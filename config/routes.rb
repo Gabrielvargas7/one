@@ -11,8 +11,15 @@ SampleApp::Application.routes.draw do
   #get "users/new"
 
   # Link to the controller
+  #match '/user/:email' =>  'user#show'
+  match '/rooms/:email' =>  'users#showrooms'
+
+  #match ':name' => Tweet#index, as => 'zombie_tweets'
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+
+
 
   # Link to the html. pages erb
   match '/signup',  to: 'users#new'

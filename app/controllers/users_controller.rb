@@ -7,7 +7,30 @@ class UsersController < ApplicationController
   def show
      @user = User.find(params[:id])
 
+    #if params[:email]
+    #  @user  = User.where(email: params[:email]).first
+    #  #render 'users/show'
+    #else
+    #  #redirect_to(root_path)
+    #end
+
   end
+
+  def showrooms
+
+    if params[:email]
+      @email = params[:email]
+      @email += ".com"
+      @user  = User.where(email: @email).first
+      render 'users/show'
+      #redirect_to(root_path)
+    else
+      redirect_to(root_path)
+    end
+
+
+  end
+
 
   def new
     @user = User.new
@@ -16,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to the MyWebRoom!"
       redirect_to @user
       # Handle a successful save.
     else
@@ -45,7 +68,17 @@ class UsersController < ApplicationController
   def index
     #@users = User.all
     @users = User.paginate(page: params[:page])
+
+    #if params[:name]
+    #  @zombie = Zombie.where(:name => params[:name]).first
+    #  @tweets = @zombie.tweets
+    #else
+    #  @tweets = Tweet.all
+    #end
+
+
   end
+
 
   def destroy
     User.find(params[:id]).destroy
