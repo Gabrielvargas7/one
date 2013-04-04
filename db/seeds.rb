@@ -19,10 +19,10 @@ ItemLocation.delete_all
 
 puts "Loading Bundles to the database"
 ItemLocation.delete_all
-  require_relative 'seeds/seeds_bundles1'
+  require_relative 'seeds/seeds_bundle'
 
 puts "Loading Items to the database"
 ItemLocation.delete_all
-require_relative 'seeds/seeds_items1'
+require_relative 'seeds/seeds_item'
 
 
