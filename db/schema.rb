@@ -11,9 +11,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328174938) do
+ActiveRecord::Schema.define(:version => 20130403165206) do
 
-  create_table "products", :force => true do |t|
+  create_table "bundles", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "theme_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "item_locations", :force => true do |t|
+    t.string   "name"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "z"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "clickable"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "items", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "item_location_id"
+    t.integer  "bundle_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.integer  "theme_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "themes", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  :null => false

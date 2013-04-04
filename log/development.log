@@ -41096,3 +41096,1148 @@ Served asset /users.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-02 17:41:29 -0700
 Served asset /application.js - 304 Not Modified (7ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (2.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (83.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (79.4ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (79.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar(255), "remember_token" varchar(255), "admin" boolean DEFAULT 'f') 
+  [1m[36m (64.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (64.1ms)[0m  CREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (63.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130328174938')
+  [1m[36m (19.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130318100622)
+Migrating to AddIndexToUsersEmail (20130318172829)
+Migrating to AddPasswordDigestToUsers (20130318182649)
+Migrating to AddRemenberTokenToUsers (20130325212218)
+Migrating to AddAdminToUsers (20130327164623)
+Migrating to CreateThemes (20130403163736)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "themes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130403163736')[0m
+  [1m[35m (89.7ms)[0m  commit transaction
+Migrating to CreateRooms (20130403164807)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "item_id" integer, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130403164807')[0m
+  [1m[35m (83.4ms)[0m  commit transaction
+Migrating to CreateItems (20130403164845)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "item_location_id" integer, "bundle_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130403164845')[0m
+  [1m[35m (83.2ms)[0m  commit transaction
+Migrating to CreateItemLocations (20130403164922)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "item_locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "x" integer, "y" integer, "z" integer, "width" integer, "height" integer, "clickable" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130403164922')[0m
+  [1m[35m (91.2ms)[0m  commit transaction
+Migrating to CreateBundles (20130403165206)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "bundles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130403165206')[0m
+  [1m[35m (91.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.6ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (128.9ms)[0m  DROP TABLE "bundles"
+  [1m[36m (89.6ms)[0m  [1mCREATE TABLE "bundles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (71.0ms)[0m  DROP TABLE "item_locations"
+  [1m[36m (64.6ms)[0m  [1mCREATE TABLE "item_locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "x" integer, "y" integer, "z" integer, "width" integer, "height" integer, "clickable" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (55.1ms)[0m  DROP TABLE "items"
+  [1m[36m (56.7ms)[0m  [1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "item_location_id" integer, "bundle_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (55.3ms)[0m  DROP TABLE "products"
+  [1m[36m (75.4ms)[0m  [1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (94.0ms)[0m  DROP TABLE "rooms"
+  [1m[36m (56.7ms)[0m  [1mCREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "item_id" integer, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (71.7ms)[0m  DROP TABLE "themes"
+  [1m[36m (56.8ms)[0m  [1mCREATE TABLE "themes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (63.3ms)[0m  DROP TABLE "users"
+  [1m[36m (64.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar(255), "remember_token" varchar(255), "admin" boolean DEFAULT 'f') [0m
+  [1m[35m (72.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (80.6ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (197.8ms)[0m  DROP TABLE "bundles"
+  [1m[36m (73.1ms)[0m  [1mCREATE TABLE "bundles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (70.8ms)[0m  DROP TABLE "item_locations"
+  [1m[36m (73.0ms)[0m  [1mCREATE TABLE "item_locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "x" integer, "y" integer, "z" integer, "width" integer, "height" integer, "clickable" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (79.6ms)[0m  DROP TABLE "items"
+  [1m[36m (73.4ms)[0m  [1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "item_location_id" integer, "bundle_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (79.7ms)[0m  DROP TABLE "rooms"
+  [1m[36m (73.5ms)[0m  [1mCREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "item_id" integer, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (88.0ms)[0m  DROP TABLE "themes"
+  [1m[36m (89.9ms)[0m  [1mCREATE TABLE "themes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (87.9ms)[0m  DROP TABLE "users"
+  [1m[36m (111.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar(255), "remember_token" varchar(255), "admin" boolean DEFAULT 'f') [0m
+  [1m[35m (113.4ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (72.4ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (3.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130318100622)
+Migrating to AddIndexToUsersEmail (20130318172829)
+Migrating to AddPasswordDigestToUsers (20130318182649)
+Migrating to AddRemenberTokenToUsers (20130325212218)
+Migrating to AddAdminToUsers (20130327164623)
+Migrating to CreateThemes (20130403163736)
+Migrating to CreateRooms (20130403164807)
+Migrating to CreateItems (20130403164845)
+Migrating to CreateItemLocations (20130403164922)
+Migrating to CreateBundles (20130403165206)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (160.5ms)[0m  CREATE TABLE "bundles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (90.7ms)[0m  [1mCREATE TABLE "item_locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "x" integer, "y" integer, "z" integer, "width" integer, "height" integer, "clickable" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (85.3ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "item_location_id" integer, "bundle_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (73.9ms)[0m  [1mCREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "item_id" integer, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (96.6ms)[0m  CREATE TABLE "themes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (73.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar(255), "remember_token" varchar(255), "admin" boolean DEFAULT 'f') [0m
+  [1m[35m (80.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (72.2ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (99.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (79.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (71.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130403165206')[0m
+  [1m[35m (116.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130403163736')
+  [1m[36m (187.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130318100622')[0m
+  [1m[35m (65.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130403164922')
+  [1m[36m (65.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130403164807')[0m
+  [1m[35m (73.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130318172829')
+  [1m[36m (73.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130327164623')[0m
+  [1m[35m (73.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130325212218')
+  [1m[36m (57.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130403164845')[0m
+  [1m[35m (57.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130318182649')
+  [1m[36m (3.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130318100622)
+Migrating to AddIndexToUsersEmail (20130318172829)
+Migrating to AddPasswordDigestToUsers (20130318182649)
+Migrating to AddRemenberTokenToUsers (20130325212218)
+Migrating to AddAdminToUsers (20130327164623)
+Migrating to CreateThemes (20130403163736)
+Migrating to CreateRooms (20130403164807)
+Migrating to CreateItems (20130403164845)
+Migrating to CreateItemLocations (20130403164922)
+Migrating to CreateBundles (20130403165206)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (87.9ms)[0m  DROP TABLE "bundles"
+  [1m[36m (65.1ms)[0m  [1mCREATE TABLE "bundles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (62.8ms)[0m  DROP TABLE "item_locations"
+  [1m[36m (73.0ms)[0m  [1mCREATE TABLE "item_locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "x" integer, "y" integer, "z" integer, "width" integer, "height" integer, "clickable" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (71.4ms)[0m  DROP TABLE "items"
+  [1m[36m (65.2ms)[0m  [1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "item_location_id" integer, "bundle_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (63.4ms)[0m  DROP TABLE "rooms"
+  [1m[36m (73.3ms)[0m  [1mCREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "item_id" integer, "theme_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (79.6ms)[0m  DROP TABLE "themes"
+  [1m[36m (81.9ms)[0m  [1mCREATE TABLE "themes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (72.2ms)[0m  DROP TABLE "users"
+  [1m[36m (60.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar(255), "remember_token" varchar(255), "admin" boolean DEFAULT 'f') [0m
+  [1m[35m (640.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (64.0ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (2.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (20.3ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:32:40 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 19:32:40 UTC +00:00]]
+  [1m[35m (161.2ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (1.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (19.4ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:17 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 19:38:17 UTC +00:00]]
+  [1m[35m (153.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:17 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["name", "Neat Studio"], ["updated_at", Wed, 03 Apr 2013 19:38:17 UTC +00:00]]
+  [1m[36m (69.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["name", "Brick Wall"], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[35m (70.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[36m (78.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[35m (78.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[36m (70.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[35m (69.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[36m (78.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[35m (100.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[36m (56.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[36m (53.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[35m (53.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[36m (57.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[35m (50.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:18 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00]]
+  [1m[36m (61.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00]]
+  [1m[35m (61.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00]]
+  [1m[36m (61.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00]]
+  [1m[35m (61.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00]]
+  [1m[36m (65.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00]]
+  [1m[35m (58.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:38:19 UTC +00:00]]
+  [1m[36m (53.6ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (325.8ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (20.3ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:02 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 19:48:02 UTC +00:00]]
+  [1m[36m (72.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["name", "Neat Studio"], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[35m (76.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["name", "Brick Wall"], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[36m (70.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[35m (70.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[36m (70.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[35m (70.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[36m (53.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[36m (53.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[36m (56.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[35m (50.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[36m (53.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[35m (53.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[36m (61.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:03 UTC +00:00]]
+  [1m[35m (62.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00]]
+  [1m[36m (62.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00]]
+  [1m[35m (53.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00]]
+  [1m[36m (78.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00]]
+  [1m[35m (53.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00]]
+  [1m[36m (53.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00]]
+  [1m[35m (53.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00]]
+  [1m[36m (53.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36mSQL (51.1ms)[0m  [1mDELETE FROM "item_locations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["height", 322], ["name", "Bed"], ["updated_at", Wed, 03 Apr 2013 19:48:04 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[35m (50.8ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (216.5ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (19.0ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[36m (74.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["name", "Neat Studio"], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[35m (67.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["name", "Brick Wall"], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[36m (53.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[36m (53.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[36m (53.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[35m (53.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[36m (64.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[35m (61.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[36m (58.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[35m (62.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:34 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[35m (70.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[36m (73.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[35m (67.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[36m (73.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[36m (53.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[36m (62.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00]]
+  [1m[35m (61.7ms)[0m  commit transaction
+  [1m[36mSQL (64.9ms)[0m  [1mDELETE FROM "item_locations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["height", 322], ["name", "Bed"], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[35m (62.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["height", 225], ["name", "Bird Cage"], ["updated_at", Wed, 03 Apr 2013 19:52:35 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[36m (59.0ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (197.0ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (1.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (119.9ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (19.2ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[36m (75.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["name", "Neat Studio"], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[35m (76.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["name", "Brick Wall"], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[36m (78.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[35m (78.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[36m (78.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[35m (86.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[36m (61.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[35m (61.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[36m (78.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:28 UTC +00:00]]
+  [1m[36m (64.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[35m (66.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[36m (62.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[35m (61.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[36m (61.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[35m (53.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[36m (61.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36mSQL (59.3ms)[0m  [1mDELETE FROM "item_locations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["height", 322], ["name", "Bed"], ["updated_at", Wed, 03 Apr 2013 20:05:29 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[35m (61.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:05:30 UTC +00:00], ["height", 225], ["name", "Bird Cage"], ["updated_at", Wed, 03 Apr 2013 20:05:30 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[36m (59.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (128.5ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (19.2ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00]]
+  [1m[36m (79.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["name", "Neat Studio"], ["updated_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00]]
+  [1m[35m (67.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (3.6ms)[0m  UPDATE "themes" SET "updated_at" = '2013-04-03 20:07:25.805935' WHERE "themes"."id" = 2
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["name", "Brick Wall"], ["updated_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00]]
+  [1m[35m (47.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  UPDATE "themes" SET "updated_at" = '2013-04-03 20:07:25.862865' WHERE "themes"."id" = 3
+  [1m[36m (0.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00]]
+  [1m[35m (67.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:25 UTC +00:00]]
+  [1m[36m (70.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[36m (53.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[35m (53.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[36m (53.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[35m (61.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[36m (64.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[35m (83.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[36m (56.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[35m (61.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[36m (64.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[36m (69.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[35m (70.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[36m (70.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:26 UTC +00:00]]
+  [1m[35m (78.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00]]
+  [1m[36m (102.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00]]
+  [1m[35m (61.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00]]
+  [1m[36m (61.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00]]
+  [1m[35m (70.0ms)[0m  commit transaction
+  [1m[36mSQL (155.6ms)[0m  [1mDELETE FROM "item_locations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00], ["height", 322], ["name", "Bed"], ["updated_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[35m (95.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00], ["height", 225], ["name", "Bird Cage"], ["updated_at", Wed, 03 Apr 2013 20:07:27 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[36m (51.0ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (119.6ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (19.1ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[36m (74.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[35m (76.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["name", "Brick Wall"], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[36m (78.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[35m (78.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[36m (53.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[35m (53.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[35m (61.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[36m (61.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[36m (56.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[35m (58.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[36m (53.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[35m (54.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:30 UTC +00:00]]
+  [1m[36m (53.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[35m (53.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[36m (53.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[35m (53.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[36m (53.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[35m (53.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[36m (53.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[35m (53.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36mSQL (67.6ms)[0m  [1mDELETE FROM "item_locations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["height", 322], ["name", "Bed"], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[35m (62.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["height", 225], ["name", "Bird Cage"], ["updated_at", Wed, 03 Apr 2013 20:08:31 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[36m (59.3ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (160.1ms)[0m  DELETE FROM "themes"
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (147.0ms)[0m  DELETE FROM "themes"
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (426.3ms)[0m  DELETE FROM "themes"
+Connecting to database specified by database.yml
+  [1m[36m (1.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (168.3ms)[0m  DELETE FROM "themes"
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (190.8ms)[0m  DELETE FROM "themes"
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (224.3ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00]]
+  [1m[36m (76.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00]]
+  [1m[35m (76.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["id", 3], ["name", "Brick Wall"], ["updated_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00]]
+  [1m[36m (78.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00]]
+  [1m[35m (78.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00]]
+  [1m[36m (102.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00]]
+  [1m[35m (78.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:40 UTC +00:00]]
+  [1m[36m (61.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[35m (63.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[36m (72.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[35m (69.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[36m (73.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[35m (94.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[36m (61.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[35m (62.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[36m (61.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[36m (62.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[35m (135.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[36m (62.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:41 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00]]
+  [1m[35m (62.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00]]
+  [1m[36m (61.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36mSQL (56.8ms)[0m  [1mDELETE FROM "item_locations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00], ["height", 322], ["name", "Bed"], ["updated_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[35m (68.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00], ["height", 225], ["name", "Bird Cage"], ["updated_at", Wed, 03 Apr 2013 20:39:42 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[36m (67.7ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (121.7ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[36m (59.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[35m (60.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["id", 3], ["name", "Brick Wall"], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[36m (61.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[35m (61.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[36m (61.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[35m (61.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[36m (61.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[35m (61.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:12 UTC +00:00]]
+  [1m[36m (70.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[35m (70.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[36m (73.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[35m (67.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[36m (114.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[35m (61.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[36m (61.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[35m (45.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[36m (61.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[35m (61.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[36m (61.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[35m (61.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[36m (62.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[35m (61.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:13 UTC +00:00]]
+  [1m[36m (61.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 03 Apr 2013 20:41:14 UTC +00:00], ["description", ""], ["name", ""], ["updated_at", Wed, 03 Apr 2013 20:41:14 UTC +00:00]]
+  [1m[35m (61.7ms)[0m  commit transaction
+  [1m[36mSQL (67.6ms)[0m  [1mDELETE FROM "item_locations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:41:14 UTC +00:00], ["height", 322], ["name", "Bed"], ["updated_at", Wed, 03 Apr 2013 20:41:14 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[35m (63.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Wed, 03 Apr 2013 20:41:14 UTC +00:00], ["height", 225], ["name", "Bird Cage"], ["updated_at", Wed, 03 Apr 2013 20:41:14 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[36m (67.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (15.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (91.8ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.1ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 11:32:59 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Thu, 04 Apr 2013 11:32:59 UTC +00:00]]
+  [1m[36m (88.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 11:32:59 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Thu, 04 Apr 2013 11:32:59 UTC +00:00]]
+  [1m[35m (86.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 11:32:59 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["id", 3], ["name", "Brick Wall"], ["updated_at", Thu, 04 Apr 2013 11:32:59 UTC +00:00]]
+  [1m[36m (88.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (86.9ms)[0m  DELETE FROM "item_locations"
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (125.3ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 11:34:13 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Thu, 04 Apr 2013 11:34:13 UTC +00:00]]
+  [1m[36m (90.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 11:34:13 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Thu, 04 Apr 2013 11:34:13 UTC +00:00]]
+  [1m[35m (80.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 11:34:13 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["id", 3], ["name", "Brick Wall"], ["updated_at", Thu, 04 Apr 2013 11:34:13 UTC +00:00]]
+  [1m[36m (73.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (67.6ms)[0m  DELETE FROM "item_locations"
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (180.1ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00]]
+  [1m[36m (81.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00]]
+  [1m[35m (84.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["id", 3], ["name", "Brick Wall"], ["updated_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00]]
+  [1m[36m (78.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (77.0ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00], ["height", 322], ["id", 1], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (77.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00], ["height", 225], ["id", 2], ["name", "Bird Cage"], ["updated_at", Thu, 04 Apr 2013 11:35:48 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[35m (77.6ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (83.6ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00]]
+  [1m[36m (67.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00]]
+  [1m[35m (84.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["id", 3], ["name", "Brick Wall"], ["updated_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00]]
+  [1m[36m (78.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (78.3ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00], ["height", 322], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (78.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00], ["height", 225], ["name", "Bird Cage"], ["updated_at", Thu, 04 Apr 2013 11:36:24 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[35m (75.9ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (183.0ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00]]
+  [1m[36m (89.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00]]
+  [1m[35m (75.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["id", 3], ["name", "Brick Wall"], ["updated_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00]]
+  [1m[36m (80.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (71.8ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["height", 322], ["id", 1], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (81.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["height", 225], ["id", 2], ["name", "Bird Cage"], ["updated_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[35m (84.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["height", 335], ["id", 3], ["name", "Book Stand"], ["updated_at", Thu, 04 Apr 2013 12:08:47 UTC +00:00], ["width", 193], ["x", 673], ["y", 257], ["z", 2]]
+  [1m[36m (77.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:08:48 UTC +00:00], ["height", 231], ["id", 4], ["name", "Chair"], ["updated_at", Thu, 04 Apr 2013 12:08:48 UTC +00:00], ["width", 164], ["x", 1209], ["y", 416], ["z", 2]]
+  [1m[35m (78.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:08:48 UTC +00:00], ["height", 74], ["id", 5], ["name", "Newspaper"], ["updated_at", Thu, 04 Apr 2013 12:08:48 UTC +00:00], ["width", 142], ["x", 71], ["y", 550], ["z", 1]]
+  [1m[36m (87.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:08:48 UTC +00:00], ["height", 142], ["id", 6], ["name", "World Map"], ["updated_at", Thu, 04 Apr 2013 12:08:48 UTC +00:00], ["width", 167], ["x", 1811], ["y", 269], ["z", 1]]
+  [1m[35m (87.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "No"], ["created_at", Thu, 04 Apr 2013 12:08:48 UTC +00:00], ["height", 116], ["name", "T.V. Stand"], ["updated_at", Thu, 04 Apr 2013 12:08:48 UTC +00:00], ["width", 237], ["x", 851], ["y", 491], ["z", 2]]
+  [1m[36m (85.9ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (163.3ms)[0m  DELETE FROM "themes"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.8ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["description", "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?"], ["id", 1], ["name", "Turquoise Loft"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00]]
+  [1m[36m (69.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["description", "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone?"], ["id", 2], ["name", "Neat Studio"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00]]
+  [1m[35m (76.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "themes" ("created_at", "description", "id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["description", "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\"."], ["id", 3], ["name", "Brick Wall"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00]]
+  [1m[36m (86.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (84.0ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["height", 322], ["id", 1], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (72.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["height", 225], ["id", 2], ["name", "Bird Cage"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[35m (68.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["height", 335], ["id", 3], ["name", "Book Stand"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["width", 193], ["x", 673], ["y", 257], ["z", 2]]
+  [1m[36m (69.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["height", 231], ["id", 4], ["name", "Chair"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["width", 164], ["x", 1209], ["y", 416], ["z", 2]]
+  [1m[35m (77.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["height", 74], ["id", 5], ["name", "Newspaper"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["width", 142], ["x", 71], ["y", 550], ["z", 1]]
+  [1m[36m (77.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["height", 142], ["id", 6], ["name", "World Map"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["width", 167], ["x", 1811], ["y", 269], ["z", 1]]
+  [1m[35m (70.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "No"], ["created_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["height", 116], ["id", 7], ["name", "T.V. Stand"], ["updated_at", Thu, 04 Apr 2013 12:18:00 UTC +00:00], ["width", 237], ["x", 851], ["y", 491], ["z", 2]]
+  [1m[36m (85.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (81.3ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "This object set gives your room an awesome look! The furniture is so hd that it looks like a cartoon room"], ["id", 1], ["name", "Cartoonish"], ["theme_id", 1], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[36m (79.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "This set is more traditional. Great furniture design, nothing flashy. It gives your room a real look and feel"], ["id", 2], ["name", "Urban"], ["theme_id", 2], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[35m (84.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "This particular set of objects is a look in to the future of home design. More modern, tech-friendly, and sleek looking than any other."], ["id", 3], ["name", "Elegante"], ["theme_id", 3], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[36m (78.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "This objects were web-crafted by guys that lived in 60's here in San Francisco. These objects are some of the goods that this duet owned in the past. "], ["id", 4], ["name", "English Hipster"], ["theme_id", 4], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[35m (77.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "Simple. Its objects blend smoothly to create an unique look."], ["id", 5], ["name", "Simplicity"], ["theme_id", 5], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[36m (72.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "The objects in this bundle were hand picked by one of our own. Really creative and modern."], ["id", 6], ["name", "Disco"], ["theme_id", 6], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[35m (86.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "Mystery set of objects! If you can't make up your mind, pick this one. "], ["id", 7], ["name", "Mystery"], ["theme_id", 7], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[36m (73.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "Feel the Chill of Brazil."], ["id", 8], ["name", "Brazil"], ["theme_id", 8], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[35m (169.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", "We like that Diamond life. "], ["id", 9], ["name", "Ritzy"], ["theme_id", 9], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[36m (83.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00], ["description", ""], ["id", 10], ["name", ""], ["theme_id", 10], ["updated_at", Thu, 04 Apr 2013 12:18:01 UTC +00:00]]
+  [1m[35m (86.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 11], ["name", ""], ["theme_id", 11], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[36m (86.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 12], ["name", ""], ["theme_id", 12], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[35m (78.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 13], ["name", ""], ["theme_id", 13], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[36m (86.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 14], ["name", ""], ["theme_id", 14], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[35m (86.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 15], ["name", ""], ["theme_id", 15], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[36m (86.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 16], ["name", ""], ["theme_id", 16], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[35m (86.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 17], ["name", ""], ["theme_id", 17], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[36m (86.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 18], ["name", ""], ["theme_id", 18], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[35m (86.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "bundles" ("created_at", "description", "id", "name", "theme_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00], ["description", ""], ["id", 19], ["name", ""], ["theme_id", 19], ["updated_at", Thu, 04 Apr 2013 12:18:02 UTC +00:00]]
+  [1m[36m (152.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (72.9ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("bundle_id", "created_at", "description", "id", "item_location_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["bundle_id", 1], ["created_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00], ["description", "This elegant design has a distinct color and it shows that your bed is an important piece of furniture for you. Its organized, spacious, and adds color to your room design. "], ["id", 1], ["item_location_id", 1], ["name", "Peach Queen"], ["updated_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00]]
+  [1m[36m (62.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "items" ("bundle_id", "created_at", "description", "id", "item_location_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["bundle_id", 1], ["created_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00], ["description", "A traditional Bird cage with a ceramic base. Simple but fashionable looking. For those who like to buy simple but look good. "], ["id", 2], ["item_location_id", 2], ["name", "Ceramic"], ["updated_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00]]
+  [1m[35m (76.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "items" ("bundle_id", "created_at", "description", "id", "item_location_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["bundle_id", 1], ["created_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00], ["description", "This eleven squared book shelf is a personal favorite. The orange tone adds style and funky-ness to your room. On top of that, it comes with a great variety of colored books, boxes and magazines inside. Great choice if you don't want to end up with a boring room setup."], ["id", 3], ["item_location_id", 3], ["name", "Eleven Oranges"], ["updated_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00]]
+  [1m[36m (70.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "items" ("bundle_id", "created_at", "description", "id", "item_location_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["bundle_id", 1], ["created_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00], ["description", "Boss Chair! Any visitor will automatically know that you are serious about your craft. You like working comfortably because once your start, there is no one taking you \"off the zone\". And its also fun to spin around when bored."], ["id", 4], ["item_location_id", 4], ["name", "Executive"], ["updated_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00]]
+  [1m[35m (78.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "items" ("bundle_id", "created_at", "description", "id", "item_location_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["bundle_id", 1], ["created_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00], ["description", "Colored Version of my Wall street journal, cup of coffee, and some pancakes! Thats how a morning should start. "], ["id", 5], ["item_location_id", 5], ["name", "Traditional"], ["updated_at", Thu, 04 Apr 2013 12:18:03 UTC +00:00]]
+  [1m[36m (78.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (182.0ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.8ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:20:22 UTC +00:00], ["height", 322], ["id", 1], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 12:20:22 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (80.8ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (103.1ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.8ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:03 UTC +00:00], ["height", 322], ["id", 1], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 12:21:03 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (86.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:03 UTC +00:00], ["height", 225], ["id", 2], ["name", "Bird Cage"], ["updated_at", Thu, 04 Apr 2013 12:21:03 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[35m (84.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:03 UTC +00:00], ["height", 335], ["id", 3], ["name", "Book Stand"], ["updated_at", Thu, 04 Apr 2013 12:21:03 UTC +00:00], ["width", 193], ["x", 673], ["y", 257], ["z", 2]]
+  [1m[36m (77.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:03 UTC +00:00], ["height", 231], ["id", 4], ["name", "Chair"], ["updated_at", Thu, 04 Apr 2013 12:21:03 UTC +00:00], ["width", 164], ["x", 1209], ["y", 416], ["z", 2]]
+  [1m[35m (77.7ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (1.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (260.5ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["height", 322], ["id", 1], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (76.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["height", 225], ["id", 2], ["name", "Bird Cage"], ["updated_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[35m (83.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["height", 335], ["id", 3], ["name", "Book Stand"], ["updated_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["width", 193], ["x", 673], ["y", 257], ["z", 2]]
+  [1m[36m (88.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["height", 231], ["id", 4], ["name", "Chair"], ["updated_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["width", 164], ["x", 1209], ["y", 416], ["z", 2]]
+  [1m[35m (86.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["height", 74], ["id", 5], ["name", "Newspaper"], ["updated_at", Thu, 04 Apr 2013 12:21:23 UTC +00:00], ["width", 142], ["x", 71], ["y", 550], ["z", 1]]
+  [1m[36m (86.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (175.1ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.8ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:41 UTC +00:00], ["height", 322], ["id", 1], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 12:21:41 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (93.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:41 UTC +00:00], ["height", 225], ["id", 2], ["name", "Bird Cage"], ["updated_at", Thu, 04 Apr 2013 12:21:41 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[35m (79.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:42 UTC +00:00], ["height", 335], ["id", 3], ["name", "Book Stand"], ["updated_at", Thu, 04 Apr 2013 12:21:42 UTC +00:00], ["width", 193], ["x", 673], ["y", 257], ["z", 2]]
+  [1m[36m (86.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:42 UTC +00:00], ["height", 231], ["id", 4], ["name", "Chair"], ["updated_at", Thu, 04 Apr 2013 12:21:42 UTC +00:00], ["width", 164], ["x", 1209], ["y", 416], ["z", 2]]
+  [1m[35m (77.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:42 UTC +00:00], ["height", 74], ["id", 5], ["name", "Newspaper"], ["updated_at", Thu, 04 Apr 2013 12:21:42 UTC +00:00], ["width", 142], ["x", 71], ["y", 550], ["z", 1]]
+  [1m[36m (94.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:42 UTC +00:00], ["height", 142], ["id", 6], ["name", "World Map"], ["updated_at", Thu, 04 Apr 2013 12:21:42 UTC +00:00], ["width", 167], ["x", 1811], ["y", 269], ["z", 1]]
+  [1m[35m (77.7ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (1.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (178.3ms)[0m  DELETE FROM "item_locations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:58 UTC +00:00], ["height", 322], ["id", 1], ["name", "Bed"], ["updated_at", Thu, 04 Apr 2013 12:21:58 UTC +00:00], ["width", 448], ["x", 1493], ["y", 420], ["z", 1]]
+  [1m[36m (81.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:58 UTC +00:00], ["height", 225], ["id", 2], ["name", "Bird Cage"], ["updated_at", Thu, 04 Apr 2013 12:21:58 UTC +00:00], ["width", 109], ["x", 156], ["y", 360], ["z", 2]]
+  [1m[35m (70.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:58 UTC +00:00], ["height", 335], ["id", 3], ["name", "Book Stand"], ["updated_at", Thu, 04 Apr 2013 12:21:58 UTC +00:00], ["width", 193], ["x", 673], ["y", 257], ["z", 2]]
+  [1m[36m (69.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:59 UTC +00:00], ["height", 231], ["id", 4], ["name", "Chair"], ["updated_at", Thu, 04 Apr 2013 12:21:59 UTC +00:00], ["width", 164], ["x", 1209], ["y", 416], ["z", 2]]
+  [1m[35m (70.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:59 UTC +00:00], ["height", 74], ["id", 5], ["name", "Newspaper"], ["updated_at", Thu, 04 Apr 2013 12:21:59 UTC +00:00], ["width", 142], ["x", 71], ["y", 550], ["z", 1]]
+  [1m[36m (71.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["clickable", "Yes"], ["created_at", Thu, 04 Apr 2013 12:21:59 UTC +00:00], ["height", 142], ["id", 6], ["name", "World Map"], ["updated_at", Thu, 04 Apr 2013 12:21:59 UTC +00:00], ["width", 167], ["x", 1811], ["y", 269], ["z", 1]]
+  [1m[35m (69.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "item_locations" ("clickable", "created_at", "height", "id", "name", "updated_at", "width", "x", "y", "z") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["clickable", "No"], ["created_at", Thu, 04 Apr 2013 12:21:59 UTC +00:00], ["height", 116], ["id", 7], ["name", "T.V. Stand"], ["updated_at", Thu, 04 Apr 2013 12:21:59 UTC +00:00], ["width", 237], ["x", 851], ["y", 491], ["z", 2]]
+  [1m[36m (69.6ms)[0m  [1mcommit transaction[0m

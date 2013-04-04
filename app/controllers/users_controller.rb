@@ -16,21 +16,6 @@ class UsersController < ApplicationController
 
   end
 
-  def showrooms
-
-    if params[:email]
-      @email = params[:email]
-      @email += ".com"
-      @user  = User.where(email: @email).first
-      render 'users/show'
-      #redirect_to(root_path)
-    else
-      redirect_to(root_path)
-    end
-
-
-  end
-
 
   def new
     @user = User.new
