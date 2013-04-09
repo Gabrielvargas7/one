@@ -11,35 +11,71 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403165206) do
+ActiveRecord::Schema.define(:version => 20130405153600) do
+
+  create_table "advertisements", :force => true do |t|
+    t.string   "image_name"
+    t.string   "description"
+    t.integer  "bookmark_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "bookmarks", :force => true do |t|
+    t.integer  "bookmarks_category_id"
+    t.string   "bookmark_url"
+    t.string   "title"
+    t.string   "i_frame"
+    t.string   "image_name"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "bookmarks_categories", :force => true do |t|
+    t.integer  "item_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "bundles", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "theme_id"
+    t.string   "image_name"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "item_locations", :force => true do |t|
-    t.string   "name"
-    t.integer  "x"
-    t.integer  "y"
-    t.integer  "z"
-    t.integer  "width"
-    t.integer  "height"
-    t.string   "clickable"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "bundles_bookmarks", :force => true do |t|
+    t.integer  "item_id"
+    t.string   "bundle_id"
+    t.string   "bookmark_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "items", :force => true do |t|
     t.string   "name"
+    t.decimal  "x"
+    t.decimal  "y"
+    t.integer  "z"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "clickable"
+    t.string   "image_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "items_designs", :force => true do |t|
+    t.string   "name"
     t.text     "description"
-    t.integer  "item_location_id"
+    t.integer  "item_id"
     t.integer  "bundle_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.string   "image_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "rooms", :force => true do |t|
@@ -53,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20130403165206) do
   create_table "themes", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "image_name"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

@@ -1,3 +1,3 @@
 class Item < ActiveRecord::Base
-  attr_accessible :bundle_id, :description, :item_location_id, :name
+  attr_accessible :clickable, :height, :image_name, :name, :width, :x, :y, :z
 end
