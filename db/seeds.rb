@@ -8,11 +8,15 @@
 
 require "rubygems"
 require "google_drive"
+require "fileutils"
 
 require_relative 'seeds/seeds_themes'
 require_relative 'seeds/seeds_item'
 require_relative 'seeds/seeds_bundle'
 require_relative 'seeds/seeds_bookmarks'
+require_relative 'seeds/seeds_themes_image'
+
+
 
 #module ImageHelper
 #  def self.fix_image_name image_name
@@ -28,42 +32,49 @@ require_relative 'seeds/seeds_bookmarks'
 session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 
 # First worksheet of
+
+#DB data
+#https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE&usp=sharing
+
+#  #Items
+#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[4]
+#SeedItemsModule.InsertItems(ws)
 #
-# fix the image name
-#def fix_image_name image_name
-#  image_name.downcase!
-#  image_name.strip!
-#  namesplit = image_name.split(' ').join('-')
-#end
-
-
-#Items
-#https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdE42em9id0VNRVBTemxoLXptcjVEb2c&usp=sharing
-  ws = session.spreadsheet_by_key("0ApGllgrhiMhwdE42em9id0VNRVBTemxoLXptcjVEb2c").worksheets[0]
-  SeedItemsModule.InsertItems(ws)
-  Test
-
+#
 ###Themes
-###https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdFNGOUpaWXpnMFYtNnAyUTlfM0FSYlE&usp=sharing
-# ws = session.spreadsheet_by_key("0ApGllgrhiMhwdFNGOUpaWXpnMFYtNnAyUTlfM0FSYlE").worksheets[0]
-# SeedThemesModule.InsertThemes(ws)
-##
-###Bundle table
-###https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdEEtT2wxbkRrcXJnMTlKa0dwaGJwN1E&usp=sharing
-#  ws = session.spreadsheet_by_key("0ApGllgrhiMhwdEEtT2wxbkRrcXJnMTlKa0dwaGJwN1E").worksheets[0]
-#  SeedBundleModule.InsertBundles(ws)
-##
-###Item_Design table
-###https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdHZCMGQzeTJNYWtsbF93Vzk3U1JpSFE&usp=sharing
-#  ws = session.spreadsheet_by_key("0ApGllgrhiMhwdHZCMGQzeTJNYWtsbF93Vzk3U1JpSFE").worksheets[0]
-#  SeedItemsModule.InsertItemsDesign(ws)
-##
+#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[2]
+#SeedThemesModule.InsertThemes(ws)
 #
-###Bookmark category table
-###https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdGpDcEczcktkZmZLcWx2RXF6NFVweXc&usp=sharing
-#    ws = session.spreadsheet_by_key("0ApGllgrhiMhwdGpDcEczcktkZmZLcWx2RXF6NFVweXc").worksheets[0]
-#    SeedBookmarkModule.InsertBookmarkCategory(ws)
+##Bundle table
+#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[1]
+#SeedBundleModule.InsertBundles(ws)
+#
+## Item_Design table
+#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[3]
+#SeedItemsModule.InsertItemsDesign(ws)
+#
+#
+##Bookmark categories table
+#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[6]
+#SeedBookmarkModule.InsertBookmarkCategory(ws)
+#
+##Bookmark table
+#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[5]
+#SeedBookmarkModule.InsertBookmarks(ws)
+#
+#
+##Bundle_bookmarks table
+#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
+#  SeedBundleModule.InsertBundlesBookmarks(ws)
 #
 
+ SeedThemeImagesModule.convert_themes_image
+
+#FileUtils.copy
+
+p Rails.root
 
 
+#Dir[Rails.root.join("spec/**/*.rb")].each {|f| p f}
+
+#require "FileUtils"

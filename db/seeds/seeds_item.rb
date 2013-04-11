@@ -7,7 +7,9 @@ module SeedItemsModule
       if ws[row,1]!='item_id'
 
         # create image name with two values (imagename)
-        image_name = ImageNameHelper.fix_image_name ws[row,9]
+
+        image_name = Image::ImageNameHelper.fix_image_name ws[row,9]
+        image_name = image_name+Image::ImageNameHelper::EXTENSION_PNG
 
 
         p "Inserting Item "+ws[row,1] +" name: "+ ws[row,2]+" image_name "+image_name
@@ -16,7 +18,7 @@ module SeedItemsModule
 
         if Item.where(image_name: image_name).exists?
           # the item exist
-          p "Error: the item don't exist for the image:"+image_name
+          p "Error: the item image name alredy exist on the item table "+image_name
            b.image_name = -1
         else
            b.image_name = image_name
@@ -31,22 +33,27 @@ module SeedItemsModule
 
   def self.InsertItemsDesign(ws)
   ItemsDesign.delete_all
-    ## insert the Items_designs Table
+    # insert the Items_designs Table
     for row in 1..ws.num_rows
       if ws[row,1]!='id'
 
-          item_image_name = ImageNameHelper.fix_image_name ws[row,5]
-          item_design_name = ImageNameHelper.fix_image_name ws[row,6]
+          item_image_name = Image::ImageNameHelper.fix_image_name ws[row,5]
+          item_design_name = Image::ImageNameHelper.fix_image_name ws[row,6]
 
           # create image name with two values (itemNames-itemDesignName-id)
-          image_name =  item_image_name+"-"+ item_design_name
+          image_name =  item_image_name+"-"+ item_design_name+Image::ImageNameHelper::EXTENSION_PNG
           image_already_on_ImageDesign_db = ItemsDesign.find_by_image_name(image_name)
+
+          # add extension
+          item_image_name  = item_image_name+Image::ImageNameHelper::EXTENSION_PNG
+
 
           if image_already_on_ImageDesign_db.blank?
 
-            p "Inserting Item design"+ws[row,1] +" name: "+ ws[row,3]+" image_name "+image_name
+            p "Inserting Item design: "+ws[row,1] +" name: "+ ws[row,3]+" image_name "+image_name
 
-            itemsDesign = ItemsDesign.new(name:ws[row,3],description:ws[row,4],image_name:image_name)
+            itemsDesign = ItemsDesign.new(name:ws[row,3],description:ws[row,4])
+            itemsDesign.image_name = image_name
 
             # check if then exist on Item table
               if Item.where(:image_name=> item_image_name).exists?
@@ -59,7 +66,6 @@ module SeedItemsModule
               end
 
             # check if bundle exist on bundle table
-
             if Bundle.exists?(ws[row,2])
               # the item don't exist
               bundle = Bundle.find(ws[row,2])

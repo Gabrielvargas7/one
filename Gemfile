@@ -11,6 +11,8 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem 'pg', '0.12.2'
 gem 'google_drive'
+gem "fileutils", " 0.7"
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.7'

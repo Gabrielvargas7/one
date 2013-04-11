@@ -1,13 +1,16 @@
 require 'spec_helper'
-#require_relative '../../db/seeds/seeds_item'
+
 
 describe "seed database with items" do
+
 
     it 'should do something' do
 
 
       #To change this template use File | Settings | File Templates.
       true.should == false
+
+      SeedBoo
     end
 
 

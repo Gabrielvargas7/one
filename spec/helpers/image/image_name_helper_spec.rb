@@ -12,22 +12,52 @@ require 'spec_helper'
 # end
 describe Image::ImageNameHelper do
 
-  #pending "add some examples to (or delete) #{__FILE__}"
+     imageNameHelper = Image::ImageNameHelper
+     subject { imageNameHelper }
 
      describe "image name" do
+
        it "remove space of the name " do
+         image_to_fix = "Bed With Space.jpg"
 
-         image_to_fix = "Bed With Space"
-         image_fix = "bed-with-space"
+         test_image_fix = imageNameHelper.remove_space_image_name image_to_fix
 
-         test_image_fix = ImageNameHelper.fix_image_name image_to_fix
-         image_fix should == test_image_fix
-
-
+         test_image_fix.should eq("bed-with-space.jpg")
        end
 
+       it "remove extension and space of the name " do
+         image_to_fix = "Bed With Space .jpg"
+
+         not_extension_image_fix = imageNameHelper.remove_image_extension image_to_fix
+         clean_image_fix = imageNameHelper.remove_space_image_name not_extension_image_fix
+
+         clean_image_fix.should eq("bed-with-space")
+       end
+
+       it "fix_image_name remove extension and space of the name " do
+         image_to_fix = "Bed With Space .jpg"
+
+         test_image_fix = imageNameHelper.fix_image_name image_to_fix
+
+         test_image_fix.should eq("bed-with-space")
+       end
+
+
+
+
+
+     it "test no self methods on the module " do
+         image_to_fix = "Bed With Space"
+
+         @testImageNameHelper =  TestImageNameHelper.new
+         test_image_fix = @testImageNameHelper.no_self_fix_image_name  image_to_fix
+
+         test_image_fix.should eq("bed-with-space")
+       end
      end
-
-
-
 end
+
+class TestImageNameHelper
+    include Image::ImageNameHelper
+end
+
