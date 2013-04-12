@@ -3,6 +3,7 @@ module SeedThemesModule
 
 
   def self.InsertThemes(ws)
+    Theme.delete_all
     ## insert the Themes Table
     for row in 1..ws.num_rows
 

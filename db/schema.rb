@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410120520) do
-
-  create_table "advertisements", :force => true do |t|
-    t.string   "image_name"
-    t.string   "description"
-    t.integer  "bookmark_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130412091953) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -65,9 +57,9 @@ ActiveRecord::Schema.define(:version => 20130410120520) do
     t.integer  "width"
     t.integer  "height"
     t.string   "clickable"
-    t.string   "image_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "folder_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "items_designs", :force => true do |t|

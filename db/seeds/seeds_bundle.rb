@@ -1,6 +1,7 @@
 module SeedBundleModule
 
     def self.InsertBundles(ws)
+      Bundle.delete_all
     # insert the bundles Table
       for row in 1..ws.num_rows
         if ws[row,1]!='bundle_id'
@@ -29,15 +30,16 @@ module SeedBundleModule
     end
 
     def self.InsertBundlesBookmarks(ws)
+      BundlesBookmark.delete_all
       # insert the bundles Table
       for row in 1..ws.num_rows
-        if ws[row,1]!='item_image_name'
+        if ws[row,1]!='item_id'
 
-          image_name = Image::ImageNameHelper.fix_image_name ws[row,1]
+          folder_name = Image::ImageNameHelper.fix_image_name ws[row,1]
 
-          image_name = image_name+Image::ImageNameHelper::EXTENSION_PNG
+          #image_name = image_name+Image::ImageNameHelper::EXTENSION_PNG
 
-          p "Inserting Bundle Bookmark: bookmark title: "+ws[row,2] +" bookmark_id: "+ ws[row,3] +" item image_name: "+image_name
+          p "Inserting Bundle Bookmark: bookmark title: "+ws[row,2] +" bookmark_id: "+ ws[row,3] +" item _name: "+folder_name
           b = BundlesBookmark.new()
 
           if Bookmark.where(id:ws[row, 3]).exists?
@@ -47,12 +49,12 @@ module SeedBundleModule
           end
 
           # check if then exist on Item table
-          if Item.where(image_name:image_name).exists?
+          if Item.where(folder_name:folder_name).exists?
             # the item exist
-            items = Item.find_by_image_name(image_name)
+            items = Item.find_by_folder_name(folder_name)
             b.item_id = items.id
           else
-            p "Error: the item don't exist for the image: "+image_name
+            p "Error: the item don't exist for item: "+folder_name
             b.item_id = -1
           end
           b.save

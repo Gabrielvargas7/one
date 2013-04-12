@@ -11,11 +11,16 @@ require "google_drive"
 require "fileutils"
 
 require_relative 'seeds/seeds_themes'
-require_relative 'seeds/seeds_item'
-require_relative 'seeds/seeds_bundle'
-require_relative 'seeds/seeds_bookmarks'
-require_relative 'seeds/seeds_themes_image'
+require_relative 'seeds/seeds_themes_images'
 
+require_relative 'seeds/seeds_item'
+require_relative 'seeds/seeds_item_images'
+
+require_relative 'seeds/seeds_bundle'
+require_relative 'seeds/seeds_bundle_images'
+
+require_relative 'seeds/seeds_bookmarks'
+require_relative 'seeds/seeds_bookmarks_images'
 
 
 #module ImageHelper
@@ -36,7 +41,7 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #DB data
 #https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE&usp=sharing
 
-#  #Items
+  #Items
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[4]
 #SeedItemsModule.InsertItems(ws)
 #
@@ -49,11 +54,11 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[1]
 #SeedBundleModule.InsertBundles(ws)
 #
-## Item_Design table
+##Item_Design table
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[3]
 #SeedItemsModule.InsertItemsDesign(ws)
 #
-#
+##
 ##Bookmark categories table
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[6]
 #SeedBookmarkModule.InsertBookmarkCategory(ws)
@@ -67,14 +72,16 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
 #  SeedBundleModule.InsertBundlesBookmarks(ws)
 #
-
- SeedThemeImagesModule.convert_themes_image
-
-#FileUtils.copy
-
-p Rails.root
+#
 
 
-#Dir[Rails.root.join("spec/**/*.rb")].each {|f| p f}
 
-#require "FileUtils"
+## this is only one time to transfer the images
+#   SeedThemeImagesModule.transfer_themes_image
+   #SeedBundleImagesModule.transfer_bundles_image
+   #SeedItemsImagesModule.transfer_items_image_main
+   #SeedItemsImagesModule.transfer_items_image_300
+   #SeedBookmarksImageModule.transfer_bookmarks_image
+
+
+

@@ -2,25 +2,25 @@ module SeedBookmarkModule
 
 
    def self.InsertBookmarkCategory(ws)
-
+      BookmarksCategory.delete_all
       # insert the Bookmark Category Table
       for row in 1..ws.num_rows
         if ws[row,1]!='id'
 
-          item_image_name = Image::ImageNameHelper.fix_image_name ws[row,2]
-          item_image_name = item_image_name+Image::ImageNameHelper::EXTENSION_PNG
+          item_folder_name = Image::ImageNameHelper.fix_image_name ws[row,2]
+          #item_image_name = item_image_name+Image::ImageNameHelper::EXTENSION_PNG
 
 
-          p "Inserting Bookmark Category Id "+ws[row,1] +" name: "+ ws[row,3]+" item image name:  "+item_image_name
+          p "Inserting Bookmark Category Id "+ws[row,1] +" name: "+ ws[row,3]+" item image name:  "+item_folder_name
           b = BookmarksCategory.new(name:ws[row,3])
           b.id = ws[row, 1]
 
-          if Item.where(image_name: item_image_name).exists?
+          if Item.where(folder_name: item_folder_name).exists?
             # the item exist
-            item  = Item.find_by_image_name(item_image_name)
+            item  = Item.find_by_folder_name(item_folder_name)
             b.item_id = item.id;
           else
-            p "Error: the item image name don't exist on  the table item:"+item_image_name
+            p "Error: the item image name don't exist on  the table item:"+item_folder_name
             b.item_id  = -1
           end
           b.save
@@ -29,7 +29,7 @@ module SeedBookmarkModule
    end
 
    def self.InsertBookmarks(ws)
-
+     Bookmark.delete_all
      # insert the Bookmark Table
      for row in 1..ws.num_rows
 
@@ -48,8 +48,8 @@ module SeedBookmarkModule
           if ws[row,3]!='id'
 
              #get the image name of the item
-             item_image_name = Image::ImageNameHelper.fix_image_name ws[row,1]
-             item_image_name = item_image_name+Image::ImageNameHelper::EXTENSION_PNG
+             item_folder_name = Image::ImageNameHelper.fix_image_name ws[row,1]
+             #item_image_name = item_image_name+Image::ImageNameHelper::EXTENSION_PNG
              bookmark_image_name = Image::ImageNameHelper.fix_image_name ws[row,2]
              bookmark_image_name = bookmark_image_name + Image::ImageNameHelper::EXTENSION_PNG
 
@@ -85,12 +85,12 @@ module SeedBookmarkModule
                p "Warning: the Bookmark category don't exist on the table bookmark category: "+ws[row,7]
              end
               #validate Items
-             if Item.where(image_name: item_image_name).exists?
+             if Item.where(folder_name: item_folder_name).exists?
                # the item exist
-               item  = Item.find_by_image_name(item_image_name)
+               item  = Item.find_by_folder_name(item_folder_name)
                b.item_id = item.id;
              else
-               p "Error: the item image name don't exist on  the table item:"+item_image_name
+               p "Error: the item image name don't exist on  the table item:"+item_folder_name
                b.item_id  = -1
              end
              b.save
