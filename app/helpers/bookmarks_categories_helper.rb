@@ -1,0 +1,2 @@
+module BookmarksCategoriesHelper
+end

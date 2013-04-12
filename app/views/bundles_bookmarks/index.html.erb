@@ -1,0 +1,25 @@
+<h1>Listing bundles_bookmarks</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Bookmark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bundles_bookmarks.each do |bundles_bookmark| %>
+  <tr>
+    <td><%= bundles_bookmark.item_id %></td>
+    <td><%= bundles_bookmark.bookmark_id %></td>
+    <td><%= link_to 'Show', bundles_bookmark %></td>
+    <td><%= link_to 'Edit', edit_bundles_bookmark_path(bundles_bookmark) %></td>
+    <td><%= link_to 'Destroy', bundles_bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bundles bookmark', new_bundles_bookmark_path %>

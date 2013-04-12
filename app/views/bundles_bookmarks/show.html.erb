@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= @bundles_bookmark.item_id %>
+</p>
+
+<p>
+  <b>Bookmark:</b>
+  <%= @bundles_bookmark.bookmark_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_bundles_bookmark_path(@bundles_bookmark) %> |
+<%= link_to 'Back', bundles_bookmarks_path %>

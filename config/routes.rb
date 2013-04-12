@@ -1,6 +1,27 @@
 SampleApp::Application.routes.draw do
 
 
+  resources :bundles_bookmarks
+
+
+  resources :bookmarks
+
+
+  resources :items_designs
+
+
+  resources :bookmarks_categories
+
+
+  resources :themes
+
+
+  resources :bundles
+
+
+  resources :items
+
+
   root to: 'static_pages#home'
 
 

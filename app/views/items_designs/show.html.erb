@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @items_design.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @items_design.description %>
+</p>
+
+<p>
+  <b>Item:</b>
+  <%= @items_design.item_id %>
+</p>
+
+<p>
+  <b>Bundle:</b>
+  <%= @items_design.bundle_id %>
+</p>
+
+<p>
+  <b>Image name:</b>
+  <%= @items_design.image_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_items_design_path(@items_design) %> |
+<%= link_to 'Back', items_designs_path %>

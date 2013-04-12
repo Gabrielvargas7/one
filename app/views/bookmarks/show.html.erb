@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bookmarks category:</b>
+  <%= @bookmark.bookmarks_category_id %>
+</p>
+
+<p>
+  <b>Item:</b>
+  <%= @bookmark.item_id %>
+</p>
+
+<p>
+  <b>Bookmark url:</b>
+  <%= @bookmark.bookmark_url %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @bookmark.title %>
+</p>
+
+<p>
+  <b>I frame:</b>
+  <%= @bookmark.i_frame %>
+</p>
+
+<p>
+  <b>Image name:</b>
+  <%= @bookmark.image_name %>
+</p>
+
+<p>
+  <b>Image name desc:</b>
+  <%= @bookmark.image_name_desc %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @bookmark.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_bookmark_path(@bookmark) %> |
+<%= link_to 'Back', bookmarks_path %>

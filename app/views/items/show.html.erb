@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>X:</b>
+  <%= @item.x %>
+</p>
+
+<p>
+  <b>Y:</b>
+  <%= @item.y %>
+</p>
+
+<p>
+  <b>Z:</b>
+  <%= @item.z %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @item.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @item.height %>
+</p>
+
+<p>
+  <b>Clickable:</b>
+  <%= @item.clickable %>
+</p>
+
+<p>
+  <b>Folder name:</b>
+  <%= @item.folder_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

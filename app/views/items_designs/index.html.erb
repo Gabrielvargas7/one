@@ -1,0 +1,31 @@
+<h1>Listing items_designs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Item</th>
+    <th>Bundle</th>
+    <th>Image name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @items_designs.each do |items_design| %>
+  <tr>
+    <td><%= items_design.name %></td>
+    <td><%= items_design.description %></td>
+    <td><%= items_design.item_id %></td>
+    <td><%= items_design.bundle_id %></td>
+    <td><%= items_design.image_name %></td>
+    <td><%= link_to 'Show', items_design %></td>
+    <td><%= link_to 'Edit', edit_items_design_path(items_design) %></td>
+    <td><%= link_to 'Destroy', items_design, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Items design', new_items_design_path %>

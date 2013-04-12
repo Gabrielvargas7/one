@@ -46,7 +46,7 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #SeedItemsModule.InsertItems(ws)
 #
 #
-###Themes
+##Themes
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[2]
 #SeedThemesModule.InsertThemes(ws)
 #
@@ -59,7 +59,7 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #SeedItemsModule.InsertItemsDesign(ws)
 #
 ##
-##Bookmark categories table
+#Bookmark categories table
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[6]
 #SeedBookmarkModule.InsertBookmarkCategory(ws)
 #
@@ -69,8 +69,8 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #
 #
 ##Bundle_bookmarks table
-#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
-#  SeedBundleModule.InsertBundlesBookmarks(ws)
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
+  SeedBundleModule.InsertBundlesBookmarks(ws)
 #
 #
 

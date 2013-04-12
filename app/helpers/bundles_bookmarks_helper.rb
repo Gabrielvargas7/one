@@ -1,0 +1,2 @@
+module BundlesBookmarksHelper
+end

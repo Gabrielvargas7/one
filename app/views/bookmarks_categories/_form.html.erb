@@ -1,0 +1,25 @@
+<%= form_for(@bookmarks_category) do |f| %>
+  <% if @bookmarks_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bookmarks_category.errors.count, "error") %> prohibited this bookmarks_category from being saved:</h2>
+
+      <ul>
+      <% @bookmarks_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :item_id %><br />
+    <%= f.number_field :item_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

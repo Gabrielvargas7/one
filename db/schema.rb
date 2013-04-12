@@ -11,24 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412091953) do
+ActiveRecord::Schema.define(:version => 20130412173211) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
+    t.integer  "item_id"
     t.string   "bookmark_url"
     t.string   "title"
     t.string   "i_frame"
     t.string   "image_name"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
     t.string   "image_name_desc"
     t.text     "description"
-    t.integer  "item_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "bookmarks_categories", :force => true do |t|
-    t.integer  "item_id"
     t.string   "name"
+    t.integer  "item_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(:version => 20130412091953) do
 
   create_table "bundles_bookmarks", :force => true do |t|
     t.integer  "item_id"
-    t.integer  "bookmark_id", :limit => 255
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer  "bookmark_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "items", :force => true do |t|
@@ -70,14 +70,6 @@ ActiveRecord::Schema.define(:version => 20130412091953) do
     t.string   "image_name"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "rooms", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "item_id"
-    t.integer  "theme_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "themes", :force => true do |t|
