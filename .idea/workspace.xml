@@ -65,6 +65,11 @@
     <file path="/seeds_bookmarks_images.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365780485808" ignored="false" />
     <file path="/20130412091554_drop_advertisements_table_to_advertisements.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365758191935" ignored="false" />
     <file path="/20130412091953_change_image_name_for_folder_name_to_items.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365758432576" ignored="false" />
+    <file path="$PROJECT_DIR$/../TwitterForZombies/config/routes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365782528053" ignored="false" />
+    <file path="$PROJECT_DIR$/../TwitterForZombies/db/migrate/20130412160413_remove_doo_table.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365782696028" ignored="false" />
+    <file path="/20130412160413_remove_doo_table.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365782674038" ignored="false" />
+    <file path="$PROJECT_DIR$/../TwitterForZombies/db/migrate/20130412160508_create_doo_table.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365782719806" ignored="false" />
+    <file path="$PROJECT_DIR$/../TwitterForZombies/db/schema.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365782742098" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +272,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="spec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -282,28 +287,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mywebroom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mywebroom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -689,7 +672,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="25" width="1444" height="854" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
