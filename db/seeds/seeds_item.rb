@@ -44,7 +44,7 @@ module SeedItemsModule
           # create image name with two values (itemNames-itemDesignName-id)
           image_name =  item_design_name+"-"+item_design_id+Image::ImageNameHelper::EXTENSION_PNG
           image_name_hover =  item_design_name+"-"+item_design_id+"-h"+Image::ImageNameHelper::EXTENSION_PNG
-          image_name_small =  item_design_name+"-"+item_design_id+"-300x300"+Image::ImageNameHelper::EXTENSION_JPG
+          image_name_pick =  item_design_name+"-"+item_design_id+"-300x300"+Image::ImageNameHelper::EXTENSION_JPG
 
           #image_name = item_design_name+Image::ImageNameHelper::EXTENSION_PNG
           image_already_on_ImageDesign_db = ItemsDesign.find_by_image_name(image_name)
@@ -76,11 +76,11 @@ module SeedItemsModule
 
                 image_name_hover = image_name_folder+items.folder_name+"/"+image_name_hover
 
-                image_name_small = image_name_folder+items.folder_name+"/"+image_name_small
+                image_name_pick = image_name_folder+items.folder_name+"/"+image_name_pick
 
                 #p image_name
                 #p image_name_hover
-                #p image_name_small
+                #p image_name_pick
 
                 # main image
                 if File.exists?(image_name)
@@ -101,12 +101,12 @@ module SeedItemsModule
                 end
 
                 # hover small image 300x300
-                if File.exists?(image_name_small)
-                  itemsDesign.image_small = File.open(image_name_small)
-                  p "small image: "+image_name_small
+                if File.exists?(image_name_pick)
+                  itemsDesign.image_name_selection = File.open(image_name_pick)
+                  p "pick image: "+image_name_pick
 
                 else
-                  p "Error: Small- No Items-design images:"+image_name_small
+                  p "Error: Small- No Items-design images:"+image_name_pick
                 end
 
 

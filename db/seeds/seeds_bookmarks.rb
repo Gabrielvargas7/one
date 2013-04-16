@@ -53,10 +53,34 @@ module SeedBookmarkModule
              bookmark_image_name = Image::ImageNameHelper.fix_image_name ws[row,2]
              bookmark_image_name = bookmark_image_name + Image::ImageNameHelper::EXTENSION_PNG
 
+             image_name_folder = Dir.pwd+"/db/seeds/images/bookmarks/"
+
              p "Inserting Bookmark Id "+ws[row,3] +" title: "+ ws[row,5]+" image name: "+bookmark_image_name
 
              b = Bookmark.new()
-             b.image_name = bookmark_image_name
+
+
+             if Item.where(folder_name: item_folder_name).exists?
+               # the item exist
+               items = Item.find_by_folder_name(item_folder_name)
+
+
+               image_name = image_name_folder+items.folder_name+"/"+bookmark_image_name
+
+
+               p image_name
+
+               # main image
+               if File.exists?(image_name)
+                b.image_name = File.open(image_name)
+                 p "bookmark image:" +image_name
+
+               else
+                 p "Error: No Bookmarks images:"+image_name
+               end
+            end
+
+
              b.id = ws[row,3]
              b.bookmark_url = ws[row,4]
              b.title = ws[row,5]
@@ -84,7 +108,7 @@ module SeedBookmarkModule
              else
                p "Warning: the Bookmark category don't exist on the table bookmark category: "+ws[row,7]
              end
-              #validate Items
+             #validate Items
              if Item.where(folder_name: item_folder_name).exists?
                # the item exist
                item  = Item.find_by_folder_name(item_folder_name)

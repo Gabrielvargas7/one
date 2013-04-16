@@ -34,9 +34,27 @@ class ItemsDesignsImageHoverUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-   version :thumb do
-     process :resize_to_limit => [100, 100]
+
+   #version :large do
+   #  process :resize_to_limit => [400, 400]
+   #end
+   #
+   version :medium do
+     process :resize_to_limit => [200, 200]
    end
+
+   version :small do
+     process :resize_to_limit => [100,100]
+   end
+
+   version :tiny do
+     process :resize_to_limit => [64,64]
+   end
+
+   #version :toolbar do
+   #  process :resize_to_limit => [32,32]
+   #end
+
 
 
   # Create different versions of your uploaded files:

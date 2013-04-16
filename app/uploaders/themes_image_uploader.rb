@@ -36,9 +36,38 @@ class ThemesImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
+
+   version :xxx_large do
+     process :resize_to_limit => [1000, 1000]
+   end
+
+   version :xx_large do
+     process :resize_to_limit => [800, 800]
+   end
+
+   version :x_large do
+     process :resize_to_limit => [600, 600]
+   end
+
+   version :large do
+     process :resize_to_limit => [400, 400]
+   end
+  #
+   version :medium do
      process :resize_to_limit => [200, 200]
+   end
+  #
+   version :small do
+     process :resize_to_limit => [100,100]
+   end
+  #
+  version :tiny do
+     process :resize_to_limit => [64,64]
   end
+  # #
+   #version :toolbar do
+   #  process :resize_to_limit => [32,32]
+   #end
 
 
 

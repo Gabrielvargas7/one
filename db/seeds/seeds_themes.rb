@@ -31,7 +31,7 @@ module SeedThemesModule
         end
 
         if File.exists?(image_popthumb)
-          b.image_popthumb = File.open(image_popthumb)
+          b.image_name_selection = File.open(image_popthumb)
 
         else
           p "Error: No themes images:"+image_popthumb

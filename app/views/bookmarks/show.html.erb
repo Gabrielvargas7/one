@@ -28,11 +28,13 @@
 <p>
   <b>Image name:</b>
   <%= @bookmark.image_name %>
+ <%= image_tag @bookmark.image_name.url %>
 </p>
 
 <p>
   <b>Image name desc:</b>
-  <%= @bookmark.image_name_desc %>
+  <%= @bookmark.image_name_desc.to_s %>
+  <%= image_tag @bookmark.image_name_desc.url %>
 </p>
 
 <p>

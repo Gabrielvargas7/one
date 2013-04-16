@@ -1,7 +1,7 @@
 class Theme < ActiveRecord::Base
-  attr_accessible :description, :image_name, :name ,:image_popthumb
+  attr_accessible :description, :image_name, :name ,:image_name_selection
 
   mount_uploader :image_name, ThemesImageUploader
+  mount_uploader :image_name_selection, ThemesImageSelectionUploader
 
-  mount_uploader :image_popthumb, ThemesImagePopthumbUploader
 end
