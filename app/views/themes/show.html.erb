@@ -12,8 +12,15 @@
 
 <p>
   <b>Image name:</b>
-  <%= @theme.image_name %>
+  <%= image_tag @theme.image_name.url(:thumb) %>
+  <%= @theme.image_name.to_s %>
 </p>
+<p>
+  <b>Image Popthumb:</b>
+  <%= image_tag @theme.image_popthumb.url(:small) %>
+  <%= @theme.image_popthumb.to_s %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_theme_path(@theme) %> |

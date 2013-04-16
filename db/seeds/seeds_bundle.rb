@@ -8,19 +8,29 @@ module SeedBundleModule
 
           image_name = Image::ImageNameHelper.fix_image_name ws[row,5]
 
-          image_name = image_name+Image::ImageNameHelper::EXTENSION_JPG
+          image_name = image_name+Image::ImageNameHelper::EXTENSION_PNG
+
+          image_name = Dir.pwd+"/db/seeds/images/bundles/"+image_name
 
           p "Inserting Bundle "+ws[row,1] +" name: "+ ws[row,3] +" image_name: "+image_name
           b = Bundle.new(name:ws[row,3], description: ws[row, 4])
           b.theme_id = ws[row, 2]
 
-          if Bundle.where(image_name: image_name).exists?
-            # the item exist
-            p "Error: the bundle image name already exist on the bundle table "+image_name
-            b.image_name = -1
+          if File.exists?(image_name)
+            b.image_name = File.open(image_name)
+
           else
-            b.image_name = image_name
+            p "Error: No Bundle images:"+image_name
           end
+
+
+          #if Bundle.where(image_name: image_name).exists?
+          #  # the item exist
+          #  p "Error: the bundle image name already exist on the bundle table "+image_name
+          #  b.image_name = -1
+          #else
+          #  b.image_name = image_name
+          #end
 
 
           b.id = ws[row, 1]

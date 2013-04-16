@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412173211) do
+ActiveRecord::Schema.define(:version => 20130415173327) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -68,16 +68,19 @@ ActiveRecord::Schema.define(:version => 20130412173211) do
     t.integer  "item_id"
     t.integer  "bundle_id"
     t.string   "image_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "image_name_hover"
+    t.string   "image_small"
   end
 
   create_table "themes", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "image_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "image_popthumb"
   end
 
   create_table "users", :force => true do |t|

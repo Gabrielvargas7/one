@@ -5,7 +5,8 @@ module SeedThemeImagesModule
 
     Dir["/home/rooms/projects/rails/images/themes/**/*.jpg"].each do  |image_path|
 
-      app_image_path = "/home/rooms/projects/rails/mywebroom/app/assets/images/themes/"
+      #app_image_path = "/home/rooms/projects/rails/mywebroom/app/assets/images/themes/"
+      app_image_path = "/home/rooms/projects/rails/mywebroom/public/uploads/theme/image_name/"
       popthumb = "popthumb"
       thumb = "thumb"
 

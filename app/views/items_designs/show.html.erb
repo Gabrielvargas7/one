@@ -23,7 +23,22 @@
 <p>
   <b>Image name:</b>
   <%= @items_design.image_name %>
+  <%= image_tag @items_design.image_name.url(:thumb) %>
 </p>
+
+<p>
+  <b>Image name hover:</b>
+  <%= @items_design.image_name_hover %>
+  <%= image_tag @items_design.image_name_hover.url(:thumb) %>
+</p>
+<p>
+  <b>Image name small:</b>
+  <%= @items_design.image_small %>
+  <%= image_tag @items_design.image_small.url(:tiny) %>
+</p>
+
+
+
 
 
 <%= link_to 'Edit', edit_items_design_path(@items_design) %> |

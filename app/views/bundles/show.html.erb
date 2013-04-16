@@ -17,7 +17,8 @@
 
 <p>
   <b>Image name:</b>
-  <%= @bundle.image_name %>
+  <%= image_tag @bundle.image_name.url(:thumb) %>
+  <%= @bundle.image_name.to_s %>
 </p>
 
 

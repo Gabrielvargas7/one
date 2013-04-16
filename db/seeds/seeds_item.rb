@@ -43,31 +43,80 @@ module SeedItemsModule
           item_design_id = Image::ImageNameHelper.fix_image_name ws[row,1]
           # create image name with two values (itemNames-itemDesignName-id)
           image_name =  item_design_name+"-"+item_design_id+Image::ImageNameHelper::EXTENSION_PNG
+          image_name_hover =  item_design_name+"-"+item_design_id+"-h"+Image::ImageNameHelper::EXTENSION_PNG
+          image_name_small =  item_design_name+"-"+item_design_id+"-300x300"+Image::ImageNameHelper::EXTENSION_JPG
+
           #image_name = item_design_name+Image::ImageNameHelper::EXTENSION_PNG
           image_already_on_ImageDesign_db = ItemsDesign.find_by_image_name(image_name)
 
           # add extension
           #item_image_name  = item_image_name+Image::ImageNameHelper::EXTENSION_PNG
+          image_name_folder = Dir.pwd+"/db/seeds/images/items-designs/"
 
 
-          if image_already_on_ImageDesign_db.blank?
 
-            p "Inserting Item design: "+ws[row,1] +" name: "+ ws[row,3]+" image_name: "+image_name+ " items name:"+item_folder_name
+          #if image_already_on_ImageDesign_db.blank?
+
+            #p "Inserting Item design: "+ws[row,1] +" name: "+ ws[row,3]+" image_name: "+image_name+ " items name:"+item_folder_name
 
             itemsDesign = ItemsDesign.new(name:ws[row,3],description:ws[row,4])
-            itemsDesign.image_name = image_name
+
+
+            #itemsDesign.image_name = image_name
 
             # check if then exist on Item table
-              if Item.where(folder_name: item_folder_name).exists?
+
+             p "Inserting Item design: "+ws[row,1] +" name: "+ ws[row,3]+" image_name: "+image_name+ " items name:"+item_folder_name
+
+             if Item.where(folder_name: item_folder_name).exists?
                  # the item exist
                 items = Item.find_by_folder_name(item_folder_name)
                 itemsDesign.item_id = items.id
-              else
+                image_name = image_name_folder+items.folder_name+"/"+image_name
+
+                image_name_hover = image_name_folder+items.folder_name+"/"+image_name_hover
+
+                image_name_small = image_name_folder+items.folder_name+"/"+image_name_small
+
+                #p image_name
+                #p image_name_hover
+                #p image_name_small
+
+                # main image
+                if File.exists?(image_name)
+                  itemsDesign.image_name = File.open(image_name)
+                  p "main image:" +image_name
+
+                else
+                  p "Error: No Items-design images:"+image_name
+                end
+
+                # hover image image
+                if File.exists?(image_name_hover)
+                  itemsDesign.image_name_hover = File.open(image_name_hover)
+                  p "Hover image: " +image_name_hover
+
+                else
+                  p "Error: Hover - No Items-design images:"+image_name_hover
+                end
+
+                # hover small image 300x300
+                if File.exists?(image_name_small)
+                  itemsDesign.image_small = File.open(image_name_small)
+                  p "small image: "+image_name_small
+
+                else
+                  p "Error: Small- No Items-design images:"+image_name_small
+                end
+
+
+
+             else
                  p "Error: the item don't exist for the item id:"+item_folder_name
                  itemsDesign.item_id = -1
               end
 
-            # check if bundle exist on bundle table
+            #check if bundle exist on bundle table
             if Bundle.exists?(ws[row,2])
               # the item don't exist
               bundle = Bundle.find(ws[row,2])
@@ -84,9 +133,9 @@ module SeedItemsModule
 
               itemsDesign.id = ws[row, 1]
               itemsDesign.save
-          else
-            p "Name Already Take it "+ws[row,1] +" name: "+ ws[row,3]+" image_name "+image_name
-          end
+          #else
+          #  p "Name Already Take it "+ws[row,1] +" name: "+ ws[row,3]+" image_name "+image_name
+          #end
       end
     end
 

@@ -21,9 +21,15 @@
   </div>
   <div class="field">
     <%= f.label :image_name %><br />
-    <%= f.text_field :image_name %>
+    <%= f.file_field :image_name %>
   </div>
-  <div class="actions">
+
+  <div class="field">
+      <%= f.label :image_popthumb %><br />
+      <%= f.file_field :image_popthumb %>
+  </div>
+
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

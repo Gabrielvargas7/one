@@ -39,9 +39,7 @@ class ThemesImageUploader < CarrierWave::Uploader::Base
   version :thumb do
      process :resize_to_limit => [200, 200]
   end
-   version :popthumb do
-     process :resize_to_limit => [600, 400]
-   end
+
 
 
   # Add a white list of extensions which are allowed to be uploaded.

@@ -12,6 +12,8 @@ gem 'jquery-rails', '2.0.2'
 gem 'pg', '0.12.2'
 gem 'google_drive'
 gem "fileutils", " 0.7"
+gem "rmagick"
+gem "carrierwave"
 
 
 group :development, :test do
