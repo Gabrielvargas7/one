@@ -5,4 +5,7 @@ class ItemsDesign < ActiveRecord::Base
   mount_uploader :image_name_hover, ItemsDesignsImageHoverUploader
   mount_uploader :image_name_selection, ItemsDesignsImageSelectionUploader
 
+  belongs_to :item
+  belongs_to :bundle
+
 end

@@ -4,4 +4,8 @@ class Bookmark < ActiveRecord::Base
   mount_uploader :image_name, BookmarkImageNameUploader
   mount_uploader :image_name_desc, BookmarkImageNameDescUploader
 
+  belongs_to :item
+  belongs_to :bookmarks_category
+  has_many :bundles_bookmarks
+
 end

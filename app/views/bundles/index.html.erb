@@ -1,11 +1,17 @@
 <h1>Listing bundles</h1>
 
-<table>
+<%= will_paginate @bundles %>
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
   <tr>
+    <th>Bundles Id</th>
     <th>Name</th>
     <th>Description</th>
-    <th>Theme</th>
-    <th>Image name</th>
+    <th>bundle Image name</th>
+    <th>Theme id</th>
+    <th>Theme name</th>
+    <th>Theme image name</th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -13,16 +19,32 @@
 
 <% @bundles.each do |bundle| %>
   <tr>
+    <td><%= bundle.id %></td>
     <td><%= bundle.name %></td>
     <td><%= bundle.description %></td>
-    <td><%= bundle.theme_id %></td>
     <td> <%= image_tag bundle.image_name.url(:small) %> </td>
+
+    <%  if bundle.theme.nil? %>
+        <td></td>
+        <td></td>
+        <td></td>
+    <%  else %>
+        <td><%= bundle.theme.id %></td>
+        <td><%= bundle.theme.name %></td>
+        <td> <%= image_tag bundle.theme.image_name.url(:small) %> </td>
+
+    <%  end %>
+
+
+
     <td><%= link_to 'Show', bundle %></td>
     <td><%= link_to 'Edit', edit_bundle_path(bundle) %></td>
     <td><%= link_to 'Destroy', bundle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate %>
 
 <br />
 

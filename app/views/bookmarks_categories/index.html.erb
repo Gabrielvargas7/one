@@ -1,9 +1,12 @@
 <h1>Listing bookmarks_categories</h1>
 
-<table>
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
   <tr>
+    <th>id</th>
     <th>Name</th>
-    <th>Item</th>
+    <th>Item id </th>
+    <th>Item name </th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +14,19 @@
 
 <% @bookmarks_categories.each do |bookmarks_category| %>
   <tr>
+    <td><%= bookmarks_category.id %></td>
     <td><%= bookmarks_category.name %></td>
-    <td><%= bookmarks_category.item_id %></td>
+
+    <%  if bookmarks_category.item.nil? %>
+        <td></td>
+        <td></td>
+
+    <%  else %>
+        <td><%= bookmarks_category.item.id %></td>
+        <td><%= bookmarks_category.item.name %></td>
+    <%  end %>
+
+
     <td><%= link_to 'Show', bookmarks_category %></td>
     <td><%= link_to 'Edit', edit_bookmarks_category_path(bookmarks_category) %></td>
     <td><%= link_to 'Destroy', bookmarks_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>

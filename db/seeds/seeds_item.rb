@@ -13,7 +13,13 @@ module SeedItemsModule
 
 
         p "Inserting Item "+ws[row,1] +" name: "+ ws[row,2]+" folder name"+folder_name
-        b = Item.new(name:ws[row,2],x:ws[row,3],y:ws[row,4],z:ws[row,5],width:ws[row,6],height:ws[row,7],clickable:ws[row,8])
+        b = Item.new(name:ws[row,2],x:ws[row,3],y:ws[row,4],z:ws[row,5],width:ws[row,6],height:ws[row,7])
+
+        clickable = ws[row,8]
+        clickable.downcase!
+
+        b.clickable = clickable
+
         b.id = ws[row, 1]
 
         if Item.where(folder_name: folder_name).exists?

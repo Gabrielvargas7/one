@@ -1,7 +1,10 @@
 <h1>Listing themes</h1>
 
-<table>
+<%= will_paginate @themes %>
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
   <tr>
+    <th>Theme Id</th>
     <th>Name</th>
     <th>Description</th>
     <th>Image name</th>
@@ -12,9 +15,10 @@
 
 <% @themes.each do |theme| %>
   <tr>
+    <td><%= theme.id %></td>
     <td><%= theme.name %></td>
     <td><%= theme.description %></td>
-    <td><%= image_tag theme.image_name.url(:small) %></td>
+    <td><%= image_tag theme.image_name.url(:large) %></td>
 
     <td><%= link_to 'Show', theme %></td>
     <td><%= link_to 'Edit', edit_theme_path(theme) %></td>
@@ -22,6 +26,8 @@
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate %>
 
 <br />
 

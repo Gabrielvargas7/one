@@ -1,15 +1,21 @@
 <h1>Listing bookmarks</h1>
 
-<table>
+<%= will_paginate @bookmarks %>
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50%" cellspacing="2" cellpadding="3">
   <tr>
-    <th>Bookmarks category</th>
-    <th>Item</th>
+
+    <th>Bookmarks id</th>
     <th>Bookmark url</th>
     <th>Title</th>
     <th>I frame</th>
     <th>Image name</th>
     <th>Image name desc</th>
     <th>Description</th>
+    <th>Bookmarks category Id</th>
+    <th>Bookmarks Name</th>
+
+    <th>Item id</th>
+    <th>Item name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,20 +23,43 @@
 
 <% @bookmarks.each do |bookmark| %>
   <tr>
-    <td><%= bookmark.bookmarks_category_id %></td>
-    <td><%= bookmark.item_id %></td>
+    <td><%= bookmark.id %></td>
+
     <td><%= bookmark.bookmark_url %></td>
     <td><%= bookmark.title %></td>
     <td><%= bookmark.i_frame %></td>
     <td><%= image_tag bookmark.image_name.url(:toolbar) %></td>
     <td><%= image_tag bookmark.image_name_desc.url(:toolbar) %></td>
     <td><%= bookmark.description %></td>
+
+
+    <%  if bookmark.bookmarks_category.nil? %>
+        <td></td>
+        <td></td>
+
+    <%  else %>
+        <td><%= bookmark.bookmarks_category.id %></td>
+        <td><%= bookmark.bookmarks_category.name  %></td>
+    <%  end %>
+
+
+    <%  if bookmark.item.nil? %>
+        <td></td>
+        <td></td>
+
+    <%  else %>
+        <td><%= bookmark.item_id %></td>
+        <td><%= bookmark.item.name %></td>
+    <%  end %>
+
+
     <td><%= link_to 'Show', bookmark %></td>
     <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
     <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+<%= will_paginate  %>
 
 <br />
 

@@ -4,4 +4,7 @@ class Theme < ActiveRecord::Base
   mount_uploader :image_name, ThemesImageUploader
   mount_uploader :image_name_selection, ThemesImageSelectionUploader
 
+  has_one :bundle
+
+
 end

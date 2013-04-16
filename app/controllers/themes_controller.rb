@@ -2,12 +2,14 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    @themes = Theme.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @themes }
-    end
+    @themes = Theme.paginate(page: params[:page], :per_page => 10)
+    #@themes = Theme.all
+    #
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.json { render json: @themes }
+    #end
   end
 
   # GET /themes/1

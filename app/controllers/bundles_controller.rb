@@ -2,12 +2,15 @@ class BundlesController < ApplicationController
   # GET /bundles
   # GET /bundles.json
   def index
-    @bundles = Bundle.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @bundles }
-    end
+    @bundles = Bundle.paginate(page: params[:page], :per_page => 10)
+
+    #@bundles = Bundle.all
+    #
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.json { render json: @bundles }
+    #end
   end
 
   # GET /bundles/1
@@ -25,7 +28,7 @@ class BundlesController < ApplicationController
   # GET /bundles/new.json
   def new
     @bundle = Bundle.new
-
+    @themes = Theme.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @bundle }
@@ -35,6 +38,8 @@ class BundlesController < ApplicationController
   # GET /bundles/1/edit
   def edit
     @bundle = Bundle.find(params[:id])
+    @themes = Theme.all
+
   end
 
   # POST /bundles

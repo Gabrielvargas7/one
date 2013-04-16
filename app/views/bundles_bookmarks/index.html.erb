@@ -1,9 +1,15 @@
 <h1>Listing bundles_bookmarks</h1>
 
-<table>
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50%" cellspacing="2" cellpadding="3">
   <tr>
-    <th>Item</th>
-    <th>Bookmark</th>
+    <th>Item id</th>
+    <th>Item name</th>
+
+    <th>Bookmark id</th>
+    <th>Bookmark url</th>
+    <th>Bookmark title</th>
+    <th>Bookmark Image </th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -11,7 +17,30 @@
 
 <% @bundles_bookmarks.each do |bundles_bookmark| %>
   <tr>
-    <td><%= bundles_bookmark.item_id %></td>
+
+    <%  if bundles_bookmark.item.nil? %>
+        <td></td>
+        <td></td>
+    <%  else %>
+        <td><%= bundles_bookmark.item.id %></td>
+        <td><%= bundles_bookmark.item.name %></td>
+    <%  end %>
+
+    <%  if bundles_bookmark.bookmark.nil? %>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    <%  else %>
+        <td><%= bundles_bookmark.bookmark.id %></td>
+        <td><%= bundles_bookmark.bookmark.bookmark_url %></td>
+        <td><%= bundles_bookmark.bookmark.title  %></td>
+        <td> <%= image_tag bundles_bookmark.bookmark.image_name.url(:small) %> </td>
+    <%  end %>
+
+
+
+
     <td><%= bundles_bookmark.bookmark_id %></td>
     <td><%= link_to 'Show', bundles_bookmark %></td>
     <td><%= link_to 'Edit', edit_bundles_bookmark_path(bundles_bookmark) %></td>

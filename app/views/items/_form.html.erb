@@ -37,12 +37,13 @@
   </div>
   <div class="field">
     <%= f.label :clickable %><br />
-    <%= f.text_field :clickable %>
+    <%= f.radio_button :clickable, 'yes', checked: true %>
+    <%= label_tag(:clickable, "yes") %>
+    <%= f.radio_button :clickable, 'no' %>
+    <%= label_tag(:clickable, "no") %>
+
   </div>
-  <div class="field">
-    <%= f.label :folder_name %><br />
-    <%= f.text_field :folder_name %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

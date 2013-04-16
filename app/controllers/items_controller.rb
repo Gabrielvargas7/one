@@ -2,12 +2,15 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @items }
-    end
+    @items = Item.paginate(page: params[:page], :per_page => 10)
+
+    #@items = Item.all
+    #
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.json { render json: @items }
+    #end
   end
 
   # GET /items/1

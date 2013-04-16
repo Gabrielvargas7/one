@@ -40,20 +40,20 @@
     <file path="/seeds_bundle.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366045245964" ignored="false" />
     <file path="$PROJECT_DIR$/../sample_app/db/seeds/seeds_themes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365092435043" ignored="false" />
     <file path="/20130404171309_create_item_locations.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365095660700" ignored="false" />
-    <file path="/bundle.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366043607667" ignored="false" />
-    <file path="/theme.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366111380406" ignored="false" />
+    <file path="/bundle.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366129816259" ignored="false" />
+    <file path="/theme.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366123099385" ignored="false" />
     <file path="/item_location.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365162507775" ignored="false" />
-    <file path="/item.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365163175275" ignored="false" />
+    <file path="/item.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366134989582" ignored="false" />
     <file path="/20130405113910_add_image_name_to_item_locations.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365172935086" ignored="false" />
     <file path="/20130405152749_create_bookmarks.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365176397099" ignored="false" />
     <file path="/seeds_themes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366111533717" ignored="false" />
-    <file path="/seeds_item.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366111642493" ignored="false" />
+    <file path="/seeds_item.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366121121726" ignored="false" />
     <file path="/seeds_bookmarks.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366105641648" ignored="false" />
     <file path="/ImageModule.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365183413841" ignored="false" />
     <file path="/Image_helper.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365440942372" ignored="false" />
     <file path="/seeds_item_spec.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365512874916" ignored="false" />
     <file path="/spec_helper.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365502054142" ignored="false" />
-    <file path="/bookmark.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366109621737" ignored="false" />
+    <file path="/bookmark.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366135013677" ignored="false" />
     <file path="/fix_my_image_helper.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365508068517" ignored="false" />
     <file path="/fix_image_helper_spec.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365505734066" ignored="false" />
     <file path="/image_name_helper_spec.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365525871065" ignored="false" />
@@ -81,10 +81,10 @@
     <file path="/20130412172909_delete_bundles_bookmark_table.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1365787765698" ignored="false" />
     <file path="$PROJECT_DIR$/../sample_app/helpers/helper rails_generate" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366041669038" ignored="false" />
     <file path="/themes_image_popthumb_uploader.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366106851813" ignored="false" />
-    <file path="/_form.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366113142028" ignored="false" />
-    <file path="/show.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366112391708" ignored="false" />
-    <file path="/index.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366113010162" ignored="false" />
-    <file path="/items_design.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366111329306" ignored="false" />
+    <file path="/_form.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366128138221" ignored="false" />
+    <file path="/show.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366122123847" ignored="false" />
+    <file path="/index.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366135749132" ignored="false" />
+    <file path="/items_design.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366130404980" ignored="false" />
     <file path="/items_designs_image_small_uploader.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366047527859" ignored="false" />
     <file path="/20130416090918_change_image_name_small_from_image_small_to_items_designs.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366103612778" ignored="false" />
     <file path="/20130416091836_drop_item_de_table.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366104007763" ignored="false" />
@@ -94,7 +94,16 @@
     <file path="/20130416103337_delete_colums_image_name_pop_thumb_to_themes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366108447504" ignored="false" />
     <file path="/20130416103926_change_name_image_name_small_from_item_de_table.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366108846671" ignored="false" />
     <file path="/20130416111901_change_name_image_name_pick_from_item_de_table.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366111285048" ignored="false" />
-    <file path="$PROJECT_DIR$/db/development.sqlite3" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366113354835" ignored="false" />
+    <file path="/custom.css.scss" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366118785466" ignored="false" />
+    <file path="/themes_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366119643473" ignored="false" />
+    <file path="/items_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366120475387" ignored="false" />
+    <file path="/bundles_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366123785338" ignored="false" />
+    <file path="$PROJECT_DIR$/../sample_app/helpers/helper_rails_view" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366128087887" ignored="false" />
+    <file path="/helper_rails_view" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366128037150" ignored="false" />
+    <file path="/items_designs_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366134643491" ignored="false" />
+    <file path="/bookmarks_category.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366134362507" ignored="false" />
+    <file path="/bookmarks_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366134850652" ignored="false" />
+    <file path="/bundles_bookmark.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366134974467" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,19 +128,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/themes/_form.html.erb">
+      <file leaf-file-name="items_designs_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/items_designs_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="78" selection-start="628" selection-end="628" vertical-scroll-proportion="0.49034175">
+            <state line="5" column="78" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/items_designs/_form.html.erb">
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/bookmarks_categories/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="59" selection-start="59" selection-end="59" vertical-scroll-proportion="-0.0">
+            <state line="5" column="25" selection-start="183" selection-end="183" vertical-scroll-proportion="-1.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bookmarks_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/bookmarks_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="25" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bundles_bookmark.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/bundles_bookmark.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="18" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/bundles_bookmarks/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="410" selection-end="410" vertical-scroll-proportion="0.591195">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/bundles/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="4" selection-start="687" selection-end="687" vertical-scroll-proportion="-7.75">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/item.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="29" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bookmark.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/bookmark.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="41" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/items/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="27" selection-start="24" selection-end="51" vertical-scroll-proportion="-1.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/bookmarks/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="18" selection-start="1539" selection-end="1539" vertical-scroll-proportion="-38.125">
               <folding />
             </state>
           </provider>
@@ -151,22 +232,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/theme.rb" />
-        <option value="$PROJECT_DIR$/app/uploaders/themes_image_selection_uploader.rb" />
-        <option value="$PROJECT_DIR$/db/seeds/seeds_themes.rb" />
-        <option value="$PROJECT_DIR$/db/seeds/seeds_item.rb" />
-        <option value="$PROJECT_DIR$/db/seeds.rb" />
+        <option value="$PROJECT_DIR$/app/views/bundles/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/themes/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/theme.rb" />
+        <option value="$PROJECT_DIR$/app/models/items_design.rb" />
+        <option value="$PROJECT_DIR$/app/models/bundle.rb" />
+        <option value="$PROJECT_DIR$/app/views/bookmarks_categories/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/bookmarks_category.rb" />
         <option value="$PROJECT_DIR$/app/views/items_designs/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/bundles/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/bundles/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/items_designs/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/themes/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/bookmarks/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/bookmarks/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/items_designs_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/bookmarks/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/items_designs/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/themes/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/bookmarks_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/bundles_bookmark.rb" />
+        <option value="$PROJECT_DIR$/app/models/item.rb" />
+        <option value="$PROJECT_DIR$/app/models/bookmark.rb" />
+        <option value="$PROJECT_DIR$/app/views/bundles/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/bundles_bookmarks/index.html.erb" />
       </list>
     </option>
   </component>
@@ -416,6 +497,13 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -630,10 +718,10 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36639118" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20385675" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28479198" sideWeight="0.6336088" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25107604" sideWeight="0.79614323" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39944905" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -706,118 +794,118 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/bundles/_form.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/themes/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.17142858">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bookmarks/new.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/bookmarks_category.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bundles/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="39" selection-start="299" selection-end="299" vertical-scroll-proportion="-13.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/themes_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="41" selection-start="813" selection-end="813" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/themes/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/theme.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bookmarks/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="59" selection-start="656" selection-end="656" vertical-scroll-proportion="0.6">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bookmarks/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="16" selection-start="408" selection-end="408" vertical-scroll-proportion="0.448">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bookmarks/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="19" selection-start="958" selection-end="958" vertical-scroll-proportion="0.5319465">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/themes/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="23" selection-start="40" selection-end="40" vertical-scroll-proportion="0.044576522">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/themes/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="49" selection-start="313" selection-end="313" vertical-scroll-proportion="0.3697997">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/themes/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="24" selection-start="353" selection-end="353" vertical-scroll-proportion="0.44576523">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items_designs/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="44" selection-start="636" selection-end="636" vertical-scroll-proportion="0.66567606">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items_designs/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="56" selection-start="477" selection-end="477" vertical-scroll-proportion="0.44576523">
+        <state line="4" column="21" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/items_designs/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="59" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
+        <state line="38" column="56" selection-start="1110" selection-end="1110" vertical-scroll-proportion="0.6">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/themes/_form.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/bundles/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="78" selection-start="628" selection-end="628" vertical-scroll-proportion="0.49034175">
+        <state line="29" column="44" selection-start="749" selection-end="749" vertical-scroll-proportion="0.6857143">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/items_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="64" selection-start="98" selection-end="158" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items_designs/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="18" selection-start="1466" selection-end="1466" vertical-scroll-proportion="-17.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="27" selection-start="24" selection-end="51" vertical-scroll-proportion="-1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bookmarks/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="18" selection-start="1539" selection-end="1539" vertical-scroll-proportion="-38.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/item.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="29" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/bookmark.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="41" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bundles/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="4" selection-start="687" selection-end="687" vertical-scroll-proportion="-7.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/bundles_bookmark.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="18" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/bookmarks_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="25" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/items_designs_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="78" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bookmarks_categories/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="25" selection-start="183" selection-end="183" vertical-scroll-proportion="-1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bundles_bookmarks/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="410" selection-end="410" vertical-scroll-proportion="0.591195">
           <folding />
         </state>
       </provider>
