@@ -1,49 +1,65 @@
-<%= form_for(@bookmark, :html => {:multipart => true} ) do |f| %>
-  <% if @bookmark.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bookmark.errors.count, "error") %> prohibited this bookmark from being saved:</h2>
+<div class="row">
+  <div class="span6 offset3">
 
-      <ul>
-      <% @bookmark.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <%= form_for(@bookmark, :html => {:multipart => true}) do |f| %>
+      <% if @bookmark.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@bookmark.errors.count, "error") %> prohibited this bookmark from being saved:</h2>
+
+          <ul>
+          <% @bookmark.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :bookmarks_category_id %><br />
-    <%= f.number_field :bookmarks_category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :item_id %><br />
-    <%= f.number_field :item_id %>
-  </div>
-  <div class="field">
-    <%= f.label :bookmark_url %><br />
-    <%= f.text_field :bookmark_url %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :i_frame %><br />
-    <%= f.text_field :i_frame %>
-  </div>
-  <div class="field">
-    <%= f.label :image_name %><br />
-    <%= f.file_field :image_name %>
-  </div>
-  <div class="field">
-    <%= f.label :image_name_desc %><br />
-    <%= f.file_field :image_name_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <div class="field">
+          <%= f.label :id %><br />
+          <%= f.text_field :id ,:readonly => true%>
+      </div>
+
+        <div class="field">
+          <%= f.label :bookmarks_category %><br />
+          <%= f.collection_select :bookmarks_category_id, BookmarksCategory.all, :id, :id_and_bookmark_category , :prompt => true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :item_id %><br />
+          <%= f.collection_select :item_id, Item.all, :id, :id_and_item , :prompt => true %>
+        </div>
+
+
+        <div class="field">
+        <%= f.label :bookmark_url %><br />
+        <%= f.text_field :bookmark_url %>
+      </div>
+      <div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+      </div>
+        <div class="field">
+          <%= f.label :i_frame %>
+          <%= f.radio_button :i_frame, 'yes', checked: true %> yes </br>
+          <%= f.radio_button :i_frame, 'no' %> no
+        </div>
+
+
+        <div class="field">
+        <%= f.label :image_name %><br />
+        <%= f.file_field :image_name %>
+      </div>
+      <div class="field">
+        <%= f.label :image_name_desc %><br />
+        <%= f.file_field :image_name_desc %>
+      </div>
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_area :description %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    </div>
+ </div>
 <% end %>

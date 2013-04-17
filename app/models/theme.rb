@@ -7,4 +7,9 @@ class Theme < ActiveRecord::Base
   has_one :bundle
 
 
+  def id_and_theme
+    "#{id}. #{name}"
+  end
+
+
 end

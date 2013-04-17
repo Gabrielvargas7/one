@@ -8,4 +8,9 @@ class ItemsDesign < ActiveRecord::Base
   belongs_to :item
   belongs_to :bundle
 
+  validates_associated :item
+  validates :item_id, :numericality => { :only_integer => true }
+
+
+
 end

@@ -5,4 +5,13 @@ class Bundle < ActiveRecord::Base
 
   belongs_to :theme
   has_many :items_designs
+
+  validates_associated :theme
+  validates :theme_id, :numericality => { :only_integer => true }
+
+
+  def id_and_bundle
+    "#{id}. #{name}"
+  end
+
 end

@@ -8,4 +8,13 @@ class Bookmark < ActiveRecord::Base
   belongs_to :bookmarks_category
   has_many :bundles_bookmarks
 
+  validates_associated :item
+  validates :item_id, :numericality => { :only_integer => true }
+
+
+  def id_and_bookmark
+    "#{id}. #{title} -iframe: #{i_frame} - #{bookmark_url}"
+  end
+
+
 end

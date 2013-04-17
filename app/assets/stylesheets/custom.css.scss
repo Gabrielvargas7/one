@@ -8,6 +8,7 @@ $grayMediumLight: #eaeaea;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+
 }
 
 /* universal */
@@ -157,13 +158,16 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input[type="text"], textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
+  height: auto;
   padding: 10px;
   margin-bottom: 15px;
   @include box_sizing;
 }
+
+
 
 input {
   height: auto !important;

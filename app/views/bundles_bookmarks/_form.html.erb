@@ -1,25 +1,42 @@
-<%= form_for(@bundles_bookmark) do |f| %>
-  <% if @bundles_bookmark.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bundles_bookmark.errors.count, "error") %> prohibited this bundles_bookmark from being saved:</h2>
+<div class="row">
+  <div class="span6 offset3">
 
-      <ul>
-      <% @bundles_bookmark.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <%= form_for(@bundles_bookmark) do |f| %>
+      <% if @bundles_bookmark.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@bundles_bookmark.errors.count, "error") %> prohibited this bundles_bookmark from being saved:</h2>
+
+          <ul>
+          <% @bundles_bookmark.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :item_id %><br />
-    <%= f.number_field :item_id %>
-  </div>
-  <div class="field">
-    <%= f.label :bookmark_id %><br />
-    <%= f.number_field :bookmark_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <div class="field">
+          <%= f.label :id %><br />
+          <%= f.text_field :id ,:readonly => true%>
+      </div>
+
+        <div class="field">
+          <%= f.label :item_id %><br />
+          <%= f.collection_select :item_id, Item.all, :id, :id_and_item , :prompt => true  %>
+        </div>
+
+        <div class="field">
+          <%= f.label :bookmark_id %><br />
+          <%= f.number_field :bookmark_id %>
+        </div>
+        <div class="field">
+          <%= f.label :bookmark %><br />
+          <%= f.collection_select :bookmark_id, Bookmark.all, :id, :id_and_bookmark , :prompt => true  %>
+        </div>
+
+
+        <div class="actions">
+        <%= f.submit %>
+      </div>
+     </div>
+ </div>
 <% end %>

@@ -3,4 +3,13 @@ class BookmarksCategory < ActiveRecord::Base
 
   belongs_to :item
   has_many :bookmarks
+
+  validates_associated :item
+  validates :item_id, :numericality => { :only_integer => true }
+
+
+  def id_and_bookmark_category
+    "#{id}. #{name}"
+  end
+
 end

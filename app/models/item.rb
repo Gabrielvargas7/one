@@ -6,4 +6,18 @@ class Item < ActiveRecord::Base
   has_many :bookmarks
   has_many :bundles_bookmarks
 
+  before_save { |item| item.clickable = clickable.downcase }
+
+  validates :height, :numericality => { :only_integer => true }
+  validates :width, :numericality => { :only_integer => true }
+  validates :x, :numericality  => true
+  validates :y, :numericality  => true
+  validates :z, :numericality => { :only_integer => true }
+
+
+  def id_and_item
+    "#{id}. #{name}"
+  end
+
+
 end

@@ -1,50 +1,59 @@
-<%= form_for(@item) do |f| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+<div class="row">
+  <div class="span6 offset3">
 
-      <ul>
-      <% @item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <%= form_for(@item) do |f| %>
+      <% if @item.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+          <ul>
+          <% @item.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+      <div class="field">
+          <%= f.label :id %><br />
+          <%= f.text_field :id ,:readonly => true%>
+      </div>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :x %><br />
+        <%= f.text_field :x %>
+      </div>
+      <div class="field">
+        <%= f.label :y %><br />
+        <%= f.text_field :y %>
+      </div>
+      <div class="field">
+        <%= f.label :z %><br />
+        <%= f.number_field :z %>
+      </div>
+      <div class="field">
+        <%= f.label :width %><br />
+        <%= f.number_field :width %>
+      </div>
+      <div class="field">
+        <%= f.label :height %><br />
+        <%= f.number_field :height %>
+      </div>
+
+      <div class="field">
+        <%= f.label :clickable %>
+        <%= f.radio_button :clickable, 'yes', checked: true %>yes</br>
+        <%= f.radio_button :clickable, 'no' %>no
+
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :x %><br />
-    <%= f.text_field :x %>
-  </div>
-  <div class="field">
-    <%= f.label :y %><br />
-    <%= f.text_field :y %>
-  </div>
-  <div class="field">
-    <%= f.label :z %><br />
-    <%= f.number_field :z %>
-  </div>
-  <div class="field">
-    <%= f.label :width %><br />
-    <%= f.number_field :width %>
-  </div>
-  <div class="field">
-    <%= f.label :height %><br />
-    <%= f.number_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label :clickable %><br />
-    <%= f.radio_button :clickable, 'yes', checked: true %>
-    <%= label_tag(:clickable, "yes") %>
-    <%= f.radio_button :clickable, 'no' %>
-    <%= label_tag(:clickable, "no") %>
-
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>
