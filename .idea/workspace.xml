@@ -130,15 +130,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="item.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/item.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="30" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="theme.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/theme.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -152,15 +143,6 @@
         <entry file="file://$PROJECT_DIR$/app/models/bookmarks_category.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="8" column="7" selection-start="216" selection-end="216" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bundle.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/bundle.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="14" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -184,10 +166,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bundles_bookmark.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="bundles_bookmark.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/bundles_bookmark.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="48" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0">
+            <state line="10" column="24" selection-start="280" selection-end="280" vertical-scroll-proportion="0.31982943">
               <folding />
             </state>
           </provider>
@@ -202,10 +184,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20130417200936_change_type_bookmark_url_to_bookmarks_2.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="20130417200936_change_type_bookmark_url_to_bookmarks_2.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20130417200936_change_type_bookmark_url_to_bookmarks_2.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="65" selection-start="140" selection-end="140" vertical-scroll-proportion="0.058027077">
+            <state line="2" column="65" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="seeds_bundle.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/seeds/seeds_bundle.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="82" selection-start="1507" selection-end="1518" vertical-scroll-proportion="-0.8666667">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="seeds.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="71" column="2" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -234,7 +234,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/bookmarks_categories/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/themes/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/items_designs/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/bundles/_form.html.erb" />
@@ -245,11 +244,12 @@
         <option value="$PROJECT_DIR$/app/models/bundle.rb" />
         <option value="$PROJECT_DIR$/app/models/items_design.rb" />
         <option value="$PROJECT_DIR$/app/models/bookmark.rb" />
-        <option value="$PROJECT_DIR$/app/models/bundles_bookmark.rb" />
         <option value="$PROJECT_DIR$/app/models/item.rb" />
         <option value="$PROJECT_DIR$/app/models/bookmarks_category.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130417200143_change_type_bookmark_url_to_bookmarks.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130417200936_change_type_bookmark_url_to_bookmarks_2.rb" />
+        <option value="$PROJECT_DIR$/db/seeds.rb" />
+        <option value="$PROJECT_DIR$/app/models/bundles_bookmark.rb" />
       </list>
     </option>
   </component>
@@ -338,7 +338,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="migrate" />
+              <option name="myItemId" value="seeds" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -818,16 +850,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1919" selection-end="1919" vertical-scroll-proportion="-14.791667" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/_user.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="16" selection-start="530" selection-end="530" vertical-scroll-proportion="0.0">
@@ -898,13 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/bundles_bookmark.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="48" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20130412172525_create_bookmarks.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -921,7 +936,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20130417200936_change_type_bookmark_url_to_bookmarks_2.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="65" selection-start="140" selection-end="140" vertical-scroll-proportion="0.058027077">
+        <state line="2" column="65" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/seeds/seeds_bundle.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="82" selection-start="1507" selection-end="1518" vertical-scroll-proportion="-0.8666667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="2" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/bundles_bookmark.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="24" selection-start="280" selection-end="280" vertical-scroll-proportion="0.31982943">
           <folding />
         </state>
       </provider>

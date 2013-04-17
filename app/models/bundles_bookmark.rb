@@ -8,7 +8,7 @@ class BundlesBookmark < ActiveRecord::Base
   validates :item_id, :numericality => { :only_integer => true }
 
   validates_associated :bookmark
-  validates :bookmark_id_id, :numericality => { :only_integer => true }
+  validates :bookmark_id, :numericality => { :only_integer => true }
 
 
 end
