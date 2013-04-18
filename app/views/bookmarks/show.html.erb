@@ -12,7 +12,7 @@
 
 <p>
   <b>Bookmark url:</b>
-  <%= @bookmark.bookmark_url %>
+  <%= @bookmark.bookmark_url.to_s %>
 </p>
 
 <p>
@@ -28,13 +28,13 @@
 <p>
   <b>Image name:</b>
   <%= @bookmark.image_name %>
- <%= image_tag @bookmark.image_name.url %>
+ <%= image_tag @bookmark.image_name.url.to_s %>
 </p>
 
 <p>
   <b>Image name desc:</b>
   <%= @bookmark.image_name_desc.to_s %>
-  <%= image_tag @bookmark.image_name_desc.url %>
+  <%= image_tag @bookmark.image_name_desc.url.to_s %>
 </p>
 
 <p>

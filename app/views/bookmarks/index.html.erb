@@ -25,11 +25,11 @@
   <tr>
     <td><%= bookmark.id %></td>
 
-    <td><%= bookmark.bookmark_url %></td>
+    <td><%= bookmark.bookmark_url.to_s %></td>
     <td><%= bookmark.title %></td>
     <td><%= bookmark.i_frame %></td>
-    <td><%= image_tag bookmark.image_name.url(:toolbar) %></td>
-    <td><%= image_tag bookmark.image_name_desc.url(:toolbar) %></td>
+    <td><%= image_tag bookmark.image_name.url(:toolbar).to_s %></td>
+    <td><%= image_tag bookmark.image_name_desc.url(:toolbar).to_s %></td>
     <td><%= bookmark.description %></td>
 
 

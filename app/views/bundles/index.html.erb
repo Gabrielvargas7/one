@@ -22,7 +22,7 @@
     <td><%= bundle.id %></td>
     <td><%= bundle.name %></td>
     <td><%= bundle.description %></td>
-    <td> <%= image_tag bundle.image_name.url(:small) %> </td>
+    <td> <%= image_tag bundle.image_name.url(:small).to_s %> </td>
 
     <%  if bundle.theme.nil? %>
         <td></td>
@@ -31,7 +31,7 @@
     <%  else %>
         <td><%= bundle.theme.id %></td>
         <td><%= bundle.theme.name %></td>
-        <td> <%= image_tag bundle.theme.image_name.url(:small) %> </td>
+        <td> <%= image_tag bundle.theme.image_name.url(:small).to_s %> </td>
 
     <%  end %>
 

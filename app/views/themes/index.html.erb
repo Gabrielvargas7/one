@@ -18,7 +18,7 @@
     <td><%= theme.id %></td>
     <td><%= theme.name %></td>
     <td><%= theme.description %></td>
-    <td><%= image_tag theme.image_name.url(:large) %></td>
+    <td><%= image_tag theme.image_name.url(:large).to_s %></td>
 
     <td><%= link_to 'Show', theme %></td>
     <td><%= link_to 'Edit', edit_theme_path(theme) %></td>

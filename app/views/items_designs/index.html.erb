@@ -23,7 +23,7 @@
     <td><%= items_design.id %></td>
     <td><%= items_design.name %></td>
     <td><%= items_design.description %></td>
-    <td><%= image_tag items_design.image_name.url(:medium) %></td>
+    <td><%= image_tag items_design.image_name.url(:medium).to_s %></td>
 
 
     <%  if items_design.item.nil? %>
@@ -44,7 +44,7 @@
     <%  else %>
         <td><%= items_design.bundle.id  %></td>
         <td><%= items_design.bundle.name  %></td>
-        <td> <%= image_tag items_design.bundle.image_name.url(:small) %> </td>
+        <td> <%= image_tag items_design.bundle.image_name.url(:small).to_s %> </td>
      <%  end %>
 
 

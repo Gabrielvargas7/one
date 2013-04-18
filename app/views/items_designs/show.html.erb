@@ -23,18 +23,18 @@
 <p>
   <b>Image name:</b>
   <%= @items_design.image_name %>
-  <%= image_tag @items_design.image_name.url %>
+  <%= image_tag @items_design.image_name.url.to_s %>
 </p>
 
 <p>
   <b>Image name hover:</b>
   <%= @items_design.image_name_hover %>
-  <%= image_tag @items_design.image_name_hover.url %>
+  <%= image_tag @items_design.image_name_hover.url.to_s %>
 </p>
 <p>
   <b>Image name selection:</b>
   <%= @items_design.image_name_selection %>
-  <%= image_tag @items_design.image_name_selection.url %>
+  <%= image_tag @items_design.image_name_selection.url.to_s %>
 </p>
 
 

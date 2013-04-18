@@ -17,12 +17,12 @@
 
 <p>
   <b>Image name:</b>
-  <%= image_tag @theme.image_name.url %>
+  <%= image_tag @theme.image_name.url.to_s %>
   <%= @theme.image_name.to_s %>
 </p>
 <p>
   <b>Image name selection:</b>
-  <%= image_tag @theme.image_name_selection.url %>
+  <%= image_tag @theme.image_name_selection.url.to_s %>
   <%= @theme.image_name_selection.to_s %>
 </p>
 
