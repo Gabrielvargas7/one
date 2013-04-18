@@ -29,7 +29,8 @@ class BundlesController < ApplicationController
   # GET /bundles/new.json
   def new
     @bundle = Bundle.new
-    @themes = Theme.all
+    @bundle_show_id = nil
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @bundle }
@@ -39,7 +40,8 @@ class BundlesController < ApplicationController
   # GET /bundles/1/edit
   def edit
     @bundle = Bundle.find(params[:id])
-    @themes = Theme.all
+    @bundle_show_id = Bundle.find(params[:id])
+    #@themes = Theme.all
 
   end
 

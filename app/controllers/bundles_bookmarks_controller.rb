@@ -25,6 +25,7 @@ class BundlesBookmarksController < ApplicationController
   # GET /bundles_bookmarks/new.json
   def new
     @bundles_bookmark = BundlesBookmark.new
+    @bundles_bookmark_show_id = nil
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class BundlesBookmarksController < ApplicationController
   # GET /bundles_bookmarks/1/edit
   def edit
     @bundles_bookmark = BundlesBookmark.find(params[:id])
+    @bundles_bookmark_show_id = BundlesBookmark.find(params[:id])
   end
 
   # POST /bundles_bookmarks

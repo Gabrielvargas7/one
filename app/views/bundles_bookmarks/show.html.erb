@@ -2,12 +2,35 @@
 
 <p>
   <b>Item:</b>
-  <%= @bundles_bookmark.item_id %>
+  <%  if @bundles_bookmark.item.nil? %>
+    <td></td>
+    <td></td>
+<%  else %>
+    <td><%= @bundles_bookmark.item.id %></td>
+    <td><%= @bundles_bookmark.item.name %></td>
+<%  end %>
+
+
 </p>
 
 <p>
   <b>Bookmark:</b>
-  <%= @bundles_bookmark.bookmark_id %>
+
+
+  <%  if @bundles_bookmark.bookmark.nil? %>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+ <%  else %>
+    <td><%= @bundles_bookmark.bookmark.id %></td>
+    <td><%= @bundles_bookmark.bookmark.bookmark_url.to_s %></td>
+    <td><%= @bundles_bookmark.bookmark.title  %></td>
+    <td> <%= image_tag @bundles_bookmark.bookmark.image_name.url(:small).to_s %> </td>
+<%  end %>
+
+
+
 </p>
 
 

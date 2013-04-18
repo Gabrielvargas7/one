@@ -7,8 +7,8 @@ class ThemesImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  # include Sprockets::Helpers::RailsHelper
-  # include Sprockets::Helpers::IsolatedHelper
+  #include Sprockets::Helpers::RailsHelper
+  #include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -26,7 +26,9 @@ class ThemesImageUploader < CarrierWave::Uploader::Base
      # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
 
      #"/images/fallback/" + [version_name, "default.png"].compact.join('_')
-     "/images/fallback/themes/default_theme.png"
+     "/images/fallback/theme/default_theme.png"
+
+
 
   end
 

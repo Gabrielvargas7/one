@@ -14,12 +14,14 @@
         </div>
       <% end %>
 
-      <div class="field">
-          <%= f.label :id %><br />
-          <%= f.text_field :id ,:readonly => true%>
-      </div>
+        <div class="field">
+          <% unless @item_show_id.nil? %><br />
+              <label>id </label>
+              <%= @item_show_id.id %>
+          <% end %>
+        </div>
 
-      <div class="field">
+        <div class="field">
         <%= f.label :name %><br />
         <%= f.text_field :name %>
       </div>

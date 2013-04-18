@@ -14,10 +14,12 @@
         </div>
       <% end %>
 
-      <div class="field">
-          <%= f.label :id %><br />
-          <%= f.text_field :id ,:readonly => true%>
-      </div>
+        <div class="field">
+          <% unless @bookmark_show_id.nil? %><br />
+              <label>id </label>
+              <%= @bookmark_show_id.id %>
+          <% end %>
+        </div>
 
         <div class="field">
           <%= f.label :bookmarks_category %><br />

@@ -40,7 +40,7 @@ module SeedThemesModule
 
         #if Theme.where(image_name: image_name).exists?
         #  # the image name exist
-        #  p "Error: the theme image name already exist on themes:"+image_name
+        #  p "Error: the themes image name already exist on themes:"+image_name
         #  b.image_name = -1
         #else
         #  b.image_name = image_name

@@ -22,6 +22,9 @@ require_relative 'seeds/seeds_bundle_images'
 require_relative 'seeds/seeds_bookmarks'
 require_relative 'seeds/seeds_bookmarks_images'
 
+require_relative 'seeds/seeds_reset_sequence'
+
+
 
 #module ImageHelper
 #  def self.fix_image_name image_name
@@ -41,16 +44,16 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #DB data
 #https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE&usp=sharing
 #
-#  #####Items
+#  ####Items
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[4]
 #SeedItemsModule.InsertItems(ws)
-##
-##
-#########Themes
+
+
+######Themes
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[2]
 #SeedThemesModule.InsertThemes(ws)
-##
-#########Bundle table
+
+########Bundle table
 #ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[1]
 #SeedBundleModule.InsertBundles(ws)
 ##
@@ -68,12 +71,15 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #SeedBookmarkModule.InsertBookmarks(ws)
 ##
 ##
-#######Bundle_bookmarks table
-ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
-  SeedBundleModule.InsertBundlesBookmarks(ws)
+########Bundle_bookmarks table
+#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
+#  SeedBundleModule.InsertBundlesBookmarks(ws)
+###
+####
+###
 ##
-##
-
+SeedResetSequence.ResetSequenceOnPostgreDb
+#
 
 
 ## this is only one time to transfer the images

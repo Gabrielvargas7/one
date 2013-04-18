@@ -28,6 +28,7 @@ class ItemsDesignsController < ApplicationController
   # GET /items_designs/new.json
   def new
     @items_design = ItemsDesign.new
+    @items_design_show_id = nil
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,6 +39,7 @@ class ItemsDesignsController < ApplicationController
   # GET /items_designs/1/edit
   def edit
     @items_design = ItemsDesign.find(params[:id])
+    @items_design_show_id = ItemsDesign.find(params[:id])
   end
 
   # POST /items_designs

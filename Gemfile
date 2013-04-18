@@ -20,11 +20,12 @@ gem "carrierwave", '0.8.0'
 gem 'jbuilder', '1.3.0'
 
 gem "railties", "3.2.13"
+gem "sprockets", '2.2.1'
 
 
 group :development, :test do
-  gem 'sqlite3', '1.3.7'
-  #gem 'pg', '0.12.2'
+  #gem 'sqlite3', '1.3.7'
+  gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.0'
   gem 'debugger','1.5.0'
   # gem 'guard-rspec', '1.2.1'

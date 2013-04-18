@@ -43,25 +43,25 @@ describe ThemesController do
   end
 
   describe "GET show" do
-    it "assigns the requested theme as @theme" do
+    it "assigns the requested themes as @themes" do
       theme = Theme.create! valid_attributes
       get :show, {:id => theme.to_param}, valid_session
-      assigns(:theme).should eq(theme)
+      assigns(:themes).should eq(theme)
     end
   end
 
   describe "GET new" do
-    it "assigns a new theme as @theme" do
+    it "assigns a new themes as @themes" do
       get :new, {}, valid_session
-      assigns(:theme).should be_a_new(Theme)
+      assigns(:themes).should be_a_new(Theme)
     end
   end
 
   describe "GET edit" do
-    it "assigns the requested theme as @theme" do
+    it "assigns the requested themes as @themes" do
       theme = Theme.create! valid_attributes
       get :edit, {:id => theme.to_param}, valid_session
-      assigns(:theme).should eq(theme)
+      assigns(:themes).should eq(theme)
     end
   end
 
@@ -69,34 +69,34 @@ describe ThemesController do
     describe "with valid params" do
       it "creates a new Theme" do
         expect {
-          post :create, {:theme => valid_attributes}, valid_session
+          post :create, {:themes => valid_attributes}, valid_session
         }.to change(Theme, :count).by(1)
       end
 
-      it "assigns a newly created theme as @theme" do
-        post :create, {:theme => valid_attributes}, valid_session
-        assigns(:theme).should be_a(Theme)
-        assigns(:theme).should be_persisted
+      it "assigns a newly created themes as @themes" do
+        post :create, {:themes => valid_attributes}, valid_session
+        assigns(:themes).should be_a(Theme)
+        assigns(:themes).should be_persisted
       end
 
-      it "redirects to the created theme" do
-        post :create, {:theme => valid_attributes}, valid_session
+      it "redirects to the created themes" do
+        post :create, {:themes => valid_attributes}, valid_session
         response.should redirect_to(Theme.last)
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved theme as @theme" do
+      it "assigns a newly created but unsaved themes as @themes" do
         # Trigger the behavior that occurs when invalid params are submitted
         Theme.any_instance.stub(:save).and_return(false)
-        post :create, {:theme => {}}, valid_session
-        assigns(:theme).should be_a_new(Theme)
+        post :create, {:themes => {}}, valid_session
+        assigns(:themes).should be_a_new(Theme)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Theme.any_instance.stub(:save).and_return(false)
-        post :create, {:theme => {}}, valid_session
+        post :create, {:themes => {}}, valid_session
         response.should render_template("new")
       end
     end
@@ -104,50 +104,50 @@ describe ThemesController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested theme" do
+      it "updates the requested themes" do
         theme = Theme.create! valid_attributes
         # Assuming there are no other themes in the database, this
         # specifies that the Theme created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Theme.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => theme.to_param, :theme => {'these' => 'params'}}, valid_session
+        put :update, {:id => theme.to_param, :themes => {'these' => 'params'}}, valid_session
       end
 
-      it "assigns the requested theme as @theme" do
+      it "assigns the requested themes as @themes" do
         theme = Theme.create! valid_attributes
-        put :update, {:id => theme.to_param, :theme => valid_attributes}, valid_session
-        assigns(:theme).should eq(theme)
+        put :update, {:id => theme.to_param, :themes => valid_attributes}, valid_session
+        assigns(:themes).should eq(theme)
       end
 
-      it "redirects to the theme" do
+      it "redirects to the themes" do
         theme = Theme.create! valid_attributes
-        put :update, {:id => theme.to_param, :theme => valid_attributes}, valid_session
+        put :update, {:id => theme.to_param, :themes => valid_attributes}, valid_session
         response.should redirect_to(theme)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the theme as @theme" do
+      it "assigns the themes as @themes" do
         theme = Theme.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Theme.any_instance.stub(:save).and_return(false)
-        put :update, {:id => theme.to_param, :theme => {}}, valid_session
-        assigns(:theme).should eq(theme)
+        put :update, {:id => theme.to_param, :themes => {}}, valid_session
+        assigns(:themes).should eq(theme)
       end
 
       it "re-renders the 'edit' template" do
         theme = Theme.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Theme.any_instance.stub(:save).and_return(false)
-        put :update, {:id => theme.to_param, :theme => {}}, valid_session
+        put :update, {:id => theme.to_param, :themes => {}}, valid_session
         response.should render_template("edit")
       end
     end
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested theme" do
+    it "destroys the requested themes" do
       theme = Theme.create! valid_attributes
       expect {
         delete :destroy, {:id => theme.to_param}, valid_session

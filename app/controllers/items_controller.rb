@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
+    @item_show_id = nil
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,7 +39,9 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+
     @item = Item.find(params[:id])
+    @item_show_id = Item.find(params[:id])
   end
 
   # POST /items

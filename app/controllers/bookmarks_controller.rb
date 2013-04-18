@@ -29,6 +29,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks/new.json
   def new
     @bookmark = Bookmark.new
+    @bookmark_show_id = nil
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,6 +40,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks/1/edit
   def edit
     @bookmark = Bookmark.find(params[:id])
+    @bookmark_show_id = Bookmark.find(params[:id])
   end
 
   # POST /bookmarks

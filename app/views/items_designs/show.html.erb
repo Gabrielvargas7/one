@@ -12,12 +12,31 @@
 
 <p>
   <b>Item:</b>
-  <%= @items_design.item_id %>
+
+  <%  if @items_design.item.nil? %>
+    <td></td>
+    <td></td>
+<%  else %>
+    <td><%= @items_design.item_id %></td>
+    <td><%= @items_design.item.name %></td>
+
+<%  end %>
+
+
 </p>
 
 <p>
   <b>Bundle:</b>
-  <%= @items_design.bundle_id %>
+  <%  if @items_design.bundle.nil? %>
+    <td></td>
+    <td></td>
+    <td></td>
+<%  else %>
+    <td><%= @items_design.bundle.id  %></td>
+    <td><%= @items_design.bundle.name  %></td>
+    <td> <%= image_tag @items_design.bundle.image_name.url(:small).to_s %> </td>
+<%  end %>
+
 </p>
 
 <p>

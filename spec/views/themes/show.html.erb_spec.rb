@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "themes/show" do
   before(:each) do
-    @theme = assign(:theme, stub_model(Theme,
+    @theme = assign(:themes, stub_model(Theme,
       :name => "Name",
       :description => "MyText",
       :image_name => "Image Name"

@@ -28,6 +28,7 @@ class ThemesController < ApplicationController
   # GET /themes/new.json
   def new
     @theme = Theme.new
+    @theme_show_id = nil
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,6 +39,7 @@ class ThemesController < ApplicationController
   # GET /themes/1/edit
   def edit
     @theme = Theme.find(params[:id])
+    @theme_show_id = Theme.find(params[:id])
   end
 
   # POST /themes

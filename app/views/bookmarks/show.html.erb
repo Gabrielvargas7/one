@@ -1,13 +1,38 @@
 <p id="notice"><%= notice %></p>
 
+
+<p>
+  <b>Bookmarks Id :</b>
+  <%= @bookmark.id %>
+</p>
+
 <p>
   <b>Bookmarks category:</b>
-  <%= @bookmark.bookmarks_category_id %>
+
+  <%  if @bookmark.bookmarks_category.nil? %>
+    <td></td>
+    <td></td>
+
+<%  else %>
+    <td><%= @bookmark.bookmarks_category.id %></td>
+    <td><%= @bookmark.bookmarks_category.name  %></td>
+<%  end %>
+
+
 </p>
 
 <p>
   <b>Item:</b>
-  <%= @bookmark.item_id %>
+  <%  if @bookmark.item.nil? %>
+    <td></td>
+    <td></td>
+
+<%  else %>
+    <td><%= @bookmark.item_id %></td>
+    <td><%= @bookmark.item.name %></td>
+<%  end %>
+
+
 </p>
 
 <p>

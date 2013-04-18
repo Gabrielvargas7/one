@@ -25,6 +25,7 @@ class BookmarksCategoriesController < ApplicationController
   # GET /bookmarks_categories/new.json
   def new
     @bookmarks_category = BookmarksCategory.new
+    @bookmarks_category_show_id = nil
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class BookmarksCategoriesController < ApplicationController
   # GET /bookmarks_categories/1/edit
   def edit
     @bookmarks_category = BookmarksCategory.find(params[:id])
+    @bookmarks_category_show_id = BookmarksCategory.find(params[:id])
   end
 
   # POST /bookmarks_categories

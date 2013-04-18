@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2280776488">
+  <component name="DataSourceManagerImpl" format="xml" hash="2100655820">
     <data-source source="LOCAL" name="Rails mywebroom: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="ef235363-efcb-4960-9438-21d900ad3114">
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1/rooms_production</jdbc-url>
@@ -29,27 +29,33 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="Rails mywebroom: development" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="2e97bab6-3d0d-4e18-8ea9-776854c7e31f">
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
+    <data-source source="LOCAL" name="Rails mywebroom: development" product="PostgreSQL" version="9.2.3" jdbc-version="3.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.1 JDBC3 (build 901)" uuid="36891dc0-4587-49b8-8892-eb5623f022c3">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/rooms_development</jdbc-url>
+      <user-name>rooms</user-name>
+      <user-password>dfd8dfc5dfc5dfc7dfd9</user-password>
       <libraries>
         <library>
-          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/xerial-sqlite-license.txt</url>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
         </library>
         <library>
-          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar</url>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.1-901.jdbc3.jar</url>
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="Rails mywebroom: test" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="aec6797e-de82-4ace-908a-487b957fd94c">
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/test.sqlite3</jdbc-url>
+    <data-source source="LOCAL" name="Rails mywebroom: test" product="PostgreSQL" version="9.2.3" jdbc-version="3.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.1 JDBC3 (build 901)" uuid="0e110ae2-5418-430a-b192-41d64caa3660">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/rooms_test</jdbc-url>
+      <user-name>rooms</user-name>
+      <user-password>dfd8dfc5dfc5dfc7dfd9</user-password>
       <libraries>
         <library>
-          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/xerial-sqlite-license.txt</url>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
         </library>
         <library>
-          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar</url>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.1-901.jdbc3.jar</url>
         </library>
       </libraries>
     </data-source>
