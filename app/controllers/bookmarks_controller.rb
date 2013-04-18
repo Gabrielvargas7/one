@@ -3,7 +3,8 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
 
-    @bookmarks = Bookmark.paginate(page: params[:page], :per_page => 30)
+    #@bookmarks = Bookmark.paginate(page: params[:page], :per_page => 30)
+    @bookmarks = Bookmark.paginate(page: params[:page])
 
     #@bookmarks = Bookmark.all
     #

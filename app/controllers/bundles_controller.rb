@@ -3,7 +3,8 @@ class BundlesController < ApplicationController
   # GET /bundles.json
   def index
 
-    @bundles = Bundle.paginate(page: params[:page], :per_page => 10)
+    #@bundles = Bundle.paginate(page: params[:page], :per_page => 10)
+    @bundles = Bundle.paginate(page: params[:page])
 
     #@bundles = Bundle.all
     #

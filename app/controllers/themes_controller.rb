@@ -3,7 +3,8 @@ class ThemesController < ApplicationController
   # GET /themes.json
   def index
 
-    @themes = Theme.paginate(page: params[:page], :per_page => 10)
+    #@themes = Theme.paginate(page: params[:page], :per_page => 10)
+    @themes = Theme.paginate(page: params[:page])
     #@themes = Theme.all
     #
     #respond_to do |format|
