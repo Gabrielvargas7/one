@@ -44,40 +44,40 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #DB data
 #https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE&usp=sharing
 #
-#  ####Items
-#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[4]
-#SeedItemsModule.InsertItems(ws)
+  ####Items
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[4]
+SeedItemsModule.InsertItems(ws)
 
 
-######Themes
-#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[2]
-#SeedThemesModule.InsertThemes(ws)
+#####Themes
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[2]
+SeedThemesModule.InsertThemes(ws)
 
-########Bundle table
-#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[1]
-#SeedBundleModule.InsertBundles(ws)
+#######Bundle table
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[1]
+SeedBundleModule.InsertBundles(ws)
+#
+########Item_Design table
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[3]
+SeedItemsModule.InsertItemsDesign(ws)
+#
 ##
-#########Item_Design table
-#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[3]
-#SeedItemsModule.InsertItemsDesign(ws)
+##########Bookmark categories table
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[6]
+SeedBookmarkModule.InsertBookmarkCategory(ws)
+#
+#######Bookmark table
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[5]
+SeedBookmarkModule.InsertBookmarks(ws)
+#
+#
+#######Bundle_bookmarks table
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
+  SeedBundleModule.InsertBundlesBookmarks(ws)
+#
 ##
-###
-###########Bookmark categories table
-#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[6]
-#SeedBookmarkModule.InsertBookmarkCategory(ws)
-##
-########Bookmark table
-#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[5]
-#SeedBookmarkModule.InsertBookmarks(ws)
-##
-##
-########Bundle_bookmarks table
-#ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
-#  SeedBundleModule.InsertBundlesBookmarks(ws)
-###
-####
-###
-##
+#
+#
 SeedResetSequence.ResetSequenceOnPostgreDb
 #
 
