@@ -191,9 +191,6 @@ GEM
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
-PLATFORMS
-  ruby
-  x86-mingw32
 
 DEPENDENCIES
   annotate (= 2.5.0)
