@@ -9,12 +9,12 @@
   <b>Item:</b>
 
   <%  if @bookmarks_category.item.nil? %>
-    <td></td>
-    <td></td>
+    
+    
 
 <%  else %>
-    <td><%= @bookmarks_category.item.id %></td>
-    <td><%= @bookmarks_category.item.name %></td>
+    <%= @bookmarks_category.item.id %>
+    <%= @bookmarks_category.item.name %>
 <%  end %>
 
 

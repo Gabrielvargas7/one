@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418154704) do
+ActiveRecord::Schema.define(:version => 20130419120308) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"

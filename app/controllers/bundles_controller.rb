@@ -4,7 +4,7 @@ class BundlesController < ApplicationController
   def index
 
     #@bundles = Bundle.paginate(page: params[:page], :per_page => 10)
-    @bundles = Bundle.paginate(page: params[:page])
+    @bundles = Bundle.paginate(page: params[:page]).order('id')
 
     #@bundles = Bundle.all
     #

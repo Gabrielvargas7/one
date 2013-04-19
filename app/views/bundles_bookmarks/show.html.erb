@@ -3,11 +3,11 @@
 <p>
   <b>Item:</b>
   <%  if @bundles_bookmark.item.nil? %>
-    <td></td>
-    <td></td>
+    
+    
 <%  else %>
-    <td><%= @bundles_bookmark.item.id %></td>
-    <td><%= @bundles_bookmark.item.name %></td>
+    <%= @bundles_bookmark.item.id %>
+    <%= @bundles_bookmark.item.name %>
 <%  end %>
 
 
@@ -18,15 +18,15 @@
 
 
   <%  if @bundles_bookmark.bookmark.nil? %>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    
+    
+    
+    
  <%  else %>
-    <td><%= @bundles_bookmark.bookmark.id %></td>
-    <td><%= @bundles_bookmark.bookmark.bookmark_url.to_s %></td>
-    <td><%= @bundles_bookmark.bookmark.title  %></td>
-    <td> <%= image_tag @bundles_bookmark.bookmark.image_name.url(:small).to_s %> </td>
+    <%= @bundles_bookmark.bookmark.id %>
+    <%= @bundles_bookmark.bookmark.bookmark_url.to_s %>
+    <%= @bundles_bookmark.bookmark.title  %>
+     <%= image_tag @bundles_bookmark.bookmark.image_name.url(:small).to_s %> 
 <%  end %>
 
 

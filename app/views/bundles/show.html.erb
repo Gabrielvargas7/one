@@ -18,13 +18,13 @@
 <p>
   <b>Theme:</b>
     <%  if @bundle.theme.nil? %>
-    <td></td>
-    <td></td>
-    <td></td>
+    
+    
+    
 <%  else %>
-    <td><%= @bundle.theme.id %></td>
-    <td><%= @bundle.theme.name %></td>
-    <td> <%= image_tag @bundle.theme.image_name.url(:small).to_s %> </td>
+    <%= @bundle.theme.id %>
+    <%= @bundle.theme.name %>
+     <%= image_tag @bundle.theme.image_name.url(:small).to_s %> 
 
 <%  end %>
 

@@ -4,7 +4,7 @@ class BookmarksController < ApplicationController
   def index
 
     #@bookmarks = Bookmark.paginate(page: params[:page], :per_page => 30)
-    @bookmarks = Bookmark.paginate(page: params[:page])
+    @bookmarks = Bookmark.paginate(page: params[:page]).order('id')
 
     #@bookmarks = Bookmark.all
     #

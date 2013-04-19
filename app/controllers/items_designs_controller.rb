@@ -4,7 +4,7 @@ class ItemsDesignsController < ApplicationController
   def index
 
     #@items_designs = ItemsDesign.paginate(page: params[:page], :per_page => 22)
-    @items_designs = ItemsDesign.paginate(page: params[:page])
+    @items_designs = ItemsDesign.paginate(page: params[:page]).order('id')
 
     #@items_designs = ItemsDesign.all
     #respond_to do |format|
