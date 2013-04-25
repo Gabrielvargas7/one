@@ -4,14 +4,14 @@ class ItemsController < ApplicationController
   def index
 
     #@items = Item.paginate(page: params[:page], :per_page => 10)
-    @items = Item.paginate(page: params[:page]).order('id')
+    #@items = Item.paginate(page: params[:page]).order('id')
 
-    #@items = Item.all
-    #
-    #respond_to do |format|
-    #  format.html # index.html.erb
-    #  format.json { render json: @items }
-    #end
+    @items = Item.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @items }
+    end
   end
 
   # GET /items/1

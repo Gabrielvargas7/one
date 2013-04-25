@@ -6,6 +6,8 @@ class Theme < ActiveRecord::Base
 
   has_one :bundle
 
+  has_many :users_themes
+
 
   def id_and_theme
     "#{id}. #{name}"

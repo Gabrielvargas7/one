@@ -1,6 +1,8 @@
 <h1>Listing items_designs</h1>
 
-<%= will_paginate @items_designs %>
+<%= link_to 'New Items design', new_items_design_path %>
+
+
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
   <tr>
     <th>Id</th>
@@ -56,7 +58,6 @@
 <% end %>
 </table>
 
-<%= will_paginate %>
+
 <br />
 
-<%= link_to 'New Items design', new_items_design_path %>

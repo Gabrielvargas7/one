@@ -2,7 +2,7 @@ class BookmarksCategoriesController < ApplicationController
   # GET /bookmarks_categories
   # GET /bookmarks_categories.json
   def index
-    @bookmarks_categories = BookmarksCategory.all
+    @bookmarks_categories = BookmarksCategory.order("item_id").all
 
     respond_to do |format|
       format.html # index.html.erb

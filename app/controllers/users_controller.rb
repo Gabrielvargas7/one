@@ -1,19 +1,27 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only:[:index,:edit,:update,:destroy]
+  before_filter :signed_in_user, only:[:edit,:update,:destroy]
   before_filter :correct_user, only:[:edit,:update]
-  before_filter :admin_user, only: :destroy
+  before_filter :admin_user, only:[:destroy,:index]
+  before_filter :correct_user_name, only:[:room]
+
+
+
+  def room
+    if params[:username]
+      if User.exists?(params[:username])
+        redirect_to(root_path)
+      else
+        @username = params[:username]
+        @user = User.find_by_username(params[:username])
+      end
+    else
+      redirect_to(root_path)
+    end
+  end
 
   def show
      @user = User.find(params[:id])
-
-    #if params[:email]
-    #  @user  = User.where(email: params[:email]).first
-    #  #render 'users/show'
-    #else
-    #  #redirect_to(root_path)
-    #end
-
   end
 
 
@@ -51,16 +59,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    #@users = User.all
+
     @users = User.paginate(page: params[:page])
-
-    #if params[:name]
-    #  @zombie = Zombie.where(:name => params[:name]).first
-    #  @tweets = @zombie.tweets
-    #else
-    #  @tweets = Tweet.all
-    #end
-
 
   end
 
@@ -82,16 +82,18 @@ class UsersController < ApplicationController
       redirect_to signin_url, notice: "Please sign in."
     end
 
-    #redirect_to signin_url, notice:"Please sign in." unless signed_in?
-    # equivalen to up code
-    #flash[:notice] = "Please sign in."
-    #redirect_to signin_url
   end
 
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_path) unless current_user?(@user)
   end
+
+  def correct_user_name
+    @user = User.find_by_username(params[:username])
+    redirect_to(root_path) unless current_user?(@user)
+  end
+
 
   def admin_user
     redirect_to(root_path) unless current_user.admin?

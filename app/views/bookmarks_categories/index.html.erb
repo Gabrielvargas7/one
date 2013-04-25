@@ -1,11 +1,13 @@
 <h1>Listing bookmarks_categories</h1>
 
+<%= link_to 'New Bookmarks category', new_bookmarks_category_path %>
+
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
   <tr>
-    <th>id</th>
-    <th>Name</th>
-    <th>Item id </th>
-    <th>Item name </th>
+    <th>Item id</th>
+    <th>Item Name</th>
+    <th>Bookmark Category id </th>
+    <th>Bookmark Category name </th>
 
     <th></th>
     <th></th>
@@ -14,9 +16,6 @@
 
 <% @bookmarks_categories.each do |bookmarks_category| %>
   <tr>
-    <td><%= bookmarks_category.id %></td>
-    <td><%= bookmarks_category.name %></td>
-
     <%  if bookmarks_category.item.nil? %>
         <td></td>
         <td></td>
@@ -25,6 +24,11 @@
         <td><%= bookmarks_category.item.id %></td>
         <td><%= bookmarks_category.item.name %></td>
     <%  end %>
+
+
+    <td><%= bookmarks_category.id %></td>
+    <td><%= bookmarks_category.name %></td>
+
 
 
     <td><%= link_to 'Show', bookmarks_category %></td>
@@ -36,4 +40,4 @@
 
 <br />
 
-<%= link_to 'New Bookmarks category', new_bookmarks_category_path %>
+

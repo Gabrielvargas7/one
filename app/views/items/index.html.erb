@@ -1,6 +1,6 @@
 <h1>Listing items</h1>
 
-<%= will_paginate @items %>
+<%= link_to 'New Item', new_item_path %>
 
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50%" cellspacing="2" cellpadding="3">
 
@@ -35,8 +35,8 @@
   </tr>
 <% end %>
 </table>
-<%= will_paginate %>
+
 
 <br />
 
-<%= link_to 'New Item', new_item_path %>
+

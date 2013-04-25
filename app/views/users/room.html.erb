@@ -1,0 +1,153 @@
+<% provide(:title, @user.name) %>
+<h1>This is My room</h1>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @user.name %>
+        <%= gravatar_for @user %>
+      </h1>
+
+      name: <%= @user.name %>,</br>
+      email:  <%= @user.email %></br>
+      username: <%= @user.username %></br>
+
+    </section>
+  </aside>
+
+
+</div>
+
+<!-- this part is for testing -->
+<div id="placeholder"></div>
+<div class="my-new-list"></div>
+
+
+<%= link_to_function "Add Row", "addRow()" %>
+
+<%= link_to_function "Greeting", "alert('Hello world!')", :class => "nav_link" %>
+
+<%= button_to "Add Row", "javascript:addRow()" %>
+
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script>
+
+        var url = 'http://'+document.location.host+'/rooms/'+<%= @user.id %> +'.json'
+        alert(url)
+
+        var applicationList = [];
+        var image_name_list = [];
+
+        function addRow(){
+
+           $.getJSON(url, function(data) {
+
+           var output="<h1>User </h1>";
+           output+="<ul>";
+           output+="<li>Email: " + data.user.email+"</li>";
+           output+="<li>Id: " + data.user.id+"</li>";
+           output+="<li>Name: " + data.user.name+"</li>";
+           output+="</ul>";
+
+
+                   output+="<h1>Theme </h1>";
+                   jQuery.each(data.user_theme, function (i, app) {
+                       applicationList[i] = [];
+                       applicationList[i]['id'] = app['id'];
+                       applicationList[i]['description'] = app['description'];
+                       applicationList[i]['name'] = app['name'];
+                       applicationList[i]['image_name'] = app['image_name'];
+
+                       applicationList[i]['image_name_original'] = app['image_name']['url'];
+
+                       output+="<ul>";
+                       output+="<li>" + applicationList[i]['id']+"</li>";
+                       output+="<li>" + applicationList[i]['description']+"</li>";
+                       output+="<li>" + applicationList[i]['name']+"</li>";
+                       output+="<li>" + applicationList[i]['image_name_original']+"</li>";
+                       output+="</ul>";
+
+
+                       jQuery.each(applicationList[i]['image_name'], function (x, app_image_name) {
+                           image_name_list[x] = [];
+                           image_name_list[x]['url'] = app_image_name['url'];
+                           output+="<ul>";
+                           output+="<li>" + image_name_list[x]['url'] +"</li>";
+                           output+="</ul>";
+
+                       });
+                   });
+
+
+
+                       output+="<h1>user_items_designs </h1>";
+                       jQuery.each(data.user_items_designs, function (i, app) {
+                           applicationList[i] = [];
+                           applicationList[i]['id'] = app['id'];
+                           applicationList[i]['description'] = app['description'];
+                           applicationList[i]['name'] = app['name'];
+                           applicationList[i]['image_name'] = app['image_name'];
+
+                           applicationList[i]['image_name_original'] = app['image_name']['url'];
+
+                           output+="<ul>";
+                           output+="<li>" + applicationList[i]['id']+"</li>";
+                           output+="<li>" + applicationList[i]['description']+"</li>";
+                           output+="<li>" + applicationList[i]['name']+"</li>";
+                           output+="<li>" + applicationList[i]['image_name_original']+"</li>";
+                           output+="</ul>";
+
+
+                           jQuery.each(applicationList[i]['image_name'], function (x, app_image_name) {
+                               image_name_list[x] = [];
+                               image_name_list[x]['url'] = app_image_name['url'];
+                               output+="<ul>";
+                               output+="<li>" + image_name_list[x]['url'] +"</li>";
+                               output+="</ul>";
+
+                           });
+                       });
+
+               output+="<h1>user_bookmarks </h1>";
+               jQuery.each(data.user_bookmarks, function (i, app) {
+                   applicationList[i] = [];
+                   applicationList[i]['id'] = app['id'];
+                   applicationList[i]['description'] = app['description'];
+                   applicationList[i]['bookmark_url'] = app['bookmark_url'];
+
+                   applicationList[i]['title'] = app['title'];
+                   applicationList[i]['image_name'] = app['image_name'];
+
+                   applicationList[i]['image_name_original'] = app['image_name']['url'];
+
+                   output+="<ul>";
+                   output+="<li>" + applicationList[i]['id']+"</li>";
+                   output+="<li>" + applicationList[i]['description']+"</li>";
+                   output+="<li>" + applicationList[i]['bookmark_url']+"</li>";
+
+                   output+="<li>" + applicationList[i]['title']+"</li>";
+                   output+="<li>" + applicationList[i]['image_name_original']+"</li>";
+                   output+="</ul>";
+
+
+                   jQuery.each(applicationList[i]['image_name'], function (x, app_image_name) {
+                       image_name_list[x] = [];
+                       image_name_list[x]['url'] = app_image_name['url'];
+                       output+="<ul>";
+                       output+="<li>" + image_name_list[x]['url'] +"</li>";
+                       output+="</ul>";
+
+                   });
+               });
+
+
+
+               document.getElementById("placeholder").innerHTML=output;
+
+             });
+
+        }
+
+</script>
+

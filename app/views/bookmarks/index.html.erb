@@ -1,21 +1,24 @@
 <h1>Listing bookmarks</h1>
 
-<%= will_paginate @bookmarks %>
-<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50%" cellspacing="2" cellpadding="3">
+<%= link_to 'New Bookmark', new_bookmark_path %>
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
   <tr>
+
+    <th>Item id</th>
+    <th>Item name</th>
+    <th>Bookmarks category Id</th>
+    <th>Bookmarks category Name</th>
+
 
     <th>Bookmarks id</th>
     <th>Bookmark url</th>
     <th>Title</th>
     <th>I frame</th>
-    <th>Image name</th>
-    <th>Image name desc</th>
+    <th>Bookmark Image name</th>
+    <th>Bookmark Image name desc</th>
     <th>Description</th>
-    <th>Bookmarks category Id</th>
-    <th>Bookmarks Name</th>
 
-    <th>Item id</th>
-    <th>Item name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,15 +26,14 @@
 
 <% @bookmarks.each do |bookmark| %>
   <tr>
-    <td><%= bookmark.id %></td>
+    <%  if bookmark.item.nil? %>
+        <td></td>
+        <td></td>
 
-    <td><%= bookmark.bookmark_url.to_s %></td>
-    <td><%= bookmark.title %></td>
-    <td><%= bookmark.i_frame %></td>
-    <td><%= image_tag bookmark.image_name.url(:toolbar).to_s %></td>
-    <td><%= image_tag bookmark.image_name_desc.url(:toolbar).to_s %></td>
-    <td><%= bookmark.description %></td>
-
+    <%  else %>
+        <td><%= bookmark.item_id %></td>
+        <td><%= bookmark.item.name %></td>
+    <%  end %>
 
     <%  if bookmark.bookmarks_category.nil? %>
         <td></td>
@@ -43,14 +45,16 @@
     <%  end %>
 
 
-    <%  if bookmark.item.nil? %>
-        <td></td>
-        <td></td>
+    <td><%= bookmark.id %></td>
 
-    <%  else %>
-        <td><%= bookmark.item_id %></td>
-        <td><%= bookmark.item.name %></td>
-    <%  end %>
+    <td><%= bookmark.bookmark_url.to_s %></td>
+    <td><%= bookmark.title %></td>
+    <td><%= bookmark.i_frame %></td>
+    <td><%= image_tag bookmark.image_name.url(:toolbar).to_s %></td>
+    <td><%= image_tag bookmark.image_name_desc.url(:toolbar).to_s %></td>
+    <td><%= bookmark.description %></td>
+
+
 
 
     <td><%= link_to 'Show', bookmark %></td>
@@ -59,8 +63,8 @@
   </tr>
 <% end %>
 </table>
-<%= will_paginate  %>
+
 
 <br />
 
-<%= link_to 'New Bookmark', new_bookmark_path %>
+

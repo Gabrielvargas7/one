@@ -4,14 +4,14 @@ class BundlesController < ApplicationController
   def index
 
     #@bundles = Bundle.paginate(page: params[:page], :per_page => 10)
-    @bundles = Bundle.paginate(page: params[:page]).order('id')
+    #@bundles = Bundle.paginate(page: params[:page]).order('id')
 
-    #@bundles = Bundle.all
-    #
-    #respond_to do |format|
-    #  format.html # index.html.erb
-    #  format.json { render json: @bundles }
-    #end
+    @bundles = Bundle.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @bundles }
+    end
   end
 
   # GET /bundles/1

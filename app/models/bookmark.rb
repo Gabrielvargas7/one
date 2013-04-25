@@ -8,6 +8,8 @@ class Bookmark < ActiveRecord::Base
   belongs_to :bookmarks_category
   has_many :bundles_bookmarks
 
+  has_many :users_bookmarks
+
   validates_associated :item
   validates :item_id, :numericality => { :only_integer => true }
 

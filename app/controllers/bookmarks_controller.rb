@@ -4,14 +4,14 @@ class BookmarksController < ApplicationController
   def index
 
     #@bookmarks = Bookmark.paginate(page: params[:page], :per_page => 30)
-    @bookmarks = Bookmark.paginate(page: params[:page]).order('id')
+    #@bookmarks = Bookmark.paginate(page: params[:page]).order('id')
 
-    #@bookmarks = Bookmark.all
-    #
-    #respond_to do |format|
-    #  format.html # index.html.erb
-    #  format.json { render json: @bookmarks }
-    #end
+    @bookmarks = Bookmark.order("item_id","bookmarks_category_id").all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @bookmarks }
+    end
   end
 
   # GET /bookmarks/1
