@@ -1,0 +1,1212 @@
+// controller  ->  ThemesController
+// method type ->  get
+// method name ->  index
+
+// routes      ->  themes GET    /themes(.:format)                                        themes#index
+// url         ->  http://localhost:3000/themes.json
+// description ->  Get all themes
+
+
+// back_end   :done
+// front_end :working
+
+//Return head 200 OK
+
+[
+{
+"created_at": "2013-04-18T16:58:21Z",
+"description": "hey",
+"id": 26,
+"image_name": {
+"url": "/uploads/theme/image_name/26/reviews.png",
+"xxx_large": {
+"url": "/uploads/theme/image_name/26/xxx_large_reviews.png"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/26/xx_large_reviews.png"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/26/x_large_reviews.png"
+},
+"large": {
+"url": "/uploads/theme/image_name/26/large_reviews.png"
+},
+"medium": {
+"url": "/uploads/theme/image_name/26/medium_reviews.png"
+},
+"small": {
+"url": "/uploads/theme/image_name/26/small_reviews.png"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/26/tiny_reviews.png"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/26/error_search.png",
+"large": {
+"url": "/uploads/theme/image_name_selection/26/large_error_search.png"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/26/medium_error_search.png"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/26/small_error_search.png"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/26/tiny_error_search.png"
+}
+},
+"name": "new theme",
+"updated_at": "2013-04-18T17:09:30Z"
+},
+{
+"created_at": "2013-04-18T16:55:50Z",
+"description": "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?",
+"id": 1,
+"image_name": {
+"url": "/uploads/theme/image_name/1/turquoise-loft.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/1/xxx_large_turquoise-loft.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/1/xx_large_turquoise-loft.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/1/x_large_turquoise-loft.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/1/large_turquoise-loft.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/1/medium_turquoise-loft.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/1/small_turquoise-loft.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/1/tiny_turquoise-loft.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/1/turquoise-loft-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/1/large_turquoise-loft-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/1/medium_turquoise-loft-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/1/small_turquoise-loft-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/1/tiny_turquoise-loft-popthumb.jpg"
+}
+},
+"name": "Turquoise Loft",
+"updated_at": "2013-04-18T16:55:50Z"
+},
+{
+"created_at": "2013-04-18T16:55:50Z",
+"description": "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone? ",
+"id": 2,
+"image_name": {
+"url": "/uploads/theme/image_name/2/neat-studio.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/2/xxx_large_neat-studio.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/2/xx_large_neat-studio.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/2/x_large_neat-studio.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/2/large_neat-studio.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/2/medium_neat-studio.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/2/small_neat-studio.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/2/tiny_neat-studio.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/2/neat-studio-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/2/large_neat-studio-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/2/medium_neat-studio-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/2/small_neat-studio-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/2/tiny_neat-studio-popthumb.jpg"
+}
+},
+"name": "Neat Studio",
+"updated_at": "2013-04-18T16:55:50Z"
+},
+{
+"created_at": "2013-04-18T16:55:51Z",
+"description": "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\". ",
+"id": 3,
+"image_name": {
+"url": "/uploads/theme/image_name/3/brick-wall.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/3/xxx_large_brick-wall.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/3/xx_large_brick-wall.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/3/x_large_brick-wall.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/3/large_brick-wall.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/3/medium_brick-wall.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/3/small_brick-wall.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/3/tiny_brick-wall.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/3/brick-wall-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/3/large_brick-wall-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/3/medium_brick-wall-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/3/small_brick-wall-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/3/tiny_brick-wall-popthumb.jpg"
+}
+},
+"name": "Brick Wall",
+"updated_at": "2013-04-18T16:55:51Z"
+},
+{
+"created_at": "2013-04-18T16:55:51Z",
+"description": "Wanna leap into comfort and harmony? Then this rooms is for you! Dark chocolate walls are totally gonna create the relaxing and decadence atmosphere in your room.",
+"id": 4,
+"image_name": {
+"url": "/uploads/theme/image_name/4/brownie.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/4/xxx_large_brownie.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/4/xx_large_brownie.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/4/x_large_brownie.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/4/large_brownie.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/4/medium_brownie.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/4/small_brownie.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/4/tiny_brownie.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/4/brownie-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/4/large_brownie-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/4/medium_brownie-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/4/small_brownie-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/4/tiny_brownie-popthumb.jpg"
+}
+},
+"name": "Brownie",
+"updated_at": "2013-04-18T16:55:51Z"
+},
+{
+"created_at": "2013-04-18T16:55:52Z",
+"description": "Are you the one who can't live a day without stuffing yourself with sweets? Pick this room and it will remind you of your fave lollipop store.",
+"id": 5,
+"image_name": {
+"url": "/uploads/theme/image_name/5/candy.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/5/xxx_large_candy.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/5/xx_large_candy.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/5/x_large_candy.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/5/large_candy.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/5/medium_candy.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/5/small_candy.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/5/tiny_candy.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/5/candy-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/5/large_candy-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/5/medium_candy-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/5/small_candy-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/5/tiny_candy-popthumb.jpg"
+}
+},
+"name": "Candy",
+"updated_at": "2013-04-18T16:55:52Z"
+},
+{
+"created_at": "2013-04-18T16:55:52Z",
+"description": "Are we the only one who are reminded of the Burgundy wine, when looking at this room? Turn your room into vinoteca! Cheers!",
+"id": 6,
+"image_name": {
+"url": "/uploads/theme/image_name/6/fine-wine.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/6/xxx_large_fine-wine.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/6/xx_large_fine-wine.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/6/x_large_fine-wine.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/6/large_fine-wine.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/6/medium_fine-wine.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/6/small_fine-wine.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/6/tiny_fine-wine.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/6/fine-wine-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/6/large_fine-wine-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/6/medium_fine-wine-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/6/small_fine-wine-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/6/tiny_fine-wine-popthumb.jpg"
+}
+},
+"name": "Fine Wine",
+"updated_at": "2013-04-18T16:55:52Z"
+},
+{
+"created_at": "2013-04-18T16:55:53Z",
+"description": "We decided to combine the fleur of the rainforest radiance with modern design. Enjoy!",
+"id": 7,
+"image_name": {
+"url": "/uploads/theme/image_name/7/modernica.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/7/xxx_large_modernica.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/7/xx_large_modernica.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/7/x_large_modernica.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/7/large_modernica.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/7/medium_modernica.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/7/small_modernica.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/7/tiny_modernica.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/7/modernica-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/7/large_modernica-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/7/medium_modernica-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/7/small_modernica-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/7/tiny_modernica-popthumb.jpg"
+}
+},
+"name": "Modernica",
+"updated_at": "2013-04-18T16:55:53Z"
+},
+{
+"created_at": "2013-04-18T16:55:53Z",
+"description": "Meet a new friend of Danny Ocean! (Just kiddin') The creation of this room was inspired by our new hobby -- surfing. So catch the wave!",
+"id": 8,
+"image_name": {
+"url": "/uploads/theme/image_name/8/ocean-deep.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/8/xxx_large_ocean-deep.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/8/xx_large_ocean-deep.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/8/x_large_ocean-deep.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/8/large_ocean-deep.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/8/medium_ocean-deep.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/8/small_ocean-deep.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/8/tiny_ocean-deep.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/8/ocean-deep-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/8/large_ocean-deep-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/8/medium_ocean-deep-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/8/small_ocean-deep-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/8/tiny_ocean-deep-popthumb.jpg"
+}
+},
+"name": "Ocean Deep",
+"updated_at": "2013-04-18T16:55:53Z"
+},
+{
+"created_at": "2013-04-18T16:55:53Z",
+"description": "\"It was a dark night in New York City. I was getting ready for my road trip to Silicon Valley. Unfortunately google maps did not know where exactly in Silicon Valley I should go, neither did I! So for 5 days straight I aimed at Sunnyvale.\" - Artem Fedyaev.",
+"id": 9,
+"image_name": {
+"url": "/uploads/theme/image_name/9/sunnyvale.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/9/xxx_large_sunnyvale.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/9/xx_large_sunnyvale.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/9/x_large_sunnyvale.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/9/large_sunnyvale.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/9/medium_sunnyvale.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/9/small_sunnyvale.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/9/tiny_sunnyvale.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/9/sunnyvale-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/9/large_sunnyvale-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/9/medium_sunnyvale-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/9/small_sunnyvale-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/9/tiny_sunnyvale-popthumb.jpg"
+}
+},
+"name": "Sunnyvale",
+"updated_at": "2013-04-18T16:55:53Z"
+},
+{
+"created_at": "2013-04-18T16:55:54Z",
+"description": "Doesn't that room electrify you with colors and all the possible cool things you can place in it?",
+"id": 10,
+"image_name": {
+"url": "/uploads/theme/image_name/10/elektro.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/10/xxx_large_elektro.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/10/xx_large_elektro.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/10/x_large_elektro.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/10/large_elektro.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/10/medium_elektro.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/10/small_elektro.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/10/tiny_elektro.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/10/elektro-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/10/large_elektro-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/10/medium_elektro-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/10/small_elektro-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/10/tiny_elektro-popthumb.jpg"
+}
+},
+"name": "Elektro",
+"updated_at": "2013-04-18T16:55:54Z"
+},
+{
+"created_at": "2013-04-18T16:55:54Z",
+"description": "Bring your Room to life with this colorful wallpaper.",
+"id": 11,
+"image_name": {
+"url": "/uploads/theme/image_name/11/pintoresco.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/11/xxx_large_pintoresco.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/11/xx_large_pintoresco.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/11/x_large_pintoresco.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/11/large_pintoresco.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/11/medium_pintoresco.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/11/small_pintoresco.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/11/tiny_pintoresco.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/11/pintoresco-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/11/large_pintoresco-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/11/medium_pintoresco-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/11/small_pintoresco-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/11/tiny_pintoresco-popthumb.jpg"
+}
+},
+"name": "Pintoresco",
+"updated_at": "2013-04-18T16:55:54Z"
+},
+{
+"created_at": "2013-04-18T16:55:55Z",
+"description": "The Sky is the Limit.",
+"id": 12,
+"image_name": {
+"url": "/uploads/theme/image_name/12/blue-skies.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/12/xxx_large_blue-skies.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/12/xx_large_blue-skies.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/12/x_large_blue-skies.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/12/large_blue-skies.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/12/medium_blue-skies.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/12/small_blue-skies.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/12/tiny_blue-skies.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/12/blue-skies-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/12/large_blue-skies-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/12/medium_blue-skies-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/12/small_blue-skies-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/12/tiny_blue-skies-popthumb.jpg"
+}
+},
+"name": "Blue Skies",
+"updated_at": "2013-04-18T16:55:55Z"
+},
+{
+"created_at": "2013-04-18T16:55:55Z",
+"description": "Inspired on Morrocan art",
+"id": 13,
+"image_name": {
+"url": "/uploads/theme/image_name/13/morrocan.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/13/xxx_large_morrocan.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/13/xx_large_morrocan.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/13/x_large_morrocan.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/13/large_morrocan.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/13/medium_morrocan.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/13/small_morrocan.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/13/tiny_morrocan.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/13/morrocan-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/13/large_morrocan-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/13/medium_morrocan-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/13/small_morrocan-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/13/tiny_morrocan-popthumb.jpg"
+}
+},
+"name": "Morrocan",
+"updated_at": "2013-04-18T16:55:55Z"
+},
+{
+"created_at": "2013-04-18T16:55:56Z",
+"description": "Ethiopia",
+"id": 14,
+"image_name": {
+"url": "/uploads/theme/image_name/14/ethiopi.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/14/xxx_large_ethiopi.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/14/xx_large_ethiopi.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/14/x_large_ethiopi.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/14/large_ethiopi.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/14/medium_ethiopi.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/14/small_ethiopi.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/14/tiny_ethiopi.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/14/ethiopi-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/14/large_ethiopi-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/14/medium_ethiopi-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/14/small_ethiopi-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/14/tiny_ethiopi-popthumb.jpg"
+}
+},
+"name": "Ethiopi",
+"updated_at": "2013-04-18T16:55:56Z"
+},
+{
+"created_at": "2013-04-18T16:55:57Z",
+"description": "Como arigato Mr. Roboto",
+"id": 15,
+"image_name": {
+"url": "/uploads/theme/image_name/15/asiatica.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/15/xxx_large_asiatica.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/15/xx_large_asiatica.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/15/x_large_asiatica.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/15/large_asiatica.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/15/medium_asiatica.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/15/small_asiatica.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/15/tiny_asiatica.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/15/asiatica-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/15/large_asiatica-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/15/medium_asiatica-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/15/small_asiatica-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/15/tiny_asiatica-popthumb.jpg"
+}
+},
+"name": "Asiatica",
+"updated_at": "2013-04-18T16:55:57Z"
+},
+{
+"created_at": "2013-04-18T16:55:57Z",
+"description": "Kick back and enjoy the view. Real life does not get better than this. ",
+"id": 16,
+"image_name": {
+"url": "/uploads/theme/image_name/16/penthouse.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/16/xxx_large_penthouse.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/16/xx_large_penthouse.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/16/x_large_penthouse.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/16/large_penthouse.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/16/medium_penthouse.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/16/small_penthouse.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/16/tiny_penthouse.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/16/penthouse-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/16/large_penthouse-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/16/medium_penthouse-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/16/small_penthouse-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/16/tiny_penthouse-popthumb.jpg"
+}
+},
+"name": "Penthouse",
+"updated_at": "2013-04-18T16:55:57Z"
+},
+{
+"created_at": "2013-04-18T16:55:57Z",
+"description": "Made by the girls at VS. ",
+"id": 17,
+"image_name": {
+"url": "/uploads/theme/image_name/17/pink.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/17/xxx_large_pink.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/17/xx_large_pink.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/17/x_large_pink.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/17/large_pink.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/17/medium_pink.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/17/small_pink.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/17/tiny_pink.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/17/pink-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/17/large_pink-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/17/medium_pink-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/17/small_pink-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/17/tiny_pink-popthumb.jpg"
+}
+},
+"name": "Pink!",
+"updated_at": "2013-04-18T16:55:57Z"
+},
+{
+"created_at": "2013-04-18T16:55:58Z",
+"description": "Back in the day in Mother Russia.",
+"id": 18,
+"image_name": {
+"url": "/uploads/theme/image_name/18/ussr.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/18/xxx_large_ussr.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/18/xx_large_ussr.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/18/x_large_ussr.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/18/large_ussr.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/18/medium_ussr.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/18/small_ussr.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/18/tiny_ussr.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/18/ussr-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/18/large_ussr-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/18/medium_ussr-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/18/small_ussr-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/18/tiny_ussr-popthumb.jpg"
+}
+},
+"name": "USSR",
+"updated_at": "2013-04-18T16:55:58Z"
+},
+{
+"created_at": "2013-04-18T16:55:59Z",
+"description": "Where it all started. ",
+"id": 19,
+"image_name": {
+"url": "/uploads/theme/image_name/19/terracota.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/19/xxx_large_terracota.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/19/xx_large_terracota.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/19/x_large_terracota.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/19/large_terracota.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/19/medium_terracota.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/19/small_terracota.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/19/tiny_terracota.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/19/terracota-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/19/large_terracota-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/19/medium_terracota-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/19/small_terracota-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/19/tiny_terracota-popthumb.jpg"
+}
+},
+"name": "Terracota",
+"updated_at": "2013-04-18T16:55:59Z"
+},
+{
+"created_at": "2013-04-18T16:56:00Z",
+"description": "Ahhh, Paris! ",
+"id": 20,
+"image_name": {
+"url": "/uploads/theme/image_name/20/paris.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/20/xxx_large_paris.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/20/xx_large_paris.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/20/x_large_paris.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/20/large_paris.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/20/medium_paris.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/20/small_paris.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/20/tiny_paris.jpg"
+}
+},
+"image_name_selection": {
+"url": "/uploads/theme/image_name_selection/20/paris-popthumb.jpg",
+"large": {
+"url": "/uploads/theme/image_name_selection/20/large_paris-popthumb.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name_selection/20/medium_paris-popthumb.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name_selection/20/small_paris-popthumb.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name_selection/20/tiny_paris-popthumb.jpg"
+}
+},
+"name": "Paris",
+"updated_at": "2013-04-18T16:56:00Z"
+},
+{
+"created_at": "2013-04-18T16:56:02Z",
+"description": "Green",
+"id": 21,
+"image_name": {
+"url": "/uploads/theme/image_name/21/green.jpg",
+"xxx_large": {
+"url": "/uploads/theme/image_name/21/xxx_large_green.jpg"
+},
+"xx_large": {
+"url": "/uploads/theme/image_name/21/xx_large_green.jpg"
+},
+"x_large": {
+"url": "/uploads/theme/image_name/21/x_large_green.jpg"
+},
+"large": {
+"url": "/uploads/theme/image_name/21/large_green.jpg"
+},
+"medium": {
+"url": "/uploads/theme/image_name/21/medium_green.jpg"
+},
+"small": {
+"url": "/uploads/theme/image_name/21/small_green.jpg"
+},
+"tiny": {
+"url": "/uploads/theme/image_name/21/tiny_green.jpg"
+}
+},
+"image_name_selection": {
+"url": "/images/fallback/theme/default_theme.png",
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"name": "Green",
+"updated_at": "2013-04-18T16:56:02Z"
+},
+{
+"created_at": "2013-04-18T16:56:02Z",
+"description": "Alpine!",
+"id": 22,
+"image_name": {
+"url": "/images/fallback/theme/default_theme.png",
+"xxx_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"xx_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"x_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"image_name_selection": {
+"url": "/images/fallback/theme/default_theme.png",
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"name": "Alps",
+"updated_at": "2013-04-18T16:56:02Z"
+},
+{
+"created_at": "2013-04-18T16:56:02Z",
+"description": "Fish And Chips!",
+"id": 23,
+"image_name": {
+"url": "/images/fallback/theme/default_theme.png",
+"xxx_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"xx_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"x_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"image_name_selection": {
+"url": "/images/fallback/theme/default_theme.png",
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"name": "London",
+"updated_at": "2013-04-18T16:56:02Z"
+},
+{
+"created_at": "2013-04-18T16:56:03Z",
+"description": "Enjoy The Blue Waters!",
+"id": 24,
+"image_name": {
+"url": "/images/fallback/theme/default_theme.png",
+"xxx_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"xx_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"x_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"image_name_selection": {
+"url": "/images/fallback/theme/default_theme.png",
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"name": "Puerto Rico",
+"updated_at": "2013-04-18T16:56:03Z"
+},
+{
+"created_at": "2013-04-18T16:56:03Z",
+"description": "Hawaii!",
+"id": 25,
+"image_name": {
+"url": "/images/fallback/theme/default_theme.png",
+"xxx_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"xx_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"x_large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"image_name_selection": {
+"url": "/images/fallback/theme/default_theme.png",
+"large": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"medium": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"small": {
+"url": "/images/fallback/theme/default_theme.png"
+},
+"tiny": {
+"url": "/images/fallback/theme/default_theme.png"
+}
+},
+"name": "Aloha",
+"updated_at": "2013-04-18T16:56:03Z"
+}
+]

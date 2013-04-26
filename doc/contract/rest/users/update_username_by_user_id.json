@@ -1,0 +1,20 @@
+// controller  ->  UsersController
+// method type ->  put
+// method name ->  update_username_by_user_id
+
+// routes      ->
+//   PUT     /users/update_username_by_user_id/:user_id(.:format)                                                               users#update_username_by_user_id
+//   Form Parameters:
+//       username  = 'my-new-username'
+
+// url         ->  http://localhost:3000/users/update_username_by_user_id/172.json
+// description ->  update the username
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  204 No Content
+// wrong user ->  head  400 Bad Request
+
+{}

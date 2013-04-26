@@ -2,6 +2,14 @@ namespace :db do
 
   desc "Fill database with sample data"
   task populate: :environment do
+
+    User.delete_all
+    UsersItemsDesign.delete_all
+    UsersBookmark.delete_all
+    UsersTheme.delete_all
+
+
+
     admin = User.create!(name: "Example User",
                  email: "test@rooms.org",
                  password: "12345678",
@@ -11,14 +19,14 @@ namespace :db do
 
     admin.id
     bundle_max = Bundle.maximum("id")
-    bundle_rand_number = rand(0..bundle_max)
+    bundle_rand_number = rand(1..bundle_max)
     bundle = Bundle.find(bundle_rand_number)
 
     UsersTheme.create!(user_id:admin.id,theme_id:bundle.theme_id)
     @items_design = ItemsDesign.find_all_by_bundle_id(bundle.id)
 
     @items_design.each  do |i|
-      UsersItemsDesign.create!(user_id:admin.id,items_design_id:i.id)
+      UsersItemsDesign.create!(user_id:admin.id,items_design_id:i.id,hide:'no')
     end
 
     @bundle_all = BundlesBookmark.all
@@ -40,14 +48,14 @@ namespace :db do
 
       user.id
       bundle_max = Bundle.maximum("id")
-      bundle_rand_number = rand(0..bundle_max)
+      bundle_rand_number = rand(1..bundle_max)
       bundle = Bundle.find(bundle_rand_number)
 
       UsersTheme.create!(user_id:user.id,theme_id:bundle.theme_id)
       @items_design = ItemsDesign.find_all_by_bundle_id(bundle.id)
 
       @items_design.each  do |i|
-        UsersItemsDesign.create!(user_id:user.id,items_design_id:i.id)
+        UsersItemsDesign.create!(user_id:user.id,items_design_id:i.id,hide:'no')
       end
 
       @bundle_all = BundlesBookmark.all

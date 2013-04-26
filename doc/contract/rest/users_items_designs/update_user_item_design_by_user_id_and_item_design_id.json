@@ -1,0 +1,20 @@
+// controller  ->  UsersItemsDesignsController
+// method type ->  put
+// method name ->  update_user_item_design_by_user_id_and_item_design_id
+
+// routes      ->
+//   PUT    /users_items_designs/update_user_item_design_by_user_id_and_item_design_id/:user_id/:item_design_id(.:format) users_items_designs#update_user_item_design_by_user_id_and_item_design_id
+//   Form Parameters:
+//       new_item_design_id = 1
+
+// url         ->  http://localhost:3000//users_items_designs/update_user_item_design_by_user_id_and_item_design_id/133/382.json
+// description ->  update the user item design
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  204 No Content
+// wrong user ->  head  400 Bad Request
+
+{}

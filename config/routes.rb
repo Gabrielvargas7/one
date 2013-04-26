@@ -3,31 +3,79 @@ SampleApp::Application.routes.draw do
 
   resources :bundles_bookmarks
 
-
   resources :bookmarks
-
 
   resources :items_designs
 
-
   resources :bookmarks_categories
-
 
   resources :themes
 
-
   resources :bundles
-
 
   resources :items
 
-
   root to: 'static_pages#home'
 
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
+
+  # Link to the html. pages erb
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+
+
+  # static pages
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+
+  #main page
+  match '/room/:username', to: 'rooms#room', via: :get
+
+
+
+# Contract Back-end -- Front-end only Json responce
+# Rules of name
+# 1.- name of the path should start with name of the controller , eg - for RoomsController -- should be /rooms/...
+# 2.- name of the method should start with the (rials rule action for REST)
+    # eg - for GET -- should be -- show (for one),
+    # eg - for GET -- should be -- index (for all)
+    # eg - for PUT -- should be -- update
+    # eg - for DELETE -- should be -- destroy
+    # eg - for POST -- should be -- create
+# 3.- following with the specific action and how you going to find it  eg room_by_user_id/:user_id
+#eg if you want all the items of the room the path should be
+#  /rooms/show_room_by_user_id/:user_id
+
+
+
+  match '/rooms/show_room_by_user_id/:user_id', to:
+         'rooms#show_room_by_user_id', via: :get
+
+
+  match '/users_themes/update_user_theme_by_user_id/:user_id', to:
+         'users_themes#update_user_theme_by_user_id', via: :put
+
+
+  match '/items_designs/index_items_designs_by_item_id/:item_id', to:
+         'items_designs#index_items_designs_by_item_id', via: :get
+
+
+  match '/users_items_designs/update_user_item_design_by_user_id_and_item_design_id/:user_id/:item_design_id', to:
+         'users_items_designs#update_user_item_design_by_user_id_and_item_design_id', via: :put
+
+
+  match '/users_items_designs/update_hide_user_item_design_by_user_id_and_item_design_id/:user_id/:item_design_id', to:
+      'users_items_designs#update_hide_user_item_design_by_user_id_and_item_design_id', via: :put
+
+
+
+  match '/users/update_username_by_user_id/:user_id', to:
+         'users#update_username_by_user_id', via: :put
+
 
   #get "users/new"
 
@@ -64,21 +112,6 @@ SampleApp::Application.routes.draw do
   #    end
   #  end
   #end
-
-
-
-  resources :rooms
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
-
-
-
-  # Link to the html. pages erb
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/:username', to: 'users#room', via: :get
-
 
 
   #get "static_pages/home"

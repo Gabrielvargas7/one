@@ -3,27 +3,11 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only:[:edit,:update,:destroy]
   before_filter :correct_user, only:[:edit,:update]
   before_filter :admin_user, only:[:destroy,:index]
-  before_filter :correct_user_name, only:[:room]
 
-
-
-  def room
-    if params[:username]
-      if User.exists?(params[:username])
-        redirect_to(root_path)
-      else
-        @username = params[:username]
-        @user = User.find_by_username(params[:username])
-      end
-    else
-      redirect_to(root_path)
-    end
-  end
 
   def show
      @user = User.find(params[:id])
   end
-
 
   def new
     @user = User.new
@@ -58,6 +42,31 @@ class UsersController < ApplicationController
     end
   end
 
+  # PUT
+  def update_username_by_user_id
+
+
+    username = clean_username(params[:username])
+
+    if username.eql?(params[:username])
+      if User.exists?(username: username)
+        head :bad_request
+      else
+        @user = User.find(params[:user_id])
+          respond_to do |format|
+            if @user.update_attributes(username:username)
+              format.json { head :no_content }
+            else
+              format.json { render json: @user_theme.errors, status: :unprocessable_entity }
+            end
+          end
+      end
+    else
+       head :bad_request
+    end
+  end
+
+
   def index
 
     @users = User.paginate(page: params[:page])
@@ -89,16 +98,29 @@ class UsersController < ApplicationController
     redirect_to(root_path) unless current_user?(@user)
   end
 
-  def correct_user_name
-    @user = User.find_by_username(params[:username])
-    redirect_to(root_path) unless current_user?(@user)
-  end
-
 
   def admin_user
     redirect_to(root_path) unless current_user.admin?
 
   end
+
+
+  def clean_username(username)
+
+    my_username = username
+    #remove all non- alphanumeric character (expect dashes '-')
+    my_username = my_username.gsub(/[^0-9a-z -]/i, '')
+
+    #remplace dashes() for empty space because if the user add dash mean that it want separate the username
+    my_username = my_username.gsub(/[-]/i, ' ')
+
+    #remplace the empty space for one dash by word
+    my_username.downcase!
+    my_username.strip!
+    username_split = my_username.split(' ').join('-')
+
+  end
+
 
 
 end
