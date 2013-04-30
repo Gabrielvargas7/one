@@ -1,0 +1,69 @@
+// controller  ->  UsersItemsDesignsController
+// method type ->  get
+// method name ->  json_show_user_item_design_by_user_id_and_item_design_id
+
+
+// routes      ->
+//   GET     /users_items_designs/show_user_item_design_by_user_id_and_item_design_id/:user_id(.:format)
+
+
+// url         ->  http://localhost:3000/users_items_designs/show_user_item_design_by_user_id_and_item_design_id/173/251.json
+// description ->  get one user's Item Design
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  200 OK
+// wrong user ->  head  400 Bad Request
+
+[
+    {
+        "description": "A tall and basic book stand that matches with any type of room design. If you are unsure of what shelf to pick, this white one is your best choice.",
+        "hide": "no",
+        "id": 25,
+        "image_name": {
+            "url": "/uploads/items_design/image_name/25/whitey-25.png",
+            "medium": {
+                "url": "/uploads/items_design/image_name/25/medium_whitey-25.png"
+            },
+            "small": {
+                "url": "/uploads/items_design/image_name/25/small_whitey-25.png"
+            },
+            "tiny": {
+                "url": "/uploads/items_design/image_name/25/tiny_whitey-25.png"
+            },
+            "toolbar": {
+                "url": "/uploads/items_design/image_name/25/toolbar_whitey-25.png"
+            }
+        },
+        "item_id": 3,
+        "name": "Whitey",
+        "image_name_hover": {
+            "url": "/images/fallback/items_design/default_items_design.png",
+            "medium": {
+                "url": "/images/fallback/items_design/default_items_design.png"
+            },
+            "small": {
+                "url": "/images/fallback/items_design/default_items_design.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/items_design/default_items_design.png"
+            }
+        },
+        "image_name_selection": {
+            "url": "/images/fallback/items_design/default_items_design.png",
+            "medium": {
+                "url": "/images/fallback/items_design/default_items_design.png"
+            },
+            "small": {
+                "url": "/images/fallback/items_design/default_items_design.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/items_design/default_items_design.png"
+            }
+        }
+    }
+]
+
+

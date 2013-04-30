@@ -12,18 +12,6 @@ class ItemsDesignsController < ApplicationController
   end
 
 
-  # GET http://localhost:3000/items_designs/index_items_designs_by_item_id/1.json
-  def index_items_designs_by_item_id
-
-    @items_designs = ItemsDesign.where('item_id=?',params[:item_id])
-
-    respond_to do |format|
-      format.json { render json: @items_designs }
-    end
-  end
-
-
-
   # GET /items_designs/1
   # GET /items_designs/1.json
   def show
@@ -96,4 +84,30 @@ class ItemsDesignsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  #***********************************
+  # Json methods for the room users
+  #***********************************
+
+
+  # GET Get all items_designs by item_id
+  #/items_designs/json/index_items_designs_by_item_id/:item_id'
+  #/items_designs/json/index_items_designs_by_item_id/1.json
+
+  def json_index_items_designs_by_item_id
+
+    respond_to do |format|
+      if ItemsDesign.exists?(item_id:params[:item_id])
+        @items_designs = ItemsDesign.where('item_id=?',params[:item_id])
+
+        format.json { render json: @items_designs }
+      else
+        format.json { render json: 'not found item id' , status: :not_found }
+      end
+    end
+  end
+
+
+
 end

@@ -1,0 +1,92 @@
+// controller  ->  UsersBookmarksController
+// method type ->  get
+// method name ->  json_index_user_bookmarks_by_user_id_and_item_id
+
+// routes      ->
+                //match '/users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/:user_id/:item_id', to:
+                //'users_bookmarks#json_index_user_bookmarks_by_user_id_and_item_id', via: :get
+
+
+// description ->
+//                # GET get all user's Bookmarks by item id
+//                # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/:user_id/:item_id
+//                # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/10000011/1.json
+
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  200 OK
+
+
+[
+    {
+        "bookmark_url": "http://www.stumbleupon.com",
+        "bookmarks_category_id": 201,
+        "description": "Description Coming Soon!",
+        "i_frame": "Yes",
+        "id": 2001,
+        "image_name": {
+            "url": "/uploads/bookmark/image_name/2001/stumbleupon.png",
+            "small": {
+                "url": "/uploads/bookmark/image_name/2001/small_stumbleupon.png"
+            },
+            "tiny": {
+                "url": "/uploads/bookmark/image_name/2001/tiny_stumbleupon.png"
+            },
+            "toolbar": {
+                "url": "/uploads/bookmark/image_name/2001/toolbar_stumbleupon.png"
+            }
+        },
+        "image_name_desc": {
+            "url": "/images/fallback/bookmark/default_bookmark.png",
+            "small": {
+                "url": "/images/fallback/bookmark/default_bookmark.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/bookmark/default_bookmark.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/bookmark/default_bookmark.png"
+            }
+        },
+        "item_id": 1,
+        "position": "1",
+        "title": "Stumble Upon"
+    },
+    {
+        "bookmark_url": "http://www.freeridegames.com",
+        "bookmarks_category_id": 202,
+        "description": "Description Coming Soon!",
+        "i_frame": "Yes",
+        "id": 2113,
+        "image_name": {
+            "url": "/uploads/bookmark/image_name/2113/freeridegames.png",
+            "small": {
+                "url": "/uploads/bookmark/image_name/2113/small_freeridegames.png"
+            },
+            "tiny": {
+                "url": "/uploads/bookmark/image_name/2113/tiny_freeridegames.png"
+            },
+            "toolbar": {
+                "url": "/uploads/bookmark/image_name/2113/toolbar_freeridegames.png"
+            }
+        },
+        "image_name_desc": {
+            "url": "/images/fallback/bookmark/default_bookmark.png",
+            "small": {
+                "url": "/images/fallback/bookmark/default_bookmark.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/bookmark/default_bookmark.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/bookmark/default_bookmark.png"
+            }
+        },
+        "item_id": 1,
+        "position": "21",
+        "title": "Free Ride Games"
+    }
+]

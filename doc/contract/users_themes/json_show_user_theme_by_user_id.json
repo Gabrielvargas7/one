@@ -1,0 +1,52 @@
+// Controller  ->  UsersThemesController
+// method type ->  get
+// method name ->  json_show_user_theme_by_user_id
+
+// routes      ->
+//   match '/users_themes/json/show_user_theme_by_user_id/:user_id', to:
+//          'users_themes#json_show_user_theme_by_user_id', via: :get
+
+
+//Description
+
+//          # GET get theme by user id
+//          # users_themes/json/show_user_theme_by_user_id/:user_id'
+//          # users_themes/json/show_user_theme_by_user_id/1.json
+
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  204 No Content
+// wrong user ->  head  400 Bad Request
+
+{
+    "description": "Doesn't that room electrify you with colors and all the possible cool things you can place in it?",
+    "id": 10,
+    "image_name": {
+        "url": "/uploads/theme/image_name/10/elektro.jpg",
+        "xxx_large": {
+            "url": "/uploads/theme/image_name/10/xxx_large_elektro.jpg"
+        },
+        "xx_large": {
+            "url": "/uploads/theme/image_name/10/xx_large_elektro.jpg"
+        },
+        "x_large": {
+            "url": "/uploads/theme/image_name/10/x_large_elektro.jpg"
+        },
+        "large": {
+            "url": "/uploads/theme/image_name/10/large_elektro.jpg"
+        },
+        "medium": {
+            "url": "/uploads/theme/image_name/10/medium_elektro.jpg"
+        },
+        "small": {
+            "url": "/uploads/theme/image_name/10/small_elektro.jpg"
+        },
+        "tiny": {
+            "url": "/uploads/theme/image_name/10/tiny_elektro.jpg"
+        }
+    },
+    "name": "Elektro"
+}

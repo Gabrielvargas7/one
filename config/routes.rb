@@ -47,34 +47,128 @@ SampleApp::Application.routes.draw do
     # eg - for DELETE -- should be -- destroy
     # eg - for POST -- should be -- create
 # 3.- following with the specific action and how you going to find it  eg room_by_user_id/:user_id
-#eg if you want all the items of the room the path should be
+# eg if you want all the items of the room the path should be
 #  /rooms/show_room_by_user_id/:user_id
 
 
+ #**************************
+ #  Start Themes contract
+ #**************************
 
-  match '/rooms/show_room_by_user_id/:user_id', to:
-         'rooms#show_room_by_user_id', via: :get
+  match 'themes/json/index', to:
+        'themes#json_index', via: :get
 
-
-  match '/users_themes/update_user_theme_by_user_id/:user_id', to:
-         'users_themes#update_user_theme_by_user_id', via: :put
-
-
-  match '/items_designs/index_items_designs_by_item_id/:item_id', to:
-         'items_designs#index_items_designs_by_item_id', via: :get
+  match 'themes/json/show/:id', to:
+        'themes#json_show', via: :get
 
 
-  match '/users_items_designs/update_user_item_design_by_user_id_and_item_design_id/:user_id/:item_design_id', to:
-         'users_items_designs#update_user_item_design_by_user_id_and_item_design_id', via: :put
-
-
-  match '/users_items_designs/update_hide_user_item_design_by_user_id_and_item_design_id/:user_id/:item_design_id', to:
-      'users_items_designs#update_hide_user_item_design_by_user_id_and_item_design_id', via: :put
+  #--------------------------
+  # end Themes contract
+  #--------------------------
 
 
 
-  match '/users/update_username_by_user_id/:user_id', to:
-         'users#update_username_by_user_id', via: :put
+  #**************************
+  #  start Rooms contract
+  #**************************
+  match '/rooms/json/show_room_by_user_id/:user_id', to:
+         'rooms#json_show_room_by_user_id', via: :get
+
+  #--------------------------
+  # end Rooms contract
+  #--------------------------
+
+
+
+  #**************************
+  # start ItemsDesigns Contract
+  #**************************
+
+  match '/items_designs/json/index_items_designs_by_item_id/:item_id', to:
+         'items_designs#json_index_items_designs_by_item_id', via: :get
+
+  #--------------------------
+  # end ItemsDesigns Contract
+  #--------------------------
+
+
+  #**************************
+  # start Users Contract
+  #**************************
+
+
+  match '/users/json/update_username_by_user_id/:user_id', to:
+         'users#json_update_username_by_user_id', via: :put
+
+  #--------------------------
+  # end Users Contract
+  #--------------------------
+
+
+
+  #**************************
+  #  start UsersThemes Contract
+  #**************************
+
+  match '/users_themes/json/update_user_theme_by_user_id/:user_id', to:
+         'users_themes#json_update_user_theme_by_user_id', via: :put
+
+  match '/users_themes/json/show_user_theme_by_user_id/:user_id', to:
+         'users_themes#json_show_user_theme_by_user_id', via: :get
+
+
+  #--------------------------
+  #  end UsersThemes Contract
+  #--------------------------
+
+  #**************************
+  # start UsersItemsDesign Contract
+  #**************************
+
+
+  match '/users_items_designs/json/update_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
+         'users_items_designs#json_update_user_items_design_by_user_id_and_items_design_id', via: :put
+
+
+  match '/users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
+         'users_items_designs#json_update_hide_user_items_design_by_user_id_and_items_design_id', via: :put
+
+  match '/users_items_designs/json/index_user_items_designs_by_user_id/:user_id', to:
+         'users_items_designs#json_index_user_items_designs_by_user_id', via: :get
+
+  match '/users_items_designs/json/show_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
+         'users_items_designs#json_show_user_items_design_by_user_id_and_items_design_id', via: :get
+
+
+  #--------------------------
+  # end UsersItemsDesign Contract
+  #--------------------------
+
+
+  #**************************
+  # start UsersBookmarks Contract
+  #**************************
+
+    match '/users_bookmarks/json/index_user_bookmarks_by_user_id/:user_id', to:
+           'users_bookmarks#json_index_user_bookmarks_by_user_id', via: :get
+
+    match '/users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/:user_id/:item_id', to:
+           'users_bookmarks#json_index_user_bookmarks_by_user_id_and_item_id', via: :get
+
+
+    match '/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/:user_id/:bookmark_id/:item_id', to:
+           'users_bookmarks#json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id', via: :post
+
+    match '/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/:user_id/:bookmark_id/:position', to:
+           'users_bookmarks#json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position', via: :delete
+
+
+  #--------------------------
+  # end UsersBookmark Contract
+  #--------------------------
+
+
+
 
 
   #get "users/new"
@@ -90,19 +184,19 @@ SampleApp::Application.routes.draw do
 
   ##
   ## /folder name/controller name/<action>/method name/...
-  #match '/rest/rooms/get/room/:id', to:'rest::rooms#get_room' , via: :get
-  #match '/rest/rooms/post/room/:id', to:'rest::rooms#get_room' , via: :post
-  #match '/rest/rooms/put/room/:id', to:'rest::rooms#get_room' , via: :put
-  #match '/rest/rooms/delete/room/:id', to:'rest::rooms#get_room' , via: :delete
+  #match '/json/rooms/get/room/:id', to:'json::rooms#get_room' , via: :get
+  #match '/json/rooms/post/room/:id', to:'json::rooms#get_room' , via: :post
+  #match '/json/rooms/put/room/:id', to:'json::rooms#get_room' , via: :put
+  #match '/json/rooms/delete/room/:id', to:'json::rooms#get_room' , via: :delete
 
 
   #resources :rooms
   #match '/room/:username' =>  'users#room'
-  #resources :rooms, :path => "/rest/rooms"
+  #resources :rooms, :path => "/json/rooms"
 
-  #match '/rest/rooms/:id', to:'rest::rooms#show'
+  #match '/json/rooms/:id', to:'json::rooms#show'
 
-  #namespace :rest do
+  #namespace :json do
   #  # Directs /admin/products/* to Admin::ProductsController
   #  # (app/controllers/admin/products_controller.rb)
   #  resources :rooms   do

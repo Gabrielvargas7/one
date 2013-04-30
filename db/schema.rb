@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426132752) do
+ActiveRecord::Schema.define(:version => 20130430100810) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -96,6 +96,9 @@ ActiveRecord::Schema.define(:version => 20130426132752) do
     t.string   "image_name_selection"
   end
 
+  add_index "themes", ["id"], :name => "index_themes_on_id"
+  add_index "themes", ["name"], :name => "index_themes_on_name"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -115,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20130426132752) do
     t.integer  "bookmark_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "position"
   end
 
   create_table "users_items_designs", :force => true do |t|

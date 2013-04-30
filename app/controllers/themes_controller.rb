@@ -1,9 +1,8 @@
 class ThemesController < ApplicationController
+
   # GET /themes
   # GET /themes.json
   def index
-
-
     @themes = Theme.all
 
     respond_to do |format|
@@ -84,4 +83,35 @@ class ThemesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #***********************************
+  # Json methods for the room users
+  #***********************************
+
+
+  # Get all themes
+  # GET 'themes/json/index'
+  #     'themes/json/index.json'
+  def json_index
+    @themes = Theme.order(:id)
+    respond_to do |format|
+      format.json { render json: @themes.as_json(only: [:id,:description, :image_name, :name ,:image_name_selection]) }
+    end
+  end
+
+  # GET get one theme by theme id
+  # GET themes/json/show/:id
+  #     themes/json/show/1.json
+  def json_show
+
+    @theme = Theme.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @theme }
+    end
+  end
+
+
+
+
+
 end

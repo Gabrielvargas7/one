@@ -1,0 +1,22 @@
+// controller  ->  UsersBookmarksController
+// method type ->  delete
+// method name ->  json_destroy_user_bookmark_by_user_id_and_position
+
+// routes      ->
+                //match '/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/:user_id/:bookmark_id/:position', to:
+                //'users_bookmarks#json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position', via: :delete
+
+
+// description ->
+                //# DELETE delete user bookmark
+                //#/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/:user_id/:bookmark_id/:position
+                //#/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/10000111/101/1.json
+
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  204 No Content
+
+{}

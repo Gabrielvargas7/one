@@ -1,0 +1,1513 @@
+// controller  ->  RoomsController
+// method type ->  get
+// method name ->  json_show_room_by_user_id
+
+
+// routes      ->
+                //match '/rooms/json/show_room_by_user_id/:user_id', to:
+                //'rooms#json_show_room_by_user_id', via: :get
+
+// description
+                //# GET Get all the user's items design,themes and user data
+                //# /rooms/json/show_room_by_user_id/:user_id
+                //# /rooms/json/show_room_by_user_id/1.json
+
+// back_end   :done
+// front_end :working
+
+//Return head
+// success    ->  head  200 OK
+
+
+
+{
+    "user": {
+        "email": "test1@rooms.org",
+        "id": 173,
+        "name": "Hallie Botsford"
+    },
+    "user_theme": [
+        {
+            "description": "Doesn't that room electrify you with colors and all the possible cool things you can place in it?",
+            "id": 10,
+            "image_name": {
+                "url": "/uploads/theme/image_name/10/elektro.jpg",
+                "xxx_large": {
+                    "url": "/uploads/theme/image_name/10/xxx_large_elektro.jpg"
+                },
+                "xx_large": {
+                    "url": "/uploads/theme/image_name/10/xx_large_elektro.jpg"
+                },
+                "x_large": {
+                    "url": "/uploads/theme/image_name/10/x_large_elektro.jpg"
+                },
+                "large": {
+                    "url": "/uploads/theme/image_name/10/large_elektro.jpg"
+                },
+                "medium": {
+                    "url": "/uploads/theme/image_name/10/medium_elektro.jpg"
+                },
+                "small": {
+                    "url": "/uploads/theme/image_name/10/small_elektro.jpg"
+                },
+                "tiny": {
+                    "url": "/uploads/theme/image_name/10/tiny_elektro.jpg"
+                }
+            },
+            "name": "Elektro",
+            "image_name_selection": {
+                "url": "/images/fallback/theme/default_theme.png",
+                "large": {
+                    "url": "/images/fallback/theme/default_theme.png"
+                },
+                "medium": {
+                    "url": "/images/fallback/theme/default_theme.png"
+                },
+                "small": {
+                    "url": "/images/fallback/theme/default_theme.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/theme/default_theme.png"
+                }
+            }
+        }
+    ],
+    "user_items_designs": [
+        {
+            "description": "This messy bed its a design inspired by a couple of us who actually know that sleeping in your bed when its messy is more comfortable than having to unfold the sheets and find the comfy spot. ",
+            "hide": "no",
+            "id": 23,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/23/messy-23.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/23/medium_messy-23.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/23/small_messy-23.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/23/tiny_messy-23.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/23/toolbar_messy-23.png"
+                }
+            },
+            "item_id": 1,
+            "name": "Messy",
+            "item": {
+                "clickable": "yes",
+                "height": 322,
+                "id": 1,
+                "name": "Bed",
+                "width": 448,
+                "x": "1493.0",
+                "y": "420.5",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "A more elegant looking bird cage with a modern table to place it on. Why not have a nice \"crib\" for the bird. ",
+            "hide": "no",
+            "id": 24,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/24/crystal-24.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/24/medium_crystal-24.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/24/small_crystal-24.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/24/tiny_crystal-24.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/24/toolbar_crystal-24.png"
+                }
+            },
+            "item_id": 2,
+            "name": "Crystal",
+            "item": {
+                "clickable": "yes",
+                "height": 225,
+                "id": 2,
+                "name": "Bird Cage",
+                "width": 109,
+                "x": "156.0",
+                "y": "360.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "A tall and basic book stand that matches with any type of room design. If you are unsure of what shelf to pick, this white one is your best choice.",
+            "hide": "no",
+            "id": 25,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/25/whitey-25.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/25/medium_whitey-25.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/25/small_whitey-25.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/25/tiny_whitey-25.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/25/toolbar_whitey-25.png"
+                }
+            },
+            "item_id": 3,
+            "name": "Whitey",
+            "item": {
+                "clickable": "yes",
+                "height": 335,
+                "id": 3,
+                "name": "Book Stand",
+                "width": 193,
+                "x": "673.0",
+                "y": "257.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "For all of us who have becomed attached to our office chairs, this design was made to bring our office chair to our home office but leaving behind the black boring color. ",
+            "hide": "no",
+            "id": 26,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/26/green-office-26.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/26/medium_green-office-26.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/26/small_green-office-26.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/26/tiny_green-office-26.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/26/toolbar_green-office-26.png"
+                }
+            },
+            "item_id": 4,
+            "name": "Green Office",
+            "item": {
+                "clickable": "yes",
+                "height": 231,
+                "id": 4,
+                "name": "Chair",
+                "width": 164,
+                "x": "1209.0",
+                "y": "416.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "A mix of old school and modern newspapers (the paper ones I mean). This design is our CEO's favorite (yes, he still reads the newspaper in paper form). ",
+            "hide": "no",
+            "id": 27,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/27/rooms-times-27.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/27/medium_rooms-times-27.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/27/small_rooms-times-27.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/27/tiny_rooms-times-27.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/27/toolbar_rooms-times-27.png"
+                }
+            },
+            "item_id": 5,
+            "name": "Rooms Times",
+            "item": {
+                "clickable": "yes",
+                "height": 74,
+                "id": 5,
+                "name": "Newspaper",
+                "width": 142,
+                "x": "71.5",
+                "y": "550.5",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Nothing too special about his one, just a modern geographical world map. ",
+            "hide": "no",
+            "id": 28,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/28/simple-map-28.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/28/medium_simple-map-28.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/28/small_simple-map-28.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/28/tiny_simple-map-28.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/28/toolbar_simple-map-28.png"
+                }
+            },
+            "item_id": 6,
+            "name": "Simple Map",
+            "item": {
+                "clickable": "yes",
+                "height": 142,
+                "id": 6,
+                "name": "World Map",
+                "width": 167,
+                "x": "1811.5",
+                "y": "269.5",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "A decent looking t.v. stand with a great combination of lime green and white. We think it looks stylish, how about you?",
+            "hide": "no",
+            "id": 29,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/29/key-lime-29.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/29/medium_key-lime-29.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/29/small_key-lime-29.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/29/tiny_key-lime-29.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/29/toolbar_key-lime-29.png"
+                }
+            },
+            "item_id": 7,
+            "name": "Key Lime",
+            "item": {
+                "clickable": "no",
+                "height": 116,
+                "id": 7,
+                "name": "TV Stand",
+                "width": 237,
+                "x": "851.0",
+                "y": "491.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Really elegant piece of furniture with seven elves... shelves. Delicate and tall, this is a fan favorite in our office. ",
+            "hide": "no",
+            "id": 30,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/30/snow-white-30.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/30/medium_snow-white-30.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/30/small_snow-white-30.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/30/tiny_snow-white-30.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/30/toolbar_snow-white-30.png"
+                }
+            },
+            "item_id": 8,
+            "name": "Snow White",
+            "item": {
+                "clickable": "yes",
+                "height": 178,
+                "id": 8,
+                "name": "File Box",
+                "width": 100,
+                "x": "1335.0",
+                "y": "414.0",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "This blue shopping bag has a great color scheme. If you look closely its brighter on the top and darker as it gets closer to the bottom. Just like the sea!",
+            "hide": "no",
+            "id": 31,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/31/deep-blue-sea-31.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/31/medium_deep-blue-sea-31.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/31/small_deep-blue-sea-31.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/31/tiny_deep-blue-sea-31.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/31/toolbar_deep-blue-sea-31.png"
+                }
+            },
+            "item_id": 9,
+            "name": "Deep Blue Sea",
+            "item": {
+                "clickable": "yes",
+                "height": 111,
+                "id": 9,
+                "name": "Shopping Bag",
+                "width": 136,
+                "x": "461.0",
+                "y": "525.5",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "A wooden frame surrounding your picture collage. Its a more relaxed design that lets the images attract the attention.  ",
+            "hide": "no",
+            "id": 32,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/32/woody-32.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/32/medium_woody-32.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/32/small_woody-32.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/32/tiny_woody-32.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/32/toolbar_woody-32.png"
+                }
+            },
+            "item_id": 10,
+            "name": "Woody",
+            "item": {
+                "clickable": "yes",
+                "height": 128,
+                "id": 10,
+                "name": "Social Painting",
+                "width": 144,
+                "x": "266.0",
+                "y": "266.5",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "If you ignore the books, both of these book shelfs look like old school cannoes. ",
+            "hide": "no",
+            "id": 33,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/33/wooden-canoes-33.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/33/medium_wooden-canoes-33.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/33/small_wooden-canoes-33.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/33/tiny_wooden-canoes-33.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/33/toolbar_wooden-canoes-33.png"
+                }
+            },
+            "item_id": 11,
+            "name": "Wooden Canoes",
+            "item": {
+                "clickable": "yes",
+                "height": 118,
+                "id": 11,
+                "name": "Encyclo Shelf",
+                "width": 157,
+                "x": "1090.0",
+                "y": "259.0",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Hipster meets modern design in this music box. Looks stylish and no more Cd's. ",
+            "hide": "no",
+            "id": 34,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/34/pod-player-34.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/34/medium_pod-player-34.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/34/small_pod-player-34.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/34/tiny_pod-player-34.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/34/toolbar_pod-player-34.png"
+                }
+            },
+            "item_id": 12,
+            "name": "Pod Player",
+            "item": {
+                "clickable": "yes",
+                "height": 106,
+                "id": 12,
+                "name": "Music Box",
+                "width": 119,
+                "x": "1329.5",
+                "y": "353.5",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Now this is more like it! A flat screen hd t.v. which adds finesse to your room design.",
+            "hide": "no",
+            "id": 35,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/35/flat-screen-35.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/35/medium_flat-screen-35.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/35/small_flat-screen-35.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/35/tiny_flat-screen-35.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/35/toolbar_flat-screen-35.png"
+                }
+            },
+            "item_id": 13,
+            "name": "Flat Screen",
+            "item": {
+                "clickable": "yes",
+                "height": 118,
+                "id": 13,
+                "name": "TV",
+                "width": 145,
+                "x": "897.0",
+                "y": "407.0",
+                "z": 3
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "A more modern looking desk with a smooth beige color. ",
+            "hide": "no",
+            "id": 36,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/36/beach-sand-36.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/36/medium_beach-sand-36.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/36/small_beach-sand-36.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/36/tiny_beach-sand-36.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/36/toolbar_beach-sand-36.png"
+                }
+            },
+            "item_id": 14,
+            "name": "Beach Sand",
+            "item": {
+                "clickable": "no",
+                "height": 170,
+                "id": 14,
+                "name": "Desk",
+                "width": 210,
+                "x": "1066.0",
+                "y": "443.0",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Even though it has nothing to do with golf, this piece of furniture has a hole in one pice of wood. Makes sense huh? Perfect to place your night-time books and journals.",
+            "hide": "no",
+            "id": 37,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/37/hole-in-one-37.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/37/medium_hole-in-one-37.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/37/small_hole-in-one-37.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/37/tiny_hole-in-one-37.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/37/toolbar_hole-in-one-37.png"
+                }
+            },
+            "item_id": 15,
+            "name": "hole in one",
+            "item": {
+                "clickable": "yes",
+                "height": 104,
+                "id": 15,
+                "name": "Night Stand",
+                "width": 91,
+                "x": "1431.0",
+                "y": "492.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "A blue notebook for notes!",
+            "hide": "no",
+            "id": 38,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/38/jean-book-38.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/38/medium_jean-book-38.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/38/small_jean-book-38.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/38/tiny_jean-book-38.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/38/toolbar_jean-book-38.png"
+                }
+            },
+            "item_id": 16,
+            "name": "Jean Book",
+            "item": {
+                "clickable": "yes",
+                "height": 40,
+                "id": 16,
+                "name": "Notebook",
+                "width": 60,
+                "x": "1225.5",
+                "y": "419.5",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "A trendy, fashionable desktop that looks awesome on your desk. Show others that you care about technology by placing this beautiful machine on your desk. ",
+            "hide": "no",
+            "id": 39,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/39/high-end-desktop-39.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/39/medium_high-end-desktop-39.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/39/small_high-end-desktop-39.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/39/tiny_high-end-desktop-39.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/39/toolbar_high-end-desktop-39.png"
+                }
+            },
+            "item_id": 17,
+            "name": "High end desktop",
+            "item": {
+                "clickable": "yes",
+                "height": 81,
+                "id": 17,
+                "name": "Computer",
+                "width": 93,
+                "x": "1140.0",
+                "y": "406.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Yes! A station for our smart phone. Who uses home lines anyways? If its for me, they call me at my cell phone. ",
+            "hide": "no",
+            "id": 40,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/40/mobile-40.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/40/medium_mobile-40.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/40/small_mobile-40.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/40/tiny_mobile-40.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/40/toolbar_mobile-40.png"
+                }
+            },
+            "item_id": 18,
+            "name": "Mobile",
+            "item": {
+                "clickable": "yes",
+                "height": 70,
+                "id": 18,
+                "name": "Phone",
+                "width": 60,
+                "x": "1100.0",
+                "y": "444.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Just a simple white lamp that looks luxurious in its own way. ",
+            "hide": "no",
+            "id": 41,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/41/blanc-41.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/41/medium_blanc-41.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/41/small_blanc-41.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/41/tiny_blanc-41.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/41/toolbar_blanc-41.png"
+                }
+            },
+            "item_id": 19,
+            "name": "Blanc",
+            "item": {
+                "clickable": "no",
+                "height": 87,
+                "id": 19,
+                "name": "Lamp",
+                "width": 50,
+                "x": "1456.0",
+                "y": "430.0",
+                "z": 3
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Populated pinboard with a sticky note. If you are a hardcore \"pinner\" this is how your pinboard should look like. ",
+            "hide": "no",
+            "id": 42,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/42/sticky-42.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/42/medium_sticky-42.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/42/small_sticky-42.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/42/tiny_sticky-42.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/42/toolbar_sticky-42.png"
+                }
+            },
+            "item_id": 20,
+            "name": "Sticky",
+            "item": {
+                "clickable": "yes",
+                "height": 67,
+                "id": 20,
+                "name": "Pinboard",
+                "width": 101,
+                "x": "1222.5",
+                "y": "363.0",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "\"Stay golden Pony boy\". This picture frame will make your profile picture pop out and make it look glamorous.",
+            "hide": "no",
+            "id": 43,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/43/pony-boy-43.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/43/medium_pony-boy-43.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/43/small_pony-boy-43.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/43/tiny_pony-boy-43.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/43/toolbar_pony-boy-43.png"
+                }
+            },
+            "item_id": 21,
+            "name": "Pony Boy",
+            "item": {
+                "clickable": "yes",
+                "height": 147,
+                "id": 21,
+                "name": "Portrait",
+                "width": 118,
+                "x": "913.0",
+                "y": "252.0",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "For all the basketball fans out there, this the way to express your passion for the sport. Michael Jordan is the best player to ever play the sport, just saying. ",
+            "hide": "no",
+            "id": 44,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/44/b-ball-44.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/44/medium_b-ball-44.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/44/small_b-ball-44.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/44/tiny_b-ball-44.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/44/toolbar_b-ball-44.png"
+                }
+            },
+            "item_id": 22,
+            "name": "B-ball",
+            "item": {
+                "clickable": "yes",
+                "height": 120,
+                "id": 22,
+                "name": "Sports",
+                "width": 120,
+                "x": "278.0",
+                "y": "473.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "Enjoy the new ambiance in your room.",
+            "hide": "no",
+            "id": 134,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/134/joy-134.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/134/medium_joy-134.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/134/small_joy-134.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/134/tiny_joy-134.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/134/toolbar_joy-134.png"
+                }
+            },
+            "item_id": 23,
+            "name": "Joy",
+            "item": {
+                "clickable": "yes",
+                "height": 424,
+                "id": 23,
+                "name": "Curtain",
+                "width": 287,
+                "x": "395.0",
+                "y": "174.0",
+                "z": 1
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "store your documents and files!",
+            "hide": "no",
+            "id": 186,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/186/boxy-186.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/186/medium_boxy-186.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/186/small_boxy-186.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/186/tiny_boxy-186.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/186/toolbar_boxy-186.png"
+                }
+            },
+            "item_id": 24,
+            "name": "Boxy",
+            "item": {
+                "clickable": "yes",
+                "height": 80,
+                "id": 24,
+                "name": "Box",
+                "width": 80,
+                "x": "619.0",
+                "y": "525.0",
+                "z": 2
+            },
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "sdf",
+            "hide": "no",
+            "id": 494,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/494/webpagetest.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/494/medium_webpagetest.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/494/small_webpagetest.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/494/tiny_webpagetest.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/494/toolbar_webpagetest.png"
+                }
+            },
+            "item_id": 27,
+            "name": "new item des",
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        },
+        {
+            "description": "asd",
+            "hide": "no",
+            "id": 493,
+            "image_name": {
+                "url": "/uploads/items_design/image_name/493/webpagetest.png",
+                "medium": {
+                    "url": "/uploads/items_design/image_name/493/medium_webpagetest.png"
+                },
+                "small": {
+                    "url": "/uploads/items_design/image_name/493/small_webpagetest.png"
+                },
+                "tiny": {
+                    "url": "/uploads/items_design/image_name/493/tiny_webpagetest.png"
+                },
+                "toolbar": {
+                    "url": "/uploads/items_design/image_name/493/toolbar_webpagetest.png"
+                }
+            },
+            "item_id": 25,
+            "name": "new item",
+            "image_name_hover": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            },
+            "image_name_selection": {
+                "url": "/images/fallback/items_design/default_items_design.png",
+                "medium": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "small": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/items_design/default_items_design.png"
+                }
+            }
+        }
+    ]
+}

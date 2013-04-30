@@ -10,40 +10,52 @@ class RoomsController < ApplicationController
 
         respond_to do |format|
           format.html # show.html.erb
-          format.json { render json: @user }
         end
 
   end
 
-  def show_room_by_user_id
-
-    @user = User.select('id , name,email').where('id = ?',params[:user_id]).first
-
-    @user_theme = Theme.
-        select('themes.id,name,description,image_name').
-        joins(:users_themes).
-        where('user_id = ?',@user.id)
-    @user_items_designs = ItemsDesign.
-        select('items_designs.id ,name,item_id,description,image_name,users_items_designs.hide').
-        joins(:users_items_designs).
-        where('user_id = ?',@user.id)
-
-    @user_bookmarks = Bookmark.
-        select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title').
-        joins(:users_bookmarks).
-        where('user_id = ?',@user.id)
+  #***********************************
+  # Json methods for the room users
+  #***********************************
 
 
+  # GET Get all the user's items design,themes and user data
+  # /rooms/json/show_room_by_user_id/:user_id
+  # /rooms/json/show_room_by_user_id/1.json
+  def json_show_room_by_user_id
 
-    respond_to do |format|
-      #format.html # rooms.html.erb
-      format.json { render json: {user: @user,
-                                  user_theme: @user_theme,
-                                  user_items_designs: @user_items_designs.as_json(include: {item: {only: [:name, :id, :x, :y, :z, :clickable, :height, :width]}}),
-                                  user_bookmarks: @user_bookmarks.as_json(include: {bookmarks_category: {only: :name}}),
-      }}
+      respond_to do |format|
 
-    end
+          #validate if the user exist
+          if User.exists?(id:params[:user_id])
+
+              @user = User.select('id , name,email').where('id = ?',params[:user_id]).first
+
+                @user_theme = Theme.
+                    select('themes.id,name,description,image_name').
+                    joins(:users_themes).
+                    where('user_id = ?',@user.id)
+                @user_items_designs = ItemsDesign.
+                    select('items_designs.id ,name,item_id,description,image_name,users_items_designs.hide').
+                    joins(:users_items_designs).
+                    where('user_id = ?',@user.id)
+
+                #@user_bookmarks = Bookmark.
+                #    select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title').
+                #    joins(:users_bookmarks).
+                #    where('user_id = ?',@user.id)
+
+                  format.json { render json: {user: @user,
+                                              user_theme: @user_theme,
+                                              user_items_designs: @user_items_designs.as_json(include: {item: {only: [:name, :id, :x, :y, :z, :clickable, :height, :width]}})
+                                              #,
+                                              #user_bookmarks: @user_bookmarks.as_json(include: {bookmarks_category: {only: :name}}),
+                  }}
+          else
+            format.json { render json: 'not found user id' , status: :not_found }
+          end
+
+      end
 
   end
 

@@ -1,0 +1,23 @@
+// controller  ->  UsersItemsDesignsController
+// method type ->  put
+// method name ->  json_update_hide_user_items_design_by_user_id_and_items_design_id
+
+// routes      ->
+            //match '/users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
+            //'users_items_designs#json_update_hide_user_items_design_by_user_id_and_items_design_id', via: :put
+
+//Description
+            //#   PUT toggle the user items design with (yes to no to yes)
+            //#  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id
+            //#  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/10000001/1000.json
+            //#     //   toggle operation -> yes -> no
+
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  204 No Content
+
+
+{}

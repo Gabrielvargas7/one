@@ -1,0 +1,65 @@
+// controller  ->  ThemesController
+// method type ->  get
+// method name ->  json_show
+
+// routes      ->match  'themes/json/show/:id', to:
+//                      'themes#json_index', via: :get
+
+// Description ->
+            //# GET get one theme by theme id
+            //# GET themes/json/show/:id
+            //      themes/json/show/1.json
+
+
+// back_end   :done
+// front_end :working
+
+//Return head 200 OK
+
+{
+    "created_at": "2013-04-18T16:55:50Z",
+    "description": "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?",
+    "id": 1,
+    "image_name": {
+        "url": "/uploads/theme/image_name/1/turquoise-loft.jpg",
+        "xxx_large": {
+            "url": "/uploads/theme/image_name/1/xxx_large_turquoise-loft.jpg"
+        },
+        "xx_large": {
+            "url": "/uploads/theme/image_name/1/xx_large_turquoise-loft.jpg"
+        },
+        "x_large": {
+            "url": "/uploads/theme/image_name/1/x_large_turquoise-loft.jpg"
+        },
+        "large": {
+            "url": "/uploads/theme/image_name/1/large_turquoise-loft.jpg"
+        },
+        "medium": {
+            "url": "/uploads/theme/image_name/1/medium_turquoise-loft.jpg"
+        },
+        "small": {
+            "url": "/uploads/theme/image_name/1/small_turquoise-loft.jpg"
+        },
+        "tiny": {
+            "url": "/uploads/theme/image_name/1/tiny_turquoise-loft.jpg"
+        }
+    },
+    "image_name_selection": {
+        "url": "/uploads/theme/image_name_selection/1/turquoise-loft-popthumb.jpg",
+        "large": {
+            "url": "/uploads/theme/image_name_selection/1/large_turquoise-loft-popthumb.jpg"
+        },
+
+        "medium": {
+            "url": "/uploads/theme/image_name_selection/1/medium_turquoise-loft-popthumb.jpg"
+        },
+        "small": {
+            "url": "/uploads/theme/image_name_selection/1/small_turquoise-loft-popthumb.jpg"
+        },
+        "tiny": {
+            "url": "/uploads/theme/image_name_selection/1/tiny_turquoise-loft-popthumb.jpg"
+        }
+    },
+    "name": "Turquoise Loft",
+    "updated_at": "2013-04-18T16:55:50Z"
+}

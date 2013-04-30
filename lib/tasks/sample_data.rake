@@ -31,8 +31,9 @@ namespace :db do
 
     @bundle_all = BundlesBookmark.all
 
+
     @bundle_all.each do |b|
-       UsersBookmark.create!(user_id:admin.id,bookmark_id:b.bookmark_id)
+       UsersBookmark.create!(user_id:admin.id,bookmark_id:b.bookmark_id,position:1)
     end
 
 
@@ -60,8 +61,10 @@ namespace :db do
 
       @bundle_all = BundlesBookmark.all
 
+
       @bundle_all.each do |b|
-        UsersBookmark.create!(user_id:user.id,bookmark_id:b.bookmark_id)
+
+        UsersBookmark.create!(user_id:user.id,bookmark_id:b.bookmark_id,position:1)
       end
 
 

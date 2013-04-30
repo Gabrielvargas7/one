@@ -1,0 +1,24 @@
+// controller  ->  UsersController
+// method type ->  put
+// method name ->  json_update_username_by_user_id
+
+// routes      ->
+            //match '/users/json/update_username_by_user_id/:user_id', to:
+            //'users#json_update_username_by_user_id', via: :put
+
+
+//Description
+                // PUT update the username
+                //  /users/json/update_username_by_user_id/:user_id'
+                //  /users/json/update_username_by_user_id/1000.json
+                //  Form Parameters:
+                //                  :new_username
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  204 No Content
+
+
+{}

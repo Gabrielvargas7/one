@@ -7,6 +7,12 @@ class UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
+
+     respond_to do |format|
+       format.html # show.html.erb
+       format.json { render json: @user.as_json(only:[:name,:email,:username])  }
+     end
+
   end
 
   def new
@@ -42,30 +48,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PUT
-  def update_username_by_user_id
-
-
-    username = clean_username(params[:username])
-
-    if username.eql?(params[:username])
-      if User.exists?(username: username)
-        head :bad_request
-      else
-        @user = User.find(params[:user_id])
-          respond_to do |format|
-            if @user.update_attributes(username:username)
-              format.json { head :no_content }
-            else
-              format.json { render json: @user_theme.errors, status: :unprocessable_entity }
-            end
-          end
-      end
-    else
-       head :bad_request
-    end
-  end
-
 
   def index
 
@@ -80,6 +62,57 @@ class UsersController < ApplicationController
     redirect_to users_url
 
   end
+
+  #***********************************
+  # Json methods for the room users
+  #***********************************
+
+  #//# PUT update the username
+  #//#  /users/json/update_username_by_user_id/:user_id'
+  #//#  /users/json/update_username_by_user_id/1000.json
+  #//#  Form Parameters:
+  #//#                  :new_username
+  def json_update_username_by_user_id
+
+    respond_to do |format|
+      #validate if the user exist
+      if User.exists?(id:params[:user_id])
+
+          new_username = clean_username(params[:new_username])
+          new_username_downcase =  params[:new_username]
+          new_username_downcase.downcase!
+
+          # validate the username has to be only alphanumeric characters,therefore,
+          # if change after clean, mean that it have no valid characters
+          if new_username.eql?(new_username_downcase)
+
+            # validate the username has to be unique
+            if User.exists?(username: new_username)
+              format.json { render json: 'sorry but the username is already take' , status: :conflict }
+            else
+              @user = User.find(params[:user_id])
+                if @user.update_attributes(username:new_username)
+                  format.json { head :no_content }
+                else
+                  format.json { render json: @user.errors, status: :unprocessable_entity }
+                end
+            end
+          else
+            format.json { render json: 'invalid username ,only alphanumerical characters ' , status: :not_acceptable }
+          end
+      else
+        format.json { render json: 'not found user id' , status: :not_found }
+      end
+
+    end
+  end
+
+
+  #***********************************
+  # End Json methods for the room users
+  #***********************************
+
+
 
 
   private
@@ -105,6 +138,8 @@ class UsersController < ApplicationController
   end
 
 
+  # this function will remove all non-alphanumeric character and
+  # replace the empty space for dash eg 'my new username@@' = my-new-username
   def clean_username(username)
 
     my_username = username

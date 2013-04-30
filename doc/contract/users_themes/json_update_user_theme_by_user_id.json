@@ -1,0 +1,29 @@
+// controller  ->  UsersThemesController
+// method type ->  put
+// method name ->  json_update_user_theme_by_user_id
+
+// routes      ->
+//               match '/users_themes/json/update_user_theme_by_user_id/:user_id', to:
+//                      'users_themes#json_update_user_theme_by_user_id', via: :put
+
+//Description
+
+//           PUT change the user's theme by user id
+
+//           users_themes/json/update_user_theme_by_user_id/:user_id'
+//           users_themes/json/update_user_theme_by_user_id/1.json
+//           Form Parameters:
+//                         theme_id = 1
+
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  200 OK
+// wrong user ->  head  400 Bad Request
+
+
+{}
+
+

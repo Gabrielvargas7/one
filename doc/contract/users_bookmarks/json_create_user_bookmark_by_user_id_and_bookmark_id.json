@@ -1,0 +1,24 @@
+// controller  ->  UsersBookmarksController
+// method type ->  post
+// method name ->  json_create_user_bookmark_by_user_id_and_bookmark_id
+
+// routes      ->
+            //match '/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/:user_id/:bookmark_id/:item_id', to:
+            //'users_bookmarks#json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id', via: :post
+
+
+// description ->
+
+                //# POST Create new user's bookmark with position
+                //#/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/:user_id/:bookmark_id/:item_id
+                //#/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/10000111/101/1.json
+                //# Form Parameters:
+                //#               position
+
+// back_end   :done
+// front_end :working
+
+//Return ->
+// success    ->  head  204 No Content
+
+{}
