@@ -11,13 +11,12 @@
 //                # GET get all user's Bookmarks by item id
 //                # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/:user_id/:item_id
 //                # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/10000011/1.json
+//Return ->
+// success    ->  head  200 OK
 
 
 // back_end   :done
 // front_end :working
-
-//Return ->
-// success    ->  head  200 OK
 
 
 [

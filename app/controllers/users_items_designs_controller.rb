@@ -9,7 +9,10 @@ class UsersItemsDesignsController < ApplicationController
   #//#  /users_items_designs/json/update_user_items_design_by_user_id_and_items_design_id/10000001/1000.json
   #//#  Form Parameters:
   #//#                  :new_items_design_id = 1
- def json_update_user_items_design_by_user_id_and_items_design_id
+  #Return ->
+  #success    ->  head  204 No Content
+
+  def json_update_user_items_design_by_user_id_and_items_design_id
 
    respond_to do |format|
          #validate if exist the items design
@@ -47,7 +50,9 @@ class UsersItemsDesignsController < ApplicationController
  #   PUT toggle the user items design with (yes to no to yes)
  #  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id
  #  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/10000001/1000.json
- #     //   toggle operation -> yes -> no
+ #       toggle operation -> yes -> no
+ #Return ->
+ #success    ->  head  204 No Content
 
   def json_update_hide_user_items_design_by_user_id_and_items_design_id
 
@@ -80,8 +85,9 @@ class UsersItemsDesignsController < ApplicationController
   #   GET get all the Item design of the user
   #  /users_items_designs/json/index_user_items_designs_by_user_id/:user_id
   #  /users_items_designs/json/index_user_items_designs_by_user_id/10000001.json
-
- def json_index_user_items_designs_by_user_id
+  # Return ->
+  # success    ->  head  200 OK
+  def json_index_user_items_designs_by_user_id
 
    respond_to do |format|
 
@@ -104,8 +110,9 @@ class UsersItemsDesignsController < ApplicationController
   # GET get one item design of the user
   #  /users_items_designs/json/show_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id
   #  /users_items_designs/json/show_user_items_designs_by_user_id_and_items_design_id/10000001/100.json
-
- def json_show_user_items_design_by_user_id_and_items_design_id
+  #Return ->
+  #success    ->  head  200 OK
+  def json_show_user_items_design_by_user_id_and_items_design_id
 
 
    respond_to do |format|

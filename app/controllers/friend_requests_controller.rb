@@ -1,0 +1,87 @@
+class FriendRequestsController < ApplicationController
+
+  #***********************************
+  # Json methods
+  #***********************************
+
+
+  #POST set a request for the friend
+  # /friend_requests/json/create_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested
+  # /friend_requests/json/create_friend_request_by_user_id_and_user_id_requested/100001/999.json
+  #Return
+  #success          ->  head  201 create
+  #already create  ->  head  200 OK
+
+  def json_create_friend_request_by_user_id_and_user_id_requested
+
+    respond_to do |format|
+
+      #validation of the users
+      if User.exists?(id:params[:user_id])
+          if User.exists?(id:params[:user_id_requested])
+
+            # validate if the user and requested exist
+            if FriendRequest.exists?(user_id:params[:user_id],user_id_requested:params[:user_id_requested])
+
+              format.json { render json:'already exist ',status: :ok }
+
+            else
+                @friend_request = FriendRequest.new(user_id:params[:user_id],user_id_requested:params[:user_id_requested])
+
+                if @friend_request.save
+                  format.json { render json: @friend_request, status: :created }
+                else
+                  format.json { render json: @friend_request.errors, status: :unprocessable_entity }
+                end
+            end
+
+          else
+            format.json { render json:'not found user_id_requested ',status: :not_found }
+          end
+      else
+        format.json { render json:'not found user_id ',status: :not_found }
+      end
+    end
+  end
+
+
+  #DELETE if the user deny the request, it will be destroy
+  # /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested
+  # /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/100001/999.json
+  #Return head
+  # success          ->  head  204 no content
+  # already destroy  ->  head  200 OK
+  def json_destroy_friend_request_by_user_id_and_user_id_requested
+
+    respond_to do |format|
+
+      #validation of the users
+      if User.exists?(id:params[:user_id])
+        if User.exists?(id:params[:user_id_requested])
+
+          # validate if the user and requested exist
+          if FriendRequest.exists?(user_id:params[:user_id],user_id_requested:params[:user_id_requested])
+
+            @friend_request = FriendRequest.find_by_user_id_and_user_id_requested(params[:user_id],params[:user_id_requested])
+
+            if @friend_request.destroy
+                format.json { head :no_content }
+            else
+                format.json { render json: @friend_request.errors, status: :unprocessable_entity }
+            end
+
+          else
+            format.json { render json:'already destroy ',status: :ok }
+          end
+
+        else
+          format.json { render json:'not found user_id_requested ',status: :not_found }
+        end
+      else
+        format.json { render json:'not found user_id ',status: :not_found }
+      end
+    end
+  end
+
+
+end

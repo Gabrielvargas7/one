@@ -4,18 +4,21 @@
 
 
 // routes      ->
-//   GET     /users_items_designs/show_user_item_design_by_user_id_and_item_design_id/:user_id(.:format)
+                //match '/users_items_designs/json/show_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
+                //'users_items_designs#json_show_user_items_design_by_user_id_and_items_design_id', via: :get
+                //
 
+// description ->
+                //# GET get one item design of the user
+                //#  /users_items_designs/json/show_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id
+                //#  /users_items_designs/json/show_user_items_designs_by_user_id_and_items_design_id/10000001/100.json
 
-// url         ->  http://localhost:3000/users_items_designs/show_user_item_design_by_user_id_and_item_design_id/173/251.json
-// description ->  get one user's Item Design
+//Return ->
+// success    ->  head  200 OK
 
 // back_end   :done
 // front_end :working
 
-//Return ->
-// success    ->  head  200 OK
-// wrong user ->  head  400 Bad Request
 
 [
     {

@@ -82,4 +82,40 @@ class BookmarksCategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #***********************************
+  # Json methods
+  #***********************************
+
+
+  # GET Get all bookmarks category with bookmarks by item id
+  # bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/:item_id
+  # bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/1.json
+  #Return head
+  # success    ->  head  200 OK
+
+  def json_index_bookmarks_categories_with_bookmarks_by_item_id
+
+      respond_to do |format|
+
+        if BookmarksCategory.exists?(item_id:params[:item_id])
+
+          #id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title
+
+          @bookmarks_category  = BookmarksCategory.select('id,name,item_id').where('item_id = ?', params[:item_id])
+          format.json {render json:
+                      @bookmarks_category.as_json(include: {bookmarks: {only: [:id, :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title]}}) }
+
+        else
+          format.json { render json: 'not bookmark category for this item ', status: :not_found }
+        end
+
+      end
+
+
+  end
+
+
+
+
 end

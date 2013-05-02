@@ -22,6 +22,9 @@ class RoomsController < ApplicationController
   # GET Get all the user's items design,themes and user data
   # /rooms/json/show_room_by_user_id/:user_id
   # /rooms/json/show_room_by_user_id/1.json
+  # Return head
+  # success    ->  head  200 OK
+
   def json_show_room_by_user_id
 
       respond_to do |format|

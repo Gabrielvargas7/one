@@ -14,14 +14,14 @@
 //           users_themes/json/update_user_theme_by_user_id/1.json
 //           Form Parameters:
 //                         theme_id = 1
+// Return ->
+// Success    ->  head  204 No Content
 
 
 // back_end   :done
 // front_end :working
 
-//Return ->
-// success    ->  head  200 OK
-// wrong user ->  head  400 Bad Request
+
 
 
 {}

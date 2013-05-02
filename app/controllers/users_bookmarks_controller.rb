@@ -11,7 +11,11 @@ class UsersBookmarksController < ApplicationController
   #/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/:user_id/:bookmark_id/:item_id
   #/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/10000111/101/1.json
   # Form Parameters:
-  #               position
+  #               :position
+  #Return ->
+  #success    ->  head  201 create
+  #'already exist'    ->  head  200 ok
+
   def json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id
 
     respond_to do |format|
@@ -24,12 +28,17 @@ class UsersBookmarksController < ApplicationController
           if Bookmark.exists?(id: params[:bookmark_id],item_id:params[:item_id])
 
               if UsersBookmark.joins(:bookmark).where('user_id = ? and item_id = ? and position = ?',params[:user_id],params[:item_id],params[:position]).exists?
-                 format.json { render json: 'the position of the bookmark already exists' , status: :conflict }
+
+                 format.json { render json: 'the position of the bookmark already exists' , status: :ok }
+
               else
-                if UsersBookmark.create!(user_id:params[:user_id],bookmark_id:params[:bookmark_id],position:params[:position])
-                    format.json { head :no_content }
+
+                @user_bookmark = UsersBookmark.new(user_id:params[:user_id],bookmark_id:params[:bookmark_id],position:params[:position])
+
+                if @user_bookmark.save
+                    format.json { render json: @user_bookmark, status: :created }
                 else
-                   format.json { render json: 'can not create the new bookmark for the user' , status: :internal_server_error }
+                    format.json { render json: @user_bookmark.errors, status: :unprocessable_entity }
                 end
 
               end
@@ -45,9 +54,12 @@ class UsersBookmarksController < ApplicationController
   end
 
 
-# DELETE delete user bookmark
-#/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/:user_id/:bookmark_id/:position
-#/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/10000111/101/1.json
+  # DELETE delete user bookmark
+  #/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/:user_id/:bookmark_id/:position
+  #/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/10000111/101/1.json
+  #Return ->
+  #success    ->  head  204 No Content
+  #already destroy  ->  head  201 ok
 
   def json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position
 
@@ -60,10 +72,10 @@ class UsersBookmarksController < ApplicationController
             if @user_bookmark.destroy
                 format.json { head :no_content }
             else
-              format.json { render json: 'can not delete' , status: :internal_server_error }
+              format.json { render json: @user_bookmark.errors , status: :internal_server_error }
             end
         else
-          format.json { render json: 'user id and bookmark id and position not found' , status: :not_found }
+          format.json { render json: 'already destroy' , status: :ok }
         end
 
 
@@ -75,6 +87,8 @@ class UsersBookmarksController < ApplicationController
   # GET get all user's Bookmarks
   # users_bookmarks/json/json_index_user_bookmarks_by_user_id/:user_id'
   # users_bookmarks/json/json_index_user_bookmarks_by_user_id/1.json'
+  #Return ->
+  #Success    ->  head  200 OK
 
   def json_index_user_bookmarks_by_user_id
 
@@ -100,6 +114,8 @@ class UsersBookmarksController < ApplicationController
   # GET get all user's Bookmarks by item id
   # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/:user_id/:item_id
   # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/10000011/1.json
+  #Return ->
+  #Success    ->  head  200 OK
 
   def json_index_user_bookmarks_by_user_id_and_item_id
 

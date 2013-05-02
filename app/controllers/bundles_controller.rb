@@ -88,4 +88,27 @@ class BundlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  #***********************************
+  # Json methods for the room users
+  #***********************************
+
+
+  # GET Get all bundles
+  # /bundles/json/index_bundles
+  # /bundles/json/index_bundles.json
+  #Return head
+  #success    ->  head  200 OK
+
+  def json_index_bundles
+
+    @bundles = Bundle.order(:id)
+    respond_to do |format|
+      format.json { render json: @bundles.as_json(only:[:id,:description, :image_name, :name, :theme_id] )
+
+      }
+    end
+
+  end
 end

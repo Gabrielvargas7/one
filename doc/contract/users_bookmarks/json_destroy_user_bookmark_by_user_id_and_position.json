@@ -11,12 +11,14 @@
                 //# DELETE delete user bookmark
                 //#/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/:user_id/:bookmark_id/:position
                 //#/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/10000111/101/1.json
+//Return ->
+// success    ->  head  204 No Content
+//'already exist'    ->  head  200 ok
+
 
 
 // back_end   :done
 // front_end :working
 
-//Return ->
-// success    ->  head  204 No Content
 
 {}

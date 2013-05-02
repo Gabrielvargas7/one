@@ -73,11 +73,29 @@ SampleApp::Application.routes.draw do
   #**************************
   match '/rooms/json/show_room_by_user_id/:user_id', to:
          'rooms#json_show_room_by_user_id', via: :get
-
   #--------------------------
   # end Rooms contract
   #--------------------------
 
+
+  #**************************
+  #  start Bundles contract
+  #**************************
+  match '/bundles/json/index_bundles', to:
+         'bundles#json_index_bundles', via: :get
+  #--------------------------
+  # end Bundles contract
+  #--------------------------
+
+
+  #**************************
+  #  start Searches contract
+  #**************************
+  match '/searches/json/index_searches_user_name_by_keyword_with_limit_and_offset/:keyword/:limit/:offset', to:
+         'searches#json_index_searches_user_name_by_keyword_with_limit_and_offset', via: :get
+  #--------------------------
+  # end Searches contract
+  #--------------------------
 
 
   #**************************
@@ -166,6 +184,36 @@ SampleApp::Application.routes.draw do
   #--------------------------
   # end UsersBookmark Contract
   #--------------------------
+
+
+  #**************************
+  # start BookmarksCategory Contract
+  #**************************
+
+  match 'bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/:item_id', to:
+        'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_by_item_id', via: :get
+
+
+  #**************************
+  # end BookmarksCategory Contract
+  #**************************
+
+
+  #**************************
+  # start FriendRequest Contract
+  #**************************
+
+  match '/friend_requests/json/create_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
+         'friend_requests#json_create_friend_request_by_user_id_and_user_id_requested', via: :post
+
+  match '/friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
+         'friend_requests#json_destroy_friend_request_by_user_id_and_user_id_requested', via: :delete
+
+
+  #**************************
+  # end FriendRequest Contract
+  #**************************
+
 
 
 

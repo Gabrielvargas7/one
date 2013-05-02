@@ -11,13 +11,14 @@
             //#  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id
             //#  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/10000001/1000.json
             //#     //   toggle operation -> yes -> no
+//Return ->
+// success    ->  head  204 No Content
+
 
 
 // back_end   :done
 // front_end :working
 
-//Return ->
-// success    ->  head  204 No Content
 
 
 {}

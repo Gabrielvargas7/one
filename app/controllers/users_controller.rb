@@ -72,6 +72,9 @@ class UsersController < ApplicationController
   #//#  /users/json/update_username_by_user_id/1000.json
   #//#  Form Parameters:
   #//#                  :new_username
+  #Return ->
+  #success    ->  head  204 No Content
+
   def json_update_username_by_user_id
 
     respond_to do |format|

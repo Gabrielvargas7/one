@@ -10,12 +10,12 @@
 //         Get all themes
 //       # GET 'themes/json/index'
       //       'themes/json/index.json'
+//Return head 200 OK
 
 
 // back_end   :done
 // front_end :working
 
-//Return head 200 OK
 
 [
 {

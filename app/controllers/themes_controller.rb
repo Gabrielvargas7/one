@@ -92,6 +92,7 @@ class ThemesController < ApplicationController
   # Get all themes
   # GET 'themes/json/index'
   #     'themes/json/index.json'
+  #Return head 200 OK
   def json_index
     @themes = Theme.order(:id)
     respond_to do |format|
@@ -102,6 +103,7 @@ class ThemesController < ApplicationController
   # GET get one theme by theme id
   # GET themes/json/show/:id
   #     themes/json/show/1.json
+  #Return head 200 OK
   def json_show
 
     @theme = Theme.find(params[:id])

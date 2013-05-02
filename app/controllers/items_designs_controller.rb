@@ -92,8 +92,10 @@ class ItemsDesignsController < ApplicationController
 
 
   # GET Get all items_designs by item_id
-  #/items_designs/json/index_items_designs_by_item_id/:item_id'
-  #/items_designs/json/index_items_designs_by_item_id/1.json
+  # /items_designs/json/index_items_designs_by_item_id/:item_id'
+  # /items_designs/json/index_items_designs_by_item_id/1.json
+  # Return head
+  # success    ->  head  200 OK
 
   def json_index_items_designs_by_item_id
 

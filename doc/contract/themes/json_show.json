@@ -9,12 +9,12 @@
             //# GET get one theme by theme id
             //# GET themes/json/show/:id
             //      themes/json/show/1.json
+//Return head 200 OK
 
 
 // back_end   :done
 // front_end :working
 
-//Return head 200 OK
 
 {
     "created_at": "2013-04-18T16:55:50Z",

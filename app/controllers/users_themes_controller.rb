@@ -11,7 +11,8 @@ class UsersThemesController < ApplicationController
   # GET get theme by user id
   # users_themes/json/show_user_theme_by_user_id/:user_id'
   # users_themes/json/show_user_theme_by_user_id/1.json
-
+  #Return ->
+  #success    ->  head  200 OK
   def json_show_user_theme_by_user_id
 
 
@@ -43,8 +44,8 @@ class UsersThemesController < ApplicationController
   #  users_themes/json/update_user_theme_by_user_id/1.json
   #  Form Parameters:
   #                  theme_id = 1
-
-
+  # Return ->
+  # Success    ->  head  204 No Content
   def json_update_user_theme_by_user_id
 
     respond_to do |format|

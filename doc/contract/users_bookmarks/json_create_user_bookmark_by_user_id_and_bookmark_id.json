@@ -13,12 +13,16 @@
                 //#/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/:user_id/:bookmark_id/:item_id
                 //#/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/10000111/101/1.json
                 //# Form Parameters:
-                //#               position
+                //#               :position
+//Return ->
+//
+//success    ->  head  201 create
+//'already exist'    ->  head  200 ok
+
+
 
 // back_end   :done
 // front_end :working
 
-//Return ->
-// success    ->  head  204 No Content
 
 {}

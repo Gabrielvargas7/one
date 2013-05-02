@@ -4,7 +4,7 @@
     <list default="true" readonly="true" id="7cb470e6-ed14-401b-bb37-da47de644fa4" name="Default" comment="" />
     <ignored path="mywebroom.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366808918995" ignored="false" />
+    <file path="/Dummy.txt" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367418501050" ignored="false" />
     <file path="/helper_rails_rauter" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1364858257849" ignored="false" />
     <file path="$PROJECT_DIR$/../sample_app/helpers/helper_rails_routing" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1364944075747" ignored="false" />
     <file path="$PROJECT_DIR$/../rooms/app/assets/stylesheets/static_pages.css.scss" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1364926659665" ignored="false" />
@@ -12,7 +12,7 @@
     <file path="/home.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1364943275314" ignored="false" />
     <file path="/_header.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366219426446" ignored="false" />
     <file path="/_footer.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1364943498775" ignored="false" />
-    <file path="/routes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367345234323" ignored="false" />
+    <file path="/routes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367488068122" ignored="false" />
     <file path="/users_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367337249932" ignored="false" />
     <file path="$PROJECT_DIR$/../sample_app/config/routes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1364952584028" ignored="false" />
     <file path="$PROJECT_DIR$/../sample_app/app/controllers/users_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1364952648213" ignored="false" />
@@ -97,7 +97,7 @@
     <file path="/custom.css.scss" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366212202904" ignored="false" />
     <file path="/themes_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367318953071" ignored="false" />
     <file path="/items_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366294036163" ignored="false" />
-    <file path="/bundles_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366294094109" ignored="false" />
+    <file path="/bundles_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367415476329" ignored="false" />
     <file path="$PROJECT_DIR$/../sample_app/helpers/helper_rails_view" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366209518388" ignored="false" />
     <file path="/helper_rails_view" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366128037150" ignored="false" />
     <file path="/items_designs_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367333916858" ignored="false" />
@@ -114,7 +114,7 @@
     <file path="/bundles_image_uploader.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366287464646" ignored="false" />
     <file path="/bookmark_image_name_desc_uploader.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366287449392" ignored="false" />
     <file path="/bundles_bookmarks_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366294128928" ignored="false" />
-    <file path="/bookmarks_categories_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366626291558" ignored="false" />
+    <file path="/bookmarks_categories_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367403232003" ignored="false" />
     <file path="$PROJECT_DIR$/spec/views/themes/index.html.erb_spec.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366296864591" ignored="false" />
     <file path="$PROJECT_DIR$/spec/views/themes/edit.html.erb_spec.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366296864591" ignored="false" />
     <file path="$PROJECT_DIR$/spec/views/themes/show.html.erb_spec.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366296864591" ignored="false" />
@@ -136,7 +136,7 @@
     <file path="/users_bookmark.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367248471683" ignored="false" />
     <file path="/rooms_get_room.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366896688585" ignored="false" />
     <file path="/users_helper.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366814519351" ignored="false" />
-    <file path="/rooms_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367335452853" ignored="false" />
+    <file path="/rooms_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367402491264" ignored="false" />
     <file path="/rooms_get_show.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366905886627" ignored="false" />
     <file path="/themes_get_index.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366911209302" ignored="false" />
     <file path="/users_themes_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367340368606" ignored="false" />
@@ -152,7 +152,7 @@
     <file path="/update_user_theme_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367256459897" ignored="false" />
     <file path="/index_user_items_designs_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367243523794" ignored="false" />
     <file path="/show_user_item_design_by_user_id_and_item_design_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367332962014" ignored="false" />
-    <file path="/users_bookmarks_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367345393062" ignored="false" />
+    <file path="/users_bookmarks_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367490507851" ignored="false" />
     <file path="/index_user_bookmarks_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367339634207" ignored="false" />
     <file path="/index_user_bookmarks_by_user_id_and_item_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367340727465" ignored="false" />
     <file path="/20130429150843_add_position_to_user_boolmarks.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367248154458" ignored="false" />
@@ -162,14 +162,34 @@
     <file path="/20130430100810_add_index_id_to_themes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367316674446" ignored="false" />
     <file path="/index.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367319833605" ignored="false" />
     <file path="/json_show.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367319765412" ignored="false" />
-    <file path="/json_show_user_theme_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367318648516" ignored="false" />
-    <file path="/json_update_user_theme_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367319512793" ignored="false" />
+    <file path="/json_show_user_theme_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367489695666" ignored="false" />
+    <file path="/json_update_user_theme_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367489702898" ignored="false" />
     <file path="/json_update_user_items_design_by_user_id_and_items_design_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367320863249" ignored="false" />
     <file path="/json_update_hide_user_items_design_by_user_id_and_items_design_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367332142924" ignored="false" />
     <file path="/json_index_user_items_designs_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367332923391" ignored="false" />
     <file path="/index_items_designs_by_item_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367333683376" ignored="false" />
     <file path="/json_index_items_designs_by_item_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367334373766" ignored="false" />
     <file path="/json_show_room_by_user_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367335657587" ignored="false" />
+    <file path="/20130501083016_add_index_to_bookmark.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367397140070" ignored="false" />
+    <file path="/20130501083423_add_index_to_bookmark_category.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367397353262" ignored="false" />
+    <file path="/20130501083701_add_index_to_bundles.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367397506920" ignored="false" />
+    <file path="/20130501083923_add_index_to_bundles_bookmarks.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367397654392" ignored="false" />
+    <file path="/20130501084154_add_index_to_items.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367397765551" ignored="false" />
+    <file path="/20130501084335_add_index_to_items_designs.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367397922656" ignored="false" />
+    <file path="/20130501084856_add_index_to_users.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367398260954" ignored="false" />
+    <file path="/20130501085143_add_index_to_users_bookmark.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367398488094" ignored="false" />
+    <file path="/20130501085613_add_index_to_users_items_designs.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367398660113" ignored="false" />
+    <file path="/20130501090045_add_index_to_users_themes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367398901239" ignored="false" />
+    <file path="/json_index_bookmarks_of_bookmarks_category_by_item_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367402796031" ignored="false" />
+    <file path="/json_index_bundles.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367415422168" ignored="false" />
+    <file path="/searches_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367421332456" ignored="false" />
+    <file path="/json_index_searches_user_name_by_seach_values.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367419028664" ignored="false" />
+    <file path="/friend_requests_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367490958541" ignored="false" />
+    <file path="/20130502085956_drop_table_friend_request.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367485213665" ignored="false" />
+    <file path="/20130502090258_drop_table_friend.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367485389174" ignored="false" />
+    <file path="/json_destroy_friend_request_by_user_id_and_user_id_requested.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367490948334" ignored="false" />
+    <file path="/json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367490890551" ignored="false" />
+    <file path="/json_create_user_bookmark_by_user_id_and_bookmark_id.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367490353052" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,55 +214,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <file leaf-file-name="bundles_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/bundles_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="0" selection-start="4855" selection-end="5100" vertical-scroll-proportion="0.0">
+            <state line="102" column="0" selection-start="2387" selection-end="2433" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_bookmarks_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/users_bookmarks_controller.rb">
+      <file leaf-file-name="json_index_bookmarks_categories_with_bookmarks_by_item_id.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/contract/bookmarks_category/json_index_bookmarks_categories_with_bookmarks_by_item_id.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="0" selection-start="1747" selection-end="2005" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_bookmark.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/users_bookmark.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="46" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_themes_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/users_themes_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="78" selection-start="2073" selection-end="2143" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_items_designs_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/users_items_designs_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="95" selection-start="3694" selection-end="3781" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="json_index_user_bookmarks_by_user_id.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/doc/contract/users_bookmarks/json_index_user_bookmarks_by_user_id.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="650" selection-end="650" vertical-scroll-proportion="16.25">
+            <state line="16" column="0" selection-start="736" selection-end="736" vertical-scroll-proportion="-10.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -250,10 +234,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="json_index_user_bookmarks_by_user_id_and_item_id.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/doc/contract/users_bookmarks/json_index_user_bookmarks_by_user_id_and_item_id.json">
+      <file leaf-file-name="bookmarks_categories_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/bookmarks_categories_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="17" selection-start="670" selection-end="670" vertical-scroll-proportion="-3.75">
+            <state line="88" column="0" selection-start="2615" selection-end="2710" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="friends_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/friends_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json_index_bundles.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/contract/bundles/json_index_bundles.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="-13.125">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -261,10 +263,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="json_create_user_bookmark_by_user_id_and_bookmark_id.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/doc/contract/users_bookmarks/json_create_user_bookmark_by_user_id_and_bookmark_id.json">
+      <file leaf-file-name="json_index_items_designs_by_item_id.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/contract/items_designs/json_index_items_designs_by_item_id.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="871" selection-end="871" vertical-scroll-proportion="-11.875">
+            <state line="14" column="0" selection-start="585" selection-end="585" vertical-scroll-proportion="-8.75">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -272,10 +274,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="json_destroy_user_bookmark_by_user_id_and_position.json" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/doc/contract/users_bookmarks/json_destroy_user_bookmark_by_user_id_and_position.json">
+      <file leaf-file-name="items_designs_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/items_designs_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="858" selection-end="858" vertical-scroll-proportion="0.5625">
+            <state line="93" column="4" selection-start="2416" selection-end="2416" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/contract/friend_requests/json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="16" selection-start="768" selection-end="768" vertical-scroll-proportion="-8.75">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="friend_requests_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/friend_requests_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="-1.2872341">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json_destroy_friend_request_by_user_id_and_user_id_requested.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/contract/friend_requests/json_destroy_friend_request_by_user_id_and_user_id_requested.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="44" selection-start="772" selection-end="787" vertical-scroll-proportion="-8.125">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -297,22 +328,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/items_designs_controller.rb" />
-        <option value="$PROJECT_DIR$/doc/contract/items_designs/json_index_items_designs_by_item_id.json" />
-        <option value="$PROJECT_DIR$/doc/README_FOR_APP" />
-        <option value="$PROJECT_DIR$/app/controllers/rooms_controller.rb" />
+        <option value="$PROJECT_DIR$/doc/contract/themes/Json_index.json" />
+        <option value="$PROJECT_DIR$/app/controllers/themes_controller.rb" />
+        <option value="$PROJECT_DIR$/doc/contract/searches/json_index_searches_user_name_by_keyword_with_limit_and_offset.json" />
+        <option value="$PROJECT_DIR$/app/controllers/searches_controller.rb" />
         <option value="$PROJECT_DIR$/doc/contract/rooms/json_show_room_by_user_id.json" />
-        <option value="$PROJECT_DIR$/doc/contract/users/update_username_by_user_id.json" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-        <option value="$PROJECT_DIR$/doc/contract/users/json_update_username_by_user_id.json" />
-        <option value="$PROJECT_DIR$/app/controllers/users_themes_controller.rb" />
-        <option value="$PROJECT_DIR$/doc/contract/users_bookmarks/index_user_bookmarks_by_user_id.json" />
-        <option value="$PROJECT_DIR$/doc/contract/users_bookmarks/index_user_bookmarks_by_user_id_and_item_id.json" />
-        <option value="$PROJECT_DIR$/doc/contract/users_bookmarks/json_index_user_bookmarks_by_user_id_and_item_id.json" />
-        <option value="$PROJECT_DIR$/doc/contract/users_bookmarks/create_user_bookmark_by_user_id_and_bookmark_id.json" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/users_bookmarks_controller.rb" />
-        <option value="$PROJECT_DIR$/doc/contract/users_bookmarks/destroy_user_bookmark_by_user_id_and_position.json" />
+        <option value="$PROJECT_DIR$/app/controllers/rooms_controller.rb" />
+        <option value="$PROJECT_DIR$/doc/contract/items_designs/json_index_items_designs_by_item_id.json" />
+        <option value="$PROJECT_DIR$/app/controllers/items_designs_controller.rb" />
+        <option value="$PROJECT_DIR$/doc/contract/friend_requests/json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id.json" />
+        <option value="$PROJECT_DIR$/doc/contract/friend_requests/json_destroy_friend_request_by_user_id_and_user_id_requested.json" />
+        <option value="$PROJECT_DIR$/doc/contract/bundles/json_index_bundles.json" />
+        <option value="$PROJECT_DIR$/app/controllers/bundles_controller.rb" />
+        <option value="$PROJECT_DIR$/doc/contract/bookmarks_category/json_index_bookmarks_categories_with_bookmarks_by_item_id.json" />
+        <option value="$PROJECT_DIR$/app/controllers/bookmarks_categories_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/friends_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/friend_requests_controller.rb" />
       </list>
     </option>
   </component>
@@ -324,9 +355,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-2" />
     <option name="y" value="25" />
-    <option name="width" value="1440" />
-    <option name="height" value="850" />
+    <option name="width" value="1444" />
+    <option name="height" value="854" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -354,7 +386,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -416,7 +447,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="doc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bookmarks_category" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -434,8 +473,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -830,15 +888,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1440" height="850" extended-state="0" />
-    <editor active="false" />
+    <frame x="-2" y="25" width="1444" height="854" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41551247" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4149086" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28489208" sideWeight="0.58448756" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33572453" sideWeight="0.5850914" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39944905" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -915,27 +973,57 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/doc/contract/users_items_designs/json_index_user_items_designs_by_user_id.json">
+    <entry file="file://$PROJECT_DIR$/doc/contract/themes/Json_index.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="43" selection-start="548" selection-end="548" vertical-scroll-proportion="0.28481013">
+        <state line="14" column="0" selection-start="337" selection-end="337" vertical-scroll-proportion="-8.75">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/contract/users/json_update_username_by_user_id.json">
+    <entry file="file://$PROJECT_DIR$/app/controllers/themes_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="41" selection-start="647" selection-end="647" vertical-scroll-proportion="0.4883721">
+        <state line="108" column="21" selection-start="2627" selection-end="2627" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/contract/searches/json_index_searches_user_name_by_keyword_with_limit_and_offset.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="762" selection-end="762" vertical-scroll-proportion="-10.625">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/searches_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/doc/contract/rooms/json_show_room_by_user_id.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="106" selection-start="473" selection-end="473" vertical-scroll-proportion="0.28481013">
+        <state line="19" column="0" selection-start="563" selection-end="563" vertical-scroll-proportion="-11.875">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/rooms_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="4" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/contract/items_designs/json_index_items_designs_by_item_id.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="585" selection-end="585" vertical-scroll-proportion="-8.75">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -944,100 +1032,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/items_designs_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="77" selection-start="2849" selection-end="2918" vertical-scroll-proportion="0.68609864">
+        <state line="93" column="4" selection-start="2416" selection-end="2416" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/rooms_controller.rb">
+    <entry file="file://$PROJECT_DIR$/doc/contract/friend_requests/json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="43" selection-start="492" selection-end="640" vertical-scroll-proportion="0.28088236">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="71" selection-start="344" selection-end="344" vertical-scroll-proportion="-0.07359307">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="37" selection-start="1329" selection-end="1534" vertical-scroll-proportion="0.33766234">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_items_designs_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="95" selection-start="3694" selection-end="3781" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_themes_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="78" selection-start="2073" selection-end="2143" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/contract/users_bookmarks/json_index_user_bookmarks_by_user_id.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="650" selection-end="650" vertical-scroll-proportion="16.25">
+        <state line="14" column="16" selection-start="768" selection-end="768" vertical-scroll-proportion="-8.75">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/contract/users_bookmarks/json_index_user_bookmarks_by_user_id_and_item_id.json">
+    <entry file="file://$PROJECT_DIR$/doc/contract/friend_requests/json_destroy_friend_request_by_user_id_and_user_id_requested.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="17" selection-start="670" selection-end="670" vertical-scroll-proportion="-3.75">
+        <state line="13" column="44" selection-start="772" selection-end="787" vertical-scroll-proportion="-8.125">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/users_bookmark.rb">
+    <entry file="file://$PROJECT_DIR$/doc/contract/bundles/json_index_bundles.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="46" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/contract/users_bookmarks/json_create_user_bookmark_by_user_id_and_bookmark_id.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="871" selection-end="871" vertical-scroll-proportion="-11.875">
+        <state line="21" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="-13.125">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_bookmarks_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/bundles_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="1747" selection-end="2005" vertical-scroll-proportion="0.0">
+        <state line="102" column="0" selection-start="2387" selection-end="2433" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/doc/contract/bookmarks_category/json_index_bookmarks_categories_with_bookmarks_by_item_id.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="0" selection-start="4855" selection-end="5100" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/contract/users_bookmarks/json_destroy_user_bookmark_by_user_id_and_position.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="858" selection-end="858" vertical-scroll-proportion="0.5625">
+        <state line="16" column="0" selection-start="736" selection-end="736" vertical-scroll-proportion="-10.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/bookmarks_categories_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="0" selection-start="2615" selection-end="2710" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/friends_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/friend_requests_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="-1.2872341">
+          <folding />
         </state>
       </provider>
     </entry>

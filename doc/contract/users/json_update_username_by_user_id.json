@@ -13,12 +13,13 @@
                 //  /users/json/update_username_by_user_id/1000.json
                 //  Form Parameters:
                 //                  :new_username
+//Return ->
+// success    ->  head  204 No Content
+
 
 // back_end   :done
 // front_end :working
 
-//Return ->
-// success    ->  head  204 No Content
 
 
 {}

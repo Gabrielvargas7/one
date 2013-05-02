@@ -12,14 +12,14 @@
 //          # GET get theme by user id
 //          # users_themes/json/show_user_theme_by_user_id/:user_id'
 //          # users_themes/json/show_user_theme_by_user_id/1.json
+// Return ->
+// Success    ->  head  200 OK
 
 
 // back_end   :done
 // front_end :working
 
-//Return ->
-// success    ->  head  204 No Content
-// wrong user ->  head  400 Bad Request
+
 
 {
     "description": "Doesn't that room electrify you with colors and all the possible cool things you can place in it?",

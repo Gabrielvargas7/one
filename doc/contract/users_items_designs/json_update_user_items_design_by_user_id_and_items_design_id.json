@@ -13,11 +13,12 @@
         //#  /users_items_designs/json/update_user_items_design_by_user_id_and_items_design_id/10000001/1000.json
         //#  Form Parameters:
         //#                  :new_items_design_id = 1
+//Return ->
+// success    ->  head  204 No Content
+
 
 // back_end   :done
 // front_end :working
 
-//Return ->
-// success    ->  head  204 No Content
 
 {}
