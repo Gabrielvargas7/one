@@ -45,7 +45,7 @@ class UsersThemesController < ApplicationController
   #  Form Parameters:
   #                  theme_id = 1
   # Return ->
-  # Success    ->  head  204 No Content
+  # Success    ->  head  200 ok
   def json_update_user_theme_by_user_id
 
     respond_to do |format|
@@ -59,7 +59,9 @@ class UsersThemesController < ApplicationController
               @user_theme = UsersTheme.find_by_user_id(params[:user_id])
 
               if @user_theme.update_attributes(theme_id: params[:theme_id])
-                format.json { head :no_content }
+
+                format.json { render json: @user_theme, status: :ok }
+
               else
                 format.json { render json: @user_theme.errors, status: :unprocessable_entity }
               end

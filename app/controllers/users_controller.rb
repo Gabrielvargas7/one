@@ -73,7 +73,7 @@ class UsersController < ApplicationController
   #//#  Form Parameters:
   #//#                  :new_username
   #Return ->
-  #success    ->  head  204 No Content
+  #success    ->  head  200 ok
 
   def json_update_username_by_user_id
 
@@ -95,7 +95,8 @@ class UsersController < ApplicationController
             else
               @user = User.find(params[:user_id])
                 if @user.update_attributes(username:new_username)
-                  format.json { head :no_content }
+                  #format.json { head :no_content }
+                  format.json { render json: @user.as_json(only: [:id,:username]), status: :ok }
                 else
                   format.json { render json: @user.errors, status: :unprocessable_entity }
                 end

@@ -1,0 +1,38 @@
+// controller  ->  FriendController
+// method type ->  post
+// method name ->  json_create_friend_by_user_id_accept_and_user_id_request
+
+// routes      ->
+                //match '/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id_accept/:user_id_request', to:
+                //'friends#json_create_friend_by_user_id_accept_and_user_id_request', via: :post
+
+
+//Description
+
+            //#POST create a friend from friend request
+            //#step 1.- delete the request. 2.- create a two row for friends, to connect all the friend of the user
+            //# eg  user_id_accept = 11  user_id_request = 99  ---, row1 -> (11,99)  row2 ->(99,11)
+            //#'/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id_accept/:user_id_request'
+            //#/friends/json/create_friend_by_user_id_accept_and_user_id_request/11/99.json
+            //# Return head
+            //# success    ->  head  201 Create
+
+// back_end   :done
+// front_end :working
+
+{
+    "user_friend_request": {
+        "created_at": "2013-05-02T13:32:57Z",
+        "id": 3,
+        "updated_at": "2013-05-02T13:32:57Z",
+        "user_id": 206,
+        "user_id_friend": 207
+    },
+    "user_friend_accept": {
+        "created_at": "2013-05-02T13:32:57Z",
+        "id": 4,
+        "updated_at": "2013-05-02T13:32:57Z",
+        "user_id": 207,
+        "user_id_friend": 206
+    }
+}

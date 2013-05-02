@@ -10,7 +10,7 @@ class UsersItemsDesignsController < ApplicationController
   #//#  Form Parameters:
   #//#                  :new_items_design_id = 1
   #Return ->
-  #success    ->  head  204 No Content
+  #success    ->  head  200 OK
 
   def json_update_user_items_design_by_user_id_and_items_design_id
 
@@ -30,7 +30,9 @@ class UsersItemsDesignsController < ApplicationController
                   @user_items_design = UsersItemsDesign.find_by_user_id_and_items_design_id(params[:user_id],params[:items_design_id])
                   #respond_to do |format|
                     if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:new_items_design_id])
-                      format.json { head :no_content }
+
+
+                      format.json { render json: @user_items_design, status: :ok }
                     else
                       format.json { render json: @user_items_design.errors, status: :unprocessable_entity }
                     end
@@ -52,7 +54,7 @@ class UsersItemsDesignsController < ApplicationController
  #  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/10000001/1000.json
  #       toggle operation -> yes -> no
  #Return ->
- #success    ->  head  204 No Content
+ #success    ->  head  200 OK
 
   def json_update_hide_user_items_design_by_user_id_and_items_design_id
 
@@ -70,7 +72,8 @@ class UsersItemsDesignsController < ApplicationController
                 end
             else
                 if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:items_design_id],hide:'yes')
-                  format.json { head :no_content }
+
+                   format.json { render json: @user_items_design, status: :ok }
                 else
                   format.json { render json: @user_items_design.errors, status: :unprocessable_entity }
                 end

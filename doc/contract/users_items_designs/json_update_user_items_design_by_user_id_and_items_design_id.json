@@ -14,11 +14,11 @@
         //#  Form Parameters:
         //#                  :new_items_design_id = 1
 //Return ->
-// success    ->  head  204 No Content
+// success    ->  head  200 OK
 
 
 // back_end   :done
 // front_end :working
 
 
-{}
+{"created_at":"2013-04-29T15:49:48Z","hide":"yes","id":2265,"items_design_id":1,"updated_at":"2013-04-30T14:37:48Z","user_id":206}

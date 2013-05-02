@@ -14,7 +14,7 @@
                 //  Form Parameters:
                 //                  :new_username
 //Return ->
-// success    ->  head  204 No Content
+// success    ->  head  20O OK
 
 
 // back_end   :done
@@ -22,4 +22,7 @@
 
 
 
-{}
+{
+    "id": 206,
+    "username": "gabriel-vargas-jime2"
+}

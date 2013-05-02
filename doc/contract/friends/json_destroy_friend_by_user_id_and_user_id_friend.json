@@ -1,0 +1,21 @@
+// controller  ->  FriendController
+// method type ->  delete
+// method name ->  json_destroy_friend_by_user_id_and_user_id_friend
+
+// routes      ->
+                //match '/friends/json/destroy_friend_by_user_id_and_user_id_friend/:user_id/:user_id_friend', to:
+                //'friends#json_destroy_friend_by_user_id_and_user_id_friend', via: :delete
+
+
+//Description
+            //#DELETE delete the two row for the Friend connection
+            //#'/friends/json/destroy_friend_by_user_id_and_user_id_friend/:user_id/:user_id_friend'
+            //#/friends/json/destroy_friend_by_user_id_and_user_id_friend/11/99.json
+            //# Return head
+            //# success    ->  head  204 No content
+            //# 'nothing to destroy '    ->  head  200 OK
+
+// back_end   :done
+// front_end :working
+
+{}

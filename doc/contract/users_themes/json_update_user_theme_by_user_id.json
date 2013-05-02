@@ -15,15 +15,13 @@
 //           Form Parameters:
 //                         theme_id = 1
 // Return ->
-// Success    ->  head  204 No Content
+// Success    ->  head  200 OK
 
 
 // back_end   :done
 // front_end :working
 
+{"created_at":"2013-04-29T15:49:48Z","id":83,"theme_id":10,"updated_at":"2013-05-02T14:32:23Z","user_id":206}
 
-
-
-{}
 
 

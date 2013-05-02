@@ -80,7 +80,7 @@ class FriendRequestsController < ApplicationController
       else
         format.json { render json:'not found user_id ',status: :not_found }
       end
-    end
+     end
   end
 
 
