@@ -1,0 +1,50 @@
+// controller  ->  FriendController
+// method type ->  get
+// method name ->  json_index_friend_by_user_id
+
+// routes      ->
+
+
+//Description
+                //#GET get all user friend
+                //#  /friends/json/index_friend_by_user_id/:user_id'
+                //#  /friends/json/index_friend_by_user_id/206.json'
+                //#  //# success    ->  head  200 OK
+
+// back_end   :done
+// front_end :working
+
+[
+    {
+        "id": 208,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Michaela Zieme IV"
+    },
+    {
+        "id": 207,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Dr. Deontae Emmerich"
+    }
+]

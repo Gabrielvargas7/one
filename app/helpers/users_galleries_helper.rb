@@ -1,0 +1,2 @@
+module UsersGalleriesHelper
+end

@@ -19,14 +19,25 @@
 // front_end :working
 
 
-
-
 {
     "user": {
-        "email": "test1@rooms.org",
-        "id": 173,
-        "name": "Hallie Botsford"
+        "email": "test@rooms.org",
+        "id": 206,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Example User"
     },
+    "user_gallery": null,
     "user_theme": [
         {
             "description": "Doesn't that room electrify you with colors and all the possible cool things you can place in it?",
@@ -75,26 +86,26 @@
     ],
     "user_items_designs": [
         {
-            "description": "This messy bed its a design inspired by a couple of us who actually know that sleeping in your bed when its messy is more comfortable than having to unfold the sheets and find the comfy spot. ",
-            "hide": "no",
-            "id": 23,
+            "description": "This elegant design has a distinct color and it shows that your bed is an important piece of furniture for you. Its organized, spacious, and adds color to your room design. ",
+            "hide": "yes",
+            "id": 1,
             "image_name": {
-                "url": "/uploads/items_design/image_name/23/messy-23.png",
+                "url": "/uploads/items_design/image_name/1/peach-queen-1.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/23/medium_messy-23.png"
+                    "url": "/uploads/items_design/image_name/1/medium_peach-queen-1.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/23/small_messy-23.png"
+                    "url": "/uploads/items_design/image_name/1/small_peach-queen-1.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/23/tiny_messy-23.png"
+                    "url": "/uploads/items_design/image_name/1/tiny_peach-queen-1.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/23/toolbar_messy-23.png"
+                    "url": "/uploads/items_design/image_name/1/toolbar_peach-queen-1.png"
                 }
             },
             "item_id": 1,
-            "name": "Messy",
+            "name": "Peach Queen",
             "item": {
                 "clickable": "yes",
                 "height": 322,
@@ -131,26 +142,26 @@
             }
         },
         {
-            "description": "A more elegant looking bird cage with a modern table to place it on. Why not have a nice \"crib\" for the bird. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 24,
+            "id": 383,
             "image_name": {
-                "url": "/uploads/items_design/image_name/24/crystal-24.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/24/medium_crystal-24.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/24/small_crystal-24.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/24/tiny_crystal-24.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/24/toolbar_crystal-24.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 2,
-            "name": "Crystal",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 225,
@@ -187,26 +198,26 @@
             }
         },
         {
-            "description": "A tall and basic book stand that matches with any type of room design. If you are unsure of what shelf to pick, this white one is your best choice.",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 25,
+            "id": 384,
             "image_name": {
-                "url": "/uploads/items_design/image_name/25/whitey-25.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/25/medium_whitey-25.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/25/small_whitey-25.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/25/tiny_whitey-25.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/25/toolbar_whitey-25.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 3,
-            "name": "Whitey",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 335,
@@ -243,26 +254,26 @@
             }
         },
         {
-            "description": "For all of us who have becomed attached to our office chairs, this design was made to bring our office chair to our home office but leaving behind the black boring color. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 26,
+            "id": 385,
             "image_name": {
-                "url": "/uploads/items_design/image_name/26/green-office-26.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/26/medium_green-office-26.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/26/small_green-office-26.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/26/tiny_green-office-26.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/26/toolbar_green-office-26.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 4,
-            "name": "Green Office",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 231,
@@ -299,26 +310,26 @@
             }
         },
         {
-            "description": "A mix of old school and modern newspapers (the paper ones I mean). This design is our CEO's favorite (yes, he still reads the newspaper in paper form). ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 27,
+            "id": 386,
             "image_name": {
-                "url": "/uploads/items_design/image_name/27/rooms-times-27.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/27/medium_rooms-times-27.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/27/small_rooms-times-27.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/27/tiny_rooms-times-27.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/27/toolbar_rooms-times-27.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 5,
-            "name": "Rooms Times",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 74,
@@ -355,26 +366,26 @@
             }
         },
         {
-            "description": "Nothing too special about his one, just a modern geographical world map. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 28,
+            "id": 387,
             "image_name": {
-                "url": "/uploads/items_design/image_name/28/simple-map-28.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/28/medium_simple-map-28.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/28/small_simple-map-28.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/28/tiny_simple-map-28.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/28/toolbar_simple-map-28.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 6,
-            "name": "Simple Map",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 142,
@@ -411,26 +422,26 @@
             }
         },
         {
-            "description": "A decent looking t.v. stand with a great combination of lime green and white. We think it looks stylish, how about you?",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 29,
+            "id": 388,
             "image_name": {
-                "url": "/uploads/items_design/image_name/29/key-lime-29.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/29/medium_key-lime-29.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/29/small_key-lime-29.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/29/tiny_key-lime-29.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/29/toolbar_key-lime-29.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 7,
-            "name": "Key Lime",
+            "name": "London",
             "item": {
                 "clickable": "no",
                 "height": 116,
@@ -467,26 +478,26 @@
             }
         },
         {
-            "description": "Really elegant piece of furniture with seven elves... shelves. Delicate and tall, this is a fan favorite in our office. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 30,
+            "id": 389,
             "image_name": {
-                "url": "/uploads/items_design/image_name/30/snow-white-30.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/30/medium_snow-white-30.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/30/small_snow-white-30.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/30/tiny_snow-white-30.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/30/toolbar_snow-white-30.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 8,
-            "name": "Snow White",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 178,
@@ -523,26 +534,26 @@
             }
         },
         {
-            "description": "This blue shopping bag has a great color scheme. If you look closely its brighter on the top and darker as it gets closer to the bottom. Just like the sea!",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 31,
+            "id": 390,
             "image_name": {
-                "url": "/uploads/items_design/image_name/31/deep-blue-sea-31.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/31/medium_deep-blue-sea-31.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/31/small_deep-blue-sea-31.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/31/tiny_deep-blue-sea-31.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/31/toolbar_deep-blue-sea-31.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 9,
-            "name": "Deep Blue Sea",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 111,
@@ -579,26 +590,26 @@
             }
         },
         {
-            "description": "A wooden frame surrounding your picture collage. Its a more relaxed design that lets the images attract the attention.  ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 32,
+            "id": 391,
             "image_name": {
-                "url": "/uploads/items_design/image_name/32/woody-32.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/32/medium_woody-32.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/32/small_woody-32.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/32/tiny_woody-32.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/32/toolbar_woody-32.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 10,
-            "name": "Woody",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 128,
@@ -635,26 +646,26 @@
             }
         },
         {
-            "description": "If you ignore the books, both of these book shelfs look like old school cannoes. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 33,
+            "id": 392,
             "image_name": {
-                "url": "/uploads/items_design/image_name/33/wooden-canoes-33.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/33/medium_wooden-canoes-33.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/33/small_wooden-canoes-33.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/33/tiny_wooden-canoes-33.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/33/toolbar_wooden-canoes-33.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 11,
-            "name": "Wooden Canoes",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 118,
@@ -691,26 +702,26 @@
             }
         },
         {
-            "description": "Hipster meets modern design in this music box. Looks stylish and no more Cd's. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 34,
+            "id": 393,
             "image_name": {
-                "url": "/uploads/items_design/image_name/34/pod-player-34.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/34/medium_pod-player-34.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/34/small_pod-player-34.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/34/tiny_pod-player-34.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/34/toolbar_pod-player-34.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 12,
-            "name": "Pod Player",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 106,
@@ -747,26 +758,26 @@
             }
         },
         {
-            "description": "Now this is more like it! A flat screen hd t.v. which adds finesse to your room design.",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 35,
+            "id": 394,
             "image_name": {
-                "url": "/uploads/items_design/image_name/35/flat-screen-35.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/35/medium_flat-screen-35.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/35/small_flat-screen-35.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/35/tiny_flat-screen-35.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/35/toolbar_flat-screen-35.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 13,
-            "name": "Flat Screen",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 118,
@@ -803,26 +814,26 @@
             }
         },
         {
-            "description": "A more modern looking desk with a smooth beige color. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 36,
+            "id": 395,
             "image_name": {
-                "url": "/uploads/items_design/image_name/36/beach-sand-36.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/36/medium_beach-sand-36.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/36/small_beach-sand-36.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/36/tiny_beach-sand-36.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/36/toolbar_beach-sand-36.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 14,
-            "name": "Beach Sand",
+            "name": "London",
             "item": {
                 "clickable": "no",
                 "height": 170,
@@ -859,26 +870,26 @@
             }
         },
         {
-            "description": "Even though it has nothing to do with golf, this piece of furniture has a hole in one pice of wood. Makes sense huh? Perfect to place your night-time books and journals.",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 37,
+            "id": 396,
             "image_name": {
-                "url": "/uploads/items_design/image_name/37/hole-in-one-37.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/37/medium_hole-in-one-37.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/37/small_hole-in-one-37.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/37/tiny_hole-in-one-37.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/37/toolbar_hole-in-one-37.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 15,
-            "name": "hole in one",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 104,
@@ -915,26 +926,26 @@
             }
         },
         {
-            "description": "A blue notebook for notes!",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 38,
+            "id": 397,
             "image_name": {
-                "url": "/uploads/items_design/image_name/38/jean-book-38.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/38/medium_jean-book-38.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/38/small_jean-book-38.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/38/tiny_jean-book-38.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/38/toolbar_jean-book-38.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 16,
-            "name": "Jean Book",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 40,
@@ -971,26 +982,26 @@
             }
         },
         {
-            "description": "A trendy, fashionable desktop that looks awesome on your desk. Show others that you care about technology by placing this beautiful machine on your desk. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 39,
+            "id": 398,
             "image_name": {
-                "url": "/uploads/items_design/image_name/39/high-end-desktop-39.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/39/medium_high-end-desktop-39.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/39/small_high-end-desktop-39.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/39/tiny_high-end-desktop-39.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/39/toolbar_high-end-desktop-39.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 17,
-            "name": "High end desktop",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 81,
@@ -1027,26 +1038,26 @@
             }
         },
         {
-            "description": "Yes! A station for our smart phone. Who uses home lines anyways? If its for me, they call me at my cell phone. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 40,
+            "id": 399,
             "image_name": {
-                "url": "/uploads/items_design/image_name/40/mobile-40.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/40/medium_mobile-40.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/40/small_mobile-40.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/40/tiny_mobile-40.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/40/toolbar_mobile-40.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 18,
-            "name": "Mobile",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 70,
@@ -1083,26 +1094,26 @@
             }
         },
         {
-            "description": "Just a simple white lamp that looks luxurious in its own way. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 41,
+            "id": 400,
             "image_name": {
-                "url": "/uploads/items_design/image_name/41/blanc-41.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/41/medium_blanc-41.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/41/small_blanc-41.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/41/tiny_blanc-41.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/41/toolbar_blanc-41.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 19,
-            "name": "Blanc",
+            "name": "London",
             "item": {
                 "clickable": "no",
                 "height": 87,
@@ -1139,26 +1150,26 @@
             }
         },
         {
-            "description": "Populated pinboard with a sticky note. If you are a hardcore \"pinner\" this is how your pinboard should look like. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 42,
+            "id": 401,
             "image_name": {
-                "url": "/uploads/items_design/image_name/42/sticky-42.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/42/medium_sticky-42.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/42/small_sticky-42.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/42/tiny_sticky-42.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/42/toolbar_sticky-42.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 20,
-            "name": "Sticky",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 67,
@@ -1195,26 +1206,26 @@
             }
         },
         {
-            "description": "\"Stay golden Pony boy\". This picture frame will make your profile picture pop out and make it look glamorous.",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 43,
+            "id": 402,
             "image_name": {
-                "url": "/uploads/items_design/image_name/43/pony-boy-43.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/43/medium_pony-boy-43.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/43/small_pony-boy-43.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/43/tiny_pony-boy-43.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/43/toolbar_pony-boy-43.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 21,
-            "name": "Pony Boy",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 147,
@@ -1251,26 +1262,26 @@
             }
         },
         {
-            "description": "For all the basketball fans out there, this the way to express your passion for the sport. Michael Jordan is the best player to ever play the sport, just saying. ",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 44,
+            "id": 403,
             "image_name": {
-                "url": "/uploads/items_design/image_name/44/b-ball-44.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/44/medium_b-ball-44.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/44/small_b-ball-44.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/44/tiny_b-ball-44.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/44/toolbar_b-ball-44.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 22,
-            "name": "B-ball",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 120,
@@ -1307,26 +1318,26 @@
             }
         },
         {
-            "description": "Enjoy the new ambiance in your room.",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 134,
+            "id": 404,
             "image_name": {
-                "url": "/uploads/items_design/image_name/134/joy-134.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/134/medium_joy-134.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/134/small_joy-134.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/134/tiny_joy-134.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/134/toolbar_joy-134.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 23,
-            "name": "Joy",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 424,
@@ -1363,26 +1374,26 @@
             }
         },
         {
-            "description": "store your documents and files!",
+            "description": "Fish And Chips",
             "hide": "no",
-            "id": 186,
+            "id": 405,
             "image_name": {
-                "url": "/uploads/items_design/image_name/186/boxy-186.png",
+                "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {
-                    "url": "/uploads/items_design/image_name/186/medium_boxy-186.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "small": {
-                    "url": "/uploads/items_design/image_name/186/small_boxy-186.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "tiny": {
-                    "url": "/uploads/items_design/image_name/186/tiny_boxy-186.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 },
                 "toolbar": {
-                    "url": "/uploads/items_design/image_name/186/toolbar_boxy-186.png"
+                    "url": "/images/fallback/items_design/default_items_design.png"
                 }
             },
             "item_id": 24,
-            "name": "Boxy",
+            "name": "London",
             "item": {
                 "clickable": "yes",
                 "height": 80,
@@ -1393,98 +1404,6 @@
                 "y": "525.0",
                 "z": 2
             },
-            "image_name_hover": {
-                "url": "/images/fallback/items_design/default_items_design.png",
-                "medium": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                },
-                "small": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                },
-                "tiny": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                }
-            },
-            "image_name_selection": {
-                "url": "/images/fallback/items_design/default_items_design.png",
-                "medium": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                },
-                "small": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                },
-                "tiny": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                }
-            }
-        },
-        {
-            "description": "sdf",
-            "hide": "no",
-            "id": 494,
-            "image_name": {
-                "url": "/uploads/items_design/image_name/494/webpagetest.png",
-                "medium": {
-                    "url": "/uploads/items_design/image_name/494/medium_webpagetest.png"
-                },
-                "small": {
-                    "url": "/uploads/items_design/image_name/494/small_webpagetest.png"
-                },
-                "tiny": {
-                    "url": "/uploads/items_design/image_name/494/tiny_webpagetest.png"
-                },
-                "toolbar": {
-                    "url": "/uploads/items_design/image_name/494/toolbar_webpagetest.png"
-                }
-            },
-            "item_id": 27,
-            "name": "new item des",
-            "image_name_hover": {
-                "url": "/images/fallback/items_design/default_items_design.png",
-                "medium": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                },
-                "small": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                },
-                "tiny": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                }
-            },
-            "image_name_selection": {
-                "url": "/images/fallback/items_design/default_items_design.png",
-                "medium": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                },
-                "small": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                },
-                "tiny": {
-                    "url": "/images/fallback/items_design/default_items_design.png"
-                }
-            }
-        },
-        {
-            "description": "asd",
-            "hide": "no",
-            "id": 493,
-            "image_name": {
-                "url": "/uploads/items_design/image_name/493/webpagetest.png",
-                "medium": {
-                    "url": "/uploads/items_design/image_name/493/medium_webpagetest.png"
-                },
-                "small": {
-                    "url": "/uploads/items_design/image_name/493/small_webpagetest.png"
-                },
-                "tiny": {
-                    "url": "/uploads/items_design/image_name/493/tiny_webpagetest.png"
-                },
-                "toolbar": {
-                    "url": "/uploads/items_design/image_name/493/toolbar_webpagetest.png"
-                }
-            },
-            "item_id": 25,
-            "name": "new item",
             "image_name_hover": {
                 "url": "/images/fallback/items_design/default_items_design.png",
                 "medium": {

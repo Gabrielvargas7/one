@@ -10,7 +10,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email,:name,:password,:password_confirmation,:username
+  attr_accessible :email,:name,:password,:password_confirmation,:username, :image_name
 
   has_secure_password
 
@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
   before_create :get_username
+
 
   validates :name,
              presence:true,
@@ -39,12 +40,16 @@ class User < ActiveRecord::Base
   validate :password_confirmation,
              presence:true
 
+  mount_uploader :image_name, UsersImageUploader
 
   has_many :users_themes
   has_many :users_items_designs
   has_many :users_bookmarks
+  has_many :users_galleries
+  has_many :friends
 
-  #private
+  private
+
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
@@ -67,6 +72,7 @@ class User < ActiveRecord::Base
       #get random number for the user
       random_number1 = rand(0..100000)
       random_number2 = rand(random_number1..100000)
+
       self.username = username_split+'-'+random_number1.to_s+"-"+random_number2.to_s
 
 

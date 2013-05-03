@@ -84,4 +84,33 @@ class FriendRequestsController < ApplicationController
   end
 
 
+  #GET get all the request that your friend make to you
+  #  /friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/:user_id
+  #  /friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/206.json
+  #  //# success    ->  head  200 OK
+  def json_index_friend_request_make_from_your_friend_to_you_by_user_id
+
+    respond_to do |format|
+
+      if User.exists?(id:params[:user_id])
+
+        @friend_requests = FriendRequest.where('user_id_requested = ?',params[:user_id])
+
+        @user_friend_requested =  User.select('id,name,image_name').where(:id => @friend_requests.map {|b| b.user_id})
+        format.json { render json: @user_friend_requested }
+
+      else
+        format.json { render json:'not found user_id ',status: :not_found }
+      end
+    end
+
+
+  end
+
+
+
+
+
+
+
 end

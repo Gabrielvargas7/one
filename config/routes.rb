@@ -1,6 +1,12 @@
 SampleApp::Application.routes.draw do
 
 
+  resources :notifications
+
+
+  resources :feedbacks
+
+
   resources :bundles_bookmarks
 
   resources :bookmarks
@@ -91,8 +97,8 @@ SampleApp::Application.routes.draw do
   #**************************
   #  start Searches contract
   #**************************
-  match '/searches/json/index_searches_user_name_by_keyword_with_limit_and_offset/:keyword/:limit/:offset', to:
-         'searches#json_index_searches_user_name_by_keyword_with_limit_and_offset', via: :get
+  match '/searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword', to:
+         'searches#json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id', via: :get
   #--------------------------
   # end Searches contract
   #--------------------------
@@ -209,7 +215,11 @@ SampleApp::Application.routes.draw do
   match '/friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
          'friend_requests#json_destroy_friend_request_by_user_id_and_user_id_requested', via: :delete
 
+  match '/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/:user_id', to:
+         'friend_requests#json_index_friend_request_make_from_your_friend_to_you_by_user_id', via: :get
 
+
+  #json_index_friend_request_make_from_your_friend_to_you_by_user_id
   #**************************
   # end FriendRequest Contract
   #**************************
@@ -224,8 +234,11 @@ SampleApp::Application.routes.draw do
          'friends#json_destroy_friend_by_user_id_and_user_id_friend', via: :delete
 
   match '/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id_accept/:user_id_request', to:
-      'friends#json_create_friend_by_user_id_accept_and_user_id_request', via: :post
+         'friends#json_create_friend_by_user_id_accept_and_user_id_request', via: :post
 
+
+  match '/friends/json/index_friend_by_user_id/:user_id', to:
+          'friends#json_index_friend_by_user_id', via: :get
 
   #**************************
   # end Friend Contract
@@ -234,6 +247,31 @@ SampleApp::Application.routes.draw do
 
 
 
+  #**************************
+  # start UsersGallery Contract
+  #**************************
+
+  match '/users_galleries/json/create_users_gallery_by_user_id/:user_id', to:
+         'users_galleries#json_create_users_gallery_by_user_id', via: :post
+
+  #**************************
+  # end UsersGallery Contract
+  #**************************
+
+
+  #**************************
+  # start Feedback Contract
+  #**************************
+
+  match '/feedbacks/json/create_feedback', to:
+         'feedbacks#json_create_feedback', via: :post
+
+  #**************************
+  # end Feedback Contract
+  #**************************
+
+
+  #/feedbacks/json_create_feedback
 
   #get "users/new"
 

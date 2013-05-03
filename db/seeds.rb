@@ -23,6 +23,8 @@ require_relative 'seeds/seeds_bookmarks'
 require_relative 'seeds/seeds_bookmarks_images'
 
 require_relative 'seeds/seeds_reset_sequence'
+require_relative 'seeds/seeds_notification'
+
 
 
 
@@ -44,7 +46,7 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #DB data
 #https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE&usp=sharing
 #
-  ####Items
+  ###Items
 ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[4]
 SeedItemsModule.InsertItems(ws)
 
@@ -74,15 +76,18 @@ SeedBookmarkModule.InsertBookmarks(ws)
 #######Bundle_bookmarks table
 ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[0]
   SeedBundleModule.InsertBundlesBookmarks(ws)
-#
-##
-#
+
+#######Notification table
+ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[7]
+SeedNotificationModule.InsertNotification(ws)
+
+
 #
 SeedResetSequence.ResetSequenceOnPostgreDb
 #
 
-
-## this is only one time to transfer the images
+#Don't use it
+## this is only one time to transfer the images to the project
 #   SeedThemeImagesModule.transfer_themes_image
    #SeedBundleImagesModule.transfer_bundles_image
    #SeedItemsImagesModule.transfer_items_image_main

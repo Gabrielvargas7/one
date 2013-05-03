@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502090806) do
+ActiveRecord::Schema.define(:version => 20130503171040) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(:version => 20130502090806) do
   add_index "bundles_bookmarks", ["id"], :name => "index_bundles_bookmarks_on_id"
   add_index "bundles_bookmarks", ["item_id"], :name => "index_bundles_bookmarks_on_item_id"
 
+  create_table "feedbacks", :force => true do |t|
+    t.text     "description"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "friend_requests", :force => true do |t|
     t.integer  "user_id"
     t.integer  "user_id_requested"
@@ -114,6 +123,14 @@ ActiveRecord::Schema.define(:version => 20130502090806) do
   add_index "items_designs", ["item_id"], :name => "index_items_designs_on_item_id"
   add_index "items_designs", ["name"], :name => "index_items_designs_on_name"
 
+  create_table "notifications", :force => true do |t|
+    t.string   "name"
+    t.string   "image_name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "themes", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -135,6 +152,7 @@ ActiveRecord::Schema.define(:version => 20130502090806) do
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
     t.string   "username"
+    t.string   "image_name"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"
@@ -157,6 +175,13 @@ ActiveRecord::Schema.define(:version => 20130502090806) do
   add_index "users_bookmarks", ["position"], :name => "index_users_bookmarks_on_position"
   add_index "users_bookmarks", ["user_id"], :name => "index_users_bookmarks_on_user_id"
 
+  create_table "users_galleries", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "image_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users_items_designs", :force => true do |t|
     t.integer  "user_id"
     t.integer  "items_design_id"
@@ -168,6 +193,14 @@ ActiveRecord::Schema.define(:version => 20130502090806) do
   add_index "users_items_designs", ["id"], :name => "index_users_items_designs_on_id"
   add_index "users_items_designs", ["items_design_id"], :name => "index_users_items_designs_on_items_design_id"
   add_index "users_items_designs", ["user_id"], :name => "index_users_items_designs_on_user_id"
+
+  create_table "users_notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.string   "notified",        :default => "y", :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "users_themes", :force => true do |t|
     t.integer  "user_id"

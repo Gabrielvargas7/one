@@ -1,0 +1,24 @@
+// controller  ->  FeedbacksController
+// method type ->  post
+// method name ->  json_create_feedback
+
+// routes      ->
+
+
+//Description
+            //# POST set new feedback - all option are optional
+            //# POST /feedbacks/json_create_feedback
+            //# POST /feedbacks/json_create_feedback.json
+            //# Form Parameters:
+            //#                :description
+            //#                :email   (optional)
+            //#                :name    (optional)
+            //#                :user_id (optional)
+            //Return head
+            // success    ->  head  201 create
+
+
+// back_end   :done
+// front_end :working
+
+{"created_at":"2013-05-03T17:04:29Z","description":"hi, I think is good one","email":"yo@yo","id":8,"name":"yoyoyyo","updated_at":"2013-05-03T17:04:29Z","user_id":11}

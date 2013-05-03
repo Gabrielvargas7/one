@@ -1,0 +1,180 @@
+// controller  ->  SearchesController
+// method type ->  get
+// method name ->  json_index_searches_user_name_by_search_values
+
+
+// routes      ->
+
+
+//Description
+            //# GET get user that was found by the keyword with limit and offset(start row)
+            //# /searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword
+            //# /searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/206/10/0/gabriel var.json
+            //#Return head
+            //#success    ->  head  200 OK
+
+// back_end   :done
+// front_end :working
+
+[
+    {
+        "id": 208,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Michaela Zieme IV"
+    },
+    {
+        "id": 206,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Example User"
+    },
+    {
+        "id": 207,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Dr. Deontae Emmerich"
+    },
+    {
+        "id": 209,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Nat Kuphal"
+    },
+    {
+        "id": 210,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Ms. Danielle Hilll"
+    },
+    {
+        "id": 211,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Sadye Cormier"
+    },
+    {
+        "id": 212,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Mrs. Leola Orn"
+    },
+    {
+        "id": 213,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Alisha Murazik"
+    },
+    {
+        "id": 214,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Van Strosin"
+    },
+    {
+        "id": 215,
+        "image_name": {
+            "url": "/images/fallback/user/default_user.png",
+            "small": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "tiny": {
+                "url": "/images/fallback/user/default_user.png"
+            },
+            "toolbar": {
+                "url": "/images/fallback/user/default_user.png"
+            }
+        },
+        "name": "Evelyn Lang"
+    }
+]
