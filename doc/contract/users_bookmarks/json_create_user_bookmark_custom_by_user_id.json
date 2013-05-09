@@ -1,0 +1,22 @@
+//# POST create a custom bookmark
+//#  /users_bookmarks/json/create_user_bookmark_custom_by_user_id/:user_id'
+//#  /users_bookmarks/json/create_user_bookmark_custom_by_user_id/1000.json
+//# Content-Type : multipart/form-data
+//#  Form Parameters:
+//#             :bookmark_url,
+//#             :bookmarks_category_id,
+//#             :image_name, (full path)
+//#             :item_id,
+//#             :title
+//#             :position
+//#Return ->
+//#success    ->  head  200 ok
+//
+
+
+{
+    "user_bookmark":
+            {"bookmark_id":16508,"created_at":"2013-05-06T16:47:07Z","id":2248,"position":12,"updated_at":"2013-05-06T16:47:07Z","user_id":206},
+    "bookmark":
+            {"bookmark_url":"http%3A%2F%2Fwww.univision.com%2F","bookmarks_category_id":301,"created_at":"2013-05-06T16:47:07Z","description":null,"i_frame":"y","id":16508,"image_name":{"url":"/uploads/bookmark/image_name/16508/images.jpg","small":{"url":"/uploads/bookmark/image_name/16508/small_images.jpg"},"tiny":{"url":"/uploads/bookmark/image_name/16508/tiny_images.jpg"},"toolbar":{"url":"/uploads/bookmark/image_name/16508/toolbar_images.jpg"}},"image_name_desc":{"url":"/images/fallback/bookmark/default_bookmark.png","small":{"url":"/images/fallback/bookmark/default_bookmark.png"},"tiny":{"url":"/images/fallback/bookmark/default_bookmark.png"},"toolbar":{"url":"/images/fallback/bookmark/default_bookmark.png"}},"item_id":3,"title":"%22uni%22","updated_at":"2013-05-06T16:47:07Z"}
+}

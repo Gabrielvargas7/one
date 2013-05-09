@@ -131,10 +131,82 @@ class FriendsController < ApplicationController
 
 
     end
-  end
+    end
 
-  #GET get all suggestions  friend
-  def json_index_suggestions_by_user_id
+    # GET get all user friend by limit and offset
+    # Limit is the number of user that you want it
+    # Offset is where you want to start
+    #  /friends/json/index_friend_by_user_id_by_limit_by_offset/:user_id/:limit/:offset'
+    #  /friends/json/index_friend_by_user_id_by_limit_by_offset/206/10/0.json'
+    #  //# success    ->  head  200 OK
+    def json_index_friend_by_user_id_by_limit_by_offset
+      respond_to do |format|
+
+
+        if User.exists?(id:params[:user_id])
+
+
+          @friends = Friend.where('user_id = ?',params[:user_id]).limit(params[:limit]).offset(params[:offset])
+
+          @user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
+          #format.json { render json: @friends }
+          format.json { render json: @user_friend }
+
+        else
+          format.json { render json:'not found user_id ',status: :not_found }
+        end
+
+
+
+      end
+    end
+
+
+
+
+
+    # GET get all user friend by limit and offset
+    # Limit is the number of user that you want it
+    # Offset is where you want to start
+    #  /friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/:user_id/:limit/:offset'
+    #  /friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/206/10/0.json'
+    #  //# success    ->  head  200 OK
+
+  def json_index_friends_suggestion_by_user_id_by_limit_by_offset
+
+    user_id = params[:user_id]
+    limit   = params[:limit]
+    offset  = params[:offset]
+
+    respond_to do |format|
+
+      if User.exists?(id:user_id)
+            sql = "SELECT user_id_friend, count(user_id_friend) suggestion_friend
+                    FROM friends
+                    WHERE user_id  in (select user_id_friend from friends where user_id="+user_id.to_s+") and
+                        user_id_friend not in (select user_id_friend from friends where user_id="+user_id.to_s+") and
+                        user_id_friend not in ("+user_id.to_s+")
+                    group by user_id_friend
+                    order by suggestion_friend desc limit "+limit+" offset "+offset
+
+
+              @suggestions = Friend.find_by_sql(sql)
+
+              @suggestions_friends = Hash.new
+              @suggestions.each  do |i|
+                    #@user_items_design = UsersItemsDesign.new(user_id:params[:user_id],items_design_id:i.id,hide:'no')
+                    #@suggestions_friends[i.user_id_friend] = User.find(i.user_id_friend)
+
+                @suggestions_friends[i.user_id_friend] = User.select('image_name,name').where(id:i.user_id_friend)
+
+              end
+              format.json { render json: @suggestions_friends }
+
+      else
+        format.json { render json:'not found user_id ',status: :not_found }
+      end
+    end
+
 
 
   end

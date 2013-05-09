@@ -112,6 +112,120 @@ class UsersController < ApplicationController
   end
 
 
+  # GET get user profile
+  #  /users/json/show_user_profile_by_user_id/:user_id
+  #  /users/json/show_user_profile_by_user_id/206.json
+  #  /# success    ->  head  200 OK
+
+  def json_show_user_profile_by_user_id
+    @user = User.find(params[:user_id])
+
+    respond_to do |format|
+      format.json { render json: @user.as_json(only:[:name,:email,:username,:image_name])  }
+    end
+  end
+
+  # POST set full bundle to the user
+  #  set theme, items design to the users, and delete the old one
+  #  /users/json/create_user_full_bundle_by_user_id_and_bundle_id/:user_id/:bundle_id
+  #  /users/json/create_user_full_bundle_by_user_id_and_bundle_id/206/10.json
+  #  /# success    ->  head  200 OK
+
+  def json_create_user_full_bundle_by_user_id_and_bundle_id
+
+
+    respond_to do |format|
+
+      if User.exists?(id:params[:user_id])
+         if Bundle.exists?(id:params[:bundle_id])
+
+            @user = User.find(params[:user_id])
+            @bundle = Bundle.find(params[:bundle_id])
+            @items_design = ItemsDesign.where('bundle_id = ?',params[:bundle_id]).all
+
+            # delete any item design of the user
+            # delete the theme of the user
+            # create the new items_design for the user
+            # create the new theme
+            ActiveRecord::Base.transaction do
+              begin
+
+                UsersItemsDesign.where("user_id = ?",params[:user_id]).delete_all
+                UsersTheme.where("user_id = ?",params[:user_id]).delete_all
+
+                @user_theme = UsersTheme.new(user_id:params[:user_id],theme_id:@bundle.theme_id)
+                @user_theme.save
+
+                @items_design.each  do |i|
+
+                  @user_items_design = UsersItemsDesign.new(user_id:params[:user_id],items_design_id:i.id,hide:'no')
+                  @user_items_design.save
+                end
+                @users_items_design = UsersItemsDesign.where("user_id = ?",params[:user_id]).all
+
+                #format.json { head :no_content }
+                format.json { render json: {user_theme: @user_theme, users_items_design:@users_items_design}, status: :ok }
+
+              rescue
+                format.json { render json: 'failure creating new full bundle for the user', status: :unprocessable_entity }
+                raise ActiveRecord::Rollback
+              end
+
+            end
+
+         else
+           format.json { render json: 'not found bundle id' , status: :not_found }
+         end
+      else
+        format.json { render json: 'not found user id' , status: :not_found }
+      end
+    end
+
+  end
+
+
+  # PUT insert user image
+  #/users/json/update_users_image_profile_by_user_id/:user_id
+  #/users/json/update_users_image_profile_by_user_id/206.json
+  # Content-Type : multipart/form-data
+  # Form Parameters:
+  #               :image_name (full path)
+  #Return ->
+  #success    ->  head  201 create
+  def json_update_users_image_profile_by_user_id
+
+    respond_to do |format|
+      #validation of the user_id
+
+      if User.exists?(id: params[:user_id])
+
+        @user = User.find(params[:user_id])
+
+        if @user.update_attribute(:image_name, params[:image_name])
+          format.json { render json: @user.as_json(only:[:id,:image_name,:name] ), status: :ok }
+        else
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      else
+        format.json { render json: 'user not found' , status: :not_found }
+      end
+
+    end
+
+  end
+
+
+  #if @theme.update_attributes(params[:theme])
+  #  format.html { redirect_to @theme, notice: 'Theme was successfully updated.' }
+  #  format.json { head :no_content }
+  #else
+  #  format.html { render action: "edit" }
+  #  format.json { render json: @theme.errors, status: :unprocessable_entity }
+  #end
+
+
+
+
   #***********************************
   # End Json methods for the room users
   #***********************************

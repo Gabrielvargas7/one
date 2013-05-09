@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: bookmarks_categories
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  item_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class BookmarksCategory < ActiveRecord::Base
   attr_accessible :item_id, :name
 

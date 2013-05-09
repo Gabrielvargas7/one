@@ -84,7 +84,9 @@ module SeedBookmarkModule
              b.id = ws[row,3]
              b.bookmark_url = ws[row,4]
              b.title = ws[row,5]
-             b.i_frame= ws[row,6]
+             iframe = ws[row,6]
+             iframe.downcase!
+             b.i_frame = iframe.chars.first
 
              # the image_name_desc can be nil
              if ws[row,8].blank?

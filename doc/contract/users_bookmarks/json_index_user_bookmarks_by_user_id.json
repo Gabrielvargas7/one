@@ -23,7 +23,7 @@
         "bookmark_url": "http://www.stumbleupon.com",
         "bookmarks_category_id": 201,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 2001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/2001/stumbleupon.png",
@@ -91,7 +91,7 @@
         "bookmark_url": "http://www.nationalgeographic.com",
         "bookmarks_category_id": 305,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 3300,
         "image_name": {
             "url": "/uploads/bookmark/image_name/3300/nationalgeographic.png",
@@ -125,7 +125,7 @@
         "bookmark_url": "http://www.hypebeast.com",
         "bookmarks_category_id": null,
         "description": null,
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 102,
         "image_name": {
             "url": "/uploads/bookmark/image_name/102/hypebeast.png",
@@ -159,7 +159,7 @@
         "bookmark_url": "http://www.cnn.com",
         "bookmarks_category_id": 401,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 4001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/4001/cnn.png",
@@ -193,7 +193,7 @@
         "bookmark_url": "http://www.tripadvisor.com",
         "bookmarks_category_id": 505,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 5402,
         "image_name": {
             "url": "/uploads/bookmark/image_name/5402/tripadvisor.png",
@@ -227,7 +227,7 @@
         "bookmark_url": "http://www.lyst.com",
         "bookmarks_category_id": 1601,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 16001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/16001/lyst.png",
@@ -261,7 +261,7 @@
         "bookmark_url": "http://www.ebay.com",
         "bookmarks_category_id": 601,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 6101,
         "image_name": {
             "url": "/uploads/bookmark/image_name/6101/ebay.png",
@@ -295,7 +295,7 @@
         "bookmark_url": "http://www.bebo.com",
         "bookmarks_category_id": 701,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 7004,
         "image_name": {
             "url": "/uploads/bookmark/image_name/7004/bebo.png",
@@ -329,7 +329,7 @@
         "bookmark_url": "http://www.wikipedia.org",
         "bookmarks_category_id": 801,
         "description": "Its 24 million articles, over 4.1 million in the English Wikipedia, are written collaboratively by volunteers around the world.",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 8001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/8001/wikipedia.png",
@@ -363,7 +363,7 @@
         "bookmark_url": "http://www.grooveshark.com",
         "bookmarks_category_id": 901,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 9001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/9001/grooveshark.png",
@@ -397,7 +397,7 @@
         "bookmark_url": "http://www.vimeo.com",
         "bookmarks_category_id": 101,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 1010,
         "image_name": {
             "url": "/uploads/bookmark/image_name/1010/vimeo.png",
@@ -431,7 +431,7 @@
         "bookmark_url": "http://www.livejournal.com",
         "bookmarks_category_id": 1001,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 10001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/10001/livejournal.png",
@@ -465,7 +465,7 @@
         "bookmark_url": "http://www.evernote.com",
         "bookmarks_category_id": 1101,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 11001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/11001/evernote.png",
@@ -499,7 +499,7 @@
         "bookmark_url": "http://www.bing.com",
         "bookmarks_category_id": 1201,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 12003,
         "image_name": {
             "url": "/uploads/bookmark/image_name/12003/bing.png",
@@ -533,7 +533,7 @@
         "bookmark_url": "http://beta.skype.com/en/",
         "bookmarks_category_id": 1304,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 13305,
         "image_name": {
             "url": "/uploads/bookmark/image_name/13305/skype.png",
@@ -601,7 +601,7 @@
         "bookmark_url": "http://www.sports.yahoo.com",
         "bookmarks_category_id": 1401,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 14005,
         "image_name": {
             "url": "/uploads/bookmark/image_name/14005/yahoosports.png",
@@ -635,7 +635,7 @@
         "bookmark_url": "http://www.weather.com/theweatherchannel",
         "bookmarks_category_id": 1501,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 15001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/15001/weather.png",
@@ -703,7 +703,7 @@
         "bookmark_url": "http://www.freeridegames.com",
         "bookmarks_category_id": 202,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 2113,
         "image_name": {
             "url": "/uploads/bookmark/image_name/2113/freeridegames.png",

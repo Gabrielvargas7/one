@@ -2,11 +2,16 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
+#  username        :string(255)
+#  image_name      :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -20,6 +25,8 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
   before_create :get_username
+  after_create :create_user_notification, :send_signup_user_email
+
 
 
   validates :name,
@@ -55,6 +62,8 @@ class User < ActiveRecord::Base
     end
 
 
+
+    # Fix the username for the url
     def get_username
 
       my_username = name
@@ -75,10 +84,22 @@ class User < ActiveRecord::Base
 
       self.username = username_split+'-'+random_number1.to_s+"-"+random_number2.to_s
 
+    end
+
+    # create the user notification on the table
+    def create_user_notification
+      UsersNotification.create(user_id:self.id)
+    end
+
+
+    # Send email after the user sign up
+    def send_signup_user_email
+
+        UsersMailer.deliver_signup_email(self)
 
     end
 
 
 
-
 end
+

@@ -7,7 +7,9 @@
     <th>Bundles Id</th>
     <th>Name</th>
     <th>Description</th>
-    <th>bundle Image name</th>
+    <th>Bundle Image name</th>
+    <th>Bundle Image name Set</th>
+
     <th>Theme id</th>
     <th>Theme name</th>
     <th>Theme image name</th>
@@ -23,6 +25,8 @@
     <td><%= bundle.name %></td>
     <td><%= bundle.description %></td>
     <td> <%= image_tag bundle.image_name.url(:small).to_s %> </td>
+    <td> <%= image_tag bundle.image_name_set.url(:small).to_s %> </td>
+
 
     <%  if bundle.theme.nil? %>
         <td></td>

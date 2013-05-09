@@ -36,7 +36,14 @@
         <%= f.file_field  :image_name %>
       </div>
 
-      <div class="field">
+        <div class="field">
+          <%= f.label :image_name_set %><br />
+          <%= f.file_field  :image_name_set %>
+        </div>
+
+
+
+        <div class="field">
         <%= f.label :theme_id %><br />
           <%= f.collection_select :theme_id, Theme.all, :id, :id_and_theme , :prompt => true  %>
       </div>

@@ -1,0 +1,17 @@
+//# GET get notification by user id
+//# users_notifications/json/show_user_notification_by_user/:user_id'
+//# users_notifications/json/show_user_notification_by_user/1.json
+//#Return ->
+//#success    ->  head  200 OK
+
+{
+    "description": null,
+    "id": 6,
+    "image_name": {
+        "url": "/uploads/notification/image_name/6/SetHeader.png",
+        "small": {
+            "url": "/uploads/notification/image_name/6/small_SetHeader.png"
+        }
+    },
+    "name": "item"
+}

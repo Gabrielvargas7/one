@@ -66,6 +66,7 @@ class BundlesController < ApplicationController
   def update
     @bundle = Bundle.find(params[:id])
 
+
     respond_to do |format|
       if @bundle.update_attributes(params[:bundle])
         format.html { redirect_to @bundle, notice: 'Bundle was successfully updated.' }

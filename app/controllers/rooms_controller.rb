@@ -43,7 +43,8 @@ class RoomsController < ApplicationController
                     joins(:users_items_designs).
                     where('user_id = ?',@user.id)
 
-                  format.json { render json: {user: @user,
+                  format.json { render json: {
+                      user: @user,
                                               user_gallery: @user_gallery,
                                               user_theme: @user_theme,
                                               user_items_designs: @user_items_designs.as_json(include: {item: {only: [:name, :id, :x, :y, :z, :clickable, :height, :width]}})

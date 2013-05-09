@@ -1,0 +1,17 @@
+{
+    "email": "test@rooms.org",
+    "image_name": {
+        "url": "/images/fallback/user/default_user.png",
+        "small": {
+            "url": "/images/fallback/user/default_user.png"
+        },
+        "tiny": {
+            "url": "/images/fallback/user/default_user.png"
+        },
+        "toolbar": {
+            "url": "/images/fallback/user/default_user.png"
+        }
+    },
+    "name": "Example User",
+    "username": "gabriel-vargas-jime2"
+}

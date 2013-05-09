@@ -1,0 +1,44 @@
+//# GET get all user friend by limit and offset
+//# Limit is the number of user that you want it
+//# Offset is where you want to start
+//#  /friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/:user_id/:limit/:offset'
+//#  /friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/206/10/0.json'
+//#  //# success    ->  head  200 OK
+//
+
+{
+    "209": [
+        {
+            "image_name": {
+                "url": "/images/fallback/user/default_user.png",
+                "small": {
+                    "url": "/images/fallback/user/default_user.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/user/default_user.png"
+                },
+                "toolbar": {
+                    "url": "/images/fallback/user/default_user.png"
+                }
+            },
+            "name": "Nat Kuphal"
+        }
+    ],
+    "210": [
+        {
+            "image_name": {
+                "url": "/images/fallback/user/default_user.png",
+                "small": {
+                    "url": "/images/fallback/user/default_user.png"
+                },
+                "tiny": {
+                    "url": "/images/fallback/user/default_user.png"
+                },
+                "toolbar": {
+                    "url": "/images/fallback/user/default_user.png"
+                }
+            },
+            "name": "Ms. Danielle Hilll"
+        }
+    ]
+}

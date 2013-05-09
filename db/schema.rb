@@ -11,19 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503171040) do
+ActiveRecord::Schema.define(:version => 20130507095030) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
     t.integer  "item_id"
     t.text     "bookmark_url"
     t.string   "title"
-    t.string   "i_frame"
+    t.string   "i_frame",               :default => "y"
     t.string   "image_name"
     t.string   "image_name_desc"
     t.text     "description"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "bookmarks", ["bookmark_url"], :name => "index_bookmarks_on_bookmark_url"
@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(:version => 20130503171040) do
     t.text     "description"
     t.integer  "theme_id"
     t.string   "image_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "image_name_set"
   end
 
   add_index "bundles", ["id"], :name => "index_bundles_on_id"
@@ -127,8 +128,10 @@ ActiveRecord::Schema.define(:version => 20130503171040) do
     t.string   "name"
     t.string   "image_name"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
+    t.integer  "position"
   end
 
   create_table "themes", :force => true do |t|
@@ -196,7 +199,7 @@ ActiveRecord::Schema.define(:version => 20130503171040) do
 
   create_table "users_notifications", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "notification_id"
+    t.integer  "notification_id", :default => 0
     t.string   "notified",        :default => "y", :null => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false

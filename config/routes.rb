@@ -39,7 +39,7 @@ SampleApp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact'
 
   #main page
-  match '/room/:username', to: 'rooms#room', via: :get
+  match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
 
 
 
@@ -62,10 +62,12 @@ SampleApp::Application.routes.draw do
  #**************************
 
   match 'themes/json/index', to:
-        'themes#json_index', via: :get
+        'themes#json_index', via: :get, as:
+        :themes_json_index
 
   match 'themes/json/show/:id', to:
-        'themes#json_show', via: :get
+        'themes#json_show', via: :get ,as:
+        :themes_json_show
 
 
   #--------------------------
@@ -78,7 +80,8 @@ SampleApp::Application.routes.draw do
   #  start Rooms contract
   #**************************
   match '/rooms/json/show_room_by_user_id/:user_id', to:
-         'rooms#json_show_room_by_user_id', via: :get
+         'rooms#json_show_room_by_user_id', via: :get ,as:
+         :rooms_json_show_room_by_user_id
   #--------------------------
   # end Rooms contract
   #--------------------------
@@ -88,7 +91,8 @@ SampleApp::Application.routes.draw do
   #  start Bundles contract
   #**************************
   match '/bundles/json/index_bundles', to:
-         'bundles#json_index_bundles', via: :get
+         'bundles#json_index_bundles', via: :get , as:
+         :bundles_json_index_bundles
   #--------------------------
   # end Bundles contract
   #--------------------------
@@ -98,7 +102,9 @@ SampleApp::Application.routes.draw do
   #  start Searches contract
   #**************************
   match '/searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword', to:
-         'searches#json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id', via: :get
+         'searches#json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword', via: :get, as:
+         :searches_json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword
+
   #--------------------------
   # end Searches contract
   #--------------------------
@@ -109,7 +115,9 @@ SampleApp::Application.routes.draw do
   #**************************
 
   match '/items_designs/json/index_items_designs_by_item_id/:item_id', to:
-         'items_designs#json_index_items_designs_by_item_id', via: :get
+         'items_designs#json_index_items_designs_by_item_id', via: :get  , as:
+         :items_designs_json_index_items_designs_by_item_id
+
 
   #--------------------------
   # end ItemsDesigns Contract
@@ -123,6 +131,18 @@ SampleApp::Application.routes.draw do
 
   match '/users/json/update_username_by_user_id/:user_id', to:
          'users#json_update_username_by_user_id', via: :put
+
+  match '/users/json/show_user_profile_by_user_id/:user_id', to:
+         'users#json_show_user_profile_by_user_id', via: :get , as:
+         :users_json_show_user_profile_by_user_id
+
+
+  match '/users/json/create_user_full_bundle_by_user_id_and_bundle_id/:user_id/:bundle_id', to:
+         'users#json_create_user_full_bundle_by_user_id_and_bundle_id', via: :post
+
+  match '/users/json/update_users_image_profile_by_user_id/:user_id', to:
+         'users#json_update_users_image_profile_by_user_id', via: :put
+
 
   #--------------------------
   # end Users Contract
@@ -138,7 +158,9 @@ SampleApp::Application.routes.draw do
          'users_themes#json_update_user_theme_by_user_id', via: :put
 
   match '/users_themes/json/show_user_theme_by_user_id/:user_id', to:
-         'users_themes#json_show_user_theme_by_user_id', via: :get
+         'users_themes#json_show_user_theme_by_user_id', via: :get , as:
+         :users_themes_json_show_user_theme_by_user_id
+
 
 
   #--------------------------
@@ -158,10 +180,14 @@ SampleApp::Application.routes.draw do
          'users_items_designs#json_update_hide_user_items_design_by_user_id_and_items_design_id', via: :put
 
   match '/users_items_designs/json/index_user_items_designs_by_user_id/:user_id', to:
-         'users_items_designs#json_index_user_items_designs_by_user_id', via: :get
+         'users_items_designs#json_index_user_items_designs_by_user_id', via: :get, as:
+         :users_items_designs_json_index_user_items_designs_by_user_id
+
 
   match '/users_items_designs/json/show_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
-         'users_items_designs#json_show_user_items_design_by_user_id_and_items_design_id', via: :get
+         'users_items_designs#json_show_user_items_design_by_user_id_and_items_design_id', via: :get, as:
+         :users_items_designs_json_show_user_items_design_by_user_id_and_items_design_id
+
 
 
   #--------------------------
@@ -174,10 +200,15 @@ SampleApp::Application.routes.draw do
   #**************************
 
     match '/users_bookmarks/json/index_user_bookmarks_by_user_id/:user_id', to:
-           'users_bookmarks#json_index_user_bookmarks_by_user_id', via: :get
+           'users_bookmarks#json_index_user_bookmarks_by_user_id', via: :get, as:
+           :users_bookmarks_json_index_user_bookmarks_by_user_id
+
+
 
     match '/users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/:user_id/:item_id', to:
-           'users_bookmarks#json_index_user_bookmarks_by_user_id_and_item_id', via: :get
+           'users_bookmarks#json_index_user_bookmarks_by_user_id_and_item_id', via: :get, as:
+           :users_bookmarks_json_index_user_bookmarks_by_user_id_and_item_id
+
 
 
     match '/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/:user_id/:bookmark_id/:item_id', to:
@@ -185,6 +216,11 @@ SampleApp::Application.routes.draw do
 
     match '/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/:user_id/:bookmark_id/:position', to:
            'users_bookmarks#json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position', via: :delete
+
+    match '/users_bookmarks/json/create_user_bookmark_custom_by_user_id/:user_id', to:
+           'users_bookmarks#json_create_user_bookmark_custom_by_user_id', via: :post
+
+
 
 
   #--------------------------
@@ -197,7 +233,9 @@ SampleApp::Application.routes.draw do
   #**************************
 
   match 'bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/:item_id', to:
-        'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_by_item_id', via: :get
+        'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_by_item_id', via: :get, as:
+        :bookmarks_categories_json_index_bookmarks_categories_with_bookmarks_by_item_id
+
 
 
   #**************************
@@ -216,7 +254,9 @@ SampleApp::Application.routes.draw do
          'friend_requests#json_destroy_friend_request_by_user_id_and_user_id_requested', via: :delete
 
   match '/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/:user_id', to:
-         'friend_requests#json_index_friend_request_make_from_your_friend_to_you_by_user_id', via: :get
+         'friend_requests#json_index_friend_request_make_from_your_friend_to_you_by_user_id', via: :get, as:
+         :friend_requests_json_index_friend_request_make_from_your_friend_to_you_by_user_id
+
 
 
   #json_index_friend_request_make_from_your_friend_to_you_by_user_id
@@ -238,7 +278,20 @@ SampleApp::Application.routes.draw do
 
 
   match '/friends/json/index_friend_by_user_id/:user_id', to:
-          'friends#json_index_friend_by_user_id', via: :get
+         'friends#json_index_friend_by_user_id', via: :get, as:
+         :friends_json_index_friend_by_user_id
+
+
+
+  match '/friends/json/index_friend_by_user_id_by_limit_by_offset/:user_id/:limit/:offset', to:
+         'friends#json_index_friend_by_user_id_by_limit_by_offset', via: :get, as:
+         :friends_json_index_friend_by_user_id_by_limit_by_offset
+
+
+  match '/friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/:user_id/:limit/:offset', to:
+         'friends#json_index_friends_suggestion_by_user_id_by_limit_by_offset', via: :get, as:
+         :friends_json_index_friends_suggestion_by_user_id_by_limit_by_offset
+
 
   #**************************
   # end Friend Contract
@@ -270,8 +323,27 @@ SampleApp::Application.routes.draw do
   # end Feedback Contract
   #**************************
 
+  #**************************
+  # start user notification Contract
+  #**************************
 
-  #/feedbacks/json_create_feedback
+  match '/users_notifications/json/show_user_notification_by_user/:user_id', to:
+         'users_notifications#json_show_user_notification_by_user', via: :get, as:
+         :users_notifications_json_show_user_notification_by_user
+
+
+  match '/users_notifications/json/update_user_notification_to_notified_by_user/:user_id', to:
+         'users_notifications#json_update_user_notification_to_notified_by_user', via: :put
+
+  #**************************
+  # end user notification Contract
+  #**************************
+
+
+
+
+
+
 
   #get "users/new"
 

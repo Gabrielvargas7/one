@@ -30,7 +30,7 @@
                 "bookmark_url": "http://www.stumbleupon.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2001,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2001/stumbleupon.png",
@@ -63,7 +63,7 @@
                 "bookmark_url": "http://www.flixster.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2002,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2002/flixster.png",
@@ -96,7 +96,7 @@
                 "bookmark_url": "http://www.thefancy.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2003,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2003/fancy.png",
@@ -129,7 +129,7 @@
                 "bookmark_url": "http://www.killsometime.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2004,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2004/killsometime.png",
@@ -162,7 +162,7 @@
                 "bookmark_url": "http://www.barstoolsports.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2005,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2005/barstoolsports.png",
@@ -195,7 +195,7 @@
                 "bookmark_url": "http://www.fmylife.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2006,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2006/fml.png",
@@ -228,7 +228,7 @@
                 "bookmark_url": "http://www.metacafe.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2007,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2007/metacafe.png",
@@ -261,7 +261,7 @@
                 "bookmark_url": "http://www.jokesgallery.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2008,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2008/jokesgallery.png",
@@ -294,7 +294,7 @@
                 "bookmark_url": "http://www.theonion.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2009,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2009/theonion.png",
@@ -327,7 +327,7 @@
                 "bookmark_url": "http://www.funnytypos.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2010,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2010/typos.png",
@@ -360,7 +360,7 @@
                 "bookmark_url": "http://www.cracked.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2012,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2012/cracked.png",
@@ -393,7 +393,7 @@
                 "bookmark_url": "http://www.juliasmexicocity.typepad.com/safetygraphics/",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2013,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2013/safety.png",
@@ -426,7 +426,7 @@
                 "bookmark_url": "http://www.answerbag.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2014,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2014/answerbag.png",
@@ -459,7 +459,7 @@
                 "bookmark_url": "http://www.patenlytsilly.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2015,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2015/patentlysilly.png",
@@ -492,7 +492,7 @@
                 "bookmark_url": "http://www.textsfromlastnight.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2016,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2016/textsfromlastnight.png",
@@ -525,7 +525,7 @@
                 "bookmark_url": "http://www.mono-1.com/monoface/main.html",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2017,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2017/monoface.png",
@@ -558,7 +558,7 @@
                 "bookmark_url": "http://www.awkwardfamilyphotos.com",
                 "bookmarks_category_id": 201,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2018,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2018/awkwardfamilyphotos.png",
@@ -598,7 +598,7 @@
                 "bookmark_url": "http://www.zynga.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2101,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2101/zynga.png",
@@ -631,7 +631,7 @@
                 "bookmark_url": "http://www.pogo.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2102,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2102/pogo.png",
@@ -664,7 +664,7 @@
                 "bookmark_url": "http://games.yahoo.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2103,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2103/yahoogames.png",
@@ -697,7 +697,7 @@
                 "bookmark_url": "http://www.y8.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2122,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2122/y8.png",
@@ -730,7 +730,7 @@
                 "bookmark_url": "http://www.gamespot.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2104,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2104/gamespot.png",
@@ -763,7 +763,7 @@
                 "bookmark_url": "http://www.miniclip.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2105,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2105/miniclip.png",
@@ -796,7 +796,7 @@
                 "bookmark_url": "http://www.addictinggames.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2106,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2106/addictinggames.png",
@@ -829,7 +829,7 @@
                 "bookmark_url": "http://new.games.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2107,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2107/games.png",
@@ -862,7 +862,7 @@
                 "bookmark_url": "http://www.gamehouse.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2108,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2108/gamehouse.png",
@@ -895,7 +895,7 @@
                 "bookmark_url": "http://www.ign.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2109,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2109/ign.png",
@@ -928,7 +928,7 @@
                 "bookmark_url": "http://www.freegamesonline.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2110,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2110/fog.png",
@@ -961,7 +961,7 @@
                 "bookmark_url": "http://www.shockwave.com/home.jsp",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2111,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2111/shockwave.png",
@@ -994,7 +994,7 @@
                 "bookmark_url": "http://www.iplay.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2112,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2112/iplay.png",
@@ -1027,7 +1027,7 @@
                 "bookmark_url": "http://www.freeridegames.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2113,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2113/freeridegames.png",
@@ -1060,7 +1060,7 @@
                 "bookmark_url": "http://www.bored.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2114,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2114/bored.png",
@@ -1093,7 +1093,7 @@
                 "bookmark_url": "http://www.iup.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2115,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2115/1up.png",
@@ -1126,7 +1126,7 @@
                 "bookmark_url": "http://www.joystiq.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2116,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2116/joystiq.png",
@@ -1159,7 +1159,7 @@
                 "bookmark_url": "http://www.agame.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2117,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2117/agame.png",
@@ -1192,7 +1192,7 @@
                 "bookmark_url": "http://www.plonga.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2118,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2118/plonga.png",
@@ -1225,7 +1225,7 @@
                 "bookmark_url": "http://www.zylom.com/us/en",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2119,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2119/zylom.png",
@@ -1258,7 +1258,7 @@
                 "bookmark_url": "http://www.bigfishames.com/",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "No",
+                "i_frame": "n",
                 "id": 2120,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2120/bigfishgames.png",
@@ -1291,7 +1291,7 @@
                 "bookmark_url": "http://www.popcap.com",
                 "bookmarks_category_id": 202,
                 "description": "Description Coming Soon!",
-                "i_frame": "No",
+                "i_frame": "n",
                 "id": 2121,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2121/popcap.png",
@@ -1331,7 +1331,7 @@
                 "bookmark_url": "http://omg.yahoo.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2201,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2201/yahooomg.png",
@@ -1364,7 +1364,7 @@
                 "bookmark_url": "http://www.people.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2202,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2202/people.png",
@@ -1397,7 +1397,7 @@
                 "bookmark_url": "http://www.tmz.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2203,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2203/tmz.png",
@@ -1430,7 +1430,7 @@
                 "bookmark_url": "http://www.wonderwall.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2204,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2204/wonderwall.png",
@@ -1463,7 +1463,7 @@
                 "bookmark_url": "http://www.perezhilton.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2205,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2205/perezhilton.png",
@@ -1496,7 +1496,7 @@
                 "bookmark_url": "http://www.eonline.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2206,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2206/eonline.png",
@@ -1529,7 +1529,7 @@
                 "bookmark_url": "http://www.usmagazine.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2207,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2207/us.png",
@@ -1562,7 +1562,7 @@
                 "bookmark_url": "http://www.mediatakeout.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2208,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2208/mediatakeout.png",
@@ -1595,7 +1595,7 @@
                 "bookmark_url": "http://www.gawker.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2209,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2209/gawker.png",
@@ -1628,7 +1628,7 @@
                 "bookmark_url": "http://www.egotastic.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2210,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2210/egotastic.png",
@@ -1661,7 +1661,7 @@
                 "bookmark_url": "http://www.radaronline.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2211,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2211/radar.png",
@@ -1727,7 +1727,7 @@
                 "bookmark_url": "http://www.nypost.com/pagesix",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2213,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2213/pagesix.png",
@@ -1760,7 +1760,7 @@
                 "bookmark_url": "http://www.popsugar.com",
                 "bookmarks_category_id": 203,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2214,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2214/popsugar.png",
@@ -1793,7 +1793,7 @@
                 "bookmark_url": "http://www.rambler.ru",
                 "bookmarks_category_id": 203,
                 "description": "Rambler to the rescue",
-                "i_frame": "No",
+                "i_frame": "n",
                 "id": 2215,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2215/rambler.png",
@@ -1833,7 +1833,7 @@
                 "bookmark_url": "http://www.break.com",
                 "bookmarks_category_id": 204,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2301,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2301/break.png",
@@ -1866,7 +1866,7 @@
                 "bookmark_url": "http://www.collegehumor.com",
                 "bookmarks_category_id": 204,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2302,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2302/collegehumor.png",
@@ -1899,7 +1899,7 @@
                 "bookmark_url": "http://www.videobash.com",
                 "bookmarks_category_id": 204,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2303,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2303/videobash.png",
@@ -1932,7 +1932,7 @@
                 "bookmark_url": "http://www.thechive.com",
                 "bookmarks_category_id": 204,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2304,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2304/thechive.png",
@@ -1965,7 +1965,7 @@
                 "bookmark_url": "http://www.funnyordie.com",
                 "bookmarks_category_id": 204,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2305,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2305/funnyordie.png",
@@ -1998,7 +1998,7 @@
                 "bookmark_url": "http://www.comedycentral.com",
                 "bookmarks_category_id": 204,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2306,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2306/comedycentral.png",
@@ -2031,7 +2031,7 @@
                 "bookmark_url": "http://www.reddit.com/r/videos/",
                 "bookmarks_category_id": 204,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2307,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2307/reddit.png",
@@ -2064,7 +2064,7 @@
                 "bookmark_url": "http://www.vh1.com/celebrity/",
                 "bookmarks_category_id": 204,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2308,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2308/bestweekever.png",
@@ -2104,7 +2104,7 @@
                 "bookmark_url": "http://www.designtaxi.com",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2401,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2401/designtaxi.png",
@@ -2137,7 +2137,7 @@
                 "bookmark_url": "http://www.dezeen.com",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2402,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2402/dezeen.png",
@@ -2170,7 +2170,7 @@
                 "bookmark_url": "http://www.smashingmagazine.com",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2403,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2403/smashing.png",
@@ -2203,7 +2203,7 @@
                 "bookmark_url": "http://www.wallpaper.com",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2404,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2404/wallpaper.png",
@@ -2236,7 +2236,7 @@
                 "bookmark_url": "http://www.noupe.com",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2405,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2405/noupe.png",
@@ -2263,13 +2263,13 @@
                     }
                 },
                 "item_id": 1,
-                "title": "Noupe"
+                "title": "nupe"
             },
             {
                 "bookmark_url": "http://www.creativeroots.com",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2406,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2406/creativeroots.png",
@@ -2302,7 +2302,7 @@
                 "bookmark_url": "http://www.designmuseum.org",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2407,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2407/designmuseum.png",
@@ -2335,7 +2335,7 @@
                 "bookmark_url": "http://www.webbyawards.com",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2408,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2408/webbyawards.png",
@@ -2368,7 +2368,7 @@
                 "bookmark_url": "http://www.w3schools.com",
                 "bookmarks_category_id": 205,
                 "description": "Description Coming Soon!",
-                "i_frame": "Yes",
+                "i_frame": "y",
                 "id": 2409,
                 "image_name": {
                     "url": "/uploads/bookmark/image_name/2409/w3schools.png",

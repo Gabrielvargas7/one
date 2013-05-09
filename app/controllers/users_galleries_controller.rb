@@ -6,7 +6,6 @@ class UsersGalleriesController < ApplicationController
 
 
   # POST insert user image
-
   #/users_galleries/json/create_users_gallery_by_user_id/:user_id
   #/users_galleries/json/create_users_gallery_by_user_id/206.json
   # Content-Type : multipart/form-data

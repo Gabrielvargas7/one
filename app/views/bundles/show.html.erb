@@ -37,6 +37,12 @@
   <%= @bundle.image_name.to_s %>
 </p>
 
+<p>
+  <b>Image Name Set:</b>
+  <%= image_tag @bundle.image_name_set.url.to_s %>
+  <%= @bundle.image_name_set.to_s %>
+</p>
+
 
 <%= link_to 'Edit', edit_bundle_path(@bundle) %> |
 <%= link_to 'Back', bundles_path %>

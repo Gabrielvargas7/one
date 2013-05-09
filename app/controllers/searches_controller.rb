@@ -5,6 +5,8 @@ class SearchesController < ApplicationController
   #***********************************
 
   # GET get user that was found by the keyword with limit and offset(start row)
+  # Limit is the number of user that you want it
+  # Offset is where you want to start
   # /searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword
   # /searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/206/10/0/gabriel var.json
   #Return head
@@ -21,28 +23,27 @@ class SearchesController < ApplicationController
          # limit the length of the string to avoid injection
          if keyword.length < 12
 
-           @user = User.select('id,name,image_name').where('lower(name) LIKE ?', "%#{keyword}%").limit(params[:limit]).offset(params[:offset])
-
-           #@user = User.
-           #             where('lower(name) LIKE ?', "%#{keyword}%").
-           #               limit(params[:limit]).
-           #                 offset(params[:offset]).
-           #                   includes(:users_galleries)
-           #                   #joins(:users_galleries)
-
-
-           #@search.each do |user|
-           #
-           #
-           #
-           #end
+           @user = User.
+               select('id,name,image_name').
+               where('lower(name) LIKE ? and id != ?', "%#{keyword}%",params[:user_id]).
+               limit(params[:limit]).
+               offset(params[:offset])
 
 
 
+           @search = Hash.new
+           @user.each  do |i|
 
-           format.json { render json: @user
-           #format.json { render json: {user: @user.as_json(only: [:name,:id],include: {users_galleries: {only: [:image_name,:id,:default_image] }} )
-           #format.json { render json: @user.as_json(only: [:name,:id],include: {users_galleries: {only: [:image_name,:id,:default_image] }} )
+
+
+             @search[i.id] = Hash.new()
+             @search[i.id]['user'] = i
+             @search[i.id]['friend'] = Friend.select('user_id').where(user_id:params[:user_id],user_id_friend: i.id)
+             @search[i.id]['request'] = FriendRequest.select('user_id').where(user_id:params[:user_id],user_id_requested: i.id)
+             @search[i.id]['requested'] = FriendRequest.select('user_id').where(user_id_requested:params[:user_id],user_id: i.id)
+           end
+
+           format.json { render json: @search
 
            }
 

@@ -24,7 +24,7 @@
         "bookmark_url": "http://www.stumbleupon.com",
         "bookmarks_category_id": 201,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 2001,
         "image_name": {
             "url": "/uploads/bookmark/image_name/2001/stumbleupon.png",
@@ -58,7 +58,7 @@
         "bookmark_url": "http://www.freeridegames.com",
         "bookmarks_category_id": 202,
         "description": "Description Coming Soon!",
-        "i_frame": "Yes",
+        "i_frame": "y",
         "id": 2113,
         "image_name": {
             "url": "/uploads/bookmark/image_name/2113/freeridegames.png",
