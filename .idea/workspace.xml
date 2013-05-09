@@ -225,7 +225,7 @@
     <file path="/20130507091804_add_image_name_set_to_bundles.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367918350580" ignored="false" />
     <file path="/20130507094918_delete_image_name_set_to_bundles_bookmark.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367920195434" ignored="false" />
     <file path="/20130507095030_add_image_name_set_to_bundle.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367920248425" ignored="false" />
-    <file path="/users_mailer.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368092809724" ignored="false" />
+    <file path="/users_mailer.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368102149209" ignored="false" />
     <file path="/signup_email.text.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368093234642" ignored="false" />
     <file path="/signup_email.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368095437363" ignored="false" />
     <file path="/production.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368100664313" ignored="false" />
@@ -274,7 +274,7 @@
       <file leaf-file-name="users_mailer.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/mailers/users_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="7" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
+            <state line="14" column="28" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -319,7 +319,7 @@
       <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="99" selection-start="2275" selection-end="2275" vertical-scroll-proportion="0.3934681">
+            <state line="60" column="57" selection-start="2233" selection-end="2233" vertical-scroll-proportion="0.3934681">
               <folding />
             </state>
           </provider>
@@ -366,12 +366,12 @@
         <option value="$PROJECT_DIR$/app/controllers/searches_controller.rb" />
         <option value="$PROJECT_DIR$/doc/contract/searches/json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword.json" />
         <option value="$PROJECT_DIR$/app/views/users_mailer/signup_email.text.erb" />
-        <option value="$PROJECT_DIR$/app/mailers/users_mailer.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/views/users_mailer/signup_email.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/rooms_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
+        <option value="$PROJECT_DIR$/app/mailers/users_mailer.rb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
       </list>
     </option>
@@ -466,6 +466,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mailers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -476,7 +508,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../322-rabl/blog-before" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../railscasts-episodes-master/episode-312" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -1000,13 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/users_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="7" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="97" column="45" selection-start="2627" selection-end="2627" vertical-scroll-proportion="0.0">
@@ -1049,9 +1074,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/users_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="28" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="99" selection-start="2275" selection-end="2275" vertical-scroll-proportion="0.3934681">
+        <state line="60" column="57" selection-start="2233" selection-end="2233" vertical-scroll-proportion="0.3934681">
           <folding />
         </state>
       </provider>

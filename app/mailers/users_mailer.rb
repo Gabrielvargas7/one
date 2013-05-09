@@ -1,7 +1,7 @@
 class UsersMailer < ActionMailer::Base
   #default from: "from@example.com"
-  default from: "web@mywebroom.com"
-  default bcc: "artem@mywebroom.com"
+  default from: "gabriel@mywebroom.com"
+  #default bcc: "artem@mywebroom.com"
 
 
 
