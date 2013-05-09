@@ -95,7 +95,7 @@ class User < ActiveRecord::Base
     # Send email after the user sign up
     def send_signup_user_email
 
-        UsersMailer.deliver_signup_email(self)
+        UsersMailer.signup_email(self).deliver
 
     end
 

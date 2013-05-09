@@ -64,8 +64,8 @@ SampleApp::Application.configure do
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => 'mywebroom.com',
-      :user_name            => 'gabriel@mywebroom.com',
-      :password             => 'Franc15c0',
+      :user_name            => 'mywebroom@mywebroom.com',
+      :password             => 'SClara_1975',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
   config.action_mailer.perform_deliveries = true
