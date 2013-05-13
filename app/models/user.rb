@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
   after_create :create_user_notification, :send_signup_user_email
 
 
-
   validates :name,
              presence:true,
              #format: { with: VALID_USERNAME_REGEX},
@@ -55,15 +54,46 @@ class User < ActiveRecord::Base
   has_many :users_galleries
   has_many :friends
 
+
+  # Send email after the user sign up
+  def send_signup_user_email
+
+    UsersMailer.signup_email(self).deliver
+
+  end
+
+  def send_password_reset
+
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UsersMailer.forget_password_email(self).deliver
+
+  end
+
+
   private
+
+    def generate_token(column)
+      begin
+        self[column] = SecureRandom.urlsafe_base64
+      end while User.exists?(column => self[column])
+    end
+
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
 
+    #def create_remember_token
+    #  begin
+    #    self.remember_token = SecureRandom.urlsafe_base64
+    #  end while User.exists?(remember_token => self.remember_token)
+    #end
 
 
-    # Fix the username for the url
+
+  # Fix the username for the url
     def get_username
 
       my_username = name
@@ -92,12 +122,8 @@ class User < ActiveRecord::Base
     end
 
 
-    # Send email after the user sign up
-    def send_signup_user_email
 
-        UsersMailer.signup_email(self).deliver
 
-    end
 
 
 

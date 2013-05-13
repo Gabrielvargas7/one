@@ -58,7 +58,7 @@ SampleApp::Application.configure do
   #   :arguments => '-i -t'
   # }
 
-  config.action_mailer.default_url_options = { :host => 'sleepy-scrubland-1880.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => "sleepy-scrubland-1880.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",

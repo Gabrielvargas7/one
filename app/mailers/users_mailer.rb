@@ -2,8 +2,6 @@ class UsersMailer < ActionMailer::Base
   #default from: "from@example.com"
   default from: "mywebroom@mywebroom.com"
   #default bcc: "artem@mywebroom.com"
-  default bcc: "gabriel@mywebroom.com"
-
 
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -12,9 +10,10 @@ class UsersMailer < ActionMailer::Base
   #   en.users_mailer.forget_password_email.subject
   #
   def forget_password_email(user)
-    @greeting = "Hi"
+    @user  = user
+    @greeting = "Hi, you forget password"
 
-    mail to: "to@example.org"
+    mail to: @user.email,subject: "mywebroom help"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

@@ -1,11 +1,12 @@
 SampleApp::Application.routes.draw do
 
 
+
+  resources :password_resets
+
   resources :notifications
 
-
   resources :feedbacks
-
 
   resources :bundles_bookmarks
 
@@ -24,6 +25,7 @@ SampleApp::Application.routes.draw do
   root to: 'static_pages#home'
 
   resources :users
+
   resources :sessions, only: [:new, :create, :destroy]
 
 
