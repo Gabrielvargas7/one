@@ -35,6 +35,12 @@ SampleApp::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
 
+  #facebook login
+  match 'auth/:provider/callback', to: 'sessions#create_facebook'
+  match 'auth/failure', to: redirect('/')
+  #match 'signout', to: 'sessions#destroy', as: 'signout'
+
+
   # static pages
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'

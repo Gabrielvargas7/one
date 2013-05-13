@@ -21,4 +21,16 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url
   end
+
+
+  def create_facebook
+
+    user = User.from_omniauth(env["omniauth.auth"])
+
+    #session[:user_id] = user.id
+    #redirect_to root_url
+    #user = User.from_omniauth("omniauth.auth")
+    sign_in user
+    redirect_back_or user
+  end
 end

@@ -9,6 +9,8 @@ gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
+gem 'omniauth-facebook', '1.4.1'
+gem 'oauth2', '0.8.0'
 
 #gem 'pg', '0.12.2'
 
@@ -17,7 +19,7 @@ gem "fileutils", '0.7'
 gem "rmagick", '2.13.2'
 gem "carrierwave", '0.8.0'
 
-gem 'jbuilder', '1.3.0'
+gem 'jbuilder','1.4.1'
 
 gem "railties", "3.2.13"
 gem "sprockets", '2.2.1'

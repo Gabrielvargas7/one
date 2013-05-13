@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509144816) do
+ActiveRecord::Schema.define(:version => 20130513150716) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -158,6 +158,8 @@ ActiveRecord::Schema.define(:version => 20130509144816) do
     t.string   "image_name"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"

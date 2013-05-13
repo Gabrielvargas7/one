@@ -15,7 +15,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email,:name,:password,:password_confirmation,:username, :image_name
+  attr_accessible :email,:name,:password,:password_confirmation,:username, :image_name ,:provider,:uid
 
   has_secure_password
 
@@ -23,7 +23,9 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   before_save { |user| user.email = email.downcase }
+
   before_save :create_remember_token
+
   before_create :get_username
   after_create :create_user_notification, :send_signup_user_email
 
@@ -71,9 +73,32 @@ class User < ActiveRecord::Base
 
   end
 
+  # create(facebook.. )the user if don't exist
+
+  def self.from_omniauth(auth)
+
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+
+      random_number1 = rand(0..100000)
+      fake_email = 'rooms'+random_number1.to_s+'@mywebroom.com'
+      fake_password = SecureRandom.urlsafe_base64
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.remember_token = auth.credentials.token
+      user.image_name = auth.info.image
+      user.email = auth.extra.raw_info.email
+      #user.email = fake_email
+      user.password = fake_password
+      user.password_confirmation = fake_password
+      user.save!
+    end
+  end
+
 
   private
 
+    #use this method when the user forget the password
     def generate_token(column)
       begin
         self[column] = SecureRandom.urlsafe_base64
@@ -82,15 +107,12 @@ class User < ActiveRecord::Base
 
 
     def create_remember_token
-      self.remember_token = SecureRandom.urlsafe_base64
+      # when the user authenticate with facebook
+      # we don't create a token
+      if self.uid.blank?
+         self.remember_token = SecureRandom.urlsafe_base64
+      end
     end
-
-    #def create_remember_token
-    #  begin
-    #    self.remember_token = SecureRandom.urlsafe_base64
-    #  end while User.exists?(remember_token => self.remember_token)
-    #end
-
 
 
   # Fix the username for the url
