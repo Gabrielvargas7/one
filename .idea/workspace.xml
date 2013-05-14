@@ -127,7 +127,7 @@
     <file path="/room_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366802441162" ignored="false" />
     <file path="/room.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366994063616" ignored="false" />
     <file path="/users_themes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366629819995" ignored="false" />
-    <file path="/user.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368461638736" ignored="false" />
+    <file path="/user.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368527820597" ignored="false" />
     <file path="/20130422112731_drop_themes_table.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366630069572" ignored="false" />
     <file path="/users_theme.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366630226131" ignored="false" />
     <file path="/users_items_design.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1366982924226" ignored="false" />
@@ -184,7 +184,7 @@
     <file path="/json_index_bundles.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367415422168" ignored="false" />
     <file path="/searches_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367942428104" ignored="false" />
     <file path="/json_index_searches_user_name_by_seach_values.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367419028664" ignored="false" />
-    <file path="/friend_requests_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367587040710" ignored="false" />
+    <file path="/friend_requests_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368542245684" ignored="false" />
     <file path="/20130502085956_drop_table_friend_request.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367485213665" ignored="false" />
     <file path="/20130502090258_drop_table_friend.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367485389174" ignored="false" />
     <file path="/json_destroy_friend_request_by_user_id_and_user_id_requested.json" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367490948334" ignored="false" />
@@ -225,16 +225,20 @@
     <file path="/20130507091804_add_image_name_set_to_bundles.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367918350580" ignored="false" />
     <file path="/20130507094918_delete_image_name_set_to_bundles_bookmark.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367920195434" ignored="false" />
     <file path="/20130507095030_add_image_name_set_to_bundle.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1367920248425" ignored="false" />
-    <file path="/users_mailer.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368109716506" ignored="false" />
+    <file path="/users_mailer.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368541804340" ignored="false" />
     <file path="/signup_email.text.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368093234642" ignored="false" />
     <file path="/signup_email.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368095437363" ignored="false" />
-    <file path="/production.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368109232716" ignored="false" />
-    <file path="/development.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368113963140" ignored="false" />
+    <file path="/production.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368540232276" ignored="false" />
+    <file path="/development.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368540273565" ignored="false" />
     <file path="/password_resets_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368112166216" ignored="false" />
-    <file path="/new.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368111579932" ignored="false" />
+    <file path="/new.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368528310198" ignored="false" />
     <file path="/forget_password_email.text.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368114495885" ignored="false" />
-    <file path="/sessions_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368458253008" ignored="false" />
-    <file path="/facebook.js.coffee.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368464627378" ignored="false" />
+    <file path="/sessions_controller.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368529309289" ignored="false" />
+    <file path="/facebook.js.coffee.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368528097442" ignored="false" />
+    <file path="/README_FOR_APP" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368526384433" ignored="false" />
+    <file path="/application.yml" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368527012396" ignored="false" />
+    <file path="/friend_request_email.text.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368541964303" ignored="false" />
+    <file path="/friend_request_email.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1368542002917" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,86 +266,70 @@
       <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="39" selection-start="2502" selection-end="2502" vertical-scroll-proportion="0.0">
+            <state line="61" column="42" selection-start="1597" selection-end="1635" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="facebook.js.coffee.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/facebook.js.coffee.erb">
+      <file leaf-file-name="users_mailer.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/mailers/users_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="35" column="48" selection-start="907" selection-end="949" vertical-scroll-proportion="0.78008914">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="omniauth.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/initializers/omniauth.rb">
+      <file leaf-file-name="friends_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/friends_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="22" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
+            <state line="10" column="87" selection-start="574" selection-end="574" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_user.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/_user.html.erb">
+      <file leaf-file-name="signup_email.text.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users_mailer/signup_email.text.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="6" column="0" selection-start="0" selection-end="126" vertical-scroll-proportion="-3.75">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/new.html.erb">
+      <file leaf-file-name="friend_request_email.text.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users_mailer/friend_request_email.text.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="3" column="54" selection-start="73" selection-end="73" vertical-scroll-proportion="-1.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/sessions/new.html.erb">
+      <file leaf-file-name="friend_request_email.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users_mailer/friend_request_email.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="88" selection-start="632" selection-end="632" vertical-scroll-proportion="0.62403697">
+            <state line="8" column="65" selection-start="97" selection-end="97" vertical-scroll-proportion="-5.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default_user.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/images/fallback/user/default_user.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <file leaf-file-name="forget_password_email.text.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users_mailer/forget_password_email.text.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="49" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0">
+            <state line="4" column="58" selection-start="163" selection-end="163" vertical-scroll-proportion="-2.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
+      <file leaf-file-name="signup_email.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users_mailer/signup_email.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="36" selection-start="635" selection-end="635" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="5" column="65" selection-start="135" selection-end="135" vertical-scroll-proportion="-3.125">
               <folding />
             </state>
           </provider>
@@ -361,22 +349,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/mailers/users_mailer.rb" />
-        <option value="$PROJECT_DIR$/app/views/password_resets/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/users/new.html.erb" />
-        <option value="$PROJECT_DIR$/config/environments/production.rb" />
-        <option value="$PROJECT_DIR$/app/views/static_pages/home.html.erb" />
-        <option value="$PROJECT_DIR$/config/environments/development.rb" />
-        <option value="$PROJECT_DIR$/app/views/password_resets/edit.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/password_resets_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/users_mailer/forget_password_email.text.erb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/config/initializers/omniauth.rb" />
+        <option value="$PROJECT_DIR$/doc/README_FOR_APP" />
+        <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/config/application.yml" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/facebook.js.coffee.erb" />
         <option value="$PROJECT_DIR$/app/views/sessions/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/config/environments/production.rb" />
+        <option value="$PROJECT_DIR$/config/environments/development.rb" />
+        <option value="$PROJECT_DIR$/app/views/users_mailer/forget_password_email.html.erb" />
+        <option value="$PROJECT_DIR$/app/mailers/users_mailer.rb" />
+        <option value="$PROJECT_DIR$/app/views/users_mailer/friend_request_email.text.erb" />
+        <option value="$PROJECT_DIR$/app/views/users_mailer/friend_request_email.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/friend_requests_controller.rb" />
       </list>
     </option>
   </component>
@@ -419,8 +407,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -449,24 +435,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mywebroom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../railscasts-episodes-master/episode-312" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/blog-after" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -633,13 +635,6 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -673,6 +668,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
@@ -849,15 +851,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="25" width="1444" height="854" extended-state="6" />
+    <frame x="-2" y="25" width="1444" height="854" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41460055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32424676" sideWeight="0.58539945" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.58539945" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39944905" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -866,6 +867,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41460055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -934,96 +936,21 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/friend_request_email.text.erb">
+    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="97" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
+        <state line="58" column="78" selection-start="2438" selection-end="2438" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/signup_email.text.erb">
+    <entry file="file://$PROJECT_DIR$/config/initializers/mime_types.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="5" column="55" selection-start="205" selection-end="205" vertical-scroll-proportion="0.11144131">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20130513150716_add_facebook_data_to_user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="43" selection-start="108" selection-end="108" vertical-scroll-proportion="0.044576522">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="298" selection-end="298" vertical-scroll-proportion="0.30326593">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/signup_email.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="98" selection-start="135" selection-end="135" vertical-scroll-proportion="-3.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/sessions_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="49" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/fallback/user/default_user.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="39" selection-start="2502" selection-end="2502" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/_user.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="36" selection-start="635" selection-end="635" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="49" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/facebook.js.coffee.erb">
+    <entry file="file://$PROJECT_DIR$/config/initializers/inflections.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -1032,14 +959,91 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/omniauth.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="22" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
+        <state line="5" column="2" selection-start="184" selection-end="184" vertical-scroll-proportion="0.11144131">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/sessions/new.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="88" selection-start="632" selection-end="632" vertical-scroll-proportion="0.62403697">
+        <state line="7" column="28" selection-start="109" selection-end="109" vertical-scroll-proportion="0.15064563">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="102" selection-end="102" vertical-scroll-proportion="0.08608321">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/forget_password_email.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="30" selection-start="254" selection-end="254" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/signup_email.text.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="0" selection-end="126" vertical-scroll-proportion="-3.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/friend_request_email.text.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="54" selection-start="73" selection-end="73" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/friend_request_email.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="65" selection-start="97" selection-end="97" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/forget_password_email.text.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="58" selection-start="163" selection-end="163" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users_mailer/signup_email.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="65" selection-start="135" selection-end="135" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="42" selection-start="1597" selection-end="1635" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/friends_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="87" selection-start="574" selection-end="574" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/friend_requests_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="96" selection-start="303" selection-end="395" vertical-scroll-proportion="0.094339624">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/users_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="48" selection-start="907" selection-end="949" vertical-scroll-proportion="0.78008914">
           <folding />
         </state>
       </provider>

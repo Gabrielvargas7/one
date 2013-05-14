@@ -13,7 +13,7 @@ class UsersMailer < ActionMailer::Base
     @user  = user
     @greeting = "Hi, you forget password"
 
-    mail to: @user.email,subject: "mywebroom help"
+    mail to: @user.email,subject: "Help, MyWebRoom "
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -24,11 +24,8 @@ class UsersMailer < ActionMailer::Base
   def signup_email(user)
 
     @user = user
-
-
     @greeting = "Hi"
-
-    mail to: @user.email,subject: "Welcome to mywebroom"
+    mail to: @user.email,subject: "Welcome to MyWebRoom"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -36,9 +33,11 @@ class UsersMailer < ActionMailer::Base
   #
   #   en.users_mailer.friend_request_email.subject
   #
-  def friend_request_email(user)
-    @greeting = "Hi"
+  def friend_request_email(user ,user_requested)
 
-    mail to: "to@example.org"
+    @user = user
+    @user_requested = user_requested
+    @greeting = "Hi, "+@user.name+" want to be your friend"
+    mail to: @user_requested.email,subject: "A friend request from MyWebRoom"
   end
 end

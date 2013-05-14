@@ -59,13 +59,10 @@ class User < ActiveRecord::Base
 
   # Send email after the user sign up
   def send_signup_user_email
-
     UsersMailer.signup_email(self).deliver
-
   end
 
   def send_password_reset
-
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
     save!
@@ -79,16 +76,16 @@ class User < ActiveRecord::Base
 
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
 
-      random_number1 = rand(0..100000)
-      fake_email = 'rooms'+random_number1.to_s+'@mywebroom.com'
+      # create a fake password for the facebook users
       fake_password = SecureRandom.urlsafe_base64
+
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
       user.remember_token = auth.credentials.token
       user.image_name = auth.info.image
       user.email = auth.extra.raw_info.email
-      #user.email = fake_email
+
       user.password = fake_password
       user.password_confirmation = fake_password
       user.save!
@@ -138,7 +135,7 @@ class User < ActiveRecord::Base
 
     end
 
-    # create the user notification on the table
+    # create the user notification on the table  when the user sign-up
     def create_user_notification
       UsersNotification.create(user_id:self.id)
     end

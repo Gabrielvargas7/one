@@ -29,6 +29,13 @@ class FriendRequestsController < ApplicationController
                 @friend_request = FriendRequest.new(user_id:params[:user_id],user_id_requested:params[:user_id_requested])
 
                 if @friend_request.save
+
+                   #send a email
+                   user = User.find(params[:user_id])
+                   user_requested = User.find(params[:user_id_requested])
+                   UsersMailer.friend_request_email(user,user_requested).deliver
+
+
                   format.json { render json: @friend_request, status: :created }
                 else
                   format.json { render json: @friend_request.errors, status: :unprocessable_entity }

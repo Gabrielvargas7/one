@@ -35,14 +35,27 @@ SampleApp::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  #config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #    :address              => "smtp.gmail.com",
+  #    :port                 => 587,
+  #    :domain               => 'mywebroom.com',
+  #    :user_name            => 'mywebroom@mywebroom.com',
+  #    :password             => 'SClara_1975',
+  #    :authentication       => 'plain',
+  #    :enable_starttls_auto => true  }
+  #config.action_mailer.perform_deliveries = true
+  #config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.default_url_options = { :host => ENV['ROOMS_MAIL_HOST_DEV'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => 'mywebroom.com',
-      :user_name            => 'mywebroom@mywebroom.com',
-      :password             => 'SClara_1975',
+      :user_name            => ENV['ROOMS_MAIL_USERNAME_DEV'],
+      :password             => ENV['ROOMS_MAIL_PASSWORD_DEV'],
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
   config.action_mailer.perform_deliveries = true

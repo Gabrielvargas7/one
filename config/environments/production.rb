@@ -58,20 +58,38 @@ SampleApp::Application.configure do
   #   :arguments => '-i -t'
   # }
 
-  config.action_mailer.default_url_options = { :host => "sleepy-scrubland-1880.herokuapp.com" }
+  #config.action_mailer.default_url_options = { :host => "sleepy-scrubland-1880.herokuapp.com" }
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #    :address              => "smtp.gmail.com",
+  #    :port                 => 587,
+  #    :domain               => 'mywebroom.com',
+  #    :user_name            => 'mywebroom@mywebroom.com',
+  #    :password             => 'SClara_1975',
+  #    :authentication       => 'plain',
+  #    :enable_starttls_auto => true  }
+  #config.action_mailer.perform_deliveries = true
+  #config.action_mailer.raise_delivery_errors = true
+
+
+  config.action_mailer.default_url_options = { :host => ENV['ROOMS_MAIL_HOST_PRO'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => 'mywebroom.com',
-      :user_name            => 'mywebroom@mywebroom.com',
-      :password             => 'SClara_1975',
+      :user_name            => ENV['ROOMS_MAIL_USERNAME_PRO'],
+      :password             => ENV['ROOMS_MAIL_PASSWORD_PRO'],
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
+
+
+
   # Enable threaded mode
+
   # config.threadsafe!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

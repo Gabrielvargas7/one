@@ -1,4 +1,25 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+MyWebRoom App on RoR
+
+******************
+Environment variables
+******************
+Environment variables are on the
+    config/application.yml
+
+******************
+Json method
+******************
+  all the json methods for the API start with json...
+  the second word must be the action (standard on rails)
+      show      = get one
+      index     = get many
+      create    = post
+      update    = put
+      destroy   = delete
+
+  the following words we should follow the name and conventions of ruby
+
+  eg json_show_user_by_email/gabriel@gmail.com
 
 
