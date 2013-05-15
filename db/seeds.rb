@@ -45,8 +45,8 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 
 #DB data
 #https://docs.google.com/a/mywebroom.com/spreadsheet/ccc?key=0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE&usp=sharing
-#
-  ##Items
+
+  #Items
 ws = session.spreadsheet_by_key("0ApGllgrhiMhwdDNCZE1JejZKekJQaW5UbWxnaHl6ZkE").worksheets[4]
 SeedItemsModule.InsertItems(ws)
 
@@ -87,12 +87,13 @@ SeedResetSequence.ResetSequenceOnPostgreDb
 
 
 #Don't use it
-## this is only one time to transfer the images to the project
+## this is only one time to transfer the images to the project from my local computer to the seeds/images folder
+#Don't user any more
 #   SeedThemeImagesModule.transfer_themes_image
-   #SeedBundleImagesModule.transfer_bundles_image
-   #SeedItemsImagesModule.transfer_items_image_main
-   #SeedItemsImagesModule.transfer_items_image_300
-   #SeedBookmarksImageModule.transfer_bookmarks_image
+#   SeedBundleImagesModule.transfer_bundles_image
+#   SeedItemsImagesModule.transfer_items_image_main
+#   SeedItemsImagesModule.transfer_items_image_300
+#   SeedBookmarksImageModule.transfer_bookmarks_image
 
 
 #p Dir.glob("db/seeds/images/themes/*")
