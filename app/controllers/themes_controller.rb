@@ -84,6 +84,7 @@ class ThemesController < ApplicationController
     end
   end
 
+
   #***********************************
   # Json methods for the room users
   #***********************************

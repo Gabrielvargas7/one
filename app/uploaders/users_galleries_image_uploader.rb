@@ -7,8 +7,8 @@ class UsersGalleriesImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  # include Sprockets::Helpers::RailsHelper
-  # include Sprockets::Helpers::IsolatedHelper
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -19,23 +19,28 @@ class UsersGalleriesImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+   def cache_dir
+     "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
+
+   # Provide a default URL as a default if there hasn't been a file uploaded:
    def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
-     "/images/fallback/users_gallery/default_user.png"
+  #   "/images/fallback/users_gallery/default_user.png"
+     asset_path("/images/fallback/users_gallery/default_user.png")
    end
 
 
-   version :medium do
-     process :resize_to_limit => [200, 200]
-   end
-  #
-   version :small do
-     process :resize_to_limit => [100,100]
-   end
+  # version :medium do
+  #   process :resize_to_limit => [200, 200]
+  # end
+  ##
+  # version :small do
+  #   process :resize_to_limit => [100,100]
+  # end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]

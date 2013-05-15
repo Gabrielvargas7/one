@@ -18,11 +18,14 @@ gem 'google_drive' , '0.3.5'
 gem "fileutils", '0.7'
 gem "rmagick", '2.13.2'
 gem "carrierwave", '0.8.0'
+gem "cloudinary","1.0.57"
 
 gem 'jbuilder','1.4.1'
 
 gem "railties", "3.2.13"
 gem "sprockets", '2.2.1'
+#gem "paperclip", "3.4.1"
+
 
 
 group :development, :test do

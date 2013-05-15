@@ -1,0 +1,41 @@
+#Cloud name: hpdnx5ayv
+#Base URL: http://res.cloudinary.com/hpdnx5ayv
+#Secure URL: https://cloudinary-a.akamaihd.net/hpdnx5ayv
+#API Base URL: http://api.cloudinary.com/v1_1/hpdnx5ayv
+#API Key: 334878688366951
+#API Secret: vW42q_EtOB9A2UedZ5SSfJxAxRM
+#Environment variable: CLOUDINARY_URL= cloudinary://334878688366951:vW42q_EtOB9A2UedZ5SSfJxAxRM@hpdnx5ayv
+
+
+#  development:
+#    cloud_name: "hpdnx5ayv"
+#    api_key:    "334878688366951"
+#    api_secret: "vW42q_EtOB9A2UedZ5SSfJxAxRM"
+#
+#  production:
+#    cloud_name: "hpdnx5ayv"
+#    api_key:    "334878688366951"
+#    api_secret: "vW42q_EtOB9A2UedZ5SSfJxAxRM"
+#  test:
+#    cloud_name: "hpdnx5ayv"
+#    api_key:    "334878688366951"
+#    api_secret: "vW42q_EtOB9A2UedZ5SSfJxAxRM"
+
+development:
+  cloud_name: hpdnx5ayv
+  api_key: '334878688366951'
+  api_secret: vW42q_EtOB9A2UedZ5SSfJxAxRM
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hpdnx5ayv
+  api_key: '334878688366951'
+  api_secret: vW42q_EtOB9A2UedZ5SSfJxAxRM
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hpdnx5ayv
+  api_key: '334878688366951'
+  api_secret: vW42q_EtOB9A2UedZ5SSfJxAxRM
+  enhance_image_tag: true
+  static_image_support: false

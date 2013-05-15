@@ -50,7 +50,6 @@ SampleApp::Application.routes.draw do
   match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
 
 
-
 # Contract Back-end -- Front-end only Json responce
 # Rules of name
 # 1.- name of the path should start with name of the controller , eg - for RoomsController -- should be /rooms/...

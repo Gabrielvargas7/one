@@ -7,8 +7,8 @@ class ThemesImageSelectionUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  # include Sprockets::Helpers::RailsHelper
-  # include Sprockets::Helpers::IsolatedHelper
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -18,16 +18,21 @@ class ThemesImageSelectionUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-
   end
+   def cache_dir
+     "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
+
+   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
      # For Rails 3.1+ asset pipeline compatibility:
      # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
 
      #"/images/fallback/" + [version_name, "default.png"].compact.join('_')
-     "/images/fallback/theme/default_theme.png"
+     #"/images/fallback/theme/default_theme.png"
+
+     asset_path("/images/fallback/theme/default_theme.png")
   end
 
   # Process files as they are uploaded:
@@ -49,21 +54,21 @@ class ThemesImageSelectionUploader < CarrierWave::Uploader::Base
    #  process :resize_to_limit => [600, 600]
    #end
 
-   version :large do
-     process :resize_to_limit => [400, 400]
-   end
-  #
-   version :medium do
-     process :resize_to_limit => [200, 200]
-   end
-  #
-   version :small do
-     process :resize_to_limit => [100,100]
-   end
-  #
-   version :tiny do
-     process :resize_to_limit => [64,64]
-   end
+  # version :large do
+  #   process :resize_to_limit => [400, 400]
+  # end
+  ##
+  # version :medium do
+  #   process :resize_to_limit => [200, 200]
+  # end
+  ##
+  # version :small do
+  #   process :resize_to_limit => [100,100]
+  # end
+  ##
+  # version :tiny do
+  #   process :resize_to_limit => [64,64]
+  # end
 
   # Create different versions of your uploaded files:
   # version :thumb do

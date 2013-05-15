@@ -62,4 +62,7 @@ SampleApp::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
 
+  #Paperclip.options[:command_path] = "/usr/bin/"
+  #Paperclip.options[:command_path] = ENV['ROOMS_IMAGE_MAGICK_PATH']
+
 end
