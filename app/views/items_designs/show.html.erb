@@ -34,7 +34,7 @@
 <%  else %>
     <%= @items_design.bundle.id  %>
     <%= @items_design.bundle.name  %>
-     <%= image_tag @items_design.bundle.image_name.url(:small).to_s %> 
+     <%= image_tag @items_design.bundle.image_name.url().to_s ,width: 100, height:100 %>
 <%  end %>
 
 </p>

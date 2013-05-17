@@ -20,13 +20,13 @@
 #    cloud_name: "hpdnx5ayv"
 #    api_key:    "334878688366951"
 #    api_secret: "vW42q_EtOB9A2UedZ5SSfJxAxRM"
-
+---
 development:
   cloud_name: hpdnx5ayv
   api_key: '334878688366951'
   api_secret: vW42q_EtOB9A2UedZ5SSfJxAxRM
   enhance_image_tag: true
-  static_image_support: false
+  static_image_support: true
 production:
   cloud_name: hpdnx5ayv
   api_key: '334878688366951'

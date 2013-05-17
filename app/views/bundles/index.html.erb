@@ -24,8 +24,8 @@
     <td><%= bundle.id %></td>
     <td><%= bundle.name %></td>
     <td><%= bundle.description %></td>
-    <td> <%= image_tag bundle.image_name.url(:small).to_s %> </td>
-    <td> <%= image_tag bundle.image_name_set.url(:small).to_s %> </td>
+    <td> <%= image_tag bundle.image_name.url().to_s ,width: 100, height:100 %> </td>
+    <td> <%= image_tag bundle.image_name_set.url().to_s ,width: 100, height:100 %> </td>
 
 
     <%  if bundle.theme.nil? %>
@@ -35,7 +35,7 @@
     <%  else %>
         <td><%= bundle.theme.id %></td>
         <td><%= bundle.theme.name %></td>
-        <td> <%= image_tag bundle.theme.image_name.url(:small).to_s %> </td>
+        <td> <%= image_tag bundle.theme.image_name.url().to_s ,width: 100, height:100 %> </td>
 
     <%  end %>
 

@@ -10,29 +10,42 @@ class BundlesImageSetUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  include Cloudinary::CarrierWave
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #process :convert => 'png'
+  process :tags => ['bundle_image_name_set']
+
+  def public_id
+    name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-#{mounted_as}-"
+    filename = File.basename(original_filename, ".*")
+    filename.downcase!
+    name.to_s+filename.to_s
   end
-  def cache_dir
-    "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
 
 
-  #Provide a default URL as a default if there hasn't been a file uploaded:
-   def default_url
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  ## Choose what kind of storage to use for this uploader:
+  #storage :file
+  ## storage :fog
   #
-  #   "/images/fallback/bundle/default_bundle.png"
-     asset_path("/images/fallback/bundle/default_bundle.png")
-   end
-
+  ## Override the directory where uploaded files will be stored.
+  ## This is a sensible default for uploaders that are meant to be mounted:
+  #def store_dir
+  #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
+  #def cache_dir
+  #  "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
+  #
+  #
+  ##Provide a default URL as a default if there hasn't been a file uploaded:
+  # def default_url
+  ##   # For Rails 3.1+ asset pipeline compatibility:
+  ##   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  ##
+  ##   "/images/fallback/bundle/default_bundle.png"
+  #   asset_path("/images/fallback/bundle/default_bundle.png")
+  # end
+  #
   #version :large do
   #  process :resize_to_limit => [400, 400]
   #end
@@ -45,15 +58,15 @@ class BundlesImageSetUploader < CarrierWave::Uploader::Base
   #  process :resize_to_limit => [100,100]
   #end
   #
-  #version :tiny do
-  #  process :resize_to_limit => [64,64]
-  #end
+  ##version :tiny do
+  ##  process :resize_to_limit => [64,64]
+  ##end
+  ##
+  ##version :toolbar do
+  ##  process :resize_to_limit => [32,32]
+  ##end
   #
-  #version :toolbar do
-  #  process :resize_to_limit => [32,32]
-  #end
-
-
+  #
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #

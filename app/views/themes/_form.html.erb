@@ -32,11 +32,13 @@
       <div class="field">
         <%= f.label :image_name %><br />
         <%= f.file_field :image_name %>
+        <%= f.hidden_field(:image_name_cache) %>
       </div>
 
       <div class="field">
           <%= f.label :image_name_selection %><br />
           <%= f.file_field :image_name_selection %>
+          <%= f.hidden_field(:image_name_selection_cache) %>
       </div>
 
         <div class="actions">

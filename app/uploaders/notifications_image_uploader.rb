@@ -10,49 +10,63 @@ class NotificationsImageUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+   include Cloudinary::CarrierWave
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-   def cache_dir
-     "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+   #process :convert => 'png'
+   process :tags => ['notification_image_name']
+
+   def public_id
+     name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-#{mounted_as}-"
+     filename = File.basename(original_filename, ".*")
+     filename.downcase!
+     name.to_s+filename.to_s
    end
 
 
-   # Provide a default URL as a default if there hasn't been a file uploaded:
-   def default_url
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  # # Choose what kind of storage to use for this uploader:
+  #storage :file
+  ## storage :fog
   #
-  #   "/images/fallback/notification/default_notification.png"
-     asset_path("/images/fallback/notification/default_notification.png")
-   end
-
-  # version :small do
+  ## Override the directory where uploaded files will be stored.
+  ## This is a sensible default for uploaders that are meant to be mounted:
+  #def store_dir
+  #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
+  # def cache_dir
+  #   "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
+  #
+  #
+  # # Provide a default URL as a default if there hasn't been a file uploaded:
+  # def default_url
+  ##   # For Rails 3.1+ asset pipeline compatibility:
+  ##   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  ##
+  ##   "/images/fallback/notification/default_notification.png"
+  #   asset_path("/images/fallback/notification/default_notification.png")
+  # end
+  #
+  #version :small do
   #   process :resize_to_limit => [100,100]
-  # end
-  ## Process files as they are uploaded:
-  # process :scale => [200, 300]
+  #end
   #
-  # def scale(width, height)
-  #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
-
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  ## Process files as they are uploaded:
+  ## process :scale => [200, 300]
+  ##
+  ## def scale(width, height)
+  ##   # do something
+  ## end
+  #
+  ## Create different versions of your uploaded files:
+  ## version :thumb do
+  ##   process :scale => [50, 50]
+  ## end
+  #
+  ## Add a white list of extensions which are allowed to be uploaded.
+  ## For images you might use something like this:
+  ## def extension_white_list
+  ##   %w(jpg jpeg gif png)
+  ## end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

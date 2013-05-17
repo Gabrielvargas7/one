@@ -12,7 +12,8 @@
 #
 
 class Theme < ActiveRecord::Base
-  attr_accessible :name, :description, :image_name,:image_name_selection
+  attr_accessible :name, :description, :image_name,:image_name_selection, :image_name_cache,:image_name_selection_cache
+
 
   mount_uploader :image_name, ThemesImageUploader
   mount_uploader :image_name_selection, ThemesImageSelectionUploader

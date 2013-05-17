@@ -9,51 +9,63 @@ class UsersGalleriesImageUploader < CarrierWave::Uploader::Base
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
+   include Cloudinary::CarrierWave
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+   #process :convert => 'png'
+   process :tags => ['user_gallery_image_name']
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-   def cache_dir
-     "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+   def public_id
+     name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-#{mounted_as}-"
+     filename = File.basename(original_filename, ".*")
+     filename.downcase!
+     name.to_s+filename.to_s
    end
 
 
-   # Provide a default URL as a default if there hasn't been a file uploaded:
-   def default_url
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  # # Choose what kind of storage to use for this uploader:
+  #storage :file
+  ## storage :fog
   #
-  #   "/images/fallback/users_gallery/default_user.png"
-     asset_path("/images/fallback/users_gallery/default_user.png")
-   end
-
-
-  # version :medium do
-  #   process :resize_to_limit => [200, 200]
+  ## Override the directory where uploaded files will be stored.
+  ## This is a sensible default for uploaders that are meant to be mounted:
+  #def store_dir
+  #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
+  # def cache_dir
+  #   "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   # end
+  #
+  #
+  # # Provide a default URL as a default if there hasn't been a file uploaded:
+  # def default_url
+  ##   # For Rails 3.1+ asset pipeline compatibility:
+  ##   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   ##
-  # version :small do
-  #   process :resize_to_limit => [100,100]
+  ##   "/images/fallback/users_gallery/default_user.png"
+  #   asset_path("/images/fallback/users_gallery/default_user.png")
   # end
-
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
   #
-  # def scale(width, height)
-  #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
-
+  #
+  #version :medium do
+  #   process :resize_to_limit => [200, 200]
+  #end
+  ##
+  #version :small do
+  #   process :resize_to_limit => [100,100]
+  #end
+  #
+  ## Process files as they are uploaded:
+  ## process :scale => [200, 300]
+  ##
+  ## def scale(width, height)
+  ##   # do something
+  ## end
+  #
+  ## Create different versions of your uploaded files:
+  ## version :thumb do
+  ##   process :scale => [50, 50]
+  ## end
+  #
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list

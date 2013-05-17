@@ -37,7 +37,7 @@
         <td><%= bundles_bookmark.bookmark.id %></td>
         <td><%= bundles_bookmark.bookmark.bookmark_url.to_s %></td>
         <td><%= bundles_bookmark.bookmark.title  %></td>
-        <td> <%= image_tag bundles_bookmark.bookmark.image_name.url(:small).to_s %> </td>
+        <td> <%= image_tag bundles_bookmark.bookmark.image_name.url().to_s ,width: 50, height:50 %> </td>
     <%  end %>
 
 

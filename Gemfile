@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-ruby "1.9.3"
+#ruby "1.9.3"
+ruby "2.0.0"
+
 
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass', '2.3.1.0'
@@ -16,9 +18,11 @@ gem 'oauth2', '0.8.0'
 
 gem 'google_drive' , '0.3.5'
 gem "fileutils", '0.7'
-gem "rmagick", '2.13.2'
+#gem "rmagick", '2.13.2'
 gem "carrierwave", '0.8.0'
+
 gem "cloudinary","1.0.57"
+#gem "cloudinary"
 
 gem 'jbuilder','1.4.1'
 
