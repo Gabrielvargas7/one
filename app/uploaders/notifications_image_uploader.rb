@@ -38,14 +38,16 @@ class NotificationsImageUploader < CarrierWave::Uploader::Base
   #
   #
   # # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  ##   # For Rails 3.1+ asset pipeline compatibility:
-  ##   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  ##
-  ##   "/images/fallback/notification/default_notification.png"
-  #   asset_path("/images/fallback/notification/default_notification.png")
-  # end
+  def default_url
+  #   # For Rails 3.1+ asset pipeline compatibility:
+  #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
+  #   "/images/fallback/notification/default_notification.png"
+  #   asset_path("/images/fallback/notification/default_notification.png")
+
+     asset_path("fallback/notification/" + [version_name, "default_notification.png"].compact.join('_'))
+  end
+
   #version :small do
   #   process :resize_to_limit => [100,100]
   #end

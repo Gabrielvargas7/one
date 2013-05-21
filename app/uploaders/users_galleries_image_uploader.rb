@@ -37,14 +37,17 @@ class UsersGalleriesImageUploader < CarrierWave::Uploader::Base
   #
   #
   # # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  ##   # For Rails 3.1+ asset pipeline compatibility:
-  ##   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  ##
-  ##   "/images/fallback/users_gallery/default_user.png"
-  #   asset_path("/images/fallback/users_gallery/default_user.png")
-  # end
+  def default_url
+  #   # For Rails 3.1+ asset pipeline compatibility:
+  #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
+  #   "/images/fallback/users_gallery/default_user.png"
+  #   asset_path("/images/fallback/users_gallery/default_user.png")
+
+     asset_path("fallback/users_gallery/" + [version_name, "default_user.png"].compact.join('_'))
+
+  end
+
   #
   #version :medium do
   #   process :resize_to_limit => [200, 200]
