@@ -25,28 +25,7 @@
     "description": "Doesn't that room electrify you with colors and all the possible cool things you can place in it?",
     "id": 10,
     "image_name": {
-        "url": "/uploads/theme/image_name/10/elektro.jpg",
-        "xxx_large": {
-            "url": "/uploads/theme/image_name/10/xxx_large_elektro.jpg"
-        },
-        "xx_large": {
-            "url": "/uploads/theme/image_name/10/xx_large_elektro.jpg"
-        },
-        "x_large": {
-            "url": "/uploads/theme/image_name/10/x_large_elektro.jpg"
-        },
-        "large": {
-            "url": "/uploads/theme/image_name/10/large_elektro.jpg"
-        },
-        "medium": {
-            "url": "/uploads/theme/image_name/10/medium_elektro.jpg"
-        },
-        "small": {
-            "url": "/uploads/theme/image_name/10/small_elektro.jpg"
-        },
-        "tiny": {
-            "url": "/uploads/theme/image_name/10/tiny_elektro.jpg"
-        }
+        "url": "/uploads/theme/image_name/10/elektro.jpg"
     },
     "name": "Elektro"
 }
