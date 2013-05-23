@@ -14,5 +14,12 @@
 require 'spec_helper'
 
 describe Theme do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  #theme = Theme.new
+  #  theme.name ="juppy"
+  #  theme.save
+  #it "it theme name 'juppy '" do
+  #  theme.name.should =='juppy'
+  #
+  #end
 end

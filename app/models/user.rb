@@ -15,7 +15,8 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email,:name,:password,:password_confirmation,:username, :image_name ,:provider,:uid
+  attr_accessible :email,:name,:password,:username, :image_name ,:provider,:uid
+
 
   has_secure_password
 
@@ -45,8 +46,8 @@ class User < ActiveRecord::Base
              presence:true,
              format:{minimum: 6}
 
-  validate :password_confirmation,
-             presence:true
+  #validate :password_confirmation,
+  #           presence:true
 
   mount_uploader :image_name, UsersImageUploader
 
