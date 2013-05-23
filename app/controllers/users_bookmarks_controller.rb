@@ -1,3 +1,4 @@
+
 class UsersBookmarksController < ApplicationController
 
 
@@ -17,6 +18,7 @@ class UsersBookmarksController < ApplicationController
   #'already exist'    ->  head  200 ok
 
   def json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id
+
 
     respond_to do |format|
         #validation of the user_id
@@ -137,7 +139,7 @@ class UsersBookmarksController < ApplicationController
   end
 
 
-  # POST create a custom bookmark
+  # POST create a custom bookmark, set all the values decode.
   #  /users_bookmarks/json/create_user_bookmark_custom_by_user_id/:user_id'
   #  /users_bookmarks/json/create_user_bookmark_custom_by_user_id/1000.json
   # Content-Type : multipart/form-data
@@ -169,27 +171,21 @@ class UsersBookmarksController < ApplicationController
 
             ActiveRecord::Base.transaction do
              begin
-
                @bookmark = Bookmark.new(title:params[:title],
                                         bookmark_url:params[:bookmark_url],
                                         bookmarks_category_id:params[:bookmarks_category_id],
                                         image_name:params[:image_name],
-                                        item_id:params[:item_id])
-
+                                        item_id:params[:item_id],
+                                        approval:params[:user_id] )
                @bookmark.save
-
                @user_bookmark = UsersBookmark.new(user_id:params[:user_id],bookmark_id:@bookmark.id,position:params[:position])
                @user_bookmark.save
 
                format.json { render json: {user_bookmark: @user_bookmark,
                                            bookmark: @bookmark}, status: :created }
-
              rescue
-
                format.json { render json: @user_bookmark.errors, status: :unprocessable_entity }
              end
-
-
             end
           end
         else

@@ -76,8 +76,9 @@ class ItemsDesignsController < ApplicationController
   # DELETE /items_designs/1
   # DELETE /items_designs/1.json
   def destroy
-    @items_design = ItemsDesign.find(params[:id])
-    @items_design.destroy
+    # sorry but not delete is not allow
+    #@items_design = ItemsDesign.find(params[:id])
+    #@items_design.destroy
 
     respond_to do |format|
       format.html { redirect_to items_designs_url }

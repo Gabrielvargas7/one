@@ -9,7 +9,7 @@
 <p>
   <b>Bookmarks category:</b>
 
-  <%  if @bookmark.bookmarks_category.nil? %>
+ <%  if @bookmark.bookmarks_category.nil? %>
 
 <%  else %>
     <%= @bookmark.bookmarks_category.id %>
@@ -64,6 +64,28 @@
   <b>Description:</b>
   <%= @bookmark.description %>
 </p>
+
+<p>
+  <b>Approved </b>
+  <%= @bookmark.approval %>
+</p>
+
+<%  if @bookmark.approval == 'y' %>
+    <b>Approved for :</b>
+    <%  if @bookmark.user_bookmark == 0 %>
+        <b>Everybody </b>
+    <%  else %>
+        <b>User only, User id:  </b>
+        <%= @bookmark.user_bookmark %>
+    <%  end %>
+<%  end %>
+
+
+</br>
+</br>
+</br>
+
+
 
 
 <%= link_to 'Edit', edit_bookmark_path(@bookmark) %> |

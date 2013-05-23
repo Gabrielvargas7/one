@@ -81,8 +81,9 @@ class BundlesController < ApplicationController
   # DELETE /bundles/1
   # DELETE /bundles/1.json
   def destroy
-    @bundle = Bundle.find(params[:id])
-    @bundle.destroy
+    # sorry but not delete is not allow
+    #@bundle = Bundle.find(params[:id])
+    #@bundle.destroy
 
     respond_to do |format|
       format.html { redirect_to bundles_url }

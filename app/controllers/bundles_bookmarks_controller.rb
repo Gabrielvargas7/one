@@ -74,8 +74,9 @@ class BundlesBookmarksController < ApplicationController
   # DELETE /bundles_bookmarks/1
   # DELETE /bundles_bookmarks/1.json
   def destroy
-    @bundles_bookmark = BundlesBookmark.find(params[:id])
-    @bundles_bookmark.destroy
+    # sorry but not delete is not allow
+    #@bundles_bookmark = BundlesBookmark.find(params[:id])
+    #@bundles_bookmark.destroy
 
     respond_to do |format|
       format.html { redirect_to bundles_bookmarks_url }

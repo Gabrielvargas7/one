@@ -16,7 +16,7 @@
 #
 
 class Bookmark < ActiveRecord::Base
-  attr_accessible :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title
+  attr_accessible :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title,:approval,:user_bookmark
 
   mount_uploader :image_name, BookmarkImageNameUploader
   mount_uploader :image_name_desc, BookmarkImageNameDescUploader
@@ -29,6 +29,10 @@ class Bookmark < ActiveRecord::Base
 
   validates_associated :item
   validates :item_id, :numericality => { :only_integer => true }
+
+  validates_associated :bookmarks_category
+  validates :bookmarks_category_id, :numericality => { :only_integer => true }
+
 
 
   def id_and_bookmark

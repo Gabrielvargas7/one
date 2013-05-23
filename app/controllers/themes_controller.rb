@@ -75,8 +75,9 @@ class ThemesController < ApplicationController
   # DELETE /themes/1
   # DELETE /themes/1.json
   def destroy
-    @theme = Theme.find(params[:id])
-    @theme.destroy
+    # sorry but not delete is not allow
+    #@theme = Theme.find(params[:id])
+    #@theme.destroy
 
     respond_to do |format|
       format.html { redirect_to themes_url }

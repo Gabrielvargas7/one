@@ -1,6 +1,9 @@
 <h1>Listing bookmarks</h1>
 
-<%= link_to 'New Bookmark', new_bookmark_path %>
+<h3><%= link_to 'New Bookmark', new_bookmark_path %> &nbsp;&nbsp;|&nbsp;&nbsp;
+    <%= link_to 'Bookmarks Approval ', index_bookmarks_approval_path %>
+</h3>
+
 
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
   <tr>
@@ -53,6 +56,7 @@
     <td><%= image_tag bookmark.image_name.url().to_s,width:50 , height:50 %></td>
     <td><%= image_tag bookmark.image_name_desc.url().to_s,width: 50, height:50 %></td>
     <td><%= bookmark.description %></td>
+
 
 
 

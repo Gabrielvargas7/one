@@ -22,8 +22,6 @@ SampleApp::Application.routes.draw do
 
   resources :items
 
-  root to: 'static_pages#home'
-
   resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -49,6 +47,12 @@ SampleApp::Application.routes.draw do
   #main page
   match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
 
+  match '/bookmarks/index/bookmarks_approval', to: 'bookmarks#index_bookmarks_approval', via: :get,as: :index_bookmarks_approval
+  match '/bookmarks/update/bookmarks_approval_for_a_user/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_a_user', via: :put,as: :update_bookmarks_approval_for_a_user
+  match '/bookmarks/update/bookmarks_approval_for_all_users/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_all_users', via: :put,as: :update_bookmarks_approval_for_all_users
+
+
+  root to: 'static_pages#home'
 
 # Contract Back-end -- Front-end only Json responce
 # Rules of name
@@ -243,6 +247,9 @@ SampleApp::Application.routes.draw do
         'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_by_item_id', via: :get, as:
         :bookmarks_categories_json_index_bookmarks_categories_with_bookmarks_by_item_id
 
+  match 'bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id/:user_id/:item_id', to:
+        'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id', via: :get, as:
+            :bookmarks_categories_json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
 
 
   #**************************

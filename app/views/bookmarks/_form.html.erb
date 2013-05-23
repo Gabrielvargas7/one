@@ -59,6 +59,18 @@
         <%= f.label :description %><br />
         <%= f.text_area :description %>
       </div>
+
+        <div class="field">
+          <%= f.label :approval %><br />
+          <%= f.radio_button :approval, 'y', checked: true %> yes </br>
+          <%= f.radio_button :approval, 'n' %> no
+        </div>
+
+        <div class="field">
+          <%= f.label :user_bookmark %><br />
+          <%= f.text_field :user_bookmark  %>
+        </div>
+
       <div class="actions">
         <%= f.submit %>
       </div>
