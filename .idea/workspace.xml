@@ -294,7 +294,7 @@
     <file path="/theme_spec.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1370303252336" ignored="false" />
     <file path="/.rspec" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1369329976791" ignored="false" />
     <file path="/helper_test" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1369416742947" ignored="false" />
-    <file path="$PROJECT_DIR$/../sample_app/helpers/helper git" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1369351764023" ignored="false" />
+    <file path="$PROJECT_DIR$/../sample_app/helpers/helper git" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1370379242107" ignored="false" />
     <file path="/factories.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1369954752328" ignored="false" />
     <file path="$PROJECT_DIR$/../raffler/config/routes.rb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1370371757428" ignored="false" />
     <file path="$PROJECT_DIR$/../raffler/app/views/main/index.html.erb" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1370278958013" ignored="false" />
@@ -329,6 +329,7 @@
     <file path="$PROJECT_DIR$/../raffler/app/assets/javascripts/views/rooms/rooms_index.js.coffee" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1370373415770" ignored="false" />
     <file path="/rooms_index.js.coffee" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1370373368664" ignored="false" />
     <file path="/mywebroom.js" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1370378010521" ignored="false" />
+    <file path="/helper git" changelist="7cb470e6-ed14-401b-bb37-da47de644fa4" time="1370379242107" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -353,15 +354,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="wrap_parameters.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/initializers/wrap_parameters.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="backtrace_silencers.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/initializers/backtrace_silencers.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -434,13 +426,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="18" selection-start="664" selection-end="664" vertical-scroll-proportion="0.37890044">
+            <state line="17" column="18" selection-start="664" selection-end="664" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="7" selection-start="438" selection-end="438" vertical-scroll-proportion="0.35661218">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -459,7 +460,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/spec/support/mailer_macros.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/config/environments/test.rb" />
@@ -475,6 +475,7 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/room_backbone.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/mywebroom.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -547,46 +548,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mywebroom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mywebroom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mywebroom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mywebroom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1247,10 +1208,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="18" selection-start="664" selection-end="664" vertical-scroll-proportion="0.37890044">
+        <state line="17" column="18" selection-start="664" selection-end="664" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="7" selection-start="438" selection-end="438" vertical-scroll-proportion="0.35661218">
+          <folding />
         </state>
       </provider>
     </entry>
