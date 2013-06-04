@@ -47,6 +47,7 @@ describe User do
   it { @user.should respond_to(:provider)}
   it { @user.should respond_to(:uid)}
 
+
   #forget password
   it { @user.should respond_to(:password_reset_token)}
   it { @user.should respond_to(:password_reset_sent_at)}
@@ -94,6 +95,7 @@ describe User do
 
       end
   end
+
 
   ###############
   #test validation - name

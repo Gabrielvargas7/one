@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
 
        if User.exists?(id:params[:id])
+
           @user = User.find(params[:id])
 
            respond_to do |format|
