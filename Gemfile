@@ -28,6 +28,8 @@ gem "sprockets", '2.2.1'
 
 gem "backbone-on-rails", "1.0.0.0"
 
+#gem 'rename'
+
 
 
 group :development, :test do

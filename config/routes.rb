@@ -1,4 +1,4 @@
-SampleApp::Application.routes.draw do
+Mywebroom::Application.routes.draw do
 
 
 
