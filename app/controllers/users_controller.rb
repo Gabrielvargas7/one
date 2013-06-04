@@ -1,18 +1,22 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only:[:edit,:update,:destroy]
+  before_filter :signed_in_user, only:[:edit,:update,:destroy,:show,:index]
   before_filter :correct_user, only:[:edit,:update]
   before_filter :admin_user, only:[:destroy]
 
 
   def show
-     @user = User.find(params[:id])
 
+       if User.exists?(id:params[:id])
+          @user = User.find(params[:id])
 
-     respond_to do |format|
-       format.html # show.html.erb
-       format.json { render json: @user.as_json(only:[:name,:email,:username])  }
-     end
+           respond_to do |format|
+             format.html # show.html.erb
+             format.json { render json: @user.as_json(only:[:name,:email,:username])  }
+           end
+       else
+          redirect_to(root_path)
+       end
 
   end
 
@@ -252,9 +256,7 @@ class UsersController < ApplicationController
 
 
   def admin_user
-    redirect_to(root_path) unless current_user.admin?
-
-
+      redirect_to(root_path) unless current_user.admin?
   end
 
 
