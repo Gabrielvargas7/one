@@ -27,6 +27,7 @@ describe User do
   #the (subject)line declare the variable that is use in all the test
   subject { @user }
 
+
   #user info
   it { @user.should respond_to(:name) }
   it { @user.should respond_to(:email) }
