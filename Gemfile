@@ -25,8 +25,8 @@ gem 'jbuilder','1.4.1'
 
 gem "railties", "3.2.13"
 gem "sprockets", '2.2.1'
-#gem "paperclip", "3.4.1"
 
+gem "backbone-on-rails", "1.0.0.0"
 
 
 
@@ -58,6 +58,7 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'cucumber-rails', '1.3.1', :require => false
   gem 'database_cleaner', '0.9.1'
+  gem 'guard-rspec', '3.0.0'
  end
 
 group :production do
