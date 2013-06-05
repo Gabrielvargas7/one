@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-ruby "1.9.3"
+#ruby "1.9.3"
+ruby "2.0.0"
 
 
 gem 'rails', '3.2.13'
@@ -27,6 +28,7 @@ gem "railties", "3.2.13"
 gem "sprockets", '2.2.1'
 
 gem "backbone-on-rails", "1.0.0.0"
+
 
 #gem 'rename'
 

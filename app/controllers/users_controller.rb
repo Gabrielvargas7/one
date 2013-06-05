@@ -49,6 +49,7 @@ class UsersController < ApplicationController
       redirect_to @user
 
     else
+
       render 'edit'
 
     end
