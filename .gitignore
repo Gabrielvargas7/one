@@ -14,3 +14,6 @@
 /log/*.log
 /tmp
 .idea/*
+
+# for mac computers
+.DS_Store

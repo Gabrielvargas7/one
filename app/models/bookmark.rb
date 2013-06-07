@@ -21,23 +21,35 @@ class Bookmark < ActiveRecord::Base
   mount_uploader :image_name, BookmarkImageNameUploader
   mount_uploader :image_name_desc, BookmarkImageNameDescUploader
 
+  VALID_Y_N_REGEX = /(y)|(n)/
+
   belongs_to :item
   belongs_to :bookmarks_category
   has_many :bundles_bookmarks
 
   has_many :users_bookmarks
 
-  validates_associated :item
-  validates :item_id, :numericality => { :only_integer => true }
 
-  validates_associated :bookmarks_category
-  validates :bookmarks_category_id, :numericality => { :only_integer => true }
+  validates_associated  :item
+  validates_presence_of :item
+  validates_associated  :bookmarks_category
+  validates_presence_of :bookmarks_category
+
+  validates :i_frame, presence:true, format: { with: VALID_Y_N_REGEX }
+  validates :item_id, numericality: { only_integer:  true }
+  validates :bookmarks_category_id, numericality: { only_integer: true }
+  validates :bookmark_url, format: URI::regexp(%w(http https))
+  validates :title,presence:true
+  validates :approval, presence:true, format: { with: VALID_Y_N_REGEX }
 
 
 
   def id_and_bookmark
     "#{id}. #{title} -iframe: #{i_frame} - #{bookmark_url}"
   end
+
+
+
 
 
 end

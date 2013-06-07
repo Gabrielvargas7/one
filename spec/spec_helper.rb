@@ -102,7 +102,9 @@ RSpec.configure do |config|
   # bundle exec rspec --tag tag_image spec/models/theme_spec.rb
   config.filter_run_excluding tag_image_theme: true
   config.filter_run_excluding tag_image_user: true
-
+  config.filter_run_excluding tag_image_bundle: true
+  config.filter_run_excluding tag_image_items_design: true
+  config.filter_run_excluding tag_image_bookmark: true
 
 end
 

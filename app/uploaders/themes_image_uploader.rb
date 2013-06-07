@@ -56,11 +56,11 @@ class ThemesImageUploader < CarrierWave::Uploader::Base
   #
   #end
   #
-  #def cache_dir
-  #   #"/PATH/RAILSAPPLICATION/tmp/uploads/cache/#{model.id}"
-  #   "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  #end
-  #
+  def cache_dir
+     #"/PATH/RAILSAPPLICATION/tmp/uploads/cache/#{model.id}"
+     "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
   ##
   ## #Provide a default URL as a default if there hasn't been a file uploaded:
   ##def default_url

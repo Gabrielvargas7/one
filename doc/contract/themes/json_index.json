@@ -1,0 +1,296 @@
+// controller  ->  ThemesController
+// method type ->  get
+// method name ->  json_index
+
+// routes      ->match  'themes/json/index', to:
+//                      'themes#json_index', via: :get
+
+
+// Description ->
+//         Get all themes
+//       # GET 'themes/json/index'
+      //       'themes/json/index.json'
+//Return head 200 OK
+
+
+// back_end   :done
+// front_end :working
+
+
+[
+    {
+        "description": "Psychologists claim that this color calms, relaxes and ispires for achivements. Let's try?",
+        "id": 1,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822775/74977-theme-image_name-turquoise-loft.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822776/36690-theme-image_name_selection-turquoise-loft-popthumb.jpg"
+        },
+        "name": "Turquoise Loft"
+    },
+    {
+        "description": "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone? ",
+        "id": 2,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822777/36665-theme-image_name-neat-studio.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822778/55714-theme-image_name_selection-neat-studio-popthumb.jpg"
+        },
+        "name": "Neat Studio"
+    },
+    {
+        "description": "All in all just put another brick in the wall... Sound familiar? This design reminds us of Pink Floyds song \"The Wall\". ",
+        "id": 3,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822780/75641-theme-image_name-brick-wall.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822781/94003-theme-image_name_selection-brick-wall-popthumb.jpg"
+        },
+        "name": "Brick Wall"
+    },
+    {
+        "description": "Wanna leap into comfort and harmony? Then this rooms is for you! Dark chocolate walls are totally gonna create the relaxing and decadence atmosphere in your room.",
+        "id": 4,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822782/64408-theme-image_name-brownie.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822783/73056-theme-image_name_selection-brownie-popthumb.jpg"
+        },
+        "name": "Brownie"
+    },
+    {
+        "description": "Are you the one who can't live a day without stuffing yourself with sweets? Pick this room and it will remind you of your fave lollipop store.",
+        "id": 5,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822787/46803-theme-image_name-candy.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822788/47592-theme-image_name_selection-candy-popthumb.jpg"
+        },
+        "name": "Candy"
+    },
+    {
+        "description": "Are we the only one who are reminded of the Burgundy wine, when looking at this room? Turn your room into vinoteca! Cheers!",
+        "id": 6,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822789/73331-theme-image_name-fine-wine.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822790/88367-theme-image_name_selection-fine-wine-popthumb.jpg"
+        },
+        "name": "Fine Wine"
+    },
+    {
+        "description": "We decided to combine the fleur of the rainforest radiance with modern design. Enjoy!",
+        "id": 7,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822791/87233-theme-image_name-modernica.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822792/93775-theme-image_name_selection-modernica-popthumb.jpg"
+        },
+        "name": "Modernica"
+    },
+    {
+        "description": "Meet a new friend of Danny Ocean! (Just kiddin') The creation of this room was inspired by our new hobby -- surfing. So catch the wave!",
+        "id": 8,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822794/35706-theme-image_name-ocean-deep.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822795/54484-theme-image_name_selection-ocean-deep-popthumb.jpg"
+        },
+        "name": "Ocean Deep"
+    },
+    {
+        "description": "\"It was a dark night in New York City. I was getting ready for my road trip to Silicon Valley. Unfortunately google maps did not know where exactly in Silicon Valley I should go, neither did I! So for 5 days straight I aimed at Sunnyvale.\" - Artem Fedyaev.",
+        "id": 9,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822796/67060-theme-image_name-sunnyvale.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822797/52241-theme-image_name_selection-sunnyvale-popthumb.jpg"
+        },
+        "name": "Sunnyvale"
+    },
+    {
+        "description": "Doesn't that room electrify you with colors and all the possible cool things you can place in it?",
+        "id": 10,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822799/52566-theme-image_name-elektro.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822800/58266-theme-image_name_selection-elektro-popthumb.jpg"
+        },
+        "name": "Elektro"
+    },
+    {
+        "description": "Bring your Room to life with this colorful wallpaper.",
+        "id": 11,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822801/26729-theme-image_name-pintoresco.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822802/70678-theme-image_name_selection-pintoresco-popthumb.jpg"
+        },
+        "name": "Pintoresco"
+    },
+    {
+        "description": "The Sky is the Limit.",
+        "id": 12,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822804/61186-theme-image_name-blue-skies.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822804/97008-theme-image_name_selection-blue-skies-popthumb.jpg"
+        },
+        "name": "Blue Skies"
+    },
+    {
+        "description": "Inspired on Morrocan art",
+        "id": 13,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822806/31224-theme-image_name-morrocan.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822807/47488-theme-image_name_selection-morrocan-popthumb.jpg"
+        },
+        "name": "Morrocan"
+    },
+    {
+        "description": "Ethiopia",
+        "id": 14,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822809/49304-theme-image_name-ethiopi.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822810/43341-theme-image_name_selection-ethiopi-popthumb.jpg"
+        },
+        "name": "Ethiopi"
+    },
+    {
+        "description": "Como arigato Mr. Roboto",
+        "id": 15,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822811/58049-theme-image_name-asiatica.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822812/63528-theme-image_name_selection-asiatica-popthumb.jpg"
+        },
+        "name": "Asiatica"
+    },
+    {
+        "description": "Kick back and enjoy the view. Real life does not get better than this. ",
+        "id": 16,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822815/94260-theme-image_name-penthouse.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822816/78595-theme-image_name_selection-penthouse-popthumb.jpg"
+        },
+        "name": "Penthouse"
+    },
+    {
+        "description": "Made by the girls at VS. ",
+        "id": 17,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822817/17140-theme-image_name-pink.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822818/30376-theme-image_name_selection-pink-popthumb.jpg"
+        },
+        "name": "Pink!"
+    },
+    {
+        "description": "Back in the day in Mother Russia.",
+        "id": 18,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822820/50045-theme-image_name-ussr.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822822/86857-theme-image_name_selection-ussr-popthumb.jpg"
+        },
+        "name": "USSR"
+    },
+    {
+        "description": "Where it all started. ",
+        "id": 19,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822823/54793-theme-image_name-terracota.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822824/93831-theme-image_name_selection-terracota-popthumb.jpg"
+        },
+        "name": "Terracota"
+    },
+    {
+        "description": "Ahhh, Paris! ",
+        "id": 20,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822828/14234-theme-image_name-paris.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822829/88722-theme-image_name_selection-paris-popthumb.jpg"
+        },
+        "name": "Paris"
+    },
+    {
+        "description": "Green",
+        "id": 21,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822835/84591-theme-image_name-green.jpg"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "name": "Green"
+    },
+    {
+        "description": "Alpine!",
+        "id": 22,
+        "image_name": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "name": "Alps"
+    },
+    {
+        "description": "Fish And Chips!",
+        "id": 23,
+        "image_name": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "name": "London"
+    },
+    {
+        "description": "Enjoy The Blue Waters!",
+        "id": 24,
+        "image_name": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "name": "Puerto Rico"
+    },
+    {
+        "description": "Hawaii!",
+        "id": 25,
+        "image_name": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/theme/default_theme.png"
+        },
+        "name": "Aloha"
+    }
+]

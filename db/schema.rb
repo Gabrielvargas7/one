@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522190349) do
+ActiveRecord::Schema.define(:version => 20130606190617) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -95,15 +95,15 @@ ActiveRecord::Schema.define(:version => 20130522190349) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
-    t.decimal  "x"
-    t.decimal  "y"
-    t.integer  "z"
-    t.integer  "width"
-    t.integer  "height"
-    t.string   "clickable"
+    t.decimal  "x",           :default => 0.0
+    t.decimal  "y",           :default => 0.0
+    t.integer  "z",           :default => 0
+    t.integer  "width",       :default => 0
+    t.integer  "height",      :default => 0
+    t.string   "clickable",   :default => "yes"
     t.string   "folder_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "items", ["id"], :name => "index_items_on_id"

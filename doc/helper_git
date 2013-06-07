@@ -1,0 +1,55 @@
+
+********************
+** How to push changes when you work in different files
+********************
+    // create a branch
+    git branch my_new_branch
+
+    // Switching branch
+    git checkout my_new_branch
+
+    // make some changes
+
+    // add it to stage
+    git add .  -A                  // add all the changes to stage (-A with all deletes)
+
+    // commit
+    git commit -m "one commit"
+
+    // move to th master branch
+    git checkout master            // move to the master branch
+    // merge
+    git merge my_new_branch
+
+    // delete the branch
+    git branch -D my_new_branch
+
+    //  pull all changes
+    git pull
+
+     //merge the origin master with master
+    git merge origin/master
+
+
+    git push
+
+********************
+** When you have conflict
+********************
+   // edit the file and fix it
+   // then commit it.
+     git commit -a
+
+    // git push
+
+
+
+
+********************
+** How to clone the repository
+********************
+
+    // this is a example
+    git clone  git@github.com:Gabrielvargas7/sample_app.git
+    // check is there
+    git remote -v

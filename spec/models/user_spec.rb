@@ -160,7 +160,6 @@ describe User do
               user_with_same_email = @user.dup
               user_with_same_email.email = @user.email
               user_with_same_email.save
-              #@user.save
               print user_with_same_email.email+"  "
               print @user.email
           end

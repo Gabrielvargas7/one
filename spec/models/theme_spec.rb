@@ -15,12 +15,9 @@ require 'spec_helper'
 
 describe Theme do
 
-  #:name, :description, :image_name,:image_name_selection, :image_name_cache,:image_name_selection_cache
-
   # the (before) line will instance the variable for every (describe methods)
-  before { @theme = Theme.new(name: "Example theme", description:"dec")}
+  before {@theme = FactoryGirl.build(:theme)}
 
-  #before {@user = FactoryGirl.build(:user) }
 
   #the (subject)line declare the variable that is use in all the test
   subject { @theme }
@@ -92,18 +89,12 @@ describe Theme do
   end
 
   ###############
-  #test methods validation - name
+  #test methods validation - id.name
   ###############
   describe "#id_and_theme",tag_id_and_theme:true do
-
-    let(:id_and_theme){Theme.first}
-
     it "should be id and theme " do
-      id_and_theme.id_and_theme == id_and_theme.id.to_s+"."+id_and_theme.name.to_s
+      @theme.id_and_theme == @theme.id.to_s+"."+@theme.name.to_s
     end
-
-
-
   end
 
 

@@ -19,10 +19,13 @@ class Bundle < ActiveRecord::Base
   mount_uploader :image_name_set, BundlesImageSetUploader
 
 
+
   belongs_to :theme
   has_many :items_designs
-
   validates_associated :theme
+  validates_presence_of :theme
+
+  validates :name,presence:true
   validates :theme_id, :numericality => { :only_integer => true }
 
 

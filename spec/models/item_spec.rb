@@ -18,5 +18,178 @@
 require 'spec_helper'
 
 describe Item do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  #attr_accessible :clickable, :folder_name, :height, :name, :width, :x, :y, :z
+  # the (before) line will instance the variable for every (describe methods)
+  #before { @item = Item.new()}
+
+  before {@item = FactoryGirl.build(:item) }
+
+
+  #the (subject)line declare the variable that is use in all the test
+  subject { @item }
+
+  #theme info
+  it { @item.should respond_to(:name) }
+  it { @item.should respond_to(:clickable) }
+  it { @item.should respond_to(:height)}
+  it { @item.should respond_to(:width)}
+  it { @item.should respond_to(:x) }
+  it { @item.should respond_to(:y) }
+  it { @item.should respond_to(:z) }
+
+  it { @item.should be_valid }
+
+
+  ###############
+  #test validation - name
+  ###############
+  describe "when the name" , tag_name: true  do
+
+    context "is not present" do
+      before {@item.name = " "}
+      it {should_not be_valid}
+
+    end
+  end
+
+
+  ###############
+  #test validation - clickable
+  ###############
+  describe "when clickable" , tag_clickable: true  do
+    context "is not present" do
+      before {@item.clickable = " "}
+      it {should_not be_valid}
+    end
+
+    context "must be 'yes' and lowercase" do
+      before do
+        @item.clickable = "yes"
+      end
+      it { 'yes'.should == @item.clickable}
+    end
+
+    context "must be 'no' and lowercase" do
+      before do
+        @item.clickable = "no"
+      end
+      it { 'no'.should == @item.clickable}
+    end
+
+    context "should not be 'ANYTHING' " do
+      before do
+        @item.clickable = "ANY"
+      end
+      it { 'no'.should_not == @item.clickable}
+      it { 'yes'.should_not == @item.clickable}
+    end
+
+  end
+
+  ###############
+  #test validation - height
+  ###############
+
+  describe "when height" , tag_height: true  do
+
+    context "is nil " do
+      before {@item.height = nil }
+      it {should_not be_valid}
+    end
+    context " is not integer '1.1' " do
+      before {@item.height = 1.1 }
+      it {should_not be_valid}
+    end
+    context " is number and integer " do
+      before {@item.height = 1 }
+      it {should be_valid}
+    end
+  end
+
+
+  ###############
+  #test validation - width
+  ###############
+
+  describe "when width" , tag_width: true  do
+
+    context "is nil " do
+      before {@item.width = nil }
+      it {should_not be_valid}
+    end
+    context " is not integer '1.1' " do
+      before {@item.width = 1.1 }
+      it {should_not be_valid}
+    end
+    context " is number and integer " do
+      before {@item.width = 1 }
+      it {should be_valid}
+    end
+  end
+
+  ###############
+  #test validation - x
+  ###############
+
+  describe "when x" , tag_x: true  do
+
+    context "is nil " do
+      before {@item.x = nil }
+      it {should_not be_valid}
+    end
+    context " is not integer '1.1' " do
+      before {@item.x = 1.1 }
+      it {should be_valid}
+    end
+    context " is number and integer " do
+      before {@item.x = 1 }
+      it {should be_valid}
+    end
+  end
+
+
+  ###############
+  #test validation - y
+  ###############
+
+  describe "when y" , tag_y: true  do
+
+    context "is nil " do
+      before {@item.y = nil }
+      it {should_not be_valid}
+    end
+    context " is not integer '1.1' " do
+      before {@item.y = 1.1 }
+      it {should be_valid}
+    end
+    context " is number and integer " do
+      before {@item.y = 1 }
+      it {should be_valid}
+    end
+  end
+
+
+  ###############
+  #test validation - y
+  ###############
+
+  describe "when z" , tag_z: true  do
+
+    context "is nil " do
+      before {@item.z = nil }
+      it {should_not be_valid}
+    end
+    context " is not integer '1.1' " do
+      before {@item.z = 1.1 }
+      it {should_not be_valid}
+    end
+    context " is number and integer " do
+      before {@item.z = 1 }
+      it {should be_valid}
+    end
+  end
+
+
+
 end

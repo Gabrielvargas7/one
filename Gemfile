@@ -25,7 +25,6 @@ gem "cloudinary","1.0.57"
 gem 'jbuilder','1.4.1'
 
 gem "railties", "3.2.13"
-gem "sprockets", '2.2.1'
 
 gem "backbone-on-rails", "1.0.0.0"
 

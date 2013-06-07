@@ -23,13 +23,17 @@ class Item < ActiveRecord::Base
   has_many :bookmarks
   has_many :bundles_bookmarks
 
+  VALID_YES_NO_REGEX = /(yes)|(no)/
+
   before_save { |item| item.clickable = clickable.downcase }
 
-  validates :height, :numericality => { :only_integer => true }
-  validates :width, :numericality => { :only_integer => true }
-  validates :x, :numericality  => true
-  validates :y, :numericality  => true
-  validates :z, :numericality => { :only_integer => true }
+  validates :name,presence:true
+  validates :clickable, presence:true, format: { with: VALID_YES_NO_REGEX }
+  validates :height, presence:true, numericality: { only_integer: true }
+  validates :width, presence:true, numericality: { only_integer: true }
+  validates :x,presence:true, numericality: true
+  validates :y,presence:true, numericality: true
+  validates :z,presence:true, numericality: { only_integer: true }
 
 
   def id_and_item
