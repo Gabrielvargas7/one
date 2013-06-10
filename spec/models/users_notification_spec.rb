@@ -13,5 +13,23 @@
 require 'spec_helper'
 
 describe UsersNotification do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # the (before) line will instance the variable for every (describe methods)
+  before do
+    @user = FactoryGirl.create(:user)
+    @notification = FactoryGirl.create(:notification)
+
+    @user_notification = FactoryGirl.build(:users_notification,user_id:@user.id,notification_id:@notification.id)
+
+  end
+
+  #the (subject)line declare the variable that is use in all the test
+  subject { @user_notification }
+
+  it { @user_notification.should respond_to(:notification_id) }
+  it { @user_notification.should respond_to(:user_id) }
+  it { @user_notification.should be_valid }
+
+
+
+
 end

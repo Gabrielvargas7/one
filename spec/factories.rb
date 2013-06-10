@@ -77,8 +77,54 @@ FactoryGirl.define do
     item_id 1
   end
 
+  factory :feedback do
+    description "feedback one"
+    email "feedback@mywebroom.com"
+    name "feedback"
+    user_id 1
+  end
 
 
+  factory :notification do
+
+    description "feedback one"
+    name "notification"
+    user_id 1
+    position 1
+  end
+
+
+  factory :friend_request do
+    user_id 1
+    user_id_requested 2
+  end
+
+  factory :friend do
+    user_id 1
+    user_id_friend 2
+  end
+
+
+  factory :users_theme do
+    user_id 1
+    theme_id 1
+  end
+
+  factory :users_bookmark do
+    user_id 1
+    bookmark_id 1
+  end
+
+  factory :users_notification do
+    user_id 1
+    notification_id 1
+  end
+
+  factory :users_items_design do
+    user_id 1
+    items_design_id 1
+    hide 'y'
+  end
 
 
 

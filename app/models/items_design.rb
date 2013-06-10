@@ -27,7 +27,7 @@ class ItemsDesign < ActiveRecord::Base
   has_many :users_items_designs
 
   validates :name, presence:true
-  validates_associated :item
+  validates_associated  :item
   validates_presence_of :item
   validates :item_id, :numericality => { :only_integer => true }
 

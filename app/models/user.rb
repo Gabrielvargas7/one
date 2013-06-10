@@ -17,8 +17,16 @@
 class User < ActiveRecord::Base
   attr_accessible :email,:name,:password,:username, :image_name ,:provider,:uid
 
+  has_many :users_themes
+  has_many :users_items_designs
+  has_many :users_bookmarks
+  has_many :users_galleries
+  has_many :friends
+  has_many :friend_requests
+  has_many :users_notifications
 
   has_secure_password
+
 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -43,18 +51,9 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, length: { minimum: 6 }
 
-  #validates :username,
-  #           presence:true,
-  #           uniqueness:{ case_sensitive: false }
 
 
   mount_uploader :image_name, UsersImageUploader
-
-  has_many :users_themes
-  has_many :users_items_designs
-  has_many :users_bookmarks
-  has_many :users_galleries
-  has_many :friends
 
 
   # Send email after the user sign up
@@ -149,10 +148,10 @@ class User < ActiveRecord::Base
 
     # create the user notification on the table  when the user sign-up
     def create_user_notification
-      UsersNotification.create(user_id:self.id)
+      UsersNotification.create(user_id:self.id,notified:'y')
     end
 
-
+    #this is temp until the new design
     def create_random_room
 
       bundle_max = Bundle.maximum("id")

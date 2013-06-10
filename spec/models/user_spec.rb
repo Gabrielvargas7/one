@@ -236,7 +236,10 @@ describe User do
     before{@user.save}
     let(:user_notification) { UsersNotification.find_by_user_id(@user.id) }
     let(:user_notification_not_exist) { UsersNotification.find_by_user_id(@user.id+1) }
-    it {user_notification.should be_valid}
+    it do
+      puts @user.id
+      user_notification.should be_valid
+    end
 
     it "should not be valid " do
       user_notification_not_exist.should be_nil

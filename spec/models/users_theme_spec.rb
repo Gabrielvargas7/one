@@ -12,5 +12,23 @@
 require 'spec_helper'
 
 describe UsersTheme do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  # the (before) line will instance the variable for every (describe methods)
+  before do
+    @user = FactoryGirl.create(:user)
+    @theme = FactoryGirl.create(:theme)
+
+    @user_theme = FactoryGirl.build(:users_theme,user_id:@user.id,theme_id:@theme.id)
+    #@friend_request = FactoryGirl.create(:friend_request)
+  end
+
+  #the (subject)line declare the variable that is use in all the test
+  subject { @user_theme }
+
+  it { @user_theme.should respond_to(:theme_id) }
+  it { @user_theme.should respond_to(:user_id) }
+  it { @user_theme.should be_valid }
+
+
+
 end

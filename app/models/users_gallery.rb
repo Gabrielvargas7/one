@@ -10,10 +10,15 @@
 #
 
 class UsersGallery < ActiveRecord::Base
-  attr_accessible :image_name, :default_image, :user_id
+  attr_accessible :image_name, :user_id
 
   mount_uploader :image_name, UsersGalleriesImageUploader
 
   belongs_to :user
+
+  validates_presence_of :user
+  validates :user_id,presence:true, numericality: { only_integer: true }
+
+
 
 end

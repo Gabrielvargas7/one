@@ -15,10 +15,12 @@ class BundlesBookmark < ActiveRecord::Base
   belongs_to :bookmark
   belongs_to :item
 
-  validates_associated :item
+
+  validates_presence_of :item
   validates :item_id, :numericality => { :only_integer => true }
 
-  validates_associated :bookmark
+
+  validates_presence_of :bookmark
   validates :bookmark_id, :numericality => { :only_integer => true }
 
 

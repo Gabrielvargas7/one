@@ -15,4 +15,13 @@ class UsersItemsDesign < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :items_design
+
+  validates_presence_of :user
+  validates_presence_of :items_design
+
+  VALID_Y_N_REGEX = /(y)|(n)/
+  validates :user_id,presence:true, numericality: { only_integer: true }
+  validates :items_design_id,presence:true, numericality: { only_integer: true }
+  validates :hide,presence:true, format: { with: VALID_Y_N_REGEX }
+
 end

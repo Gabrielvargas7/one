@@ -34,11 +34,22 @@ describe ThemesController do
     {}
   end
 
-  describe "GET index" do
+  describe "GET index",tag_index:true do
     it "assigns all themes as @themes" do
-      theme = Theme.create! valid_attributes
-      get :index, {}, valid_session
+
+      #theme = Theme.create! valid_attributes
+      #get :index, {}, valid_session
+      #assigns(:themes).should eq([theme])
+
+      theme = FactoryGirl.create(:theme)
+      get :index
       assigns(:themes).should eq([theme])
+
+      #it "renders the :index view" do
+      #  get :index
+      #  response.should render_template :index
+      #end
+
     end
   end
 

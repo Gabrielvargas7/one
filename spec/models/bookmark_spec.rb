@@ -20,7 +20,6 @@ require 'spec_helper'
 describe Bookmark do
 
   before do
-
     @item = @item = FactoryGirl.create(:item)
     @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
     @bookmark = FactoryGirl.build(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)

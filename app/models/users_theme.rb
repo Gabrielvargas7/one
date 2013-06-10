@@ -15,5 +15,12 @@ class UsersTheme < ActiveRecord::Base
   belongs_to :theme
   belongs_to :user
 
+  validates_presence_of :user
+  validates_presence_of :theme
+
+  validates :user_id,presence:true, numericality: { only_integer: true }
+  validates :theme_id,presence:true, numericality: { only_integer: true }
+
+
 
 end

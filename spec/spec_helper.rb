@@ -105,6 +105,9 @@ RSpec.configure do |config|
   config.filter_run_excluding tag_image_bundle: true
   config.filter_run_excluding tag_image_items_design: true
   config.filter_run_excluding tag_image_bookmark: true
+  config.filter_run_excluding tag_image_notification: true
+  config.filter_run_excluding   tag_image_user_gallery: true
+
 
 end
 

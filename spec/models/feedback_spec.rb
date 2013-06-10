@@ -14,5 +14,21 @@
 require 'spec_helper'
 
 describe Feedback do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before do
+    @feedback= FactoryGirl.build(:feedback)
+  end
+
+
+  #the (subject)line declare the variable that is use in all the test
+  subject { @feedback }
+
+  #theme info
+  it { @feedback.should respond_to(:name) }
+  it { @feedback.should respond_to(:description) }
+  it { @feedback.should respond_to(:email)}
+  it { @feedback.should respond_to(:user_id)}
+  it { @feedback.should be_valid }
+
+
 end
