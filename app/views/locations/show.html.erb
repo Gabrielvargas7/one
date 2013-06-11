@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @location.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @location.description %>
+</p>
+
+<p>
+  <b>X:</b>
+  <%= @location.x %>
+</p>
+
+<p>
+  <b>Y:</b>
+  <%= @location.y %>
+</p>
+
+<p>
+  <b>Z:</b>
+  <%= @location.z %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @location.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @location.height %>
+</p>
+
+<p>
+  <b>Section:</b>
+  <%= @location.section_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

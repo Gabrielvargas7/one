@@ -1,7 +1,7 @@
 class Mywebroom.Routers.Rooms extends Backbone.Router
 
   routes:
-    'rooms': 'routes_room'
+    '': 'routes_room'
 
   initialize: ->
     @collection = new Mywebroom.Collections.ThemesJsonIndex()

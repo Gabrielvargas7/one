@@ -2,6 +2,12 @@ Mywebroom::Application.routes.draw do
 
 
 
+
+  resources :locations
+
+
+  resources :sections
+
   resources :password_resets
 
   resources :notifications
