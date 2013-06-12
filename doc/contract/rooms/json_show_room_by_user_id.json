@@ -36,6 +36,8 @@
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822806/31224-theme-image_name-morrocan.jpg"
             },
             "name": "Morrocan",
+            "section_id": "1",
+            "section_name": "main",
             "image_name_selection": {
                 "url": "/assets/fallback/theme/default_theme.png"
             }

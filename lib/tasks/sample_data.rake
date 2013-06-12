@@ -27,11 +27,17 @@ namespace :db do
     bundle = Bundle.find(bundle_rand_number)
 
     UsersTheme.create!(user_id:admin.id,theme_id:bundle.theme_id)
-    @items_design = ItemsDesign.find_all_by_bundle_id(bundle.id)
 
-    @items_design.each  do |i|
-      UsersItemsDesign.create!(user_id:admin.id,items_design_id:i.id,hide:'no')
+    #@items_design = ItemsDesign.find_all_by_bundle_id(bundle.id)
+    #@items_design.each  do |i|
+    #  UsersItemsDesign.create!(user_id:admin.id,items_design_id:i.id,hide:'no')
+    #end
+
+    @bundles_items_designs = BundlesItemsDesign.find_all_by_bundle_id(bundle.id)
+    @bundles_items_designs.each  do |bundles_items_design|
+      UsersItemsDesign.create!(user_id:self.id,items_design_id:bundles_items_design.items_design_id,hide:'no',location_id:bundles_items_design.location_id)
     end
+
 
     @bundle_all = BundlesBookmark.all
 
@@ -65,11 +71,17 @@ namespace :db do
       bundle = Bundle.find(bundle_rand_number)
 
       UsersTheme.create!(user_id:user.id,theme_id:bundle.theme_id)
-      @items_design = ItemsDesign.find_all_by_bundle_id(bundle.id)
 
-      @items_design.each  do |i|
-        UsersItemsDesign.create!(user_id:user.id,items_design_id:i.id,hide:'no')
+      #@items_design = ItemsDesign.find_all_by_bundle_id(bundle.id)
+      #@items_design.each  do |i|
+      #  UsersItemsDesign.create!(user_id:user.id,items_design_id:i.id,hide:'no')
+      #end
+
+      @bundles_items_designs = BundlesItemsDesign.find_all_by_bundle_id(bundle.id)
+      @bundles_items_designs.each  do |bundles_items_design|
+        UsersItemsDesign.create!(user_id:self.id,items_design_id:bundles_items_design.items_design_id,hide:'no',location_id:bundles_items_design.location_id)
       end
+
 
       @bundle_all = BundlesBookmark.all
 

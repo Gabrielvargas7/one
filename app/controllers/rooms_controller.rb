@@ -11,7 +11,6 @@ class RoomsController < ApplicationController
         respond_to do |format|
           format.html # show.html.erb
         end
-
   end
 
   #***********************************
@@ -35,9 +34,11 @@ class RoomsController < ApplicationController
                 @user = User.select('id , name,email,image_name').where('id = ?',params[:user_id]).first
 
                 @user_theme = Theme.
-                    select('themes.id,name,description,image_name').
+                    select('themes.id,themes.name,themes.description,image_name,users_themes.section_id, sections.name as section_name').
                     joins(:users_themes).
-                    where('user_id = ?',@user.id)
+                    where('user_id = ?',@user.id).
+                    joins('LEFT OUTER JOIN sections ON sections.id = users_themes.section_id')
+
                 @user_items_designs = ItemsDesign.
                     select('items_designs.id ,
                             items_designs.name,
