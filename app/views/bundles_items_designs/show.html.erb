@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Items design:</b>
+  <%= @bundles_items_design.items_design_id %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @bundles_items_design.location_id %>
+</p>
+
+<p>
+  <b>Bundle:</b>
+  <%= @bundles_items_design.bundle_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_bundles_items_design_path(@bundles_items_design) %> |
+<%= link_to 'Back', bundles_items_designs_path %>

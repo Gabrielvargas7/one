@@ -48,6 +48,11 @@
           <%= f.collection_select :theme_id, Theme.all, :id, :id_and_theme , :prompt => true  %>
       </div>
 
+        <div class="field">
+          <%= f.label :section_id %><br />
+          <%= f.collection_select :section_id, Section.all, :id, :id_and_section , :prompt => true  %>
+        </div>
+
       <div class="actions">
              <%= f.submit %>
       </div>

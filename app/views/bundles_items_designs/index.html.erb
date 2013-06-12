@@ -1,0 +1,83 @@
+<h1>Listing bundles_items_designs</h1>
+
+<%= link_to 'New Bundles items design', new_bundles_items_design_path %>
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
+  <tr>
+    <th>Bundle id</th>
+    <th>Bundle name</th>
+    <th>Bundle image_name</th>
+
+
+    <th>Items id</th>
+    <th>Items name</th>
+
+    <th>Items design id</th>
+    <th>Items design name</th>
+    <th>Items design image name</th>
+
+    <th>Location id</th>
+    <th>Location name</th>
+    <th>Section id </th>
+    <th>Section name</th>
+
+
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bundles_items_designs.each do |bundles_items_design| %>
+  <tr>
+
+    <%  if bundles_items_design.bundle.nil? %>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    <%  else %>
+        <td><%= bundles_items_design.bundle.id %></td>
+        <td><%= bundles_items_design.bundle.name %></td>
+        <td><%= image_tag bundles_items_design.bundle.image_name.url().to_s,width:50 , height:50 %></td>
+    <%  end %>
+
+
+    <%  if bundles_items_design.items_design.nil? %>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    <%  else %>
+        <td><%= bundles_items_design.items_design.item.id %></td>
+        <td><%= bundles_items_design.items_design.item.name %></td>
+
+        <td><%= bundles_items_design.items_design.id %></td>
+        <td><%= bundles_items_design.items_design.name %></td>
+        <td><%= image_tag bundles_items_design.items_design.image_name.url().to_s,width:50 , height:50 %></td>
+    <%  end %>
+
+
+    <%  if bundles_items_design.location.nil? %>
+        <td></td>
+        <td></td>
+
+    <%  else %>
+        <td><%= bundles_items_design.location.id %></td>
+        <td><%= bundles_items_design.location.name %></td>
+        <td><%= bundles_items_design.location.section.id %></td>
+        <td><%= bundles_items_design.location.section.name %></td>
+
+    <%  end %>
+
+
+    <td><%= link_to 'Show', bundles_items_design %></td>
+    <td><%= link_to 'Edit', edit_bundles_items_design_path(bundles_items_design) %></td>
+    <td><%= link_to 'Destroy', bundles_items_design, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

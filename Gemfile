@@ -34,7 +34,7 @@ gem "backbone-on-rails", "1.0.0.0"
 
 
 group :development, :test do
-  #gem 'sqlite3', '1.3.7'
+  gem 'sqlite3', '1.3.7'
   gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.0'
   gem 'debugger','1.5.0'

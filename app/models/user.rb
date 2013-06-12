@@ -162,13 +162,15 @@ class User < ActiveRecord::Base
       bundle = Bundle.find(bundle_rand_number)
 
       #create the theme from the bundle
-      UsersTheme.create!(user_id:self.id,theme_id:bundle.theme_id)
+      UsersTheme.create!(user_id:self.id,theme_id:bundle.theme_id,section_id:bundle.section_id)
 
 
       #create the items_design from the bundle
       @items_designs = ItemsDesign.find_all_by_bundle_id(bundle.id)
       @items_designs.each  do |items_design|
-        UsersItemsDesign.create!(user_id:self.id,items_design_id:items_design.id,hide:'no')
+        items_location = ItemsLocation.find_by_item_id(items_design.item_id)
+
+        UsersItemsDesign.create!(user_id:self.id,items_design_id:items_design.id,hide:'no',location_id:items_location.location_id)
       end
 
       #create the initials bookmarks from the bundle

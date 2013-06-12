@@ -13,20 +13,25 @@
 #
 
 class Bundle < ActiveRecord::Base
-  attr_accessible :description, :image_name, :name, :theme_id,:image_name_set
+  attr_accessible :description, :image_name, :name, :theme_id,:image_name_set,:section_id
 
   mount_uploader :image_name, BundlesImageUploader
   mount_uploader :image_name_set, BundlesImageSetUploader
 
 
-
+  belongs_to :section
   belongs_to :theme
   has_many :items_designs
-  validates_associated :theme
+
+
   validates_presence_of :theme
+  validates_presence_of :section
+
 
   validates :name,presence:true
-  validates :theme_id, :numericality => { :only_integer => true }
+  validates :theme_id,presence:true, :numericality => { :only_integer => true }
+  validates :section_id,presence:true,:numericality => { :only_integer => true }
+
 
 
   def id_and_bundle

@@ -9,7 +9,9 @@
     <th>Z</th>
     <th>Width</th>
     <th>Height</th>
-    <th>Section</th>
+    <th>Section id</th>
+    <th>Section name</th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -24,7 +26,20 @@
     <td><%= location.z %></td>
     <td><%= location.width %></td>
     <td><%= location.height %></td>
-    <td><%= location.section_id %></td>
+
+    <%  if location.section.nil? %>
+        <td></td>
+        <td></td>
+
+    <%  else %>
+        <td><%= location.section.id  %></td>
+        <td><%= location.section.name  %></td>
+
+    <%  end %>
+
+
+
+
     <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Edit', edit_location_path(location) %></td>
     <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>

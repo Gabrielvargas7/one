@@ -22,6 +22,7 @@ class Item < ActiveRecord::Base
   has_many :bookmarks_categories
   has_many :bookmarks
   has_many :bundles_bookmarks
+  has_many :items_locations
 
   VALID_YES_NO_REGEX = /(yes)|(no)/
 

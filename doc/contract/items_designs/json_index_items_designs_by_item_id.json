@@ -21,1586 +21,596 @@
 [
     {
         "bundle_id": 1,
-        "created_at": "2013-04-18T14:17:49Z",
+        "created_at": "2013-05-17T20:34:16Z",
         "description": "This elegant design has a distinct color and it shows that your bed is an important piece of furniture for you. Its organized, spacious, and adds color to your room design. ",
         "id": 1,
         "image_name": {
-            "url": "/uploads/items_design/image_name/1/peach-queen-1.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/1/medium_peach-queen-1.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/1/small_peach-queen-1.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/1/tiny_peach-queen-1.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/1/toolbar_peach-queen-1.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822857/68849-items_design-image_name-peach-queen-1.png"
         },
         "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/1/peach-queen-1-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/1/medium_peach-queen-1-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/1/small_peach-queen-1-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/1/tiny_peach-queen-1-h.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822858/12123-items_design-image_name_hover-peach-queen-1-h.png"
         },
         "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/1/peach-queen-1-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/1/medium_peach-queen-1-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/1/small_peach-queen-1-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/1/tiny_peach-queen-1-300x300.jpg"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822859/70275-items_design-image_name_selection-peach-queen-1-300x300.jpg"
         },
         "item_id": 1,
         "name": "Peach Queen",
-        "updated_at": "2013-04-18T14:17:49Z"
+        "updated_at": "2013-05-17T20:34:16Z"
     },
     {
         "bundle_id": 2,
-        "created_at": "2013-04-18T14:17:53Z",
+        "created_at": "2013-05-17T20:35:24Z",
         "description": "This messy bed its a design inspired by a couple of us who actually know that sleeping in your bed when its messy is more comfortable than having to unfold the sheets and find the comfy spot. ",
         "id": 23,
         "image_name": {
-            "url": "/uploads/items_design/image_name/23/messy-23.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/23/medium_messy-23.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/23/small_messy-23.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/23/tiny_messy-23.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/23/toolbar_messy-23.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822924/1156-items_design-image_name-messy-23.png"
         },
         "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/23/messy-23-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/23/medium_messy-23-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/23/small_messy-23-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/23/tiny_messy-23-h.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822925/72584-items_design-image_name_hover-messy-23-h.png"
         },
         "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/23/messy-23-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/23/medium_messy-23-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/23/small_messy-23-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/23/tiny_messy-23-300x300.jpg"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822926/96120-items_design-image_name_selection-messy-23-300x300.jpg"
         },
         "item_id": 1,
         "name": "Messy",
-        "updated_at": "2013-04-18T14:17:53Z"
+        "updated_at": "2013-05-17T20:35:24Z"
     },
     {
         "bundle_id": 3,
-        "created_at": "2013-04-18T14:17:57Z",
+        "created_at": "2013-05-17T20:36:31Z",
         "description": "Sleep like baby, wake up feeling like a million dollar man! or woman. This grey bed looks stylish and really comfortable.",
         "id": 45,
         "image_name": {
-            "url": "/uploads/items_design/image_name/45/luxury-dream-45.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/45/medium_luxury-dream-45.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/45/small_luxury-dream-45.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/45/tiny_luxury-dream-45.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/45/toolbar_luxury-dream-45.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822994/3125-items_design-image_name-luxury-dream-45.png"
         },
         "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/45/luxury-dream-45-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/45/medium_luxury-dream-45-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/45/small_luxury-dream-45-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/45/tiny_luxury-dream-45-h.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822995/65622-items_design-image_name_hover-luxury-dream-45-h.png"
         },
         "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/45/luxury-dream-45-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/45/medium_luxury-dream-45-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/45/small_luxury-dream-45-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/45/tiny_luxury-dream-45-300x300.jpg"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822996/51051-items_design-image_name_selection-luxury-dream-45-300x300.jpg"
         },
         "item_id": 1,
         "name": "Luxury Dream",
-        "updated_at": "2013-04-18T14:17:57Z"
+        "updated_at": "2013-05-17T20:36:31Z"
     },
     {
         "bundle_id": 4,
-        "created_at": "2013-04-18T14:18:01Z",
+        "created_at": "2013-05-17T20:37:36Z",
         "description": "After this past Summer Olympics, we all have a little obsession with london. So from our obsession, came to be this great design which adds color, attitude and style to your room. This is another favorite here in our offices. ",
         "id": 67,
         "image_name": {
-            "url": "/uploads/items_design/image_name/67/hail-the-queen-67.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/67/medium_hail-the-queen-67.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/67/small_hail-the-queen-67.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/67/tiny_hail-the-queen-67.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/67/toolbar_hail-the-queen-67.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823057/37332-items_design-image_name-hail-the-queen-67.png"
         },
         "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/67/hail-the-queen-67-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/67/medium_hail-the-queen-67-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/67/small_hail-the-queen-67-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/67/tiny_hail-the-queen-67-h.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823058/79209-items_design-image_name_hover-hail-the-queen-67-h.png"
         },
         "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/67/hail-the-queen-67-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/67/medium_hail-the-queen-67-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/67/small_hail-the-queen-67-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/67/tiny_hail-the-queen-67-300x300.jpg"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823059/41886-items_design-image_name_selection-hail-the-queen-67-300x300.jpg"
         },
         "item_id": 1,
         "name": "Hail the Queen",
-        "updated_at": "2013-04-18T14:18:01Z"
+        "updated_at": "2013-05-17T20:37:36Z"
     },
     {
         "bundle_id": 5,
-        "created_at": "2013-04-18T14:18:05Z",
+        "created_at": "2013-05-17T20:38:42Z",
         "description": "Duerme como un rey!",
         "id": 89,
         "image_name": {
-            "url": "/uploads/items_design/image_name/89/cama-89.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/89/medium_cama-89.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/89/small_cama-89.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/89/tiny_cama-89.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/89/toolbar_cama-89.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823123/59513-items_design-image_name-cama-89.png"
         },
         "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/89/cama-89-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/89/medium_cama-89-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/89/small_cama-89-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/89/tiny_cama-89-h.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823124/86993-items_design-image_name_hover-cama-89-h.png"
         },
         "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/89/cama-89-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/89/medium_cama-89-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/89/small_cama-89-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/89/tiny_cama-89-300x300.jpg"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823125/93527-items_design-image_name_selection-cama-89-300x300.jpg"
         },
         "item_id": 1,
         "name": "Cama",
-        "updated_at": "2013-04-18T14:18:05Z"
+        "updated_at": "2013-05-17T20:38:42Z"
     },
     {
         "bundle_id": 6,
-        "created_at": "2013-04-18T14:18:10Z",
+        "created_at": "2013-05-17T20:39:54Z",
         "description": "Even thought we called it grasshopper, its not going to jump away!",
         "id": 111,
         "image_name": {
-            "url": "/uploads/items_design/image_name/111/grasshopper-111.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/111/medium_grasshopper-111.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/111/small_grasshopper-111.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/111/tiny_grasshopper-111.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/111/toolbar_grasshopper-111.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823195/77703-items_design-image_name-grasshopper-111.png"
         },
         "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/111/grasshopper-111-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/111/medium_grasshopper-111-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/111/small_grasshopper-111-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/111/tiny_grasshopper-111-h.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823196/63896-items_design-image_name_hover-grasshopper-111-h.png"
         },
         "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/111/grasshopper-111-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/111/medium_grasshopper-111-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/111/small_grasshopper-111-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/111/tiny_grasshopper-111-300x300.jpg"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823197/98215-items_design-image_name_selection-grasshopper-111-300x300.jpg"
         },
         "item_id": 1,
         "name": "Grasshopper",
-        "updated_at": "2013-04-18T14:18:10Z"
-    },
-    {
-        "bundle_id": 7,
-        "created_at": "2013-04-18T14:18:15Z",
-        "description": "Pick Me!",
-        "id": 139,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/139/mystery-139.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/139/medium_mystery-139.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/139/small_mystery-139.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/139/tiny_mystery-139.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/139/toolbar_mystery-139.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/139/mystery-139-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/139/medium_mystery-139-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/139/small_mystery-139-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/139/tiny_mystery-139-h.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/139/mystery-139-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/139/medium_mystery-139-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/139/small_mystery-139-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/139/tiny_mystery-139-300x300.jpg"
-            }
-        },
-        "item_id": 1,
-        "name": "Mystery",
-        "updated_at": "2013-04-18T14:18:15Z"
-    },
-    {
-        "bundle_id": 8,
-        "created_at": "2013-04-18T14:18:19Z",
-        "description": "Chill of Braziu",
-        "id": 163,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/163/brazil-163.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/163/medium_brazil-163.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/163/small_brazil-163.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/163/tiny_brazil-163.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/163/toolbar_brazil-163.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/163/brazil-163-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/163/medium_brazil-163-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/163/small_brazil-163-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/163/tiny_brazil-163-h.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/163/brazil-163-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/163/medium_brazil-163-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/163/small_brazil-163-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/163/tiny_brazil-163-300x300.jpg"
-            }
-        },
-        "item_id": 1,
-        "name": "Brazil",
-        "updated_at": "2013-04-18T14:18:19Z"
-    },
-    {
-        "bundle_id": 9,
-        "created_at": "2013-04-18T14:18:25Z",
-        "description": "Ai yaiyai this is Dubai!",
-        "id": 193,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/193/dubai-193.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/193/medium_dubai-193.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/193/small_dubai-193.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/193/tiny_dubai-193.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/193/toolbar_dubai-193.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/193/dubai-193-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/193/medium_dubai-193-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/193/small_dubai-193-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/193/tiny_dubai-193-h.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/193/dubai-193-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/193/medium_dubai-193-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/193/small_dubai-193-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/193/tiny_dubai-193-300x300.jpg"
-            }
-        },
-        "item_id": 1,
-        "name": "Dubai",
-        "updated_at": "2013-04-18T14:18:25Z"
-    },
-    {
-        "bundle_id": 10,
-        "created_at": "2013-04-18T14:18:29Z",
-        "description": "All Pink everywhere. ",
-        "id": 217,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/217/pink-217.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/217/medium_pink-217.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/217/small_pink-217.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/217/tiny_pink-217.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/217/toolbar_pink-217.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/217/pink-217-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/217/medium_pink-217-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/217/small_pink-217-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/217/tiny_pink-217-h.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/217/pink-217-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/217/medium_pink-217-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/217/small_pink-217-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/217/tiny_pink-217-300x300.jpg"
-            }
-        },
-        "item_id": 1,
-        "name": "Pink",
-        "updated_at": "2013-04-18T14:18:29Z"
-    },
-    {
-        "bundle_id": 11,
-        "created_at": "2013-04-18T14:18:34Z",
-        "description": "Sushi?",
-        "id": 241,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/241/asian-fusion-241.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/241/medium_asian-fusion-241.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/241/small_asian-fusion-241.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/241/tiny_asian-fusion-241.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/241/toolbar_asian-fusion-241.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/241/asian-fusion-241-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/241/medium_asian-fusion-241-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/241/small_asian-fusion-241-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/241/tiny_asian-fusion-241-h.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/241/asian-fusion-241-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/241/medium_asian-fusion-241-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/241/small_asian-fusion-241-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/241/tiny_asian-fusion-241-300x300.jpg"
-            }
-        },
-        "item_id": 1,
-        "name": "Asian Fusion",
-        "updated_at": "2013-04-18T14:18:34Z"
-    },
-    {
-        "bundle_id": 12,
-        "created_at": "2013-04-18T14:18:38Z",
-        "description": "Vodka for you.",
-        "id": 265,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/265/ussr-265.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/265/medium_ussr-265.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/265/small_ussr-265.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/265/tiny_ussr-265.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/265/toolbar_ussr-265.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/265/ussr-265-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/265/medium_ussr-265-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/265/small_ussr-265-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/265/tiny_ussr-265-h.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/265/ussr-265-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/265/medium_ussr-265-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/265/small_ussr-265-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/265/tiny_ussr-265-300x300.jpg"
-            }
-        },
-        "item_id": 1,
-        "name": "USSR",
-        "updated_at": "2013-04-18T14:18:38Z"
-    },
-    {
-        "bundle_id": 13,
-        "created_at": "2013-04-18T14:18:44Z",
-        "description": "Romantica for you.",
-        "id": 299,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/299/parisian-299.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/299/medium_parisian-299.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/299/small_parisian-299.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/299/tiny_parisian-299.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/299/toolbar_parisian-299.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/299/parisian-299-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/299/medium_parisian-299-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/299/small_parisian-299-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/299/tiny_parisian-299-h.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/uploads/items_design/image_name_selection/299/parisian-299-300x300.jpg",
-            "medium": {
-                "url": "/uploads/items_design/image_name_selection/299/medium_parisian-299-300x300.jpg"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_selection/299/small_parisian-299-300x300.jpg"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_selection/299/tiny_parisian-299-300x300.jpg"
-            }
-        },
-        "item_id": 1,
-        "name": "Parisian",
-        "updated_at": "2013-04-18T14:18:44Z"
-    },
-    {
-        "bundle_id": 14,
-        "created_at": "2013-04-18T14:18:58Z",
-        "description": "Go Green",
-        "id": 358,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/358/green-358.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/358/medium_green-358.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/358/small_green-358.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/358/tiny_green-358.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/358/toolbar_green-358.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
-        },
-        "item_id": 1,
-        "name": "Green",
-        "updated_at": "2013-04-18T14:18:58Z"
-    },
-    {
-        "bundle_id": 15,
-        "created_at": "2013-04-18T14:19:00Z",
-        "description": "Fish And Chips",
-        "id": 382,
-        "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
-        },
-        "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
-        },
-        "item_id": 1,
-        "name": "London",
-        "updated_at": "2013-04-18T14:19:00Z"
+        "updated_at": "2013-05-17T20:39:54Z"
     },
     {
         "bundle_id": 16,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:53Z",
         "description": "Fish And Chips",
         "id": 406,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Alps",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:53Z"
+    },
+    {
+        "bundle_id": 7,
+        "created_at": "2013-05-17T20:41:22Z",
+        "description": "Pick Me!",
+        "id": 139,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823282/69049-items_design-image_name-mystery-139.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823283/3592-items_design-image_name_hover-mystery-139-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823284/95457-items_design-image_name_selection-mystery-139-300x300.jpg"
+        },
+        "item_id": 1,
+        "name": "Mystery",
+        "updated_at": "2013-05-17T20:41:22Z"
+    },
+    {
+        "bundle_id": 8,
+        "created_at": "2013-05-17T20:42:32Z",
+        "description": "Chill of Braziu",
+        "id": 163,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823353/60294-items_design-image_name-brazil-163.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823354/52754-items_design-image_name_hover-brazil-163-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823355/83806-items_design-image_name_selection-brazil-163-300x300.jpg"
+        },
+        "item_id": 1,
+        "name": "Brazil",
+        "updated_at": "2013-05-17T20:42:32Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 430,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Asiatica",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 431,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Devil",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 432,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Dolphin",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 433,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Ritz",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 434,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Shoko",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 435,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "BoConcept",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "bundle_id": 9,
+        "created_at": "2013-05-17T20:44:20Z",
+        "description": "Ai yaiyai this is Dubai!",
+        "id": 193,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823460/9413-items_design-image_name-dubai-193.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823462/59414-items_design-image_name_hover-dubai-193-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823463/18970-items_design-image_name_selection-dubai-193-300x300.jpg"
+        },
+        "item_id": 1,
+        "name": "Dubai",
+        "updated_at": "2013-05-17T20:44:20Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 436,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Velvet",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 437,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Barrel",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 438,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Lemon",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 439,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Installment",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 440,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Futuro",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 441,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Retro",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:01Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 442,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Classique",
-        "updated_at": "2013-04-18T14:19:01Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:02Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 443,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Kartel flowers",
-        "updated_at": "2013-04-18T14:19:02Z"
+        "updated_at": "2013-05-17T20:50:54Z"
     },
     {
         "bundle_id": 0,
-        "created_at": "2013-04-18T14:19:02Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "Test",
         "id": 444,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Fusion",
-        "updated_at": "2013-04-18T14:19:02Z"
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "bundle_id": 10,
+        "created_at": "2013-05-17T20:45:39Z",
+        "description": "All Pink everywhere. ",
+        "id": 217,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823539/91049-items_design-image_name-pink-217.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823541/45000-items_design-image_name_hover-pink-217-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823542/19289-items_design-image_name_selection-pink-217-300x300.jpg"
+        },
+        "item_id": 1,
+        "name": "Pink",
+        "updated_at": "2013-05-17T20:45:39Z"
+    },
+    {
+        "bundle_id": 11,
+        "created_at": "2013-05-17T20:46:48Z",
+        "description": "Sushi?",
+        "id": 241,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823608/20028-items_design-image_name-asian-fusion-241.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823609/45286-items_design-image_name_hover-asian-fusion-241-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823610/98510-items_design-image_name_selection-asian-fusion-241-300x300.jpg"
+        },
+        "item_id": 1,
+        "name": "Asian Fusion",
+        "updated_at": "2013-05-17T20:46:48Z"
+    },
+    {
+        "bundle_id": 12,
+        "created_at": "2013-05-17T20:48:01Z",
+        "description": "Vodka for you.",
+        "id": 265,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823682/83068-items_design-image_name-ussr-265.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823685/77678-items_design-image_name_hover-ussr-265-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823686/15731-items_design-image_name_selection-ussr-265-300x300.jpg"
+        },
+        "item_id": 1,
+        "name": "USSR",
+        "updated_at": "2013-05-17T20:48:01Z"
     },
     {
         "bundle_id": 17,
-        "created_at": "2013-04-18T14:19:02Z",
+        "created_at": "2013-05-17T20:50:54Z",
         "description": "White Sand!",
         "id": 445,
         "image_name": {
-            "url": "/uploads/items_design/image_name/445/puerto-rico-445.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/445/medium_puerto-rico-445.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/445/small_puerto-rico-445.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/445/tiny_puerto-rico-445.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/445/toolbar_puerto-rico-445.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823855/74299-items_design-image_name-puerto-rico-445.png"
         },
         "image_name_hover": {
-            "url": "/uploads/items_design/image_name_hover/445/puerto-rico-445-h.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name_hover/445/medium_puerto-rico-445-h.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name_hover/445/small_puerto-rico-445-h.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name_hover/445/tiny_puerto-rico-445-h.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823856/11209-items_design-image_name_hover-puerto-rico-445-h.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Puerto Rico",
-        "updated_at": "2013-04-18T14:19:02Z"
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "bundle_id": 13,
+        "created_at": "2013-05-17T20:49:18Z",
+        "description": "Romantica for you.",
+        "id": 299,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823758/77024-items_design-image_name-parisian-299.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823759/86888-items_design-image_name_hover-parisian-299-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823760/93423-items_design-image_name_selection-parisian-299-300x300.jpg"
+        },
+        "item_id": 1,
+        "name": "Parisian",
+        "updated_at": "2013-05-17T20:49:18Z"
+    },
+    {
+        "bundle_id": 14,
+        "created_at": "2013-05-17T20:50:33Z",
+        "description": "Go Green",
+        "id": 358,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823835/5986-items_design-image_name-green-358.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "name": "Green",
+        "updated_at": "2013-05-17T20:50:33Z"
+    },
+    {
+        "bundle_id": 15,
+        "created_at": "2013-05-17T20:50:52Z",
+        "description": "Fish And Chips",
+        "id": 382,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "name": "London",
+        "updated_at": "2013-05-17T20:50:52Z"
     },
     {
         "bundle_id": 18,
-        "created_at": "2013-04-18T14:19:06Z",
+        "created_at": "2013-05-17T20:51:46Z",
         "description": "Hawaii!",
         "id": 469,
         "image_name": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
+            "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
         "name": "Aloha",
-        "updated_at": "2013-04-18T14:19:06Z"
+        "updated_at": "2013-05-17T20:51:46Z"
     }
 ]

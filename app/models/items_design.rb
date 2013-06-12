@@ -31,6 +31,10 @@ class ItemsDesign < ActiveRecord::Base
   validates_presence_of :item
   validates :item_id, :numericality => { :only_integer => true }
 
+  def id_and_item_design
+    "#{id}. #{name}"
+  end
+
 
 
 end

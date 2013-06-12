@@ -39,15 +39,40 @@ class RoomsController < ApplicationController
                     joins(:users_themes).
                     where('user_id = ?',@user.id)
                 @user_items_designs = ItemsDesign.
-                    select('items_designs.id ,name,item_id,description,image_name,users_items_designs.hide').
+                    select('items_designs.id ,
+                            items_designs.name,
+                            items_designs.item_id,
+                            items_designs.description,
+                            image_name,
+                            users_items_designs.hide,
+                            users_items_designs.location_id,
+                            locations.z,
+                            locations.x,
+                            locations.y,
+                            locations.height,
+                            locations.width,
+                            locations.section_id,
+                            items.name as items_name,
+                            sections.name as section_name'
+                            ).
                     joins(:users_items_designs).
-                    where('user_id = ?',@user.id)
+                    where('user_id = ?',@user.id).
+                    joins('LEFT OUTER JOIN locations  ON locations.id = users_items_designs.location_id').
+                    joins('LEFT OUTER JOIN items  ON items.id = items_designs.item_id').
+                    joins('LEFT OUTER JOIN sections ON sections.id = locations.section_id')
+
+
 
                   format.json { render json: {
                       user: @user,
                                               user_gallery: @user_gallery,
                                               user_theme: @user_theme,
-                                              user_items_designs: @user_items_designs.as_json(include: {item: {only: [:name, :id, :x, :y, :z, :clickable, :height, :width]}})
+                                              user_items_designs: @user_items_designs.as_json(
+                                                  #include: {item: {only: [:name, :id, :x, :y, :z, :clickable, :height, :width]}}
+
+
+
+                                              )
 
                   }}
           else

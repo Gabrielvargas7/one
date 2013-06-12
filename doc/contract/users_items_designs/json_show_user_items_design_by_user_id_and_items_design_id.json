@@ -11,7 +11,8 @@
 // description ->
                 //# GET get one item design of the user
                 //#  /users_items_designs/json/show_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id
-                //#  /users_items_designs/json/show_user_items_designs_by_user_id_and_items_design_id/10000001/100.json
+                //#  /users_items_designs/json/show_user_items_design_by_user_id_and_items_design_id/10000001/100.json
+
 
 //Return ->
 // success    ->  head  200 OK
@@ -19,54 +20,21 @@
 // back_end   :done
 // front_end :working
 
-
 [
-    {
-        "description": "A tall and basic book stand that matches with any type of room design. If you are unsure of what shelf to pick, this white one is your best choice.",
-        "hide": "no",
-        "id": 25,
-        "image_name": {
-            "url": "/uploads/items_design/image_name/25/whitey-25.png",
-            "medium": {
-                "url": "/uploads/items_design/image_name/25/medium_whitey-25.png"
-            },
-            "small": {
-                "url": "/uploads/items_design/image_name/25/small_whitey-25.png"
-            },
-            "tiny": {
-                "url": "/uploads/items_design/image_name/25/tiny_whitey-25.png"
-            },
-            "toolbar": {
-                "url": "/uploads/items_design/image_name/25/toolbar_whitey-25.png"
-            }
-        },
-        "item_id": 3,
-        "name": "Whitey",
-        "image_name_hover": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
-        },
-        "image_name_selection": {
-            "url": "/images/fallback/items_design/default_items_design.png",
-            "medium": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "small": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/items_design/default_items_design.png"
-            }
-        }
-    }
+{
+"description": "Vodka for you.",
+"hide": "no",
+"id": 273,
+"image_name": {
+"url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823709/4349-items_design-image_name-ussr-273.png"
+},
+"item_id": 9,
+"name": "USSR",
+"image_name_hover": {
+"url": "/assets/fallback/items_design/default_items_design.png"
+},
+"image_name_selection": {
+"url": "/assets/fallback/items_design/default_items_design.png"
+}
+}
 ]
-
-

@@ -1,0 +1,2 @@
+module ItemsLocationsHelper
+end

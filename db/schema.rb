@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611162726) do
+ActiveRecord::Schema.define(:version => 20130612174716) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130611162726) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "image_name_set"
+    t.integer  "section_id"
   end
 
   add_index "bundles", ["id"], :name => "index_bundles_on_id"
@@ -69,6 +70,14 @@ ActiveRecord::Schema.define(:version => 20130611162726) do
   add_index "bundles_bookmarks", ["bookmark_id"], :name => "index_bundles_bookmarks_on_bookmark_id"
   add_index "bundles_bookmarks", ["id"], :name => "index_bundles_bookmarks_on_id"
   add_index "bundles_bookmarks", ["item_id"], :name => "index_bundles_bookmarks_on_item_id"
+
+  create_table "bundles_items_designs", :force => true do |t|
+    t.integer  "items_design_id"
+    t.integer  "location_id"
+    t.integer  "bundle_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "feedbacks", :force => true do |t|
     t.text     "description"
@@ -125,6 +134,13 @@ ActiveRecord::Schema.define(:version => 20130611162726) do
   add_index "items_designs", ["id"], :name => "index_items_designs_on_id"
   add_index "items_designs", ["item_id"], :name => "index_items_designs_on_item_id"
   add_index "items_designs", ["name"], :name => "index_items_designs_on_name"
+
+  create_table "items_locations", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "locations", :force => true do |t|
     t.string   "name"
@@ -214,9 +230,10 @@ ActiveRecord::Schema.define(:version => 20130611162726) do
   create_table "users_items_designs", :force => true do |t|
     t.integer  "user_id"
     t.integer  "items_design_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "hide"
+    t.integer  "location_id",     :default => 0
   end
 
   add_index "users_items_designs", ["id"], :name => "index_users_items_designs_on_id"
@@ -236,6 +253,7 @@ ActiveRecord::Schema.define(:version => 20130611162726) do
     t.integer  "theme_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "section_id"
   end
 
   add_index "users_themes", ["id"], :name => "index_users_themes_on_id"

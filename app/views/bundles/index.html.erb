@@ -14,6 +14,11 @@
     <th>Theme name</th>
     <th>Theme image name</th>
 
+    <th>Section id</th>
+    <th>Section name</th>
+
+
+
     <th></th>
     <th></th>
     <th></th>
@@ -38,6 +43,15 @@
         <td> <%= image_tag bundle.theme.image_name.url().to_s ,width: 100, height:100 %> </td>
 
     <%  end %>
+
+    <%  if bundle.section.nil? %>
+        <td></td>
+        <td></td>
+    <%  else %>
+        <td><%= bundle.section.id %></td>
+        <td><%= bundle.section.name %></td>
+    <%  end %>
+
 
 
 

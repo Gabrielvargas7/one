@@ -1,0 +1,27 @@
+<%= form_for(@items_location) do |f| %>
+  <% if @items_location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@items_location.errors.count, "error") %> prohibited this items_location from being saved:</h2>
+
+      <ul>
+      <% @items_location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :item_id %><br />
+      <%= f.collection_select :item_id, Item.all, :id, :id_and_item , :prompt => true  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :location_id %><br />
+      <%= f.collection_select :location_id,Location.all, :id, :id_and_location_section , :prompt => true  %>
+    </div>
+
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

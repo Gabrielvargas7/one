@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= @items_location.item_id %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @items_location.location_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_items_location_path(@items_location) %> |
+<%= link_to 'Back', items_locations_path %>

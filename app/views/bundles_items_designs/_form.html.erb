@@ -1,0 +1,30 @@
+<%= form_for(@bundles_items_design) do |f| %>
+  <% if @bundles_items_design.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bundles_items_design.errors.count, "error") %> prohibited this bundles_items_design from being saved:</h2>
+
+      <ul>
+      <% @bundles_items_design.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :items_design_id %><br />
+    <%= f.collection_select :items_design_id, ItemsDesign.all, :id, :id_and_item_design , :prompt => true  %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id %><br />
+    <%= f.collection_select :location_id, ItemsLocation.all  , :location_id, :item_location_section , :prompt => true  %>
+  </div>
+  <div class="field">
+    <%= f.label :bundle_id %><br />
+    <%= f.collection_select :bundle_id, Bundle.all, :id, :id_and_bundle , :prompt => true  %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

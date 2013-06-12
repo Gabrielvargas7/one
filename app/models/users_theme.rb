@@ -10,16 +10,21 @@
 #
 
 class UsersTheme < ActiveRecord::Base
-  attr_accessible :theme_id, :user_id
+  attr_accessible :theme_id, :user_id,:section_id
 
   belongs_to :theme
   belongs_to :user
+  belongs_to :section
 
   validates_presence_of :user
   validates_presence_of :theme
+  validates_presence_of :section
+
 
   validates :user_id,presence:true, numericality: { only_integer: true }
   validates :theme_id,presence:true, numericality: { only_integer: true }
+  validates :section_id,presence:true, numericality: { only_integer: true }
+
 
 
 

@@ -3,6 +3,12 @@ Mywebroom::Application.routes.draw do
 
 
 
+  resources :bundles_items_designs
+
+
+  resources :items_locations
+
+
   resources :locations
 
 
