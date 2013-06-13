@@ -72,8 +72,8 @@ class ItemsLocationsController < ApplicationController
   # DELETE /items_locations/1
   # DELETE /items_locations/1.json
   def destroy
-    @items_location = ItemsLocation.find(params[:id])
-    @items_location.destroy
+    #@items_location = ItemsLocation.find(params[:id])
+    #@items_location.destroy
 
     respond_to do |format|
       format.html { redirect_to items_locations_url }

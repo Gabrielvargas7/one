@@ -15,20 +15,20 @@
 #
 
 class ItemsDesign < ActiveRecord::Base
-  attr_accessible :bundle_id, :description, :image_name, :item_id, :name,:image_name_hover,:image_name_selection
+  attr_accessible  :description, :image_name, :item_id, :name,:image_name_hover,:image_name_selection
+  #:bundle_id,
 
   mount_uploader :image_name, ItemsDesignsImageUploader
   mount_uploader :image_name_hover, ItemsDesignsImageHoverUploader
   mount_uploader :image_name_selection, ItemsDesignsImageSelectionUploader
 
   belongs_to :item
-  belongs_to :bundle
+  validates_presence_of :item
+
 
   has_many :users_items_designs
 
   validates :name, presence:true
-  validates_associated  :item
-  validates_presence_of :item
   validates :item_id, :numericality => { :only_integer => true }
 
   def id_and_item_design

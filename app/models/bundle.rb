@@ -22,6 +22,7 @@ class Bundle < ActiveRecord::Base
   belongs_to :section
   belongs_to :theme
   has_many :items_designs
+  has_many :bundles_items_designs
 
 
   validates_presence_of :theme
@@ -37,5 +38,10 @@ class Bundle < ActiveRecord::Base
   def id_and_bundle
     "#{id}. #{name}"
   end
+
+  def id_and_bundle_section
+    "Bundle: #{id}. #{name} -- Section: #{section.id}.#{section.name}"
+  end
+
 
 end

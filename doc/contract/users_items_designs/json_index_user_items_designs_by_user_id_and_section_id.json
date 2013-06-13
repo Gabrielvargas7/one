@@ -1,0 +1,44 @@
+//#   GET get all the Item design of the user and section id
+//#  /users_items_designs/json/index_user_items_designs_by_user_id_and_section_id/:user_id/:section_id
+//#  /users_items_designs/json/index_user_items_designs_by_user_id/23/1.json
+//# Return ->
+//# success    ->  head  200 OK
+
+[
+    {
+        "description": "This elegant design has a distinct color and it shows that your bed is an important piece of furniture for you. Its organized, spacious, and adds color to your room design. ",
+        "hide": "no",
+        "id": 1,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822857/68849-items_design-image_name-peach-queen-1.png"
+        },
+        "item_id": 1,
+        "location_id": "25",
+        "name": "Peach Queen",
+        "section_id": "2",
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        }
+    },
+    {
+        "description": "\"King of the castle! Go do this, go do that.\"",
+        "hide": "no",
+        "id": 92,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823132/74322-items_design-image_name-silla-92.png"
+        },
+        "item_id": 4,
+        "location_id": "25",
+        "name": "Silla",
+        "section_id": "2",
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        }
+    }
+]

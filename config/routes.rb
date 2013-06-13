@@ -177,12 +177,12 @@ Mywebroom::Application.routes.draw do
   #  start UsersThemes Contract
   #**************************
 
-  match '/users_themes/json/update_user_theme_by_user_id/:user_id', to:
-         'users_themes#json_update_user_theme_by_user_id', via: :put
+  match '/users_themes/json/update_user_theme_by_user_id_and_section_id/:user_id/:section_id', to:
+         'users_themes#json_update_user_theme_by_user_id_and_section_id', via: :put
 
-  match '/users_themes/json/show_user_theme_by_user_id/:user_id', to:
-         'users_themes#json_show_user_theme_by_user_id', via: :get , as:
-         :users_themes_json_show_user_theme_by_user_id
+  match '/users_themes/json/show_user_theme_by_user_id_and_section_id/:user_id/:section_id', to:
+         'users_themes#json_show_user_theme_by_user_id_and_section_id', via: :get , as:
+         :users_themes_json_show_user_theme_by_user_id_and_section_id
 
 
 
@@ -195,12 +195,12 @@ Mywebroom::Application.routes.draw do
   #**************************
 
 
-  match '/users_items_designs/json/update_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
-         'users_items_designs#json_update_user_items_design_by_user_id_and_items_design_id', via: :put
+  match '/users_items_designs/json/update_user_items_design_by_user_id_and_items_design_id_and_location_id/:user_id/:items_design_id/:location_id', to:
+         'users_items_designs#json_update_user_items_design_by_user_id_and_items_design_id_and_location_id', via: :put
 
 
-  match '/users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
-         'users_items_designs#json_update_hide_user_items_design_by_user_id_and_items_design_id', via: :put
+  match '/users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id/:user_id/:items_design_id/:location_id', to:
+         'users_items_designs#json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id', via: :put
 
   match '/users_items_designs/json/index_user_items_designs_by_user_id/:user_id', to:
          'users_items_designs#json_index_user_items_designs_by_user_id', via: :get, as:
@@ -211,6 +211,9 @@ Mywebroom::Application.routes.draw do
          'users_items_designs#json_show_user_items_design_by_user_id_and_items_design_id', via: :get, as:
          :users_items_designs_json_show_user_items_design_by_user_id_and_items_design_id
 
+  match '/users_items_designs/json/index_user_items_designs_by_user_id_and_section_id/:user_id/:section_id', to:
+         'users_items_designs#json_index_user_items_designs_by_user_id_and_section_id', via: :get, as:
+            :users_items_designs_json_index_user_items_designs_by_user_id_and_section_id
 
 
   #--------------------------

@@ -21,20 +21,22 @@
 // front_end :working
 
 [
-{
-"description": "Vodka for you.",
-"hide": "no",
-"id": 273,
-"image_name": {
-"url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823709/4349-items_design-image_name-ussr-273.png"
-},
-"item_id": 9,
-"name": "USSR",
-"image_name_hover": {
-"url": "/assets/fallback/items_design/default_items_design.png"
-},
-"image_name_selection": {
-"url": "/assets/fallback/items_design/default_items_design.png"
-}
-}
+    {
+        "description": "\"King of the castle! Go do this, go do that.\"",
+        "hide": "no",
+        "id": 92,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823132/74322-items_design-image_name-silla-92.png"
+        },
+        "item_id": 4,
+        "location_id": "25",
+        "name": "Silla",
+        "section_id": "2",
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        }
+    }
 ]

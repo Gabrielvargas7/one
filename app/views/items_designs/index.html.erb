@@ -1,6 +1,9 @@
 <h1>Listing items_designs</h1>
 
-<%= link_to 'New Items design', new_items_design_path %>
+<h3>
+  <%= link_to 'New Items design', new_items_design_path %>
+</h3>
+
 
 
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
@@ -11,9 +14,6 @@
     <th>Item_Design Image name</th>
     <th>Item id</th>
     <th>Item Name</th>
-    <th>Bundle id</th>
-    <th>Bundle name</th>
-    <th>Bundle image_name</th>
 
     <th></th>
     <th></th>
@@ -36,18 +36,6 @@
         <td><%= items_design.item.name %></td>
 
     <%  end %>
-
-
-
-    <%  if items_design.bundle.nil? %>
-        <td></td>
-        <td></td>
-        <td></td>
-    <%  else %>
-        <td><%= items_design.bundle.id  %></td>
-        <td><%= items_design.bundle.name  %></td>
-        <td> <%= image_tag items_design.bundle.image_name.url().to_s ,width: 100, height:100 %> </td>
-     <%  end %>
 
 
 

@@ -14,4 +14,6 @@ class BundlesItemsDesign < ActiveRecord::Base
   validates :items_design_id,presence:true,:numericality => { :only_integer => true }
 
 
+
+
 end

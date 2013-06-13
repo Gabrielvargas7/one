@@ -1,17 +1,14 @@
+//# GET get user profile
+//#  /users/json/show_user_profile_by_user_id/:user_id
+//#  /users/json/show_user_profile_by_user_id/206.json
+//#  /# success    ->  head  200 OK
+
+
 {
-    "email": "test@rooms.org",
+    "email": "gabrielvargas7@gmail.com",
     "image_name": {
-        "url": "/images/fallback/user/default_user.png",
-        "small": {
-            "url": "/images/fallback/user/default_user.png"
-        },
-        "tiny": {
-            "url": "/images/fallback/user/default_user.png"
-        },
-        "toolbar": {
-            "url": "/images/fallback/user/default_user.png"
-        }
+        "url": "/assets/fallback/user/default_user.png"
     },
-    "name": "Example User",
-    "username": "gabriel-vargas-jime2"
+    "name": "gabrielvargas7",
+    "username": "gabrielvargas7-74335-78473"
 }

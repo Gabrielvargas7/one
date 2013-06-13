@@ -148,37 +148,78 @@ class UsersController < ApplicationController
 
             @user = User.find(params[:user_id])
             @bundle = Bundle.find(params[:bundle_id])
-            @items_design = ItemsDesign.where('bundle_id = ?',params[:bundle_id]).all
+            @bundles_items_designs = BundlesItemsDesign.find_all_by_bundle_id(params[:bundle_id])
+            @locations = Location.find_all_by_section_id(@bundle.section_id)
 
-            # delete any item design of the user
-            # delete the theme of the user
-            # create the new items_design for the user
-            # create the new theme
-            ActiveRecord::Base.transaction do
-              begin
 
-                UsersItemsDesign.where("user_id = ?",params[:user_id]).delete_all
-                UsersTheme.where("user_id = ?",params[:user_id]).delete_all
+           # delete any item design of the user
+           # delete the theme of the user
+           # create the new items_design for the user
+           # create the new theme
+           ActiveRecord::Base.transaction do
+             begin
 
-                @user_theme = UsersTheme.new(user_id:params[:user_id],theme_id:@bundle.theme_id)
-                @user_theme.save
 
-                @items_design.each  do |i|
+               @locations.each do |location|
+                  UsersItemsDesign.where("user_id = ? and location_id = ?",params[:user_id],location.id).delete_all
+               end
 
-                  @user_items_design = UsersItemsDesign.new(user_id:params[:user_id],items_design_id:i.id,hide:'no')
-                  @user_items_design.save
-                end
-                @users_items_design = UsersItemsDesign.where("user_id = ?",params[:user_id]).all
+               UsersTheme.where("user_id = ? and section_id = ?",params[:user_id],@bundle.section_id).delete_all
 
-                #format.json { head :no_content }
-                format.json { render json: {user_theme: @user_theme, users_items_design:@users_items_design}, status: :ok }
+               @user_theme = UsersTheme.new(user_id:params[:user_id],theme_id:@bundle.theme_id,section_id:@bundle.section_id)
+               @user_theme.save
 
-              rescue
-                format.json { render json: 'failure creating new full bundle for the user', status: :unprocessable_entity }
-                raise ActiveRecord::Rollback
-              end
+               @bundles_items_designs.each  do |bundles_items_design|
 
-            end
+                 @user_items_design = UsersItemsDesign.new(user_id:params[:user_id],items_design_id:bundles_items_design.items_design_id, hide:'no',location_id:bundles_items_design.location_id)
+                 @user_items_design.save
+               end
+               @users_items_design = UsersItemsDesign.select("users_items_designs.*,locations.section_id").where("user_id = ?",params[:user_id]).joins(:location).all
+
+               format.json { render json: {user_theme: @user_theme, users_items_design:@users_items_design}, status: :ok }
+
+             rescue
+               format.json { render json: 'failure creating new full bundle for the user', status: :unprocessable_entity }
+               raise ActiveRecord::Rollback
+             end
+
+           end
+
+
+
+           #@items_design = ItemsDesign.where('bundle_id = ?',params[:bundle_id]).all
+            #
+            ## delete any item design of the user
+            ## delete the theme of the user
+            ## create the new items_design for the user
+            ## create the new theme
+            #ActiveRecord::Base.transaction do
+            #  begin
+            #
+            #    UsersItemsDesign.where("user_id = ?",params[:user_id]).delete_all
+            #    UsersTheme.where("user_id = ?",params[:user_id]).delete_all
+            #
+            #    @user_theme = UsersTheme.new(user_id:params[:user_id],theme_id:@bundle.theme_id)
+            #    @user_theme.save
+            #
+            #    @items_design.each  do |i|
+            #
+            #      @user_items_design = UsersItemsDesign.new(user_id:params[:user_id],items_design_id:i.id,hide:'no')
+            #      @user_items_design.save
+            #    end
+            #    @users_items_design = UsersItemsDesign.where("user_id = ?",params[:user_id]).all
+            #
+            #    #format.json { head :no_content }
+            #    format.json { render json: {user_theme: @user_theme, users_items_design:@users_items_design}, status: :ok }
+            #
+            #  rescue
+            #    format.json { render json: 'failure creating new full bundle for the user', status: :unprocessable_entity }
+            #    raise ActiveRecord::Rollback
+            #  end
+            #
+            #end
+
+
 
          else
            format.json { render json: 'not found bundle id' , status: :not_found }

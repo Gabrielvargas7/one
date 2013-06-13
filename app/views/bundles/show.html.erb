@@ -19,8 +19,6 @@
   <b>Theme:</b>
     <%  if @bundle.theme.nil? %>
     
-    
-    
 <%  else %>
     <%= @bundle.theme.id %>
     <%= @bundle.theme.name %>
@@ -30,6 +28,19 @@
 
 
 </p>
+
+<p>
+  <b>Section:</b>
+  <%  if @bundle.section.nil? %>
+
+  <%  else %>
+      <%= @bundle.section.id %>
+      <%= @bundle.section.name %>
+
+  <%  end %>
+
+</p>
+
 
 <p>
   <b>Image name:</b>
@@ -42,6 +53,8 @@
   <%= image_tag @bundle.image_name_set.url.to_s %>
   <%= @bundle.image_name_set.to_s %>
 </p>
+
+
 
 
 <%= link_to 'Edit', edit_bundle_path(@bundle) %> |

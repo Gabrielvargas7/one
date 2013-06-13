@@ -1,13 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Item:</b>
-  <%= @items_location.item_id %>
+    <b>Item:</b>
+    <%= @items_location.item_id %>
+    <%= @items_location.item.name %>
+
 </p>
 
 <p>
-  <b>Location:</b>
-  <%= @items_location.location_id %>
+  <%  unless @items_location.location.nil? %>
+    <b>Location:</b>
+    <%= @items_location.location_id %>
+    <%= @items_location.location.name %>
+  <% end %>
+
+</p>
+<p>
+  <%  unless @items_location.location.section.nil? %>
+    <b>Section:</b>
+    <%= @items_location.location.section.id %>
+    <%= @items_location.location.section.name %>
+  <% end %>
 </p>
 
 

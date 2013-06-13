@@ -41,5 +41,11 @@
 </p>
 
 
+<%  unless @location.section.nil? %>
+    <%= @location.section.name %>
+<%  end %>
+
+
+
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

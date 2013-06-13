@@ -22,345 +22,303 @@
 
 [
     {
-        "description": "This particular set of objects is a look in to the future of home design. More modern, tech-friendly, and sleek looking than any other.",
-        "id": 3,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/3/elegante.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/3/medium_elegante.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/3/small_elegante.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/3/tiny_elegante.png"
-            }
-        },
-        "name": "Elegante",
-        "theme_id": 3
-    },
-    {
-        "description": "This objects were web-crafted by guys that lived in 60's here in San Francisco. These objects are some of the goods that this duet owned in the past. ",
-        "id": 4,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/4/english-hipster.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/4/medium_english-hipster.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/4/small_english-hipster.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/4/tiny_english-hipster.png"
-            }
-        },
-        "name": "English Hipster",
-        "theme_id": 4
-    },
-    {
-        "description": "Simple. Its objects blend smoothly to create an unique look.",
-        "id": 5,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/5/simplicity.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/5/medium_simplicity.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/5/small_simplicity.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/5/tiny_simplicity.png"
-            }
-        },
-        "name": "Simplicity",
-        "theme_id": 5
-    },
-    {
-        "description": "The objects in this bundle were hand picked by one of our own. Really creative and modern.",
-        "id": 6,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/6/disco.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/6/medium_disco.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/6/small_disco.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/6/tiny_disco.png"
-            }
-        },
-        "name": "Disco",
-        "theme_id": 6
-    },
-    {
-        "description": "Mystery set of objects! If you can't make up your mind, pick this one. ",
-        "id": 7,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/7/mystery.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/7/medium_mystery.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/7/small_mystery.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/7/tiny_mystery.png"
-            }
-        },
-        "name": "Mystery",
-        "theme_id": 7
-    },
-    {
-        "description": "Feel the Chill of Brazil.",
-        "id": 8,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/8/brazil.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/8/medium_brazil.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/8/small_brazil.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/8/tiny_brazil.png"
-            }
-        },
-        "name": "Brazil",
-        "theme_id": 8
-    },
-    {
-        "description": "We like that Diamond life. ",
-        "id": 9,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/9/ritzy.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/9/medium_ritzy.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/9/small_ritzy.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/9/tiny_ritzy.png"
-            }
-        },
-        "name": "Ritzy",
-        "theme_id": 9
-    },
-    {
-        "description": "All Pink everywhere. ",
-        "id": 10,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/10/pink.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/10/medium_pink.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/10/small_pink.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/10/tiny_pink.png"
-            }
-        },
-        "name": "Pink",
-        "theme_id": 10
-    },
-    {
-        "description": "Sushi?",
-        "id": 11,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/11/asian-fusion.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/11/medium_asian-fusion.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/11/small_asian-fusion.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/11/tiny_asian-fusion.png"
-            }
-        },
-        "name": "Asian Fusion",
-        "theme_id": 11
-    },
-    {
-        "description": "Vodka for you.",
-        "id": 12,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/12/ussr.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/12/medium_ussr.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/12/small_ussr.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/12/tiny_ussr.png"
-            }
-        },
-        "name": "USSR",
-        "theme_id": 12
-    },
-    {
-        "description": "Appreciate the detail in the selection. ",
-        "id": 13,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/13/parisian.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/13/medium_parisian.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/13/small_parisian.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/13/tiny_parisian.png"
-            }
-        },
-        "name": "Parisian",
-        "theme_id": 13
-    },
-    {
-        "description": "Get Green",
-        "id": 14,
-        "image_name": {
-            "url": "/images/fallback/bundle/default_bundle.png",
-            "medium": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "small": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            }
-        },
-        "name": "Green",
-        "theme_id": 14
-    },
-    {
-        "description": "F and C",
-        "id": 15,
-        "image_name": {
-            "url": "/images/fallback/bundle/default_bundle.png",
-            "medium": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "small": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            }
-        },
-        "name": "London",
-        "theme_id": 15
-    },
-    {
-        "description": "Alpine",
-        "id": 16,
-        "image_name": {
-            "url": "/images/fallback/bundle/default_bundle.png",
-            "medium": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "small": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            }
-        },
-        "name": "Alps",
-        "theme_id": 16
-    },
-    {
-        "description": "Enjoy the waters!",
-        "id": 17,
-        "image_name": {
-            "url": "/images/fallback/bundle/default_bundle.png",
-            "medium": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "small": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            }
-        },
-        "name": "Puerto Rico",
-        "theme_id": 17
-    },
-    {
-        "description": "Hawaii!",
-        "id": 18,
-        "image_name": {
-            "url": "/images/fallback/bundle/default_bundle.png",
-            "medium": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "small": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/bundle/default_bundle.png"
-            }
-        },
-        "name": "Aloha",
-        "theme_id": 18
-    },
-    {
-        "description": "This object set gives your room an awesome look! The furniture is so hd that it looks like a cartoon room.sad",
+        "created_at": "2013-05-17T20:33:57Z",
+        "description": "This object set gives your room an awesome look! The furniture is so hd that it looks like a cartoon room.",
         "id": 1,
         "image_name": {
-            "url": "/uploads/bundle/image_name/1/cartoonish.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/1/medium_cartoonish.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/1/small_cartoonish.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/1/tiny_cartoonish.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822838/36614-bundle-image_name-cartoonish.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
         },
         "name": "Cartoonish",
-        "theme_id": 1
+        "section_id": 1,
+        "theme_id": 1,
+        "updated_at": "2013-05-17T20:33:57Z"
     },
     {
-        "description": "sdas",
-        "id": 19,
-        "image_name": {
-            "url": "/uploads/bundle/image_name/19/error_search.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/19/medium_error_search.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/19/small_error_search.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/19/tiny_error_search.png"
-            }
-        },
-        "name": "new bbb",
-        "theme_id": 18
-    },
-    {
+        "created_at": "2013-05-17T20:33:59Z",
         "description": "This set is more traditional. Great furniture design, nothing flashy. It gives your room a real look and feel.",
         "id": 2,
         "image_name": {
-            "url": "/uploads/bundle/image_name/2/urban.png",
-            "medium": {
-                "url": "/uploads/bundle/image_name/2/medium_urban.png"
-            },
-            "small": {
-                "url": "/uploads/bundle/image_name/2/small_urban.png"
-            },
-            "tiny": {
-                "url": "/uploads/bundle/image_name/2/tiny_urban.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822839/68126-bundle-image_name-urban.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
         },
         "name": "Urban",
-        "theme_id": 10
+        "section_id": 1,
+        "theme_id": 2,
+        "updated_at": "2013-05-17T20:33:59Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:00Z",
+        "description": "This particular set of objects is a look in to the future of home design. More modern, tech-friendly, and sleek looking than any other.",
+        "id": 3,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822840/10342-bundle-image_name-elegante.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Elegante",
+        "section_id": 1,
+        "theme_id": 3,
+        "updated_at": "2013-05-17T20:34:00Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:01Z",
+        "description": "This objects were web-crafted by guys that lived in 60's here in San Francisco. These objects are some of the goods that this duet owned in the past. ",
+        "id": 4,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822842/89336-bundle-image_name-english-hipster.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "English Hipster",
+        "section_id": 1,
+        "theme_id": 4,
+        "updated_at": "2013-05-17T20:34:01Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:03Z",
+        "description": "Simple. Its objects blend smoothly to create an unique look.",
+        "id": 5,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822843/10681-bundle-image_name-simplicity.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Simplicity",
+        "section_id": 1,
+        "theme_id": 5,
+        "updated_at": "2013-05-17T20:34:03Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:04Z",
+        "description": "The objects in this bundle were hand picked by one of our own. Really creative and modern.",
+        "id": 6,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822844/85776-bundle-image_name-disco.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Disco",
+        "section_id": 1,
+        "theme_id": 6,
+        "updated_at": "2013-05-17T20:34:04Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:05Z",
+        "description": "Mystery set of objects! If you can't make up your mind, pick this one. ",
+        "id": 7,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822845/37275-bundle-image_name-mystery.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Mystery",
+        "section_id": 1,
+        "theme_id": 7,
+        "updated_at": "2013-05-17T20:34:05Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:06Z",
+        "description": "Feel the Chill of Brazil.",
+        "id": 8,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822847/29362-bundle-image_name-brazil.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Brazil",
+        "section_id": 1,
+        "theme_id": 8,
+        "updated_at": "2013-05-17T20:34:06Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:08Z",
+        "description": "We like that Diamond life. ",
+        "id": 9,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822848/65457-bundle-image_name-ritzy.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Ritzy",
+        "section_id": 1,
+        "theme_id": 9,
+        "updated_at": "2013-05-17T20:34:08Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:09Z",
+        "description": "All Pink everywhere. ",
+        "id": 10,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822849/19255-bundle-image_name-pink.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Pink",
+        "section_id": 1,
+        "theme_id": 10,
+        "updated_at": "2013-05-17T20:34:09Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:10Z",
+        "description": "Sushi?",
+        "id": 11,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822850/75232-bundle-image_name-asian-fusion.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Asian Fusion",
+        "section_id": 1,
+        "theme_id": 11,
+        "updated_at": "2013-05-17T20:34:10Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:11Z",
+        "description": "Vodka for you.",
+        "id": 12,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822851/64279-bundle-image_name-ussr.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "USSR",
+        "section_id": 1,
+        "theme_id": 12,
+        "updated_at": "2013-05-17T20:34:11Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:12Z",
+        "description": "Appreciate the detail in the selection. ",
+        "id": 13,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822853/57518-bundle-image_name-parisian.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Parisian",
+        "section_id": 1,
+        "theme_id": 13,
+        "updated_at": "2013-05-17T20:34:12Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:14Z",
+        "description": "Get Green",
+        "id": 14,
+        "image_name": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Green",
+        "section_id": 1,
+        "theme_id": 14,
+        "updated_at": "2013-05-17T20:34:14Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:14Z",
+        "description": "F and C",
+        "id": 15,
+        "image_name": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "London",
+        "section_id": 1,
+        "theme_id": 15,
+        "updated_at": "2013-05-17T20:34:14Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:14Z",
+        "description": "Alpine",
+        "id": 16,
+        "image_name": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Alps",
+        "section_id": 1,
+        "theme_id": 16,
+        "updated_at": "2013-05-17T20:34:14Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:14Z",
+        "description": "Enjoy the waters!",
+        "id": 17,
+        "image_name": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Puerto Rico",
+        "section_id": 1,
+        "theme_id": 17,
+        "updated_at": "2013-05-17T20:34:14Z"
+    },
+    {
+        "created_at": "2013-05-17T20:34:14Z",
+        "description": "Hawaii!",
+        "id": 18,
+        "image_name": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "Aloha",
+        "section_id": 1,
+        "theme_id": 18,
+        "updated_at": "2013-05-17T20:34:14Z"
+    },
+    {
+        "created_at": "2013-06-12T23:53:44Z",
+        "description": "asdsadasd",
+        "id": 19,
+        "image_name": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "asdsad",
+        "section_id": 1,
+        "theme_id": 4,
+        "updated_at": "2013-06-12T23:59:24Z"
+    },
+    {
+        "created_at": "2013-06-13T16:37:51Z",
+        "description": "ys",
+        "id": 20,
+        "image_name": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "name": "New Bundle Section 2",
+        "section_id": 2,
+        "theme_id": 25,
+        "updated_at": "2013-06-13T16:37:51Z"
     }
 ]

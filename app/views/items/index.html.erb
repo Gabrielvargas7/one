@@ -1,17 +1,15 @@
 <h1>Listing items</h1>
 
-<%= link_to 'New Item', new_item_path %>
+<h3>
+  <%= link_to 'New Item', new_item_path %>
+</h3>
+
 
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50%" cellspacing="2" cellpadding="3">
 
   <tr>
     <th>Item Id</th>
     <th>Name</th>
-    <th>X</th>
-    <th>Y</th>
-    <th>Z</th>
-    <th>Width</th>
-    <th>Height</th>
     <th>Clickable</th>
     <th></th>
     <th></th>
@@ -23,11 +21,6 @@
 
     <td><%= item.id %></td>
     <td><%= item.name %></td>
-    <td><%= item.x %></td>
-    <td><%= item.y %></td>
-    <td><%= item.z %></td>
-    <td><%= item.width %></td>
-    <td><%= item.height %></td>
     <td><%= item.clickable %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>

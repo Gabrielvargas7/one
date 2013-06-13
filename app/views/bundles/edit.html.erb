@@ -1,6 +1,64 @@
 <h1>Editing bundle</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+
+
+    <%= form_for(@bundle , :html => {:multipart => true}) do |f| %>
+        <% if @bundle.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@bundle.errors.count, "error") %> prohibited this bundle from being saved:</h2>
+
+              <ul>
+                <% @bundle.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="field">
+          <% unless @bundle_show_id.nil? %><br />
+              <label>id </label>
+              <%= @bundle_show_id.id %>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :description %><br />
+          <%= f.text_area :description %>
+        </div>
+
+        <div class="field">
+          <%= f.label :image_name %><br />
+          <%= f.file_field  :image_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :image_name_set %><br />
+          <%= f.file_field  :image_name_set %>
+        </div>
+
+
+
+        <div class="field">
+          <%= f.label :theme_id %><br />
+          <%= f.collection_select :theme_id, Theme.all, :id, :id_and_theme , :prompt => true  %>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+        </div>
+        </div>
+    <% end %>
+
+
 
 <%= link_to 'Show', @bundle %> |
 <%= link_to 'Back', bundles_path %>

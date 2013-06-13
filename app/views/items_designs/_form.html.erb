@@ -37,11 +37,6 @@
 
 
         <div class="field">
-         <%= f.label :bundle_id %><br />
-         <%= f.collection_select :bundle_id, Bundle.all, :id, :id_and_bundle, :prompt => true  %>
-        </div>
-
-        <div class="field">
         <%= f.label :image_name %><br />
         <%= f.file_field :image_name %>
       </div>

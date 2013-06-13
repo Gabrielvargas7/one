@@ -6,7 +6,7 @@ class BundlesController < ApplicationController
     #@bundles = Bundle.paginate(page: params[:page], :per_page => 10)
     #@bundles = Bundle.paginate(page: params[:page]).order('id')
 
-    @bundles = Bundle.all
+    @bundles = Bundle.order('id').all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -107,7 +107,8 @@ class BundlesController < ApplicationController
 
     @bundles = Bundle.order(:id)
     respond_to do |format|
-      format.json { render json: @bundles.as_json(only:[:id,:description, :image_name, :name, :theme_id] )
+      format.json { render json: @bundles.as_json()
+                               #@bundles.as_json(only:[:id,:description, :image_name, :name, :theme_id] )
 
       }
     end

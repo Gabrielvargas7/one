@@ -1,5 +1,10 @@
 <h1>Listing items_locations</h1>
 
+<h3>
+  <%= link_to 'New Items location', new_items_location_path %>
+
+</h3>
+
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50%" cellspacing="2" cellpadding="3">
   <tr>
     <th>Item id</th>
@@ -7,6 +12,9 @@
 
     <th>Location id</th>
     <th>Location name</th>
+    <th>Section id</th>
+    <th>Section name</th>
+
 
     <th></th>
     <th></th>
@@ -33,6 +41,8 @@
     <%  else %>
         <td><%= items_location.location.id  %></td>
         <td><%= items_location.location.name  %></td>
+        <td><%= items_location.location.section.id  %></td>
+        <td><%= items_location.location.section.name  %></td>
     <%  end %>
 
 
@@ -45,4 +55,4 @@
 
 <br />
 
-<%= link_to 'New Items location', new_items_location_path %>
+
