@@ -1,18 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Items design:</b>
-  <%= @bundles_items_design.items_design_id %>
-</p>
+<h1>bundles_items_design</h1>
+
 
 <p>
   <b>Location:</b>
   <%= @bundles_items_design.location_id %>
+  <%= @bundles_items_design.location.name %>
 </p>
+
+<p>
+  <b>Section: </b>
+  <%= @bundles_items_design.location.section.id %>
+  <%= @bundles_items_design.location.section.name %>
+
+</p>
+
+<p>
+  <b>Item :</b>
+  <%= @bundles_items_design.items_design.item.id %>
+  <%= @bundles_items_design.items_design.item.name %>
+</p>
+
+<p>
+  <b>Items design:</b>
+  <%= @bundles_items_design.items_design_id %>
+  <%= @bundles_items_design.items_design.name %>
+
+  <b>Image name:</b>
+  <%= @bundles_items_design.items_design.image_name %>
+  <%= image_tag @bundles_items_design.items_design.image_name.url.to_s,width:50 , height:50 %>
+</p>
+
 
 <p>
   <b>Bundle:</b>
   <%= @bundles_items_design.bundle_id %>
+  <%= @bundles_items_design.bundle.name %>
+
+  <b>Image name:</b>
+  <%= image_tag @bundles_items_design.bundle.image_name.url.to_s,width:50 , height:50 %>
 </p>
 
 

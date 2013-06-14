@@ -22,6 +22,7 @@
       <%= f.collection_select :location_id, ItemsLocation.all , :location_id, :item_location_section , :prompt => true  %>
     </div>
 
+
      <div class="field">
         <%= f.label :items_design_id %><br />
         <%= f.collection_select :items_design_id, ItemsDesign.all, :id, :id_and_item_design , :prompt => true  %>

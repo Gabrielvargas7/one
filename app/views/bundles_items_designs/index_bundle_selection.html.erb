@@ -1,0 +1,66 @@
+<h1>Select bundle</h1>
+
+
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
+  <tr>
+    <th>Bundles Id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Bundle Image name</th>
+    <th>Bundle Image name Set</th>
+
+    <th>Theme id</th>
+    <th>Theme name</th>
+    <th>Theme image name</th>
+
+    <th>Section id</th>
+    <th>Section name</th>
+
+    <th></th>
+  </tr>
+
+  <% @bundles.each do |bundle| %>
+      <tr>
+
+        <td><%= bundle.id %></td>
+        <td><%= bundle.name %></td>
+        <td><%= bundle.description %></td>
+        <td> <%= image_tag bundle.image_name.url().to_s ,width: 100, height:100 %> </td>
+        <td> <%= image_tag bundle.image_name_set.url().to_s ,width: 100, height:100 %> </td>
+
+
+        <%  if bundle.theme.nil? %>
+            <td></td>
+            <td></td>
+            <td></td>
+        <%  else %>
+            <td><%= bundle.theme.id %></td>
+            <td><%= bundle.theme.name %></td>
+            <td> <%= image_tag bundle.theme.image_name.url().to_s ,width: 100, height:100 %> </td>
+
+        <%  end %>
+
+        <%  if bundle.section.nil? %>
+            <td></td>
+            <td></td>
+        <%  else %>
+            <td><%= bundle.section.id %></td>
+            <td><%= bundle.section.name %></td>
+        <%  end %>
+        <td><%= link_to 'Select Bundle',  index_items_location_selection_path(bundle.id,bundle.section.id), :method => :get %></td>
+
+
+      </tr>
+  <% end %>
+</table>
+
+<h3>
+
+  <%= link_to 'New Bundle', new_bundle_path %>
+</h3>
+
+
+<br />
+
+

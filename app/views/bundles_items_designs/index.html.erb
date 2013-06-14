@@ -2,7 +2,12 @@
 
 <h3>
   <%= link_to 'New Bundles items design', new_bundles_items_design_path %>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <%= link_to 'New Bundles items design 1', index_bundle_selection_path %>
+
+
 </h3>
+
 
 
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
@@ -75,7 +80,6 @@
 
 
     <td><%= link_to 'Show', bundles_items_design %></td>
-    <td><%= link_to 'Edit', edit_bundles_items_design_path(bundles_items_design) %></td>
     <td><%= link_to 'Destroy', bundles_items_design, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

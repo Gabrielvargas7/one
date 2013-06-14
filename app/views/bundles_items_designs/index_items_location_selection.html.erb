@@ -1,0 +1,64 @@
+<h1>Select items_locations</h1>
+
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50%" cellspacing="2" cellpadding="3">
+  <tr>
+    <th>Item id</th>
+    <th>Item name</th>
+
+    <th>Location id</th>
+    <th>Location name</th>
+    <th>Section id</th>
+    <th>Section name</th>
+
+    <th>Bundle id</th>
+    <th>Bundle name</th>
+    <th>Bundle image name</th>
+
+
+
+    <th></th>
+  </tr>
+
+
+  <% @items_locations.each do |items_location| %>
+
+      <tr>
+        <%  if items_location.item.nil? %>
+            <td></td>
+            <td></td>
+
+        <%  else %>
+            <td><%= items_location.item.id  %></td>
+            <td><%= items_location.item.name  %></td>
+        <%  end %>
+
+
+        <%  if items_location.location.nil? %>
+            <td></td>
+            <td></td>
+
+        <%  else %>
+            <td><%= items_location.location.id  %></td>
+            <td><%= items_location.location.name  %></td>
+            <td><%= items_location.location.section.id  %></td>
+            <td><%= items_location.location.section.name  %></td>
+        <%  end %>
+
+        <%  if @bundle.id.nil? %>
+            <td></td>
+            <td></td>
+            <td></td>
+        <%  else %>
+            <td><%= @bundle.id %></td>
+            <td><%= @bundle.name %></td>
+            <td> <%= image_tag @bundle.image_name.url().to_s ,width: 100, height:100 %> </td>
+      <%  end %>
+        <td><%= link_to 'Select items and location', index_items_design_selection_path(@bundle.id,items_location.location.id,items_location.item.id), :method => :get %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+

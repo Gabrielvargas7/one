@@ -5,6 +5,18 @@ Mywebroom::Application.routes.draw do
 
   resources :bundles_items_designs
 
+  match '/bundles_items_designs/index/bundle_selection', to:
+         'bundles_items_designs#index_bundle_selection', via: :get,as: :index_bundle_selection
+
+  match '/bundles_items_designs/index/items_location_selection/:bundle_id/:section_id', to:
+         'bundles_items_designs#index_items_location_selection', via: :get,as: :index_items_location_selection
+
+  match '/bundles_items_designs/index/items_design_selection/:bundle_id/:location_id/:item_id', to:
+        'bundles_items_designs#index_items_design_selection', via: :get,as: :index_items_design_selection
+
+  match '/bundles_items_designs/create/bundle_items_design/:bundle_id/:location_id/:items_design_id', to:
+         'bundles_items_designs#create_bundle_items_design', via: :post, as: :create_bundle_items_design
+
 
   resources :items_locations
 
@@ -23,6 +35,11 @@ Mywebroom::Application.routes.draw do
   resources :bundles_bookmarks
 
   resources :bookmarks
+
+  match '/bookmarks/index/bookmarks_approval', to: 'bookmarks#index_bookmarks_approval', via: :get,as: :index_bookmarks_approval
+  match '/bookmarks/update/bookmarks_approval_for_a_user/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_a_user', via: :put,as: :update_bookmarks_approval_for_a_user
+  match '/bookmarks/update/bookmarks_approval_for_all_users/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_all_users', via: :put,as: :update_bookmarks_approval_for_all_users
+
 
   resources :items_designs
 
@@ -58,11 +75,6 @@ Mywebroom::Application.routes.draw do
 
   #main page
   match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
-
-  match '/bookmarks/index/bookmarks_approval', to: 'bookmarks#index_bookmarks_approval', via: :get,as: :index_bookmarks_approval
-  match '/bookmarks/update/bookmarks_approval_for_a_user/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_a_user', via: :put,as: :update_bookmarks_approval_for_a_user
-  match '/bookmarks/update/bookmarks_approval_for_all_users/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_all_users', via: :put,as: :update_bookmarks_approval_for_all_users
-
 
   root to: 'static_pages#home'
 
