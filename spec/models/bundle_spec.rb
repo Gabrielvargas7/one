@@ -20,8 +20,9 @@ describe Bundle do
 
    # the (before) line will instance the variable for every (describe methods)
   before do
+    @section = FactoryGirl.create(:section)
     @theme = FactoryGirl.create(:theme)
-    @bundle = FactoryGirl.build(:bundle,theme_id:@theme.id)
+    @bundle = FactoryGirl.build(:bundle,theme_id:@theme.id,section_id:@section.id)
 
   end
 
@@ -34,6 +35,7 @@ describe Bundle do
   it { @bundle.should respond_to(:image_name_set)}
   it { @bundle.should respond_to(:image_name)}
   it { @bundle.should respond_to(:theme_id) }
+  it { @bundle.should respond_to(:section_id) }
 
   it { @bundle.should be_valid }
 
@@ -99,7 +101,6 @@ describe Bundle do
   describe "bundle theme_id ",tag_bundle_theme_id:true do
 
     it "should be valid " do
-
       @bundle.theme_id == @theme.id
     end
   end
@@ -110,11 +111,31 @@ describe Bundle do
 
   describe "should not be valid bundle theme_id ",tag_bundle_theme_id:true do
 
-    let(:bundle_not_theme_id){Bundle.create(name:'bundle',theme_id:-1)}
+    let(:bundle_not_theme_id){FactoryGirl.build(:bundle,theme_id:-1,section_id:@section.id)}
     it { bundle_not_theme_id.should_not be_valid }
 
   end
 
+  ###############
+  #test validation section_id on bundle
+  ###############
+  describe "bundle section_id ",tag_bundle_section_id:true do
+
+    it "should be valid " do
+      @bundle.section_id == @section.id
+    end
+  end
+
+  ###############
+  #test validation section_id on bundle
+  ###############
+
+  describe "should not be valid bundle section_id ",tag_bundle_section_id:true do
+
+    let(:bundle_not_section_id){FactoryGirl.build(:bundle,theme_id:@theme.id,section_id:-1)}
+    it { bundle_not_section_id.should_not be_valid }
+
+  end
 
 
 
