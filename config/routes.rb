@@ -77,6 +77,8 @@ Mywebroom::Application.routes.draw do
   match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
 
   root to: 'static_pages#home'
+  #root to: 'users#new'
+
 
 # Contract Back-end -- Front-end only Json responce
 # Rules of name

@@ -4,6 +4,9 @@ class RoomsController < ApplicationController
 
 
 
+  # GET Get room with the username
+  # /room/:username
+  # room_rooms_path // room_rooms_url
   def room
         @username = params[:username]
         @user = User.find_by_username(params[:username])

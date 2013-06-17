@@ -23,9 +23,16 @@ FactoryGirl.define do
   end
 
 
+  factory :section do
+    sequence(:name)  { |n| "theme #{n}" }
+    sequence(:description)  { |n| "desc #{n}" }
+  end
+
+
   factory :theme do
     sequence(:name)  { |n| "theme #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
+
 
   end
 
@@ -33,17 +40,30 @@ FactoryGirl.define do
     sequence(:name)  { |n| "bundle #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
     theme_id 1
+    section_id 1
   end
 
   factory :item do
     sequence(:name)  { |n| "item #{n}" }
     clickable  "yes"
+  end
+
+  factory :location do
+    sequence(:name)  { |n| "item #{n}" }
+    section 1
     height 10
     width 10
     x 1
     y 2
     z 3
   end
+
+  factory :items_location do
+    item_id 1
+    location_id 1
+  end
+
+
 
   factory :items_design do
     sequence(:name)  { |n| "item_design #{n}" }
@@ -77,12 +97,21 @@ FactoryGirl.define do
     item_id 1
   end
 
+
+  factory :bundles_items_design do
+    bundle_id 1
+    location_id 1
+    items_design_id 1
+  end
+
+
   factory :feedback do
     description "feedback one"
     email "feedback@mywebroom.com"
     name "feedback"
     user_id 1
   end
+
 
 
   factory :notification do

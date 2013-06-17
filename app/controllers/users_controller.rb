@@ -10,11 +10,13 @@ class UsersController < ApplicationController
        if User.exists?(id:params[:id])
 
           @user = User.find(params[:id])
+          redirect_to room_rooms_url @user.username
 
-           respond_to do |format|
-             format.html # show.html.erb
-             format.json { render json: @user.as_json(only:[:name,:email,:username])  }
-           end
+           #respond_to do |format|
+           #  format.html # show.html.erb
+           #  format.json { render json: @user.as_json(only:[:name,:email,:username])  }
+           #end
+
        else
           redirect_to(root_path)
        end
@@ -47,11 +49,9 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       sign_in @user
       redirect_to @user
-
+      #redirect_to room_rooms_url @user.username
     else
-
       render 'edit'
-
     end
   end
 
