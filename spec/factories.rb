@@ -49,7 +49,8 @@ FactoryGirl.define do
   end
 
   factory :location do
-    sequence(:name)  { |n| "item #{n}" }
+    sequence(:name)  { |n| "location #{n}" }
+    description "location"
     section 1
     height 10
     width 10
@@ -62,7 +63,6 @@ FactoryGirl.define do
     item_id 1
     location_id 1
   end
-
 
 
   factory :items_design do
@@ -137,6 +137,8 @@ FactoryGirl.define do
   factory :users_theme do
     user_id 1
     theme_id 1
+    section_id 1
+
   end
 
   factory :users_bookmark do
@@ -153,6 +155,7 @@ FactoryGirl.define do
     user_id 1
     items_design_id 1
     hide 'y'
+    location_id 1
   end
 
 

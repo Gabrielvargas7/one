@@ -12,6 +12,7 @@
 
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
   <tr>
+    <th>Bundle Items Design id</th>
     <th>Bundle id</th>
     <th>Bundle name</th>
     <th>Bundle image_name</th>
@@ -33,12 +34,13 @@
 
     <th></th>
     <th></th>
-    <th></th>
+
   </tr>
 
 <% @bundles_items_designs.each do |bundles_items_design| %>
   <tr>
 
+    <td><%= bundles_items_design.id %></td>
     <%  if bundles_items_design.bundle.nil? %>
         <td></td>
         <td></td>

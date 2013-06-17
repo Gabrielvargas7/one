@@ -35,5 +35,12 @@ module SessionsHelper
     session[:return_to] = request.url
   end
 
+  def is_admin?
+
+    if self.signed_in?
+      current_user.admin?
+    end
+
+  end
 
 end

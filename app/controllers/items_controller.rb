@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     #@items = Item.paginate(page: params[:page], :per_page => 10)
     #@items = Item.paginate(page: params[:page]).order('id')
 
-    @items = Item.all
+    @items = Item.order(:id).all
 
     respond_to do |format|
       format.html # index.html.erb

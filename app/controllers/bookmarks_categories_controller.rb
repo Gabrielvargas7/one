@@ -74,13 +74,26 @@ class BookmarksCategoriesController < ApplicationController
   # DELETE /bookmarks_categories/1
   # DELETE /bookmarks_categories/1.json
   def destroy
-    # sorry but not delete is not allow
-    #@bookmarks_category = BookmarksCategory.find(params[:id])
-    #@bookmarks_category.destroy
+    # the category must have a least one category
 
     respond_to do |format|
-      format.html { redirect_to bookmarks_categories_url }
-      format.json { head :no_content }
+
+      @bookmarks_category = BookmarksCategory.find(params[:id])
+
+      @bookmarks_categories_count = BookmarksCategory.where("item_id = ?",@bookmarks_category.item_id).count
+
+      if @bookmarks_categories_count > 1
+         @bookmarks_category.destroy
+
+         flash[:success] = "Destroy is successful"
+         format.html { redirect_to bookmarks_categories_url }
+      else
+        flash[:success] = "Sorry: a least one category must exist for item"
+        format.html { redirect_to bookmarks_categories_url }
+
+      end
+
+
     end
   end
 

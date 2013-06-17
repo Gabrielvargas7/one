@@ -92,8 +92,8 @@ class NotificationsController < ApplicationController
   # DELETE /notifications/1
   # DELETE /notifications/1.json
   def destroy
-    @notification = Notification.find(params[:id])
-    @notification.destroy
+    #@notification = Notification.find(params[:id])
+    #@notification.destroy
 
     respond_to do |format|
       format.html { redirect_to notifications_url }

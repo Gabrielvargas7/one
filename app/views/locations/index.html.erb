@@ -5,6 +5,7 @@
 </h3>
 <table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50%" cellspacing="2" cellpadding="3">
   <tr>
+    <th>id</th>
     <th>Name</th>
     <th>Description</th>
     <th>X</th>
@@ -17,11 +18,13 @@
 
     <th></th>
     <th></th>
-    <th></th>
+
   </tr>
 
 <% @locations.each do |location| %>
   <tr>
+
+    <td><%= location.id %></td>
     <td><%= location.name %></td>
     <td><%= location.description %></td>
     <td><%= location.x %></td>
@@ -45,7 +48,7 @@
 
     <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
   </tr>
 <% end %>
 </table>
