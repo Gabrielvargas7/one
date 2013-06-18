@@ -1,0 +1,16 @@
+// GET get signed user info
+
+//  /users/json/show_signed_user
+//  /users/json/show_signed_user
+//  /# success    ->  head  200 OK
+//  /# user didn't sign in = 404 Not Found
+
+{
+    "id": 23,
+    "image_name": {
+        "url": "/assets/fallback/user/default_user.png"
+    },
+    "name": "gabrielvargas7",
+    "username": "gabrielvargas7-74335-78473"
+}
+

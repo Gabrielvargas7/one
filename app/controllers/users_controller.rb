@@ -184,43 +184,6 @@ class UsersController < ApplicationController
              end
 
            end
-
-
-
-           #@items_design = ItemsDesign.where('bundle_id = ?',params[:bundle_id]).all
-            #
-            ## delete any item design of the user
-            ## delete the theme of the user
-            ## create the new items_design for the user
-            ## create the new theme
-            #ActiveRecord::Base.transaction do
-            #  begin
-            #
-            #    UsersItemsDesign.where("user_id = ?",params[:user_id]).delete_all
-            #    UsersTheme.where("user_id = ?",params[:user_id]).delete_all
-            #
-            #    @user_theme = UsersTheme.new(user_id:params[:user_id],theme_id:@bundle.theme_id)
-            #    @user_theme.save
-            #
-            #    @items_design.each  do |i|
-            #
-            #      @user_items_design = UsersItemsDesign.new(user_id:params[:user_id],items_design_id:i.id,hide:'no')
-            #      @user_items_design.save
-            #    end
-            #    @users_items_design = UsersItemsDesign.where("user_id = ?",params[:user_id]).all
-            #
-            #    #format.json { head :no_content }
-            #    format.json { render json: {user_theme: @user_theme, users_items_design:@users_items_design}, status: :ok }
-            #
-            #  rescue
-            #    format.json { render json: 'failure creating new full bundle for the user', status: :unprocessable_entity }
-            #    raise ActiveRecord::Rollback
-            #  end
-            #
-            #end
-
-
-
          else
            format.json { render json: 'not found bundle id' , status: :not_found }
          end
@@ -262,15 +225,23 @@ class UsersController < ApplicationController
 
   end
 
+  # GET get signed user info
+  #  /users/json/show_signed_user
+  #  /users/json/show_signed_user
+  #  /# success    ->  head  200 OK
 
-  #if @theme.update_attributes(params[:theme])
-  #  format.html { redirect_to @theme, notice: 'Theme was successfully updated.' }
-  #  format.json { head :no_content }
-  #else
-  #  format.html { render action: "edit" }
-  #  format.json { render json: @theme.errors, status: :unprocessable_entity }
-  #end
+  def json_show_signed_user
+    @current_user =  current_user
+    respond_to do |format|
+      if @current_user.nil?
+        format.json { render json: 'user not found' , status: :not_found }
+      else
+        format.json { render json: @current_user.as_json(only:[:id,:image_name,:name,:username]), status: :ok}
+      end
 
+
+    end
+  end
 
 
 

@@ -181,6 +181,12 @@ Mywebroom::Application.routes.draw do
          'users#json_update_users_image_profile_by_user_id', via: :put
 
 
+  match '/users/json/show_signed_user', to:
+        'users#json_show_signed_user', via: :get
+
+
+
+
   #--------------------------
   # end Users Contract
   #--------------------------

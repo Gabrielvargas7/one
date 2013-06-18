@@ -10,5 +10,5 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
 #    this
 
   render: ->
-    $(@el).html(@template(themes: @collection))
+    $(@el).html(@template(user: @collection))
     this

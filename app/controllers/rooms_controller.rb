@@ -13,6 +13,8 @@ class RoomsController < ApplicationController
 
         respond_to do |format|
           format.html # show.html.erb
+          format.json { render json:@user.as_json(only: [:id,:name, :username, :image_name ])  }
+
         end
   end
 
@@ -71,12 +73,7 @@ class RoomsController < ApplicationController
                       user: @user,
                                               user_gallery: @user_gallery,
                                               user_theme: @user_theme,
-                                              user_items_designs: @user_items_designs.as_json(
-                                                  #include: {item: {only: [:name, :id, :x, :y, :z, :clickable, :height, :width]}}
-
-
-
-                                              )
+                                              user_items_designs: @user_items_designs.as_json()
 
                   }}
           else

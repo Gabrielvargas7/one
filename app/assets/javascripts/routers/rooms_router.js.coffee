@@ -4,7 +4,8 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
     'rooms': 'routes_room'
 
   initialize: ->
-    @collection = new Mywebroom.Collections.ThemesJsonIndex()
+#    @collection = new Mywebroom.Collections.ThemesJsonIndex()
+    @collection = new Mywebroom.Collections.UsersJsonShowSignedUser()
     @collection.fetch({reset: true})
 
 

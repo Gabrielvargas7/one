@@ -1,4 +1,5 @@
 //# PUT insert user image
+
 //#/users/json/update_users_image_profile_by_user_id/:user_id
 //#/users/json/update_users_image_profile_by_user_id/206.json
 //# Content-Type : multipart/form-data
@@ -6,7 +7,6 @@
 //#               :image_name (full path)
 //#Return ->
 //#success    ->  head  201 create
-
 
 {
     "id":206,
