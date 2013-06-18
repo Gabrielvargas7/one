@@ -35,13 +35,15 @@ describe ThemesController do
   end
 
   describe "GET index",tag_index:true do
+
     it "assigns all themes as @themes" do
 
       #theme = Theme.create! valid_attributes
       #get :index, {}, valid_session
       #assigns(:themes).should eq([theme])
 
-      theme = FactoryGirl.create(:theme)
+      FactoryGirl.create(:theme)
+      theme = Theme.all
       get :index
       assigns(:themes).should eq([theme])
 
