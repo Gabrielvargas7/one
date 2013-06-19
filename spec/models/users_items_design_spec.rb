@@ -14,6 +14,10 @@ require 'spec_helper'
 
 describe UsersItemsDesign do
 
+  before(:all){ create_init_data }
+  after(:all){ delete_init_data }
+
+
   before do
     @user = FactoryGirl.create(:user)
 

@@ -13,6 +13,9 @@ require 'spec_helper'
 
 describe UsersTheme do
 
+  before(:all){ create_init_data }
+  after(:all){ delete_init_data }
+
   # the (before) line will instance the variable for every (describe methods)
   before do
     @user = FactoryGirl.create(:user)

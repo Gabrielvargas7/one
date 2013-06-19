@@ -22,6 +22,8 @@ describe User do
   # the (before) line will instance the variable for every (describe methods)
   #before { @user = User.new(name: "Example User", email: "user@example.com", password: "foobar")}
 
+  before(:all){ create_init_data }
+  after(:all){ delete_init_data }
   before {@user = FactoryGirl.build(:user) }
 
   #the (subject)line declare the variable that is use in all the test

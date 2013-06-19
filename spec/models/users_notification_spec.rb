@@ -14,6 +14,9 @@ require 'spec_helper'
 
 describe UsersNotification do
   # the (before) line will instance the variable for every (describe methods)
+  before(:all){ create_init_data }
+  after(:all){ delete_init_data }
+
   before do
     @user = FactoryGirl.create(:user)
     @notification = FactoryGirl.create(:notification)

@@ -34,51 +34,72 @@ describe ThemesController do
     {}
   end
 
+   #the (before) line will instance the variable for every (describe methods)
+  before {@theme = FactoryGirl.create(:theme)}
+
+
+  #the (subject)line declare the variable that is use in all the test
+  subject { @theme }
+
   describe "GET index",tag_index:true do
 
     it "assigns all themes as @themes" do
 
-      #theme = Theme.create! valid_attributes
-      #get :index, {}, valid_session
-      #assigns(:themes).should eq([theme])
-
-      FactoryGirl.create(:theme)
-      theme = Theme.all
+      #theme = FactoryGirl.create(:theme)
       get :index
-      assigns(:themes).should eq([theme])
-
-      #it "renders the :index view" do
-      #  get :index
-      #  response.should render_template :index
-      #end
-
+      assigns(:themes).should eq([@theme])
     end
+
+    it "renders the :index view" do
+      get :index
+      response.should render_template :index
+    end
+
   end
 
-  describe "GET show" do
+  describe "GET show", tag_show:true do
+
     it "assigns the requested themes as @themes" do
-      theme = Theme.create! valid_attributes
-      get :show, {:id => theme.to_param}, valid_session
-      assigns(:themes).should eq(theme)
+      get :show, id: @theme
+      assigns(:theme).should eq(@theme)
+
     end
+
+    it "renders the #show view" do
+
+      get :show, id: @theme
+      response.should render_template :show
+    end
+
   end
 
-  describe "GET new" do
+  describe "GET new",tag_new:true do
+
     it "assigns a new themes as @themes" do
-      get :new, {}, valid_session
-      assigns(:themes).should be_a_new(Theme)
+
+      new_theme = FactoryGirl.create(:theme)
+      Theme.should_receive(:new).and_return(new_theme)
+      get :new
+      assigns[:theme].should eq(new_theme)
     end
+
+
   end
 
-  describe "GET edit" do
+  describe "GET edit", tag_edit:true do
+
     it "assigns the requested themes as @themes" do
-      theme = Theme.create! valid_attributes
-      get :edit, {:id => theme.to_param}, valid_session
-      assigns(:themes).should eq(theme)
+
+      new_theme = FactoryGirl.create(:theme)
+      get :edit, id: new_theme
+      assigns[:theme].should eq(new_theme)
+
+
     end
   end
 
   describe "POST create" do
+
     describe "with valid params" do
       it "creates a new Theme" do
         expect {
