@@ -44,8 +44,6 @@ describe ThemesController do
   describe "GET index",tag_index:true do
 
     it "assigns all themes as @themes" do
-
-      #theme = FactoryGirl.create(:theme)
       get :index
       assigns(:themes).should eq([@theme])
     end
@@ -102,99 +100,128 @@ describe ThemesController do
 
     describe "with valid params" do
       it "creates a new Theme" do
+
         expect {
-          post :create, {:themes => FactoryGirl.create(:theme)}
+          post :create,theme: FactoryGirl.attributes_for(:theme)
         }.to change(Theme, :count).by(1)
 
 
       end
 
-      #it "assigns a newly created themes as @themes" do
-      #  post :create, {:themes => FactoryGirl.attributes_for(:theme)}
-      #  assigns(:themes).should be_a(Theme)
-      #  assigns(:themes).should be_persisted
-      #end
-      #
-      #it "redirects to the created themes" do
-      #  post :create, {:themes => FactoryGirl.attributes_for(:theme)}
-      #  response.should redirect_to(Theme.last)
-      #end
-    end
-
-    #describe "with invalid params" do
-    #  it "assigns a newly created but unsaved themes as @themes" do
-    #    # Trigger the behavior that occurs when invalid params are submitted
-    #    Theme.any_instance.stub(:save).and_return(false)
-    #    post :create, {:themes => {}}, valid_session
-    #    assigns(:themes).should be_a_new(Theme)
-    #  end
-    #
-    #  it "re-renders the 'new' template" do
-    #    # Trigger the behavior that occurs when invalid params are submitted
-    #    Theme.any_instance.stub(:save).and_return(false)
-    #    post :create, {:themes => {}}, valid_session
-    #    response.should render_template("new")
-    #  end
-    #end
-  end
-
-  describe "PUT update", tag_update:true do
-    describe "with valid params" do
-      it "updates the requested themes" do
-        theme = Theme.create! valid_attributes
-        # Assuming there are no other themes in the database, this
-        # specifies that the Theme created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Theme.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => theme.to_param, :themes => {'these' => 'params'}}, valid_session
+      it "assigns a newly created themes as @themes" do
+        post :create,theme: FactoryGirl.attributes_for(:theme)
+        assigns(:theme).should be_a(Theme)
+        assigns(:theme).should be_persisted
       end
 
-      it "assigns the requested themes as @themes" do
-        theme = Theme.create! valid_attributes
-        put :update, {:id => theme.to_param, :themes => valid_attributes}, valid_session
-        assigns(:themes).should eq(theme)
-      end
-
-      it "redirects to the themes" do
-        theme = Theme.create! valid_attributes
-        put :update, {:id => theme.to_param, :themes => valid_attributes}, valid_session
-        response.should redirect_to(theme)
+      it "redirects to the created themes" do
+        post :create, theme: FactoryGirl.attributes_for(:theme)
+        response.should redirect_to(Theme.last)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the themes as @themes" do
-        theme = Theme.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Theme.any_instance.stub(:save).and_return(false)
-        put :update, {:id => theme.to_param, :themes => {}}, valid_session
-        assigns(:themes).should eq(theme)
+
+    context "with invalid attributes" do
+      it "does not save the new contact" do
+        expect{ post :create, theme: FactoryGirl.attributes_for(:theme,name:nil)
+        }.to_not change(Theme,:count)
+      end
+      it "re-renders the new method" do
+        post :create, theme: FactoryGirl.attributes_for(:theme,name:nil)
+        response.should render_template :new
+      end
+    end
+
+    end
+
+  end
+
+  describe "PUT update", tag_update:true do
+    describe "with valid params" do
+
+      context "valid attributes" do
+        it "located the requested @theme" do
+          put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme)
+          assigns(:theme).should eq(@theme)
+        end
       end
 
-      it "re-renders the 'edit' template" do
-        theme = Theme.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Theme.any_instance.stub(:save).and_return(false)
-        put :update, {:id => theme.to_param, :themes => {}}, valid_session
-        response.should render_template("edit")
+      it "changes @theme's attributes" do
+        put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme, name: "Larry", description: "Smith")
+        @theme.reload
+        @theme.name.should eq("Larry")
+        @theme.description.should eq("Smith")
+      end
+
+      it "redirects to the updated theme" do
+        put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme)
+        response.should redirect_to @theme
+      end
+
+
+    end
+
+    context "invalid attributes" do
+
+      it "locates the requested @theme" do
+        put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme,name:nil)
+        assigns(:theme).should eq(@theme)
+      end
+      it "does not change @theme's attributes" do
+        put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme, name:nil, description: "Smith")
+        @theme.reload
+        @theme.name.should_not eq("Larry")
+        @theme.description.should_not eq("Smith")
+      end
+      it "re-renders the edit method" do
+        put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme,name:nil)
+        response.should render_template :edit
       end
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested themes" do
-      theme = Theme.create! valid_attributes
-      expect {
-        delete :destroy, {:id => theme.to_param}, valid_session
-      }.to change(Theme, :count).by(-1)
-    end
+  describe "api #json_index",tag_json_index:true do
 
-    it "redirects to the themes list" do
-      theme = Theme.create! valid_attributes
-      delete :destroy, {:id => theme.to_param}, valid_session
-      response.should redirect_to(themes_url)
-    end
+
+      it "should be successful" do
+        get :json_index, theme: @theme, :format => :json
+        response.should be_success
+      end
+
+      it "should set theme" do
+        get :json_index, theme: @theme, :format => :json
+        assigns(:themes).as_json.should == [@theme.as_json]
+
+      end
+
+      it "should return json_index theme in json" do # depend on what you return in action
+        get :json_index, theme: @theme , :format => :json
+        body = JSON.parse(response.body)
+        puts "body ---- > "+body.to_s
+        puts "theme ----> "+@theme.as_json.to_s
+        puts "body name ----> " + body[0]["name"].to_s
+        puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+        puts "theme name----> "+@theme.name.to_s
+        puts "theme image name----> "+@theme.image_name.to_s
+
+        body.each do |body_theme|
+          body_theme["name"].should == @theme.name
+          body_theme["description"].should == @theme.description
+          body_theme["id"].should == @theme.id
+          body_theme["image_name"]["url"].should == @theme.image_name.to_s
+          body_theme["image_name_selection"]["url"].should == @theme.image_name_selection.to_s
+
+        end
+
+      end
+
+        it "has a 200 status code" do
+          get :json_index, theme: @theme, :format => :json
+          expect(response.status).to eq(200)
+        end
+
   end
+
 
 end

@@ -19,7 +19,6 @@ FactoryGirl.define do
       admin true
     end
 
-
   end
 
 
@@ -32,9 +31,10 @@ FactoryGirl.define do
   factory :theme do
     sequence(:name)  { |n| "theme #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
-
-
   end
+
+
+
 
   factory :bundle do
     sequence(:name)  { |n| "bundle #{n}" }
