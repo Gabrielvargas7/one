@@ -2,9 +2,11 @@
 // method type ->  put
 // method name ->  json_update_hide_user_items_design_by_user_id_and_items_design_id
 
-// routes      ->
-            //match '/users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
-            //'users_items_designs#json_update_hide_user_items_design_by_user_id_and_items_design_id', via: :put
+
+// Security: private user
+
+//Description
+
 
 //Description
             //#   PUT toggle the user items design with (yes to no to yes)

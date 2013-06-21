@@ -1,5 +1,27 @@
 class UsersThemesController < ApplicationController
-  #before_filter :correct_user_by_user_id, only:[:update_user_theme_by_user_id]
+
+  before_filter :signed_in_user,
+                only:[
+                ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_show_user_theme_by_user_id_and_section_id,
+                    :json_update_user_theme_by_user_id_and_section_id
+
+
+                ]
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_show_user_theme_by_user_id_and_section_id,
+                    :json_update_user_theme_by_user_id_and_section_id,
+
+  ]
+
+
+  before_filter :correct_user, only:[]
+  before_filter :admin_user, only:[]
 
 
 
@@ -76,15 +98,6 @@ class UsersThemesController < ApplicationController
       end
     end
   end
-
-
-private
-  def correct_user_by_user_id
-    @user = User.find(params[:user_id])
-
-     head :bad_request unless current_user?(@user)
-  end
-
 
 
 end

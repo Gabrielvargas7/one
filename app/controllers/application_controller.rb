@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  protect_from_forgery
-  include SessionsHelper
+
 
 
   #Force to signout to prevent CSRF attacks
@@ -9,5 +8,12 @@ class ApplicationController < ActionController::Base
     sign_out
     super
   end
+
+
+  private
+
+  protect_from_forgery
+  include SessionsHelper
+  include ApplicationHelper
 
 end

@@ -1,4 +1,25 @@
 class UsersNotificationsController < ApplicationController
+  before_filter :signed_in_user,
+                only:[
+                ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_show_user_notification_by_user,
+                    :json_update_user_notification_to_notified_by_user
+
+
+                ]
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_show_user_notification_by_user,
+                    :json_update_user_notification_to_notified_by_user
+                ]
+
+
+  before_filter :correct_user, only:[]
+  before_filter :admin_user, only:[]
 
 
 #***********************************

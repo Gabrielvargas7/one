@@ -1,4 +1,27 @@
 class BundlesBookmarksController < ApplicationController
+
+  before_filter :signed_in_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+
+  before_filter :admin_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+
   # GET /bundles_bookmarks
   # GET /bundles_bookmarks.json
   def index

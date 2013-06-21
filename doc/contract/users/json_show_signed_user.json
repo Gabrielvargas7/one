@@ -1,3 +1,7 @@
+// Security: public
+
+//Description
+
 // GET get signed user info
 
 //  /users/json/show_signed_user

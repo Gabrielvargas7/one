@@ -3,10 +3,8 @@
 // method name ->  json_show_user_item_design_by_user_id_and_item_design_id
 
 
-// routes      ->
-                //match '/users_items_designs/json/show_user_items_design_by_user_id_and_items_design_id/:user_id/:items_design_id', to:
-                //'users_items_designs#json_show_user_items_design_by_user_id_and_items_design_id', via: :get
-                //
+// Security: private user
+
 
 // description ->
                 //# GET get one item design of the user

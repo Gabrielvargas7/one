@@ -2,9 +2,9 @@
 // method type ->  get
 // method name ->  json_show_user_theme_by_user_id
 
-// routes      ->
-//   match '/users_themes/json/show_user_theme_by_user_id/:user_id', to:
-//          'users_themes#json_show_user_theme_by_user_id', via: :get
+// Security: private user
+
+//Description
 
 
 //Description

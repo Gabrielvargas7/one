@@ -2,10 +2,38 @@
 class UsersBookmarksController < ApplicationController
 
 
+  before_filter :signed_in_user,
+                only:[
+                ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
+                    :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
+                    :json_index_user_bookmarks_by_user_id,
+                    :json_index_user_bookmarks_by_user_id_and_item_id,
+                    :json_create_user_bookmark_custom_by_user_id
+
+                ]
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
+                    :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
+                    :json_index_user_bookmarks_by_user_id,
+                    :json_index_user_bookmarks_by_user_id_and_item_id,
+                    :json_create_user_bookmark_custom_by_user_id
+                ]
+
+
+  before_filter :correct_user, only:[]
+  before_filter :admin_user, only:[]
+
+
+
   #***********************************
   # Json methods for the room users
   #***********************************
-
 
 
   # POST Create new user's bookmark with position
@@ -79,7 +107,6 @@ class UsersBookmarksController < ApplicationController
         else
           format.json { render json: 'already destroy' , status: :ok }
         end
-
 
     end
 

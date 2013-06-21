@@ -1,4 +1,30 @@
 class BundlesController < ApplicationController
+
+  before_filter :signed_in_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_index_bundles
+                ]
+
+  before_filter :admin_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
   # GET /bundles
   # GET /bundles.json
   def index

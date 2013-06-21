@@ -1,3 +1,6 @@
+// Security: private user
+
+// Description
 //# GET get all user friend by limit and offset
 //# Limit is the number of user that you want it
 //# Offset is where you want to start

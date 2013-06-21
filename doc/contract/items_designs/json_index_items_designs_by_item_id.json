@@ -2,10 +2,10 @@
 // method type ->  get
 // method name ->  json_index_items_designs_by_item_id
 
-// routes      ->
 
-                //match '/items_designs/json/index_items_designs_by_item_id/:item_id', to:
-                //'items_designs#json_index_items_designs_by_item_id', via: :get
+//Security : public
+
+
 //Description
                 //# GET Get all items_designs by item_id
                 //#/items_designs/json/index_items_designs_by_item_id/:item_id'

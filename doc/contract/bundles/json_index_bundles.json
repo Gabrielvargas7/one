@@ -2,10 +2,8 @@
 // method type ->  get
 // method name ->  json_index_bundles
 
-// routes      ->
-                //match '/bundles/json/index_bundles', to:
-                //'bundles#json_index_bundles', via: :get
 
+// Security: private user
 
 //Description
             //# GET Get all bundles

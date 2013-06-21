@@ -1,12 +1,8 @@
 // controller  ->  UsersController
-
 // method type ->  put
 // method name ->  json_update_username_by_user_id
 
-// routes      ->
-            //match '/users/json/update_username_by_user_id/:user_id', to:
-            //'users#json_update_username_by_user_id', via: :put
-
+// Security: private user
 
 //Description
                 // PUT update the username

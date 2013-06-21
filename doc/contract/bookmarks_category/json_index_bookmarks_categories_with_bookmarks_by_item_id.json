@@ -2,9 +2,7 @@
 // method type ->  get
 // method name ->  json_index_bookmarks_categories_with_bookmarks_by_item_id
 
-// routes      ->
-                //match 'bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/:item_id', to:
-                //'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_by_item_id', via: :get
+// Security: private user
 
 
 //Description

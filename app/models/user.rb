@@ -139,7 +139,7 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       # when the user authenticate with facebook
-      # we don't create a token
+      # we don't create a token because facebook generate it for us
       if self.uid.blank?
          self.remember_token = SecureRandom.urlsafe_base64
       end

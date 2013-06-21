@@ -2,9 +2,8 @@
 // method type ->  post
 // method name ->  json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id
 
-// routes      ->
-            //match '/users_bookmarks/json/create_user_bookmark_by_user_id_and_bookmark_id_and_item_id/:user_id/:bookmark_id/:item_id', to:
-            //'users_bookmarks#json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id', via: :post
+// Security: private user
+
 
 
 // description ->

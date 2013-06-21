@@ -2,9 +2,7 @@
 // method type ->  post
 // method name ->  json_create_friend_request_by_user_id_and_user_id_requested
 
-// routes      ->
-            //match '/friend_requests/json/create_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
-            //'friend_requests#json_create_friend_request_by_user_id_and_user_id_requested', via: :delete
+// Security: private user
 
 //Description
             //#POST set a request for the friend

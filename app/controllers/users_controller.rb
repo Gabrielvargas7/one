@@ -1,8 +1,39 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only:[:edit,:update,:destroy,:show,:index]
-  before_filter :correct_user, only:[:edit,:update]
-  before_filter :admin_user, only:[:destroy]
+
+  # Create and new user should not be filter because
+  # is when a new user sign up
+
+
+  before_filter :signed_in_user,
+    only:[
+        :edit,
+        :update,
+        :destroy,
+        :show,
+        :index]
+
+  before_filter :json_signed_in_user,
+    only:[
+        :json_update_username_by_user_id,
+        :json_show_user_profile_by_user_id,
+        :json_create_user_full_bundle_by_user_id_and_bundle_id,
+        :json_update_users_image_profile_by_user_id,
+        :json_show_signed_user
+        ]
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_update_username_by_user_id,
+                    :json_show_user_profile_by_user_id,
+                    :json_create_user_full_bundle_by_user_id_and_bundle_id,
+                    :json_update_users_image_profile_by_user_id
+
+                ]
+
+
+  before_filter :correct_user, only:[:edit,:update,:show]
+  before_filter :admin_user, only:[:destroy,:index]
 
 
   def show
@@ -10,12 +41,12 @@ class UsersController < ApplicationController
        if User.exists?(id:params[:id])
 
           @user = User.find(params[:id])
-          redirect_to room_rooms_url @user.username
+          #redirect_to room_rooms_url @user.username
 
-           #respond_to do |format|
-           #  format.html # show.html.erb
-           #  format.json { render json: @user.as_json(only:[:name,:email,:username])  }
-           #end
+           respond_to do |format|
+             format.html # show.html.erb
+             format.json { render json: @user.as_json(only:[:name,:email,:username])  }
+           end
 
        else
           redirect_to(root_path)
@@ -49,7 +80,6 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       sign_in @user
       redirect_to @user
-      #redirect_to room_rooms_url @user.username
     else
       render 'edit'
     end
@@ -250,28 +280,8 @@ class UsersController < ApplicationController
   #***********************************
 
 
-
-
   private
 
-  def signed_in_user
-
-    unless signed_in?
-      store_location
-      redirect_to signin_url, notice: "Please sign in."
-    end
-
-  end
-
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
-  end
-
-
-  def admin_user
-      redirect_to(root_path) unless current_user.admin?
-  end
 
 
   # this function will remove all non-alphanumeric character and

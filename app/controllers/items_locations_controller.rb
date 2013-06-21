@@ -1,4 +1,26 @@
 class ItemsLocationsController < ApplicationController
+  before_filter :signed_in_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+
+  before_filter :admin_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+
   # GET /items_locations
   # GET /items_locations.json
   def index

@@ -1,3 +1,8 @@
+
+// Security: private user
+
+//Description
+
 //# PUT insert user image
 
 //#/users/json/update_users_image_profile_by_user_id/:user_id

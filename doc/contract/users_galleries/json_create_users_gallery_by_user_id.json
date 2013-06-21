@@ -3,9 +3,9 @@
 // content-Type : multipart/form-data
 // method name ->  json_create_users_gallery_by_user_id
 
-// routes      ->
-                //match '/users_galleries/json/create_users_gallery_by_user_id/:user_id', to:
-                //'users_galleries#json_create_users_gallery_by_user_id', via: :post
+// Security: private user
+
+//Description
 
 // Description
             //# POST insert user image

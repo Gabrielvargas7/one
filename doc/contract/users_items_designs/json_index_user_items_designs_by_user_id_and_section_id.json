@@ -1,3 +1,8 @@
+// Security: private user
+
+//Description
+
+
 //#   GET get all the Item design of the user and section id
 //#  /users_items_designs/json/index_user_items_designs_by_user_id_and_section_id/:user_id/:section_id
 //#  /users_items_designs/json/index_user_items_designs_by_user_id/23/1.json

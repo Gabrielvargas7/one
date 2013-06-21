@@ -1,5 +1,40 @@
 class BundlesItemsDesignsController < ApplicationController
 
+  before_filter :signed_in_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create,
+                      :index_bundle_selection,
+                      :index_items_location_selection,
+                      :index_items_design_selection,
+                      :create_bundle_items_design,
+                ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                ]
+
+  before_filter :admin_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create,
+                      :index_bundle_selection,
+                      :index_items_location_selection,
+                      :index_items_design_selection,
+                      :create_bundle_items_design,
+
+
+                ]
+
+
   # GET /bundles_items_designs
   # GET /bundles_items_designs.json
   def index

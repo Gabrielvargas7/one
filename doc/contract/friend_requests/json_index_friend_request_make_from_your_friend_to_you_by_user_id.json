@@ -2,7 +2,8 @@
 // method type ->  get
 // method name ->  json_index_friend_request_make_from_your_friend_to_you_by_user_id
 
-// routes      ->
+// Security: private user
+
 
 //Description
                 //#GET get all the request that your friend make to you

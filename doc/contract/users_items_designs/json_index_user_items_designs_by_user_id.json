@@ -2,9 +2,10 @@
 // method type ->  get
 // method name ->  json_index_user_items_designs_by_user_id
 
-// routes      ->
-                //match '/users_items_designs/json/index_user_items_designs_by_user_id/:user_id', to:
-                //'users_items_designs#json_index_user_items_designs_by_user_id', via: :get
+// Security: private user
+
+//Description
+
 
 //Description
             //#   GET get all the Item design of the user

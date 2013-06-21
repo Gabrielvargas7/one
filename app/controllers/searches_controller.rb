@@ -1,10 +1,26 @@
 class SearchesController < ApplicationController
 
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword
+
+                ]
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword
+                ]
+
+
+
+
+
+
   #***********************************
   # Json methods for the room users
   #***********************************
 
-  # GET get user that was found by the keyword with limit and offset(start row)
+  # GET get user that was found by the keyword with limit and offset
   # Limit is the number of user that you want it
   # Offset is where you want to start
   # /searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword
@@ -46,9 +62,6 @@ class SearchesController < ApplicationController
            format.json { render json: @search
 
            }
-
-
-
 
          else
            @user = nil

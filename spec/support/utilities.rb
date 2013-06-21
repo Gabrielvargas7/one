@@ -14,7 +14,20 @@ def sign_in(user)
   click_button "Sign in"
   # Sign in when not using Capybara as well.
   cookies[:remember_token] = user.remember_token
+
+  #if user.admin
+  #  puts "Admin user signin cookie: "+cookies[:remember_token].to_s
+  #else
+  #  puts "Regular user signin cookie: "+cookies[:remember_token].to_s
+  #end
 end
+
+def sign_out
+  cookies.delete(:remember_token)
+  #puts "user signout cookie: "+cookies[:remember_token].to_s
+end
+
+
 
 def create_init_data
 
@@ -41,8 +54,8 @@ def create_init_data
 
     item =  Item.first
     location = Location.first
-    puts "items : " +item.id.to_s
-    puts "location : "+ location.id.to_s
+    #puts "items : " +item.id.to_s
+    #puts "location : "+ location.id.to_s
 
     FactoryGirl.create(:items_location,item_id:item.id,location_id:location.id)
 

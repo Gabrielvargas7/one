@@ -1,4 +1,41 @@
 class BookmarksCategoriesController < ApplicationController
+
+  before_filter :signed_in_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_index_bookmarks_categories_with_bookmarks_by_item_id,
+                    :json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
+                ]
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
+                ]
+
+
+
+
+  before_filter :admin_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+
+
   # GET /bookmarks_categories
   # GET /bookmarks_categories.json
   def index
@@ -127,7 +164,7 @@ class BookmarksCategoriesController < ApplicationController
       end
   end
 
-  # GET Get all bookmarks that are approved,
+  # GET Get all bookmarks that has to be approved,
   #   eg. when that user add a new bookmark, the bookmark has to be approved for the administrator, and after that everybody can see it.
   #        but if is not approved, it will be delete
   # bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id/:user_id/:item_id

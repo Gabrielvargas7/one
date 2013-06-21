@@ -2,8 +2,7 @@
 // method type ->  post
 // method name ->  json_create_feedback
 
-// routes      ->
-
+// Security: public
 
 //Description
             //# POST set new feedback - all option are optional

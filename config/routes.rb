@@ -322,7 +322,7 @@ Mywebroom::Application.routes.draw do
   match '/friends/json/destroy_friend_by_user_id_and_user_id_friend/:user_id/:user_id_friend', to:
          'friends#json_destroy_friend_by_user_id_and_user_id_friend', via: :delete
 
-  match '/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id_accept/:user_id_request', to:
+  match '/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id/:user_id_request', to:
          'friends#json_create_friend_by_user_id_accept_and_user_id_request', via: :post
 
 

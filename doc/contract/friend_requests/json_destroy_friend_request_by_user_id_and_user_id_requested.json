@@ -2,9 +2,8 @@
 // method type ->  delete
 // method name ->  json_destroy_friend_request_by_user_id_and_user_id_requested
 
-// routes      ->
-                //match '/friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
-                //'friend_requests#json_destroy_friend_request_by_user_id_and_user_id_requested', via: :delete
+// Security: private user
+
 
 //Description
             //#DELETE if the user deny the request, it will be destroy

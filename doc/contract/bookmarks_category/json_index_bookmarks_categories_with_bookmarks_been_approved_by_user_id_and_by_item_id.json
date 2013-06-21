@@ -2,6 +2,7 @@
 // method type ->  get
 // method name ->  json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
 
+// Security: private user
 
 //Description
 //# GET Get all bookmarks that are approved,

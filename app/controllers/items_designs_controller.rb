@@ -1,5 +1,30 @@
 class ItemsDesignsController < ApplicationController
 
+  before_filter :signed_in_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                ]
+
+  before_filter :admin_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create
+                ]
+
+
   # GET /items_designs
   # GET /items_designs.json
   def index

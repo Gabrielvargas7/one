@@ -1,6 +1,28 @@
 class RoomsController < ApplicationController
-  #before_filter :correct_user_by_user_id, only:[:show_room_by_user_id]
-  #before_filter :correct_user_by_username, only:[:room]
+
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_show_room_by_user_id
+
+                ]
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_show_room_by_user_id
+                ]
+
+
+  before_filter :signed_in_user,
+                only:[
+                    :room
+                ]
+
+  before_filter :correct_username,
+                only:[
+                    :room
+                    ]
+
+
 
 
 
@@ -83,21 +105,6 @@ class RoomsController < ApplicationController
       end
 
   end
-
-  private
-
-  def correct_user_by_username
-    @user = User.find_by_username(params[:username])
-    redirect_to(root_path) unless current_user?(@user)
-  end
-
-
-  def correct_user_by_user_id
-    @user = User.find(params[:user_id])
-    head :bad_request unless current_user?(@user)
-  end
-
-
 
 
 

@@ -40,14 +40,17 @@ class SessionsController < ApplicationController
       else
        # this user is on the system with facebook login (login fine)
         user = User.from_omniauth(env["omniauth.auth"])
+
         sign_in user
         redirect_back_or user
       end
     else
       #this user is new
       user = User.from_omniauth(env["omniauth.auth"])
+
       sign_in user
       redirect_back_or user
+
     end
   end
 end

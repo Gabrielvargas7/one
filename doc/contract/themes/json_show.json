@@ -2,8 +2,7 @@
 // method type ->  get
 // method name ->  json_show
 
-// routes      ->match  'themes/json/show/:id', to:
-//                      'themes#json_index', via: :get
+// Security: public
 
 // Description ->
             //# GET get one theme by theme id

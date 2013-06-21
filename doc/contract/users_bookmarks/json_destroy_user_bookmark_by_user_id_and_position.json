@@ -2,9 +2,7 @@
 // method type ->  delete
 // method name ->  json_destroy_user_bookmark_by_user_id_and_position
 
-// routes      ->
-                //match '/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/:user_id/:bookmark_id/:position', to:
-                //'users_bookmarks#json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position', via: :delete
+// Security: private user
 
 
 // description ->

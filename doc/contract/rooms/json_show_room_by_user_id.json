@@ -3,9 +3,8 @@
 // method name ->  json_show_room_by_user_id
 
 
-// routes      ->
-                //match '/rooms/json/show_room_by_user_id/:user_id', to:
-                //'rooms#json_show_room_by_user_id', via: :get
+// Security: private user
+
 
 // description
                 //# GET Get all the user's items design,themes and user data

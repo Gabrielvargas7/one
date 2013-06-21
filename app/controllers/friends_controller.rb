@@ -1,5 +1,27 @@
 class FriendsController < ApplicationController
 
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_create_friend_by_user_id_accept_and_user_id_request,
+                    :json_destroy_friend_by_user_id_and_user_id_friend,
+                    :json_index_friend_by_user_id,
+                    :json_index_friend_by_user_id_by_limit_by_offset,
+                    :json_index_friends_suggestion_by_user_id_by_limit_by_offset
+
+                ]
+
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_create_friend_by_user_id_accept_and_user_id_request,
+                    :json_destroy_friend_by_user_id_and_user_id_friend,
+                    :json_index_friend_by_user_id,
+                    :json_index_friend_by_user_id_by_limit_by_offset,
+                    :json_index_friends_suggestion_by_user_id_by_limit_by_offset
+
+                ]
+
+
   #***********************************
   # Json methods
   #***********************************
@@ -7,7 +29,7 @@ class FriendsController < ApplicationController
     #POST create a friend from friend request
     #step 1.- delete the request. 2.- create a two row for friends, to connect all the friend of the user
     # eg  user_id_accept = 11  user_id_request = 99  ---, row1 -> (11,99)  row2 ->(99,11)
-    #'/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id_accept/:user_id_request'
+    #'/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id/:user_id_request'
     #/friends/json/create_friend_by_user_id_accept_and_user_id_request/11/99.json
     # Return head
     # success    ->  head  201 Create
@@ -15,15 +37,15 @@ class FriendsController < ApplicationController
 
       respond_to do |format|
         #validation of the users
-        if User.exists?(id:params[:user_id_accept])
+        if User.exists?(id:params[:user_id])
           if User.exists?(id:params[:user_id_request])
 
-            if FriendRequest.exists?(user_id:params[:user_id_request],user_id_requested:params[:user_id_accept])
+            if FriendRequest.exists?(user_id:params[:user_id_request],user_id_requested:params[:user_id])
 
-              @friend_request = FriendRequest.find_by_user_id_and_user_id_requested(params[:user_id_request],params[:user_id_accept])
+              @friend_request = FriendRequest.find_by_user_id_and_user_id_requested(params[:user_id_request],params[:user_id])
 
-              @user_friend_accept = Friend.new(user_id:params[:user_id_accept],user_id_friend:params[:user_id_request])
-              @user_friend_request = Friend.new(user_id:params[:user_id_request],user_id_friend:params[:user_id_accept])
+              @user_friend_accept = Friend.new(user_id:params[:user_id],user_id_friend:params[:user_id_request])
+              @user_friend_request = Friend.new(user_id:params[:user_id_request],user_id_friend:params[:user_id])
 
               ActiveRecord::Base.transaction do
                begin

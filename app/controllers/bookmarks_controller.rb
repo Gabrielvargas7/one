@@ -1,4 +1,36 @@
 class BookmarksController < ApplicationController
+  before_filter :signed_in_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create,
+                      :index_bookmarks_approval,
+                      :update_bookmarks_approval_for_a_user,
+                      :update_bookmarks_approval_for_all_users
+                ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                ]
+
+  before_filter :admin_user,
+                only:[:destroy,
+                      :index,
+                      :show,
+                      :new,
+                      :edit,
+                      :update,
+                      :create,
+                      :index_bookmarks_approval,
+                      :update_bookmarks_approval_for_a_user,
+                      :update_bookmarks_approval_for_all_users
+                ]
+
+
+
   # GET /bookmarks
   # GET /bookmarks.json
   def index
