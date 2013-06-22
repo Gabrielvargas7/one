@@ -27,7 +27,11 @@ module SessionsHelper
   end
 
   def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
+
+    #redirect_to(session[:return_to] || default)
+
+    user_name = default.username
+    redirect_to(session[:return_to] || room_rooms_path(user_name))
     session.delete(:return_to)
   end
 

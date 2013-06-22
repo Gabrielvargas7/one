@@ -9,15 +9,15 @@
         <%= f.label :name  %>
         <%= f.text_field :name %>
 
-        <%= f.label :email  %>
-        <%= f.text_field :email %>
-
-
         <%= f.label :password  %>
         <%= f.text_field :password %>
 
-        <%= f.label :password_confirmation, "Confirm Password" %>
-        <%= f.text_field :password_confirmation %>
+        <%= f.label :image_name %><br />
+        <%= f.file_field :image_name %>
+
+
+
+
 
         <%= f.submit "Save changes",class: "btn btn-large btn-primary" %>
   <% end %>

@@ -1,4 +1,4 @@
-<h1>this view is on backbone -- Rooms</h1>
+<h1>This view is on backbone </h1>
 
 
 <%= @user.length %>
@@ -10,6 +10,8 @@
     <li><%= entry.get('id') %></li>
     <li><%= entry.get('name') %></li>
     <li><%= entry.get('image_name') %></li>
+
+
 
     <% end %>
 </ul>
