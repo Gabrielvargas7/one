@@ -278,17 +278,37 @@ Mywebroom::Application.routes.draw do
   # start BookmarksCategory Contract
   #**************************
 
-  match 'bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/:item_id', to:
-        'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_by_item_id', via: :get, as:
-        :bookmarks_categories_json_index_bookmarks_categories_with_bookmarks_by_item_id
-
-  match 'bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id/:user_id/:item_id', to:
-        'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id', via: :get, as:
-            :bookmarks_categories_json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
+  #match 'bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/:item_id', to:
+  #      'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_by_item_id', via: :get, as:
+  #      :bookmarks_categories_json_index_bookmarks_categories_with_bookmarks_by_item_id
+  #
+  #match 'bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id/:user_id/:item_id', to:
+  #      'bookmarks_categories#json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id', via: :get, as:
+  #          :bookmarks_categories_json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
 
 
   #**************************
   # end BookmarksCategory Contract
+  #**************************
+
+
+
+  #**************************
+  # start Bookmarks Contract
+  #**************************
+
+  match '/bookmarks/json/index_bookmarks_with_bookmarks_category_by_item_id/:item_id', to:
+         'bookmarks#json_index_bookmarks_with_bookmarks_category_by_item_id', via: :get, as:
+         :bookmarks_json_index_bookmarks_with_bookmarks_category_by_item_id
+
+  match '/bookmarks/json/index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id/:user_id/:item_id', to:
+         'bookmarks#json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id', via: :get, as:
+         :bookmarks_json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id
+
+
+
+  #**************************
+  # end Bookmarks Contract
   #**************************
 
 

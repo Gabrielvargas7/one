@@ -50,6 +50,11 @@ describe ThemesController do
   #the (subject)line declare the variable that is use in all the test
   subject { @theme }
 
+
+  #***********************************
+  # rspec test  index
+  #***********************************
+
   describe "GET index",tag_index:true do
 
     context "is admin user" do
@@ -77,14 +82,17 @@ describe ThemesController do
        end
 
        it "not render to index " do
-         get :show, id:@theme
+         get :index
          response.should_not render_template :index
        end
      end
 
-
-
   end
+
+  #***********************************
+  # rspec test  show
+  #***********************************
+
 
   describe "GET show", tag_show:true do
 
@@ -124,6 +132,11 @@ describe ThemesController do
 
   end
 
+  #***********************************
+  # rspec test  new
+  #***********************************
+
+
   describe "GET new",tag_new:true do
 
     context "is admin user"  do
@@ -147,8 +160,12 @@ describe ThemesController do
       end
     end
 
-
   end
+
+  #***********************************
+  # rspec test  edit
+  #***********************************
+
 
   describe "GET edit", tag_edit:true do
 
@@ -178,6 +195,12 @@ describe ThemesController do
     end
 
   end
+
+
+  #***********************************
+  # rspec test create
+  #***********************************
+
 
   describe "POST create", tag_create:true  do
 
@@ -241,6 +264,11 @@ describe ThemesController do
 
   end
 
+  #***********************************
+  # rspec test  update
+  #***********************************
+
+
   describe "PUT update", tag_update:true do
 
     describe "is admin user" do
@@ -271,7 +299,7 @@ describe ThemesController do
           assigns(:theme).should eq(@theme)
         end
           it "does not change @theme's attributes" do
-          put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme, name:nil, description: "Smith")
+          put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme, name:"John", description: "Smith")
           @theme.reload
           @theme.name.should_not eq("Larry")
           @theme.description.should_not eq("Smith")
@@ -298,6 +326,11 @@ describe ThemesController do
 
 
   end
+
+  #***********************************
+  # rspec test  #json_index
+  #***********************************
+
 
   describe "api #json_index",tag_json_index:true do
 
@@ -345,6 +378,11 @@ describe ThemesController do
         end
     end
   end
+
+  #***********************************
+  # rspec test  #json_show
+  #***********************************
+
 
   describe "api #json_show",tag_json_show:true do
 

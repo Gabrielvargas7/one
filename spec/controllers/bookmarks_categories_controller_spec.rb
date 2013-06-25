@@ -34,131 +34,309 @@ describe BookmarksCategoriesController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all bookmarks_categories as @bookmarks_categories" do
-      bookmarks_category = BookmarksCategory.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:bookmarks_categories).should eq([bookmarks_category])
-    end
+  before(:all){ create_init_data }
+  after(:all){ delete_init_data }
+
+  before  do
+    @bookmarks_category = BookmarksCategory.first
+    @admin = FactoryGirl.create(:admin)
+    sign_in @admin
+    #puts "Admin user signin cookie: "+cookies[:remember_token].to_s
   end
 
-  describe "GET show" do
-    it "assigns the requested bookmarks_category as @bookmarks_category" do
-      bookmarks_category = BookmarksCategory.create! valid_attributes
-      get :show, {:id => bookmarks_category.to_param}, valid_session
-      assigns(:bookmarks_category).should eq(bookmarks_category)
-    end
-  end
 
-  describe "GET new" do
-    it "assigns a new bookmarks_category as @bookmarks_category" do
-      get :new, {}, valid_session
-      assigns(:bookmarks_category).should be_a_new(BookmarksCategory)
-    end
-  end
+  #the (subject)line declare the variable that is use in all the test
+  subject { @bookmarks_category }
 
-  describe "GET edit" do
-    it "assigns the requested bookmarks_category as @bookmarks_category" do
-      bookmarks_category = BookmarksCategory.create! valid_attributes
-      get :edit, {:id => bookmarks_category.to_param}, valid_session
-      assigns(:bookmarks_category).should eq(bookmarks_category)
-    end
-  end
+  #***********************************
+  # rspec test  index
+  #***********************************
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new BookmarksCategory" do
-        expect {
-          post :create, {:bookmarks_category => valid_attributes}, valid_session
-        }.to change(BookmarksCategory, :count).by(1)
+
+  describe "GET index",tag_index:true do
+
+    context "is admin user" do
+      let(:bookmarks_categories_all) { BookmarksCategory.order("item_id,id").all }
+
+      it "assigns all bookmarks_categories as :bookmarks_categories" do
+        get :index
+        assigns(:bookmarks_categories).should eq(bookmarks_categories_all)
       end
 
-      it "assigns a newly created bookmarks_category as @bookmarks_category" do
-        post :create, {:bookmarks_category => valid_attributes}, valid_session
-        assigns(:bookmarks_category).should be_a(BookmarksCategory)
-        assigns(:bookmarks_category).should be_persisted
-      end
-
-      it "redirects to the created bookmarks_category" do
-        post :create, {:bookmarks_category => valid_attributes}, valid_session
-        response.should redirect_to(BookmarksCategory.last)
+      it "renders the :index view" do
+        get :index
+        response.should render_template :index
       end
     end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved bookmarks_category as @bookmarks_category" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        BookmarksCategory.any_instance.stub(:save).and_return(false)
-        post :create, {:bookmarks_category => {}}, valid_session
-        assigns(:bookmarks_category).should be_a_new(BookmarksCategory)
+    context "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
       end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        BookmarksCategory.any_instance.stub(:save).and_return(false)
-        post :create, {:bookmarks_category => {}}, valid_session
-        response.should render_template("new")
+      it "redirect to root " do
+        get :index
+        response.should redirect_to root_path
+      end
+
+      it "not render to index " do
+        get :index
+        response.should_not render_template :index
       end
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested bookmarks_category" do
-        bookmarks_category = BookmarksCategory.create! valid_attributes
-        # Assuming there are no other bookmarks_categories in the database, this
-        # specifies that the BookmarksCategory created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        BookmarksCategory.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => bookmarks_category.to_param, :bookmarks_category => {'these' => 'params'}}, valid_session
+  #***********************************
+  # rspec test  show
+  #***********************************
+
+
+  describe "GET show", tag_show:true do
+
+    context "is admin user" do
+
+      it "assigns the requested bookmarks category as @bookmark category" do
+        get :show, id: @bookmarks_category
+        assigns(:bookmarks_category).should eq(@bookmarks_category)
+
       end
 
-      it "assigns the requested bookmarks_category as @bookmarks_category" do
-        bookmarks_category = BookmarksCategory.create! valid_attributes
-        put :update, {:id => bookmarks_category.to_param, :bookmarks_category => valid_attributes}, valid_session
-        assigns(:bookmarks_category).should eq(bookmarks_category)
+      it "renders the #show view" do
+
+        get :show, id: @bookmarks_category
+        response.should render_template :show
       end
 
-      it "redirects to the bookmarks_category" do
-        bookmarks_category = BookmarksCategory.create! valid_attributes
-        put :update, {:id => bookmarks_category.to_param, :bookmarks_category => valid_attributes}, valid_session
-        response.should redirect_to(bookmarks_category)
-      end
     end
 
-    describe "with invalid params" do
-      it "assigns the bookmarks_category as @bookmarks_category" do
-        bookmarks_category = BookmarksCategory.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        BookmarksCategory.any_instance.stub(:save).and_return(false)
-        put :update, {:id => bookmarks_category.to_param, :bookmarks_category => {}}, valid_session
-        assigns(:bookmarks_category).should eq(bookmarks_category)
+    context "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
       end
 
-      it "re-renders the 'edit' template" do
-        bookmarks_category = BookmarksCategory.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        BookmarksCategory.any_instance.stub(:save).and_return(false)
-        put :update, {:id => bookmarks_category.to_param, :bookmarks_category => {}}, valid_session
-        response.should render_template("edit")
+      it "redirect to root " do
+        get :show, id:@bookmarks_category
+        response.should redirect_to root_path
+      end
+
+      it "not render to show " do
+        get :show, id:@bookmarks_category
+        response.should_not render_template :show
+      end
+
+    end
+  end
+
+  #***********************************
+  # rspec test  new
+  #***********************************
+
+
+  describe "GET new",tag_new:true do
+
+    let(:item){Item.first}
+
+    context "is admin user"  do
+      it "assigns a new bookmarks category as @bookmark category" do
+
+        new_bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:item.id)
+
+        BookmarksCategory.should_receive(:new).and_return(new_bookmarks_category)
+        get :new
+        assigns[:bookmarks_category].should eq(new_bookmarks_category)
+      end
+    end
+    context "is not admin user"  do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirect to root" do
+        get :new
+        response.should redirect_to root_path
       end
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested bookmarks_category" do
-      bookmarks_category = BookmarksCategory.create! valid_attributes
-      expect {
-        delete :destroy, {:id => bookmarks_category.to_param}, valid_session
-      }.to change(BookmarksCategory, :count).by(-1)
+
+  #***********************************
+  # rspec test  edit
+  #***********************************
+
+
+  describe "GET edit", tag_edit:true do
+
+    let(:item){Item.first}
+    context "is admin user"  do
+
+      it "assigns the requested bookmarks category as @bookmark category" do
+
+        new_bookmark_category = FactoryGirl.create(:bookmarks_category,item_id:item.id)
+        get :edit, id: new_bookmark_category
+        assigns[:bookmarks_category].should eq(new_bookmark_category)
+      end
     end
 
-    it "redirects to the bookmarks_categories list" do
-      bookmarks_category = BookmarksCategory.create! valid_attributes
-      delete :destroy, {:id => bookmarks_category.to_param}, valid_session
-      response.should redirect_to(bookmarks_categories_url)
+    context "is not admin user" do
+
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+
+      end
+
+      it "redirect to root " do
+        new_bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:item.id)
+        get :edit, id: new_bookmarks_category
+        response.should redirect_to root_path
+      end
     end
   end
+
+  #***********************************
+  # rspec test  create
+  #***********************************
+
+  describe "POST create", tag_create:true  do
+
+    describe "is admin user" do
+      context "with valid params" do
+
+        it "creates a new bookmarks_category" do
+
+          expect {
+
+            post :create,bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:Item.first)
+          }.to change(BookmarksCategory, :count).by(1)
+
+        end
+
+        it "assigns a newly created bookmarks_category as @bookmarks_category" do
+          post :create,bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:Item.first)
+          assigns(:bookmarks_category).should be_a(BookmarksCategory)
+          assigns(:bookmarks_category).should be_persisted
+        end
+
+        it "redirects to the created bookmarks_category" do
+          post :create, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:Item.first)
+          response.should redirect_to(BookmarksCategory.last)
+        end
+      end
+
+      context "with invalid params" do
+
+        context "with invalid attributes" do
+          it "does not save the new contact" do
+
+            expect{ post :create, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:nil)
+            }.to_not change(BookmarksCategory,:count)
+
+          end
+          it "re-renders the new method" do
+            post :create, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:nil)
+            response.should render_template :new
+          end
+        end
+
+      end
+
+    end
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root" do
+        post :create, bookmarks_category:  FactoryGirl.attributes_for(:bookmarks_category,item_id:Item.first)
+        response.should redirect_to(root_path)
+      end
+      it "not redirects to the created bookmarks_category" do
+        post :create, bookmarks_category:FactoryGirl.attributes_for(:bookmarks_category,item_id:Item.first)
+        response.should_not redirect_to(BookmarksCategory.last)
+      end
+    end
+  end
+
+
+
+  #***********************************
+  # rspec test  update
+  #***********************************
+
+
+  describe "PUT update", tag_update:true do
+
+    #let(:item_last){FactoryGirl.create(:item)}
+    describe "is admin user" do
+      context "valid attributes" do
+        it "located the requested @bookmarks_category" do
+          FactoryGirl.create(:item)
+          put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:Item.last.id)
+          assigns(:bookmarks_category).should eq(@bookmarks_category)
+        end
+      end
+
+      it "changes @bookmarks_category's attributes" do
+        FactoryGirl.create(:item)
+        put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category, item_id:Item.last.id)
+        @bookmarks_category.reload
+        @bookmarks_category.item_id.should eq(Item.last.id)
+      end
+
+      it "redirects to the updated bookmarks_category" do
+        put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:Item.last.id)
+        response.should redirect_to @bookmarks_category
+      end
+
+
+      context "invalid attributes" do
+        # Create a new variable with the same data but with a nil id
+        let(:bookmarks_category_same){ @bookmarks_category.dup}
+
+        it "locates the requested @bookmarks_category" do
+          put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:nil)
+          assigns(:bookmarks_category).should eq(@bookmarks_category)
+        end
+        it "does not change @bookmarks_category's attributes" do
+
+          FactoryGirl.create(:item)
+          puts "same "+bookmarks_category_same.item_id.to_s
+          puts "same old "+@bookmarks_category.item_id.to_s
+          put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category, item_id:Item.last.id)
+          @bookmarks_category.reload
+          puts "new item_id "+@bookmarks_category.item_id.to_s
+          @bookmarks_category.item_id.should_not eq(bookmarks_category_same)
+        end
+        it "re-renders the edit method" do
+          put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:nil)
+          response.should render_template :edit
+        end
+      end
+    end
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root " do
+        put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category,item_id:Item.last.id)
+        response.should redirect_to root_path
+      end
+
+    end
+
+  end
+
+
+  #***********************************
+  # rspec test  #json_index
+  #***********************************
+
 
 end

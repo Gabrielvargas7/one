@@ -34,131 +34,461 @@ describe BookmarksController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all bookmarks as @bookmarks" do
-      bookmark = Bookmark.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:bookmarks).should eq([bookmark])
-    end
+  before(:all){ create_init_data }
+  after(:all){ delete_init_data }
+
+  before  do
+    @item  = FactoryGirl.create(:item)
+    @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
+    @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
+    @admin = FactoryGirl.create(:admin)
+    sign_in @admin
   end
 
-  describe "GET show" do
-    it "assigns the requested bookmark as @bookmark" do
-      bookmark = Bookmark.create! valid_attributes
-      get :show, {:id => bookmark.to_param}, valid_session
-      assigns(:bookmark).should eq(bookmark)
-    end
-  end
 
-  describe "GET new" do
-    it "assigns a new bookmark as @bookmark" do
-      get :new, {}, valid_session
-      assigns(:bookmark).should be_a_new(Bookmark)
-    end
-  end
 
-  describe "GET edit" do
-    it "assigns the requested bookmark as @bookmark" do
-      bookmark = Bookmark.create! valid_attributes
-      get :edit, {:id => bookmark.to_param}, valid_session
-      assigns(:bookmark).should eq(bookmark)
-    end
-  end
+  subject { @bookmark }
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Bookmark" do
-        expect {
-          post :create, {:bookmark => valid_attributes}, valid_session
-        }.to change(Bookmark, :count).by(1)
+  #***********************************
+  # rspec test  index
+  #***********************************
+
+
+  describe "GET index",tag_index:true do
+
+    context "is admin user" do
+      let(:bookmarks_all) { Bookmark.order("item_id","bookmarks_category_id").all }
+
+      it "assigns all bookmark as :bookmark" do
+        get :index
+        assigns(:bookmarks).should eq(bookmarks_all)
       end
 
-      it "assigns a newly created bookmark as @bookmark" do
-        post :create, {:bookmark => valid_attributes}, valid_session
-        assigns(:bookmark).should be_a(Bookmark)
-        assigns(:bookmark).should be_persisted
-      end
-
-      it "redirects to the created bookmark" do
-        post :create, {:bookmark => valid_attributes}, valid_session
-        response.should redirect_to(Bookmark.last)
+      it "renders the :index view" do
+        get :index
+        response.should render_template :index
       end
     end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved bookmark as @bookmark" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Bookmark.any_instance.stub(:save).and_return(false)
-        post :create, {:bookmark => {}}, valid_session
-        assigns(:bookmark).should be_a_new(Bookmark)
+    context "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
       end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Bookmark.any_instance.stub(:save).and_return(false)
-        post :create, {:bookmark => {}}, valid_session
-        response.should render_template("new")
+      it "redirect to root " do
+        get :index
+        response.should redirect_to root_path
+      end
+
+      it "not render to index " do
+        get :index
+        response.should_not render_template :index
       end
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested bookmark" do
-        bookmark = Bookmark.create! valid_attributes
-        # Assuming there are no other bookmarks in the database, this
-        # specifies that the Bookmark created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Bookmark.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => bookmark.to_param, :bookmark => {'these' => 'params'}}, valid_session
+
+  #***********************************
+  # rspec test  show
+  #***********************************
+
+
+  describe "GET show", tag_show:true do
+
+    context "is admin user" do
+
+      it "assigns the requested bookmarks  as @bookmark " do
+        get :show, id: @bookmark
+        assigns(:bookmark).should eq(@bookmark)
+
       end
 
-      it "assigns the requested bookmark as @bookmark" do
-        bookmark = Bookmark.create! valid_attributes
-        put :update, {:id => bookmark.to_param, :bookmark => valid_attributes}, valid_session
-        assigns(:bookmark).should eq(bookmark)
+      it "renders the #show view" do
+
+        get :show, id: @bookmark
+        response.should render_template :show
       end
 
-      it "redirects to the bookmark" do
-        bookmark = Bookmark.create! valid_attributes
-        put :update, {:id => bookmark.to_param, :bookmark => valid_attributes}, valid_session
-        response.should redirect_to(bookmark)
-      end
     end
 
-    describe "with invalid params" do
-      it "assigns the bookmark as @bookmark" do
-        bookmark = Bookmark.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Bookmark.any_instance.stub(:save).and_return(false)
-        put :update, {:id => bookmark.to_param, :bookmark => {}}, valid_session
-        assigns(:bookmark).should eq(bookmark)
+    context "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
       end
 
-      it "re-renders the 'edit' template" do
-        bookmark = Bookmark.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Bookmark.any_instance.stub(:save).and_return(false)
-        put :update, {:id => bookmark.to_param, :bookmark => {}}, valid_session
-        response.should render_template("edit")
+      it "redirect to root " do
+        get :show, id:@bookmark
+        response.should redirect_to root_path
+      end
+
+      it "not render to show " do
+        get :show, id:@bookmark
+        response.should_not render_template :show
+      end
+
+    end
+  end
+
+  #***********************************
+  # rspec test  new
+  #***********************************
+
+
+  describe "GET new",tag_new:true do
+
+
+
+    context "is admin user"  do
+      let(:bookmarks_category_new){BookmarksCategory.first}
+      it "assigns a new bookmarks as @bookmark" do
+        puts bookmarks_category_new.id.to_s
+        puts bookmarks_category_new.item_id.to_s
+
+        new_bookmark = FactoryGirl.create(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        Bookmark.should_receive(:new).and_return(new_bookmark)
+        get :new
+        assigns[:bookmark].should eq(new_bookmark)
+      end
+    end
+    context "is not admin user"  do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirect to root" do
+        get :new
+        response.should redirect_to root_path
       end
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested bookmark" do
-      bookmark = Bookmark.create! valid_attributes
-      expect {
-        delete :destroy, {:id => bookmark.to_param}, valid_session
-      }.to change(Bookmark, :count).by(-1)
+
+  #***********************************
+  # rspec test  edit
+  #***********************************
+
+
+  describe "GET edit", tag_edit:true do
+
+    let(:bookmarks_category_new){BookmarksCategory.first}
+    context "is admin user"  do
+
+      it "assigns the requested bookmarks as @bookmark " do
+
+
+        new_bookmark = FactoryGirl.create(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        get :edit, id: new_bookmark
+        assigns[:bookmark].should eq(new_bookmark)
+      end
     end
 
-    it "redirects to the bookmarks list" do
-      bookmark = Bookmark.create! valid_attributes
-      delete :destroy, {:id => bookmark.to_param}, valid_session
-      response.should redirect_to(bookmarks_url)
+    context "is not admin user" do
+
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+
+      end
+
+      it "redirect to root " do
+        new_bookmark = FactoryGirl.create(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        get :edit, id: new_bookmark
+        response.should redirect_to root_path
+      end
     end
   end
+
+  #***********************************
+  # rspec test  create
+  #***********************************
+
+  describe "POST create", tag_create:true  do
+
+    let(:bookmarks_category_new){BookmarksCategory.first}
+    describe "is admin user" do
+      context "with valid params" do
+
+        it "creates a new bookmark" do
+
+          expect {
+
+            post :create,bookmark: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+          }.to change(Bookmark, :count).by(1)
+
+        end
+
+        it "assigns a newly created bookmark as @bookmark" do
+          post :create,bookmark: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+          assigns(:bookmark).should be_a(Bookmark)
+          assigns(:bookmark).should be_persisted
+        end
+
+        it "redirects to the created bookmark" do
+          post :create, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+          response.should redirect_to(Bookmark.last)
+        end
+      end
+
+      context "with invalid params" do
+
+        context "with invalid attributes" do
+          it "does not save the new contact" do
+
+            expect{ post :create, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:nil,bookmarks_category_id:bookmarks_category_new.id)
+            }.to_not change(Bookmark,:count)
+
+            expect{ post :create, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:nil)
+            }.to_not change(Bookmark,:count)
+
+          end
+          it "re-renders the new method" do
+            post :create, bookmarks: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:nil)
+            response.should render_template :new
+          end
+        end
+
+      end
+
+    end
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root" do
+        post :create, bookmark:  FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        response.should redirect_to(root_path)
+      end
+      it "not redirects to the created bookmarks_category" do
+        post :create, bookmark:  FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        response.should_not redirect_to(Bookmark.last)
+      end
+    end
+  end
+
+
+  #***********************************
+  # rspec test  update
+  #***********************************
+
+  describe "PUT update", tag_update:true do
+
+
+    describe "is admin user" do
+      context "valid attributes" do
+        it "located the requested @bookmark" do
+          FactoryGirl.create(:item)
+          FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
+
+          put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+          assigns(:bookmark).should eq(@bookmark)
+        end
+      end
+
+      it "changes @bookmarks's attributes" do
+        FactoryGirl.create(:item)
+        FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
+
+        put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+        @bookmark.reload
+        @bookmark.item_id.should eq(BookmarksCategory.last.item_id)
+        @bookmark.bookmarks_category_id.should eq(BookmarksCategory.last.id)
+
+      end
+
+      it "redirects to the updated bookmarks" do
+        put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+        response.should redirect_to @bookmark
+      end
+
+
+      context "invalid attributes" do
+        # Create a new variable with the same data but with a nil id
+        let(:bookmark_same){ @bookmark.dup}
+
+        it "locates the requested @bookmarks" do
+          put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:nil)
+          assigns(:bookmark).should eq(@bookmark)
+        end
+        it "does not change @bookmark's attributes" do
+
+          FactoryGirl.create(:item)
+          FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
+
+          puts "same "+bookmark_same.item_id.to_s
+          puts "same old "+@bookmark.item_id.to_s
+
+          put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+          @bookmark.reload
+          puts "new item_id "+@bookmark.item_id.to_s
+          @bookmark.item_id.should_not eq(bookmark_same)
+        end
+
+        it "re-renders the edit method" do
+          put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:nil)
+          response.should render_template :edit
+        end
+      end
+    end
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root " do
+        put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+        response.should redirect_to root_path
+      end
+
+    end
+
+  end
+
+
+  #***********************************
+  # rspec test  #json_index_bookmarks_with_bookmarks_category_by_item_id
+  #***********************************
+
+  describe "api #json_index_bookmarks_with_bookmarks_category_by_item_id/:item_id.json",tag_json_index:true do
+
+    describe "is public api" do
+      before do
+        sign_out
+      end
+
+      it "should be successful" do
+        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmark.item_id, :format => :json
+        response.should be_success
+      end
+
+
+      it "has a 200 status code" do
+        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmark.item_id, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+
+        #let(:bookmarks_all){Bookmark.find_all_by_item_id(@bookmarks_category.item_id).order("bookmarks_category_id,bookmarks.id")}
+
+        it "should return json_index_bookmarks_with_bookmarks_category_by_item_id in json" do
+          # depend on what you return in action
+          get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmark.item_id, :format => :json
+
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          #puts "theme ----> "+@theme.as_json.to_s
+          puts "body bookmark_id ----> " + body[0]["id"].to_s
+          puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          puts "body image name desc ----> " + body[0]["image_name_desc"].to_s
+
+
+          body.each do |body_bookmark|
+            @bookmark_json = Bookmark.find(body_bookmark["id"])
+            @bookmarks_category_json = BookmarksCategory.find(body_bookmark["bookmarks_category_id"])
+
+            body_bookmark["id"].should == @bookmark_json.id
+            body_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
+            body_bookmark["item_id"].should == @bookmark_json.item_id
+            body_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
+            body_bookmark["bookmarks_category_name"].should == @bookmarks_category_json.name
+            body_bookmark["description"].should == @bookmark_json.description
+            body_bookmark["i_frame"].should == @bookmark_json.i_frame
+            body_bookmark["title"].should == @bookmark_json.title
+            body_bookmark["item_id"].should == @bookmark_json.item_id
+            body_bookmark["image_name"]["url"].should == @bookmark_json.image_name.to_s
+            body_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
+
+          end
+        end
+      end
+    end
+  end
+
+
+
+  #***********************************
+  # rspec test  #json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id
+  #***********************************
+
+
+  describe "api #json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id/:user_id/:item_id.json",tag_json_index:true do
+
+    describe "is private api " do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+
+      end
+
+      it "should be successful" do
+        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmark.item_id, :format => :json
+        response.should be_success
+      end
+
+
+      it "has a 200 status code" do
+        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmark.item_id, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+
+        it "should return json_index_bookmarks_with_bookmarks_category_by_item_id in json" do
+          # depend on what you return in action
+          get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmark.item_id, :format => :json
+
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          #puts "theme ----> "+@theme.as_json.to_s
+          puts "body bookmark_id ----> " + body[0]["id"].to_s
+          puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          puts "body image name desc ----> " + body[0]["image_name_desc"].to_s
+
+
+          body.each do |body_bookmark|
+            @bookmark_json = Bookmark.find(body_bookmark["id"])
+            @bookmarks_category_json = BookmarksCategory.find(body_bookmark["bookmarks_category_id"])
+
+            body_bookmark["id"].should == @bookmark_json.id
+            body_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
+            body_bookmark["item_id"].should == @bookmark_json.item_id
+            body_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
+            body_bookmark["bookmarks_category_name"].should == @bookmarks_category_json.name
+            body_bookmark["description"].should == @bookmark_json.description
+            body_bookmark["i_frame"].should == @bookmark_json.i_frame
+            body_bookmark["title"].should == @bookmark_json.title
+            body_bookmark["item_id"].should == @bookmark_json.item_id
+            body_bookmark["image_name"]["url"].should == @bookmark_json.image_name.to_s
+            body_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
+
+          end
+        end
+      end
+    end
+
+    describe "is user didn't sign in " do
+      before do
+        sign_out
+      end
+
+      it "response should be 404 " do
+
+        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:User.first.id,item_id: @bookmark.item_id, :format => :json
+        expect(response.status).to eq(404)
+      end
+
+    end
+
+
+  end
+
+
 
 end

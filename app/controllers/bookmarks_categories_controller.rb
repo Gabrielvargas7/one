@@ -12,16 +12,13 @@ class BookmarksCategoriesController < ApplicationController
 
   before_filter :json_signed_in_user,
                 only:[
-                    :json_index_bookmarks_categories_with_bookmarks_by_item_id,
-                    :json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
+
                 ]
 
   before_filter :json_correct_user,
                 only:[
-                    :json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
+
                 ]
-
-
 
 
   before_filter :admin_user,
@@ -39,7 +36,7 @@ class BookmarksCategoriesController < ApplicationController
   # GET /bookmarks_categories
   # GET /bookmarks_categories.json
   def index
-    @bookmarks_categories = BookmarksCategory.order("item_id").all
+    @bookmarks_categories = BookmarksCategory.order("item_id,id").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -145,24 +142,46 @@ class BookmarksCategoriesController < ApplicationController
   #Return head
   # success    ->  head  200 OK
 
-  def json_index_bookmarks_categories_with_bookmarks_by_item_id
-
-      respond_to do |format|
-
-        if BookmarksCategory.exists?(item_id:params[:item_id])
-
-          #id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title
-
-          @bookmarks_category  = BookmarksCategory.select('id,name,item_id').where('item_id = ?', params[:item_id])
-          format.json {render json:
-                      @bookmarks_category.as_json(include: {bookmarks: {only: [:id, :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title]}}) }
-
-        else
-          format.json { render json: 'not bookmark category for this item ', status: :not_found }
-        end
-
-      end
-  end
+  #def json_index_bookmarks_categories_with_bookmarks_by_item_id
+  #
+  #    respond_to do |format|
+  #
+  #      if BookmarksCategory.exists?(item_id:params[:item_id])
+  #
+  #
+  #        #@bookmarks_category  = BookmarksCategory.select('id,name,item_id').where('item_id = ?', params[:item_id])
+  #        #
+  #        #format.json {render json:
+  #        #            @bookmarks_category.as_json(include: {bookmarks: {only: [:id, :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title]}}) }
+  #
+  #
+  #        @bookmarks  = Bookmark.
+  #            select('bookmarks.id,
+  #                    bookmarks.item_id,
+  #                    bookmarks_categories.name as bookmarks_category_name,
+  #                    bookmark_url,
+  #                    bookmarks_category_id,
+  #                    description,
+  #                    i_frame,
+  #                    image_name,
+  #                    image_name_desc,
+  #                    title').
+  #            joins(:bookmarks_category).
+  #            where('bookmarks.item_id = ?', params[:item_id]).order("bookmarks_category_id,bookmarks.id")
+  #
+  #        format.json {render json:
+  #                                @bookmarks.as_json() }
+  #
+  #
+  #        format.json {render json: @bookmarks}
+  #
+  #
+  #      else
+  #        format.json { render json: 'not bookmark category for this item ', status: :not_found }
+  #      end
+  #
+  #    end
+  #end
 
   # GET Get all bookmarks that has to be approved,
   #   eg. when that user add a new bookmark, the bookmark has to be approved for the administrator, and after that everybody can see it.
@@ -172,33 +191,32 @@ class BookmarksCategoriesController < ApplicationController
   #Return head
   # success    ->  head  200 OK
 
-  def json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
-
-    respond_to do |format|
-
-      if User.exists?(id:params[:user_id])
-
-        if BookmarksCategory.exists?(item_id:params[:item_id])
-
-          @bookmarks_category  = BookmarksCategory.
-                                  includes(:bookmarks).
-                                    where('bookmarks_categories.item_id = ? and bookmarks.approval in (0,?)', params[:item_id],params[:user_id])
-
-          format.json {render json:@bookmarks_category.
-                                as_json(include:
-                                            {bookmarks: {only: [:id, :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title]}}) }
-
-        else
-          format.json { render json: 'not bookmark category for this item ', status: :not_found }
-        end
-      else
-        format.json { render json: 'not user found', status: :not_found }
-      end
-    end
-
-
-  end
-
+  #def json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
+  #
+  #  respond_to do |format|
+  #
+  #    if User.exists?(id:params[:user_id])
+  #
+  #      if BookmarksCategory.exists?(item_id:params[:item_id])
+  #
+  #        @bookmarks_category  = BookmarksCategory.
+  #                                includes(:bookmarks).
+  #                                  where('bookmarks_categories.item_id = ? and bookmarks.approval in (0,?)', params[:item_id],params[:user_id])
+  #        format.json {render json:@bookmarks_category.
+  #                              as_json(include:
+  #                                          {bookmarks: {only: [:id, :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title]}}) }
+  #
+  #      else
+  #        format.json { render json: 'not bookmark category for this item ', status: :not_found }
+  #      end
+  #    else
+  #      format.json { render json: 'not user found', status: :not_found }
+  #    end
+  #  end
+  #
+  #
+  #end
+  #
 
 
 
