@@ -153,7 +153,7 @@ class BookmarksController < ApplicationController
 
 
 
-  def index_bookmarks_approval
+    def index_bookmarks_approval
 
     @bookmarks = Bookmark.order("item_id","bookmarks_category_id").where("approval = 'n'")
 

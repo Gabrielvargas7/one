@@ -277,7 +277,6 @@ describe BookmarksController do
 
   describe "PUT update", tag_update:true do
 
-
     describe "is admin user" do
       context "valid attributes" do
         it "located the requested @bookmark" do
@@ -349,6 +348,175 @@ describe BookmarksController do
     end
 
   end
+
+
+
+
+  #***********************************
+  # rspec test  index_bookmarks_approval
+  #***********************************
+
+
+  describe "GET index_bookmarks_approval",tag_index_approval:true do
+
+    before do
+      @item_approval  = FactoryGirl.create(:item)
+      @bookmarks_category_approval = FactoryGirl.create(:bookmarks_category,item_id:@item_approval.id)
+      @bookmark_approval = FactoryGirl.create(:bookmark,item_id:@item_approval.id,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n')
+
+    end
+
+
+    context "is admin user" do
+      let(:bookmarks_all) { Bookmark.where("approval = 'n'").order("item_id","bookmarks_category_id").all }
+
+
+
+      it "assigns all bookmark as :bookmark" do
+        puts "what is a id to approve "+Bookmark.where("approval = 'n'").order("item_id","bookmarks_category_id").first.id.to_s
+        get :index_bookmarks_approval
+        assigns(:bookmarks).should eq(bookmarks_all)
+      end
+
+      it "renders the :index_bookmarks_approval view" do
+        get :index_bookmarks_approval
+        response.should render_template :index_bookmarks_approval
+      end
+    end
+    context "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirect to root " do
+        get :index_bookmarks_approval
+        response.should redirect_to root_path
+      end
+
+      it "not render to index " do
+        get :index_bookmarks_approval
+        response.should_not render_template :index_bookmarks_approval
+      end
+    end
+  end
+
+
+
+
+
+  #***********************************
+  # rspec test  update_bookmarks_approval_for_a_user
+  #***********************************
+
+  describe "PUT update_bookmarks_approval_for_a_user", tag_update_approval:true do
+
+    before do
+      @user = FactoryGirl.create(:user)
+      @item_approval  = FactoryGirl.create(:item)
+      @bookmarks_category_approval = FactoryGirl.create(:bookmarks_category,item_id:@item_approval.id)
+      @bookmark_approval = FactoryGirl.create(:bookmark,item_id:@item_approval.id,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n',user_bookmark:@user.id)
+
+    end
+
+
+    describe "is admin user" do
+      context "valid attributes" do
+        it "located the requested @bookmark" do
+
+          put :update_bookmarks_approval_for_a_user, bookmark_id: @bookmark_approval
+          assigns(:bookmark).should eq(@bookmark_approval)
+        end
+      end
+
+      it "changes @bookmarks's approval to 'y'" do
+
+        put :update_bookmarks_approval_for_a_user,bookmark_id: @bookmark_approval
+        @bookmark_approval.reload
+        @bookmark_approval.approval.should eq('y')
+        @bookmark_approval.user_bookmark.should eq(@user.id)
+
+      end
+      it "redirects to the updated bookmarks" do
+        put :update_bookmarks_approval_for_a_user,bookmark_id: @bookmark_approval
+        response.should redirect_to @bookmark_approval
+      end
+
+    end
+
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root " do
+        put :update_bookmarks_approval_for_a_user,bookmark_id: @bookmark_approval
+        response.should redirect_to root_path
+      end
+
+    end
+
+  end
+
+
+  #***********************************
+  # rspec test update_bookmarks_approval_for_all_users
+  #***********************************
+
+  describe "PUT update_bookmarks_approval_for_all_users", tag_update_approval_all:true do
+
+    before do
+      @user = FactoryGirl.create(:user)
+      @item_approval  = FactoryGirl.create(:item)
+      @bookmarks_category_approval = FactoryGirl.create(:bookmarks_category,item_id:@item_approval.id)
+      @bookmark_approval = FactoryGirl.create(:bookmark,item_id:@item_approval.id,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n',user_bookmark:@user.id)
+
+    end
+
+
+    describe "is admin user" do
+      context "valid attributes" do
+        it "located the requested @bookmark" do
+
+          put :update_bookmarks_approval_for_all_users, bookmark_id: @bookmark_approval
+          assigns(:bookmark).should eq(@bookmark_approval)
+        end
+      end
+
+      it "changes @bookmarks's approval to 'y'" do
+
+        put :update_bookmarks_approval_for_all_users,bookmark_id: @bookmark_approval
+        @bookmark_approval.reload
+        @bookmark_approval.approval.should eq('y')
+        @bookmark_approval.user_bookmark.should eq(0)
+
+      end
+      it "redirects to the updated bookmarks" do
+        put :update_bookmarks_approval_for_all_users,bookmark_id: @bookmark_approval
+        response.should redirect_to @bookmark_approval
+      end
+
+    end
+
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root " do
+        put :update_bookmarks_approval_for_all_users,bookmark_id: @bookmark_approval
+        response.should redirect_to root_path
+      end
+
+    end
+
+  end
+
+
 
 
   #***********************************
