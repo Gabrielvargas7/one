@@ -82,8 +82,6 @@ def create_init_data
     end
 
 
-
-
     items_design = ItemsDesign.first
     items_location = ItemsLocation.find_by_item_id(items_design.item_id)
     FactoryGirl.create(:bundles_items_design,bundle_id:@bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
@@ -103,7 +101,9 @@ def delete_init_data
 
   puts "--- Start deleteing init data for test  "
 
-
+  Section.delete_all
+  Location.delete_all
+  ItemsLocation.delete_all
   Bundle.delete_all
   Theme.delete_all
   Item.delete_all

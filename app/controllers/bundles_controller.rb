@@ -134,7 +134,6 @@ class BundlesController < ApplicationController
     @bundles = Bundle.order(:id)
     respond_to do |format|
       format.json { render json: @bundles.as_json()
-                               #@bundles.as_json(only:[:id,:description, :image_name, :name, :theme_id] )
 
       }
     end

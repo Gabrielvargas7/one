@@ -51,7 +51,7 @@ FactoryGirl.define do
   factory :location do
     sequence(:name)  { |n| "location #{n}" }
     description "location"
-    section 1
+    section_id 1
     height 10
     width 10
     x 1
