@@ -161,10 +161,8 @@ describe BundlesController do
         new_theme = FactoryGirl.create(:theme)
         new_bundle = FactoryGirl.create(:bundle,theme_id:new_theme.id,section_id:new_section.id)
 
-
-
         get :edit, id: new_bundle
-        assigns[:location].should eq(new_bundle)
+        assigns[:bundle].should eq(new_bundle)
       end
     end
 
@@ -178,9 +176,10 @@ describe BundlesController do
 
       it "redirect to root " do
         new_section = FactoryGirl.create(:section)
-        new_location = FactoryGirl.create(:location,section_id:new_section.id)
+        new_theme = FactoryGirl.create(:theme)
+        new_bundle = FactoryGirl.create(:bundle,theme_id:new_theme.id,section_id:new_section.id)
 
-        get :edit, id: new_location
+        get :edit, id: new_bundle
         response.should redirect_to root_path
       end
     end
@@ -188,147 +187,236 @@ describe BundlesController do
   end
 
 
-  ##***********************************
-  ## rspec test create
-  ##***********************************
-  #
-  #
-  #describe "POST create", tag_create:true  do
-  #
-  #
-  #
-  #
-  #  describe "is admin user" do
-  #    context "with valid params" do
-  #
-  #      it "creates a new location" do
-  #
-  #        expect {
-  #          post :create,location: FactoryGirl.attributes_for(:location,section_id:@section.id)
-  #        }.to change(Location, :count).by(1)
-  #
-  #
-  #      end
-  #
-  #      it "assigns a newly created location as @location" do
-  #        post :create,location: FactoryGirl.attributes_for(:location,section_id:@section.id)
-  #        assigns(:location).should be_a(Location)
-  #        assigns(:location).should be_persisted
-  #      end
-  #
-  #      it "redirects to the created location" do
-  #        post :create, location: FactoryGirl.attributes_for(:location,section_id:@section.id)
-  #        response.should redirect_to(Location.last)
-  #      end
-  #    end
-  #
-  #    context "with invalid params" do
-  #
-  #      context "with invalid attributes" do
-  #        it "does not save the new contact" do
-  #          expect{ post :create, location: FactoryGirl.attributes_for(:location,section_id:nil)
-  #          }.to_not change(Location,:count)
-  #        end
-  #        it "re-renders the new method" do
-  #          post :create, location: FactoryGirl.attributes_for(:location,section_id:nil)
-  #          response.should render_template :new
-  #        end
-  #      end
-  #
-  #    end
-  #
-  #  end
-  #
-  #  describe "is not admin user" do
-  #    before do
-  #      @user  = FactoryGirl.create(:user)
-  #      sign_in @user
-  #    end
-  #
-  #    it "redirects to root" do
-  #      post :create, location: FactoryGirl.attributes_for(:location,section_id:@section.id)
-  #      response.should redirect_to(root_path)
-  #    end
-  #    it "not redirects to the created location" do
-  #      post :create, location: FactoryGirl.attributes_for(:location,section_id:@section.id)
-  #      response.should_not redirect_to(Location.last)
-  #    end
-  #  end
-  #
-  #
-  #end
-  #
-  ##***********************************
-  ## rspec test  update
-  ##***********************************
-  #
-  #describe "PUT update", tag_update:true do
-  #
-  #  describe "is admin user" do
-  #
-  #    context "valid attributes" do
-  #      it "located the requested @location" do
-  #        put :update, id: @location, location: FactoryGirl.attributes_for(:location,section_id:@section.id)
-  #        assigns(:location).should eq(@location)
-  #      end
-  #    end
-  #
-  #    it "changes @section's attributes" do
-  #      put :update, id: @location, location: FactoryGirl.attributes_for(:location,section_id:@section.id,x:111,y:222,z:333)
-  #      @location.reload
-  #      @location.section_id.should eq(@section.id)
-  #      @location.x.should eq(111)
-  #      @location.y.should eq(222)
-  #      @location.z.should eq(333)
-  #    end
-  #
-  #    it "redirects to the updated section" do
-  #      put :update, id: @location, location: FactoryGirl.attributes_for(:location,section_id:@section.id,x:111,y:222,z:333)
-  #      response.should redirect_to @location
-  #    end
-  #
-  #    context "invalid attributes" do
-  #
-  #      it "locates the requested @location" do
-  #        #put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme,name:nil)
-  #        put :update, id: @location, location: FactoryGirl.attributes_for(:location,section_id:nil,x:111,y:222,z:333)
-  #        assigns(:location).should eq(@location)
-  #      end
-  #
-  #      it "does not change @theme's attributes" do
-  #
-  #        put :update, id: @location, location: FactoryGirl.attributes_for(:location,section_id:nil,x:111,y:222,z:333)
-  #        @location.reload
-  #        @location.section_id.should eq(@section.id)
-  #        @location.x.should_not eq(111)
-  #        @location.y.should_not eq(222)
-  #        @location.z.should_not eq(333)
-  #
-  #      end
-  #      it "re-renders the edit method" do
-  #        put :update, id: @location, location: FactoryGirl.attributes_for(:location,section_id:nil,x:111,y:222,z:333)
-  #        response.should render_template :edit
-  #      end
-  #    end
-  #  end
-  #
-  #  describe "is not admin user" do
-  #    before do
-  #      @user  = FactoryGirl.create(:user)
-  #      sign_in @user
-  #    end
-  #
-  #    it "redirects to root " do
-  #      put :update, id: @location, location: FactoryGirl.attributes_for(:location,section_id:@section.id,x:111,y:222,z:333)
-  #      response.should redirect_to root_path
-  #    end
-  #
-  #  end
-  #
-  #
-  #end
-  #
-  #
+  #***********************************
+  # rspec test create
+  #***********************************
+
+
+  describe "POST create", tag_create:true  do
+
+    describe "is admin user" do
+      context "with valid params" do
+
+        it "creates a new bundle" do
+          new_section = FactoryGirl.create(:section)
+          new_theme = FactoryGirl.create(:theme)
+          expect {
+            post :create,bundle: FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+          }.to change(Bundle, :count).by(1)
+
+
+        end
+
+        it "assigns a newly created bundle as @bundle" do
+          new_section = FactoryGirl.create(:section)
+          new_theme = FactoryGirl.create(:theme)
+          post :create,bundle: FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+          assigns(:bundle).should be_a(Bundle)
+          assigns(:bundle).should be_persisted
+        end
+
+        it "redirects to the created bundle" do
+          new_section = FactoryGirl.create(:section)
+          new_theme = FactoryGirl.create(:theme)
+          post :create,bundle: FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+          response.should redirect_to(Bundle.last)
+        end
+      end
+
+      context "with invalid params" do
+
+        context "with invalid attributes" do
+          it "does not save the new contact" do
+            new_section = FactoryGirl.create(:section)
+            new_theme = FactoryGirl.create(:theme)
+
+            expect{ post :create, bundle: FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:nil)
+            }.to_not change(Bundle,:count)
+            expect{ post :create, bundle: FactoryGirl.attributes_for(:bundle,theme_id:nil,section_id:new_section.id)
+            }.to_not change(Bundle,:count)
+
+          end
+          it "re-renders the new method" do
+            new_section = FactoryGirl.create(:section)
+            post :create, bundle: FactoryGirl.attributes_for(:bundle,theme_id:nil,section_id:new_section.id)
+            response.should render_template :new
+          end
+        end
+
+      end
+
+    end
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root" do
+        new_section = FactoryGirl.create(:section)
+        new_theme = FactoryGirl.create(:theme)
+
+        post :create, bundle: FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+        response.should redirect_to(root_path)
+      end
+      it "not redirects to the created bundle" do
+        new_section = FactoryGirl.create(:section)
+        new_theme = FactoryGirl.create(:theme)
+        post :create, bundle: FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+        response.should_not redirect_to(Bundle.last)
+      end
+    end
+
+
+  end
+
+  #***********************************
+  # rspec test  update
+  #***********************************
+
+  describe "PUT update", tag_update:true do
+
+    describe "is admin user" do
+
+      context "valid attributes" do
+        it "located the requested @bundle" do
+          new_section = FactoryGirl.create(:section)
+          new_theme = FactoryGirl.create(:theme)
+
+          put :update, id: @bundle, bundle:  FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+          assigns(:bundle).should eq(@bundle)
+        end
+      end
+
+      it "changes @bundle's attributes" do
+        new_section = FactoryGirl.create(:section)
+        new_theme = FactoryGirl.create(:theme)
+        put :update, id: @bundle, bundle:  FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+        @bundle.reload
+        @bundle.theme_id.should eq(new_theme.id)
+        @bundle.section_id.should eq(new_section.id)
+
+      end
+
+      it "redirects to the updated section" do
+        new_section = FactoryGirl.create(:section)
+        new_theme = FactoryGirl.create(:theme)
+        put :update, id: @bundle, bundle:  FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+        response.should redirect_to @bundle
+      end
+
+      context "invalid attributes" do
+
+        it "locates the requested @bundle" do
+          new_section = FactoryGirl.create(:section)
+          new_theme = FactoryGirl.create(:theme)
+          put :update, id: @bundle, bundle:  FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+          assigns(:bundle).should eq(@bundle)
+        end
+
+        it "does not change @bundle's attributes" do
+          new_section = FactoryGirl.create(:section)
+          new_theme = FactoryGirl.create(:theme)
+          put :update, id: @bundle, bundle:  FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:nil)
+          @bundle.reload
+          @bundle.theme_id.should_not eq(new_theme.id)
+          @bundle.section_id.should_not eq(new_section.id)
+
+
+
+        end
+        it "re-renders the edit method" do
+
+          new_theme = FactoryGirl.create(:theme)
+          put :update, id: @bundle, bundle:  FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:nil)
+          response.should render_template :edit
+
+
+        end
+      end
+    end
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root " do
+        new_section = FactoryGirl.create(:section)
+        new_theme = FactoryGirl.create(:theme)
+        put :update, id: @bundle, bundle:  FactoryGirl.attributes_for(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+        response.should redirect_to root_path
+      end
+
+    end
+  end
+
+
+  #***********************************
+  # rspec test  #json_index_bundles
+  #***********************************
+
+
+  describe "api #json_index_bundles",tag_json_index:true do
+
+    describe "is public api" do
+      before do
+        sign_out
+      end
+
+
+      it "should be successful" do
+        #get :json_index_bundles, theme: @theme, :format => :json
+
+        get :json_index_bundles, :format => :json
+        response.should be_success
+      end
+
+      let(:bundles_all){Bundle.all}
+      it "should set bundle" do
+        get :json_index_bundles, :format => :json
+        assigns(:bundles).as_json.should == bundles_all.as_json
+      end
+
+      it "has a 200 status code" do
+        get :json_index_bundles, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "should return json_index bundle in json" do # depend on what you return in action
+
+          get :json_index_bundles, :format => :json
+
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          #puts "theme ----> "+@theme.as_json.to_s
+          #puts "body name ----> " + body[0]["name"].to_s
+          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          #puts "theme name----> "+@theme.name.to_s
+          #puts "theme image name----> "+@theme.image_name.to_s
+
+          #:description, :image_name, :name, :theme_id,:image_name_set,:section_id
+
+          body.each do |body_bundle|
+            @bundle_json = Bundle.find(body_bundle["id"])
+            body_bundle["name"].should == @bundle_json.name
+            body_bundle["description"].should == @bundle_json.description
+            body_bundle["id"].should == @bundle_json.id
+            body_bundle["image_name"]["url"].should == @bundle_json.image_name.to_s
+            body_bundle["image_name_set"]["url"].should == @bundle_json.image_name_set.to_s
+            body_bundle["section_id"].should == @bundle_json.section_id
+
+          end
+        end
+      end
+    end
+  end
+
+
+
 
 
 

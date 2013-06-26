@@ -12,7 +12,7 @@ class BundlesController < ApplicationController
 
   before_filter :json_signed_in_user,
                 only:[
-                    :json_index_bundles
+
                 ]
 
   before_filter :admin_user,
@@ -122,12 +122,13 @@ class BundlesController < ApplicationController
   # Json methods for the room users
   #***********************************
 
-
   # GET Get all bundles
   # /bundles/json/index_bundles
   # /bundles/json/index_bundles.json
   #Return head
   #success    ->  head  200 OK
+
+  #public api
 
   def json_index_bundles
 

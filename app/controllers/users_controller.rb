@@ -62,7 +62,9 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the MyWebRoom!"
-      redirect_to @user
+      #redirect_to @user
+
+      redirect_back_or @user
       # Handle a successful save.
     else
       render 'new'

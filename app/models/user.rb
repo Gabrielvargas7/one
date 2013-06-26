@@ -154,8 +154,21 @@ class User < ActiveRecord::Base
     #this is temp until the new design
     def create_random_room
 
-      bundle_max = Bundle.maximum("id")
+      #bundle_max = Bundle.maximum("id")
+
+      bundle_max = 18 # note this is a quick fix,
+      # you should add the activation field for bundle
+      # so the activation field will be say if the bundle is ready for use (it have all the values links for a bundle )
+      # example, it have
+      #        BundlesItemsDesign
+      #        BundlesBookmark
+      #        Theme
+      #        Section .. more
+
+
+
       bundle_min = Bundle.minimum("id")
+
       #print "bundle max "+bundle_max.to_s
       bundle_rand_number = rand(bundle_min..bundle_max)
       #print "bundle_rand_number  "+bundle_rand_number.to_s
@@ -170,14 +183,6 @@ class User < ActiveRecord::Base
       @bundles_items_designs.each  do |bundles_items_design|
         UsersItemsDesign.create!(user_id:self.id,items_design_id:bundles_items_design.items_design_id,hide:'no',location_id:bundles_items_design.location_id)
       end
-
-      ##create the items_design from the bundle
-      #@items_designs = ItemsDesign.find_all_by_bundle_id(bundle.id)
-      #@items_designs.each  do |items_design|
-      #  items_location = ItemsLocation.find_by_item_id(items_design.item_id)
-      #
-      #  UsersItemsDesign.create!(user_id:self.id,items_design_id:items_design.id,hide:'no',location_id:items_location.location_id)
-      #end
 
       #create the initials bookmarks from the bundle
       @bundle_bookmarks = BundlesBookmark.all
