@@ -68,7 +68,6 @@ FactoryGirl.define do
   factory :items_design do
     sequence(:name)  { |n| "item_design #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
-    bundle_id 1
     item_id 1
   end
 

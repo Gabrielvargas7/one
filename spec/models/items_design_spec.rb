@@ -6,7 +6,6 @@
 #  name                 :string(255)
 #  description          :text
 #  item_id              :integer
-#  bundle_id            :integer
 #  image_name           :string(255)
 #  image_name_hover     :string(255)
 #  image_name_selection :string(255)
@@ -18,7 +17,7 @@ require 'spec_helper'
 
 describe ItemsDesign do
 
-  #attr_accessible :bundle_id, :description, :image_name, :item_id, :name,:image_name_hover,:image_name_selection
+  #attr_accessible : :description, :image_name, :item_id, :name,:image_name_hover,:image_name_selection
 
   # the (before) line will instance the variable for every (describe methods)
   before do
@@ -36,7 +35,7 @@ describe ItemsDesign do
   it { @items_designs.should respond_to(:image_name_selection)}
   it { @items_designs.should respond_to(:image_name)}
   it { @items_designs.should respond_to(:item_id) }
-  it { @items_designs.should respond_to(:bundle_id) }
+
 
   it { @items_designs.should be_valid }
 
