@@ -163,7 +163,12 @@ class BundlesItemsDesignsController < ApplicationController
   # POST /create_bundle_items_design.json
   def create_bundle_items_design
 
-    @bundles_items_design = BundlesItemsDesign.new(bundle_id:params[:bundle_id],location_id:params[:location_id],items_design_id:params[:items_design_d])
+    #puts "bundle id --> "+params[:bundle_id]
+    #puts "items_location id --> "+params[:location_id]
+    #puts "items_design id --> "+params[:items_design_id]
+
+
+    @bundles_items_design = BundlesItemsDesign.new(bundle_id:params[:bundle_id],location_id:params[:location_id],items_design_id:params[:items_design_id])
 
     respond_to do |format|
       if @bundles_items_design.save

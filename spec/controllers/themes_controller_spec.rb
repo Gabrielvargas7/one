@@ -393,6 +393,26 @@ describe ThemesController do
   end
 
 
+  #***********************************
+  # rspec test  destroy
+  #***********************************
+
+  #
+  #describe 'DELETE destroy' do
+  #
+  #  it "deletes the contact" do
+  #    expect{
+  #      delete :destroy, id: @bundles_items_design
+  #    }.to change(BundlesItemsDesign,:count).by(-1)
+  #  end
+  #  it "redirects to contacts#index" do
+  #    delete :destroy, id:  @bundles_items_design
+  #    response.should redirect_to bundles_items_designs_url
+  #  end
+  #end
+
+
+
 
 
 

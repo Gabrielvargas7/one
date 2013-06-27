@@ -34,7 +34,7 @@ class RoomsController < ApplicationController
         @user = User.find_by_username(params[:username])
 
         respond_to do |format|
-          format.html # show.html.erb
+          format.html
           format.json { render json:@user.as_json(only: [:id,:name, :username, :image_name ])  }
 
         end

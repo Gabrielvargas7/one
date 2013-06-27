@@ -4,10 +4,11 @@ describe BundlesItemsDesign do
 
   # the (before) line will instance the variable for every (describe methods)
   before do
-    @theme = FactoryGirl.create(:theme)
-    @bundle = FactoryGirl.create(:bundle,theme_id:@theme.id)
 
     @section = FactoryGirl.create(:section)
+    @theme = FactoryGirl.create(:theme)
+    @bundle = FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id)
+
     @location = FactoryGirl.create(:location,section_id:@section.id )
     @item = FactoryGirl.create(:item)
     @items_location = FactoryGirl.create(:items_location,location_id:@location.id,item_id:@item.id)

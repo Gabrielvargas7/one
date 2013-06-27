@@ -154,9 +154,11 @@ class User < ActiveRecord::Base
     #this is temp until the new design
     def create_random_room
 
-      #bundle_max = Bundle.maximum("id")
+      bundle_max = Bundle.maximum("id")
 
-      bundle_max = 18 # note this is a quick fix,
+      #bundle_max =
+
+      # note this is a quick fix,
       # you should add the activation field for bundle
       # so the activation field will be say if the bundle is ready for use (it have all the values links for a bundle )
       # example, it have
