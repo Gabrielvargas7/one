@@ -55,7 +55,6 @@ class FriendRequestsController < ApplicationController
                    user_requested = User.find(params[:user_id_requested])
                    UsersMailer.friend_request_email(user,user_requested).deliver
 
-
                   format.json { render json: @friend_request, status: :created }
                 else
                   format.json { render json: @friend_request.errors, status: :unprocessable_entity }
@@ -111,7 +110,7 @@ class FriendRequestsController < ApplicationController
   end
 
 
-  #GET get all the request that your friend make to you
+  #GET get all the request that your friends make to you
   #  /friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/:user_id
   #  /friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/206.json
   #  //# success    ->  head  200 OK

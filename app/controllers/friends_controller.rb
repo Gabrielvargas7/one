@@ -106,7 +106,8 @@ class FriendsController < ApplicationController
                   @friend_1.destroy unless @friend_1.nil?
                   @friend_2.destroy unless @friend_2.nil?
 
-                  format.json { head :no_content }
+                  #format.json { head :no_content }
+                  format.json { render json: 'nothing to destroy   ', status: :ok }
 
                 rescue ActiveRecord::StatementInvalid
                   format.json { render json: 'failure to destroy friends', status: :unprocessable_entity }
@@ -214,12 +215,11 @@ class FriendsController < ApplicationController
 
               @suggestions = Friend.find_by_sql(sql)
 
-              @suggestions_friends = Hash.new
-              @suggestions.each  do |i|
-                    #@user_items_design = UsersItemsDesign.new(user_id:params[:user_id],items_design_id:i.id,hide:'no')
-                    #@suggestions_friends[i.user_id_friend] = User.find(i.user_id_friend)
 
-                @suggestions_friends[i.user_id_friend] = User.select('image_name,name').where(id:i.user_id_friend)
+              @suggestions_friends = Array.new
+
+              @suggestions.each  do |i|
+                @suggestions_friends.push User.select('id,image_name,name').where(id:i.user_id_friend).as_json
 
               end
               format.json { render json: @suggestions_friends }

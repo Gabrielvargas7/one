@@ -10,39 +10,19 @@
 //#  //# success    ->  head  200 OK
 //
 
-{
-    "209": [
+[
+    [
         {
-            "image_name": {
-                "url": "/images/fallback/user/default_user.png",
-                "small": {
-                    "url": "/images/fallback/user/default_user.png"
-                },
-                "tiny": {
-                    "url": "/images/fallback/user/default_user.png"
-                },
-                "toolbar": {
-                    "url": "/images/fallback/user/default_user.png"
-                }
-            },
-            "name": "Nat Kuphal"
+            "id"=>6690,
+            "image_name"=>{"url"=>"/assets/fallback/user/default_user.png"},
+            "name"=>"Person 20"
         }
     ],
-    "210": [
+    [
         {
-            "image_name": {
-                "url": "/images/fallback/user/default_user.png",
-                "small": {
-                    "url": "/images/fallback/user/default_user.png"
-                },
-                "tiny": {
-                    "url": "/images/fallback/user/default_user.png"
-                },
-                "toolbar": {
-                    "url": "/images/fallback/user/default_user.png"
-                }
-            },
-            "name": "Ms. Danielle Hilll"
+            "id"=>6691,
+            "image_name"=>{"url"=>"/assets/fallback/user/default_user.png"},
+            "name"=>"Person 21"
         }
     ]
-}
+]
