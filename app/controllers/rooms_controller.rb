@@ -1,26 +1,26 @@
 class RoomsController < ApplicationController
 
-  before_filter :json_signed_in_user,
-                only:[
-                    :json_show_room_by_user_id
+  #before_filter :json_signed_in_user,
+  #              only:[
+  #                  :json_show_room_by_user_id
+  #
+  #              ]
+  #
+  #before_filter :json_correct_user,
+  #              only:[
+  #                  :json_show_room_by_user_id
+  #              ]
 
-                ]
 
-  before_filter :json_correct_user,
-                only:[
-                    :json_show_room_by_user_id
-                ]
-
-
-  before_filter :signed_in_user,
-                only:[
-                    :room
-                ]
-
-  before_filter :correct_username,
-                only:[
-                    :room
-                    ]
+  #before_filter :signed_in_user,
+  #              only:[
+  #                  :room
+  #              ]
+  #
+  #before_filter :correct_username,
+  #              only:[
+  #                  :room
+  #                  ]
 
 
 
@@ -29,6 +29,7 @@ class RoomsController < ApplicationController
   # GET Get room with the username
   # /room/:username
   # room_rooms_path // room_rooms_url
+  # public
   def room
         @username = params[:username]
         @user = User.find_by_username(params[:username])
@@ -58,7 +59,7 @@ class RoomsController < ApplicationController
           #validate if the user exist
           if User.exists?(id:params[:user_id])
 
-                @user = User.select('id , name,email,image_name').where('id = ?',params[:user_id]).first
+                @user = User.select('id ,name,email,image_name,username').where('id = ?',params[:user_id]).first
 
                 @user_theme = Theme.
                     select('themes.id,themes.name,themes.description,image_name,users_themes.section_id, sections.name as section_name').
@@ -95,7 +96,7 @@ class RoomsController < ApplicationController
                       user: @user,
                                               user_gallery: @user_gallery,
                                               user_theme: @user_theme,
-                                              user_items_designs: @user_items_designs.as_json()
+                                              user_items_designs: @user_items_designs
 
                   }}
           else

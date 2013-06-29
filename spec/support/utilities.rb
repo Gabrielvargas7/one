@@ -44,7 +44,8 @@ def create_init_data
     @themes.each do |theme|
       FactoryGirl.create(:bundle,theme_id:theme.id,section_id:@section.id)
     end
-    @bundle = Bundle.first
+
+    #@bundle = Bundle.first
 
     2.times {FactoryGirl.create(:item)}
     @items = Item.all
@@ -81,15 +82,17 @@ def create_init_data
       FactoryGirl.create(:bundles_bookmark,item_id:item.id,bookmark_id:@bookmark.id)
     end
 
+    @bundles = Bundle.all
 
-    items_design = ItemsDesign.first
-    items_location = ItemsLocation.find_by_item_id(items_design.item_id)
-    FactoryGirl.create(:bundles_items_design,bundle_id:@bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
+    @bundles.each do |bundle|
+      items_design = ItemsDesign.first
+      items_location = ItemsLocation.find_by_item_id(items_design.item_id)
+      FactoryGirl.create(:bundles_items_design,bundle_id:bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
 
-    items_design = ItemsDesign.last
-    items_location = ItemsLocation.find_by_item_id(items_design.item_id)
-    FactoryGirl.create(:bundles_items_design,bundle_id:@bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
-
+      items_design = ItemsDesign.last
+      items_location = ItemsLocation.find_by_item_id(items_design.item_id)
+      FactoryGirl.create(:bundles_items_design,bundle_id:bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
+    end
 
     puts "--- End creating seed data for test  "
 
