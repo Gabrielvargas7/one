@@ -29,10 +29,14 @@ module SessionsHelper
   def redirect_back_or(default)
 
     #redirect_to(session[:return_to] || default)
+    if default.username.nil?
+      redirect_to root_path
+    else
+      user_name = default.username
+      redirect_to(session[:return_to] || room_rooms_path(user_name))
+      session.delete(:return_to)
+    end
 
-    user_name = default.username
-    redirect_to(session[:return_to] || room_rooms_path(user_name))
-    session.delete(:return_to)
   end
 
   def store_location

@@ -141,6 +141,8 @@ FactoryGirl.define do
   end
 
   factory :users_bookmark do
+    sequence(:position) { |n| "#{n}" }
+    #sequence(:title)  { |n| "title #{n}" }
     user_id 1
     bookmark_id 1
   end

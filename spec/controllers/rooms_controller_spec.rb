@@ -137,13 +137,6 @@ describe RoomsController do
 
 
 
-
-                #body["description"].should == @theme.description
-                #body["id"].should == @theme.id
-                #body["image_name"]["url"].should == @theme.image_name.to_s
-                #body["image_name_selection"]["url"].should == @theme.image_name_selection.to_s
-
-
               end
             end
           end

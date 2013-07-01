@@ -220,6 +220,31 @@ describe FriendsController do
       end
     end
 
+    context "is sign in with other user" do
+      before do
+        @user3 = FactoryGirl.create(:user)
+        sign_in @user3
+      end
+      it "has a 404 status code" do
+        get :json_index_friends_suggestion_by_user_id_by_limit_by_offset,user_id: @user1.id,limit:@limit,offset:@offset, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
+
+    context "is sign out user" do
+      before do
+        sign_out
+      end
+      it "has a 404 status code" do
+        get :json_index_friends_suggestion_by_user_id_by_limit_by_offset,user_id: @user1.id,limit:@limit,offset:@offset, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
+
+
+
   end
 
 
@@ -290,6 +315,29 @@ describe FriendsController do
 
       end
     end
+
+    context "is sign in with other user" do
+      before do
+        @user3 = FactoryGirl.create(:user)
+        sign_in @user3
+      end
+      it "has a 404 status code" do
+        post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
+
+    context "is sign out user" do
+      before do
+        sign_out
+      end
+      it "has a 404 status code" do
+        post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
   end
 
 
@@ -306,9 +354,32 @@ describe FriendsController do
 
     it "deletes friend request" do
       expect{
-        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id
+        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
       }.to change(Friend,:count).by(-1)
     end
+
+    context "is sign in with other user" do
+      before do
+        @user3 = FactoryGirl.create(:user)
+        sign_in @user3
+      end
+      it "has a 404 status code" do
+        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
+
+    context "is sign out user" do
+      before do
+        sign_out
+      end
+      it "has a 404 status code" do
+        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
 
   end
 

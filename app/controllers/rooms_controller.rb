@@ -31,14 +31,20 @@ class RoomsController < ApplicationController
   # room_rooms_path // room_rooms_url
   # public
   def room
+
+    if User.exists?(username:params[:username])
+
         @username = params[:username]
+
         @user = User.find_by_username(params[:username])
 
         respond_to do |format|
           format.html
           format.json { render json:@user.as_json(only: [:id,:name, :username, :image_name ])  }
-
         end
+    else
+      redirect_to(root_path)
+    end
   end
 
   #***********************************

@@ -203,7 +203,10 @@ class UsersBookmarksController < ApplicationController
                                         bookmarks_category_id:params[:bookmarks_category_id],
                                         image_name:params[:image_name],
                                         item_id:params[:item_id],
-                                        approval:params[:user_id] )
+                                        approval:'n',
+                                        i_frame:'y',
+                                        user_bookmark:params[:user_id]
+               )
                @bookmark.save
                @user_bookmark = UsersBookmark.new(user_id:params[:user_id],bookmark_id:@bookmark.id,position:params[:position])
                @user_bookmark.save
