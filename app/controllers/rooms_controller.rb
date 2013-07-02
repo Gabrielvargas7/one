@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
 
+  #method for Json access
   before_filter :json_signed_in_user,
                 only:[
                     :json_show_room_by_user_id
@@ -11,6 +12,7 @@ class RoomsController < ApplicationController
                     :json_show_room_by_user_id
                 ]
 
+  #method for ruby access
 
   before_filter :signed_in_user,
                 only:[
@@ -32,6 +34,7 @@ class RoomsController < ApplicationController
   def room
         @username = params[:username]
         @user = User.find_by_username(params[:username])
+        @user_theme = UsersTheme.find_by_user_id(@user.id)
 
         respond_to do |format|
           format.html

@@ -11,8 +11,7 @@
     <li><%= entry.get('name') %></li>
     <li><%= entry.get('image_name') %></li>
 
-
-
     <% end %>
 </ul>
+
 

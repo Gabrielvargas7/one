@@ -4,7 +4,7 @@
 </div>
 
         <% provide(:title, @user.name) %>
-        <h1>This is My room on RoR</h1>
+        <h1>This is My room on RoR TEST</h1>
         <div class="row">
           <aside class="span4">
             <section>
@@ -16,7 +16,7 @@
               name: <%= @user.name %>,</br>
               email:  <%= @user.email %></br>
               username: <%= @user.username %></br>
-
+               themeID (we'll need them URL later):        <%= @user_theme.theme.image_name.to_s %></br>
             </section>
           </aside>
         </div>

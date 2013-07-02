@@ -1,0 +1,7 @@
+<h1>HALLO THEME!</h1>
+<%= @user_theme.length %>
+    <% for entry in @user_theme.models: %>
+        <%= entry.get('user_theme')[0].image_name.url %>
+       <img id="current_background" src=<%= entry.get('user_theme')[0].image_name.url %>>
+    <% end %>
+
