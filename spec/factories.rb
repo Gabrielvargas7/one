@@ -41,6 +41,7 @@ FactoryGirl.define do
     sequence(:description)  { |n| "desc #{n}" }
     theme_id 1
     section_id 1
+    active 'n'
   end
 
   factory :item do

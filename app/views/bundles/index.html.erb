@@ -11,6 +11,8 @@
     <th>Bundles Id</th>
     <th>Name</th>
     <th>Description</th>
+    <th>Active</th>
+
     <th>Bundle Image name</th>
     <th>Bundle Image name Set</th>
 
@@ -26,6 +28,8 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
+
   </tr>
 
 <% @bundles.each do |bundle| %>
@@ -33,6 +37,8 @@
     <td><%= bundle.id %></td>
     <td><%= bundle.name %></td>
     <td><%= bundle.description %></td>
+    <td><%= bundle.active %></td>
+
     <td> <%= image_tag bundle.image_name.url().to_s ,width: 100, height:100 %> </td>
     <td> <%= image_tag bundle.image_name_set.url().to_s ,width: 100, height:100 %> </td>
 
@@ -57,10 +63,10 @@
     <%  end %>
 
 
-
-
     <td><%= link_to 'Show', bundle %></td>
     <td><%= link_to 'Edit', edit_bundle_path(bundle) %></td>
+    <td><%= link_to 'Active',bundles_active_update_path(bundle.id), :method => :put %></td>
+
 
   </tr>
 <% end %>

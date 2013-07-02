@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612174716) do
+ActiveRecord::Schema.define(:version => 20130701220622) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -50,10 +50,11 @@ ActiveRecord::Schema.define(:version => 20130612174716) do
     t.text     "description"
     t.integer  "theme_id"
     t.string   "image_name"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "image_name_set"
     t.integer  "section_id"
+    t.string   "active",         :default => "n"
   end
 
   add_index "bundles", ["id"], :name => "index_bundles_on_id"

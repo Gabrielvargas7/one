@@ -36,9 +36,15 @@ Mywebroom::Application.routes.draw do
 
   resources :bookmarks
 
-  match '/bookmarks/index/bookmarks_approval', to: 'bookmarks#index_bookmarks_approval', via: :get,as: :index_bookmarks_approval
-  match '/bookmarks/update/bookmarks_approval_for_a_user/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_a_user', via: :put,as: :update_bookmarks_approval_for_a_user
-  match '/bookmarks/update/bookmarks_approval_for_all_users/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_all_users', via: :put,as: :update_bookmarks_approval_for_all_users
+  match '/bookmarks/index/bookmarks_approval', to:
+         'bookmarks#index_bookmarks_approval', via: :get,as:
+                    :index_bookmarks_approval
+  match '/bookmarks/update/bookmarks_approval_for_a_user/:bookmark_id', to:
+         'bookmarks#update_bookmarks_approval_for_a_user', via: :put,as:
+                   :update_bookmarks_approval_for_a_user
+  match '/bookmarks/update/bookmarks_approval_for_all_users/:bookmark_id', to:
+         'bookmarks#update_bookmarks_approval_for_all_users', via: :put,as:
+                   :update_bookmarks_approval_for_all_users
 
 
   resources :items_designs
@@ -49,6 +55,9 @@ Mywebroom::Application.routes.draw do
 
   resources :bundles
 
+  match '/bundles/active_update/:id', to:
+         'bundles#active_update', via: :put,as:
+         :bundles_active_update
   resources :items
 
   resources :users

@@ -355,6 +355,84 @@ describe BundlesController do
 
 
   #***********************************
+  # rspec test active_update
+  #***********************************
+
+  describe "PUT active_update", tag_active_update:true do
+    before do
+
+      @section = FactoryGirl.create(:section)
+      @theme = FactoryGirl.create(:theme)
+      @bundle = FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'n')
+
+      @location = FactoryGirl.create(:location,section_id:@section.id )
+      @item = FactoryGirl.create(:item)
+      @items_location = FactoryGirl.create(:items_location,location_id:@location.id,item_id:@item.id)
+      @items_designs = FactoryGirl.create(:items_design,item_id:@item.id)
+      @bundle_items_design = FactoryGirl.create(:bundles_items_design,bundle_id:@bundle.id,location_id:@items_location.location_id,items_design_id:@items_designs.id)
+
+    end
+
+    describe "is admin user" do
+
+      context "valid attributes" do
+        it "located the requested @bundle" do
+
+          put :active_update, id: @bundle.id
+          assigns(:bundle).should eq(@bundle)
+        end
+      end
+
+      it "changes @bundle's attributes" do
+        put :active_update, id: @bundle.id
+        @bundle.reload
+        @bundle.active.should eq('y')
+
+      end
+
+      it "redirects to the updated section" do
+
+        put :active_update, id: @bundle.id
+        response.should redirect_to @bundle
+      end
+
+      context "invalid attributes" do
+        before do
+          @invalid_bundle = FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'n')
+        end
+
+        it "locates the requested @invalid_bundle" do
+          put :active_update, id: @invalid_bundle.id
+          assigns(:bundle).should eq(@invalid_bundle)
+        end
+
+        it "does not change @bundle's attributes" do
+          put :active_update, id: @invalid_bundle.id
+          @invalid_bundle.reload
+          @invalid_bundle.active.should eq('n')
+
+        end
+
+      end
+    end
+
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root " do
+        put :active_update, id: @bundle.id
+        response.should redirect_to root_path
+      end
+
+    end
+  end
+
+
+
+  #***********************************
   # rspec test  #json_index_bundles
   #***********************************
 

@@ -7,7 +7,8 @@ class BundlesController < ApplicationController
                       :new,
                       :edit,
                       :update,
-                      :create
+                      :create,
+                      :active_update
                 ]
 
   before_filter :json_signed_in_user,
@@ -22,7 +23,8 @@ class BundlesController < ApplicationController
                       :new,
                       :edit,
                       :update,
-                      :create
+                      :create,
+                      :active_update
                 ]
 
   # GET /bundles
@@ -117,6 +119,35 @@ class BundlesController < ApplicationController
     end
   end
 
+  # PUT /active_bundles/1
+  # PUT /active_bundles/1.json
+  def active_update
+    respond_to do |format|
+      if Bundle.exists?(id:params[:id])
+        @bundle = Bundle.find(params[:id])
+
+        if BundlesItemsDesign.exists?(bundle_id:params[:id])
+
+          @bundle.active = 'y'
+          if @bundle.save!
+            format.html { redirect_to @bundle, notice: 'Bundle was successfully updated.' }
+          else
+            format.html { redirect_to @bundle, notice: 'something go wrong.' }
+          end
+        else
+          format.html { redirect_to @bundle, notice: "Bundle item design doesn't exist, you need to have a least one." }
+        end
+      else
+        format.json { render json: @bundle.errors, status: :unprocessable_entity }
+
+
+      end
+    end
+  end
+
+
+
+
 
   #***********************************
   # Json methods for the room users
@@ -132,7 +163,7 @@ class BundlesController < ApplicationController
 
   def json_index_bundles
 
-    @bundles = Bundle.order(:id)
+    @bundles = Bundle.where("active = 'y'").order(:id)
     respond_to do |format|
       format.json { render json: @bundles.as_json()
 

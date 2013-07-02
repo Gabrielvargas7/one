@@ -36,6 +36,9 @@ describe Bundle do
   it { @bundle.should respond_to(:image_name)}
   it { @bundle.should respond_to(:theme_id) }
   it { @bundle.should respond_to(:section_id) }
+  it { @bundle.should respond_to(:active) }
+
+
 
   it { @bundle.should be_valid }
 
@@ -134,6 +137,40 @@ describe Bundle do
 
     let(:bundle_not_section_id){FactoryGirl.build(:bundle,theme_id:@theme.id,section_id:-1)}
     it { bundle_not_section_id.should_not be_valid }
+
+  end
+
+  ###############
+  #test validation - active
+  ###############
+  describe "when active " , tag_active: true  do
+
+    context "is not present" do
+      before {@bundle.active = " "}
+      it {should_not be_valid}
+    end
+
+    context "must be 'y' and lowercase" do
+      before do
+        @bundle.active = "y"
+      end
+      it { 'y'.should == @bundle.active}
+    end
+
+    context "must be 'n' and lowercase" do
+      before do
+        @bundle.active = "n"
+      end
+      it { 'n'.should == @bundle.active}
+    end
+
+    context "should not be 'ANYTHING' " do
+      before do
+        @bundle.active = "ANY"
+      end
+      it { 'n'.should_not == @bundle.active}
+      it { 'y'.should_not == @bundle.active}
+    end
 
   end
 

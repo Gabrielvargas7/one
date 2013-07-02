@@ -96,7 +96,8 @@ class UsersController < ApplicationController
 
 
   def destroy
-    User.find(params[:id]).destroy
+    #User.find(params[:id]).destroy
+
     flash[:success] = "User destroyed."
     redirect_to users_url
 
@@ -280,11 +281,7 @@ class UsersController < ApplicationController
   #***********************************
   # End Json methods for the room users
   #***********************************
-
-
   private
-
-
 
   # this function will remove all non-alphanumeric character and
   # replace the empty space for dash eg 'my new username@@' = my-new-username

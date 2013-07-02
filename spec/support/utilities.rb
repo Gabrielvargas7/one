@@ -42,7 +42,7 @@ def create_init_data
     @themes = Theme.all
 
     @themes.each do |theme|
-      FactoryGirl.create(:bundle,theme_id:theme.id,section_id:@section.id)
+      FactoryGirl.create(:bundle,theme_id:theme.id,section_id:@section.id,active:'y')
     end
 
     #@bundle = Bundle.first

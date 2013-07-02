@@ -154,9 +154,7 @@ class User < ActiveRecord::Base
     #this is temp until the new design
     def create_random_room
 
-      bundle_max = Bundle.maximum("id")
-
-      #bundle_max =
+      #bundle_max = Bundle.maximum("id")
 
       # note this is a quick fix,
       # you should add the activation field for bundle
@@ -169,12 +167,16 @@ class User < ActiveRecord::Base
 
 
 
-      bundle_min = Bundle.minimum("id")
+      #bundle_min = Bundle.minimum("id")
+      #
+      #Bundle.where("active = 'y'").order("by RANDOM()").first
+      #
+      ##print "bundle max "+bundle_max.to_s
+      #bundle_rand_number = rand(bundle_min..bundle_max)
+      ##print "bundle_rand_number  "+bundle_rand_number.to_s
+      #bundle = Bundle.find(bundle_rand_number)
 
-      #print "bundle max "+bundle_max.to_s
-      bundle_rand_number = rand(bundle_min..bundle_max)
-      #print "bundle_rand_number  "+bundle_rand_number.to_s
-      bundle = Bundle.find(bundle_rand_number)
+      bundle = Bundle.where("active = 'y'").order("RANDOM()").first
 
       #create the theme from the bundle
       UsersTheme.create!(user_id:self.id,theme_id:bundle.theme_id,section_id:bundle.section_id)
