@@ -1,0 +1,17 @@
+//# PUT update set profile image
+//#/users_photos/json/update_users_set_profile_image_by_user_id_and_users_photo_id/:user_id/:users_photo_id
+//#/users_photos/json/update_users_set_profile_image_by_user_id_and_users_photo_id/30/400.json
+//#success    ->  head  200 ok
+
+
+{
+"created_at": "2013-07-05T21:42:05Z",
+"description": "4+new+profile+image",
+"id": 8,
+"image_name": {
+"url": "/assets/fallback/users_photos/default_user.png"
+},
+"profile_image": "y",
+"updated_at": "2013-07-05T21:57:51Z",
+"user_id": 23
+}

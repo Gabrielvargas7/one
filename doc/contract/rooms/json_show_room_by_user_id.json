@@ -19,14 +19,24 @@
 
 {
     "user": {
-        "email": "g@g.com",
-        "id": 26,
-        "image_name": {
-            "url": "/assets/fallback/user/default_user.png"
-        },
-        "name": "hi"
+        "email": "nine@gmail.com",
+        "id": 36,
+        "name": "nine",
+        "username": "nine"
     },
-    "user_gallery": null,
+    "user_photos": [
+        {
+            "created_at": "2013-07-03T18:49:33Z",
+            "description": null,
+            "id": 1,
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "profile_image": "y",
+            "updated_at": "2013-07-03T18:49:33Z",
+            "user_id": 36
+        }
+    ],
     "user_theme": [
         {
             "description": "Inspired on Morrocan art",
@@ -36,88 +46,13 @@
             },
             "name": "Morrocan",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "image_name_selection": {
                 "url": "/assets/fallback/theme/default_theme.png"
             }
         }
     ],
     "user_items_designs": [
-        {
-            "description": "Romantica for you.",
-            "height": "74",
-            "hide": "no",
-            "id": 303,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823770/50781-items_design-image_name-parisian-303.png"
-            },
-            "item_id": 5,
-            "items_name": "Newspaper",
-            "location_id": "5",
-            "name": "Parisian",
-            "section_id": "1",
-            "section_name": "main",
-            "width": "142",
-            "x": "71.5",
-            "y": "550.5",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "Romantica for you.",
-            "height": "118",
-            "hide": "no",
-            "id": 311,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823795/96697-items_design-image_name-parisian-311.png"
-            },
-            "item_id": 13,
-            "items_name": "TV",
-            "location_id": "13",
-            "name": "Parisian",
-            "section_id": "1",
-            "section_name": "main",
-            "width": "145",
-            "x": "897.0",
-            "y": "407.0",
-            "z": "3",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "Romantica for you.",
-            "height": "142",
-            "hide": "no",
-            "id": 304,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823773/28489-items_design-image_name-parisian-304.png"
-            },
-            "item_id": 6,
-            "items_name": "World Map",
-            "location_id": "6",
-            "name": "Parisian",
-            "section_id": "1",
-            "section_name": "main",
-            "width": "167",
-            "x": "1811.5",
-            "y": "269.5",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
         {
             "description": "Romantica for you.",
             "height": "322",
@@ -131,35 +66,10 @@
             "location_id": "1",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "448",
             "x": "1493.0",
             "y": "420.5",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "Romantica for you.",
-            "height": "128",
-            "hide": "no",
-            "id": 308,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823785/51426-items_design-image_name-parisian-308.png"
-            },
-            "item_id": 10,
-            "items_name": "Social Painting",
-            "location_id": "10",
-            "name": "Parisian",
-            "section_id": "1",
-            "section_name": "main",
-            "width": "144",
-            "x": "266.0",
-            "y": "266.5",
             "z": "1",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
@@ -181,35 +91,10 @@
             "location_id": "2",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "109",
             "x": "156.0",
             "y": "360.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "Romantica for you.",
-            "height": "116",
-            "hide": "no",
-            "id": 305,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823776/47269-items_design-image_name-parisian-305.png"
-            },
-            "item_id": 7,
-            "items_name": "TV Stand",
-            "location_id": "7",
-            "name": "Parisian",
-            "section_id": "1",
-            "section_name": "main",
-            "width": "237",
-            "x": "851.0",
-            "y": "491.0",
             "z": "2",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
@@ -231,35 +116,10 @@
             "location_id": "3",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "193",
             "x": "673.0",
             "y": "257.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "Romantica for you.",
-            "height": "104",
-            "hide": "no",
-            "id": 313,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823801/46572-items_design-image_name-parisian-313.png"
-            },
-            "item_id": 15,
-            "items_name": "Night Stand",
-            "location_id": "15",
-            "name": "Parisian",
-            "section_id": "1",
-            "section_name": "main",
-            "width": "91",
-            "x": "1431.0",
-            "y": "492.0",
             "z": "2",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
@@ -281,7 +141,7 @@
             "location_id": "4",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "164",
             "x": "1209.0",
             "y": "416.0",
@@ -295,22 +155,72 @@
         },
         {
             "description": "Romantica for you.",
-            "height": "118",
+            "height": "74",
             "hide": "no",
-            "id": 309,
+            "id": 303,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823788/35460-items_design-image_name-parisian-309.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823770/50781-items_design-image_name-parisian-303.png"
             },
-            "item_id": 11,
-            "items_name": "Encyclo Shelf",
-            "location_id": "11",
+            "item_id": 5,
+            "items_name": "Newspaper",
+            "location_id": "5",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
-            "width": "157",
-            "x": "1090.0",
-            "y": "259.0",
+            "section_name": "Main Room",
+            "width": "142",
+            "x": "71.5",
+            "y": "550.5",
             "z": "1",
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "description": "Romantica for you.",
+            "height": "142",
+            "hide": "no",
+            "id": 304,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823773/28489-items_design-image_name-parisian-304.png"
+            },
+            "item_id": 6,
+            "items_name": "World Map",
+            "location_id": "6",
+            "name": "Parisian",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "width": "167",
+            "x": "1811.5",
+            "y": "269.5",
+            "z": "1",
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "description": "Romantica for you.",
+            "height": "116",
+            "hide": "no",
+            "id": 305,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823776/47269-items_design-image_name-parisian-305.png"
+            },
+            "item_id": 7,
+            "items_name": "TV Stand",
+            "location_id": "7",
+            "name": "Parisian",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "width": "237",
+            "x": "851.0",
+            "y": "491.0",
+            "z": "2",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
             },
@@ -331,35 +241,10 @@
             "location_id": "8",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "100",
             "x": "1335.0",
             "y": "414.0",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "Romantica for you.",
-            "height": "170",
-            "hide": "no",
-            "id": 312,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823798/73688-items_design-image_name-parisian-312.png"
-            },
-            "item_id": 14,
-            "items_name": "Desk",
-            "location_id": "14",
-            "name": "Parisian",
-            "section_id": "1",
-            "section_name": "main",
-            "width": "210",
-            "x": "1066.0",
-            "y": "443.0",
             "z": "1",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
@@ -381,11 +266,61 @@
             "location_id": "9",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "136",
             "x": "461.0",
             "y": "525.5",
             "z": "2",
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "description": "Romantica for you.",
+            "height": "128",
+            "hide": "no",
+            "id": 308,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823785/51426-items_design-image_name-parisian-308.png"
+            },
+            "item_id": 10,
+            "items_name": "Social Painting",
+            "location_id": "10",
+            "name": "Parisian",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "width": "144",
+            "x": "266.0",
+            "y": "266.5",
+            "z": "1",
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "description": "Romantica for you.",
+            "height": "118",
+            "hide": "no",
+            "id": 309,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823788/35460-items_design-image_name-parisian-309.png"
+            },
+            "item_id": 11,
+            "items_name": "Encyclo Shelf",
+            "location_id": "11",
+            "name": "Parisian",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "width": "157",
+            "x": "1090.0",
+            "y": "259.0",
+            "z": "1",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
             },
@@ -406,7 +341,7 @@
             "location_id": "12",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "119",
             "x": "1329.5",
             "y": "353.5",
@@ -420,22 +355,22 @@
         },
         {
             "description": "Romantica for you.",
-            "height": "70",
+            "height": "118",
             "hide": "no",
-            "id": 316,
+            "id": 311,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823810/27029-items_design-image_name-parisian-316.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823795/96697-items_design-image_name-parisian-311.png"
             },
-            "item_id": 18,
-            "items_name": "Phone",
-            "location_id": "18",
+            "item_id": 13,
+            "items_name": "TV",
+            "location_id": "13",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
-            "width": "60",
-            "x": "1100.0",
-            "y": "444.0",
-            "z": "2",
+            "section_name": "Main Room",
+            "width": "145",
+            "x": "897.0",
+            "y": "407.0",
+            "z": "3",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
             },
@@ -445,21 +380,46 @@
         },
         {
             "description": "Romantica for you.",
-            "height": "81",
+            "height": "170",
             "hide": "no",
-            "id": 315,
+            "id": 312,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823807/19209-items_design-image_name-parisian-315.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823798/73688-items_design-image_name-parisian-312.png"
             },
-            "item_id": 17,
-            "items_name": "Computer",
-            "location_id": "17",
+            "item_id": 14,
+            "items_name": "Desk",
+            "location_id": "14",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
-            "width": "93",
-            "x": "1140.0",
-            "y": "406.0",
+            "section_name": "Main Room",
+            "width": "210",
+            "x": "1066.0",
+            "y": "443.0",
+            "z": "1",
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "description": "Romantica for you.",
+            "height": "104",
+            "hide": "no",
+            "id": 313,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823801/46572-items_design-image_name-parisian-313.png"
+            },
+            "item_id": 15,
+            "items_name": "Night Stand",
+            "location_id": "15",
+            "name": "Parisian",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "width": "91",
+            "x": "1431.0",
+            "y": "492.0",
             "z": "2",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
@@ -481,10 +441,60 @@
             "location_id": "16",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "60",
             "x": "1225.5",
             "y": "419.5",
+            "z": "2",
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "description": "Romantica for you.",
+            "height": "81",
+            "hide": "no",
+            "id": 315,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823807/19209-items_design-image_name-parisian-315.png"
+            },
+            "item_id": 17,
+            "items_name": "Computer",
+            "location_id": "17",
+            "name": "Parisian",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "width": "93",
+            "x": "1140.0",
+            "y": "406.0",
+            "z": "2",
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "description": "Romantica for you.",
+            "height": "70",
+            "hide": "no",
+            "id": 316,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823810/27029-items_design-image_name-parisian-316.png"
+            },
+            "item_id": 18,
+            "items_name": "Phone",
+            "location_id": "18",
+            "name": "Parisian",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "width": "60",
+            "x": "1100.0",
+            "y": "444.0",
             "z": "2",
             "image_name_hover": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
@@ -506,7 +516,7 @@
             "location_id": "19",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "50",
             "x": "1456.0",
             "y": "430.0",
@@ -531,7 +541,7 @@
             "location_id": "20",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "101",
             "x": "1222.5",
             "y": "363.0",
@@ -556,7 +566,7 @@
             "location_id": "21",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "118",
             "x": "913.0",
             "y": "252.0",
@@ -581,7 +591,7 @@
             "location_id": "22",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "120",
             "x": "278.0",
             "y": "473.0",
@@ -606,7 +616,7 @@
             "location_id": "23",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "287",
             "x": "395.0",
             "y": "174.0",
@@ -631,7 +641,7 @@
             "location_id": "24",
             "name": "Parisian",
             "section_id": "1",
-            "section_name": "main",
+            "section_name": "Main Room",
             "width": "80",
             "x": "619.0",
             "y": "525.0",

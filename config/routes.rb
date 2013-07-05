@@ -375,11 +375,18 @@ Mywebroom::Application.routes.draw do
 
 
   #**************************
-  # start UsersGallery Contract
+  # start UsersPhotos Contract
   #**************************
 
-  match '/users_photos/json/create_users_gallery_by_user_id/:user_id', to:
-         'users_photos#json_create_users_gallery_by_user_id', via: :post
+  match '/users_photos/json/create_users_photo_by_user_id/:user_id', to:
+         'users_photos#json_create_users_photo_by_user_id', via: :post
+
+  match '/users_photos/json/update_users_set_profile_image_by_user_id_and_users_photo_id/:user_id/:users_photo_id', to:
+         'users_photos#json_update_users_set_profile_image_by_user_id_and_users_photo_id', via: :put
+
+  match '/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/:user_id/:limit/:offset', to:
+         'users_photos#json_index_users_photos_by_user_id_by_limit_by_offset', via: :get
+
 
   #**************************
   # end UsersGallery Contract

@@ -133,54 +133,6 @@ class UsersController < ApplicationController
 
   end
 
-  #***********************************
-  # Json methods for the room users
-  #***********************************
-
-  #//# PUT update the username
-  #//#  /users/json/update_username_by_user_id/:user_id'
-  #//#  /users/json/update_username_by_user_id/1000.json
-  #//#  Form Parameters:
-  #//#                  :new_username
-  #Return ->
-  #success    ->  head  200 ok
-
-  #def json_update_username_by_user_id
-  #
-  #  respond_to do |format|
-  #    #validate if the user exist
-  #    if User.exists?(id:params[:user_id])
-  #
-  #        new_username = clean_username(params[:new_username])
-  #        new_username_downcase =  params[:new_username]
-  #        new_username_downcase.downcase!
-  #
-  #        # validate the username has to be only alphanumeric characters,therefore,
-  #        # if change after clean, mean that it have no valid characters
-  #        if new_username.eql?(new_username_downcase)
-  #
-  #          # validate the username has to be unique
-  #          if User.exists?(username: new_username)
-  #            format.json { render json: 'sorry but the username is already take' , status: :conflict }
-  #          else
-  #            @user = User.find(params[:user_id])
-  #              if @user.update_attributes(username:new_username)
-  #                #format.json { head :no_content }
-  #                format.json { render json: @user.as_json(only: [:id,:username]), status: :ok }
-  #              else
-  #                format.json { render json: @user.errors, status: :unprocessable_entity }
-  #              end
-  #          end
-  #        else
-  #          format.json { render json: 'invalid username ,only alphanumerical characters ' , status: :not_acceptable }
-  #        end
-  #    else
-  #      format.json { render json: 'not found user id' , status: :not_found }
-  #    end
-  #
-  #  end
-  #end
-
 
   # GET get user profile
   #  /users/json/show_user_profile_by_user_id/:user_id
@@ -258,35 +210,6 @@ class UsersController < ApplicationController
   end
 
 
-  # PUT insert user image
-  #/users/json/update_users_image_profile_by_user_id/:user_id
-  #/users/json/update_users_image_profile_by_user_id/206.json
-  # Content-Type : multipart/form-data
-  # Form Parameters:
-  #               :image_name (full path)
-  #Return ->
-  #success    ->  head  201 create
-  #def json_update_users_image_profile_by_user_id
-  #
-  #  respond_to do |format|
-  #    #validation of the user_id
-  #
-  #    if User.exists?(id: params[:user_id])
-  #
-  #      @user = User.find(params[:user_id])
-  #
-  #      if @user.update_attribute(:image_name, params[:image_name])
-  #        format.json { render json: @user.as_json(only:[:id,:image_name,:name] ), status: :ok }
-  #      else
-  #        format.json { render json: @user.errors, status: :unprocessable_entity }
-  #      end
-  #    else
-  #      format.json { render json: 'user not found' , status: :not_found }
-  #    end
-  #
-  #  end
-  #
-  #end
 
   # GET get signed user info
   #  /users/json/show_signed_user

@@ -1,0 +1,65 @@
+//#GET Get all users photos
+//
+//#/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/:user_id/:limit/:offset
+//#/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/
+//#                     #Return head
+//#success    ->  head  200 OK
+
+
+[
+    {
+        "created_at": "2013-07-05T19:28:42Z",
+        "description": "yes+new+profile+image",
+        "id": 2,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1373052525/60271-users_photo-image_name-2012-02-17_12.12.33.jpg"
+        },
+        "profile_image": "n",
+        "updated_at": "2013-07-05T19:28:42Z",
+        "user_id": 23
+    },
+    {
+        "created_at": "2013-07-05T21:29:44Z",
+        "description": "second+new+profile+image",
+        "id": 3,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1373059787/26626-users_photo-image_name-2012-02-21_19.22.53.jpg"
+        },
+        "profile_image": "n",
+        "updated_at": "2013-07-05T21:29:44Z",
+        "user_id": 23
+    },
+    {
+        "created_at": "2013-07-05T21:39:21Z",
+        "description": "3+new+profile+image",
+        "id": 6,
+        "image_name": {
+            "url": "/assets/fallback/users_photos/default_user.png"
+        },
+        "profile_image": "n",
+        "updated_at": "2013-07-05T21:39:21Z",
+        "user_id": 23
+    },
+    {
+        "created_at": "2013-07-05T21:41:42Z",
+        "description": "4+new+profile+image",
+        "id": 7,
+        "image_name": {
+            "url": "/assets/fallback/users_photos/default_user.png"
+        },
+        "profile_image": "n",
+        "updated_at": "2013-07-05T21:41:42Z",
+        "user_id": 23
+    },
+    {
+        "created_at": "2013-07-05T21:42:05Z",
+        "description": "4+new+profile+image",
+        "id": 8,
+        "image_name": {
+            "url": "/assets/fallback/users_photos/default_user.png"
+        },
+        "profile_image": "y",
+        "updated_at": "2013-07-05T21:57:51Z",
+        "user_id": 23
+    }
+]
