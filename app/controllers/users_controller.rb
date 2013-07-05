@@ -15,24 +15,20 @@ class UsersController < ApplicationController
 
   before_filter :json_signed_in_user,
     only:[
-        :json_update_username_by_user_id,
         :json_show_user_profile_by_user_id,
         :json_create_user_full_bundle_by_user_id_and_bundle_id,
-        :json_update_users_image_profile_by_user_id,
         :json_show_signed_user
         ]
 
   before_filter :json_correct_user,
                 only:[
-                    :json_update_username_by_user_id,
                     :json_show_user_profile_by_user_id,
-                    :json_create_user_full_bundle_by_user_id_and_bundle_id,
-                    :json_update_users_image_profile_by_user_id
+                    :json_create_user_full_bundle_by_user_id_and_bundle_id
 
                 ]
 
 
-  before_filter :correct_user, only:[:edit,:update,:show]
+  before_filter :correct_user, only:[:edit,:show,:update]
   before_filter :admin_user, only:[:destroy,:index]
 
 
@@ -77,12 +73,46 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      # Handle a successful update.
-      flash[:success] = "Profile updated"
-      sign_in @user
-      redirect_to @user
+    user = User.find(params[:id])
+
+    if user && user.authenticate(params[:user][:password])
+
+       if user.username == params[:user][:username]
+         # no changes on the username
+
+         if @user.update_attributes(params[:user])
+           # Handle a successful update.
+           flash[:success] = "Profile updated"
+           sign_in @user
+           redirect_to @user
+         else
+           render 'edit'
+         end
+
+       else
+         clean_username = user.get_username(params[:user][:username])
+
+         if clean_username == params[:user][:username]
+
+            params[:user][:username] = clean_username
+
+            if @user.update_attributes(params[:user])
+              # Handle a successful update.
+              flash[:success] = "Profile updated"
+              sign_in @user
+              redirect_to @user
+            else
+              render 'edit'
+            end
+
+          else
+            # no available username
+            flash[:error] = "the username is not available: this one is avalable "+clean_username
+            render 'edit'
+          end
+       end
     else
+      flash[:success] = "password is not valid"
       render 'edit'
     end
   end
@@ -115,41 +145,41 @@ class UsersController < ApplicationController
   #Return ->
   #success    ->  head  200 ok
 
-  def json_update_username_by_user_id
-
-    respond_to do |format|
-      #validate if the user exist
-      if User.exists?(id:params[:user_id])
-
-          new_username = clean_username(params[:new_username])
-          new_username_downcase =  params[:new_username]
-          new_username_downcase.downcase!
-
-          # validate the username has to be only alphanumeric characters,therefore,
-          # if change after clean, mean that it have no valid characters
-          if new_username.eql?(new_username_downcase)
-
-            # validate the username has to be unique
-            if User.exists?(username: new_username)
-              format.json { render json: 'sorry but the username is already take' , status: :conflict }
-            else
-              @user = User.find(params[:user_id])
-                if @user.update_attributes(username:new_username)
-                  #format.json { head :no_content }
-                  format.json { render json: @user.as_json(only: [:id,:username]), status: :ok }
-                else
-                  format.json { render json: @user.errors, status: :unprocessable_entity }
-                end
-            end
-          else
-            format.json { render json: 'invalid username ,only alphanumerical characters ' , status: :not_acceptable }
-          end
-      else
-        format.json { render json: 'not found user id' , status: :not_found }
-      end
-
-    end
-  end
+  #def json_update_username_by_user_id
+  #
+  #  respond_to do |format|
+  #    #validate if the user exist
+  #    if User.exists?(id:params[:user_id])
+  #
+  #        new_username = clean_username(params[:new_username])
+  #        new_username_downcase =  params[:new_username]
+  #        new_username_downcase.downcase!
+  #
+  #        # validate the username has to be only alphanumeric characters,therefore,
+  #        # if change after clean, mean that it have no valid characters
+  #        if new_username.eql?(new_username_downcase)
+  #
+  #          # validate the username has to be unique
+  #          if User.exists?(username: new_username)
+  #            format.json { render json: 'sorry but the username is already take' , status: :conflict }
+  #          else
+  #            @user = User.find(params[:user_id])
+  #              if @user.update_attributes(username:new_username)
+  #                #format.json { head :no_content }
+  #                format.json { render json: @user.as_json(only: [:id,:username]), status: :ok }
+  #              else
+  #                format.json { render json: @user.errors, status: :unprocessable_entity }
+  #              end
+  #          end
+  #        else
+  #          format.json { render json: 'invalid username ,only alphanumerical characters ' , status: :not_acceptable }
+  #        end
+  #    else
+  #      format.json { render json: 'not found user id' , status: :not_found }
+  #    end
+  #
+  #  end
+  #end
 
 
   # GET get user profile
@@ -161,7 +191,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
 
     respond_to do |format|
-      format.json { render json: @user.as_json(only:[:name,:email,:username,:image_name])  }
+      format.json { render json: @user.as_json(only:[:name,:email,:username])  }
     end
   end
 
@@ -236,27 +266,27 @@ class UsersController < ApplicationController
   #               :image_name (full path)
   #Return ->
   #success    ->  head  201 create
-  def json_update_users_image_profile_by_user_id
-
-    respond_to do |format|
-      #validation of the user_id
-
-      if User.exists?(id: params[:user_id])
-
-        @user = User.find(params[:user_id])
-
-        if @user.update_attribute(:image_name, params[:image_name])
-          format.json { render json: @user.as_json(only:[:id,:image_name,:name] ), status: :ok }
-        else
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      else
-        format.json { render json: 'user not found' , status: :not_found }
-      end
-
-    end
-
-  end
+  #def json_update_users_image_profile_by_user_id
+  #
+  #  respond_to do |format|
+  #    #validation of the user_id
+  #
+  #    if User.exists?(id: params[:user_id])
+  #
+  #      @user = User.find(params[:user_id])
+  #
+  #      if @user.update_attribute(:image_name, params[:image_name])
+  #        format.json { render json: @user.as_json(only:[:id,:image_name,:name] ), status: :ok }
+  #      else
+  #        format.json { render json: @user.errors, status: :unprocessable_entity }
+  #      end
+  #    else
+  #      format.json { render json: 'user not found' , status: :not_found }
+  #    end
+  #
+  #  end
+  #
+  #end
 
   # GET get signed user info
   #  /users/json/show_signed_user
@@ -264,12 +294,13 @@ class UsersController < ApplicationController
   #  /# success    ->  head  200 OK
 
   def json_show_signed_user
+
     @current_user =  current_user
     respond_to do |format|
       if @current_user.nil?
         format.json { render json: 'user not found' , status: :not_found }
       else
-        format.json { render json: @current_user.as_json(only:[:id,:image_name,:name,:username]), status: :ok}
+        format.json { render json: @current_user.as_json(only:[:id,:name,:username]), status: :ok}
       end
 
 

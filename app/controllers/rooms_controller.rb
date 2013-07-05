@@ -67,6 +67,8 @@ class RoomsController < ApplicationController
 
                 @user = User.select('id ,name,email,image_name,username').where('id = ?',params[:user_id]).first
 
+                @user_photos = UsersPhoto.find_all_by_user_id(@user.id)
+
                 @user_theme = Theme.
                     select('themes.id,themes.name,themes.description,image_name,users_themes.section_id, sections.name as section_name').
                     joins(:users_themes).
@@ -100,7 +102,7 @@ class RoomsController < ApplicationController
 
                   format.json { render json: {
                       user: @user,
-                                              user_gallery: @user_gallery,
+                                              user_photos: @user_photos,
                                               user_theme: @user_theme,
                                               user_items_designs: @user_items_designs
 

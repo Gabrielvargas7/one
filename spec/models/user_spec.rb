@@ -11,7 +11,6 @@
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
 #  username        :string(255)
-#  image_name      :string(255)
 #
 
 require 'spec_helper'
@@ -34,7 +33,6 @@ describe User do
   it { @user.should respond_to(:name) }
   it { @user.should respond_to(:email) }
   it { @user.should respond_to(:username)}
-  it { @user.should respond_to(:image_name)}
   it { @user.should respond_to(:admin) }
 
   #room authentication
@@ -288,40 +286,40 @@ describe User do
    end
 
 
-  ###############
-  #test validation - default image
-  ###############
-  describe "when image default ", tag_image_default: true  do
+  ################
+  ##test validation - default image
+  ################
+  #describe "when image default ", tag_image_default: true  do
+  #
+  #  let(:image_default) {"/assets/fallback/user/default_user.png"}
+  #
+  #  it "should be default " do
+  #    puts @user.image_name
+  #    @user.image_name.to_s.should == image_default.to_s
+  #
+  #  end
+  #
+  #end
 
-    let(:image_default) {"/assets/fallback/user/default_user.png"}
 
-    it "should be default " do
-      puts @user.image_name
-      @user.image_name.to_s.should == image_default.to_s
-
-    end
-
-  end
-
-
-  ###############
-  #test validation - upload image
-  ###############
-  # these test only run when it is explicit.- example
-  # bundle exec rspec --tag tag_image spec/models/theme_spec.rb
-  describe "when image",tag_image_user:true  do
-
-    let(:user_with_image_upload) { Theme.create(
-        name:"user test",
-        image_name:Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'image', 'test_image.jpg'))
-    )}
-
-    it "should be upload to CDN - cloudinary " do
-      puts user_with_image_upload.image_name
-      user_with_image_upload.image_name.to_s.should include("http")
-    end
-
-  end
+  ################
+  ##test validation - upload image
+  ################
+  ## these test only run when it is explicit.- example
+  ## bundle exec rspec --tag tag_image spec/models/theme_spec.rb
+  #describe "when image",tag_image_user:true  do
+  #
+  #  let(:user_with_image_upload) { Theme.create(
+  #      name:"user test",
+  #      image_name:Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'image', 'test_image.jpg'))
+  #  )}
+  #
+  #  it "should be upload to CDN - cloudinary " do
+  #    puts user_with_image_upload.image_name
+  #    user_with_image_upload.image_name.to_s.should include("http")
+  #  end
+  #
+  #end
 
 
 

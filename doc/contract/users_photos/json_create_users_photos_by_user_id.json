@@ -9,8 +9,8 @@
 
 // Description
             //# POST insert user image
-            //#/users_galleries/json/create_users_gallery_by_user_id/:user_id
-            //#/users_galleries/json/create_users_gallery_by_user_id/206.json
+            //#/users_photos/json/create_users_gallery_by_user_id/:user_id
+            //#/users_photos/json/create_users_gallery_by_user_id/206.json
             //# Content-Type : multipart/form-data
             //# Form Parameters:
             //#               :image_name (full path)

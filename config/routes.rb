@@ -3,6 +3,9 @@ Mywebroom::Application.routes.draw do
 
 
 
+  resources :users_photos
+
+
   resources :bundles_items_designs
 
   match '/bundles_items_designs/index/bundle_selection', to:
@@ -375,8 +378,8 @@ Mywebroom::Application.routes.draw do
   # start UsersGallery Contract
   #**************************
 
-  match '/users_galleries/json/create_users_gallery_by_user_id/:user_id', to:
-         'users_galleries#json_create_users_gallery_by_user_id', via: :post
+  match '/users_photos/json/create_users_gallery_by_user_id/:user_id', to:
+         'users_photos#json_create_users_gallery_by_user_id', via: :post
 
   #**************************
   # end UsersGallery Contract

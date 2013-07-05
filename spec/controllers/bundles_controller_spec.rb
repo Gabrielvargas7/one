@@ -486,6 +486,7 @@ describe BundlesController do
             body_bundle["image_name"]["url"].should == @bundle_json.image_name.to_s
             body_bundle["image_name_set"]["url"].should == @bundle_json.image_name_set.to_s
             body_bundle["section_id"].should == @bundle_json.section_id
+            body_bundle["active"].should == 'y'
 
           end
         end

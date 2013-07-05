@@ -115,6 +115,7 @@ def delete_init_data
   Bookmark.delete_all
   BundlesBookmark.delete_all
   BundlesItemsDesign.delete_all
+  UsersPhoto.delete_all
 
   puts "--- End deleteing init data for test  "
 

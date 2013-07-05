@@ -32,7 +32,7 @@ describe RoomsController do
       end
 
       it "renders the :room view" do
-        get :room,username:@username
+        get :room,username:@user.username
         response.should render_template :room
       end
     end
@@ -47,7 +47,7 @@ describe RoomsController do
       end
 
       it "renders the :room view" do
-        get :room,username:@username
+        get :room,username:@user.username
         response.should render_template :room
       end
     end
@@ -96,7 +96,7 @@ describe RoomsController do
                 puts "user --->"+body["user"].to_s
                 puts "user theme --->"+body["user_theme"].to_s
                 puts "user items designs --->"+body["user_items_designs"].to_s
-                puts "user user_gallery --->"+body["user_gallery"].to_s
+                puts "user user_photos --->"+body["user_photos"].to_s
 
 
 
@@ -104,7 +104,7 @@ describe RoomsController do
                 body["user"]["id"].should == @user.id
                 body["user"]["name"].should == @user.name
                 body["user"]["username"].should == @user.username
-                body["user"]["image_name"]["url"].should == @user.image_name.to_s
+
 
                 body["user_theme"].each do |user_theme|
                   #puts user_theme["id"]

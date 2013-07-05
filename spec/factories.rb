@@ -13,11 +13,14 @@ FactoryGirl.define do
   factory :user do
     sequence(:name)  { |n| "Person #{n}" }
     sequence(:email) { |n| "person_#{n}@example.com"}
+    sequence(:username)  {|n| "username#{n}"}
+
     password "foobar"
 
     factory :admin do
       admin true
     end
+
 
   end
 
@@ -159,6 +162,13 @@ FactoryGirl.define do
     hide 'y'
     location_id 1
   end
+
+  factory :users_photo do
+    sequence(:description) { |n| "description #{n}" }
+    profile_image 'n'
+    user_id 1
+  end
+
 
 
 

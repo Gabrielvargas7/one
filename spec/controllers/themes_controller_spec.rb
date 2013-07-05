@@ -264,8 +264,10 @@ describe ThemesController do
           it "locates the requested @theme" do
           put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme,name:nil)
           assigns(:theme).should eq(@theme)
-        end
+          end
+
           it "does not change @theme's attributes" do
+          @theme = FactoryGirl.create(:theme,name:"Larry",description:"Smith")
           put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme, name:"John", description: "Smith")
           @theme.reload
           @theme.name.should_not eq("Larry")

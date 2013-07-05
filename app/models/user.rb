@@ -15,34 +15,37 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email,:name,:password,:username, :image_name ,:provider,:uid
+  attr_accessible :email,:name,:password,:username ,:provider,:uid
+
+  #mount_uploader :image_name, UsersImageUploader
 
   has_many :users_themes
   has_many :users_items_designs
   has_many :users_bookmarks
-  has_many :users_galleries
+  #has_many :users_photos
   has_many :friends
   has_many :friend_requests
   has_many :users_notifications
+  has_many :users_photos
 
   has_secure_password
-
 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   before_save { |user| user.email = email.downcase }
 
-  before_save :create_remember_token
-  before_create :get_username
 
-  after_create :create_user_notification, :send_signup_user_email ,:create_random_room
+  before_save :create_remember_token
+  before_create{ get_username(self.name)}
+
+  after_create :create_user_notification, :send_signup_user_email ,:create_random_room,:create_image_name
 
 
   validates :name,
              presence:true,
              length: { maximum: 50 }
-             #uniqueness:{ case_sensitive: false }
+
 
   validates :email,
              presence:true,
@@ -51,9 +54,11 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, length: { minimum: 6 }
 
+  validates :username, uniqueness:{ case_sensitive: false }
 
 
-  mount_uploader :image_name, UsersImageUploader
+
+
 
 
   # Send email after the user sign up
@@ -91,9 +96,9 @@ class User < ActiveRecord::Base
   end
 
   # create the username for the url
-  def get_username
+  def get_username(new_username)
 
-    my_username = name
+    my_username = new_username
     #remove all non- alphanumeric character (expect dashes '-')
     my_username = my_username.gsub(/[^0-9a-z -]/i, '')
 
@@ -126,7 +131,6 @@ class User < ActiveRecord::Base
 
   end
 
-
   private
 
     #use this method when the user forget the password
@@ -151,7 +155,11 @@ class User < ActiveRecord::Base
       UsersNotification.create(user_id:self.id,notified:'y')
     end
 
-    #this is temp until the new design
+    def create_image_name
+      UsersPhoto.create(user_id:self.id,profile_image:'y')
+    end
+
+  #this is temp until the new design
     def create_random_room
 
       #bundle_max = Bundle.maximum("id")

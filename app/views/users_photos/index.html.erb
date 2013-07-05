@@ -1,0 +1,41 @@
+<h1>Listing users_photos</h1>
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
+  <tr>
+    <th>name</th>
+    <th>Username</th>
+    <th>Email</th>
+
+    <th>Description</th>
+    <th>Image name</th>
+    <th>Profile image</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users_photos.each do |users_photo| %>
+  <tr>
+    <%  if users_photo.user.nil? %>
+        <td></td>
+        <td></td>
+        <td></td>
+    <%  else %>
+        <td><%= users_photo.user.name %></td>
+        <td><%= users_photo.user.username %></td>
+        <td><%= users_photo.user.email %></td>
+    <%  end %>
+    <td><%= users_photo.description %></td>
+    <td><%= image_tag(users_photo.image_name.url().to_s,width: 100, height:100) %></td>
+    <td><%= users_photo.profile_image %></td>
+
+    <td><%= link_to 'Show', users_photo %></td>
+    <td><%= link_to 'Edit', edit_users_photo_path(users_photo) %></td>
+    <td><%= link_to 'Destroy', users_photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Users photo', new_users_photo_path %>
