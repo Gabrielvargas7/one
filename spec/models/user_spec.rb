@@ -160,8 +160,8 @@ describe User do
               user_with_same_email = @user.dup
               user_with_same_email.email = @user.email
               user_with_same_email.save
-              print user_with_same_email.email+"  "
-              print @user.email
+              #print user_with_same_email.email+"  "
+              #print @user.email
           end
           it { @user.should_not be_valid }
       end
@@ -237,7 +237,7 @@ describe User do
     let(:user_notification) { UsersNotification.find_by_user_id(@user.id) }
     let(:user_notification_not_exist) { UsersNotification.find_by_user_id(@user.id+1) }
     it do
-      puts @user.id
+      #puts @user.id
       user_notification.should be_valid
     end
 

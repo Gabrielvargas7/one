@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Firstname:</b>
+  <%= @users_profile.firstname %>
+</p>
+
+<p>
+  <b>Lastname:</b>
+  <%= @users_profile.lastname %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @users_profile.gender %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @users_profile.description %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @users_profile.city %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @users_profile.country %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @users_profile.birthday %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @users_profile.user_id %>
+</p>
+
+<li><%= link_to "Edit", edit_users_profiles_by_user_id_path(@users_profile.user_id) %></li>
+

@@ -49,8 +49,8 @@ describe FriendRequestsController do
        end
 
       it "should be successful" do
-        puts "user id --->"+@user.id.to_s
-        puts "user id requested--->"+@user_requested.id.to_s
+        #puts "user id --->"+@user.id.to_s
+        #puts "user id requested--->"+@user_requested.id.to_s
 
         get :json_index_friend_request_make_from_your_friend_to_you_by_user_id,user_id: @user_requested.id, :format => :json
         response.should be_success
@@ -137,8 +137,8 @@ describe FriendRequestsController do
         context "with valid params" do
 
           it "creates a new friend request" do
-            puts "user id --->"+@user.id.to_s
-            puts "user id requested--->"+@user_requested.id.to_s
+            #puts "user id --->"+@user.id.to_s
+            #puts "user id requested--->"+@user_requested.id.to_s
 
             expect {
               post :json_create_friend_request_by_user_id_and_user_id_requested,user_id:@user.id,user_id_requested:@user_requested.id, :format => :json

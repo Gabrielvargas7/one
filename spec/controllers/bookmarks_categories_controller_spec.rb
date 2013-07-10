@@ -304,11 +304,11 @@ describe BookmarksCategoriesController do
         it "does not change @bookmarks_category's attributes" do
 
           FactoryGirl.create(:item)
-          puts "same "+bookmarks_category_same.item_id.to_s
-          puts "same old "+@bookmarks_category.item_id.to_s
+          #puts "same "+bookmarks_category_same.item_id.to_s
+          #puts "same old "+@bookmarks_category.item_id.to_s
           put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category, item_id:Item.last.id)
           @bookmarks_category.reload
-          puts "new item_id "+@bookmarks_category.item_id.to_s
+          #puts "new item_id "+@bookmarks_category.item_id.to_s
           @bookmarks_category.item_id.should_not eq(bookmarks_category_same)
         end
         it "re-renders the edit method" do

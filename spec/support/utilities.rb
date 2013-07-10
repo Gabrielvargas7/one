@@ -35,7 +35,7 @@ def create_init_data
 
     2.times {FactoryGirl.create(:section)}
     @section = Section.first
-    puts "--- Start creating seed data for test  "
+    #puts "--- Start creating seed data for test  "
 
 
     5.times {FactoryGirl.create(:theme)}
@@ -94,7 +94,7 @@ def create_init_data
       FactoryGirl.create(:bundles_items_design,bundle_id:bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
     end
 
-    puts "--- End creating seed data for test  "
+    #puts "--- End creating seed data for test  "
 
   end
 end
@@ -102,7 +102,7 @@ end
 
 def delete_init_data
 
-  puts "--- Start deleteing init data for test  "
+  #puts "--- Start deleteing init data for test  "
 
   Section.delete_all
   Location.delete_all
@@ -117,7 +117,7 @@ def delete_init_data
   BundlesItemsDesign.delete_all
   UsersPhoto.delete_all
 
-  puts "--- End deleteing init data for test  "
+#  puts "--- End deleteing init data for test  "
 
 
 end

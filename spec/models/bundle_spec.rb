@@ -57,8 +57,8 @@ describe Bundle do
     )}
 
     it "should be upload to CDN - cloudinary " do
-      puts bundle_with_image_upload.image_name
-      puts bundle_with_image_upload.image_name_set
+      #puts bundle_with_image_upload.image_name
+      #puts bundle_with_image_upload.image_name_set
 
       bundle_with_image_upload.image_name.to_s.should include("http")
       bundle_with_image_upload.image_name_set.to_s.should include("http")
@@ -76,8 +76,8 @@ describe Bundle do
     let(:image_default) {"/assets/fallback/bundle/default_bundle.png"}
 
     it "should be default  " do
-      puts @bundle.image_name
-      puts @bundle.image_name_set
+      #puts @bundle.image_name
+      #puts @bundle.image_name_set
 
       @bundle.image_name.to_s.should == image_default.to_s
       @bundle.image_name_set.to_s.should == image_default.to_s

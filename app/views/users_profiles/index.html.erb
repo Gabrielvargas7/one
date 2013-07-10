@@ -27,11 +27,9 @@
     <td><%= users_profile.user_id %></td>
     <td><%= link_to 'Show', users_profile %></td>
     <td><%= link_to 'Edit', edit_users_profile_path(users_profile) %></td>
-    <td><%= link_to 'Destroy', users_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Users profile', new_users_profile_path %>

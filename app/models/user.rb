@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
   before_create{ get_username(self.email)}
 
-  after_create :create_user_notification, :send_signup_user_email ,:create_random_room,:create_image_name
+  after_create :create_user_notification, :send_signup_user_email ,:create_random_room,:create_image_name,:create_user_profile
 
 
   #validates :name,
@@ -60,11 +60,18 @@ class User < ActiveRecord::Base
 
 
 
+#***********************************
+# user  send_signup_user_email
+#***********************************
 
   # Send email after the user sign up
   def send_signup_user_email
     UsersMailer.signup_email(self).deliver
   end
+
+  #***********************************
+  # user  send_password_reset
+  #***********************************
 
   def send_password_reset
     generate_token(:password_reset_token)
@@ -73,6 +80,11 @@ class User < ActiveRecord::Base
     UsersMailer.forget_password_email(self).deliver
 
   end
+
+  #***********************************
+  # user  self.from_omniauth(auth)
+  #***********************************
+
 
   # create(facebook.. )the user if don't exist
   def self.from_omniauth(auth)
@@ -84,16 +96,41 @@ class User < ActiveRecord::Base
 
       user.provider = auth.provider
       user.uid = auth.uid
-      #user.name = auth.info.name
       user.remember_token = auth.credentials.token
-      #user.image_name = auth.info.image
       user.email = auth.extra.raw_info.email
-
       user.password = fake_password
-     F user.password_confirmation = fake_password
+      user.password_confirmation = fake_password
       user.save!
+
+      # create user profile
+      user_profile  = UsersProfile.new()
+      user_profile.firstname = auth.extra.raw_info.first_name
+      user_profile.lastname = auth.extra.raw_info.last_name
+      user_profile.gender = auth.extra.raw_info.gender
+      user_profile.birthday = auth.info.user_birthday
+      user_profile.user_id = user.id
+      user_profile.save!
+
+
+      #open('image.png', 'wb') do |file|
+      #  file << open('http://example.com/image.png').read
+      #end
+      # create new user photo
+      user_photos = UsersPhoto.new()
+      user_photos.user_id = user.id
+      user_photos.profile_image = 'y'
+      #user_photos.image_name = auth.info.image
+      #user_photos.image_name = File.open(auth.info.image)
+      user_photos.image_name = URI.parse(auth.info.image)
+      user_photos.save!
+
+
     end
   end
+
+  #***********************************
+  # user  get_username(new_username)
+  #***********************************
 
   # create the username for the url
   def get_username(new_username)
@@ -136,7 +173,12 @@ class User < ActiveRecord::Base
 
   private
 
-    #use this method when the user forget the password
+
+  #***********************************
+  # user  generate_token(column)
+  #***********************************
+
+  #use this method when the user forget the password
     def generate_token(column)
       begin
         self[column] = SecureRandom.urlsafe_base64
@@ -153,15 +195,40 @@ class User < ActiveRecord::Base
     end
 
 
-    # create the user notification on the table  when the user sign-up
+  #***********************************
+  # user  create_user_notification
+  #***********************************
+
+  # create the user notification on the table  when the user sign-up
     def create_user_notification
       UsersNotification.create(user_id:self.id,notified:'y')
     end
 
-    def create_image_name
+  #***********************************
+  # user  create_image_name
+  #***********************************
+
+  def create_image_name
+    if self.uid.blank?
       UsersPhoto.create(user_id:self.id,profile_image:'y')
+     end
+
+  end
+
+  #***********************************
+  # user  create_user_profile
+  #***********************************
+  def create_user_profile
+    if self.uid.blank?
       UsersProfile.create(user_id:self.id)
     end
+  end
+
+
+
+  #***********************************
+  # user  create_random_room
+  #***********************************
 
   #this is temp until the new design
     def create_random_room

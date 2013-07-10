@@ -90,13 +90,13 @@ describe RoomsController do
                 get :json_show_room_by_user_id, user_id: @user.id, :format => :json
 
                 body = JSON.parse(response.body)
-                puts "----->"+body.to_s
-                puts "--- --->"
-
-                puts "user --->"+body["user"].to_s
-                puts "user theme --->"+body["user_theme"].to_s
-                puts "user items designs --->"+body["user_items_designs"].to_s
-                puts "user user_photos --->"+body["user_photos"].to_s
+                #puts "----->"+body.to_s
+                #puts "--- --->"
+                #
+                #puts "user --->"+body["user"].to_s
+                #puts "user theme --->"+body["user_theme"].to_s
+                #puts "user items designs --->"+body["user_items_designs"].to_s
+                #puts "user user_photos --->"+body["user_photos"].to_s
 
 
 
@@ -117,8 +117,8 @@ describe RoomsController do
                 end
 
                 body["user_items_designs"].each do |user_items_designs|
-                  puts "item design ------->"+user_items_designs.to_s
-                  puts "item design ------->"+user_items_designs["id"].to_s
+                  #puts "item design ------->"+user_items_designs.to_s
+                  #puts "item design ------->"+user_items_designs["id"].to_s
 
                   @user_items_designs_json = ItemsDesign.find(user_items_designs["id"])
                   user_items_designs["description"].should == @user_items_designs_json.description

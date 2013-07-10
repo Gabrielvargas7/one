@@ -29,7 +29,7 @@ describe UsersPhoto do
     let(:image_default) {"/assets/fallback/users_photos/default_user.png"}
 
     it "should be default " do
-      puts @user_photos.image_name
+      #puts @user_photos.image_name
       @user_photos.image_name.to_s.should == image_default.to_s
 
     end
@@ -53,7 +53,7 @@ describe UsersPhoto do
     )}
 
     it "should be upload to CDN - cloudinary " do
-      puts user_with_image_upload.image_name
+      #puts user_with_image_upload.image_name
       user_with_image_upload.image_name.to_s.should include("http")
     end
 

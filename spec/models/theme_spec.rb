@@ -47,8 +47,8 @@ describe Theme do
         )}
 
         it "should be upload to CDN - cloudinary " do
-           puts theme_with_image_upload.image_name
-           puts theme_with_image_upload.image_name_selection
+           #puts theme_with_image_upload.image_name
+           #puts theme_with_image_upload.image_name_selection
 
            theme_with_image_upload.image_name.to_s.should include("http")
            theme_with_image_upload.image_name_selection.to_s.should include("http")
@@ -66,8 +66,8 @@ describe Theme do
     let(:image_default) {"/assets/fallback/theme/default_theme.png"}
 
     it "should be default  " do
-      puts @theme.image_name
-      puts @theme.image_name_selection
+      #puts @theme.image_name
+      #puts @theme.image_name_selection
 
       @theme.image_name.to_s.should == image_default.to_s
       @theme.image_name_selection.to_s.should == image_default.to_s

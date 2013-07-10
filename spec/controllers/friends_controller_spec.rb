@@ -63,8 +63,8 @@ describe FriendsController do
     end
 
     it "should be successful" do
-      puts "user id 1--->"+@user1.id.to_s
-      puts "user id 2--->"+@user2.id.to_s
+      #puts "user id 1--->"+@user1.id.to_s
+      #puts "user id 2--->"+@user2.id.to_s
 
       get :json_index_friend_by_user_id,user_id: @user1.id, :format => :json
       response.should be_success
@@ -139,8 +139,8 @@ describe FriendsController do
     end
 
     it "should be successful" do
-      puts "user id 1--->"+@user1.id.to_s
-      puts "user id 2--->"+@user2.id.to_s
+      #puts "user id 1--->"+@user1.id.to_s
+      #puts "user id 2--->"+@user2.id.to_s
 
       get :json_index_friend_by_user_id_by_limit_by_offset,user_id: @user1.id,limit:@limit,offset:@offset, :format => :json
       response.should be_success
@@ -211,8 +211,8 @@ describe FriendsController do
     end
 
     it "should be successful" do
-      puts "user id 1--->"+@user1.id.to_s
-      puts "user id 2--->"+@user2.id.to_s
+      #puts "user id 1--->"+@user1.id.to_s
+      #puts "user id 2--->"+@user2.id.to_s
 
       get :json_index_friends_suggestion_by_user_id_by_limit_by_offset,user_id: @user1.id,limit:@limit,offset:@offset, :format => :json
       response.should be_success
@@ -344,12 +344,12 @@ describe FriendsController do
 
         context "return json values " do
           it "should return friend request in json" do # depend on what you return in action
-            puts "user id --->"+@user1.id.to_s
-            puts "user id requested--->"+@user_requested.id.to_s
+            #puts "user id --->"+@user1.id.to_s
+            #puts "user id requested--->"+@user_requested.id.to_s
             post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
             body = JSON.parse(response.body)
-            puts "body ---- > "+body.to_s
-            puts body["user_friend_request"]["user_id"].to_s
+            #puts "body ---- > "+body.to_s
+            #puts body["user_friend_request"]["user_id"].to_s
 
             body["user_friend_request"]["user_id"].should == @user1.id
             body["user_friend_request"]["user_id_friend"].should == @user_requested.id

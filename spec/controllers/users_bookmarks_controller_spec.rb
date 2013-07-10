@@ -137,8 +137,8 @@ describe UsersBookmarksController do
 
     it "should set user bookmark " do
       #puts "user bookmark "+@user_bookmarks.as_json
-      puts "item id "+@item.id.to_s
-      puts "user id "+@user.id.to_s
+      #puts "item id "+@item.id.to_s
+      #puts "user id "+@user.id.to_s
 
 
 
@@ -236,7 +236,7 @@ describe UsersBookmarksController do
         it "creates a new user bookmark " do
           #puts "user id --->"+@user1.id.to_s
           #puts "user id requested--->"+@user_requested.id.to_s
-          puts "user max posi " + @user_max_position.to_s
+          #puts "user max posi " + @user_max_position.to_s
           expect {
             post :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,user_id:@user.id,bookmark_id:@bookmark2.id,item_id:@item2.id,position:@user_max_position+1,:format => :json
           }.to change(UsersBookmark, :count).by(1)
@@ -335,7 +335,7 @@ describe UsersBookmarksController do
         it "creates a new user bookmark " do
           #puts "user id --->"+@user1.id.to_s
           #puts "user id requested--->"+@user_requested.id.to_s
-          puts "user max posi " + @user_max_position.to_s
+          #puts "user max posi " + @user_max_position.to_s
           expect {
             post :json_create_user_bookmark_custom_by_user_id,
                  user_id:@user.id,
@@ -409,7 +409,7 @@ describe UsersBookmarksController do
                  position:@user_max_position+1,:format => :json
 
             body = JSON.parse(response.body)
-            puts "body ---- > "+body.to_s
+            #puts "body ---- > "+body.to_s
             #puts body["user_friend_request"]["user_id"].to_s
             #
             @bookmark_json = Bookmark.find(body["user_bookmark"]["bookmark_id"])

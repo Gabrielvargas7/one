@@ -56,8 +56,8 @@ describe Bookmark do
     )}
 
     it "should be upload to CDN - cloudinary " do
-      puts bookmark_with_image_upload.image_name
-      puts bookmark_with_image_upload.image_name_desc
+      #puts bookmark_with_image_upload.image_name
+      #puts bookmark_with_image_upload.image_name_desc
 
       bookmark_with_image_upload.image_name.to_s.should include("http")
       bookmark_with_image_upload.image_name_desc.to_s.should include("http")
@@ -75,8 +75,8 @@ describe Bookmark do
     let(:image_default) {"/assets/fallback/bookmark/default_bookmark.png"}
 
     it "should be default  " do
-      puts @bookmark.image_name
-      puts @bookmark.image_name_desc
+      #puts @bookmark.image_name
+      #puts @bookmark.image_name_desc
 
       @bookmark.image_name.to_s.should == image_default.to_s
       @bookmark.image_name_desc.to_s.should == image_default.to_s

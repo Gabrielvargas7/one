@@ -169,6 +169,19 @@ FactoryGirl.define do
   end
 
 
+  factory :users_profile do
+
+    sequence(:description) { |n| "description #{n}" }
+    city 'city'
+    country 'country'
+    gender 'gender'
+    lastname 'lastname'
+    firstname 'firtname'
+    birthday Date.today
+    user_id 1
+
+  end
+
 
 
 

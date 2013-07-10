@@ -1,5 +1,5 @@
 <% provide(:title, @user.username) %>
-<h1>This is my profile</h1>
+<h1>This is my Settings</h1>
 <div class="row">
   <aside class="span4">
     <section>
@@ -12,7 +12,7 @@
         <b>User Name:</b>
         <%= @user.username %></br>
       </p>
-
+      <li><%= link_to "Edit ", edit_user_path(current_user) %></li>
     </section>
   </aside>
 

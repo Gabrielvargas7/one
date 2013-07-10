@@ -320,7 +320,7 @@ describe UsersPhotosController do
       context "with valid params" do
 
         it "creates a new user photo" do
-          puts "user id --->"+@user.id.to_s
+          #puts "user id --->"+@user.id.to_s
 
 
           expect {

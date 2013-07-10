@@ -26,7 +26,7 @@ describe BundlesController do
     @bundle = Bundle.first
     @admin = FactoryGirl.create(:admin)
     sign_in @admin
-    puts "bundle id "+@bundle.id.to_s
+    #puts "bundle id "+@bundle.id.to_s
 
   end
 

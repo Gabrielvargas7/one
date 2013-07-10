@@ -5,6 +5,16 @@ Mywebroom::Application.routes.draw do
 
   resources :users_profiles
 
+  match '/users_profiles/show_users_profiles_by_user_id/:id', to:
+         'users_profiles#show_users_profiles_by_user_id', via: :get,as: :show_users_profiles_by_user_id
+
+  match '/users_profiles/edit_users_profiles_by_user_id/:id', to:
+         'users_profiles#edit_users_profiles_by_user_id', via: :get,as: :edit_users_profiles_by_user_id
+
+  match '/users_profiles/update_users_profiles_by_user_id/:id', to:
+         'users_profiles#update_users_profiles_by_user_id', via: :put,as: :update_users_profiles_by_user_id
+
+
 
   resources :users_photos
 

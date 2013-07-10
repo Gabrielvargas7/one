@@ -37,11 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :birthday %><br />
-    <%= f.date_select :birthday %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.date_select :birthday , start_year:@start_date, end_year:@end_date %>
   </div>
   <div class="actions">
     <%= f.submit %>

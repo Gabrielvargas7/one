@@ -88,9 +88,9 @@ describe ItemsDesign do
 
     it "should be upload to CDN - cloudinary " do
 
-      puts items_design_with_image_upload.image_name
-      puts items_design_with_image_upload.image_name_hover
-      puts items_design_with_image_upload.image_name_selection
+      #puts items_design_with_image_upload.image_name
+      #puts items_design_with_image_upload.image_name_hover
+      #puts items_design_with_image_upload.image_name_selection
 
       items_design_with_image_upload.image_name.to_s.should include("http")
       items_design_with_image_upload.image_name_hover.to_s.should include("http")
@@ -109,9 +109,9 @@ describe ItemsDesign do
     let(:image_default) {"/assets/fallback/items_design/default_items_design.png"}
 
     it "should be default  " do
-      puts @items_designs.image_name
-      puts @items_designs.image_name_hover
-      puts @items_designs.image_name_selection
+      #puts @items_designs.image_name
+      #puts @items_designs.image_name_hover
+      #puts @items_designs.image_name_selection
 
 
       @items_designs.image_name.to_s.should == image_default.to_s
