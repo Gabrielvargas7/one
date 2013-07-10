@@ -65,10 +65,10 @@ class RoomsController < ApplicationController
           #validate if the user exist
           if User.exists?(id:params[:user_id])
 
-                @user = User.select('id ,name,email,username').where('id = ?',params[:user_id]).first
+                @user = User.select('id ,email,username').where('id = ?',params[:user_id]).first
                 @profile_image = 'y'
-                @user_photos = UsersPhoto.find_all_by_user_id_and_profile_image(@user.id,@profile_image)
-
+                @user_photos = UsersPhoto.find_all_by_user_id_and_profile_image(@user.id,@profile_image).first
+                @user_profile = UsersProfile.find_all_by_user_id(@user.id).first
                 @user_theme = Theme.
                     select('themes.id,themes.name,themes.description,image_name,users_themes.section_id, sections.name as section_name').
                     joins(:users_themes).
@@ -101,8 +101,9 @@ class RoomsController < ApplicationController
 
 
                   format.json { render json: {
-                      user: @user,
+                                              user: @user,
                                               user_photos: @user_photos,
+                                              user_profile:@user_profile,
                                               user_theme: @user_theme,
                                               user_items_designs: @user_items_designs
 

@@ -30,7 +30,7 @@ describe User do
 
 
   #user info
-  it { @user.should respond_to(:name) }
+
   it { @user.should respond_to(:email) }
   it { @user.should respond_to(:username)}
   it { @user.should respond_to(:admin) }
@@ -97,23 +97,23 @@ describe User do
   end
 
 
-  ###############
-  #test validation - name
-  ###############
-  describe "when the name" , tag_name: true  do
-
-      context "is not present" do
-        before {@user.name = " "}
-        it {should_not be_valid}
-
-      end
-
-      context "is too long" do
-        before { @user.name = "a" * 51 }
-        it { should_not be_valid }
-      end
-
-  end
+  ################
+  ##test validation - name
+  ################
+  #describe "when the name" , tag_name: true  do
+  #
+  #    context "is not present" do
+  #      before {@user.name = " "}
+  #      it {should_not be_valid}
+  #
+  #    end
+  #
+  #    context "is too long" do
+  #      before { @user.name = "a" * 51 }
+  #      it { should_not be_valid }
+  #    end
+  #
+  #end
 
 
   ###############
@@ -216,8 +216,8 @@ describe User do
     context "username is already taken" do
 
       before do
-        @user_with_same_username = User.new(name: "Example User", email:"user_with_same_username@example.com", password: "foobar")
-        @user_with_same_username.name = @user.name.upcase
+
+        @user_with_same_username = User.new(email:@user.username, password: "foobar")
         @user_with_same_username.save
         @user.save
       end

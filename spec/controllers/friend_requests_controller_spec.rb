@@ -12,7 +12,7 @@ describe FriendRequestsController do
 
     @user = FactoryGirl.create(:user)
     @user_requested = FactoryGirl.create(:user)
-    #@friend_request = FactoryGirl.create(:friend_request,user_id:@user.id,user_id_requested:@user_requested.id)
+
 
     #sign_in @user_requested
 
@@ -33,7 +33,19 @@ describe FriendRequestsController do
   describe "api #json_index_friend_request_make_from_your_friend_to_you_by_user_id",tag_json_index:true do
 
        before do
+         @friend_request1 = FactoryGirl.create(:friend_request,user_id:@user.id,user_id_requested:@user_requested.id)
          sign_in @user_requested
+         @friend_requests_find = FriendRequest.where('user_id_requested = ?',@user_requested.id)
+         @user_friend_requested_all =
+                           UsersPhoto.select(
+                               'users_photos.user_id,
+                              users_photos.image_name,
+                              users_photos.profile_image,
+                              users_profiles.firstname,
+                              users_profiles.lastname'
+                           ).where(:user_id => @friend_requests_find.map {|b| b.user_id})
+                           .where("users_photos.profile_image = 'y'")
+                           .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
        end
 
       it "should be successful" do
@@ -47,13 +59,13 @@ describe FriendRequestsController do
 
       it "should set friend request" do
 
-        friend_requests_find = FriendRequest.where('user_id_requested = ?',@user_requested.id)
-        user_friend_requested_all =  User.select('id,name,image_name').where(:id => friend_requests_find.map {|b| b.user_id})
+        #friend_requests_find = FriendRequest.where('user_id_requested = ?',@user_requested.id)
+        #user_friend_requested_all =  User.select('id').where(:id => friend_requests_find.map {|b| b.user_id})
 
         get :json_index_friend_request_make_from_your_friend_to_you_by_user_id,user_id: @user_requested.id, :format => :json
-        assigns(:user_friend_requested).as_json.should eq(user_friend_requested_all.as_json)
+        assigns(:user_friend_requested).as_json.should eq(@user_friend_requested_all.as_json)
       end
-
+      #
       it "has a 200 status code" do
         get :json_index_friend_request_make_from_your_friend_to_you_by_user_id,user_id: @user_requested.id, :format => :json
         expect(response.status).to eq(200)
@@ -72,10 +84,13 @@ describe FriendRequestsController do
           #puts "theme image name----> "+@theme.image_name.to_s
 
           body.each do |body_friend_request|
-            @friend_request_json = User.find(body_friend_request["id"])
-            body_friend_request["name"].should == @friend_request_json.name.to_s
-            body_friend_request["image_name"]["url"].should == @friend_request_json.image_name.to_s
-            body_friend_request["id"].should == @friend_request_json.id
+            @user_photos_json = UsersPhoto.find_all_by_user_id(body_friend_request["user_id"]).first
+            @user_profile_json = UsersProfile.find_all_by_user_id(body_friend_request["user_id"]).first
+            body_friend_request["firstname"].should == @user_profile_json.firstname
+            body_friend_request["lastname"].should == @user_profile_json.lastname
+            body_friend_request["image_name"]["url"].should == @user_photos_json.image_name.to_s
+            body_friend_request["profile_image"].should == @user_photos_json.profile_image
+
           end
         end
       end

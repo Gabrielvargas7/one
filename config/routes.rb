@@ -3,6 +3,9 @@ Mywebroom::Application.routes.draw do
 
 
 
+  resources :users_profiles
+
+
   resources :users_photos
 
 

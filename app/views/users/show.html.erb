@@ -1,13 +1,9 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user.username) %>
 <h1>This is my profile</h1>
 <div class="row">
   <aside class="span4">
     <section>
 
-      <p>
-        <b>Name:</b>
-        <%= @user.name %>,</br>
-      </p>
       <p>
         <b>Email:</b>
         <%= @user.email %></br>

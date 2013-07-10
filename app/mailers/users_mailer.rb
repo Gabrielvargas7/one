@@ -37,7 +37,8 @@ class UsersMailer < ActionMailer::Base
 
     @user = user
     @user_requested = user_requested
-    @greeting = "Hi, "+@user.name+" want to be your friend"
+    @greeting = "Hi, "+@user.username+" want to be your friend"
+
     mail to: @user_requested.email,subject: "A friend request from MyWebRoom"
   end
 end

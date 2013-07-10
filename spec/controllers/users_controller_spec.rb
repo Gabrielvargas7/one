@@ -233,9 +233,9 @@ describe UsersController do
       end
 
       it "changes @user's attributes" do
-        put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "Larry")
+        put :update, id: @user, user: FactoryGirl.attributes_for(:user, username: "larry")
         @user.reload
-        @user.name.should eq("Larry")
+        @user.username.should eq("larry")
       end
 
       it "redirects to the updated user" do
@@ -246,17 +246,17 @@ describe UsersController do
       context "invalid attributes" do
 
         it "locates the requested @user" do
-          put :update, id: @user, user: FactoryGirl.attributes_for(:user,name:nil,password:nil)
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user,username:nil,password:nil)
           assigns(:user).should eq(@user)
         end
         it "does not change @user's attributes" do
-          put :update, id: @user, user: FactoryGirl.attributes_for(:user, name:"John", password: nil)
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user, username:"john", password: nil)
           @user.reload
-          @user.name.should_not eq("John")
+          @user.username.should_not eq("john")
 
         end
         it "re-renders the edit method" do
-          put :update, id: @user, user: FactoryGirl.attributes_for(:user,name:nil,password:nil)
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user,username:nil,password:nil)
           response.should render_template :edit
         end
       end
@@ -312,7 +312,6 @@ describe UsersController do
         it "should return json_index theme in json" do # depend on what you return in action
           get :json_show_user_profile_by_user_id,user_id:@user.id, :format => :json
           body = JSON.parse(response.body)
-            body["name"].should == @user.name
             body["username"].should == @user.username
             body["email"].should == @user.email
 
@@ -379,7 +378,6 @@ describe UsersController do
           get :json_show_signed_user, :format => :json
           body = JSON.parse(response.body)
           body["id"].should == @user.id
-          body["name"].should == @user.name
           body["username"].should == @user.username
 
         end

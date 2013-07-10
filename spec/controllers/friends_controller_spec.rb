@@ -48,6 +48,18 @@ describe FriendsController do
 
     before do
       #sign_in @requested
+      @friends = Friend.where('user_id = ?',@user1.id)
+      @user_friend =
+          UsersPhoto.select(
+              'users_photos.user_id,
+                users_photos.image_name,
+                users_photos.profile_image,
+                users_profiles.firstname,
+                users_profiles.lastname'
+          ).where(:user_id => @friends.map {|b| b.user_id})
+          .where("users_photos.profile_image = 'y'")
+          .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+
     end
 
     it "should be successful" do
@@ -61,8 +73,8 @@ describe FriendsController do
 
     it "should set friend " do
 
-      @friends = Friend.where('user_id = ?',@user1.id)
-      @user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
+      #@friends = Friend.where('user_id = ?',@user1.id)
+      #@user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
 
       get :json_index_friend_by_user_id,user_id: @user1.id, :format => :json
       assigns(:user_friend).as_json.should eq(@user_friend.as_json)
@@ -86,11 +98,15 @@ describe FriendsController do
         #puts "theme name----> "+@theme.name.to_s
         #puts "theme image name----> "+@theme.image_name.to_s
 
+
         body.each do |body_friend|
-          @friend_json = User.find(body_friend["id"])
-          body_friend["name"].should == @friend_json.name.to_s
-          body_friend["image_name"]["url"].should == @friend_json.image_name.to_s
-          body_friend["id"].should == @friend_json.id
+          @user_photos_json = UsersPhoto.find_all_by_user_id(body_friend["user_id"]).first
+          @user_profile_json = UsersProfile.find_all_by_user_id(body_friend["user_id"]).first
+          body_friend["firstname"].should == @user_profile_json.firstname
+          body_friend["lastname"].should == @user_profile_json.lastname
+          body_friend["image_name"]["url"].should == @user_photos_json.image_name.to_s
+          body_friend["profile_image"].should == @user_photos_json.profile_image
+
         end
       end
     end
@@ -107,8 +123,19 @@ describe FriendsController do
   describe "api #json_index_friend_by_user_id_by_limit_by_offset",tag_json_index:true do
 
     before do
+          #sign_in @requested
+      @friends = Friend.where('user_id = ?',@user1.id).limit(@limit).offset(@offset)
+      @user_friend =
+          UsersPhoto.select(
+              'users_photos.user_id,
+                users_photos.image_name,
+                users_photos.profile_image,
+                users_profiles.firstname,
+                users_profiles.lastname'
+          ).where(:user_id => @friends.map {|b| b.user_id})
+          .where("users_photos.profile_image = 'y'")
+          .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
 
-      #sign_in @requested
     end
 
     it "should be successful" do
@@ -122,14 +149,14 @@ describe FriendsController do
 
     it "should set friend " do
 
-      @friends = Friend.where('user_id = ?',@user1.id).limit(@limit).offset(@offset)
-
-      @user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
-
+      #@friends = Friend.where('user_id = ?',@user1.id).limit(@limit).offset(@offset)
+      #
+      #@user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
+      #
       get :json_index_friend_by_user_id_by_limit_by_offset,user_id: @user1.id,limit:@limit,offset:@offset, :format => :json
       assigns(:user_friend).as_json.should eq(@user_friend.as_json)
     end
-
+    #
     it "has a 200 status code" do
       get :json_index_friend_by_user_id_by_limit_by_offset,user_id: @user1.id,limit:@limit,offset:@offset, :format => :json
       expect(response.status).to eq(200)
@@ -148,12 +175,23 @@ describe FriendsController do
         #puts "theme name----> "+@theme.name.to_s
         #puts "theme image name----> "+@theme.image_name.to_s
 
+        #body.each do |body_friend|
+        #  @friend_json = User.find(body_friend["id"])
+        #  body_friend["name"].should == @friend_json.name.to_s
+        #  body_friend["image_name"]["url"].should == @friend_json.image_name.to_s
+        #  body_friend["id"].should == @friend_json.id
+        #end
+
         body.each do |body_friend|
-          @friend_json = User.find(body_friend["id"])
-          body_friend["name"].should == @friend_json.name.to_s
-          body_friend["image_name"]["url"].should == @friend_json.image_name.to_s
-          body_friend["id"].should == @friend_json.id
+          @user_photos_json = UsersPhoto.find_all_by_user_id(body_friend["user_id"]).first
+          @user_profile_json = UsersProfile.find_all_by_user_id(body_friend["user_id"]).first
+          body_friend["firstname"].should == @user_profile_json.firstname
+          body_friend["lastname"].should == @user_profile_json.lastname
+          body_friend["image_name"]["url"].should == @user_photos_json.image_name.to_s
+          body_friend["profile_image"].should == @user_photos_json.profile_image
+
         end
+
       end
     end
 
@@ -197,26 +235,36 @@ describe FriendsController do
         #puts "body name ----> " + body[0].to_s
         ##puts "body image name ----> " + body[0]["image_name"]["url"].to_s
 
+        #body.each do |body_friend|
+        #  puts "body friend "+body_friend.to_s
+        #
+        #  body_friend.each do |b_friend|
+        #    #  @friend_json = User.find(body_friend["id"])
+        #    #  body_friend["name"].should == @friend_json.name.to_s
+        #    #  body_friend["image_name"]["url"].should == @friend_json.image_name.to_s
+        #    #  body_friend["id"].should == @friend_json.id
+        #
+        #    puts "body friend ---> "+b_friend.to_s
+        #    puts "body friend "+b_friend["name"].to_s
+        #    #puts "body friend "+body_friend1
+        #
+        #    @friend_json = User.find(b_friend["id"])
+        #    b_friend["name"].should == @friend_json.name.to_s
+        #    b_friend["image_name"]["url"].should == @friend_json.image_name.to_s
+        #    b_friend["id"].should == @friend_json.id
+        #  end
+        #end
+        #
         body.each do |body_friend|
-          puts "body friend "+body_friend.to_s
+          @user_photos_json = UsersPhoto.find_all_by_user_id(body_friend["user_id"]).first
+          @user_profile_json = UsersProfile.find_all_by_user_id(body_friend["user_id"]).first
+          body_friend["firstname"].should == @user_profile_json.firstname
+          body_friend["lastname"].should == @user_profile_json.lastname
+          body_friend["image_name"]["url"].should == @user_photos_json.image_name.to_s
+          body_friend["profile_image"].should == @user_photos_json.profile_image
 
-          body_friend.each do |b_friend|
-            #  @friend_json = User.find(body_friend["id"])
-            #  body_friend["name"].should == @friend_json.name.to_s
-            #  body_friend["image_name"]["url"].should == @friend_json.image_name.to_s
-            #  body_friend["id"].should == @friend_json.id
-
-            puts "body friend ---> "+b_friend.to_s
-            puts "body friend "+b_friend["name"].to_s
-            #puts "body friend "+body_friend1
-
-            @friend_json = User.find(b_friend["id"])
-            b_friend["name"].should == @friend_json.name.to_s
-            b_friend["image_name"]["url"].should == @friend_json.image_name.to_s
-            b_friend["id"].should == @friend_json.id
-
-          end
         end
+
       end
     end
 

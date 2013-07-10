@@ -3,17 +3,17 @@
 
 </div>
 
-        <% provide(:title, @user.name) %>
+        <% provide(:title, @user.username) %>
         <h1>This is My room on RoR</h1>
         <div class="row">
           <aside class="span4">
             <section>
               <h1>
-                <%= @user.name %>
+                <%= @user.username %>
               </h1>
 
               name: <%= @user.id %>,</br>
-              name: <%= @user.name %>,</br>
+              name: <%= @user.username %>,</br>
               email:  <%= @user.email %></br>
               username: <%= @user.username %></br>
 

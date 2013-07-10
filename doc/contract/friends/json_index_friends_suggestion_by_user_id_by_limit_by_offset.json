@@ -9,20 +9,23 @@
 //#  /friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/206/10/0.json'
 //#  //# success    ->  head  200 OK
 //
-
 [
-    [
-        {
-            "id"=>6690,
-            "image_name"=>{"url"=>"/assets/fallback/user/default_user.png"},
-            "name"=>"Person 20"
-        }
-    ],
-    [
-        {
-            "id"=>6691,
-            "image_name"=>{"url"=>"/assets/fallback/user/default_user.png"},
-            "name"=>"Person 21"
-        }
-    ]
+    {
+        "firstname": null,
+        "image_name": {
+            "url": "/assets/fallback/users_photos/default_user.png"
+        },
+        "lastname": null,
+        "profile_image": "y",
+        "user_id": 18
+    },
+    {
+        "firstname": null,
+        "image_name": {
+            "url": "/assets/fallback/users_photos/default_user.png"
+        },
+        "lastname": null,
+        "profile_image": "y",
+        "user_id": 22
+    }
 ]

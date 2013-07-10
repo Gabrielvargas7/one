@@ -144,7 +144,19 @@ class FriendsController < ApplicationController
       if User.exists?(id:params[:user_id])
 
            @friends = Friend.where('user_id = ?',params[:user_id])
-           @user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
+           #@user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
+
+           @user_friend =
+               UsersPhoto.select(
+               'users_photos.user_id,
+                users_photos.image_name,
+                users_photos.profile_image,
+                users_profiles.firstname,
+                users_profiles.lastname'
+               ).where(:user_id => @friends.map {|b| b.user_id})
+               .where("users_photos.profile_image = 'y'")
+               .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+
             format.json { render json: @user_friend }
 
       else
@@ -171,7 +183,21 @@ class FriendsController < ApplicationController
 
           @friends = Friend.where('user_id = ?',params[:user_id]).limit(params[:limit]).offset(params[:offset])
 
-          @user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
+          #@user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
+
+          @user_friend =
+              UsersPhoto.select(
+                  'users_photos.user_id,
+                users_photos.image_name,
+                users_photos.profile_image,
+                users_profiles.firstname,
+                users_profiles.lastname'
+              ).where(:user_id => @friends.map {|b| b.user_id})
+              .where("users_photos.profile_image = 'y'")
+              .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+
+          format.json { render json: @user_friend }
+
           #format.json { render json: @friends }
           format.json { render json: @user_friend }
 
@@ -215,13 +241,25 @@ class FriendsController < ApplicationController
 
               @suggestions = Friend.find_by_sql(sql)
 
+              #@suggestions_friends = Array.new
+              #
+              #@suggestions.each  do |i|
+              #  @suggestions_friends.push User.select('id,image_name,name').where(id:i.user_id_friend).as_json
+              #
+              #end
 
-              @suggestions_friends = Array.new
+            @suggestions_friends =
+                UsersPhoto.select(
+                    'users_photos.user_id,
+                users_photos.image_name,
+                users_photos.profile_image,
+                users_profiles.firstname,
+                users_profiles.lastname'
+                ).where(:user_id => @suggestions.map {|b| b.user_id_friend})
+                .where("users_photos.profile_image = 'y'")
+                .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
 
-              @suggestions.each  do |i|
-                @suggestions_friends.push User.select('id,image_name,name').where(id:i.user_id_friend).as_json
 
-              end
               format.json { render json: @suggestions_friends }
 
       else

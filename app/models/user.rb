@@ -15,18 +15,18 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email,:name,:password,:username ,:provider,:uid
+  attr_accessible :email,:password,:username ,:provider,:uid
 
   #mount_uploader :image_name, UsersImageUploader
 
   has_many :users_themes
   has_many :users_items_designs
   has_many :users_bookmarks
-  #has_many :users_photos
   has_many :friends
   has_many :friend_requests
   has_many :users_notifications
   has_many :users_photos
+  has_many :users_profiles
 
   has_secure_password
 
@@ -37,14 +37,14 @@ class User < ActiveRecord::Base
 
 
   before_save :create_remember_token
-  before_create{ get_username(self.name)}
+  before_create{ get_username(self.email)}
 
   after_create :create_user_notification, :send_signup_user_email ,:create_random_room,:create_image_name
 
 
-  validates :name,
-             presence:true,
-             length: { maximum: 50 }
+  #validates :name,
+  #           presence:true,
+  #           length: { maximum: 50 }
 
 
   validates :email,
@@ -84,13 +84,13 @@ class User < ActiveRecord::Base
 
       user.provider = auth.provider
       user.uid = auth.uid
-      user.name = auth.info.name
+      #user.name = auth.info.name
       user.remember_token = auth.credentials.token
-      user.image_name = auth.info.image
+      #user.image_name = auth.info.image
       user.email = auth.extra.raw_info.email
 
       user.password = fake_password
-      user.password_confirmation = fake_password
+     F user.password_confirmation = fake_password
       user.save!
     end
   end
@@ -98,7 +98,10 @@ class User < ActiveRecord::Base
   # create the username for the url
   def get_username(new_username)
 
-    my_username = new_username
+    my_username_no_email = new_username.split('@')
+
+    my_username = my_username_no_email.first
+    #my_username = new_username
     #remove all non- alphanumeric character (expect dashes '-')
     my_username = my_username.gsub(/[^0-9a-z -]/i, '')
 
@@ -157,6 +160,7 @@ class User < ActiveRecord::Base
 
     def create_image_name
       UsersPhoto.create(user_id:self.id,profile_image:'y')
+      UsersProfile.create(user_id:self.id)
     end
 
   #this is temp until the new design

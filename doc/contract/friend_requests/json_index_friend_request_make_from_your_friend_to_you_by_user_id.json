@@ -17,51 +17,21 @@
 
 [
     {
-        "id": 206,
+        "firstname": null,
         "image_name": {
-            "url": "/images/fallback/user/default_user.png",
-            "small": {
-                "url": "/images/fallback/user/default_user.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/user/default_user.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/user/default_user.png"
-            }
+            "url": "/assets/fallback/users_photos/default_user.png"
         },
-        "name": "Example User"
+        "lastname": null,
+        "profile_image": "y",
+        "user_id": 24
     },
     {
-        "id": 209,
+        "firstname": null,
         "image_name": {
-            "url": "/images/fallback/user/default_user.png",
-            "small": {
-                "url": "/images/fallback/user/default_user.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/user/default_user.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/user/default_user.png"
-            }
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1373412029/13940-users_photo-image_name-2012-02-21_19.23.53.jpg"
         },
-        "name": "Nat Kuphal"
-    },
-    {
-        "id": 210,
-        "image_name": {
-            "url": "/images/fallback/user/default_user.png",
-            "small": {
-                "url": "/images/fallback/user/default_user.png"
-            },
-            "tiny": {
-                "url": "/images/fallback/user/default_user.png"
-            },
-            "toolbar": {
-                "url": "/images/fallback/user/default_user.png"
-            }
-        },
-        "name": "Ms. Danielle Hilll"
+        "lastname": null,
+        "profile_image": "y",
+        "user_id": 23
     }
 ]

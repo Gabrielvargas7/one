@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
            respond_to do |format|
              format.html # show.html.erb
-             format.json { render json: @user.as_json(only:[:name,:email,:username])  }
+             format.json { render json: @user.as_json(only:[:email,:username])  }
            end
 
        else
@@ -143,7 +143,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
 
     respond_to do |format|
-      format.json { render json: @user.as_json(only:[:name,:email,:username])  }
+      format.json { render json: @user.as_json(only:[:email,:username])  }
     end
   end
 
@@ -223,7 +223,7 @@ class UsersController < ApplicationController
       if @current_user.nil?
         format.json { render json: 'user not found' , status: :not_found }
       else
-        format.json { render json: @current_user.as_json(only:[:id,:name,:username]), status: :ok}
+        format.json { render json: @current_user.as_json(only:[:id,:username]), status: :ok}
       end
 
 

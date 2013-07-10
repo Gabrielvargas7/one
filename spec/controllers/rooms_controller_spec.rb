@@ -102,7 +102,6 @@ describe RoomsController do
 
 
                 body["user"]["id"].should == @user.id
-                body["user"]["name"].should == @user.name
                 body["user"]["username"].should == @user.username
 
 

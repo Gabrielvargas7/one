@@ -1,0 +1,37 @@
+<h1>Listing users_profiles</h1>
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Gender</th>
+    <th>Description</th>
+    <th>City</th>
+    <th>Country</th>
+    <th>Birthday</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users_profiles.each do |users_profile| %>
+  <tr>
+    <td><%= users_profile.firstname %></td>
+    <td><%= users_profile.lastname %></td>
+    <td><%= users_profile.gender %></td>
+    <td><%= users_profile.description %></td>
+    <td><%= users_profile.city %></td>
+    <td><%= users_profile.country %></td>
+    <td><%= users_profile.birthday %></td>
+    <td><%= users_profile.user_id %></td>
+    <td><%= link_to 'Show', users_profile %></td>
+    <td><%= link_to 'Edit', edit_users_profile_path(users_profile) %></td>
+    <td><%= link_to 'Destroy', users_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Users profile', new_users_profile_path %>
