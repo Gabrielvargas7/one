@@ -480,8 +480,6 @@ describe UsersPhotosController do
         expect(response.status).to eq(404)
       end
     end
-
-
   end
 
 
@@ -552,53 +550,6 @@ describe UsersPhotosController do
     end
   end
 
-  ##***********************************
-  ## rspec test  #json_show
-  ##***********************************
-  #
-  #
-  #describe "api #json_show",tag_json_show:true do
-  #
-  #  describe "is public api" do
-  #    before do
-  #      sign_out
-  #    end
-  #
-  #
-  #    it "should be successful" do
-  #      get :json_show, id: @theme, :format => :json
-  #      response.should be_success
-  #    end
-  #
-  #    let(:themes_all){Theme.all}
-  #    it "should set theme" do
-  #      get :json_show,id:@theme, :format => :json
-  #      assigns(:theme).as_json.should == @theme.as_json
-  #    end
-  #
-  #    it "has a 200 status code" do
-  #      get :json_show, id: @theme, :format => :json
-  #      expect(response.status).to eq(200)
-  #    end
-  #
-  #    context "get all values " do
-  #      it "should return json_show theme in json" do # depend on what you return in action
-  #        get :json_show,id:@theme, :format => :json
-  #        body = JSON.parse(response.body)
-  #        body["name"].should == @theme.name
-  #        body["description"].should == @theme.description
-  #        body["id"].should == @theme.id
-  #        body["image_name"]["url"].should == @theme.image_name.to_s
-  #        body["image_name_selection"]["url"].should == @theme.image_name_selection.to_s
-  #
-  #
-  #      end
-  #    end
-  #  end
-  #end
-  #
-  #
-  #
 
 
 end

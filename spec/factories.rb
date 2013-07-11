@@ -153,6 +153,7 @@ FactoryGirl.define do
   factory :users_notification do
     user_id 1
     notification_id 1
+    notified 'n'
   end
 
   factory :users_items_design do
