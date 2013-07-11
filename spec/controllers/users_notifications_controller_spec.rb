@@ -59,7 +59,7 @@ describe UsersNotificationsController do
         it "should return json_show user notification in json" do # depend on what you return in action
           #puts @user.as_json
           #puts @notification.as_json
-          puts @user_notification.as_json
+          #puts @user_notification.as_json
           get :json_show_user_notification_by_user, user_id: @user_notification.user_id, :format => :json
           body = JSON.parse(response.body)
           body["name"].should == @notification.name
