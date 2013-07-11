@@ -159,7 +159,7 @@ FactoryGirl.define do
   factory :users_items_design do
     user_id 1
     items_design_id 1
-    hide 'y'
+    hide 'no'
     location_id 1
   end
 

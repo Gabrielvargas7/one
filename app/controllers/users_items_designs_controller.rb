@@ -76,7 +76,7 @@ class UsersItemsDesignsController < ApplicationController
      end
   end
 
- #   PUT toggle the user items design with (yes to no to yes)
+ #   PUT (hide the item)toggle the user items design with (yes to no to yes)
  #  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id/:user_id/:items_design_id/:location_id
  #  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
  #       toggle operation -> yes -> no
@@ -95,7 +95,7 @@ class UsersItemsDesignsController < ApplicationController
                 if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:items_design_id],hide:'no',location_id:params[:location_id] )
                   format.json { head :no_content }
                 else
-                  format.json { render json: @user_theme.errors, status: :unprocessable_entity }
+                  format.json { render json: @user_items_design.errors, status: :unprocessable_entity }
                 end
             else
                 if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:items_design_id],hide:'yes')
@@ -135,7 +135,7 @@ class UsersItemsDesignsController < ApplicationController
                                         locations.section_id').
                                   joins(:users_items_designs).
                                   joins('LEFT OUTER JOIN locations  ON locations.id = users_items_designs.location_id').
-                                    where('user_id = ?',params[:user_id])
+                                  where('user_id = ?',params[:user_id])
 
         format.json { render json: @user_items_designs }
 
