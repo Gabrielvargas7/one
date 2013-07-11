@@ -40,5 +40,17 @@
   <%= @users_profile.user_id %>
 </p>
 
+<p>
+  <b>User image :</b>
+  <%  unless @users_photo.nil? %>
+     <%= image_tag(@users_photo.image_name.url().to_s,width: 180, height:180) %>
+  <% end %>
+
+
+</p>
+
+
+
+
 <li><%= link_to "Edit", edit_users_profiles_by_user_id_path(@users_profile.user_id) %></li>
 

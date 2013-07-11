@@ -121,6 +121,7 @@ class UsersProfilesController < ApplicationController
   # GET /users_profiles/show_by_user_id/:id
   def show_users_profiles_by_user_id
     @users_profile = UsersProfile.find_all_by_user_id(params[:id]).first
+    @users_photo = UsersPhoto.find_by_user_id_and_profile_image(params[:id],'y')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -130,9 +131,9 @@ class UsersProfilesController < ApplicationController
 
   # GET /users_profiles/edit_by_user_id/:id
   def edit_users_profiles_by_user_id
-    @users_profile = UsersProfile.find_all_by_user_id(params[:id]).first
     @start_date = Time.now.year - 100
     @end_date = Time.now.year
+    @users_profile = UsersProfile.find_all_by_user_id(params[:id]).first
 
   end
 

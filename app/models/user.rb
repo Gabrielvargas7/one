@@ -13,6 +13,7 @@
 #  username        :string(255)
 #  image_name      :string(255)
 #
+require 'open-uri'
 
 class User < ActiveRecord::Base
   attr_accessible :email,:password,:username ,:provider,:uid
@@ -85,7 +86,6 @@ class User < ActiveRecord::Base
   # user  self.from_omniauth(auth)
   #***********************************
 
-
   # create(facebook.. )the user if don't exist
   def self.from_omniauth(auth)
 
@@ -93,6 +93,10 @@ class User < ActiveRecord::Base
 
       # create a fake password for the facebook users
       fake_password = SecureRandom.urlsafe_base64
+
+      #---------------------------------
+      # create user from facebook
+      #---------------------------------
 
       user.provider = auth.provider
       user.uid = auth.uid
@@ -102,8 +106,16 @@ class User < ActiveRecord::Base
       user.password_confirmation = fake_password
       user.save!
 
-      # create user profile
-      user_profile  = UsersProfile.new()
+
+      #---------------------------------
+      # create user profile from facebook
+      #---------------------------------
+
+      if UsersProfile.exists?(user_id:user.id)
+        user_profile  = UsersProfile.find_by_user_id(user.id)
+      else
+        user_profile  = UsersProfile.new()
+      end
       user_profile.firstname = auth.extra.raw_info.first_name
       user_profile.lastname = auth.extra.raw_info.last_name
       user_profile.gender = auth.extra.raw_info.gender
@@ -111,19 +123,33 @@ class User < ActiveRecord::Base
       user_profile.user_id = user.id
       user_profile.save!
 
+      #---------------------------------
+      # create user profile photo from facebook
+      #---------------------------------
 
-      #open('image.png', 'wb') do |file|
-      #  file << open('http://example.com/image.png').read
-      #end
-      # create new user photo
-      user_photos = UsersPhoto.new()
-      user_photos.user_id = user.id
-      user_photos.profile_image = 'y'
-      #user_photos.image_name = auth.info.image
-      #user_photos.image_name = File.open(auth.info.image)
-      user_photos.image_name = URI.parse(auth.info.image)
-      user_photos.save!
+      unless UsersPhoto.exists?(user_id:user.id,profile_image:'y')
+        user_photo  = UsersPhoto.new()
+        puts "new photo field"
 
+        user_image_name = user.id.to_s
+        user_image_name = rand(0..100000).to_s+user_image_name+".jpg"
+        facebook_image = "#{Rails.root}/tmp/uploads/cache/facebook/"+user_image_name
+
+        open(facebook_image, 'wb') do |file|
+          #file << open(auth.info.image).read
+          #file << open( auth.info.image.split("=")[0]<< "=normal").read
+          file << open( auth.info.image.split("=")[0]<< "=large").read
+        end
+
+        if File.exists?(facebook_image)
+          puts "file exist yes"
+          user_photo.image_name = File.open(facebook_image)
+        end
+        user_photo.user_id = user.id
+        user_photo.profile_image = 'y'
+        user_photo.save!
+
+      end
 
     end
   end
