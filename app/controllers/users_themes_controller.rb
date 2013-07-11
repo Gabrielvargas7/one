@@ -65,7 +65,7 @@ class UsersThemesController < ApplicationController
   #  users_themes/json/update_user_theme_by_user_id_and_section_id/:user_id/:section_id'
   #  users_themes/json/update_user_theme_by_user_id_and_section_id/1/1.json
   #  Form Parameters:
-  #                  theme_id = 1
+  #                  new_theme_id = 1
   # Return ->
   # Success    ->  head  200 ok
   def json_update_user_theme_by_user_id_and_section_id
@@ -74,13 +74,13 @@ class UsersThemesController < ApplicationController
 
       if User.exists?(id:params[:user_id])
         #validate themes
-        if Theme.exists?(id: params[:theme_id])
+        if Theme.exists?(id: params[:new_theme_id])
 
           if UsersTheme.exists?(user_id:params[:user_id],section_id:params[:section_id])
 
               @user_theme = UsersTheme.find_by_user_id_and_section_id(params[:user_id],params[:section_id])
 
-              if @user_theme.update_attributes(theme_id: params[:theme_id],section_id:params[:section_id])
+              if @user_theme.update_attributes(theme_id: params[:new_theme_id],section_id:params[:section_id])
 
                 format.json { render json: @user_theme, status: :ok }
 
