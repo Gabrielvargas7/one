@@ -69,7 +69,6 @@ class NotificationsController < ApplicationController
       ActiveRecord::Base.transaction do
         begin
 
-
           @notification.save
           # after save, we can get the id
           users_notification_conditions ="notification_id = "+@notification.id.to_s+" ,notified = 'n'"
@@ -80,16 +79,6 @@ class NotificationsController < ApplicationController
         rescue
           format.html { render action: "new" }
         end
-
-        #if @notification.save
-        #format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
-        #format.json { render json: @notification, status: :created, location: @notification }
-        #else
-        #format.html { render action: "new" }
-        #format.json { render json: @notification.errors, status: :unprocessable_entity }
-        #end
-
-
       end
 
     end

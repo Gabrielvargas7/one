@@ -20,16 +20,16 @@ module ApplicationHelper
 
     unless signed_in?
       respond_to do |format|
-        format.json { render json: 'user not found' , status: :not_found }
+        format.json { render json: 'user not sign in ' , status: :not_found }
       end
     end
   end
 
   def json_correct_user
-    @user = User.find(params[:user_id])
-    unless current_user?(@user)
+    @user_json = User.find(params[:user_id])
+    unless current_user?(@user_json)
       respond_to do |format|
-        format.json { render json: 'user not found' , status: :not_found }
+        format.json { render json: 'user not correct ' , status: :not_found }
       end
     end
   end
@@ -53,8 +53,8 @@ module ApplicationHelper
   end
 
   def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
+    @user_correct = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user_correct)
   end
 
 

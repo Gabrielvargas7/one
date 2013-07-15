@@ -36,6 +36,9 @@ describe Bundle do
   it { @bundle.should respond_to(:image_name)}
   it { @bundle.should respond_to(:theme_id) }
   it { @bundle.should respond_to(:section_id) }
+  it { @bundle.should respond_to(:active) }
+
+
 
   it { @bundle.should be_valid }
 
@@ -54,8 +57,8 @@ describe Bundle do
     )}
 
     it "should be upload to CDN - cloudinary " do
-      puts bundle_with_image_upload.image_name
-      puts bundle_with_image_upload.image_name_set
+      #puts bundle_with_image_upload.image_name
+      #puts bundle_with_image_upload.image_name_set
 
       bundle_with_image_upload.image_name.to_s.should include("http")
       bundle_with_image_upload.image_name_set.to_s.should include("http")
@@ -73,8 +76,8 @@ describe Bundle do
     let(:image_default) {"/assets/fallback/bundle/default_bundle.png"}
 
     it "should be default  " do
-      puts @bundle.image_name
-      puts @bundle.image_name_set
+      #puts @bundle.image_name
+      #puts @bundle.image_name_set
 
       @bundle.image_name.to_s.should == image_default.to_s
       @bundle.image_name_set.to_s.should == image_default.to_s
@@ -134,6 +137,40 @@ describe Bundle do
 
     let(:bundle_not_section_id){FactoryGirl.build(:bundle,theme_id:@theme.id,section_id:-1)}
     it { bundle_not_section_id.should_not be_valid }
+
+  end
+
+  ###############
+  #test validation - active
+  ###############
+  describe "when active " , tag_active: true  do
+
+    context "is not present" do
+      before {@bundle.active = " "}
+      it {should_not be_valid}
+    end
+
+    context "must be 'y' and lowercase" do
+      before do
+        @bundle.active = "y"
+      end
+      it { 'y'.should == @bundle.active}
+    end
+
+    context "must be 'n' and lowercase" do
+      before do
+        @bundle.active = "n"
+      end
+      it { 'n'.should == @bundle.active}
+    end
+
+    context "should not be 'ANYTHING' " do
+      before do
+        @bundle.active = "ANY"
+      end
+      it { 'n'.should_not == @bundle.active}
+      it { 'y'.should_not == @bundle.active}
+    end
 
   end
 

@@ -13,7 +13,6 @@ class FeedbacksController < ApplicationController
 
   before_filter :json_signed_in_user,
                 only:[
-                    :json_create_feedback
                 ]
 
   before_filter :admin_user,

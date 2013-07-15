@@ -3,7 +3,6 @@ require 'spec_helper'
 
 describe ThemesController do
 
-
   before(:all){ create_init_data }
   after(:all){ delete_init_data }
 
@@ -265,12 +264,14 @@ describe ThemesController do
           it "locates the requested @theme" do
           put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme,name:nil)
           assigns(:theme).should eq(@theme)
-        end
+          end
+
           it "does not change @theme's attributes" do
-          put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme, name:"John", description: "Smith")
+          @theme = FactoryGirl.create(:theme,name:"Larry",description:"Smith")
+          put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme, name:nil, description: "lopez")
           @theme.reload
-          @theme.name.should_not eq("Larry")
-          @theme.description.should_not eq("Smith")
+          @theme.name.should_not eq(nil)
+          @theme.description.should_not eq("lopez")
         end
           it "re-renders the edit method" do
           put :update, id: @theme, theme: FactoryGirl.attributes_for(:theme,name:nil)

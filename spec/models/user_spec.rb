@@ -11,7 +11,6 @@
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
 #  username        :string(255)
-#  image_name      :string(255)
 #
 
 require 'spec_helper'
@@ -31,10 +30,9 @@ describe User do
 
 
   #user info
-  it { @user.should respond_to(:name) }
+
   it { @user.should respond_to(:email) }
   it { @user.should respond_to(:username)}
-  it { @user.should respond_to(:image_name)}
   it { @user.should respond_to(:admin) }
 
   #room authentication
@@ -99,23 +97,23 @@ describe User do
   end
 
 
-  ###############
-  #test validation - name
-  ###############
-  describe "when the name" , tag_name: true  do
-
-      context "is not present" do
-        before {@user.name = " "}
-        it {should_not be_valid}
-
-      end
-
-      context "is too long" do
-        before { @user.name = "a" * 51 }
-        it { should_not be_valid }
-      end
-
-  end
+  ################
+  ##test validation - name
+  ################
+  #describe "when the name" , tag_name: true  do
+  #
+  #    context "is not present" do
+  #      before {@user.name = " "}
+  #      it {should_not be_valid}
+  #
+  #    end
+  #
+  #    context "is too long" do
+  #      before { @user.name = "a" * 51 }
+  #      it { should_not be_valid }
+  #    end
+  #
+  #end
 
 
   ###############
@@ -162,8 +160,8 @@ describe User do
               user_with_same_email = @user.dup
               user_with_same_email.email = @user.email
               user_with_same_email.save
-              print user_with_same_email.email+"  "
-              print @user.email
+              #print user_with_same_email.email+"  "
+              #print @user.email
           end
           it { @user.should_not be_valid }
       end
@@ -218,8 +216,8 @@ describe User do
     context "username is already taken" do
 
       before do
-        @user_with_same_username = User.new(name: "Example User", email:"user_with_same_username@example.com", password: "foobar")
-        @user_with_same_username.name = @user.name.upcase
+
+        @user_with_same_username = User.new(email:@user.username, password: "foobar")
         @user_with_same_username.save
         @user.save
       end
@@ -239,7 +237,7 @@ describe User do
     let(:user_notification) { UsersNotification.find_by_user_id(@user.id) }
     let(:user_notification_not_exist) { UsersNotification.find_by_user_id(@user.id+1) }
     it do
-      puts @user.id
+      #puts @user.id
       user_notification.should be_valid
     end
 
@@ -288,40 +286,40 @@ describe User do
    end
 
 
-  ###############
-  #test validation - default image
-  ###############
-  describe "when image default ", tag_image_default: true  do
+  ################
+  ##test validation - default image
+  ################
+  #describe "when image default ", tag_image_default: true  do
+  #
+  #  let(:image_default) {"/assets/fallback/user/default_user.png"}
+  #
+  #  it "should be default " do
+  #    puts @user.image_name
+  #    @user.image_name.to_s.should == image_default.to_s
+  #
+  #  end
+  #
+  #end
 
-    let(:image_default) {"/assets/fallback/user/default_user.png"}
 
-    it "should be default " do
-      puts @user.image_name
-      @user.image_name.to_s.should == image_default.to_s
-
-    end
-
-  end
-
-
-  ###############
-  #test validation - upload image
-  ###############
-  # these test only run when it is explicit.- example
-  # bundle exec rspec --tag tag_image spec/models/theme_spec.rb
-  describe "when image",tag_image_user:true  do
-
-    let(:user_with_image_upload) { Theme.create(
-        name:"user test",
-        image_name:Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'image', 'test_image.jpg'))
-    )}
-
-    it "should be upload to CDN - cloudinary " do
-      puts user_with_image_upload.image_name
-      user_with_image_upload.image_name.to_s.should include("http")
-    end
-
-  end
+  ################
+  ##test validation - upload image
+  ################
+  ## these test only run when it is explicit.- example
+  ## bundle exec rspec --tag tag_image spec/models/theme_spec.rb
+  #describe "when image",tag_image_user:true  do
+  #
+  #  let(:user_with_image_upload) { Theme.create(
+  #      name:"user test",
+  #      image_name:Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'image', 'test_image.jpg'))
+  #  )}
+  #
+  #  it "should be upload to CDN - cloudinary " do
+  #    puts user_with_image_upload.image_name
+  #    user_with_image_upload.image_name.to_s.should include("http")
+  #  end
+  #
+  #end
 
 
 

@@ -13,7 +13,7 @@
 #
 
 class Bundle < ActiveRecord::Base
-  attr_accessible :description, :image_name, :name, :theme_id,:image_name_set,:section_id
+  attr_accessible :description, :image_name, :name, :theme_id,:image_name_set,:section_id,:active
 
   mount_uploader :image_name, BundlesImageUploader
   mount_uploader :image_name_set, BundlesImageSetUploader
@@ -21,14 +21,16 @@ class Bundle < ActiveRecord::Base
 
   belongs_to :section
   belongs_to :theme
-  has_many :items_designs
+  #has_many :items_designs
   has_many :bundles_items_designs
+
+  VALID_Y_N_REGEX = /(y)|(n)/
 
 
   validates_presence_of :theme
   validates_presence_of :section
 
-
+  validates :active, presence:true, format: { with: VALID_Y_N_REGEX }
   validates :name,presence:true
   validates :theme_id,presence:true, :numericality => { :only_integer => true }
   validates :section_id,presence:true,:numericality => { :only_integer => true }
@@ -42,6 +44,8 @@ class Bundle < ActiveRecord::Base
   def id_and_bundle_section
     "Bundle: #{id}. #{name} -- Section: #{section.id}.#{section.name}"
   end
+
+
 
 
 end

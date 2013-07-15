@@ -142,8 +142,8 @@ describe BookmarksController do
     context "is admin user"  do
       let(:bookmarks_category_new){BookmarksCategory.first}
       it "assigns a new bookmarks as @bookmark" do
-        puts bookmarks_category_new.id.to_s
-        puts bookmarks_category_new.item_id.to_s
+        #puts bookmarks_category_new.id.to_s
+        #puts bookmarks_category_new.item_id.to_s
 
         new_bookmark = FactoryGirl.create(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
         Bookmark.should_receive(:new).and_return(new_bookmark)
@@ -318,12 +318,12 @@ describe BookmarksController do
           FactoryGirl.create(:item)
           FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
 
-          puts "same "+bookmark_same.item_id.to_s
-          puts "same old "+@bookmark.item_id.to_s
+          #puts "same "+bookmark_same.item_id.to_s
+          #puts "same old "+@bookmark.item_id.to_s
 
           put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
           @bookmark.reload
-          puts "new item_id "+@bookmark.item_id.to_s
+          #puts "new item_id "+@bookmark.item_id.to_s
           @bookmark.item_id.should_not eq(bookmark_same)
         end
 
@@ -373,7 +373,7 @@ describe BookmarksController do
 
 
       it "assigns all bookmark as :bookmark" do
-        puts "what is a id to approve "+Bookmark.where("approval = 'n'").order("item_id","bookmarks_category_id").first.id.to_s
+        #puts "what is a id to approve "+Bookmark.where("approval = 'n'").order("item_id","bookmarks_category_id").first.id.to_s
         get :index_bookmarks_approval
         assigns(:bookmarks).should eq(bookmarks_all)
       end
@@ -552,9 +552,9 @@ describe BookmarksController do
           body = JSON.parse(response.body)
           #puts "body ---- > "+body.to_s
           #puts "theme ----> "+@theme.as_json.to_s
-          puts "body bookmark_id ----> " + body[0]["id"].to_s
-          puts "body image name ----> " + body[0]["image_name"]["url"].to_s
-          puts "body image name desc ----> " + body[0]["image_name_desc"].to_s
+          #puts "body bookmark_id ----> " + body[0]["id"].to_s
+          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          #puts "body image name desc ----> " + body[0]["image_name_desc"].to_s
 
 
           body.each do |body_bookmark|
@@ -615,9 +615,9 @@ describe BookmarksController do
           body = JSON.parse(response.body)
           #puts "body ---- > "+body.to_s
           #puts "theme ----> "+@theme.as_json.to_s
-          puts "body bookmark_id ----> " + body[0]["id"].to_s
-          puts "body image name ----> " + body[0]["image_name"]["url"].to_s
-          puts "body image name desc ----> " + body[0]["image_name_desc"].to_s
+          #puts "body bookmark_id ----> " + body[0]["id"].to_s
+          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          #puts "body image name desc ----> " + body[0]["image_name_desc"].to_s
 
 
           body.each do |body_bookmark|

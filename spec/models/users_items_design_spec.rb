@@ -20,7 +20,6 @@ describe UsersItemsDesign do
 
   before do
     @user = FactoryGirl.create(:user)
-
     @section = FactoryGirl.create(:section)
     @location = FactoryGirl.create(:location,section_id:@section.id )
     @item = FactoryGirl.create(:item)

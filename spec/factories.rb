@@ -11,13 +11,15 @@
 FactoryGirl.define do
 
   factory :user do
-    sequence(:name)  { |n| "Person #{n}" }
     sequence(:email) { |n| "person_#{n}@example.com"}
+    sequence(:username)  {|n| "username#{n}"}
+
     password "foobar"
 
     factory :admin do
       admin true
     end
+
 
   end
 
@@ -41,6 +43,7 @@ FactoryGirl.define do
     sequence(:description)  { |n| "desc #{n}" }
     theme_id 1
     section_id 1
+    active 'n'
   end
 
   factory :item do
@@ -68,7 +71,6 @@ FactoryGirl.define do
   factory :items_design do
     sequence(:name)  { |n| "item_design #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
-    bundle_id 1
     item_id 1
   end
 
@@ -142,6 +144,8 @@ FactoryGirl.define do
   end
 
   factory :users_bookmark do
+    sequence(:position) { |n| "#{n}" }
+    #sequence(:title)  { |n| "title #{n}" }
     user_id 1
     bookmark_id 1
   end
@@ -149,13 +153,34 @@ FactoryGirl.define do
   factory :users_notification do
     user_id 1
     notification_id 1
+    notified 'n'
   end
 
   factory :users_items_design do
     user_id 1
     items_design_id 1
-    hide 'y'
+    hide 'no'
     location_id 1
+  end
+
+  factory :users_photo do
+    sequence(:description) { |n| "description #{n}" }
+    profile_image 'n'
+    user_id 1
+  end
+
+
+  factory :users_profile do
+
+    sequence(:description) { |n| "description #{n}" }
+    city 'city'
+    country 'country'
+    gender 'gender'
+    lastname 'lastname'
+    firstname 'firtname'
+    birthday Date.today
+    user_id 1
+
   end
 
 

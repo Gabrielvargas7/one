@@ -6,14 +6,15 @@
 
         <%= render 'shared/error_messages' %>
 
-        <%= f.label :name  %>
-        <%= f.text_field :name %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
 
-        <%= f.label :image_name %><br />
-        <%= f.file_field :image_name %>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
 
-
-
+        <label> please type you current password </label>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
 
         <%= f.submit "Save changes",class: "btn btn-large btn-primary" %>

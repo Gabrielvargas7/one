@@ -10,13 +10,11 @@
 //#success    ->  head  200 OK
 
 {
-    "description": null,
-    "id": 6,
+    "description": "asedfdsf",
+    "id": 8,
     "image_name": {
-        "url": "/uploads/notification/image_name/6/SetHeader.png",
-        "small": {
-            "url": "/uploads/notification/image_name/6/small_SetHeader.png"
-        }
+        "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1373069740/64385-notification-image_name-2012-03-22_12.04.33.jpg"
     },
-    "name": "item"
+    "name": "item",
+    "position": 2
 }

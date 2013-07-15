@@ -20,7 +20,6 @@ describe UsersNotification do
   before do
     @user = FactoryGirl.create(:user)
     @notification = FactoryGirl.create(:notification)
-
     @user_notification = FactoryGirl.build(:users_notification,user_id:@user.id,notification_id:@notification.id)
 
   end

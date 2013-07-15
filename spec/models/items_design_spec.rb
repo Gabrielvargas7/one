@@ -6,7 +6,6 @@
 #  name                 :string(255)
 #  description          :text
 #  item_id              :integer
-#  bundle_id            :integer
 #  image_name           :string(255)
 #  image_name_hover     :string(255)
 #  image_name_selection :string(255)
@@ -18,7 +17,7 @@ require 'spec_helper'
 
 describe ItemsDesign do
 
-  #attr_accessible :bundle_id, :description, :image_name, :item_id, :name,:image_name_hover,:image_name_selection
+  #attr_accessible : :description, :image_name, :item_id, :name,:image_name_hover,:image_name_selection
 
   # the (before) line will instance the variable for every (describe methods)
   before do
@@ -36,7 +35,7 @@ describe ItemsDesign do
   it { @items_designs.should respond_to(:image_name_selection)}
   it { @items_designs.should respond_to(:image_name)}
   it { @items_designs.should respond_to(:item_id) }
-  it { @items_designs.should respond_to(:bundle_id) }
+
 
   it { @items_designs.should be_valid }
 
@@ -89,9 +88,9 @@ describe ItemsDesign do
 
     it "should be upload to CDN - cloudinary " do
 
-      puts items_design_with_image_upload.image_name
-      puts items_design_with_image_upload.image_name_hover
-      puts items_design_with_image_upload.image_name_selection
+      #puts items_design_with_image_upload.image_name
+      #puts items_design_with_image_upload.image_name_hover
+      #puts items_design_with_image_upload.image_name_selection
 
       items_design_with_image_upload.image_name.to_s.should include("http")
       items_design_with_image_upload.image_name_hover.to_s.should include("http")
@@ -110,9 +109,9 @@ describe ItemsDesign do
     let(:image_default) {"/assets/fallback/items_design/default_items_design.png"}
 
     it "should be default  " do
-      puts @items_designs.image_name
-      puts @items_designs.image_name_hover
-      puts @items_designs.image_name_selection
+      #puts @items_designs.image_name
+      #puts @items_designs.image_name_hover
+      #puts @items_designs.image_name_selection
 
 
       @items_designs.image_name.to_s.should == image_default.to_s

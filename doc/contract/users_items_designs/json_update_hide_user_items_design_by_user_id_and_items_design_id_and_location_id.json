@@ -9,7 +9,7 @@
 
 
 //Description
-            //#   PUT toggle the user items design with (yes to no to yes)
+            //#   PUT (hide the item)toggle the user items design with (yes to no to yes)
             //#  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id/:user_id/:items_design_id/:location_id
             //#  /users_items_designs/json/update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json.json
             //#     //   toggle operation -> yes -> no

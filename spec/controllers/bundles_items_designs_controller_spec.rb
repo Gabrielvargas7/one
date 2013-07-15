@@ -349,9 +349,9 @@ describe BundlesItemsDesignsController do
         it "creates a new bundle item design" do
 
           # POST /create_bundle_items_design/:bundle_id/:location_id/:items_design_id
-          puts "bundle id --> "+@bundle.id.to_s
-          puts "items_location id --> "+@items_location.location_id.to_s
-          puts "items_design id --> "+@items_designs.id.to_s
+          #puts "bundle id --> "+@bundle.id.to_s
+          #puts "items_location id --> "+@items_location.location_id.to_s
+          #puts "items_design id --> "+@items_designs.id.to_s
 
           expect {
             post :create_bundle_items_design,bundle_id:@bundle.id,location_id:@items_location.location_id,items_design_id:@items_designs.id

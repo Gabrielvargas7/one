@@ -12,7 +12,7 @@
 //           users_themes/json/update_user_theme_by_user_id_and_section_id/:user_id/:section_id'
 //           users_themes/json/update_user_theme_by_user_id_and_section_id/1/1.json
 //           Form Parameters:
-//                         theme_id = 1
+//#                  new_theme_id = 1
 // Return ->
 // Success    ->  head  200 OK
 

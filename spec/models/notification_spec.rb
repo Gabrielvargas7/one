@@ -47,7 +47,7 @@ describe Notification do
     )}
 
     it "should be upload to CDN - cloudinary " do
-      puts notification_with_image_upload.image_name
+      #puts notification_with_image_upload.image_name
       notification_with_image_upload.image_name.to_s.should include("http")
 
     end
@@ -62,7 +62,7 @@ describe Notification do
     let(:image_default) {"/assets/fallback/notification/default_notification.png"}
 
     it "should be default  " do
-      puts @notification.image_name
+      #puts @notification.image_name
       @notification.image_name.to_s.should == image_default.to_s
 
     end

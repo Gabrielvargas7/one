@@ -13,36 +13,40 @@
 #  username        :string(255)
 #  image_name      :string(255)
 #
+require 'open-uri'
 
 class User < ActiveRecord::Base
-  attr_accessible :email,:name,:password,:username, :image_name ,:provider,:uid
+  attr_accessible :email,:password,:username ,:provider,:uid
+
+  #mount_uploader :image_name, UsersImageUploader
 
   has_many :users_themes
   has_many :users_items_designs
   has_many :users_bookmarks
-  has_many :users_galleries
   has_many :friends
   has_many :friend_requests
   has_many :users_notifications
+  has_many :users_photos
+  has_many :users_profiles
 
   has_secure_password
-
 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   before_save { |user| user.email = email.downcase }
 
+
   before_save :create_remember_token
-  before_create :get_username
+  before_create{ get_username(self.email)}
 
-  after_create :create_user_notification, :send_signup_user_email ,:create_random_room
+  after_create :create_user_notification, :send_signup_user_email ,:create_random_room,:create_image_name,:create_user_profile
 
 
-  validates :name,
-             presence:true,
-             length: { maximum: 50 }
-             #uniqueness:{ case_sensitive: false }
+  #validates :name,
+  #           presence:true,
+  #           length: { maximum: 50 }
+
 
   validates :email,
              presence:true,
@@ -51,15 +55,24 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, length: { minimum: 6 }
 
+  validates :username, uniqueness:{ case_sensitive: false }
 
 
-  mount_uploader :image_name, UsersImageUploader
 
+
+
+#***********************************
+# user  send_signup_user_email
+#***********************************
 
   # Send email after the user sign up
   def send_signup_user_email
     UsersMailer.signup_email(self).deliver
   end
+
+  #***********************************
+  # user  send_password_reset
+  #***********************************
 
   def send_password_reset
     generate_token(:password_reset_token)
@@ -69,6 +82,10 @@ class User < ActiveRecord::Base
 
   end
 
+  #***********************************
+  # user  self.from_omniauth(auth)
+  #***********************************
+
   # create(facebook.. )the user if don't exist
   def self.from_omniauth(auth)
 
@@ -77,23 +94,77 @@ class User < ActiveRecord::Base
       # create a fake password for the facebook users
       fake_password = SecureRandom.urlsafe_base64
 
+      #---------------------------------
+      # create user from facebook
+      #---------------------------------
+
       user.provider = auth.provider
       user.uid = auth.uid
-      user.name = auth.info.name
       user.remember_token = auth.credentials.token
-      user.image_name = auth.info.image
       user.email = auth.extra.raw_info.email
-
       user.password = fake_password
       user.password_confirmation = fake_password
       user.save!
+
+
+      #---------------------------------
+      # create user profile from facebook
+      #---------------------------------
+
+      if UsersProfile.exists?(user_id:user.id)
+        user_profile  = UsersProfile.find_by_user_id(user.id)
+      else
+        user_profile  = UsersProfile.new()
+      end
+      user_profile.firstname = auth.extra.raw_info.first_name
+      user_profile.lastname = auth.extra.raw_info.last_name
+      user_profile.gender = auth.extra.raw_info.gender
+      user_profile.birthday = auth.info.user_birthday
+      user_profile.user_id = user.id
+      user_profile.save!
+
+      #---------------------------------
+      # create user profile photo from facebook
+      #---------------------------------
+
+      unless UsersPhoto.exists?(user_id:user.id,profile_image:'y')
+        user_photo  = UsersPhoto.new()
+        puts "new photo field"
+
+        user_image_name = user.id.to_s
+        user_image_name = rand(0..100000).to_s+user_image_name+".jpg"
+        facebook_image = "#{Rails.root}/tmp/uploads/cache/facebook/"+user_image_name
+
+        open(facebook_image, 'wb') do |file|
+          #file << open(auth.info.image).read
+          #file << open( auth.info.image.split("=")[0]<< "=normal").read
+          file << open( auth.info.image.split("=")[0]<< "=large").read
+        end
+
+        if File.exists?(facebook_image)
+          puts "file exist yes"
+          user_photo.image_name = File.open(facebook_image)
+        end
+        user_photo.user_id = user.id
+        user_photo.profile_image = 'y'
+        user_photo.save!
+
+      end
+
     end
   end
 
-  # create the username for the url
-  def get_username
+  #***********************************
+  # user  get_username(new_username)
+  #***********************************
 
-    my_username = name
+  # create the username for the url
+  def get_username(new_username)
+
+    my_username_no_email = new_username.split('@')
+
+    my_username = my_username_no_email.first
+    #my_username = new_username
     #remove all non- alphanumeric character (expect dashes '-')
     my_username = my_username.gsub(/[^0-9a-z -]/i, '')
 
@@ -126,10 +197,14 @@ class User < ActiveRecord::Base
 
   end
 
-
   private
 
-    #use this method when the user forget the password
+
+  #***********************************
+  # user  generate_token(column)
+  #***********************************
+
+  #use this method when the user forget the password
     def generate_token(column)
       begin
         self[column] = SecureRandom.urlsafe_base64
@@ -146,17 +221,45 @@ class User < ActiveRecord::Base
     end
 
 
-    # create the user notification on the table  when the user sign-up
+  #***********************************
+  # user  create_user_notification
+  #***********************************
+
+  # create the user notification on the table  when the user sign-up
     def create_user_notification
       UsersNotification.create(user_id:self.id,notified:'y')
     end
 
-    #this is temp until the new design
+  #***********************************
+  # user  create_image_name
+  #***********************************
+
+  def create_image_name
+    if self.uid.blank?
+      UsersPhoto.create(user_id:self.id,profile_image:'y')
+     end
+
+  end
+
+  #***********************************
+  # user  create_user_profile
+  #***********************************
+  def create_user_profile
+    if self.uid.blank?
+      UsersProfile.create(user_id:self.id)
+    end
+  end
+
+
+
+  #***********************************
+  # user  create_random_room
+  #***********************************
+
+  #this is temp until the new design
     def create_random_room
 
-      bundle_max = Bundle.maximum("id")
-
-      #bundle_max =
+      #bundle_max = Bundle.maximum("id")
 
       # note this is a quick fix,
       # you should add the activation field for bundle
@@ -169,12 +272,16 @@ class User < ActiveRecord::Base
 
 
 
-      bundle_min = Bundle.minimum("id")
+      #bundle_min = Bundle.minimum("id")
+      #
+      #Bundle.where("active = 'y'").order("by RANDOM()").first
+      #
+      ##print "bundle max "+bundle_max.to_s
+      #bundle_rand_number = rand(bundle_min..bundle_max)
+      ##print "bundle_rand_number  "+bundle_rand_number.to_s
+      #bundle = Bundle.find(bundle_rand_number)
 
-      #print "bundle max "+bundle_max.to_s
-      bundle_rand_number = rand(bundle_min..bundle_max)
-      #print "bundle_rand_number  "+bundle_rand_number.to_s
-      bundle = Bundle.find(bundle_rand_number)
+      bundle = Bundle.where("active = 'y'").order("RANDOM()").first
 
       #create the theme from the bundle
       UsersTheme.create!(user_id:self.id,theme_id:bundle.theme_id,section_id:bundle.section_id)

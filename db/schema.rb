@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612174716) do
+ActiveRecord::Schema.define(:version => 20130709214955) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -50,10 +50,11 @@ ActiveRecord::Schema.define(:version => 20130612174716) do
     t.text     "description"
     t.integer  "theme_id"
     t.string   "image_name"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "image_name_set"
     t.integer  "section_id"
+    t.string   "active",         :default => "n"
   end
 
   add_index "bundles", ["id"], :name => "index_bundles_on_id"
@@ -103,20 +104,13 @@ ActiveRecord::Schema.define(:version => 20130612174716) do
   end
 
   create_table "items", :force => true do |t|
+    t.string   "clickable",  :default => "yes"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "name"
-    t.decimal  "x",           :default => 0.0
-    t.decimal  "y",           :default => 0.0
-    t.integer  "z",           :default => 0
-    t.integer  "width",       :default => 0
-    t.integer  "height",      :default => 0
-    t.string   "clickable",   :default => "yes"
-    t.string   "folder_name"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
   end
 
   add_index "items", ["id"], :name => "index_items_on_id"
-  add_index "items", ["name"], :name => "index_items_on_name"
 
   create_table "items_designs", :force => true do |t|
     t.string   "name"
@@ -185,7 +179,6 @@ ActiveRecord::Schema.define(:version => 20130612174716) do
   add_index "themes", ["name"], :name => "index_themes_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "name"
     t.string   "email"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
@@ -193,7 +186,6 @@ ActiveRecord::Schema.define(:version => 20130612174716) do
     t.string   "remember_token"
     t.boolean  "admin",                  :default => false
     t.string   "username"
-    t.string   "image_name"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "provider"
@@ -203,7 +195,6 @@ ActiveRecord::Schema.define(:version => 20130612174716) do
   add_index "users", ["admin"], :name => "index_users_on_admin"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id"
-  add_index "users", ["name"], :name => "index_users_on_name"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
   add_index "users", ["username"], :name => "index_users_on_username"
 
@@ -219,13 +210,6 @@ ActiveRecord::Schema.define(:version => 20130612174716) do
   add_index "users_bookmarks", ["id"], :name => "index_users_bookmarks_on_id"
   add_index "users_bookmarks", ["position"], :name => "index_users_bookmarks_on_position"
   add_index "users_bookmarks", ["user_id"], :name => "index_users_bookmarks_on_user_id"
-
-  create_table "users_galleries", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "image_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "users_items_designs", :force => true do |t|
     t.integer  "user_id"
@@ -246,6 +230,28 @@ ActiveRecord::Schema.define(:version => 20130612174716) do
     t.string   "notified",        :default => "y", :null => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "users_photos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "description"
+    t.string   "image_name"
+    t.string   "profile_image", :default => "n"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "users_profiles", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "gender"
+    t.string   "description"
+    t.string   "city"
+    t.string   "country"
+    t.date     "birthday"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users_themes", :force => true do |t|

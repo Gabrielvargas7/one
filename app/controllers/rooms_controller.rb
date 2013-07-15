@@ -4,16 +4,11 @@ class RoomsController < ApplicationController
   before_filter :json_signed_in_user,
                 only:[
                     :json_show_room_by_user_id
-
-                ]
-
   before_filter :json_correct_user,
                 only:[
                     :json_show_room_by_user_id
                 ]
-
   #method for ruby access
-
   before_filter :signed_in_user,
                 only:[
                     :room
@@ -31,16 +26,23 @@ class RoomsController < ApplicationController
   # GET Get room with the username
   # /room/:username
   # room_rooms_path // room_rooms_url
+  # public
   def room
+
+    if User.exists?(username:params[:username])
+
         @username = params[:username]
+
         @user = User.find_by_username(params[:username])
         @user_theme = UsersTheme.find_by_user_id(@user.id)
 
         respond_to do |format|
           format.html
           format.json { render json:@user.as_json(only: [:id,:name, :username, :image_name ])  }
-
         end
+    else
+      redirect_to(root_path)
+    end
   end
 
   #***********************************
@@ -61,8 +63,10 @@ class RoomsController < ApplicationController
           #validate if the user exist
           if User.exists?(id:params[:user_id])
 
-                @user = User.select('id , name,email,image_name').where('id = ?',params[:user_id]).first
-
+                @user = User.select('id ,email,username').where('id = ?',params[:user_id]).first
+                @profile_image = 'y'
+                @user_photos = UsersPhoto.find_all_by_user_id_and_profile_image(@user.id,@profile_image).first
+                @user_profile = UsersProfile.find_all_by_user_id(@user.id).first
                 @user_theme = Theme.
                     select('themes.id,themes.name,themes.description,image_name,users_themes.section_id, sections.name as section_name').
                     joins(:users_themes).
@@ -95,10 +99,11 @@ class RoomsController < ApplicationController
 
 
                   format.json { render json: {
-                      user: @user,
-                                              user_gallery: @user_gallery,
+                                              user: @user,
+                                              user_photos: @user_photos,
+                                              user_profile:@user_profile,
                                               user_theme: @user_theme,
-                                              user_items_designs: @user_items_designs.as_json()
+                                              user_items_designs: @user_items_designs
 
                   }}
           else

@@ -1,0 +1,47 @@
+
+  <%= form_for(@users_profile, url: update_users_profiles_by_user_id_path(@users_profile.user_id)) do |f| %>
+      <% if @users_profile.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@users_profile.errors.count, "error") %> prohibited this users_profile from being saved:</h2>
+
+            <ul>
+              <% @users_profile.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+
+      <div class="field">
+      <%= f.label :firstname %><br />
+      <%= f.text_field :firstname %>
+    </div>
+    <div class="field">
+      <%= f.label :lastname %><br />
+      <%= f.text_field :lastname %>
+    </div>
+    <div class="field">
+      <%= f.label :gender %><br />
+      <%= f.text_field :gender %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_field :description %>
+    </div>
+    <div class="field">
+      <%= f.label :city %><br />
+      <%= f.text_field :city %>
+    </div>
+    <div class="field">
+      <%= f.label :country %><br />
+      <%= f.text_field :country %>
+    </div>
+    <div class="field">
+      <%= f.label :birthday %><br />
+      <%= f.date_select :birthday , start_year:@start_date, end_year:@end_date %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

@@ -127,7 +127,7 @@ class ItemsDesignsController < ApplicationController
 
     respond_to do |format|
       if ItemsDesign.exists?(item_id:params[:item_id])
-        @items_designs = ItemsDesign.where('item_id=?',params[:item_id])
+        @items_designs = ItemsDesign.where('item_id=?',params[:item_id]).order("id")
 
         format.json { render json: @items_designs }
       else

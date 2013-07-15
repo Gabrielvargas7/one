@@ -55,7 +55,6 @@ class FriendRequestsController < ApplicationController
                    user_requested = User.find(params[:user_id_requested])
                    UsersMailer.friend_request_email(user,user_requested).deliver
 
-
                   format.json { render json: @friend_request, status: :created }
                 else
                   format.json { render json: @friend_request.errors, status: :unprocessable_entity }
@@ -111,7 +110,7 @@ class FriendRequestsController < ApplicationController
   end
 
 
-  #GET get all the request that your friend make to you
+  #GET get all the request that your friends make to you
   #  /friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/:user_id
   #  /friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/206.json
   #  //# success    ->  head  200 OK
@@ -123,7 +122,19 @@ class FriendRequestsController < ApplicationController
 
         @friend_requests = FriendRequest.where('user_id_requested = ?',params[:user_id])
 
-        @user_friend_requested =  User.select('id,name,image_name').where(:id => @friend_requests.map {|b| b.user_id})
+        #@user_friend_requested =  User.select('users.id,users_photos.image_name').where(:id => @friend_requests.map {|b| b.user_id})
+        #                          .joins(:users_photos)
+
+        @user_friend_requested =
+              UsersPhoto.select(
+               'users_photos.user_id,
+                users_photos.image_name,
+                users_photos.profile_image,
+                users_profiles.firstname,
+                users_profiles.lastname'
+              ).where(:user_id => @friend_requests.map {|b| b.user_id})
+               .where("users_photos.profile_image = 'y'")
+               .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
         format.json { render json: @user_friend_requested }
 
       else

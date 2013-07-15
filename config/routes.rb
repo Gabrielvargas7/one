@@ -3,6 +3,22 @@ Mywebroom::Application.routes.draw do
 
 
 
+  resources :users_profiles
+
+  match '/users_profiles/show_users_profiles_by_user_id/:id', to:
+         'users_profiles#show_users_profiles_by_user_id', via: :get,as: :show_users_profiles_by_user_id
+
+  match '/users_profiles/edit_users_profiles_by_user_id/:id', to:
+         'users_profiles#edit_users_profiles_by_user_id', via: :get,as: :edit_users_profiles_by_user_id
+
+  match '/users_profiles/update_users_profiles_by_user_id/:id', to:
+         'users_profiles#update_users_profiles_by_user_id', via: :put,as: :update_users_profiles_by_user_id
+
+
+
+  resources :users_photos
+
+
   resources :bundles_items_designs
 
   match '/bundles_items_designs/index/bundle_selection', to:
@@ -36,9 +52,15 @@ Mywebroom::Application.routes.draw do
 
   resources :bookmarks
 
-  match '/bookmarks/index/bookmarks_approval', to: 'bookmarks#index_bookmarks_approval', via: :get,as: :index_bookmarks_approval
-  match '/bookmarks/update/bookmarks_approval_for_a_user/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_a_user', via: :put,as: :update_bookmarks_approval_for_a_user
-  match '/bookmarks/update/bookmarks_approval_for_all_users/:bookmark_id', to: 'bookmarks#update_bookmarks_approval_for_all_users', via: :put,as: :update_bookmarks_approval_for_all_users
+  match '/bookmarks/index/bookmarks_approval', to:
+         'bookmarks#index_bookmarks_approval', via: :get,as:
+                    :index_bookmarks_approval
+  match '/bookmarks/update/bookmarks_approval_for_a_user/:bookmark_id', to:
+         'bookmarks#update_bookmarks_approval_for_a_user', via: :put,as:
+                   :update_bookmarks_approval_for_a_user
+  match '/bookmarks/update/bookmarks_approval_for_all_users/:bookmark_id', to:
+         'bookmarks#update_bookmarks_approval_for_all_users', via: :put,as:
+                   :update_bookmarks_approval_for_all_users
 
 
   resources :items_designs
@@ -49,6 +71,9 @@ Mywebroom::Application.routes.draw do
 
   resources :bundles
 
+  match '/bundles/active_update/:id', to:
+         'bundles#active_update', via: :put,as:
+         :bundles_active_update
   resources :items
 
   resources :users
@@ -363,11 +388,18 @@ Mywebroom::Application.routes.draw do
 
 
   #**************************
-  # start UsersGallery Contract
+  # start UsersPhotos Contract
   #**************************
 
-  match '/users_galleries/json/create_users_gallery_by_user_id/:user_id', to:
-         'users_galleries#json_create_users_gallery_by_user_id', via: :post
+  match '/users_photos/json/create_users_photo_by_user_id/:user_id', to:
+         'users_photos#json_create_users_photo_by_user_id', via: :post
+
+  match '/users_photos/json/update_users_set_profile_image_by_user_id_and_users_photo_id/:user_id/:users_photo_id', to:
+         'users_photos#json_update_users_set_profile_image_by_user_id_and_users_photo_id', via: :put
+
+  match '/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/:user_id/:limit/:offset', to:
+         'users_photos#json_index_users_photos_by_user_id_by_limit_by_offset', via: :get
+
 
   #**************************
   # end UsersGallery Contract
