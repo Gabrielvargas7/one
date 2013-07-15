@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
   before_filter :json_signed_in_user,
                 only:[
                     :json_show_room_by_user_id
+                ]
   before_filter :json_correct_user,
                 only:[
                     :json_show_room_by_user_id

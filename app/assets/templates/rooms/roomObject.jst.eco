@@ -1,7 +1,4 @@
-<%= @user_objects.length %>
-<% for entry in @user_objects.models: %>
-    <p><%= entry.get('user_items_designs')[0] %></p>
-    <% for obj in entry.get('user_items_designs')[0]: %>
-        <img class="room_object" src=<%= obj.image_name.url %>>
-    <% end %>
-<% end %>
+<%= @room_object.length %> Object Templates. Length to left.
+
+    <p id="roomObjectPar" style="">Objects Template Works!</p>
+

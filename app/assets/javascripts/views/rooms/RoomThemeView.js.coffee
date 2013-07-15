@@ -21,3 +21,4 @@ class Mywebroom.Views.RoomThemeView extends Backbone.View
 #render: ->
 #  $(@el).html(@template(user: @collection))
 #  this
+
