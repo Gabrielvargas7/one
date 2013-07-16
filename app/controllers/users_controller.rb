@@ -55,6 +55,11 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(params[:user])
+    #puts "------------------------------------------"
+    #puts  "this is the city "+ request.location.city
+    #puts "------------------------------------------"
+    ##@user.country = request.location.country_code
+
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the MyWebRoom!"

@@ -29,6 +29,8 @@ gem "backbone-on-rails", "1.0.0.0"
 
 gem "unicorn", "4.6.3"
 
+gem 'geocoder', "1.1.8"
+
 
 
 #gem 'rename'

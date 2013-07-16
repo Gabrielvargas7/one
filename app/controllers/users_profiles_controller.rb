@@ -135,15 +135,18 @@ class UsersProfilesController < ApplicationController
 
   # GET /users_profiles/edit_by_user_id/:id
   def edit_users_profiles_by_user_id
+
     @start_date = Time.now.year - 100
     @end_date = Time.now.year
     @users_profile = UsersProfile.find_all_by_user_id(params[:id]).first
+
 
   end
 
   # PUT /users_profiles/update_by_user_id/:id
   def update_users_profiles_by_user_id
     @users_profile = UsersProfile.find_all_by_user_id(params[:id]).first
+
 
     respond_to do |format|
       if @users_profile.update_attributes(params[:users_profile])

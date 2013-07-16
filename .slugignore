@@ -1,0 +1,12 @@
+
+*.psd
+*.pdf
+/test
+/spec
+/doc
+/app/assets/images/demo
+/app/assets/images/general
+/app/assets/images/home
+/app/assets/images/info
+/app/assets/images/login
+/db/seeds
