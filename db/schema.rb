@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712222035) do
+ActiveRecord::Schema.define(:version => 20130716214308) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20130712222035) do
     t.datetime "updated_at",                             :null => false
     t.string   "approval",              :default => "y"
     t.integer  "user_bookmark",         :default => 0
-    t.integer  "like"
+    t.integer  "like",                  :default => 0
   end
 
   add_index "bookmarks", ["bookmark_url"], :name => "index_bookmarks_on_bookmark_url"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20130712222035) do
     t.string   "color"
     t.string   "make"
     t.string   "special_name"
-    t.integer  "like"
+    t.integer  "like",           :default => 0
   end
 
   add_index "bundles", ["brand"], :name => "index_bundles_on_brand"
@@ -143,15 +143,15 @@ ActiveRecord::Schema.define(:version => 20130712222035) do
     t.string   "image_name"
     t.string   "image_name_hover"
     t.string   "image_name_selection"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "category"
     t.string   "style"
     t.string   "brand"
     t.string   "color"
     t.string   "make"
     t.string   "special_name"
-    t.integer  "like"
+    t.integer  "like",                 :default => 0
   end
 
   add_index "items_designs", ["brand"], :name => "index_items_designs_on_brand"
@@ -221,8 +221,8 @@ ActiveRecord::Schema.define(:version => 20130712222035) do
     t.string   "name"
     t.text     "description"
     t.string   "image_name"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "image_name_selection"
     t.string   "category"
     t.string   "style"
@@ -231,7 +231,7 @@ ActiveRecord::Schema.define(:version => 20130712222035) do
     t.string   "color"
     t.string   "make"
     t.string   "special_name"
-    t.integer  "like"
+    t.integer  "like",                 :default => 0
   end
 
   add_index "themes", ["brand"], :name => "index_themes_on_brand"
