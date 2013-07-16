@@ -18,6 +18,30 @@ Mywebroom::Application.routes.draw do
 
   resources :users_photos
 
+  match '/users_photos/index_users_photos_by_user_id/:user_id', to:
+         'users_photos#index_users_photos_by_user_id', via: :get,as: :index_users_photos_by_user_id
+
+  match '/users_photos/update_users_photos_profile_image_by_user_id_by_users_photo_id/:user_id/:users_photo_id', to:
+         'users_photos#update_users_photos_profile_image_by_user_id_by_users_photo_id', via: :put,as: :update_users_photos_profile_image_by_user_id_by_users_photo_id
+
+  match '/users_photos/new_users_photos_by_user_id/:user_id', to:
+         'users_photos#new_users_photos_by_user_id', via: :get,as: :new_users_photos_by_user_id
+
+  match '/users_photos/create_users_photos_by_user_id/:user_id', to:
+         'users_photos#create_users_photos_by_user_id', via: :post,as: :create_users_photos_by_user_id
+
+  match '/users_photos/destroy_users_photos_by_user_id_by_users_photo_id/:user_id/:users_photo_id', to:
+         'users_photos#destroy_users_photos_by_user_id_by_users_photo_id', via: :delete,as: :destroy_users_photos_by_user_id_by_users_photo_id
+
+  match '/users_photos/edit_users_photos_by_user_id_by_users_photo_id/:user_id/:users_photo_id', to:
+         'users_photos#edit_users_photos_by_user_id_by_users_photo_id', via: :get,as: :edit_users_photos_by_user_id_by_users_photo_id
+
+  match '/users_photos/update_users_photos_by_user_id_by_users_photo_id/:user_id/:users_photo_id', to:
+         'users_photos#update_users_photos_by_user_id_by_users_photo_id', via: :put,as: :update_users_photos_by_user_id_by_users_photo_id
+
+
+
+
 
   resources :bundles_items_designs
 
@@ -32,6 +56,8 @@ Mywebroom::Application.routes.draw do
 
   match '/bundles_items_designs/create/bundle_items_design/:bundle_id/:location_id/:items_design_id', to:
          'bundles_items_designs#create_bundle_items_design', via: :post, as: :create_bundle_items_design
+
+
 
 
   resources :items_locations

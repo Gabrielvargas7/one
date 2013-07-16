@@ -70,7 +70,20 @@ class RoomsController < ApplicationController
                 @user_photos = UsersPhoto.find_all_by_user_id_and_profile_image(@user.id,@profile_image).first
                 @user_profile = UsersProfile.find_all_by_user_id(@user.id).first
                 @user_theme = Theme.
-                    select('themes.id,themes.name,themes.description,image_name,users_themes.section_id, sections.name as section_name').
+                    select('themes.id,
+                            themes.name,
+                            themes.description,
+                            themes.image_name,
+                            themes.category,
+                            themes.style,
+                            themes.brand,
+                            themes.location,
+                            themes.color,
+                            themes.make,
+                            themes.special_name,
+                            themes.like,
+                            users_themes.section_id,
+                            sections.name as section_name').
                     joins(:users_themes).
                     where('user_id = ?',@user.id).
                     joins('LEFT OUTER JOIN sections ON sections.id = users_themes.section_id')
@@ -80,15 +93,25 @@ class RoomsController < ApplicationController
                             items_designs.name,
                             items_designs.item_id,
                             items_designs.description,
-                            image_name,
+                            items_designs.category,
+                            items_designs.style,
+                            items_designs.brand,
+                            items_designs.color,
+                            items_designs.make,
+                            items_designs.special_name,
+                            items_designs.like,
+                            items_designs.image_name,
+
                             users_items_designs.hide,
                             users_items_designs.location_id,
+
                             locations.z,
                             locations.x,
                             locations.y,
                             locations.height,
                             locations.width,
                             locations.section_id,
+
                             items.name as items_name,
                             sections.name as section_name'
                             ).

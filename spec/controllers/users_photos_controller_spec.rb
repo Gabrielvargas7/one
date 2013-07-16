@@ -294,6 +294,404 @@ describe UsersPhotosController do
     end
   end
 
+  #***********************************
+  # rspec test  index_users_photos_by_user_id
+  #***********************************
+
+  # GET /users_photos/index_users_photos/:user_id
+  describe "GET index_users_photos_by_user_id",tag_index_custom:true do
+    before do
+      @user  = FactoryGirl.create(:user)
+      @users_photo1 = FactoryGirl.create(:users_photo,user_id:@user.id)
+      @users_photo2 = FactoryGirl.create(:users_photo,user_id:@user.id)
+      sign_in @user
+    end
+
+    context "is regular user" do
+      let(:users_photos_all) { UsersPhoto.find_all_by_user_id(@user.id) }
+
+      it "assigns all user photos  as @user photos" do
+        get :index_users_photos_by_user_id,user_id:@user.id
+        assigns(:users_photos).should eq(users_photos_all)
+      end
+
+      it "renders the :index view" do
+        get :index_users_photos_by_user_id,user_id:@user.id
+        response.should render_template :index_users_photos_by_user_id
+      end
+    end
+    context "sign out user" do
+      before do
+        sign_out
+      end
+
+      it "redirect to root " do
+        get :index_users_photos_by_user_id,user_id:@user.id
+        response.should redirect_to root_path
+      end
+
+      it "not render to index " do
+        get :index_users_photos_by_user_id,user_id:@user.id
+        response.should_not render_template :index_users_photos_by_user_id
+      end
+    end
+  end
+
+  #***********************************
+  # rspec test  new_users_photos_by_user_id
+  #***********************************
+
+  # GET /users_photos/new_users_photos_by_user_id/user_id
+
+  describe "GET new_users_photos_by_user_id",tag_new_custom:true do
+    before do
+      @user  = FactoryGirl.create(:user)
+      @users_photo1 = FactoryGirl.create(:users_photo,user_id:@user.id)
+      @users_photo2 = FactoryGirl.create(:users_photo,user_id:@user.id)
+      sign_in @user
+    end
+
+    context "is regular user"  do
+      it "assigns a new user photos as @user photos" do
+        @users_photo3 = FactoryGirl.create(:users_photo,user_id:@user.id)
+        UsersPhoto.should_receive(:new).and_return(@users_photo3)
+        get :new_users_photos_by_user_id, user_id:@user.id
+        assigns[:users_photo].should eq(@users_photo3)
+      end
+    end
+    context "is user sign out"  do
+      before do
+        sign_out
+      end
+
+      it "redirect to root" do
+        get :new_users_photos_by_user_id, user_id:@user.id
+        response.should redirect_to root_path
+      end
+    end
+
+  end
+
+  #***********************************
+  # rspec test  edit_users_photos_by_user_id_by_users_photo_id
+  #***********************************
+
+
+  describe "GET edit_users_photos_by_user_id_by_users_photo_id", tag_edit_custom:true do
+    before do
+      @user  = FactoryGirl.create(:user)
+      @users_photo1 = FactoryGirl.create(:users_photo,user_id:@user.id)
+      @users_photo2 = FactoryGirl.create(:users_photo,user_id:@user.id)
+      sign_in @user
+    end
+
+    context "is regular user"  do
+
+      it "assigns the requested user photo as @user photo" do
+
+        new_users_photo = FactoryGirl.create(:users_photo,user_id:@user.id)
+        get :edit_users_photos_by_user_id_by_users_photo_id, user_id: new_users_photo.user_id,users_photo_id:new_users_photo.id
+        assigns[:users_photo].should eq(new_users_photo)
+      end
+    end
+
+    context "is signout user" do
+
+      before do
+        sign_out
+
+      end
+
+      it "redirect to root " do
+        new_users_photo = FactoryGirl.create(:users_photo,user_id:@user.id)
+        get :edit_users_photos_by_user_id_by_users_photo_id, user_id: new_users_photo.user_id,users_photo_id:new_users_photo.id
+        response.should redirect_to root_path
+      end
+    end
+  end
+
+  # DELETE /users_photos/destroy_users_photos_by_user_id_by_users_photo_id/:user_id/:users_photo_id
+
+
+  #***********************************
+  # rspec destroy_users_photos_by_user_id_by_users_photo_id
+  #***********************************
+
+  # DELETE /users_photos/destroy_users_photos_by_user_id_by_users_photo_id/:user_id/:users_photo_id
+  describe 'DELETE destroy_users_photos_by_user_id_by_users_photo_id', tag_destroy_custom:true do
+    before do
+      @user  = FactoryGirl.create(:user)
+      @users_photo1 = FactoryGirl.create(:users_photo,user_id:@user.id)
+      @users_photo2 = FactoryGirl.create(:users_photo,user_id:@user.id,profile_image:'y')
+      sign_in @user
+    end
+    context "when profile_image == 'n'" do
+
+      it "deletes the contact" do
+        expect{
+          delete :destroy_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo1.user_id,users_photo_id:@users_photo1.id
+        }.to change(UsersPhoto,:count).by(-1)
+      end
+
+      it "redirects to contacts#index" do
+        delete :destroy_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo1.user_id,users_photo_id:@users_photo1.id
+        response.should redirect_to index_users_photos_by_user_id_path(@user.id)
+      end
+
+    end
+    context "when profile_image == 'y'" do
+
+      it "deletes the contact" do
+        expect{
+          delete :destroy_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo2.user_id,users_photo_id:@users_photo2.id
+        }.to change(UsersPhoto,:count).by(0)
+      end
+
+      it "redirects to contacts#index" do
+        delete :destroy_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo2.user_id,users_photo_id:@users_photo2.id
+        response.should redirect_to index_users_photos_by_user_id_path(@user.id)
+      end
+
+    end
+  end
+
+
+  # PUT update set profile image
+  #/users_photos/update_users_photos_profile_image_by_user_id_by_users_photo_id/:user_id/:users_photo_id
+  #/users_photos/update_users_photos_profile_image_by_user_id_by_users_photo_id/30/400.json
+  #success    ->  head  200 ok
+
+  #***********************************
+  # rspec test  update_users_photos_profile_image_by_user_id_by_users_photo_id
+  #***********************************
+
+
+  describe "PUT update_users_photos_profile_image_by_user_id_by_users_photo_id", tag_update_custom:true do
+
+    describe "is regular user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        @users_photo = FactoryGirl.create(:users_photo,user_id:@user.id)
+        sign_in @user
+      end
+
+
+      context "valid attributes" do
+        it "located the requested @user photos" do
+          put :update_users_photos_profile_image_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id
+          assigns(:users_photo).should eq(@users_photo)
+        end
+      end
+
+      it "changes @user photos's attributes" do
+
+        @users_photo.profile_image.should eq("n")
+        put :update_users_photos_profile_image_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id
+        @users_photo.reload
+        @users_photo.profile_image.should eq("y")
+      end
+
+
+      context "return values " do
+        it "should count one profile image 'Y' " do
+          @users_photo1 = FactoryGirl.create(:users_photo,user_id:@user.id,profile_image:'y')
+          @user_photo_count  = UsersPhoto.where("profile_image = 'y' and user_id = ?",@user.id).count
+          @user_photo_count.should == 2
+          put :update_users_photos_profile_image_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id
+          @user_photo_count  = UsersPhoto.where("profile_image = 'y' and user_id = ?",@user.id).count
+          @user_photo_count.should == 1
+        end
+
+      end
+
+      context "invalid attributes" do
+
+        it "does not change @users photo's attributes" do
+          put :update_users_photos_profile_image_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:-1
+          @users_photo.reload
+          @users_photo.profile_image.should_not eq("y")
+        end
+      end
+    end
+
+    context "is sign in with other user" do
+      before do
+        @user1 = FactoryGirl.create(:user)
+        sign_in @user1
+      end
+      it "has a 404 status code" do
+        put :update_users_photos_profile_image_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id
+        response.should redirect_to root_path
+      end
+    end
+
+
+    context "is sign out user" do
+      before do
+        sign_out
+      end
+      it "has a 404 status code" do
+        put :update_users_photos_profile_image_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id
+        response.should redirect_to root_path
+      end
+    end
+  end
+
+
+  #***********************************
+  # rspec test  update_users_photos_by_user_id_by_users_photo_id
+  #***********************************
+
+
+  describe "PUT update_users_photos_by_user_id_by_users_photo_id", tag_update_custom:true do
+
+    before do
+      @user  = FactoryGirl.create(:user)
+      @users_photo = FactoryGirl.create(:users_photo,user_id:@user.id)
+      sign_in @user
+    end
+
+    describe "is regular user" do
+
+      context "valid attributes" do
+        it "located the requested @user photos" do
+          put :update_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id,users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id)
+          assigns(:users_photo).should eq(@users_photo)
+        end
+      end
+
+      it "changes @user photos's attributes" do
+        put :update_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id, users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id, description: "new desc")
+        @users_photo.reload
+        @users_photo.description.should eq("new desc")
+
+      end
+
+      it "redirects to the updated users photos " do
+        put :update_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id,users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id, description: "new desc")
+        response.should redirect_to index_users_photos_by_user_id_path(@users_photo.user_id)
+      end
+
+      context "invalid attributes" do
+
+        it "locates the requested @user photos" do
+          put :update_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id,users_photo: FactoryGirl.attributes_for(:users_photo,user_id:nil, description: "new desc")
+          assigns(:users_photo).should eq(@users_photo)
+        end
+
+        it "does not change @users photo's attributes" do
+          put :update_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id,users_photo: FactoryGirl.attributes_for(:users_photo,user_id:nil, description: "new desc")
+          @users_photo.reload
+          @users_photo.description.should_not eq("new desc")
+          @users_photo.profile_image.should_not eq("y")
+        end
+        it "re-renders the edit method" do
+          put :update_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id,users_photo: FactoryGirl.attributes_for(:users_photo,user_id:nil, description: "new desc")
+          response.should redirect_to index_users_photos_by_user_id_path(@users_photo.user_id)
+        end
+      end
+    end
+
+    describe "is signout" do
+      before do
+        sign_out
+      end
+
+      it "redirects to root " do
+        put :update_users_photos_by_user_id_by_users_photo_id, user_id: @users_photo.user_id,users_photo_id:@users_photo.id,users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id, description: "new desc")
+        response.should redirect_to root_path
+      end
+    end
+  end
+
+  # POST insert user image
+  #/users_photos/create_users_photos_by_user_id/:user_id
+  #/users_photos/create_users_photos_by_user_id/206.json
+  # Content-Type : multipart/form-data
+  # Form Parameters:
+  #  params[:users_photo])
+  #Return ->
+  #success    ->  head  201 create
+
+
+  #***********************************
+  # rspec test create_users_photos_by_user_id
+  #***********************************
+
+
+  describe "POST create_users_photos_by_user_id", tag_create_custom:true  do
+
+    before do
+      @user  = FactoryGirl.create(:user)
+      @users_photo = FactoryGirl.create(:users_photo,user_id:@user.id)
+      sign_in @user
+    end
+
+    describe "is regular user" do
+      context "with valid params" do
+
+        it "creates a new User Photo" do
+
+          expect {
+            post :create_users_photos_by_user_id,user_id:@user.id, users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id)
+          }.to change(UsersPhoto, :count).by(1)
+        end
+
+        it "assigns a newly created user photos as @users photos" do
+          post :create_users_photos_by_user_id,user_id:@user.id, users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id)
+          assigns(:users_photo).should be_a(UsersPhoto)
+          assigns(:users_photo).should be_persisted
+        end
+
+        it "redirects to the created user photos" do
+          post :create_users_photos_by_user_id,user_id:@user.id, users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id)
+          response.should redirect_to index_users_photos_by_user_id_path(@user.id)
+        end
+      end
+
+      context "with invalid params" do
+
+        context "with invalid attributes" do
+          it "does not save the new contact" do
+            expect{
+              post :create_users_photos_by_user_id,user_id:-1, users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id)
+            }.to_not change(UsersPhoto,:count)
+          end
+          it "re-renders the new method" do
+            post :create_users_photos_by_user_id,user_id:-1, users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id)
+            response.should redirect_to root_path
+          end
+        end
+
+      end
+
+    end
+
+    describe "is sign out user " do
+      before do
+         sign_out
+      end
+
+      it "redirects to root" do
+        post :create_users_photos_by_user_id,user_id:@user.id, users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id)
+        response.should redirect_to root_path
+      end
+
+      it "not redirects to the index" do
+
+        post :create_users_photos_by_user_id,user_id:@user.id, users_photo: FactoryGirl.attributes_for(:users_photo,user_id:@user.id)
+        response.should_not redirect_to index_users_photos_by_user_id_path(@user.id)
+      end
+    end
+
+
+  end
+
+
+
+
+
+
   ##***********************************
   ## rspec test  #json_create_users_photo_by_user_id
   ##***********************************

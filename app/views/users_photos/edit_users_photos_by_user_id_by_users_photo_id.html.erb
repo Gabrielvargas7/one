@@ -1,0 +1,28 @@
+<%= form_for(@users_photo, url: update_users_photos_by_user_id_by_users_photo_id_path(@users_photo.user_id,@users_photo.id),:html => {:multipart => true}) do |f| %>
+    <% if @users_photo.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@users_photo.errors.count, "error") %> prohibited this users_photo from being saved:</h2>
+
+          <ul>
+            <% @users_photo.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_field :description %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image_name %><br />
+      <%= f.file_field :image_name %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

@@ -20,16 +20,23 @@
 
 [
     {
-        "description": "\"King of the castle! Go do this, go do that.\"",
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "A more elegant looking bird cage with a modern table to place it on. Why not have a nice \"crib\" for the bird. ",
         "hide": "no",
-        "id": 92,
+        "id": 24,
         "image_name": {
-            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823132/74322-items_design-image_name-silla-92.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822927/66461-items_design-image_name-crystal-24.png"
         },
-        "item_id": 4,
-        "location_id": "25",
-        "name": "Silla",
-        "section_id": "2",
+        "item_id": 2,
+        "like": null,
+        "location_id": "2",
+        "make": null,
+        "name": "Crystal",
+        "section_id": "1",
+        "special_name": null,
+        "style": null,
         "image_name_hover": {
             "url": "/assets/fallback/items_design/default_items_design.png"
         },

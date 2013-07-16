@@ -11,7 +11,7 @@
     <th>Bundles Id</th>
     <th>Name</th>
     <th>Description</th>
-    <th>Active</th>
+
 
     <th>Bundle Image name</th>
     <th>Bundle Image name Set</th>
@@ -22,6 +22,15 @@
 
     <th>Section id</th>
     <th>Section name</th>
+    <th>Category</th>
+    <th>Style</th>
+    <th>Brand</th>
+    <th>Location</th>
+    <th>Color</th>
+    <th>Make</th>
+    <th>Special Name</th>
+    <th>Like</th>
+    <th>Active</th>
 
 
 
@@ -37,7 +46,7 @@
     <td><%= bundle.id %></td>
     <td><%= bundle.name %></td>
     <td><%= bundle.description %></td>
-    <td><%= bundle.active %></td>
+
 
     <td> <%= image_tag bundle.image_name.url().to_s ,width: 100, height:100 %> </td>
     <td> <%= image_tag bundle.image_name_set.url().to_s ,width: 100, height:100 %> </td>
@@ -61,6 +70,20 @@
         <td><%= bundle.section.id %></td>
         <td><%= bundle.section.name %></td>
     <%  end %>
+
+    <td><%= bundle.category %></td>
+    <td><%= bundle.style %></td>
+    <td><%= bundle.brand %></td>
+    <td><%= bundle.location %></td>
+    <td><%= bundle.color %></td>
+    <td><%= bundle.make %></td>
+    <td><%= bundle.special_name %></td>
+    <td><%= bundle.like %></td>
+    <%  if bundle.active.eql?('n') %>
+        <td bgcolor="red" ><%= bundle.active %></td>
+    <% else %>
+        <td><%= bundle.active %></td>
+    <% end %>
 
 
     <td><%= link_to 'Show', bundle %></td>

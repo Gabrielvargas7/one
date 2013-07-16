@@ -33,6 +33,15 @@ FactoryGirl.define do
   factory :theme do
     sequence(:name)  { |n| "theme #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
+    category "category"
+    style "style"
+    brand "brand"
+    location "location"
+    color "color"
+    make "make"
+    special_name "special_name"
+    like 1
+
   end
 
 
@@ -44,6 +53,14 @@ FactoryGirl.define do
     theme_id 1
     section_id 1
     active 'n'
+    category "category"
+    style "style"
+    brand "brand"
+    location "location"
+    color "color"
+    make "make"
+    special_name "special_name"
+    like 1
   end
 
   factory :item do
@@ -72,6 +89,13 @@ FactoryGirl.define do
     sequence(:name)  { |n| "item_design #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
     item_id 1
+    category "category"
+    style "style"
+    brand "brand"
+    color "color"
+    make "make"
+    special_name "special_name"
+    like 1
   end
 
 
@@ -91,6 +115,7 @@ FactoryGirl.define do
     item_id 1
     approval 'y'
     user_bookmark 0 # zero is when all have access to the bookmark
+    like 1
   end
 
 

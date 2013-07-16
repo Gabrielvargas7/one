@@ -232,7 +232,8 @@ class BookmarksController < ApplicationController
                       i_frame,
                       image_name,
                       image_name_desc,
-                      title').
+                      title,
+                      "like"').
             joins(:bookmarks_category).
             where('bookmarks.item_id = ? and user_bookmark = 0', params[:item_id]).order("bookmarks_category_id,bookmarks.id")
 
@@ -280,7 +281,8 @@ class BookmarksController < ApplicationController
                       i_frame,
                       image_name,
                       image_name_desc,
-                      title').
+                      title,
+                      "like"').
               joins(:bookmarks_category).
               where("bookmarks_categories.item_id = ? and bookmarks.user_bookmark in (0,?)", params[:item_id],params[:user_id]).order("bookmarks_category_id,bookmarks.id")
 

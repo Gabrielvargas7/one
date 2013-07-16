@@ -487,6 +487,14 @@ describe BundlesController do
             body_bundle["image_name_set"]["url"].should == @bundle_json.image_name_set.to_s
             body_bundle["section_id"].should == @bundle_json.section_id
             body_bundle["active"].should == 'y'
+            body_bundle["category"].should == @bundle_json.category
+            body_bundle["style"].should == @bundle_json.style
+            body_bundle["brand"].should == @bundle_json.brand
+            body_bundle["location"].should == @bundle_json.location
+            body_bundle["color"].should == @bundle_json.color
+            body_bundle["make"].should == @bundle_json.make
+            body_bundle["special_name"].should == @bundle_json.special_name
+            body_bundle["like"].should == @bundle_json.like
 
           end
         end

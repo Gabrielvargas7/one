@@ -13,7 +13,21 @@
 #
 
 class Bundle < ActiveRecord::Base
-  attr_accessible :description, :image_name, :name, :theme_id,:image_name_set,:section_id,:active
+  attr_accessible :description,
+                  :image_name,
+                  :name,
+                  :theme_id,
+                  :image_name_set,
+                  :section_id,
+                  :active,
+                  :category,
+                  :style,
+                  :brand,
+                  :location,
+                  :color,
+                  :make,
+                  :special_name,
+                  :like
 
   mount_uploader :image_name, BundlesImageUploader
   mount_uploader :image_name_set, BundlesImageSetUploader
@@ -34,6 +48,7 @@ class Bundle < ActiveRecord::Base
   validates :name,presence:true
   validates :theme_id,presence:true, :numericality => { :only_integer => true }
   validates :section_id,presence:true,:numericality => { :only_integer => true }
+  validates :like, :numericality => { :only_integer => true }
 
 
 

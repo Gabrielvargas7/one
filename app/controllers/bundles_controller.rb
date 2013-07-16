@@ -135,11 +135,10 @@ class BundlesController < ApplicationController
             format.html { redirect_to @bundle, notice: 'something go wrong.' }
           end
         else
-          format.html { redirect_to @bundle, notice: "Bundle item design doesn't exist, you need to have a least one." }
+          format.html { redirect_to @bundle, notice:  "Bundle item design doesn't exist yet, you need to have a least one." }
         end
       else
         format.json { render json: @bundle.errors, status: :unprocessable_entity }
-
 
       end
     end

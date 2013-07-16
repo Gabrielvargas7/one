@@ -9,6 +9,10 @@ class UsersProfilesController < ApplicationController
                       :edit,
                       :update,
                       :create,
+                      :edit_users_profiles_by_user_id,
+                      :show_users_profiles_by_user_id,
+                      :update_users_profiles_by_user_id
+
                 ]
 
 

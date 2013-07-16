@@ -347,7 +347,13 @@ describe ItemsDesignsController do
             body_items_design["image_name_selection"]["url"].should == @items_design_json.image_name_selection.to_s
             body_items_design["image_name_hover"]["url"].should == @items_design_json.image_name_hover.to_s
             body_items_design["item_id"].should == @items_design_json.item_id
-
+            body_items_design["category"].should == @items_design_json.category
+            body_items_design["style"].should == @items_design_json.style
+            body_items_design["brand"].should == @items_design_json.brand
+            body_items_design["color"].should == @items_design_json.color
+            body_items_design["make"].should == @items_design_json.make
+            body_items_design["special_name"].should == @items_design_json.special_name
+            body_items_design["like"].should == @items_design_json.like
 
           end
         end

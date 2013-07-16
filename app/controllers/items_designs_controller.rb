@@ -29,7 +29,7 @@ class ItemsDesignsController < ApplicationController
   # GET /items_designs.json
   def index
 
-    @items_designs = ItemsDesign.all
+    @items_designs = ItemsDesign.order(:item_id,:id).all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items_designs }

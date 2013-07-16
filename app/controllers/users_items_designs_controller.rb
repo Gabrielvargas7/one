@@ -130,6 +130,14 @@ class UsersItemsDesignsController < ApplicationController
                                         items_designs.item_id,
                                         items_designs.description,
                                         items_designs.image_name,
+                                            items_designs.category,
+                                            items_designs.style,
+                                            items_designs.brand,
+                                            items_designs.color,
+                                            items_designs.make,
+                                            items_designs.special_name,
+                                            items_designs.like,
+
                                         users_items_designs.hide,
                                         users_items_designs.location_id,
                                         locations.section_id').
@@ -163,6 +171,13 @@ class UsersItemsDesignsController < ApplicationController
                                             items_designs.item_id,
                                             items_designs.description,
                                             items_designs.image_name,
+                                            items_designs.category,
+                                            items_designs.style,
+                                            items_designs.brand,
+                                            items_designs.color,
+                                            items_designs.make,
+                                            items_designs.special_name,
+                                            items_designs.like,
                                             users_items_designs.hide,
                                             users_items_designs.location_id,
                                             locations.section_id').
@@ -199,6 +214,14 @@ class UsersItemsDesignsController < ApplicationController
                                         items_designs.item_id,
                                         items_designs.description,
                                         items_designs.image_name,
+                                            items_designs.category,
+                                            items_designs.style,
+                                            items_designs.brand,
+                                            items_designs.color,
+                                            items_designs.make,
+                                            items_designs.special_name,
+                                            items_designs.like,
+
                                         users_items_designs.hide,
                                         users_items_designs.location_id,
                                         locations.section_id').

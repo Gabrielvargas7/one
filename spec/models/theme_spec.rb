@@ -29,6 +29,17 @@ describe Theme do
   it { @theme.should respond_to(:image_name)}
   it { @theme.should respond_to(:image_name_cache) }
   it { @theme.should respond_to(:image_name_selection_cache) }
+  it { @theme.should respond_to(:special_name) }
+  it { @theme.should respond_to(:category) }
+  it { @theme.should respond_to(:style) }
+  it { @theme.should respond_to(:brand) }
+  it { @theme.should respond_to(:color) }
+  it { @theme.should respond_to(:location) }
+  it { @theme.should respond_to(:make) }
+  it { @theme.should respond_to(:like) }
+
+
+
 
   it { @theme.should be_valid }
 
