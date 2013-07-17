@@ -21,6 +21,8 @@ describe FriendsController do
 
 
     @friend1 = FactoryGirl.create(:friend,user_id:@user1.id,user_id_friend:@user2.id)
+    @friend1 = FactoryGirl.create(:friend,user_id:@user2.id,user_id_friend:@user1.id)
+
     @friend2 = FactoryGirl.create(:friend,user_id:@user1.id,user_id_friend:@user3.id)
     @friend3 = FactoryGirl.create(:friend,user_id:@user1.id,user_id_friend:@user4.id)
     @friend4 = FactoryGirl.create(:friend,user_id:@user1.id,user_id_friend:@user5.id)
@@ -324,6 +326,22 @@ describe FriendsController do
           }.to change(Friend, :count).by(2)
         end
 
+        it "numeber of friend increase by 1 " do
+          @user_profile_1 = UsersProfile.find_all_by_user_id(@user1.id).first
+          @user_profile_2 = UsersProfile.find_all_by_user_id(@user_requested.id).first
+
+          @user_profile_1.friends_number.should be == 4
+          @user_profile_2.friends_number.should be == 0
+
+          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+          @user_profile_1.reload
+          @user_profile_1.friends_number.should be == 5
+          @user_profile_2.reload
+          @user_profile_2.friends_number.should be == 1
+
+        end
+
+
         it "assigns a newly created friend request as @friend request" do
           post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
           assigns(:user_friend_request).should be_a(Friend)
@@ -397,14 +415,33 @@ describe FriendsController do
   #'/friends/json/destroy_friend_by_user_id_and_user_id_friend/:user_id/:user_id_friend'
   describe "DELETE json_destroy_friend_by_user_id_and_user_id_friend",tag_destroy:true do
     before do
+
       sign_in @user1
     end
 
-    it "deletes friend request" do
+    it "deletes friend " do
       expect{
         delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
-      }.to change(Friend,:count).by(-1)
+      }.to change(Friend,:count).by(-2)
     end
+
+
+    it "numeber of friend decrease by 1 " do
+        @user_profile_1 = UsersProfile.find_all_by_user_id(@user1.id).first
+        @user_profile_2 = UsersProfile.find_all_by_user_id(@user2.id).first
+
+        @user_profile_1.friends_number.should be == 4
+        @user_profile_2.friends_number.should be == 2
+
+        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
+        @user_profile_1.reload
+        @user_profile_1.friends_number.should be == 3
+        @user_profile_2.reload
+        @user_profile_2.friends_number.should be == 1
+
+    end
+
+
 
     context "is sign in with other user" do
       before do

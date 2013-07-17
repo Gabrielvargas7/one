@@ -35,6 +35,8 @@ describe User do
   it { @user.should respond_to(:username)}
   it { @user.should respond_to(:admin) }
 
+
+
   #room authentication
   it { @user.should respond_to(:password_digest)}
   it { should respond_to(:password) }
@@ -46,6 +48,7 @@ describe User do
   #facebook or other authentication
   it { @user.should respond_to(:provider)}
   it { @user.should respond_to(:uid)}
+
 
 
   #forget password

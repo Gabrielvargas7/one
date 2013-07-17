@@ -114,6 +114,8 @@ describe RoomsController do
                 body["user_profile"]["country"].should == @user_profile_json.country
                 body["user_profile"]["birthday"].should == @user_profile_json.birthday
                 body["user_profile"]["user_id"].should == @user_profile_json.user_id
+                body["user_profile"]["friends_number"].should == @user_profile_json.friends_number
+
 
                 @user_photos_json = UsersPhoto.find_all_by_user_id_and_profile_image(body["user"]["id"],'y').first
                 body["user_photos"]["description"].should == @user_photos_json.description

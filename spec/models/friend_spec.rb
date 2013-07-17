@@ -33,4 +33,28 @@ describe Friend do
   it { @friend.should be_valid }
 
 
+  describe "user_id_friend", tag_user_friend:true do
+
+    before do
+      @user3 = FactoryGirl.create(:user)
+      @user4 = FactoryGirl.create(:user)
+    end
+    it "creates a new User Friend #add_one_friend" do
+
+      expect {
+        @friend2 = FactoryGirl.create(:friend,user_id:@user3.id,user_id_friend:@user4.id)
+      }.to change(Friend, :count).by(1)
+    end
+
+    it "not changes #user_id_friend_exist" do
+
+      expect {
+        @friend2 = FactoryGirl.create(:friend,user_id:@user3.id,user_id_friend:1)
+      }.to raise_error
+    end
+
+  end
+
+
+
 end

@@ -35,6 +35,7 @@
         "user_id": 23
     },
     "user_profile": {
+        "friends_number": 0
         "birthday": null,
         "city": null,
         "country": null,

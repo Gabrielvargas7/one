@@ -1,5 +1,13 @@
 class UsersProfile < ActiveRecord::Base
-  attr_accessible :birthday, :city, :country, :description, :firstname, :gender, :lastname, :user_id
+  attr_accessible :birthday,
+                  :city,
+                  :country,
+                  :description,
+                  :firstname,
+                  :gender,
+                  :lastname,
+                  :user_id,
+                  :friends_number
 
 
   #before_save{ get_location}

@@ -91,17 +91,28 @@ class FriendsController < ApplicationController
         #validation of the users
         #User.where('id = ? or id = ?',params[:user_id],params[:user_id_friend] )
         if User.exists?(id:params[:user_id])
-          if User.exists?(id:params[:user_id_friend])
+          if User.exists?(id:params[:user_id_friend])or
+             UsersProfile.exists?(user_id:params[:user_id]) or
+             UsersProfile.exists?(user_idid:params[:user_id_friend])
 
-            if (Friend.exists?(user_id:params[:user_id],user_id_friend:params[:user_id_friend]) or
-               Friend.exists?(user_id:params[:user_id_friend],user_id_friend:params[:user_id]))
+             if (Friend.exists?(user_id:params[:user_id],user_id_friend:params[:user_id_friend]) or
+                Friend.exists?(user_id:params[:user_id_friend],user_id_friend:params[:user_id]))
 
 
               @friend_1 = Friend.find_by_user_id_and_user_id_friend(params[:user_id],params[:user_id_friend])
               @friend_2 = Friend.find_by_user_id_and_user_id_friend(params[:user_id_friend],params[:user_id])
 
+              @user_profile_1 = UsersProfile.find_all_by_user_id(params[:user_id]).first
+              @user_profile_2 = UsersProfile.find_all_by_user_id(params[:user_id_friend]).first
+
+
               ActiveRecord::Base.transaction do
                 begin
+                  @user_profile_1.friends_number -=1
+                  @user_profile_2.friends_number -=1
+
+                  @user_profile_1.save
+                  @user_profile_2.save
 
                   @friend_1.destroy unless @friend_1.nil?
                   @friend_2.destroy unless @friend_2.nil?
