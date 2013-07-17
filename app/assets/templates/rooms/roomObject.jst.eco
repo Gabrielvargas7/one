@@ -1,12 +1,13 @@
-<%= @room_object.length %> Object Templates. Length to left.
-
-    <p id="roomObjectPar" style="">Objects Template Works!</p>
-    <ol id="roomObjList">
     <% for entry in @room_object: %>
-        <li><%= entry.name %> <img class="room_object" src="<%= entry.image_name.url%>"
-        style="position:absolute;width:<%=entry.width%>px;left:<%=entry.x%>px;top:<%=entry.y%>px;">
-        </li>
+        <div class="room_object_Container"
+        style="position:absolute;
+              width:<%=entry.width%>px;
+              left:<%=entry.x%>px;
+              top:<%=entry.y%>px;
+              z-index:<%=entry.z%>;"><%= entry.name %>
+        <img class="room_object" src="<%= entry.image_name.url%>">
+        </div>
     <% end %>
-    </ol>
+
 
 

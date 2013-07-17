@@ -9,8 +9,8 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
     @theme_collection = new Mywebroom.Collections.RoomsJsonShowRoomByUserId()
     @signedUserInfoCollection.fetch({reset: true})
     @theme_collection.fetch({reset: true})
-    @test_collection = new Mywebroom.Collections.RoomObjectsCollection()
-    @test_collection.fetch({reset: true})
+    #@test_collection = new Mywebroom.Collections.RoomObjectsCollection()
+    #@test_collection.fetch({reset: true})
 
 
   routes_room: ->
@@ -20,8 +20,8 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
     #themeView in background
     themeView = new Mywebroom.Views.RoomThemeView(collection: @theme_collection)
     $('#c').append(themeView.render().el)
-    objectsView = new Mywebroom.Views.RoomObjectView(collection: @test_collection)
-    $('#c').append(objectsView.render().el)
+    #objectsView = new Mywebroom.Views.RoomObjectView(collection: @test_collection)
+    #$('#c').append(objectsView.render().el)
     #for each object, we need to create a new Object View and render it in the room.
     #Or we need to create a collections view with all the objects in it.
   show_objects: ->

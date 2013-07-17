@@ -2,6 +2,8 @@
 <%= @user_theme.length %>
     <% for entry in @user_theme.models: %>
         <%= entry.get('user_theme')[0].image_name.url %>
+       <div id="room_theme_container">
        <img id="current_background" src=<%= entry.get('user_theme')[0].image_name.url %>>
+       </div>
     <% end %>
 
