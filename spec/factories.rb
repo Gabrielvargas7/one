@@ -66,6 +66,7 @@ FactoryGirl.define do
   factory :item do
     sequence(:name)  { |n| "item #{n}" }
     clickable  "yes"
+    priority_order 1
   end
 
   factory :location do

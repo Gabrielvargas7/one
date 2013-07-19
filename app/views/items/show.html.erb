@@ -15,6 +15,17 @@
   <%= @item.clickable %>
 </p>
 
+<p>
+  <b>Priority order:</b>
+  <%= @item.priority_order %>
+</p>
+
+<p>
+  <b>Image name:</b>
+  <%= image_tag @item.image_name.url.to_s %>
+  <%= @item.image_name.to_s %>
+</p>
+
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

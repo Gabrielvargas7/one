@@ -26,6 +26,9 @@ describe Item do
   #theme info
   it { @item.should respond_to(:name) }
   it { @item.should respond_to(:clickable) }
+  it { @item.should respond_to(:image_name) }
+  it { @item.should respond_to(:priority_order) }
+
 
   it { @item.should be_valid }
 
@@ -76,6 +79,47 @@ describe Item do
 
   end
 
+
+  ###############
+  #test validation - upload image
+  ###############
+  # these test only run when it is explicit.- example
+  # bundle exec rspec --tag tag_image spec/models/item_spec.rb
+  describe "when image",tag_image_item:true  do
+
+    let(:item_with_image_upload) { Item.create(
+        name:"theme test",
+        clickable:"yes",
+        image_name:Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'image', 'test_image.jpg'))
+    )}
+
+    it "should be upload to CDN - cloudinary " do
+      #puts theme_with_image_upload.image_name
+      #puts theme_with_image_upload.image_name_selection
+      item_with_image_upload.image_name.to_s.should include("http")
+
+
+    end
+
+  end
+
+
+  ###############
+  #test validation - default image
+  ###############
+  describe "when image default ", tag_image_default: true  do
+
+    let(:image_default) {"/assets/fallback/item/default_item.png"}
+
+    it "should be default  " do
+      #puts @theme.image_name
+      #puts @theme.image_name_selection
+
+      @item.image_name.to_s.should == image_default.to_s
+
+    end
+
+  end
 
 
 

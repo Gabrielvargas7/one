@@ -21,7 +21,7 @@
           <% end %>
         </div>
 
-        <div class="field">
+       <div class="field">
         <%= f.label :name %><br />
         <%= f.text_field :name %>
       </div>
@@ -33,7 +33,19 @@
 
       </div>
 
-      <div class="actions">
+        <div class="field">
+          <%= f.label :priority_order %><br />
+          <%= f.number_field :priority_order %>
+        </div>
+
+
+        <div class="field">
+          <%= f.label :image_name %><br />
+          <%= f.file_field :image_name %>
+        </div>
+
+
+        <div class="actions">
         <%= f.submit %>
     </div>
   </div>
