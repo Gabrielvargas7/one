@@ -354,6 +354,8 @@ describe ItemsDesignsController do
             body_items_design["make"].should == @items_design_json.make
             body_items_design["special_name"].should == @items_design_json.special_name
             body_items_design["like"].should == @items_design_json.like
+            body_items_design["price"].should == @items_design_json.price.to_s
+            body_items_design["product_url"].should == @items_design_json.product_url
 
           end
         end

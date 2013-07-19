@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717165802) do
+ActiveRecord::Schema.define(:version => 20130719165510) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -143,15 +143,17 @@ ActiveRecord::Schema.define(:version => 20130717165802) do
     t.string   "image_name"
     t.string   "image_name_hover"
     t.string   "image_name_selection"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
     t.string   "category"
     t.string   "style"
     t.string   "brand"
     t.string   "color"
     t.string   "make"
     t.string   "special_name"
-    t.integer  "like",                 :default => 0
+    t.integer  "like",                                               :default => 0
+    t.decimal  "price",                :precision => 8, :scale => 2, :default => 0.0
+    t.string   "product_url"
   end
 
   add_index "items_designs", ["brand"], :name => "index_items_designs_on_brand"
@@ -179,14 +181,14 @@ ActiveRecord::Schema.define(:version => 20130717165802) do
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.decimal  "x"
-    t.decimal  "y"
+    t.decimal  "x",           :precision => 8, :scale => 1
+    t.decimal  "y",           :precision => 8, :scale => 1
     t.integer  "z"
     t.integer  "width"
     t.integer  "height"
     t.integer  "section_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "locations", ["description"], :name => "index_locations_on_description"

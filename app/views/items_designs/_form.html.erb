@@ -64,9 +64,18 @@
 
         <div class="field">
           <%= f.label :like %><br />
-          <%= f.text_field :like %>
+          <%= f.number_field :like %>
         </div>
 
+        <div class="field">
+          <%= f.label :price %><br />
+          <%= f.text_field :price %>
+        </div>
+
+        <div class="field">
+          <%= f.label :product_url %><br />
+          <%= f.url_field :product_url %>
+        </div>
 
         <div class="field">
             <%= f.label :image_name %><br />

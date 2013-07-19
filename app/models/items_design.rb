@@ -27,7 +27,9 @@ class ItemsDesign < ActiveRecord::Base
                    :color,
                    :make,
                    :special_name,
-                   :like
+                   :like,
+                   :price,
+                   :product_url
 
   #:bundle_id,
 
@@ -44,6 +46,7 @@ class ItemsDesign < ActiveRecord::Base
   validates :name, presence:true
   validates :item_id, :numericality => { :only_integer => true }
   validates :like, :numericality => { :only_integer => true }
+  validates :price,presence:true, numericality: true
 
 
   def id_and_item_design

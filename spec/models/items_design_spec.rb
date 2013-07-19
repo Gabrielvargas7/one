@@ -42,6 +42,9 @@ describe ItemsDesign do
   it { @items_designs.should respond_to(:color) }
   it { @items_designs.should respond_to(:make) }
   it { @items_designs.should respond_to(:like) }
+  it { @items_designs.should respond_to(:price) }
+  it { @items_designs.should respond_to(:product_url) }
+
 
 
 

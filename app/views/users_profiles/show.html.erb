@@ -40,6 +40,10 @@
   <%= @users_profile.user_id %>
 </p>
 
+<p>
+  <b>Friends Number:</b>
+  <%= @users_profile.friends_number %>
+</p>
 
 <%= link_to 'Edit', edit_users_profile_path(@users_profile) %> |
 <%= link_to 'Back', users_profiles_path %>

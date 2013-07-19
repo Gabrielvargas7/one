@@ -68,7 +68,7 @@ describe SearchesController do
         it "should return json_index theme in json" do # depend on what you return in action
           get :json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
           body = JSON.parse(response.body)
-          puts body.as_json
+          #puts body.as_json
           # Test user
           body["users"].each do |user|
 
@@ -76,7 +76,7 @@ describe SearchesController do
             @user_photo_json = UsersPhoto.find_all_by_user_id(@user_json.id).first
 
             #puts "image_name: "+@user_photo_json.image_name.to_s
-            puts "username: "+user["username"].as_json
+            #puts "username: "+user["username"].as_json
 
             user["username"].should == @user_json.username
             user["user_id"].should == @user_json.id
@@ -89,8 +89,8 @@ describe SearchesController do
             @user_profile_json = UsersProfile.find(user["user_id"])
             @user_photo_json = UsersPhoto.find_all_by_user_id(@user_profile_json.id).first
 
-            puts "first name: "+user["firstname"].to_s
-            puts "last name: "+user["lastname"].to_s
+            #puts "first name: "+user["firstname"].to_s
+            #puts "last name: "+user["lastname"].to_s
 
             user["firstname"].should == @user_profile_json.firstname
             user["lastname"].should == @user_profile_json.lastname
@@ -99,7 +99,9 @@ describe SearchesController do
           end
 
           body["themes"].each do |theme|
-            puts theme["name"]
+
+            #puts theme["name"]
+
             @theme_json = Theme.find(theme["id"])
             theme["name"].should == @theme_json.name
             theme["description"].should == @theme_json.description
@@ -119,8 +121,8 @@ describe SearchesController do
 
           body["items_designs"].each do |items_design|
 
-            puts "item design ------->"+items_design["id"].to_s
-            puts "item name ------>"+items_design["items_name"].to_s
+            #puts "item design ------->"+items_design["id"].to_s
+            #puts "item name ------>"+items_design["items_name"].to_s
 
             @items_design_json = ItemsDesign.find(items_design["id"])
             @item_json = Item.find(@items_design_json.item_id)
@@ -145,7 +147,9 @@ describe SearchesController do
 
           body["bundles"].each do |body_bundle|
             @bundle_json = Bundle.find(body_bundle["id"])
-            puts "bundle name ------>"+body_bundle["name"].to_s
+
+            #puts "bundle name ------>"+body_bundle["name"].to_s
+
             body_bundle["name"].should == @bundle_json.name
             body_bundle["description"].should == @bundle_json.description
             body_bundle["id"].should == @bundle_json.id
@@ -166,7 +170,8 @@ describe SearchesController do
           body["bookmarks"].each do |body_bookmark|
             @bookmark_json = Bookmark.find(body_bookmark["id"])
             @bookmarks_category_json = BookmarksCategory.find(body_bookmark["bookmarks_category_id"])
-            puts "bookmark title ------>"+body_bookmark["title"].to_s
+
+            #puts "bookmark title ------>"+body_bookmark["title"].to_s
 
             body_bookmark["id"].should == @bookmark_json.id
             body_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
