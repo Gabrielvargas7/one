@@ -189,9 +189,15 @@ Mywebroom::Application.routes.draw do
   #**************************
   #  start Searches contract
   #**************************
-  match '/searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword', to:
-         'searches#json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword', via: :get, as:
-         :searches_json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword
+  #match '/searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword', to:
+  #       'searches#json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword', via: :get, as:
+  #       :searches_json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword
+
+
+  match '/searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
+         'searches#json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword', via: :get, as:
+          :json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword
+
 
   #--------------------------
   # end Searches contract

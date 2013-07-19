@@ -147,6 +147,7 @@ describe RoomsController do
                   user_theme["description"].should == @theme_json.description
                   user_theme["id"].should == @theme_json.id
                   user_theme["image_name"]["url"].should == @theme_json.image_name.to_s
+
                   user_theme["image_name_selection"]["url"].should == @theme_json.image_name_selection.to_s
                   user_theme["category"].should == @theme_json.category
                   user_theme["style"].should == @theme_json.style
