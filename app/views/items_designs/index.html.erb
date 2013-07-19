@@ -11,9 +11,22 @@
     <th>Id</th>
     <th>Name</th>
     <th>Description</th>
-    <th>Item_Design Image name</th>
+    <th>Item_Design Image</th>
     <th>Item id</th>
     <th>Item Name</th>
+    <th>Item Image</th>
+
+    <th>Category</th>
+    <th>Style</th>
+    <th>Brand</th>
+    <th>Color</th>
+    <th>Make</th>
+    <th>Special Name</th>
+    <th>Like</th>
+    <th>Price</th>
+    <th>product_url</th>
+
+
 
     <th></th>
     <th></th>
@@ -30,11 +43,24 @@
     <%  if items_design.item.nil? %>
         <td></td>
         <td></td>
+        <td></td>
+
     <%  else %>
         <td><%= items_design.item_id %></td>
         <td><%= items_design.item.name %></td>
+        <td><%= image_tag items_design.item.image_name.url().to_s,with:50,height:50 %></td>
 
     <%  end %>
+    <td><%= items_design.category %></td>
+    <td><%= items_design.style %></td>
+    <td><%= items_design.brand %></td>
+    <td><%= items_design.color %></td>
+    <td><%= items_design.make %></td>
+    <td><%= items_design.special_name %></td>
+    <td><%= items_design.like %></td>
+    <td><%= items_design.price %></td>
+    <td><%= items_design.product_url %></td>
+
 
 
 

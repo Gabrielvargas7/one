@@ -21,12 +21,15 @@ gem "fileutils", '0.7'
 gem "carrierwave", '0.8.0'
 gem "cloudinary","1.0.57"
 
-
 gem 'jbuilder','1.4.1'
 
 gem "railties", "3.2.13"
 
 gem "backbone-on-rails", "1.0.0.0"
+
+gem "unicorn", "4.6.3"
+
+gem 'geocoder', "1.1.8"
 
 
 

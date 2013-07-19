@@ -39,6 +39,8 @@ describe Bookmark do
   it { @bookmark.should respond_to(:item_id) }
   it { @bookmark.should respond_to(:approval) }
   it { @bookmark.should respond_to(:user_bookmark) }
+  it { @bookmark.should respond_to(:like) }
+
 
   it { @bookmark.should be_valid }
 

@@ -34,23 +34,22 @@
   <b>Birthday:</b>
   <%= @users_profile.birthday %>
 </p>
+<li><%= link_to "Edit your data ", edit_users_profiles_by_user_id_path(@users_profile.user_id) %></li>
 
-<p>
-  <b>User:</b>
-  <%= @users_profile.user_id %>
-</p>
+<p>-------------------------------------------------------------------------</p>
+
 
 <p>
   <b>User image :</b>
   <%  unless @users_photo.nil? %>
+     </br>
      <%= image_tag(@users_photo.image_name.url().to_s,width: 180, height:180) %>
+    </br>
+      <b>image description:</b>
+     <%= @users_photo.description %>
+
   <% end %>
-
-
 </p>
 
-
-
-
-<li><%= link_to "Edit", edit_users_profiles_by_user_id_path(@users_profile.user_id) %></li>
+<li><%= link_to "Edit your profile image", index_users_photos_by_user_id_path(@users_photo.user_id) %></li>
 

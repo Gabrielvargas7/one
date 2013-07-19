@@ -342,6 +342,16 @@ describe ThemesController do
                   body_theme["id"].should == @theme_json.id
                   body_theme["image_name"]["url"].should == @theme_json.image_name.to_s
                   body_theme["image_name_selection"]["url"].should == @theme_json.image_name_selection.to_s
+                  body_theme["category"].should == @theme_json.category
+                  body_theme["style"].should == @theme_json.style
+                  body_theme["brand"].should == @theme_json.brand
+                  body_theme["location"].should == @theme_json.location
+                  body_theme["color"].should == @theme_json.color
+                  body_theme["make"].should == @theme_json.make
+                  body_theme["special_name"].should == @theme_json.special_name
+                  body_theme["like"].should == @theme_json.like
+
+
                 end
             end
         end
@@ -381,11 +391,25 @@ describe ThemesController do
         it "should return json_show theme in json" do # depend on what you return in action
           get :json_show,id:@theme, :format => :json
           body = JSON.parse(response.body)
+          #puts body.as_json
+          #puts body["category"]
+          #puts @the
+
           body["name"].should == @theme.name
           body["description"].should == @theme.description
           body["id"].should == @theme.id
           body["image_name"]["url"].should == @theme.image_name.to_s
           body["image_name_selection"]["url"].should == @theme.image_name_selection.to_s
+
+          body["category"].should == @theme.category
+          body["style"].should == @theme.style
+          body["brand"].should == @theme.brand
+          body["location"].should == @theme.location
+          body["color"].should == @theme.color
+          body["make"].should == @theme.make
+          body["special_name"].should == @theme.special_name
+          body["like"].should == @theme.like
+
 
 
         end

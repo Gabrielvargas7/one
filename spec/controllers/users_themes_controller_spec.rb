@@ -67,6 +67,16 @@ describe UsersThemesController do
           body["description"].should == @theme.description
           body["id"].should == @theme.id
           body["image_name"]["url"].should == @theme.image_name.to_s
+          body["category"].should == @theme.category
+          body["style"].should == @theme.style
+          body["brand"].should == @theme.brand
+          body["location"].should == @theme.location
+          body["color"].should == @theme.color
+          body["make"].should == @theme.make
+          body["special_name"].should == @theme.special_name
+          body["like"].should == @theme.like
+
+
         end
       end
     end

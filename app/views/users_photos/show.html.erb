@@ -13,6 +13,7 @@
 <p>
   <b>Image name:</b>
   <%= @users_photo.image_name %>
+  <%= image_tag(@users_photo.image_name.url().to_s,width: 180, height:180) %>
 </p>
 
 <p>

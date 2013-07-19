@@ -59,6 +59,8 @@ RSpec.configure do |config|
   config.filter_run_excluding tag_image_bookmark: true
   config.filter_run_excluding tag_image_notification: true
   config.filter_run_excluding tag_image_user_photos: true
+  config.filter_run_excluding tag_image_item: true
+
 
 
 end

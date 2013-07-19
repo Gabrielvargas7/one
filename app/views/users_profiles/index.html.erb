@@ -10,6 +10,8 @@
     <th>Country</th>
     <th>Birthday</th>
     <th>User</th>
+    <th>Friends </th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -25,6 +27,7 @@
     <td><%= users_profile.country %></td>
     <td><%= users_profile.birthday %></td>
     <td><%= users_profile.user_id %></td>
+    <td><%= users_profile.friends_number %></td>
     <td><%= link_to 'Show', users_profile %></td>
     <td><%= link_to 'Edit', edit_users_profile_path(users_profile) %></td>
   </tr>

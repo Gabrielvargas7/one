@@ -12,6 +12,15 @@
     <th>Name</th>
     <th>Description</th>
     <th>Image name</th>
+    <th>Category</th>
+    <th>Style</th>
+    <th>Brand</th>
+    <th>Location</th>
+    <th>Color</th>
+    <th>Make</th>
+    <th>Special Name</th>
+    <th>Like</th>
+
     <th></th>
     <th></th>
 
@@ -23,6 +32,15 @@
     <td><%= theme.name %></td>
     <td><%= theme.description %></td>
     <td><%= image_tag(theme.image_name.url().to_s,width: 100, height:100) %></td>
+
+    <td><%= theme.category %></td>
+    <td><%= theme.style %></td>
+    <td><%= theme.brand %></td>
+    <td><%= theme.location %></td>
+    <td><%= theme.color %></td>
+    <td><%= theme.make %></td>
+    <td><%= theme.special_name %></td>
+    <td><%= theme.like %></td>
 
 
     <td><%= link_to 'Show', theme %></td>

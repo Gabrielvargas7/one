@@ -14,26 +14,24 @@
 
   </tr>
 
-<% @users_photos.each do |users_photo| %>
-  <tr>
-    <td><%= users_photo.id %></td>
-    <%  if users_photo.user.nil? %>
-        <td></td>
-        <td></td>
-    <%  else %>
-        <td><%= users_photo.user.username %></td>
-        <td><%= users_photo.user.email %></td>
-    <%  end %>
-    <td><%= users_photo.description %></td>
-    <td><%= image_tag(users_photo.image_name.url().to_s,width: 100, height:100) %></td>
-    <td><%= users_photo.profile_image %></td>
+  <% @users_photos.each do |users_photo| %>
+      <tr>
+        <td><%= users_photo.id %></td>
+        <%  if users_photo.user.nil? %>
+            <td></td>
+            <td></td>
+        <%  else %>
+            <td><%= users_photo.user.username %></td>
+            <td><%= users_photo.user.email %></td>
+        <%  end %>
+        <td><%= users_photo.description %></td>
+        <td><%= image_tag(users_photo.image_name.url().to_s,width: 100, height:100) %></td>
+        <td><%= users_photo.profile_image %></td>
 
-    <td><%= link_to 'Show', users_photo %></td>
-    <td><%= link_to 'Edit', edit_users_photo_path(users_photo) %></td>
-  </tr>
-<% end %>
+        <td><%= link_to 'Show', users_photo %></td>
+        <td><%= link_to 'Edit', edit_users_photo_path(users_photo) %></td>
+      </tr>
+  <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Users photo', new_users_photo_path %>

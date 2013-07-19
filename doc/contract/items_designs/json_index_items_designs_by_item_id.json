@@ -20,7 +20,10 @@
 
 [
     {
+        "brand": null,
         "bundle_id": 1,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:34:16Z",
         "description": "This elegant design has a distinct color and it shows that your bed is an important piece of furniture for you. Its organized, spacious, and adds color to your room design. ",
         "id": 1,
@@ -34,11 +37,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822859/70275-items_design-image_name_selection-peach-queen-1-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Peach Queen",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:34:16Z"
     },
     {
+        "brand": null,
         "bundle_id": 2,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:35:24Z",
         "description": "This messy bed its a design inspired by a couple of us who actually know that sleeping in your bed when its messy is more comfortable than having to unfold the sheets and find the comfy spot. ",
         "id": 23,
@@ -52,11 +62,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822926/96120-items_design-image_name_selection-messy-23-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Messy",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:35:24Z"
     },
     {
+        "brand": null,
         "bundle_id": 3,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:36:31Z",
         "description": "Sleep like baby, wake up feeling like a million dollar man! or woman. This grey bed looks stylish and really comfortable.",
         "id": 45,
@@ -70,11 +87,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822996/51051-items_design-image_name_selection-luxury-dream-45-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Luxury Dream",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:36:31Z"
     },
     {
+        "brand": null,
         "bundle_id": 4,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:37:36Z",
         "description": "After this past Summer Olympics, we all have a little obsession with london. So from our obsession, came to be this great design which adds color, attitude and style to your room. This is another favorite here in our offices. ",
         "id": 67,
@@ -88,11 +112,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823059/41886-items_design-image_name_selection-hail-the-queen-67-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Hail the Queen",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:37:36Z"
     },
     {
+        "brand": null,
         "bundle_id": 5,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:38:42Z",
         "description": "Duerme como un rey!",
         "id": 89,
@@ -106,11 +137,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823125/93527-items_design-image_name_selection-cama-89-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Cama",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:38:42Z"
     },
     {
+        "brand": null,
         "bundle_id": 6,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:39:54Z",
         "description": "Even thought we called it grasshopper, its not going to jump away!",
         "id": 111,
@@ -124,29 +162,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823197/98215-items_design-image_name_selection-grasshopper-111-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Grasshopper",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:39:54Z"
     },
     {
-        "bundle_id": 16,
-        "created_at": "2013-05-17T20:50:53Z",
-        "description": "Fish And Chips",
-        "id": 406,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Alps",
-        "updated_at": "2013-05-17T20:50:53Z"
-    },
-    {
+        "brand": null,
         "bundle_id": 7,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:41:22Z",
         "description": "Pick Me!",
         "id": 139,
@@ -160,11 +187,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823284/95457-items_design-image_name_selection-mystery-139-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Mystery",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:41:22Z"
     },
     {
+        "brand": null,
         "bundle_id": 8,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:42:32Z",
         "description": "Chill of Braziu",
         "id": 163,
@@ -178,119 +212,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823355/83806-items_design-image_name_selection-brazil-163-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Brazil",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:42:32Z"
     },
     {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 430,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Asiatica",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 431,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Devil",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 432,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Dolphin",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 433,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Ritz",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 434,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Shoko",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 435,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "BoConcept",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
+        "brand": null,
         "bundle_id": 9,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:44:20Z",
         "description": "Ai yaiyai this is Dubai!",
         "id": 193,
@@ -304,173 +237,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823463/18970-items_design-image_name_selection-dubai-193-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Dubai",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:44:20Z"
     },
     {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 436,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Velvet",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 437,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Barrel",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 438,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Lemon",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 439,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Installment",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 440,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Futuro",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 441,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Retro",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 442,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Classique",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 443,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Kartel flowers",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
-        "bundle_id": 0,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "Test",
-        "id": 444,
-        "image_name": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_hover": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Fusion",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
+        "brand": null,
         "bundle_id": 10,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:45:39Z",
         "description": "All Pink everywhere. ",
         "id": 217,
@@ -484,11 +262,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823542/19289-items_design-image_name_selection-pink-217-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Pink",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:45:39Z"
     },
     {
+        "brand": null,
         "bundle_id": 11,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:46:48Z",
         "description": "Sushi?",
         "id": 241,
@@ -502,11 +287,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823610/98510-items_design-image_name_selection-asian-fusion-241-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Asian Fusion",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:46:48Z"
     },
     {
+        "brand": null,
         "bundle_id": 12,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:48:01Z",
         "description": "Vodka for you.",
         "id": 265,
@@ -520,29 +312,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823686/15731-items_design-image_name_selection-ussr-265-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "USSR",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:48:01Z"
     },
     {
-        "bundle_id": 17,
-        "created_at": "2013-05-17T20:50:54Z",
-        "description": "White Sand!",
-        "id": 445,
-        "image_name": {
-            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823855/74299-items_design-image_name-puerto-rico-445.png"
-        },
-        "image_name_hover": {
-            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823856/11209-items_design-image_name_hover-puerto-rico-445-h.png"
-        },
-        "image_name_selection": {
-            "url": "/assets/fallback/items_design/default_items_design.png"
-        },
-        "item_id": 1,
-        "name": "Puerto Rico",
-        "updated_at": "2013-05-17T20:50:54Z"
-    },
-    {
+        "brand": null,
         "bundle_id": 13,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:49:18Z",
         "description": "Romantica for you.",
         "id": 299,
@@ -556,11 +337,18 @@
             "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823760/93423-items_design-image_name_selection-parisian-299-300x300.jpg"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Parisian",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:49:18Z"
     },
     {
+        "brand": null,
         "bundle_id": 14,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:50:33Z",
         "description": "Go Green",
         "id": 358,
@@ -574,11 +362,18 @@
             "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Green",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:50:33Z"
     },
     {
+        "brand": null,
         "bundle_id": 15,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:50:52Z",
         "description": "Fish And Chips",
         "id": 382,
@@ -592,11 +387,443 @@
             "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "London",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:50:52Z"
     },
     {
+        "brand": null,
+        "bundle_id": 16,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:53Z",
+        "description": "Fish And Chips",
+        "id": 406,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Alps",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:53Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 430,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Asiatica",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 431,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Devil",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 432,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Dolphin",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 433,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Ritz",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 434,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Shoko",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 435,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "BoConcept",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 436,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Velvet",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 437,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Barrel",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 438,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Lemon",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 439,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Installment",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 440,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Futuro",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 441,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Retro",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 442,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Classique",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 443,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Kartel flowers",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "Test",
+        "id": 444,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Fusion",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 17,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:54Z",
+        "description": "White Sand!",
+        "id": 445,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823855/74299-items_design-image_name-puerto-rico-445.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823856/11209-items_design-image_name_hover-puerto-rico-445-h.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 1,
+        "like": null,
+        "make": null,
+        "name": "Puerto Rico",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:54Z"
+    },
+    {
+        "brand": null,
         "bundle_id": 18,
+        "category": null,
+        "color": null,
         "created_at": "2013-05-17T20:51:46Z",
         "description": "Hawaii!",
         "id": 469,
@@ -610,7 +837,11 @@
             "url": "/assets/fallback/items_design/default_items_design.png"
         },
         "item_id": 1,
+        "like": null,
+        "make": null,
         "name": "Aloha",
+        "special_name": null,
+        "style": null,
         "updated_at": "2013-05-17T20:51:46Z"
     }
 ]

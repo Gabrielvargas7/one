@@ -16,7 +16,7 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :clickable, :name
+  attr_accessible :clickable, :name ,:priority_order,:image_name
                   #:folder_name, :height, :name, :width, :x, :y, :z
 
   has_many :items_designs
@@ -25,18 +25,15 @@ class Item < ActiveRecord::Base
   has_many :bundles_bookmarks
   has_many :items_locations
 
+  mount_uploader :image_name, ItemsImageUploader
+
   VALID_YES_NO_REGEX = /(yes)|(no)/
 
   before_save { |item| item.clickable = clickable.downcase }
 
   validates :name,presence:true
   validates :clickable, presence:true, format: { with: VALID_YES_NO_REGEX }
-
-  #validates :height, presence:true, numericality: { only_integer: true }
-  #validates :width, presence:true, numericality: { only_integer: true }
-  #validates :x,presence:true, numericality: true
-  #validates :y,presence:true, numericality: true
-  #validates :z,presence:true, numericality: { only_integer: true }
+  validates :priority_order,presence:true, numericality: true
 
 
   def id_and_item

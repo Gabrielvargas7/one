@@ -49,7 +49,7 @@ class UsersThemesController < ApplicationController
         if Theme.exists?(id:@user_theme.theme_id)
 
           @theme = Theme.find(@user_theme.theme_id)
-          format.json { render json: @theme.as_json(only: [:id,:name,:description,:image_name]) }
+          format.json { render json: @theme }
         else
           format.json { render json: 'not found theme of user ' , status: :not_found }
         end

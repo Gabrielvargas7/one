@@ -16,6 +16,40 @@
 </p>
 
 <p>
+  <b>Category:</b>
+  <%= @theme.category %>
+</p>
+<p>
+  <b>Style:</b>
+  <%= @theme.style %>
+</p>
+<p>
+  <b>Brand:</b>
+  <%= @theme.brand %>
+</p>
+<p>
+  <b>Location:</b>
+  <%= @theme.location %>
+</p>
+<p>
+  <b>Color:</b>
+  <%= @theme.color %>
+</p>
+<p>
+  <b>Make:</b>
+  <%= @theme.special_name %>
+</p>
+<p>
+  <b>Special Name:</b>
+  <%= @theme.special_name %>
+</p>
+<p>
+  <b>Like:</b>
+  <%= @theme.like %>
+</p>
+
+
+<p>
   <b>Image name:</b>
   <%= image_tag @theme.image_name.url.to_s %>
   <%= @theme.image_name.to_s %>
@@ -25,6 +59,8 @@
   <%= image_tag @theme.image_name_selection.url.to_s %>
   <%= @theme.image_name_selection.to_s %>
 </p>
+
+
 
 
 <%= link_to 'Edit', edit_theme_path(@theme) %> |

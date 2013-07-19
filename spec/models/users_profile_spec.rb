@@ -23,6 +23,7 @@ describe UsersProfile do
   it { @user_profile.should respond_to(:country) }
   it { @user_profile.should respond_to(:gender) }
   it { @user_profile.should respond_to(:user_id) }
+  it { @user_profile.should respond_to(:friends_number) }
 
   it { @user_profile.should be_valid }
 

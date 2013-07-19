@@ -11,6 +11,10 @@
     <th>Item Id</th>
     <th>Name</th>
     <th>Clickable</th>
+    <th>image name</th>
+    <th>priority order</th>
+
+
     <th></th>
     <th></th>
   </tr>
@@ -21,6 +25,8 @@
     <td><%= item.id %></td>
     <td><%= item.name %></td>
     <td><%= item.clickable %></td>
+    <td><%= image_tag(item.image_name.url().to_s,width: 100, height:100) %></td>
+    <td><%= item.priority_order %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
   </tr>

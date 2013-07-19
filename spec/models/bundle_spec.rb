@@ -37,6 +37,17 @@ describe Bundle do
   it { @bundle.should respond_to(:theme_id) }
   it { @bundle.should respond_to(:section_id) }
   it { @bundle.should respond_to(:active) }
+  it { @bundle.should respond_to(:special_name) }
+  it { @bundle.should respond_to(:category) }
+  it { @bundle.should respond_to(:style) }
+  it { @bundle.should respond_to(:brand) }
+  it { @bundle.should respond_to(:color) }
+  it { @bundle.should respond_to(:location) }
+  it { @bundle.should respond_to(:make) }
+  it { @bundle.should respond_to(:like) }
+
+
+
 
 
 

@@ -12,18 +12,52 @@
 
 <p>
   <b>Item:</b>
-
   <%  if @items_design.item.nil? %>
-    
     
 <%  else %>
     <%= @items_design.item_id %>
     <%= @items_design.item.name %>
-
 <%  end %>
-
-
 </p>
+<p>
+  <b>Category:</b>
+  <%= @items_design.category %>
+</p>
+<p>
+  <b>Style:</b>
+  <%= @items_design.style %>
+</p>
+<p>
+  <b>Brand:</b>
+  <%= @items_design.brand %>
+</p>
+<p>
+  <b>Color:</b>
+  <%= @items_design.color %>
+</p>
+<p>
+  <b>Make:</b>
+  <%= @items_design.special_name %>
+</p>
+<p>
+  <b>Special Name:</b>
+  <%= @items_design.special_name %>
+</p>
+
+<p>
+  <b>Like:</b>
+  <%= @items_design.like %>
+</p>
+
+<p>
+  <b>price:</b>
+  <%= @items_design.price %>
+</p>
+<p>
+  <b>product url:</b>
+  <%= @items_design.product_url %>
+</p>
+
 
 
 <p>
@@ -42,7 +76,6 @@
   <%= @items_design.image_name_selection %>
   <%= image_tag @items_design.image_name_selection.url.to_s %>
 </p>
-
 
 
 

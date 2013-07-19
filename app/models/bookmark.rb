@@ -16,7 +16,17 @@
 #
 
 class Bookmark < ActiveRecord::Base
-  attr_accessible :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title,:approval,:user_bookmark
+  attr_accessible :bookmark_url,
+                  :bookmarks_category_id,
+                  :description,
+                  :i_frame,
+                  :image_name,
+                  :image_name_desc,
+                  :item_id,
+                  :title,
+                  :approval,
+                  :user_bookmark,
+                  :like
 
   mount_uploader :image_name, BookmarkImageNameUploader
   mount_uploader :image_name_desc, BookmarkImageNameDescUploader
@@ -41,6 +51,9 @@ class Bookmark < ActiveRecord::Base
   validates :bookmark_url, format: URI::regexp(%w(http https))
   validates :title,presence:true
   validates :approval, presence:true, format: { with: VALID_Y_N_REGEX }
+  validates :user_bookmark, :numericality => { :only_integer => true }
+  validates :like, :numericality => { :only_integer => true }
+
 
 
 

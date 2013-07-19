@@ -22,7 +22,7 @@
         </div>
 
 
-        <div class="field">
+      <div class="field">
         <%= f.label :name %><br />
         <%= f.text_field :name %>
       </div>
@@ -35,11 +35,54 @@
           <%= f.collection_select :item_id, Item.all, :id, :id_and_item , :prompt => true  %>
       </div>
 
+        <div class="field">
+          <%= f.label :category %><br />
+          <%= f.text_field :category %>
+        </div>
+        <div class="field">
+          <%= f.label :style %><br />
+          <%= f.text_field :style %>
+        </div>
+        <div class="field">
+          <%= f.label :brand %><br />
+          <%= f.text_field :brand %>
+        </div>
 
         <div class="field">
-        <%= f.label :image_name %><br />
-        <%= f.file_field :image_name %>
-      </div>
+          <%= f.label :color %><br />
+          <%= f.text_field :color %>
+        </div>
+
+        <div class="field">
+          <%= f.label :make %><br />
+          <%= f.text_field :make %>
+        </div>
+        <div class="field">
+          <%= f.label :special_name %><br />
+          <%= f.text_field :special_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :like %><br />
+          <%= f.number_field :like %>
+        </div>
+
+        <div class="field">
+          <%= f.label :price %><br />
+          <%= f.text_field :price %>
+        </div>
+
+        <div class="field">
+          <%= f.label :product_url %><br />
+          <%= f.url_field :product_url %>
+        </div>
+
+        <div class="field">
+            <%= f.label :image_name %><br />
+            <%= f.file_field :image_name %>
+        </div>
+
+
         <div class="field">
           <%= f.label :image_name_hover %><br />
           <%= f.file_field :image_name_hover %>
@@ -48,8 +91,6 @@
           <%= f.label :image_name_selection %><br />
           <%= f.file_field :image_name_selection %>
         </div>
-
-
 
         <div class="actions">
         <%= f.submit %>

@@ -29,7 +29,7 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    @themes = Theme.all
+    @themes = Theme.order(:id).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -124,7 +124,7 @@ class ThemesController < ApplicationController
   def json_index
     @themes = Theme.order(:id)
     respond_to do |format|
-      format.json { render json: @themes.as_json(only: [:id,:description, :image_name, :name ,:image_name_selection]) }
+      format.json { render json: @themes }
     end
   end
 

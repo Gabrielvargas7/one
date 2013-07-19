@@ -35,6 +35,17 @@ describe ItemsDesign do
   it { @items_designs.should respond_to(:image_name_selection)}
   it { @items_designs.should respond_to(:image_name)}
   it { @items_designs.should respond_to(:item_id) }
+  it { @items_designs.should respond_to(:special_name) }
+  it { @items_designs.should respond_to(:category) }
+  it { @items_designs.should respond_to(:style) }
+  it { @items_designs.should respond_to(:brand) }
+  it { @items_designs.should respond_to(:color) }
+  it { @items_designs.should respond_to(:make) }
+  it { @items_designs.should respond_to(:like) }
+  it { @items_designs.should respond_to(:price) }
+  it { @items_designs.should respond_to(:product_url) }
+
+
 
 
   it { @items_designs.should be_valid }

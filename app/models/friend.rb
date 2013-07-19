@@ -12,7 +12,7 @@
 class Friend < ActiveRecord::Base
   attr_accessible :user_id, :user_id_friend
 
-  before_create :user_id_friend_exist
+  before_create :user_id_friend_exist,:add_one_friend
 
   belongs_to :user
   validates_presence_of :user
@@ -25,9 +25,19 @@ class Friend < ActiveRecord::Base
   def user_id_friend_exist
     #check is the user request exist if not (don't save)
     if User.exists?(id:self.user_id_friend)
-      true
+        true
     else
       false
+    end
+  end
+
+
+  def add_one_friend
+    #check is the user request exist if not (don't save)
+    if UsersProfile.exists?(user_id:self.user_id)
+      @user_profile = UsersProfile.find_all_by_user_id(self.user_id).first
+      @user_profile.friends_number+=1
+      @user_profile.save!
     end
   end
 

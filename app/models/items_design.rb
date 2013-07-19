@@ -15,7 +15,22 @@
 #
 
 class ItemsDesign < ActiveRecord::Base
-  attr_accessible  :description, :image_name, :item_id, :name,:image_name_hover,:image_name_selection
+  attr_accessible  :description,
+                   :image_name,
+                   :item_id,
+                   :name,
+                   :image_name_hover,
+                   :image_name_selection,
+                   :category,
+                   :style,
+                   :brand,
+                   :color,
+                   :make,
+                   :special_name,
+                   :like,
+                   :price,
+                   :product_url
+
   #:bundle_id,
 
   mount_uploader :image_name, ItemsDesignsImageUploader
@@ -30,6 +45,9 @@ class ItemsDesign < ActiveRecord::Base
 
   validates :name, presence:true
   validates :item_id, :numericality => { :only_integer => true }
+  validates :like, :numericality => { :only_integer => true }
+  validates :price,presence:true, numericality: true
+
 
   def id_and_item_design
     "#{id}. #{name}"

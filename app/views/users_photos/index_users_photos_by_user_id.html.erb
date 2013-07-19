@@ -1,0 +1,47 @@
+<h1>Listing users_photos</h1>
+
+<%= link_to 'New Users photo', new_users_photos_by_user_id_path(@photos_user.id),method: :get  %>
+
+<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
+  <tr>
+
+
+    <th>Email</th>
+    <th>Description</th>
+    <th>Image name</th>
+    <th>Profile image</th>
+    <th></th>
+    <th></th>
+    <th></th>
+
+
+  </tr>
+
+  <% @users_photos.each do |users_photo| %>
+      <tr>
+        <%  if users_photo.user.nil? %>
+            <td></td>
+            <td></td>
+        <%  else %>
+            <td><%= users_photo.user.email %></td>
+        <%  end %>
+
+        <td><%= users_photo.description %></td>
+        <td><%= image_tag(users_photo.image_name.url().to_s,width: 100, height:100) %></td>
+        <td><%= users_photo.profile_image %></td>
+
+        <td><%= link_to 'Set a profile image', update_users_photos_profile_image_by_user_id_by_users_photo_id_path(users_photo.user_id,users_photo.id), method: :put %></td>
+        <td><%= link_to 'Edit image', edit_users_photos_by_user_id_by_users_photo_id_path(users_photo.user_id,users_photo.id), method: :get %></td>
+
+        <%  if users_photo.profile_image == 'n' %>
+            <td><%= link_to 'Delete',destroy_users_photos_by_user_id_by_users_photo_id_path(users_photo.user_id,users_photo.id), method: :delete %></td>
+        <%  else  %>
+            <td></td>
+        <%  end %>
+
+
+      </tr>
+  <% end %>
+</table>
+
+<br />

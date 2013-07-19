@@ -126,7 +126,7 @@ class UsersBookmarksController < ApplicationController
       if UsersBookmark.exists?(user_id: params[:user_id])
 
         @user_bookmarks = Bookmark.
-            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title,position').
+            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title,position,"like"').
             joins(:users_bookmarks).
             where('user_id = ? ',params[:user_id])
 
@@ -153,7 +153,7 @@ class UsersBookmarksController < ApplicationController
       if Bookmark.joins(:users_bookmarks).where('user_id = ? and item_id = ?',params[:user_id],params[:item_id]).exists?
 
         @user_bookmarks = Bookmark.
-            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title,position').
+            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title,position,"like"').
             joins(:users_bookmarks).
             where('user_id = ? and item_id = ?',params[:user_id],params[:item_id] )
 
@@ -205,7 +205,8 @@ class UsersBookmarksController < ApplicationController
                                         item_id:params[:item_id],
                                         approval:'n',
                                         i_frame:'y',
-                                        user_bookmark:params[:user_id]
+                                        user_bookmark:params[:user_id],
+                                        like:1
                )
                @bookmark.save
                @user_bookmark = UsersBookmark.new(user_id:params[:user_id],bookmark_id:@bookmark.id,position:params[:position])

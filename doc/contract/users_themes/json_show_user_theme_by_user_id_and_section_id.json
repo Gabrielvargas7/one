@@ -20,12 +20,24 @@
 // front_end :working
 
 
-
 {
-    "description": "Wanna leap into comfort and harmony? Then this rooms is for you! Dark chocolate walls are totally gonna create the relaxing and decadence atmosphere in your room.",
-    "id": 4,
-    "image_name": {
-        "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822782/64408-theme-image_name-brownie.jpg"
-    },
-    "name": "Brownie"
+"brand": null,
+"category": null,
+"color": null,
+"created_at": "2013-05-17T20:32:57Z",
+"description": "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone? ",
+"id": 2,
+"image_name": {
+"url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822777/36665-theme-image_name-neat-studio.jpg"
+},
+"image_name_selection": {
+"url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822778/55714-theme-image_name_selection-neat-studio-popthumb.jpg"
+},
+"like": null,
+"location": null,
+"make": null,
+"name": "Neat Studio",
+"special_name": null,
+"style": null,
+"updated_at": "2013-05-17T20:32:57Z"
 }

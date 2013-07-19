@@ -89,6 +89,15 @@ describe UsersItemsDesignsController do
             body_items_design["image_name"]["url"].should == @items_designs_json.image_name.to_s
             body_items_design["hide"].should == @user_items_design_json.hide
             body_items_design["section_id"].should == @location_json.section_id.to_s
+            body_items_design["category"].should == @items_designs_json.category
+            body_items_design["style"].should == @items_designs_json.style
+            body_items_design["brand"].should == @items_designs_json.brand
+            body_items_design["color"].should == @items_designs_json.color
+            body_items_design["make"].should == @items_designs_json.make
+            body_items_design["special_name"].should == @items_designs_json.special_name
+            body_items_design["like"].should == @items_designs_json.like
+
+
           end
         end
       end
@@ -183,6 +192,13 @@ describe UsersItemsDesignsController do
             body_items_design["image_name"]["url"].should == @items_designs_json.image_name.to_s
             body_items_design["hide"].should == @user_items_design_json.hide
             body_items_design["section_id"].should == @location_json.section_id.to_s
+            body_items_design["category"].should == @items_designs_json.category
+            body_items_design["style"].should == @items_designs_json.style
+            body_items_design["brand"].should == @items_designs_json.brand
+            body_items_design["color"].should == @items_designs_json.color
+            body_items_design["make"].should == @items_designs_json.make
+            body_items_design["special_name"].should == @items_designs_json.special_name
+            body_items_design["like"].should == @items_designs_json.like
           end
         end
       end
@@ -277,6 +293,13 @@ describe UsersItemsDesignsController do
             body_items_design["image_name"]["url"].should == @items_designs_json.image_name.to_s
             body_items_design["hide"].should == @user_items_design_json.hide
             body_items_design["section_id"].should == @location_json.section_id.to_s
+            body_items_design["category"].should == @items_designs_json.category
+            body_items_design["style"].should == @items_designs_json.style
+            body_items_design["brand"].should == @items_designs_json.brand
+            body_items_design["color"].should == @items_designs_json.color
+            body_items_design["make"].should == @items_designs_json.make
+            body_items_design["special_name"].should == @items_designs_json.special_name
+            body_items_design["like"].should == @items_designs_json.like
           end
         end
       end
