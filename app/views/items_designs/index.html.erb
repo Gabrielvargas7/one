@@ -11,9 +11,11 @@
     <th>Id</th>
     <th>Name</th>
     <th>Description</th>
-    <th>Item_Design Image name</th>
+    <th>Item_Design Image</th>
     <th>Item id</th>
     <th>Item Name</th>
+    <th>Item Image</th>
+
     <th>Category</th>
     <th>Style</th>
     <th>Brand</th>
@@ -41,9 +43,12 @@
     <%  if items_design.item.nil? %>
         <td></td>
         <td></td>
+        <td></td>
+
     <%  else %>
         <td><%= items_design.item_id %></td>
         <td><%= items_design.item.name %></td>
+        <td><%= image_tag items_design.item.image_name.url().to_s,with:50,height:50 %></td>
 
     <%  end %>
     <td><%= items_design.category %></td>
