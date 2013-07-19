@@ -5,7 +5,7 @@ class Mywebroom.Views.RoomThemeView extends Backbone.View
     @collection.on('reset',@render,this)
     #Child initialize
     @object_collection = new Mywebroom.Collections.RoomObjectsCollection()
-    @object_collection.fetch({reset: true})
+    @object_collection.fetch({reset: true,parse:true})
 
   render: ->
     attribute = this.collection.toJSON()

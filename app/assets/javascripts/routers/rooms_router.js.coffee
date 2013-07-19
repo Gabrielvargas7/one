@@ -2,6 +2,7 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
 
   routes:
     '': 'routes_room'
+    '/room/:name': 'show_room'
     'show_room':'show_room'
   initialize: ->
 #    @collection = new Mywebroom.Collections.ThemesJsonIndex()
@@ -13,7 +14,7 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
     #@test_collection.fetch({reset: true})
 
 
-  routes_room: ->
+  routes_room: (name) ->
     #Sanity Check View
     view = new Mywebroom.Views.RoomsIndex(collection: @signedUserInfoCollection)
     $('#c').html(view.render().el)
@@ -27,8 +28,8 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
   show_objects: ->
     objectsView = new Mywebroom.Views.RoomObjectView(collection: @test_collection)
     $('#c').append(objectsView.render().el)
-  show_room: ->
-    alert("Show the room theme")
+  show_room: (name)->
+    alert("Show the name #{name}")
 
 
 

@@ -7,9 +7,8 @@
 <ul>
     <% for entry in @user.models: %>
 
-    <li><%= entry.get('id') %></li>
-    <li><%= entry.get('name') %></li>
-    <li><%= entry.get('image_name') %></li>
+    <li>ID:<%= entry.get('id') %></li>
+
 
     <% end %>
 </ul>
