@@ -3,7 +3,8 @@ style="position:absolute;
       width:<%=@room_object.get('width')%>px;
       left:<%=@room_object.get('x')%>px;
       top:<%=@room_object.get('y')%>px;
-      z-index:<%=@room_object.get('z')%>;"><%= @room_object.get('name') %>
+      z-index:<%=@room_object.get('z')%>;">
+      <!--<%= @room_object.get('name') %>-->
 <img class="room_object" src="<%=@room_object.get('image_name').url%>" id="<%=@room_object.get('items_name')%>">
 </div>
 

@@ -8,6 +8,7 @@
     <% for entry in @user.models: %>
 
     <li>ID:<%= entry.get('id') %></li>
+    <li> <a>BB Profile Test</a></li>
 
 
     <% end %>
