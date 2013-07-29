@@ -1,14 +1,9 @@
-<h1>This view is on backbone </h1>
-
-
-<%= @user.length %>
-
 
 <ul>
     <% for entry in @user.models: %>
 
     <li>ID:<%= entry.get('id') %></li>
-    <li> <a>BB Profile Test</a></li>
+    <li> <a id="ProfileOpen">BB Profile Test</a></li>
 
 
     <% end %>

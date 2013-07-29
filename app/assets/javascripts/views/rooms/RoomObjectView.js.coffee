@@ -2,7 +2,7 @@ class Mywebroom.Views.RoomObjectView extends Backbone.View
   #className: 'room_object'
   template: JST['rooms/roomObject']
   events:
-            'click .room_object':'displayObject'
+    'click .room_object':'displayObject'
 
   initialize: ->
     #Commented out because Theme handles this one for now. -SN
