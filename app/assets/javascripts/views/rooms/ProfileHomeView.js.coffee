@@ -1,6 +1,6 @@
 class Mywebroom.Views.ProfileHomeView extends Backbone.View
  className: 'user_profile'
- template: JST['rooms/profileHome']
+ template: JST['profile/profileHome']
  events:
  	'click #Profile-Photos':'showProfilePhotos',
  	'click #Profile-Friends':'showProfileFriends',
@@ -16,9 +16,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
    $(@el).html(@template(user_info:@model))     #pass variables into template.
    this
  showProfilePhotos: ->
- 	console.log("showProfilePhotos function runs")
  	#initialize new Profile Photos view
- 	
  	$('#profileHome_bottom').html(@photosView.render().el)
  showProfileFriends: ->
  	console.log("showProfileFriends function runs")
@@ -30,4 +28,3 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	$('#profileHome_bottom').html('<p>Need to show INS grid here</p>')
  closeProfileView: ->
  	this.remove()
- 	console.log('ran this.remove() in closeProfileView')

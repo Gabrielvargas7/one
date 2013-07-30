@@ -5,17 +5,20 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
   	'click #ProfileOpen':'showProfile',
   	
   }
-  showProfile: ->
+  showProfile: (evt) ->
+    #evt.preventDefault()
   	@profileView = new Mywebroom.Views.ProfileHomeView({model:@profile});
   	$(@el).append(@profileView.el);
   	@profileView.render();
+  	#Need to stop listening to other room events (hover objects,etc)
+    # Objects are initialized int room_router.js.coffee. how do I get that model to stop listening?
+  	#Need to stop listening for click #ProfileOpen
   
   closeProfileView: ->
   	console.log('CloseProfileView Function running')
   	@profileView.remove();	
-
-
-
+  	#Need to listen for #ProfileOpen again
+  	#Need to enable other room events again.
 
   initialize: ->
     @collection.on('reset', @render, this)

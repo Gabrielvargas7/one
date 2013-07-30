@@ -22,7 +22,7 @@ class Mywebroom.Views.RoomObjectView extends Backbone.View
 
   displayObject: (event) ->
     currentObj = this.collection.get(event.currentTarget.dataset.id)
-    alert("You clicked an object: #{currentObj.get('items_name')}")
+    console.log("You clicked an object: #{currentObj.get('items_name')}")
     #Get name. Can either include it in template as ID. Or use an API to grab the info of that item. Get user's bed for example
   hoverObject: (event) ->
     #change out images displayed. 

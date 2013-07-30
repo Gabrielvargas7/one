@@ -64,12 +64,13 @@ p{
 				<p id="info_name">Name: <%=@user_info.get('firstname')%> <%=@user_info.get('lastname')%></p>
 				<p id ="info_gender">Gender: <%=@user_info.get('gender')%></p>
 				<p id = "info_username">Username: <%=@user_info.get('username')%></p>
+				<p id = "info_description"><%=@user_info.get('description')%></p>
 				<p><a id="editProfile" href="/users_profiles/edit_users_profiles_by_user_id/23">Edit</a></p>
 			</div>
 
 		</div>
 		<div id="profileHome_bottom">
-			<p>For each item in grid, create a div. Need a way to auto make rows. 
+			<p>INS grid goes here 
 			</p>
 		</div>
 	</div>
