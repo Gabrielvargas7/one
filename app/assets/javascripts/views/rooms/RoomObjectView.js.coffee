@@ -3,6 +3,8 @@ class Mywebroom.Views.RoomObjectView extends Backbone.View
   template: JST['rooms/roomObject']
   events:
     'click .room_object':'displayObject'
+    'mouseenter img.room_object':'hoverObject'
+    'mouseleave img.room_object':'hoverOffObject'
 
   initialize: ->
     #Commented out because Theme handles this one for now. -SN
@@ -19,8 +21,19 @@ class Mywebroom.Views.RoomObjectView extends Backbone.View
     this
 
   displayObject: (event) ->
-    alert("You clicked an object: #{event.currentTarget.id}")
+    currentObj = this.collection.get(event.currentTarget.dataset.id)
+    alert("You clicked an object: #{currentObj.get('items_name')}")
     #Get name. Can either include it in template as ID. Or use an API to grab the info of that item. Get user's bed for example
+  hoverObject: (event) ->
+    #change out images displayed. 
+    dataID= event.currentTarget.dataset.id
+    hovered = this.collection.get(dataID)
+    $('[data-id='+dataID+']').attr('src',hovered.get('image_name_hover').url)
+  hoverOffObject: (event) ->
+    dataID= event.currentTarget.dataset.id
+    hovered = this.collection.get(dataID)
+    $('[data-id='+dataID+']').attr('src',hovered.get('image_name').url)
+
 
 
 

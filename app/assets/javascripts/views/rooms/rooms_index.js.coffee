@@ -3,7 +3,7 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
   template: JST['rooms/index']
   events:{
   	'click #ProfileOpen':'showProfile',
-  	'click #Profile-Close-Button':'closeProfileView'
+  	
   }
   showProfile: ->
   	@profileView = new Mywebroom.Views.ProfileHomeView({model:@profile});

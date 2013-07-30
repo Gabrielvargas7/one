@@ -1,0 +1,76 @@
+<style>
+.Profile_Home_Container{
+	position:absolute;
+	left:5px;
+	width:400px;
+	z-index: 5;
+}
+#profile_sidebar{
+	float:left;
+	border:1px dashed pink;
+	background:rgba(0,0,0,.50);
+	color:white;
+
+}
+#info_img{
+	float:left;
+	border:1px solid #AFAFAF;
+	width:100px;
+	
+	background:rgba(0,0,0,.50);
+}
+#profileHome_info{
+	float:right;
+}
+#profileHome_top{
+	border:1px solid gray;
+	
+
+}
+
+p{
+	font-weight:bolder;
+	font-size:12px;
+	font-family:Arial;
+
+
+}
+#profileHome_bottom{
+	float:right;
+
+}
+</style>
+<div class="Profile_Home_Container">
+      
+<p>User Home Profile</p>
+<div id="profile_sidebar">
+			<ul>
+				<li id="Profile-Home"><a href="#">Home</a></li>
+				<li id="Profile-Photos"><a href="#">Photos</a></li>
+				<li><a id="Profile-Friends" href="#">Friends</a></li>
+				<li><a id="Profile-Key-Requests" href="#">Key Requests</a></li>
+				<li><a id="Profile-Activity" href="#">Activity</a></li>
+				<li><a href="#" id="Profile-Close-Button">Close</a></li>
+
+			</ul>
+</div>
+	<div id="profileHome_container">
+		<div id="profileHome_top">
+			<div id="info_img">
+				<img id="profile_picture" src="<%=@user_info.get('user_photos').image_name.url%>">
+
+			</div>
+			<div id="profileHome_info" class="user_info">
+				<p id="info_name">Name: <%=@user_info.get('firstname')%> <%=@user_info.get('lastname')%></p>
+				<p id ="info_gender">Gender: <%=@user_info.get('gender')%></p>
+				<p id = "info_username">Username: <%=@user_info.get('username')%></p>
+				<p><a id="editProfile" href="/users_profiles/edit_users_profiles_by_user_id/23">Edit</a></p>
+			</div>
+
+		</div>
+		<div id="profileHome_bottom">
+			<p>For each item in grid, create a div. Need a way to auto make rows. 
+			</p>
+		</div>
+	</div>
+</div>

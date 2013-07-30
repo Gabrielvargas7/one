@@ -5,7 +5,7 @@ style="position:absolute;
       top:<%=@room_object.get('y')%>px;
       z-index:<%=@room_object.get('z')%>;">
       <!--<%= @room_object.get('name') %>-->
-<img class="room_object" src="<%=@room_object.get('image_name').url%>" id="<%=@room_object.get('items_name')%>">
+<img class="room_object" src="<%=@room_object.get('image_name').url%>" data-id="<%=@room_object.get('id')%>">
 </div>
 
 
