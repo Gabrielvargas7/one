@@ -1,3 +1,4 @@
+<div id="users_profile_container">
 
   <%= form_for(@users_profile, url: update_users_profiles_by_user_id_path(@users_profile.user_id)) do |f| %>
       <% if @users_profile.errors.any? %>
@@ -45,3 +46,5 @@
       <%= f.submit %>
     </div>
 <% end %>
+
+</div>

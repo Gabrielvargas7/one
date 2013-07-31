@@ -1,0 +1,68 @@
+// Place all the styles related to the shop controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#shop_container{
+  overflow:hidden;
+  width:remainder;
+  line-height:1.5;
+  font-size:12px;
+  color:#5A5A5A;
+  background:#fff;
+  font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#shop_filter{
+  width:15%;
+  float:left;
+}
+#shop_filter a{
+  background-color:#f0f0f0;
+  color:#006daf;
+}
+#shop_filter a:hover {
+  background-color:#f0f0f0;
+  color:#000000;
+}
+
+#shop_content_items{
+  width:85%;
+  float:right;
+
+}
+#shop_content_items a:hover {background-color:#f0f0f0;}
+
+#shop_left{
+  width:60%;
+  float:left;
+  text-align: center;
+}
+#shop_left a{
+  background-color:#f0f0f0;
+  color:#006daf;
+}
+#shop_left a:hover {
+  background-color:#f0f0f0;
+  color:#000000;
+}
+
+#shop_right{
+  width:remainder;
+}
+
+#shop_right p {
+  font-size:90%;
+}
+
+
+
+
+
+
+
+
+

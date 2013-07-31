@@ -29,7 +29,8 @@ class ItemsController < ApplicationController
     #@items = Item.paginate(page: params[:page], :per_page => 10)
     #@items = Item.paginate(page: params[:page]).order('id')
 
-    @items = Item.order(:id).all
+    #@items = Item.order(:id).all
+    @items = Item.order(:priority_order,:name).all
 
     respond_to do |format|
       format.html # index.html.erb
