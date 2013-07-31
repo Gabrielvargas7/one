@@ -7,7 +7,7 @@
 
 // Description ->
 //         Get all themes
-//       # GET 'themes/json/index'
+//       # GET ''
       //       'themes/json/index.json'
 //Return head 200 OK
 

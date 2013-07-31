@@ -11,11 +11,12 @@
 
 class UsersTheme < ActiveRecord::Base
   attr_accessible :theme_id, :user_id,:section_id
-
+#softlink- you don't need theme to create usertheme
   belongs_to :theme
   belongs_to :user
   belongs_to :section
 
+  #harder link. forces you to need theme before creating user theme.
   validates_presence_of :user
   validates_presence_of :theme
   validates_presence_of :section
