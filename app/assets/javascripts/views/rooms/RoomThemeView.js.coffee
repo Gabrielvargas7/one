@@ -16,11 +16,8 @@ class Mywebroom.Views.RoomThemeView extends Backbone.View
     #Create Objects View within Theme
     if @collection.models[0]
       @object_collection.add(obj) for obj in @collection.models[0].get('user_items_designs')
-      #@object_collection.models = @collection.models[0].get('user_items_designs')
-      #$('#room_theme_container').append(objectsView.render().el)
       $('#room_theme_container').append(@objectsView.el)
       @objectsView.render()
-
     this
 #  template: JST['rooms/index']
 #
