@@ -22,7 +22,7 @@
     <table border="2" bordercolor="#ededee" bgcolor="#ffffcc"  width="75%" cellspacing="2" cellpadding="3">
 
       <% if @item_length > 0 %>
-      <% @items_designs_rand.in_groups_of(@item_length).each do |items_design_groups| %>
+      <% @items_designs_rand.in_groups_of(@item_length,false).each do |items_design_groups| %>
           <tr>
             <% items_design_groups.each do |items_design| %>
                 <td align="center" >

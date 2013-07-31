@@ -4,11 +4,11 @@
     <table border="2" bordercolor="#ededee" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
 
       <% if @item_length > 0 %>
-      <% @items.in_groups_of(@item_length).each do |item_groups| %>
+      <% @items.in_groups_of(@item_length,false).each do |item_groups| %>
           <tr>
             <% item_groups.each do |item| %>
             <td align="center">
-                <%= link_to image_tag(item.image_name.url().to_s),  shop_path(item.id), :method => :get %>
+                <%= link_to image_tag(item.image_name.url().to_s, width: 300,height:300 ),  shop_path(item.id), :method => :get %>
                 </br><%= item.name %>
             </td>
             <% end %>

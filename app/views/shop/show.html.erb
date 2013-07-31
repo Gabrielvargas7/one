@@ -49,12 +49,12 @@
     <table border="2" bordercolor="#ededee" bgcolor="#ffffcc"  width="100%" cellspacing="2" cellpadding="3">
 
       <% if @item_length > 0 %>
-          <%  @items_designs.in_groups_of(@item_length).each do |items_design_groups| %>
+          <%  @items_designs.in_groups_of(@item_length,false).each do |items_design_groups| %>
               <tr>
                 <% items_design_groups.each do |items_design| %>
 
                     <td align="center" >
-                      <%= link_to image_tag(items_design.image_name_selection.url().to_s
+                      <%= link_to image_tag(items_design.image_name_selection.url().to_s,width: 300,height:300
                                            ),
                                shop_show_items_design_path(items_design.id), :method => :get %>
                       </br><%= items_design.name %>
