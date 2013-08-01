@@ -54,7 +54,7 @@
                 <% items_design_groups.each do |items_design| %>
 
                     <td align="center" >
-                      <%= link_to image_tag(items_design.image_name_selection.url().to_s,width: 300,height:300
+                      <%= link_to image_tag(items_design.image_name_selection.url().to_s,width: 200,height:200
                                            ),
                                shop_show_items_design_path(items_design.id), :method => :get %>
                       </br><%= items_design.name %>

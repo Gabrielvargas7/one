@@ -58,9 +58,9 @@ describe ItemsController do
   describe "GET index",tag_index:true do
 
     context "is admin user" do
-      let(:item_all) { Item.all }
+      let(:item_all) { Item.order(:priority_order,:name).all }
 
-      it "assigns all themes as @item" do
+      it "assigns all items as @item" do
         get :index
         assigns(:items).should eq(item_all)
       end

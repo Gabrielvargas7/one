@@ -1,4 +1,4 @@
-<div id="shop_container">
+<div id="shop_container1">
   <h4>Shop by category</h4>
 
     <table border="2" bordercolor="#ededee" bgcolor="#ffffcc" width="100%" cellspacing="2" cellpadding="3">
@@ -8,7 +8,7 @@
           <tr>
             <% item_groups.each do |item| %>
             <td align="center">
-                <%= link_to image_tag(item.image_name.url().to_s, width: 300,height:300 ),  shop_path(item.id), :method => :get %>
+                <%= link_to image_tag(item.image_name.url().to_s, width: 200,height:200 ),  shop_path(item.id), :method => :get %>
                 </br><%= item.name %>
             </td>
             <% end %>
