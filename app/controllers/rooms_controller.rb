@@ -3,21 +3,21 @@ class RoomsController < ApplicationController
   #method for Json access
   before_filter :json_signed_in_user,
                 only:[
-                    :json_show_room_by_user_id
+
                 ]
   before_filter :json_correct_user,
                 only:[
-                    :json_show_room_by_user_id
+
                 ]
   #method for ruby access
   before_filter :signed_in_user,
                 only:[
-                    :room
+
                 ]
 
   before_filter :correct_username,
                 only:[
-                    :room
+
                     ]
 
 
@@ -64,7 +64,7 @@ class RoomsController < ApplicationController
           #validate if the user exist
           if User.exists?(id:params[:user_id])
 
-                @user = User.select('id ,email,username').where('id = ?',params[:user_id]).first
+                @user = User.select('id,username').where('id = ?',params[:user_id]).first
                 @profile_image = 'y'
                 @user_photos = UsersPhoto.find_all_by_user_id_and_profile_image(@user.id,@profile_image).first
                 @user_profile = UsersProfile.find_all_by_user_id(@user.id).first

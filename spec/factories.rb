@@ -203,7 +203,7 @@ FactoryGirl.define do
     country 'country'
     gender 'gender'
     lastname 'lastname'
-    firstname 'firtname'
+    firstname 'firstname'
     birthday Date.today
     user_id 1
 

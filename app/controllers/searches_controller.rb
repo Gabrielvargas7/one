@@ -371,17 +371,19 @@ class SearchesController < ApplicationController
             limit(params[:limit]).
             offset(params[:offset])
 
-        format.json { render json:{ users_array:@users_array,
-                                    users:@users,
-                                    users_profiles_array:@users_profiles_array,
-                                    users_profiles:@users_profiles,
-                                    themes_array:@themes_array,
-                                    themes:@themes,
-                                    bundle_array:@bundles_array,
-                                    bundles:@bundles,
-                                    items_designs_array:@items_designs_array,
+
+        format.json { render json:{
+                                    #items_designs_array:@items_designs_array,
                                     items_designs:@items_designs,
-                                    bookmark_array:@bookmarks_array,
+                                    #users_array:@users_array,
+                                    users:@users,
+                                    #users_profiles_array:@users_profiles_array,
+                                    users_profiles:@users_profiles,
+                                    #themes_array:@themes_array,
+                                    themes:@themes,
+                                    #bundle_array:@bundles_array,
+                                    bundles:@bundles,
+                                    #bookmark_array:@bookmarks_array,
                                     bookmarks:@bookmarks
         }}
 
