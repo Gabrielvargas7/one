@@ -100,6 +100,9 @@ class RoomsController < ApplicationController
                             items_designs.special_name,
                             items_designs.like,
                             items_designs.image_name,
+                            items_designs.image_name_hover,
+                            items_designs.image_name_selection,
+
 
                             users_items_designs.hide,
                             users_items_designs.location_id,
