@@ -3,7 +3,7 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
   routes:
     '': 'routes_room'
     '/room/:name': 'show_room'
-    'show_room':'show_room'
+    'cheetos':'show_room'
   initialize: ->
 #    @collection = new Mywebroom.Collections.ThemesJsonIndex()
     @signedUserInfoCollection = new Mywebroom.Collections.UsersJsonShowSignedUser()

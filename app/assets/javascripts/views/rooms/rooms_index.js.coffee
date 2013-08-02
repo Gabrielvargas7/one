@@ -6,7 +6,7 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
   	
   }
   showProfile: (evt) ->
-    #evt.preventDefault()
+    #TODO Move this to the model initialize
     @profile = new Mywebroom.Models.ProfileHome({msg:"Hello user"})
     @profile.set(@theme_collection.models[0].get('user_profile'))
     @profile.set('user',@theme_collection.models[0].get('user'))
@@ -36,6 +36,7 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
   initialize: ->
     @collection.on('reset', @render, this)
     @theme_collection = new Mywebroom.Collections.RoomsJsonShowRoomByUserId()
+    #@theme_colection.set('id',23)
     @theme_collection.fetch
       reset: true 
       success: (response)->

@@ -65,7 +65,7 @@ p{
 				<p id ="info_gender">Gender: <%=@user_info.get('gender')%></p>
 				<p id = "info_username">Username: <%=@user_info.get('username')%></p>
 				<p id = "info_description"><%=@user_info.get('description')%></p>
-				<p><a id="editProfile" href="/users_profiles/edit_users_profiles_by_user_id/23">Edit</a></p>
+				<p><a id="editProfile" href="/#cheetos">Edit</a></p>
 			</div>
 
 		</div>
