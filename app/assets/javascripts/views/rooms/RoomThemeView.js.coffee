@@ -5,18 +5,19 @@ class Mywebroom.Views.RoomThemeView extends Backbone.View
     @collection.on('reset',@render,this)
     #Child initialize
     @object_collection = new Mywebroom.Collections.RoomObjectsCollection()
-    @object_collection.fetch({reset: true,parse:true})
+    @objectsView = new Mywebroom.Views.RoomObjectView(collection: @object_collection)
+    #@object_collection = new Mywebroom.Collections.RoomObjectsCollection()
+    #@object_collection.fetch({reset: true,parse:true})
 
   render: ->
     attribute = this.collection.toJSON()
     console.log(attribute)
     $(@el).html(@template(user_theme: @collection))     #pass variables into template.
     #Create Objects View within Theme
-    objectsView = new Mywebroom.Views.RoomObjectView(collection: @object_collection)
-    #$('#room_theme_container').append(objectsView.render().el)
-    $('#room_theme_container').append(objectsView.el)
-    objectsView.render()
-
+    if @collection.models[0]
+      @object_collection.add(obj) for obj in @collection.models[0].get('user_items_designs')
+      $('#room_theme_container').append(@objectsView.el)
+      @objectsView.render()
     this
 #  template: JST['rooms/index']
 #

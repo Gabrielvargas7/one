@@ -15,9 +15,10 @@ class Mywebroom.Views.RoomObjectView extends Backbone.View
     #console.log("Objects Array user_objects passed to templates"+ @user_objects)
     #Consider iterating the collection here and appending separate views -SN
     #(@el).html(@template(room_object: @collection))
-    for roomObject in @collection.models
-      $(@el).append(@template(room_object: roomObject))
-         #pass variables into template.
+    if @collection
+      for roomObject in @collection.models
+        $(@el).append(@template(room_object: roomObject))
+           #pass variables into template.
     this
 
   displayObject: (event) ->
