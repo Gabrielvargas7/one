@@ -14,3 +14,10 @@
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
 }
+//There is a fake header in the Profile code about 50px high. The div is placed at top:0 so the content shows below the rooms header
+.user_profile{
+	position:absolute;
+	z-index:200;
+	top:0px;
+	left:0px;
+}

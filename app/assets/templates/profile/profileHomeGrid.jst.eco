@@ -1,0 +1,17 @@
+<table class="generalGrid">
+<tr>
+	<th colspan="3">
+		Latest Rooms Additions
+	</th>
+</tr>
+    <tr>
+        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823576/3019-items_design-image_name_hover-pink-229-h.png"><span class="gridItemDescription">Item Name!</span></td>
+        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823576/3019-items_design-image_name_hover-pink-229-h.png"><span class="gridItemDescription">Item Name!</span></td>
+        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823576/3019-items_design-image_name_hover-pink-229-h.png"><span class="gridItemDescription">Item Name!</span></td>
+    </tr>
+    <tr>
+         <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823547/62628-items_design-image_name_hover-pink-219-h.png"><span class="gridItemDescription">Item Name!</span></td>
+        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823547/62628-items_design-image_name_hover-pink-219-h.png"></td>
+        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823547/62628-items_design-image_name_hover-pink-219-h.png"></td>
+    </tr>
+</table>

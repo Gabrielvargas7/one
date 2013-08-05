@@ -1,6 +1,6 @@
 class Mywebroom.Views.ProfileHomeView extends Backbone.View
  className: 'user_profile'
- template: JST['profile/profileHome']
+ template: JST['profile/profileDraft']
  events:
  	'click #Profile-Photos':'showProfilePhotos',
  	'click #Profile-Friends':'showProfileFriends',
@@ -25,6 +25,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	#initalize new Profile Friends model. 
  showHomeGrid: ->
  	console.log('showHomeGrid function runs')
- 	$('#profileHome_bottom').html('<p>Need to show INS grid here</p>')
+ 	homeGridtemplate= JST['profile/profileHomeGrid']
+ 	$('#profileHome_bottom').html(homeGridtemplate)
  closeProfileView: ->
  	this.remove()
