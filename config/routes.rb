@@ -469,6 +469,13 @@ Mywebroom::Application.routes.draw do
   # end user notification Contract
   #**************************
 
+  #**************************
+  # start Notification Contract
+  #**************************
+
+  match '/notifications/json/index_notification_by_limit_by_offset/:limit/:offset', to:
+         'notifications#json_index_notification_by_limit_by_offset', via: :get, as:
+          :index_notification
 
 
 

@@ -12,8 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.select :name, ['bookmark', 'item', 'theme','new version'] %>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
     <%= f.label 'position on the screen' %><br />
     <%= f.select :position, [['position of bookmark', 1], ['position of item', 2], ['position of theme', 3],['position of new version']] %>
   </div>
@@ -27,6 +30,14 @@
       <%= f.label :image_name %><br />
       <%= f.file_field :image_name %>
     </div>
+
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => @current_user.id %>
+    </div>
+
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

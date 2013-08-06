@@ -6,9 +6,15 @@ describe NotificationsController do
   after(:all){ delete_init_data }
 
   before  do
-
-    @notification = FactoryGirl.create(:notification)
     @admin = FactoryGirl.create(:admin)
+    @notification = FactoryGirl.create(:notification,user_id: @admin.id)
+    @notificatio1 = FactoryGirl.create(:notification,user_id: @admin.id)
+    @notificatio2 = FactoryGirl.create(:notification,user_id: @admin.id)
+    @notificatio3 = FactoryGirl.create(:notification,user_id: @admin.id)
+    @limit = 2
+    @offset = 1
+
+
     sign_in @admin
     #puts "Admin user signin cookie: "+cookies[:remember_token].to_s
   end
@@ -290,6 +296,62 @@ describe NotificationsController do
   end
 
 
+
+  #***********************************
+  # rspec test  json_index_notification
+  #***********************************
+
+  describe "GET json_index_notification",tag_index:true do
+    before do
+       sign_out
+    end
+
+    context "is public api" do
+
+      let(:notification_all) { Notification.order("updated_at desc").limit(@limit).offset(@offset) }
+
+      it "assigns all notification as @notification" do
+        get :json_index_notification_by_limit_by_offset, limit:@limit,offset:@offset, :format => :json
+        assigns(:notifications).should eq(notification_all)
+      end
+
+      it "should be successful" do
+        get :json_index_notification_by_limit_by_offset, limit:@limit,offset:@offset , :format => :json
+        response.should be_success
+      end
+
+      it "has a 200 status code" do
+        get :json_index_notification_by_limit_by_offset, limit:@limit,offset:@offset , :format => :json
+        expect(response.status).to eq(200)
+      end
+
+    end
+
+    context "get all values " do
+      it "should return json_index_notification in json" do # depend on what you return in action
+        get :json_index_notification_by_limit_by_offset, limit:@limit,offset:@offset , :format => :json
+        body = JSON.parse(response.body)
+        #puts body.as_json
+        #puts body["category"]
+        #puts @the
+
+        body.each do |body_notification|
+          @notification_json = Notification.find(body_notification["id"])
+          body_notification["name"].should == @notification_json.name
+          body_notification["description"].should == @notification_json.description
+          body_notification["id"].should == @notification_json.id
+          body_notification["image_name"]["url"].should == @notification_json.image_name.to_s
+          body_notification["position"].should == @notification_json.position
+
+
+        end
+
+
+      end
+    end
+
+
+  end
 
 
 

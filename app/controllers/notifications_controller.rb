@@ -48,6 +48,7 @@ class NotificationsController < ApplicationController
   def new
 
     @notification = Notification.new
+    @current_user =  current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -115,6 +116,16 @@ class NotificationsController < ApplicationController
   #***********************************
   # Json methods for the room users
   #***********************************
+
+  # Get all notification
+  # GET 'notifications/json/index_notification_by_limit_by_offset.json'
+  #Return head 200 OK
+  def json_index_notification_by_limit_by_offset
+    @notifications = Notification.order("updated_at desc").limit(params[:limit]).offset(params[:offset])
+    respond_to do |format|
+      format.json { render json: @notifications }
+    end
+  end
 
 
 

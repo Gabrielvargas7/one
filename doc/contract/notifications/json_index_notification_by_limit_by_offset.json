@@ -1,0 +1,115 @@
+//# Get all notification
+//# GET 'notifications/json/index_notification_by_limit_by_offset.json'
+//#Return head 200 OK
+
+
+[
+    {
+        "created_at": "2013-08-06T00:52:38Z",
+        "description": "asdasa",
+        "id": 9,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375750360/40527-notification-image_name-costa_rican_frog.jpg"
+        },
+        "name": "new noti1",
+        "position": 1,
+        "updated_at": "2013-08-06T00:56:04Z",
+        "user_id": 12
+    },
+    {
+        "created_at": "2013-07-06T00:15:39Z",
+        "description": "asedfdsf",
+        "id": 8,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1373069740/64385-notification-image_name-2012-03-22_12.04.33.jpg"
+        },
+        "name": "item",
+        "position": 2,
+        "updated_at": "2013-07-06T00:15:39Z",
+        "user_id": 23
+    },
+    {
+        "created_at": "2013-07-05T23:58:03Z",
+        "description": "new ver",
+        "id": 7,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1373068686/49354-notification-image_name-2012-03-23_19.26.27.jpg"
+        },
+        "name": "new version",
+        "position": 4,
+        "updated_at": "2013-07-05T23:58:03Z",
+        "user_id": 23
+    },
+    {
+        "created_at": "2013-07-05T23:51:17Z",
+        "description": "e",
+        "id": 6,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1373068296/2885-notification-image_name-2012-04-11_17.12.55.jpg"
+        },
+        "name": "theme",
+        "position": 3,
+        "updated_at": "2013-07-05T23:51:17Z",
+        "user_id": null
+    },
+    {
+        "created_at": "2013-05-17T21:35:29Z",
+        "description": "asa",
+        "id": 5,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368826529/90537-notification-image_name-images.jpg"
+        },
+        "name": "bookmark",
+        "position": 1,
+        "updated_at": "2013-05-17T21:35:29Z",
+        "user_id": null
+    },
+    {
+        "created_at": "2013-05-17T21:10:12Z",
+        "description": null,
+        "id": 4,
+        "image_name": {
+            "url": "/assets/fallback/notification/default_notification.png"
+        },
+        "name": "new version",
+        "position": null,
+        "updated_at": "2013-05-17T21:10:12Z",
+        "user_id": null
+    },
+    {
+        "created_at": "2013-05-17T21:10:12Z",
+        "description": null,
+        "id": 3,
+        "image_name": {
+            "url": "/assets/fallback/notification/default_notification.png"
+        },
+        "name": "theme",
+        "position": null,
+        "updated_at": "2013-05-17T21:10:12Z",
+        "user_id": null
+    },
+    {
+        "created_at": "2013-05-17T21:10:12Z",
+        "description": null,
+        "id": 2,
+        "image_name": {
+            "url": "/assets/fallback/notification/default_notification.png"
+        },
+        "name": "items",
+        "position": null,
+        "updated_at": "2013-05-17T21:10:12Z",
+        "user_id": null
+    },
+    {
+        "created_at": "2013-05-17T21:10:12Z",
+        "description": null,
+        "id": 1,
+        "image_name": {
+            "url": "/assets/fallback/notification/default_notification.png"
+        },
+        "name": "bookmark",
+        "position": null,
+        "updated_at": "2013-05-17T21:10:12Z",
+        "user_id": null
+    }
+]

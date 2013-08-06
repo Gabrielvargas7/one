@@ -144,7 +144,7 @@ FactoryGirl.define do
 
   factory :notification do
 
-    description "feedback one"
+    description "noti one"
     name "notification"
     user_id 1
     position 1
