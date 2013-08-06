@@ -30,10 +30,11 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	#If view is open, close it, else reverse.
  	#Sara Note- this is odd looking Coffeescript. I don't see any 
  	#	documentation that elses need to be indented, but that appears to be the case here.
- 	if $("#profileHome_container").css("display") is "none"
-    	$("#profileHome_container").css "display", "block"
+ 	if $("#profileHome_container").css("visibility") is "hidden"
+    	$("#profileHome_container").css "visibility", "visible"
   		else
-    		$("#profileHome_container").css "display", "none"
+    		$("#profileHome_container").css "visibility", "hidden"
+ 	#Adjust min height of profile-sidebar to browser height?
  	console.log "hi"
 
  closeProfileView: ->

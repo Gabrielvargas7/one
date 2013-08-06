@@ -13,6 +13,7 @@
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
 }
+
 //There is a fake header in the Profile code about 50px high. The div is placed at top:0 so the content shows below the rooms header
 .user_profile{
 	position:absolute;
@@ -30,14 +31,14 @@
 	font-size:8px;
 	display:table-row;
 	white-space:nowrap;
-	color:white;
+	
 }
 .user_profile p{
 	font-weight:normal;
 	font-size:16px;
 	margin:0;
 	padding:0;
-	color:white;
+	color:#f5f5f5;
 }
 #Profile-Home-wrapper td{
     width:200px;
@@ -72,30 +73,40 @@
 
 #Profile-Home-container{
 	height:100%;
+	width:720px;
+	position:relative;
 	
 }
 
 #profile_sidebar{
 	background: rgba(51,51,51,.8);
-	width:100px;
+	width:70px;
 	position:absolute;
 	left:0;
-	top:50px;
+	top:0px;
 	bottom:0px;
-	color: #f5f5f5;
 	text-transform:uppercase;
+	padding:0 10px;
 }
 #profileHome_container{
-	/*margin-left is the profile_sidebar width*/
-	margin-left:100px;
+	/*margin-left is the profile_sidebar width + sidebar padding*/
+	margin-left:90px;
 	background: rgba(0,0,0,.8);
 	position:relative;/*for close button positioning*/
+	color: #f5f5f5;
+
 }
 #profile_sidebar li{
+	
+}
+#profile_sidebar li, #profile_sidebar li a{
 	list-style-type: none;
+	text-align:center;
+	padding-top:60px;
 }
 #profile_sidebar ul{
-	font-size:18px;
+	font-size:15px;
+	font-weight:lighter;
 	margin:0;
 	padding:0;
 
@@ -103,6 +114,45 @@
 #profile_sidebar li a{
 
 }
+div.spacer{
+	height:100px;
+}
+//Sidebar Icons
+
+#Profile-Home a{
+	padding-top: 60px;
+	height:50px;
+	text-align: center;
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-default_fllxkx.png") no-repeat center;
+}
+#Profile-Home a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-active_n7xzdo.png") no-repeat center;
+}
+#Profile-Photos a{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/photobtn-default_wyukgi.png") no-repeat center;
+}
+#Profile-Photos a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/photobtn-active_fkeam2.png") no-repeat center;
+}
+#Profile-Friends a{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/friendsbtn-default_acwlwf.png") no-repeat center;
+}
+#Profile-Friends a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/friendsbtn-active_zjl9jt.png") no-repeat center;
+}
+#Profile-Key-Requests a{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/keyrequestbtn-default_cow1kv.png") no-repeat center;
+}
+#Profile-Key-Requests a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/keyrequestbtn-active_btjwdx.png") no-repeat center;
+}
+#Profile-Activity a{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/activitybtn-default_nszatj.png") no-repeat center;
+}
+#Profile-Activity a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811572/activitybtn-active_w91vry.png") no-repeat center;
+}
+
 #profileHome-info-img{
 	height:150px;
 	width:120px;
@@ -128,17 +178,18 @@
 #profileHome_info{
 	/*Need float and width to keep basicInfo borders contained*/
 	float:left;
-	width:400px;
+	width:460px;
 	background: #1d1d1d;
 	margin:1em 0;
+	color:#f5f5f5
 }
 #profileHome_top{
 
 	height:150px;
 }
 #profileHomeBasicInfo{
-	border-top:1px solid #5d6567;
-	border-bottom: 1px solid #5d6567;
+	border-top:1px solid #2c2c2c;
+	border-bottom: 1px solid #2c2c2c;
 	font-size:15px;
 	font-weight:lighter;
 	padding:15px 10px;
@@ -147,9 +198,6 @@
 
 #profileHomeBasicInfo ul li{
 	display:inline;
-
-	color:white;
-
 }
 #profileHome_bottom{
 	clear:both;
@@ -168,13 +216,17 @@ div.info_name{
 	font-size:22px;
 }
 .blueLink{
-	color:#0085FF;
+	color:#0099cb;
+	font-weight:lighter;
+	font-size:15px;
 }
 #profileHome_description{
 	font-style:italic;
 	font-size:16px;
 	padding:15px 10px;
+	font-weight:lighter;
 }
+
 /*General Table CSS for Photos,INS,Activity,etc*/
 #Profile-Home-wrapper th{
 	background-color: #5d6567;
@@ -183,22 +235,30 @@ div.info_name{
 	font-size:16px;
 	font-weight:normal;
 	text-transform:uppercase;
+	width:100%
 }
 #Profile-Home-wrapper table.generalGrid{
 	width:100%;
 }
 .gridItem img{
-	width:200px;
-	height:200px;
+	width:180px;
+	height:180px;
 }
 td.gridItem{
 	text-align:center;
 }
 .gridItemDescription{
-
+	color:black;
+	font-size:12px;
+	font-weight:lighter;
 }
 #CloseButton{
 	position:absolute;
 	right:0;
 	top:0;
+}
+#CollapseArrow{
+	position:absolute;
+	right:0;
+	top:50%;
 }

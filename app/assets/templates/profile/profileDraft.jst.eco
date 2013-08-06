@@ -5,15 +5,19 @@
 		
 		<div id="profile_sidebar">
 			<ul>
-				<li id="Profile-Home"><a href="#">Home</a></li>
+				<li id="Profile-Home">
+					<a href="#"><span>Home<span></a></li>
+					<br>
+					<br>
+					<div class="spacer"></div>
+					<img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/linebreak_xjaflm.png" width="70px"/>	
 				<li id="Profile-Photos"><a href="#">Photos</a></li>
 				<li id="Profile-Friends"><a href="#">Friends</a></li>
-				<li><a href="#">Key Requests</a></li>
-				<li><a href="#">Activity</a></li>
+				<li id="Profile-Key-Requests"><a href="#"><span>Requests<span></a></li>
+				<li id="Profile-Activity"><a href="#">Activity</a></li>
 
 			</ul>
-			<div id="CloseButton"><a href="#" id="Profile-Close-Button">CLOSE</a></div>
-			<div id="CollapseArrow"><a href="#" id="Profile-Collapse-Button">Collapse</a></div>
+			
 		</div>
 		<div id="profileHome_container">
 			
@@ -67,7 +71,11 @@
 				</p>
 			</div>
 		</div>
-		
+		<div id="collapseBar">
+			<div id="CloseButton"><a href="#" id="Profile-Close-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" width="15px"></a></div>
+			<div id="CollapseArrow"><a href="#" id="Profile-Collapse-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png"></a></div>
+		</div>
+		<div id="push">push</div>
 	</div>
 </div>
-
+<div id="fakefooter">Footer</div>
