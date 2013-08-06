@@ -1,204 +1,27 @@
-<style>
 
-figure{
-	margin:0;
-	padding:0;
-	display:table;
-}
-figcaption{
-	font-size:8px;
-	display:table-row;
-	white-space:nowrap;
-	color:white;
-}
-p{
-	font-weight:normal;
-	font-size:16px;
-	font-family:Arial;
-	margin:0;
-	padding:0;
-	color:white;
-}
-td{
-    width:200px;
-}
-ul{
-	margin:0;
-	padding:0;
-}
-#profile_sidbar a,a:visited{
-	text-decoration:none;
-	color:#f5f5f5;
-	
-}
-a:hover{
-	background:rgba(0,0,0,.8);
-}
-
-#Profile-Home-wrapper{
-	min-height:100%;
-}
-#fakefooter{
-	height:50px;
-}
-#push{
-	height: 50px;
-	clear:both;
-
-}
-#fakeheader{
-	height:50px;
-}
-
-#Profile-Home-container{
-	height:100%;
-	
-}
-
-#profile_sidebar{
-	background: rgba(51,51,51,.8);
-	width:100px;
-	position:absolute;
-	left:0;
-	top:50px;
-	bottom:0px;
-	color: #f5f5f5;
-}
-#profileHome_container{
-	/*margin-left is the profile_sidebar width*/
-	margin-left:100px;
-	background: rgba(0,0,0,.8);
-	position:relative;/*for close button positioning*/
-}
-#profile_sidebar li{
-	list-style-type: none;
-}
-#profile_sidebar ul{
-	font-size:18px;
-	margin:0;
-	padding:0;
-
-}
-#profile_sidebar li a{
-
-}
-#profileHome-info-img{
-	height:150px;
-	width:120px;
-	margin:1em;
-	padding:0;
-	float:left;
-}
-#profileHome-info-img{
-	margin:1em;
-}
-#profileHome-info-img img{
-	width:100px;
-	height:120px;
-}
-#profileHome-info-img img:hover{
-	border:2px solid #ffc000;
-	/*float:left;
-	border:1px solid #AFAFAF;
-	width:100px;
-	min-height:100px;
-	background:rgba(0,0,0,.50);*/
-}
-#profileHome_info{
-	/*Need float and width to keep basicInfo borders contained*/
-	float:left;
-	width:400px;
-	background: #1d1d1d;
-	margin:1em 0;
-}
-#profileHome_top{
-
-	height:150px;
-}
-#profileHomeBasicInfo{
-	border-top:1px solid #948B8B;
-	border-bottom: 1px solid #948B8B;
-	font-size:15px;
-	font-weight:lighter;
-	padding:15px 10px;
-	
-}
-
-#profileHomeBasicInfo ul li{
-	display:inline;
-
-	color:white;
-
-}
-#profileHome_bottom{
-	clear:both;
-	background-color: white;
-	margin: 0 1em;
-
-}
-#info_username{
-	font-size:15px;
-	text-transform:uppercase;
-}
-div.info_name{
-	padding:15px 10px;
-}
-#info_name{
-	font-size:22px;
-}
-.blueLink{
-	color:#0085FF;
-}
-#profileHome_description{
-	font-style:italic;
-	font-size:16px;
-	padding:15px 10px;
-}
-/*General Table CSS for Photos,INS,Activity,etc*/
-th{
-	background-color: #5d6567;
-	color:white;
-	text-align:left;
-	font-size:16px;
-	font-weight:normal;
-	text-transform:uppercase;
-}
-table.generalGrid{
-	width:100%;
-}
-.gridItem img{
-	width:200px;
-	height:200px;
-}
-td.gridItem{
-	text-align:center;
-}
-.gridItemDescription{
-
-}
-#CloseButton{
-	position:absolute;
-	right:0;
-	top:0;
-}
-</style>
 <div id="Profile-Home-wrapper">
 	<div id="fakeheader">Header</div>
 	<div id="Profile-Home-container">
 		
 		<div id="profile_sidebar">
 			<ul>
-				<li id="Profile-Home"><a href="#">Home</a></li>
+				<li id="Profile-Home">
+					<a href="#"><span>Home<span></a></li>
+					<br>
+					<br>
+					<div class="spacer"></div>
+					<img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/linebreak_xjaflm.png" width="70px"/>	
 				<li id="Profile-Photos"><a href="#">Photos</a></li>
 				<li id="Profile-Friends"><a href="#">Friends</a></li>
-				<li><a href="#">Key Requests</a></li>
-				<li><a href="#">Activity</a></li>
+				<li id="Profile-Key-Requests"><a href="#"><span>Requests<span></a></li>
+				<li id="Profile-Activity"><a href="#">Activity</a></li>
 
 			</ul>
+			
 		</div>
 		<div id="profileHome_container">
-			<div id="CloseButton"><a href="#" id="Profile-Close-Button">CLOSE</a></div>
-			<div id="CollapseArrow"></div>
+			
+			
 			<div id="profileHome_top">
 				<div id="profileHome-info-img">
 					<figure>
@@ -248,7 +71,11 @@ td.gridItem{
 				</p>
 			</div>
 		</div>
-		
+		<div id="collapseBar">
+			<div id="CloseButton"><a href="#" id="Profile-Close-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" width="15px"></a></div>
+			<div id="CollapseArrow"><a href="#" id="Profile-Collapse-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png"></a></div>
+		</div>
+		<div id="push">push</div>
 	</div>
 </div>
-
+<div id="fakefooter">Footer</div>
