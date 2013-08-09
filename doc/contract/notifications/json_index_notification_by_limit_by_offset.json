@@ -1,5 +1,6 @@
 //# Get all notification
-//# GET 'notifications/json/index_notification_by_limit_by_offset.json'
+//# GET 'notifications/json/index_notification_by_limit_by_offset/:limit/:offset.json'
+//# GET 'notifications/json/index_notification_by_limit_by_offset/5/0.json'
 //#Return head 200 OK
 
 

@@ -11,7 +11,9 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
     @profile.set(@theme_collection.models[0].get('user_profile'))
     @profile.set('user',@theme_collection.models[0].get('user'))
     @profile.set('user_photos',@theme_collection.models[0].get('user_photos'))
+    
     @showProfileView()
+
     #I had a lot of issues when trying to create the Profile View here. 
     #Got a white screen on loading, no errors. 
     #Not sure why this wouldn't run if view is created right after model is.
@@ -24,7 +26,10 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
   	#Need to stop listening for click #ProfileOpen
   showProfileView: ->
     console.log("ShowProfileView fun")
-    @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile})
+    @profileView = new Mywebroom.Views.ProfileHomeView(
+      model:@profile
+      activityCollection:@activityCollection
+      )
     $(@el).append(@profileView.el)
     @profileView.render()
   closeProfileView: ->
@@ -41,6 +46,27 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
       reset: true 
       success: (response)->
         console.log(response)
+    #Can't get activity collection to wait for fetch if
+    #it's in ProfileHomeModel
+    @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
+    @activityCollection.fetch
+        reset:true
+        limit:6
+        offset:0
+        success: (response)-> 
+          console.log("ActivityCollection Fetched Successfully")
+          console.log(response.attributes)
+    #userid= @.get('user').id
+    #@photosCollection = new Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset()
+    #@photosCollection.fetch()
+
+    #Tried putting this in the Profile Home model intialize function, but it was not ready for
+    #view rendering -SN
+    #@activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
+    #@activityCollection.fetch
+    #    reset: true 
+    #    success: (response)->
+     #     console.log(response.attributes)
 
     #@profile.fetch({parse:true});
     #TODO Create Profile Model

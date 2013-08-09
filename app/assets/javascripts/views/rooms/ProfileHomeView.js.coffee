@@ -8,13 +8,17 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #Profile-Close-Button':'closeProfileView'
  	'click #Profile-Collapse-Button':'collapseProfileView'
  initialize: ->
+ 	@activityCollection=@options.activityCollection
  	@photosView = new Mywebroom.Views.ProfilePhotosView({model:@model})
+ 	@activityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
+ 	#@activityCollection.on('reset', @render, this)
    #@collection.on('reset',@render,this)
 
  render: ->
    #attribute = this.model.toJSON()
    #console.log("ProfileHomeView model toJSON: "+attribute)
    $(@el).html(@template(user_info:@model))     #pass variables into template.
+   @showHomeGrid()
    this
  showProfilePhotos: ->
  	#initialize new Profile Photos view
@@ -24,8 +28,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	$('#profileHome_bottom').html(photosView.render().el)
  	#initalize new Profile Friends model. 
  showHomeGrid: ->
- 	homeGridtemplate= JST['profile/profileHomeGrid']
- 	$('#profileHome_bottom').html(homeGridtemplate)
+ 	console.log("ShowHomeGrid runs")
+ 	#homeGridtemplate= JST['profile/profileHomeGrid']
+ 	$('#profileHome_bottom').html(@activityView.el)
+ 	@activityView.render()
  collapseProfileView: ->
  	#If view is open, close it, else reverse.
  	#Sara Note- this is odd looking Coffeescript. I don't see any 

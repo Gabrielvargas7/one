@@ -116,10 +116,10 @@ class NotificationsController < ApplicationController
   #***********************************
   # Json methods for the room users
   #***********************************
-
-  # Get all notification
-  # GET 'notifications/json/index_notification_by_limit_by_offset.json'
-  #Return head 200 OK
+# Get all notification
+# GET 'notifications/json/index_notification_by_limit_by_offset/:limit/:offset.json'
+# GET 'notifications/json/index_notification_by_limit_by_offset/5/0.json'
+#Return head 200 OK
   def json_index_notification_by_limit_by_offset
     @notifications = Notification.order("updated_at desc").limit(params[:limit]).offset(params[:offset])
     respond_to do |format|

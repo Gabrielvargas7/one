@@ -5,13 +5,17 @@
 	</th>
 </tr>
     <tr>
-        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823576/3019-items_design-image_name_hover-pink-229-h.png"><span class="gridItemDescription">Item Name!</span></td>
-        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823576/3019-items_design-image_name_hover-pink-229-h.png"><span class="gridItemDescription">Item Name!</span></td>
-        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823576/3019-items_design-image_name_hover-pink-229-h.png"><span class="gridItemDescription">Item Name!</span></td>
+        <% i=0 %>
+        <% while i < 3: %>
+        <td class="gridItem"><img src="<%=@activity.get(i).image_name.url%>"><span class="gridItemDescription"><%=@activity.get(i).name%></span></td>
+        <%i++%>
+        <% end %>
     </tr>
     <tr>
-         <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823547/62628-items_design-image_name_hover-pink-219-h.png"><span class="gridItemDescription">Item Name!</span></td>
-        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823547/62628-items_design-image_name_hover-pink-219-h.png"></td>
-        <td class="gridItem"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823547/62628-items_design-image_name_hover-pink-219-h.png"></td>
+        <% j=4 %>
+        <% while j < 6: %>
+        <td class="gridItem"><img src="<%=@activity.get(j).image_name.url%>"><span class="gridItemDescription"><%=@activity.get(j).name%></span></td>
+        <%j++%>
+        <% end %>
     </tr>
 </table>
