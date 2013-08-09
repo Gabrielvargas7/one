@@ -41,11 +41,9 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
   initialize: ->
     @collection.on('reset', @render, this)
     @theme_collection = new Mywebroom.Collections.RoomsJsonShowRoomByUserId()
+    @theme_collection.on('reset_theme', @render_theme, this)
     #@theme_colection.set('id',23)
-    @theme_collection.fetch
-      reset: true 
-      success: (response)->
-        console.log(response)
+    
     #Can't get activity collection to wait for fetch if
     #it's in ProfileHomeModel
     @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
@@ -84,8 +82,22 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
 
   render: ->
     $(@el).html(@template(user: @collection))
-    #@theme_collection.fetch({reset: true})
+    #Once collection is done, we want to fetch the theme by user id.
+    # so set the url for theme collection to the user id
+    if @collection.models.length 
+      console.log("UsersJsonShowSignedUser has a model. Fetching ThemeCol data");
+      @theme_collection.url= '/rooms/json/show_room_by_user_id/'+@collection.models[0].get('id')
+      @theme_collection.fetch
+        reset_theme: true 
+        success: (response)->
+          console.log(response)
+          if response.models
+            response.models[0].collection.trigger('reset_theme')
+    
+    this
+  render_theme: ->
     @themeView = new Mywebroom.Views.RoomThemeView(collection: @theme_collection)
     $('#c').append(@themeView.el)
     @themeView.render()
     this
+
