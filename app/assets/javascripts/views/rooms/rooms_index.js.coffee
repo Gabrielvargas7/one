@@ -56,9 +56,16 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
         success: (response)-> 
           console.log("ActivityCollection Fetched Successfully")
           console.log(response.attributes)
-    #userid= @.get('user').id
-    #@photosCollection = new Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset()
-    #@photosCollection.fetch()
+    @photosCollection = new Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset()
+    #@photosCollection.set('user_id',24)
+    #Fetch by passing url with limits and offset
+    @photosCollection.fetch
+      url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/24/6/0.json'
+      reset:true;
+      success: (response)->
+        console.log("PhotosCollection Fetched Successfully")
+        console.log(response)
+
 
     #Tried putting this in the Profile Home model intialize function, but it was not ready for
     #view rendering -SN

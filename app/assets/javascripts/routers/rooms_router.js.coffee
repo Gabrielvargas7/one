@@ -2,8 +2,6 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
 
   routes:
     '': 'routes_room'
-    '/room/:name': 'show_room'
-    'cheetos':'show_room'
   initialize: ->
 #    @collection = new Mywebroom.Collections.ThemesJsonIndex()
     @signedUserInfoCollection = new Mywebroom.Collections.UsersJsonShowSignedUser()
@@ -18,11 +16,7 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
     #themeView in background
     #themeView = new Mywebroom.Views.RoomThemeView(collection: @theme_collection)
     #$('#c').append(themeView.render().el)
-  show_objects: ->
-    objectsView = new Mywebroom.Views.RoomObjectView(collection: @test_collection)
-    $('#c').append(objectsView.render().el)
-  show_room: (name)->
-    alert("Show the name #{name}")
+
 
 
 
