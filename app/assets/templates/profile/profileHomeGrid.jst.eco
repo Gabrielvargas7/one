@@ -7,14 +7,18 @@
     <tr>
         <% i=0 %>
         <% while i < 3: %>
-        <td class="gridItem"><img src="<%=@activity.get(i).image_name.url%>"><span class="gridItemDescription"><%=@activity.get(i).name%></span></td>
+            <% if @activity.models[i]: %>
+                <td class="gridItem"><img src="<%=@activity.models[i].get('image_name').url%>"><span class="gridItemDescription"><%=@activity.models[i].get('image_name').name%></span></td>
+            <% end %>
         <%i++%>
         <% end %>
     </tr>
     <tr>
         <% j=4 %>
         <% while j < 6: %>
-        <td class="gridItem"><img src="<%=@activity.get(j).image_name.url%>"><span class="gridItemDescription"><%=@activity.get(j).name%></span></td>
+            <% if @activity.models[j]: %>
+        <td class="gridItem"><img src="<%=@activity.models[j].get('image_name').url%>"><span class="gridItemDescription"><%=@activity.models[j].get('image_name').name%></span></td>
+            <% end %>
         <%j++%>
         <% end %>
     </tr>

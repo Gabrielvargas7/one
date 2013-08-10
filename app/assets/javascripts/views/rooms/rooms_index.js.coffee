@@ -29,6 +29,7 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
     @profileView = new Mywebroom.Views.ProfileHomeView(
       model:@profile
       activityCollection:@activityCollection
+      photosCollection:@photosCollection
       )
     $(@el).append(@profileView.el)
     @profileView.render()
@@ -47,23 +48,10 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
     #Can't get activity collection to wait for fetch if
     #it's in ProfileHomeModel
     @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
-    @activityCollection.fetch
-        reset:true
-        limit:6
-        offset:0
-        success: (response)-> 
-          console.log("ActivityCollection Fetched Successfully")
-          console.log(response.attributes)
     @photosCollection = new Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset()
     #@photosCollection.set('user_id',24)
     #Fetch by passing url with limits and offset
-    @photosCollection.fetch
-      url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/24/6/0.json'
-      reset:true;
-      success: (response)->
-        console.log("PhotosCollection Fetched Successfully")
-        console.log(response)
-
+    
 
     #Tried putting this in the Profile Home model intialize function, but it was not ready for
     #view rendering -SN
@@ -86,14 +74,29 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
     # so set the url for theme collection to the user id
     if @collection.models.length 
       console.log("UsersJsonShowSignedUser has a model. Fetching ThemeCol data");
-      @theme_collection.url= '/rooms/json/show_room_by_user_id/'+@collection.models[0].get('id')
+      #Fetch Theme data
       @theme_collection.fetch
+        url:'/rooms/json/show_room_by_user_id/'+@collection.models[0].get('id')
         reset_theme: true 
         success: (response)->
           console.log(response)
           if response.models
             response.models[0].collection.trigger('reset_theme')
-    
+      #Fetch activity data for Profile
+      @activityCollection.fetch
+        reset:true
+        success: (response)-> 
+          console.log("ActivityCollection Fetched Successfully Response:")
+          console.log(response)
+          console.log('response.attributes: ')
+          console.log(response.attributes)
+      #Fetch photos data for Profile Photos
+      @photosCollection.fetch
+        url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+@collection.models[0].get('id')+'/6/0.json'
+        reset:true;
+        success: (response)->
+         console.log("PhotosCollection Fetched Successfully")
+         console.log(response)
     this
   render_theme: ->
     @themeView = new Mywebroom.Views.RoomThemeView(collection: @theme_collection)

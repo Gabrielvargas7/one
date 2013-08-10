@@ -1,5 +1,5 @@
 #Collection
-class Mywebroom.Collections.index_notification_by_limit_by_offset extends Backbone.Model
+class Mywebroom.Collections.index_notification_by_limit_by_offset extends Backbone.Collection
 	model:Mywebroom.Models.ProfileActivity
 	limit:6
 	offset:0

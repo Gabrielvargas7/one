@@ -9,7 +9,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #Profile-Collapse-Button':'collapseProfileView'
  initialize: ->
  	@activityCollection=@options.activityCollection
- 	@photosView = new Mywebroom.Views.ProfilePhotosView({model:@model})
+ 	@photosCollection=@options.photosCollection
+
+ 	@photosView = new Mywebroom.Views.ProfilePhotosView({collection:@photosCollection})
  	@activityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
  	#@activityCollection.on('reset', @render, this)
    #@collection.on('reset',@render,this)
