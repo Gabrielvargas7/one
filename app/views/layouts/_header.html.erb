@@ -1,9 +1,10 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
+<header class="navbar navbar-fixed-top navbar-inverse"  >
+  <div class="navbar-inner" >
     <div class="container">
-      <%= link_to "rooms", '#', id: "logo" %>
+      <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), "#"  %>
       <nav>
-        <ul class="nav pull-right">
+        <ul class="nav pull-right" >
+
           <li><%= link_to "Home", root_path  %></li>
           <li><%= link_to "Help",  help_path %></li>
 
