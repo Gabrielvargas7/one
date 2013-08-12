@@ -22,12 +22,12 @@
 	left:0px;
 	font-family:"Open Sans",sans-serif
 }
-#Profile-Home-wrapper figure{
+#profile_home_wrapper figure{
 	margin:0;
 	padding:0;
 	display:table;
 }
-#Profile-Home-wrapper figcaption{
+#profile_home_wrapper figcaption{
 	font-size:8px;
 	display:table-row;
 	white-space:nowrap;
@@ -40,10 +40,10 @@
 	padding:0;
 	color:#f5f5f5;
 }
-#Profile-Home-wrapper td{
+#profile_home_wrapper td{
     width:200px;
 }
-#Profile-Home-wrapper ul{
+#profile_home_wrapper ul{
 	margin:0;
 	padding:0;
 }
@@ -52,11 +52,11 @@
 	color:#f5f5f5;
 	
 }
-#Profile-Home-wrapper a:hover{
+#profile_home_wrapper a:hover{
 	background:rgba(0,0,0,.8);
 }
 
-#Profile-Home-wrapper{
+#profile_home_wrapper{
 	min-height:100%;
 }
 #fakefooter{
@@ -71,7 +71,7 @@
 	height:50px;
 }
 
-#Profile-Home-container{
+#profile_home_container{
 	height:100%;
 	width:720px;
 	position:relative;
@@ -119,55 +119,55 @@ div.spacer{
 }
 //Sidebar Icons
 
-#Profile-Home a{
+#profile_home a{
 	padding-top: 60px;
 	height:50px;
 	text-align: center;
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-default_fllxkx.png") no-repeat center;
 }
-#Profile-Home a:hover{
+#profile_home a:hover{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-active_n7xzdo.png") no-repeat center;
 }
-#Profile-Photos a{
+#profile_photos a{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/photobtn-default_wyukgi.png") no-repeat center;
 }
-#Profile-Photos a:hover{
+#profile_photos a:hover{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/photobtn-active_fkeam2.png") no-repeat center;
 }
-#Profile-Friends a{
+#profile_friends a{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/friendsbtn-default_acwlwf.png") no-repeat center;
 }
-#Profile-Friends a:hover{
+#profile_friends a:hover{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/friendsbtn-active_zjl9jt.png") no-repeat center;
 }
-#Profile-Key-Requests a{
+#profile_key_requests a{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/keyrequestbtn-default_cow1kv.png") no-repeat center;
 }
-#Profile-Key-Requests a:hover{
+#profile_key_requests a:hover{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/keyrequestbtn-active_btjwdx.png") no-repeat center;
 }
-#Profile-Activity a{
+#profile_activity a{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/activitybtn-default_nszatj.png") no-repeat center;
 }
-#Profile-Activity a:hover{
+#profile_activity a:hover{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811572/activitybtn-active_w91vry.png") no-repeat center;
 }
 
-#profileHome-info-img{
+#profile_home_info_img{
 	height:150px;
 	width:120px;
 	margin:1em;
 	padding:0;
 	float:left;
 }
-#profileHome-info-img{
+#profile_home_info_img{
 	margin:1em;
 }
-#profileHome-info-img img{
+#profile_home_info_img img{
 	width:100px;
 	height:120px;
 }
-#profileHome-info-img img:hover{
+#profile_home_info_img img:hover{
 	border:2px solid #ffc000;
 	/*float:left;
 	border:1px solid #AFAFAF;
@@ -175,7 +175,7 @@ div.spacer{
 	min-height:100px;
 	background:rgba(0,0,0,.50);*/
 }
-#profileHome_info{
+#profile_home_info_wrap{
 	/*Need float and width to keep basicInfo borders contained*/
 	float:left;
 	width:460px;
@@ -183,11 +183,12 @@ div.spacer{
 	margin:1em 0;
 	color:#f5f5f5
 }
+/*this refers to top section of the profile container */
 #profileHome_top{
 
 	height:150px;
 }
-#profileHomeBasicInfo{
+#profile_home_basic_info{
 	border-top:1px solid #2c2c2c;
 	border-bottom: 1px solid #2c2c2c;
 	font-size:15px;
@@ -196,9 +197,10 @@ div.spacer{
 	
 }
 
-#profileHomeBasicInfo ul li{
+#profile_home_basic_info ul li{
 	display:inline;
 }
+/* this refers to the bottom section of the profile container */
 #profileHome_bottom{
 	clear:both;
 	background-color: white;
@@ -209,10 +211,10 @@ div.spacer{
 	font-size:15px;
 	text-transform:uppercase;
 }
-div.info_name{
+div.profile_info_name{
 	padding:15px 10px;
 }
-#info_name{
+#profile_info_name{
 	font-size:22px;
 }
 .blueLink{
@@ -220,7 +222,7 @@ div.info_name{
 	font-weight:lighter;
 	font-size:15px;
 }
-#profileHome_description{
+#profile_home_description{
 	font-style:italic;
 	font-size:16px;
 	padding:15px 10px;
@@ -228,7 +230,7 @@ div.info_name{
 }
 
 /*General Table CSS for Photos,INS,Activity,etc*/
-#Profile-Home-wrapper th{
+#profile_home_wrapper th{
 	background-color: #5d6567;
 	color:white;
 	text-align:left;
@@ -237,7 +239,7 @@ div.info_name{
 	text-transform:uppercase;
 	width:100%
 }
-#Profile-Home-wrapper table.generalGrid{
+#profile_home_wrapper table.generalGrid{
 	width:100%;
 }
 .gridItem img{
@@ -252,12 +254,12 @@ td.gridItem{
 	font-size:12px;
 	font-weight:lighter;
 }
-#CloseButton{
+#profile_close_button{
 	position:absolute;
 	right:0;
 	top:0;
 }
-#CollapseArrow{
+#profile_collapse_arrow{
 	position:absolute;
 	right:0;
 	top:50%;

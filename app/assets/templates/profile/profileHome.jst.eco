@@ -19,7 +19,7 @@
 	
 	background:rgba(0,0,0,.50);
 }
-#profileHome_info{
+#profile_home_info_wrap{
 	float:right;
 }
 #profileHome_top{
@@ -40,11 +40,11 @@ p{
 <p>User Home Profile</p>
 <div id="profile_sidebar">
 			<ul>
-				<li id="Profile-Home"><a href="#">Home</a></li>
-				<li id="Profile-Photos"><a href="#">Photos</a></li>
-				<li><a id="Profile-Friends" href="#">Friends</a></li>
-				<li><a id="Profile-Key-Requests" href="#">Key Requests</a></li>
-				<li><a id="Profile-Activity" href="#">Activity</a></li>
+				<li id="profile_home"><a href="#">Home</a></li>
+				<li id="profile_photos"><a href="#">Photos</a></li>
+				<li><a id="profile_friends" href="#">Friends</a></li>
+				<li><a id="profile_key_requests" href="#">Key Requests</a></li>
+				<li><a id="profile_activity" href="#">Activity</a></li>
 				<li><a href="#" id="Profile-Close-Button">Close</a></li>
 
 			</ul>
@@ -55,8 +55,8 @@ p{
 				<img id="profile_picture" src="<%=@user_info.get('user_photos').image_name.url%>">
 
 			</div>
-			<div id="profileHome_info" class="user_info">
-				<p id="info_name">Name: <%=@user_info.get('firstname')%> <%=@user_info.get('lastname')%></p>
+			<div id="profile_home_info_wrap" class="user_info">
+				<p id="profile_info_name">Name: <%=@user_info.get('firstname')%> <%=@user_info.get('lastname')%></p>
 				<p id ="info_gender">Gender: <%=@user_info.get('gender')%></p>
 				<p id = "info_username">Username: <%=@user_info.get('username')%></p>
 				<p id = "info_description"><%=@user_info.get('description')%></p>
