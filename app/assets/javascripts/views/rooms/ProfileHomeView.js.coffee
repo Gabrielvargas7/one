@@ -1,6 +1,6 @@
 class Mywebroom.Views.ProfileHomeView extends Backbone.View
  className: 'user_profile'
- template: JST['profile/profileDraft']
+ template: JST['profile/profileHome']
  events:
  	'click #profile_photos':'showProfilePhotos',
  	'click #profile_friends':'showProfileFriends',
