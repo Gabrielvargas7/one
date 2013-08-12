@@ -24,16 +24,11 @@
 }
 #profileHome_top{
 	border:1px solid gray;
-	
-
 }
 
 p{
 	font-weight:bolder;
 	font-size:12px;
-	font-family:Arial;
-
-
 }
 #profileHome_bottom{
 	float:right;
