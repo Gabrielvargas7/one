@@ -40,9 +40,15 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  		$('#profileHome_bottom').html(@keyRequestsView.render().el) 	
  showProfileFriends: ->
  	if @friendsView
- 		$('#profileHome_bottom').html(@friendsView.render().el)
-
+ 		#Need to get a collection view, then a subview for each model.
+ 		#Feed each model profileFriends View
+ 		$('#profileHome_bottom').html("<h1>Friends View y'all<h1>")
+ 		@friendsCollection.forEach(@friendsAdd,this)
  	#initalize new Profile Friends model. 
+ friendsAdd: (friend) ->
+ 	friendView = new Mywebroom.Views.ProfileFriendsView({model:friend})
+ 	$('#profileHome_bottom').append(friendView.el)
+ 	friendView.render()
  showHomeGrid: ->
  	console.log("ShowHomeGrid runs")
  	#homeGridtemplate= JST['profile/profileHomeGrid']
