@@ -30,6 +30,8 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
       model:@profile
       activityCollection:@activityCollection
       photosCollection:@photosCollection
+      friendsCollection:@friendsCollection
+      keyRequestsCollection:@keyRequestsCollection
       )
     $(@el).append(@profileView.el)
     @profileView.render()
@@ -43,30 +45,14 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
     @collection.on('reset', @render, this)
     @theme_collection = new Mywebroom.Collections.RoomsJsonShowRoomByUserId()
     @theme_collection.on('reset_theme', @render_theme, this)
-    #@theme_colection.set('id',23)
     
     #Can't get activity collection to wait for fetch if
-    #it's in ProfileHomeModel
+    # it's in ProfileHomeModel
     @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
     @photosCollection = new Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset()
-    #@photosCollection.set('user_id',24)
-    #Fetch by passing url with limits and offset
-    
+    @friendsCollection = new Mywebroom.Collections.Index_Friend_By_User_Id_By_Limit_By_Offset()
+    @keyRequestsCollection = new Mywebroom.Collections.Index_Friend_Request_Make_From_Your_Friend_To_You_By_User_Id()
 
-    #Tried putting this in the Profile Home model intialize function, but it was not ready for
-    #view rendering -SN
-    #@activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
-    #@activityCollection.fetch
-    #    reset: true 
-    #    success: (response)->
-     #     console.log(response.attributes)
-
-    #@profile.fetch({parse:true});
-    #TODO Create Profile Model
-
-#  render: ->
-#    $(@el).html(@template(rooms1:"hi backbone -- wellcome to RoR "))
-#    this
 
   render: ->
     $(@el).html(@template(user: @collection))
@@ -74,9 +60,10 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
     # so set the url for theme collection to the user id
     if @collection.models.length 
       console.log("UsersJsonShowSignedUser has a model. Fetching ThemeCol data");
+      loggedInUserId=@collection.models[0].get('id')
       #Fetch Theme data
       @theme_collection.fetch
-        url:'/rooms/json/show_room_by_user_id/'+@collection.models[0].get('id')
+        url:'/rooms/json/show_room_by_user_id/'+loggedInUserId
         reset_theme: true 
         success: (response)->
           console.log(response)
@@ -92,10 +79,24 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
           console.log(response.attributes)
       #Fetch photos data for Profile Photos
       @photosCollection.fetch
-        url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+@collection.models[0].get('id')+'/6/0.json'
+        url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+loggedInUserId+'/6/0.json'
         reset:true;
         success: (response)->
          console.log("PhotosCollection Fetched Successfully")
+         console.log(response)
+      #Fetch friends data for Profile Friends
+      @friendsCollection.fetch
+        url:'/friends/json/index_friend_by_user_id_by_limit_by_offset/'+loggedInUserId+'/6/0.json'
+        reset:true;
+        success: (response)->
+         console.log("FriendsCollection Fetched Successfully")
+         console.log(response)
+      #Fetch friends data for Profile Friends
+      @keyRequestsCollection.fetch
+        url:'/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/'+loggedInUserId+'.json'
+        reset:true;
+        success: (response)->
+         console.log("KeyRequestsCollection Fetched Successfully")
          console.log(response)
     this
   render_theme: ->

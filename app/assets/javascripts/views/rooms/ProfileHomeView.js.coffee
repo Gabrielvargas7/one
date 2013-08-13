@@ -36,11 +36,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	#initialize new Profile Photos view
  	$('#profileHome_bottom').html(@photosView.render().el)
  showProfileKeyRequests: ->
+ 	if @keyRequestsView
+ 		$('#profileHome_bottom').html(@keyRequestsView.render().el) 	
+ showProfileFriends: ->
  	if @friendsView
  		$('#profileHome_bottom').html(@friendsView.render().el)
- showProfileFriends: ->
- 	if @keyRequestsView
- 		$('#profileHome_bottom').html(@keyRequestsView.render().el)
+
  	#initalize new Profile Friends model. 
  showHomeGrid: ->
  	console.log("ShowHomeGrid runs")
