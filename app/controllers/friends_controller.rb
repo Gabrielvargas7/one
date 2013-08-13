@@ -164,7 +164,7 @@ class FriendsController < ApplicationController
                 users_photos.profile_image,
                 users_profiles.firstname,
                 users_profiles.lastname'
-               ).where(:user_id => @friends.map {|b| b.user_id})
+               ).where(:user_id => @friends.map {|b| b.user_id_friend})
                .where("users_photos.profile_image = 'y'")
                .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
 
@@ -203,7 +203,7 @@ class FriendsController < ApplicationController
                 users_photos.profile_image,
                 users_profiles.firstname,
                 users_profiles.lastname'
-              ).where(:user_id => @friends.map {|b| b.user_id})
+              ).where(:user_id => @friends.map {|b| b.user_id_friend})
               .where("users_photos.profile_image = 'y'")
               .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
 
