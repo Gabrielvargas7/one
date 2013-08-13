@@ -4,15 +4,22 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  events:
  	'click #profile_photos':'showProfilePhotos',
  	'click #profile_friends':'showProfileFriends',
+ 	'click #profile_key_requests':'showKeyRequests',
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView'
  	'click #Profile-Collapse-Button':'collapseProfileView'
  initialize: ->
  	@activityCollection=@options.activityCollection
  	@photosCollection=@options.photosCollection
+ 	@friendsCollection=@options.friendsCollection
+ 	@keyRequestsCollection=@options.keyRequestsCollection
 
  	@photosView = new Mywebroom.Views.ProfilePhotosView({collection:@photosCollection})
  	@activityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
+ 	if @friendsCollection
+ 		@friendsView = new Mywebroom.Views.ProfileFriendsView({collection:@friendsCollection})
+ 	if @keyRequestsCollection
+ 		@keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView({collection:@keyRequestsCollection})
  	#@activityCollection.on('reset', @render, this)
    #@collection.on('reset',@render,this)
 
@@ -28,9 +35,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  showProfilePhotos: ->
  	#initialize new Profile Photos view
  	$('#profileHome_bottom').html(@photosView.render().el)
+ showProfileKeyRequests: ->
+ 	if @friendsView
+ 		$('#profileHome_bottom').html(@friendsView.render().el)
  showProfileFriends: ->
- 	photosView = new Mywebroom.Views.ProfilePhotosView({model:@model})
- 	$('#profileHome_bottom').html(photosView.render().el)
+ 	if @keyRequestsView
+ 		$('#profileHome_bottom').html(@keyRequestsView.render().el)
  	#initalize new Profile Friends model. 
  showHomeGrid: ->
  	console.log("ShowHomeGrid runs")
