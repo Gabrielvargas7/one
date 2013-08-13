@@ -1,0 +1,12 @@
+<div class="media">
+	<a class="pull-left" href="#">
+		<img class="media-object" data-src="<%=model.get('image_name').url%>">
+	</a>
+	<div class="media-body">
+		<h4 class="media-heading">
+			<%=model.get('firstname')%> <%=model.get('lastname')%>
+		</h4>
+		<h5><%=model.get('username')%></h5>
+	</div>
+</div>
+
