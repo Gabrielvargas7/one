@@ -4,7 +4,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  events:
  	'click #profile_photos':'showProfilePhotos',
  	'click #profile_friends':'showProfileFriends',
- 	'click #profile_key_requests':'showKeyRequests',
+ 	'click #profile_key_requests':'showProfileKeyRequests',
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView'
  	'click #Profile-Collapse-Button':'collapseProfileView'
@@ -37,15 +37,24 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	$('#profileHome_bottom').html(@photosView.render().el)
  showProfileKeyRequests: ->
  	if @keyRequestsView
- 		$('#profileHome_bottom').html(@keyRequestsView.render().el) 	
+ 		$('#profileHome_bottom').html(@keyRequestsView.el)
+ 		@keyRequestsView.render()
+ 		@keyRequestsCollection.forEach(@keyRequestAddView,this)
+ 		@showSuggestedFriends 	
+ keyRequestAddView: (keyRequest) ->
+ 	keyRequestSingleView = new Mywebroom.Views.ProfileKeyRequestSingleView({model:keyRequest})
+ 	$('#profileHome_bottom').append(keyRequestSingleView.el)
+ 	keyRequestSingleView.render()
+ showSuggestedFriends: ->
+ 	console.log("One day I'll show friend suggestions!")
  showProfileFriends: ->
  	if @friendsView
  		#Need to get a collection view, then a subview for each model.
  		#Feed each model profileFriends View
  		$('#profileHome_bottom').html("<h1>Friends View y'all<h1>")
- 		@friendsCollection.forEach(@friendsAdd,this)
+ 		@friendsCollection.forEach(@friendsAddView,this)
  	#initalize new Profile Friends model. 
- friendsAdd: (friend) ->
+ friendsAddView: (friend) ->
  	friendView = new Mywebroom.Views.ProfileFriendsView({model:friend})
  	$('#profileHome_bottom').append(friendView.el)
  	friendView.render()

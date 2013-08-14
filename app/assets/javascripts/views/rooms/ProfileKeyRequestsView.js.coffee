@@ -2,6 +2,7 @@ class Mywebroom.Views.ProfileKeyRequestsView extends Backbone.View
 	# className: 'profileHome_activity'
 	# template: JST['profile/profileHomeGrid']
 	# initialize: ->
-		
-	# render: ->
-	# 	$(@el).html(@template(activity:@collection))
+	className:'profile_key_requests'
+	template:JST['profile/ProfileKeyRequests']
+	render: ->
+	 	$(@el).html(@template(collection:@collection))
