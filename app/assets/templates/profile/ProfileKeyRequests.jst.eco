@@ -1,0 +1,21 @@
+<style>
+#profile_key_request_list h1, #profile_suggested_friends_list h1{
+	background-color:gray;
+
+}
+#profile_key_request_list{
+	height:200px;
+	overflow:scroll;
+}
+#profile_key_request_list{
+	height:300px;
+	overflow:scroll;
+}
+</style>
+
+<div id="profile_key_request_list">
+	<h1>Key Requests</h1>
+</div>
+<div id="profile_suggested_friends_list">
+	<h1>Suggested Friends</h1>
+</div>
