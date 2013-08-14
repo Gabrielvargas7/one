@@ -37,14 +37,16 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	$('#profileHome_bottom').html(@photosView.render().el)
  showProfileKeyRequests: ->
  	if @keyRequestsView
- 		$('#profileHome_bottom').html(@keyRequestsView.el)
+ 		$('#profileHome_bottom').html(@keyRequestsView.el) 	
  		@keyRequestsView.render()
  		@keyRequestsCollection.forEach(@keyRequestAddView,this)
- 		@showSuggestedFriends 	
+ 		@showSuggestedFriends()
+ 		
  keyRequestAddView: (keyRequest) ->
  	keyRequestSingleView = new Mywebroom.Views.ProfileKeyRequestSingleView({model:keyRequest})
- 	$('#profileHome_bottom').append(keyRequestSingleView.el)
+ 	$('#profile_key_request_list').append(keyRequestSingleView.$el)
  	keyRequestSingleView.render()
+ 	console.log(@keyRequestsView.el)
  showSuggestedFriends: ->
  	console.log("One day I'll show friend suggestions!")
  showProfileFriends: ->

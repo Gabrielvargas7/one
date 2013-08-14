@@ -1,5 +1,5 @@
 <style>
-#profile_key_request_list h1, #profile_suggested_friends_list h1{
+#profile_key_request_list , #profile_suggested_friends_list {
 	background-color:gray;
 
 }
@@ -7,7 +7,7 @@
 	height:200px;
 	overflow:scroll;
 }
-#profile_key_request_list{
+#profile_suggested_friends_list{
 	height:300px;
 	overflow:scroll;
 }
