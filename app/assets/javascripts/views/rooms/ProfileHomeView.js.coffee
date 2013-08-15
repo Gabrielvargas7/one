@@ -20,6 +20,22 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  		@friendsView = new Mywebroom.Views.ProfileFriendsView({collection:@friendsCollection})
  	if @keyRequestsCollection
  		@keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView({collection:@keyRequestsCollection})
+
+ 	#Try initialize Friend Suggestions here
+ 	@friendsSuggestionsCollection = new Mywebroom.Collections.IndexFriendsSuggestionsByUserIdByOffsetByLimit()
+ 	#user_id = @model.get('user_id')
+ 	user_id= 24
+ 	limit = 10;
+ 	offset = 0;
+ 	#Fetch suggestion data for Profile Friends Requests
+ 	#Getting error in backbone once fetch is done and model start populating.
+ 	@friendsSuggestionsCollection.fetch
+      url:'/friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/'+user_id+'/'+limit+'/'+offset+'.json'
+      reset:true;
+      success: (response)->
+       console.log("friendsSuggestionsCollection Fetched Successfully")
+       console.log(response)
+    @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({collection:@friendsSuggestionsCollection})
  	#@activityCollection.on('reset', @render, this)
    #@collection.on('reset',@render,this)
 
@@ -35,6 +51,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  showProfilePhotos: ->
  	#initialize new Profile Photos view
  	$('#profileHome_bottom').html(@photosView.render().el)
+ #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
  showProfileKeyRequests: ->
  	if @keyRequestsView
  		$('#profileHome_bottom').html(@keyRequestsView.el) 	
@@ -48,7 +65,14 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	keyRequestSingleView.render()
  	console.log(@keyRequestsView.el)
  showSuggestedFriends: ->
+ 	if @friendsSuggestionsView
+ 		@friendsSuggestionsCollection.forEach(@friendsSuggestionAddView, this)
  	console.log("One day I'll show friend suggestions!")
+ friendsSuggestionAddView: (friendSuggestion) ->
+ 	friendSuggestionSingleView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({model:friendSuggestion})
+ 	$('#profile_suggested_friends_list').append(friendSuggestionSingleView.$el)
+ 	friendSuggestionSingleView.render()
+
  showProfileFriends: ->
  	if @friendsView
  		#Need to get a collection view, then a subview for each model.

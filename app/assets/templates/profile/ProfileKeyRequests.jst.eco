@@ -13,9 +13,13 @@
 }
 </style>
 
-<div id="profile_key_request_list">
-	<h1>Key Requests</h1>
-</div>
+<table id="profile_key_request_list">
+	<tbody>
+	<tr><th>
+		Key Requests
+	</th></tr>
+	</tbody>
+</table>
 <div id="profile_suggested_friends_list">
 	<h1>Suggested Friends</h1>
 </div>

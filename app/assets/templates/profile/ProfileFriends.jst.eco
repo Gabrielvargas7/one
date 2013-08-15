@@ -2,6 +2,9 @@
 .media.profile_friend{
 	color:black;
 }
+.profile_friend{
+	background-color:gray;
+}
 </style>
 <a class="pull-left" href="#">
 	<img class="media-object" src="<%=@model.get('image_name').url%>">
