@@ -3,8 +3,11 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
   template: JST['rooms/index']
   events:{
   	'click #ProfileOpen':'showProfile',
-  	
   }
+#  **********************
+#  *** function showProfile
+#  **********************
+
   showProfile: (evt) ->
     #TODO Move this to the model initialize
     @profile = new Mywebroom.Models.ProfileHome({msg:"Hello user"})
@@ -24,6 +27,11 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
   	#Need to stop listening to other room events (hover objects,etc)
     # Objects are initialized int room_router.js.coffee. how do I get that model to stop listening?
   	#Need to stop listening for click #ProfileOpen
+
+#  **********************
+#  *** function showProfileView
+#  **********************
+
   showProfileView: ->
     console.log("ShowProfileView fun")
     @profileView = new Mywebroom.Views.ProfileHomeView(
@@ -35,11 +43,20 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
       )
     $(@el).append(@profileView.el)
     @profileView.render()
+
+#  **********************
+#  *** function closeProfileView
+#  **********************
+
   closeProfileView: ->
   	console.log('CloseProfileView Function running')
   	@profileView.remove();	
   	#Need to listen for #ProfileOpen again
   	#Need to enable other room events again.
+
+#  **********************
+#  *** initialize
+#  **********************
 
   initialize: ->
     @collection.on('reset', @render, this)
@@ -58,13 +75,13 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
     $(@el).html(@template(user: @collection))
     #Once collection is done, we want to fetch the theme by user id.
     # so set the url for theme collection to the user id
-    if @collection.models.length 
+    if @collection.models.length
       console.log("UsersJsonShowSignedUser has a model. Fetching ThemeCol data");
       loggedInUserId=@collection.models[0].get('id')
       #Fetch Theme data
       @theme_collection.fetch
         url:'/rooms/json/show_room_by_user_id/'+loggedInUserId
-        reset_theme: true 
+        reset_theme: true
         success: (response)->
           console.log(response)
           if response.models
@@ -72,7 +89,7 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
       #Fetch activity data for Profile
       @activityCollection.fetch
         reset:true
-        success: (response)-> 
+        success: (response)->
           console.log("ActivityCollection Fetched Successfully Response:")
           console.log(response)
           console.log('response.attributes: ')
@@ -99,6 +116,8 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
          console.log("KeyRequestsCollection Fetched Successfully")
          console.log(response)
     this
+
+
   render_theme: ->
     @themeView = new Mywebroom.Views.RoomThemeView(collection: @theme_collection)
     $('#c').append(@themeView.el)
