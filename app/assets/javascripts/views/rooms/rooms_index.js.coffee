@@ -8,6 +8,7 @@ class Mywebroom.Views.RoomsIndex extends Backbone.View
 #  *** function showProfile
 #  **********************
 
+
   showProfile: (evt) ->
     #TODO Move this to the model initialize
     @profile = new Mywebroom.Models.ProfileHome({msg:"Hello user"})

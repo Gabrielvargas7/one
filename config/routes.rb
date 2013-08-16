@@ -128,8 +128,10 @@ Mywebroom::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
-  #main page
+  #room page
   match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
+  match '/xroom/:username', to: 'rooms#xroom', via: :get,as: :xroom_rooms
+
 
   root to: 'static_pages#home'
   #root to: 'users#new'
@@ -174,6 +176,13 @@ Mywebroom::Application.routes.draw do
   match '/rooms/json/show_room_by_user_id/:user_id', to:
          'rooms#json_show_room_by_user_id', via: :get ,as:
          :rooms_json_show_room_by_user_id
+
+  match '/rooms/json/show_room_user', to:
+        'rooms#json_show_room_user', via: :get ,as:
+        :rooms_json_show_room_user
+
+
+
   #--------------------------
   # end Rooms contract
   #--------------------------

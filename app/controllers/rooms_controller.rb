@@ -23,6 +23,27 @@ class RoomsController < ApplicationController
 
 
 
+  # GET Get room with the username
+  # /xroom/:username
+  # xroom_rooms_path // xroom_rooms_url
+  # public
+  def xroom
+
+    if User.exists?(username:params[:username])
+
+      @username = params[:username]
+      @user = User.find_by_username(params[:username])
+
+      set_room_user @user
+
+      respond_to do |format|
+        format.html
+      end
+    else
+      redirect_to(root_path)
+    end
+  end
+
 
   # GET Get room with the username
   # /room/:username
@@ -49,6 +70,27 @@ class RoomsController < ApplicationController
   #***********************************
   # Json methods for the room users
   #***********************************
+
+  # GET get user the is visit
+  #  /rooms/json/show_room_user
+  #  /rooms/json/show_room_user
+  #  /# success    ->  head  200 OK
+
+  def json_show_room_user
+
+    @room_user = room_user
+    respond_to do |format|
+      if @room_user.nil?
+        format.json { render json: 'user not found' , status: :not_found }
+      else
+        format.json { render json: @room_user.as_json(only:[:id,:username]), status: :ok}
+      end
+
+
+    end
+  end
+
+
 
 
   # GET Get all the user's items design,themes

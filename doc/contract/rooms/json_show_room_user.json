@@ -1,0 +1,9 @@
+//# GET get user the is visit
+//#  /rooms/json/show_room_user
+//#  /rooms/json/show_room_user
+//#  /# success    ->  head  200 OK
+
+{
+    "id": 23,
+    "username": "gabrielvargas7-74335-78473"
+}
