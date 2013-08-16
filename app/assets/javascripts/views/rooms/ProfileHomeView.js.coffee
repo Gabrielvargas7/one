@@ -6,11 +6,14 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  events:
  	'click #profile_photos':'showProfilePhotos',
  	'click #profile_friends':'showProfileFriends',
+  'click #profile_home_basic_info .blueLink':'showProfileFriends',
  	'click #profile_key_requests':'showProfileKeyRequests',
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView'
  	'click #Profile-Collapse-Button':'collapseProfileView'
   'click .gridItem':'getGridItemModel'
+  'mouseenter .gridItem':'showSocialBarView' #should this be in gridView?
+  'mouseleave .gridItem':'closeSocialBarView'
  initialize: ->
  	@activityCollection=@options.activityCollection
  	@photosCollection=@options.photosCollection
@@ -137,8 +140,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
       $("#profile_home_wrapper").append(currentView.el)
       currentView.render()
-
-
-
+ showSocialBarView:->
+  console.log("showSocialBarView function runs")
+ closeSocialBarView:->
+  console.log("closeSocialBarView functio runs")
  closeProfileView: ->
  	this.remove()
