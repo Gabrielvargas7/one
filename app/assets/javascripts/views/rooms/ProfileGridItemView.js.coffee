@@ -1,0 +1,32 @@
+class Mywebroom.Views.ProfileGridItemView extends Backbone.View
+	tagName:'td'
+	className:'gridItem'
+	template:JST['profile/ProfileGridItem']
+	render: ->
+		$(@el).html(@template(model:@model))
+	events: 
+		'mouseenter .gridItem':'showSocialBarView' 
+		'mouseleave .gridItem':'closeSocialBarView'
+		'click .gridItem':'getGridItemModel'
+	showSocialBarView:(event)->
+  		console.log("showSocialBarView function runs")
+  		hoveredModel = @model#collection.get(event.currentTarget.dataset.id)
+  		#model is undefined here. Get the specific model hovered over
+  		@socialBarView = new Mywebroom.Views.SocialBarView(model:hoveredModel)
+  		$(@el.childNodes[0]).append(@socialBarView.el)
+  		@socialBarView.render() 
+ 	closeSocialBarView:->
+  		console.log("closeSocialBarView functio runs")
+  		@socialBarView.remove()
+  	getGridItemModel: (event) ->
+  		event.stopPropagation()
+  		dataID = event.currentTarget.dataset.id
+  		console.log("You clicked a grid Item " +this.model.get('id'))
+  		#gridItem is either Activity Item or Photo. Determine which. 
+  		currentGridItem = this.model
+  		#launch new view. profile_drawer needs to expand
+  		$("#profile_drawer").css "width", "1320px"
+  		#$("#profile_home_container").css "width", "1320px"
+  		currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
+  		$("#profile_home_wrapper").append(currentView.el)
+  		currentView.render()  
