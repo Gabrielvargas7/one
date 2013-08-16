@@ -1,6 +1,8 @@
 class Mywebroom.Views.ProfileHomeView extends Backbone.View
  className: 'user_profile'
  template: JST['profile/profileHome']
+ #We should eventually make profileBottom its own view to remove and re-render. 
+ #There may be memory leaks with this method
  events:
  	'click #profile_photos':'showProfilePhotos',
  	'click #profile_friends':'showProfileFriends',
@@ -8,6 +10,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView'
  	'click #Profile-Collapse-Button':'collapseProfileView'
+  'click .gridItem':'getGridItemModel'
  initialize: ->
  	@activityCollection=@options.activityCollection
  	@photosCollection=@options.photosCollection
@@ -110,6 +113,32 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     		setTimeout (->
     			$("#profile_home_container").css "width", "0px"), 2000
     		console.log "UN-CollapseProfileView"
+ getGridItemModel: (event) ->
+  event.stopPropagation()
+  dataID = event.currentTarget.dataset.id
+  console.log("You clicked a grid Item " +dataID)
+  #gridItem is either Activity Item or Photo. Determine which. 
+  currentGridItem = @activityCollection.get(dataID)
+  if !currentGridItem
+    if @photosCollection
+      currentGridItem = @photosCollection.get(dataID)
+      if currentGridItem
+        #launch new view. profile_drawer needs to expand
+        $("#profile_drawer").css "width", "1320px"
+        #$("#profile_home_container").css "width", "1320px"
+        currentView = new Mywebroom.Views.PhotosLargeView({model:currentGridItem})
+        $("#profile_home_wrapper").append(currentView.el)
+        currentView.render()
+  else
+    if currentGridItem
+      #launch new view. profile_drawer needs to expand
+      $("#profile_drawer").css "width", "1320px"
+      #$("#profile_home_container").css "width", "1320px"
+      currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
+      $("#profile_home_wrapper").append(currentView.el)
+      currentView.render()
+
+
 
  closeProfileView: ->
  	this.remove()

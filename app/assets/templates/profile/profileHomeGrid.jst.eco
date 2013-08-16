@@ -8,7 +8,7 @@
         <% i=0 %>
         <% while i < 3: %>
             <% if @activity.models[i]: %>
-                <td class="gridItem"><img src="<%=@activity.models[i].get('image_name').url%>"><span class="gridItemDescription"><%=@activity.models[i].get('image_name').name%></span></td>
+                <td class="gridItem" data-id="<%=@activity.models[i].get('id')%>"><img src="<%=@activity.models[i].get('image_name').url%>" ><span class="gridItemDescription"><%=@activity.models[i].get('name')%></span></td>
             <% end %>
         <%i++%>
         <% end %>
@@ -17,7 +17,7 @@
         <% j=4 %>
         <% while j < 6: %>
             <% if @activity.models[j]: %>
-        <td class="gridItem"><img src="<%=@activity.models[j].get('image_name').url%>"><span class="gridItemDescription"><%=@activity.models[j].get('image_name').name%></span></td>
+        <td class="gridItem" data-id="<%=@activity.models[i].get('id')%>"><img src="<%=@activity.models[j].get('image_name').url%>" data-id="<%=@activity.models[i].get('id')%>"><span class="gridItemDescription"><%=@activity.models[j].get('name')%></span></td>
             <% end %>
         <%j++%>
         <% end %>

@@ -1,0 +1,17 @@
+<style>
+.activity_item_large_view{
+	position:absolute;
+	right:15%;
+	top:70px;
+
+}
+.activity_item_large_view img{
+	width:350px;
+	height:350px;
+}
+</style>
+<div>
+<h2>HAI LARGE ACTIVITY ITEM</h2>
+<img src="<%=@model.get('image_name').url%>">
+<p>Social Icons here eventually</p>
+</div>
