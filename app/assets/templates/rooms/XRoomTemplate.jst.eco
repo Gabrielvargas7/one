@@ -1,0 +1,4 @@
+
+<img id="current_background" src=<%= @user_theme.image_name.url %>>
+
+
