@@ -57,10 +57,13 @@ describe FriendsController do
                 users_photos.image_name,
                 users_photos.profile_image,
                 users_profiles.firstname,
-                users_profiles.lastname'
+                users_profiles.lastname,
+                users.username'
+
           ).where(:user_id => @friends.map {|b| b.user_id})
           .where("users_photos.profile_image = 'y'")
           .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+          .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')
 
     end
 
@@ -104,10 +107,14 @@ describe FriendsController do
         body.each do |body_friend|
           @user_photos_json = UsersPhoto.find_all_by_user_id(body_friend["user_id"]).first
           @user_profile_json = UsersProfile.find_all_by_user_id(body_friend["user_id"]).first
+          @user_json = User.find(body_friend["user_id"])
+
           body_friend["firstname"].should == @user_profile_json.firstname
           body_friend["lastname"].should == @user_profile_json.lastname
           body_friend["image_name"]["url"].should == @user_photos_json.image_name.to_s
           body_friend["profile_image"].should == @user_photos_json.profile_image
+          body_friend["username"].should == @user_json.username
+
 
         end
       end
@@ -133,10 +140,14 @@ describe FriendsController do
                 users_photos.image_name,
                 users_photos.profile_image,
                 users_profiles.firstname,
-                users_profiles.lastname'
+                users_profiles.lastname,
+                users.username'
+
           ).where(:user_id => @friends.map {|b| b.user_id})
           .where("users_photos.profile_image = 'y'")
           .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+          .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')
+
 
     end
 
@@ -187,10 +198,12 @@ describe FriendsController do
         body.each do |body_friend|
           @user_photos_json = UsersPhoto.find_all_by_user_id(body_friend["user_id"]).first
           @user_profile_json = UsersProfile.find_all_by_user_id(body_friend["user_id"]).first
+          @user_json = User.find(body_friend["user_id"])
           body_friend["firstname"].should == @user_profile_json.firstname
           body_friend["lastname"].should == @user_profile_json.lastname
           body_friend["image_name"]["url"].should == @user_photos_json.image_name.to_s
           body_friend["profile_image"].should == @user_photos_json.profile_image
+          body_friend["username"].should == @user_json.username
 
         end
 
@@ -260,10 +273,12 @@ describe FriendsController do
         body.each do |body_friend|
           @user_photos_json = UsersPhoto.find_all_by_user_id(body_friend["user_id"]).first
           @user_profile_json = UsersProfile.find_all_by_user_id(body_friend["user_id"]).first
+          @user_json = User.find(body_friend["user_id"])
           body_friend["firstname"].should == @user_profile_json.firstname
           body_friend["lastname"].should == @user_profile_json.lastname
           body_friend["image_name"]["url"].should == @user_photos_json.image_name.to_s
           body_friend["profile_image"].should == @user_photos_json.profile_image
+          body_friend["username"].should == @user_json.username
 
         end
 

@@ -42,10 +42,12 @@ describe FriendRequestsController do
                               users_photos.image_name,
                               users_photos.profile_image,
                               users_profiles.firstname,
-                              users_profiles.lastname'
+                              users_profiles.lastname,
+                              users.username'
                            ).where(:user_id => @friend_requests_find.map {|b| b.user_id})
                            .where("users_photos.profile_image = 'y'")
                            .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+                          .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')
        end
 
       it "should be successful" do
