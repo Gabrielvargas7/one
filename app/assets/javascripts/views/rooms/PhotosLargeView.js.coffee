@@ -7,8 +7,13 @@ class Mywebroom.Views.PhotosLargeView extends Backbone.View
 	initialize: ->
 		 _.bindAll this, 'insideHandler', 'outsideHandler'
 	render: ->
+		#append Social Bar icons View
 		$('body').on('click', this.outsideHandler);
 		$(@el).html(@template(model:@model))
+		#append social view to el here
+		socialBarView = new Mywebroom.Views.SocialBarView({model:@model})
+		$(@el).append(socialBarView.el)
+		socialBarView.render()
 		this
 		
 	insideHandler: (event) ->

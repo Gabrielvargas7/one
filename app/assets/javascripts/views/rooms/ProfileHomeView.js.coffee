@@ -11,9 +11,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView'
  	'click #Profile-Collapse-Button':'collapseProfileView'
-  'click .gridItem':'getGridItemModel'
-  'mouseenter .gridItem':'showSocialBarView' #should this be in gridView?
-  'mouseleave .gridItem':'closeSocialBarView'
+  # 'click .gridItem':'getGridItemModel'
+  # 'mouseenter .gridItem':'showSocialBarView' #should this be in gridView?
+  # 'mouseleave .gridItem':'closeSocialBarView'
  initialize: ->
  	@activityCollection=@options.activityCollection
  	@photosCollection=@options.photosCollection
@@ -116,33 +116,33 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     		setTimeout (->
     			$("#profile_home_container").css "width", "0px"), 2000
     		console.log "UN-CollapseProfileView"
- getGridItemModel: (event) ->
-  event.stopPropagation()
-  dataID = event.currentTarget.dataset.id
-  console.log("You clicked a grid Item " +dataID)
-  #gridItem is either Activity Item or Photo. Determine which. 
-  currentGridItem = @activityCollection.get(dataID)
-  if !currentGridItem
-    if @photosCollection
-      currentGridItem = @photosCollection.get(dataID)
-      if currentGridItem
-        #launch new view. profile_drawer needs to expand
-        $("#profile_drawer").css "width", "1320px"
-        #$("#profile_home_container").css "width", "1320px"
-        currentView = new Mywebroom.Views.PhotosLargeView({model:currentGridItem})
-        $("#profile_home_wrapper").append(currentView.el)
-        currentView.render()
-  else
-    if currentGridItem
-      #launch new view. profile_drawer needs to expand
-      $("#profile_drawer").css "width", "1320px"
-      #$("#profile_home_container").css "width", "1320px"
-      currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
-      $("#profile_home_wrapper").append(currentView.el)
-      currentView.render()
- showSocialBarView:->
-  console.log("showSocialBarView function runs")
- closeSocialBarView:->
-  console.log("closeSocialBarView functio runs")
+ # getGridItemModel: (event) ->
+ #  event.stopPropagation()
+ #  dataID = event.currentTarget.dataset.id
+ #  console.log("You clicked a grid Item " +dataID)
+ #  #gridItem is either Activity Item or Photo. Determine which. 
+ #  currentGridItem = @activityCollection.get(dataID)
+ #  if !currentGridItem
+ #    if @photosCollection
+ #      currentGridItem = @photosCollection.get(dataID)
+ #      if currentGridItem
+ #        #launch new view. profile_drawer needs to expand
+ #        $("#profile_drawer").css "width", "1320px"
+ #        #$("#profile_home_container").css "width", "1320px"
+ #        currentView = new Mywebroom.Views.PhotosLargeView({model:currentGridItem})
+ #        $("#profile_home_wrapper").append(currentView.el)
+ #        currentView.render()
+ #  else
+ #    if currentGridItem
+ #      #launch new view. profile_drawer needs to expand
+ #      $("#profile_drawer").css "width", "1320px"
+ #      #$("#profile_home_container").css "width", "1320px"
+ #      currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
+ #      $("#profile_home_wrapper").append(currentView.el)
+ #      currentView.render()
+ # showSocialBarView:->
+ #  console.log("showSocialBarView function runs")
+ # closeSocialBarView:->
+ #  console.log("closeSocialBarView functio runs")
  closeProfileView: ->
  	this.remove()
