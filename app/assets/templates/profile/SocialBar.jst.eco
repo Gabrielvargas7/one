@@ -4,15 +4,25 @@
 	height:auto;
 }
 .pinterest_item img{
-	width:50px;
+	width:20px;
 	height:auto;
 }
 .info_button_item img{
 	width:50px;
 	height:auto;
-
+}
+.social_bar .navbar .nav > li > a{
+	padding:10px 5px 10px;
 }
 </style>
-<div class="fb_like_item"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376673746/fb-test-like.jpg"></div>
-<div class="pinterest_item"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371247321/pinterest-red.png"></div>
-<div class="info_button_item btn"><button>Info</button></div>
+<div class ="navbar">
+	<div class="navbar-inner">
+		<ul class="nav">
+			<li class ="fb_like_item"><a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376673746/fb-test-like.jpg"></a></li>
+			<li class="pinterest_item"><a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371247321/pinterest-red.png"></a></li>
+			<li class="info_button_item"><a href="#">Info</a></li>
+		</ul>
+	</div>
+</div>
+<!-- <div class="pinterest_item"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371247321/pinterest-red.png"></div>
+<div class="info_button_item btn"><button>Info</button></div> -->
