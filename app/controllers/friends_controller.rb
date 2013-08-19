@@ -163,10 +163,14 @@ class FriendsController < ApplicationController
                 users_photos.image_name,
                 users_photos.profile_image,
                 users_profiles.firstname,
-                users_profiles.lastname'
+                users_profiles.lastname,
+                users.username'
+
                ).where(:user_id => @friends.map {|b| b.user_id_friend})
                .where("users_photos.profile_image = 'y'")
                .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+               .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')
+
 
             format.json { render json: @user_friend }
 
@@ -202,10 +206,12 @@ class FriendsController < ApplicationController
                 users_photos.image_name,
                 users_photos.profile_image,
                 users_profiles.firstname,
-                users_profiles.lastname'
+                users_profiles.lastname,
+                users.username'
               ).where(:user_id => @friends.map {|b| b.user_id_friend})
               .where("users_photos.profile_image = 'y'")
               .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+              .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')
 
           format.json { render json: @user_friend }
 
@@ -250,14 +256,9 @@ class FriendsController < ApplicationController
                     order by suggestion_friend desc limit "+limit+" offset "+offset
 
 
-              @suggestions = Friend.find_by_sql(sql)
+            @suggestions = Friend.find_by_sql(sql)
 
-              #@suggestions_friends = Array.new
-              #
-              #@suggestions.each  do |i|
-              #  @suggestions_friends.push User.select('id,image_name,name').where(id:i.user_id_friend).as_json
-              #
-              #end
+
 
             @suggestions_friends =
                 UsersPhoto.select(
@@ -265,10 +266,13 @@ class FriendsController < ApplicationController
                 users_photos.image_name,
                 users_photos.profile_image,
                 users_profiles.firstname,
-                users_profiles.lastname'
+                users_profiles.lastname,
+                users.username'
                 ).where(:user_id => @suggestions.map {|b| b.user_id_friend})
                 .where("users_photos.profile_image = 'y'")
                 .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+                .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')
+
 
 
               format.json { render json: @suggestions_friends }

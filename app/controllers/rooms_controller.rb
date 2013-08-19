@@ -92,7 +92,6 @@ class RoomsController < ApplicationController
 
 
 
-
   # GET Get all the user's items design,themes
     # /rooms/json/show_room_by_user_id/:user_id
   # /rooms/json/show_room_by_user_id/1.json
@@ -177,10 +176,23 @@ class RoomsController < ApplicationController
           else
             format.json { render json: 'not found user id' , status: :not_found }
           end
-
       end
 
   end
+
+
+  # Get random items and bookmarks of all items or bookmarks
+  # GET 'rooms/json/index_random_items_bookmarks_by_limit_by_offset/:limit/:offset.json'
+  #  # GET 'rooms/json/index_notification_by_limit_by_offset/5/0.json'
+  #Return head 200 OK
+  def json_index_notification_by_limit_by_offset
+    @notifications = Notification.order("updated_at desc").limit(params[:limit]).offset(params[:offset])
+    respond_to do |format|
+      format.json { render json: @notifications }
+    end
+  end
+
+
 
 
 

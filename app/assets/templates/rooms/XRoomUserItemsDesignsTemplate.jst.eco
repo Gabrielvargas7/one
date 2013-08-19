@@ -1,12 +1,12 @@
 
-<div class="user_item_design_container"
+<div class="room_user_item_design_container"
 
 style="position:absolute;
       width:<%=@user_item_design.width%>px;
       left:<%=@user_item_design.x%>px;
       top:<%=@user_item_design.y%>px;
       z-index:<%=@user_item_design.z%>;">
-    <img class="user_item_design" src="<%=@user_item_design.image_name.url%>" data-id="<%=@user_item_design.id%>">
+    <img class="room_user_item_design" src="<%=@user_item_design.image_name.url%>" data-id="<%=@user_item_design.id%>">
 
 </div>
 

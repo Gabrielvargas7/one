@@ -13,6 +13,8 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   #*******************
   #**** Events
   #*******************
+  events:
+    'click #xroom_profile_open':'showProfile'
 
 
   #*******************
@@ -21,6 +23,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   initialize: ->
     this.getRoomLoadingUserCollection()
     this.getUserSignInCollection()
+
 
   #*******************
   #**** Render
@@ -31,15 +34,17 @@ class Mywebroom.Views.XRoomView extends Backbone.View
     if @userRoomModel.id is undefined
       this.forwardToRoot()
     else
-      this.getUserDataCollection(this)
-
+      this.getUserDataCollection()
       @userAllRoomDataModel = @userAllRoomDataCollection.first()
-      this.setRoomTheme(@userAllRoomDataModel)
-      this.setRoomItemsDesigns(@userAllRoomDataModel)
-      this
+
+      this.setRoomTheme @userAllRoomDataModel
+      this.setRoomItemsDesigns @userAllRoomDataModel
+
+    this
+
 
   #*******************
-  #**** Funtions
+  #**** Funtions  Start Room
   #*******************
 
   #--------------------------
@@ -83,7 +88,8 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   setRoomTheme: (userAllRoomDataModel) ->
     userThemeList = userAllRoomDataModel.get('user_theme')
     userTheme = userThemeList[0]
-    $('#xroom_theme_items').append(@template(user_theme:userTheme))
+    $(@el).append(@template(user_theme:userTheme))
+
 
   #--------------------------
   # set items designs on room
@@ -95,8 +101,17 @@ class Mywebroom.Views.XRoomView extends Backbone.View
     while i < length
       console.log(userItemsDesignsList[i].id)
       userItemsDesignsView = new Mywebroom.Views.XRoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i]})
-      $('#xroom_theme_items').append(userItemsDesignsView.el)
+      $('#xroom_items').append(userItemsDesignsView.el)
       userItemsDesignsView.render()
       i++
+
+
+  #*******************
+  #**** Funtions  Profile
+  #*******************
+
+  showProfile: ->
+    alert('hi')
+    console.log("ShowProfileView fun")
 
 

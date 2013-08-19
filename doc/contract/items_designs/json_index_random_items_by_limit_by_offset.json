@@ -1,0 +1,279 @@
+
+//# GET Get random items_designs
+//# /items_designs/json/index_random_items_by_limit_by_offset/:limit/:offset.json
+//# /items_designs/json/index_random_items_by_limit_by_offset/10/0.json
+//# Return head
+//# success    ->  head  200 OK
+
+[
+    {
+        "brand": null,
+        "bundle_id": 11,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:47:00Z",
+        "description": "Sushi?",
+        "id": 245,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823620/99669-items_design-image_name-asian-fusion-245.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823621/5490-items_design-image_name_hover-asian-fusion-245-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823622/78587-items_design-image_name_selection-asian-fusion-245-300x300.jpg"
+        },
+        "item_id": 5,
+        "like": 0,
+        "make": null,
+        "name": "Asian Fusion",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:47:00Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 4,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:37:53Z",
+        "description": "This antique is a great way to express your liking for newspapers made actually out of paper and not in a computer screen. Choose this design and take a stand against the digitalization of newspapers.",
+        "id": 71,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823073/41720-items_design-image_name-black-n-white-71.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823074/2125-items_design-image_name_hover-black-n-white-71-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823075/77526-items_design-image_name_selection-black-n-white-71-300x300.jpg"
+        },
+        "item_id": 5,
+        "like": 0,
+        "make": null,
+        "name": "Black n White",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:37:53Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 8,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:42:55Z",
+        "description": "Chill of Braziu",
+        "id": 168,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823375/69312-items_design-image_name-brazil-168.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823376/39404-items_design-image_name_hover-brazil-168-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823377/69948-items_design-image_name_selection-brazil-168-300x300.jpg"
+        },
+        "item_id": 7,
+        "like": 0,
+        "make": null,
+        "name": "Brazil",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:42:55Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 3,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:37:03Z",
+        "description": "Air Plane tales are very large imagine how many things can be stored on them if they were turned into shelves!",
+        "id": 55,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823023/84487-items_design-image_name-phone-tail-55.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823024/88718-items_design-image_name_hover-phone-tail-55-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823025/77217-items_design-image_name_selection-phone-tail-55-300x300.jpg"
+        },
+        "item_id": 11,
+        "like": 0,
+        "make": null,
+        "name": "Phone Tail",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:37:03Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 12,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:48:26Z",
+        "description": "Vodka for you.",
+        "id": 272,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823707/28162-items_design-image_name-ussr-272.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823708/90852-items_design-image_name_hover-ussr-272-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823708/27293-items_design-image_name_selection-ussr-272-300x300.jpg"
+        },
+        "item_id": 8,
+        "like": 0,
+        "make": null,
+        "name": "USSR",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:48:26Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 18,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:51:46Z",
+        "description": "Hawaii!",
+        "id": 489,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 21,
+        "like": 0,
+        "make": null,
+        "name": "Aloha",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:51:46Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 0,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:50:33Z",
+        "description": "Test",
+        "id": 346,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 9,
+        "like": 0,
+        "make": null,
+        "name": "English Jute Bag",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:50:33Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 13,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:49:36Z",
+        "description": "Romantica for you.",
+        "id": 305,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823776/47269-items_design-image_name-parisian-305.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823777/27134-items_design-image_name_hover-parisian-305-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823778/83037-items_design-image_name_selection-parisian-305-300x300.jpg"
+        },
+        "item_id": 7,
+        "like": 0,
+        "make": null,
+        "name": "Parisian",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:49:36Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 11,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:46:54Z",
+        "description": "Sushi?",
+        "id": 243,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823614/54495-items_design-image_name-asian-fusion-243.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823615/49428-items_design-image_name_hover-asian-fusion-243-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823616/21893-items_design-image_name_selection-asian-fusion-243-300x300.jpg"
+        },
+        "item_id": 3,
+        "like": 0,
+        "make": null,
+        "name": "Asian Fusion",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:46:54Z"
+    },
+    {
+        "brand": null,
+        "bundle_id": 11,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:47:59Z",
+        "description": "Sushi?",
+        "id": 264,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823679/12227-items_design-image_name-asian-fusion-264.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823680/25097-items_design-image_name_hover-asian-fusion-264-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823681/24047-items_design-image_name_selection-asian-fusion-264-300x300.jpg"
+        },
+        "item_id": 24,
+        "like": 0,
+        "make": null,
+        "name": "Asian Fusion",
+        "price": "0.0",
+        "product_url": null,
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:47:59Z"
+    }
+]

@@ -296,9 +296,25 @@ class BookmarksController < ApplicationController
         format.json { render json: 'not user found', status: :not_found }
       end
     end
-
-
   end
+
+
+  # GET Get random bookmarks
+  # /bookmarks/json/index_random_bookmarks_by_limit_by_offset/:limit/:offset.json
+  # /bookmarks/json/index_random_bookmarks_by_limit_by_offset/10/0.json
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_random_bookmarks_by_limit_by_offset
+
+    respond_to do |format|
+
+      @bookmarks = Bookmark.order("RANDOM()").limit(params[:limit]).offset(params[:offset])
+      format.json { render json: @bookmarks }
+
+    end
+  end
+
 
 
 
