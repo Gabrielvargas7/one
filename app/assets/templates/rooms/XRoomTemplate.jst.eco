@@ -1,4 +1,5 @@
-
+<a id="xroom_profile_open" >xroom profile</a>
 <img id="current_background" src=<%= @user_theme.image_name.url %>>
+
 
 

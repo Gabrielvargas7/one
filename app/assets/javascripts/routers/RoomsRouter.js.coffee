@@ -22,7 +22,6 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
 
   routesRoom: ->
     xRoomView = new Mywebroom.Views.XRoomView()
-##    alert "Username"
     $('#xroom_main_container').append(xRoomView.render().el)
 
 

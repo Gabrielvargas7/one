@@ -1,6 +1,7 @@
 class Mywebroom.Views.RoomsIndex extends Backbone.View
 
   template: JST['rooms/index']
+
   events:{
   	'click #ProfileOpen':'showProfile',
   }

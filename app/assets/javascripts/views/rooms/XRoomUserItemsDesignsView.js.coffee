@@ -15,10 +15,9 @@ class Mywebroom.Views.XRoomUserItemsDesignsView  extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click .user_item_design':'clickItem'
-    'mouseenter img.user_item_design':'hoverItem'
-    'mouseleave img.user_item_design':'hoverOffItem'
-
+    'click img.room_user_item_design':'clickItem'
+    'mouseenter img.room_user_item_design':'hoverItem'
+    'mouseleave img.room_user_item_design':'hoverOffItem'
 
   #*******************
   #**** Initialize
