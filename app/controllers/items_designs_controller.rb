@@ -137,5 +137,22 @@ class ItemsDesignsController < ApplicationController
   end
 
 
+  # GET Get random items_designs
+  # /items_designs/json/index_random_items_by_limit_by_offset/:limit/:offset.json
+  # /items_designs/json/index_random_items_by_limit_by_offset/10/0.json
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_random_items_by_limit_by_offset
+
+    respond_to do |format|
+
+        @items_designs = ItemsDesign.order("RANDOM()").limit(params[:limit]).offset(params[:offset])
+        format.json { render json: @items_designs }
+
+    end
+  end
+
+
 
 end

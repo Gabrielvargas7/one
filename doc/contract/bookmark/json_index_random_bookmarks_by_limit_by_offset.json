@@ -1,0 +1,209 @@
+//# GET Get random bookmarks
+//# /bookmarks/json/index_random_bookmarks_by_limit_by_offset/:limit/:offset.json
+//# /bookmarks/json/index_random_bookmarks_by_limit_by_offset/10/0.json
+//# Return head
+//# success    ->  head  200 OK
+
+
+[
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.flixter.com",
+        "bookmarks_category_id": 704,
+        "created_at": "2013-05-17T21:02:29Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 7305,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824549/52246-bookmark-image_name-flixter.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 10,
+        "like": 0,
+        "title": "Flixter",
+        "updated_at": "2013-05-17T21:02:29Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "www.nationalgeographic.com",
+        "bookmarks_category_id": 505,
+        "created_at": "2013-05-17T20:59:51Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 5401,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824391/25134-bookmark-image_name-natgeo.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 6,
+        "like": 0,
+        "title": "NatGeo",
+        "updated_at": "2013-05-17T20:59:51Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.care2.com",
+        "bookmarks_category_id": 1301,
+        "created_at": "2013-05-17T21:06:52Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 13012,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824812/47868-bookmark-image_name-care2.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 18,
+        "like": 0,
+        "title": "Care2",
+        "updated_at": "2013-05-17T21:06:52Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.msnbc.msn.com/id/8004316/ns/video/",
+        "bookmarks_category_id": 103,
+        "created_at": "2013-05-17T20:52:45Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "n",
+        "id": 1206,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823965/59565-bookmark-image_name-msnbc.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 13,
+        "like": 0,
+        "title": "Msnbc",
+        "updated_at": "2013-05-17T20:52:45Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.miniclip.com",
+        "bookmarks_category_id": 202,
+        "created_at": "2013-05-17T20:53:28Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2105,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824008/72430-bookmark-image_name-miniclip.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Miniclip",
+        "updated_at": "2013-05-17T20:53:28Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.myfashionassistant.com",
+        "bookmarks_category_id": 1603,
+        "created_at": "2013-05-17T21:00:16Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 16305,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824416/18711-bookmark-image_name-myfashionassistant.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 8,
+        "like": 0,
+        "title": "My Fashion Assistant",
+        "updated_at": "2013-05-17T21:00:16Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.quintura.com",
+        "bookmarks_category_id": 1201,
+        "created_at": "2013-05-17T21:06:09Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 12023,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824769/69150-bookmark-image_name-quintura.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 17,
+        "like": 0,
+        "title": "Quintura",
+        "updated_at": "2013-05-17T21:06:09Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.dior.com",
+        "bookmarks_category_id": 602,
+        "created_at": "2013-05-17T21:00:29Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 6215,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824429/87040-bookmark-image_name-dior.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 9,
+        "like": 0,
+        "title": "Dior",
+        "updated_at": "2013-05-17T21:00:29Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.whdf.com",
+        "bookmarks_category_id": 1404,
+        "created_at": "2013-05-17T21:09:30Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 14321,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824970/57915-bookmark-image_name-whdf.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 22,
+        "like": 0,
+        "title": "WHDF",
+        "updated_at": "2013-05-17T21:09:30Z",
+        "user_bookmark": 0
+    },
+    {
+        "approval": "0",
+        "bookmark_url": "http://www.smh.com.au",
+        "bookmarks_category_id": 403,
+        "created_at": "2013-05-17T20:57:27Z",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 4212,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824247/61285-bookmark-image_name-thesydneymorningherald.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 5,
+        "like": 0,
+        "title": "The Sydney Morning Herald",
+        "updated_at": "2013-05-17T20:57:27Z",
+        "user_bookmark": 0
+    }
+]

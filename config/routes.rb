@@ -225,6 +225,11 @@ Mywebroom::Application.routes.draw do
          'items_designs#json_index_items_designs_by_item_id', via: :get  , as:
          :items_designs_json_index_items_designs_by_item_id
 
+  match '/items_designs/json/index_random_items_by_limit_by_offset/:limit/:offset', to:
+         'items_designs#json_index_random_items_by_limit_by_offset', via: :get  , as:
+            :items_designs_json_index_items_designs_by_item_id
+
+
 
   #--------------------------
   # end ItemsDesigns Contract
@@ -367,6 +372,11 @@ Mywebroom::Application.routes.draw do
   match '/bookmarks/json/index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id/:user_id/:item_id', to:
          'bookmarks#json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id', via: :get, as:
          :bookmarks_json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id
+
+  match '/bookmarks/json/index_random_bookmarks_by_limit_by_offset/:limit/:offset', to:
+         'bookmarks#json_index_random_bookmarks_by_limit_by_offset', via: :get  , as:
+            :items_designs_json_index_bookmarks_designs_by_item_id
+
 
 
 
