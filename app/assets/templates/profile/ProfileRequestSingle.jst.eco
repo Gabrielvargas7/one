@@ -1,13 +1,14 @@
+
 <!---->
 <div class="media">
-	<a class="pull-left" href="#">
-		<img class="media-object" src="<%=@model.get('image_name').url%>">
-	</a>
+	<div class="pull-left profile_request_single_image_holder" style="background-image:url('<%=@model.get('image_name').url%>');">
+	</div>
 	<div class="media-body">
 		<h4 class="media-heading"><%=@model.get('firstname')%> <%=@model.get('lastname')%></h4>
+		<h5><%=@model.get('username')%></h5>
 
 		<p class="requestSingle">
-			I AM A REQUEST. If there's no name, name is NULL
+			I AM A REQUEST.
 		</p>
 	</div>
 	<!--Buttons-->

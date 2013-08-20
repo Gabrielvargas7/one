@@ -265,3 +265,18 @@ td.gridItem{
 	right:0;
 	top:50%;
 }
+/*image holders for profile friends, requests, and suggestions*/
+div.profile_friend_image_holder, .profile_request_single_image_holder, 
+.profile_friend_suggestion_single_image_holder{
+	 width:70px;
+	 height:70px;
+	 background-size:contain;
+	 background-repeat: no-repeat;
+	 background-position: 50% 50%;
+}
+.media.profile_friend{
+	color:black;
+}
+.profile_friend{
+	background-color:gray;
+}

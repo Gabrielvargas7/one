@@ -30,7 +30,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	#Try initialize Friend Suggestions here
  	@friendsSuggestionsCollection = new Mywebroom.Collections.IndexFriendsSuggestionsByUserIdByOffsetByLimit()
  	#user_id = @model.get('user_id')
- 	user_id= 24
+ 	user_id= this.model.get('user_id')
  	limit = 10;
  	offset = 0;
  	#Fetch suggestion data for Profile Friends Requests
@@ -56,10 +56,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
    this
  showProfilePhotos: ->
  	#initialize new Profile Photos view
+  $('#profileHome_top').html("<h1>New ProfileHome Top</h1>")
+  $('#profileHome_top').css "height","70px"
  	$('#profileHome_bottom').html(@photosView.render().el)
  #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
  showProfileKeyRequests: ->
  	if @keyRequestsView
+
  		$('#profileHome_bottom').html(@keyRequestsView.el) 	
  		@keyRequestsView.render()
  		@keyRequestsCollection.forEach(@keyRequestAddView,this)
