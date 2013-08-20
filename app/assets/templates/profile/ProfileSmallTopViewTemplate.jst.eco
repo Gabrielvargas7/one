@@ -1,6 +1,7 @@
 <style>
 #profile_small_user_picture{
 	height:70px;
+	padding:1em;
 }
 </style>
 <div id="profile_small_user_picture_wrap" class="pull-left">
@@ -9,7 +10,7 @@
 <div class="pull-left">
 	<p id="profile_info_name"><%=@user_info.get('firstname')%> <%=@user_info.get('lastname')%></p>
 </div>
-<div class="pull-right">
-	optionalButton
+<div class="pull-right" id="profile_small_top_optional_button">
+	<%=@optionalButton%>
 </div>
 
