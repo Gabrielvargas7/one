@@ -28,7 +28,7 @@ class Mywebroom.Views.XRoomUserItemsDesignsView  extends Backbone.View
   #**** Render
   #*******************
   render: ->
-    console.log(this.options.user_item_design)
+    #console.log(this.options.user_item_design)
     $(@el).append(@template(user_item_design:this.options.user_item_design))
     this
 
