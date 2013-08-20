@@ -6,11 +6,6 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
 
 
   initialize: ->
-#    @collection = new Mywebroom.Collections.ThemesJsonIndex()
-    #@signedUserInfoCollection = new Mywebroom.Collections.UsersJsonShowSignedUser()
-    #@theme_collection = new Mywebroom.Collections.RoomsJsonShowRoomByUserId()
-    #@signedUserInfoCollection.fetch({reset: true})
-    #@theme_collection.fetch({reset: true})
 
   routes_room: ->
     view = new Mywebroom.Views.RoomView()
