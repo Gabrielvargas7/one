@@ -16,7 +16,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   # 'mouseleave .gridItem':'closeSocialBarView'
  initialize: ->
   @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
-  @friendsCollection = new Mywebroom.Collections.Index_Friend_By_User_Id_By_Limit_By_Offset()
   @keyRequestsCollection = new Mywebroom.Collections.Index_Friend_Request_Make_From_Your_Friend_To_You_By_User_Id()
 
   #initial limit and offset for apis
@@ -31,14 +30,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       console.log("ActivityCollection Fetched Successfully Response:")
       console.log(response)
   
-  
-  #Fetch friends data for Profile Friends
-  @friendsCollection.fetch
-    url:@friendsCollection.url @model.get('user_id'), @initialLimit, @initialOffset
-    async:false
-    success: (response)->
-     console.log("FriendsCollection Fetched Successfully")
-     console.log(response)
   #Fetch friends data for Profile Friends
   @keyRequestsCollection.fetch
     url: @keyRequestsCollection.url @model.get('user_id')
@@ -50,8 +41,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
  	
  	@activityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
- 	if @friendsCollection
- 		@friendsView = new Mywebroom.Views.ProfileFriendsView({collection:@friendsCollection})
  	if @keyRequestsCollection
  		@keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView({collection:@keyRequestsCollection})
 
@@ -116,11 +105,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	friendSuggestionSingleView.render()
 
  showProfileFriends: ->
- 	if @friendsView
- 		#Need to get a collection view, then a subview for each model.
- 		#Feed each model profileFriends View
- 		$('#profileHome_bottom').html("<h1>Friends View y'all<h1>")
- 		@friendsCollection.forEach(@friendsAddView,this)
+  @friendsView = new Mywebroom.Views.ProfileFriendsView(model:@model)
+  $('#profileHome_bottom').html(@friendsView.render().el)
+ 	# if @friendsView
+ 	# 	#Need to get a collection view, then a subview for each model.
+ 	# 	#Feed each model profileFriends View
+ 	# 	$('#profileHome_bottom').html(friendsView.render().el)
+ 	# 	@friendsCollection.forEach(@friendsAddView,this)
  	#initalize new Profile Friends model. 
  friendsAddView: (friend) ->
  	friendView = new Mywebroom.Views.ProfileFriendsView({model:friend})
