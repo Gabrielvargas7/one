@@ -25,6 +25,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   initialOffset= 0
 
   @activityCollection.fetch
+    url:@activityCollection.url initialLimit, initialOffset
     reset:true
     async:false
     success: (response)->
@@ -46,8 +47,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
      console.log(response)
   #Fetch friends data for Profile Friends
   @keyRequestsCollection.fetch
-    url:'/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/'+@model.get('user_id')+'.json'
-    reset:true
+    url: @keyRequestsCollection.url @model.get('user_id')
     async:false
     success: (response)->
      console.log("KeyRequestsCollection Fetched Successfully")
@@ -71,11 +71,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	#Getting error in backbone once fetch is done and model start populating.
  	@friendsSuggestionsCollection.fetch
       url:'/friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/'+user_id+'/'+limit+'/'+offset+'.json'
-      reset:true;
+      reset:true
+      async:false
       success: (response)->
        console.log("friendsSuggestionsCollection Fetched Successfully")
        console.log(response)
-    @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({collection:@friendsSuggestionsCollection})
+  @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({collection:@friendsSuggestionsCollection})
  	#@activityCollection.on('reset', @render, this)
    #@collection.on('reset',@render,this)
 
