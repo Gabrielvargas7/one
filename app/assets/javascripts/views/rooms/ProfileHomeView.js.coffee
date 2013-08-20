@@ -20,6 +20,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	@friendsCollection=@options.friendsCollection
  	@keyRequestsCollection=@options.keyRequestsCollection
 
+  @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
  	@photosView = new Mywebroom.Views.ProfilePhotosView({collection:@photosCollection})
  	@activityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
  	if @friendsCollection
@@ -46,18 +47,22 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
    #@collection.on('reset',@render,this)
 
  render: ->
-   #attribute = this.model.toJSON()
-   #console.log("ProfileHomeView model toJSON: "+attribute)
    $(@el).html(@template(user_info:@model))     #pass variables into template.
+   #attach top portion of view
+   $("#profileHome_top").append(@profileHomeTopView.el)
+   @profileHomeTopView.render()
    #Set min height for #profile_home_container based on browser size
    $('#profileHome_container').css "min-height",'656px'
    #Display User Activity
    @showHomeGrid()
    this
  showProfilePhotos: ->
- 	#initialize new Profile Photos view
-  $('#profileHome_top').html("<h1>New ProfileHome Top</h1>")
+ 	#Modify Top part and create Bottom Photos part. 
+  @profileHomeTopView.remove()
   $('#profileHome_top').css "height","70px"
+  #CONCERN: OptionalButton will be tied to events eventually. Need to refactor to make easy to maintain
+  topTemplate= JST['profile/ProfileSmallTopViewTemplate']
+  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Upload Photos"))
  	$('#profileHome_bottom').html(@photosView.render().el)
  #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
  showProfileKeyRequests: ->
@@ -76,7 +81,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  showSuggestedFriends: ->
  	if @friendsSuggestionsView
  		@friendsSuggestionsCollection.forEach(@friendsSuggestionAddView, this)
- 	console.log("One day I'll show friend suggestions!")
+ 	
  friendsSuggestionAddView: (friendSuggestion) ->
  	friendSuggestionSingleView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({model:friendSuggestion})
  	$('#profile_suggested_friends_list').append(friendSuggestionSingleView.$el)
@@ -94,8 +99,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	$('#profileHome_bottom').append(friendView.el)
  	friendView.render()
  showHomeGrid: ->
- 	console.log("ShowHomeGrid runs")
- 	#homeGridtemplate= JST['profile/profileHomeGrid']
+ 	$('#profileHome_top').html(@profileHomeTopView.render().el)
  	$('#profileHome_bottom').html(@activityView.el)
  	@activityView.render()
  collapseProfileView: ->
@@ -104,6 +108,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	#	documentation that elses need to be indented, but that appears to be the case here.
  	#Change profile_home_container width to 0
  	#Change profileHome_container left o 720px
+  #BUG: Click collapse error while Large Photo View is on
  	if $("#profileHome_container").css("left") is "-720px"
     	$("#profileHome_container").css "left", "0px"
     	$('#profile_home_container').css "width", "720px"
