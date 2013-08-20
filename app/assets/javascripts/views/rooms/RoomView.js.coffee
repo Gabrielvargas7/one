@@ -24,85 +24,27 @@ class Mywebroom.Views.RoomView extends Backbone.View
 #  **********************
 
   initialize: ->
-    @collection.on('reset', @render, this)
-    @theme_collection = new Mywebroom.Collections.RoomsJsonShowRoomByUserId()
-#    @theme_collection.on('reset_theme', @render_theme, this)
-    
-    #Can't get activity collection to wait for fetch if
-    # it's in ProfileHomeModel
-    @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
-    @photosCollection = new Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset()
-    @friendsCollection = new Mywebroom.Collections.Index_Friend_By_User_Id_By_Limit_By_Offset()
-    @keyRequestsCollection = new Mywebroom.Collections.Index_Friend_Request_Make_From_Your_Friend_To_You_By_User_Id()
-
     this.getRoomLoadingUserCollection()
     this.getUserSignInCollection()
-
-
 
   #*******************
   #**** Render
   #*******************
   render: ->
 
-    @userRoomModel = @userRoomCollection.first()
+    @userRoomModel = @userRoomCollection.first() #username and id
 
     if @userRoomModel.id is undefined
       this.forwardToRoot()
     else
       this.getUserDataCollection()
-      @userAllRoomDataModel = @userAllRoomDataCollection.first()
+      @userAllRoomDataModel = @userAllRoomDataCollection.first() #user data
+      console.log("userAllRoomDataModel:  ")
+      console.log(@userAllRoomDataModel)
 
       this.setRoomTheme @userAllRoomDataModel
       this.setRoomItemsDesigns @userAllRoomDataModel
 
-
-
-  #    $(@el).html(@template(user: @collection))
-    #Once collection is done, we want to fetch the theme by user id.
-    # so set the url for theme collection to the user id
-    if @collection.models.length
-      console.log("UsersJsonShowSignedUser has a model. Fetching ThemeCol data");
-      loggedInUserId=@collection.models[0].get('id')
-      #Fetch Theme data
-      @theme_collection.fetch
-        url:'/rooms/json/show_room_by_user_id/'+loggedInUserId
-        reset_theme: true
-#        success: (response)->
-#          console.log(response)
-#          if response.models
-#            response.models[0].collection.trigger('reset_theme')
-      #Fetch activity data for Profile
-
-      @activityCollection.fetch
-        reset:true
-        success: (response)->
-          console.log("ActivityCollection Fetched Successfully Response:")
-          console.log(response)
-          console.log('response.attributes: ')
-          console.log(response.attributes)
-      #Fetch photos data for Profile Photos
-      @photosCollection
-      @photosCollection.fetch
-        url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+loggedInUserId+'/6/0.json'
-        reset:true
-        success: (response)->
-         console.log("PhotosCollection Fetched Successfully")
-         console.log(response)
-      #Fetch friends data for Profile Friends
-      @friendsCollection.fetch
-        url:'/friends/json/index_friend_by_user_id_by_limit_by_offset/'+loggedInUserId+'/6/0.json'
-        reset:true
-        success: (response)->
-         console.log("FriendsCollection Fetched Successfully")
-         console.log(response)
-      #Fetch friends data for Profile Friends
-      @keyRequestsCollection.fetch
-        url:'/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/'+loggedInUserId+'.json'
-        reset:true
-        success: (response)->
-         console.log("KeyRequestsCollection Fetched Successfully")
-         console.log(response)
     this
 
 
@@ -110,11 +52,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #**** Funtions  Start Room
   #*******************
 
-#  render_theme: ->
-#    @themeView = new Mywebroom.Views.RoomThemeView(collection: @theme_collection)
-#    $('#c').append(@themeView.el)
-#    @themeView.render()
-#    this
+
 
 
   #*******************
@@ -152,7 +90,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   getUserDataCollection: ->
     @userAllRoomDataCollection = new Mywebroom.Collections.XRoomsJsonShowRoomByUserIdCollection()
-    console.log("user defined: "+JSON.stringify(@userRoomModel.toJSON()))
+    console.log("userRoomModel: "+JSON.stringify(@userRoomModel.toJSON()))
     @userAllRoomDataCollection.user_id = @userRoomModel.get('id')
     @userAllRoomDataCollection.fetch async: false
 
@@ -173,7 +111,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
     length = userItemsDesignsList.length
     i = 0
     while i < length
-      console.log(userItemsDesignsList[i].id)
+      #console.log(userItemsDesignsList[i].id)
       userItemsDesignsView = new Mywebroom.Views.XRoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i]})
       $('#xroom_items').append(userItemsDesignsView.el)
       userItemsDesignsView.render()
@@ -181,25 +119,19 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
 
   #*******************
-  #**** Funtions  Profile
+  #**** Funtions Social
   #*******************
 
-  homeProfile: ->
-    console.log("Create ProfileView ")
-    userProfileHomeView = new Mywebroom.Views.XProfileHomeView()
-    $('#xroom_profile').append(userProfileHomeView.el)
-    userProfileHomeView.render()
 
 
   #--------------------------
   #  *** function showProfile
   #--------------------------
   showProfile: (evt) ->
-        #TODO Move this to the model initialize
     @profile = new Mywebroom.Models.ProfileHome({msg:"Hello user"})
-    @profile.set(@theme_collection.models[0].get('user_profile'))
-    @profile.set('user',@theme_collection.models[0].get('user'))
-    @profile.set('user_photos',@theme_collection.models[0].get('user_photos'))
+    @profile.set(@userAllRoomDataModel.get('user_profile'))
+    @profile.set('user',@userAllRoomDataModel.get('user'))
+    @profile.set('user_photos',@userAllRoomDataModel.get('user_photos'))
     @showProfileView()
 
 
@@ -207,13 +139,8 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #  *** function showProfileView
   #--------------------------
   showProfileView: ->
-    console.log("ShowProfileView fun")
     @profileView = new Mywebroom.Views.ProfileHomeView(
       model:@profile
-      activityCollection:@activityCollection
-      photosCollection:@photosCollection
-      friendsCollection:@friendsCollection
-      keyRequestsCollection:@keyRequestsCollection
     )
     $('#xroom_profile').append(@profileView.el)
     @profileView.render()

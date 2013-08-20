@@ -15,10 +15,43 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   # 'mouseenter .gridItem':'showSocialBarView' #should this be in gridView?
   # 'mouseleave .gridItem':'closeSocialBarView'
  initialize: ->
- 	@activityCollection=@options.activityCollection
- 	@photosCollection=@options.photosCollection
- 	@friendsCollection=@options.friendsCollection
- 	@keyRequestsCollection=@options.keyRequestsCollection
+  @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
+  @photosCollection = new Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset()
+  @friendsCollection = new Mywebroom.Collections.Index_Friend_By_User_Id_By_Limit_By_Offset()
+  @keyRequestsCollection = new Mywebroom.Collections.Index_Friend_Request_Make_From_Your_Friend_To_You_By_User_Id()
+
+  #initial limit and offset for apis
+  initialLimit = 6
+  initialOffset= 0
+
+  @activityCollection.fetch
+    url:@activityCollection.url initialLimit, initialOffset
+    reset:true
+    async:false
+    success: (response)->
+      console.log("ActivityCollection Fetched Successfully Response:")
+      console.log(response)
+  
+  @photosCollection.fetch
+    url: @photosCollection.url @model.get('user_id'),initialLimit,initialOffset
+    async:false
+    success: (response)->
+     console.log("PhotosCollection Fetched Successfully")
+     console.log(response)
+  #Fetch friends data for Profile Friends
+  @friendsCollection.fetch
+    url:@friendsCollection.url @model.get('user_id'), initialLimit, initialOffset
+    async:false
+    success: (response)->
+     console.log("FriendsCollection Fetched Successfully")
+     console.log(response)
+  #Fetch friends data for Profile Friends
+  @keyRequestsCollection.fetch
+    url: @keyRequestsCollection.url @model.get('user_id')
+    async:false
+    success: (response)->
+     console.log("KeyRequestsCollection Fetched Successfully")
+     console.log(response)
 
   @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
  	@photosView = new Mywebroom.Views.ProfilePhotosView({collection:@photosCollection})
@@ -38,11 +71,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	#Getting error in backbone once fetch is done and model start populating.
  	@friendsSuggestionsCollection.fetch
       url:'/friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/'+user_id+'/'+limit+'/'+offset+'.json'
-      reset:true;
+      reset:true
+      async:false
       success: (response)->
        console.log("friendsSuggestionsCollection Fetched Successfully")
        console.log(response)
-    @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({collection:@friendsSuggestionsCollection})
+  @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({collection:@friendsSuggestionsCollection})
  	#@activityCollection.on('reset', @render, this)
    #@collection.on('reset',@render,this)
 
@@ -124,33 +158,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     		setTimeout (->
     			$("#profile_home_container").css "width", "0px"), 2000
     		console.log "UN-CollapseProfileView"
- # getGridItemModel: (event) ->
- #  event.stopPropagation()
- #  dataID = event.currentTarget.dataset.id
- #  console.log("You clicked a grid Item " +dataID)
- #  #gridItem is either Activity Item or Photo. Determine which. 
- #  currentGridItem = @activityCollection.get(dataID)
- #  if !currentGridItem
- #    if @photosCollection
- #      currentGridItem = @photosCollection.get(dataID)
- #      if currentGridItem
- #        #launch new view. profile_drawer needs to expand
- #        $("#profile_drawer").css "width", "1320px"
- #        #$("#profile_home_container").css "width", "1320px"
- #        currentView = new Mywebroom.Views.PhotosLargeView({model:currentGridItem})
- #        $("#profile_home_wrapper").append(currentView.el)
- #        currentView.render()
- #  else
- #    if currentGridItem
- #      #launch new view. profile_drawer needs to expand
- #      $("#profile_drawer").css "width", "1320px"
- #      #$("#profile_home_container").css "width", "1320px"
- #      currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
- #      $("#profile_home_wrapper").append(currentView.el)
- #      currentView.render()
- # showSocialBarView:->
- #  console.log("showSocialBarView function runs")
- # closeSocialBarView:->
- #  console.log("closeSocialBarView functio runs")
+
  closeProfileView: ->
  	this.remove()
