@@ -20,15 +20,19 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @friendsCollection = new Mywebroom.Collections.Index_Friend_By_User_Id_By_Limit_By_Offset()
   @keyRequestsCollection = new Mywebroom.Collections.Index_Friend_Request_Make_From_Your_Friend_To_You_By_User_Id()
 
+  #initial limit and offset for apis
+  initialLimit = 6
+  initialOffset= 0
+
   @activityCollection.fetch
     reset:true
     async:false
     success: (response)->
       console.log("ActivityCollection Fetched Successfully Response:")
       console.log(response)
+  
   @photosCollection.fetch
-    url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+@model.get('user_id')+'/6/0.json'
-    reset:true
+    url: @photosCollection.url @model.get('user_id'),initialLimit,initialOffset
     async:false
     success: (response)->
      console.log("PhotosCollection Fetched Successfully")
