@@ -24,8 +24,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
 #  **********************
 
   initialize: ->
-    #@collection.on('reset', @render, this)
-    
     #Can't get activity collection to wait for fetch if
     # it's in ProfileHomeModel
     @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
@@ -72,8 +70,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
       success: (response)->
         console.log("ActivityCollection Fetched Successfully Response:")
         console.log(response)
-        console.log('response.attributes: ')
-        console.log(response.attributes)
     #Fetch photos data for Profile Photos
     @photosCollection.fetch
       url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+loggedInUserId+'/6/0.json'
