@@ -1,0 +1,5 @@
+<a id="room_menu_profile" >room profile</a>
+
+<img id="current_background" src=<%= @user_theme.image_name.url %>>
+
+

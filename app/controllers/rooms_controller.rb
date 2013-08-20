@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
 
+
   #method for Json access
   before_filter :json_signed_in_user,
                 only:[
@@ -35,6 +36,8 @@ class RoomsController < ApplicationController
       @user = User.find_by_username(params[:username])
 
       set_room_user @user
+      @skip_header = true
+      @skip_footer = true
 
       respond_to do |format|
         format.html
@@ -57,6 +60,12 @@ class RoomsController < ApplicationController
 
         @user = User.find_by_username(params[:username])
         @user_theme = UsersTheme.find_by_user_id(@user.id)
+
+        set_room_user @user
+        @skip_header = true
+        @skip_footer = false
+
+
 
         respond_to do |format|
           format.html

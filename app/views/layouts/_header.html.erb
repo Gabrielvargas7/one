@@ -7,6 +7,7 @@
 
           <li><%= link_to "Home", root_path  %></li>
           <li><%= link_to "Help",  help_path %></li>
+          <li><%= link_to 'Profile','#',id:"my-link", remote:true  %></li>
 
 
           <!-- Start If  -->
@@ -27,9 +28,7 @@
                   <li>
                     <%= link_to "Sign out", signout_path, method: "delete" %>
                   </li>
-                  <li>
-                    <%= link_to_function 'Backbone Profile', 'testClick',id:"my-link"  %>
-                  </li>
+
                 </ul>
               </li>
 

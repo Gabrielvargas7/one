@@ -1,4 +1,12 @@
-<a id="xroom_profile_open" >xroom profile</a>
+<ul>
+    <li>
+        <a>Menu 1</a>
+    </li>
+    <li>
+        <a id="xroom_menu_profile" >xroom profile</a>
+    </li>
+<ul>
+
 <img id="current_background" src=<%= @user_theme.image_name.url %>>
 
 

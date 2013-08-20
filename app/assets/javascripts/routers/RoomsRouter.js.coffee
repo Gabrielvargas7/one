@@ -12,13 +12,10 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
     @signedUserInfoCollection.fetch({reset: true})
     #@theme_collection.fetch({reset: true})
 
-  routes_room: (name) ->
-    #Sanity Check View
-    view = new Mywebroom.Views.RoomsIndex(collection: @signedUserInfoCollection)
-    $('#c').html(view.render().el)
-    #themeView in background
-    #themeView = new Mywebroom.Views.RoomThemeView(collection: @theme_collection)
-    #$('#c').append(themeView.render().el)
+  routes_room: ->
+    view = new Mywebroom.Views.RoomView(collection: @signedUserInfoCollection)
+    $('#xroom_main_container').append(view.render().el)
+
 
   routesRoom: ->
     xRoomView = new Mywebroom.Views.XRoomView()
