@@ -3,4 +3,3 @@ class Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset ext
 	model:Mywebroom.Models.ProfilePhotos
 	url: (userID,limit,offset) ->
 		'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+userID+'/'+limit+'/'+offset+'.json'
-#		'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+@user_id+'/'+@limit+'/'+@offset+'.json'

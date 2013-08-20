@@ -39,8 +39,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
      console.log(response)
   #Fetch friends data for Profile Friends
   @friendsCollection.fetch
-    url:'/friends/json/index_friend_by_user_id_by_limit_by_offset/'+@model.get('user_id')+'/6/0.json'
-    reset:true
+    url:@friendsCollection.url @model.get('user_id'), initialLimit, initialOffset
     async:false
     success: (response)->
      console.log("FriendsCollection Fetched Successfully")
