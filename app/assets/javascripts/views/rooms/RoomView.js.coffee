@@ -37,22 +37,15 @@ class Mywebroom.Views.RoomView extends Backbone.View
     if @userRoomModel.id is undefined
       this.forwardToRoot()
     else
-      this.getUserDataCollection()
+      this.getUserDataCollection(@userRoomModel.get('id'))
       @userAllRoomDataModel = @userAllRoomDataCollection.first() #user data
-      console.log("userAllRoomDataModel:  ")
+      console.log("userAllRoomDataModel: ")
       console.log(@userAllRoomDataModel)
 
       this.setRoomTheme @userAllRoomDataModel
       this.setRoomItemsDesigns @userAllRoomDataModel
 
     this
-
-
-  #*******************
-  #**** Funtions  Start Room
-  #*******************
-
-
 
 
   #*******************
@@ -71,7 +64,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
   # get the user of the room that is loading
   #--------------------------
   getRoomLoadingUserCollection: ->
-    @userRoomCollection = new Mywebroom.Collections.XRoomsShowRoomUserCollection()
+    @userRoomCollection = new Mywebroom.Collections.ShowRoomUserCollection()
     this.userRoomCollection.fetch async: false
     console.log("fetch userRoomCollection: "+JSON.stringify(this.userRoomCollection.toJSON()))
 
@@ -80,19 +73,24 @@ class Mywebroom.Views.RoomView extends Backbone.View
   # get the sign in user  if exist
   #--------------------------
   getUserSignInCollection: ->
-    @userSignInCollection = new Mywebroom.Collections.XUsersJsonShowSignedUserCollection()
+    @userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
     @userSignInCollection.fetch async: false
     console.log("fetch userSignInCollection: "+JSON.stringify(@userSignInCollection.toJSON()))
-
 
   #--------------------------
   # get the user room info
   #--------------------------
-  getUserDataCollection: ->
-    @userAllRoomDataCollection = new Mywebroom.Collections.XRoomsJsonShowRoomByUserIdCollection()
-    console.log("userRoomModel: "+JSON.stringify(@userRoomModel.toJSON()))
-    @userAllRoomDataCollection.user_id = @userRoomModel.get('id')
-    @userAllRoomDataCollection.fetch async: false
+  getUserDataCollection:(userId) ->
+    @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
+    @userAllRoomDataCollection.fetch
+      url:@userAllRoomDataCollection.url userId
+      async:false
+      success: (response)->
+        console.log("@userAllRoomDataCollection: ")
+        console.log(response)
+#        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
+
+
 
   #--------------------------
   # set theme on id = #xroom
