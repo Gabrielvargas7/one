@@ -1,0 +1,58 @@
+
+<style>
+#profile_drawer{
+	width:760px; /*profile container width - drawer_handle width*/
+	transition:all 2s ease-in-out;
+}
+nav.profile {
+        position:fixed;
+        top: 16px;/*this needs to be rooms_header height*/
+        height:100%;
+        background-color:transparent; /* your choice here */
+        z-index:3; /* make sure this is the highest z-index on the page */
+
+    }
+#profile_drawer_handle{
+        position: absolute;
+        top: 50px;
+        right: 0;
+        height: 100%;
+        background-color: rgba(0,0,0,.8); /* your choice here */
+        width:40px;/*Sara add width*/
+    }
+</style>
+<nav class="profile">
+<div id="profile_drawer">
+	<div id="profile_home_wrapper">
+
+		<div id="fakeheader">Header</div>
+		<div id="profile_home_container">
+
+			<div id="profile_sidebar">
+				<ul>
+					<li id="profile_home">
+						<a href="#"><span>Home<span></a></li>
+						<br>
+						<br>
+						<div class="spacer"></div>
+						<img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/linebreak_xjaflm.png" width="70px"/>
+						<li id="profile_photos"><a href="#">Photos</a></li>
+						<li id="profile_friends"><a href="#">Friends</a></li>
+						<li id="profile_key_requests"><a href="#"><span>Requests<span></a></li>
+						<li id="profile_activity"><a href="#">Activity</a></li>
+
+				</ul>
+
+				<div id="collapseBar">
+
+				</div>
+				<div id="push">push</div>
+			</div>
+		</div>
+	</div>
+<div id="profile_drawer_handle">
+	<div id="profile_close_button"><a href="#" id="Profile-Close-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" width="15px"></a></div>
+					<div id="profile_collapse_arrow"><a href="#" id="Profile-Collapse-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png"></a></div>
+</nav>
+</div>
+	<div id="fakefooter">Footer</div>

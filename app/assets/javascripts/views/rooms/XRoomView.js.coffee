@@ -4,6 +4,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   #**** Tag  (no tag = default el "div")
   #*******************
 
+  el: '#xroom'
 
   #*******************
   #**** Templeate
@@ -14,7 +15,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click #xroom_profile_open':'showProfile'
+    'click #xroom_menu_profile':'homeProfile'
 
 
   #*******************
@@ -83,7 +84,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
     @userAllRoomDataCollection.fetch async: false
 
   #--------------------------
-  # set theme on room
+  # set theme on id = #xroom
   #--------------------------
   setRoomTheme: (userAllRoomDataModel) ->
     userThemeList = userAllRoomDataModel.get('user_theme')
@@ -92,7 +93,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
 
 
   #--------------------------
-  # set items designs on room
+  # set items designs on id = #xroom_items
   #--------------------------
   setRoomItemsDesigns: (userAllRoomDataModel) ->
     userItemsDesignsList = userAllRoomDataModel.get('user_items_designs')
@@ -110,8 +111,11 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   #**** Funtions  Profile
   #*******************
 
-  showProfile: ->
-    alert('hi')
-    console.log("ShowProfileView fun")
+  homeProfile: ->
+    console.log("Create ProfileView ")
+    userProfileHomeView = new Mywebroom.Views.XProfileHomeView()
+    $('#xroom_profile').append(userProfileHomeView.el)
+    userProfileHomeView.render()
+
 
 
