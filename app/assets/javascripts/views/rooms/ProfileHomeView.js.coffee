@@ -16,31 +16,25 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   # 'mouseleave .gridItem':'closeSocialBarView'
  initialize: ->
   @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
-  @photosCollection = new Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset()
   @friendsCollection = new Mywebroom.Collections.Index_Friend_By_User_Id_By_Limit_By_Offset()
   @keyRequestsCollection = new Mywebroom.Collections.Index_Friend_Request_Make_From_Your_Friend_To_You_By_User_Id()
 
   #initial limit and offset for apis
-  initialLimit = 6
-  initialOffset= 0
+  @initialLimit = 6
+  @initialOffset= 0
 
   @activityCollection.fetch
-    url:@activityCollection.url initialLimit, initialOffset
+    url:@activityCollection.url @initialLimit, @initialOffset
     reset:true
     async:false
     success: (response)->
       console.log("ActivityCollection Fetched Successfully Response:")
       console.log(response)
   
-  @photosCollection.fetch
-    url: @photosCollection.url @model.get('user_id'),initialLimit,initialOffset
-    async:false
-    success: (response)->
-     console.log("PhotosCollection Fetched Successfully")
-     console.log(response)
+  
   #Fetch friends data for Profile Friends
   @friendsCollection.fetch
-    url:@friendsCollection.url @model.get('user_id'), initialLimit, initialOffset
+    url:@friendsCollection.url @model.get('user_id'), @initialLimit, @initialOffset
     async:false
     success: (response)->
      console.log("FriendsCollection Fetched Successfully")
@@ -54,7 +48,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
      console.log(response)
 
   @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
- 	@photosView = new Mywebroom.Views.ProfilePhotosView({collection:@photosCollection})
+ 	
  	@activityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
  	if @friendsCollection
  		@friendsView = new Mywebroom.Views.ProfileFriendsView({collection:@friendsCollection})
@@ -91,7 +85,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
    @showHomeGrid()
    this
  showProfilePhotos: ->
- 	#Modify Top part and create Bottom Photos part. 
+  @photosView = new Mywebroom.Views.ProfilePhotosView(model:@model) 
   @profileHomeTopView.remove()
   $('#profileHome_top').css "height","70px"
   #CONCERN: OptionalButton will be tied to events eventually. Need to refactor to make easy to maintain
