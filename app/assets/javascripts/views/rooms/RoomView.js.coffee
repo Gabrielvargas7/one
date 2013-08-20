@@ -82,6 +82,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
           console.log('response.attributes: ')
           console.log(response.attributes)
       #Fetch photos data for Profile Photos
+      @photosCollection
       @photosCollection.fetch
         url:'/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/'+loggedInUserId+'/6/0.json'
         reset:true

@@ -1,14 +1,14 @@
 // controller  ->  ThemesController
 // method type ->  get
-// method name ->  json_show
 
 // Security: public
 
 // Description ->
-            //# GET get one theme by theme id
-            //# GET themes/json/show/:id
-            //      themes/json/show/1.json
-//Return head 200 OK
+//# GET get one theme by theme id
+//# GET themes/json/show_theme_by_theme_id/:theme_id
+//#     themes/json/show_theme_by_theme_id/1.json
+//#Return head 200 OK
+
 
 
 // back_end   :done

@@ -155,13 +155,13 @@ Mywebroom::Application.routes.draw do
  #  Start Themes contract
  #**************************
 
-  match 'themes/json/index', to:
-        'themes#json_index', via: :get, as:
-        :themes_json_index
+  match 'themes/json/index_themes', to:
+        'themes#json_index_themes', via: :get, as:
+        :themes_json_index_themes
 
-  match 'themes/json/show/:id', to:
-        'themes#json_show', via: :get ,as:
-        :themes_json_show
+  match 'themes/json/show_theme_by_theme_id/:theme_id', to:
+        'themes#json_show_theme_by_theme_id', via: :get ,as:
+        :themes_json_show_theme_by_theme_id
 
 
   #--------------------------
@@ -209,7 +209,7 @@ Mywebroom::Application.routes.draw do
 
   match '/searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
          'searches#json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword', via: :get, as:
-          :json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword
+         :searches_json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword
 
 
   #--------------------------
@@ -227,7 +227,7 @@ Mywebroom::Application.routes.draw do
 
   match '/items_designs/json/index_random_items_by_limit_by_offset/:limit/:offset', to:
          'items_designs#json_index_random_items_by_limit_by_offset', via: :get  , as:
-            :items_designs_json_index_items_designs_by_item_id
+         :items_designs_json_index_items_designs_by_item_id
 
 
 
@@ -257,7 +257,9 @@ Mywebroom::Application.routes.draw do
 
 
   match '/users/json/show_signed_user', to:
-        'users#json_show_signed_user', via: :get
+        'users#json_show_signed_user', via: :get , as:
+        'users_json_show_signed_user'
+
 
 
 
@@ -308,7 +310,7 @@ Mywebroom::Application.routes.draw do
 
   match '/users_items_designs/json/index_user_items_designs_by_user_id_and_section_id/:user_id/:section_id', to:
          'users_items_designs#json_index_user_items_designs_by_user_id_and_section_id', via: :get, as:
-            :users_items_designs_json_index_user_items_designs_by_user_id_and_section_id
+         :users_items_designs_json_index_user_items_designs_by_user_id_and_section_id
 
 
   #--------------------------
@@ -375,7 +377,7 @@ Mywebroom::Application.routes.draw do
 
   match '/bookmarks/json/index_random_bookmarks_by_limit_by_offset/:limit/:offset', to:
          'bookmarks#json_index_random_bookmarks_by_limit_by_offset', via: :get  , as:
-            :items_designs_json_index_bookmarks_designs_by_item_id
+          :bookmarks_json_index_random_bookmarks_by_limit_by_offset
 
 
 
@@ -453,7 +455,8 @@ Mywebroom::Application.routes.draw do
          'users_photos#json_update_users_set_profile_image_by_user_id_and_users_photo_id', via: :put
 
   match '/users_photos/json/index_users_photos_by_user_id_by_limit_by_offset/:user_id/:limit/:offset', to:
-         'users_photos#json_index_users_photos_by_user_id_by_limit_by_offset', via: :get
+         'users_photos#json_index_users_photos_by_user_id_by_limit_by_offset', via: :get , as:
+          :users_photos_json_index_users_photos_by_user_id_by_limit_by_offset
 
 
   #**************************
@@ -494,7 +497,7 @@ Mywebroom::Application.routes.draw do
 
   match '/notifications/json/index_notification_by_limit_by_offset/:limit/:offset', to:
          'notifications#json_index_notification_by_limit_by_offset', via: :get, as:
-          :index_notification
+          :notifications_json_index_notification_by_limit_by_offset
 
 
 

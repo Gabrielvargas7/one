@@ -1,16 +1,14 @@
 // controller  ->  ThemesController
 // method type ->  get
-// method name ->  json_index
-
 
 // Security: public
 
 // Description ->
-//         Get all themes
-//       # GET ''
-      //       'themes/json/index.json'
-//Return head 200 OK
 
+//# Get all themes
+//# GET 'themes/json/index_themes'
+//#     'themes/json/index_themes.json'
+//#Return head 200 OK
 
 // back_end   :done
 // front_end :working

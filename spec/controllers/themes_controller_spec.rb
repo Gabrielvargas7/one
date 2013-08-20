@@ -297,11 +297,11 @@ describe ThemesController do
   end
 
   #***********************************
-  # rspec test  #json_index
+  # rspec test  #json_index_themes
   #***********************************
 
 
-  describe "api #json_index",tag_json_index:true do
+  describe "api #json_index_themes",tag_json_index:true do
 
     describe "is public api" do
         before do
@@ -310,23 +310,23 @@ describe ThemesController do
 
 
         it "should be successful" do
-          get :json_index, theme: @theme, :format => :json
+          get :json_index_themes, theme: @theme, :format => :json
           response.should be_success
         end
         let(:themes_all){Theme.all}
         it "should set theme" do
-          get :json_index, :format => :json
+          get :json_index_themes, :format => :json
           assigns(:themes).as_json.should == themes_all.as_json
         end
 
         it "has a 200 status code" do
-          get :json_index, theme: @theme, :format => :json
+          get :json_index_themes, theme: @theme, :format => :json
           expect(response.status).to eq(200)
         end
 
         context "get all values " do
             it "should return json_index theme in json" do # depend on what you return in action
-                get :json_index, :format => :json
+                get :json_index_themes, :format => :json
                 body = JSON.parse(response.body)
                 #puts "body ---- > "+body.to_s
                 #puts "theme ----> "+@theme.as_json.to_s
@@ -363,7 +363,7 @@ describe ThemesController do
   #***********************************
 
 
-  describe "api #json_show",tag_json_show:true do
+  describe "api #json_show_theme_by_theme_id",tag_json_show:true do
 
     describe "is public api" do
       before do
@@ -372,24 +372,24 @@ describe ThemesController do
 
 
       it "should be successful" do
-        get :json_show, id: @theme, :format => :json
+        get :json_show_theme_by_theme_id, theme_id: @theme.id, :format => :json
         response.should be_success
       end
 
       let(:themes_all){Theme.all}
       it "should set theme" do
-        get :json_show,id:@theme, :format => :json
+        get :json_show_theme_by_theme_id,theme_id:@theme.id, :format => :json
         assigns(:theme).as_json.should == @theme.as_json
       end
 
       it "has a 200 status code" do
-        get :json_show, id: @theme, :format => :json
+        get :json_show_theme_by_theme_id, theme_id: @theme.id, :format => :json
         expect(response.status).to eq(200)
       end
 
       context "get all values " do
         it "should return json_show theme in json" do # depend on what you return in action
-          get :json_show,id:@theme, :format => :json
+          get :json_show_theme_by_theme_id,theme_id:@theme.id, :format => :json
           body = JSON.parse(response.body)
           #puts body.as_json
           #puts body["category"]
