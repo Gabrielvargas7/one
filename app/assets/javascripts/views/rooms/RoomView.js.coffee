@@ -10,7 +10,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #**** Templeate
   #*******************
 
-  template: JST['rooms/XRoomTemplate']
+  template: JST['rooms/RoomTemplate']
 
   #*******************
   #**** Events
@@ -110,7 +110,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
     i = 0
     while i < length
       #console.log(userItemsDesignsList[i].id)
-      userItemsDesignsView = new Mywebroom.Views.XRoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i]})
+      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i]})
       $('#xroom_items').append(userItemsDesignsView.el)
       userItemsDesignsView.render()
       i++
@@ -119,7 +119,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
   #**** Funtions Social
   #*******************
-
 
 
   #--------------------------

@@ -9,7 +9,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   #*******************
   #**** Templeate
   #*******************
-  template: JST['rooms/XRoomTemplate']
+  template: JST['rooms/RoomTemplate']
 
   #*******************
   #**** Events
@@ -35,7 +35,8 @@ class Mywebroom.Views.XRoomView extends Backbone.View
     if @userRoomModel.id is undefined
       this.forwardToRoot()
     else
-      this.getUserDataCollection()
+#      this.getUserDataCollection()
+      this.getUserDataCollection(@userRoomModel.get('id'))
       @userAllRoomDataModel = @userAllRoomDataCollection.first()
 
       this.setRoomTheme @userAllRoomDataModel
@@ -60,7 +61,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   # get the user of the room that is loading
   #--------------------------
   getRoomLoadingUserCollection: ->
-    @userRoomCollection = new Mywebroom.Collections.XRoomsShowRoomUserCollection()
+    @userRoomCollection = new Mywebroom.Collections.ShowRoomUserCollection()
     this.userRoomCollection.fetch async: false
     console.log("fetch userRoomCollection: "+JSON.stringify(this.userRoomCollection.toJSON()))
 
@@ -69,7 +70,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   # get the sign in user  if exist
   #--------------------------
   getUserSignInCollection: ->
-    @userSignInCollection = new Mywebroom.Collections.XUsersJsonShowSignedUserCollection()
+    @userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
     @userSignInCollection.fetch async: false
     console.log("fetch userSignInCollection: "+JSON.stringify(@userSignInCollection.toJSON()))
 
@@ -77,11 +78,21 @@ class Mywebroom.Views.XRoomView extends Backbone.View
   #--------------------------
   # get the user room info
   #--------------------------
-  getUserDataCollection: ->
-    @userAllRoomDataCollection = new Mywebroom.Collections.XRoomsJsonShowRoomByUserIdCollection()
-    console.log("user defined: "+JSON.stringify(@userRoomModel.toJSON()))
-    @userAllRoomDataCollection.user_id = @userRoomModel.get('id')
-    @userAllRoomDataCollection.fetch async: false
+#  getUserDataCollection: ->
+#    @userAllRoomDataCollection = new Mywebroom.Collections.XRoomsJsonShowRoomByUserIdCollection()
+#    console.log("user defined: "+JSON.stringify(@userRoomModel.toJSON()))
+#    @userAllRoomDataCollection.user_id = @userRoomModel.get('id')
+#    @userAllRoomDataCollection.fetch async: false
+
+  getUserDataCollection:(userId) ->
+    @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
+    @userAllRoomDataCollection.fetch
+      url:@userAllRoomDataCollection.url userId
+      async:false
+      success: (response)->
+        console.log("@userAllRoomDataCollection: ")
+        console.log(response)
+#        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
 
   #--------------------------
   # set theme on id = #xroom
@@ -101,7 +112,7 @@ class Mywebroom.Views.XRoomView extends Backbone.View
     i = 0
     while i < length
       console.log(userItemsDesignsList[i].id)
-      userItemsDesignsView = new Mywebroom.Views.XRoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i]})
+      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i]})
       $('#xroom_items').append(userItemsDesignsView.el)
       userItemsDesignsView.render()
       i++
@@ -113,9 +124,9 @@ class Mywebroom.Views.XRoomView extends Backbone.View
 
   homeProfile: ->
     console.log("Create ProfileView ")
-    userProfileHomeView = new Mywebroom.Views.XProfileHomeView()
-    $('#xroom_profile').append(userProfileHomeView.el)
-    userProfileHomeView.render()
+#    userProfileHomeView = new Mywebroom.Views.XProfileHomeView()
+#    $('#xroom_profile').append(userProfileHomeView.el)
+#    userProfileHomeView.render()
 
 
 
