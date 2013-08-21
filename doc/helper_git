@@ -18,20 +18,21 @@
 
     // move to th master branch
     git checkout master            // move to the master branch
-    // merge
+
+    // pull all changes before of merge
+    git pull
+
+    // merge with your branch
     git merge my_new_branch
 
     // delete the branch
     git branch -D my_new_branch
 
-    //  pull all changes
-    git pull
-
-     //merge the origin master with master
-    git merge origin/master
-
+    // push your changes
 
     git push
+
+
 
 ********************
 ** When you have conflict
