@@ -1,6 +1,6 @@
 class Mywebroom.Views.ProfileHomeView extends Backbone.View
  className: 'user_profile'
- template: JST['profile/ProfileHome']
+ template: JST['profile/ProfileHomeTemplate']
  #We should eventually make profileBottom its own view to remove and re-render. 
  #There may be memory leaks with this method
  events:
