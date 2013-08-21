@@ -23,14 +23,3 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
-
-//
-//$(function (){
-////    alert('DOM has loaded.');
-//    $('#my-link').click(function (event) {
-//        alert('Hooray!');
-//        event.preventDefault(); // Prevent link from following its href
-//    });
-//
-//})
-
