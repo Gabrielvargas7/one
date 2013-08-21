@@ -1,5 +1,5 @@
 class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
-	template: JST['profile/ActivityItemLarge']
+	template: JST['profile/ProfileActivityItemLarge']
 	className: 'activity_item_large_view'
 	initialize: ->
 		 _.bindAll this, 'insideHandler', 'outsideHandler'

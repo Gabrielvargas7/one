@@ -1,7 +1,7 @@
 class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 	tagName:'table'
 	className:'user-photos-view'
-	template: JST['profile/profileHomeGrid']
+	template: JST['profile/ProfileHomeGrid']
 	initialize: ->
 		@photosCollection = new Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection()
 		@photosCollection.fetch

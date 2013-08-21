@@ -1,5 +1,5 @@
 class Mywebroom.Views.PhotosLargeView extends Backbone.View
-	template: JST['profile/PhotosLarge']
+	template: JST['profile/ProfilePhotosLarge']
 	className: 'photos_large_view'
 	events:
 		"click #photos_next":"insideHandler"
