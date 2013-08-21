@@ -17,3 +17,6 @@
 
 # for mac computers
 .DS_Store
+
+# ignore gem lock
+Gemfile.lock
