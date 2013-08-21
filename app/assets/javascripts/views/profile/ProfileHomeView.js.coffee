@@ -46,7 +46,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @profileHomeTopView.remove()
   $('#profileHome_top').css "height","70px"
   #CONCERN: OptionalButton will be tied to events eventually. Need to refactor to make easy to maintain
-  topTemplate= JST['profile/ProfileSmallTopViewTemplate']
+  topTemplate= JST['profile/ProfileSmallTopTemplate']
   $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Upload Photos"))
  	$('#profileHome_bottom').html(@photosView.render().el)
  #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
@@ -64,7 +64,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @profileActivityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
   #Modify Top Portion
   $('#profileHome_top').css "height","70px"
-  topTemplate= JST['profile/ProfileSmallTopViewTemplate']
+  topTemplate= JST['profile/ProfileSmallTopTemplate']
   $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:""))
   $('#profileHome_bottom').html(@profileActivityView.el)
   @profileActivityView.render()
