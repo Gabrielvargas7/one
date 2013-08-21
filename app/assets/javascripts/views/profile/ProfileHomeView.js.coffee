@@ -1,6 +1,6 @@
 class Mywebroom.Views.ProfileHomeView extends Backbone.View
  className: 'user_profile'
- template: JST['profile/ProfileHome']
+ template: JST['profile/ProfileHomeTemplate']
  #We should eventually make profileBottom its own view to remove and re-render. 
  #There may be memory leaks with this method
  events:
@@ -8,7 +8,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #profile_friends':'showProfileFriends',
   'click #profile_home_basic_info .blueLink':'showProfileFriends',
  	'click #profile_key_requests':'showProfileKeyRequests',
-  'click #profile_activity':'showHomeGrid',
+  'click #profile_activity':'showProfileActivity',
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView'
  	'click #Profile-Collapse-Button':'collapseProfileView'
@@ -17,7 +17,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
   @activityCollection = new Mywebroom.Collections.IndexNotificationByLimitByOffsetCollection()
   #initial limit and offset for apis
-  @initialLimit = 6
+  @initialLimit = 24
   @initialOffset= 0
   @activityCollection.fetch
     url:@activityCollection.url @initialLimit, @initialOffset
@@ -26,7 +26,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     success: (response)->
       console.log("ActivityCollection Fetched Successfully Response:")
       console.log(response)
- 	@activityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
+  #For ProfileHomeActivity screen, only send the first 6
+  tempProfileHomeActivityCollection = new Backbone.Collection
+  tempProfileHomeActivityCollection.set(@activityCollection.first 6)
+ 	@ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView({collection:tempProfileHomeActivityCollection})
 
  render: ->
    $(@el).html(@template(user_info:@model))     #pass variables into template.
@@ -56,10 +59,20 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @friendsView = new Mywebroom.Views.ProfileFriendsView(model:@model)
   $('#profileHome_bottom').html(@friendsView.render().el)
 
+ showProfileActivity:->
+  #send full collection to this view.
+  @profileActivityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
+  #Modify Top Portion
+  $('#profileHome_top').css "height","70px"
+  topTemplate= JST['profile/ProfileSmallTopViewTemplate']
+  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:""))
+  $('#profileHome_bottom').html(@profileActivityView.el)
+  @profileActivityView.render()
+
  showHomeGrid: ->
  	$('#profileHome_top').html(@profileHomeTopView.render().el)
- 	$('#profileHome_bottom').html(@activityView.el)
- 	@activityView.render()
+ 	$('#profileHome_bottom').html(@ProfileHomeActivityView.el)
+ 	@ProfileHomeActivityView.render()
 
  collapseProfileView: ->
  	#If view is open, close it, else reverse.

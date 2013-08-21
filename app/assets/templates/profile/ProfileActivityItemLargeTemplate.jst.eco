@@ -13,5 +13,4 @@
 <div>
 <h2>HAI LARGE ACTIVITY ITEM</h2>
 <img src="<%=@model.get('image_name').url%>">
-<p>Social Icons here eventually</p>
 </div>

@@ -1,18 +1,36 @@
 class Mywebroom.Views.ProfileActivityView extends Backbone.View
 	tagName:'table'
 	className: 'profileHome_activity generalGrid'
-	template: JST['profile/ProfileHomeGrid']
+	template: JST['profile/ProfileHomeGridTemplate']
 	
 	initialize: ->
 		
 	render: ->
 		#this template will be the parent one which defines the table
 		$(@el).html(@template(activity:@collection))
-		#Send first 3 models to row template. this view's template will define the rows
-		slicedCollection = @collection.first 3
-		rowView = new Mywebroom.Views.ProfileGridRowView(collection:slicedCollection)
-		$(@el).append(rowView.el)
-		rowView.render()
+		#Split collection into rows of three and send them to GridRowView (which goes to GridItemView)
+		k=0
+		rowArray= []
+		console.log("@collection.models.length: "+@collection.models.length)
+		while k < @collection.models.length
+		  i = 0
+		  while i < 3
+		    rowArray.push @collection.at k  if k < @collection.models.length
+		    k+=1
+		    i++
+		  rowView = new Mywebroom.Views.ProfileGridRowView(collection: rowArray)
+		  $(@el).append rowView.el
+		  rowView.render()
+		  rowArray.length = 0
+		
+
+		# #this template will be the parent one which defines the table
+		# $(@el).html(@template(activity:@collection))
+		# #Send first 3 models to row template. this view's template will define the rows
+		# slicedCollection = @collection.first 3
+		# rowView = new Mywebroom.Views.ProfileGridRowView(collection:slicedCollection)
+		# $(@el).append(rowView.el)
+		# rowView.render()
 		# for each item in @collection
 		# 	rowView = new Mywebroom.Views.ProfileGridRow(collection:item)
 		# 	$(@el).append(rowView.el)

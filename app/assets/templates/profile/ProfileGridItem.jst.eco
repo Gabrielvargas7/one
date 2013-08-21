@@ -1,1 +1,0 @@
-<div class="gridItem" ><img src="<%=@model.get('image_name').url%>"  data-id="<%=@model.get('id')%>" ><span class="gridItemDescription"><%=@model.get('name')%></span><div>

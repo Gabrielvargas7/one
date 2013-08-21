@@ -1,7 +1,7 @@
 class Mywebroom.Views.ProfileGridItemView extends Backbone.View
 	tagName:'td'
 	className:'gridItem'
-	template:JST['profile/ProfileGridItem']
+	template:JST['profile/ProfileGridItemTemplate']
 	render: ->
 		$(@el).html(@template(model:@model))
 	events: 

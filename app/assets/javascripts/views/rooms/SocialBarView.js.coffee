@@ -1,6 +1,6 @@
 class Mywebroom.Views.SocialBarView extends Backbone.View
 	className:'social_bar'
-	template:JST['profile/SocialBar']
+	template:JST['profile/SocialBarTemplate']
 	events:
 		'click .fb_like_item':'clickFBLikeItem'
 		'click .pinterest_item':'clickPinItem'

@@ -1,5 +1,4 @@
 class Mywebroom.Views.ProfileGridRowView extends Backbone.View
-	#template:JST['profile/ProfileGridRow']
 	tagName:'tr'
 	className:'profile_grid_row'
 	render: ->
