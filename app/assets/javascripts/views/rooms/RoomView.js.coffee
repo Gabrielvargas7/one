@@ -125,7 +125,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #  *** function showProfile
   #--------------------------
   showProfile: (evt) ->
-    @profile = new Mywebroom.Models.ProfileHome({msg:"Hello user"})
+    @profile = new Backbone.Model
     @profile.set(@userAllRoomDataModel.get('user_profile'))
     @profile.set('user',@userAllRoomDataModel.get('user'))
     @profile.set('user_photos',@userAllRoomDataModel.get('user_photos'))

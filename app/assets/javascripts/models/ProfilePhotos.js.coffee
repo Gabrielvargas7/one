@@ -1,2 +1,2 @@
-class Mywebroom.Models.ProfilePhotos extends Backbone.Model
+#class Mywebroom.Models.ProfilePhotos extends Backbone.Model
 	

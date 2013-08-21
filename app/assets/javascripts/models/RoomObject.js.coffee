@@ -1,1 +1,1 @@
-class Mywebroom.Models.RoomObject extends Backbone.Model
+#class Mywebroom.Models.RoomObject extends Backbone.Model

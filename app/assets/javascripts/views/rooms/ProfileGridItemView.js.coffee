@@ -29,9 +29,9 @@ class Mywebroom.Views.ProfileGridItemView extends Backbone.View
 		#$("#profile_home_container").css "width", "1320px"
     #if currentGridItem is photos, we want a PhotosView. otherwise, we want an ActivityView.
     #if currentGridItem's Collection is this view's parent's @photosCollection, create a Photos View. 
-		if currentGridItem.constructor.name is Mywebroom.Models.ProfilePhotos.name
-      currentView= new Mywebroom.Views.PhotosLargeView({model:currentGridItem})
-    else
-      currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
-		$("#profile_home_wrapper").append(currentView.el)
-		currentView.render()  
+		if currentGridItem.collection.constructor.name is Mywebroom.Collections.index_users_photos_by_user_id_by_limit_by_offset.name
+      		currentView= new Mywebroom.Views.PhotosLargeView({model:currentGridItem})
+	    else
+	      	currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
+			$("#profile_home_wrapper").append(currentView.el)
+			currentView.render()  

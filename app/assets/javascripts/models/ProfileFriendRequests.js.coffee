@@ -1,1 +1,1 @@
-class Mywebroom.Models.ProfileKeyRequests extends Backbone.Model
+#class Mywebroom.Models.ProfileKeyRequests extends Backbone.Model

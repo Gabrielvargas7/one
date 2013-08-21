@@ -1,1 +1,1 @@
-class Mywebroom.Models.ProfileFriends extends Backbone.Model
+#class Mywebroom.Models.ProfileFriends extends Backbone.Model
