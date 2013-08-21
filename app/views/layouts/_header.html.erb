@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-inverse"  >
+<header class="navbar navbar-fixed-top navbar-inverse" >
   <div class="navbar-inner" >
     <div class="container">
       <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), "#"  %>
@@ -12,7 +12,7 @@
 
           <!-- Start If  -->
           <% if signed_in? %>
-              <li id="fat-menu" class="dropdown">
+              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Account <b class="caret"></b>
                 </a>
@@ -65,12 +65,12 @@
               <% end %>
 
 
-        <% else %>
+          <% else %>
               <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
           <!-- End If -->
 
-          <!--<li><%= link_to "Sign in", signin_path %></li>-->
+          <li><%= link_to "Sign in", signin_path %></li>
 
 
         </ul>
