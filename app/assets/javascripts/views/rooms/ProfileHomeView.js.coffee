@@ -8,19 +8,17 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #profile_friends':'showProfileFriends',
   'click #profile_home_basic_info .blueLink':'showProfileFriends',
  	'click #profile_key_requests':'showProfileKeyRequests',
+  'click #profile_activity':'showHomeGrid',
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView'
  	'click #Profile-Collapse-Button':'collapseProfileView'
-  # 'click .gridItem':'getGridItemModel'
-  # 'mouseenter .gridItem':'showSocialBarView' #should this be in gridView?
-  # 'mouseleave .gridItem':'closeSocialBarView'
- initialize: ->
-  @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
 
+ initialize: ->
+  @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
+  @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
   #initial limit and offset for apis
   @initialLimit = 6
   @initialOffset= 0
-
   @activityCollection.fetch
     url:@activityCollection.url @initialLimit, @initialOffset
     reset:true
@@ -28,29 +26,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     success: (response)->
       console.log("ActivityCollection Fetched Successfully Response:")
       console.log(response)
-  @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
- 	
  	@activityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
-
-
- 	#Try initialize Friend Suggestions here
- 	#@friendsSuggestionsCollection = new Mywebroom.Collections.IndexFriendsSuggestionsByUserIdByOffsetByLimit()
- 	#user_id = @model.get('user_id')
- 	user_id= this.model.get('user_id')
- 	limit = 10;
- 	offset = 0;
- 	#Fetch suggestion data for Profile Friends Requests
- 	#Getting error in backbone once fetch is done and model start populating.
- 	# @friendsSuggestionsCollection.fetch
-  #     url:'/friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/'+user_id+'/'+limit+'/'+offset+'.json'
-  #     reset:true
-  #     async:false
-  #     success: (response)->
-  #      console.log("friendsSuggestionsCollection Fetched Successfully")
-  #      console.log(response)
-#  @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({collection:@friendsSuggestionsCollection})
- 	#@activityCollection.on('reset', @render, this)
-   #@collection.on('reset',@render,this)
 
  render: ->
    $(@el).html(@template(user_info:@model))     #pass variables into template.
@@ -75,20 +51,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView(model:@model)
   $('#profileHome_bottom').html(@keyRequestsView.el) 	
   @keyRequestsView.render()
- 		
- keyRequestAddView: (keyRequest) ->
- 	keyRequestSingleView = new Mywebroom.Views.ProfileKeyRequestSingleView({model:keyRequest})
- 	$('#profile_key_request_list').append(keyRequestSingleView.$el)
- 	keyRequestSingleView.render()
- 	console.log(@keyRequestsView.el)
- showSuggestedFriends: ->
- 	if @friendsSuggestionsView
- 		@friendsSuggestionsCollection.forEach(@friendsSuggestionAddView, this)
- 	
- friendsSuggestionAddView: (friendSuggestion) ->
- 	friendSuggestionSingleView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({model:friendSuggestion})
- 	$('#profile_suggested_friends_list').append(friendSuggestionSingleView.$el)
- 	friendSuggestionSingleView.render()
 
  showProfileFriends: ->
   @friendsView = new Mywebroom.Views.ProfileFriendsView(model:@model)
@@ -98,6 +60,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	$('#profileHome_top').html(@profileHomeTopView.render().el)
  	$('#profileHome_bottom').html(@activityView.el)
  	@activityView.render()
+
  collapseProfileView: ->
  	#If view is open, close it, else reverse.
  	#Sara Note- this is odd looking Coffeescript. I don't see any 
