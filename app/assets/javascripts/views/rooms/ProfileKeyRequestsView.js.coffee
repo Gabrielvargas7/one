@@ -5,8 +5,8 @@ class Mywebroom.Views.ProfileKeyRequestsView extends Backbone.View
  className:'profile_key_requests'
  template:JST['profile/ProfileKeyRequests']
  initialize: ->
- 	@friendsSuggestionsCollection = new Mywebroom.Collections.IndexFriendsSuggestionsByUserIdByOffsetByLimit()
- 	@keyRequestsCollection = new Mywebroom.Collections.Index_Friend_Request_Make_From_Your_Friend_To_You_By_User_Id()
+ 	@friendsSuggestionsCollection = new Mywebroom.Collections.IndexFriendsSuggestionByUserIdByLimitByOffsetCollection()
+ 	@keyRequestsCollection = new Mywebroom.Collections.IndexFriendRequestMakeFromYourFriendToYouByUserIdCollection()
  	@keyRequestsCollection.fetch
  	  url: @keyRequestsCollection.url @model.get('user_id')
  	  async:false

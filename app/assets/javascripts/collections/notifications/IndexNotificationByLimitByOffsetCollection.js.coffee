@@ -1,3 +1,4 @@
+#@profileActivityCollection
 class Mywebroom.Collections.IndexNotificationByLimitByOffsetCollection extends Backbone.Collection
 
   url:(limit,offset) ->

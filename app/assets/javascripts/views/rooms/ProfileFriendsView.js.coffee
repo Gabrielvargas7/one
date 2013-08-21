@@ -2,7 +2,7 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
  className:'profile_friend media'
  #template: JST['profile/ProfileFriends']
  initialize: ->
-  @friendsCollection = new Mywebroom.Collections.Index_Friend_By_User_Id_By_Limit_By_Offset()
+  @friendsCollection = new Mywebroom.Collections.IndexFriendByUserIdByLimitByOffsetCollection()
  # Fetch friends data for Profile Friends
   @friendsCollection.fetch
     url:@friendsCollection.url @model.get('user_id'), 6, 0

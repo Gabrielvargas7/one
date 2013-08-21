@@ -1,3 +1,4 @@
+#profileFriendsSuggestionsCollection
 class Mywebroom.Collections.IndexFriendsSuggestionByUserIdByLimitByOffsetCollection extends Backbone.Collection
 
   url:(userId,limit,offset) ->

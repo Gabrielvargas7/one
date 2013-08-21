@@ -1,3 +1,4 @@
+#Friend Requests Collection
 class Mywebroom.Collections.IndexFriendRequestMakeFromYourFriendToYouByUserIdCollection extends Backbone.Collection
 
   url:(userId) ->

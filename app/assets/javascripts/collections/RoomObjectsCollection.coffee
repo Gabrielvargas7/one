@@ -1,1 +1,1 @@
-class Mywebroom.Collections.RoomObjectsCollection extends Backbone.Collection
+#class Mywebroom.Collections.RoomObjectsCollection extends Backbone.Collection

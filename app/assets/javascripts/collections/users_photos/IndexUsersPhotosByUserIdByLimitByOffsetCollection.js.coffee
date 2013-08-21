@@ -1,3 +1,4 @@
+#Profile Photos Collection
 class Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection extends Backbone.Collection
 
   url:(userId,limit,offset) ->

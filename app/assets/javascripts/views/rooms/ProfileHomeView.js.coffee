@@ -15,7 +15,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  initialize: ->
   @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
-  @activityCollection = new Mywebroom.Collections.index_notification_by_limit_by_offset()
+  @activityCollection = new Mywebroom.Collections.IndexNotificationByLimitByOffsetCollection()
   #initial limit and offset for apis
   @initialLimit = 6
   @initialOffset= 0

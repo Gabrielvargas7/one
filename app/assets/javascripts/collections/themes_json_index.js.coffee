@@ -1,4 +1,4 @@
-class Mywebroom.Collections.ThemesJsonIndex extends Backbone.Collection
+# class Mywebroom.Collections.ThemesJsonIndex extends Backbone.Collection
 
-  url: '/themes/json/index.json'
+#   url: '/themes/json/index.json'
 
