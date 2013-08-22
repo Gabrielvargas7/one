@@ -52,6 +52,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	$('#profileHome_bottom').html(@photosView.render().el)
  #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
  showProfileKeyRequests: ->
+  # /*Note on key request view, we do not want profile-bottom overflow on. */
   @keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView(model:@model)
   $('#profileHome_bottom').html(@keyRequestsView.el) 	
   @keyRequestsView.render()
@@ -73,7 +74,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  showHomeGrid: ->
  	$('#profileHome_top').html(@profileHomeTopView.render().el)
-  $('#profileHome_bottom').css "height","400px"
+  $('#profileHome_bottom').css "height","450px"
  	$('#profileHome_bottom').html(@ProfileHomeActivityView.el)
  	@ProfileHomeActivityView.render()
 

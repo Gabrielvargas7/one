@@ -1,16 +1,15 @@
 <div class="media">
 	<div class="pull-left profile_friend_suggestion_single_image_holder" style="background-image:url('<%=@model.get('image_name').url%>');">
-	
-</div>
+
+	</div>
 	<div class="media-body">
 		<h4 class="media-heading"><%=@model.get('firstname')%> <%=@model.get('lastname')%></h4>
 		<h5> <%=@model.get('username')%></h5>
-		<p class="requestSingle">
-			I AM A SUGGESTION.
-		</p>
-			<!--Buttons-->
-		<div class="btn-group pull-right">
-			<button class="btn">Request Key</button>
-		</div>
+
+	</div>
+	<!--Buttons-->
+	<div class="btn-group pull-right">
+		<button class="btn">Request Key</button>
+		<button class="btn">Request Key</button>
 	</div>
 </div>
