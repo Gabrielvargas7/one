@@ -19,28 +19,14 @@
         <!-- Menu  -->
         <ul class="nav pull-right">
             <li>
-                <a id="xroom_menu_profile" >
-                    <img alt="social profile"
-                        src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125493/social.gif"
-                        onmouseover="this.src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125506/social-hover.gif'"
-                        onmouseout="this.src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125493/social.gif'"
-                        height="23" width="21"
-                     />
+                <a id="xroom_menu_profile">
                 </a>
             </li>
-
             <li>
-                <a href="#">
-                    <img alt="rooms items"
-                        src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125793/store-icon.gif"
-                        onmouseover="this.src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125806/store-icon-hover.gif'"
-                        onmouseout="this.src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125793/store-icon.gif'"
-                        height="23" width="21"
-                    />
-                    <span>Room<span>
+                <a id="xroom_header_store">
+                    <span>&nbsp&nbspRoom<span>
                 </a>
             </li>
-
             <li><a href="#">MyRoom</a></li>
 
             <!-- dropdown menu -->
