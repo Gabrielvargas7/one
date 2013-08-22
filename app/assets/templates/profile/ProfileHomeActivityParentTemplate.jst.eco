@@ -1,0 +1,13 @@
+<style>
+.profile_activity_outerDiv{
+
+}
+#profile_activity_innerDiv{
+	overflow:scroll;
+}
+</style>
+<div class="profile_activity_outerDiv">
+	TEST
+	<div id="profile_activity_innerDiv">
+	</div>
+</div>
