@@ -126,11 +126,12 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   setRoomItemsDesigns: (userAllRoomDataModel) ->
     userItemsDesignsList = userAllRoomDataModel.get('user_items_designs')
+    user = userAllRoomDataModel.get('user')
     length = userItemsDesignsList.length
     i = 0
     while i < length
       #console.log(userItemsDesignsList[i].id)
-      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i]})
+      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i],user:user})
       $('#xroom_items').append(userItemsDesignsView.el)
       userItemsDesignsView.render()
       i++

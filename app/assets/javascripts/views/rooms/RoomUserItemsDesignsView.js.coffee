@@ -28,7 +28,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     #**** Render
     #*******************
   render: ->
-    #console.log(this.options.user_item_design)
+#    console.log(this.options.user)
     $(@el).append(@template(user_item_design:this.options.user_item_design))
     this
 
@@ -43,6 +43,10 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     event.preventDefault()
     console.log("You clicked an object: "+this.options.user_item_design)
     console.log(this.options.user_item_design)
+    console.log(this.options.user)
+    bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:this.options.user_item_design,user:this.options.user})
+    $('#xroom_bookmarks').append(bookmarksView.el)
+    bookmarksView.render()
 
   #--------------------------
   # change hover image on maouse over

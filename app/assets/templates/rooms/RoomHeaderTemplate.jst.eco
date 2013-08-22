@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a id="xroom_header_store">
+                <a id="xroom_header_storepage">
                     <span>&nbsp&nbspRoom<span>
                 </a>
             </li>
@@ -40,8 +40,8 @@
                            <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                           <li><a id="xroom_header_update_profile" >Profile</a></li>
-                           <li><a id="xroom_header_update_setting" >Setting</a></li>
+                           <li><a id="xroom_header_forward_profile" >Profile</a></li>
+                           <li><a id="xroom_header_forward_setting" >Setting</a></li>
                            <li><a id="xroom_header_logout" >Logout</a></li>
                         </ul>
             </li>

@@ -16,16 +16,17 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
   events:{
     'click #xroom_header_profile':'showProfile'
-    'click #xroom_header_update_profile':'forwardToRoRProfilePage'
-    'click #xroom_header_update_setting':'forwardToRoRSettingPage'
+    'click #xroom_header_forward_profile':'forwardToRoRProfilePage'
+    'click #xroom_header_forward_setting':'forwardToRoRSettingPage'
     'click #xroom_header_logout':'logout'
+    'click #xroom_header_storepage':'showStorePage'
+
   }
 #  **********************
 #  *** function showProfile
 #  **********************
 
   initialize: ->
-
 
   #*******************
   #**** Render
@@ -34,7 +35,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     console.log("Adding the RoomHeaderView with model:")
     $(@el).append(@template(user_data:@model))
     this
-
 
 
   #*******************
@@ -58,9 +58,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfileView
   #--------------------------
   showProfileView: ->
-    @profileView = new Mywebroom.Views.ProfileHomeView(
-      model:@profile
-    )
+    @profileView = new Mywebroom.Views.ProfileHomeView(model:@profile)
     $('#xroom_profile').append(@profileView.el)
     @profileView.render()
 
@@ -71,8 +69,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   closeProfileView: ->
     console.log('CloseProfileView Function running')
     @profileView.remove();
-  #Need to listen for #ProfileOpen again
-  #Need to enable other room events again.
+    #Need to listen for #ProfileOpen again
+    #Need to enable other room events again.
 
 
   #*******************
@@ -139,3 +137,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     this.eraseCookie "remember_token"
     window.location.href = origin
 
+  #*******************
+  #**** Functions showStorePage
+  #*******************
+
+  #--------------------------
+  #  *** function
+  #--------------------------
+  showStorePage:  ->
+    console.log('storePage Function running')
+    storePageView = new Mywebroom.Views.StorePageView(model:@model)
+    $('#xroom_storepage').append(storePageView.el)
+    storePageView.render()
