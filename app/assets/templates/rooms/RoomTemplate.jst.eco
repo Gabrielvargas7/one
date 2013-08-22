@@ -1,15 +1,8 @@
-<div class="navbar  navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-        <a class="brand" href="#">Title</a>
-        <ul class="nav pull-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a id="xroom_menu_profile" >room profile</a></li>
-        </ul>
-    </div>
-</div>
-
+<!-- ************************ -->
+<!-- Room Background  -->
+<!-- ************************ -->
 
 <img id="current_background" src=<%= @user_theme.image_name.url %>>
+
 
 

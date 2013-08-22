@@ -1,14 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse" >
   <div class="navbar-inner" >
     <div class="container">
-      <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), "#"  %>
-      <nav>
+      <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), "#" , class: "brand"  %>
+      <!--<nav>-->
         <ul class="nav pull-right" >
 
           <li><%= link_to "Home", root_path  %></li>
-          <li><%= link_to "Help",  help_path %></li>
-          <li><%= link_to 'Profile','#',id:"my-link", remote:true  %></li>
-
 
           <!-- Start If  -->
           <% if signed_in? %>
@@ -74,7 +71,7 @@
 
 
         </ul>
-      </nav>
+      <!--</nav>-->
     </div>
   </div>
 </header>
