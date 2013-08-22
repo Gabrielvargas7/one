@@ -20,6 +20,25 @@
 	left:0px;
 	font-family:"Open Sans",sans-serif
 }
+#profile_drawer{
+	width:760px; /*profile container width - drawer_handle width*/
+	transition:all 2s ease-in-out;
+}
+nav.profile {
+     position:fixed;
+     // top: 16px;/*this needs to be rooms_header height*/
+     height:100%;
+     background-color:transparent; /* your choice here */
+     z-index:3; /* make sure this is the highest z-index on the page */
+}
+#profile_drawer_handle{
+    position: absolute;
+    top: 41px; /*This needs to be the same as the rooms_header height*/
+    right: 0;
+    height: 100%;
+    background-color: rgba(0,0,0,.8); /* your choice here */
+    width:40px;/*Sara add width*/
+}
 #profile_home_wrapper figure{
 	margin:0;
 	padding:0;
@@ -66,7 +85,7 @@
 
 }
 #fakeheader{
-	height:50px;
+	height:41px; /*This needs to be the same as the rooms_header height*/
 }
 
 #profile_home_container{

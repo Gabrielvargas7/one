@@ -34,8 +34,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  render: ->
    $(@el).html(@template(user_info:@model))     #pass variables into template.
    #attach top portion of view
-   $("#profileHome_top").append(@profileHomeTopView.el)
-   @profileHomeTopView.render()
+   # $("#profileHome_top").append(@profileHomeTopView.el)
+   # @profileHomeTopView.render()
    #Set min height for #profile_home_container based on browser size
    $('#profileHome_container').css "min-height",'656px'
    #Display User Activity
