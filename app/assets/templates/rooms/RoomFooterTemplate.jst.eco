@@ -1,0 +1,18 @@
+<!-- ************************ -->
+<!-- Room  Footer Menu -->
+<!-- ************************ -->
+
+<div class="navbar navbar-fixed-bottom  navbar-inverse">
+    <div class="navbar-inner">
+        <ul class="nav pull-left">
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Future Plans</a></li>
+            <li><a href="#">Join The Team</a></li>
+            <li><a href="#">Partnerships</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li class="disabled"> <a href="#"> &copy; Copyright 2012 Rooms Inc. All Rights Reserved</a></li>
+        </ul>
+    </div>
+</div>

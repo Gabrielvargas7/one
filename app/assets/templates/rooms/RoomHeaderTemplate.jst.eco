@@ -1,0 +1,59 @@
+<!-- ************************ -->
+<!-- Room Header -->
+<!-- ************************ -->
+
+<div class="navbar  navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+
+        <!-- Logo  -->
+        <a class="brand" href="#">
+              <img alt="logo-mywebroom" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/logo-mywebroom.png" height="32" width="112">
+        </a>
+
+        <!-- Search Box  -->
+        <form class="navbar-search pull-left">
+           <input type="text" class="span6" placeholder="Search for people, objects and bookmarks">
+        </form>
+
+
+        <!-- Menu  -->
+        <ul class="nav pull-right">
+            <li>
+                <a id="xroom_menu_profile" >
+                    <img alt="social profile"
+                        src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125493/social.gif"
+                        onmouseover="this.src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125506/social-hover.gif'"
+                        onmouseout="this.src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125493/social.gif'"
+                        height="23" width="21"
+                     />
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img alt="rooms items"
+                        src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125793/store-icon.gif"
+                        onmouseover="this.src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125806/store-icon-hover.gif'"
+                        onmouseout="this.src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125793/store-icon.gif'"
+                        height="23" width="21"
+                    />
+                    <span>Room<span>
+                </a>
+            </li>
+
+            <li><a href="#">MyRoom</a></li>
+
+            <!-- dropdown menu -->
+            <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"  href="#">
+                           <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                           <li><a href="#">Profile</a></li>
+                           <li><a href="#">Setting</a></li>
+                           <li><a href="#">Log Out</a></li>
+                        </ul>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -44,6 +44,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
       this.setRoomTheme @userAllRoomDataModel
       this.setRoomItemsDesigns @userAllRoomDataModel
+      this.setRoomHeader()
 
     this
 
@@ -90,6 +91,14 @@ class Mywebroom.Views.RoomView extends Backbone.View
         console.log(response)
 #        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
 
+
+  #--------------------------
+  # set items designs on id = #xroom_items
+  #--------------------------
+  setRoomHeader: ->
+    roomHeaderView = new Mywebroom.Views.RoomHeaderView()
+    $('#xroom_header').append(roomHeaderView.el)
+    roomHeaderView.render()
 
 
   #--------------------------
