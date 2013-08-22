@@ -1,4 +1,5 @@
 class Mywebroom.Views.ProfileActivityView extends Backbone.View
+	#el:"#profileActivityTable"
 	tagName:'table'
 	className: 'profileHome_activity generalGrid'
 	template: JST['profile/ProfileHomeGridTemplate']
