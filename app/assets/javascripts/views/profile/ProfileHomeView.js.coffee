@@ -75,7 +75,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  showHomeGrid: ->
  	$('#profileHome_top').html(@profileHomeTopView.render().el)
   $('#profileHome_bottom').css "height","450px"
- 	$('#profileHome_bottom').html(@ProfileHomeActivityView.el)
+  #Bandaid- make header another table.
+  tableHeader = JST['profile/ProfileGridTableHeader']
+  $("#profileHome_bottom").html(tableHeader(headerName:'Latest Room Additions'))
+ 	$('#profileHome_bottom').append(@ProfileHomeActivityView.el)
  	@ProfileHomeActivityView.render()
 
  collapseProfileView: ->
@@ -90,7 +93,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     	$('#profile_home_container').css "width", "720px"
     	$('#profile_drawer').css "width","760px"
     	$('#profile_collapse_arrow img').removeClass('flipimg')
-    	console.log "CollapseProfileView"
   		else
     		$("#profileHome_container").css "left", "-720px"
     		$('#profile_drawer').css "width","130px"#sidebarWidth + drawerWidth
@@ -99,7 +101,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     		#To enable hover on objects again set timeout on width
     		setTimeout (->
     			$("#profile_home_container").css "width", "0px"), 2000
-    		console.log "UN-CollapseProfileView"
 
  closeProfileView: ->
  	this.remove()
