@@ -39,14 +39,16 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickItem: () ->
+  clickItem: (event) ->
+    event.preventDefault()
     console.log("You clicked an object: "+this.options.user_item_design)
     console.log(this.options.user_item_design)
 
   #--------------------------
   # change hover image on maouse over
   #--------------------------
-  hoverItem: () ->
+  hoverItem: (event) ->
+    event.preventDefault()
     dataID= this.options.user_item_design.id
     $('[data-id='+dataID+']').attr('src',this.options.user_item_design.image_name_hover.url)
 
@@ -54,7 +56,8 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #--------------------------
   # change normal image on hover
   #--------------------------
-  hoverOffItem: () ->
+  hoverOffItem: (event) ->
+    event.preventDefault()
     dataID= this.options.user_item_design.id
     $('[data-id='+dataID+']').attr('src',this.options.user_item_design.image_name.url)
 

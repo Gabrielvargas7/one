@@ -6,7 +6,8 @@
     <div class="navbar-inner">
 
         <!-- Logo  -->
-        <a class="brand" href="#">
+        <a class="brand">
+              <span>&nbsp<span>
               <img alt="logo-mywebroom" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/logo-mywebroom.png" height="32" width="112">
         </a>
 
@@ -19,7 +20,7 @@
         <!-- Menu  -->
         <ul class="nav pull-right">
             <li>
-                <a id="xroom_menu_profile">
+                <a id="xroom_header_profile">
                 </a>
             </li>
             <li>
@@ -27,17 +28,21 @@
                     <span>&nbsp&nbspRoom<span>
                 </a>
             </li>
-            <li><a href="#">MyRoom</a></li>
+            <li><a id="xroom_header_myroom" >
+                <img src=<%= @user_data.get('user_photos').image_name.url %> >
+                <%=  @user_data.get('user').username %>
 
-            <!-- dropdown menu -->
+            </a></li>
+
+            <!-- sub menu (dropdown menu) -->
             <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown"  href="#">
                            <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                           <li><a href="#">Profile</a></li>
-                           <li><a href="#">Setting</a></li>
-                           <li><a href="#">Log Out</a></li>
+                           <li><a id="xroom_header_update_profile" >Profile</a></li>
+                           <li><a id="xroom_header_update_setting" >Setting</a></li>
+                           <li><a id="xroom_header_logout" >Logout</a></li>
                         </ul>
             </li>
         </ul>

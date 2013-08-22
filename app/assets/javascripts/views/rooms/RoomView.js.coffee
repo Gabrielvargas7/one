@@ -17,7 +17,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
 
   events:{
-    'click #xroom_menu_profile':'showProfile'
+
   }
 #  **********************
 #  *** function showProfile
@@ -44,22 +44,14 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
       this.setRoomTheme @userAllRoomDataModel
       this.setRoomItemsDesigns @userAllRoomDataModel
-      this.setRoomHeader()
+      this.setRoomHeader @userAllRoomDataModel
 
     this
 
 
   #*******************
-  #**** Funtions  Start Room
+  #**** Functions  Initialize Room
   #*******************
-
-  #--------------------------
-  # forward to the origin url if the user does't exist -> ex: 'http://www.mywebroom.com/'
-  #--------------------------
-  forwardToRoot: ->
-    origin = window.location.origin
-    console.log("forward to: "+origin)
-    window.location.href = origin
 
   #--------------------------
   # get the user of the room that is loading
@@ -92,11 +84,30 @@ class Mywebroom.Views.RoomView extends Backbone.View
 #        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
 
 
+
+  #*******************
+  #**** Functions  Forward to root
+  #*******************
+
+  #--------------------------
+  # forward to the origin url if the user does't exist -> ex: 'http://www.mywebroom.com/'
+  #--------------------------
+  forwardToRoot: ->
+    origin = window.location.origin
+    console.log("forward to: "+origin)
+    window.location.replace(origin)
+
+
+  #*******************
+  #**** Functions  Set RoomViews
+  #*******************
+
+
   #--------------------------
   # set items designs on id = #xroom_items
   #--------------------------
-  setRoomHeader: ->
-    roomHeaderView = new Mywebroom.Views.RoomHeaderView()
+  setRoomHeader:(userAllRoomDataModel) ->
+    roomHeaderView = new Mywebroom.Views.RoomHeaderView(model:userAllRoomDataModel)
     $('#xroom_header').append(roomHeaderView.el)
     roomHeaderView.render()
 
@@ -124,39 +135,3 @@ class Mywebroom.Views.RoomView extends Backbone.View
       userItemsDesignsView.render()
       i++
 
-
-  #*******************
-  #**** Funtions Social
-  #*******************
-
-
-  #--------------------------
-  #  *** function showProfile
-  #--------------------------
-  showProfile: (evt) ->
-    @profile = new Backbone.Model
-    @profile.set(@userAllRoomDataModel.get('user_profile'))
-    @profile.set('user',@userAllRoomDataModel.get('user'))
-    @profile.set('user_photos',@userAllRoomDataModel.get('user_photos'))
-    @showProfileView()
-
-
-  #--------------------------
-  #  *** function showProfileView
-  #--------------------------
-  showProfileView: ->
-    @profileView = new Mywebroom.Views.ProfileHomeView(
-      model:@profile
-    )
-    $('#xroom_profile').append(@profileView.el)
-    @profileView.render()
-
-
-  #--------------------------
-  #  *** function closeProfileView
-  #--------------------------
-  closeProfileView: ->
-    console.log('CloseProfileView Function running')
-    @profileView.remove();
-    #Need to listen for #ProfileOpen again
-    #Need to enable other room events again.

@@ -1,5 +1,5 @@
 
-#xroom_menu_profile {
+#xroom_header_profile {
 
   background-position: center;
   background-repeat: no-repeat;
@@ -8,7 +8,7 @@
   background-image: url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125493/social.gif');
 }
 
-#xroom_menu_profile:hover{
+#xroom_header_profile:hover{
 
   width: 23px;
   height: 21px;
@@ -30,4 +30,9 @@
   height: 21px;
   background-image: url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377125806/store-icon-hover.gif');
 
+}
+
+#xroom_header_myroom img{
+  width: 23px;
+  height: 23px;
 }
