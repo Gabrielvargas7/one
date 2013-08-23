@@ -1,40 +1,4 @@
-<style>
-#profile_key_request_list , #profile_suggested_friends_list {
-	background-color:gray;
 
-}
-#profile_key_request_list{
-	overflow:scroll;
-	width:100%;
-}
-.profile_table_innerDiv.profile_key_request{
-	height:200px;
-}
-.profile_table_innerDiv.profile_suggested_friends{
-	height:300px;
-}
-#profile_suggested_friends_list{
-	overflow:scroll;
-	width:100%;
-}
-.profile_table_outerDiv{
-	position:relative;
-	background-color: gray;
-}
-.profile_table_innerDiv{
-	overflow-y:auto;
-	padding-top: 1.6em;
-}
-.profile_table_outerDiv thead tr{
-	position:absolute;
-	top:0px;
-
-}
-.profile_table_innerDiv thead th{
-	width:500px !important;  /*This needs to be the width of the table to keep the text from overlapping on table scroll. */
-}
-/*Note on key request view, we do not want profile-bottom overflow on. */
-</style>
 <div class="profile_table_outerDiv">
 	<div class="profile_table_innerDiv profile_key_request">
 		<table id="profile_key_request_list">

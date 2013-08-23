@@ -1,15 +1,18 @@
-
-<!---->
+<td>
+<!--inside class profile_key_requests-->
 <div class="media">
 	<div class="pull-left profile_request_single_image_holder" style="background-image:url('<%=@model.get('image_name').url%>');">
 	</div>
 	<div class="media-body">
-		<h4 class="media-heading"><%=@model.get('firstname')%> <%=@model.get('lastname')%></h4>
-		<h5><%=@model.get('username')%></h5>
+		<p class="media-heading profile_request_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p>
+		<p class="profile_request_username"><%=@model.get('username')%></p>	
 	</div>
-	<!--Buttons-->
+</td>
+<td class="profile_request_buttons">
+<!--Buttons-->
 	<div class="btn-group pull-right">
-		<button class="btn">Accept</button>
-		<button class="btn">Deny</button>
+		<button class="profile_request_accept">Accept</button>
+		<button class="profile_request_deny">Deny</button>
 	</div>
 </div>
+</td>
