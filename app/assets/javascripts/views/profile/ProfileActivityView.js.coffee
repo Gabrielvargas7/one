@@ -23,6 +23,7 @@ class Mywebroom.Views.ProfileActivityView extends Backbone.View
 		  $(@el).append rowView.el
 		  rowView.render()
 		  rowArray.length = 0
+		this
 		
 
 		# #this template will be the parent one which defines the table

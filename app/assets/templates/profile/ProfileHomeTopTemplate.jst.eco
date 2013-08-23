@@ -1,7 +1,7 @@
 <div id="profile_home_info_img">
 	<figure>
 		<img id="profile_picture" src="<%=@user_info.get('user_photos').image_name.url%>">
-		<figcaption>Member since <%=@user_info.get('created_at')%></figcaption>
+		<figcaption>Member since Aug 2013.</figcaption>
 		<figcaption><a href="/users_profiles/show_users_profiles_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></figcaption>
 	</figure>
 </div>
@@ -12,9 +12,9 @@
 	<div id="profile_home_basic_info">
 		<p id = "info_username"><%=@user_info.get('user').username%> </p>
 		<ul>
-			<li>Age: NEEDDATA</li>
+			<li>Age: 27.</li>
 			<li><%=@user_info.get('gender')%></li>
-			<li><%=@user_info.get('city') %> <%=@user_info.get('country')%></li>
+			<li><%=@user_info.get('city') %>, <%=@user_info.get('country')%></li>
 		</ul>
 		<a class="blueLink" href="#">Friends (250)</a>
 	</div>

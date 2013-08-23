@@ -13,7 +13,7 @@ class Mywebroom.Views.ProfileGridItemView extends Backbone.View
   		hoveredModel = @model #collection.get(event.currentTarget.dataset.id)
   		#model is undefined here. Get the specific model hovered over
   		@socialBarView = new Mywebroom.Views.SocialBarView(model:hoveredModel)
-  		$(@el.childNodes[0]).append(@socialBarView.el)
+  		$(@el).children(".gridItem").children(".gridItemPicture").append(@socialBarView.el)
   		@socialBarView.render() 
  	closeSocialBarView:->
   		console.log("closeSocialBarView functio runs")

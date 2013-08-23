@@ -59,6 +59,7 @@ nav.profile {
 }
 #profile_home_wrapper td{
     width:200px;
+    background-color:white;
 }
 #profile_home_wrapper ul{
 	margin:0;
@@ -186,9 +187,10 @@ div.spacer{
 #profile_home_info_img img{
 	width:100px;
 	height:120px;
+	border:1px solid #919191
 }
 #profile_home_info_img img:hover{
-	border:2px solid #ffc000;
+	
 	/*float:left;
 	border:1px solid #AFAFAF;
 	width:100px;
@@ -219,12 +221,16 @@ div.spacer{
 
 #profile_home_basic_info ul li{
 	display:inline;
+	padding-right: 20px 
 }
 /* this refers to the bottom section of the profile container */
 #profileHome_bottom{
 	clear:both;
-	background-color: white;
+	background-color: #f5f5f5;
 	margin: 0 1em;
+	height:400px;
+	overflow-y:auto;
+	overflow-x:hidden;
 
 }
 #info_username{
@@ -259,8 +265,15 @@ div.profile_info_name{
 	text-transform:uppercase;
 	width:100%
 }
-#profile_home_wrapper table.generalGrid{
+// #profile_home_wrapper 
+table.generalGrid{
 	width:100%;
+	background-color:#f5f5f5;
+	border-collapse:separate;
+	border-spacing:15px;
+}
+#profileHome_activity_header{
+	border-collapse:collapse;
 }
 .gridItemPicture {
 	width:180px;
@@ -271,6 +284,7 @@ div.profile_info_name{
 }
 td.gridItem{
 	text-align:center;
+	border:1px solid #ebebeb;
 }
 .gridItemDescription{
 	color:black;
@@ -295,10 +309,14 @@ div.profile_friend_image_holder, .profile_request_single_image_holder,
 	 background-size:contain;
 	 background-repeat: no-repeat;
 	 background-position: 50% 50%;
+	 border:1px solid #e2e2e2;
 }
-.media.profile_friend{
-	color:black;
+
+
+.profile_friend_gear{
+	padding:0;
+	border:0;
 }
-.profile_friend{
-	background-color:gray;
+.profile_friend_button{
+	padding-right:20px;
 }

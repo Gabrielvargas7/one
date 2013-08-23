@@ -1,25 +1,29 @@
-<style>
-#profile_key_request_list , #profile_suggested_friends_list {
-	background-color:gray;
 
-}
-#profile_key_request_list{
-	height:200px;
-	overflow:scroll;
-}
-#profile_suggested_friends_list{
-	height:300px;
-	overflow:scroll;
-}
-</style>
+<div class="profile_table_outerDiv">
+	<div class="profile_table_innerDiv profile_key_request">
+		<table id="profile_key_request_list">
+			<thead>
+				<tr><th>
+					Key Requests
+				</th></tr>
+			</thead>
+			<tbody>
 
-<table id="profile_key_request_list">
-	<tbody>
-	<tr><th>
-		Key Requests
-	</th></tr>
-	</tbody>
-</table>
-<div id="profile_suggested_friends_list">
-	<h1>Suggested Friends</h1>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="profile_table_outerDiv">
+	<div class="profile_table_innerDiv profile_suggested_friends">
+		<table id="profile_suggested_friends_list">
+			<thead>
+				<tr><th>
+					Suggested Friends
+				</th></tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+	</div>
 </div>
