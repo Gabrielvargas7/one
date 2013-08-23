@@ -1,5 +1,5 @@
 class Mywebroom.Views.ProfileFriendsView extends Backbone.View
- className:'profile_friend media'
+ className:'profile_friends_view media'
  initialize: ->
   @friendsCollection = new Mywebroom.Collections.IndexFriendByUserIdByLimitByOffsetCollection()
  # Fetch friends data for Profile Friends
@@ -10,7 +10,8 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
      console.log("FriendsCollection Fetched Successfully")
      console.log(response)
  render: ->
-  $(@el).html("<p>Friends View woowoo</p>")
+  tableHeaderHTML = JST['profile/ProfileGridTableHeader'](headerName:"Friends ("+@friendsCollection.length+")")
+  $(@el).html(tableHeaderHTML)
   @friendsCollection.forEach(@friendsAddView,this)
   this
  	

@@ -226,7 +226,7 @@ div.spacer{
 /* this refers to the bottom section of the profile container */
 #profileHome_bottom{
 	clear:both;
-	background-color: white;
+	background-color: #f5f5f5;
 	margin: 0 1em;
 	height:400px;
 	overflow-y:auto;
@@ -311,9 +311,12 @@ div.profile_friend_image_holder, .profile_request_single_image_holder,
 	 background-position: 50% 50%;
 	 border:1px solid #e2e2e2;
 }
-.media.profile_friend{
-	color:black;
+
+
+.profile_friend_gear{
+	padding:0;
+	border:0;
 }
-.profile_friend{
-	background-color:gray;
+.profile_friend_button{
+	padding-right:20px;
 }

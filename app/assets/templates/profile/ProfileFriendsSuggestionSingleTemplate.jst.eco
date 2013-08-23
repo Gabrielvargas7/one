@@ -5,7 +5,7 @@
 
 	</div>
 	<div class="media-body">
-		<p class="media-heading profile_suggestion_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p>
+		<a href='/room/<%=@model.get('username')%>'><p class="media-heading profile_suggestion_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p></a>
 		<p class="profile_suggestion_username"> <%=@model.get('username')%></p>
 			
 	</div>

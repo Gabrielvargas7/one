@@ -1,5 +1,6 @@
-<td>
+
 <!--inside class profile_key_requests-->
+<td>
 <div class="media">
 	<div class="pull-left profile_request_single_image_holder" style="background-image:url('<%=@model.get('image_name').url%>');">
 	</div>
