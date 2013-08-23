@@ -57,20 +57,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   #  *** function showProfileView
   #--------------------------
-  showProfileView: ->
-    @profileView = new Mywebroom.Views.ProfileHomeView(model:@profile)
+  showProfileView:() ->
+    alert(this.options.FLAG_PROFILE)
+    @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAG_PROFILE})
     $('#xroom_profile').append(@profileView.el)
     @profileView.render()
 
-
-  #--------------------------
-  #  *** function closeProfileView
-  #--------------------------
-  closeProfileView: ->
-    console.log('CloseProfileView Function running')
-    @profileView.remove();
-    #Need to listen for #ProfileOpen again
-    #Need to enable other room events again.
 
 
   #*******************
@@ -138,14 +130,28 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     window.location.href = origin
 
   #*******************
-  #**** Functions showStorePage
+  #**** Functions StorePage
   #*******************
 
   #--------------------------
   #  *** function
   #--------------------------
-  showStorePage:  ->
+  showStorePage: (event) ->
+    event.preventDefault()
+    event.stopPropagation()
     console.log('storePage Function running')
-    storePageView = new Mywebroom.Views.StorePageView(model:@model)
-    $('#xroom_storepage').append(storePageView.el)
-    storePageView.render()
+    @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
+    $('#xroom_storepage').append(@storePageView.el)
+    @storePageView.render()
+
+    $(this.el).off('click', '#xroom_header_storepage');
+    $(this.el).off('click', '#xroom_header_profile');
+    alert(Mywebroom.Views.RoomView.FRAG_PROFILE)
+
+
+
+
+
+
+
+

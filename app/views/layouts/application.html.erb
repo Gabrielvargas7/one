@@ -11,13 +11,20 @@
 </head>
 <body>
 <%= render 'layouts/header'  unless @skip_header %>
-<div class="container">
-  <% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
-  <%= yield %>
-  <%= render 'layouts/footer' unless @skip_footer %>
-  <%= debug(params) if Rails.env.development? %>
+
+ <div class=<%= "container" unless @skip_header %>>
+
+
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' unless @skip_footer %>
+
+      <!--remove development params on room -->
+      <%= debug(params) if Rails.env.development? unless @skip_header %>
+
 </div>
+
 </body>
 </html>
