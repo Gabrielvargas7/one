@@ -9,11 +9,20 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   'click #profile_home_basic_info .blueLink':'showProfileFriends',
  	'click #profile_key_requests':'showProfileKeyRequests',
   'click #profile_activity':'showProfileActivity',
+  'click #profile_objects':'showProfileObjects',
+  'click #profile_bookmarks':'showProfileBookmarks',
  	'click #profile_home':'showHomeGrid',
- 	'click #Profile-Close-Button':'closeProfileView'
+ 	'click #Profile-Close-Button':'closeProfileView',
  	'click #Profile-Collapse-Button':'collapseProfileView'
+  'click .profile_suggestion_name':'showUserProfile'
+
 
  initialize: ->
+  #Get RoomFlag
+  #@TestRoomFlag = 'MY_FRIEND_ROOM'
+  if this.options.FLAG_PROFILE is Mywebroom.Views.RoomView.MY_FRIEND_ROOM
+    @template=JST['profile/FriendHomeTemplate']
+    
   @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
   @activityCollection = new Mywebroom.Collections.IndexNotificationByLimitByOffsetCollection()
   #initial limit and offset for apis
@@ -27,9 +36,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       console.log("ActivityCollection Fetched Successfully Response:")
       console.log(response)
   #For ProfileHomeActivity screen, only send the first 6
-  tempProfileHomeActivityCollection = new Backbone.Collection
-  tempProfileHomeActivityCollection.set(@activityCollection.first 6)
- 	@ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView({collection:tempProfileHomeActivityCollection})
+  initialProfileHomeActivityCollection = new Backbone.Collection
+  initialProfileHomeActivityCollection.set(@activityCollection.first 6)
+ 	@ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView({collection:initialProfileHomeActivityCollection})
 
  render: ->
    $(@el).html(@template(user_info:@model))     #pass variables into template.
@@ -71,6 +80,20 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:""))
   $('#profileHome_bottom').html(@profileActivityView.el)
   @profileActivityView.render()
+
+ showProfileBookmarks:->
+  #show user Bookmarks
+
+ showProfileObjects:->
+  #Show user Objects
+  @profileObjectsView = new Mywebroom.Views.ProfileObjectsView({collection:@activityCollection,model:@model})
+  $('#profileHome_top').html('')
+  $('#profileHome_top').css 'height', 'auto'
+  $("#profileHome_bottom").html(@profileObjectsView.el)
+  @profileObjectsView.render()
+ showUserProfile:->
+  @TestRoomFlag = 'MY_FRIEND_ROOM'
+  console.log('showUserProfile runs')
 
  showHomeGrid: ->
  	$('#profileHome_top').html(@profileHomeTopView.render().el)

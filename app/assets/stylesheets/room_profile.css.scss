@@ -303,7 +303,7 @@ td.gridItem{
 }
 /*image holders for profile friends, requests, and suggestions*/
 div.profile_friend_image_holder, .profile_request_single_image_holder, 
-.profile_friend_suggestion_single_image_holder{
+.profile_friend_suggestion_single_image_holder, {
 	 width:70px;
 	 height:70px;
 	 background-size:contain;
@@ -312,6 +312,10 @@ div.profile_friend_image_holder, .profile_request_single_image_holder,
 	 border:1px solid #e2e2e2;
 }
 
+#profile_small_user_picture{
+	height:70px;
+	padding:1em;
+}
 
 .profile_friend_gear{
 	padding:0;

@@ -1,9 +1,4 @@
-<style>
-#profile_small_user_picture{
-	height:70px;
-	padding:1em;
-}
-</style>
+
 <div id="profile_small_user_picture_wrap" class="pull-left">
 	<img id="profile_small_user_picture" src="<%=@user_info.get('user_photos').image_name.url%>"/>
 </div>

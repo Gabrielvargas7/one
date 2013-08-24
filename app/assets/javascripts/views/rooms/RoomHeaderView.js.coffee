@@ -58,7 +58,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfileView
   #--------------------------
   showProfileView:() ->
-    alert(this.options.FLAG_PROFILE)
+    #alert(this.options.FLAG_PROFILE)
     @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAG_PROFILE})
     $('#xroom_profile').append(@profileView.el)
     @profileView.render()
