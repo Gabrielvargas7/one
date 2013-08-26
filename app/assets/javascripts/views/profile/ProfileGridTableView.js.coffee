@@ -15,7 +15,7 @@ class Mywebroom.Views.ProfileTableOuterDivView extends Backbone.View
 
 class Mywebroom.Views.ProfileTableInnerDivView extends Backbone.View
 	tagName:'div'
-	className:'profile_table_innerDiv generalGrid'
+	className:'profile_table_innerDiv'
 	render:->
 		$(@el).html('')
 		#inner creates table
@@ -25,7 +25,7 @@ class Mywebroom.Views.ProfileTableInnerDivView extends Backbone.View
 
 class Mywebroom.Views.ProfileGridTableView extends Backbone.View
 	tagName:'table'
-	className:'profile_grid_table_view'
+	className:'profile_grid_table_view generalGrid'
 	initialize:->
 	render:->
 		$(@el).html('')

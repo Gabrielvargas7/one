@@ -147,12 +147,26 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   $('#profileHome_bottom').append(@profileActivityView.el)
   @profileActivityView.render()
 
+  #--------------------------
+  # showProfileBookmarks - Only shows on Friend/Public Profile View
+  #--------------------------
  showProfileBookmarks:->
   #show user Bookmarks
+  @profileBookmarksView = new Mywebroom.Views.ProfileObjectsView({collection:@activityBookmarksRandomCollection,model:@model})
+  $('#profileHome_top').html('')
+  $('#profileHome_top').css 'height', 'auto'
+  $("#profileHome_bottom").html(@profileBookmarksView.el)
+  @profileBookmarksView.render()
 
+  
+  #--------------------------
+  # showProfileObjects - Only shows on Friend/Public Profile View
+  #--------------------------
  showProfileObjects:->
   #Show user Objects
-  @profileObjectsView = new Mywebroom.Views.ProfileObjectsView({collection:@activityCollection,model:@model})
+  profileObjectsCollection = new Backbone.Collection()
+  profileObjectsCollection.set(@model.get('user_items_designs'))
+  @profileObjectsView = new Mywebroom.Views.ProfileObjectsView({collection:profileObjectsCollection,model:@model})
   $('#profileHome_top').html('')
   $('#profileHome_top').css 'height', 'auto'
   $("#profileHome_bottom").html(@profileObjectsView.el)
