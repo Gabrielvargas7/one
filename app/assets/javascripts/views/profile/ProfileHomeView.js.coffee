@@ -104,3 +104,4 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  closeProfileView: ->
  	this.remove()
+  this.options.roomHeaderView.delegateEvents() # add all header events

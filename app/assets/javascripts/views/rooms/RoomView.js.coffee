@@ -34,8 +34,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
   initialize: ->
 
-
-
     this.getRoomLoadingUserCollection()
     this.getUserSignInCollection()
 #    this.removeRoomClass()
@@ -45,7 +43,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
   render: ->
     this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_ROOM
-    console.log("flag: "+this.FRAG_PROFILE)
 
     @userRoomModel = @userRoomCollection.first() #username and id
     @userSignIn = @userSignInCollection.first() #username and id
@@ -170,3 +167,8 @@ class Mywebroom.Views.RoomView extends Backbone.View
       $('#xroom_items').append(userItemsDesignsView.el)
       userItemsDesignsView.render()
       i++
+      if this.FLAG_PROFILE == Mywebroom.Views.RoomView.PUBLIC_ROOM
+        userItemsDesignsView.undelegateEvents()
+
+
+

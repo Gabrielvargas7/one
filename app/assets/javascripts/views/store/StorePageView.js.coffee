@@ -15,7 +15,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #*******************
 
   events:{
-    'click #store_close_button':'destroyStorePageView'
+    'click #store_close_button':'closeStorePageView'
 
   }
 
@@ -39,9 +39,10 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #*******************
   #**** Functions  Initialize Room
   #*******************
-  destroyStorePageView: ->
+  closeStorePageView: ->
     console.log('add all the event to the header')
-    this.options.roomHeaderView.delegateEvents()
+    this.options.roomHeaderView.delegateEvents() # add all header events
+
     console.log('delete storePageView ')
     this.model.destroy() # Unbind reference to the model
     this.unbind()        # Unbind all local event bindings

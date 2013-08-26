@@ -35,6 +35,18 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     console.log("Adding the RoomHeaderView with model:")
     $(@el).append(@template(user_data:@model))
     this
+    this.removeRoomHeaderElemments()
+
+
+  removeRoomHeaderElemments:->
+    if this.options.FLAG_PROFILE != Mywebroom.Views.RoomView.MY_ROOM
+      $('#xroom_header_storepage').remove()
+
+    if this.options.FLAG_PROFILE == Mywebroom.Views.RoomView.PUBLIC_ROOM
+      $('#xroom_header_profile').remove()
+      $('#xroom_header_myroom').remove()
+      $('.dropdown').remove()
+      this.showProfile(null)
 
 
   #*******************
@@ -46,7 +58,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfile
   #--------------------------
   showProfile: (event) ->
-    event.preventDefault()
+    if event
+      event.preventDefault()
     @profile = new Backbone.Model
     @profile.set(@model.get('user_profile'))
     @profile.set('user',@model.get('user'))
@@ -58,10 +71,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfileView
   #--------------------------
   showProfileView:() ->
-    alert(this.options.FLAG_PROFILE)
-    @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAG_PROFILE})
+    @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAG_PROFILE,roomHeaderView:this })
     $('#xroom_profile').append(@profileView.el)
     @profileView.render()
+    @removeHeaderEvents()
 
 
 
@@ -143,10 +156,13 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
     $('#xroom_storepage').append(@storePageView.el)
     @storePageView.render()
+    @removeHeaderEvents()
 
-    $(this.el).off('click', '#xroom_header_storepage');
-    $(this.el).off('click', '#xroom_header_profile');
-    alert(Mywebroom.Views.RoomView.FRAG_PROFILE)
+
+  removeHeaderEvents: ->
+    $(this.el).off('click', '#xroom_header_storepage')
+    $(this.el).off('click', '#xroom_header_profile')
+
 
 
 
