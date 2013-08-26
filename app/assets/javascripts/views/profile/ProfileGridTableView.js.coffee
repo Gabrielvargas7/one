@@ -1,7 +1,7 @@
 #This file is used to create a table nested within an Outer Div and an Inner Div.
 #The styling of the divs allows table scrolling without the title bar moving.
-#If you want a table header title, create the ProfileGridTableHeader view first.
-#Then append this view to it.
+#If you want a table header title, create the ProfileGridTableHeader TEMPLATE first.
+#Then append this view AFTER it.
 #Create this view with the Outer table and pass your collection and model to it. 
 class Mywebroom.Views.ProfileTableOuterDivView extends Backbone.View
 	tagName:'div'
@@ -25,7 +25,7 @@ class Mywebroom.Views.ProfileTableInnerDivView extends Backbone.View
 
 class Mywebroom.Views.ProfileGridTableView extends Backbone.View
 	tagName:'table'
-	className:'profile_grid_table_view'
+	className:'profile_grid_table_view generalGrid'
 	initialize:->
 	render:->
 		$(@el).html('')
