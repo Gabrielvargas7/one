@@ -1,9 +1,8 @@
 
-#store_main_box{
-  position:absolute;
+.store_main_box {
   top: 50px;
   right: 0px;
-  z-index:200;
+  z-index:4;
   float: right;
   width:700px;
   height:700px;
@@ -13,32 +12,31 @@
   transition:all .3s ease-in-out;
 
 }
-//#store_main_box:hover{
-//  float: right;
-//
-//  width:40px;
-//  height:700px;
-//  padding:0px;
-//  margin:0 auto;
-//  /*background-color: rgba(0,0,0,.8);  your choice here */
-//  transition:all .3s ease-in-out;
-//
-//}
-
-#store_main_box_left{
-  float:left;
+.store_main_box {
+  float: right;
   width:40px;
   height:700px;
+  padding:0px;
+  margin:0 auto;
+  /*background-color: rgba(0,0,0,.8);  your choice here */
+  transition:all .3s ease-in-out;
+
+}
+
+#store_main_box_left{
+
+  float:left;
+  width:40px;
+  height:600px;
   padding: 0px;
   margin:0 auto;
-
-  /*background-color:#0099cb;*/
+  background-color:#0099cb;
 }
 
 #store_main_box_right{
   float:right;
-  width:660px;
-  height:700px;
+  width:600px;
+  height:600px;
   padding: 0px;
   margin:0 auto;
   background-color:#ffc000;
