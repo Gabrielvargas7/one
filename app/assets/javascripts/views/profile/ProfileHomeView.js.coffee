@@ -33,7 +33,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #@TestRoomFlag = 'MY_FRIEND_ROOM'
   if this.options.FLAG_PROFILE is Mywebroom.Views.RoomView.MY_FRIEND_ROOM
     @template=JST['profile/FriendHomeTemplate']
-    
   #initial limit and offset for apis
   @initialLimit = 24
   @initialOffset= 0
@@ -152,7 +151,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #--------------------------
  showProfileBookmarks:->
   #show user Bookmarks
-  @profileBookmarksView = new Mywebroom.Views.ProfileObjectsView({collection:@activityBookmarksRandomCollection,model:@model})
+  @profileBookmarksView = new Mywebroom.Views.ProfileBookmarksView({collection:@activityBookmarksRandomCollection,model:@model})
   $('#profileHome_top').html('')
   $('#profileHome_top').css 'height', 'auto'
   $("#profileHome_bottom").html(@profileBookmarksView.el)
