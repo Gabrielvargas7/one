@@ -53,15 +53,18 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  showProfilePhotos: ->
   @photosView = new Mywebroom.Views.ProfilePhotosView(model:@model) 
   @profileHomeTopView.remove()
-  $('#profileHome_top').css "height","70px"
+  $('#profileHome_top').css "height","auto"
+  $('#profileHome_top').html ""
   $('#profileHome_bottom').css "height","550px"
   #CONCERN: OptionalButton will be tied to events eventually. Need to refactor to make easy to maintain
-  topTemplate= JST['profile/ProfileSmallTopTemplate']
-  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Upload Photos"))
+  #topTemplate= JST['profile/ProfileSmallTopTemplate']
+  #$('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Upload Photos"))
  	$('#profileHome_bottom').html(@photosView.render().el)
  #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
  showProfileKeyRequests: ->
   # /*Note on key request view, we do not want profile-bottom overflow on. */
+  topTemplate= JST['profile/ProfileSmallTopTemplate']
+  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Invite Friends With FB!"))
   @keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView(model:@model)
   $('#profileHome_bottom').html(@keyRequestsView.el) 	
   @keyRequestsView.render()
