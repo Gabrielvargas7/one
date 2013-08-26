@@ -1,8 +1,16 @@
 class Mywebroom.Views.ProfileHomeView extends Backbone.View
  className: 'user_profile'
+
+  #*******************
+  #**** Templeate
+  #*******************
+
  template: JST['profile/ProfileHomeTemplate']
- #We should eventually make profileBottom its own view to remove and re-render. 
- #There may be memory leaks with this method
+
+  #*******************
+  #**** Events
+  #*******************
+
  events:
  	'click #profile_photos':'showProfilePhotos',
  	'click #profile_friends':'showProfileFriends',
@@ -16,6 +24,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #Profile-Collapse-Button':'collapseProfileView'
   'click .profile_suggestion_name':'showUserProfile'
 
+  #*******************
+  #**** Initialize
+  #*******************
 
  initialize: ->
   #Get RoomFlag
@@ -23,23 +34,39 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   if this.options.FLAG_PROFILE is Mywebroom.Views.RoomView.MY_FRIEND_ROOM
     @template=JST['profile/FriendHomeTemplate']
     
-  @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
-  @activityCollection = new Mywebroom.Collections.IndexNotificationByLimitByOffsetCollection()
   #initial limit and offset for apis
   @initialLimit = 24
   @initialOffset= 0
-  @activityCollection.fetch
-    url:@activityCollection.url @initialLimit, @initialOffset
+  #initial Top View for Profile Welcome Screen
+  @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
+  #Activity Collection is a combo of random bookmarks and objects. 
+  #Activity Collection is a scramble of both, fetched below.
+  @activityCollection = new Backbone.Collection()
+  @activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
+  @activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
+  #Fetch them
+  @activityBookmarksRandomCollection.fetch
+    url:@activityBookmarksRandomCollection.url @initialLimit, @initialOffset
     reset:true
     async:false
     success: (response)->
-      console.log("ActivityCollection Fetched Successfully Response:")
+      console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
       console.log(response)
-  #For ProfileHomeActivity screen, only send the first 6
-  initialProfileHomeActivityCollection = new Backbone.Collection
-  initialProfileHomeActivityCollection.set(@activityCollection.first 6)
- 	@ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView({collection:initialProfileHomeActivityCollection})
+  @activityItemsDesignsRandomCollection.fetch
+    url:@activityItemsDesignsRandomCollection.url @initialLimit, @initialOffset
+    reset:true
+    async:false
+    success: (response)->
+      console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
+      console.log(response)
+  #Scramble Activity Collection.
+  @scrambleItemsAndBookmarks()
 
+
+  #*******************
+  #**** Render - sets up initial structure and layout of the view
+  #*******************
+ 
  render: ->
    $(@el).html(@template(user_info:@model))     #pass variables into template.
    #attach top portion of view
@@ -50,6 +77,40 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
    #Display User Activity
    @showHomeGrid()
    this
+
+  #--------------------------
+  # showHomeGrid - Show the content portion of the view
+  #--------------------------
+
+ showHomeGrid: ->
+  $('#profileHome_top').html(@profileHomeTopView.render().el)
+  $('#profileHome_bottom').css "height","450px"
+  #Bandaid- make header another table.
+  tableHeader = JST['profile/ProfileGridTableHeader']
+  $("#profileHome_bottom").html(tableHeader(headerName:'Latest Room Additions'))
+  $('#profileHome_bottom').append(@ProfileHomeActivityView.el)
+  @ProfileHomeActivityView.render()
+
+  #*******************
+  #**** Functions  Initialize Profile Welcome View
+  #*******************
+
+  #--------------------------
+  # scramble activity and initialize activity view
+  #--------------------------
+ scrambleItemsAndBookmarks: ->
+  #For initial collection
+  @activityCollection.add(@activityItemsDesignsRandomCollection.toJSON(), {silent:true})
+  @activityCollection.add(@activityBookmarksRandomCollection.toJSON(),{silent:true})
+  @activityCollection.reset(@activityCollection.shuffle(),{silent:true})
+  initialProfileHomeActivityCollection = new Backbone.Collection
+  initialProfileHomeActivityCollection.set(@activityCollection.first 6)
+  @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView({collection:initialProfileHomeActivityCollection})
+
+  #*******************
+  #**** Functions  Event functions to alter views
+  #*******************
+
  showProfilePhotos: ->
   @photosView = new Mywebroom.Views.ProfilePhotosView(model:@model) 
   @profileHomeTopView.remove()
@@ -60,6 +121,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #topTemplate= JST['profile/ProfileSmallTopTemplate']
   #$('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Upload Photos"))
  	$('#profileHome_bottom').html(@photosView.render().el)
+ 
  #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
  showProfileKeyRequests: ->
   # /*Note on key request view, we do not want profile-bottom overflow on. */
@@ -75,13 +137,14 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  showProfileActivity:->
   #send full collection to this view.
-  @profileActivityView = new Mywebroom.Views.ProfileActivityView({collection:@activityCollection})
+  @profileActivityView = new Mywebroom.Views.ProfileTableOuterDivView({collection:@activityCollection})
   #Modify Top Portion
   $('#profileHome_top').css "height","70px"
   $('#profileHome_bottom').css "height","550px"
   topTemplate= JST['profile/ProfileSmallTopTemplate']
   $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:""))
-  $('#profileHome_bottom').html(@profileActivityView.el)
+  $('#profileHome_bottom').html(JST['profile/ProfileGridTableHeader'](headerName:"Activity"))
+  $('#profileHome_bottom').append(@profileActivityView.el)
   @profileActivityView.render()
 
  showProfileBookmarks:->
@@ -98,14 +161,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @TestRoomFlag = 'MY_FRIEND_ROOM'
   console.log('showUserProfile runs')
 
- showHomeGrid: ->
- 	$('#profileHome_top').html(@profileHomeTopView.render().el)
-  $('#profileHome_bottom').css "height","450px"
-  #Bandaid- make header another table.
-  tableHeader = JST['profile/ProfileGridTableHeader']
-  $("#profileHome_bottom").html(tableHeader(headerName:'Latest Room Additions'))
- 	$('#profileHome_bottom').append(@ProfileHomeActivityView.el)
- 	@ProfileHomeActivityView.render()
+  #*******************
+  #**** Functions  View layout
+  #*******************
+
 
  collapseProfileView: ->
  	#If view is open, close it, else reverse.
