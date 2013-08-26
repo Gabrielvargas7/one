@@ -16,6 +16,9 @@ class Mywebroom.Views.StorePageView extends Backbone.View
 
   events:{
     'click #store_close_button':'closeStorePageView'
+    'click #store_collapse_button':'collapseStorePageView'
+
+
 
   }
 
@@ -39,7 +42,8 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #*******************
   #**** Functions  Initialize Room
   #*******************
-  closeStorePageView: ->
+  closeStorePageView: (event) ->
+    event.preventDefault()
     console.log('add all the event to the header')
     this.options.roomHeaderView.delegateEvents() # add all header events
 
@@ -49,6 +53,13 @@ class Mywebroom.Views.StorePageView extends Backbone.View
     this.remove()        # Remove view from DOM
     delete this.$el      # Delete the jQuery wrapped object variable
     delete this.el       # Delete the variable reference to this node
+
+
+  collapseStorePageView: (event)->
+    event.preventDefault()
+
+    this.$el.addClass('compress');
+
 
 
 

@@ -10,8 +10,6 @@ class UsersBookmarksController < ApplicationController
                 only:[
                     :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
                     :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
-                    :json_index_user_bookmarks_by_user_id,
-                    :json_index_user_bookmarks_by_user_id_and_item_id,
                     :json_create_user_bookmark_custom_by_user_id
 
                 ]
@@ -20,8 +18,6 @@ class UsersBookmarksController < ApplicationController
                 only:[
                     :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
                     :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
-                    :json_index_user_bookmarks_by_user_id,
-                    :json_index_user_bookmarks_by_user_id_and_item_id,
                     :json_create_user_bookmark_custom_by_user_id
                 ]
 

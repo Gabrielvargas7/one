@@ -2,14 +2,14 @@
 // method type ->  get
 // method name ->  json_index_user_bookmarks_by_user_id
 
-// Security: private user
+// Security: public user
 
 //Description
 
 // description ->
                 //# GET get all user's Bookmarks
-                //# users_bookmarks/json/json_index_user_bookmarks_by_user_id/:user_id'
-                //# users_bookmarks/json/json_index_user_bookmarks_by_user_id/1.json'
+                //# users_bookmarks/json/index_user_bookmarks_by_user_id/:user_id'
+                //# users_bookmarks/json/index_user_bookmarks_by_user_id/1.json'
 //Return ->
 // success    ->  head  200 OK
 

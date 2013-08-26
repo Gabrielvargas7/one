@@ -6,20 +6,13 @@ class UsersItemsDesignsController < ApplicationController
   before_filter :json_signed_in_user,
                 only:[
                     :json_update_user_items_design_by_user_id_and_items_design_id_and_location_id,
-                    :json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id,
-                    :json_index_user_items_designs_by_user_id,
-                    :json_show_user_items_design_by_user_id_and_items_design_id,
-                    :json_index_user_items_designs_by_user_id_and_section_id
-
+                    :json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id
                 ]
 
   before_filter :json_correct_user,
                 only:[
                     :json_update_user_items_design_by_user_id_and_items_design_id_and_location_id,
-                    :json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id,
-                    :json_index_user_items_designs_by_user_id,
-                    :json_show_user_items_design_by_user_id_and_items_design_id,
-                    :json_index_user_items_designs_by_user_id_and_section_id
+                    :json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id
 
                 ]
 
