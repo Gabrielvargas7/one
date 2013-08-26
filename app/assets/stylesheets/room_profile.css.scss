@@ -228,9 +228,9 @@ div.spacer{
 	clear:both;
 	background-color: #f5f5f5;
 	margin: 0 1em;
-	height:400px;
-	overflow-y:auto;
-	overflow-x:hidden;
+	// height:400px;
+	// overflow-y:auto;
+	// overflow-x:hidden;
 
 }
 #info_username{
@@ -270,10 +270,11 @@ table.generalGrid{
 	width:100%;
 	background-color:#f5f5f5;
 	border-collapse:separate;
-	border-spacing:15px;
+	border-spacing:10px;
 }
-#profileHome_activity_header{
+#profileHome_activity_header, .profileTableHeader{
 	border-collapse:collapse;
+	width:100%;
 }
 .gridItemPicture {
 	width:180px;
@@ -303,7 +304,7 @@ td.gridItem{
 }
 /*image holders for profile friends, requests, and suggestions*/
 div.profile_friend_image_holder, .profile_request_single_image_holder, 
-.profile_friend_suggestion_single_image_holder{
+.profile_friend_suggestion_single_image_holder, {
 	 width:70px;
 	 height:70px;
 	 background-size:contain;
@@ -312,6 +313,10 @@ div.profile_friend_image_holder, .profile_request_single_image_holder,
 	 border:1px solid #e2e2e2;
 }
 
+#profile_small_user_picture{
+	height:70px;
+	padding:1em;
+}
 
 .profile_friend_gear{
 	padding:0;
