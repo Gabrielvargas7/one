@@ -9,10 +9,14 @@ class Mywebroom.Views.ProfileBookmarksView extends Backbone.View
 				console.log("UsersBookmarks fetched success:")
 				console.log(response)
 		@bookmarksGridView = new Mywebroom.Views.ProfileTableOuterDivView(collection:@collection,model:@model)
-		#fetch
+		#if(@model.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM)
+		@bookmarksCollection = @bookmarksCollection.first 9
 	render:->
 		$(@el).html(@template(model:@model))
 		$(@el).append(JST['profile/ProfileGridTableHeader'](headerName:"Bookmarks"))
 		$(@el).append(@bookmarksGridView.render().el)
+		#overlay test
+		#if(@model.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM)
+		$(@el).append(JST['profile/ProfileAskForKey']())
 		this
 	
