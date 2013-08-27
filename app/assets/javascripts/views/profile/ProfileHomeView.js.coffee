@@ -84,7 +84,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  showHomeGrid: ->
   $('#profileHome_top').html(@profileHomeTopView.render().el)
-  $('#profileHome_bottom').css "height","450px"
+  #$('#profileHome_bottom').css "height","450px"
   #Bandaid- make header another table.
   tableHeader = JST['profile/ProfileGridTableHeader']
   $("#profileHome_bottom").html(tableHeader(headerName:'Latest Room Additions'))
@@ -152,7 +152,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #--------------------------
  showProfileBookmarks:->
   #show user Bookmarks
-  @profileBookmarksView = new Mywebroom.Views.ProfileBookmarksView({collection:@activityBookmarksRandomCollection,model:@model})
+  @profileBookmarksView = new Mywebroom.Views.ProfileBookmarksView({model:@model})
   $('#profileHome_top').html('')
   $('#profileHome_top').css 'height', 'auto'
   $("#profileHome_bottom").html(@profileBookmarksView.el)
@@ -166,6 +166,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #Show user Objects
   profileObjectsCollection = new Backbone.Collection()
   profileObjectsCollection.set(@model.get('user_items_designs'))
+  profileObjectsCollection.reset(profileObjectsCollection.shuffle(),{silent:true})
   @profileObjectsView = new Mywebroom.Views.ProfileObjectsView({collection:profileObjectsCollection,model:@model})
   $('#profileHome_top').html('')
   $('#profileHome_top').css 'height', 'auto'
