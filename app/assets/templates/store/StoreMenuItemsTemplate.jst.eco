@@ -1,0 +1,3 @@
+<div class="store_item_container">
+    <img class="store_item" src="<%=@item.get('image_name').url%>" data-id="<%=@item.get('id')%>">
+</div>

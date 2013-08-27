@@ -152,6 +152,18 @@ Mywebroom::Application.routes.draw do
 #  /rooms/show_room_by_user_id/:user_id
 
 
+
+#**************************
+#  Start Items contract
+#**************************
+
+  match 'items/json/index_items', to:
+        'items#json_index_items', via: :get, as:
+        :items_json_index_items
+
+
+
+
  #**************************
  #  Start Themes contract
  #**************************
