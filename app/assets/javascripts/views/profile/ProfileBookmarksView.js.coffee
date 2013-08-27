@@ -17,9 +17,6 @@ class Mywebroom.Views.ProfileBookmarksView extends Backbone.View
 		$(@el).html(@template(model:@model))
 		$(@el).append(JST['profile/ProfileGridTableHeader'](headerName:"Bookmarks"))
 		$(@el).append(@bookmarksGridView.render().el)
-		#overlay test
-		#if(@model.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM)
-		$(@el).append(JST['profile/ProfileAskForKey']())
 		this
 	askForKey:(event)->
 		console.log("Bookmarks- Ask for "+@model.get('user_id')+' '+@model.get('firstname')+' key request from ME. (Who am I?)')
