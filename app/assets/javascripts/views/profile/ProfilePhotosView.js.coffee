@@ -4,8 +4,10 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 	template: JST['profile/ProfilePhotosTemplate']
 	initialize: ->
 		@photosCollection = new Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection()
+		#If global flag, fetch 9 instead
+		fetchLimit = 24
 		@photosCollection.fetch
-		    url: @photosCollection.url @model.get('user_id'),24,0
+		    url: @photosCollection.url @model.get('user_id'),fetchLimit,0
 		    async:false
 		    success: (response)->
 		     console.log("PhotosCollection Fetched Successfully")

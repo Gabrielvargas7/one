@@ -1,9 +1,4 @@
-<style>
-.profile_objects_view{
-	background-color: gray;
 
-}
-</style>
 <div id="profile_small_user_picture_wrap" class="pull-left">
 	<img id="profile_small_user_picture" src="<%=@model.get('user_photos').image_name.url%>"/>
 </div>

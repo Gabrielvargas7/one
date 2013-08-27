@@ -9,14 +9,13 @@ class Mywebroom.Views.ProfileGridItemView extends Backbone.View
 		'mouseleave .gridItem':'closeSocialBarView'
 		'click .gridItem':'getGridItemModel'
 	showSocialBarView:(event)->
-  		console.log("showSocialBarView function runs")
   		hoveredModel = @model #collection.get(event.currentTarget.dataset.id)
   		#model is undefined here. Get the specific model hovered over
+  		#Depending on FLAG_PROFILE, hover will cause different view here. 
   		@socialBarView = new Mywebroom.Views.SocialBarView(model:hoveredModel)
   		$(@el).children(".gridItem").children(".gridItemPicture").append(@socialBarView.el)
   		@socialBarView.render() 
  	closeSocialBarView:->
-  		console.log("closeSocialBarView functio runs")
   		@socialBarView.remove()
 	getGridItemModel: (event) ->
 		event.stopPropagation()
