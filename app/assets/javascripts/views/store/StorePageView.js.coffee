@@ -8,7 +8,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #*******************
   #**** Templeate
   #*******************
-  template: JST['store/StoreTemplate']
+  template: JST['store/StorePageTemplate']
 
   #*******************
   #**** Events
@@ -17,7 +17,6 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   events:{
     'click #store_close_button':'closeStorePageView'
     'click #store_collapse_button':'collapseStorePageView'
-
 
 
   }
@@ -33,9 +32,16 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   render: ->
     console.log("storepage view: ")
     console.log(@model)
-#    alert("user id: "+@model.get('user').id)
+
     $(@el).append(@template())
+
+
+    @storeMenuView = new Mywebroom.Views.StoreMenuView({model:@model})
+    $('.store_main_box_right').append(@storeMenuView.el)
+    @storeMenuView.render()
+
     this
+
 
 
 
@@ -57,8 +63,15 @@ class Mywebroom.Views.StorePageView extends Backbone.View
 
   collapseStorePageView: (event)->
     event.preventDefault()
+    if $("#store_main_box").css("width") is "40px"
+       $('#store_main_box').css "width","700px"
+       $('#store_collapse_button img').addClass('flipimg')
 
-    this.$el.addClass('compress');
+    else
+       $('#store_main_box').css "width","40px"
+       $('#store_collapse_img').attr('src','http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png')
+       $('#store_collapse_button img').removeClass('flipimg')
+
 
 
 
