@@ -20,7 +20,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 	
 	render: ->
 		#FOR TESTING ONLY- set flag profile
-		#@model.set 'FLAG_PROFILE', Mywebroom.Views.RoomView.PUBLIC_ROOM
+		@model.set 'FLAG_PROFILE', Mywebroom.Views.RoomView.PUBLIC_ROOM
 		$(@el).html(@template(collection:@photosCollection, model:@model))
 		#create table with data
 		tableView = new Mywebroom.Views.ProfileTableOuterDivView(collection: @photosCollection, model:@model)

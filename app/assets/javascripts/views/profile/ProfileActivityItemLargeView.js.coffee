@@ -1,6 +1,6 @@
 class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	template: JST['profile/ProfileActivityItemLargeTemplate']
-	className: 'activity_item_large_view'
+	className: 'activity_item_large_wrap'
 	initialize: ->
 		 _.bindAll this, 'insideHandler', 'outsideHandler'
 	render: ->
@@ -10,6 +10,8 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		socialBarView = new Mywebroom.Views.SocialBarView({model:@model})
 		$(@el).append(socialBarView.el)
 		socialBarView.render()
+
+		
 		this
 	insideHandler: (event) ->
 		event.stopPropagation()
@@ -24,4 +26,8 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		$("#profile_drawer").css "width", "760px"
 		this.$el.remove()
 		console.log "ActivityItemLargeView closed"
+		this
+class Mywebroom.Views.GenericOuterDiv extends Backbone.View
+	render: ->
+		$(@el).html("")
 		this
