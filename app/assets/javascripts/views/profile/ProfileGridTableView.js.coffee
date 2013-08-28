@@ -11,6 +11,9 @@ class Mywebroom.Views.ProfileTableOuterDivView extends Backbone.View
 		#outer creates inner
 		innerView = new Mywebroom.Views.ProfileTableInnerDivView(collection: @collection,model:@model)
 		$(@el).append(innerView.render().el)
+		if @model and @model.get('FLAG_PROFILE') is Mywebroom.Views.RoomView.PUBLIC_ROOM
+			#append ask for key overlay.
+			$(@el).append(JST['profile/ProfileAskForKey']())
 		this
 
 class Mywebroom.Views.ProfileTableInnerDivView extends Backbone.View

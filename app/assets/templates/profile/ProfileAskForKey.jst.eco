@@ -2,7 +2,7 @@
 #profile_ask_for_key_overlay{
 	height:200px;
 	width:600px;
-	position:fixed;
+	position:absolute;
 	bottom:0;
 
 }

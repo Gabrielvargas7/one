@@ -173,7 +173,19 @@ div.spacer{
 #profile_activity a:hover{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811572/activitybtn-active_w91vry.png") no-repeat center;
 }
-
+#profile_objects a{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/objectsbtn-default_mdls5o.png") no-repeat center;
+}
+#profile_objects a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/objectsbtn-active_fmtjj4.png") no-repeat center;
+}
+#profile_bookmarks a{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-default_n2c6yp.png") no-repeat center;
+	font-size:13px;
+}
+#profile_bookmarks a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-active_csktwe.png") no-repeat center;
+}
 #profile_home_info_img{
 	height:150px;
 	width:120px;
