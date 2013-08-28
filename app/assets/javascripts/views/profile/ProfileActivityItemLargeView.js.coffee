@@ -3,6 +3,9 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	className: 'activity_item_large_wrap'
 	initialize: ->
 		 _.bindAll this, 'insideHandler', 'outsideHandler'
+	events:
+		'click .large_item_nav_arrow.flipimg':'showPrev'
+		'click .large_item_nav_arrow':'showNext'
 	render: ->
 		$('body').on('click', this.outsideHandler);
 		$(@el).html(@template(model:@model))
@@ -31,6 +34,10 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		this.$el.remove()
 		console.log "ActivityItemLargeView closed"
 		this
+	showNext: ->
+		console.log "someday I'll show next"
+	showPrev:->
+		console.log "someday I'll show prev"
 class Mywebroom.Views.GenericOuterDiv extends Backbone.View
 	render: ->
 		$(@el).html("")
