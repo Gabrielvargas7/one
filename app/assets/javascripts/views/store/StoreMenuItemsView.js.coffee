@@ -4,7 +4,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #**** Tag  (no tag = default el "div")
   #*******************
 
-  tagName: 'td'
+  tagName: 'li'
   #*******************
   #**** Templeate
   #*******************

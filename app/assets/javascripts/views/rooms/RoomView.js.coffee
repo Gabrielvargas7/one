@@ -70,14 +70,27 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
   setFlags: ->
     if @userSignIn is undefined
-      console.log("flag public user: ")
       this.FLAG_PROFILE = Mywebroom.Views.RoomView.PUBLIC_ROOM
+      console.log("flag public user: "+this.FLAG_PROFILE)
     else if @userSignIn.id == @userRoomModel.id
-      console.log("flag room user: ")
       this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_ROOM
+      console.log("flag room user: "+this.FLAG_PROFILE)
     else
-      console.log("flag friend user: ")
-      this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_FRIEND_ROOM
+      @myfriend = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
+      @myfriend.fetch
+        url:@myfriend.url(@userSignIn.id,@userRoomModel.id)
+        async:false
+        success: (response)->
+          console.log("@myfriend: ")
+          console.log(response)
+
+      if @myfriend.length == 0
+        this.FLAG_PROFILE = Mywebroom.Views.RoomView.PUBLIC_ROOM
+        console.log("flag public user: "+this.FLAG_PROFILE)
+      else
+        this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_FRIEND_ROOM
+        console.log("flag friend user: "+this.FLAG_PROFILE)
+
 
 
   #*******************

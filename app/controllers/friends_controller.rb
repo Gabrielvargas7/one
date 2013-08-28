@@ -4,9 +4,7 @@ class FriendsController < ApplicationController
                 only:[
                     :json_create_friend_by_user_id_accept_and_user_id_request,
                     :json_destroy_friend_by_user_id_and_user_id_friend,
-                    :json_index_friend_by_user_id,
-                    :json_index_friend_by_user_id_by_limit_by_offset,
-                    :json_index_friends_suggestion_by_user_id_by_limit_by_offset
+                    :json_show_is_my_friend_by_user_id_and_friend_id
 
                 ]
 
@@ -15,9 +13,8 @@ class FriendsController < ApplicationController
                 only:[
                     :json_create_friend_by_user_id_accept_and_user_id_request,
                     :json_destroy_friend_by_user_id_and_user_id_friend,
-                    :json_index_friend_by_user_id,
-                    :json_index_friend_by_user_id_by_limit_by_offset,
-                    :json_index_friends_suggestion_by_user_id_by_limit_by_offset
+                    :json_show_is_my_friend_by_user_id_and_friend_id
+
 
                 ]
 
@@ -282,9 +279,49 @@ class FriendsController < ApplicationController
       end
     end
 
-
-
   end
+
+
+  #GET get a friend of the user
+  #  /friends/json/show_is_my_friend_by_user_id_and_friend_id/:user_id/friend_id'
+  #  /friends/json/show_is_my_friend_by_user_id_and_friend_id/206/13.json'
+  #  //# success    ->  head  200 OK
+
+
+  def json_show_is_my_friend_by_user_id_and_friend_id
+    respond_to do |format|
+
+      if User.exists?(id:params[:user_id])
+
+        @friends = Friend.where('user_id = ? and user_id_friend = ?',params[:user_id],params[:friend_id])
+        #@user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
+
+        @user_friend =
+            UsersPhoto.select(
+                'users_photos.user_id,
+                users_photos.image_name,
+                users_photos.profile_image,
+                users_profiles.firstname,
+                users_profiles.lastname,
+                users.username'
+
+            ).where(:user_id => @friends.map {|b| b.user_id_friend})
+            .where("users_photos.profile_image = 'y'")
+            .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
+            .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')
+
+
+        format.json { render json: @user_friend }
+
+      else
+        format.json { render json:'not found user_id ',status: :not_found }
+      end
+
+
+
+    end
+  end
+
 
 
 
