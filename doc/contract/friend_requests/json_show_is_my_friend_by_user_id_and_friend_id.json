@@ -1,0 +1,18 @@
+//#GET get a friend of the user
+//#  /friends/json/show_is_my_friend_by_user_id_and_friend_id/:user_id/friend_id'
+//#  /friends/json/show_is_my_friend_by_user_id_and_friend_id/206/13.json'
+//#  //# success    ->  head  200 OK
+
+
+[
+    {
+        "firstname": "ben",
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376946021/39257-users_photo-image_name-avatar5.png"
+        },
+        "lastname": "stracke",
+        "profile_image": "y",
+        "user_id": 15,
+        "username": "ben-stracke-18017-84967"
+    }
+]
