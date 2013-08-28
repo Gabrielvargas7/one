@@ -2,6 +2,9 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 	tagName:'div'
 	className:'user-photos-view'
 	template: JST['profile/ProfilePhotosTemplate']
+	events:
+		'click #profile_ask_for_key_overlay button':'askForKey'
+
 	initialize: ->
 		@photosCollection = new Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection()
 		#If global flag, fetch 9 instead
@@ -12,33 +15,19 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 		    success: (response)->
 		     console.log("PhotosCollection Fetched Successfully")
 		     console.log(response)
+		#if(@model.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM)
+		 @photosCollection.reset(@photosCollection.first(9), silent:true)
+	
 	render: ->
-		#Create table header
+		#FOR TESTING ONLY- set flag profile
+		@model.set 'FLAG_PROFILE', Mywebroom.Views.RoomView.PUBLIC_ROOM
 		$(@el).html(@template(collection:@photosCollection, model:@model))
 		#create table with data
-		tableView = new Mywebroom.Views.ProfileTableOuterDivView(collection: @photosCollection)
+		tableView = new Mywebroom.Views.ProfileTableOuterDivView(collection: @photosCollection, model:@model)
 		$(@el).append(tableView.render().el)
+		#if(@model.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM)
+		#if @photosCollection.length > 6
+		#	$(@el).append(JST['profile/ProfileAskForKey']())
 		this
-		# #this template will be the parent one which defines the table
-		# $(@el).html(@template(activity:@photosCollection))
-		# #Split collection into rows of three and send them to GridRowView (which goes to GridItemView)
-		# k=0
-		# rowArray= []
-		# console.log("@photosCollection.models.length: "+@photosCollection.models.length)
-		# while k < @photosCollection.models.length
-		#   i = 0
-		#   while i < 3
-		#     rowArray.push @photosCollection.at k  if k < @photosCollection.models.length
-		#     k+=1
-		#     i++
-		#   rowView = new Mywebroom.Views.ProfileGridRowView(collection: rowArray)
-		#   $(@el).append rowView.el
-		#   rowView.render()
-		#   rowArray.length = 0
-
-		#Send first 3 models to row template. this view's template will define the rows
-		# slicedCollection = @photosCollection.first 3
-		# rowView = new Mywebroom.Views.ProfileGridRowView(collection:slicedCollection)
-		# $(@el).append(rowView.el)
-		# rowView.render()
-		this
+	askForKey:(event)->
+		console.log("Photos- Ask for "+@model.get('user_id')+' '+@model.get('firstname')+' key request from ME. (Who am I?)')
