@@ -2,7 +2,7 @@
 	<h2><%=@model.get('name')%></h2>
 	<p class="pull-left"><a id="photos_prev" href="#">Prev</a></p>
 	<div class="activity_item_img_wrap">
-		<img class="pull-left" src="<%=@model.get('image_name').url%>">
+		<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
 	</div>
 	<p class="pull-left"><a id="photos_next" href="#">Next</a></p>
 	<div class="profile_button_wrap"><button class="profile_request_key_button" >Try in My Room!</button></div>

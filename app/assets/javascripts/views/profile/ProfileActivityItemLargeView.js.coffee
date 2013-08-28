@@ -6,10 +6,14 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	render: ->
 		$('body').on('click', this.outsideHandler);
 		$(@el).html(@template(model:@model))
-		#append social view to el here
-		socialBarView = new Mywebroom.Views.SocialBarView({model:@model})
-		$(@el).append(socialBarView.el)
-		socialBarView.render()
+		#The social View is in the template because
+		#the styling was not right with this view. It needs a parent wrapper div, and the 
+		#social view cannot append elegantly with the current styling.
+		#Revisit if we use a Backbone Layout Plugin like SubViews or Marionette.
+		# #append social view to el here
+		# socialBarView = new Mywebroom.Views.SocialBarView({model:@model})
+		# $(@el).append(socialBarView.el)
+		# socialBarView.render()
 
 		
 		this

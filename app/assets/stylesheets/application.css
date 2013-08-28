@@ -69,3 +69,24 @@ footer ul li {
     filter: FlipH;
     -ms-filter: "FlipH";
 }
+
+/*Social Bar Style*/
+.fb_like_item img{
+    width:50px;
+    height:auto;
+}
+.pinterest_item img{
+    width:20px;
+    height:auto;
+}
+.info_button_item img{
+    width:50px;
+    height:auto;
+}
+.social_bar .navbar .nav > li > a{
+    padding:10px 5px 10px;
+}
+.social_bar .navbar{
+    border-spacing:0;
+}
+/*End social bar style*/
