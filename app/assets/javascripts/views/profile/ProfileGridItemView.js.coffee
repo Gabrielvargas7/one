@@ -3,14 +3,18 @@ class Mywebroom.Views.ProfileGridItemView extends Backbone.View
 	className:'gridItem'
 	template:JST['profile/ProfileGridItemTemplate']
 	render: ->
-		$(@el).html(@template(model:@model))
+		if @model.get('title') != undefined
+		#if @model.collection.constructor.name is Mywebroom.Collections.IndexUserBookmarksByUserIdCollection.name
+			gridText = @model.get('title')
+		else
+			gridText= @model.get('name')
+		$(@el).html(@template(model:@model,gridText:gridText))
 	events: 
 		'mouseenter .gridItem':'showSocialBarView' 
 		'mouseleave .gridItem':'closeSocialBarView'
 		'click .gridItem':'getGridItemModel'
 	showSocialBarView:(event)->
-  		hoveredModel = @model #collection.get(event.currentTarget.dataset.id)
-  		#model is undefined here. Get the specific model hovered over
+  		hoveredModel = @model
   		#Depending on FLAG_PROFILE, hover will cause different view here. 
   		@socialBarView = new Mywebroom.Views.SocialBarView(model:hoveredModel)
   		$(@el).children(".gridItem").children(".gridItemPicture").append(@socialBarView.el)
