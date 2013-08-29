@@ -15,17 +15,17 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 		    success: (response)->
 		     console.log("PhotosCollection Fetched Successfully")
 		     console.log(response)
-		#if(@model.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM)
+		if(@model.get("FLAG_PROFILE") is Mywebroom.Views.RoomView.PUBLIC_ROOM)
 		 @photosCollection.reset(@photosCollection.first(9), silent:true)
 	
 	render: ->
 		#FOR TESTING ONLY- set flag profile
-		@model.set 'FLAG_PROFILE', Mywebroom.Views.RoomView.PUBLIC_ROOM
+		#@model.set 'FLAG_PROFILE', Mywebroom.Views.RoomView.PUBLIC_ROOM
 		$(@el).html(@template(collection:@photosCollection, model:@model))
 		#create table with data
 		tableView = new Mywebroom.Views.ProfileTableOuterDivView(collection: @photosCollection, model:@model)
 		$(@el).append(tableView.render().el)
-		#if(@model.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM)
+		#if(@model.get F"LAG_PROFILE" is Mywebroom.Views.RoomView.PUBLIC_ROOM)
 		#if @photosCollection.length > 6
 		#	$(@el).append(JST['profile/ProfileAskForKey']())
 		this

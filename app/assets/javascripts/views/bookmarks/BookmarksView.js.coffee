@@ -3,25 +3,35 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   #*******************
   #**** Tag  (no tag = default el "div")
   #*******************
-
+  className:'bookmark_view'
 
   #*******************
   #**** Templeate
   #*******************
-
+  template:JST['bookmarks/BookmarkTemplate']
 
   #*******************
   #**** Events
   #*******************
 
   events:{
+    'click .bookmark_view':'closeView'
 
   }
-#  **********************
-#  *** function showProfile
-#  **********************
+  #*******************
+  #**** Functions  Initialize Room
+  #*******************
 
   initialize: ->
+    #fetch bookmark data
+    @collection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
+    @collection.fetch
+      async:false
+      url:@collection.url this.options.user_item_design.item_id
+      success:(response) ->
+        console.log("bookmark fetch successful: ")
+        console.log(response)
+
 
   #*******************
   #**** Render
@@ -29,11 +39,11 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   render: ->
     console.log("bookmark view: "+this.options.user_item_design)
     console.log(this.options.user_item_design)
-    alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user.id)
-    $(@el).append()
+    #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user.id)
+    $(@el).append(@template(user_item_design:this.options.user_item_design))
     this
 
-  #*******************
-  #**** Functions  Initialize Room
-  #*******************
 
+
+  closeView:->
+    this.remove()

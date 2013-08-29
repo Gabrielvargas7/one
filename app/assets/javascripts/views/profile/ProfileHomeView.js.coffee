@@ -32,7 +32,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #Get RoomFlag
   #@TestRoomFlag = 'MY_FRIEND_ROOM'
   this.model.set 'FLAG_PROFILE', this.options.FLAG_PROFILE
-  if this.options.FLAG_PROFILE is Mywebroom.Views.RoomView.MY_FRIEND_ROOM
+  if this.options.FLAG_PROFILE != Mywebroom.Views.RoomView.MY_ROOM
     @template=JST['profile/FriendHomeTemplate']
   #initial limit and offset for apis
   @initialLimit = 24
