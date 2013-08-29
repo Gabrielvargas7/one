@@ -3,5 +3,10 @@
 		<!-- <img src="<%=@model.get('image_name').url%>"  data-id="<%=@model.get('id')%>" > -->
 		
 	</div>
-	<span class="gridItemDescription"><%=@model.get('name')%></span>
+	<span class="gridItemDescription">
+		<%if @gridText: %>
+		<%=@gridText%>
+		<%else:%>
+		<%= @model.get('name')%></span>
+		<% end %>
 </div>
