@@ -42,6 +42,12 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #**** Render
   #*******************
   render: ->
+#    $.cloudinary.config  cloud_name: "sample"  api_key: "874837483274837"
+#    image = $.cloudinary.image 'sample.jpg',  alt: "Sample Image"
+    image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
+    console.log(image)
+
+
     this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_ROOM
 
     @userRoomModel = @userRoomCollection.first() #username and id
