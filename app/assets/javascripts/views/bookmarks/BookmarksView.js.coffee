@@ -16,6 +16,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   events:{
     'click .bookmark_view':'closeView'
+    'click .bookmarks_close_button':'closeView'
 
   }
   #*******************
