@@ -42,8 +42,9 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-#    $.cloudinary.config  cloud_name: "sample"  api_key: "874837483274837"
-#    image = $.cloudinary.image 'sample.jpg',  alt: "Sample Image"
+
+    #*******************
+    #**** Test of coudinary on js
     image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
     console.log(image)
 

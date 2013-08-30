@@ -59,13 +59,13 @@
   margin: 0px;
 }
 
-.store_item {
+.store_image_cell {
   width:180px;
-  height:180px;
+  //height:180px;
   padding: 0px;
 }
 
-.store_item_container{
+.store_container{
   margin: 8px;
   border: 1px solid;
   border-color: #ebebeb;
@@ -74,6 +74,11 @@
   width: 180px;
   height: 200px;
 
-
-
 }
+
+#button_preview {
+  position:relative;
+  top: -100px;
+  left:0px;
+}
+
