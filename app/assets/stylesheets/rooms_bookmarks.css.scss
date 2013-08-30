@@ -70,3 +70,49 @@ ul.bookmark_menu_list {
 	top:15px;
 	right:15px;
 }
+/*My Bookmarks Grid Items*/
+.my_bookmarks_bottom{
+	height:600px;
+	overflow:auto;
+}
+.my_bookmarks_bottom li{
+	display:table-cell;
+
+
+}
+.bookmark_grid_item{
+	width:180px;
+	height:200px;
+	border:1px solid #ebebeb;
+	display:table;
+	position:relative;
+	margin:4px 8px;
+
+}
+.bookmark_grid_item_bottom{
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+.bookmark_grid_item_bottom img{
+	width:30px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	border:1px solid #7d7d7d;
+}
+#my_bookmarks_bookmark_name_form{
+	left:30px;
+	position:absolute;
+	bottom:0;
+	margin:0;
+
+}
+#my_bookmarks_bookmark_name_form input{
+	width:140px;
+	margin:0;
+	padding-left:10px;
+	border:none;
+
+}
+/*END My Bookmarks Grid Items*/

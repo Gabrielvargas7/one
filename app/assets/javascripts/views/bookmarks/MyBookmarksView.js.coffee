@@ -16,9 +16,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	
 	render:->
 		$(@el).append(@template())
-		#Divide collection into rows of 5. 
-		#Insert ul element. 
-		#For each in 5ple, make li with grid item view.  
+		 
 		#Split collection into rows of five
 		# and send them to <ul>. Then make <li> for each
 		@appendItems()
@@ -32,6 +30,9 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	# append bookmark items to this view. called from render()
 	#--------------------------
 	appendItems:->
+		#Divide collection into rows of 5. 
+		#Insert ul element. 
+		#For each in 5ple, append a grid item view. 
 		k=0
 		columnNum=5
 		rowArray= []

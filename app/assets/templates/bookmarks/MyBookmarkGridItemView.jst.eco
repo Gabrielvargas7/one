@@ -1,3 +1,12 @@
-<div>
-<%=@model.get('id')%> <%=@model.get('title')%>
+
+<div class="bookmark_grid_item">
+
+	<div class="gridItemPicture my_bookmarks_grid_item" style="background-image:url(<%=@model.get('image_name').url%>)"></div>
+	<div class="bookmark_grid_item_bottom"> 
+		<img src="<%=@model.get('image_name').url%>">
+		<form id="my_bookmarks_bookmark_name_form">
+  			<input name="q" placeholder="<%=@model.get('title')%>">
+  		</form>
+		<!--<%=@model.get('id')%> <%=@model.get('title')%>-->
+	</div>
 </div>
