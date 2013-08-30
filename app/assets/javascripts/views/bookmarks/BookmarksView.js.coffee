@@ -8,7 +8,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   #*******************
   #**** Templeate
   #*******************
-  template:JST['bookmarks/BookmarkTemplate']
+  template:JST['bookmarks/BookmarksMenuTemplate']
 
   #*******************
   #**** Events
@@ -41,7 +41,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     console.log("bookmark view: "+this.options.user_item_design)
     console.log(this.options.user_item_design)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user.id)
-    $(@el).append(@template(user_item_design:this.options.user_item_design))
+    $(@el).append(@template(user_item_design:this.options.user_item_design, collection:@collection))
+    @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
+    $(@el).append(@myBookmarksView.render().el)
     this
 
 

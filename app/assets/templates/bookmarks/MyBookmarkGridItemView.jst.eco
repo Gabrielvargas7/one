@@ -1,0 +1,3 @@
+<div>
+<%=@model.get('id')%> <%=@model.get('title')%>
+</div>
