@@ -1,4 +1,4 @@
-class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
+class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
 
   #*******************
   #**** Tag  (no tag = default el "div")
@@ -8,29 +8,31 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #*******************
   #**** Templeate
   #*******************
-  template: JST['store/StoreMenuItemsTemplate']
+  template: JST['store/StoreMenuBundlesSetTemplate']
 
 
   #*******************
   #**** Events
   #*******************
   events:
-    'click .store_container':'clickStoreItem'
-    'mouseenter .store_container':'hoverStoreItem'
-    'mouseleave .store_container':'hoverOffStoreItem'
-
+    'click .store_container':'clickStoreBundleSet'
+    'mouseenter .store_container':'hoverStoreBundleSet'
+    'mouseleave .store_container':'hoverOffStoreBundleSet'
 
   #*******************
   #**** Initialize
   #*******************
   initialize: ->
 
-  #*******************
-  #**** Render
-  #*******************
+
+
+    #*******************
+    #**** Render
+    #*******************
   render: ->
-    console.log("Store Menu Items View "+@model.get('id'))
-    $(@el).append(@template(item:@model))
+
+    console.log("Store Menu Bundle View "+@model.get('id'))
+    $(@el).append(@template(bundle:@model))
     this
 
 
@@ -41,31 +43,33 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreItem: (event) ->
+  clickStoreBundleSet: (event) ->
     event.preventDefault()
     console.log("click")
-    console.log(this.model.get('id'))
-#    $('[data-toggle="tab"][href="#tab_items"]').css.display = 'none'
 
 
 
   #--------------------------
   # change hover image on maouse over
   #--------------------------
-  hoverStoreItem: (event) ->
+  hoverStoreBundleSet: (event) ->
     event.preventDefault()
     console.log("hover "+this.model.get('id'))
     button_preview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
-    $('#store_item_container_'+this.model.get('id')).append(button_preview)
+    $('#store_bundle_set_container_'+this.model.get('id')).append(button_preview)
+
+
+
 
 
   #--------------------------
   # change normal image on hover
   #--------------------------
-  hoverOffStoreItem: (event) ->
+  hoverOffStoreBundleSet: (event) ->
     event.preventDefault()
     console.log("hoverOff"+this.model.get('id'))
     $('#button_preview').remove()
+
 
 
 
