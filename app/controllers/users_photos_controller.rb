@@ -21,15 +21,15 @@ class UsersPhotosController < ApplicationController
   before_filter :json_signed_in_user,
                 only:[
                     :json_create_users_photo_by_user_id,
-                    :json_update_users_set_profile_image_by_user_id_and_users_photo_id,
-                    :json_index_users_photos_by_user_id_by_limit_by_offset
+                    :json_update_users_set_profile_image_by_user_id_and_users_photo_id
+
                 ]
 
   before_filter :json_correct_user,
                only:[
                     :json_create_users_photo_by_user_id,
-                    :json_update_users_set_profile_image_by_user_id_and_users_photo_id,
-                    :json_index_users_photos_by_user_id_by_limit_by_offset
+                    :json_update_users_set_profile_image_by_user_id_and_users_photo_id
+
                 ]
   before_filter :correct_user_by_user_id, only:[
                     :index_users_photos_by_user_id,

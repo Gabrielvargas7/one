@@ -28,24 +28,24 @@ class RoomsController < ApplicationController
   # /xroom/:username
   # xroom_rooms_path // xroom_rooms_url
   # public
-  def xroom
-
-    if User.exists?(username:params[:username])
-
-      @username = params[:username]
-      @user = User.find_by_username(params[:username])
-
-      set_room_user @user
-      @skip_header = true
-      @skip_footer = true
-
-      respond_to do |format|
-        format.html
-      end
-    else
-      redirect_to(root_path)
-    end
-  end
+  #def xroom
+  #
+  #  if User.exists?(username:params[:username])
+  #
+  #    @username = params[:username]
+  #    @user = User.find_by_username(params[:username])
+  #
+  #    set_room_user @user
+  #    @skip_header = true
+  #    @skip_footer = true
+  #
+  #    respond_to do |format|
+  #      format.html
+  #    end
+  #  else
+  #    redirect_to(root_path)
+  #  end
+  #end
 
 
   # GET Get room with the username
@@ -63,7 +63,7 @@ class RoomsController < ApplicationController
 
         set_room_user @user
         @skip_header = true
-        @skip_footer = false
+        @skip_footer = true
 
 
 

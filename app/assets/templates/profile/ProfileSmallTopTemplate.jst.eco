@@ -1,0 +1,11 @@
+
+<div id="profile_small_user_picture_wrap" class="pull-left">
+	<img id="profile_small_user_picture" src="<%=@user_info.get('user_photos').image_name.url%>"/>
+</div>
+<div class="pull-left">
+	<p id="profile_info_name"><%=@user_info.get('firstname')%> <%=@user_info.get('lastname')%></p>
+</div>
+<div class="pull-right" id="profile_small_top_optional_button">
+	<%=@optionalButton%>
+</div>
+

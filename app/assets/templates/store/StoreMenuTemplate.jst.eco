@@ -1,0 +1,31 @@
+<div class="tabbable1"> <!-- Only required for left/right tabs -->
+
+    <!-- Store Menu  -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_items" data-toggle="tab">OBJECTS</a></li>
+        <li><a href="#tab_themes" data-toggle="tab">THEMES</a></li>
+        <li><a href="#tab_bundles" data-toggle="tab">BUNDLES</a></li>
+        <li><a href="#tab_set_rooms" data-toggle="tab">SET ROOMS</a></li>
+    </ul>
+
+
+    <!-- Store Menu Selection  -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_items">
+
+
+
+
+        </div>
+        <div class="tab-pane" id="tab_themes">
+            <p>Themes</p>
+        </div>
+        <div class="tab-pane" id="tab_bundles">
+            <p>Bundles</p>
+        </div>
+        <div class="tab-pane" id="tab_set_rooms">
+           <p>Set Room</p>
+        </div>
+
+    </div>
+</div>

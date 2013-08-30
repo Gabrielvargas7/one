@@ -1,0 +1,29 @@
+
+<div class="profile_table_outerDiv">
+	<div class="profile_table_innerDiv profile_key_request">
+		<table id="profile_key_request_list">
+			<thead>
+				<tr><th>
+					Key Requests
+				</th></tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="profile_table_outerDiv">
+	<div class="profile_table_innerDiv profile_suggested_friends">
+		<table id="profile_suggested_friends_list">
+			<thead>
+				<tr><th>
+					Suggested Friends
+				</th></tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+	</div>
+</div>

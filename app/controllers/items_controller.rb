@@ -112,4 +112,24 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  # GET Get random items_designs
+  # /items/json/index_items.json
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_items
+
+    respond_to do |format|
+
+      @items = Item.order(:priority_order,:name).all
+      format.json { render json: @items }
+
+    end
+  end
+
+
 end
+
+

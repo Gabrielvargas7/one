@@ -130,7 +130,8 @@ Mywebroom::Application.routes.draw do
 
   #room page
   match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
-  match '/xroom/:username', to: 'rooms#xroom', via: :get,as: :xroom_rooms
+
+  #match '/xroom/:username', to: 'rooms#xroom', via: :get,as: :xroom_rooms
 
 
   root to: 'static_pages#home'
@@ -149,6 +150,18 @@ Mywebroom::Application.routes.draw do
 # 3.- following with the specific action and how you going to find it  eg room_by_user_id/:user_id
 # eg if you want all the items of the room the path should be
 #  /rooms/show_room_by_user_id/:user_id
+
+
+
+#**************************
+#  Start Items contract
+#**************************
+
+  match 'items/json/index_items', to:
+        'items#json_index_items', via: :get, as:
+        :items_json_index_items
+
+
 
 
  #**************************
@@ -202,10 +215,6 @@ Mywebroom::Application.routes.draw do
   #**************************
   #  start Searches contract
   #**************************
-  #match '/searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword', to:
-  #       'searches#json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword', via: :get, as:
-  #       :searches_json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword
-
 
   match '/searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
          'searches#json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword', via: :get, as:
@@ -435,6 +444,11 @@ Mywebroom::Application.routes.draw do
   match '/friends/json/index_friends_suggestion_by_user_id_by_limit_by_offset/:user_id/:limit/:offset', to:
          'friends#json_index_friends_suggestion_by_user_id_by_limit_by_offset', via: :get, as:
          :friends_json_index_friends_suggestion_by_user_id_by_limit_by_offset
+
+  match '/friends/json/show_is_my_friend_by_user_id_and_friend_id/:user_id/:friend_id', to:
+        'friends#json_show_is_my_friend_by_user_id_and_friend_id', via: :get, as:
+        :friends_json_show_is_my_friend_by_user_id_and_friend_id
+
 
 
   #**************************

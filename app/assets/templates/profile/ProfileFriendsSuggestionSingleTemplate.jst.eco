@@ -1,0 +1,19 @@
+<!-- inside class profile_friends_suggestion_single -->
+<td>
+<div class="media">
+	<div class="pull-left profile_friend_suggestion_single_image_holder" style="background-image:url('<%=@model.get('image_name').url%>');">
+
+	</div>
+	<div class="media-body">
+		<a href='/room/<%=@model.get('username')%>'><p class="media-heading profile_suggestion_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p></a>
+		<p class="profile_suggestion_username"> <%=@model.get('username')%></p>
+			
+	</div>
+</td>
+<td class="profile_request_buttons">
+<!--Buttons-->
+	<div class="btn-group pull-right">
+		<button class="profile_request_key_button">Request Key</button>
+	</div>
+</div>
+</td>

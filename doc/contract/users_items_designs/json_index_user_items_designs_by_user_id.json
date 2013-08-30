@@ -2,7 +2,7 @@
 // method type ->  get
 // method name ->  json_index_user_items_designs_by_user_id
 
-// Security: private user
+// Security: public user
 
 //Description
 

@@ -1,0 +1,5 @@
+
+<h1>Large Photo</h1>
+<p><a id="photos_prev" href="#">Prev</a></p>
+<img class="photos_large_view_img" src="<%=@model.get('image_name').url%>">
+<p><a id="photos_next" href="#">Next</a></p>

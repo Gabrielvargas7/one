@@ -17,26 +17,48 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
 
   events:{
-    'click #xroom_menu_profile':'showProfile'
-  }
-#  **********************
-#  *** function showProfile
-#  **********************
 
+  }
+  #*******************
+  #**** GLOBAL VARIBLES
+  #*******************
+  @MY_ROOM = "MY_ROOM"
+  @MY_FRIEND_ROOM = 'MY_FRIEND_ROOM'
+  @PUBLIC_ROOM = 'PUBLIC_ROOM'
+
+
+
+
+  #*******************
+  #**** Initialize
+  #*******************
   initialize: ->
+
     this.getRoomLoadingUserCollection()
     this.getUserSignInCollection()
+#    this.removeRoomClass()
 
   #*******************
   #**** Render
   #*******************
   render: ->
+#    $.cloudinary.config  cloud_name: "sample"  api_key: "874837483274837"
+#    image = $.cloudinary.image 'sample.jpg',  alt: "Sample Image"
+    image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
+    console.log(image)
+
+
+    this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_ROOM
 
     @userRoomModel = @userRoomCollection.first() #username and id
+    @userSignIn = @userSignInCollection.first() #username and id
 
     if @userRoomModel.id is undefined
       this.forwardToRoot()
     else
+
+      this.setFlags()
+
       this.getUserDataCollection(@userRoomModel.get('id'))
       @userAllRoomDataModel = @userAllRoomDataCollection.first() #user data
       console.log("userAllRoomDataModel: ")
@@ -44,21 +66,42 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
       this.setRoomTheme @userAllRoomDataModel
       this.setRoomItemsDesigns @userAllRoomDataModel
+      this.setRoomHeader @userAllRoomDataModel
 
     this
 
 
   #*******************
-  #**** Funtions  Start Room
+  #**** Functions  Initialize Room
   #*******************
+  setFlags: ->
+    if @userSignIn is undefined
+      this.FLAG_PROFILE = Mywebroom.Views.RoomView.PUBLIC_ROOM
+      console.log("flag public user: "+this.FLAG_PROFILE)
+    else if @userSignIn.id == @userRoomModel.id
+      this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_ROOM
+      console.log("flag room user: "+this.FLAG_PROFILE)
+    else
+      @myfriend = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
+      @myfriend.fetch
+        url:@myfriend.url(@userSignIn.id,@userRoomModel.id)
+        async:false
+        success: (response)->
+          console.log("@myfriend: ")
+          console.log(response)
 
-  #--------------------------
-  # forward to the origin url if the user does't exist -> ex: 'http://www.mywebroom.com/'
-  #--------------------------
-  forwardToRoot: ->
-    origin = window.location.origin
-    console.log("forward to: "+origin)
-    window.location.href = origin
+      if @myfriend.length == 0
+        this.FLAG_PROFILE = Mywebroom.Views.RoomView.PUBLIC_ROOM
+        console.log("flag public user: "+this.FLAG_PROFILE)
+      else
+        this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_FRIEND_ROOM
+        console.log("flag friend user: "+this.FLAG_PROFILE)
+
+
+
+  #*******************
+  #**** Functions  Initialize Room
+  #*******************
 
   #--------------------------
   # get the user of the room that is loading
@@ -77,6 +120,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
     @userSignInCollection.fetch async: false
     console.log("fetch userSignInCollection: "+JSON.stringify(@userSignInCollection.toJSON()))
 
+
   #--------------------------
   # get the user room info
   #--------------------------
@@ -90,6 +134,33 @@ class Mywebroom.Views.RoomView extends Backbone.View
         console.log(response)
 #        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
 
+
+
+  #*******************
+  #**** Functions  Forward to root
+  #*******************
+
+  #--------------------------
+  # forward to the origin url if the user does't exist -> ex: 'http://www.mywebroom.com/'
+  #--------------------------
+  forwardToRoot: ->
+    origin = window.location.origin
+    console.log("forward to: "+origin)
+    window.location.replace(origin)
+
+
+  #*******************
+  #**** Functions  Set RoomViews
+  #*******************
+
+
+  #--------------------------
+  # set items designs on id = #xroom_items
+  #--------------------------
+  setRoomHeader:(userAllRoomDataModel) ->
+    roomHeaderView = new Mywebroom.Views.RoomHeaderView({model:userAllRoomDataModel,FLAG_PROFILE:@FLAG_PROFILE})
+    $('#xroom_header').append(roomHeaderView.el)
+    roomHeaderView.render()
 
 
   #--------------------------
@@ -106,48 +177,17 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   setRoomItemsDesigns: (userAllRoomDataModel) ->
     userItemsDesignsList = userAllRoomDataModel.get('user_items_designs')
+    user = userAllRoomDataModel.get('user')
     length = userItemsDesignsList.length
     i = 0
     while i < length
       #console.log(userItemsDesignsList[i].id)
-      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i]})
+      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i],user:user})
       $('#xroom_items').append(userItemsDesignsView.el)
       userItemsDesignsView.render()
       i++
+      if this.FLAG_PROFILE == Mywebroom.Views.RoomView.PUBLIC_ROOM
+        userItemsDesignsView.undelegateEvents()
 
 
-  #*******************
-  #**** Funtions Social
-  #*******************
 
-
-  #--------------------------
-  #  *** function showProfile
-  #--------------------------
-  showProfile: (evt) ->
-    @profile = new Backbone.Model
-    @profile.set(@userAllRoomDataModel.get('user_profile'))
-    @profile.set('user',@userAllRoomDataModel.get('user'))
-    @profile.set('user_photos',@userAllRoomDataModel.get('user_photos'))
-    @showProfileView()
-
-
-  #--------------------------
-  #  *** function showProfileView
-  #--------------------------
-  showProfileView: ->
-    @profileView = new Mywebroom.Views.ProfileHomeView(
-      model:@profile
-    )
-    $('#xroom_profile').append(@profileView.el)
-    @profileView.render()
-
-
-  #--------------------------
-  #  *** function closeProfileView
-  #--------------------------
-  closeProfileView: ->
-    console.log('CloseProfileView Function running')
-    @profileView.remove();
-    #Need to listen for #ProfileOpen again
-    #Need to enable other room events again.

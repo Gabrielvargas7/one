@@ -1,6 +1,0 @@
-# #Friends Collection
-# #/friends/json/index_friend_by_user_id_by_limit_by_offset/:user_id/:limit/:offset
-
-# class Mywebroom.Collections.IndexFriendByUserIdByLimitByOffsetCollection extends Backbone.Collection
-# 	url: (userID,limit,offset) ->
-# 		'/friends/json/index_friend_by_user_id_by_limit_by_offset/'+userID+'/'+limit+'/'+offset+'.json'

@@ -20,6 +20,25 @@
 	left:0px;
 	font-family:"Open Sans",sans-serif
 }
+#profile_drawer{
+	width:760px; /*profile container width - drawer_handle width*/
+	transition:all 2s ease-in-out;
+}
+nav.profile {
+     position:fixed;
+     // top: 16px;/*this needs to be rooms_header height*/
+     height:100%;
+     background-color:transparent; /* your choice here */
+     z-index:3; /* make sure this is the highest z-index on the page */
+}
+#profile_drawer_handle{
+    position: absolute;
+    top: 41px; /*This needs to be the same as the rooms_header height*/
+    right: 0;
+    height: 100%;
+    background-color: rgba(0,0,0,.8); /* your choice here */
+    width:40px;/*Sara add width*/
+}
 #profile_home_wrapper figure{
 	margin:0;
 	padding:0;
@@ -40,6 +59,7 @@
 }
 #profile_home_wrapper td{
     width:200px;
+    background-color:white;
 }
 #profile_home_wrapper ul{
 	margin:0;
@@ -51,7 +71,7 @@
 	
 }
 #profile_home_wrapper a:hover{
-	background:rgba(0,0,0,.8);
+	// background:rgba(0,0,0,.8);
 }
 
 #profile_home_wrapper{
@@ -66,7 +86,7 @@
 
 }
 #fakeheader{
-	height:50px;
+	height:41px; /*This needs to be the same as the rooms_header height*/
 }
 
 #profile_home_container{
@@ -153,7 +173,19 @@ div.spacer{
 #profile_activity a:hover{
 	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811572/activitybtn-active_w91vry.png") no-repeat center;
 }
-
+#profile_objects a{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/objectsbtn-default_mdls5o.png") no-repeat center;
+}
+#profile_objects a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/objectsbtn-active_fmtjj4.png") no-repeat center;
+}
+#profile_bookmarks a{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-default_n2c6yp.png") no-repeat center;
+	font-size:13px;
+}
+#profile_bookmarks a:hover{
+	background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-active_csktwe.png") no-repeat center;
+}
 #profile_home_info_img{
 	height:150px;
 	width:120px;
@@ -167,9 +199,10 @@ div.spacer{
 #profile_home_info_img img{
 	width:100px;
 	height:120px;
+	border:1px solid #919191
 }
 #profile_home_info_img img:hover{
-	border:2px solid #ffc000;
+	
 	/*float:left;
 	border:1px solid #AFAFAF;
 	width:100px;
@@ -200,12 +233,16 @@ div.spacer{
 
 #profile_home_basic_info ul li{
 	display:inline;
+	padding-right: 20px 
 }
 /* this refers to the bottom section of the profile container */
 #profileHome_bottom{
 	clear:both;
-	background-color: white;
+	background-color: transparent;
 	margin: 0 1em;
+	// height:400px;
+	// overflow-y:auto;
+	// overflow-x:hidden;
 
 }
 #info_username{
@@ -240,15 +277,27 @@ div.profile_info_name{
 	text-transform:uppercase;
 	width:100%
 }
-#profile_home_wrapper table.generalGrid{
+// #profile_home_wrapper 
+table.generalGrid{
+	// width:100%;
+	background-color:#f5f5f5;
+	border-collapse:separate;
+	border-spacing:10px;
+}
+#profileHome_activity_header, .profileTableHeader{
+	border-collapse:collapse;
 	width:100%;
 }
-.gridItem img{
+.gridItemPicture {
 	width:180px;
 	height:180px;
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
 }
 td.gridItem{
 	text-align:center;
+	border:1px solid #ebebeb;
 }
 .gridItemDescription{
 	color:black;
@@ -267,16 +316,24 @@ td.gridItem{
 }
 /*image holders for profile friends, requests, and suggestions*/
 div.profile_friend_image_holder, .profile_request_single_image_holder, 
-.profile_friend_suggestion_single_image_holder{
+.profile_friend_suggestion_single_image_holder, {
 	 width:70px;
 	 height:70px;
 	 background-size:contain;
 	 background-repeat: no-repeat;
 	 background-position: 50% 50%;
+	 border:1px solid #e2e2e2;
 }
-.media.profile_friend{
-	color:black;
+
+#profile_small_user_picture{
+	height:70px;
+	padding:1em;
 }
-.profile_friend{
-	background-color:gray;
+
+.profile_friend_gear{
+	padding:0;
+	border:0;
+}
+.profile_friend_button{
+	padding-right:20px;
 }
