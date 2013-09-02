@@ -22,7 +22,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView',
  	'click #Profile-Collapse-Button':'collapseProfileView'
-  'click .profile_suggestion_name':'showUserProfile'
+  #'click .profile_suggestion_name':'showUserProfile'
 
   #*******************
   #**** Initialize
@@ -30,37 +30,34 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  initialize: ->
   #Get RoomFlag
-  #@TestRoomFlag = 'MY_FRIEND_ROOM'
   this.model.set 'FLAG_PROFILE', this.options.FLAG_PROFILE
   if this.options.FLAG_PROFILE != Mywebroom.Views.RoomView.MY_ROOM
     @template=JST['profile/FriendHomeTemplate']
+  @collapseFlag = false
+  
   #initial limit and offset for apis
-  @initialLimit = 24
-  @initialOffset= 0
-  #initial Top View for Profile Welcome Screen
-  @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
-  #Activity Collection is a combo of random bookmarks and objects. 
-  #Activity Collection is a scramble of both, fetched below.
-  @activityCollection = new Backbone.Collection()
-  @activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
-  @activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
+  initialLimit = 24
+  initialOffset= 0
+
+  activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
+  activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
   #Fetch them
-  @activityBookmarksRandomCollection.fetch
-    url:@activityBookmarksRandomCollection.url @initialLimit, @initialOffset
+  activityBookmarksRandomCollection.fetch
+    url:activityBookmarksRandomCollection.url initialLimit, initialOffset
     reset:true
     async:false
     success: (response)->
       console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
       console.log(response)
-  @activityItemsDesignsRandomCollection.fetch
-    url:@activityItemsDesignsRandomCollection.url @initialLimit, @initialOffset
+  activityItemsDesignsRandomCollection.fetch
+    url:activityItemsDesignsRandomCollection.url initialLimit, initialOffset
     reset:true
     async:false
     success: (response)->
       console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
       console.log(response)
   #Scramble Activity Collection.
-  @scrambleItemsAndBookmarks()
+  @scrambleItemsAndBookmarks(activityItemsDesignsRandomCollection,activityBookmarksRandomCollection)
 
 
   #*******************
@@ -68,13 +65,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #*******************
  
  render: ->
+    #Template shows structure of the view. 
    $(@el).html(@template(user_info:@model))     #pass variables into template.
-   #attach top portion of view
-   # $("#profileHome_top").append(@profileHomeTopView.el)
-   # @profileHomeTopView.render()
-   #Set min height for #profile_home_container based on browser size
-   $('#profileHome_container').css "min-height",'656px'
-   #Display User Activity
+   $('#profileHome_container').css "min-height",'720px'
+   #Show the user content 
    @showHomeGrid()
    this
 
@@ -83,6 +77,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #--------------------------
 
  showHomeGrid: ->
+
+  @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
   $('#profileHome_top').html(@profileHomeTopView.render().el)
   #$('#profileHome_bottom').css "height","450px"
   #Bandaid- make header another table.
@@ -98,10 +94,11 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #--------------------------
   # scramble activity and initialize activity view
   #--------------------------
- scrambleItemsAndBookmarks: ->
+ scrambleItemsAndBookmarks:(ItemsDesignsCollection, BookmarksRandomCollection) ->
   #For initial collection
-  @activityCollection.add(@activityItemsDesignsRandomCollection.toJSON(), {silent:true})
-  @activityCollection.add(@activityBookmarksRandomCollection.toJSON(),{silent:true})
+  @activityCollection = new Backbone.Collection()
+  @activityCollection.add(ItemsDesignsCollection.toJSON(), {silent:true})
+  @activityCollection.add(BookmarksRandomCollection.toJSON(),{silent:true})
   @activityCollection.reset(@activityCollection.shuffle(),{silent:true})
   initialProfileHomeActivityCollection = new Backbone.Collection
   initialProfileHomeActivityCollection.set(@activityCollection.first 6)
@@ -172,9 +169,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   $('#profileHome_top').css 'height', 'auto'
   $("#profileHome_bottom").html(@profileObjectsView.el)
   @profileObjectsView.render()
- showUserProfile:->
-  @TestRoomFlag = 'MY_FRIEND_ROOM'
-  console.log('showUserProfile runs')
 
   #*******************
   #**** Functions  View layout
@@ -183,24 +177,25 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  collapseProfileView: ->
  	#If view is open, close it, else reverse.
- 	#Sara Note- this is odd looking Coffeescript. I don't see any 
- 	#	documentation that elses need to be indented, but that appears to be the case here.
  	#Change profile_home_container width to 0
  	#Change profileHome_container left o 720px
   #BUG: Click collapse error while Large Photo View is on
- 	if $("#profileHome_container").css("left") is "-720px"
-    	$("#profileHome_container").css "left", "0px"
-    	$('#profile_home_container').css "width", "720px"
-    	$('#profile_drawer').css "width","760px"
-    	$('#profile_collapse_arrow img').removeClass('flipimg')
-  		else
-    		$("#profileHome_container").css "left", "-720px"
-    		$('#profile_drawer').css "width","130px"#sidebarWidth + drawerWidth
-    		#Collapse Icon turn around.
-    		$('#profile_collapse_arrow img').addClass('flipimg')
-    		#To enable hover on objects again set timeout on width
-    		setTimeout (->
-    			$("#profile_home_container").css "width", "0px"), 2000
+ 	if @collapseFlag is false
+    $("#profileHome_container").css "left", "0px"
+    $('#profile_home_container').css "width", "720px"
+    $('#profile_drawer').css "width","760px"
+    @collapseFlag=true
+    $('#profile_collapse_arrow img').removeClass('flipimg')
+    #@collapseFlag=true
+  	else
+    $("#profileHome_container").css "left", "-720px"
+    $('#profile_drawer').css "width","130px"#sidebarWidth + drawerWidth
+    #Collapse Icon turn around.
+    $('#profile_collapse_arrow img').addClass('flipimg')
+    #To enable hover on objects again set timeout on width
+    setTimeout (->
+    	$("#profile_home_container").css "width", "0px"), 2000
+    @collapseFlag = false
 
  closeProfileView: ->
  	this.remove()
