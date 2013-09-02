@@ -114,9 +114,6 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   $('#profileHome_top').css "height","auto"
   $('#profileHome_top').html ""
   $('#profileHome_bottom').css "height","550px"
-  #CONCERN: OptionalButton will be tied to events eventually. Need to refactor to make easy to maintain
-  #topTemplate= JST['profile/ProfileSmallTopTemplate']
-  #$('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Upload Photos"))
  	$('#profileHome_bottom').html(@photosView.render().el)
  
  #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
@@ -129,6 +126,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @keyRequestsView.render()
 
  showProfileFriends: ->
+  topTemplate= JST['profile/ProfileSmallTopTemplate']
+  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Invite Friends With FB!"))
   @friendsView = new Mywebroom.Views.ProfileFriendsView(model:@model)
   $('#profileHome_bottom').html(@friendsView.render().el)
 
@@ -194,7 +193,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $('#profile_collapse_arrow img').addClass('flipimg')
     #To enable hover on objects again set timeout on width
     setTimeout (->
-    	$("#profile_home_container").css "width", "0px"), 2000
+    	$("#profile_home_container").css "width", "0px"), 1000
     @collapseFlag = false
 
  closeProfileView: ->

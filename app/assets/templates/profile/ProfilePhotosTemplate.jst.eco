@@ -1,18 +1,19 @@
 
-<div id="profile_small_user_picture_wrap" class="pull-left">
-  <img id="profile_small_user_picture" src="<%=@model.get('user_photos').image_name.url%>"/>
+<div class = "profile_small_top_template">
+	<div id="profile_small_user_picture_wrap" class="pull-left">
+		<img id="profile_small_user_picture" src="<%=@model.get('user_photos').image_name.url%>"/>
+	</div>
+	<div class="pull-left profile_info_name">
+		<p id="profile_info_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p>
+	</div>
+	<div class="pull-right" id="profile_small_top_optional_button">
+		Upload Photos!
+	</div>
 </div>
-<div class="pull-left">
-  <p id="profile_info_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p>
-</div>
-<div class="pull-right" id="profile_small_top_optional_button">
-  Upload Photos!
-</div>
-
 <table class='profileTableHeader'><thead>
-<tr>
-  <th colspan='3'>
-    PHOTOS (<%=@collection.length%>)
-  </th>
-</tr>
+	<tr>
+		<th colspan='3'>
+			PHOTOS (<%=@collection.length%>)
+		</th>
+	</tr>
 </thead></table>
