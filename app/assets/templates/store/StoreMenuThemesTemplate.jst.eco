@@ -1,6 +1,8 @@
 <div class="store_container">
-    <div id="store_theme_container_<%=@theme.get('id')%>">
-        <img class="store_image_cell" src="<%=@theme.get('image_name_selection').url%>" data-id="<%=@theme.get('id')%>">
+    <div class="store_container_theme" id="store_theme_container_<%=@theme.get('id')%>">
+
+        <img class="store_image_cell" src="<%=@theme.get('image_name_selection').url%>" data-id="<%=@theme.get('id')%>"></br>
         <%= @theme.get('name') %> </br>
+
     </div>
 </div>

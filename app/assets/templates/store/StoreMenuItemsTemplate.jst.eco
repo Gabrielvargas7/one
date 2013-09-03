@@ -1,6 +1,7 @@
 <div class="store_container">
-    <div id="store_item_container_<%=@item.get('id')%>">
-        <img class="store_image_cell" src="<%=@item.get('image_name').url%>" data-id="<%=@item.get('id')%>">
-        <%= @item.get('name') %></br>
+    <div class="store_container_item" id="store_item_container_<%=@item.get('id')%>">
+       <img class="store_image_cell" src="<%=@item.get('image_name').url%>" data-id="<%=@item.get('id')%>"></br>
+       <%= @item.get('name') %></br>
     </div>
+
 </div>

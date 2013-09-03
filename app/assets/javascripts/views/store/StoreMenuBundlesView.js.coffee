@@ -15,9 +15,9 @@ class Mywebroom.Views.StoreMenuBundlesView  extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click .store_container':'clickStoreBundle'
-    'mouseenter .store_container':'hoverStoreBundle'
-    'mouseleave .store_container':'hoverOffStoreBundle'
+    'click .store_container_bundle':'clickStoreBundle'
+    'mouseenter .store_container_bundle':'hoverStoreBundle'
+    'mouseleave .store_container_bundle':'hoverOffStoreBundle'
 
   #*******************
   #**** Initialize
@@ -31,7 +31,7 @@ class Mywebroom.Views.StoreMenuBundlesView  extends Backbone.View
     #*******************
   render: ->
 
-    console.log("Store Menu Bundle View "+@model.get('id'))
+#    console.log("Store Menu Bundle View "+@model.get('id'))
     $(@el).append(@template(bundle:@model))
     this
 

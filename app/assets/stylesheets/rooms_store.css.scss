@@ -50,8 +50,6 @@
 
 .tab-content li {
   display: table-cell;
-  //width: 211px;
-  //height: 200px;
 
 }
 
@@ -60,9 +58,10 @@
 }
 
 .store_image_cell {
-  width:180px;
-  //height:180px;
-  padding: 0px;
+  width: auto;
+  max-width: 180px;
+  height: auto;
+  max-height: 180px;
 }
 
 .store_container{
@@ -73,7 +72,6 @@
   font-size: 11px;
   width: 180px;
   height: 200px;
-
 }
 
 #button_preview {
