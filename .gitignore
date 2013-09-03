@@ -19,4 +19,4 @@
 .DS_Store
 
 # ignore gem lock
-Gemfile.lock
+#Gemfile.lock
