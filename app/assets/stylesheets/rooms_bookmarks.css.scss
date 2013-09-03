@@ -40,6 +40,9 @@ ul.bookmark_menu_list {
 	color:white;
 	width:100%;
 }
+#my_bookmarks_menu_item.bookmark_menu_selected, #discover_menu_item.bookmark_menu_selected{
+	color:#40c3fd;
+}
 .bookmark_menu_list a:hover, .bookmark_menu_list li:hover{
 	color:#40c3fd;
 	background-color: #464646;
@@ -50,7 +53,7 @@ ul.bookmark_menu_list {
     content:"";
 	padding-right: 40px;
 }
-#my_bookmarks_menu_item:hover:before{
+#my_bookmarks_menu_item:hover:before, #my_bookmarks_menu_item.bookmark_menu_selected:before{
 	background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226438/my-bookmarks-menu-icon-hover.png') no-repeat;
 	content:"";
 	padding-right: 40px;
@@ -62,7 +65,7 @@ ul.bookmark_menu_list {
 	content:"";
 
 }
-#discover_menu_item:hover:before
+#discover_menu_item:hover:before, #discover_menu_item.bookmark_menu_selected:before
 {
 	background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226505/discover-bookmarks-menu-icon-hover.png') no-repeat;
 	padding-right:40px;
