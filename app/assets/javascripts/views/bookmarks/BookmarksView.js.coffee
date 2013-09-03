@@ -51,14 +51,17 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   renderDiscover:->
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
-    @myBookmarksView.remove() if @myBookmarksView
+    #@myBookmarksView.remove() if @myBookmarksView
+    $(@myBookmarksView.el).hide()
     console.log('discover bookmarks!')
   renderMyBookmarks:->
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
     #@myBookmarksView.remove() if @myBookmarksView
+    $(@myBookmarksView.el).hide()
     #@myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
-    $(@el).append(@myBookmarksView.render().el)
+    $(@myBookmarksView.el).show()
+    #$(@el).append(@myBookmarksView.render().el)
     this
 
 
