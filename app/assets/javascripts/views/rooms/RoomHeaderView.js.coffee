@@ -10,6 +10,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
   template: JST['rooms/RoomHeaderTemplate']
 
+
   #*******************
   #**** Events
   #*******************
@@ -20,11 +21,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_forward_setting':'forwardToRoRSettingPage'
     'click #xroom_header_logout':'logout'
     'click #xroom_header_storepage':'showStorePage'
+    'click #xroom_header_myroom':'goToMyRoom'
+
 
   }
-#  **********************
-#  *** function showProfile
-#  **********************
+
+
+  #*******************
+  #**** Initialize
+  #*******************
 
   initialize: ->
 
@@ -33,26 +38,56 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
   render: ->
     console.log("Adding the RoomHeaderView with model:")
-    $(@el).append(@template(user_data:@model))
+    $(@el).append(@template(user_data:this.options.signInUserDataModel))
+    this.removeRoomHeaderElemments(this.options.FLAGS_MAP)
     this
-    this.removeRoomHeaderElemments()
 
 
-  removeRoomHeaderElemments:->
-    if this.options.FLAG_PROFILE != Mywebroom.Views.RoomView.MY_ROOM
+
+  #*******************
+  #**** Functions header
+  #*******************
+
+  #--------------------------
+  #  *** function remove header elemenst
+  #--------------------------
+  removeRoomHeaderElemments:(flagsMap)->
+    if flagsMap['FLAG_PROFILE'] != Mywebroom.Views.RoomView.MY_ROOM
       $('#xroom_header_storepage').remove()
 
-    if this.options.FLAG_PROFILE == Mywebroom.Views.RoomView.PUBLIC_ROOM
+    if flagsMap['FLAG_PROFILE'] == Mywebroom.Views.RoomView.PUBLIC_ROOM
       $('#xroom_header_profile').remove()
-      $('#xroom_header_myroom').remove()
       $('.dropdown').remove()
       this.showProfile(null)
+
+    if !flagsMap['FLAG_SIGN_IN']
+      $('#xroom_header_myroom').remove()
+
+
+
+  #*******************
+  #**** Functions get Collection data
+  #*******************
+
+  #--------------------------
+  # get the user room info
+  #--------------------------
+  getUserSignInDataCollection:(userId) ->
+    @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
+    @userAllRoomDataCollection.fetch
+      url:@userAllRoomDataCollection.url userId
+      async:false
+      success: (response)->
+        console.log("@userAllRoomDataCollection: ")
+        console.log(response)
+#        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
+
+
 
 
   #*******************
   #**** Functions Profile
   #*******************
-
 
   #--------------------------
   #  *** function showProfile
@@ -72,10 +107,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfileView
   #--------------------------
   showProfileView:() ->
-    @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAG_PROFILE,roomHeaderView:this })
+    @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAGS_MAP['FLAG_PROFILE'],roomHeaderView:this })
     $('#xroom_profile').append(@profileView.el)
     @profileView.render()
     @removeHeaderEvents()
+
 
 
 
@@ -95,7 +131,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     window.location.replace(origin)
 
 
-
   #--------------------------
   #  *** function  forwardToRoRSettingPage
   #--------------------------
@@ -106,6 +141,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     origin = origin+"/users/"+@model.get('user').id
     console.log("forward to: "+origin)
     window.location.href = origin
+
+
 
 
   #*******************
@@ -122,8 +159,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       expires = "; expires=" + date.toGMTString()
     else
       expires = ""
-
     document.cookie = name + "=" + value + expires + "; path=/"
+
 
   #--------------------------
   #  *** function eraseCookies
@@ -131,10 +168,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   eraseCookie: (name) ->
     this.createCookie(name, "", -1)
 
+
   #--------------------------
   #  *** function logout
   #--------------------------
-
   logout:(event) ->
     event.preventDefault()
     console.log('logout Function running')
@@ -142,6 +179,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     console.log("forward to: "+origin)
     this.eraseCookie "remember_token"
     window.location.href = origin
+
+
 
   #*******************
   #**** Functions StorePage
@@ -159,13 +198,28 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @storePageView.render()
     @removeHeaderEvents()
 
-
+  #--------------------------
+  #  *** function events
+  #--------------------------
   removeHeaderEvents: ->
     $(this.el).off('click', '#xroom_header_storepage')
     $(this.el).off('click', '#xroom_header_profile')
 
 
 
+  #*******************
+  #**** Functions MyRoom
+  #*******************
+
+  goToMyRoom: (event) ->
+    event.preventDefault()
+    event.stopPropagation()
+    console.log('go to my room')
+    origin = window.location.origin
+    myOrigin = origin+'/room/'+this.options.signInUserDataModel.get('user').username
+    console.log(myOrigin)
+    console.log("forward to: "+myOrigin)
+    window.location.replace(myOrigin)
 
 
 

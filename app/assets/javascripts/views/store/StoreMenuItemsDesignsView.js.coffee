@@ -1,4 +1,4 @@
-class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
+class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
 
   #*******************
   #**** Tag  (no tag = default el "div")
@@ -8,31 +8,29 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
   #*******************
   #**** Templeate
   #*******************
-  template: JST['store/StoreMenuThemesTemplate']
+  template: JST['store/StoreMenuItemsDesignsTemplate']
 
 
   #*******************
   #**** Events
   #*******************
   events:
-    'click .store_container_theme':'clickStoreTheme'
-    'mouseenter .store_container_theme':'hoverStoreTheme'
-    'mouseleave .store_container_theme':'hoverOffStoreTheme'
+    'click .store_container_item_designs':'clickStoreItemDesigns'
+    'mouseenter .store_container_item_designs':'hoverStoreItemDesigns'
+    'mouseleave .store_container_item_designs':'hoverOffStoreItemDesigns'
+
 
   #*******************
   #**** Initialize
   #*******************
   initialize: ->
 
-
-
-  #*******************
-  #**** Render
-  #*******************
+    #*******************
+    #**** Render
+    #*******************
   render: ->
-
-#    console.log("Store Menu Theme View "+@model.get('id'))
-    $(@el).append(@template(theme:@model))
+#    console.log("Store Menu Items View "+@model.get('id'))
+    $(@el).append(@template(item_designs:@model))
     this
 
 
@@ -43,28 +41,29 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreTheme: (event) ->
+  clickStoreItemDesigns: (event) ->
     event.preventDefault()
     console.log("click")
-
+    console.log(this.model.get('id'))
+#    console.log($('[data-toggle="tab"][href="#tab_items"]'))
+#    $tab = $('[data-toggle="tab"][href="#tab_items"]')
+#    $tab.hide()
 
 
   #--------------------------
   # change hover image on maouse over
   #--------------------------
-  hoverStoreTheme: (event) ->
+  hoverStoreItemDesigns: (event) ->
     event.preventDefault()
     console.log("hover "+this.model.get('id'))
     button_preview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
-    $('#store_theme_container_'+this.model.get('id')).append(button_preview)
-
-
+    $('#store_item_designs_container_'+this.model.get('id')).append(button_preview)
 
 
   #--------------------------
   # change normal image on hover
   #--------------------------
-  hoverOffStoreTheme: (event) ->
+  hoverOffStoreItemDesigns: (event) ->
     event.preventDefault()
     console.log("hoverOff"+this.model.get('id'))
     $('#button_preview').remove()

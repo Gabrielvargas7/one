@@ -37,6 +37,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     this.getItemsCollection()
     this.appendItemsEntry()
 
+    # items designs
+    this.hideItemsDesignsTab()
+
+
     # themes
     this.getThemesCollection()
     this.appendThemesEntry()
@@ -87,7 +91,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     @loop_number = 0
     @row_number = 1
     @column_number = 3
-    @row_line = "<ul id='row_item"+@row_number+"'></ul>"
+
+    @row_line = "<ul id='row_item_"+@row_number+"'></ul>"
     this.$('#tab_items').append(@row_line)
 
     that = this
@@ -99,11 +104,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       that.loop_number++
 
       u = that.loop_number%that.column_number
-
       if u == 0
        that.row_number++
        that.row_line = "<ul id='row_item_"+that.row_number+"'></ul>"
        this.$('#tab_items').append(that.row_line)
+
+
 
   #--------------------------
   # append themes views
@@ -125,7 +131,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       that.loop_number++
 
       u = that.loop_number%that.column_number
-
       if u == 0
         that.row_number++
         that.row_line = "<ul id='row_theme_"+that.row_number+"'></ul>"
@@ -183,4 +188,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         that.row_number++
         that.row_line = "<ul id='row_bundle_set_"+that.row_number+"'></ul>"
         this.$('#tab_bundles_set').append(that.row_line)
+
+  #--------------------------
+  # hide items designs tap
+  #--------------------------
+  hideItemsDesignsTab: ->
+    $tab_item_designs = $('[data-toggle="tab"][href="#tab_items_designs"]')
+    $tab_item_designs.hide()
 

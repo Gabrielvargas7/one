@@ -1,6 +1,7 @@
 <div class="store_container">
-    <div id="store_bundle_container_<%=@bundle.get('id')%>">
-        <img class="store_image_cell" src="<%=@bundle.get('image_name').url%>" data-id="<%=@bundle.get('id')%>">
+    <div class="store_container_bundle" id="store_bundle_container_<%=@bundle.get('id')%>">
+        <img class="store_image_cell" src="<%=@bundle.get('image_name').url%>" data-id="<%=@bundle.get('id')%>"></br>
         <%= @bundle.get('name') %> </br>
+
     </div>
 </div>

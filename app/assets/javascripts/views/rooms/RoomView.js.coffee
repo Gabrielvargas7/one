@@ -6,11 +6,13 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
   el: '#xroom'
 
+
   #*******************
   #**** Templeate
   #*******************
 
   template: JST['rooms/RoomTemplate']
+
 
   #*******************
   #**** Events
@@ -19,55 +21,70 @@ class Mywebroom.Views.RoomView extends Backbone.View
   events:{
 
   }
+
+
   #*******************
   #**** GLOBAL VARIBLES
   #*******************
   @MY_ROOM = "MY_ROOM"
   @MY_FRIEND_ROOM = 'MY_FRIEND_ROOM'
   @PUBLIC_ROOM = 'PUBLIC_ROOM'
-
-
-
+  @SIGN_IN  = true
+  @NOT_SIGN_IN = false
 
   #*******************
   #**** Initialize
   #*******************
   initialize: ->
 
-    this.getRoomLoadingUserCollection()
-    this.getUserSignInCollection()
-#    this.removeRoomClass()
 
   #*******************
   #**** Render
   #*******************
   render: ->
 
+    #*******************    #
+    #    image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
+    #    console.log(image)
     #*******************
-    #**** Test of coudinary on js
-    image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
-    console.log(image)
+
+    this.FLAGS_MAP = {};
+
+    this.FLAGS_MAP['FLAG_PROFILE'] = Mywebroom.Views.RoomView.PUBLIC_ROOM
+    this.FLAGS_MAP['FLAG_SIGN_IN'] = Mywebroom.Views.RoomView.NOT_SIGN_IN
 
 
-    this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_ROOM
 
-    @userRoomModel = @userRoomCollection.first() #username and id
-    @userSignIn = @userSignInCollection.first() #username and id
+    # get room user
+    @userRoomCollection = this.getRoomLoadingUserCollection()
+    @userRoomModel = @userRoomCollection.first()
+
+    # get sign in user if exist
+    @userSignInCollection = this.getUserSignInCollection()
+    @userSignInModel = @userSignInCollection.first()
 
     if @userRoomModel.id is undefined
       this.forwardToRoot()
     else
 
-      this.setFlags()
+      this.FLAGS_MAP['FLAG_PROFILE'] = this.setProfileFlags(@userSignInModel,@userRoomModel)
+      this.FLAGS_MAP['FLAG_SIGN_IN'] = this.setSignInFlag(@userSignInModel)
 
-      this.getUserDataCollection(@userRoomModel.get('id'))
-      @userAllRoomDataModel = @userAllRoomDataCollection.first() #user data
-      console.log("userAllRoomDataModel: ")
-      console.log(@userAllRoomDataModel)
 
-      this.setRoomTheme @userAllRoomDataModel
-      this.setRoomItemsDesigns @userAllRoomDataModel
-      this.setRoomHeader @userAllRoomDataModel
+      # get user room data
+      @roomUserDataCollection = this.getRoomUserDataCollection(@userRoomModel.get('id'))
+      @roomUserDataModel = @roomUserDataCollection.first()
+
+      # get user sign in data
+      @signInUserDataCollection = this.getSignInUserDataCollection(@userSignInModel.get('id'))
+      @signInUserDataModel = @signInUserDataCollection.first()
+
+      console.log("@roomUserData: ")
+      console.log(@roomUserDataModel)
+
+      this.setRoomTheme  @roomUserDataModel
+      this.setRoomItemsDesigns(@roomUserDataModel, this.FLAGS_MAP['FLAG_PROFILE'])
+      this.setRoomHeader( @roomUserDataModel, @signInUserDataModel, this.FLAGS_MAP)
 
     this
 
@@ -75,66 +92,110 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
   #**** Functions  Initialize Room
   #*******************
-  setFlags: ->
-    if @userSignIn is undefined
-      this.FLAG_PROFILE = Mywebroom.Views.RoomView.PUBLIC_ROOM
-      console.log("flag public user: "+this.FLAG_PROFILE)
-    else if @userSignIn.id == @userRoomModel.id
-      this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_ROOM
-      console.log("flag room user: "+this.FLAG_PROFILE)
+
+
+  #--------------------------
+  # set Sign in global variable
+  #--------------------------
+  setSignInFlag: (userSignInModel) ->
+    flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
+    if userSignInModel is undefined
+      flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
     else
-      @myfriend = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
-      @myfriend.fetch
-        url:@myfriend.url(@userSignIn.id,@userRoomModel.id)
+      flagSignIn = Mywebroom.Views.RoomView.SIGN_IN
+
+    console.log("flag sign in user: "+flagSignIn)
+    return flagSignIn
+
+
+
+
+  #--------------------------
+  # set profile global variables
+  #--------------------------
+  setProfileFlags: (userSignInModel,userRoomModel ) ->
+
+    flagProfile =  Mywebroom.Views.RoomView.PUBLIC_ROOM
+    if userSignInModel is undefined
+      flagProfile = Mywebroom.Views.RoomView.PUBLIC_ROOM
+      console.log("flag public user: "+flagProfile)
+
+    else if userSignInModel.id == userRoomModel.id
+      flagProfile = Mywebroom.Views.RoomView.MY_ROOM
+      console.log("flag room user: "+flagProfile)
+
+    else
+      myfriend = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
+      myfriend.fetch
+        url:myfriend.url(userSignInModel.id,userRoomModel.id)
         async:false
         success: (response)->
           console.log("@myfriend: ")
           console.log(response)
 
-      if @myfriend.length == 0
-        this.FLAG_PROFILE = Mywebroom.Views.RoomView.PUBLIC_ROOM
-        console.log("flag public user: "+this.FLAG_PROFILE)
-      else
-        this.FLAG_PROFILE = Mywebroom.Views.RoomView.MY_FRIEND_ROOM
-        console.log("flag friend user: "+this.FLAG_PROFILE)
 
+      if myfriend.length == 0
+        flagProfile = Mywebroom.Views.RoomView.PUBLIC_ROOM
+        console.log("flag public user: "+flagProfile)
+
+      else
+        flagProfile = Mywebroom.Views.RoomView.MY_FRIEND_ROOM
+        console.log("flag friend user: "+flagProfile)
+
+    return flagProfile
 
 
   #*******************
-  #**** Functions  Initialize Room
+  #**** Functions  get Collection data
   #*******************
 
   #--------------------------
   # get the user of the room that is loading
   #--------------------------
   getRoomLoadingUserCollection: ->
-    @userRoomCollection = new Mywebroom.Collections.ShowRoomUserCollection()
-    this.userRoomCollection.fetch async: false
-    console.log("fetch userRoomCollection: "+JSON.stringify(this.userRoomCollection.toJSON()))
-
+    userRoomCollection = new Mywebroom.Collections.ShowRoomUserCollection()
+    userRoomCollection.fetch async: false
+    console.log("fetch userRoomCollection: "+JSON.stringify(userRoomCollection.toJSON()))
+    return userRoomCollection
 
   #--------------------------
   # get the sign in user  if exist
   #--------------------------
   getUserSignInCollection: ->
-    @userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
-    @userSignInCollection.fetch async: false
-    console.log("fetch userSignInCollection: "+JSON.stringify(@userSignInCollection.toJSON()))
-
+    userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
+    userSignInCollection.fetch async: false
+    console.log("fetch userSignInCollection: "+JSON.stringify(userSignInCollection.toJSON()))
+    return userSignInCollection
 
   #--------------------------
-  # get the user room info
+  # get room user data
   #--------------------------
-  getUserDataCollection:(userId) ->
-    @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
-    @userAllRoomDataCollection.fetch
-      url:@userAllRoomDataCollection.url userId
+  getRoomUserDataCollection:(userId) ->
+    roomUserDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
+    roomUserDataCollection.fetch
+      url:roomUserDataCollection.url userId
       async:false
       success: (response)->
-        console.log("@userAllRoomDataCollection: ")
+        console.log("@roomUserDataCollection: ")
         console.log(response)
-#        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
+#        console.log("@roomUserDataCollection: "+JSON.stringify(response.toJSON()))
 
+    return roomUserDataCollection
+
+
+  #--------------------------
+  # get room user data
+  #--------------------------
+  getSignInUserDataCollection:(userId) ->
+    signInUserDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
+    signInUserDataCollection.fetch
+      url:signInUserDataCollection.url userId
+      async:false
+      success: (response)->
+        console.log("@roomUserDataCollection: ")
+        console.log(response)
+
+    return signInUserDataCollection
 
 
   #*******************
@@ -150,16 +211,16 @@ class Mywebroom.Views.RoomView extends Backbone.View
     window.location.replace(origin)
 
 
+
   #*******************
   #**** Functions  Set RoomViews
   #*******************
 
-
   #--------------------------
   # set items designs on id = #xroom_items
   #--------------------------
-  setRoomHeader:(userAllRoomDataModel) ->
-    roomHeaderView = new Mywebroom.Views.RoomHeaderView({model:userAllRoomDataModel,FLAG_PROFILE:@FLAG_PROFILE})
+  setRoomHeader:(roomUserDataModel, signInUserDataModel , FlagsMap) ->
+    roomHeaderView = new Mywebroom.Views.RoomHeaderView({model:roomUserDataModel,signInUserDataModel:signInUserDataModel,FLAGS_MAP:FlagsMap})
     $('#xroom_header').append(roomHeaderView.el)
     roomHeaderView.render()
 
@@ -167,8 +228,8 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   # set theme on id = #xroom
   #--------------------------
-  setRoomTheme: (userAllRoomDataModel) ->
-    userThemeList = userAllRoomDataModel.get('user_theme')
+  setRoomTheme: (roomUserDataModel) ->
+    userThemeList = roomUserDataModel.get('user_theme')
     userTheme = userThemeList[0]
     $(@el).append(@template(user_theme:userTheme))
 
@@ -176,9 +237,9 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   # set items designs on id = #xroom_items
   #--------------------------
-  setRoomItemsDesigns: (userAllRoomDataModel) ->
-    userItemsDesignsList = userAllRoomDataModel.get('user_items_designs')
-    user = userAllRoomDataModel.get('user')
+  setRoomItemsDesigns: (roomUserDataModel,profileFlag) ->
+    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
+    user = roomUserDataModel.get('user')
     length = userItemsDesignsList.length
     i = 0
     while i < length
@@ -187,7 +248,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       $('#xroom_items').append(userItemsDesignsView.el)
       userItemsDesignsView.render()
       i++
-      if this.FLAG_PROFILE == Mywebroom.Views.RoomView.PUBLIC_ROOM
+      if profileFlag == Mywebroom.Views.RoomView.PUBLIC_ROOM
         userItemsDesignsView.undelegateEvents()
 
 
