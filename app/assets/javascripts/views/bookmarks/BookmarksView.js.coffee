@@ -17,6 +17,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   events:{
     'click .bookmark_view':'closeView'
     'click .bookmarks_close_button':'closeView'
+    'click #discover_menu_item':'renderDiscover'
+    'click #my_bookmarks_menu_item':'renderMyBookmarks'
 
   }
   #*******************
@@ -45,7 +47,14 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
     this
-
+  renderDiscover:->
+    @myBookmarksView.remove() if @myBookmarksView
+    console.log('discover bookmarks!')
+  renderMyBookmarks:->
+    @myBookmarksView.remove() if @myBookmarksView
+    @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
+    $(@el).append(@myBookmarksView.render().el)
+    this
 
 
   closeView:->
