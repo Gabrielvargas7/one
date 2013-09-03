@@ -304,6 +304,10 @@ td.gridItem{
 	text-align:center;
 	border:1px solid #ebebeb;
 }
+/*center the picture*/
+.user-photos-view div.gridItem{
+	padding:0 10px;
+}
 .gridItemDescription{
 	color:black;
 	font-size:12px;
