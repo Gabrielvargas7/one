@@ -85,6 +85,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       this.setRoomTheme  @roomUserDataModel
       this.setRoomItemsDesigns(@roomUserDataModel, this.FLAGS_MAP['FLAG_PROFILE'])
       this.setRoomHeader( @roomUserDataModel, @signInUserDataModel, this.FLAGS_MAP)
+      this.setStoreMenuSaveCancelRemove()
 
     this
 
@@ -217,12 +218,29 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
 
   #--------------------------
-  # set items designs on id = #xroom_items
+  # set main header menu
   #--------------------------
   setRoomHeader:(roomUserDataModel, signInUserDataModel , FlagsMap) ->
     roomHeaderView = new Mywebroom.Views.RoomHeaderView({model:roomUserDataModel,signInUserDataModel:signInUserDataModel,FLAGS_MAP:FlagsMap})
     $('#xroom_header').append(roomHeaderView.el)
     roomHeaderView.render()
+
+  #--------------------------
+  # set store menu for save cancel and remove
+  #--------------------------
+  setStoreMenuSaveCancelRemove: ->
+    storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
+    $('#xroom_store_menu_save_cancel_remove').append(storeMenuSaveCancelRemoveView.el)
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    storeMenuSaveCancelRemoveView.render()
+
+    #add the images
+    storeRemoveButton = $.cloudinary.image 'store_remove_button.png',{ alt: "store remove button", id: "store_remove_button"}
+    $('#xroom_store_remove').prepend(storeRemoveButton)
+    storeSaveButton = $.cloudinary.image 'store_save_button.png',{ alt: "store save button", id: "store_save_button"}
+    $('#xroom_store_save').prepend(storeSaveButton)
+    storeCancelButton = $.cloudinary.image 'store_cancel_button.png',{ alt: "store cancel button", id: "store_cancel_button"}
+    $('#xroom_store_cancel').prepend(storeCancelButton)
 
 
   #--------------------------

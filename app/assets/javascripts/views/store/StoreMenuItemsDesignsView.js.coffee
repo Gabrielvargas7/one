@@ -43,11 +43,15 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
   #--------------------------
   clickStoreItemDesigns: (event) ->
     event.preventDefault()
-    console.log("click")
-    console.log(this.model.get('id'))
-#    console.log($('[data-toggle="tab"][href="#tab_items"]'))
-#    $tab = $('[data-toggle="tab"][href="#tab_items"]')
-#    $tab.hide()
+    console.log("click Store Menu item design View "+@model.get('id'))
+    console.log(" item id "+@model.get('item_id'))
+    image_name = @model.get('image_name').url
+    console.log(image_name)
+#    $('current_background').attr("src", image_name);
+#    $('#current_background').attr("data-theme_id", @model.get('id'));
+
+
+
 
 
   #--------------------------

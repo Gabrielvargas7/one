@@ -137,51 +137,27 @@ class BookmarksCategoriesController < ApplicationController
 
 
   # GET Get all bookmarks category with bookmarks by item id
-  # bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/:item_id
-  # bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_by_item_id/1.json
+  # bookmarks_categories/json/index_bookmarks_categories_by_item_id/:item_id
+  # bookmarks_categories/json/index_bookmarks_categories_by_item_id/1.json
   #Return head
   # success    ->  head  200 OK
 
-  #def json_index_bookmarks_categories_with_bookmarks_by_item_id
-  #
-  #    respond_to do |format|
-  #
-  #      if BookmarksCategory.exists?(item_id:params[:item_id])
-  #
-  #
-  #        #@bookmarks_category  = BookmarksCategory.select('id,name,item_id').where('item_id = ?', params[:item_id])
-  #        #
-  #        #format.json {render json:
-  #        #            @bookmarks_category.as_json(include: {bookmarks: {only: [:id, :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title]}}) }
-  #
-  #
-  #        @bookmarks  = Bookmark.
-  #            select('bookmarks.id,
-  #                    bookmarks.item_id,
-  #                    bookmarks_categories.name as bookmarks_category_name,
-  #                    bookmark_url,
-  #                    bookmarks_category_id,
-  #                    description,
-  #                    i_frame,
-  #                    image_name,
-  #                    image_name_desc,
-  #                    title').
-  #            joins(:bookmarks_category).
-  #            where('bookmarks.item_id = ?', params[:item_id]).order("bookmarks_category_id,bookmarks.id")
-  #
-  #        format.json {render json:
-  #                                @bookmarks.as_json() }
-  #
-  #
-  #        format.json {render json: @bookmarks}
-  #
-  #
-  #      else
-  #        format.json { render json: 'not bookmark category for this item ', status: :not_found }
-  #      end
-  #
-  #    end
-  #end
+  def json_index_bookmarks_categories_by_item_id
+
+      respond_to do |format|
+
+        if BookmarksCategory.exists?(item_id:params[:item_id])
+
+          @bookmarks_categories =  BookmarksCategory.find_all_by_item_id(params[:item_id])
+
+          format.json {render json:  @bookmarks_categories.as_json() }
+
+        else
+          format.json { render json: 'not bookmark category for this item ', status: :not_found }
+        end
+
+      end
+  end
 
   # GET Get all bookmarks that has to be approved,
   #   eg. when that user add a new bookmark, the bookmark has to be approved for the administrator, and after that everybody can see it.

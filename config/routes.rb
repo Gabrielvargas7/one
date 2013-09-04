@@ -514,7 +514,13 @@ Mywebroom::Application.routes.draw do
           :notifications_json_index_notification_by_limit_by_offset
 
 
+  #**************************
+  # start Bookmarks category
+  #**************************
 
+  match '/bookmarks_categories/json/index_bookmarks_categories_by_item_id/:item_id', to:
+         'bookmarks_categories#json_index_bookmarks_categories_by_item_id', via: :get, as:
+         :bookmarks_categories_json_index_bookmarks_categories_by_item_id
 
 
 

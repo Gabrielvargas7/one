@@ -45,8 +45,11 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
   #--------------------------
   clickStoreTheme: (event) ->
     event.preventDefault()
-    console.log("click")
-
+    console.log("click Store Menu Theme View "+@model.get('id'))
+    image_name = @model.get('image_name').url
+    console.log(image_name)
+    $('#current_background').attr("src", image_name);
+    $('#current_background').attr("data-theme_id", @model.get('id'));
 
 
   #--------------------------
