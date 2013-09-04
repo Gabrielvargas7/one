@@ -17,40 +17,71 @@
 	border-bottom:1px solid #707070;
 }
 .bookmark_object_title{
-	font-size: 24px;
+	font-size: 22px;
 	font-weight: lighter;
+	padding-top:.5em;
+	padding-bottom: .7em;
 
 	line-height: 26px;
 }
 ul.bookmark_menu_list {
 	margin:0;
 	padding:0;
+	padding-top:.5em;
 
+}
+.bookmark_menu_list li{
+	padding:.4em 0;
 }
 .bookmark_menu_list li a,.bookmark_menu_list li {
 	list-style-type: none;
 	text-align:left;
 	font-size: 16px;
 	color:white;
-	width:100%;
+	//width:100%;
+}
+#my_bookmarks_menu_item.bookmark_menu_selected, #discover_menu_item.bookmark_menu_selected{
+	color:#40c3fd;
 }
 .bookmark_menu_list a:hover, .bookmark_menu_list li:hover{
 	color:#40c3fd;
 	background-color: #464646;
 	text-decoration: none;
 }
-#my_bookmarks_menu_item a{
+#my_bookmarks_menu_item:before {
+    background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226417/my-bookmarks-menu-icon.png') no-repeat;
+    content:"";
+	padding-right: 40px;
+}
+#my_bookmarks_menu_item:hover:before, #my_bookmarks_menu_item.bookmark_menu_selected:before{
+	background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226438/my-bookmarks-menu-icon-hover.png') no-repeat;
+	content:"";
+	padding-right: 40px;
+}
+#discover_menu_item:before{
+	background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226491/discover-bookmarks-menu-icon.png') no-repeat;
+//	content: url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226491/discover-bookmarks-menu-icon.png');
+	padding-right:40px;
+	content:"";
 
 }
-#discover_menu_item a{
-
+#discover_menu_item:hover:before, #discover_menu_item.bookmark_menu_selected:before
+{
+	background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226505/discover-bookmarks-menu-icon-hover.png') no-repeat;
+	padding-right:40px;
+	content:"";
 }
-#my_bookmarks_menu_item a:hover{
 
+/*Discover Sub Menu Item Style*/
+#discover_submenu_list li.discover_submenu{
+	padding-left:40px;
+	
 }
-#discover_menu_item a:hover{
-
+#discover_submenu_list{
+	border-bottom:1px solid #707070;
+	padding-bottom:2em;
 }
+/*END Discover Sub Menu Item Style*/
 .my_bookmarks_list_wrap{
 	width:1100px;
 	background-color:white;
@@ -63,6 +94,7 @@ ul.bookmark_menu_list {
 	padding:20px 20px 0px;
 	border-bottom:1px solid #ebebeb;
 	font-size:18px;
+	margin-bottom:35px;
 
 }
 .bookmarks_close_button{
@@ -115,5 +147,14 @@ ul.bookmark_menu_list {
 	padding-left:10px;
 	border:none;
 
+}
+div:hover.bookmark_corner_icon_wrap img.trash_icon{
+display:none;
+}
+div.bookmark_corner_icon_wrap img.trash_icon_hover{
+display:none;
+}
+div:hover.bookmark_corner_icon_wrap img.trash_icon_hover{
+display:block;
 }
 /*END My Bookmarks Grid Items*/
