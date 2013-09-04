@@ -136,7 +136,7 @@ class BookmarksCategoriesController < ApplicationController
   #***********************************
 
 
-  # GET Get all bookmarks category with bookmarks by item id
+  # GET Get all bookmarks category by item id
   # bookmarks_categories/json/index_bookmarks_categories_by_item_id/:item_id
   # bookmarks_categories/json/index_bookmarks_categories_by_item_id/1.json
   #Return head
