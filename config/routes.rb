@@ -355,6 +355,8 @@ Mywebroom::Application.routes.draw do
 
 
 
+
+
   #--------------------------
   # end UsersBookmark Contract
   #--------------------------
@@ -364,6 +366,10 @@ Mywebroom::Application.routes.draw do
   # start BookmarksCategory Contract
   #**************************
 
+
+  match '/bookmarks_categories/json/index_bookmarks_categories_by_item_id/:item_id', to:
+         'bookmarks_categories#json_index_bookmarks_categories_by_item_id', via: :get, as:
+         :bookmarks_categories_json_index_bookmarks_categories_by_item_id
 
 
   #**************************
@@ -387,6 +393,12 @@ Mywebroom::Application.routes.draw do
   match '/bookmarks/json/index_random_bookmarks_by_limit_by_offset/:limit/:offset', to:
          'bookmarks#json_index_random_bookmarks_by_limit_by_offset', via: :get  , as:
           :bookmarks_json_index_random_bookmarks_by_limit_by_offset
+
+
+  match '/bookmarks/json/index_bookmarks_by_bookmarks_category_id/:bookmarks_category_id', to:
+         'bookmarks#json_index_bookmarks_by_bookmarks_category_id', via: :get  , as:
+                   :json_index_bookmarks_by_bookmarks_category_id
+
 
 
 
@@ -514,13 +526,6 @@ Mywebroom::Application.routes.draw do
           :notifications_json_index_notification_by_limit_by_offset
 
 
-  #**************************
-  # start Bookmarks category
-  #**************************
-
-  match '/bookmarks_categories/json/index_bookmarks_categories_by_item_id/:item_id', to:
-         'bookmarks_categories#json_index_bookmarks_categories_by_item_id', via: :get, as:
-         :bookmarks_categories_json_index_bookmarks_categories_by_item_id
 
 
 

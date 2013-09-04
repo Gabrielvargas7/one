@@ -1,0 +1,44 @@
+//# GET Get all bookmarks category by item id
+//# bookmarks_categories/json/index_bookmarks_categories_by_item_id/:item_id
+//# bookmarks_categories/json/index_bookmarks_categories_by_item_id/1.json
+//#Return head
+//# success    ->  head  200 OK
+
+
+[
+    {
+        "created_at": "2013-05-17T20:51:50Z",
+        "id": 201,
+        "item_id": 1,
+        "name": "Entertainment",
+        "updated_at": "2013-05-17T20:51:50Z"
+    },
+    {
+        "created_at": "2013-05-17T20:51:50Z",
+        "id": 202,
+        "item_id": 1,
+        "name": "Games",
+        "updated_at": "2013-05-17T20:51:50Z"
+    },
+    {
+        "created_at": "2013-05-17T20:51:50Z",
+        "id": 203,
+        "item_id": 1,
+        "name": "Gossip",
+        "updated_at": "2013-05-17T20:51:50Z"
+    },
+    {
+        "created_at": "2013-05-17T20:51:50Z",
+        "id": 204,
+        "item_id": 1,
+        "name": "Comedy",
+        "updated_at": "2013-05-17T20:51:50Z"
+    },
+    {
+        "created_at": "2013-05-17T20:51:50Z",
+        "id": 205,
+        "item_id": 1,
+        "name": "Design",
+        "updated_at": "2013-05-17T20:51:50Z"
+    }
+]

@@ -1,0 +1,298 @@
+//# GET Get all bookmarks by bookmarks category id
+//# bookmarks/json/index_bookmarks_by_bookmarks_category_id/:bookmarks_category_id
+//# bookmarks/json/index_bookmarks_by_bookmarks_category_id/1.json
+//# Return head
+//# success    ->  head  200 OK
+
+
+[
+    {
+        "bookmark_url": "http://www.stumbleupon.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2001,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823987/17243-bookmark-image_name-stumbleupon.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Stumble Upon"
+    },
+    {
+        "bookmark_url": "http://www.flixster.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2002,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823988/21002-bookmark-image_name-flixster.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Flixster"
+    },
+    {
+        "bookmark_url": "http://www.thefancy.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2003,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823989/70594-bookmark-image_name-fancy.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Fancy"
+    },
+    {
+        "bookmark_url": "http://www.killsometime.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2004,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823990/11105-bookmark-image_name-killsometime.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Kill Some Time"
+    },
+    {
+        "bookmark_url": "http://www.barstoolsports.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2005,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823991/23727-bookmark-image_name-barstoolsports.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Barstool Sports"
+    },
+    {
+        "bookmark_url": "http://www.fmylife.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2006,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823991/33720-bookmark-image_name-fml.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "F My Life"
+    },
+    {
+        "bookmark_url": "http://www.metacafe.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2007,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823992/19394-bookmark-image_name-metacafe.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Meta Cafe"
+    },
+    {
+        "bookmark_url": "http://www.jokesgallery.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2008,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823993/88513-bookmark-image_name-jokesgallery.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Jokes Gallery"
+    },
+    {
+        "bookmark_url": "http://www.theonion.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2009,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823994/72267-bookmark-image_name-theonion.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "The Onion"
+    },
+    {
+        "bookmark_url": "http://www.funnytypos.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2010,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823995/84780-bookmark-image_name-typos.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Funny Typos"
+    },
+    {
+        "bookmark_url": "http://www.cracked.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2012,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823996/58490-bookmark-image_name-cracked.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Cracked"
+    },
+    {
+        "bookmark_url": "http://www.juliasmexicocity.typepad.com/safetygraphics/",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2013,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823997/83513-bookmark-image_name-safety.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Safety Graphics"
+    },
+    {
+        "bookmark_url": "http://www.answerbag.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2014,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823998/86956-bookmark-image_name-answerbag.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Answer Bag"
+    },
+    {
+        "bookmark_url": "http://www.patenlytsilly.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2015,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823999/75137-bookmark-image_name-patentlysilly.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Patent Silly"
+    },
+    {
+        "bookmark_url": "http://www.textsfromlastnight.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2016,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824000/54640-bookmark-image_name-textsfromlastnight.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Texts From Last Night"
+    },
+    {
+        "bookmark_url": "http://www.mono-1.com/monoface/main.html",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2017,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824001/88251-bookmark-image_name-monoface.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Monoface"
+    },
+    {
+        "bookmark_url": "http://www.awkwardfamilyphotos.com",
+        "bookmarks_category_id": 201,
+        "bookmarks_category_name": "Entertainment",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2018,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824002/4834-bookmark-image_name-awkwardfamilyphotos.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "title": "Awkward Family Photos"
+    }
+]

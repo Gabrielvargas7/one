@@ -237,10 +237,9 @@ class BookmarksController < ApplicationController
             joins(:bookmarks_category).
             where('bookmarks.item_id = ? and user_bookmark = 0', params[:item_id]).order("bookmarks_category_id,bookmarks.id")
 
-        format.json {render json:
-                                @bookmarks.as_json()}
+        format.json {render json: @bookmarks.as_json()}
 
-        format.json {render json: @bookmarks}
+
 
 
       else
@@ -311,6 +310,46 @@ class BookmarksController < ApplicationController
 
       @bookmarks = Bookmark.order("RANDOM()").limit(params[:limit]).offset(params[:offset])
       format.json { render json: @bookmarks }
+
+    end
+  end
+
+
+
+  # GET Get all bookmarks by bookmarks category id
+  # bookmarks/json/index_bookmarks_by_bookmarks_category_id/:bookmarks_category_id
+  # bookmarks/json/index_bookmarks_by_bookmarks_category_id/1.json
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_bookmarks_by_bookmarks_category_id
+
+    respond_to do |format|
+
+      if BookmarksCategory.exists?(id:params[:bookmarks_category_id])
+
+
+        @bookmarks  = Bookmark.
+            select('bookmarks.id,
+                      bookmarks.item_id,
+                      bookmarks_categories.name as bookmarks_category_name,
+                      bookmark_url,
+                      bookmarks_category_id,
+                      description,
+                      i_frame,
+                      image_name,
+                      image_name_desc,
+                      title,
+                      "like"').
+            joins(:bookmarks_category).
+            where('bookmarks.bookmarks_category_id = ? and user_bookmark = 0', params[:bookmarks_category_id]).order("bookmarks_category_id,bookmarks.id")
+
+        format.json {render json: @bookmarks.as_json()}
+
+
+      else
+        format.json { render json: 'not bookmark for this item ', status: :not_found }
+      end
 
     end
   end
