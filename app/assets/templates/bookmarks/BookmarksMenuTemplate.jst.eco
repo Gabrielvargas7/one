@@ -1,7 +1,25 @@
 <div class="bookmark_menu">
-<p class="bookmark_object_title bottom_border_padding"><%=@user_item_design.items_name%> Bookmarks</p>
-<ul class="bookmark_menu_list">
-	<a href="#"><li id="my_bookmarks_menu_item">My Bookmarks</li></a>
-	<a href="#"><li id="discover_menu_item">Discover</li></a>
-</ul>
+	<p class="bookmark_object_title bottom_border_padding"><%=@user_item_design.items_name%> Bookmarks</p>
+	<ul class="bookmark_menu_list">
+		<a href="#"><li id="my_bookmarks_menu_item">My Bookmarks</li></a>
+		<a href="#"><li id="discover_menu_item">Discover</li></a>
+	</ul>
+	<div class="hidden discover_submenu_section">
+		<ul class="bookmark_menu_list" id="discover_submenu_list">
+			<a href="#"><li class="discover_submenu" id="discover_submenu_cat_1">Category 1</li></a>
+			<a href="#"><li class="discover_submenu" id="discover_submenu_cat_2">Category 2</li></a>
+			<a href="#"><li class="discover_submenu" id="discover_submenu_cat_3">Category 3</li></a>
+			<a href="#"><li class="discover_submenu" id="discover_submenu_cat_4">Category 4</li></a>
+			<a href="#"><li class="discover_submenu" id="discover_submenu_cat_5">Category 5</li></a>
+		</ul>
+		<p>Add your own!</p>
+		<div id="add_your_own_box">
+			<form>
+				<input name="url_input" type="url" placeholder="URL">
+				<input name="title" placeholder="Bookmark Title">
+				<input type="image" name="submit_btn" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226577/bookmarks-icon-magnifying-glass-search.png">
+			</form>
+			<img class="pull-right" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226577/bookmarks-icon-magnifying-glass-search.png">
+		</div>
+	</div>
 </div>

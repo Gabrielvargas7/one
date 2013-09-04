@@ -4,7 +4,11 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	#*******************
 	
 	className:"my_bookmarks_list_wrap"
-
+	#*******************
+	#**** Initialize
+	#*******************
+	initialize:->
+		@template=this.options.template if this.options.template
 	#*******************
 	#**** Templeate
 	#*******************
