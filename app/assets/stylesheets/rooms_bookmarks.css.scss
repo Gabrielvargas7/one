@@ -5,6 +5,7 @@
 	z-index:4;
 }
 .bookmark_menu{
+	position:fixed;
 	width:240px;
 	background-color: rgba(0,0,0,.8);
 	height:100%;
@@ -75,6 +76,7 @@ ul.bookmark_menu_list {
 /*Discover Sub Menu Item Style*/
 #discover_submenu_list li.discover_submenu{
 	padding-left:40px;
+	font-size:14px;
 	
 }
 #discover_submenu_list{
@@ -89,6 +91,8 @@ ul.bookmark_menu_list {
 	height:100%;
 	padding:10px;
 	color:#333333;
+	position:absolute;
+	left:250px;
 }
 .my_bookmarks_top, .discover_bookmarks_top{
 	padding:20px 20px 0px;

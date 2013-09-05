@@ -21,6 +21,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     'click #my_bookmarks_menu_item':'renderMyBookmarks'
     'click img.trash_icon':'clickTrash'
     'click .discover_submenu':'showCategory'
+    'click .discover_bookmarks_bottom .bookmark_grid_item':'previewMode'
 
   }
   #*******************
@@ -29,10 +30,10 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   initialize: ->
     #fetch bookmark data
-    @collection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
+    @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
     @collection.fetch
       async:false
-      url:@collection.url this.options.user_item_design.item_id
+      url:@collection.url '23', this.options.user_item_design.item_id
       success:(response) ->
         console.log("bookmark fetch successful: ")
         console.log(response)
@@ -112,6 +113,24 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @bookmarksDiscoverView.remove()
     @currentBookmarkbyCategoryView = new Mywebroom.Views.DiscoverBookmarksView(collection:@currentBookmarkbyCategoryCollection)
     $(@el).append(@currentBookmarkbyCategoryView.render().el)
+
+  previewMode:(event)->
+    #we'll have previewView to correspond to discover_bookmarks
+    #and browseMode to correspond to my_bookmarks
+    #open in iframe
+    bookmarkClicked=@discoverCollection.get(event.currentTarget.dataset.cid)
+    urlToOpen= bookmarkClicked.get('bookmark_url')
+    previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
+    #Edit sidebar menu 
+    #hide categories
+    $(@el).append(previewModeView.render().el)#"<iframe src="+"'"+urlToOpen+"'>"+"</iframe>")
+    previewModeView.on('closedView',@closePreviewMode())
+    console.log("preview site!"+urlToOpen)
+    console.log(bookmarkClicked)
+  closePreviewMode:->
+    console.log 'close previewmode.'
+
+    #show sidebar categories.
   clickTrash: (event)->
     #hoveredEl = event.currentTarget
     #hoveredEl
