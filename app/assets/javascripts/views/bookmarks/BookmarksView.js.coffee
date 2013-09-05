@@ -63,6 +63,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
     $('.discover_submenu_section').removeClass('hidden')
+    $('.discover_submenu').removeClass('bookmark_menu_selected')
     #@myBookmarksView.remove() if @myBookmarksView
     $(@myBookmarksView.el).hide()
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
@@ -95,6 +96,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     this
   showCategory:(event)->
     categoryId = event.currentTarget.dataset.id
+    $('#discover_menu_item').removeClass 'bookmark_menu_selected'
+    $('.discover_submenu').removeClass 'bookmark_menu_selected'
+    $(event.currentTarget).addClass('bookmark_menu_selected')
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView 
     #get the category bookmarks
     @currentBookmarkbyCategoryCollection = new Mywebroom.Collections.IndexBookmarksByBookmarksCategoryId()

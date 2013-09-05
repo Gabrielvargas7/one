@@ -1,6 +1,5 @@
 .bookmark_view{
 	position:absolute;
-	border:1px solid red;
 	color:white;
 	height:95%;
 	z-index:4;
@@ -40,7 +39,8 @@ ul.bookmark_menu_list {
 	color:white;
 	//width:100%;
 }
-#my_bookmarks_menu_item.bookmark_menu_selected, #discover_menu_item.bookmark_menu_selected{
+#my_bookmarks_menu_item.bookmark_menu_selected, 
+#discover_menu_item.bookmark_menu_selected, a li.bookmark_menu_selected{
 	color:#40c3fd;
 }
 .bookmark_menu_list a:hover, .bookmark_menu_list li:hover{
