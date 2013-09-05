@@ -20,6 +20,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     'click #discover_menu_item':'renderDiscover'
     'click #my_bookmarks_menu_item':'renderMyBookmarks'
     'click img.trash_icon':'clickTrash'
+    'click .discover_submenu':'showCategory'
 
   }
   #*******************
@@ -64,17 +65,27 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('.discover_submenu_section').removeClass('hidden')
     #@myBookmarksView.remove() if @myBookmarksView
     $(@myBookmarksView.el).hide()
+    @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
+
     #Add sidebar (Make class display?)
     #Render Bookmarks api.
-    #fetch DiscoverBookmarks
+    #fetch DiscoverBookmarks here so we can reuse the view in other places
+    @discoverCollection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
+    @discoverCollection.fetch
+      async:false
+      url: @discoverCollection.url this.options.user_item_design.item_id
+      success:(response)->
+        console.log "discover Bookmarks fetch successful: "
+        console.log response
     #@fetchDiscoverBookmarks()
-    @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(user_item_design:this.options.user_item_design)
+    @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.user_item_design)
     $(@el).append(@bookmarksDiscoverView.render().el)
 
   renderMyBookmarks:->
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
     $('.discover_submenu_section').addClass('hidden')
+    @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     #@myBookmarksView.remove() if @myBookmarksView
     $(@myBookmarksView.el).hide()
     $(@bookmarksDiscoverView.el).hide()
@@ -82,7 +93,21 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $(@myBookmarksView.el).show()
     #$(@el).append(@myBookmarksView.render().el)
     this
-
+  showCategory:(event)->
+    categoryId = event.currentTarget.dataset.id
+    @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView 
+    #get the category bookmarks
+    @currentBookmarkbyCategoryCollection = new Mywebroom.Collections.IndexBookmarksByBookmarksCategoryId()
+    @currentBookmarkbyCategoryCollection.fetch
+      async:false
+      url: @currentBookmarkbyCategoryCollection.url categoryId
+      success:(response) ->
+        console.log("BookmarkbyCategoryCollection fetch successful:")
+        console.log(response)
+    #display the category bookmarks
+    @bookmarksDiscoverView.remove()
+    @currentBookmarkbyCategoryView = new Mywebroom.Views.DiscoverBookmarksView(collection:@currentBookmarkbyCategoryCollection)
+    $(@el).append(@currentBookmarkbyCategoryView.render().el)
   clickTrash: (event)->
     #hoveredEl = event.currentTarget
     #hoveredEl

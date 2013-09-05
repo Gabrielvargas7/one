@@ -2,13 +2,13 @@ class Mywebroom.Views.DiscoverBookmarksView extends Backbone.View
 	template:JST['bookmarks/DiscoverBookmarksTemplate']
 	className:'discover_list_wrap'
 	initialize:->
-	    @collection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
-	    @collection.fetch
-	      async:false
-	      url: @collection.url this.options.user_item_design.item_id
-	      success:(response)->
-	        console.log "discover Bookmarks fetch successful: "
-	        console.log response
+	    # @collection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
+	    # @collection.fetch
+	    #   async:false
+	    #   url: @collection.url this.options.user_item_design.item_id
+	    #   success:(response)->
+	    #     console.log "discover Bookmarks fetch successful: "
+	    #     console.log response
 		
 	render:->
 		$(@el).append(@template())

@@ -1,8 +1,5 @@
-<p>
-HALLO DISCOVER!
-</p>
 <div class="discover_bookmarks_top">
-	<p>Below are all of your saved websites</p>
+	<p>Below you can find many websites to add!</p>
 	<a href="#" class="bookmarks_close_button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371245133/close-delete-icon.png"></a>
 </div>
 <div class="discover_bookmarks_bottom">
