@@ -37,7 +37,7 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
 
 
   #*******************
-  #**** Funtions
+  #**** Funtions  -events
   #*******************
 
   #--------------------------
@@ -46,10 +46,10 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
   clickStoreTheme: (event) ->
     event.preventDefault()
     console.log("click Store Menu Theme View "+@model.get('id'))
-    image_name = @model.get('image_name').url
-    console.log(image_name)
-    $('#current_background').attr("src", image_name);
-    $('#current_background').attr("data-theme_id", @model.get('id'));
+    imageName = @model.get('image_name').url
+    console.log(imageName)
+    $('.current_background').attr("src", imageName);
+    $('.current_background').attr("data-theme_id", @model.get('id'));
 
 
   #--------------------------
@@ -58,9 +58,8 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
   hoverStoreTheme: (event) ->
     event.preventDefault()
     console.log("hover "+this.model.get('id'))
-    button_preview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
-    $('#store_theme_container_'+this.model.get('id')).append(button_preview)
-
+    buttonPreview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
+    $('#store_theme_container_'+this.model.get('id')).append(buttonPreview)
 
 
 
@@ -71,6 +70,8 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
     event.preventDefault()
     console.log("hoverOff"+this.model.get('id'))
     $('#button_preview').remove()
+
+
 
 
 

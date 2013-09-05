@@ -2,7 +2,7 @@
 <!-- Room Background  -->
 <!-- ************************ -->
 
-<img id="current_background" src=<%= @user_theme.image_name.url %> data-theme_id="<%=@user_theme.id%>">
+<img class="current_background" src=<%= @user_theme.image_name.url %> data-theme_id="<%=@user_theme.id%>" data-section_id="<%=@user_theme.section_id%>" >
 
 
 

@@ -30,22 +30,53 @@ class Mywebroom.Views.StoreMenuBundlesView  extends Backbone.View
     #**** Render
     #*******************
   render: ->
-
 #    console.log("Store Menu Bundle View "+@model.get('id'))
     $(@el).append(@template(bundle:@model))
     this
 
-
   #*******************
-  #**** Funtions
+  #**** Funtions  getCollecton
   #*******************
 
   #--------------------------
-  # do something on click
+  # get items deisgns of the bundle
+  #--------------------------
+  getBundleItemDesignsCollection:(bundleId) ->
+    bundleItemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsOfBundleByBundleIdCollection()
+    bundleItemsDesignsCollection.fetch
+      url:bundleItemsDesignsCollection.url bundleId
+      async:false
+      success: (response)->
+        console.log("@bundleItemsDesignsCollection: ")
+        console.log(response)
+    #        console.log("@bundleItemsDesignsCollection:: "+JSON.stringify(response.toJSON()))
+
+    return bundleItemsDesignsCollection
+
+
+
+
+  #*******************
+  #**** Funtions - evens
+  #*******************
+
+  #--------------------------
+  # change all items of the room for bundle when click
   #--------------------------
   clickStoreBundle: (event) ->
     event.preventDefault()
-    console.log("click")
+    console.log("click Store Bundle View "+@model.get('id'))
+    bundleItemsDesignsCollection = this.getBundleItemDesignsCollection(@model.get('id'))
+
+    bundleItemsDesignsCollection.each (entry)  ->
+      itemId = entry.get('item_id')
+      itemDesignId = entry.get('id')
+      imageName = entry.get('image_name').url
+      imageNameHover = entry.get('image_name_hover').url
+
+      $('[data-item_id='+itemId+']').attr("src", imageName)
+      $('[data-item_id='+itemId+']').attr("data-item_design_id",itemDesignId)
+      $('[data-item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
 
 
 

@@ -11,6 +11,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   template: JST['rooms/RoomHeaderTemplate']
 
 
+
   #*******************
   #**** Events
   #*******************
@@ -22,8 +23,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_logout':'logout'
     'click #xroom_header_storepage':'showStorePage'
     'click #xroom_header_myroom':'goToMyRoom'
-
-
   }
 
 
@@ -32,6 +31,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   initialize: ->
+
 
   #*******************
   #**** Render
@@ -190,8 +190,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function
   #--------------------------
   showStorePage: (event) ->
-    event.preventDefault()
-    event.stopPropagation()
+    if event  # this is is because this fuction is also call when is PUBLIC_ROOM
+      event.preventDefault()
+      event.stopPropagation()
     console.log('storePage Function running')
     @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
     $('#xroom_storepage').append(@storePageView.el)
@@ -202,8 +203,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function events
   #--------------------------
   removeHeaderEvents: ->
+
     $(this.el).off('click', '#xroom_header_storepage')
     $(this.el).off('click', '#xroom_header_profile')
+    $('.room_user_item_design_container').off()
+
+
 
 
 

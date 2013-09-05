@@ -31,7 +31,7 @@ class ItemsDesign < ActiveRecord::Base
                    :price,
                    :product_url
 
-  #:bundle_id,
+
 
   mount_uploader :image_name, ItemsDesignsImageUploader
   mount_uploader :image_name_hover, ItemsDesignsImageHoverUploader
@@ -42,6 +42,7 @@ class ItemsDesign < ActiveRecord::Base
 
 
   has_many :users_items_designs
+  has_many :bundles_items_designs
 
   validates :name, presence:true
   validates :item_id, :numericality => { :only_integer => true }

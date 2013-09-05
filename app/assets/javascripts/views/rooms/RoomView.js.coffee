@@ -43,11 +43,15 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
   render: ->
 
+
+
+
     #*******************    #
     #    image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
     #    console.log(image)
     #*******************
 
+#    this.ev = _.extend({}, Backbone.Events)
     this.FLAGS_MAP = {};
 
     this.FLAGS_MAP['FLAG_PROFILE'] = Mywebroom.Views.RoomView.PUBLIC_ROOM
