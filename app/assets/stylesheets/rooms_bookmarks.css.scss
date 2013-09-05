@@ -82,7 +82,7 @@ ul.bookmark_menu_list {
 	padding-bottom:2em;
 }
 /*END Discover Sub Menu Item Style*/
-.my_bookmarks_list_wrap{
+.my_bookmarks_list_wrap, .discover_list_wrap{
 	width:1100px;
 	background-color:white;
 	float:left;
@@ -90,7 +90,7 @@ ul.bookmark_menu_list {
 	padding:10px;
 	color:#333333;
 }
-.my_bookmarks_top{
+.my_bookmarks_top, .discover_bookmarks_top{
 	padding:20px 20px 0px;
 	border-bottom:1px solid #ebebeb;
 	font-size:18px;
@@ -103,11 +103,11 @@ ul.bookmark_menu_list {
 	right:15px;
 }
 /*My Bookmarks Grid Items*/
-.my_bookmarks_bottom{
+.my_bookmarks_bottom, .discover_bookmarks_bottom{
 	height:600px;
 	overflow:auto;
 }
-.my_bookmarks_bottom li{
+.my_bookmarks_bottom li, .discover_bookmarks_bottom li{
 	display:table-cell;
 
 
@@ -134,27 +134,27 @@ ul.bookmark_menu_list {
 	border:1px solid #7d7d7d;
 	border-radius:6px;
 }
-#my_bookmarks_bookmark_name_form{
+.my_bookmarks_bookmark_name_form, .discover_bookmark_name_form{
 	left:30px;
 	position:absolute;
 	bottom:0;
 	margin:0;
 
 }
-#my_bookmarks_bookmark_name_form input{
+.my_bookmarks_bookmark_name_form input, .discover_bookmark_name_form input{
 	width:140px;
 	margin:0;
 	padding-left:10px;
 	border:none;
 
 }
-div:hover.bookmark_corner_icon_wrap img.trash_icon{
+div:hover.bookmark_corner_icon_wrap img.trash_icon, div:hover.bookmark_corner_icon_wrap img.add_bookmark_icon{
 display:none;
 }
-div.bookmark_corner_icon_wrap img.trash_icon_hover{
+div.bookmark_corner_icon_wrap img.trash_icon_hover, div.bookmark_corner_icon_wrap img.add_bookmark_icon_hover{
 display:none;
 }
-div:hover.bookmark_corner_icon_wrap img.trash_icon_hover{
+div:hover.bookmark_corner_icon_wrap img.trash_icon_hover, div:hover.bookmark_corner_icon_wrap img.add_bookmark_icon_hover{
 display:block;
 }
 /*END My Bookmarks Grid Items*/

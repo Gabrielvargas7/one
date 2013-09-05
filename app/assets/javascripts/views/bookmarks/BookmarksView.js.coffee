@@ -36,15 +36,15 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         console.log("bookmark fetch successful: ")
         console.log(response)
     #@categoryCollection = new Mywebroom.Collections.
-  fetchDiscoverBookmarks: ->
-    console.log "hi"
-    @discoverBookmarksCollection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
-    @discoverBookmarksCollection.fetch
+    @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
+    @discoverCategoriesCollection.fetch
       async:false
-      url: @discoverBookmarksCollection.url this.options.user_item_design.item_id
-      success:(response)->
-        console.log "discover Bookmarks fetch successful: "
-        console.log response
+      url: @discoverCategoriesCollection.url this.options.user_item_design.item_id
+      success:(response) ->
+        console.log("categories fetch successful: ")
+        console.log(response)
+  fetchDiscoverBookmarks: ->
+
 
   #*******************
   #**** Render
@@ -53,7 +53,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     console.log("bookmark view: "+this.options.user_item_design)
     console.log(this.options.user_item_design)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user.id)
-    $(@el).append(@template(user_item_design:this.options.user_item_design, collection:@collection))
+    $(@el).append(@template(user_item_design:this.options.user_item_design, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
@@ -67,10 +67,10 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #Add sidebar (Make class display?)
     #Render Bookmarks api.
     #fetch DiscoverBookmarks
-    @fetchDiscoverBookmarks()
-    @bookmarksDiscoverView = new Mywebroom.Views.MyBookmarksView(collection:@discoverBookmarksCollection, template:JST['bookmarks/DiscoverBookmarksTemplate'])
+    #@fetchDiscoverBookmarks()
+    @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(user_item_design:this.options.user_item_design)
     $(@el).append(@bookmarksDiscoverView.render().el)
-    console.log('discover bookmarks!')
+
   renderMyBookmarks:->
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
