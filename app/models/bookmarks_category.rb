@@ -23,7 +23,8 @@ class BookmarksCategory < ActiveRecord::Base
 
 
   def id_and_bookmark_category
-    "#{id}. #{name}"
+    #"#{id}. #{name}. -> item id and Name: #{item.id}.#{item.name} "
+    "Item: #{item.id}.#{item.name} -> Bookmark Cat: #{id}.#{name}"
   end
 
 end

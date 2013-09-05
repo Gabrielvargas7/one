@@ -34,9 +34,12 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     this
 
 
+
+
   #*******************
-  #**** Funtions
+  #**** Funtions - events
   #*******************
+
 
   #--------------------------
   # do something on click
@@ -45,13 +48,15 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     event.preventDefault()
     console.log("click Store Menu item design View "+@model.get('id'))
     console.log(" item id "+@model.get('item_id'))
-    image_name = @model.get('image_name').url
-    console.log(image_name)
-#    $('current_background').attr("src", image_name);
-#    $('#current_background').attr("data-theme_id", @model.get('id'));
 
+    itemId =@model.get('item_id')
+    itemDesignId =@model.get('id')
+    imageName = @model.get('image_name').url
+    imageNameHover = @model.get('image_name_hover').url
 
-
+    $('[data-item_id='+itemId+']').attr("src", imageName)
+    $('[data-item_id='+itemId+']').attr("data-item_design_id",itemDesignId)
+    $('[data-item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
 
 
   #--------------------------
@@ -60,8 +65,8 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
   hoverStoreItemDesigns: (event) ->
     event.preventDefault()
     console.log("hover "+this.model.get('id'))
-    button_preview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
-    $('#store_item_designs_container_'+this.model.get('id')).append(button_preview)
+    buttonPreview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
+    $('#store_item_designs_container_'+this.model.get('id')).append(buttonPreview)
 
 
   #--------------------------

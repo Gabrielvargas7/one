@@ -238,6 +238,11 @@ Mywebroom::Application.routes.draw do
          'items_designs#json_index_random_items_by_limit_by_offset', via: :get  , as:
          :items_designs_json_index_items_designs_by_item_id
 
+  match '/items_designs/json/index_items_designs_of_bundle_by_bundle_id/:bundle_id', to:
+         'items_designs#json_index_items_designs_of_bundle_by_bundle_id', via: :get  , as:
+         :items_designs_json_index_items_designs_of_bundle_by_bundle_id
+
+
 
 
   #--------------------------
