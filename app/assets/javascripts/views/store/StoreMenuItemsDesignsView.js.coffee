@@ -59,9 +59,16 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'new')
     $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
 
+    # move to the center
+    console.log($('[data-room_item_id='+itemId+']').offset())
+    item_position  = $('[data-room_item_id='+itemId+']').offset()
+    console.log(item_position.left)
+    console.log(item_position.top)
+    $('body').scrollLeft(item_position.left);
+
 
   #--------------------------
-  # change hover image on maouse over
+  # change hover image on mouse over
   #--------------------------
   hoverStoreItemDesigns: (event) ->
     event.preventDefault()
@@ -80,6 +87,9 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
 
 
 
+  #*******************
+  #**** Funtions - move to the center
+  #*******************
 
 
 

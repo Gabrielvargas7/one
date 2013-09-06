@@ -87,8 +87,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       i++
       if isItemDesignNew == "new"
 
-
-
         itemDesignIdCurrent = $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id_current")
         itemDesignIdNew = $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id")
         itemLocationId = $('[data-room_item_id='+itemId+']').attr("data-room_location_id")
