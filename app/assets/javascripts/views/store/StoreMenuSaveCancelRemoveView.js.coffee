@@ -86,14 +86,18 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
       i++
       if isItemDesignNew == "new"
-        $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'current')
+
+
 
         itemDesignIdCurrent = $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id_current")
-        itemDesignId = $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id")
+        itemDesignIdNew = $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id")
         itemLocationId = $('[data-room_item_id='+itemId+']').attr("data-room_location_id")
 
+        $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id_current",itemDesignIdNew)
+        $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'current')
+
         userId      = this.options.signInUserDataModel.get('user').id
-        updateItem = new Mywebroom.Models.UpdateUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({new_items_design_id:itemDesignId, _id: userId})
+        updateItem = new Mywebroom.Models.UpdateUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({new_items_design_id:itemDesignIdNew, _id: userId})
         updateItem.location_id    = itemLocationId
         updateItem.item_design_id = itemDesignIdCurrent
         updateItem.user_id        = userId
