@@ -47,7 +47,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     itemId= this.options.user_item_design.item_id
     imageNameHover = this.options.user_item_design.image_name_hover.url
     imageName = this.options.user_item_design.image_name.url
-    $('[data-item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+    $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
 
 
   #--------------------------

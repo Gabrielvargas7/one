@@ -84,7 +84,9 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
     bundleThemeCollection = this.getBundleThemeCollection(@model.get('theme_id'))
     bundleThemeModel = bundleThemeCollection.first()
     $('.current_background').attr("src",  bundleThemeModel.get('image_name').url);
-    $('.current_background').attr("data-theme_id",bundleThemeModel.get('id'));
+    $('.current_background').attr("data-room_theme_id",bundleThemeModel.get('id'));
+    $('.current_background').attr("data-room_theme",'new');
+
 
     # set the new items
     bundleItemsDesignsCollection = this.getBundleItemDesignsCollection(@model.get('id'))
@@ -94,9 +96,10 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
       imageName = entry.get('image_name').url
       imageNameHover = entry.get('image_name_hover').url
 
-      $('[data-item_id='+itemId+']').attr("src", imageName)
-      $('[data-item_id='+itemId+']').attr("data-item_design_id",itemDesignId)
-      $('[data-item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+      $('[data-room_item_id='+itemId+']').attr("src", imageName)
+      $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id",itemDesignId)
+      $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+      $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'new')
 
 
 
@@ -109,7 +112,6 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
     console.log("hover "+this.model.get('id'))
     button_preview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
     $('#store_bundle_set_container_'+this.model.get('id')).append(button_preview)
-
 
 
 

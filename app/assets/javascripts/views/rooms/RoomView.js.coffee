@@ -89,7 +89,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       this.setRoomTheme  @roomUserDataModel
       this.setRoomItemsDesigns(@roomUserDataModel, this.FLAGS_MAP['FLAG_PROFILE'])
       this.setRoomHeader( @roomUserDataModel, @signInUserDataModel, this.FLAGS_MAP)
-      this.setStoreMenuSaveCancelRemove()
+      this.setStoreMenuSaveCancelRemove(@signInUserDataModel)
 
     this
 
@@ -232,8 +232,8 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   # set store menu for save cancel and remove
   #--------------------------
-  setStoreMenuSaveCancelRemove: ->
-    storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
+  setStoreMenuSaveCancelRemove:(signInUserDataModel) ->
+    storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView({signInUserDataModel:signInUserDataModel})
     $('#xroom_store_menu_save_cancel_remove').append(storeMenuSaveCancelRemoveView.el)
     $('#xroom_store_menu_save_cancel_remove').hide()
     storeMenuSaveCancelRemoveView.render()
