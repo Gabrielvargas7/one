@@ -49,7 +49,12 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
     imageName = @model.get('image_name').url
     console.log(imageName)
     $('.current_background').attr("src", imageName);
-    $('.current_background').attr("data-theme_id", @model.get('id'));
+    $('.current_background').attr("data-room_theme_id", @model.get('id'));
+    $('.current_background').attr("data-room_theme", 'new');
+
+
+
+
 
 
   #--------------------------

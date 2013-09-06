@@ -74,9 +74,10 @@ class Mywebroom.Views.StoreMenuBundlesView  extends Backbone.View
       imageName = entry.get('image_name').url
       imageNameHover = entry.get('image_name_hover').url
 
-      $('[data-item_id='+itemId+']').attr("src", imageName)
-      $('[data-item_id='+itemId+']').attr("data-item_design_id",itemDesignId)
-      $('[data-item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+      $('[data-room_item_id='+itemId+']').attr("src", imageName)
+      $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id",itemDesignId)
+      $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+      $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'new')
 
 
 
