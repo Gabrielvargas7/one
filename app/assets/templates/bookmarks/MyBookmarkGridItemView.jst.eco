@@ -1,7 +1,7 @@
 
 <div class="bookmark_grid_item" data-cid="<%=@model.cid%>">
 
-	<div class="gridItemPicture my_bookmarks_grid_item" style="background-image:url(<%=@model.get('image_name').url%>)">
+	<div class="gridItemPicture my_bookmarks_grid_item" style="background-image:url(<%=@model.get('image_name_desc').url%>)">
 		<div class="bookmark_corner_icon_wrap">
 			<img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226218/bookmarks-corner-icon-trash.png" class="trash_icon pull-right">
 			<img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226244/bookmarks-corner-icon-trash-hover.png" class="trash_icon_hover pull-right">
