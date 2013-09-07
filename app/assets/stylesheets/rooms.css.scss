@@ -8,4 +8,29 @@
   left: 0;
   z-index: -1;
   ///*height: 100%;*/
+
 }
+
+.room_scroll_left{
+  position:fixed;
+  z-index:5;
+  top:45px;
+  left:0px;
+  width:50px;
+  height:750px;
+  background-color: rgba(0,0,0,0);
+}
+
+.room_scroll_left:hover{
+  background-color: rgba(0,0,0,.3);
+}
+
+
+.room_scroll_left img{
+  position:relative;
+  top:50%;
+  left:10px;
+  width: 22px;
+  height:24px;
+}
+

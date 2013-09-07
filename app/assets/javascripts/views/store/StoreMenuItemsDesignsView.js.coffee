@@ -35,7 +35,6 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
 
 
 
-
   #*******************
   #**** Funtions - events
   #*******************
