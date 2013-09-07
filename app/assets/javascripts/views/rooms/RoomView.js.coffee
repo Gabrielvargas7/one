@@ -90,6 +90,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       this.setRoomItemsDesigns(@roomUserDataModel, this.FLAGS_MAP['FLAG_PROFILE'])
       this.setRoomHeader( @roomUserDataModel, @signInUserDataModel, this.FLAGS_MAP)
       this.setStoreMenuSaveCancelRemove(@signInUserDataModel)
+      this.setRoomScrollLeft()
 
     this
 
@@ -273,5 +274,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       if profileFlag == Mywebroom.Views.RoomView.PUBLIC_ROOM
         userItemsDesignsView.undelegateEvents()
 
-
-
+  setRoomScrollLeft: ->
+    roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView()
+    $('#xroom_scroll_left').append(roomScrollLeftView.el)
+    roomScrollLeftView.render()

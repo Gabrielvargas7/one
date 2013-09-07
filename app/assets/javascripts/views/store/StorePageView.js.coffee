@@ -41,7 +41,6 @@ class Mywebroom.Views.StorePageView extends Backbone.View
 
 
 
-
   #*******************
   #**** Functions  - events
   #*******************
