@@ -9,6 +9,8 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	#*******************
 	initialize:->
 		@template=this.options.template if this.options.template
+		@collection.on('add', this.render, this);
+		@collection.on('reset', this.render, this);
 	#*******************
 	#**** Templeate
 	#*******************

@@ -14,25 +14,32 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
     #*******************
 	render:->
 		$(@el).html(@template(model:@model))
+	getUserId:->
+		userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
+		userSignInCollection.fetch async: false
+		userSignInCollection.models[0].get('id')
+	getMyBookmarksCollection:(userId)->
+		@myBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
+		@myBookmarksCollection.fetch
+		  async:false
+		  url:@myBookmarksCollection.url userId, @model.get('item_id')
+
 	addBookmark:(event)->
 		event.stopPropagation()
-		console.log "ADD BOOKMARKS PLZ"
-		postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:@model.get('item_id'), bookmarkId:@model.get('id'),userId:24})
-		postBookmarkModel.itemId=@model.get('item_id')
-		postBookmarkModel.bookmarkId=@model.get('id')
-		postBookmarkModel.userId=24
-		#save doesn't detect any changes from when we identified the model? but still, the url is not updated.why not? :(
-		#Trying to get POST to work. Trying to add a bookmark to database. success and error functions are not working.  
+		#To determine position, we need the user id. Get user ID:
+		userId = @getUserId() 
+		@getMyBookmarksCollection(userId) #Get mybookmarksCollection
+		#Finally call api to add the bookmark.
+		postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:@model.get('item_id'), bookmarkId:@model.get('id'),userId:userId})
+		#postBookmarkModel.url()
+		postBookmarkModel.set 'position',@myBookmarksCollection.models.length+1
 		
-
-		#postBookmarkModel.set 'bookmarkId', @model.get('bookmarkId')
-		#postBookmarkModel.set('url', postBookmarkModel.url(24,@model.get('id'),@model.get('item_id')))
-		postBookmarkModel.save
+		postBookmarkModel.save {},
 			success: (model, response)->
-				console.log('SUCCESS:')
+				console.log('postBookmarkModel SUCCESS:')
 				console.log(response)
 			error: (model, response)->
-		        console.log('FAIL:')
+		        console.log('postBookmarkModel FAIL:')
 		        console.log(response)
 
 
