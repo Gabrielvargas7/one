@@ -21,6 +21,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
     #*******************
 	
 	render:->
+		@$el.empty()
 		$(@el).append(@template())
 		 
 		#Split collection into rows of five
