@@ -11,6 +11,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		@template=this.options.template if this.options.template
 		@collection.on('add', this.render, this);
 		@collection.on('reset', this.render, this);
+		#@collection.on('deleteBookmark',@triggerDeleteBookmark,this)
 	#*******************
 	#**** Templeate
 	#*******************
@@ -59,6 +60,44 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		  	bookmarkItemView = new Mywebroom.Views.MyBookmarkGridItemView(model:bookmark)
 		  	@$('#my_bookmarks_row_item_'+rowNum).append(bookmarkItemView.el)
 		  	bookmarkItemView.render()
+		  	bookmarkItemView.on('deleteBookmark',@triggerDeleteBookmark,this)
 		  	#this.$('#my_bookmarks_row_item'+rowNum).append(bookmarkItemView.render().el)
 		  rowArray.length = 0
+	triggerDeleteBookmark:(model)->
+		console.log("I'm in MyBookmarksView. Trigger DeleteBookmark")
+		#trigger a collection remove? to rerender the view?
+		bookmarkId= model.get('id')
+		position= model.get('position')
+		userId= @getUserSignedInId()
+		#Can't DELETE this way yet. 
+		deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
+		deletedBookmark.set 'userId', userId
+		deletedBookmark.set 'bookmarkId', bookmarkId
+		deletedBookmark.set 'position', position
+		deletedBookmark.set 'url', deletedBookmark.url()
+		#deletedBookmark.save()
+		console.log(deletedBookmark)
+		# deletedBookmark.destroy(
+	 #      success: (model2, response)->
+	 #        console.log "Success"
+	 #      error: (model2, response)->
+	 #        console.log "Error"
+	 #      )
 
+		collectionModelToRemove= @collection.get(model.get('id'))
+		
+		@collection.remove(collectionModelToRemove)
+		#set URL in prep for delete
+		collectionModelToRemove.destroy
+			url:deletedBookmark.get('url')
+			success: (model2, response)->
+			  console.log "Success remove bookmark"
+			error: (model2, response)->
+			  console.log "Error"
+			  console.log response
+			
+
+	getUserSignedInId:->
+		userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
+		userSignInCollection.fetch async: false
+		userSignInCollection.models[0].get('id')

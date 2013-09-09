@@ -25,6 +25,8 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
 		  url:@myBookmarksCollection.url userId, @model.get('item_id')
 
 	addBookmark:(event)->
+		#Need to add bookmark to database. 
+		#And, need to create added dialog.  
 		event.stopPropagation()
 		#To determine position, we need the user id. Get user ID:
 		userId = @getUserId() 
@@ -41,5 +43,9 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
 			error: (model, response)->
 		        console.log('postBookmarkModel FAIL:')
 		        console.log(response)
+        #Create Added overlay
+		console.log(event)
+		$(event.target.parentElement.parentElement).removeAttr('background-image').html('').addClass('just_added')
+        #event.currentTarget.dataset.cid
 
 

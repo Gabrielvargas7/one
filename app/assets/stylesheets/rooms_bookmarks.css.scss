@@ -161,4 +161,14 @@ display:none;
 div:hover.bookmark_corner_icon_wrap img.trash_icon_hover, div:hover.bookmark_corner_icon_wrap img.add_bookmark_icon_hover{
 display:block;
 }
+
+div.just_added{
+	width:180px;
+	height:180px;
+	content:"Added!";
+	font:white;
+	background-color:rgba(0,0,0,.8)
+
+	 //background: -webkit-radial-gradient(top center, ellipse cover, rgba(0,0,0,.8) 0%,rgba(0,0,0,0.8) 100%), url('http://www.placekitten.com/180/180') repeat;
+}
 /*END My Bookmarks Grid Items*/
