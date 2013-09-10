@@ -1,6 +1,6 @@
 class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	#*******************
-	#**** Tag  (no tag = default el "div")
+	#**** Tag  / Class
 	#*******************
 	
 	className:"my_bookmarks_list_wrap"
@@ -13,7 +13,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		@collection.on('reset', this.render, this);
 		#@collection.on('deleteBookmark',@triggerDeleteBookmark,this)
 	#*******************
-	#**** Templeate
+	#**** Template
 	#*******************
 	template:JST['bookmarks/MyBookmarksTemplate']
 	
@@ -35,7 +35,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	#*******************
 	
 	#--------------------------
-	# append bookmark items to this view. called from render()
+	# append bookmark items to this view. called from render(). Views here listen for deleteBookmark event.
 	#--------------------------
 	appendItems:->
 		#Divide collection into rows of 5. 
@@ -63,40 +63,38 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		  	bookmarkItemView.on('deleteBookmark',@triggerDeleteBookmark,this)
 		  	#this.$('#my_bookmarks_row_item'+rowNum).append(bookmarkItemView.render().el)
 		  rowArray.length = 0
+
+	confirmDeleteBookmark:(model)->
+		#Show confirm box in center of this.el. 
+
+		answer= "Yes"
+		@triggerDeleteBookmark(model) if answer is "Yes"
+
+	#--------------------------
+	# Delete the bookmark from the server. Called when user selects delete a bookmark.
+	#--------------------------
 	triggerDeleteBookmark:(model)->
-		console.log("I'm in MyBookmarksView. Trigger DeleteBookmark")
-		#trigger a collection remove? to rerender the view?
+		deleteModelUrl= @getUrlForBookmarkRemoval(model)
+		#Delete the bookmark from the server. 
+		jQuery.ajax
+			'url':deleteModelUrl
+			'type':'DELETE'
+
+	#--------------------------
+	# Generate the URL to delete a bookmark from the server. Called from triggerDeleteBookmark
+	#--------------------------
+	getUrlForBookmarkRemoval:(model)->
+		#Get parameters needed for url
 		bookmarkId= model.get('id')
 		position= model.get('position')
 		userId= @getUserSignedInId()
-		#Can't DELETE this way yet. 
 		deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
-		deletedBookmark.set 'userId', userId
-		deletedBookmark.set 'bookmarkId', bookmarkId
-		deletedBookmark.set 'position', position
-		deletedBookmark.set 'url', deletedBookmark.url()
-		#deletedBookmark.save()
-		console.log(deletedBookmark)
-		# deletedBookmark.destroy(
-	 #      success: (model2, response)->
-	 #        console.log "Success"
-	 #      error: (model2, response)->
-	 #        console.log "Error"
-	 #      )
+		deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
+		deletedBookmark.get('url')
 
-		collectionModelToRemove= @collection.get(model.get('id'))
-		
-		@collection.remove(collectionModelToRemove)
-		#set URL in prep for delete
-		collectionModelToRemove.destroy
-			url:deletedBookmark.get('url')
-			success: (model2, response)->
-			  console.log "Success remove bookmark"
-			error: (model2, response)->
-			  console.log "Error"
-			  console.log response
-			
-
+	#--------------------------
+	# Get the current signed in user. Called from triggerDeleteBookmark
+	#--------------------------
 	getUserSignedInId:->
 		userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
 		userSignInCollection.fetch async: false

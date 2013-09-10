@@ -1,6 +1,7 @@
+#Used to Delete a user bookmark. Just make a DELETE call to the generated url. 
 class Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition extends Backbone.Model
 	@userId
 	@bookmarkId
 	@position
-	url:->
-		'/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/'+this.get('userId')+'/'+this.get('bookmarkId')+'/'+this.get('position')+'.json'
+	url:(userId,bookmarkId,position)->
+		'/users_bookmarks/json/destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position/'+userId+'/'+bookmarkId+'/'+position+'.json'
