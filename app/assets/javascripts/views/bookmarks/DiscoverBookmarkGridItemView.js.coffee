@@ -14,28 +14,18 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
     #*******************
 	render:->
 		$(@el).html(@template(model:@model))
-	getUserId:->
-		userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
-		userSignInCollection.fetch async: false
-		userSignInCollection.models[0].get('id')
-	getMyBookmarksCollection:(userId)->
-		@myBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
-		@myBookmarksCollection.fetch
-		  async:false
-		  url:@myBookmarksCollection.url userId, @model.get('item_id')
-
-	addBookmark:(event)->
-		#Need to add bookmark to database. 
-		#And, need to create added dialog.  
+	
+	#--------------------------
+	# Add bookmark to server. Append "Added" to the el. 
+	#--------------------------
+	addBookmark:(event)-> 
 		event.stopPropagation()
-		#To determine position, we need the user id. Get user ID:
+		#To determine position, we need the user id, and bookmarks collection.
 		userId = @getUserId() 
-		@getMyBookmarksCollection(userId) #Get mybookmarksCollection
+		@getMyBookmarksCollection(userId)
 		#Finally call api to add the bookmark.
 		postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:@model.get('item_id'), bookmarkId:@model.get('id'),userId:userId})
-		#postBookmarkModel.url()
-		postBookmarkModel.set 'position',@myBookmarksCollection.models.length+1
-		
+		postBookmarkModel.set 'position',@myBookmarksCollection.models.length+1		
 		postBookmarkModel.save {},
 			success: (model, response)->
 				console.log('postBookmarkModel SUCCESS:')
@@ -43,9 +33,25 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
 			error: (model, response)->
 		        console.log('postBookmarkModel FAIL:')
 		        console.log(response)
-        #Create Added overlay
-		console.log(event)
-		$(event.target.parentElement.parentElement).removeAttr('background-image').html('').addClass('just_added')
-        #event.currentTarget.dataset.cid
-
+       #Append Added Confirmation HTML 
+       #TODO- make added dialog disappear after 5-10 seconds. (Keep checkmark)
+		@$('.bookmark_grid_item').append("<div class='just_added'>
+			<p>Added!</p>
+			<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>
+			</div>")
+	#--------------------------
+	# Retrieve the signed in user id. Called from addBookmark
+	#--------------------------
+	getUserId:->
+		userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
+		userSignInCollection.fetch async: false
+		userSignInCollection.models[0].get('id')
+	#--------------------------
+	# Retrieve the MyBookmarks Collection. Called from addBookmark.  
+	#--------------------------
+	getMyBookmarksCollection:(userId)->
+		@myBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
+		@myBookmarksCollection.fetch
+		  async:false
+		  url:@myBookmarksCollection.url userId, @model.get('item_id')
 
