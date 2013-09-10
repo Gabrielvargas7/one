@@ -66,7 +66,6 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 
 	confirmDeleteBookmark:(model)->
 		#Show confirm box in center of this.el. 
-
 		answer= "Yes"
 		@triggerDeleteBookmark(model) if answer is "Yes"
 
@@ -74,23 +73,13 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	# Delete the bookmark from the server. Called when user selects delete a bookmark.
 	#--------------------------
 	triggerDeleteBookmark:(model)->
-		deleteModelUrl= @getUrlForBookmarkRemoval(model)
-		#Delete the bookmark from the server. 
-		jQuery.ajax
-			'url':deleteModelUrl
-			'type':'DELETE'
-
-	#--------------------------
-	# Generate the URL to delete a bookmark from the server. Called from triggerDeleteBookmark
-	#--------------------------
-	getUrlForBookmarkRemoval:(model)->
-		#Get parameters needed for url
 		bookmarkId= model.get('id')
 		position= model.get('position')
 		userId= @getUserSignedInId()
 		deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
 		deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
-		deletedBookmark.get('url')
+		#Delete the bookmark from the server. 
+		deletedBookmark.destroyUserBookmark()
 
 	#--------------------------
 	# Get the current signed in user. Called from triggerDeleteBookmark

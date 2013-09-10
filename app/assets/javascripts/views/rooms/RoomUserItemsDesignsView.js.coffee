@@ -67,7 +67,6 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #--------------------------
   hoverItem: (event) ->
     event.preventDefault()
-    console.log("hover")
 
 
 
@@ -76,7 +75,6 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #--------------------------
   hoverOffItem: (event) ->
     event.preventDefault()
-    console.log("hover Off")
 
 
 
