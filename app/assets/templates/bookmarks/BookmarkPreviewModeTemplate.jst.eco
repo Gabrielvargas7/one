@@ -5,6 +5,7 @@
 	width:1120px;
 	height:100%;
 	background-color: #404040;
+	z-index:2;
 }
 .preview_mode_wrap iframe{
 	width:100%;

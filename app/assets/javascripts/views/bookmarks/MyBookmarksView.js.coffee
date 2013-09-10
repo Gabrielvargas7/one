@@ -11,6 +11,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		@template=this.options.template if this.options.template
 		@collection.on('add', this.render, this);
 		@collection.on('reset', this.render, this);
+		@collection.on('remove',this.render,this)
 		#@collection.on('deleteBookmark',@triggerDeleteBookmark,this)
 	#*******************
 	#**** Template
@@ -24,9 +25,6 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	render:->
 		@$el.empty()
 		$(@el).append(@template())
-		 
-		#Split collection into rows of five
-		# and send them to <ul>. Then make <li> for each
 		@appendItems()
 		this
 	
@@ -64,13 +62,9 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		  	#this.$('#my_bookmarks_row_item'+rowNum).append(bookmarkItemView.render().el)
 		  rowArray.length = 0
 
-	confirmDeleteBookmark:(model)->
-		#Show confirm box in center of this.el. 
-		answer= "Yes"
-		@triggerDeleteBookmark(model) if answer is "Yes"
-
 	#--------------------------
-	# Delete the bookmark from the server. Called when user selects delete a bookmark.
+	# Delete the bookmark from the server. Called when user confirms delete a bookmark in modal.
+	#   
 	#--------------------------
 	triggerDeleteBookmark:(model)->
 		bookmarkId= model.get('id')
@@ -80,6 +74,8 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
 		#Delete the bookmark from the server. 
 		deletedBookmark.destroyUserBookmark()
+		#destroy the modal
+		$('#myModal').remove()
 
 	#--------------------------
 	# Get the current signed in user. Called from triggerDeleteBookmark
