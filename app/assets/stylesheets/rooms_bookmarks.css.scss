@@ -129,6 +129,7 @@ ul.bookmark_menu_list {
 	position:absolute;
 	bottom:0;
 	left:0;
+	z-index:1; /*To let this thumbnail icon still pop once its been added*/
 }
 .bookmark_grid_item_bottom img{
 	width:30px;
@@ -160,5 +161,29 @@ display:none;
 }
 div:hover.bookmark_corner_icon_wrap img.trash_icon_hover, div:hover.bookmark_corner_icon_wrap img.add_bookmark_icon_hover{
 display:block;
+}
+
+div.just_added{
+	position:absolute;
+	top:0;
+	width:180px;
+	height:180px;
+	font-color:white;
+	background-color:rgba(0,0,0,.8);
+	z-index:0; /*to let bookmark_grid_item_bottom pop when bookmark is added*/
+
+	 //background: -webkit-radial-gradient(top center, ellipse cover, rgba(0,0,0,.8) 0%,rgba(0,0,0,0.8) 100%), url('http://www.placekitten.com/180/180') repeat;
+}
+div.just_added p{
+	position:relative;
+	top:50%;
+	text-align:center;
+	color:white;
+	font-size:18px;
+}
+div.just_added img{
+	position:absolute;
+	top:0;
+	right:0;
 }
 /*END My Bookmarks Grid Items*/

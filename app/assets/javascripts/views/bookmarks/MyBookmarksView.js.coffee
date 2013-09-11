@@ -1,6 +1,6 @@
 class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	#*******************
-	#**** Tag  (no tag = default el "div")
+	#**** Tag  / Class
 	#*******************
 	
 	className:"my_bookmarks_list_wrap"
@@ -11,8 +11,10 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		@template=this.options.template if this.options.template
 		@collection.on('add', this.render, this);
 		@collection.on('reset', this.render, this);
+		@collection.on('remove',this.render,this)
+		#@collection.on('deleteBookmark',@triggerDeleteBookmark,this)
 	#*******************
-	#**** Templeate
+	#**** Template
 	#*******************
 	template:JST['bookmarks/MyBookmarksTemplate']
 	
@@ -23,9 +25,6 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	render:->
 		@$el.empty()
 		$(@el).append(@template())
-		 
-		#Split collection into rows of five
-		# and send them to <ul>. Then make <li> for each
 		@appendItems()
 		this
 	
@@ -34,7 +33,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 	#*******************
 	
 	#--------------------------
-	# append bookmark items to this view. called from render()
+	# append bookmark items to this view. called from render(). Views here listen for deleteBookmark event.
 	#--------------------------
 	appendItems:->
 		#Divide collection into rows of 5. 
@@ -59,6 +58,29 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		  	bookmarkItemView = new Mywebroom.Views.MyBookmarkGridItemView(model:bookmark)
 		  	@$('#my_bookmarks_row_item_'+rowNum).append(bookmarkItemView.el)
 		  	bookmarkItemView.render()
+		  	bookmarkItemView.on('deleteBookmark',@triggerDeleteBookmark,this)
 		  	#this.$('#my_bookmarks_row_item'+rowNum).append(bookmarkItemView.render().el)
 		  rowArray.length = 0
 
+	#--------------------------
+	# Delete the bookmark from the server. Called when user confirms delete a bookmark in modal.
+	#   
+	#--------------------------
+	triggerDeleteBookmark:(model)->
+		bookmarkId= model.get('id')
+		position= model.get('position')
+		userId= @getUserSignedInId()
+		deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
+		deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
+		#Delete the bookmark from the server. 
+		deletedBookmark.destroyUserBookmark()
+		#destroy the modal
+		$('#myModal').remove()
+
+	#--------------------------
+	# Get the current signed in user. Called from triggerDeleteBookmark
+	#--------------------------
+	getUserSignedInId:->
+		userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
+		userSignInCollection.fetch async: false
+		userSignInCollection.models[0].get('id')
