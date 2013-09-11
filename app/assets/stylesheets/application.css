@@ -20,6 +20,7 @@
 
 body {
     padding-top: 45px;
+    font-family:"Open Sans";
 }
 
 .center {
@@ -69,7 +70,9 @@ footer ul li {
     filter: FlipH;
     -ms-filter: "FlipH";
 }
-
+.hidden{
+    visibility:hidden;
+}
 /*Social Bar Style*/
 .fb_like_item img{
     width:50px;

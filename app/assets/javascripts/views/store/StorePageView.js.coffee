@@ -32,26 +32,28 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   render: ->
     console.log("storepage view: ")
     console.log(@model)
-
     $(@el).append(@template())
 
-
-    @storeMenuView = new Mywebroom.Views.StoreMenuView({model:@model})
-    $('.store_main_box_right').append(@storeMenuView.el)
-    @storeMenuView.render()
+    this.showStoreMenuSaveCancelRemoveView()
+    this.createStoreMenuView(@model)
 
     this
 
 
 
+  #*******************
+  #**** Functions  - events
+  #*******************
 
-  #*******************
-  #**** Functions  Initialize Room
-  #*******************
+  #--------------------------
+  # close store page
+  #--------------------------
   closeStorePageView: (event) ->
     event.preventDefault()
     console.log('add all the event to the header')
     this.options.roomHeaderView.delegateEvents() # add all header events
+
+    this.hideStoreMenuSaveCancelRemoveView()
 
     console.log('delete storePageView ')
     this.model.destroy() # Unbind reference to the model
@@ -60,7 +62,9 @@ class Mywebroom.Views.StorePageView extends Backbone.View
     delete this.$el      # Delete the jQuery wrapped object variable
     delete this.el       # Delete the variable reference to this node
 
-
+  #--------------------------
+  # collapse store page
+  #--------------------------
   collapseStorePageView: (event)->
     event.preventDefault()
     if $("#store_main_box").css("width") is "40px"
@@ -73,6 +77,30 @@ class Mywebroom.Views.StorePageView extends Backbone.View
        $('#store_collapse_button img').removeClass('flipimg')
 
 
+
+  #*******************
+  #**** Functions  -  Store Menu
+  #*******************
+
+  #--------------------------
+  # show store menu for save cancel and remove
+  #--------------------------
+  showStoreMenuSaveCancelRemoveView: ->
+    $('#xroom_store_menu_save_cancel_remove').show()
+
+  #--------------------------
+  # hide store menu for save cancel and remove
+  #--------------------------
+  hideStoreMenuSaveCancelRemoveView: ->
+    $('#xroom_store_menu_save_cancel_remove').hide()
+
+  #--------------------------
+  # create store menu for Theme, items, bundles
+  #--------------------------
+  createStoreMenuView:(model) ->
+    storeMenuView = new Mywebroom.Views.StoreMenuView({model:model})
+    $('.store_main_box_right').append(storeMenuView.el)
+    storeMenuView.render()
 
 
 

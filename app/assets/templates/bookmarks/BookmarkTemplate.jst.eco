@@ -1,5 +1,0 @@
-<div class="bookmark_view">
-<h1>BOOKMARKS VIEW</h1>
-<p>About this <%=@user_item_design.items_name%></p>
-<p><%=@user_item_design.description%></p>
-</div>

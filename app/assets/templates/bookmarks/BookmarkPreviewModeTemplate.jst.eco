@@ -1,0 +1,36 @@
+<style>
+.preview_mode_wrap{
+	position:absolute;
+	left:250px;
+	width:1120px;
+	height:100%;
+	background-color: #404040;
+	z-index:2;
+}
+.preview_mode_wrap iframe{
+	width:100%;
+	height:100%;
+}
+.preview_mode_title{
+	color:#ffffff;
+	height:35px;
+	padding:.5em 0 .7em 1em;
+	font-size:18px;
+}
+.preview_mode_title p{
+	margin:1em;
+}
+.preview_mode_title .close_button{
+	position:absolute;
+	right:20px;
+	top:10px;
+}
+
+</style>
+
+	<div class="preview_mode_title">
+		<p><%=@model.get('title')%></p>
+		<div class="close_button"><a href="#">X</a></div>
+	</div>
+<iframe src="<%=@model.get('bookmark_url')%>">
+</iframe>

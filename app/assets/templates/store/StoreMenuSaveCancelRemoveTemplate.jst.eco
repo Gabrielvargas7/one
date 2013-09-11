@@ -1,0 +1,26 @@
+<!-- ************************ -->
+<!-- Room Store Menu Save, Cancel and Remove -->
+<!-- ************************ -->
+
+    <div class="store_menu_save_cancel_remove navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <!-- Menu  -->
+            <ul class="nav pull-left">
+                <li>
+                    <a id="xroom_store_save">
+                        Save Design
+                    </a>
+                </li>
+                <li>
+                    <a id="xroom_store_cancel">
+                        Cancel Changes
+
+                    </a>
+                </li>
+                <li><a id="xroom_store_remove" >
+                        Remove Object
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>

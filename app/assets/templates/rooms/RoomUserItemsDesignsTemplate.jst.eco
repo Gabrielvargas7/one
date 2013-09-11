@@ -5,7 +5,16 @@ style="position:absolute;
       left:<%=@user_item_design.x%>px;
       top:<%=@user_item_design.y%>px;
       z-index:<%=@user_item_design.z%>;">
-    <img class="room_user_item_design" src="<%=@user_item_design.image_name.url%>" data-id="<%=@user_item_design.id%>">
+
+    <img class="room_user_item_design"
+        src="<%=@user_item_design.image_name.url%>"
+        data-room_item_design_id="<%=@user_item_design.id%>"
+        data-room_item_id="<%=@user_item_design.item_id%>"
+        data-room_section_id="<%=@user_item_design.section_id%>"
+        data-room_location_id="<%=@user_item_design.location_id%>"
+        data-room_item_design_id_current="<%=@user_item_design.id%>"
+        data-room_item_design="current"
+    >
 
 </div>
 

@@ -1,7 +1,7 @@
 #store_main_box {
   position:fixed;
   z-index:4;
-  top:50px;
+  top:45px;
   right:0px;
   width:700px;
   height:750px;
@@ -50,8 +50,6 @@
 
 .tab-content li {
   display: table-cell;
-  //width: 211px;
-  //height: 200px;
 
 }
 
@@ -59,13 +57,14 @@
   margin: 0px;
 }
 
-.store_item {
-  width:180px;
-  height:180px;
-  padding: 0px;
+.store_image_cell {
+  width: auto;
+  max-width: 180px;
+  height: auto;
+  max-height: 180px;
 }
 
-.store_item_container{
+.store_container{
   margin: 8px;
   border: 1px solid;
   border-color: #ebebeb;
@@ -73,7 +72,16 @@
   font-size: 11px;
   width: 180px;
   height: 200px;
+}
+
+#button_preview {
+  position:relative;
+  top: -100px;
+  left:0px;
+}
 
 
-
+.store_menu_save_cancel_remove{
+  top: 45px;
+  z-index: 3;
 }

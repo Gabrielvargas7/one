@@ -1,0 +1,536 @@
+//# GET Get all items_designs of bundle by bundle_id
+//# /items_designs/json/index_items_designs_of_bundle_by_bundle_id/:bundle_id'
+//# /items_designs/json/index_items_designs_of_bundle_by_bundle_id/1.json
+//# Return head
+//# success    ->  head  200 OK
+
+[
+    {
+        "brand": "brand",
+        "category": "category",
+        "color": "color",
+        "description": "This elegant design has a distinct color and it shows that your bed is an important piece of furniture for you. Its organized, spacious, and adds color to your room design. ",
+        "id": 1,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822857/68849-items_design-image_name-peach-queen-1.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822858/12123-items_design-image_name_hover-peach-queen-1-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822859/70275-items_design-image_name_selection-peach-queen-1-300x300.jpg"
+        },
+        "item_id": 1,
+        "like": 121,
+        "make": "make",
+        "name": "Peach Queen",
+        "special_name": "special name",
+        "style": "style"
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "A traditional Bird cage with a ceramic base. Simple but fashionable looking. For those who like to buy simple but look good. ",
+        "id": 2,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822860/61074-items_design-image_name-ceramic-2.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822861/66974-items_design-image_name_hover-ceramic-2-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822862/56391-items_design-image_name_selection-ceramic-2-300x300.jpg"
+        },
+        "item_id": 2,
+        "like": 0,
+        "make": null,
+        "name": "Ceramic",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "This eleven squared book shelf is a personal favorite. The orange tone adds style and funky-ness to your room. On top of that, it comes with a great variety of colored books, boxes and magazines inside. Great choice if you don't want to end up with a boring room setup. ",
+        "id": 3,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822863/63842-items_design-image_name-eleven-oranges-3.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822864/84262-items_design-image_name_hover-eleven-oranges-3-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822865/41766-items_design-image_name_selection-eleven-oranges-3-300x300.jpg"
+        },
+        "item_id": 3,
+        "like": 0,
+        "make": null,
+        "name": "Eleven Oranges",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Boss Chair! Any visitor will automatically know that you are serious about your craft. You like working comfortably because once your start, there is no one taking you \"off the zone\". And its also fun to spin around when bored. ",
+        "id": 4,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822866/30758-items_design-image_name-executive-4.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822867/33326-items_design-image_name_hover-executive-4-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822868/20518-items_design-image_name_selection-executive-4-300x300.jpg"
+        },
+        "item_id": 4,
+        "like": 0,
+        "make": null,
+        "name": "Executive",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Colored Version of my Wall street journal, cup of coffee, and some pancakes! Thats how a morning should start. ",
+        "id": 5,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822869/82334-items_design-image_name-traditional-5.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822870/53975-items_design-image_name_hover-traditional-5-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822871/79403-items_design-image_name_selection-traditional-5-300x300.jpg"
+        },
+        "item_id": 5,
+        "like": 0,
+        "make": null,
+        "name": "Traditional",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Detailed map of the world. Updated countries, greenlands and desserts. When planning for your next trip, consult your map! You never know what crazy idea it might suggest. Fiji?",
+        "id": 6,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822872/13241-items_design-image_name-modern-6.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822873/30521-items_design-image_name_hover-modern-6-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822875/34569-items_design-image_name_selection-modern-6-300x300.jpg"
+        },
+        "item_id": 6,
+        "like": 0,
+        "make": null,
+        "name": "Modern",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Classic dark T.V. stand. Looks elegant and helps you keep your DVD's (if you still have any), video games, cable box and more. Dark wood is always a good choice. ",
+        "id": 7,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822876/36884-items_design-image_name-dark-chocolate-7.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822877/53743-items_design-image_name_hover-dark-chocolate-7-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822878/3782-items_design-image_name_selection-dark-chocolate-7-300x300.jpg"
+        },
+        "item_id": 7,
+        "like": 0,
+        "make": null,
+        "name": "Dark Chocolate",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Tall furniture with a pale wood color. Really nice and simple piece that matches well with mostly anything. It contains 6 drawers for all of us who are a little too organized. ",
+        "id": 8,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822879/77937-items_design-image_name-light-wood-8.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822880/90537-items_design-image_name_hover-light-wood-8-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822881/43916-items_design-image_name_selection-light-wood-8-300x300.jpg"
+        },
+        "item_id": 8,
+        "like": 0,
+        "make": null,
+        "name": "Light Wood",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Prounounced with a french accent, this bag is a representation of a highly trendy shopping bag from one of the most famous boutiques in France. Its bright orange tone can not be mistaken when your walking down Ave des Champs-Elysées. ",
+        "id": 9,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822882/7929-items_design-image_name-le-bag-orange-9.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822883/71524-items_design-image_name_hover-le-bag-orange-9-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822884/59867-items_design-image_name_selection-le-bag-orange-9-300x300.jpg"
+        },
+        "item_id": 9,
+        "like": 0,
+        "make": null,
+        "name": "Le Bag Orange",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Nice, but heavy silver frame. It gives a nice impression to visitors as they walk in. Who doesn't like shinny things?",
+        "id": 10,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822886/44294-items_design-image_name-silver-frame-10.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822887/36859-items_design-image_name_hover-silver-frame-10-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822888/93440-items_design-image_name_selection-silver-frame-10-300x300.jpg"
+        },
+        "item_id": 10,
+        "like": 0,
+        "make": null,
+        "name": "Silver Frame",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "For all of us who have had to construct our own pieces of furniture, here's a tribute. Two flat pieces of wood, a couple of screws and whala! ",
+        "id": 11,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822889/3332-items_design-image_name-carpenter-11.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822890/19772-items_design-image_name_hover-carpenter-11-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822891/95516-items_design-image_name_selection-carpenter-11-300x300.jpg"
+        },
+        "item_id": 11,
+        "like": 0,
+        "make": null,
+        "name": "Carpenter",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "This shinny black speakers look like a piece of equipment that the men in black would have in their house. Really technologic, elegant, attractive and stylish! Pump up the volume and let this speaker blast. ",
+        "id": 12,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822892/48217-items_design-image_name-black-panther-12.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822893/96830-items_design-image_name_hover-black-panther-12-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822894/21547-items_design-image_name_selection-black-panther-12-300x300.jpg"
+        },
+        "item_id": 12,
+        "like": 0,
+        "make": null,
+        "name": "Black Panther",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "A representation of those TV's in the old days that could easily be mistaken for microwaves. The screen to the left and two circular knobs on the right. Its a traditional tv set - and we upgraded it from displaying black and white - to color. ",
+        "id": 13,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822895/91036-items_design-image_name-microwavable-13.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822896/5894-items_design-image_name_hover-microwavable-13-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822897/56399-items_design-image_name_selection-microwavable-13-300x300.jpg"
+        },
+        "item_id": 13,
+        "like": 0,
+        "make": null,
+        "name": "Microwavable ",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Spacious, firm desk that creates an environment of concentration. Smooth surface for organizing documents, placing your computer and doing some work!",
+        "id": 14,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822898/41740-items_design-image_name-good-wood-14.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822899/73214-items_design-image_name_hover-good-wood-14-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822900/87568-items_design-image_name_selection-good-wood-14-300x300.jpg"
+        },
+        "item_id": 14,
+        "like": 0,
+        "make": null,
+        "name": "Good Wood",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Simple, elegant night stand. Perfect place to store your journal and place your alarm clock. Its natural wood color attracts good vibes and helps balance the energy of the rooms. ",
+        "id": 15,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822901/57063-items_design-image_name-brown-stand-15.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822901/48317-items_design-image_name_hover-brown-stand-15-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822902/24430-items_design-image_name_selection-brown-stand-15-300x300.jpg"
+        },
+        "item_id": 15,
+        "like": 0,
+        "make": null,
+        "name": "Brown Stand",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Just a simple orange notebook.",
+        "id": 16,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822903/74254-items_design-image_name-carrot-book-16.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822904/77542-items_design-image_name_hover-carrot-book-16-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822905/10188-items_design-image_name_selection-carrot-book-16-300x300.jpg"
+        },
+        "item_id": 16,
+        "like": 0,
+        "make": null,
+        "name": "Carrot Book",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Inspired by one of our guy's first laptop, this design goes nicely with any type of room.",
+        "id": 17,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822906/76141-items_design-image_name-portshiba-17.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822907/14566-items_design-image_name_hover-portshiba-17-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822908/48401-items_design-image_name_selection-portshiba-17-300x300.jpg"
+        },
+        "item_id": 17,
+        "like": 0,
+        "make": null,
+        "name": "Portshiba",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Your classic black home phone! Even though some of us are not really familiar with using a home phone anymore, this set looks elegant and nice on your desk. ",
+        "id": 18,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822909/66737-items_design-image_name-phonorola-18.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822911/89163-items_design-image_name_hover-phonorola-18-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822912/107-items_design-image_name_selection-phonorola-18-300x300.jpg"
+        },
+        "item_id": 18,
+        "like": 0,
+        "make": null,
+        "name": "Phonorola",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Cute looking lamp!",
+        "id": 19,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822913/26381-items_design-image_name-simple-dimple-19.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822914/60826-items_design-image_name_hover-simple-dimple-19-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822915/51393-items_design-image_name_selection-simple-dimple-19-300x300.jpg"
+        },
+        "item_id": 19,
+        "like": 0,
+        "make": null,
+        "name": "Simple Dimple",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "A nice looking pin board that keeps us organized and adds decoration to our work station. ",
+        "id": 20,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822916/40138-items_design-image_name-pin-pin-20.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822917/93298-items_design-image_name_hover-pin-pin-20-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822918/30152-items_design-image_name_selection-pin-pin-20-300x300.jpg"
+        },
+        "item_id": 20,
+        "like": 0,
+        "make": null,
+        "name": "Pin Pin",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Feel the power of the green fairy!",
+        "id": 21,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822918/32787-items_design-image_name-absinthe-21.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822919/88546-items_design-image_name_hover-absinthe-21-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822920/40167-items_design-image_name_selection-absinthe-21-300x300.jpg"
+        },
+        "item_id": 21,
+        "like": 0,
+        "make": null,
+        "name": "Absinthe",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "La Chaaaampions! Show your passion for soccer with the Champions League soccer ball. ",
+        "id": 22,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822921/19182-items_design-image_name-soccer-22.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822922/26215-items_design-image_name_hover-soccer-22-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822923/20742-items_design-image_name_selection-soccer-22-300x300.jpg"
+        },
+        "item_id": 22,
+        "like": 0,
+        "make": null,
+        "name": "Soccer",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "This curtain will protect you from those staring through the window.",
+        "id": 133,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823260/32768-items_design-image_name-shadow-133.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823261/77738-items_design-image_name_hover-shadow-133-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823262/18364-items_design-image_name_selection-shadow-133-300x300.jpg"
+        },
+        "item_id": 23,
+        "like": 0,
+        "make": null,
+        "name": "Shadow",
+        "special_name": null,
+        "style": null
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "store your documents and files!",
+        "id": 185,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823431/75443-items_design-image_name-box-185.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823432/59847-items_design-image_name_hover-box-185-h.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823433/23491-items_design-image_name_selection-box-185-300x300.jpg"
+        },
+        "item_id": 24,
+        "like": 0,
+        "make": null,
+        "name": "Box",
+        "special_name": null,
+        "style": null
+    }
+]

@@ -1,11 +1,36 @@
 // Place all the styles related to the Rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#current_background{
+.current_background{
   max-width:none;
   position: absolute;
   top:0;
   left: 0;
   z-index: -1;
   ///*height: 100%;*/
+
 }
+
+.room_scroll_left{
+  position:fixed;
+  z-index:5;
+  top:45px;
+  left:0px;
+  width:50px;
+  height:750px;
+  background-color: rgba(0,0,0,0);
+}
+
+.room_scroll_left:hover{
+  background-color: rgba(0,0,0,.3);
+}
+
+
+.room_scroll_left img{
+  position:relative;
+  top:50%;
+  left:10px;
+  width: 22px;
+  height:24px;
+}
+

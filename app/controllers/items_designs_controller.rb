@@ -153,6 +153,47 @@ class ItemsDesignsController < ApplicationController
     end
   end
 
+  # GET Get all items_designs of bundle by bundle_id
+  # /items_designs/json/index_items_designs_of_bundle_by_bundle_id/:bundle_id'
+  # /items_designs/json/index_items_designs_of_bundle_by_bundle_id/1.json
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_items_designs_of_bundle_by_bundle_id
+
+    respond_to do |format|
+
+      if Bundle.exists?(id:params[:bundle_id])
+
+        @bundles_items_designs = ItemsDesign.
+                    select('items_designs.id ,
+                            items_designs.name,
+                            items_designs.item_id,
+                            items_designs.description,
+                            items_designs.category,
+                            items_designs.style,
+                            items_designs.brand,
+                            items_designs.color,
+                            items_designs.make,
+                            items_designs.special_name,
+                            items_designs.like,
+                            items_designs.image_name,
+                            items_designs.image_name_hover,
+                            items_designs.image_name_selection').
+                    joins(:bundles_items_designs).
+                    where('bundles_items_designs.bundle_id=?',params[:bundle_id]).
+                    order('items_designs.item_id')
+
+        format.json { render json: @bundles_items_designs }
+      else
+        format.json { render json: 'not found bundle id' , status: :not_found }
+      end
+
+
+    end
+  end
+
+
 
 
 end
