@@ -2,8 +2,6 @@ class Mywebroom.Routers.Rooms extends Backbone.Router
 
   routes:
     '': 'routes_room'
-#    'xroom': 'routesRoom'
-
 
   initialize: ->
 

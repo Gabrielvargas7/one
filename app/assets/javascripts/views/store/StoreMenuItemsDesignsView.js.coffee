@@ -29,16 +29,13 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     #**** Render
     #*******************
   render: ->
-#    console.log("Store Menu Items View "+@model.get('id'))
     $(@el).append(@template(item_designs:@model))
     this
-
 
 
   #*******************
   #**** Funtions - events
   #*******************
-
 
   #--------------------------
   # do something on click
@@ -58,13 +55,7 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'new')
     $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
 
-    # move to the center
-    console.log($('[data-room_item_id='+itemId+']').offset())
-    item_position  = $('[data-room_item_id='+itemId+']').offset()
-    console.log(item_position.left)
-    console.log(item_position.top)
-    $('body').scrollLeft(item_position.left);
-
+    this.setItemToCenter(itemId)
 
   #--------------------------
   # change hover image on mouse over
@@ -85,10 +76,18 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     $('#button_preview').remove()
 
 
-
   #*******************
-  #**** Funtions - move to the center
+  #**** Funtions -
   #*******************
 
+  #--------------------------
+  # do center the element to room that is on the center
+  #--------------------------
+  setItemToCenter:(itemId) ->
 
+    # move to the center
+    console.log("center the element with the center room")
+    console.log($("[data-current_screen_position='1']").find('[data-room_item_id='+itemId+']').offset())
+    item_position  = $("[data-current_screen_position='1']").find('[data-room_item_id='+itemId+']').offset()
+    $('body').scrollLeft(item_position.left-300);
 

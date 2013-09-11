@@ -33,8 +33,21 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     $(@el).append(@template(user_item_design:this.options.user_item_design))
     this.setHoverOffOnImages()
 
-    this
+    y = this.options.user_item_design.y.toString()+'px'
+    x = this.options.user_item_design.x.toString()+'px'
+    z = this.options.user_item_design.z.toString()
+    width = this.options.user_item_design.width.toString()+'px'
+    id_room_item_designs_container =".room_item_designs_container_"+this.options.user_item_design.item_id.toString()
 
+    $(id_room_item_designs_container).css({
+      'position': 'absolute',
+      'width':width,
+      'left':x,
+      'top':y,
+      'z-index':z
+    })
+
+    this
 
   #*******************
   #**** Funtions
@@ -80,6 +93,11 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
 
 
 
-
+#
+#    style="position:absolute;
+#          width:<%=@user_item_design.width%>px;
+#          left:<%=@user_item_design.x%>px;
+#          top:<%=@user_item_design.y%>px;
+#          z-index:<%=@user_item_design.z%>;">
 
 

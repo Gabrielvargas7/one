@@ -43,15 +43,12 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #*******************
   render: ->
 
-
-
-
     #*******************    #
     #    image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
     #    console.log(image)
     #*******************
 
-#    this.ev = _.extend({}, Backbone.Events)
+
     this.FLAGS_MAP = {};
 
     this.FLAGS_MAP['FLAG_PROFILE'] = Mywebroom.Views.RoomView.PUBLIC_ROOM
@@ -86,19 +83,24 @@ class Mywebroom.Views.RoomView extends Backbone.View
       console.log("@roomUserData: ")
       console.log(@roomUserDataModel)
 
-      this.setRoomTheme  @roomUserDataModel
+      # this.setRoomTheme  @roomUserDataModel
       this.setRoomItemsDesigns(@roomUserDataModel, this.FLAGS_MAP['FLAG_PROFILE'])
       this.setRoomHeader( @roomUserDataModel, @signInUserDataModel, this.FLAGS_MAP)
       this.setStoreMenuSaveCancelRemove(@signInUserDataModel)
-      this.setRoomScrollLeft()
+      this.setRoomScrolls(@roomUserDataModel)
+
+
+      # center the windows  and remove the scroll
+      $('body').scrollLeft(2300);
+      $('body').css('overflow-x', 'hidden');
 
     this
+
 
 
   #*******************
   #**** Functions  Initialize Room
   #*******************
-
 
   #--------------------------
   # set Sign in global variable
@@ -138,7 +140,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
         success: (response)->
           console.log("@myfriend: ")
           console.log(response)
-
 
       if myfriend.length == 0
         flagProfile = Mywebroom.Views.RoomView.PUBLIC_ROOM
@@ -249,32 +250,51 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
 
   #--------------------------
-  # set theme on id = #xroom
+  # set arrow for left and right scroll
   #--------------------------
-  setRoomTheme: (roomUserDataModel) ->
-    userThemeList = roomUserDataModel.get('user_theme')
-    userTheme = userThemeList[0]
-    $(@el).append(@template(user_theme:userTheme))
+
+  setRoomScrolls: (roomUserDataModel)->
+    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
+    roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView({user_items_designs:userItemsDesignsList})
+    $('#xroom_scroll_left').append(roomScrollLeftView.el)
+    roomScrollLeftView.render()
+
+    roomScrollRightView = new Mywebroom.Views.RoomScrollRightView({user_items_designs:userItemsDesignsList})
+    $('#xroom_scroll_right').append(roomScrollRightView.el)
+    roomScrollRightView.render()
 
 
+
   #--------------------------
-  # set items designs on id = #xroom_items
+  # set items designs and themes
   #--------------------------
   setRoomItemsDesigns: (roomUserDataModel,profileFlag) ->
+    this.setRoom('#xroom_items_0',roomUserDataModel,profileFlag)
+    this.setRoom('#xroom_items_1',roomUserDataModel,profileFlag)
+    this.setRoom('#xroom_items_2',roomUserDataModel,profileFlag)
+
+
+  #--------------------------
+  # set room on the rooms.html
+  #--------------------------
+  setRoom: (xroom_item_num,roomUserDataModel,profileFlag) ->
+
+    console.log(xroom_item_num,roomUserDataModel,profileFlag)
+
     userItemsDesignsList = roomUserDataModel.get('user_items_designs')
     user = roomUserDataModel.get('user')
+
+    userThemeList = roomUserDataModel.get('user_theme')
+    userTheme = userThemeList[0]
+    $(xroom_item_num).append(@template(user_theme:userTheme))
+
     length = userItemsDesignsList.length
     i = 0
     while i < length
-      #console.log(userItemsDesignsList[i].id)
       userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i],user:user})
-      $('#xroom_items').append(userItemsDesignsView.el)
+      $(xroom_item_num).append(userItemsDesignsView.el)
       userItemsDesignsView.render()
       i++
       if profileFlag == Mywebroom.Views.RoomView.PUBLIC_ROOM
         userItemsDesignsView.undelegateEvents()
 
-  setRoomScrollLeft: ->
-    roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView()
-    $('#xroom_scroll_left').append(roomScrollLeftView.el)
-    roomScrollLeftView.render()
