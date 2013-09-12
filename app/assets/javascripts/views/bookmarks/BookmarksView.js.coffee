@@ -53,7 +53,6 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   #*******************
   render: ->
     console.log("bookmark view: "+this.options.user_item_design)
-    console.log(this.options.user_item_design)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user.id)
     $(@el).append(@template(user_item_design:this.options.user_item_design, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
@@ -91,7 +90,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     #@myBookmarksView.remove() if @myBookmarksView
     #@myBookmarksView.remove()
-    $(@bookmarksDiscoverView.el).hide()
+    $(@bookmarksDiscoverView.el).hide() if @bookmarksDiscoverView
     #@myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     @collection.fetch
       reset:true
@@ -126,13 +125,16 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #open in iframe
     bookmarkClicked=@discoverCollection.get(event.currentTarget.dataset.cid)
     urlToOpen= bookmarkClicked.get('bookmark_url')
-    previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
-    #Edit sidebar menu 
-    #hide categories
-    $(@el).append(previewModeView.render().el)
-    previewModeView.once('closedView',@closePreviewMode())
-    console.log("preview site!"+urlToOpen)
-    console.log(bookmarkClicked)
+    if bookmarkClicked.get('i_frame') is 'y'
+      previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
+      #Edit sidebar menu 
+      #hide categories
+      $(@el).append(previewModeView.render().el)
+      previewModeView.once('closedView',@closePreviewMode())
+      console.log("preview site!"+urlToOpen)
+      console.log(bookmarkClicked)
+    else
+      window.open urlToOpen,"_blank" 
   closePreviewMode:->
     console.log 'close previewmode.'
 

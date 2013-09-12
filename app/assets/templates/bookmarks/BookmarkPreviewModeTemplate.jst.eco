@@ -1,6 +1,6 @@
 <style>
 .preview_mode_wrap{
-	position:absolute;
+	position:fixed;
 	left:250px;
 	width:1120px;
 	height:100%;
