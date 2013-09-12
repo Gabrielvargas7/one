@@ -82,7 +82,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #@fetchDiscoverBookmarks()
     @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.user_item_design)
     $(@el).append(@bookmarksDiscoverView.render().el)
-
+    that = this
+    $('#add_your_own_form').submit({that},@addCustomBookmark)
   renderMyBookmarks:->
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
@@ -141,5 +142,38 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #hoveredEl
     console.log "You want to delete an item"
 
+  addCustomBookmark:(event)->
+    event.preventDefault()
+    console.log "I'd like to add a custom bookmark"
+    customURL= $.trim $("input[name=url_input]").val()
+    title = $.trim $("input[name=bookmark_title]").val()
+    #The regex code is copied from the old Rooms code. 
+    customURL = "http://" + customURL  unless customURL.match(/^https?:\/\//) or customURL.match(/^spdy:\/\//)
+    #http://stackoverflow.com/questions/833469/regular-expression-for-url
+    url_match = customURL.match(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/)
+    title_match = title.length > 0 and title.length < 25
+    if url_match and title_match
+      #Add custom URL
+      src = "http://img.bitpixels.com/getthumbnail?code=67736&size=200&url=" + customURL
+      customBookmark = new Mywebroom.Models.CreateCustomUserBookmarkByUserId()
+      customBookmark.set
+        'userId':event.data.that.options.user.id
+        'bookmark_url':customURL
+        'title':title
+        'image_name':src
+        'item_id': event.data.that.options.user_item_design.item_id
+        'position':parseInt(event.data.that.collection.last().get('position'))+1
+        'bookmarks_category_id':event.data.that.discoverCategoriesCollection.first().get('id')
+      console.log customBookmark
+      customBookmark.save {},
+        success: (model, response)->
+          console.log('post CUSTOM BookmarkModel SUCCESS:')
+          console.log(response)
+        error: (model, response)->
+              console.log('post CUSTOM BookmarkModel FAIL:')
+              console.log(response)
+    else
+      #Show an error to the user. 
+      console.log "There was an error in your url or the title was too long."
   closeView:->
     this.remove()
