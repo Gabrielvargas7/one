@@ -55,7 +55,7 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'new')
     $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
 
-    this.setItemToCenter(itemId)
+#    this.setItemToCenter(itemId)
 
   #--------------------------
   # change hover image on mouse over
@@ -83,11 +83,11 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
   #--------------------------
   # do center the element to room that is on the center
   #--------------------------
-  setItemToCenter:(itemId) ->
 
-    # move to the center
-    console.log("center the element with the center room")
-    console.log($("[data-current_screen_position='1']").find('[data-room_item_id='+itemId+']').offset())
-    item_position  = $("[data-current_screen_position='1']").find('[data-room_item_id='+itemId+']').offset()
-    $('body').scrollLeft(item_position.left-300);
+#  setItemToCenter:(itemId) ->
+#    # move to the center
+#    console.log("center the element with the center room")
+#    console.log($("[data-current_screen_position='1']").find('[data-room_item_id='+itemId+']').offset())
+#    item_position  = $("[data-current_screen_position='1']").find('[data-room_item_id='+itemId+']').offset()
+#    $('body').scrollLeft(item_position.left-300);
 

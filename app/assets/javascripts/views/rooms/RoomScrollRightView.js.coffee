@@ -53,6 +53,7 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
     event.preventDefault()
     console.log("hover Off")
     window.clearInterval(@loop_interval)
+    console.log($(window).scrollLeft())
 
 
 

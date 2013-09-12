@@ -531,6 +531,15 @@ Mywebroom::Application.routes.draw do
           :notifications_json_index_notification_by_limit_by_offset
 
 
+  #**************************
+  # start location Contract
+  #**************************
+
+  match '/locations/json/show_location_by_location_id/:location_id', to:
+         'locations#json_show_location_by_location_id', via: :get, as:
+         :locations_json_show_location_by_location_id
+
+
 
 
 

@@ -103,4 +103,15 @@ class LocationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+    # GET /locations/json/show_location_by_location_id/1.json
+  def json_show_location_by_location_id
+      @location = Location.find(params[:location_id])
+
+      respond_to do |format|
+        format.json { render json: @location }
+      end
+  end
 end

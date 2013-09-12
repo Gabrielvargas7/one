@@ -56,6 +56,8 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     event.preventDefault()
     console.log("hover Off")
     window.clearInterval(@loop_interval)
+    console.log($(window).scrollLeft())
+
 
   #*******************
   #**** Functions  - moving to the left

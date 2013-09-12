@@ -4,8 +4,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #**** Tag  (no tag = default el "div")
   #*******************
 
-  el: '#xroom'
-
 
   #*******************
   #**** Templeate
@@ -91,7 +89,8 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
 
       # center the windows  and remove the scroll
-      $('body').scrollLeft(2300);
+#      $('body').scrollLeft(2300);
+      $(window).scrollLeft(2300)
       $('body').css('overflow-x', 'hidden');
 
     this
@@ -99,7 +98,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
 
   #*******************
-  #**** Functions  Initialize Room
+  #**** Functions  set Variables
   #*******************
 
   #--------------------------
@@ -114,8 +113,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
     console.log("flag sign in user: "+flagSignIn)
     return flagSignIn
-
-
 
 
   #--------------------------

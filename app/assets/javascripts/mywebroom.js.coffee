@@ -4,7 +4,7 @@ window.Mywebroom =
   Views: {}
   Routers: {}
   initialize: ->
-        new Mywebroom.Routers.Rooms()
+        new Mywebroom.Routers.RoomsRouter()
         Backbone.history.start()
 
 $(document).ready ->

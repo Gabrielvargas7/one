@@ -39,7 +39,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #*******************
 
 
-#--------------------------
+  #--------------------------
   # get the items designs data
   #--------------------------
   getItemsDesignsCollection: (item_id) ->
@@ -64,10 +64,12 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     event.preventDefault()
     console.log("click")
 
-    this.hideItemsTab()
-    this.showItemsDesignsTab()
+#    this.hideItemsTab()
+#    this.showItemsDesignsTab()
+    this.moveToItemsDesignsTab()
     itemsDesignsCollection = this.getItemsDesignsCollection(this.model.get('id'))
     this.appendItemsDesignsEntry(itemsDesignsCollection)
+    this.setItemToCenter(this.model)
 
 
 
@@ -148,4 +150,60 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     $tab_item_designs.parent().addClass('active')
     $tab_body_item_designs = $('#tab_items_designs')
     $tab_body_item_designs.addClass('active')
+
+
+  #--------------------------
+  # move to the items designs
+  #--------------------------
+
+  moveToItemsDesignsTab: ->
+    $tab_item = $('[data-toggle="tab"][href="#tab_items"]')
+    $tab_item.parent().removeClass('active')
+
+    $tab_body_item = $('#tab_items')
+    $tab_body_item.removeClass('active')
+
+    $tab_item_designs = $('[data-toggle="tab"][href="#tab_items_designs"]')
+    $tab_item_designs.parent().addClass('active')
+
+    $tab_body_item_designs = $('#tab_items_designs')
+    $tab_body_item_designs.addClass('active')
+
+  #*******************
+  #**** Funtions -
+  #*******************
+
+  #--------------------------
+  # do center the element to room that is on the center
+  #--------------------------
+  setItemToCenter:(itemModel) ->
+    # move to the center
+    console.log("center the element with the center room")
+
+#    item_position  = $("[data-current_screen_position='1']").find('[data-room_item_id='+itemId+']').offset()
+#    item_position2  = $("[data-current_screen_position='2']").find('[data-room_item_id='+itemId+']').offset()
+#    item_position0  = $("[data-current_screen_position='0']").find('[data-room_item_id='+itemId+']').offset()
+#    item_position  = $('[data-room_item_id='+itemId+']').offset()
+#    item_position  = $('.room_item_designs_container_'+itemId).offset()
+
+    item_location_x = parseInt(itemModel.get('x'));
+    console.log(item_location_x)
+#    console.log(item_position.left)
+#    console.log(item_position2.left)
+#    console.log(item_position0.left)
+#    console.log(item_position.left+300)
+    $('#xroom_items_0').attr('data-current_screen_position','0')
+    $('#xroom_items_0').css({
+        'left':0+300-item_location_x+300
+    })
+    $('#xroom_items_1').attr('data-current_screen_position','1')
+    $('#xroom_items_1').css({
+          'left':1999+300-item_location_x+300
+    })
+    $('#xroom_items_2').attr('data-current_screen_position','2')
+    $('#xroom_items_2').css({
+          'left':3999+300-item_location_x+300
+    })
+    $(window).scrollLeft(2300)
+    console.log($(window).scrollLeft())
 

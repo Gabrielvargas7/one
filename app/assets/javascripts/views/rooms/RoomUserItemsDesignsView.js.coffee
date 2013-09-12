@@ -4,7 +4,6 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #**** Tag  (no tag = default el "div")
   #*******************
 
-#  el: '.xroom_item_designs'
 
   #*******************
   #**** Templeate
@@ -89,13 +88,5 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   hoverOffItem: (event) ->
     event.preventDefault()
 
-
-
-#
-#    style="position:absolute;
-#          width:<%=@user_item_design.width%>px;
-#          left:<%=@user_item_design.x%>px;
-#          top:<%=@user_item_design.y%>px;
-#          z-index:<%=@user_item_design.z%>;">
 
 
