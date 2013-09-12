@@ -90,7 +90,8 @@ ul.bookmark_menu_list {
 	// height:100%;
 	padding:10px;
 	color:#333333;
-	position:absolute;
+	position:fixed;
+	top:45px;
 	left:250px;
 }
 .my_bookmarks_top, .discover_bookmarks_top{
