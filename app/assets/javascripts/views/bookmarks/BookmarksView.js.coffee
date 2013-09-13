@@ -183,6 +183,18 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       console.log "There was an error in your url or the title was too long."
   browseMode:(event)->
     console.log("browseMode runs from BookmarksView")
+    #Check for browseMode instance. If its there, use jquery to access everything
+
+    #Otherwise Create new View. 
+    browseModeView = new Mywebroom.Views.BrowseModeView({modelToBrowse:event.model})
+    browseModeView.once('browserModeClosed',->@closeView)
+    #Hide this view. Hide $('#bookmark_view')
+    $('.bookmark_view').hide()
+    #Attach browseModeView view to something
+    $('#xroom_bookmarks').append(browseModeView.el)
+    browseModeView.render()
+
+    #On closing the new View, close BookmarksView, so we are in the Room. 
 
   closeView:->
     this.remove()
