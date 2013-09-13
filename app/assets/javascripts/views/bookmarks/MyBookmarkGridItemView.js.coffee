@@ -10,6 +10,7 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
 
 	events:
 		'click .trash_icon_hover':'confirmDeleteBookmark'
+		'click .gridItemPicture.my_bookmarks_grid_item':'triggerBrowseMode'
 	#*******************
     #**** Render
     #*******************
@@ -30,4 +31,7 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
 		#Destroy the modal instead of hide it, since we have changing data inside it. (model name)
 		$("#myModal").on "hidden", ->
   			$('#myModal').remove()
-
+	triggerBrowseMode:(event)->
+		console.log "Welcome to browse mode! You are browsing:"
+		console.log @model
+		this.trigger('browseMode',{@model})
