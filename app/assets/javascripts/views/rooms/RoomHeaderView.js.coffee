@@ -103,6 +103,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @showProfileView()
 
 
+
+
   #--------------------------
   #  *** function showProfileView
   #--------------------------
@@ -198,6 +200,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_storepage').append(@storePageView.el)
     @storePageView.render()
     @removeHeaderEvents()
+
+
+
+
 
   #--------------------------
   #  *** function events

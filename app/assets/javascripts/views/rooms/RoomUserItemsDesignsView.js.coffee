@@ -56,10 +56,12 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   # set hover on off images by jquery
   #--------------------------
   setHoverOffOnImages: ->
-    itemId= this.options.user_item_design.item_id
-    imageNameHover = this.options.user_item_design.image_name_hover.url
-    imageName = this.options.user_item_design.image_name.url
-    $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+
+    if this.options.user_item_design.clickable == 'yes'
+      itemId= this.options.user_item_design.item_id
+      imageNameHover = this.options.user_item_design.image_name_hover.url
+      imageName = this.options.user_item_design.image_name.url
+      $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
 
 
   #--------------------------
@@ -70,9 +72,12 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     console.log("You clicked an object: "+this.options.user_item_design)
     console.log(this.options.user_item_design)
     console.log(this.options.user)
-    bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:this.options.user_item_design,user:this.options.user})
-    $('#xroom_bookmarks').append(bookmarksView.el)
-    bookmarksView.render()
+
+    if this.options.user_item_design.clickable == 'yes'
+      bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:this.options.user_item_design,user:this.options.user})
+      $('#xroom_bookmarks').append(bookmarksView.el)
+      bookmarksView.render()
+
 
   #--------------------------
   # change hover image on maouse over

@@ -3,6 +3,7 @@ window.Mywebroom =
   Collections: {}
   Views: {}
   Routers: {}
+  Helpers:{}
   initialize: ->
         new Mywebroom.Routers.RoomsRouter()
         Backbone.history.start()
