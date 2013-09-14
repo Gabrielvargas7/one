@@ -58,6 +58,10 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
+    
+    #Listen for BrowseMode trigger
+    that= this
+    @myBookmarksView.once('browseMode1',@browseMode,that)
     this
   renderDiscover:->
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
@@ -177,5 +181,32 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     else
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
+  browseMode:(event)->
+    console.log("browseMode runs from BookmarksView")
+    #Check for browseMode instance. If its there, use jquery to access everything
+    $currentBrowseModeView=$('.browse_mode_view')
+    if $currentBrowseModeView.length > 0
+      console.log "using jquery on bookmarksview" #This means we can't ever close the view. 
+      #Open new iframe on browse_mode_sites and switch active classes
+            #switch iframe classes
+      $('.current_browse_mode_site').removeClass('current_browse_mode_site')
+      newIframeHTML = "<iframe class='current_browse_mode_site browse_mode_site' src='http://www.about.com'></iframe>"
+      $('.browse_mode_site_wrap').append(newIframeHTML)
+      $currentBrowseModeView.show()
+
+      $('.bookmark_view').hide()
+
+    else
+      #Otherwise Create new View. 
+      @browseModeView = new Mywebroom.Views.BrowseModeView({modelToBrowse:event.model})
+      @browseModeView.once('browserModeClosed',->@closeView)
+      #Hide this view. Hide $('#bookmark_view')
+      $('.bookmark_view').hide()
+      #Attach browseModeView view to something
+      $('#xroom_bookmarks').append(@browseModeView.el)
+      @browseModeView.render()
+
+    #On closing the new View, close BookmarksView, so we are in the Room. 
+
   closeView:->
     this.remove()

@@ -1,0 +1,60 @@
+<style>
+.browse_mode_site_nav{
+	position:absolute;
+	top:52px;
+	right:152px;
+}
+.browse_mode_sidebar{
+	position:fixed;
+	z-index:8;
+	left:0;
+	top:45px;
+	background-color:rgba(0,0,0,.8);
+	padding:10px;
+	height:100%;
+	width:150px;
+
+}
+.browse_mode_site_wrap{
+	height:100%;
+	width:100%;
+	position:fixed;
+	z-index:8;
+	left:150px;
+}
+iframe.current_browse_mode_site {
+	width:100%;
+	height:100%;
+
+}
+.browse_mode_site{
+	display:none;
+}
+.current_browse_mode_site.browse_mode_site{
+	display:block;
+
+}
+
+</style>
+<div class="browse_mode_sidebar">
+	<ul class="browse_mode_list">
+		<li><a>Active</a></li>
+		<li><a>Discover</a></li>
+		<li><a>Bookmarks</a></li>
+		<div class="spacer"></div>
+		<li><a>1</a></li>
+		<li><a>2</a></li>
+		<li><a>3</a></li>
+		<li><a>4</a></li>
+	</ul>
+</div>
+<div class="browse_mode_site_wrap">
+	<!--iframes go here-->
+	<iframe class="current_browse_mode_site browse_mode_site" src="http://placekitten.com">
+	</iframe>
+	<div class="browse_mode_site_nav">
+		<a id="browse_mode_site_nav_close">Close</a>
+		<a id="browse_mode_site_nav_minimize">Minimize</a>
+		<a id="browse_mode_site_nav_refresh">Refresh</a>
+	</div>
+</div>
