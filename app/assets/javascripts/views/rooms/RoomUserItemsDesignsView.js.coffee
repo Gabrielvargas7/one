@@ -36,7 +36,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     x = this.options.user_item_design.x.toString()+'px'
     z = this.options.user_item_design.z.toString()
     width = this.options.user_item_design.width.toString()+'px'
-    id_room_item_designs_container =".room_item_designs_container_"+this.options.user_item_design.item_id.toString()
+    id_room_item_designs_container = ".room_item_designs_container_"+this.options.user_item_design.item_id.toString()
 
     $(id_room_item_designs_container).css({
       'position': 'absolute',
@@ -75,6 +75,11 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
 
     if this.options.user_item_design.clickable == 'yes'
       bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:this.options.user_item_design,user:this.options.user})
+      self= this
+      bookmarksView.on('dataForBrowseMode'
+        ,((event)->
+          this.trigger('dataForBrowseMode2',{model:event.model}))
+        ,self)
       $('#xroom_bookmarks').append(bookmarksView.el)
       bookmarksView.render()
 

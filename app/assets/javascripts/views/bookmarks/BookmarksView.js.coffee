@@ -182,9 +182,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
   browseMode:(event)->
-    console.log("browseMode runs from BookmarksView")
     #Send data to browseModeView
-    this.trigger('dataForBrowseMode',"Message for you sir!")
+    this.trigger('dataForBrowseMode',{model:event.model})
     $('#xroom_bookmarks_browse_mode').show()
     #Close this view. 
     @closeView()
