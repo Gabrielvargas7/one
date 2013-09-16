@@ -61,20 +61,20 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
 
   #*******************
   #**** Functions  - moving to the left
-  #*******************
+  #*******************     Math.floor(155.923235454541);
 
   moveToTheLeft: ->
 
     $('#xroom_items_0').css({
-      'left':$("#xroom_items_0").offset().left+2
+      'left':Math.floor($("#xroom_items_0").offset().left)+2
     })
 
     $('#xroom_items_1').css({
-      'left':$("#xroom_items_1").offset().left+2
+      'left':Math.floor($("#xroom_items_1").offset().left)+2
     })
 
     $('#xroom_items_2').css({
-      'left':$("#xroom_items_2").offset().left+2
+      'left':Math.floor($("#xroom_items_2").offset().left)+2
     })
 
 

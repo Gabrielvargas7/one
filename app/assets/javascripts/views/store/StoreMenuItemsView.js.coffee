@@ -179,30 +179,20 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   setItemToCenter:(itemModel) ->
     # move to the center
     console.log("center the element with the center room")
-
-#    item_position  = $("[data-current_screen_position='1']").find('[data-room_item_id='+itemId+']').offset()
-#    item_position2  = $("[data-current_screen_position='2']").find('[data-room_item_id='+itemId+']').offset()
-#    item_position0  = $("[data-current_screen_position='0']").find('[data-room_item_id='+itemId+']').offset()
-#    item_position  = $('[data-room_item_id='+itemId+']').offset()
-#    item_position  = $('.room_item_designs_container_'+itemId).offset()
-
     item_location_x = parseInt(itemModel.get('x'));
     console.log(item_location_x)
-#    console.log(item_position.left)
-#    console.log(item_position2.left)
-#    console.log(item_position0.left)
-#    console.log(item_position.left+300)
+
     $('#xroom_items_0').attr('data-current_screen_position','0')
     $('#xroom_items_0').css({
-        'left':0+300-item_location_x+300
+        'left':Math.floor(0+300-item_location_x+300)
     })
     $('#xroom_items_1').attr('data-current_screen_position','1')
     $('#xroom_items_1').css({
-          'left':1999+300-item_location_x+300
+          'left':Math.floor(1999+300-item_location_x+300)
     })
     $('#xroom_items_2').attr('data-current_screen_position','2')
     $('#xroom_items_2').css({
-          'left':3999+300-item_location_x+300
+          'left':Math.floor(3999+300-item_location_x+300)
     })
     $(window).scrollLeft(2300)
     console.log($(window).scrollLeft())
