@@ -86,6 +86,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       this.setRoomHeader( @roomUserDataModel, @signInUserDataModel, this.FLAGS_MAP)
       this.setStoreMenuSaveCancelRemove(@signInUserDataModel)
       this.setRoomScrolls(@roomUserDataModel)
+      this.setBrowseMode()
 
 
       # center the windows  and remove the scroll
@@ -244,6 +245,14 @@ class Mywebroom.Views.RoomView extends Backbone.View
     $('#xroom_store_save').prepend(storeSaveButton)
     storeCancelButton = $.cloudinary.image 'store_cancel_button.png',{ alt: "store cancel button", id: "store_cancel_button"}
     $('#xroom_store_cancel').prepend(storeCancelButton)
+  #--------------------------
+  # set browse mode up
+  #--------------------------
+  setBrowseMode:->
+    browseModeView = new Mywebroom.Views.BrowseModeView()
+    $('#xroom_bookmarks_browse_mode').append(browseModeView.el)
+    $('#xroom_bookmarks_browse_mode').hide()
+    browseModeView.render()
 
 
   #--------------------------
