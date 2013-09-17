@@ -290,6 +290,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
     this.setRoom('#xroom_items_0',roomUserDataModel,profileFlag)
     this.setRoom('#xroom_items_1',roomUserDataModel,profileFlag)
     this.setRoom('#xroom_items_2',roomUserDataModel,profileFlag)
+    this.setBookmarksRoom(roomUserDataModel,profileFlag)
 
 
   #--------------------------
@@ -309,18 +310,40 @@ class Mywebroom.Views.RoomView extends Backbone.View
     length = userItemsDesignsList.length
     i = 0
     while i < length
-      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i],user:user})
+      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i],user:user,user_items_designs_list:userItemsDesignsList})
       self = this
-      userItemsDesignsView.on('dataForBrowseMode2',
-      ((event)->
-        @changeBrowseMode(event))
-      ,self)
+      userItemsDesignsView.on('dataForBrowseMode2',((event)-> @changeBrowseMode(event)),self)
+
       $(xroom_item_num).append(userItemsDesignsView.el)
       userItemsDesignsView.render()
-      i++
+
       if profileFlag == Mywebroom.Views.RoomView.PUBLIC_ROOM
         userItemsDesignsView.undelegateEvents()
+      i++
 
+
+  #--------------------------
+  # set bookmarks on the rooms.html
+  #--------------------------
+  setBookmarksRoom: (roomUserDataModel,profileFlag) ->
+
+    $('#xroom_bookmarks').hide()
+
+    console.log(roomUserDataModel,profileFlag)
+
+    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
+    user = roomUserDataModel.get('user')
+
+    length = userItemsDesignsList.length
+    i = 0
+
+    while i < length
+      if userItemsDesignsList[i].clickable == 'yes'
+        bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView({user_item_design:userItemsDesignsList[i],user:user})
+        $('#xroom_bookmarks').append(bookmarkHomeView.el)
+        bookmarkHomeView.render()
+        $('#room_bookmark_item_id_container_'+userItemsDesignsList[i].item_id).hide()
+      i++
 
 
   setEventTest:->

@@ -1,0 +1,4 @@
+<div  id="room_bookmark_item_id_container_<%=@user_item_design.item_id%>"  style="" >
+
+</div>
+

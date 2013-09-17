@@ -72,17 +72,17 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     console.log("You clicked an object: "+this.options.user_item_design)
     console.log(this.options.user_item_design)
     console.log(this.options.user)
+    this.hideAndShowBookmarks(this.options.user_item_design.item_id)
+    this.displayBookmark()
 
     if this.options.user_item_design.clickable == 'yes'
       bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:this.options.user_item_design,user:this.options.user})
       self= this
-      bookmarksView.on('dataForBrowseMode'
-        ,((event)->
-          this.trigger('dataForBrowseMode2',{model:event.model}))
-        ,self)
-      $('#xroom_bookmarks').append(bookmarksView.el)
-      bookmarksView.render()
+      bookmarksView.on('dataForBrowseMode',((event)-> this.trigger('dataForBrowseMode2',{model:event.model})) ,self)
 
+#      $('#xroom_bookmarks').append(bookmarksView.el)
+      $('#room_bookmark_item_id_container_'+this.options.user_item_design.item_id).append(bookmarksView.el)
+      bookmarksView.render()
 
   #--------------------------
   # change hover image on maouse over
@@ -99,4 +99,25 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     event.preventDefault()
 
 
+  #--------------------------
+  # hide bookmarks when is not this item
+  #--------------------------
+  hideAndShowBookmarks:(bookmark_item_id) ->
+    length = this.options.user_items_designs_list.length
+    i = 0
+    while i < length
+      if bookmark_item_id == this.options.user_items_designs_list[i].item_id
+        $('#room_bookmark_item_id_container_'+this.options.user_items_designs_list[i].item_id).show();
+      else
+        $('#room_bookmark_item_id_container_'+this.options.user_items_designs_list[i].item_id).hide();
+      i++
+
+  #--------------------------
+  # hide store and profile pages
+  #--------------------------
+  displayBookmark: ->
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    $('#xroom_storepage').hide()
+    $('#xroom_profile').hide()
+    $('#xroom_bookmarks').show()
 
