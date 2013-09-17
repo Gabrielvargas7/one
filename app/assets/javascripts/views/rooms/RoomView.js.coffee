@@ -246,16 +246,19 @@ class Mywebroom.Views.RoomView extends Backbone.View
     storeCancelButton = $.cloudinary.image 'store_cancel_button.png',{ alt: "store cancel button", id: "store_cancel_button"}
     $('#xroom_store_cancel').prepend(storeCancelButton)
   #--------------------------
-  # set browse mode up
+  # set browse mode 
   #--------------------------
   setBrowseMode:->
     @browseModeView = new Mywebroom.Views.BrowseModeView()
     $('#xroom_bookmarks_browse_mode').append(@browseModeView.el)
     $('#xroom_bookmarks_browse_mode').hide()
     @browseModeView.render()
-
+  #--------------------------
+  # change browse mode. (Pass a new model to it)
+  #--------------------------
   changeBrowseMode:(event)->
     console.log('now we play with BrowseMode for reals!')
+    @browseModeView.activeSiteChange(event.model)
     console.log(@browseModeView)
 
 

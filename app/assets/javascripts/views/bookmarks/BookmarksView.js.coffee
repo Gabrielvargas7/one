@@ -185,6 +185,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #Send data to browseModeView
     this.trigger('dataForBrowseMode',{model:event.model})
     $('#xroom_bookmarks_browse_mode').show()
+    $('.browse_mode_view').show()
     #Close this view. 
     @closeView()
 
