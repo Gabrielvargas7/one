@@ -56,11 +56,12 @@ class Mywebroom.Views.StorePageView extends Backbone.View
     this.hideStoreMenuSaveCancelRemoveView()
 
     console.log('delete storePageView ')
-    this.model.destroy() # Unbind reference to the model
+#    this.model.destroy() # Unbind reference to the model
     this.unbind()        # Unbind all local event bindings
     this.remove()        # Remove view from DOM
     delete this.$el      # Delete the jQuery wrapped object variable
     delete this.el       # Delete the variable reference to this node
+
 
   #--------------------------
   # collapse store page

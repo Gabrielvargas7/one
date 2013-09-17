@@ -47,6 +47,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
     #*******************
 
 
+
     this.FLAGS_MAP = {};
 
     this.FLAGS_MAP['FLAG_PROFILE'] = Mywebroom.Views.RoomView.PUBLIC_ROOM
@@ -90,9 +91,11 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
 
       # center the windows  and remove the scroll
-#      $('body').scrollLeft(2300);
       $(window).scrollLeft(2300)
       $('body').css('overflow-x', 'hidden');
+
+      this.setEventTest()
+
 
     this
 
@@ -113,6 +116,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       flagSignIn = Mywebroom.Views.RoomView.SIGN_IN
 
     console.log("flag sign in user: "+flagSignIn)
+
     return flagSignIn
 
 
@@ -303,4 +307,13 @@ class Mywebroom.Views.RoomView extends Backbone.View
       i++
       if profileFlag == Mywebroom.Views.RoomView.PUBLIC_ROOM
         userItemsDesignsView.undelegateEvents()
+
+
+
+  setEventTest:->
+    console.log("add global event")
+    Mywebroom.vent.on("some:event",->
+      console.log("in global event")
+      alert "some event was fired!"
+    )
 

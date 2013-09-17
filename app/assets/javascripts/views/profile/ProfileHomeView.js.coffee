@@ -198,4 +198,5 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  closeProfileView: ->
  	this.remove()
+#  Mywebroom.vent.trigger("destroy:profile")
   this.options.roomHeaderView.delegateEvents() # add all header events
