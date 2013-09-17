@@ -1,0 +1,11 @@
+<ul class="browse_mode_list">
+	<li><a>Active</a></li>
+	<li><a>Discover</a></li>
+	<li><a>Bookmarks</a></li>
+	<div class="spacer"></div>
+	<%if @collection:%>
+		<%for site in @collection:%>
+		<li><img class="browse_mode_sidebar_icons" src="<%=site.get('image_name').url%>"></li>
+		<%end%>
+	<%end%>
+</ul>
