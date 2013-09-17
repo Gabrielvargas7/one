@@ -39,12 +39,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   render: ->
     console.log("Adding the RoomHeaderView with model:")
     $(@el).append(@template(user_data:this.options.signInUserDataModel))
+    this.createStorePage()
+    this.createProfileView()
     this.removeRoomHeaderElemments(this.options.FLAGS_MAP)
-    this.setEventCreateStore()
-    this.setEventDestroyStore()
+
     this
 
-#    Mywebroom.vent.on("click #xroom_header_storepage",this.showStorePage)
 
 
   #*******************
@@ -98,37 +98,26 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   showProfile: (event) ->
     if event  # this is is because this fuction is also call when is PUBLIC_ROOM
       event.preventDefault()
+    this.displayProfile()
+
+
+  createProfileView:->
     @profile = new Backbone.Model
     @profile.set(@model.get('user_profile'))
     @profile.set('user',@model.get('user'))
     @profile.set('user_photos',@model.get('user_photos'))
     @profile.set('user_items_designs',@model.get('user_items_designs'))
-    @showProfileView()
-#    Mywebroom.vent.trigger("destroy:store_page")
-
-
-
-
-  #--------------------------
-  #  *** function showProfileView
-  #--------------------------
-  showProfileView:() ->
-#    this.destroyViews()
-#    Mywebroom.vent.on("destroy:profile",this.destroyProfile())
-#    Mywebroom.vent.on("create:profile",this.createProfile())
-#    Mywebroom.vent.trigger("create:profile")
-#    console.log("trigger global event")
-
 
     @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAGS_MAP['FLAG_PROFILE'],roomHeaderView:this })
-    $('#xroom_profile').append(@profileView.el)
+    $('#xroom_profile').html(@profileView.el)
     @profileView.render()
-    @removeHeaderEvents()
+    $('#xroom_profile').hide()
 
 
 
 
-  #*******************
+
+    #*******************
   #**** Functions the forward to RoR
   #*******************
 
@@ -207,47 +196,49 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       event.preventDefault()
       event.stopPropagation()
     console.log("trigger global event create:store_page")
-#    Mywebroom.vent.trigger("create:store_page")
-#    Mywebroom.vent.off("create:store_page")
 
-#    this.destroyViews()
-#    Mywebroom.vent.on("destroy:store",this.destroyStore())
-#    Mywebroom.vent.on("create:store",this.createStore())
-#    Mywebroom.vent.trigger("create:store")
+    this.displayStorePage()
+#    @storePageView.render()
 
 
 
+  createStorePage:->
     console.log('storePage Function running')
     @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
-    $('#xroom_storepage').append(@storePageView.el)
+    $('#xroom_storepage').html(@storePageView.el)
     @storePageView.render()
-#    this.displayStorePage()
-
-    @removeHeaderEvents()
-
-
+    $('#xroom_storepage').hide()
+    $('#xroom_store_menu_save_cancel_remove').hide()
 
 
 
   #--------------------------
-  #  *** function events
+  #  *** function display
   #--------------------------
   displayStorePage: ->
+    $('#xroom_store_menu_save_cancel_remove').show()
     $('#xroom_storepage').show()
     $('#xroom_profile').hide()
+    $('#xroom_bookmarks').hide()
+
+  #--------------------------
+  #  *** function
+  #--------------------------
+  displayProfile: ->
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    $('#xroom_storepage').hide()
+    $('#xroom_profile').show()
     $('#xroom_bookmarks').hide()
 
 
 
   #--------------------------
-  #  *** function events
+  #  *** function
   #--------------------------
   removeHeaderEvents: ->
-
     $(this.el).off('click', '#xroom_header_storepage')
     $(this.el).off('click', '#xroom_header_profile')
     $('.room_user_item_design_container').off()
-
 
 
 
@@ -264,81 +255,4 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     console.log(myOrigin)
     console.log("forward to: "+myOrigin)
     window.location.replace(myOrigin)
-
-  #*******************
-  #**** Functions Global events
-  #*******************
-
-
-  setGlobalEvents:->
-    console.log("add global event")
-#    Mywebroom.vent.on("create:store",this.createStore())
-#    Mywebroom.vent.on("create:profile",this.createProfile())
-
-
-
-  createStore:->
-    console.log('storePage Function running')
-    @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
-    $('#xroom_storepage').append(@storePageView.el)
-    @storePageView.render()
-
-
-  destroyStore:->
-    if @storePageView is undefined
-      console.log("store undefined")
-    else
-      console.log("store defined")
-      @storePageView.remove()
-
-
-  createProfile:->
-    @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAGS_MAP['FLAG_PROFILE'],roomHeaderView:this })
-    $('#xroom_profile').append(@profileView.el)
-    @profileView.render()
-
-  destroyProfile:->
-    if @profileView is undefined
-      console.log("profile undefined")
-    else
-      @profileView.remove()
-      console.log("profile defined")
-
-  destroyViews:->
-    if @profileView is undefined
-      console.log("profile undefined")
-    else
-      @profileView.remove()
-      console.log("profile defined")
-
-    if @storePageView is undefined
-      console.log("store undefined")
-    else
-      console.log("store defined")
-      @storePageView.remove()
-
-
-  setEventCreateStore: ->
-    console.log("add global event create store")
-    Mywebroom.vent.on("create:store_page",->
-      console.log("in global event create store")
-      @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
-      $('#xroom_storepage').append(@storePageView.el)
-      @storePageView.render()
-    )
-
-
-  setEventDestroyStore: ->
-    console.log("add global event destroy store")
-    Mywebroom.vent.on("destroy:store_page",->
-      console.log("in global event destroy store")
-      if @storePageView is undefined
-        console.log("store undefined")
-      else
-        console.log("store defined")
-        @storePageView.remove()
-    )
-
-
-
 
