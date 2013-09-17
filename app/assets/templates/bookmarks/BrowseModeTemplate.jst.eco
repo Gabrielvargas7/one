@@ -32,7 +32,9 @@ iframe.current_browse_mode_site {
 }
 .current_browse_mode_site.browse_mode_site{
 	display:block;
-
+}
+iframe.current_browse_mode_site.browse_mode_site{
+	background-color:white;
 }
 
 </style>

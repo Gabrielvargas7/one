@@ -59,7 +59,6 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		  	@$('#my_bookmarks_row_item_'+rowNum).append(bookmarkItemView.el)
 		  	bookmarkItemView.render()
 		  	bookmarkItemView.on('deleteBookmark',@triggerDeleteBookmark,this)
-		  	bookmarkItemView.on('browseMode', @triggerBrowseMode,this)
 		  	#this.$('#my_bookmarks_row_item'+rowNum).append(bookmarkItemView.render().el)
 		  rowArray.length = 0
 

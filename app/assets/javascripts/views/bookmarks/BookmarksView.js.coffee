@@ -45,9 +45,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       success:(response) ->
         console.log("categories fetch successful: ")
         console.log(response)
-  fetchDiscoverBookmarks: ->
-
-
+    self= this
+    Mywebroom.vent.on('BrowseMode:closeBookmarkView',@browseMode,self)
   #*******************
   #**** Render
   #*******************
@@ -59,10 +58,6 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $(@el).append(@myBookmarksView.render().el)
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
-    #Listen for BrowseMode trigger
-    that= this
-    @myBookmarksView.once('browseMode1',@browseMode,that)
-    this
   renderDiscover:->
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
@@ -181,9 +176,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     else
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
-  browseMode:(event)->
+  browseMode:->
     #Send data to browseModeView
-    this.trigger('dataForBrowseMode',{model:event.model})
     $('#xroom_bookmarks_browse_mode').show()
     $('.browse_mode_view').show()
     #Close this view. 

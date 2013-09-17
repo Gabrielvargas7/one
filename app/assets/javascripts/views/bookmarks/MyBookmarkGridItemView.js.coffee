@@ -34,4 +34,5 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
 	triggerBrowseMode:(event)->
 		console.log "Welcome to browse mode! You are browsing:"
 		console.log @model
-		this.trigger('browseMode',{@model})
+		Mywebroom.vent.trigger('BrowseMode:open',{@model})
+		Mywebroom.vent.trigger('BrowseMode:closeBookmarkView')
