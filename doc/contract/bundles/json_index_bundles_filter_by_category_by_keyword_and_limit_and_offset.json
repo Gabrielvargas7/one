@@ -1,0 +1,59 @@
+//# GET Get all bundles filter by category, item_id and keyword
+//# /bundles/json/index_bundles_filter_by_category_by_keyword_and_limit_and_offset/:category/:keyword/:limit/:offset'
+//# /bundles/json/index_bundles_filter_by_category_by_keyword_and_limit_and_offset/color/green/10/0.json'
+//
+//# Return head
+//# success    ->  head  200 OK
+
+
+
+[
+    {
+        "active": "y",
+        "brand": "",
+        "category": "",
+        "color": "green",
+        "created_at": "2013-05-17T20:33:57Z",
+        "description": "This object set gives your room an awesome look! The furniture is so hd that it looks like a cartoon room.",
+        "id": 1,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822838/36614-bundle-image_name-cartoonish.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "like": 0,
+        "location": "",
+        "make": "",
+        "name": "Cartoonish",
+        "section_id": 1,
+        "special_name": "",
+        "style": "",
+        "theme_id": 1,
+        "updated_at": "2013-09-18T22:08:29Z"
+    },
+    {
+        "active": "y",
+        "brand": "",
+        "category": "",
+        "color": "green",
+        "created_at": "2013-05-17T20:33:59Z",
+        "description": "This set is more traditional. Great furniture design, nothing flashy. It gives your room a real look and feel.",
+        "id": 2,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822839/68126-bundle-image_name-urban.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "like": 0,
+        "location": "",
+        "make": "",
+        "name": "Urban",
+        "section_id": 1,
+        "special_name": "",
+        "style": "",
+        "theme_id": 2,
+        "updated_at": "2013-09-18T22:08:55Z"
+    }
+]

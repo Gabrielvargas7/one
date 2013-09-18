@@ -1,3 +1,9 @@
+//# GET Get all items_designs categories group
+//# /items_designs/json/index_items_designs_categories_by_item_id/:item_id'
+//# /items_designs/json/index_items_designs_categories_by_item_id/1.json'
+//# Return head
+//# success    ->  head  200 OK
+
 {
     "items_designs_categories": [
         {
