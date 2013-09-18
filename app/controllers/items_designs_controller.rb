@@ -195,5 +195,49 @@ class ItemsDesignsController < ApplicationController
 
 
 
+  # GET Get all items_designs categories group
+  # /items_designs/json/index_items_designs_categories_by_item_id/:item_id'
+  # /items_designs/json/index_items_designs_categories_by_item_id/1.json'
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_items_designs_categories_by_item_id
+
+    respond_to do |format|
+
+      if ItemsDesign.exists?(item_id:params[:item_id])
+
+        @items_designs_categories = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(category)))) as category, item_id ").
+            where("item_id = ?",params[:item_id])
+
+        @items_designs_brands = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(brand)))) as brand, item_id ").
+            where("item_id = ?",params[:item_id])
+
+        @items_designs_styles = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(style)))) as style, item_id ").
+            where("item_id = ?",params[:item_id])
+
+        @items_designs_colors = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(color)))) as color, item_id ").
+            where("item_id = ?",params[:item_id])
+
+        @items_designs_makes = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(make)))) as make, item_id ").
+            where("item_id = ?",params[:item_id])
+
+
+
+        format.json { render json:{ items_designs_categories:@items_designs_categories,
+                                     items_designs_brands:@items_designs_brands,
+                                     items_designs_styles:@items_designs_styles,
+                                     items_designs_colors:@items_designs_colors,
+                                     items_designs_makes:@items_designs_makes
+        }}
+
+      else
+        format.json { render json: 'not found item id' , status: :not_found }
+      end
+
+
+    end
+
+  end
 
 end

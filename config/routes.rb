@@ -176,6 +176,14 @@ Mywebroom::Application.routes.draw do
         'themes#json_show_theme_by_theme_id', via: :get ,as:
         :themes_json_show_theme_by_theme_id
 
+  match 'themes/json/index_themes_categories', to:
+        'themes#json_index_themes_categories', via: :get ,as:
+         :themes_json_index_themes_categories
+
+
+
+
+
 
   #--------------------------
   # end Themes contract
@@ -207,6 +215,12 @@ Mywebroom::Application.routes.draw do
   match '/bundles/json/index_bundles', to:
          'bundles#json_index_bundles', via: :get , as:
          :bundles_json_index_bundles
+
+  match '/bundles/json/index_bundles_categories', to:
+         'bundles#json_index_bundles_categories', via: :get , as:
+         :bundles_json_index_bundles_categories
+
+
   #--------------------------
   # end Bundles contract
   #--------------------------
@@ -241,6 +255,12 @@ Mywebroom::Application.routes.draw do
   match '/items_designs/json/index_items_designs_of_bundle_by_bundle_id/:bundle_id', to:
          'items_designs#json_index_items_designs_of_bundle_by_bundle_id', via: :get  , as:
          :items_designs_json_index_items_designs_of_bundle_by_bundle_id
+
+  match '/items_designs/json/index_items_designs_categories_by_item_id/:item_id', to:
+         'items_designs#json_index_items_designs_categories_by_item_id', via: :get  , as:
+         :json_index_items_designs_categories_by_item_id
+
+
 
 
 

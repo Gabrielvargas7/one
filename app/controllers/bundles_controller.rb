@@ -147,7 +147,6 @@ class BundlesController < ApplicationController
 
 
 
-
   #***********************************
   # Json methods for the room users
   #***********************************
@@ -170,4 +169,54 @@ class BundlesController < ApplicationController
     end
 
   end
+
+
+  # GET Get all bundles categories group
+  # /bundles/json/index_bundles_categories'
+  # /bundles/json/index_bundles_categories.json'
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_bundles_categories
+
+    respond_to do |format|
+
+
+      @bundles_categories = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(category)))) as category")
+
+
+      @bundles_brands = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(brand)))) as brand")
+
+
+      @bundles_styles = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(style)))) as style")
+
+
+      @bundles_colors = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(color)))) as color")
+
+
+      @bundles_makes = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(make)))) as make")
+
+
+      @bundles_locations = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(location)))) as location")
+
+
+
+      format.json { render json:{ bundles_categories:@bundles_categories,
+                                  bundles_brands:@bundles_brands,
+                                  bundles_styles:@bundles_styles,
+                                  bundles_colors:@bundles_colors,
+                                  bundles_makes:@bundles_makes,
+                                  bundles_locations:@bundles_locations
+      }}
+
+
+
+    end
+
+
+
+  end
+
+
+
 end

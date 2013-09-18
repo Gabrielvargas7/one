@@ -141,6 +141,53 @@ class ThemesController < ApplicationController
   end
 
 
+  # GET Get all themes categories group
+  # /themes/json/index_themes_categories'
+  # /themes/json/index_themes_categories.json'
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_themes_categories
+
+    respond_to do |format|
+
+
+        @themes_categories = Theme.select("DISTINCT(LOWER(LTRIM(RTRIM(category)))) as category")
+
+
+        @themes_brands = Theme.select("DISTINCT(LOWER(LTRIM(RTRIM(brand)))) as brand")
+
+
+        @themes_styles = Theme.select("DISTINCT(LOWER(LTRIM(RTRIM(style)))) as style")
+
+
+        @themes_colors = Theme.select("DISTINCT(LOWER(LTRIM(RTRIM(color)))) as color")
+
+
+        @themes_makes = Theme.select("DISTINCT(LOWER(LTRIM(RTRIM(make)))) as make")
+
+
+        @themes_locations = Theme.select("DISTINCT(LOWER(LTRIM(RTRIM(location)))) as location")
+
+
+
+        format.json { render json:{ themes_categories:@themes_categories,
+                                    themes_brands:@themes_brands,
+                                    themes_styles:@themes_styles,
+                                    themes_colors:@themes_colors,
+                                    themes_makes:@themes_makes,
+                                    themes_locations:@themes_locations
+        }}
+
+
+
+    end
+
+
+
+  end
+
+
 
 
 
