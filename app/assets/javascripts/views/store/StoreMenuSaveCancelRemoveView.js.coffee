@@ -15,8 +15,8 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
 
   events:{
-    'click #xroom_store_save':'clickStoreSave'
-
+    'click #xroom_store_save'  :'clickStoreSave',
+    'click #xroom_store_cancel':'clickStoreCancel'
   }
 
   #*******************
@@ -41,11 +41,39 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   clickStoreSave: (event) ->
     event.preventDefault()
     console.log("click Store Save")
+    
+
+    # Displays save message
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "positionClass": "toast-bottom-left",
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "2000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+    toastr.success("The changes to your room have been saved.")
+  
+    
 
     this.saveNewTheme()
     this.saveNewItems()
-
-
+    
+    
+    
+    
+  clickStoreCancel: (event) ->
+    event.preventDefault()
+    console.log("click Store Cancel")
+    
+    
+    
   #*******************
   #**** Functions  -save data
   #*******************
