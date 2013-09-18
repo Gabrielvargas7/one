@@ -95,6 +95,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       $('body').css('overflow-x', 'hidden');
 
       this.setEventTest()
+      this.setBrowseModeEvents()
 
 
     this
@@ -260,9 +261,9 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   # change browse mode. (Pass a new model to it)
   #--------------------------
-  changeBrowseMode:(event)->
+  changeBrowseMode:(model)->
     console.log('now we play with BrowseMode for reals!')
-    @browseModeView.activeSiteChange(event.model)
+    @browseModeView.activeSiteChange(model)
     console.log(@browseModeView)
 
 
@@ -311,9 +312,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
     i = 0
     while i < length
       userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i],user:user,user_items_designs_list:userItemsDesignsList})
-      self = this
-      userItemsDesignsView.on('dataForBrowseMode2',((event)-> @changeBrowseMode(event)),self)
-
       $(xroom_item_num).append(userItemsDesignsView.el)
       userItemsDesignsView.render()
 
@@ -352,4 +350,8 @@ class Mywebroom.Views.RoomView extends Backbone.View
       console.log("in global event")
       alert "some event was fired!"
     )
+  setBrowseModeEvents:->
+    self = this
+    Mywebroom.vent.on("BrowseMode:open",((event)->
+      @changeBrowseMode(event.model)),self)
 

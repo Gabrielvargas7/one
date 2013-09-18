@@ -1,7 +1,7 @@
 <style>
 .browse_mode_site_nav{
 	position:absolute;
-	top:52px;
+	top:82px;
 	right:152px;
 }
 .browse_mode_sidebar{
@@ -12,7 +12,7 @@
 	background-color:rgba(0,0,0,.8);
 	padding:10px;
 	height:100%;
-	width:150px;
+	width:50px;
 
 }
 .browse_mode_site_wrap{
@@ -20,7 +20,7 @@
 	width:100%;
 	position:fixed;
 	z-index:8;
-	left:150px;
+	left:70px;
 }
 iframe.current_browse_mode_site {
 	width:100%;
@@ -32,15 +32,45 @@ iframe.current_browse_mode_site {
 }
 .current_browse_mode_site.browse_mode_site{
 	display:block;
+}
+iframe.current_browse_mode_site.browse_mode_site{
+	background-color:white;
+}
 
+img.browse_mode_sidebar_icons{
+	width:30px;
+}
+
+.browse_mode_list li{
+	padding:10px 0;
+	list-style: none;
+}
+.browse_mode_list{
+	margin:0;
+}
+#browse_mode_list_selected{
+	border:2px solid #40C3FD;
+
+}
+
+.browse_mode_active_sites_menu{
+	border: 1px dashed pink;
+	width: 100%;
+	top: 45px;
+	position: fixed;
+	z-index: 9;
+	height: 80px;
+	padding: 0;
+	margin: 0;
+	left: -2070px;
+	transition: all 1.5s ease-in-out;
 }
 
 </style>
 
 <div class="browse_mode_site_wrap">
 	<!--iframes go here-->
-	<iframe class="current_browse_mode_site browse_mode_site" src="http://placekitten.com">
-	</iframe>
+
 
 	<div class="browse_mode_site_nav">
 		<a id="browse_mode_site_nav_close">Close</a>

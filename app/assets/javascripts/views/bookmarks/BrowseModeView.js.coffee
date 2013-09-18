@@ -16,22 +16,21 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 	$activeSites:->
 		$('.browse_mode_site')
 	initialize:->
-		console.log "hi I'm a browse mode view"
-		@activeSitesArray=[]
-			
-		#Create activeSitesCollection 
-		#No, cause we close this view. 
+		@activeSitesCollection=new Backbone.Collection()
 	setModelToBrowse:(model)->
 		@modelToBrowse=model
 		#Fetch item+designs info (possibly rerender active menu when we're there)
 	getModelToBrowse:->
 		@modelToBrowse
-
+	
+	#render- The nature of this view is that render is called once. 
+	#We frequently rerender the sidebar view. 
+	
 	render:->
 		@browseModeSidebarView.remove() if @browseModeSidebarView
 		@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
 		$(@el).html(@browseModeSidebarView.render().el)
-		$(@el).append(@template(model:@getModelToBrowse(),activeSitesArray:@activeSitesArray))
+		$(@el).append(@template(model:@getModelToBrowse()))
 	minimizeSite:(event)->
 		console.log("minimize view")
 		#Add to active sites by removing class 'current_active_site'
@@ -43,28 +42,40 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 
 	removeCurrentActiveSite:(target)->
 		#remove current active site
-		$(target).removeClass 'current_active_site'
+		$(target).removeClass 'current_browse_mode_site'
 	addCurrentActiveSite:(target)->
 		$(target).addClass 'current_active_site' 
-	showActiveMenu:-> console.log "BrowseMode showActiveMenu"
+	showActiveMenu:-> 
+		console.log "BrowseMode showActiveMenu"
+		#Create new active menu view
+		activeMenuView = new Mywebroom.Views.BrowseActiveMenuView(collection:@activeSitesCollection)
+		$(@el).append(activeMenuView.render().el)
+		$('.browse_mode_active_sites_menu').css 'left','70px'
 	showDiscoverView:->console.log "BrowseMode showDiscoverView"
 	showBookmarksView:->console.log "BrowseMode showBookmarksView"
+
+	#activeSiteChange is called each time a user clicks a bookmark. 
+	#  It adds the new site to the collection and generates a new iframe
 	activeSiteChange:(model)->
 		console.log "BrowseMode activeSiteChange"
 		@setModelToBrowse model
 		#Add to active sites collection.
-		@activeSitesArray.push(model)
+		@activeSitesCollection.add(model)
 		#Remove current active site and add this one as current.
 		@removeCurrentActiveSite(@$currentActiveSiteHTML())
 		#Append it to the el. 
-		newIframeHTML = "<iframe class='current_browse_mode_site browse_mode_site' src='http://www.about.com'></iframe>"
+
+		newIframeHTML = JST['bookmarks/BrowseModeIframeTemplate'](model:@getModelToBrowse())
 		$('.browse_mode_site_wrap').append(newIframeHTML)
 		#rerender the sidebar menu if model id is different.
-		@render()
+		@browseModeSidebarView.remove() if @browseModeSidebarView
+		@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
+		$(@el).append(@browseModeSidebarView.render().el)
 
-	closeView:(event)->
+	closeView:->
 		#remove current active site from the active sites list.
 		$(@$currentActiveSiteHTML()).remove()
-		#NEED TO REMOVE FROM ACTIVE SITES LIST
+		#Remove the model from activeSitesCollection
+		@activeSitesCollection.remove(@getModelToBrowse())
 		$(@el).hide()	
 

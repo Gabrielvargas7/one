@@ -1,0 +1,1 @@
+<iframe class='current_browse_mode_site browse_mode_site' src='<%=@model.get('bookmark_url')%>' data-item-id='<%=@model.get('item_id')%>' data-cid='<%=@model.cid%>'></iframe>
