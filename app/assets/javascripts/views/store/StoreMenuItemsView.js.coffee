@@ -63,13 +63,14 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   clickStoreItem: (event) ->
     event.preventDefault()
     console.log("click")
-
+    
 #    this.hideItemsTab()
 #    this.showItemsDesignsTab()
     this.moveToItemsDesignsTab()
     itemsDesignsCollection = this.getItemsDesignsCollection(this.model.get('id'))
     this.appendItemsDesignsEntry(itemsDesignsCollection)
     this.setItemToCenter(this.model)
+    $("li").removeClass()
 
 
 
