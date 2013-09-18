@@ -10,5 +10,5 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
 			  async:false;
 			@collection = itemBookmarksCollection.first(4)
 	render:->
-		$(@el).html(@template(collection:@collection))
+		$(@el).html(@template(collection:@collection,model:@model))
 		this

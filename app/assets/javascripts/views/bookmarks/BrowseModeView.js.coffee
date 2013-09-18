@@ -45,7 +45,12 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		$(target).removeClass 'current_browse_mode_site'
 	addCurrentActiveSite:(target)->
 		$(target).addClass 'current_active_site' 
-	showActiveMenu:-> console.log "BrowseMode showActiveMenu"
+	showActiveMenu:-> 
+		console.log "BrowseMode showActiveMenu"
+		#Create new active menu view
+		activeMenuView = new Mywebroom.Views.BrowseActiveMenuView(collection:@activeSitesCollection)
+		$(@el).append(activeMenuView.render().el)
+		$('.browse_mode_active_sites_menu').css 'left','70px'
 	showDiscoverView:->console.log "BrowseMode showDiscoverView"
 	showBookmarksView:->console.log "BrowseMode showBookmarksView"
 

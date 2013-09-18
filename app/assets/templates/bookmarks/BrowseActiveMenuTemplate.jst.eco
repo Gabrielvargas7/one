@@ -1,0 +1,20 @@
+<style>
+.horizontal_list li{
+	display:inline;
+	list-style-type: none;
+	padding right:15px;
+}
+#active_menu_close_wrap{
+	position:absolute;
+	top:50px;
+	right:10%;
+}
+</style>
+<ul class="horizontal_list">
+<%for site in @collection:%>
+	<li>"HI"</li>
+<%end%>
+</ul>
+<div id="active_menu_close_wrap">
+	<a id="active_menu_close" href="#">Close</a>
+</div>
