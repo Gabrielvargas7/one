@@ -19,6 +19,7 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
 
 	confirmDeleteBookmark:(event)->
 		#Confirm to delete the bookmark.
+		event.stopPropagation()
 		modalHTML = JST['bookmarks/ConfirmDeleteBookmarkModal'](model:@model)
 		$(@el).append(modalHTML)
 		$('#myModal').modal(backdrop:false)
