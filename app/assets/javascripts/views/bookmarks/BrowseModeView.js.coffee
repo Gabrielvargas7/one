@@ -25,7 +25,6 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 	
 	#render- The nature of this view is that render is called once. 
 	#We frequently rerender the sidebar view. 
-	
 	render:->
 		@browseModeSidebarView.remove() if @browseModeSidebarView
 		@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
@@ -35,6 +34,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		console.log("minimize view")
 		#Add to active sites by removing class 'current_active_site'
 		@removeCurrentActiveSite(event.currentTarget)
+		#Hide Active Sites View if it exists. 
+		$(@activeMenuView.el).hide() if @activeMenuView
 		#hide the view and go back to room.
 		$(@el).hide()
 	refreshSite:(event)->
@@ -46,11 +47,14 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 	addCurrentActiveSite:(target)->
 		$(target).addClass 'current_active_site' 
 	showActiveMenu:-> 
-		console.log "BrowseMode showActiveMenu"
-		#Create new active menu view
-		activeMenuView = new Mywebroom.Views.BrowseActiveMenuView(collection:@activeSitesCollection)
-		$(@el).append(activeMenuView.render().el)
-		$('.browse_mode_active_sites_menu').css 'left','70px'
+		if !@activeMenuView
+			console.log "BrowseMode showActiveMenu"
+			#Create new active menu view
+			@activeMenuView = new Mywebroom.Views.BrowseActiveMenuView(collection:@activeSitesCollection)
+			$(@el).append(@activeMenuView.render().el)
+			$('.browse_mode_active_sites_menu').css 'left','70px'
+		else
+			$(@activeMenuView.el).show()
 	showDiscoverView:->console.log "BrowseMode showDiscoverView"
 	showBookmarksView:->console.log "BrowseMode showBookmarksView"
 
@@ -77,5 +81,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		$(@$currentActiveSiteHTML()).remove()
 		#Remove the model from activeSitesCollection
 		@activeSitesCollection.remove(@getModelToBrowse())
+		#Hide Active Sites View if it exists. 
+		$(@activeMenuView.el).hide() if @activeMenuView
+		#Hide Browse Mode View
 		$(@el).hide()	
 

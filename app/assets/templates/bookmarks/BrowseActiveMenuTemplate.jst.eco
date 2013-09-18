@@ -1,18 +1,9 @@
-<style>
-.horizontal_list li{
-	display:inline;
-	list-style-type: none;
-	padding right:15px;
-}
-#active_menu_close_wrap{
-	position:absolute;
-	top:50px;
-	right:10%;
-}
-</style>
+
 <ul class="horizontal_list">
-<%for site in @collection:%>
-	<li>"HI"</li>
+<%for site in @collection.models:%>
+	<li>
+		<div class="active_menu_site_icon" style="background-image:url(<%=site.get('image_name').url%>)"></div>
+	</li>
 <%end%>
 </ul>
 <div id="active_menu_close_wrap">
