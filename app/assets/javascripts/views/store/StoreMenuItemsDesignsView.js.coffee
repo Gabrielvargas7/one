@@ -41,9 +41,17 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
   # do something on click
   #--------------------------
   clickStoreItemDesigns: (event) ->
-    event.preventDefault()
+    event.preventDefault()    
     console.log("click Store Menu item design View "+@model.get('id'))
     console.log(" item id "+@model.get('item_id'))
+    
+    
+    # Show the view with the Save, Cancel, Remove buttons
+    $('#xroom_store_menu_save_cancel_remove').show()
+    
+    # Hide the remove button
+    $('#xroom_store_remove').show()
+    
 
     itemId =@model.get('item_id')
     itemDesignId =@model.get('id')

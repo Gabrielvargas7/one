@@ -48,6 +48,16 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
     console.log("click Store Menu Theme View "+@model.get('id'))
     imageName = @model.get('image_name').url
     console.log(imageName)
+    
+    
+    # Show the view with the Save, Cancel, Remove buttons
+    $('#xroom_store_menu_save_cancel_remove').show()
+    
+    
+    # Hide the remove button
+    $('#xroom_store_remove').hide()
+    
+    
     $('.current_background').attr("src", imageName);
     $('.current_background').attr("data-room_theme_id", @model.get('id'));
     $('.current_background').attr("data-room_theme", 'new');

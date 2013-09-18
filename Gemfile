@@ -31,6 +31,8 @@ gem "unicorn", "4.6.3"
 
 gem 'geocoder', "1.1.8"
 
+gem 'toastr-rails', '1.0.3'
+
 
 
 #gem 'rename'

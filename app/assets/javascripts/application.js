@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require cloudinary
 //= require bootstrap
+//= require toastr
+//= require bootbox.min
 //= require underscore
 //= require backbone
 //= require mywebroom
