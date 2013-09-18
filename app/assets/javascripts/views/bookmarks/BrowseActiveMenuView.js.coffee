@@ -9,6 +9,6 @@ class Mywebroom.Views.BrowseActiveMenuView extends Backbone.View
 		$(@el).html(@template(collection:@collection))
 		this
 	hideActiveMenu:->
-		$(@el).hide()
+		$(@el).css "left","-2070px"
 	showActiveMenu:->
 		$(@el).show()
