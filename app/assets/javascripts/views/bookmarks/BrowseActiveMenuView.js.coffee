@@ -1,6 +1,10 @@
+#Active Menu instance hides and shows by altering the css left property. 
+#This lets the menu slide out from right to left. 
 class Mywebroom.Views.BrowseActiveMenuView extends Backbone.View
 	className:'browse_mode_active_sites_menu'
 	template:JST['bookmarks/BrowseActiveMenuTemplate']
+	events:
+		'click #active_menu_close':'hideActiveMenu'
 	initialize:->
 		self= this
 		@collection.on('add',@render,self)
@@ -11,4 +15,4 @@ class Mywebroom.Views.BrowseActiveMenuView extends Backbone.View
 	hideActiveMenu:->
 		$(@el).css "left","-2070px"
 	showActiveMenu:->
-		$(@el).show()
+		$(@el).css "left","70px"
