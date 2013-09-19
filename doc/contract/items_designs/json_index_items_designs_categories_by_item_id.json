@@ -1,0 +1,343 @@
+//# GET Get all items_designs categories group
+//# /items_designs/json/index_items_designs_categories_by_item_id/:item_id'
+//# /items_designs/json/index_items_designs_categories_by_item_id/1.json'
+//# Return head
+//# success    ->  head  200 OK
+
+{
+    "items_designs_categories": [
+        {
+            "category": "furniture",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "category": null,
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "category": "asd",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "category": "category",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "category": "",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        }
+    ],
+    "items_designs_brands": [
+        {
+            "brand": null,
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": "asd",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": "brand",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": "ikea",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": "",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        }
+    ],
+    "items_designs_styles": [
+        {
+            "item_id": 1,
+            "style": "modern",
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "item_id": 1,
+            "style": null,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "item_id": 1,
+            "style": "asd",
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "item_id": 1,
+            "style": "style",
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "item_id": 1,
+            "style": "",
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        }
+    ],
+    "items_designs_colors": [
+        {
+            "color": null,
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "color": "fsdg",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "color": "green",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "color": "color",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "color": "",
+            "item_id": 1,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        }
+    ],
+    "items_designs_makes": [
+        {
+            "item_id": 1,
+            "make": null,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "item_id": 1,
+            "make": "sdf",
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "item_id": 1,
+            "make": "wood",
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "item_id": 1,
+            "make": "make",
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "item_id": 1,
+            "make": "",
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        }
+    ]
+}

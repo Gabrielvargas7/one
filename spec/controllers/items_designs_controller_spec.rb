@@ -364,4 +364,155 @@ describe ItemsDesignsController do
   end
 
 
+  #***********************************
+  # rspec test  #json_index_items_designs_categories_by_item_id
+  #***********************************
+
+  describe "api #json_index_items_designs_categories_by_item_id",tag_json_category:true do
+
+
+    describe "is public api" do
+      before do
+        sign_out
+
+        @item = FactoryGirl.create(:item)
+        FactoryGirl.create(:items_design,item_id:@item.id,
+                           category:"furniture",style:"modern",brand:"nike",color:"green",make:"wood")
+        FactoryGirl.create(:items_design,item_id:@item.id,
+                           category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather")
+      end
+
+      it "should be successful" do
+        get :json_index_items_designs_categories_by_item_id,item_id:@item.id, :format => :json
+        response.should be_success
+      end
+
+      it "has a 200 status code" do
+        get :json_index_items_designs_categories_by_item_id,item_id:@item.id, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+
+        it "should return json_index_bundles_categories" do # depend on what you return in action
+          get :json_index_items_designs_categories_by_item_id,item_id:@item.id, :format => :json
+          body = JSON.parse(response.body)
+          #puts body.as_json
+          puts body["category"]
+          #puts @the
+
+          body["items_designs_categories"].each do |body_b|
+            @items_designs_json = ItemsDesign.find_all_by_category(body_b["category"]).first()
+            body_b["category"].should == @items_designs_json.category
+            #puts body_theme["category"]
+          end
+
+          body["items_designs_brands"].each do |body_b|
+            @items_designs_json = ItemsDesign.find_all_by_brand(body_b["brand"]).first()
+            body_b["brand"].should == @items_designs_json.brand
+            #puts body_theme["brand"]
+          end
+
+          body["items_designs_styles"].each do |body_b|
+            @items_designs_json = ItemsDesign.find_all_by_style(body_b["style"]).first()
+            body_b["style"].should == @items_designs_json.style
+            #puts body_theme["style"]
+          end
+
+          body["items_designs_colors"].each do |body_b|
+            @items_designs_json = ItemsDesign.find_all_by_color(body_b["color"]).first()
+            body_b["color"].should == @items_designs_json.color
+            #puts body_theme["color"]
+          end
+
+          body["items_designs_makes"].each do |body_b|
+            @items_designs_json = ItemsDesign.find_all_by_make(body_b["make"]).first()
+            body_b["make"].should == @items_designs_json.make
+            #puts body_theme["make"]
+          end
+
+
+
+        end
+      end
+    end
+  end
+
+
+  #***********************************
+  # rspec test  #json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset
+  #***********************************
+
+
+  describe "api #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset",tag_json_index:true do
+
+    describe "is public api" do
+      before do
+        sign_out
+        @category = "category"
+        @keyword = "electronics"
+        @limit = 4
+        @offset = 0
+
+
+        @item = FactoryGirl.create(:item)
+        FactoryGirl.create(:items_design,item_id:@item.id,
+                           category:"furniture",style:"modern",brand:"nike",color:"green",make:"wood")
+
+        FactoryGirl.create(:items_design,item_id:@item.id,
+                           category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather")
+
+        FactoryGirl.create(:items_design,item_id:@item.id,
+                           category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather")
+
+
+      end
+
+
+      it "should be successful" do
+        get :json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset,item_id:@item.id, category:@category,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
+        response.should be_success
+      end
+
+
+      it "has a 200 status code" do
+        get :json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset,item_id:@item.id, category:@category,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset" do # depend on what you return in action
+          get :json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset,item_id:@item.id, category:@category,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          #puts "theme ----> "+@theme.as_json.to_s
+          #puts "body name ----> " + body[0]["name"].to_s
+          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          #puts "theme name----> "+@theme.name.to_s
+          #puts "theme image name----> "+@theme.image_name.to_s
+
+          body.each do |body_b|
+            @b_json = ItemsDesign.find(body_b["id"])
+            body_b["name"].should == @b_json.name
+            body_b["description"].should == @b_json.description
+            body_b["id"].should == @b_json.id
+            body_b["image_name"]["url"].should == @b_json.image_name.to_s
+            body_b["image_name_hover"]["url"].should == @b_json.image_name_hover.to_s
+            body_b["category"].should == @b_json.category
+            body_b["style"].should == @b_json.style
+            body_b["brand"].should == @b_json.brand
+            body_b["color"].should == @b_json.color
+            body_b["make"].should == @b_json.make
+            body_b["special_name"].should == @b_json.special_name
+            body_b["like"].should == @b_json.like
+
+
+          end
+        end
+      end
+    end
+  end
+
+
+
 end
