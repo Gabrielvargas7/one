@@ -55,7 +55,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:itemId,user:userId})
 		$('#room_bookmark_item_id_container_'+itemId).append(bookmarksView.el)
 		bookmarksView.render()
-		if event.currentTarget is $('#browse_mode_discover') 
+		if event.currentTarget is $('#browse_mode_discover')[0]
 		  bookmarksView.renderDiscover()
 		#hide this view
 				#Hide Active Sites View if it exists. 
@@ -82,15 +82,21 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 			@getActiveSitesCollection().add(model)
 			#Remove current active site and add this one as current.
 			@removeCurrentActiveSite(@$currentActiveSiteHTML())
-			#Append it to the el. 
-
-			newIframeHTML = JST['bookmarks/BrowseModeIframeTemplate'](model:@getModelToBrowse())
-			$('.browse_mode_site_wrap').append(newIframeHTML)
-			#rerender the sidebar menu if model id is different.
-			@browseModeSidebarView.remove() if @browseModeSidebarView
-			@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
-			@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
-			$(@el).append(@browseModeSidebarView.render().el)
+			#Check if the site allows iframe
+			if model.get('i_frame') is 'n'
+				#open in target
+				window.open model.get('bookmark_url'),"_blank"
+				#close view
+				@closeView()	
+			else	
+				#Append it to the el.	
+				newIframeHTML = JST['bookmarks/BrowseModeIframeTemplate'](model:@getModelToBrowse())
+				$('.browse_mode_site_wrap').append(newIframeHTML)
+				#rerender the sidebar menu if model id is different.
+				@browseModeSidebarView.remove() if @browseModeSidebarView
+				@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
+				@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
+				$(@el).append(@browseModeSidebarView.render().el)
 	
 	#Called when user clicks another site icon in the Active Menu
 	#The model clicked is already part of activeSitesCollection
@@ -103,7 +109,6 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
 		@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
 		$(@el).append(@browseModeSidebarView.render().el)
-
 		@removeCurrentActiveSite(@$currentActiveSiteHTML())
 		#set current active site to this model in iframe. 
 		@setCurrentActiveSite $('.browse_mode_site[data-id='+siteId+']') 

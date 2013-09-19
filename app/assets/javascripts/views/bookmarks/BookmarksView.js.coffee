@@ -178,8 +178,6 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       console.log "There was an error in your url or the title was too long."
   browseMode:->
     #Send data to browseModeView
-    $('#xroom_bookmarks_browse_mode').show()
-    $('.browse_mode_view').show()
     #Close this view. 
     @closeView()
 

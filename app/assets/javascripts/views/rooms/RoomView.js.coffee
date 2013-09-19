@@ -263,6 +263,8 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   changeBrowseMode:(model)->
     console.log('now we play with BrowseMode for reals!')
+    $('#xroom_bookmarks_browse_mode').show()
+    $('.browse_mode_view').show()
     @browseModeView.activeSiteChange(model)
     console.log(@browseModeView)
 
