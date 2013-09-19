@@ -10,6 +10,7 @@
  *
  *= require bootstrap
  *= require toastr
+ *= require toastr-responsive
  *= require_self
  *= require_tree .
  */
