@@ -206,22 +206,17 @@ class ThemesController < ApplicationController
 
   def json_index_themes_filter_by_category_by_keyword_and_limit_and_offset
 
-
     respond_to do |format|
-
       # limit the length of the string to avoid injection
       if params[:keyword].length < 12 and params[:category].length < 12
 
-
           keyword = params[:keyword].strip.downcase
           category = params[:category].strip.downcase
-
 
           @themes = Theme.
               where("LOWER(LTRIM(RTRIM("+category+"))) LIKE ? ", "%#{keyword}%").
               limit(params[:limit]).
               offset(params[:offset])
-
 
           format.json { render json: @themes
           }
