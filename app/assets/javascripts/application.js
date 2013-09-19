@@ -16,9 +16,9 @@
 //= require cloudinary
 //= require bootstrap
 //= require toastr
-//= require bootbox.min
 //= require underscore
 //= require backbone
+//= require bootbox
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models

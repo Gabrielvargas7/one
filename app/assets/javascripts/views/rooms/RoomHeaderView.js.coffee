@@ -216,7 +216,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function display
   #--------------------------
   displayStorePage: ->
-    $('#xroom_store_menu_save_cancel_remove').show()
+    #$('#xroom_store_menu_save_cancel_remove').show()
     $('#xroom_storepage').show()
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
