@@ -65,14 +65,22 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     this.saveNewTheme()
     this.saveNewItems()
     
+  
+    
+  revert: (bool) ->
+    alert(bool)
+      
     
     
     
   clickStoreCancel: (event) ->
+    self = this
     event.preventDefault()
     console.log("click Store Cancel")
-    
-    
+    bootbox.confirm "Are you sure you want to cancel all the changes you made in your room?", (result) ->
+      self.revert(result)
+
+
     
   #*******************
   #**** Functions  -save data
