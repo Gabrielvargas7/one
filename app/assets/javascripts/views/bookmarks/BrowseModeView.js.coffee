@@ -8,9 +8,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		'click #browse_mode_site_nav_refresh':'refreshSite'
 		'click #browse_mode_active':'showActiveMenu'
 		'click .active_menu_site_icon':'iconActiveSiteChange'
-		'click #browse_mode_discover':'showDiscoverView'
+		'click #browse_mode_discover':'showBookmarksView'
 		'click #browse_mode_bookmarks':'showBookmarksView'
-
 		
 	$currentActiveSiteHTML:->
 		$('.current_browse_mode_site')
@@ -23,6 +22,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		#Fetch item+designs info (possibly rerender active menu when we're there)
 	getModelToBrowse:->
 		@modelToBrowse
+	getActiveSitesCollection:->
+		@activeSitesCollection
 	
 	#render- The nature of this view is that render is called once. 
 	#We frequently rerender the sidebar view. 
@@ -32,7 +33,6 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		#$(@el).html(@browseModeSidebarView.render().el)
 		$(@el).append(@template(model:@getModelToBrowse()))
 	
-
 	removeCurrentActiveSite:(target)->
 		#remove current active site
 		$(target).removeClass 'current_browse_mode_site'
@@ -42,22 +42,36 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		if !@activeMenuView
 			console.log "BrowseMode showActiveMenu"
 			#Create new active menu view
-			@activeMenuView = new Mywebroom.Views.BrowseActiveMenuView(collection:@activeSitesCollection)
+			@activeMenuView = new Mywebroom.Views.BrowseActiveMenuView(collection:@getActiveSitesCollection())
 			$(@el).append(@activeMenuView.render().el)
 			@activeMenuView.showActiveMenu()
 		else
 			@activeMenuView.showActiveMenu()
-	showDiscoverView:->console.log "BrowseMode showDiscoverView"
-	showBookmarksView:->console.log "BrowseMode showBookmarksView"
+
+	showBookmarksView:(event)->
+		#get model item-id, show that bookmark view.
+		itemId = @modelToBrowse.get('item_id')
+		userId = "24"
+		bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:itemId,user:userId})
+		$('#room_bookmark_item_id_container_'+itemId).append(bookmarksView.el)
+		bookmarksView.render()
+		if event.currentTarget is $('#browse_mode_discover') 
+		  bookmarksView.renderDiscover()
+		#hide this view
+				#Hide Active Sites View if it exists. 
+		@activeMenuView.hideActiveMenu() if @activeMenuView
+		#Hide Browse Mode View
+		$(@el).hide()	
+		console.log "BrowseMode showBookmarksView"
 
 	#activeSiteChange is called each time a user clicks a bookmark.
 	#  It is also called when the user clicks a BrowseMode Sidebar icon.  
 	#  It adds the new site to the collection and generates a new iframe
 	activeSiteChange:(model)->
 		#Check if the site is already active.
-		if @activeSitesCollection.get(model)
+		if @getActiveSitesCollection().get(model)
 			console.log "already here!"
-			@setModelToBrowse @activeSitesCollection.get(model)
+			@setModelToBrowse @getActiveSitesCollection().get(model)
 			@browseModeSidebarView.setModel @getModelToBrowse()
 			@removeCurrentActiveSite(@$currentActiveSiteHTML())
 			#set current active site to this model in iframe. 
@@ -65,7 +79,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		else
 			@setModelToBrowse model
 			#Add to active sites collection.
-			@activeSitesCollection.add(model)
+			@getActiveSitesCollection().add(model)
 			#Remove current active site and add this one as current.
 			@removeCurrentActiveSite(@$currentActiveSiteHTML())
 			#Append it to the el. 
@@ -83,7 +97,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 	iconActiveSiteChange:(event)->
 		#get model and pass to activeSiteChange
 		siteId= event.currentTarget.dataset.id
-		@setModelToBrowse @activeSitesCollection.get(siteId)
+		@setModelToBrowse @getActiveSitesCollection().get(siteId)
 		#rerender the sidebar menu (TODO- onlyif model id is different.)
 		@browseModeSidebarView.remove() if @browseModeSidebarView
 		@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
@@ -97,6 +111,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 	#Called when the user clicks Refresh in the Browse Mode Nav.
 	refreshSite:(event)->
 		console.log "refresh site!"
+		originalURL = $('.current_browse_mode_site').attr 'src'
+		$('.current_browse_mode_site').attr 'src',originalURL
 	
 	#Called when user clicks Minimize in the Browse Mode Nav.
 	minimizeSite:(event)->
@@ -114,7 +130,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		#remove current active site from the active sites list.
 		$(@$currentActiveSiteHTML()).remove()
 		#Remove the model from activeSitesCollection
-		@activeSitesCollection.remove(@getModelToBrowse())
+		@getActiveSitesCollection().remove(@getModelToBrowse())
 		#Hide Active Sites View if it exists. 
 		@activeMenuView.hideActiveMenu() if @activeMenuView
 		#Hide Browse Mode View

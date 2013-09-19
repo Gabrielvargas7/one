@@ -33,7 +33,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
     @collection.fetch
       async:false
-      url:@collection.url this.options.user.id, this.options.user_item_design.item_id
+      url:@collection.url this.options.user, this.options.user_item_design
       success:(response) ->
         console.log("bookmark fetch successful: ")
         console.log(response)
@@ -41,7 +41,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
     @discoverCategoriesCollection.fetch
       async:false
-      url: @discoverCategoriesCollection.url this.options.user_item_design.item_id
+      url: @discoverCategoriesCollection.url this.options.user_item_design
       success:(response) ->
         console.log("categories fetch successful: ")
         console.log(response)
@@ -52,7 +52,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   #*******************
   render: ->
     console.log("bookmark view: "+this.options.user_item_design)
-    #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user.id)
+    #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user)
     $(@el).append(@template(user_item_design:this.options.user_item_design, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
@@ -73,7 +73,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @discoverCollection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
     @discoverCollection.fetch
       async:false
-      url: @discoverCollection.url this.options.user_item_design.item_id
+      url: @discoverCollection.url this.options.user_item_design
       success:(response)->
         console.log "discover Bookmarks fetch successful: "
         console.log response
@@ -94,7 +94,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @collection.fetch
       reset:true
       async:false
-      url:@collection.url this.options.user.id, this.options.user_item_design.item_id
+      url:@collection.url this.options.user, this.options.user_item_design
     #$(@el).append(@myBookmarksView.render().el)
     $(@myBookmarksView.el).show()
     #$(@el).append(@myBookmarksView.render().el)

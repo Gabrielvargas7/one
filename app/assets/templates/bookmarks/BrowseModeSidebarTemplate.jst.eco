@@ -1,7 +1,7 @@
 <ul class="browse_mode_list">
 	<li><a id="browse_mode_active" href="#">Active</a></li>
-	<li><a>Discover</a></li>
-	<li><a>Bookmarks</a></li>
+	<li><a id="browse_mode_discover">Discover</a></li>
+	<li><a id="browse_mode_bookmarks">Bookmarks</a></li>
 	<div class="spacer"></div>
 
 	<%if @collection:%>
