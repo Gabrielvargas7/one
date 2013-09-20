@@ -1,10 +1,6 @@
-<div class="room_user_item_design_container"
-
-style="position:absolute;
-      width:<%=@user_item_design.width%>px;
-      left:<%=@user_item_design.x%>px;
-      top:<%=@user_item_design.y%>px;
-      z-index:<%=@user_item_design.z%>;">
+<div
+     class="room_item_designs_container_<%=@user_item_design.item_id%>"
+    style="" >
 
     <img class="room_user_item_design"
         src="<%=@user_item_design.image_name.url%>"
@@ -14,6 +10,9 @@ style="position:absolute;
         data-room_location_id="<%=@user_item_design.location_id%>"
         data-room_item_design_id_current="<%=@user_item_design.id%>"
         data-room_item_design="current"
+
+
+
     >
 
 </div>

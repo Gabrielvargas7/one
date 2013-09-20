@@ -164,6 +164,7 @@ class RoomsController < ApplicationController
                             locations.section_id,
 
                             items.name as items_name,
+                            items.clickable,
                             sections.name as section_name'
                             ).
                     joins(:users_items_designs).

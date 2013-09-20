@@ -1,0 +1,16 @@
+
+//# GET /locations/json/show_location_by_location_id/1.json
+
+{
+    "created_at": "2013-05-17T20:32:53Z",
+    "description": null,
+    "height": 322,
+    "id": 1,
+    "name": "Bed",
+    "section_id": 1,
+    "updated_at": "2013-05-17T20:32:53Z",
+    "width": 448,
+    "x": "1493.0",
+    "y": "420.5",
+    "z": 1
+}

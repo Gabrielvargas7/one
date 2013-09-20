@@ -9,7 +9,7 @@ describe FriendsController do
 
   before  do
 
-    @limit = 2
+    @limit = 1
     @offset = 0
     @user1 = FactoryGirl.create(:user)
     @user2 = FactoryGirl.create(:user)
@@ -32,6 +32,7 @@ describe FriendsController do
 
     sign_in @user1
 
+
     #puts "Admin user signin cookie: "+cookies[:remember_token].to_s
   end
 
@@ -49,8 +50,7 @@ describe FriendsController do
   describe "api #json_index_friend_by_user_id",tag_json_index:true do
 
     before do
-      #sign_in @requested
-      @friends = Friend.where('user_id = ?',@user1.id)
+      @friends = Friend.where('user_id = ?',@user1.id).all
       @user_friend =
           UsersPhoto.select(
               'users_photos.user_id,
@@ -60,7 +60,7 @@ describe FriendsController do
                 users_profiles.lastname,
                 users.username'
 
-          ).where(:user_id => @friends.map {|b| b.user_id})
+          ).where(:user_id => @friends.map {|b| b.user_id_friend})
           .where("users_photos.profile_image = 'y'")
           .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
           .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')
@@ -143,7 +143,7 @@ describe FriendsController do
                 users_profiles.lastname,
                 users.username'
 
-          ).where(:user_id => @friends.map {|b| b.user_id})
+          ).where(:user_id => @friends.map {|b| b.user_id_friend})
           .where("users_photos.profile_image = 'y'")
           .joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id')
           .joins('LEFT OUTER JOIN users  ON users.id = users_photos.user_id')

@@ -2,7 +2,7 @@
 	position:absolute;
 	color:white;
 	height:95%;
-	z-index:4;
+	z-index:6;
 }
 .bookmark_menu{
 	position:fixed;
@@ -21,7 +21,6 @@
 	font-weight: lighter;
 	padding-top:.5em;
 	padding-bottom: .7em;
-
 	line-height: 26px;
 }
 ul.bookmark_menu_list {
@@ -88,10 +87,11 @@ ul.bookmark_menu_list {
 	width:1100px;
 	background-color:white;
 	float:left;
-	height:100%;
+	// height:100%;
 	padding:10px;
 	color:#333333;
-	position:absolute;
+	position:fixed;
+	top:45px;
 	left:250px;
 }
 .my_bookmarks_top, .discover_bookmarks_top{
@@ -187,3 +187,31 @@ div.just_added img{
 	right:0;
 }
 /*END My Bookmarks Grid Items*/
+/*Bookmarks Preview Mode*/
+.preview_mode_wrap{
+	position:fixed;
+	left:250px;
+	width:1120px;
+	height:100%;
+	background-color: #404040;
+	z-index:2;
+}
+.preview_mode_wrap iframe{
+	width:100%;
+	height:100%;
+}
+.preview_mode_title{
+	color:#ffffff;
+	height:35px;
+	padding:.5em 0 .7em 1em;
+	font-size:18px;
+}
+.preview_mode_title p{
+	margin:1em;
+}
+.preview_mode_title .close_button{
+	position:absolute;
+	right:20px;
+	top:10px;
+}
+/*END Bookmarks Preview Mode*/

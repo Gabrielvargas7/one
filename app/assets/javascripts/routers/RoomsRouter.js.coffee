@@ -1,20 +1,10 @@
-class Mywebroom.Routers.Rooms extends Backbone.Router
+class Mywebroom.Routers.RoomsRouter extends Backbone.Router
 
   routes:
-    '': 'routes_room'
-#    'xroom': 'routesRoom'
-
+    '': 'routesRoom'
 
   initialize: ->
 
-  routes_room: ->
+  routesRoom: ->
     view = new Mywebroom.Views.RoomView()
     $('#xroom_main_container').append(view.render().el)
-
-
-
-
-
-
-
-

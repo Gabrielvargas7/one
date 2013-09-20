@@ -1,0 +1,109 @@
+//# GET Get all themes categories group
+//# /themes/json/index_themes_categories'
+//# /themes/json/index_themes_categories.json'
+//# Return head
+//# success    ->  head  200 OK
+
+
+{
+    "themes_categories": [
+        {
+            "category": null,
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        },
+        {
+            "category": "",
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        }
+    ],
+    "themes_brands": [
+        {
+            "brand": null,
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        },
+        {
+            "brand": "",
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        }
+    ],
+    "themes_styles": [
+        {
+            "style": null,
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        },
+        {
+            "style": "",
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        }
+    ],
+    "themes_colors": [
+        {
+            "color": null,
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        },
+        {
+            "color": "",
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        }
+    ],
+    "themes_makes": [
+        {
+            "make": null,
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        },
+        {
+            "make": "",
+            "image_name": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            }
+        }
+    ]
+}

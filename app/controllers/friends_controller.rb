@@ -4,19 +4,29 @@ class FriendsController < ApplicationController
                 only:[
                     :json_create_friend_by_user_id_accept_and_user_id_request,
                     :json_destroy_friend_by_user_id_and_user_id_friend,
+                    :json_show_is_my_friend_by_user_id_and_friend_id,
+                    :json_index_friends_suggestion_by_user_id_by_limit_by_offset,
+                    :json_index_friend_by_user_id,
+                    :json_index_friend_by_user_id_by_limit_by_offset,
                     :json_show_is_my_friend_by_user_id_and_friend_id
-
                 ]
-
 
   before_filter :json_correct_user,
                 only:[
                     :json_create_friend_by_user_id_accept_and_user_id_request,
                     :json_destroy_friend_by_user_id_and_user_id_friend,
-                    :json_show_is_my_friend_by_user_id_and_friend_id
-
+                    :json_show_is_my_friend_by_user_id_and_friend_id,
+                    :json_index_friends_suggestion_by_user_id_by_limit_by_offset
 
                 ]
+  before_filter :json_is_my_friend_the_sign_in_by_friend_id,
+                only:[
+                      :json_index_friend_by_user_id,
+                      :json_index_friend_by_user_id_by_limit_by_offset,
+                      :json_show_is_my_friend_by_user_id_and_friend_id
+
+                     ]
+
 
 
   #***********************************
@@ -176,7 +186,6 @@ class FriendsController < ApplicationController
       end
 
 
-
     end
     end
 
@@ -287,15 +296,10 @@ class FriendsController < ApplicationController
   #  /friends/json/show_is_my_friend_by_user_id_and_friend_id/206/13.json'
   #  //# success    ->  head  200 OK
 
-
   def json_show_is_my_friend_by_user_id_and_friend_id
     respond_to do |format|
-
       if User.exists?(id:params[:user_id])
-
         @friends = Friend.where('user_id = ? and user_id_friend = ?',params[:user_id],params[:friend_id])
-        #@user_friend =  User.select('id,name,image_name').where(:id => @friends.map {|b| b.user_id_friend})
-
         @user_friend =
             UsersPhoto.select(
                 'users_photos.user_id,
@@ -317,11 +321,8 @@ class FriendsController < ApplicationController
         format.json { render json:'not found user_id ',status: :not_found }
       end
 
-
-
     end
   end
-
 
 
 

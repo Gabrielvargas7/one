@@ -9,6 +9,7 @@ class Mywebroom.Views.DiscoverBookmarksView extends Backbone.View
 	    #   success:(response)->
 	    #     console.log "discover Bookmarks fetch successful: "
 	    #     console.log response
+	    
 		
 	render:->
 		$(@el).append(@template())
@@ -39,4 +40,8 @@ class Mywebroom.Views.DiscoverBookmarksView extends Backbone.View
 		  	bookmarkItemView.render()
 		  	#this.$('#my_bookmarks_row_item'+rowNum).append(bookmarkItemView.render().el)
 		  rowArray.length = 0
+	addCustomBookmark:->
+
+		console.log "I'd like to add a custom bookmark!"
+		console.log $("input:first").val()
 

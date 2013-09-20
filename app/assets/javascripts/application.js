@@ -15,8 +15,10 @@
 //= require jquery_ujs
 //= require cloudinary
 //= require bootstrap
+//= require toastr
 //= require underscore
 //= require backbone
+//= require bootbox
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models

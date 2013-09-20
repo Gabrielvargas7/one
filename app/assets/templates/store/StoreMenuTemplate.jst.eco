@@ -2,11 +2,19 @@
 
     <!-- Store Menu  -->
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab_items" data-toggle="tab">OBJECTS</a></li>
-        <li ><a href="#tab_items_designs" data-toggle="tab" >OBJECTS</a></li>
-        <li ><a href="#tab_themes" data-toggle="tab">THEMES</a></li>
-        <li ><a href="#tab_bundles" data-toggle="tab">BUNDLES</a></li>
-        <li ><a href="#tab_bundles_set" data-toggle="tab" >SET ROOMS</a></li>
+        
+        <li class="active">
+            <a href="#tab_items" data-toggle="tab">OBJECTS</a>
+        </li>
+        <li >             
+            <a href="#tab_themes"        data-toggle="tab">THEMES</a>
+        </li>
+        <li >              
+            <a href="#tab_bundles"       data-toggle="tab">BUNDLES</a>
+        </li>
+        <li >              
+            <a href="#tab_bundles_set"   data-toggle="tab">SET ROOMS</a>
+        </li>
 
     </ul>
 

@@ -79,6 +79,15 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
   clickStoreBundleSet: (event) ->
     event.preventDefault()
     console.log("click")
+    
+    
+    # Show the view with the Save, Cancel, Remove buttons
+    $('#xroom_store_menu_save_cancel_remove').show()
+    
+    
+    # Hide the remove button
+    $('#xroom_store_remove').hide()
+
 
     # set the new theme
     bundleThemeCollection = this.getBundleThemeCollection(@model.get('theme_id'))

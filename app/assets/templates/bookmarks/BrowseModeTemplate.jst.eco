@@ -1,0 +1,11 @@
+
+<div class="browse_mode_site_wrap">
+	<!--iframes go here-->
+
+
+	<div class="browse_mode_site_nav">
+		<a id="browse_mode_site_nav_close">Close</a>
+		<a id="browse_mode_site_nav_minimize">Minimize</a>
+		<a id="browse_mode_site_nav_refresh">Refresh</a>
+	</div>
+</div>

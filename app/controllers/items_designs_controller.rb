@@ -71,6 +71,13 @@ class ItemsDesignsController < ApplicationController
   def create
     @items_design = ItemsDesign.new(params[:items_design])
 
+    params[:items_design][:category] = params[:items_design][:category].strip.downcase
+    params[:items_design][:style] = params[:items_design][:style].strip.downcase
+    params[:items_design][:color] = params[:items_design][:color].strip.downcase
+    params[:items_design][:brand] = params[:items_design][:brand].strip.downcase
+    params[:items_design][:make] = params[:items_design][:make].strip.downcase
+
+
     respond_to do |format|
       if @items_design.save
         format.html { redirect_to @items_design, notice: 'Items design was successfully created.' }
@@ -86,6 +93,13 @@ class ItemsDesignsController < ApplicationController
   # PUT /items_designs/1.json
   def update
     @items_design = ItemsDesign.find(params[:id])
+
+    params[:items_design][:category] = params[:items_design][:category].strip.downcase
+    params[:items_design][:style] = params[:items_design][:style].strip.downcase
+    params[:items_design][:color] = params[:items_design][:color].strip.downcase
+    params[:items_design][:brand] = params[:items_design][:brand].strip.downcase
+    params[:items_design][:make] = params[:items_design][:make].strip.downcase
+
 
     respond_to do |format|
       if @items_design.update_attributes(params[:items_design])
@@ -195,5 +209,90 @@ class ItemsDesignsController < ApplicationController
 
 
 
+  # GET Get all items_designs categories group
+  # /items_designs/json/index_items_designs_categories_by_item_id/:item_id'
+  # /items_designs/json/index_items_designs_categories_by_item_id/1.json'
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_items_designs_categories_by_item_id
+
+    respond_to do |format|
+
+      if ItemsDesign.exists?(item_id:params[:item_id])
+
+        @items_designs_categories = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(category)))) as category, item_id ").
+            where("item_id = ?",params[:item_id])
+
+        @items_designs_brands = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(brand)))) as brand, item_id ").
+            where("item_id = ?",params[:item_id])
+
+        @items_designs_styles = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(style)))) as style, item_id ").
+            where("item_id = ?",params[:item_id])
+
+        @items_designs_colors = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(color)))) as color, item_id ").
+            where("item_id = ?",params[:item_id])
+
+        @items_designs_makes = ItemsDesign.select("DISTINCT(LOWER(LTRIM(RTRIM(make)))) as make, item_id ").
+            where("item_id = ?",params[:item_id])
+
+
+
+        format.json { render json:{ items_designs_categories:@items_designs_categories,
+                                     items_designs_brands:@items_designs_brands,
+                                     items_designs_styles:@items_designs_styles,
+                                     items_designs_colors:@items_designs_colors,
+                                     items_designs_makes:@items_designs_makes
+        }}
+
+      else
+        format.json { render json: 'not found item id' , status: :not_found }
+      end
+
+    end
+
+  end
+
+
+
+  # GET Get all items_designs filter by category, item_id and keyword and limit and offset
+  # /items_designs/json/index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset/:category/:item_id/:keyword/:limit/:offset'
+  # /items_designs/json/index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset/color/11/green/10/0.json'
+
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset
+
+
+    respond_to do |format|
+
+      # limit the length of the string to avoid injection
+      if params[:keyword].length < 12 and params[:category].length < 12
+
+          if ItemsDesign.exists?(item_id:params[:item_id])
+
+          keyword = params[:keyword].strip.downcase
+          category = params[:category].strip.downcase
+
+          @items_designs = ItemsDesign.
+              where("LOWER(LTRIM(RTRIM("+category+"))) LIKE ? and item_id = ? ", "%#{keyword}%",params[:item_id]).
+              limit(params[:limit]).
+              offset(params[:offset])
+
+
+          format.json { render json: @items_designs
+          }
+
+        else
+          format.json { render json: 'not found item id' , status: :not_found }
+        end
+      else
+        format.json { render json: 'keyword or category to long ' , status: :not_found }
+      end
+
+    end
+
+  end
 
 end

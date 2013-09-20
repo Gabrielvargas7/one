@@ -34,11 +34,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $(@el).append(@template())
 
     # hide object tab ItemsDesignsTab
-    this.hideItemsDesignsTab()
+#    this.hideItemsDesignsTab()
 
     # items
     @itemsCollection = this.getItemsCollection()
     this.appendItemsEntry(@itemsCollection)
+
+    # items designs
+    @itemsDesignsCollection = this.getItemsDesignsCollection(@itemsCollection.first().get('id'))
+    this.appendItemsDesignsEntry(@itemsDesignsCollection)
 
     # themes
     @themesCollection = this.getThemesCollection()
@@ -67,6 +71,20 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     itemsCollection = new Mywebroom.Collections.IndexItemsCollection()
     itemsCollection.fetch async: false
     return itemsCollection
+
+  #--------------------------
+  # get the items designs data
+  #--------------------------
+  getItemsDesignsCollection: (item_id) ->
+    itemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
+    itemsDesignsCollection.fetch
+      async:false
+      url:itemsDesignsCollection.url item_id
+      success:(response) ->
+        console.log("items designs fetch successful: ")
+        console.log(response)
+    return itemsDesignsCollection
+
 
   #--------------------------
   # get the Themes data
@@ -117,6 +135,33 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
        that.row_line = "<ul id='row_item_"+that.row_number+"'></ul>"
        $('#tab_items').append(that.row_line)
 
+
+  #--------------------------
+  # append items designs views
+  #--------------------------
+
+  appendItemsDesignsEntry:(itemsDesignsCollection) ->
+
+    $("#tab_items_designs > ul").remove()
+    @loop_number = 0
+    @row_number = 1
+    @column_number = 3
+
+    @row_line = "<ul id='row_item_designs_"+@row_number+"'></ul>"
+    this.$('#tab_items_designs').append(@row_line)
+
+    that = this
+    itemsDesignsCollection.each (entry)  ->
+      storeMenuItemsDesignsView = new Mywebroom.Views.StoreMenuItemsDesignsView(model:entry)
+      $('#row_item_designs_'+that.row_number).append(storeMenuItemsDesignsView.el)
+      storeMenuItemsDesignsView.render()
+      that.loop_number++
+
+      u = that.loop_number%that.column_number
+      if u == 0
+        that.row_number++
+        that.row_line = "<ul id='row_item_designs_"+that.row_number+"'></ul>"
+        $('#tab_items_designs').append(that.row_line)
 
 
   #--------------------------

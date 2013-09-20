@@ -17,7 +17,6 @@ gem 'oauth2', '0.8.0'
 
 gem 'google_drive' , '0.3.5'
 gem "fileutils", '0.7'
-#gem "rmagick", '2.13.2'
 gem "carrierwave", '0.8.0'
 gem "cloudinary","1.0.57"
 
@@ -31,9 +30,7 @@ gem "unicorn", "4.6.3"
 
 gem 'geocoder', "1.1.8"
 
-
-
-#gem 'rename'
+gem 'toastr-rails', '1.0.3'
 
 
 
@@ -70,6 +67,7 @@ group :test do
 
 group :production do
   gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
 end
 
 # Bundle edge Rails instead:

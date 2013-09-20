@@ -1,0 +1,76 @@
+//# GET Get all bundles categories group
+//# /bundles/json/index_bundles_categories'
+//# /bundles/json/index_bundles_categories.json'
+//# Return head
+//# success    ->  head  200 OK
+
+
+
+{
+    "bundles_categories": [
+        {
+            "category": null,
+            "image_name": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            }
+        }
+    ],
+    "bundles_brands": [
+        {
+            "brand": null,
+            "image_name": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            }
+        }
+    ],
+    "bundles_styles": [
+        {
+            "style": null,
+            "image_name": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            }
+        }
+    ],
+    "bundles_colors": [
+        {
+            "color": null,
+            "image_name": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            }
+        }
+    ],
+    "bundles_makes": [
+        {
+            "make": null,
+            "image_name": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            }
+        }
+    ],
+    "bundles_locations": [
+        {
+            "location": null,
+            "image_name": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            }
+        }
+    ]
+}

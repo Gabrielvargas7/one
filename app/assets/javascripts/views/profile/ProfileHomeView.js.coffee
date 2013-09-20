@@ -197,5 +197,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     @collapseFlag = false
 
  closeProfileView: ->
- 	this.remove()
-  this.options.roomHeaderView.delegateEvents() # add all header events
+# 	this.remove()
+#  Mywebroom.vent.trigger("destroy:profile")
+#  this.options.roomHeaderView.delegateEvents() # add all header events
+   $('#xroom_profile').hide()

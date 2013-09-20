@@ -237,6 +237,7 @@ class UsersController < ApplicationController
 
 
 
+
   #***********************************
   # End Json methods for the room users
   #***********************************

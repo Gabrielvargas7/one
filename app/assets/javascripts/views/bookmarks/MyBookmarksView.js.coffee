@@ -84,3 +84,9 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 		userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
 		userSignInCollection.fetch async: false
 		userSignInCollection.models[0].get('id')
+
+	triggerBrowseMode:(model)->
+		console.log "BrowseMode triggered in MyBookmarksView:"
+		console.log model
+		this.trigger('browseMode1',model)
+
