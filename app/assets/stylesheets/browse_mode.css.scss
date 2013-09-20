@@ -9,10 +9,13 @@
 	left:0;
 	top:45px;
 	background-color:rgba(0,0,0,.8);
-	padding:10px;
+	padding:0 10px;
 	height:100%;
 	width:50px;
-
+	color:#d2d4d4;
+	font-size:12px;
+	font-weight:bolder;
+	text-transform:uppercase;
 }
 .browse_mode_site_wrap{
 	height:100%;
@@ -38,17 +41,37 @@ iframe.current_browse_mode_site.browse_mode_site{
 /*Browse mode Sidebar*/
 img.browse_mode_sidebar_icons{
 	width:30px;
+	border-radius:3px;
 }
 
 .browse_mode_list li{
-	padding:10px 0;
+	padding:15px 0;
 	list-style: none;
+	text-align:center;
+}
+.browse_mode_list div{
+	margin:3px 0;
 }
 .browse_mode_list{
 	margin:0;
 }
-#browse_mode_list_selected{
+.sidebar_spacer{
+	height:22px;
+	border-top: 1px solid #707070;
+}
+#browse_mode_list_selected .browse_mode_sidebar_icons{
 	border:2px solid #40C3FD;
+}
+#browse_mode_active_highlight,#browse_mode_discover_highlight,#browse_mode_mybookmarks_highlight{
+	display:none;
+}
+/*The Bookmarks menu text is too long. Negative margin here to help center it like the others. */
+#browse_mode_bookmarks + div{
+	margin-left:-8px;
+	font-size:10.5px
+}
+li.browse_mode_sidebar_icons_list{
+	padding:8px;
 
 }
 /*END Browse mode Sidebar*/
@@ -74,11 +97,6 @@ img.browse_mode_sidebar_icons{
 	list-style-type: none;
 	padding-right:15px;
 }
-#active_menu_close_wrap{
-	position:absolute;
-	top:50px;
-	right:10%;
-}
 .active_menu_site_icon{
 	display:inline-block;
 	width: 30px;
@@ -87,5 +105,10 @@ img.browse_mode_sidebar_icons{
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
+}
+#active_menu_close_wrap{
+	position:absolute;
+	top:50px;
+	right:10%;
 }
 /*END Active Sites Menu*/
