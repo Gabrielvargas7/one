@@ -60,15 +60,26 @@ class Mywebroom.Views.RoomView extends Backbone.View
     @userRoomModel = @userRoomCollection.first()
 
     # get sign in user if exist
-    @userSignInCollection = this.getUserSignInCollection()
-    @userSignInModel = @userSignInCollection.first()
+    @mainUserCollection = this.getUserSignInCollection()
+    if @mainUserCollection is undefined
+       @signInUser = false
+       console.log("sign in false")
+
+       @mainUserModel = @userRoomCollection.first()
+    else
+       @mainUserModel = @mainUserCollection.first()
+       @signInUser = true
+       console.log("sign in true")
+
+
+
 
     if @userRoomModel.id is undefined
       this.forwardToRoot()
     else
 
-      this.FLAGS_MAP['FLAG_PROFILE'] = this.setProfileFlags(@userSignInModel,@userRoomModel)
-      this.FLAGS_MAP['FLAG_SIGN_IN'] = this.setSignInFlag(@userSignInModel)
+      this.FLAGS_MAP['FLAG_PROFILE'] = this.setProfileFlags(@signInUser,@mainUserModel,@userRoomModel)
+      this.FLAGS_MAP['FLAG_SIGN_IN'] = this.setSignInFlag(@signInUser)
 
 
       # get user room data
@@ -76,19 +87,18 @@ class Mywebroom.Views.RoomView extends Backbone.View
       @roomUserDataModel = @roomUserDataCollection.first()
 
       # get user sign in data
-      @signInUserDataCollection = this.getSignInUserDataCollection(@userSignInModel.get('id'))
-      @signInUserDataModel = @signInUserDataCollection.first()
+      @mainUserDataCollection = this.getSignInUserDataCollection(@mainUserModel.get('id'))
+      @mainUserDataModel = @mainUserDataCollection.first()
 
       console.log("@roomUserData: ")
       console.log(@roomUserDataModel)
 
       # this.setRoomTheme  @roomUserDataModel
       this.setRoomItemsDesigns(@roomUserDataModel, this.FLAGS_MAP['FLAG_PROFILE'])
-      this.setRoomHeader( @roomUserDataModel, @signInUserDataModel, this.FLAGS_MAP)
-      this.setStoreMenuSaveCancelRemove(@signInUserDataModel)
+      this.setRoomHeader( @roomUserDataModel, @mainUserDataModel, this.FLAGS_MAP)
+      this.setStoreMenuSaveCancelRemove(@mainUserDataModel)
       this.setRoomScrolls(@roomUserDataModel)
       this.setBrowseMode()
-
 
       # center the windows  and remove the scroll
       $(window).scrollLeft(2300)
@@ -108,12 +118,13 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   # set Sign in global variable
   #--------------------------
-  setSignInFlag: (userSignInModel) ->
+  setSignInFlag: (signInUser) ->
     flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
-    if userSignInModel is undefined
-      flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
-    else
+
+    if signInUser  == true
       flagSignIn = Mywebroom.Views.RoomView.SIGN_IN
+    else
+      flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
 
     console.log("flag sign in user: "+flagSignIn)
 
@@ -123,21 +134,21 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   # set profile global variables
   #--------------------------
-  setProfileFlags: (userSignInModel,userRoomModel ) ->
+  setProfileFlags: (signInUser,mainUserModel,userRoomModel) ->
 
     flagProfile =  Mywebroom.Views.RoomView.PUBLIC_ROOM
-    if userSignInModel is undefined
+    if signInUser == false
       flagProfile = Mywebroom.Views.RoomView.PUBLIC_ROOM
       console.log("flag public user: "+flagProfile)
 
-    else if userSignInModel.id == userRoomModel.id
+    else if mainUserModel.id == userRoomModel.id
       flagProfile = Mywebroom.Views.RoomView.MY_ROOM
       console.log("flag room user: "+flagProfile)
 
     else
       myfriend = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
       myfriend.fetch
-        url:myfriend.url(userSignInModel.id,userRoomModel.id)
+        url:myfriend.url(mainUserModel.id,userRoomModel.id)
         async:false
         success: (response)->
           console.log("@myfriend: ")
@@ -172,9 +183,16 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #--------------------------
   getUserSignInCollection: ->
     userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
-    userSignInCollection.fetch async: false
-    console.log("fetch userSignInCollection: "+JSON.stringify(userSignInCollection.toJSON()))
+    userSignInCollection.fetch
+      async:false
+      success: (response)->
+        console.log("fetch userSignInCollection: "+userSignInCollection)
+        console.log(response)
+      error: ->
+        userSignInCollection = undefined
+        console.log("error fetch userSignInCollection "+userSignInCollection)
     return userSignInCollection
+
 
   #--------------------------
   # get room user data

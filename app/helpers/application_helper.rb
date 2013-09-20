@@ -25,6 +25,7 @@ module ApplicationHelper
     end
   end
 
+
   def json_correct_user
     @user_json = User.find(params[:user_id])
     unless current_user?(@user_json)
@@ -33,6 +34,41 @@ module ApplicationHelper
       end
     end
   end
+
+
+  def json_is_my_friend_the_sign_in_by_friend_id
+
+    if signed_in?
+      @current_user =  current_user
+
+      # if the user is the same pass
+      if  @current_user.id.to_s == params[:user_id].to_s
+
+        return true
+
+      else
+          # if I sign in and want to see my friends friends
+          if Friend.exists?(user_id:@current_user.id,user_id_friend:params[:user_id])
+
+            return true
+
+          else
+            respond_to do |format|
+              format.json { render json: 'not friend ' , status: :not_found }
+            end
+          end
+      end
+    else
+      respond_to do |format|
+        format.json { render json: 'user not sign in ' , status: :not_found }
+      end
+    end
+
+  end
+
+
+
+
 
 
   #***********************************
