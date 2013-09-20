@@ -1,7 +1,7 @@
 .browse_mode_site_nav{
 	position:absolute;
 	top:82px;
-	right:152px;
+	right:95px;
 }
 .browse_mode_sidebar{
 	position:fixed;
@@ -45,7 +45,7 @@ img.browse_mode_sidebar_icons{
 }
 
 .browse_mode_list li{
-	padding:15px 0;
+	padding:12px 0;
 	list-style: none;
 	text-align:center;
 }
@@ -77,7 +77,6 @@ li.browse_mode_sidebar_icons_list{
 /*END Browse mode Sidebar*/
 /*Active Sites Menu*/
 .browse_mode_active_sites_menu{
-	border: 1px dashed pink;
 	width: 100%;
 	top: 45px;
 	position: fixed;
@@ -91,6 +90,8 @@ li.browse_mode_sidebar_icons_list{
 }
 .horizontal_list{
 	padding-left:20px;
+	padding-top:20px;
+	margin:0;
 }
 .horizontal_list li{
 	display:inline;
@@ -108,7 +109,7 @@ li.browse_mode_sidebar_icons_list{
 }
 #active_menu_close_wrap{
 	position:absolute;
-	top:50px;
-	right:10%;
+	top:5px;
+	right:90px;
 }
 /*END Active Sites Menu*/
