@@ -308,7 +308,10 @@ Mywebroom::Application.routes.draw do
 
   match '/users/json/show_signed_user', to:
          'users#json_show_signed_user', via: :get , as:
-         'users_json_show_signed_user'
+         :users_json_show_signed_user
+
+
+
 
 
 
@@ -501,6 +504,14 @@ Mywebroom::Application.routes.draw do
   match '/friends/json/show_is_my_friend_by_user_id_and_friend_id/:user_id/:friend_id', to:
         'friends#json_show_is_my_friend_by_user_id_and_friend_id', via: :get, as:
         :friends_json_show_is_my_friend_by_user_id_and_friend_id
+
+
+  #match '/friends/json/is_my_friend_the_sign_in_by_friend_id/:user_id', to:
+  #       'friends#json_is_my_friend_the_sign_in_by_friend_id', via: :get
+
+
+
+
 
 
 
