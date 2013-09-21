@@ -56,6 +56,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $(@el).append(@template(user_item_design:this.options.user_item_design, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
+    #set .my_bookmarks_bottom to 100% width minus the sidebar width
+    $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
   renderDiscover:->
@@ -80,6 +82,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #@fetchDiscoverBookmarks()
     @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.user_item_design)
     $(@el).append(@bookmarksDiscoverView.render().el)
+    #set .discover_bookmarks_bottom to 100% width minus the sidebar width
+    $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
     $('#add_your_own_form').submit({that},@addCustomBookmark)
   renderMyBookmarks:->
@@ -96,6 +100,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       async:false
       url:@collection.url this.options.user, this.options.user_item_design
     #$(@el).append(@myBookmarksView.render().el)
+    #set .my_bookmarks_bottom to 100% width minus the sidebar width
+    $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $(@myBookmarksView.el).show()
     #$(@el).append(@myBookmarksView.render().el)
     
@@ -117,6 +123,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @bookmarksDiscoverView.remove()
     @currentBookmarkbyCategoryView = new Mywebroom.Views.DiscoverBookmarksView(collection:@currentBookmarkbyCategoryCollection)
     $(@el).append(@currentBookmarkbyCategoryView.render().el)
+    #set .discover_bookmarks_bottom to 100% width minus the sidebar width
+    $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
 
   previewMode:(event)->
     #we'll have previewView to correspond to discover_bookmarks
@@ -129,13 +137,14 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       #Edit sidebar menu 
       #hide categories
       $(@el).append(previewModeView.render().el)
-      previewModeView.once('closedView',@closePreviewMode())
-      console.log("preview site!"+urlToOpen)
+      previewModeView.once('closedView',@closePreviewMode,this)
+      
       console.log(bookmarkClicked)
     else
       window.open urlToOpen,"_blank" 
   closePreviewMode:->
     console.log 'close previewmode.'
+
 
     #show sidebar categories.
   clickTrash: (event)->

@@ -7,5 +7,5 @@
 <%end%>
 </ul>
 <div id="active_menu_close_wrap">
-	<a id="active_menu_close" href="#">Close</a>
+	<a id="active_menu_close" href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" title="Close Active Menu"></a>
 </div>

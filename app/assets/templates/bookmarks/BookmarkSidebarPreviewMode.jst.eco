@@ -1,0 +1,25 @@
+<style>
+#bookmark_sidebar_preview_mode{
+	text-align:center;
+}
+.preview_mode_save_button {
+	background-color:#0099cb;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:normal;
+	font-style:normal;
+	height:32px;
+	line-height:32px;
+	width:130px;
+	text-decoration:none;
+	text-align:center;
+	border-radius:3px;
+}
+</style>
+<div id="bookmark_sidebar_preview_mode">
+	<img src="<%=@model.get('image_name').url%>"></img>
+	<p><%=@model.get('description')%></p>
+	<div class="preview_mode_save_button">Save Site</div>
+</div>
