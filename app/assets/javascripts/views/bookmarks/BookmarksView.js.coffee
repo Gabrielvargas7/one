@@ -137,13 +137,14 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       #Edit sidebar menu 
       #hide categories
       $(@el).append(previewModeView.render().el)
-      previewModeView.once('closedView',@closePreviewMode())
-      console.log("preview site!"+urlToOpen)
+      previewModeView.once('closedView',@closePreviewMode,this)
+      
       console.log(bookmarkClicked)
     else
       window.open urlToOpen,"_blank" 
   closePreviewMode:->
     console.log 'close previewmode.'
+
 
     #show sidebar categories.
   clickTrash: (event)->
