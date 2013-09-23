@@ -94,6 +94,7 @@ nav.profile {
 	width:720px;
 	position:absolute;
 	transition:left 1s ease-in-out;
+	z-index:2;
 	
 }
 
@@ -140,9 +141,22 @@ div.spacer{
 	height:100px;
 }
 
-.profile_small_top_template .profile_info_name,
-#profile_small_top_optional_button{
+.profile_small_top_template .profile_info_name,.profile_small_top_optional_button_outer{
 	padding:2em;
+}
+#profile_upload_photos_button
+{
+	background-color: #0099cb;
+	display: inline-block;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: normal;
+	height: 32px;
+	line-height: 32px;
+	width: 130px;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 3px;
 }
 //Sidebar Icons
 
