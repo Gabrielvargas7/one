@@ -1,0 +1,10 @@
+<div class='current_browse_mode_site browse_mode_site' data-item-id='<%=@model.get('item_id')%>' data-id='<%=@model.get('id')%>'>
+	<h1>Your bookmark has opened in a new tab</h1>
+	<p>
+		Some websites don't allow their site to open in your room. This message is Mywebroom letting your know that your site has opened in a new tab.
+	</p>
+	<p>
+		Accidentally close your bookmark tab? No problem. <a href="<%=@model.get('bookmark_url')%>" target="_blank">Reopen <%=@model.get('title')%></a>
+	</p>
+
+</div>

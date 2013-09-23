@@ -87,18 +87,17 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 			if model.get('i_frame') is 'n'
 				#open in target
 				window.open model.get('bookmark_url'),"_blank"
-				#close view
-				@closeView()	
+				newIframeHTML = JST['bookmarks/BrowseModeNoIframeTemplate'](model:@getModelToBrowse())
 			else	
 				#Append it to the el.	
 				newIframeHTML = JST['bookmarks/BrowseModeIframeTemplate'](model:@getModelToBrowse())
-				$('.browse_mode_site_wrap').append(newIframeHTML)
-				#rerender the sidebar menu if model id is different.
-				@browseModeSidebarView.remove() if @browseModeSidebarView
-				@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
-				@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
-				$(@el).append(@browseModeSidebarView.render().el)
-				@setSidebarHover();
+			$('.browse_mode_site_wrap').append(newIframeHTML)
+			#rerender the sidebar menu if model id is different.
+			@browseModeSidebarView.remove() if @browseModeSidebarView
+			@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
+			@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
+			$(@el).append(@browseModeSidebarView.render().el)
+			@setSidebarHover();
 				
 			
 	#Called when user clicks another site icon in the Active Menu

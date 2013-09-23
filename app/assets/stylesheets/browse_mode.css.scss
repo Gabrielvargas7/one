@@ -1,7 +1,9 @@
 .browse_mode_site_nav{
 	position:absolute;
-	top:82px;
+	top:5px;
 	right:95px;
+	z-index: 2;
+	transition:top .5s ease-in-out;
 }
 .browse_mode_sidebar{
 	position:fixed;
@@ -37,6 +39,15 @@ iframe.current_browse_mode_site {
 }
 iframe.current_browse_mode_site.browse_mode_site{
 	background-color:white;
+}
+div.current_browse_mode_site.browse_mode_site{
+	background-color:rgba(0,0,0,.8);
+	width:100%;
+	height:100%;
+	position:fixed;
+	padding-top:10%;
+	color:white;
+	text-align:center;
 }
 /*Browse mode Sidebar*/
 img.browse_mode_sidebar_icons{
