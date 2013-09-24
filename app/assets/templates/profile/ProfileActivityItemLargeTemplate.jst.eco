@@ -1,5 +1,8 @@
 <div class="activity_item_large_view">
 	<h2><%=@model.get('name')%></h2>
+	<%if @model.get('brand') and @model.get('brand') !=null:%>
+		<h4>by <%=@model.get('brand')%></h4>
+	<%end%>
 	<div class='activity_item_large_content_wrap'>
 		<div class="pull-left" id="photos_prev"><a  href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div>
 

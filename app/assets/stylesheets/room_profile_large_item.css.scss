@@ -65,3 +65,23 @@
 	width:350px;
 	height:350px;
 }
+.large_item_just_added{
+	position: relative;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+div.large_item_just_added p{
+	position:relative;
+	top:50%;
+	text-align:center;
+	color:white;
+	font-size:18px;
+}
+div.large_item_just_added img{
+	position:absolute;
+	top:0;
+	right:0;
+}
