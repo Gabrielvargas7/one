@@ -10,6 +10,7 @@
  *
  *= require bootstrap
  *= require toastr
+ *= require typeahead-bootstrap
  *= require_self
  *= require_tree .
  */
