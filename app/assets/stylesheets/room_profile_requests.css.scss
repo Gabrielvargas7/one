@@ -52,7 +52,7 @@ p.profile_friend_username{
 	color:#898989;
 	font-size:12px;
 }
-.profile_request_accept, .profile_request_key_button{
+.profile_request_accept, .profile_request_key_button,.profile_large_item_try_it_button{
 	width:70px;
 	height:23px;
 	font-size:15px;
@@ -85,8 +85,4 @@ p.profile_friend_username{
 }
 .user-photos-view{
   background-color: transparent;
-
-}
-#photos_prev{
-	padding-left: 20px;
 }

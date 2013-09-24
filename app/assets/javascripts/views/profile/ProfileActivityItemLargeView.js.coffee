@@ -23,8 +23,12 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	insideHandler: (event) ->
 		event.stopPropagation()
 		console.log "insideHandler called"
-	outsideHandler: ->
+	outsideHandler: (event) ->
 		console.log "outsideHandler called"
+		console.log(event)
+		#If event src element is try in my room, close this view and open store.
+		#if event src is next or prev, change model to next in collection.
+		#else close view
 		@closeView()
 		return false
 	closeView: ->
@@ -35,6 +39,10 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		console.log "ActivityItemLargeView closed"
 		this
 	showNext: ->
+		event.stopPropagation()
+		currentModelIndex = @collection.getIndexOf(@model)
+		newModel = @collection.at(currentModelIndex+1);
+		console.log newModel
 		console.log "someday I'll show next"
 	showPrev:->
 		console.log "someday I'll show prev"

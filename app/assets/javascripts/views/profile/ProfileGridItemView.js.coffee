@@ -35,6 +35,6 @@ class Mywebroom.Views.ProfileGridItemView extends Backbone.View
 		if currentGridItem.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
       		currentView= new Mywebroom.Views.PhotosLargeView({model:currentGridItem})
 	    else
-	      	currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem})
+	      	currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem,collection:@collection})
 			$("#profile_home_wrapper").append(currentView.el)
 			currentView.render()  
