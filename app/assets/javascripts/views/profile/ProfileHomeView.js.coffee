@@ -120,7 +120,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  showProfileKeyRequests: ->
   # /*Note on key request view, we do not want profile-bottom overflow on. */
   topTemplate= JST['profile/ProfileSmallTopTemplate']
-  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Invite Friends With FB!"))
+  optionalButton = "<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379965946/invite-friends-with-facebook.png'>"
+  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:optionalButton))
   @keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView(model:@model)
   $('#profileHome_bottom').html(@keyRequestsView.el) 	
   @keyRequestsView.render()

@@ -1,14 +1,14 @@
 
 <nav class="profile">
-<div id="profile_drawer">
-	<div id="profile_home_wrapper">
-		<div id="fakeheader">Header</div>
-		<div id="profile_home_container">
+	<div id="profile_drawer">
+		<div id="profile_home_wrapper">
+			<div id="profile_home_container">
 
-			<div id="profile_sidebar">
-				<ul>
-					<li id="profile_home">
-						<a href="#"><span>Home<span></a></li>
+				<div id="profile_sidebar">
+					<ul>
+						<li id="profile_home">
+							<a href="#"><span>Home<span></a>
+						</li>
 						<br>
 						<br>
 						<div class="spacer"></div>
@@ -20,28 +20,28 @@
 
 					</ul>
 
-				</div>
+				</div><!--end profile_sidebar_container-->
 				<div id="profileHome_container">
 
 
 					<div id="profileHome_top">
-						
+
 
 					</div>
 					<div id="profileHome_bottom">
-						
+
 					</div>
 				</div>
-				<div id="collapseBar">
-					
-				</div>
-				<div id="push">push</div>
+			</div><!--profile_home_container-->
+		</div><!--end profile home wrapper-->
+		<div id="profile_drawer_handle">
+			<div id="profile_close_button">
+				<a href="#" id="Profile-Close-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" width="15px"></a>
 			</div>
-		</div>
-	</div>
-<div id="profile_drawer_handle">
-	<div id="profile_close_button"><a href="#" id="Profile-Close-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" width="15px"></a></div>
-					<div id="profile_collapse_arrow"><a href="#" id="Profile-Collapse-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png"></a></div>
+			<div id="profile_collapse_arrow">
+				<a href="#" id="Profile-Collapse-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png"></a>
+			</div>
+		</div><!--end profile_drawer_handle-->
+
+	</div><!--end profile drawer-->
 </nav>
-</div>
-	<div id="fakefooter">Footer</div>

@@ -26,14 +26,14 @@
 }
 nav.profile {
      position:fixed;
-     // top: 16px;/*this needs to be rooms_header height*/
+     top:45px;
      height:100%;
      background-color:transparent; /* your choice here */
      z-index:3; /* make sure this is the highest z-index on the page */
 }
 #profile_drawer_handle{
     position: absolute;
-    top: 45px; /*This needs to be the same as the rooms_header height*/
+    top: 0;
     right: 0;
     height: 100%;
     background-color: rgba(0,0,0,.8); /* your choice here */
@@ -92,8 +92,9 @@ nav.profile {
 #profile_home_container{
 	height:100%;
 	width:720px;
-	position:relative;
+	position:absolute;
 	transition:left 1s ease-in-out;
+	z-index:2;
 	
 }
 
@@ -115,6 +116,7 @@ nav.profile {
 	color: #f5f5f5;
 	/*left transition will turn left into negative width of profile_home_container */
 	transition:all 1s ease-in-out;
+	height:100%;
 
 }
 #profile_sidebar li{
@@ -139,9 +141,22 @@ div.spacer{
 	height:100px;
 }
 
-.profile_small_top_template .profile_info_name,
-#profile_small_top_optional_button{
+.profile_small_top_template .profile_info_name,.profile_small_top_optional_button_outer{
 	padding:2em;
+}
+#profile_upload_photos_button
+{
+	background-color: #0099cb;
+	display: inline-block;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: normal;
+	height: 32px;
+	line-height: 32px;
+	width: 130px;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 3px;
 }
 //Sidebar Icons
 

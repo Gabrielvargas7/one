@@ -1,14 +1,15 @@
 <div class="activity_item_large_view">
 	<h2><%=@model.get('name')%></h2>
-	<a class="pull-left" id="photos_prev" href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a>
+	<div class='activity_item_large_content_wrap'>
+		<div class="pull-left" id="photos_prev"><a  href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div>
 
-	<div class="activity_item_img_wrap">
-		<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
+		<div class="activity_item_img_wrap">
+			<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
+		</div>
+
+		<div class="pull-right" id="photos_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div>
 	</div>
-
-	<a class="pull-left" id="photos_prev" href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a>
-	
-	<div class="profile_button_wrap"><button class="profile_request_key_button" >Try in My Room!</button></div>
+	<div class="profile_button_wrap"><button class="profile_large_item_try_it_button" >Try in My Room!</button></div>
 	<div class="social_bar">
 		<div class ="navbar">
 			<div class="navbar-inner">
