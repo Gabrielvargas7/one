@@ -53,24 +53,111 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     return itemsDesignsCollection
 
 
+  collapseAll: ->
+    # Add the collapse class
+    $('#dropdown-object').addClass('collapse')
+    $('#dropdown-style').addClass('collapse')
+    $('#dropdown-brand').addClass('collapse')
+    $('#dropdown-location').addClass('collapse');
+    $('#dropdown-color').addClass('collapse');
+    $('#dropdown-make').addClass('collapse');
+
+
+
+  expandAll: ->
+    # Remove the collapse class
+    $('#dropdown-object').removeClass('collapse')
+    $('#dropdown-style').removeClass('collapse')
+    $('#dropdown-brand').removeClass('collapse')
+    $('#dropdown-location').removeClass('collapse');
+    $('#dropdown-color').removeClass('collapse');
+    $('#dropdown-make').removeClass('collapse');
+
   #*******************
-  #**** Funtions  -evens
+  #**** Funtions  -events
   #*******************
 
   #--------------------------
   # do something on click
   #--------------------------
   clickStoreItem: (event) ->
-    event.preventDefault()
-    console.log("click")
+    self = this
     
-#    this.hideItemsTab()
-#    this.showItemsDesignsTab()
+    event.preventDefault()
     this.moveToItemsDesignsTab()
     itemsDesignsCollection = this.getItemsDesignsCollection(this.model.get('id'))
     this.appendItemsDesignsEntry(itemsDesignsCollection)
     this.setItemToCenter(this.model)
-    $("li").removeClass()
+    
+    # $("li").removeClass() <-- this is messing up the stuff below. which class do we actually want to remove?
+    
+    
+    @expandAll()
+    
+    
+    # COLLAPSE LOCATION
+    $('#dropdown-location').addClass('collapse');
+    
+    
+    
+    
+    # SET THE MENUS
+    itemId = this.model.get('id')
+    categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection(itemId)
+    categories.fetch()
+    categories.on('sync', ->
+      model = this.first();
+      self.setCategories(model.get('items_designs_categories'))
+      self.setBrands(model.get('items_designs_brands'))
+      self.setStyles(model.get('items_designs_styles'))
+      self.setColors(model.get('items_designs_colors'))
+      self.setMakes(model.get('items_designs_makes'))
+    )
+    
+
+  setCategories: (categories) ->
+    _.each(categories, (category) ->
+      if category.category
+        $('#dropdown-object > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(category.category)+'</a></li>');
+    )
+
+
+    
+  setBrands: (brands) ->
+    _.each(brands, (brand) ->
+      if brand.brand
+        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(brand.brand)+'</a></li>');
+    )
+    
+    
+    
+  setStyles: (styles) ->
+    _.each(styles, (style) ->
+      if style.style
+        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(style.style)+'</a></li>');
+    )
+    
+   
+   
+  setColors: (colors) ->
+    _.each(colors, (color) ->
+      if color.color
+        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(color.color)+'</a></li>');
+    )
+    
+    
+  setMakes: (makes) ->
+    
+    _.each(makes, (make) ->
+      if make.make
+        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(make.make)+'</a></li>');
+    )
+  
+    
+    
+    
+    
+    
 
 
 

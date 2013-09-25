@@ -19,6 +19,9 @@
 //= require underscore
 //= require backbone
 //= require bootbox
+//= require hogan-2.0.0
+//= require underscore.string
+//= require typeahead
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models
