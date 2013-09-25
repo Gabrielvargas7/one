@@ -116,6 +116,11 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     
 
   setCategories: (categories) ->
+    # empty out existing dropdown items
+    $('#dropdown-object > .dropdown-menu').empty()
+    
+    
+    # iterate through the category items and create a li out of each one
     _.each(categories, (category) ->
       if category.category
         $('#dropdown-object > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(category.category)+'</a></li>');
@@ -124,6 +129,11 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
 
     
   setBrands: (brands) ->
+    # empty out existing dropdown items
+    $('#dropdown-brand > .dropdown-menu').empty()
+    
+    
+    # iterate through the brand items and create a li out of each one
     _.each(brands, (brand) ->
       if brand.brand
         $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(brand.brand)+'</a></li>');
@@ -132,6 +142,11 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     
     
   setStyles: (styles) ->
+    # empty out existing dropdown items
+    $('#dropdown-style > .dropdown-menu').empty()
+    
+    
+    # iterate through the style items and create a li out of each one
     _.each(styles, (style) ->
       if style.style
         $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(style.style)+'</a></li>');
@@ -140,6 +155,11 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
    
    
   setColors: (colors) ->
+    # empty out existing dropdown items
+    $('#dropdown-color > .dropdown-menu').empty()
+    
+    
+    # iterate through the color items and create a li out of each one
     _.each(colors, (color) ->
       if color.color
         $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(color.color)+'</a></li>');
@@ -147,7 +167,11 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     
     
   setMakes: (makes) ->
+    # empty out existing dropdown items
+    $('#dropdown-make > .dropdown-menu').empty()
     
+    
+    # iterate through the make items and create a li out of each one
     _.each(makes, (make) ->
       if make.make
         $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(make.make)+'</a></li>');
