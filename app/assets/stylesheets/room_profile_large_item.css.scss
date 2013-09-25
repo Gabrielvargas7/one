@@ -45,13 +45,13 @@
 .activity_item_large_content_wrap{
 	width:100%;
 }
-#photos_next{
+#photos_next,#large_item_next{
 	right:20px;
 }
-#photos_prev{
+#photos_prev,#large_item_prev{
 	left:20px;
 }
-#photos_prev,#photos_next{
+#photos_prev,#photos_next, #large_item_prev, #large_item_next{
 	position:absolute;
 	top:40%;
 }

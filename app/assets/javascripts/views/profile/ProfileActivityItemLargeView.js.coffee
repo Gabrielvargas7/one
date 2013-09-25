@@ -3,12 +3,14 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	className: 'activity_item_large_wrap'
 	initialize: ->
 		 _.bindAll this, 'insideHandler', 'outsideHandler'
+		 @originalCollection=this.options.originalCollection
+		 $('body').on('click', this.outsideHandler);
 	events:
-		'click .large_item_nav_arrow.flipimg':'showPrev'
-		'click .large_item_nav_arrow':'showNext'
+		'click #large_item_prev':'showPrev'
+		'click #large_item_next':'showNext'
 		'click .profile_large_item_try_it_button':'showStore'
+		'click .gridItem':'closeView'
 	render: ->
-		$('body').on('click', this.outsideHandler);
 		$(@el).html(@template(model:@model))
 		#The social View is in the template because
 		#the styling was not right with this view. It needs a parent wrapper div, and the 
@@ -39,14 +41,20 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		this.$el.remove()
 		console.log "ActivityItemLargeView closed"
 		this
-	showNext: ->
+	showNext:(event) ->
 		event.stopPropagation()
-		currentModelIndex = @collection.getIndexOf(@model)
-		newModel = @collection.at(currentModelIndex+1);
-		console.log newModel
-		console.log "someday I'll show next"
-	showPrev:->
-		console.log "someday I'll show prev"
+		this.trigger('ProfileActivityLargeView:showNext',event)
+		# currentModelIndex = @originalCollection.indexOf(@model)
+		# newModel = @originalCollection.at(currentModelIndex+1);
+		# #Set newModel to @model
+		# if newModel
+		# 	this.model.clear({silent:true})
+		# 	this.model.set(newModel.toJSON())
+		# console.log newModel
+		# console.log "someday I'll show next"
+	showPrev:(event)->
+		event.stopPropagation()
+		this.trigger('ProfileActivityLargeView:showNext',event)
 	showStore:(event)->
 		event.stopPropagation()
 		#if item is object, show store. 
