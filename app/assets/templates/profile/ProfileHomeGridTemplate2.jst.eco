@@ -1,0 +1,13 @@
+<table id='profileHome_activity_header' class='profileHome_activity generalGrid'><thead>
+<tr>
+  <th colspan='3'>
+    <%=@headerName%>
+  </th>
+</tr>
+</thead></table>
+
+<div id="gridItemList">
+	<div id="gridItemsTest" style="display:table-cell;width:100%;">
+	</div>
+
+</div>

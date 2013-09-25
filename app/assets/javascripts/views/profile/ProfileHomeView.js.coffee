@@ -83,7 +83,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #$('#profileHome_bottom').css "height","450px"
   #Bandaid- make header another table.
   tableHeader = JST['profile/ProfileGridTableHeader']
-  $("#profileHome_bottom").html(tableHeader(headerName:'Latest Room Additions'))
+  $("#profileHome_bottom").html(tableHeader())
   $('#profileHome_bottom').append(@ProfileHomeActivityView.el)
   @ProfileHomeActivityView.render()
 
@@ -102,7 +102,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @activityCollection.reset(@activityCollection.shuffle(),{silent:true})
   initialProfileHomeActivityCollection = new Backbone.Collection
   initialProfileHomeActivityCollection.set(@activityCollection.first 6)
-  @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView({collection:initialProfileHomeActivityCollection})
+  @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView2({collection:initialProfileHomeActivityCollection, headerName:'Latest Room Additions'})
 
   #*******************
   #**** Functions  Event functions to alter views
