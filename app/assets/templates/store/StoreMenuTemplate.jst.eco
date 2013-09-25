@@ -1,32 +1,99 @@
 <div class="tabbable1"> <!-- Only required for left/right tabs -->
 
-    <!-- Store Menu  -->
-    <ul class="nav nav-tabs">
-        
-        <li class="active">
-            <a href="#tab_items" data-toggle="tab">OBJECTS</a>
-        </li>
-        <li >             
-            <a href="#tab_themes"        data-toggle="tab">THEMES</a>
-        </li>
-        <li >              
-            <a href="#tab_bundles"       data-toggle="tab">BUNDLES</a>
-        </li>
-        <li >              
-            <a href="#tab_bundles_set"   data-toggle="tab">SET ROOMS</a>
-        </li>
+  <!-- Store Menu  -->
+  <ul class="nav nav-tabs">
+      <li id="objects-store-menu" class="active">
+          <a href="#tab_items" data-toggle="tab">OBJECTS</a>
+      </li>
+      <li id="themes-store-menu">             
+          <a href="#tab_themes" data-toggle="tab">THEMES</a>
+      </li>
+      <li id="bundles-store-menu">              
+          <a href="#tab_bundles" data-toggle="tab">BUNDLES</a>
+      </li>
+      <li id="set-rooms-store-menu">              
+          <a href="#tab_bundles_set" data-toggle="tab">SET ROOMS</a>
+      </li>
+  </ul>
 
-    </ul>
-
-
-    <!-- Store Menu Selection  -->
-    <div class="tab-content">
-        <div class="tab-pane active" id="tab_items"> </div>
-        <div class="tab-pane" id="tab_items_designs" > </div>
-        <div class="tab-pane" id="tab_themes">       </div>
-        <div class="tab-pane" id="tab_bundles">      </div>
-        <div class="tab-pane" id="tab_bundles_set">  </div>
-
+  <div class="container">
+    <div class="navbar">
+    <div class="navbar-inner">
+      <ul class="nav">
+        <li>
+          <div class="input-append">
+            <input class="span2" type="text">
+            <div class="btn-group">
+              <button id="store-dropdown-btn" class="btn">ALL</button>
+              <button class="btn dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="active" id="store-dropdown-all">
+                  <a href="#">ALL</a>
+                 </li>
+                <li id="store-dropdown-objects">
+                    <a href="#">OBJECTS</a>
+                </li>
+                <li id="store-dropdown-themes">
+                    <a href="#">THEMES</a>
+                </li>
+                <li id="store-dropdown-bundles">
+                    <a href="#">BUNDLES</a>
+                </li>
+                <li id="store-dropdown-entire-rooms">
+                    <a href="#">ENTIRE ROOMS</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <ul class="nav nav-pills">
+            <li id="dropdown-object" class="dropdown collapse">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Object<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+            <li id="dropdown-style"class="dropdown collapse">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Style<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+            <li id="dropdown-brand" class="dropdown collapse">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Brand<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+            <li id="dropdown-location" class="dropdown collapse">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Location<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+            <li id="dropdown-color" class="dropdown collapse">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Color<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+            <li id="dropdown-make" class="dropdown collapse">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Make<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
+  </div>
+  </div>
+
+  <!-- Store Menu Selection  -->
+  <div class="tab-content">
+      <div class="tab-pane active" id="tab_items"> </div>
+      <div class="tab-pane" id="tab_items_designs" > </div>
+      <div class="tab-pane" id="tab_themes">       </div>
+      <div class="tab-pane" id="tab_bundles">      </div>
+      <div class="tab-pane" id="tab_bundles_set">  </div>
+  </div>
 
 </div>
