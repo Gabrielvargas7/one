@@ -31,7 +31,6 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
   			@currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem,collection:@collection})
   			@currentView.on('ProfileActivityLargeView:showNext',@showNextItem,this)
   			$("#profile_home_wrapper").append(@currentView.el)
-  			$("#profile_drawer").css "width", "1320px"
   			@currentView.render()
   	showNextItem:(event,model)->
   			console.log 'lets event here instead'
@@ -49,7 +48,6 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
   				@currentView.closeView() if @currentView
   				@currentView.remove() if @currentView
   				#open new view
-  				$("#profile_drawer").css "width", "1320px" 
   				@currentView = new Mywebroom.Views.ActivityItemLargeView({model:newModel,collection:@collection,originalCollection:@originalCollection})
   				@currentView.on('ProfileActivityLargeView:showNext',@showNextItem,this)
   				$("#profile_home_wrapper").append(@currentView.el)

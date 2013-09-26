@@ -11,6 +11,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		'click .profile_large_item_try_it_button':'showStore'
 		'click .gridItem':'closeView'
 	render: ->
+		$("#profile_drawer").css "width", "1320px" 
 		$(@el).html(@template(model:@model))
 		#The social View is in the template because
 		#the styling was not right with this view. It needs a parent wrapper div, and the 

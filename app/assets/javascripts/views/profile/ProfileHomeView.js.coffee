@@ -134,14 +134,14 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  showProfileActivity:->
   #send full collection to this view.
-  @profileActivityView = new Mywebroom.Views.ProfileTableOuterDivView({collection:@activityCollection})
+  @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:"Activity"})
   #Modify Top Portion
   $('#profileHome_top').css "height","70px"
   $('#profileHome_bottom').css "height","550px"
   topTemplate= JST['profile/ProfileSmallTopTemplate']
   $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:""))
-  $('#profileHome_bottom').html(JST['profile/ProfileGridTableHeader'](headerName:"Activity"))
-  $('#profileHome_bottom').append(@profileActivityView.el)
+  #$('#profileHome_bottom').html(JST['profile/ProfileGridTableHeader'](headerName:"Activity"))
+  $('#profileHome_bottom').html(@profileActivityView.el)
   @profileActivityView.render()
 
   #--------------------------
