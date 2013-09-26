@@ -2,17 +2,17 @@
 
   <!-- Store Menu  -->
   <ul class="nav nav-tabs">
-      <li id="objects-store-menu" class="active">
+      <li id="objects-store-menu" class="active store-nav">
           <a href="#tab_items" data-toggle="tab">OBJECTS</a>
       </li>
-      <li id="themes-store-menu">             
+      <li id="themes-store-menu" class="store-nav">             
           <a href="#tab_themes" data-toggle="tab">THEMES</a>
       </li>
-      <li id="bundles-store-menu">              
+      <li id="bundles-store-menu" class="store-nav">              
           <a href="#tab_bundles" data-toggle="tab">BUNDLES</a>
       </li>
-      <li id="set-rooms-store-menu">              
-          <a href="#tab_bundles_set" data-toggle="tab">SET ROOMS</a>
+      <li id="entire-rooms-store-menu" class="store-nav">              
+          <a href="#tab_entire_rooms" data-toggle="tab">ENTIRE ROOMS</a>
       </li>
   </ul>
 
@@ -29,19 +29,19 @@
                   <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                <li class="active" id="store-dropdown-all">
+                <li class="active store-dropdown" id="store-dropdown-all">
                   <a href="#">ALL</a>
                  </li>
-                <li id="store-dropdown-objects">
+                <li class="store-dropdown" id="store-dropdown-objects">
                     <a href="#">OBJECTS</a>
                 </li>
-                <li id="store-dropdown-themes">
+                <li class="store-dropdown" id="store-dropdown-themes">
                     <a href="#">THEMES</a>
                 </li>
-                <li id="store-dropdown-bundles">
+                <li class="store-dropdown" id="store-dropdown-bundles">
                     <a href="#">BUNDLES</a>
                 </li>
-                <li id="store-dropdown-entire-rooms">
+                <li class="store-dropdown" id="store-dropdown-entire-rooms">
                     <a href="#">ENTIRE ROOMS</a>
                 </li>
               </ul>
@@ -93,7 +93,7 @@
       <div class="tab-pane" id="tab_items_designs" > </div>
       <div class="tab-pane" id="tab_themes">       </div>
       <div class="tab-pane" id="tab_bundles">      </div>
-      <div class="tab-pane" id="tab_bundles_set">  </div>
+      <div class="tab-pane" id="tab_entire_rooms">  </div>
   </div>
 
 </div>

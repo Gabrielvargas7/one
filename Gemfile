@@ -5,7 +5,7 @@ ruby "2.0.0"
 
 
 gem 'rails', '3.2.13'
-gem 'bootstrap-sass', '2.3.1.0'
+gem 'bootstrap-sass', '2.3.2.2'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
@@ -24,7 +24,7 @@ gem 'jbuilder','1.4.1'
 
 gem "railties", "3.2.13"
 
-gem "backbone-on-rails", "1.0.0.0"
+gem "backbone-on-rails", "1.0.0.1"
 
 gem "unicorn", "4.6.3"
 

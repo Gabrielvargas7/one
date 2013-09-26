@@ -15,11 +15,54 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
 
   events:
-    'click #objects-store-menu'  :'clickObjects'
-    'click #themes-store-menu'   :'clickThemes'
-    'click #bundles-store-menu'  :'clickBundles'
-    'click #set-rooms-store-menu':'clickSetRooms'
+    'click #objects-store-menu'         :'clickObjects'
+    'click #themes-store-menu'          :'clickThemes'
+    'click #bundles-store-menu'         :'clickBundles'
+    'click #entire-rooms-store-menu'    :'clickBundles'
+    'click #store-dropdown-all'         :'clickAllDropdown'
+    'click #store-dropdown-objects'     :'clickObjectsDropdown'
+    'click #store-dropdown-themes'      :'clickThemesDropdown'
+    'click #store-dropdown-bundles'     :'clickBundlesDropdown'
+    'click #store-dropdown-entire-rooms':'clickEntireRoomsDropdown'
+    'click .store-dropdown'             :'clickStoreDropdown'
     
+    
+  clickStoreDropdown: (e) ->
+    # DROPDOWN
+    # Remove active class
+    $('.store-dropdown').removeClass('active')
+    
+    # Add active class to just-clicked element
+    $(e.target).parent().addClass('active')
+    
+    # Change the text of the search filter
+    $('#store-dropdown-btn').text(e.target.text)
+    
+    
+    # TAB-PANE
+    # Remove active class for store-nav
+    # $('.store-nav').removeClass('active')
+    
+    # Active the correct store-nav tab
+    navName = e.target.text
+    
+    switch navName
+      when 'ALL'          
+        $('a[href="#tab_items"]').tab('show')
+        @clickObjects()
+      when 'OBJECTS'     
+        $('a[href="#tab_items"]').tab('show')
+        @clickObjects()
+      when 'THEMES'       
+        $('a[href="#tab_themes"]').tab('show')
+        @clickThemes()
+      when 'BUNDLES'      
+        $('a[href="#tab_bundles"]').tab('show')
+        @clickBundles()
+      when 'ENTIRE ROOMS' 
+        $('a[href="#tab_entire_rooms"]').tab('show')
+        @clickBundles()
+      
 
   #*******************
   #**** Initialize
@@ -230,7 +273,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     @column_number = 3
 
     @row_line = "<ul id='row_bundle_set_"+@row_number+"'></ul>"
-    $('#tab_bundles_set').append(@row_line)
+    $('#tab_entire_rooms').append(@row_line)
     that = this
 
     bundlesCollection.each (entry)  ->
@@ -244,7 +287,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       if u == 0
         that.row_number++
         that.row_line = "<ul id='row_bundle_set_"+that.row_number+"'></ul>"
-        $('#tab_bundles_set').append(that.row_line)
+        $('#tab_entire_rooms').append(that.row_line)
 
 
 
@@ -334,17 +377,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       self.setLocations(model.get('bundles_locations'))
       self.setColors(model.get('bundles_colors'))
       self.setMakes(model.get('bundles_makes'))
-    )  
-    
-    
-  clickSetRooms: ->
-    self = this
-    
-    @expandAll()
-    
-    
-    # Collapse the object dropdown
-    $('#dropdown-object').addClass('collapse');
+    )
   
   
     
