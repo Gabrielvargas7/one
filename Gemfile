@@ -32,6 +32,8 @@ gem 'geocoder', "1.1.8"
 
 gem 'toastr-rails', '1.0.3'
 
+gem 'marionette-rails', '1.1.0'
+
 
 # gem to look for improment like
 # memory leak and time out
