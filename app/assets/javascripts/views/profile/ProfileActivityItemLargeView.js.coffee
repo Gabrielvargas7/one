@@ -43,7 +43,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		this
 	showNext:(event) ->
 		event.stopPropagation()
-		this.trigger('ProfileActivityLargeView:showNext',event)
+		this.trigger('ProfileActivityLargeView:showNext',event,@model)
 		# currentModelIndex = @originalCollection.indexOf(@model)
 		# newModel = @originalCollection.at(currentModelIndex+1);
 		# #Set newModel to @model
@@ -54,7 +54,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		# console.log "someday I'll show next"
 	showPrev:(event)->
 		event.stopPropagation()
-		this.trigger('ProfileActivityLargeView:showNext',event)
+		this.trigger('ProfileActivityLargeView:showNext',event,@model)
 	showStore:(event)->
 		event.stopPropagation()
 		#if item is object, show store. 
