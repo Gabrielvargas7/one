@@ -2,17 +2,17 @@
 
   <!-- Store Menu  -->
   <ul class="nav nav-tabs">
-      <li id="objects-store-menu" class="active">
+      <li id="objects-store-menu" class="active store-nav">
           <a href="#tab_items" data-toggle="tab">OBJECTS</a>
       </li>
-      <li id="themes-store-menu">             
+      <li id="themes-store-menu" class="store-nav">             
           <a href="#tab_themes" data-toggle="tab">THEMES</a>
       </li>
-      <li id="bundles-store-menu">              
+      <li id="bundles-store-menu" class="store-nav">              
           <a href="#tab_bundles" data-toggle="tab">BUNDLES</a>
       </li>
-      <li id="set-rooms-store-menu">              
-          <a href="#tab_bundles_set" data-toggle="tab">ENTIRE ROOMS</a>
+      <li id="entire-rooms-store-menu" class="store-nav">              
+          <a href="#tab_entire_rooms" data-toggle="tab">ENTIRE ROOMS</a>
       </li>
   </ul>
 
@@ -93,7 +93,7 @@
       <div class="tab-pane" id="tab_items_designs" > </div>
       <div class="tab-pane" id="tab_themes">       </div>
       <div class="tab-pane" id="tab_bundles">      </div>
-      <div class="tab-pane" id="tab_bundles_set">  </div>
+      <div class="tab-pane" id="tab_entire_rooms">  </div>
   </div>
 
 </div>
