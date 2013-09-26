@@ -62,6 +62,7 @@ group :assets do
   gem 'sass-rails', '3.2.6'
   gem 'coffee-rails','3.2.2'
   gem 'uglifier', '2.0.1'
+  gem 'marionette-rails', '1.1.0'
 end
 
 group :test do
