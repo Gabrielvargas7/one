@@ -18,6 +18,7 @@
 //= require toastr
 //= require underscore
 //= require backbone
+//= require backbone.marionette
 //= require bootbox
 //= require hogan-2.0.0
 //= require underscore.string
