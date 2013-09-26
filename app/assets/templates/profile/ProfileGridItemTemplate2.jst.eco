@@ -1,4 +1,4 @@
-
+<div class="gridItem">
 	<div class="gridItemPicture" style="background-image:url('<%=@.image_name.url%>');">
 	
 		
@@ -9,3 +9,4 @@
 		<%else:%>
 		<%= @.name%></span>
 		<% end %>
+</div>

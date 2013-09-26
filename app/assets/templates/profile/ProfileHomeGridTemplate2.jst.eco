@@ -6,8 +6,10 @@
 </tr>
 </thead></table>
 
-<div id="gridItemList">
-	<div id="gridItemsTest" style="display:table-cell;width:100%;">
+<div id="gridItemList" style="display:table;">
+	
+	<div id="gridItemsTest" style="display:table-cell;width:600px;">
 	</div>
+	
 
 </div>
