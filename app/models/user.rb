@@ -40,7 +40,13 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
   before_create{ get_username(self.email)}
 
-  after_create :create_user_notification, :send_signup_user_email ,:create_random_room,:create_image_name,:create_user_profile
+  after_create :create_user_notification,
+               :send_signup_user_email ,
+               :create_random_room,
+               #:create_specific_room,
+               :create_image_name,
+               :create_user_profile,
+               :create_specific_friends
 
 
   #validates :name,
@@ -67,7 +73,9 @@ class User < ActiveRecord::Base
 
   # Send email after the user sign up
   def send_signup_user_email
-    UsersMailer.signup_email(self).deliver
+    if Rails.env.production?
+        UsersMailer.signup_email(self).deliver
+    end
   end
 
   #***********************************
@@ -231,6 +239,57 @@ class User < ActiveRecord::Base
     end
 
   #***********************************
+  # user  create_specific_friends
+  #***********************************
+
+  # create the user notification on the table  when the user sign-up
+  def create_specific_friends
+    @friend_id = 28  # gabriel
+    if User.exists?(id:@friend_id)
+      Friend.create(user_id:@friend_id,user_id_friend:self.id)
+      Friend.create(user_id:self.id,user_id_friend:@friend_id)
+    end
+
+    @friend_id = 25  # John
+    if User.exists?(id:@friend_id)
+      Friend.create(user_id:@friend_id,user_id_friend:self.id)
+      Friend.create(user_id:self.id,user_id_friend:@friend_id)
+    end
+
+    @friend_id = 24  # Sara
+    if User.exists?(id:@friend_id)
+      Friend.create(user_id:@friend_id,user_id_friend:self.id)
+      Friend.create(user_id:self.id,user_id_friend:@friend_id)
+    end
+
+
+    @friend_id = 29  # aubrey
+    if User.exists?(id:@friend_id)
+      Friend.create(user_id:@friend_id,user_id_friend:self.id)
+      Friend.create(user_id:self.id,user_id_friend:@friend_id)
+    end
+
+
+    @friend_id = 26  #artem
+    if User.exists?(id:@friend_id)
+      Friend.create(user_id:@friend_id,user_id_friend:self.id)
+      Friend.create(user_id:self.id,user_id_friend:@friend_id)
+    end
+
+    @friend_id = 32  #millu
+    if User.exists?(id:@friend_id)
+      Friend.create(user_id:@friend_id,user_id_friend:self.id)
+      Friend.create(user_id:self.id,user_id_friend:@friend_id)
+    end
+    @friend_id = 34  #marketing
+    if User.exists?(id:@friend_id)
+      Friend.create(user_id:@friend_id,user_id_friend:self.id)
+      Friend.create(user_id:self.id,user_id_friend:@friend_id)
+    end
+
+  end
+
+  #***********************************
   # user  create_image_name
   #***********************************
 
@@ -259,28 +318,6 @@ class User < ActiveRecord::Base
   #this is temp until the new design
     def create_random_room
 
-      #bundle_max = Bundle.maximum("id")
-
-      # note this is a quick fix,
-      # you should add the activation field for bundle
-      # so the activation field will be say if the bundle is ready for use (it have all the values links for a bundle )
-      # example, it have
-      #        BundlesItemsDesign
-      #        BundlesBookmark
-      #        Theme
-      #        Section .. more
-
-
-
-      #bundle_min = Bundle.minimum("id")
-      #
-      #Bundle.where("active = 'y'").order("by RANDOM()").first
-      #
-      ##print "bundle max "+bundle_max.to_s
-      #bundle_rand_number = rand(bundle_min..bundle_max)
-      ##print "bundle_rand_number  "+bundle_rand_number.to_s
-      #bundle = Bundle.find(bundle_rand_number)
-
       bundle = Bundle.where("active = 'y'").order("RANDOM()").first
 
       #create the theme from the bundle
@@ -302,10 +339,39 @@ class User < ActiveRecord::Base
         end
           UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
       end
-
-
-
     end
+
+  #***********************************
+  # user  create_specific_room
+  #***********************************
+
+
+  def create_specific_room
+
+    bundle = Bundle.find(6)
+
+    #create the theme from the bundle
+    UsersTheme.create!(user_id:self.id,theme_id:bundle.theme_id,section_id:bundle.section_id)
+
+    #create the items_design from the bundle
+
+    @bundles_items_designs = BundlesItemsDesign.find_all_by_bundle_id(bundle.id)
+    @bundles_items_designs.each  do |bundles_items_design|
+      UsersItemsDesign.create!(user_id:self.id,items_design_id:bundles_items_design.items_design_id,hide:'no',location_id:bundles_items_design.location_id)
+    end
+
+    #create the initials bookmarks from the bundle
+    @bundle_bookmarks = BundlesBookmark.all
+    @bundle_bookmarks.each do |bundle_bookmark|
+      position = 1
+      while UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
+        position += position
+      end
+      UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
+    end
+
+
+  end
 
 
 

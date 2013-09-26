@@ -33,6 +33,13 @@ gem 'geocoder', "1.1.8"
 gem 'toastr-rails', '1.0.3'
 
 
+# gem to look for improment like
+# memory leak and time out
+gem "oink", '0.10.1'
+gem "rack-timeout"
+
+
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.7'

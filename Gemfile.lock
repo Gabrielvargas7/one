@@ -122,6 +122,7 @@ GEM
       rspec (~> 2.13)
     hashie (2.0.5)
     hike (1.2.3)
+    hodel_3000_compliant_logger (0.1.1)
     httpauth (0.2.0)
     i18n (0.6.1)
     jbuilder (1.4.1)
@@ -158,6 +159,9 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
+    oink (0.10.1)
+      activerecord
+      hodel_3000_compliant_logger
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
@@ -179,6 +183,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack-timeout (0.0.4)
     rails (3.2.13)
       actionmailer (= 3.2.13)
       actionpack (= 3.2.13)
@@ -282,8 +287,10 @@ DEPENDENCIES
   jbuilder (= 1.4.1)
   jquery-rails (= 2.0.2)
   oauth2 (= 0.8.0)
+  oink (= 0.10.1)
   omniauth-facebook (= 1.4.1)
   pg (= 0.15.1)
+  rack-timeout
   rails (= 3.2.13)
   rails_12factor (= 0.0.2)
   railties (= 3.2.13)
