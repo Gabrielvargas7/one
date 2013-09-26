@@ -4,9 +4,10 @@ class Mywebroom.Routers.RoomsRouter extends Backbone.Router
     '': 'routesRoom'
 
 
-  initialize: ->
-
   routesRoom: ->
     view = new Mywebroom.Views.RoomView()
-    $('#xroom_main_container').append(view.render().el)
+    
+    Mywebroom.App.xroom_main_container.show(view)
+    
+    #$('#xroom_main_container').append(view.render().el)
 
