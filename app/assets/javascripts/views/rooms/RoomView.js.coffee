@@ -1,4 +1,4 @@
-class Mywebroom.Views.RoomView extends Backbone.View
+class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   #*******************
   #**** Tag  (no tag = default el "div")
@@ -16,9 +16,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #**** Events
   #*******************
 
-  events:{
-
-  }
 
 
   #*******************
@@ -34,20 +31,6 @@ class Mywebroom.Views.RoomView extends Backbone.View
   #**** Initialize
   #*******************
   initialize: ->
-
-
-  #*******************
-  #**** Render
-  #*******************
-  render: ->
-
-    #*******************    #
-    #    image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
-    #    console.log(image)
-    #*******************
-
-
-
     this.FLAGS_MAP = {};
 
     this.FLAGS_MAP['FLAG_PROFILE'] = Mywebroom.Views.RoomView.PUBLIC_ROOM
@@ -109,6 +92,8 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
 
     this
+
+    
 
 
 
@@ -366,12 +351,12 @@ class Mywebroom.Views.RoomView extends Backbone.View
 
   setEventTest:->
     console.log("add global event")
-    Mywebroom.vent.on("some:event",->
+    Mywebroom.App.vent.on("some:event",->
       console.log("in global event")
       alert "some event was fired!"
     )
   setBrowseModeEvents:->
     self = this
-    Mywebroom.vent.on("BrowseMode:open",((event)->
+    Mywebroom.App.vent.on("BrowseMode:open",((event)->
       @changeBrowseMode(event.model)),self)
 
