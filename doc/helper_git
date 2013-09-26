@@ -2,13 +2,17 @@
 ********************
 ** How to push changes when you work in different files
 ********************
-    // create a branch
+    // Create a new branch
     git branch my_new_branch
 
-    // Switching branch
+    // Switch to an existing branch
     git checkout my_new_branch
 
-    // make some changes
+    // Branch and checkout at the same time
+    git checkout -B my_new_branch
+
+
+    // Make Some Changes
 
     // add it to stage
     git add .  -A                  // add all the changes to stage (-A with all deletes)
@@ -16,8 +20,8 @@
     // commit
     git commit -m "one commit"
 
-    // move to th master branch
-    git checkout master            // move to the master branch
+    // move to the master branch
+    git checkout master            
 
     // pull all changes before of merge
     git pull
@@ -25,12 +29,14 @@
     // merge with your branch
     git merge my_new_branch
 
+    // push your changes
+    git push
+    
     // delete the branch
     git branch -D my_new_branch
-
-    // push your changes
-
-    git push
+    
+    // push to heroku (after adding remote repo staging)
+    git push staging master
 
 
 
