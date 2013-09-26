@@ -1,11 +1,11 @@
 
-	<div class="gridItemPicture" style="background-image:url('<%=@model.get('image_name').url%>');">
-		<!-- <img src="<%=@model.get('image_name').url%>"  data-id="<%=@model.get('id')%>" > -->
+	<div class="gridItemPicture" style="background-image:url('<%=@.image_name.url%>');">
+	
 		
 	</div>
 	<span class="gridItemDescription">
 		<%if @gridText: %>
 		<%=@gridText%>
 		<%else:%>
-		<%= @model.get('name')%></span>
+		<%= @.name%></span>
 		<% end %>

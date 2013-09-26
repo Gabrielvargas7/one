@@ -1175,27 +1175,22 @@ Marionette.Renderer = {
   // passed to the `TemplateCache` object to retrieve the
   // template function. Override this method to provide your own
   // custom rendering and template handling for all of Marionette.
-  //**************************************
-  //OVERRIDING render function for JST template compatibility
-  //**************************************
   render: function(template, data){
-    if (!JST[template]) throw "Template '" + template + "' not found!";
-    return JST[template](data);
 
-  //   if (!template) {
-  //     var error = new Error("Cannot render the template since it's false, null or undefined.");
-  //     error.name = "TemplateNotFoundError";
-  //     throw error;
-  //   }
+    if (!template) {
+      var error = new Error("Cannot render the template since it's false, null or undefined.");
+      error.name = "TemplateNotFoundError";
+      throw error;
+    }
 
-  //   var templateFunc;
-  //   if (typeof template === "function"){
-  //     templateFunc = template;
-  //   } else {
-  //     templateFunc = Marionette.TemplateCache.get(template);
-  //   }
+    var templateFunc;
+    if (typeof template === "function"){
+      templateFunc = template;
+    } else {
+      templateFunc = Marionette.TemplateCache.get(template);
+    }
 
-  //   return templateFunc(data);
+    return templateFunc(data);
   }
 };
 
