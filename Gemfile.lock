@@ -32,13 +32,13 @@ GEM
       rake
     arel (3.0.2)
     aws_cf_signer (0.1.2)
-    backbone-on-rails (1.0.0.0)
+    backbone-on-rails (1.0.0.1)
       eco
       ejs
       jquery-rails
       rails (>= 3.1)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.3.1.0)
+    bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.6)
       will_paginate
@@ -267,9 +267,9 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (= 2.5.0)
-  backbone-on-rails (= 1.0.0.0)
+  backbone-on-rails (= 1.0.0.1)
   bcrypt-ruby (= 3.0.1)
-  bootstrap-sass (= 2.3.1.0)
+  bootstrap-sass (= 2.3.2.2)
   bootstrap-will_paginate (= 0.0.6)
   capybara (= 2.1.0)
   carrierwave (= 0.8.0)
