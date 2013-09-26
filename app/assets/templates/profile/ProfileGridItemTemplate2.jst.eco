@@ -4,8 +4,8 @@
 		
 	</div>
 	<span class="gridItemDescription">
-		<%if @gridText: %>
-		<%=@gridText%>
+		<%if @.title: %>
+		<%=@.title%>
 		<%else:%>
 		<%= @.name%></span>
 		<% end %>
