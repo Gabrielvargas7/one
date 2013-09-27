@@ -1,10 +1,12 @@
 <div class="btn-group pull-right profile_friend_button" >
 		<button class="profile_friend_gear" data-toggle="dropdown"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377288874/gear-icon.png"></button>
-		<!-- DropDown Doesn't have enough space to show  -->
+		
 	<ul class="dropdown-menu profile_friends_dropdown_menu">
 		<li><a href='/room/<%=@model.get('username')%>'>View Room</a></li>
-		<li><a href='#'>Unfriend</a></li>
-		
+		<!-- if friend or public, don't show Unfriend -->
+		<%if @.PUBLIC_FLAG is 'MY_ROOM':%>
+			<li><a href='#'>Unfriend</a></li>
+		<%end%>
 	</ul>
 </div>
 <div class="pull-left profile_friend_image_holder" style="background-image:url('<%=@model.get('image_name').url%>');">

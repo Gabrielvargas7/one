@@ -201,6 +201,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     @collapseFlag = false
  #Calculates and return age. Argument is string YYYY-MM-DD
  getAge:(birthday)->
+   if birthday is undefined || birthday is null || birthday is ''
+    return 
    now = new Date() 
    dob= birthday.split '-'
    if dob.length is 3
