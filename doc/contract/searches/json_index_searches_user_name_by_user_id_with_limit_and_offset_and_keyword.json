@@ -7,7 +7,7 @@
 
 
 //Description
-            //# GET get user that was found by the keyword with limit and offset(start row)
+            //# GET get user,items, themes, bundles, bookmarks that was found by the keyword with limit and offset(start row)
             //# Limit is the number of user that you want it
             //# Offset is where you want to start
             //searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
