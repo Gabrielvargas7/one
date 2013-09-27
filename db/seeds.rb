@@ -117,7 +117,9 @@ p "#########################"
   #Rails.logger.info user.inspect
   p user["id"]
   p user["email"]
-  #p user["firstname"]
+  p user["firstname"]
+  p user["lastname"]
+
 
   if User.exists?(email:user["email"] )
     p "user already on db "+ user["email"]
@@ -132,11 +134,27 @@ p "#########################"
       end
     end
 
+    if User.exists?(email:user["email"] )
+      @user_id = User.find_by_email(user["email"])
+      if UsersProfile.exists?(user_id:@user_id.id)
+         @user_profile = UsersProfile.find_by_user_id(@user_id.id)
+         @user_profile.update_attributes(firstname:user["firstname"],lastname:user["lastname"])
+         ActiveRecord::Base.transaction do
+           begin
+             p "Updating firstname lastname "+user["firstname"]
+             @user_profile.update_attributes(firstname:user["firstname"],lastname:user["lastname"])
+           rescue
+             p "Error on Updateting firstname "+user["firstname"]
 
-  #p "new user add it db "+ user["email"]
+             raise ActiveRecord::Rollback
+           end
+         end
 
-    #User.create!(email: user["email"],
-    #             password: "onetwo1234")
+
+
+      end
+    end
+
 
   end
 
