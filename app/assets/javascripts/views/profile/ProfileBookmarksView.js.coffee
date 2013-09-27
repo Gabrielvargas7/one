@@ -12,10 +12,10 @@ class Mywebroom.Views.ProfileBookmarksView extends Backbone.View
 				console.log(response)	
 		if(@model.get("FLAG_PROFILE") is Mywebroom.Views.RoomView.PUBLIC_ROOM)
 		 @bookmarksCollection.reset(@bookmarksCollection.first(9), silent:true)
-		@bookmarksGridView = new Mywebroom.Views.ProfileTableOuterDivView(collection:@bookmarksCollection,model:@model)
+		@bookmarksGridView = new Mywebroom.Views.ProfileActivityView2(collection:@bookmarksCollection,model:@model,headerName:"Bookmarks")
 	render:->
 		$(@el).html(@template(model:@model))
-		$(@el).append(JST['profile/ProfileGridTableHeader'](headerName:"Bookmarks"))
+		#$(@el).append(JST['profile/ProfileGridTableHeader'](headerName:"Bookmarks"))
 		$(@el).append(@bookmarksGridView.render().el)
 		this
 	askForKey:(event)->

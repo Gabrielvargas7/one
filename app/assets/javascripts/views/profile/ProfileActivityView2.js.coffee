@@ -39,7 +39,6 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
   			$("#profile_home_wrapper").append(@currentView.el)
   			@currentView.render()
   	showNextItem:(event,model)->
-  			console.log 'lets event here instead'
   			oldModel = model
   			#get next model
   			@currentModelIndex = @collection.indexOf(oldModel) if !@currentModelIndex

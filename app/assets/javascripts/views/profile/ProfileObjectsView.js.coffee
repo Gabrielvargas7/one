@@ -10,7 +10,7 @@ class Mywebroom.Views.ProfileObjectsView extends Backbone.View
 	render: ->
 		$(@el).html(@template(collection: @collection,model:@model))
 		#append objects table.
-		objectsTableView = new Mywebroom.Views.ProfileTableOuterDivView(collection: @collection, model:@model)
+		objectsTableView = new Mywebroom.Views.ProfileActivityView2(collection: @collection, model:@model,headerName:"OBJECTS")
 		$(@el).append(objectsTableView.render().el)
 		this
 
