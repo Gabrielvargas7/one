@@ -5,6 +5,8 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		 _.bindAll this, 'insideHandler', 'outsideHandler'
 		 @originalCollection=this.options.originalCollection
 		 $('body').on('click', this.outsideHandler);
+		 if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
+  			@template = JST['profile/ProfilePhotosLargeTemplate']
 	events:
 		'click #large_item_prev':'showPrev'
 		'click #large_item_next':'showNext'
