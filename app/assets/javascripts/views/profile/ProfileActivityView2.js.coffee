@@ -1,12 +1,10 @@
 class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
-	#el:"#profileActivityTable"
 	tagName:'div'
 	className: 'profileHome_activity generalGrid'
 	template: JST['profile/ProfileHomeGridTemplate2']
 	itemView:(obj) ->
 		new Mywebroom.Views.AProfileGridItemView2(obj)
 	itemViewContainer:'#gridItemsTest'
-	
 	initialize: ->
 		@headerName=this.options.headerName
 		this.on('itemview:gridItemLargeView',@showGridItemLargeView)
@@ -31,11 +29,6 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
 			@currentView.closeView()
 			@currentView.remove()
 			@currentModelIndex=undefined
-		# if currentGridItem.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
-		# 	@currentView= new Mywebroom.Views.PhotosLargeView({model:currentGridItem})
-		# 	$("#profile_home_wrapper").append(@currentView.el)
-		# 	@currentView.render()
-		# else
 		@currentView = new Mywebroom.Views.ActivityItemLargeView({model:currentGridItem,collection:@collection})
 		@currentView.on('ProfileActivityLargeView:showNext',@showNextItem,this)
 		$("#profile_home_wrapper").append(@currentView.el)

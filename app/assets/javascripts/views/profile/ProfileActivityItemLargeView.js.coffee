@@ -8,7 +8,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		 if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
   			@template = JST['profile/ProfilePhotosLargeTemplate']
 	events:
-		'click #large_item_prev':'showPrev'
+		'click #large_item_prev':'showNext'
 		'click #large_item_next':'showNext'
 		'click .profile_large_item_try_it_button':'showStore'
 		'click .gridItem':'closeView'
@@ -45,17 +45,6 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		console.log "ActivityItemLargeView closed"
 		this
 	showNext:(event) ->
-		event.stopPropagation()
-		this.trigger('ProfileActivityLargeView:showNext',event,@model)
-		# currentModelIndex = @originalCollection.indexOf(@model)
-		# newModel = @originalCollection.at(currentModelIndex+1);
-		# #Set newModel to @model
-		# if newModel
-		# 	this.model.clear({silent:true})
-		# 	this.model.set(newModel.toJSON())
-		# console.log newModel
-		# console.log "someday I'll show next"
-	showPrev:(event)->
 		event.stopPropagation()
 		this.trigger('ProfileActivityLargeView:showNext',event,@model)
 	showStore:(event)->
