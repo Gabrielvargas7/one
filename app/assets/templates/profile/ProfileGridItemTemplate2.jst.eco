@@ -1,12 +1,16 @@
 <div class="gridItem">
-	<div class="gridItemPicture" style="background-image:url('<%=@.image_name.url%>');">
+	<%if @.image_name_desc:%>
+		<div class="gridItemPicture" style="background-image:url('<%=@.image_name_desc.url%>');">
+	<%else:%>
+		<div class="gridItemPicture" style="background-image:url('<%=@.image_name.url%>');">
+	<%end%>
 	
 		
 	</div>
 	<span class="gridItemDescription">
 		<%if @.title: %>
-		<%=@.title%>
+			<%=@.title%>
 		<%else:%>
-		<%= @.name%></span>
+			<%= @.name%></span>
 		<% end %>
 </div>

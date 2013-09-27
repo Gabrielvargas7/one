@@ -7,7 +7,11 @@
 		<div class="pull-left" id="large_item_prev"><a  href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div>
 
 		<div class="activity_item_img_wrap">
-			<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
+			<%if @model.get('image_name_desc'):%>
+				<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name_desc').url%>">
+			<%else:%>
+				<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
+			<%end%>
 		</div>
 
 		<div class="pull-right" id="large_item_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div>
