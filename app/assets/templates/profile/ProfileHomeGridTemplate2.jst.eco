@@ -6,9 +6,9 @@
 </tr>
 </thead></table>
 
-<div id="gridItemList" style="display:table;">
+<div id="gridItemList" >
 	
-	<div id="gridItemsTest" style="display:table-cell;width:600px;">
+	<div id="gridItemsTest">
 	</div>
 	
 

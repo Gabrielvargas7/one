@@ -1,19 +1,16 @@
 class Mywebroom.Views.PhotosLargeView extends Backbone.View
 	template: JST['profile/ProfilePhotosLargeTemplate']
-	className: 'photos_large_view'
+	className: 'activity_item_large_wrap'
 	events:
 		"click #photos_next":"insideHandler"
 		"click #photos_prev":"insideHandler"
 	initialize: ->
 		 _.bindAll this, 'insideHandler', 'outsideHandler'
 	render: ->
+		$("#profile_drawer").css "width", "1320px" 
 		#append Social Bar icons View
 		$('body').on('click', this.outsideHandler);
 		$(@el).html(@template(model:@model))
-		#append social view to el here
-		socialBarView = new Mywebroom.Views.SocialBarView({model:@model})
-		$(@el).append(socialBarView.el)
-		socialBarView.render()
 		this
 		
 	insideHandler: (event) ->

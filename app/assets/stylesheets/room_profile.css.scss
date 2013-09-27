@@ -304,14 +304,17 @@ table.generalGrid{
 	border-collapse:separate;
 	border-spacing:10px;
 }
-.gridItemList{
+#gridItemList{
 	background-color: #f5f5f5;
-	padding:10px;
+	position:relative;
+	overflow-y:scroll;
+	width:620px;
+	height:585px;
 
 }
 #profileHome_activity_header, .profileTableHeader{
 	border-collapse:collapse;
-	width:100%;
+	width:620px;
 }
 .gridItemPicture {
 	width:180px;
@@ -322,6 +325,9 @@ table.generalGrid{
 }
 #gridItemsTest{
 	background-color: white;
+	display:table-cell;
+	width:620px;
+	position:relative;
 }
 .gridItemWrap{
 	width:200px;
