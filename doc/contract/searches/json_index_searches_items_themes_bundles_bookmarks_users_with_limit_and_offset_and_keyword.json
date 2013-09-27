@@ -7,13 +7,13 @@
 
 
 //Description
-            //# GET get user,items, themes, bundles, bookmarks that was found by the keyword with limit and offset(start row)
-            //# Limit is the number of user that you want it
-            //# Offset is where you want to start
-            //searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
-            //searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/10/0/green gab.json
-            //#Return head
-            //#success    ->  head  200 OK
+//# GET get search items,themes, bundles,bookmarks,users by the keyword with limit and offset
+//# Limit is the number of returns by type that you want it
+//# Offset is where you want to start
+//# /searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
+//# /searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/10/0/gabriel var.json
+//#Return head
+//#success    ->  head  200 OK
 
 // back_end   :done
 // front_end :working

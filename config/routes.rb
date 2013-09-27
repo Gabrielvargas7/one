@@ -246,6 +246,26 @@ Mywebroom::Application.routes.draw do
          'searches#json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword', via: :get, as:
          :searches_json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword
 
+  match '/searches/json/index_searches_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
+         'searches#json_index_searches_users_with_limit_and_offset_and_keyword', via: :get, as:
+         :searches_json_index_searches_users_with_limit_and_offset_and_keyword
+
+  match '/searches/json/index_searches_items_designs_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
+         'searches#json_index_searches_items_designs_with_limit_and_offset_and_keyword', via: :get, as:
+         :searches_json_index_searches_items_designs_with_limit_and_offset_and_keyword
+
+  match '/searches/json/index_searches_themes_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
+         'searches#json_index_searches_themes_with_limit_and_offset_and_keyword', via: :get, as:
+         :searches_json_index_searches_themes_with_limit_and_offset_and_keyword
+
+  match '/searches/json/index_searches_bundles_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
+         'searches#json_index_searches_bundles_with_limit_and_offset_and_keyword', via: :get, as:
+         :searches_json_index_searches_bundles_with_limit_and_offset_and_keyword
+
+  match '/searches/json/index_searches_bookmarks_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
+         'searches#json_index_searches_bookmarks_with_limit_and_offset_and_keyword', via: :get, as:
+         :searches_json_index_searches_bookmarks_with_limit_and_offset_and_keyword
+
 
   #--------------------------
   # end Searches contract

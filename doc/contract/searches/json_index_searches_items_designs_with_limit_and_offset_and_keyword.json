@@ -1,0 +1,129 @@
+//# GET get search items designs by the keyword with limit and offset
+//# Limit is the number of returns by type that you want it
+//# Offset is where you want to start
+//# /searches/json/index_searches_items_designs_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
+//# /searches/json/index_searches_items_designs_with_limit_and_offset_and_keyword/10/0/gabriel var.json
+//#Return head
+//#success    ->  head  200 OK
+
+
+
+{
+    "items_designs": [
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "This blue shopping bag has a great color scheme. If you look closely its brighter on the top and darker as it gets closer to the bottom. Just like the sea!",
+            "id": 31,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822951/90046-items_design-image_name-deep-blue-sea-31.png"
+            },
+            "item_id": 9,
+            "items_name": "Shopping Bag",
+            "like": 0,
+            "make": null,
+            "name": "Deep Blue Sea",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Keep all your books away from the visitors eyes!",
+            "id": 47,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823000/87842-items_design-image_name-blue-tetris-47.png"
+            },
+            "item_id": 3,
+            "items_name": "Book Stand",
+            "like": 0,
+            "make": null,
+            "name": "Blue Tetris",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "We all have a notebook where we write our ideas and thoughts. We not pick one that's blue. ",
+            "id": 82,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823104/81322-items_design-image_name-blue-book-82.png"
+            },
+            "item_id": 16,
+            "items_name": "Notebook",
+            "like": 0,
+            "make": null,
+            "name": "Blue Book",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Test",
+            "id": 336,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 22,
+            "items_name": "Sports",
+            "like": 0,
+            "make": null,
+            "name": "Air Jordan 3 True Blue",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": "ikea",
+            "category": "Furniture",
+            "color": "blue",
+            "description": "hello test",
+            "id": 496,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378492745/48906-items_design-image_name-chair.jpg"
+            },
+            "item_id": 7,
+            "items_name": "TV Stand",
+            "like": 0,
+            "make": "wood",
+            "name": "testetstets",
+            "special_name": "testspecial",
+            "style": "modern",
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        }
+    ]
+}

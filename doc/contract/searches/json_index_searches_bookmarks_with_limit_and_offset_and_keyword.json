@@ -1,0 +1,164 @@
+//# GET get search bookmarks by the keyword with limit and offset
+//# Limit is the number of returns by type that you want it
+//# Offset is where you want to start
+//# /searches/json/index_searches_bookmarks_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
+//# /searches/json/index_searches_bookmarks_with_limit_and_offset_and_keyword/10/0/blu.json
+//#Return head
+//#success    ->  head  200 OK
+
+
+
+{
+    "bookmarks": [
+        {
+            "bookmark_url": "http://www.google.com/videohp",
+            "bookmarks_category_id": 101,
+            "bookmarks_category_name": "Popular",
+            "description": "Description Coming Soon!",
+            "id": 1015,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823930/70822-bookmark-image_name-google.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "Google Video"
+        },
+        {
+            "bookmark_url": "http://www.bing.com/videos/browse?FORM=Z9LH1",
+            "bookmarks_category_id": 101,
+            "bookmarks_category_name": "Popular",
+            "description": "Description Coming Soon!",
+            "id": 1019,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823934/40675-bookmark-image_name-bing.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "Bing Video"
+        },
+        {
+            "bookmark_url": "http://www.espn.go.com/video",
+            "bookmarks_category_id": 102,
+            "bookmarks_category_name": "Sports",
+            "description": "Description Coming Soon!",
+            "id": 1101,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823937/79571-bookmark-image_name-espn.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "Espn Go"
+        },
+        {
+            "bookmark_url": "http://www.goal.com/en-us/news/3362/video",
+            "bookmarks_category_id": 102,
+            "bookmarks_category_name": "Sports",
+            "description": "Description Coming Soon!",
+            "id": 1110,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823946/4744-bookmark-image_name-goal.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "Goal"
+        },
+        {
+            "bookmark_url": "http://www.premierleague.com/en-gb/photos-and-videos.html",
+            "bookmarks_category_id": 102,
+            "bookmarks_category_name": "Sports",
+            "description": "Description Coming Soon!",
+            "id": 1121,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823956/60189-bookmark-image_name-premiereleague.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "Premiere League"
+        },
+        {
+            "bookmark_url": "http://www.pgatour.com",
+            "bookmarks_category_id": 102,
+            "bookmarks_category_name": "Sports",
+            "description": "Description Coming Soon!",
+            "id": 1125,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823960/70407-bookmark-image_name-pgatour.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "PGA Tour"
+        },
+        {
+            "bookmark_url": "http://www.sportinglife.com/video",
+            "bookmarks_category_id": 102,
+            "bookmarks_category_name": "Sports",
+            "description": "Description Coming Soon!",
+            "id": 1126,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823961/81629-bookmark-image_name-sportinglife.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "Sporting LIfe"
+        },
+        {
+            "bookmark_url": "http://www.grindtv.com",
+            "bookmarks_category_id": 102,
+            "bookmarks_category_name": "Sports",
+            "description": "Description Coming Soon!",
+            "id": 1127,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823962/25124-bookmark-image_name-grindtv.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "Grind Tv"
+        },
+        {
+            "bookmark_url": "http://www.latimes.com/videogallery/",
+            "bookmarks_category_id": 103,
+            "bookmarks_category_name": "News",
+            "description": "Description Coming Soon!",
+            "id": 1210,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823969/44629-bookmark-image_name-losangelestimes.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "Los Angeles Times"
+        },
+        {
+            "bookmark_url": "http://www.ovguide.com",
+            "bookmarks_category_id": 105,
+            "bookmarks_category_name": "Explore",
+            "description": "Description Coming Soon!",
+            "id": 1402,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823981/43506-bookmark-image_name-ovguide.png"
+            },
+            "image_name_desc": {
+                "url": "/assets/fallback/bookmark/default_bookmark.png"
+            },
+            "like": 0,
+            "title": "OV Guide"
+        }
+    ]
+}

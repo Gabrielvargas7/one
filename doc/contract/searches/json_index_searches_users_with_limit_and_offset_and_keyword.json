@@ -1,0 +1,166 @@
+//# GET get search users by the keyword with limit and offset
+//# Limit is the number of returns by type that you want it
+//# Offset is where you want to start
+//# /searches/json/index_searches_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
+//# /searches/json/index_searches_users_with_limit_and_offset_and_keyword/10/0/gabriel var.json
+//#Return head
+//#success    ->  head  200 OK
+
+
+
+{
+    "users": [
+        {
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376419707/61296-users_photo-image_name-2013-07-13_12.23.42.jpg"
+            },
+            "user_id": 28,
+            "username": "gabriel"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 44,
+            "username": "fedievartem"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 285,
+            "username": "patvarela0"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 380,
+            "username": "contactkimvarma"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 507,
+            "username": "gabrielvargas7"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 861,
+            "username": "enavarro822"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 1202,
+            "username": "bvargas2493"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 1213,
+            "username": "novarez"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 1506,
+            "username": "dolivarez16"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 2256,
+            "username": "aldanaalvarino"
+        }
+    ],
+    "users_profiles": [
+        {
+            "firstname": "Gabriel",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376419707/61296-users_photo-image_name-2013-07-13_12.23.42.jpg"
+            },
+            "lastname": "vargas",
+            "user_id": 28
+        },
+        {
+            "firstname": "Aaron",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "Gabriel",
+            "user_id": 241
+        },
+        {
+            "firstname": "GabrielVargas7",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "GabrielVargas7",
+            "user_id": 507
+        },
+        {
+            "firstname": "gabriela",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "rios",
+            "user_id": 848
+        },
+        {
+            "firstname": "David",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "Olivarez",
+            "user_id": 1506
+        },
+        {
+            "firstname": "Gabriela",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "Valenzuela",
+            "user_id": 1757
+        },
+        {
+            "firstname": "Gabriela",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "Aranda",
+            "user_id": 2308
+        },
+        {
+            "firstname": "Gabriela",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "Llanas",
+            "user_id": 2360
+        },
+        {
+            "firstname": "Gabriel",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "Gabriel",
+            "user_id": 3000
+        },
+        {
+            "firstname": "Michelle",
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "lastname": "Alvarado",
+            "user_id": 3065
+        }
+    ]
+}
