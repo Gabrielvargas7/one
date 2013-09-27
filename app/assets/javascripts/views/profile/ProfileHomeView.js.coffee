@@ -58,7 +58,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       console.log(response)
   #Scramble Activity Collection.
   @scrambleItemsAndBookmarks(activityItemsDesignsRandomCollection,activityBookmarksRandomCollection)
-
+  #Calculate Age
+  @model.set('age',@getAge(@model.get('birthday')))
 
   #*******************
   #**** Render - sets up initial structure and layout of the view
@@ -198,6 +199,24 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     setTimeout (->
     	$("#profile_home_container").css "width", "0px"), 1000
     @collapseFlag = false
+ #Calculates and return age. Argument is string YYYY-MM-DD
+ getAge:(birthday)->
+   now = new Date() 
+   dob= birthday.split '-'
+   if dob.length is 3
+    born = new Date(parseInt(dob[0]), parseInt(dob[1]) - 1, parseInt(dob[2]))
+    age = now.getFullYear() - (born.getFullYear())
+    if now.getMonth() < born.getMonth()
+      age--
+    if now.getMonth() is born.getMonth()
+      if now.getDate()<born.getDate()
+        age = age-1
+      age
+    else
+      return age
+   else
+    return ''
+
 
  closeProfileView: ->
 # 	this.remove()
