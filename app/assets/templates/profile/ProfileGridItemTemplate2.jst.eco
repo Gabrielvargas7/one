@@ -1,0 +1,12 @@
+<div class="gridItem">
+	<div class="gridItemPicture" style="background-image:url('<%=@.image_name.url%>');">
+	
+		
+	</div>
+	<span class="gridItemDescription">
+		<%if @.title: %>
+		<%=@.title%>
+		<%else:%>
+		<%= @.name%></span>
+		<% end %>
+</div>

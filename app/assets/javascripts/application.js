@@ -22,6 +22,7 @@
 //= require hogan-2.0.0
 //= require underscore.string
 //= require typeahead
+//= require backbone.marionette
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models

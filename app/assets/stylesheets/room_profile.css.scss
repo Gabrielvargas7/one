@@ -304,6 +304,11 @@ table.generalGrid{
 	border-collapse:separate;
 	border-spacing:10px;
 }
+.gridItemList{
+	background-color: #f5f5f5;
+	padding:10px;
+
+}
 #profileHome_activity_header, .profileTableHeader{
 	border-collapse:collapse;
 	width:100%;
@@ -315,9 +320,20 @@ table.generalGrid{
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 }
-td.gridItem{
+#gridItemsTest{
+	background-color: white;
+}
+.gridItemWrap{
+	width:200px;
+	background-color: #f5f5f5;
+	display:inline-block;
+}
+.gridItem{
 	text-align:center;
 	border:1px solid #ebebeb;
+	display:inline-block;
+	margin:5px;
+	
 }
 /*center the picture*/
 .user-photos-view div.gridItem{
