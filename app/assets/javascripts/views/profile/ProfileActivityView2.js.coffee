@@ -10,12 +10,18 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
 	initialize: ->
 		@headerName=this.options.headerName
 		this.on('itemview:gridItemLargeView',@showGridItemLargeView)
+		
 	#The Marionette way to pass additional data to template:
 	#Override serializeData method to pass additional data to this template. 
 	serializeData:->
 		viewData= {}
-		viewData.headerName = if @options.headerName is `undefined` then true else @options.headerName
+		viewData.headerName = @options.headerName
 		viewData
+	#OnRender is called after built in render function has completed.
+	onRender:->
+		if @model and @model.get('FLAG_PROFILE') is Mywebroom.Views.RoomView.PUBLIC_ROOM
+			#append ask for key overlay.
+			@$(@itemViewContainer).append(JST['profile/ProfileAskForKey']())
 	showGridItemLargeView:(childView,model)->
   		currentGridItem = model
   		#launch new view. profile_drawer needs to expand

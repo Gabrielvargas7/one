@@ -134,7 +134,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  showProfileActivity:->
   #send full collection to this view.
-  @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:"Activity"})
+  @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:"Activity",model:@model})
   #Modify Top Portion
   $('#profileHome_top').css "height","70px"
   $('#profileHome_bottom').css "height","550px"
