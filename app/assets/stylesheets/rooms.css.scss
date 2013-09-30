@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS)   here: http://sass-lang.com/
 
+.room_backgroud_color{
+    background-color: rgba(0,0,0,.9);
+}
 
 .room_scroll_left{
   position:fixed;
@@ -49,7 +52,7 @@
 
 #xroom_items_0{
   position:absolute;
-  left:0px;
+  left:-1999px;
   top:45px;
   z-index: -1;
   width: 2000px;
@@ -57,7 +60,7 @@
 }
 #xroom_items_1{
   position:absolute;
-  left:1999px;
+  left:0px;
   top:45px;
   z-index: -1;
   width: 2000px;
@@ -65,7 +68,7 @@
 }
 #xroom_items_2{
   position:absolute;
-  left:3999px;
+  left:1999px;
   top:45px;
   z-index: -1;
   width: 2000px;

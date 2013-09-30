@@ -3,40 +3,42 @@ source 'https://rubygems.org'
 #ruby "1.9.3"
 ruby "2.0.0"
 
+################
+# gem for rails
+################
 
-gem 'rails', '3.2.13'
-gem 'bootstrap-sass', '2.3.2.2'
-gem 'bcrypt-ruby', '3.0.1'
-gem 'faker', '1.1.2'
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.6'
-gem 'jquery-rails', '3.0.4'
-gem 'omniauth-facebook', '1.4.1'
-gem 'oauth2', '0.8.0'
-
-
-gem 'google_drive' , '0.3.5'
-gem "fileutils", '0.7'
-gem "carrierwave", '0.8.0'
-gem "cloudinary","1.0.57"
-
-gem 'jbuilder','1.4.1'
-
-gem "railties", "3.2.13"
-
-gem "backbone-on-rails", "1.0.0.1"
-
-gem "unicorn", "4.6.3"
-
-gem 'geocoder', "1.1.8"
-
-gem 'toastr-rails', '1.0.3'
+  gem 'rails', '3.2.13'
+  gem 'bcrypt-ruby', '3.0.1'
+  gem 'faker', '1.1.2'
+  gem 'omniauth-facebook', '1.4.1'
+  gem 'oauth2', '0.8.0'
+  gem 'google_drive' , '0.3.5'
+  gem "fileutils", '0.7'
+  gem "carrierwave", '0.8.0'
+  gem "cloudinary", "1.0.57"
+  gem 'jbuilder', '1.4.1'
+  gem "railties", "3.2.13"
+  gem "unicorn", "4.6.3"
+  gem 'geocoder', "1.1.8"
 
 
-# gem to look for improment like
-# memory leak and time out
-gem "oink", '0.10.1'
-gem "rack-timeout"
+  # memory leak and time out
+  gem "oink", '0.10.1'
+  gem "rack-timeout"
+
+
+
+
+
+################
+# gem for front end
+################
+  gem 'bootstrap-sass', '2.3.2.2'
+  gem 'will_paginate', '3.0.4'
+  gem 'bootstrap-will_paginate', '0.0.6'
+  gem 'jquery-rails', '3.0.4'
+  gem "backbone-on-rails", "1.0.0.1"
+  gem 'toastr-rails', '1.0.3'
 
 
 

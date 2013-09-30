@@ -296,16 +296,16 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
 
     $('#xroom_items_0').attr('data-current_screen_position','0')
     $('#xroom_items_0').css({
-        'left':Math.floor(0+300-item_location_x+300)
+        'left':Math.floor(-1999-item_location_x+100)
     })
     $('#xroom_items_1').attr('data-current_screen_position','1')
     $('#xroom_items_1').css({
-          'left':Math.floor(1999+300-item_location_x+300)
+          'left':Math.floor(0-item_location_x+100)
     })
     $('#xroom_items_2').attr('data-current_screen_position','2')
     $('#xroom_items_2').css({
-          'left':Math.floor(3999+300-item_location_x+300)
+          'left':Math.floor(1999-item_location_x+100)
     })
-    $(window).scrollLeft(2300)
-    console.log($(window).scrollLeft())
+#    $(window).scrollLeft(0)
+    console.log("window location"+$(window).scrollLeft())
 
