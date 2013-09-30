@@ -10,7 +10,18 @@ window.Mywebroom =
 
 $(document).ready ->
   # Create the state model
-  Mywebroom.State.appState = new Backbone.Model()
+  Mywebroom.State = new Backbone.Model({
+    defaults:
+      roomState    : "PUBLIC"  # Who's room are we viewing? PUBLIC, FRIEND, or SELF
+      roomUser     : false     # Backbone Model of room user, or false
+      roomData     : false     # Backbone Model of room data, or false
+      roomDesigns  : []        # Array of item designs, or empty array
+      roomTheme    : {}        # Object containing info on room's theme
+      signedInState: false     # Boolean: Is the user signed in?
+      signedInUser : false     # Backbone Model of signed-in user, or false
+      signedInData : false     # Backbone Model of signed-in user's data, or false
+  })
+  
   
   # Create the Marionette App Object
   Mywebroom.App = new Backbone.Marionette.Application()
