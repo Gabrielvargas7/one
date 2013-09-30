@@ -8,14 +8,36 @@
         <!-- Logo  -->
         <a class="brand">
               <span>&nbsp<span>
-              <img alt="logo-mywebroom" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/logo-mywebroom.png" height="32" width="112">
-
+              <img alt="logo-mywebroom" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/w_132,h_30/logo-mywebroom.png" >
         </a>
 
         <!-- Search Box  -->
-        <form class="navbar-search pull-left">
-           <input type="text" class="span6" placeholder="Search for people, objects and bookmarks">
-        </form>
+            <div class="input-append" id="xroom_header_search_box"  >
+                    <input type="text" class="span5" placeholder="Search for people, objects and bookmarks">
+                    <div class="btn-group">
+                      <button id="header-search-dropdown-btn" class="btn">ALL</button>
+
+                      <button class="btn dropdown-toggle" data-toggle="dropdown">
+                          <span class="caret"></span>
+                      </button>
+
+                      <ul class="dropdown-menu">
+                        <li class="active header-search-dropdown" id="header-search-dropdown-all">
+                            <a href="#">ALL</a>
+                         </li>
+                         <li class="header-search-dropdown" id="header-search-dropdown-bookmarks">
+                            <a href="#">BOOKMARKS</a>
+                         </li>
+                         <li class="header-search-dropdown" id="header-search-dropdown-objects">
+                            <a href="#">OBJECTS</a>
+                         </li>
+                         <li class="header-search-dropdown" id="header-search-dropdown-people">
+                            <a href="#">PEOPLE</a>
+                         </li>
+                      </ul>
+                    </div>
+            </div>
+
 
 
         <!-- Menu  -->

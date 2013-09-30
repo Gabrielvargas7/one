@@ -101,7 +101,7 @@ class Mywebroom.Views.RoomView extends Backbone.View
       this.setBrowseMode()
 
       # center the windows  and remove the scroll
-      $(window).scrollLeft(2300)
+      $(window).scrollLeft(0)
       $('body').css('overflow-x', 'hidden');
 
       this.setEventTest()
@@ -251,6 +251,11 @@ class Mywebroom.Views.RoomView extends Backbone.View
     roomHeaderView = new Mywebroom.Views.RoomHeaderView({model:roomUserDataModel,signInUserDataModel:signInUserDataModel,FLAGS_MAP:FlagsMap})
     $('#xroom_header').append(roomHeaderView.el)
     roomHeaderView.render()
+
+    roomFooterView = new Mywebroom.Views.RoomFooterView()
+    $('#xroom_footer').append(roomFooterView.el)
+    roomFooterView.render()
+
 
   #--------------------------
   # set store menu for save cancel and remove

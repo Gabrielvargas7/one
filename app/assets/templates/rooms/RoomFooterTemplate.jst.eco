@@ -2,7 +2,8 @@
 <!-- Room  Footer Menu -->
 <!-- ************************ -->
 
-<div class="navbar navbar-fixed-bottom  navbar-inverse">
+
+<div class="navbar navbar-inverse navbar-fixed-top" id="xroom_footer">
     <div class="navbar-inner">
         <ul class="nav pull-left">
             <li><a href="#">Product</a></li>
