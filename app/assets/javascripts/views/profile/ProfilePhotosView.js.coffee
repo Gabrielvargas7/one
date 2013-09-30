@@ -23,7 +23,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 		#@model.set 'FLAG_PROFILE', Mywebroom.Views.RoomView.PUBLIC_ROOM
 		$(@el).html(@template(collection:@photosCollection, model:@model))
 		#create table with data
-		tableView = new Mywebroom.Views.ProfileTableOuterDivView(collection: @photosCollection, model:@model)
+		tableView = new Mywebroom.Views.ProfileActivityView2(collection: @photosCollection, model:@model)
 		$(@el).append(tableView.render().el)
 		#if(@model.get F"LAG_PROFILE" is Mywebroom.Views.RoomView.PUBLIC_ROOM)
 		#if @photosCollection.length > 6

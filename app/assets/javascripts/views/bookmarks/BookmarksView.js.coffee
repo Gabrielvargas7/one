@@ -56,6 +56,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $(@el).append(@template(user_item_design:this.options.user_item_design, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
+    #set .my_bookmarks_bottom to 100% width minus the sidebar width
+    $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
   renderDiscover:->
@@ -80,6 +82,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #@fetchDiscoverBookmarks()
     @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.user_item_design)
     $(@el).append(@bookmarksDiscoverView.render().el)
+    #set .discover_bookmarks_bottom to 100% width minus the sidebar width
+    $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
     $('#add_your_own_form').submit({that},@addCustomBookmark)
   renderMyBookmarks:->
@@ -96,6 +100,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       async:false
       url:@collection.url this.options.user, this.options.user_item_design
     #$(@el).append(@myBookmarksView.render().el)
+    #set .my_bookmarks_bottom to 100% width minus the sidebar width
+    $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $(@myBookmarksView.el).show()
     #$(@el).append(@myBookmarksView.render().el)
     
@@ -117,25 +123,28 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @bookmarksDiscoverView.remove()
     @currentBookmarkbyCategoryView = new Mywebroom.Views.DiscoverBookmarksView(collection:@currentBookmarkbyCategoryCollection)
     $(@el).append(@currentBookmarkbyCategoryView.render().el)
+    #set .discover_bookmarks_bottom to 100% width minus the sidebar width
+    $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
 
   previewMode:(event)->
     #we'll have previewView to correspond to discover_bookmarks
     #and browseMode to correspond to my_bookmarks
     #open in iframe
-    bookmarkClicked=@discoverCollection.get(event.currentTarget.dataset.cid)
+    bookmarkClicked=@discoverCollection.get(event.currentTarget.dataset.id)
     urlToOpen= bookmarkClicked.get('bookmark_url')
     if bookmarkClicked.get('i_frame') is 'y'
       previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
       #Edit sidebar menu 
       #hide categories
       $(@el).append(previewModeView.render().el)
-      previewModeView.once('closedView',@closePreviewMode())
-      console.log("preview site!"+urlToOpen)
+      previewModeView.once('closedView',@closePreviewMode,this)
+      
       console.log(bookmarkClicked)
     else
       window.open urlToOpen,"_blank" 
   closePreviewMode:->
     console.log 'close previewmode.'
+
 
     #show sidebar categories.
   clickTrash: (event)->
@@ -176,37 +185,5 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     else
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
-  browseMode:->
-    #Send data to browseModeView
-    #Close this view. 
-    @closeView()
-
-    #Check for browseMode instance. If its there, use jquery to access everything
-    # $currentBrowseModeView=$('.browse_mode_view')
-    # if $currentBrowseModeView.length > 0
-    #   console.log "using jquery on bookmarksview" #This means we can't ever close the view. 
-    #   #Open new iframe on browse_mode_sites and switch active classes
-    #         #switch iframe classes
-    #   $('.current_browse_mode_site').removeClass('current_browse_mode_site')
-    #   newIframeHTML = "<iframe class='current_browse_mode_site browse_mode_site' src='http://www.about.com'></iframe>"
-    #   $('.browse_mode_site_wrap').append(newIframeHTML)
-    #   $currentBrowseModeView.show()
-
-    #   $('.bookmark_view').hide()
-    #   this.closeView()
-
-    # else
-    #   #Otherwise Create new View. 
-    #   @browseModeView = new Mywebroom.Views.BrowseModeView({modelToBrowse:event.model})
-    #   @browseModeView.on('browseModeClosed',->
-    #     @closeView)
-    #   #Hide this view. Hide $('#bookmark_view')
-    #   $('.bookmark_view').hide()
-    #   #Attach browseModeView view to something
-    #   $('#xroom_bookmarks').append(@browseModeView.el)
-    #   @browseModeView.render()
-
-    #On closing the new View, close BookmarksView, so we are in the Room. 
-
   closeView:->
     this.remove()

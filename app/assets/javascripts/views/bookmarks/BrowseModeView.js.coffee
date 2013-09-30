@@ -32,7 +32,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
 		#$(@el).html(@browseModeSidebarView.render().el)
 		$(@el).append(@template(model:@getModelToBrowse()))
-	
+
+		this
 	removeCurrentActiveSite:(target)->
 		#remove current active site
 		$(target).removeClass 'current_browse_mode_site'
@@ -86,18 +87,19 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 			if model.get('i_frame') is 'n'
 				#open in target
 				window.open model.get('bookmark_url'),"_blank"
-				#close view
-				@closeView()	
+				newIframeHTML = JST['bookmarks/BrowseModeNoIframeTemplate'](model:@getModelToBrowse())
 			else	
 				#Append it to the el.	
 				newIframeHTML = JST['bookmarks/BrowseModeIframeTemplate'](model:@getModelToBrowse())
-				$('.browse_mode_site_wrap').append(newIframeHTML)
-				#rerender the sidebar menu if model id is different.
-				@browseModeSidebarView.remove() if @browseModeSidebarView
-				@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
-				@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
-				$(@el).append(@browseModeSidebarView.render().el)
-	
+			$('.browse_mode_site_wrap').append(newIframeHTML)
+			#rerender the sidebar menu if model id is different.
+			@browseModeSidebarView.remove() if @browseModeSidebarView
+			@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
+			@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
+			$(@el).append(@browseModeSidebarView.render().el)
+			@setSidebarHover();
+				
+			
 	#Called when user clicks another site icon in the Active Menu
 	#The model clicked is already part of activeSitesCollection
 	iconActiveSiteChange:(event)->
@@ -140,4 +142,28 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		@activeMenuView.hideActiveMenu() if @activeMenuView
 		#Hide Browse Mode View
 		$(@el).hide()	
-
+	setSidebarHover:->
+		$('#browse_mode_active_default').mouseover(->
+			$('#browse_mode_active_highlight').show()
+			$('#browse_mode_active_default').hide()
+			)
+		$('#browse_mode_active_highlight').mouseout(->
+				$('#browse_mode_active_highlight').hide()
+				$('#browse_mode_active_default').show()
+			)
+		$('#browse_mode_discover_default').mouseover(->
+			$('#browse_mode_discover_highlight').show()
+			$('#browse_mode_discover_default').hide()
+			)
+		$('#browse_mode_discover_highlight').mouseout(->
+				$('#browse_mode_discover_highlight').hide()
+				$('#browse_mode_discover_default').show()
+			)
+		$('#browse_mode_mybookmarks_default').mouseover(->
+			$('#browse_mode_mybookmarks_highlight').show()
+			$('#browse_mode_mybookmarks_default').hide()
+			)
+		$('#browse_mode_mybookmarks_highlight').mouseout(->
+				$('#browse_mode_mybookmarks_highlight').hide()
+				$('#browse_mode_mybookmarks_default').show()
+			)

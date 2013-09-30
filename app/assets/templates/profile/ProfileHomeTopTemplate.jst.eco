@@ -12,11 +12,11 @@
 	<div id="profile_home_basic_info">
 		<p id = "info_username"><%=@user_info.get('user').username%> </p>
 		<ul>
-			<li>Age: 27.</li>
+			<li>Age: <%if @user_info.get('age'):%><%=@user_info.get('age')%><%end%></li>
 			<li><%=@user_info.get('gender')%></li>
 			<li><%=@user_info.get('city') %>, <%=@user_info.get('country')%></li>
 		</ul>
-		<a class="blueLink" href="#">Friends (250)</a>
+		<a class="blueLink" href="#">Friends (<%=@user_info.get('friends_number')%>)</a>
 	</div>
 	<div id="profile_home_description">
 		<p><%=@user_info.get('description')%></p>

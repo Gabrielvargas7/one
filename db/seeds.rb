@@ -10,6 +10,9 @@ require "rubygems"
 require "google_drive"
 require "fileutils"
 
+require 'open-uri'
+require 'json'
+
 require_relative 'seeds/seeds_themes'
 require_relative 'seeds/seeds_themes_images'
 
@@ -99,4 +102,110 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #p Dir.glob("db/seeds/images/themes/*")
 
 
+#########################
+# transfer user from mysql
+#########################
+
+@users = JSON.parse(open("http://localhost:8084/EtlRoom/json/all").read)
+#p @users
+
+p "#########################"
+p "Geting the friends "
+p "#########################"
+
+@users.each do |user|
+  #Rails.logger.info user.inspect
+  p user["id"]
+  p user["email"]
+  p user["firstname"]
+  p user["lastname"]
+
+
+  if User.exists?(email:user["email"] )
+    p "user already on db "+ user["email"]
+  else
+    ActiveRecord::Base.transaction do
+      begin
+        p "new user add it db "+ user["email"]
+        User.create!(email: user["email"], password: "onetwo1234")
+      rescue
+        p "Error on email"+ user["email"]
+        raise ActiveRecord::Rollback
+      end
+    end
+
+    if User.exists?(email:user["email"] )
+      @user_id = User.find_by_email(user["email"])
+      if UsersProfile.exists?(user_id:@user_id.id)
+         @user_profile = UsersProfile.find_by_user_id(@user_id.id)
+         @user_profile.update_attributes(firstname:user["firstname"],lastname:user["lastname"])
+         ActiveRecord::Base.transaction do
+           begin
+             p "Updating firstname lastname "+user["firstname"]
+             @user_profile.update_attributes(firstname:user["firstname"],lastname:user["lastname"])
+           rescue
+             p "Error on Updateting firstname "+user["firstname"]
+
+             raise ActiveRecord::Rollback
+           end
+         end
+
+
+
+      end
+    end
+
+
+  end
+
+end
+#########################
+# get the friends
+#########################
+p "#########################"
+p "Geting the friends "
+p "#########################"
+
+#@users = User.all
+@users.each do |user|
+  #Rails.logger.info user.inspect
+  p user["id"]
+  p user["email"]
+  #p user["firstname"]
+  friend_url = "http://localhost:8084/EtlRoom/json/friends/"+user["id"].to_s
+  p friend_url
+
+  @friends = JSON.parse(open(friend_url).read)
+
+  @friends.each do |friend|
+    if User.exists?(email:friend["email"] ) and User.exists?(email:user["email"] )
+        p "user already on db "+ friend["email"]
+
+        @user_friend = User.find_by_email(friend["email"])
+        @user_friend2 = User.find_by_email(user["email"])
+
+        #p "friend one "+@user_friend.id.to_s+" "+@user_friend.email.to_s
+        #p "friend two "+@user_friend2.id.to_s+" "+@user_friend.email2.to_s
+        if Friend.exists?(user_id:@user_friend.id,user_id_friend:@user_friend2.id)
+
+          p "friend alredy on db "+ @user_friend2.id.to_s+" "+@user_friend2.email.to_s
+          p "friend alredy on db "+ @user_friend.id.to_s+" "+@user_friend.email.to_s
+
+        else
+          p "friend add it on db "+ @user_friend2.id.to_s+" "+@user_friend2.email.to_s
+          p "friend add it on db "+ @user_friend.id.to_s+" "+@user_friend.email.to_s
+
+
+          Friend.create(user_id:@user_friend.id,user_id_friend:@user_friend2.id)
+          Friend.create(user_id:@user_friend2.id.to_s,user_id_friend:@user_friend.id)
+        end
+
+    else
+      p "one of this don't exist on db "+ friend["email"]
+      p user["email"]
+
+    end
+  end
+
+end
 

@@ -16,6 +16,6 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
   this
  	
  friendsAddView: (friend) ->
-  friendView = new Mywebroom.Views.ProfileFriendsSingleView({model:friend})
+  friendView = new Mywebroom.Views.ProfileFriendsSingleView({model:friend,PUBLIC_FLAG:@model.get('FLAG_PROFILE')})
   $(@el).append(friendView.el)
   friendView.render()

@@ -58,7 +58,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       console.log(response)
   #Scramble Activity Collection.
   @scrambleItemsAndBookmarks(activityItemsDesignsRandomCollection,activityBookmarksRandomCollection)
-
+  #Calculate Age
+  @model.set('age',@getAge(@model.get('birthday')))
 
   #*******************
   #**** Render - sets up initial structure and layout of the view
@@ -83,7 +84,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #$('#profileHome_bottom').css "height","450px"
   #Bandaid- make header another table.
   tableHeader = JST['profile/ProfileGridTableHeader']
-  $("#profileHome_bottom").html(tableHeader(headerName:'Latest Room Additions'))
+  $("#profileHome_bottom").html(tableHeader())
   $('#profileHome_bottom').append(@ProfileHomeActivityView.el)
   @ProfileHomeActivityView.render()
 
@@ -102,7 +103,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @activityCollection.reset(@activityCollection.shuffle(),{silent:true})
   initialProfileHomeActivityCollection = new Backbone.Collection
   initialProfileHomeActivityCollection.set(@activityCollection.first 6)
-  @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView({collection:initialProfileHomeActivityCollection})
+  if this.options.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM
+    @activityCollection.reset(@activityCollection.first(9),{silent:true})
+  @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView2({collection:initialProfileHomeActivityCollection, headerName:'Latest Room Additions'})
 
   #*******************
   #**** Functions  Event functions to alter views
@@ -120,7 +123,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  showProfileKeyRequests: ->
   # /*Note on key request view, we do not want profile-bottom overflow on. */
   topTemplate= JST['profile/ProfileSmallTopTemplate']
-  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Invite Friends With FB!"))
+  optionalButton = "<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379965946/invite-friends-with-facebook.png'>"
+  $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:optionalButton))
   @keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView(model:@model)
   $('#profileHome_bottom').html(@keyRequestsView.el) 	
   @keyRequestsView.render()
@@ -133,14 +137,14 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  showProfileActivity:->
   #send full collection to this view.
-  @profileActivityView = new Mywebroom.Views.ProfileTableOuterDivView({collection:@activityCollection})
+  @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:"Activity",model:@model})
   #Modify Top Portion
   $('#profileHome_top').css "height","70px"
   $('#profileHome_bottom').css "height","550px"
   topTemplate= JST['profile/ProfileSmallTopTemplate']
   $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:""))
-  $('#profileHome_bottom').html(JST['profile/ProfileGridTableHeader'](headerName:"Activity"))
-  $('#profileHome_bottom').append(@profileActivityView.el)
+  #$('#profileHome_bottom').html(JST['profile/ProfileGridTableHeader'](headerName:"Activity"))
+  $('#profileHome_bottom').html(@profileActivityView.el)
   @profileActivityView.render()
 
   #--------------------------
@@ -195,6 +199,26 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     setTimeout (->
     	$("#profile_home_container").css "width", "0px"), 1000
     @collapseFlag = false
+ #Calculates and return age. Argument is string YYYY-MM-DD
+ getAge:(birthday)->
+   if birthday is undefined || birthday is null || birthday is ''
+    return 
+   now = new Date() 
+   dob= birthday.split '-'
+   if dob.length is 3
+    born = new Date(parseInt(dob[0]), parseInt(dob[1]) - 1, parseInt(dob[2]))
+    age = now.getFullYear() - (born.getFullYear())
+    if now.getMonth() < born.getMonth()
+      age--
+    if now.getMonth() is born.getMonth()
+      if now.getDate()<born.getDate()
+        age = age-1
+      age
+    else
+      return age
+   else
+    return ''
+
 
  closeProfileView: ->
 # 	this.remove()

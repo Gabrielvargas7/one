@@ -5,7 +5,7 @@
 	<div class="pull-left profile_info_name">
 		<p id="profile_info_name"><%=@user_info.get('firstname')%> <%=@user_info.get('lastname')%></p>
 	</div>
-	<div class="pull-right" id="profile_small_top_optional_button">
-		<%=@optionalButton%>
+	<div class="pull-right profile_small_top_optional_button_outer">
+		<a href="#"><img id="profile_facebook_friends_invite" src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379965946/invite-friends-with-facebook.png'></a>
 	</div>
 </div>

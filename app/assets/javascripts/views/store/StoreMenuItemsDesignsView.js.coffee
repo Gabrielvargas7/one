@@ -63,6 +63,13 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'new')
     $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
 
+
+
+    ###
+    Here's where we need to un-hide the dropdowns and populate them
+    ###
+
+
 #    this.setItemToCenter(itemId)
 
   #--------------------------

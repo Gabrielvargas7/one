@@ -1,0 +1,401 @@
+// controller  ->  SearchesController
+// method type ->  get
+// method name ->  json_index_searches_user_name_by_search_values
+
+
+//Security  private user
+
+
+//Description
+//# GET get search items,themes, bundles,bookmarks,users by the keyword with limit and offset
+//# Limit is the number of returns by type that you want it
+//# Offset is where you want to start
+//# /searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
+//# /searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/10/0/gabriel var.json
+//#Return head
+//#success    ->  head  200 OK
+
+// back_end   :done
+// front_end :working
+{
+    "items_designs": [
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Go Green",
+            "id": 361,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823838/37694-items_design-image_name-green-361.png"
+            },
+            "item_id": 4,
+            "items_name": "Chair",
+            "like": 0,
+            "make": null,
+            "name": "Green",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "For all of us who have becomed attached to our office chairs, this design was made to bring our office chair to our home office but leaving behind the black boring color. ",
+            "id": 26,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822933/41021-items_design-image_name-green-office-26.png"
+            },
+            "item_id": 4,
+            "items_name": "Chair",
+            "like": 0,
+            "make": null,
+            "name": "Green Office",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Go Green",
+            "id": 362,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823839/3259-items_design-image_name-green-362.png"
+            },
+            "item_id": 5,
+            "items_name": "Newspaper",
+            "like": 0,
+            "make": null,
+            "name": "Green",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "For those who love relaxing shopping.",
+            "id": 53,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823018/2814-items_design-image_name-green-dream-53.png"
+            },
+            "item_id": 9,
+            "items_name": "Shopping Bag",
+            "like": 0,
+            "make": null,
+            "name": "Green Dream",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Go Green",
+            "id": 363,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 6,
+            "items_name": "World Map",
+            "like": 0,
+            "make": null,
+            "name": "Green",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Go Green",
+            "id": 364,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 7,
+            "items_name": "TV Stand",
+            "like": 0,
+            "make": null,
+            "name": "Green",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "This is not another “Grasshoper”, but they would look great together, check it out in the drawers\nselection.",
+            "id": 117,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823214/21271-items_design-image_name-greene-117.png"
+            },
+            "item_id": 7,
+            "items_name": "TV Stand",
+            "like": 0,
+            "make": null,
+            "name": "Greene",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Go Green",
+            "id": 365,
+            "image_name": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 8,
+            "items_name": "File Box",
+            "like": 0,
+            "make": null,
+            "name": "Green",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Go Green",
+            "id": 358,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823835/5986-items_design-image_name-green-358.png"
+            },
+            "item_id": 1,
+            "items_name": "Bed",
+            "like": 0,
+            "make": null,
+            "name": "Green",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        },
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "description": "Go Green",
+            "id": 359,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823836/80636-items_design-image_name-green-359.png"
+            },
+            "item_id": 2,
+            "items_name": "Bird Cage",
+            "like": 0,
+            "make": null,
+            "name": "Green",
+            "special_name": null,
+            "style": null,
+            "image_name_hover": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            }
+        }
+    ],
+    "users": [
+        {
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376419707/61296-users_photo-image_name-2013-07-13_12.23.42.jpg"
+            },
+            "user_id": 28,
+            "username": "gabriel"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 37,
+            "username": "gabrielvargasuabc"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 508,
+            "username": "gabrielvargas7"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 647,
+            "username": "greeneyedfaithypoo"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 1468,
+            "username": "poeticallygreen"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 1483,
+            "username": "fgreene92"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 1557,
+            "username": "gabivaiciunaite"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 1758,
+            "username": "gabivalenzuela"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 1838,
+            "username": "greenpenguin90"
+        },
+        {
+            "image_name": {
+                "url": "/assets/fallback/users_photos/default_user.png"
+            },
+            "user_id": 2158,
+            "username": "gabrivalo106"
+        }
+    ],
+    "users_profiles": [
+        {
+            "firstname": "Gabriel",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376419707/61296-users_photo-image_name-2013-07-13_12.23.42.jpg"
+            },
+            "lastname": "vargas",
+            "user_id": 28
+        }
+    ],
+    "themes": [
+        {
+            "brand": null,
+            "category": null,
+            "color": null,
+            "created_at": "2013-05-17T20:33:50Z",
+            "description": "Green",
+            "id": 21,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822835/84591-theme-image_name-green.jpg"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/theme/default_theme.png"
+            },
+            "like": 0,
+            "location": null,
+            "make": null,
+            "name": "Green",
+            "special_name": null,
+            "style": null,
+            "updated_at": "2013-05-17T20:33:50Z"
+        }
+    ],
+    "bundles": [
+        {
+            "active": "y",
+            "brand": null,
+            "category": null,
+            "color": null,
+            "created_at": "2013-05-17T20:34:14Z",
+            "description": "Get Green",
+            "id": 14,
+            "image_name": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "like": 0,
+            "location": null,
+            "make": null,
+            "name": "Green",
+            "section_id": 1,
+            "special_name": null,
+            "style": null,
+            "theme_id": 14,
+            "updated_at": "2013-07-02T16:18:57Z"
+        }
+    ],
+    "bookmarks": [
+        {
+            "bookmark_url": "http://www.thedailygreen.com",
+            "bookmarks_category_id": 405,
+            "bookmarks_category_name": "Explore",
+            "description": "Site geared toward people who are looking to be more environmentally- responsible. Includes news items, a dictionary of environmentalist terms, articles, and many more!",
+            "id": 4410,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824322/90518-bookmark-image_name-dailygreen.png"
+            },
+            "image_name_desc": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1380068884/9560-bookmark-image_name_desc-the-daily-green-news.jpg"
+            },
+            "like": 0,
+            "title": "Daily Green"
+        }
+    ]
+}

@@ -59,6 +59,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       "hideMethod": "fadeOut"
     }
     toastr.success("The changes to your room have been saved.")
+    $('.toast-bottom-left').css({'bottom':'76%', 'left':'7%'});
   
     
 

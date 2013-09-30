@@ -19,7 +19,7 @@ class Mywebroom.Views.ProfileActivityView extends Backbone.View
 		    rowArray.push @collection.at k  if k < @collection.models.length
 		    k+=1
 		    i++
-		  rowView = new Mywebroom.Views.ProfileGridRowView(collection: rowArray)
+		  rowView = new Mywebroom.Views.ProfileGridRowView(collection: rowArray,originalCollection:@collection)
 		  $(@el).append rowView.el
 		  rowView.render()
 		  rowArray.length = 0

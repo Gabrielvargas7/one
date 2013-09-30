@@ -84,10 +84,9 @@ ul.bookmark_menu_list {
 }
 /*END Discover Sub Menu Item Style*/
 .my_bookmarks_list_wrap, .discover_list_wrap{
-	width:1100px;
+	height:100%;
 	background-color:white;
 	float:left;
-	// height:100%;
 	padding:10px;
 	color:#333333;
 	position:fixed;
@@ -104,11 +103,11 @@ ul.bookmark_menu_list {
 .bookmarks_close_button{
 	position:absolute;
 	top:15px;
-	right:15px;
+	right:25px;
 }
 /*My Bookmarks Grid Items*/
 .my_bookmarks_bottom, .discover_bookmarks_bottom{
-	height:600px;
+	height:80%;
 	overflow:auto;
 }
 .my_bookmarks_bottom li, .discover_bookmarks_bottom li{
@@ -140,7 +139,7 @@ ul.bookmark_menu_list {
 	border-radius:6px;
 }
 .my_bookmarks_bookmark_name_form, .discover_bookmark_name_form{
-	left:30px;
+	left:33px;
 	position:absolute;
 	bottom:0;
 	margin:0;
@@ -191,7 +190,7 @@ div.just_added img{
 .preview_mode_wrap{
 	position:fixed;
 	left:250px;
-	width:1120px;
+	width:84%;
 	height:100%;
 	background-color: #404040;
 	z-index:2;
@@ -211,7 +210,7 @@ div.just_added img{
 }
 .preview_mode_title .close_button{
 	position:absolute;
-	right:20px;
+	right:25px;
 	top:10px;
 }
 /*END Bookmarks Preview Mode*/

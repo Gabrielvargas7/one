@@ -1,5 +1,28 @@
+<div class="activity_item_large_view">
+	<h2>First LastName Profile Photos</h2>
+	<%if @model.photoIndex:%>
+	<h4>Viewing <%=@.photoIndex%> of <%=@.photosTotal%></h4>
+	<%end%>
+	<div class='activity_item_large_content_wrap'>
+		<div class="pull-left" id="large_item_prev"><a  href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div>
 
-<h1>Large Photo</h1>
-<p><a id="photos_prev" href="#">Prev</a></p>
-<img class="photos_large_view_img" src="<%=@model.get('image_name').url%>">
-<p><a id="photos_next" href="#">Next</a></p>
+		<div class="activity_item_img_wrap">
+			<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
+			<div class="social_bar">
+				<div class ="navbar">
+					<div class="navbar-inner">
+						<ul class="nav">
+							<li class ="fb_like_item"><a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376673746/fb-test-like.jpg"></a></li>
+							<li class="pinterest_item"><a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371247321/pinterest-red.png"></a></li>
+						</ul>
+					</div>
+				</div>
+				<div><a href="/users_photos/index_users_photos_by_user_id/<%=@model.get('user_id')%>">Set As Profile Photo</a></div>
+			</div>
+
+		</div>
+
+		<div class="pull-right" id="large_item_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div>
+	</div>
+
+</div>

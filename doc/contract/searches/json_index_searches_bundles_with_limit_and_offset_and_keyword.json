@@ -1,0 +1,85 @@
+//# GET get search bundles by the keyword with limit and offset
+//# Limit is the number of returns by type that you want it
+//# Offset is where you want to start
+//# /searches/json/index_searches_bundles_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
+//# /searches/json/index_searches_bundles_with_limit_and_offset_and_keyword/10/0/blu.json
+//#Return head
+//#success    ->  head  200 OK
+
+
+{
+    "themes": [
+        {
+            "active": "y",
+            "brand": null,
+            "category": null,
+            "color": null,
+            "created_at": "2013-05-17T20:34:00Z",
+            "description": "This particular set of objects is a look in to the future of home design. More modern, tech-friendly, and sleek looking than any other.",
+            "id": 3,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822840/10342-bundle-image_name-elegante.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "like": 0,
+            "location": null,
+            "make": null,
+            "name": "Elegante",
+            "section_id": 1,
+            "special_name": null,
+            "style": null,
+            "theme_id": 3,
+            "updated_at": "2013-07-02T00:30:40Z"
+        },
+        {
+            "active": "y",
+            "brand": null,
+            "category": null,
+            "color": null,
+            "created_at": "2013-05-17T20:34:01Z",
+            "description": "This objects were web-crafted by guys that lived in 60's here in San Francisco. These objects are some of the goods that this duet owned in the past. ",
+            "id": 4,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822842/89336-bundle-image_name-english-hipster.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "like": 0,
+            "location": null,
+            "make": null,
+            "name": "English Hipster",
+            "section_id": 1,
+            "special_name": null,
+            "style": null,
+            "theme_id": 4,
+            "updated_at": "2013-07-02T00:30:48Z"
+        },
+        {
+            "active": "y",
+            "brand": null,
+            "category": null,
+            "color": null,
+            "created_at": "2013-05-17T20:34:14Z",
+            "description": "Get Green",
+            "id": 14,
+            "image_name": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "image_name_set": {
+                "url": "/assets/fallback/bundle/default_bundle.png"
+            },
+            "like": 0,
+            "location": null,
+            "make": null,
+            "name": "Green",
+            "section_id": 1,
+            "special_name": null,
+            "style": null,
+            "theme_id": 14,
+            "updated_at": "2013-07-02T16:18:57Z"
+        }
+    ]
+}

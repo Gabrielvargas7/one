@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719182152) do
+ActiveRecord::Schema.define(:version => 20130719181705) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -127,15 +127,16 @@ ActiveRecord::Schema.define(:version => 20130719182152) do
   add_index "friends", ["user_id_friend"], :name => "index_friends_on_user_id_friend"
 
   create_table "items", :force => true do |t|
+    t.string   "name"
     t.string   "clickable",      :default => "yes"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
-    t.string   "name"
     t.string   "image_name"
     t.integer  "priority_order", :default => 0
   end
 
   add_index "items", ["id"], :name => "index_items_on_id"
+  add_index "items", ["name"], :name => "index_items_on_name"
 
   create_table "items_designs", :force => true do |t|
     t.string   "name"

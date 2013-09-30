@@ -14,10 +14,55 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #**** Events
   #*******************
 
-  events:{
-
-
-  }
+  events:
+    'click #objects-store-menu'         :'clickObjects'
+    'click #themes-store-menu'          :'clickThemes'
+    'click #bundles-store-menu'         :'clickBundles'
+    'click #entire-rooms-store-menu'    :'clickBundles'
+    'click #store-dropdown-all'         :'clickAllDropdown'
+    'click #store-dropdown-objects'     :'clickObjectsDropdown'
+    'click #store-dropdown-themes'      :'clickThemesDropdown'
+    'click #store-dropdown-bundles'     :'clickBundlesDropdown'
+    'click #store-dropdown-entire-rooms':'clickEntireRoomsDropdown'
+    'click .store-dropdown'             :'clickStoreDropdown'
+    
+    
+  clickStoreDropdown: (e) ->
+    # DROPDOWN
+    # Remove active class
+    $('.store-dropdown').removeClass('active')
+    
+    # Add active class to just-clicked element
+    $(e.target).parent().addClass('active')
+    
+    # Change the text of the search filter
+    $('#store-dropdown-btn').text(e.target.text)
+    
+    
+    # TAB-PANE
+    # Remove active class for store-nav
+    # $('.store-nav').removeClass('active')
+    
+    # Active the correct store-nav tab
+    navName = e.target.text
+    
+    switch navName
+      when 'ALL'          
+        $('a[href="#tab_items"]').tab('show')
+        @clickObjects()
+      when 'OBJECTS'     
+        $('a[href="#tab_items"]').tab('show')
+        @clickObjects()
+      when 'THEMES'       
+        $('a[href="#tab_themes"]').tab('show')
+        @clickThemes()
+      when 'BUNDLES'      
+        $('a[href="#tab_bundles"]').tab('show')
+        @clickBundles()
+      when 'ENTIRE ROOMS' 
+        $('a[href="#tab_entire_rooms"]').tab('show')
+        @clickBundles()
+      
 
   #*******************
   #**** Initialize
@@ -228,7 +273,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     @column_number = 3
 
     @row_line = "<ul id='row_bundle_set_"+@row_number+"'></ul>"
-    $('#tab_bundles_set').append(@row_line)
+    $('#tab_entire_rooms').append(@row_line)
     that = this
 
     bundlesCollection.each (entry)  ->
@@ -242,7 +287,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       if u == 0
         that.row_number++
         that.row_line = "<ul id='row_bundle_set_"+that.row_number+"'></ul>"
-        $('#tab_bundles_set').append(that.row_line)
+        $('#tab_entire_rooms').append(that.row_line)
 
 
 
@@ -259,3 +304,143 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $tab_item_designs.hide()
 
 
+
+  collapseAll: ->
+    # Add the collapse class
+    $('#dropdown-object').addClass('collapse')
+    $('#dropdown-style').addClass('collapse')
+    $('#dropdown-brand').addClass('collapse')
+    $('#dropdown-location').addClass('collapse');
+    $('#dropdown-color').addClass('collapse');
+    $('#dropdown-make').addClass('collapse');
+
+
+
+  expandAll: ->
+    # Remove the collapse class
+    $('#dropdown-object').removeClass('collapse')
+    $('#dropdown-style').removeClass('collapse')
+    $('#dropdown-brand').removeClass('collapse')
+    $('#dropdown-location').removeClass('collapse');
+    $('#dropdown-color').removeClass('collapse');
+    $('#dropdown-make').removeClass('collapse');
+
+
+
+  clickObjects: ->      
+    @collapseAll()
+    
+    
+    
+  clickThemes: ->
+    self = this
+    
+    @expandAll()
+    
+    
+     # Add the collapse class
+    $('#dropdown-object').addClass('collapse');
+    
+    
+    # Load the Bundles' Categories Collection
+    categories = new Mywebroom.Collections.IndexThemesCategoriesCollection();
+    categories.fetch();
+    categories.on('sync', -> 
+      model = this.first();
+      self.setBrands(model.get('themes_brands'))
+      self.setStyles(model.get('themes_styles'))
+      self.setLocations(model.get('themes_locations'))
+      self.setColors(model.get('themes_colors'))
+      self.setMakes(model.get('themes_makes'))
+    )  
+    
+    
+    
+    
+  clickBundles: ->
+    self = this
+    
+    @expandAll()
+    
+    
+    # Add the collapse class
+    $('#dropdown-object').addClass('collapse');
+    
+    
+    # Load the Bundles' Categories Collection
+    categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection();
+    categories.fetch();
+    categories.on('sync', -> 
+      model = this.first();
+      self.setBrands(model.get('bundles_brands'))
+      self.setStyles(model.get('bundles_styles'))
+      self.setLocations(model.get('bundles_locations'))
+      self.setColors(model.get('bundles_colors'))
+      self.setMakes(model.get('bundles_makes'))
+    )
+  
+  
+    
+  setBrands: (brands) ->
+    # empty out existing dropdown items
+    $('#dropdown-brand > .dropdown-menu').empty()
+    
+    
+    # iterate through the brand items and create a li out of each one
+    _.each(brands, (brand) ->
+      if brand.brand
+        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(brand.brand)+'</a></li>');
+    )
+    
+    
+    
+  setStyles: (styles) ->
+    # empty out existing dropdown items
+    $('#dropdown-style > .dropdown-menu').empty()
+    
+    
+    # iterate through the style items and create a li out of each one
+    _.each(styles, (style) ->
+      if style.style
+        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(style.style)+'</a></li>');
+    )
+    
+    
+  setLocations: (locations) ->
+    # empty out existing dropdown items
+    $('#dropdown-location > .dropdown-menu').empty()
+    
+    
+    # iterate through the location items and create a li out of each one
+    _.each(locations, (location) ->
+      if location.location
+        $('#dropdown-location > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(location.location)+'</a></li>');
+    )
+   
+   
+  setColors: (colors) ->
+    # empty out existing dropdown items
+    $('#dropdown-color > .dropdown-menu').empty()
+    
+    
+    # iterate through the color items and create a li out of each one
+    _.each(colors, (color) ->
+      if color.color
+        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(color.color)+'</a></li>');
+    )
+    
+    
+  setMakes: (makes) ->
+    # empty out existing dropdown items
+    $('#dropdown-make > .dropdown-menu').empty()
+    
+    
+    # iterate through the make items and create a li out of each one
+    _.each(makes, (make) ->
+      if make.make
+        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(make.make)+'</a></li>');
+    )
+       
+    
+    
+  
