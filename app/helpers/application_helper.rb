@@ -20,6 +20,7 @@ module ApplicationHelper
 
     unless signed_in?
       respond_to do |format|
+        #format.json { render json: {id: nil, username: nil}, status: :not_found }
         format.json { render json: 'user not sign in ' , status: :not_found }
       end
     end

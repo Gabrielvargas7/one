@@ -20,3 +20,6 @@
 
 # ignore gem lock
 #Gemfile.lock
+
+# TextMate config file
+.tm_properties

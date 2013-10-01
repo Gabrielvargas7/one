@@ -9,6 +9,7 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
     success: (response)->
      console.log("FriendsCollection Fetched Successfully")
      console.log(response)
+  this.listenTo(@friendsCollection,'remove',@render)
  render: ->
   tableHeaderHTML = JST['profile/ProfileGridTableHeader'](headerName:"Friends ("+@friendsCollection.length+")")
   $(@el).html(tableHeaderHTML)
@@ -17,5 +18,8 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
  	
  friendsAddView: (friend) ->
   friendView = new Mywebroom.Views.ProfileFriendsSingleView({model:friend,PUBLIC_FLAG:@model.get('FLAG_PROFILE')})
+  that = this
+  friendView.on('Profile:friendRemoved',(->
+    @friendsCollection.remove(friendView.model)),that)
   $(@el).append(friendView.el)
   friendView.render()

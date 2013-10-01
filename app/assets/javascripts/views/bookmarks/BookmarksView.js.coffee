@@ -46,7 +46,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         console.log("categories fetch successful: ")
         console.log(response)
     self= this
-    Mywebroom.vent.on('BrowseMode:closeBookmarkView',@browseMode,self)
+    Mywebroom.App.vent.on('BrowseMode:closeBookmarkView',@browseMode,self)
   #*******************
   #**** Render
   #*******************

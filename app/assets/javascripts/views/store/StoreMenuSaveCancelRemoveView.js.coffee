@@ -68,9 +68,14 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
   
     
-  revert: (bool) ->
-    alert(bool)
+  revert: ->
+    this.resetTheme()
       
+    
+    
+    
+  resetTheme: ->
+    
     
     
     
@@ -79,7 +84,8 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     event.preventDefault()
     console.log("click Store Cancel")
     bootbox.confirm "Are you sure you want to cancel all the changes you made in your room?", (result) ->
-      self.revert(result)
+      if result
+        self.revert()
 
 
     

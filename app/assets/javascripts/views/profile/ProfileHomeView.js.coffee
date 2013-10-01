@@ -30,8 +30,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  initialize: ->
   #Get RoomFlag
-  this.model.set 'FLAG_PROFILE', this.options.FLAG_PROFILE
-  if this.options.FLAG_PROFILE != Mywebroom.Views.RoomView.MY_ROOM
+  this.model.set 'FLAG_PROFILE', Mywebroom.State.get("roomState")
+  if this.options.FLAG_PROFILE != "SELF"
     @template=JST['profile/FriendHomeTemplate']
   @collapseFlag = false
   
