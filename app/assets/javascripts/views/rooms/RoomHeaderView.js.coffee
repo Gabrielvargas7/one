@@ -31,6 +31,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   initialize: ->
+    
+    @model = Mywebroom.State.get("signInData")
 
 
   #*******************
