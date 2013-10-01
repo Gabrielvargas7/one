@@ -56,9 +56,13 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   #  *** function remove header elemenst
   #--------------------------
-  removeRoomHeaderElemments:(flagsMap)->
-    if flagsMap['FLAG_PROFILE'] != Mywebroom.Views.RoomView.MY_ROOM
-      $('#xroom_header_storepage').remove()
+  removeRoomHeaderElemments: ->
+    roomState   = Mywebroom.State.get("roomState")
+    signInState = Mywebroom.State.get("signInState")
+    
+    
+    $('#xroom_header_storepage').remove() if roomState isnt "SELF"
+      
 
     if roomState is "PUBLIC"
       $('#xroom_header_profile').remove()
