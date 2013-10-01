@@ -14,10 +14,10 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #**** Events
   #*******************
 
-  events:{
+  events:
     'click #xroom_store_save'  :'clickStoreSave',
     'click #xroom_store_cancel':'clickStoreCancel'
-  }
+  
 
   #*******************
   #**** Initialize
@@ -30,7 +30,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   render: ->
     console.log("store menu save page view: ")
     $(@el).append(@template())
-    this
+    @
 
 
 
@@ -61,20 +61,83 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     toastr.success("The changes to your room have been saved.")
     $('.toast-bottom-left').css({'bottom':'76%', 'left':'7%'});
   
+
+    # Hide the Save, Cancel, Remove View
+    $('#xroom_store_menu_save_cancel_remove').hide()
     
 
+    #@saveTheme()
     this.saveNewTheme()
     this.saveNewItems()
     
+    
+    
+  saveTheme: ->  
+    # Capture all the changed themes
+    $('[data-room_theme=' + "new" + ']')
+  
+    # And iterate over them
+    .each( ->
+      # Capture the old src
+      src = $(@).attr("data-room-theme-src")
+    
+      $(@)
+      # Replace the changed source
+      .attr("src", src)
+    
+    
+      # And change the status back to current
+      .attr("data-room_theme", "current")
+    )
   
     
   revert: ->
-    this.resetTheme()
+    # Revert designs
+    # Capture all the changed elements
+    $('[data-room_item_design=' + "new" + ']')
+    
+    # And iterate over them
+    .each( ->
+      # Capture the old id
+      id = $(@).attr("data-room_item_design_id_current")
+      
+      # Capture the old src
+      src = $(@).attr("data-room-design-src")
+      
+  
+      $(@)
+      # Replace the changed id
+      .attr("data-room_item_design_id", id)
+      
+      # Replace the changed source
+      .attr("src", src)
+      
+      # And change the status back to current
+      .attr("data-room_item_design", "current")
+    )
+      
+      
+    # Revert the theme
+    # Capture all the changed themes
+    $('[data-room_theme=' + "new" + ']')
+    
+    # And iterate over them
+    .each( ->
+      # Capture the old src
+      src = $(@).attr("data-room-theme-src")
+      
+      $(@)
+      # Replace the changed source
+      .attr("src", src)
+      
+      
+      # And change the status back to current
+      .attr("data-room_theme", "current")
+    )
       
     
     
-    
-  resetTheme: ->
+
     
     
     
@@ -86,6 +149,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     bootbox.confirm "Are you sure you want to cancel all the changes you made in your room?", (result) ->
       if result
         self.revert()
+    
+    # Hide the Save, Cancel, Remove View
+    $('#xroom_store_menu_save_cancel_remove').hide()
 
 
     
@@ -102,7 +168,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
         themeId     = $('.current_background').attr("data-room_theme_id")
         sectionId   = $('.current_background').attr("data-room_section_id")
-        userId      = this.options.signInUserDataModel.get('user').id
+        userId      = Mywebroom.State.get("roomUser").get("id")
 
         updateTheme = new Mywebroom.Models.UpdateUserThemeByUserIdAndSectionIdModel({new_theme_id:themeId, _id: userId})
         updateTheme.section_id=sectionId
