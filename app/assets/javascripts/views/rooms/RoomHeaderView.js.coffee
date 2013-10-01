@@ -201,7 +201,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     console.log("trigger global event create:store_page")
 
     this.displayStorePage()
-#    @storePageView.render()
 
 
 
