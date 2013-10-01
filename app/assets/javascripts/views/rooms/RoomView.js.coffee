@@ -1,7 +1,6 @@
 class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   #*******************
-  #**** Tag  (no tag = default el "div")
   #*******************
 
 
