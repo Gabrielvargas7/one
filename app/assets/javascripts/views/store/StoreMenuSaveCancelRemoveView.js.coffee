@@ -71,25 +71,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     this.saveNewTheme()
     this.saveNewItems()
     
-    
-    
-  saveTheme: ->  
-    # Capture all the changed themes
-    $('[data-room_theme=' + "new" + ']')
-  
-    # And iterate over them
-    .each( ->
-      # Capture the old src
-      src = $(@).attr("data-room-theme-src")
-    
-      $(@)
-      # Replace the changed source
-      .attr("src", src)
-    
-    
-      # And change the status back to current
-      .attr("data-room_theme", "current")
-    )
   
     
   revert: ->
