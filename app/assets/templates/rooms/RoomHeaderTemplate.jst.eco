@@ -13,7 +13,7 @@
 
         <!-- Search Box  -->
             <div class="input-append" id="xroom_header_search_box"  >
-                    <input type="text" class="span5" placeholder="Search for people, objects and bookmarks">
+                    <input id="xroom_header_search_box_text" type="text" class="span5" placeholder="Search for people, objects and bookmarks">
                     <div class="btn-group">
                       <button id="header-search-dropdown-btn" class="btn">ALL</button>
 
