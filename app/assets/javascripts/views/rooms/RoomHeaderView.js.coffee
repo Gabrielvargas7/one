@@ -83,10 +83,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @userAllRoomDataCollection.fetch
       url:@userAllRoomDataCollection.url userId
       async:false
-      success: (response)->
-        console.log("@userAllRoomDataCollection: ")
-        console.log(response)
-#        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
 
 
 
