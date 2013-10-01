@@ -69,7 +69,28 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   
     
   revert: ->
-    this.resetTheme()
+    # Capture all the changed elements
+    $('[data-room_item_design=' + "new" + ']')
+    
+    # And iterate over them
+    .each( ->
+      # Capture the old id
+      id = $(@).attr("data-room_item_design_id_current")
+      
+      # Capture the old src
+      src = $(@).attr("data-room-src")
+      
+  
+      $(@)
+      # Replace the changed id
+      .attr("data-room_item_design_id", id)
+      
+      # Replace the changed source
+      .attr("src", src)
+      
+      # And change the status back to current
+      .attr("data-room_item_design", "current")
+    )
       
     
     
