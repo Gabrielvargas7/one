@@ -199,8 +199,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     if event  # this is is because this fuction is also call when is PUBLIC_ROOM
       event.preventDefault()
       event.stopPropagation()
+   
+    @displayStorePage()
 
-    this.displayStorePage()
 
 
 
