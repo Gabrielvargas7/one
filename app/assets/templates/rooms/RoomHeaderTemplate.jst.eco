@@ -12,15 +12,14 @@
         </a>
 
         <!-- Search Box  -->
-            <div class="input-append" id="xroom_header_search_box"  >
-                    <input id="xroom_header_search_box_text" type="text" class="span5" placeholder="Search for people, objects and bookmarks">
+            <div class="input-append" id="xroom_header_search"  >
+                    <input id="xroom_header_search_text" type="text" class="span5" placeholder="Search for people, objects and bookmarks">
+
                     <div class="btn-group">
                       <button id="header-search-dropdown-btn" class="btn">ALL</button>
-
                       <button class="btn dropdown-toggle" data-toggle="dropdown">
                           <span class="caret"></span>
                       </button>
-
                       <ul class="dropdown-menu">
                         <li class="active header-search-dropdown" id="header-search-dropdown-all">
                             <a href="#">ALL</a>
@@ -36,6 +35,10 @@
                          </li>
                       </ul>
                     </div>
+                    <div id="xroom_header_search_box"  >
+
+                    </div>
+
             </div>
 
 

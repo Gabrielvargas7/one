@@ -124,11 +124,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_header").append(roomHeaderView.el)
     roomHeaderView.render()
     Mywebroom.State.set("roomHeaderView", roomHeaderView)
-    
-    
-    
-    
-    
+
+
+
+
     # Create and render Save, Cancel, Remove View
     storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
     $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)

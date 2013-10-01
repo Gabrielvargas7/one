@@ -42,7 +42,8 @@ $(document).ready ->
     xroom_items_0                      : "#xroom_items_0"
     xroom_items_1                      : "#xroom_items_1"
     xroom_itmes_2                      : "#xroom_items_2"
-    
+    xroom_header                       : "#xroom_header"
+
     
   
   Mywebroom.App.addInitializer ->
