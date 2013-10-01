@@ -99,7 +99,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   showProfile: (event) ->
     if event  # this is is because this fuction is also call when is PUBLIC_ROOM
       event.preventDefault()
-    this.displayProfile()
+    
+    @displayProfile()
 
 
   createProfileView:->
