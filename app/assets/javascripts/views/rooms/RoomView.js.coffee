@@ -95,19 +95,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     return roomUserDataCollection
 
 
-  #--------------------------
-  # get room user data
-  #--------------------------
-  getSignInUserDataCollection:(userId) ->
-    signInUserDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
-    signInUserDataCollection.fetch
-      url:signInUserDataCollection.url userId
-      async:false
-      success: (response)->
-        console.log("@roomUserDataCollection: ")
-        console.log(response)
-
-    return signInUserDataCollection
 
 
   #*******************
