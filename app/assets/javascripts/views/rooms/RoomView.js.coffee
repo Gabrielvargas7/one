@@ -6,14 +6,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   template: JST["rooms/RoomTemplate"]
 
 
-  #*******************
-  #**** GLOBAL VARIBLES
-  #*******************
-  @MY_ROOM = "MY_ROOM"
-  @MY_FRIEND_ROOM = 'MY_FRIEND_ROOM'
-  @PUBLIC_ROOM = 'PUBLIC_ROOM'
-  @SIGN_IN  = true
-  @NOT_SIGN_IN = false
 
   #*******************
   #**** Initialize ***
