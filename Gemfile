@@ -22,6 +22,7 @@ ruby "2.0.0"
   gem 'geocoder', "1.1.8"
 
 
+
   # memory leak and time out
   gem "oink", '0.10.1'
   gem "rack-timeout"
@@ -77,7 +78,7 @@ group :test do
 
 group :production do
   gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+  #gem 'rails_12factor', '0.0.2'
 end
 
 # Bundle edge Rails instead:
