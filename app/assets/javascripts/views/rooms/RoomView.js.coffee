@@ -81,6 +81,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     this
 
+    self = @
     
 
 
