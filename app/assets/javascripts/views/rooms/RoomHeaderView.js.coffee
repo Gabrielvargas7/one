@@ -97,7 +97,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfile
   #--------------------------
   showProfile: (event) ->
-    if event  # this is is because this fuction is also call when is PUBLIC_ROOM
+    if event  # this is is because this fuction is also called when room is PUBLIC
       event.preventDefault()
     
     @displayProfile()
