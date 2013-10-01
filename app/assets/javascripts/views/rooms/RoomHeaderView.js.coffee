@@ -44,7 +44,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     this.createProfileView()
     this.removeRoomHeaderElemments(this.options.FLAGS_MAP)
 
-    this
+    @
 
 
 
