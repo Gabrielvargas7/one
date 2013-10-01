@@ -12,7 +12,7 @@ $(document).ready ->
   # Create the state model
   Mywebroom.State = new Backbone.Model({
     defaults:
-      roomState     : "PUBLIC"  # Who's room are we viewing? PUBLIC, FRIEND, or SELF
+      roomState     : "initial" # Who's room are we viewing? PUBLIC, FRIEND, or SELF
       roomUser      : false     # Backbone Model of room user, or false
       roomData      : false     # Backbone Model of room data, or false
       roomDesigns   : []        # Array of item designs, or empty array
