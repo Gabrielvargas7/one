@@ -28,7 +28,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   @NOT_SIGN_IN = false
 
   #*******************
-  #**** Initialize
+  #**** Initialize ***
   #*******************
   initialize: ->
     this.FLAGS_MAP = {};
@@ -359,4 +359,3 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     self = this
     Mywebroom.App.vent.on("BrowseMode:open",((event)->
       @changeBrowseMode(event.model)),self)
-
