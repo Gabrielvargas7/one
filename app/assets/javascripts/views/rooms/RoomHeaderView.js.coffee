@@ -39,7 +39,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-    console.log("Adding the RoomHeaderView with model:")
     $(@el).append(@template(user_data:this.options.signInUserDataModel))
     this.createStorePage()
     this.createProfileView()
