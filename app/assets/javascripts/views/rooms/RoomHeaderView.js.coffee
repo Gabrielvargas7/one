@@ -206,7 +206,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   createStorePage:->
-    console.log('storePage Function running')
     @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
     $('#xroom_storepage').html(@storePageView.el)
     @storePageView.render()
