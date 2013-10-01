@@ -83,17 +83,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  #*******************
-  #**** Functions  Forward to root
-  #*******************
-
-  #--------------------------
-  # forward to the origin url if the user does't exist -> ex: 'http://www.mywebroom.com/'
-  #--------------------------
-  forwardToRoot: ->
-    origin = window.location.origin
-    console.log("forward to: "+origin)
-    window.location.replace(origin)
 
 
 
