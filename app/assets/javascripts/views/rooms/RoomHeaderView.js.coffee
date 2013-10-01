@@ -40,9 +40,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
   render: ->
     $(@el).append(@template(user_data:this.options.signInUserDataModel))
-    this.createStorePage()
-    this.createProfileView()
     this.removeRoomHeaderElemments(this.options.FLAGS_MAP)
+    @createStorePage()
+    @createProfileView()
 
     @
 
