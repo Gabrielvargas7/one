@@ -75,9 +75,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     return flagProfile
 
 
-  #*******************
-  #**** Functions  get Collection data
-  #*******************
 
   #--------------------------
   # get the user of the room that is loading
