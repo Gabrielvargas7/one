@@ -17,9 +17,9 @@ $(document).ready ->
       roomData      : false     # Backbone Model of room data, or false
       roomDesigns   : []        # Array of item designs, or empty array
       roomTheme     : {}        # Object containing info on room's theme
-      signedInState : false     # Boolean: Is the user signed in?
-      signedInUser  : false     # Backbone Model of signed-in user, or false
-      signedInData  : false     # Backbone Model of signed-in user's data, or false
+      signInState   : false     # Boolean: Is the user signed in?
+      signInUser    : false     # Backbone Model of signed-in user, or false
+      signInData    : false     # Backbone Model of signed-in user's data, or false
       roomHeaderView: null
   })
   
