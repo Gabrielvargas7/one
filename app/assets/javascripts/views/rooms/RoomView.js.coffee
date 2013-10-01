@@ -75,20 +75,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #**** Functions  set Variables
   #*******************
 
-  #--------------------------
-  # set Sign in global variable
-  #--------------------------
-  setSignInFlag: (signInUser) ->
-    flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
-
-    if signInUser  == true
-      flagSignIn = Mywebroom.Views.RoomView.SIGN_IN
-    else
-      flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
-
-    console.log("flag sign in user: "+flagSignIn)
-
-    return flagSignIn
 
 
   #--------------------------
