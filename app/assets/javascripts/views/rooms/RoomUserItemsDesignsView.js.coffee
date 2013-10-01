@@ -77,9 +77,9 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     @hideAndShowBookmarks(@design.item_id)
     @displayBookmark()
 
-      $('#room_bookmark_item_id_container_'+this.options.user_item_design.item_id).append(bookmarksView.el)
     if @design.clickable is "yes"
       self = this
+      $('#room_bookmark_item_id_container_' + @design.item_id).append(bookmarksView.el)
       bookmarksView.render()
 
   #--------------------------
