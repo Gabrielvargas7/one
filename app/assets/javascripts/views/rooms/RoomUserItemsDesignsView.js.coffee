@@ -24,6 +24,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #*******************
   initialize: ->
 
+    @design = @options.design
     #*******************
     #**** Render
     #*******************
