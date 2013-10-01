@@ -163,7 +163,3 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         bookmarkHomeView.render()
         $('#room_bookmark_item_id_container_'+userItemsDesignsList[i].item_id).hide()
       i++
-  setBrowseModeEvents:->
-    self = this
-    Mywebroom.App.vent.on("BrowseMode:open",((event)->
-      @changeBrowseMode(event.model)),self)
