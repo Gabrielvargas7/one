@@ -94,8 +94,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   # change browse mode. (Pass a new model to it)
   #--------------------------
   changeBrowseMode:(model)->
-    $('#xroom_bookmarks_browse_mode').show()
-    $('.browse_mode_view').show()
+    $("#xroom_bookmarks_browse_mode").show()
+    $(".browse_mode_view").show()
     @browseModeView.activeSiteChange(model)
 
 
