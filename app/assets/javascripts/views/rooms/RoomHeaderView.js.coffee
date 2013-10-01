@@ -60,7 +60,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     if flagsMap['FLAG_PROFILE'] != Mywebroom.Views.RoomView.MY_ROOM
       $('#xroom_header_storepage').remove()
 
-    if flagsMap['FLAG_PROFILE'] == Mywebroom.Views.RoomView.PUBLIC_ROOM
+    if roomState is "PUBLIC"
       $('#xroom_header_profile').remove()
       $('.dropdown').remove()
       @showProfile(null)
