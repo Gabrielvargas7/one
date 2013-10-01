@@ -101,7 +101,10 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   # hide bookmarks when is not this item
   #--------------------------
   hideAndShowBookmarks:(bookmark_item_id) ->
-    length = this.options.user_items_designs_list.length
+    designs = Mywebroom.State.get("roomDesigns")
+    
+
+    length = designs.length
     i = 0
     while i < length
       if bookmark_item_id == this.options.user_items_designs_list[i].item_id
