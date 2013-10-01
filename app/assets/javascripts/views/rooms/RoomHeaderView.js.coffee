@@ -128,7 +128,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   forwardToRoRProfilePage:(event) ->
     event.preventDefault()
-    console.log('forwardToRoRProfilePage Function running')
     origin = window.location.origin
     origin = origin+"/users_profiles/show_users_profiles_by_user_id/"+@model.get('user').id
     console.log("forward to: "+origin)
