@@ -17,12 +17,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   events:{
-    'click #xroom_header_profile':'showProfile'
+    'click #xroom_header_profile'        :'showProfile'
     'click #xroom_header_forward_profile':'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting':'forwardToRoRSettingPage'
-    'click #xroom_header_logout':'logout'
-    'click #xroom_header_storepage':'showStorePage'
-    'click #xroom_header_myroom':'goToMyRoom'
+    'click #xroom_header_logout'         :'logout'
+    'click #xroom_header_storepage'      :'showStorePage'
+    'click #xroom_header_myroom'         :'goToMyRoom'
   }
 
 
