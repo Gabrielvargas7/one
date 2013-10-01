@@ -23,7 +23,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_logout':'logout'
     'click #xroom_header_storepage':'showStorePage'
     'click #xroom_header_myroom':'goToMyRoom'
-    'keyup #xroom_header_search_box_text':'keyPressOnSearch'
+    'keyup #xroom_header_search_text':'keyPressOnSearch'
+    'focusout #xroom_header_search_text': 'focusOutSearchTextBox',
 
   }
 
@@ -48,6 +49,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @removeRoomHeaderElemments()
 
     @
+    # Create Search Box
+    searchView = new Mywebroom.Views.SearchView()
+    $("#xroom_header_search_box").append(searchView.el)
+    $("#xroom_header_search_box").hide()
+    searchView.render()
+
 
 
 
@@ -232,6 +239,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_storepage').show()
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
+    $('#xroom_header_search_box').hide()
+
 
   #--------------------------
   #  *** function
@@ -241,6 +250,18 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_storepage').hide()
     $('#xroom_profile').show()
     $('#xroom_bookmarks').hide()
+    $('#xroom_header_search_box').hide()
+
+
+
+  displaySearchPage: ->
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    $('#xroom_storepage').hide()
+    $('#xroom_profile').hide()
+    $('#xroom_bookmarks').hide()
+    $('#xroom_header_search_box').show()
+
+
 
 
 
@@ -261,10 +282,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   goToMyRoom: (event) ->
     event.preventDefault()
     event.stopPropagation()
-   
+
     origin =  window.location.origin
     origin += '/room/' + Mywebroom.State.get("signInUser").get("username")
-
    
     window.location.replace(origin)
 
@@ -277,6 +297,20 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     console.log(event.type, event.keyCode)
+    if  event.keyCode == 13
+      $('#xroom_header_search_box').hide()
+      console.log("do something")
+    else
+      @displaySearchPage()
+      console.log("do search ")
+
+
+
+  focusOutSearchTextBox:(event)->
+    event.preventDefault()
+    event.stopPropagation()
+    console.log("clean textbox values")
+    $('#xroom_header_search_text').val("");
 
 
 

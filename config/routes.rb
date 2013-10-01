@@ -479,8 +479,8 @@ Mywebroom::Application.routes.draw do
   match '/friend_requests/json/create_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
          'friend_requests#json_create_friend_request_by_user_id_and_user_id_requested', via: :post
 
-  match '/friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
-         'friend_requests#json_destroy_friend_request_by_user_id_and_user_id_requested', via: :delete
+  match '/friend_requests/json/destroy_friend_request_by_user_id_and_user_id_that_make_request/:user_id/:user_id_that_make_request', to:
+         'friend_requests#json_destroy_friend_request_by_user_id_and_user_id_that_make_request', via: :delete
 
   match '/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/:user_id', to:
          'friend_requests#json_index_friend_request_make_from_your_friend_to_you_by_user_id', via: :get, as:
