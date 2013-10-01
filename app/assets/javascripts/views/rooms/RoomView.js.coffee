@@ -7,12 +7,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
   #*******************
-  #**** Events
-  #*******************
-
-
-
-  #*******************
   #**** GLOBAL VARIBLES
   #*******************
   @MY_ROOM = "MY_ROOM"
