@@ -12,7 +12,7 @@ $(document).ready ->
   # Create the state model
   Mywebroom.State = new Backbone.Model({
     defaults:
-      roomState     : "PUBLIC"  # Who's room are we viewing? PUBLIC, FRIEND, or SELF
+      roomState     : "initial" # Who's room are we viewing? PUBLIC, FRIEND, or SELF
       roomUser      : false     # Backbone Model of room user, or false
       roomData      : false     # Backbone Model of room data, or false
       roomDesigns   : []        # Array of item designs, or empty array
@@ -22,6 +22,12 @@ $(document).ready ->
       signInData    : false     # Backbone Model of signed-in user's data, or false
       roomHeaderView: null
   })
+  
+  
+  # Listen to changes of room state
+  Mywebroom.State.on("change:roomState", ->
+    if Mywebroom.State.get("roomState") is "PUBLIC" then $("#xroom_header_search_box").hide() else $("#xroom_header_search_box").show()
+  )
   
   
   # Create the Marionette App Object
