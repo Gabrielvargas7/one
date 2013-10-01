@@ -11,13 +11,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #**** Initialize ***
   #*******************
   initialize: ->
-    this.FLAGS_MAP = {};
-
-    this.FLAGS_MAP['FLAG_PROFILE'] = Mywebroom.Views.RoomView.PUBLIC_ROOM
-    this.FLAGS_MAP['FLAG_SIGN_IN'] = Mywebroom.Views.RoomView.NOT_SIGN_IN
-
-
-
     # get room user
     @userRoomCollection = this.getRoomLoadingUserCollection()
     @userRoomModel = @userRoomCollection.first()
