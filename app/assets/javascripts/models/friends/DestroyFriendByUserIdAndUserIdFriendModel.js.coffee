@@ -1,5 +1,5 @@
 #Used to Delete a user bookmark. Just set the url to delete. Then call destroyUserBookmark. 
-class Mywebroom.Models.DestroyFriendByUserIdAndUserIdFriend extends Backbone.Model
+class Mywebroom.Models.DestroyFriendByUserIdAndUserIdFriendModel extends Backbone.Model
 	@userId
 	@friendUserId
 	url:(userId,friendUserId)->

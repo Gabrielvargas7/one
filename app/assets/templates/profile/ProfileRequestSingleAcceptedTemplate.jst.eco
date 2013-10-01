@@ -1,0 +1,18 @@
+
+<!--inside class profile_key_requests-->
+<td>
+<div class="media">
+	<div class="pull-left profile_request_single_image_holder" style="background-image:url('<%=@model.get('image_name').url%>');">
+	</div>
+	<div class="media-body">
+		<p class="media-heading profile_request_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p>
+		<p class="profile_request_username"><%=@model.get('username')%></p>	
+	</div>
+</td>
+<td class="profile_request_buttons">
+<!--Buttons-->
+	<div class="btn-group pull-right">
+		<a href="/room/<%=@model.get('username')%>"><button class="profile_request_key_button">View Room</button></a>
+	</div>
+</div>
+</td>
