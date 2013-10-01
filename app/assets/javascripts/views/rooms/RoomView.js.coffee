@@ -100,22 +100,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  #--------------------------
-  # set arrow for left and right scroll
-  #--------------------------
-
-  setRoomScrolls: (roomUserDataModel)->
-    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
-    roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView({user_items_designs:userItemsDesignsList})
-    $('#xroom_scroll_left').append(roomScrollLeftView.el)
-    roomScrollLeftView.render()
-
-    roomScrollRightView = new Mywebroom.Views.RoomScrollRightView({user_items_designs:userItemsDesignsList})
-    $('#xroom_scroll_right').append(roomScrollRightView.el)
-    roomScrollRightView.render()
-
-
-
    
     
   #--------------------------
