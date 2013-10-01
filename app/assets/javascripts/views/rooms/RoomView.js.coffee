@@ -13,6 +13,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   initialize: ->
     self = @
     
+    # Make the room public to begin with to force the serach box to hid
+    # (5) Set roomState
+    Mywebroom.State.set("roomState", "PUBLIC")
+    
     
     ###
     (1)   Set roomUser
@@ -124,11 +128,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_header").append(roomHeaderView.el)
     roomHeaderView.render()
     Mywebroom.State.set("roomHeaderView", roomHeaderView)
-    
-    
-    
-    
-    
+
+
+
+
     # Create and render Save, Cancel, Remove View
     storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
     $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)

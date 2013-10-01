@@ -72,23 +72,23 @@ class FriendRequestsController < ApplicationController
 
 
   #DELETE if the user deny the request, it will be destroy
-  # /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested
-  # /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/100001/999.json
+  # /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_that_make_request/:user_id/:user_id_that_make_request
+  # /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_that_make_request/100001/999.json
   #Return head
   # success          ->  head  204 no content
   # already destroy  ->  head  200 OK
-  def json_destroy_friend_request_by_user_id_and_user_id_requested
+  def json_destroy_friend_request_by_user_id_and_user_id_that_make_request
 
     respond_to do |format|
 
       #validation of the users
       if User.exists?(id:params[:user_id])
-        if User.exists?(id:params[:user_id_requested])
+        if User.exists?(id:params[:user_id_that_make_request])
 
           # validate if the user and requested exist
-          if FriendRequest.exists?(user_id:params[:user_id],user_id_requested:params[:user_id_requested])
+          if FriendRequest.exists?(user_id:params[:user_id_that_make_request],user_id_requested:params[:user_id])
 
-            @friend_request = FriendRequest.find_by_user_id_and_user_id_requested(params[:user_id],params[:user_id_requested])
+            @friend_request = FriendRequest.find_by_user_id_and_user_id_requested(params[:user_id_that_make_request],params[:user_id])
 
             if @friend_request.destroy
                 format.json { head :no_content }
