@@ -5,10 +5,13 @@ class Mywebroom.Views.ProfileKeyRequestSingleView extends Backbone.View
 	events:
 		'click .profile_request_accept':'acceptKeyRequest'
 		'click .profile_request_deny':'denyKeyRequest'
+
 	initialize:->
 		@userId = new Mywebroom.Helpers.ItemHelper()
+
 	render: ->
 		$(@el).html(@template(model:@model))
+
 	acceptKeyRequest:(event)->
 		event.stopPropagation()
 		acceptKeyRequestModel = new Mywebroom.Models.CreateFriendByUserIdAcceptAndUserIdRequestModel()
@@ -18,15 +21,17 @@ class Mywebroom.Views.ProfileKeyRequestSingleView extends Backbone.View
 		acceptKeyRequestModel.save {},
 			success: (model, response)->
 			  console.log('post AcceptKeyRequest SUCCESS:')
-			  console.log(response)
-			  #Need to re-render request screen and suggestions screen. 
+			  console.log(response) 
 			error: (model, response)->
 			  console.log('post AcceptKeyRequest FAIL:')
 			  console.log(response)
-		#Trigger event to re-render KeyRequests and Suggested Friends. 
+		#Rerender the view with view room button.
+		@template = JST['profile/ProfileRequestSingleAcceptedTemplate']
+		this.render()
+		
 	denyKeyRequest:(event)->
-		console.log 'DENIIIIIIED!'
 		denyKeyRequestModel = new Mywebroom.Models.DestroyFriendRequestByUserIdAndUserIdRequestedModel()
 		debugger
+		this.trigger('ProfileKeyRequest:Deny',@model)
 		denyKeyRequestModel.set('url', denyKeyRequestModel.url(@userId.getUserId(),this.model.get('user_id')))
 		denyKeyRequestModel.destroyUserFriendRequest()
