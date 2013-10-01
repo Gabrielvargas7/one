@@ -24,6 +24,12 @@ $(document).ready ->
   })
   
   
+  # Listen to changes of room state
+  Mywebroom.State.on("change:roomState", ->
+    if Mywebroom.State.get("roomState") is "PUBLIC" then $("#xroom_header_search_box").hide() else $("#xroom_header_search_box").show()
+  )
+  
+  
   # Create the Marionette App Object
   Mywebroom.App = new Backbone.Marionette.Application()
   
