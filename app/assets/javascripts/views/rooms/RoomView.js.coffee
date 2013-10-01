@@ -1,14 +1,9 @@
 class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   #*******************
+  #**** Template *****
   #*******************
-
-
-  #*******************
-  #**** Templeate
-  #*******************
-
-  template: JST['rooms/RoomTemplate']
+  template: JST["rooms/RoomTemplate"]
 
 
   #*******************
