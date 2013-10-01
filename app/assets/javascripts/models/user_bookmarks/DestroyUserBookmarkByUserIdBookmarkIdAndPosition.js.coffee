@@ -1,4 +1,4 @@
-#Used to Delete a user bookmark. Just make a DELETE call to the generated url. 
+#Used to Delete a user bookmark. Just set the url to delete. Then call destroyUserBookmark. 
 class Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition extends Backbone.Model
 	@userId
 	@bookmarkId
