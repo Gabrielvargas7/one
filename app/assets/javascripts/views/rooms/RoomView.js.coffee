@@ -73,13 +73,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  #--------------------------
-  # set main header menu
-  #--------------------------
-  setRoomHeader:(roomUserDataModel, signInUserDataModel , FlagsMap) ->
-    roomHeaderView = new Mywebroom.Views.RoomHeaderView({model:roomUserDataModel,signInUserDataModel:signInUserDataModel,FLAGS_MAP:FlagsMap})
-    $('#xroom_header').append(roomHeaderView.el)
-    roomHeaderView.render()
 
   #--------------------------
   # set store menu for save cancel and remove
