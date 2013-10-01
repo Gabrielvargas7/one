@@ -164,6 +164,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       expires = "; expires=" + date.toGMTString()
     else
       expires = ""
+      
     document.cookie = name + "=" + value + expires + "; path=/"
 
 
@@ -179,9 +180,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   logout:(event) ->
     event.preventDefault()
-    console.log('logout Function running')
+   
     origin = window.location.origin
-    console.log("forward to: "+origin)
+   
     this.eraseCookie "remember_token"
     window.location.href = origin
 
@@ -198,7 +199,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     if event  # this is is because this fuction is also call when is PUBLIC_ROOM
       event.preventDefault()
       event.stopPropagation()
-    console.log("trigger global event create:store_page")
 
     this.displayStorePage()
 
