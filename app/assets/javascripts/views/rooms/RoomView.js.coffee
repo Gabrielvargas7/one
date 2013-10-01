@@ -118,21 +118,29 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
   #-------------------------------
   # set bookmarks on the rooms.html
-  #--------------------------
-  setBookmarksRoom: (roomUserDataModel,profileFlag) ->
-
-    $('#xroom_bookmarks').hide()
-
-
-    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
-    user = roomUserDataModel.get('user')
-
-    length = userItemsDesignsList.length
+  #-------------------------------
+  setBookmarksRoom: ->
+    $("#xroom_bookmarks").hide()
+    
+    roomUser = Mywebroom.State.get("roomUser")
+    designs  = Mywebroom.State.get("roomDesigns")
+    
+    
+    length = designs.length
     i = 0
+    
     while i < length
-      if userItemsDesignsList[i].clickable == 'yes'
-        bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView({user_item_design:userItemsDesignsList[i],user:user})
-        $('#xroom_bookmarks').append(bookmarkHomeView.el)
+      if designs[i].clickable is "yes"
+        bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView(
+          {
+            user_item_design: designs[i],
+            user            : roomUser
+          }
+        )
+        
+        $("#xroom_bookmarks").append(bookmarkHomeView.el)
         bookmarkHomeView.render()
-        $('#room_bookmark_item_id_container_'+userItemsDesignsList[i].item_id).hide()
+        
+        $("#room_bookmark_item_id_container_" + designs[i].item_id).hide()
+        
       i++
