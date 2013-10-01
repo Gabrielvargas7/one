@@ -17,12 +17,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   events:{
-    'click #xroom_header_profile':'showProfile'
+    'click #xroom_header_profile'        :'showProfile'
     'click #xroom_header_forward_profile':'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting':'forwardToRoRSettingPage'
-    'click #xroom_header_logout':'logout'
-    'click #xroom_header_storepage':'showStorePage'
-    'click #xroom_header_myroom':'goToMyRoom'
+    'click #xroom_header_logout'         :'logout'
+    'click #xroom_header_storepage'      :'showStorePage'
+    'click #xroom_header_myroom'         :'goToMyRoom'
   }
 
 
@@ -31,19 +31,21 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   initialize: ->
+    
+    @model = Mywebroom.State.get("signInData")
 
 
   #*******************
   #**** Render
   #*******************
   render: ->
-    console.log("Adding the RoomHeaderView with model:")
-    $(@el).append(@template(user_data:this.options.signInUserDataModel))
-    this.createStorePage()
-    this.createProfileView()
-    this.removeRoomHeaderElemments(this.options.FLAGS_MAP)
+    
+    $(@el).append(@template(user_data: Mywebroom.State.get("signInData")))
+    @createStorePage()
+    @createProfileView()
+    @removeRoomHeaderElemments()
 
-    this
+    @
 
 
 
@@ -54,17 +56,22 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   #  *** function remove header elemenst
   #--------------------------
-  removeRoomHeaderElemments:(flagsMap)->
-    if flagsMap['FLAG_PROFILE'] != Mywebroom.Views.RoomView.MY_ROOM
-      $('#xroom_header_storepage').remove()
+  removeRoomHeaderElemments: ->
+    roomState   = Mywebroom.State.get("roomState")
+    signInState = Mywebroom.State.get("signInState")
+    
+    
+    $('#xroom_header_storepage').remove() if roomState isnt "SELF"
+      
 
-    if flagsMap['FLAG_PROFILE'] == Mywebroom.Views.RoomView.PUBLIC_ROOM
+    if roomState is "PUBLIC"
       $('#xroom_header_profile').remove()
       $('.dropdown').remove()
-      this.showProfile(null)
+      @showProfile(null)
 
-    if !flagsMap['FLAG_SIGN_IN']
-      $('#xroom_header_myroom').remove()
+
+    $('#xroom_header_myroom').remove() if signInState isnt true
+      
 
 
 
@@ -78,12 +85,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   getUserSignInDataCollection:(userId) ->
     @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
     @userAllRoomDataCollection.fetch
-      url:@userAllRoomDataCollection.url userId
-      async:false
-      success: (response)->
-        console.log("@userAllRoomDataCollection: ")
-        console.log(response)
-#        console.log("@userAllRoomDataCollection: "+JSON.stringify(response.toJSON()))
+      async: false
+      url  : @userAllRoomDataCollection.url userId
+      
+      
 
 
 
@@ -96,19 +101,26 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfile
   #--------------------------
   showProfile: (event) ->
-    if event  # this is is because this fuction is also call when is PUBLIC_ROOM
+    if event  # this is is because this fuction is also called when room is PUBLIC
       event.preventDefault()
-    this.displayProfile()
+    
+    @displayProfile()
 
 
   createProfileView:->
     @profile = new Backbone.Model
     @profile.set(@model.get('user_profile'))
-    @profile.set('user',@model.get('user'))
-    @profile.set('user_photos',@model.get('user_photos'))
-    @profile.set('user_items_designs',@model.get('user_items_designs'))
+    @profile.set('user', @model.get('user'))
+    @profile.set('user_photos', @model.get('user_photos'))
+    @profile.set('user_items_designs', @model.get('user_items_designs'))
 
-    @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAGS_MAP['FLAG_PROFILE'],roomHeaderView:this })
+    @profileView = new Mywebroom.Views.ProfileHomeView(
+      {
+        model         : @profile,
+        roomHeaderView: @ 
+      }
+    )
+    
     $('#xroom_profile').html(@profileView.el)
     @profileView.render()
     $('#xroom_profile').hide()
@@ -126,10 +138,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   forwardToRoRProfilePage:(event) ->
     event.preventDefault()
-    console.log('forwardToRoRProfilePage Function running')
-    origin = window.location.origin
-    origin = origin+"/users_profiles/show_users_profiles_by_user_id/"+@model.get('user').id
-    console.log("forward to: "+origin)
+   
+    origin =  window.location.origin
+    origin += "/users_profiles/show_users_profiles_by_user_id/" + @model.get('user').id
+    
     window.location.replace(origin)
 
 
@@ -138,11 +150,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   forwardToRoRSettingPage:(event) ->
     event.preventDefault()
-    console.log('forwardToRoRSettingPage Function running')
-    origin = window.location.origin
-    origin = origin+"/users/"+@model.get('user').id
-    console.log("forward to: "+origin)
-    window.location.href = origin
+  
+    origin =  window.location.origin
+    origin += "/users/" + @model.get('user').id
+   
+    # Why do we use set location.href instead of calling location.replace() ??
+    window.location.href = origin 
 
 
 
@@ -161,6 +174,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       expires = "; expires=" + date.toGMTString()
     else
       expires = ""
+      
     document.cookie = name + "=" + value + expires + "; path=/"
 
 
@@ -176,9 +190,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   logout:(event) ->
     event.preventDefault()
-    console.log('logout Function running')
+   
     origin = window.location.origin
-    console.log("forward to: "+origin)
+   
     this.eraseCookie "remember_token"
     window.location.href = origin
 
@@ -195,16 +209,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     if event  # this is is because this fuction is also call when is PUBLIC_ROOM
       event.preventDefault()
       event.stopPropagation()
-    console.log("trigger global event create:store_page")
+   
+    @displayStorePage()
 
-    this.displayStorePage()
-#    @storePageView.render()
 
 
 
   createStorePage:->
-    console.log('storePage Function running')
-    @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
+    @storePageView = new Mywebroom.Views.StorePageView({ model: @model, roomHeaderView: @ })
     $('#xroom_storepage').html(@storePageView.el)
     @storePageView.render()
     $('#xroom_storepage').hide()
@@ -216,7 +228,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function display
   #--------------------------
   displayStorePage: ->
-    #$('#xroom_store_menu_save_cancel_remove').show()
     $('#xroom_storepage').show()
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
@@ -249,10 +260,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   goToMyRoom: (event) ->
     event.preventDefault()
     event.stopPropagation()
-    console.log('go to my room')
-    origin = window.location.origin
-    myOrigin = origin+'/room/'+this.options.signInUserDataModel.get('user').username
-    console.log(myOrigin)
-    console.log("forward to: "+myOrigin)
-    window.location.replace(myOrigin)
+   
+    origin =  window.location.origin
+    origin += '/room/' + Mywebroom.State.get("signInUser").get("username")
+
+   
+    window.location.replace(origin)
 

@@ -225,6 +225,7 @@ class UsersController < ApplicationController
 
     @current_user =  current_user
     respond_to do |format|
+      #format.json { render json: @current_user.as_json(only:[:id,:username]), status: :ok}
       if @current_user.nil?
         format.json { render json: 'user not found' , status: :not_found }
       else

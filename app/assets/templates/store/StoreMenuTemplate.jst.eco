@@ -18,16 +18,18 @@
 
   <div class="container">
     <div class="navbar">
-    <div class="navbar-inner">
+      <div class="navbar-inner">
       <ul class="nav">
         <li>
           <div class="input-append">
+            <!-- SEARCH BOX -->
             <input class="span2" type="text">
             <div class="btn-group">
               <button id="store-dropdown-btn" class="btn">ALL</button>
               <button class="btn dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
               </button>
+              <!-- SEARCH DROPDOWN OPTIONS -->
               <ul class="dropdown-menu">
                 <li class="active store-dropdown" id="store-dropdown-all">
                   <a href="#">ALL</a>
@@ -49,6 +51,7 @@
           </div>
         </li>
         <li>
+          <!-- FILTERS -->
           <ul class="nav nav-pills">
             <li id="dropdown-object" class="dropdown collapse">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Object<b class="caret"></b></a>
@@ -84,16 +87,16 @@
         </li>
       </ul>
     </div>
-  </div>
+    </div>
   </div>
 
   <!-- Store Menu Selection  -->
   <div class="tab-content">
       <div class="tab-pane active" id="tab_items"> </div>
-      <div class="tab-pane" id="tab_items_designs" > </div>
+      <div class="tab-pane" id="tab_items_designs"></div>
       <div class="tab-pane" id="tab_themes">       </div>
       <div class="tab-pane" id="tab_bundles">      </div>
-      <div class="tab-pane" id="tab_entire_rooms">  </div>
+      <div class="tab-pane" id="tab_entire_rooms"> </div>
   </div>
 
 </div>

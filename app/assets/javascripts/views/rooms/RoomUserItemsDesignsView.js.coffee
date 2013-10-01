@@ -15,28 +15,30 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click img.room_user_item_design':'clickItem'
-    'mouseenter img.room_user_item_design':'hoverItem'
-    'mouseleave img.room_user_item_design':'hoverOffItem'
+    'click img.room_user_item_design'     : 'clickItem'
+    'mouseenter img.room_user_item_design': 'hoverItem'
+    'mouseleave img.room_user_item_design': 'hoverOffItem'
 
   #*******************
   #**** Initialize
   #*******************
   initialize: ->
 
+    @design = @options.design
     #*******************
     #**** Render
     #*******************
   render: ->
-#    console.log(this.options.user)
-    $(@el).append(@template(user_item_design:this.options.user_item_design))
+
+    $(@el).append(@template(user_item_design: @design))
     this.setHoverOffOnImages()
 
-    y = this.options.user_item_design.y.toString()+'px'
-    x = this.options.user_item_design.x.toString()+'px'
-    z = this.options.user_item_design.z.toString()
-    width = this.options.user_item_design.width.toString()+'px'
-    id_room_item_designs_container = ".room_item_designs_container_"+this.options.user_item_design.item_id.toString()
+    y = @design.y.toString() + 'px'
+    x = @design.x.toString() + 'px'
+    z = @design.z.toString()
+    
+    width = @design.width.toString() + 'px'
+    id_room_item_designs_container = ".room_item_designs_container_" + @design.item_id.toString()
 
     $(id_room_item_designs_container).css({
       'position': 'absolute',
@@ -57,11 +59,11 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #--------------------------
   setHoverOffOnImages: ->
 
-    if this.options.user_item_design.clickable == 'yes'
-      itemId= this.options.user_item_design.item_id
-      imageNameHover = this.options.user_item_design.image_name_hover.url
-      imageName = this.options.user_item_design.image_name.url
-      $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+    if @design.clickable is "yes"
+      itemId = @design.item_id
+      imageNameHover = @design.image_name_hover.url
+      imageName = @design.image_name.url
+      $('[data-room_item_id=' + itemId + ']').hover (->  $(this).attr("src", imageNameHover)), -> $(this).attr("src", imageName)
 
 
   #--------------------------
@@ -69,19 +71,16 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #--------------------------
   clickItem: (event) ->
     event.preventDefault()
-    console.log("You clicked an object: "+this.options.user_item_design)
-    console.log(this.options.user_item_design)
-    console.log(this.options.user)
-    this.hideAndShowBookmarks(this.options.user_item_design.item_id)
-    this.displayBookmark()
 
-    if this.options.user_item_design.clickable == 'yes'
-      bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:this.options.user_item_design.item_id,user:this.options.user.id})
-      self= this
-#      bookmarksView.on('dataForBrowseMode',((event)-> this.trigger('dataForBrowseMode2',{model:event.model})) ,self)
+    
+    @hideAndShowBookmarks(@design.item_id)
+    @displayBookmark()
 
-#      $('#xroom_bookmarks').append(bookmarksView.el)
-      $('#room_bookmark_item_id_container_'+this.options.user_item_design.item_id).append(bookmarksView.el)
+    if @design.clickable is "yes"
+      bookmarksView = new Mywebroom.Views.BookmarksView({ user_item_design: @design.item_id, user: Mywebroom.State.get("roomUser").get("id") })
+      
+      self = this
+      $('#room_bookmark_item_id_container_' + @design.item_id).append(bookmarksView.el)
       bookmarksView.render()
 
   #--------------------------
@@ -103,13 +102,16 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   # hide bookmarks when is not this item
   #--------------------------
   hideAndShowBookmarks:(bookmark_item_id) ->
-    length = this.options.user_items_designs_list.length
+    designs = Mywebroom.State.get("roomDesigns")
+    
+
+    length = designs.length
     i = 0
     while i < length
-      if bookmark_item_id == this.options.user_items_designs_list[i].item_id
-        $('#room_bookmark_item_id_container_'+this.options.user_items_designs_list[i].item_id).show();
+      if bookmark_item_id is designs[i].item_id
+        $('#room_bookmark_item_id_container_' + designs[i].item_id).show();
       else
-        $('#room_bookmark_item_id_container_'+this.options.user_items_designs_list[i].item_id).hide();
+        $('#room_bookmark_item_id_container_' + designs[i].item_id).hide();
       i++
 
   #--------------------------
