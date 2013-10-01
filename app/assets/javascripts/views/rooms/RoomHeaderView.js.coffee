@@ -252,12 +252,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   goToMyRoom: (event) ->
     event.preventDefault()
     event.stopPropagation()
-    console.log('go to my room')
-    origin = window.location.origin
-    myOrigin = origin+'/room/'+this.options.signInUserDataModel.get('user').username
-    console.log(myOrigin)
-    console.log("forward to: "+myOrigin)
-    window.location.replace(myOrigin)
    
     origin =  window.location.origin
     origin += '/room/' + Mywebroom.State.get("signInUser").get("username")
