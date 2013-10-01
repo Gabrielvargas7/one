@@ -29,7 +29,8 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     #**** Render
     #*******************
   render: ->
-    $(@el).append(@template(user_item_design:this.options.user_item_design))
+
+    $(@el).append(@template(user_item_design: @design))
     this.setHoverOffOnImages()
 
     y = this.options.user_item_design.y.toString()+'px'
