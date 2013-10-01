@@ -26,7 +26,9 @@ $(document).ready ->
   
   # Listen to changes of room state
   Mywebroom.State.on("change:roomState", ->
-    if Mywebroom.State.get("roomState") is "PUBLIC" then $("#xroom_header_search_box").hide() else $("#xroom_header_search_box").show()
+    # We need to wait for the DOM to be ready before doing anything with the elements on the page
+    $(document).ready ->
+      if Mywebroom.State.get("roomState") is "PUBLIC" then $("#xroom_header_search").hide() else $("#xroom_header_search").show()
   )
   
   
