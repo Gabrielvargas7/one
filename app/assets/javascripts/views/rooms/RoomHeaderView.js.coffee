@@ -34,16 +34,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   initialize: ->
-    
-    @model = Mywebroom.State.get("signInData")
+    @model = Mywebroom.State.get("roomData")
 
 
   #*******************
   #**** Render
   #*******************
   render: ->
-    
-    $(@el).append(@template(user_data: Mywebroom.State.get("signInData")))
+    $(@el).append(@template(user_data: Mywebroom.State.get("roomData")))
     @createStorePage()
     @createProfileView()
     @removeRoomHeaderElemments()
