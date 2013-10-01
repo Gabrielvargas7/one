@@ -69,9 +69,6 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #--------------------------
   clickItem: (event) ->
     event.preventDefault()
-    console.log("You clicked an object: "+this.options.user_item_design)
-    console.log(this.options.user_item_design)
-    console.log(this.options.user)
     this.hideAndShowBookmarks(this.options.user_item_design.item_id)
     this.displayBookmark()
 
