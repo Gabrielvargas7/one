@@ -72,7 +72,6 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   clickItem: (event) ->
     event.preventDefault()
 
-    if this.options.user_item_design.clickable == 'yes'
       bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:this.options.user_item_design.item_id,user:this.options.user.id})
       self= this
     
@@ -80,6 +79,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     @displayBookmark()
 
       $('#room_bookmark_item_id_container_'+this.options.user_item_design.item_id).append(bookmarksView.el)
+    if @design.clickable is "yes"
       bookmarksView.render()
 
   #--------------------------
