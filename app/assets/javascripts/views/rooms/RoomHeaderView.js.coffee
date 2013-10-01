@@ -138,10 +138,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   forwardToRoRSettingPage:(event) ->
     event.preventDefault()
-    console.log('forwardToRoRSettingPage Function running')
     origin = window.location.origin
     origin = origin+"/users/"+@model.get('user').id
-    console.log("forward to: "+origin)
     window.location.href = origin
 
 
