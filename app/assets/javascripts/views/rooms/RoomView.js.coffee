@@ -68,15 +68,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     self = @
     
-
-
-
-  #*******************
-  #**** Functions  set Variables
-  #*******************
-
-
-
       else
         flagProfile = Mywebroom.Views.RoomView.MY_FRIEND_ROOM
         console.log("flag friend user: "+flagProfile)
