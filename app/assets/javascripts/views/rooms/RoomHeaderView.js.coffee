@@ -81,8 +81,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   getUserSignInDataCollection:(userId) ->
     @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
     @userAllRoomDataCollection.fetch
-      url:@userAllRoomDataCollection.url userId
-      async:false
+      async: false
+      url  : @userAllRoomDataCollection.url userId
+      
+      
 
 
 
