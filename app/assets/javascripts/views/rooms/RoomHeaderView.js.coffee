@@ -206,7 +206,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   createStorePage:->
-    @storePageView = new Mywebroom.Views.StorePageView({model:@model,roomHeaderView:this})
+    @storePageView = new Mywebroom.Views.StorePageView({ model: @model, roomHeaderView: @ })
     $('#xroom_storepage').html(@storePageView.el)
     @storePageView.render()
     $('#xroom_storepage').hide()
