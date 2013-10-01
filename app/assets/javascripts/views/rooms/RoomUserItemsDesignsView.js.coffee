@@ -59,11 +59,11 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #--------------------------
   setHoverOffOnImages: ->
 
-    if this.options.user_item_design.clickable == 'yes'
       itemId= this.options.user_item_design.item_id
       imageNameHover = this.options.user_item_design.image_name_hover.url
       imageName = this.options.user_item_design.image_name.url
       $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+    if @design.clickable is "yes"
 
 
   #--------------------------
