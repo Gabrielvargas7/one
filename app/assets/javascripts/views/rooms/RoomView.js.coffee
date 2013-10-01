@@ -124,16 +124,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  #--------------------------
-  # set items designs and themes
-  #--------------------------
-  setRoomItemsDesigns: (roomUserDataModel,profileFlag) ->
-    this.setRoom('#xroom_items_0',roomUserDataModel,profileFlag)
-    this.setRoom('#xroom_items_1',roomUserDataModel,profileFlag)
-    this.setRoom('#xroom_items_2',roomUserDataModel,profileFlag)
-    this.setBookmarksRoom(roomUserDataModel,profileFlag)
-
-
+   
+    
   #--------------------------
   # set room on the rooms.html
   #--------------------------
