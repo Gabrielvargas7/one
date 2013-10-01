@@ -108,10 +108,10 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     length = designs.length
     i = 0
     while i < length
-      if bookmark_item_id == this.options.user_items_designs_list[i].item_id
-        $('#room_bookmark_item_id_container_'+this.options.user_items_designs_list[i].item_id).show();
+      if bookmark_item_id is designs[i].item_id
+        $('#room_bookmark_item_id_container_' + designs[i].item_id).show();
       else
-        $('#room_bookmark_item_id_container_'+this.options.user_items_designs_list[i].item_id).hide();
+        $('#room_bookmark_item_id_container_' + designs[i].item_id).hide();
       i++
 
   #--------------------------
