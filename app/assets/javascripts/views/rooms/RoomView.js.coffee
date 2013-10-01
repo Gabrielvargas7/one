@@ -3,6 +3,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #*******************
   #**** Template *****
   #*******************
+  
+  ###
+  This really isn't a template for this view, so when Marionette tries to render
+  it, bad stuff happens.
+  ###
   template: JST["rooms/RoomTemplate"]
 
 

@@ -2,9 +2,6 @@
 <!-- Room Background  -->
 <!-- ************************ -->
 
-<!-- TODO -->
-<!-- Uncaught TypeError: Cannot read property 'image_name' of undefined -->
-<!-- However, everything is working and user_theme, image_name, and url are all defined and correct-->
 <img class="current_background"
      src="<%=@user_theme.image_name.url%>"
      data-room-theme-src="<%=@user_theme.image_name.url%>"
