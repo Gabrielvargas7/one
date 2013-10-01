@@ -106,11 +106,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   createProfileView:->
     @profile = new Backbone.Model
     @profile.set(@model.get('user_profile'))
-    @profile.set('user',@model.get('user'))
-    @profile.set('user_photos',@model.get('user_photos'))
-    @profile.set('user_items_designs',@model.get('user_items_designs'))
-
     @profileView = new Mywebroom.Views.ProfileHomeView({model:@profile,FLAG_PROFILE:this.options.FLAGS_MAP['FLAG_PROFILE'],roomHeaderView:this })
+    @profile.set('user', @model.get('user'))
+    @profile.set('user_photos', @model.get('user_photos'))
+    @profile.set('user_items_designs', @model.get('user_items_designs'))
+
     $('#xroom_profile').html(@profileView.el)
     @profileView.render()
     $('#xroom_profile').hide()
