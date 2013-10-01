@@ -254,11 +254,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   # change browse mode. (Pass a new model to it)
   #--------------------------
   changeBrowseMode:(model)->
-    console.log('now we play with BrowseMode for reals!')
     $('#xroom_bookmarks_browse_mode').show()
     $('.browse_mode_view').show()
     @browseModeView.activeSiteChange(model)
-    console.log(@browseModeView)
 
 
 
@@ -293,7 +291,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #--------------------------
   setRoom: (xroom_item_num,roomUserDataModel,profileFlag) ->
 
-    console.log(xroom_item_num,roomUserDataModel,profileFlag)
 
     userItemsDesignsList = roomUserDataModel.get('user_items_designs')
     user = roomUserDataModel.get('user')
@@ -321,7 +318,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     $('#xroom_bookmarks').hide()
 
-    console.log(roomUserDataModel,profileFlag)
 
     userItemsDesignsList = roomUserDataModel.get('user_items_designs')
     user = roomUserDataModel.get('user')
@@ -338,7 +334,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
   setEventTest:->
-    console.log("add global event")
     Mywebroom.App.vent.on("some:event",->
       console.log("in global event")
       alert "some event was fired!"
