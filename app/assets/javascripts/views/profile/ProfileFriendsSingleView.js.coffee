@@ -18,7 +18,7 @@ class Mywebroom.Views.ProfileFriendsSingleView extends Backbone.View
 			$('#myModal').remove()
 
 	unfriendFriend:(event)->
-		deleteFriendModel = new Mywebroom.Models.DestroyFriendByUserIdAndUserIdFriend()
+		deleteFriendModel = new Mywebroom.Models.DestroyFriendByUserIdAndUserIdFriendModel()
 		helper = new Mywebroom.Helpers.ItemHelper()
 		userId = helper.getUserId()
 		deleteFriendModel.set 'url' , deleteFriendModel.url(userId,event.data.model.get('user_id'))
