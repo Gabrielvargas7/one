@@ -138,11 +138,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
     
     
-
-    
-    
-    
-    
   clickStoreCancel: (event) ->
     self = this
     event.preventDefault()
