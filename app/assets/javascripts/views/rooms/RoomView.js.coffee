@@ -76,14 +76,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  #--------------------------
-  # get the user of the room that is loading
-  #--------------------------
-  getRoomLoadingUserCollection: ->
-    userRoomCollection = new Mywebroom.Collections.ShowRoomUserCollection()
-    userRoomCollection.fetch async: false
-    console.log("fetch userRoomCollection: "+JSON.stringify(userRoomCollection.toJSON()))
-    return userRoomCollection
 
   #--------------------------
   # get the sign in user  if exist
