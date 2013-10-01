@@ -121,29 +121,18 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #--------------------------
   # set room on the rooms.html
   #--------------------------
-  setRoom: (xroom_item_num,roomUserDataModel,profileFlag) ->
-
-
-    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
-    user = roomUserDataModel.get('user')
-
-    userThemeList = roomUserDataModel.get('user_theme')
-    userTheme = userThemeList[0]
-    $(xroom_item_num).append(@template(user_theme:userTheme))
-
-    length = userItemsDesignsList.length
-    i = 0
-    while i < length
-      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i],user:user,user_items_designs_list:userItemsDesignsList})
-      $(xroom_item_num).append(userItemsDesignsView.el)
-      userItemsDesignsView.render()
-
-      if profileFlag == Mywebroom.Views.RoomView.PUBLIC_ROOM
-        userItemsDesignsView.undelegateEvents()
-      i++
-
-
-  #--------------------------
+  setRoom: (xroom_item_num) ->    
+    $(xroom_item_num).append(@template(user_theme: Mywebroom.State.get("roomTheme")))
+    
+    
+    _.each(Mywebroom.State.get("roomDesigns"), (design)->  
+      view = new Mywebroom.Views.RoomUserItemsDesignsView({design: design})
+      $(xroom_item_num).append(view.el)
+      view.render()
+      view.undelegateEvents() if Mywebroom.State.get("roomState") is "PUBLIC"
+    )
+    
+  #-------------------------------
   # set bookmarks on the rooms.html
   #--------------------------
   setBookmarksRoom: (roomUserDataModel,profileFlag) ->
