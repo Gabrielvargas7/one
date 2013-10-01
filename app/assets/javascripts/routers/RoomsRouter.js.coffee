@@ -10,4 +10,3 @@ class Mywebroom.Routers.RoomsRouter extends Backbone.Router
     
     # Render and attach to main div
     Mywebroom.App.xroom_main_container.show(view)
-
