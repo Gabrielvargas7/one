@@ -77,16 +77,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-
-
-
-
-
-
-
-
-
-
   #--------------------------
   # set main header menu
   #--------------------------
