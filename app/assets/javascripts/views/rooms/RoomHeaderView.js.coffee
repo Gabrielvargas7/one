@@ -23,6 +23,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_logout':'logout'
     'click #xroom_header_storepage':'showStorePage'
     'click #xroom_header_myroom':'goToMyRoom'
+    'keyup #xroom_header_search_box_text':'keyPressOnSearch'
   }
 
 
@@ -65,7 +66,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     if !flagsMap['FLAG_SIGN_IN']
       $('#xroom_header_myroom').remove()
-
 
 
   #*******************
@@ -255,4 +255,17 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     console.log(myOrigin)
     console.log("forward to: "+myOrigin)
     window.location.replace(myOrigin)
+
+
+  #*******************
+  #**** Functions Search
+  #*******************
+
+  keyPressOnSearch:(event)->
+    event.preventDefault()
+    event.stopPropagation()
+    console.log(event.type, event.keyCode)
+
+
+
 
