@@ -1,382 +1,240 @@
-class Mywebroom.Views.RoomView extends Backbone.View
+class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   #*******************
-  #**** Tag  (no tag = default el "div")
+  #**** Template *****
   #*******************
+  template: JST["rooms/RoomTemplate"]
 
-
-  #*******************
-  #**** Templeate
-  #*******************
-
-  template: JST['rooms/RoomTemplate']
 
 
   #*******************
-  #**** Events
-  #*******************
-
-  events:{
-
-  }
-
-
-  #*******************
-  #**** GLOBAL VARIBLES
-  #*******************
-  @MY_ROOM = "MY_ROOM"
-  @MY_FRIEND_ROOM = 'MY_FRIEND_ROOM'
-  @PUBLIC_ROOM = 'PUBLIC_ROOM'
-  @SIGN_IN  = true
-  @NOT_SIGN_IN = false
-
-  #*******************
-  #**** Initialize
+  #**** Initialize ***
   #*******************
   initialize: ->
-
-
-  #*******************
-  #**** Render
-  #*******************
-  render: ->
-
-    #*******************    #
-    #    image = $.cloudinary.image 'logo-mywebroom.png',  alt: "Logo"
-    #    console.log(image)
-    #*******************
-
-
-
-    this.FLAGS_MAP = {};
-
-    this.FLAGS_MAP['FLAG_PROFILE'] = Mywebroom.Views.RoomView.PUBLIC_ROOM
-    this.FLAGS_MAP['FLAG_SIGN_IN'] = Mywebroom.Views.RoomView.NOT_SIGN_IN
-
-
-
-    # get room user
-    @userRoomCollection = this.getRoomLoadingUserCollection()
-    @userRoomModel = @userRoomCollection.first()
-
-    # get sign in user if exist
-    @mainUserCollection = this.getUserSignInCollection()
-    if @mainUserCollection is undefined
-       @signInUser = false
-       console.log("sign in false")
-
-       @mainUserModel = @userRoomCollection.first()
-    else
-       @mainUserModel = @mainUserCollection.first()
-       @signInUser = true
-       console.log("sign in true")
-
-
-
-
-    if @userRoomModel.id is undefined
-      this.forwardToRoot()
-    else
-
-      this.FLAGS_MAP['FLAG_PROFILE'] = this.setProfileFlags(@signInUser,@mainUserModel,@userRoomModel)
-      this.FLAGS_MAP['FLAG_SIGN_IN'] = this.setSignInFlag(@signInUser)
-
-
-      # get user room data
-      @roomUserDataCollection = this.getRoomUserDataCollection(@userRoomModel.get('id'))
-      @roomUserDataModel = @roomUserDataCollection.first()
-
-      # get user sign in data
-      @mainUserDataCollection = this.getSignInUserDataCollection(@mainUserModel.get('id'))
-      @mainUserDataModel = @mainUserDataCollection.first()
-
-      console.log("@roomUserData: ")
-      console.log(@roomUserDataModel)
-
-      # this.setRoomTheme  @roomUserDataModel
-      this.setRoomItemsDesigns(@roomUserDataModel, this.FLAGS_MAP['FLAG_PROFILE'])
-      this.setRoomHeader( @roomUserDataModel, @mainUserDataModel, this.FLAGS_MAP)
-      this.setStoreMenuSaveCancelRemove(@mainUserDataModel)
-      this.setRoomScrolls(@roomUserDataModel)
-      this.setBrowseMode()
-
-      # center the windows  and remove the scroll
-      $(window).scrollLeft(0)
-      $('body').css('overflow-x', 'hidden');
-
-      this.setEventTest()
-      this.setBrowseModeEvents()
-
-
-    this
-
-
-
-  #*******************
-  #**** Functions  set Variables
-  #*******************
-
-  #--------------------------
-  # set Sign in global variable
-  #--------------------------
-  setSignInFlag: (signInUser) ->
-    flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
-
-    if signInUser  == true
-      flagSignIn = Mywebroom.Views.RoomView.SIGN_IN
-    else
-      flagSignIn = Mywebroom.Views.RoomView.NOT_SIGN_IN
-
-    console.log("flag sign in user: "+flagSignIn)
-
-    return flagSignIn
-
-
-  #--------------------------
-  # set profile global variables
-  #--------------------------
-  setProfileFlags: (signInUser,mainUserModel,userRoomModel) ->
-
-    flagProfile =  Mywebroom.Views.RoomView.PUBLIC_ROOM
-    if signInUser == false
-      flagProfile = Mywebroom.Views.RoomView.PUBLIC_ROOM
-      console.log("flag public user: "+flagProfile)
-
-    else if mainUserModel.id == userRoomModel.id
-      flagProfile = Mywebroom.Views.RoomView.MY_ROOM
-      console.log("flag room user: "+flagProfile)
-
-    else
-      myfriend = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
-      myfriend.fetch
-        url:myfriend.url(mainUserModel.id,userRoomModel.id)
-        async:false
-        success: (response)->
-          console.log("@myfriend: ")
-          console.log(response)
-
-      if myfriend.length == 0
-        flagProfile = Mywebroom.Views.RoomView.PUBLIC_ROOM
-        console.log("flag public user: "+flagProfile)
-
+    self = @
+    
+    
+    ###
+    (1)   Set roomUser
+    (2)   Set roomData
+    (2.1) Set roomDesigns
+    (2.2) Set roomTheme
+    (3)   Set signInState
+    (4)   Set signInUser
+    (5)   Set roomState
+    (6)   Set signInData
+    ###
+    
+    # (1) Set roomUser
+    roomUsers = new Mywebroom.Collections.ShowRoomUserCollection()
+    roomUsers.fetch 
+      async  : false
+      success: ->
+        roomUser = roomUsers.first()
+        Mywebroom.State.set("roomUser", roomUser)
+        
+        # Fetch the data associated with this user
+        dataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
+        dataCollection.fetch
+          async  : false
+          url    : dataCollection.url Mywebroom.State.get("roomUser").get("id")
+          success: ->
+            # Extract the first model
+            data = dataCollection.first()
+        
+            # (2) Set roomData
+            Mywebroom.State.set("roomData", data)
+            
+            # (2.1) Set roomDesigns
+            Mywebroom.State.set("roomDesigns", data.get("user_items_designs"))
+            
+            # (2.2) Set roomTheme
+            Mywebroom.State.set("roomTheme", data.get("user_theme")[0])
+    
+    
+    
+    # Fetch the collection containing the signInUser model
+    signInUsers = new Mywebroom.Collections.ShowSignedUserCollection()
+    signInUsers.fetch
+      async  : false
+      success: ->
+        # If it works, we know the user is signed in
+        # (3) Set signInState
+        Mywebroom.State.set("signInState", true)
+       
+        # Extract the first model
+        signInUser = signInUsers.first()
+       
+        # (4) Set signInUser
+        Mywebroom.State.set("signInUser", signInUser)
+        
+        
+    
+    
+    
+    # roomState is set to PUBLIC by default, so we only need 
+    # to perform further logic when the user is signed-in
+    if Mywebroom.State.get("signInState")
+      
+      # When roomUser and signInUser are the same, we're on our own page
+      if  Mywebroom.State.get("roomUser").get("id") is Mywebroom.State.get("signInUser").get("id")
+        # (5) set roomState
+        Mywebroom.State.set("roomState", "SELF")
+        
+        # In this case, we can set signInData to roomData
+        # (6) set roomData
+        Mywebroom.State.set("signInData", Mywebroom.State.get("roomData"))
       else
-        flagProfile = Mywebroom.Views.RoomView.MY_FRIEND_ROOM
-        console.log("flag friend user: "+flagProfile)
-
-    return flagProfile
-
-
-  #*******************
-  #**** Functions  get Collection data
-  #*******************
-
-  #--------------------------
-  # get the user of the room that is loading
-  #--------------------------
-  getRoomLoadingUserCollection: ->
-    userRoomCollection = new Mywebroom.Collections.ShowRoomUserCollection()
-    userRoomCollection.fetch async: false
-    console.log("fetch userRoomCollection: "+JSON.stringify(userRoomCollection.toJSON()))
-    return userRoomCollection
-
-  #--------------------------
-  # get the sign in user  if exist
-  #--------------------------
-  getUserSignInCollection: ->
-    userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
-    userSignInCollection.fetch
-      async:false
-      success: (response)->
-        console.log("fetch userSignInCollection: "+userSignInCollection)
-        console.log(response)
-      error: ->
-        userSignInCollection = undefined
-        console.log("error fetch userSignInCollection "+userSignInCollection)
-    return userSignInCollection
+        # We're not on our own page, so we've got to check if we're friends with the page owner
+        friends = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection() 
+        friends.fetch
+          async  : false
+          url    : friends.url(Mywebroom.State.get("roomUser").get("id"), Mywebroom.State.get("signInUser").get("id"))
+          success: ->
+            # We're on a friend's page if the collection isn't empty
+            # (6) set roomState
+            Mywebroom.State.set("roomState", "FRIEND") if friends.length > 0
+        
+            # In this case, we need to perform another AJAX request to populate signInData
+            dataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
+            dataCollection.fetch
+              async  : false
+              url    : dataCollection.url Mywebroom.State.get("signInUser").get("id")
+              success: ->
+                # (6) Set roomData
+                Mywebroom.State.set("signInData", dataCollection.first())
+              
+        
 
 
-  #--------------------------
-  # get room user data
-  #--------------------------
-  getRoomUserDataCollection:(userId) ->
-    roomUserDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
-    roomUserDataCollection.fetch
-      url:roomUserDataCollection.url userId
-      async:false
-      success: (response)->
-        console.log("@roomUserDataCollection: ")
-        console.log(response)
-#        console.log("@roomUserDataCollection: "+JSON.stringify(response.toJSON()))
-
-    return roomUserDataCollection
-
-
-  #--------------------------
-  # get room user data
-  #--------------------------
-  getSignInUserDataCollection:(userId) ->
-    signInUserDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
-    signInUserDataCollection.fetch
-      url:signInUserDataCollection.url userId
-      async:false
-      success: (response)->
-        console.log("@roomUserDataCollection: ")
-        console.log(response)
-
-    return signInUserDataCollection
-
-
-  #*******************
-  #**** Functions  Forward to root
-  #*******************
-
-  #--------------------------
-  # forward to the origin url if the user does't exist -> ex: 'http://www.mywebroom.com/'
-  #--------------------------
-  forwardToRoot: ->
-    origin = window.location.origin
-    console.log("forward to: "+origin)
-    window.location.replace(origin)
-
-
-
-  #*******************
-  #**** Functions  Set RoomViews
-  #*******************
-
-  #--------------------------
-  # set main header menu
-  #--------------------------
-  setRoomHeader:(roomUserDataModel, signInUserDataModel , FlagsMap) ->
-    roomHeaderView = new Mywebroom.Views.RoomHeaderView({model:roomUserDataModel,signInUserDataModel:signInUserDataModel,FLAGS_MAP:FlagsMap})
-    $('#xroom_header').append(roomHeaderView.el)
+    # Place items in the room
+    @setRoom("#xroom_items_0")
+    @setRoom("#xroom_items_1")
+    @setRoom("#xroom_items_2")
+    
+    
+    
+    # Initialize Bookmarks Views
+    @setBookmarksRoom()
+    
+    
+    
+    # Create and render Header View
+    roomHeaderView = new Mywebroom.Views.RoomHeaderView()
+    $("#xroom_header").append(roomHeaderView.el)
     roomHeaderView.render()
+    Mywebroom.State.set("roomHeaderView", roomHeaderView)
+    
+    
+    
+    
+    
+    # Create and render Save, Cancel, Remove View
+    storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
+    $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)
+    $("#xroom_store_menu_save_cancel_remove").hide()
+    storeMenuSaveCancelRemoveView.render()
+    
+    
+    # Add Images to the Save, Cancel, Remove View
+    storeRemoveButton = $.cloudinary.image "store_remove_button.png",{ alt: "store remove button", id: "store_remove_button"}
+    $("#xroom_store_remove").prepend(storeRemoveButton)
+    storeSaveButton = $.cloudinary.image "store_save_button.png",{ alt: "store save button", id: "store_save_button"}
+    $("#xroom_store_save").prepend(storeSaveButton)
+    storeCancelButton = $.cloudinary.image "store_cancel_button.png",{ alt: "store cancel button", id: "store_cancel_button"}
+    $("#xroom_store_cancel").prepend(storeCancelButton)
+    
+    
+    # Create and render Left Scroller View
+    roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView()
+    $("#xroom_scroll_left").append(roomScrollLeftView.el)
+    roomScrollLeftView.render()
 
+
+    # Create and render Right Scroller View
+    roomScrollRightView = new Mywebroom.Views.RoomScrollRightView()
+    $("#xroom_scroll_right").append(roomScrollRightView.el)
+    roomScrollRightView.render()
+    
+    
+    # Create and render Browse Mode View
+    @browseModeView = new Mywebroom.Views.BrowseModeView()
+    $("#xroom_bookmarks_browse_mode").append(@browseModeView.el)
+    $("#xroom_bookmarks_browse_mode").hide()
+    @browseModeView.render()
+    
+
+    # Center the windows and remove the scroll
+    $(window).scrollLeft(0)
+    $("body").css("overflow-x", "hidden");
+
+
+    # Set up a listener for the BrowseMode:open event
+    Mywebroom.App.vent.on("BrowseMode:open", ((event)->
+      @changeBrowseMode(event.model)), self)
+    
+    
+    # Create and render the Footer View
     roomFooterView = new Mywebroom.Views.RoomFooterView()
     $('#xroom_footer').append(roomFooterView.el)
     roomFooterView.render()
+    
+    # Return the view
+    @
+    
 
-
-  #--------------------------
-  # set store menu for save cancel and remove
-  #--------------------------
-  setStoreMenuSaveCancelRemove:(signInUserDataModel) ->
-    storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView({signInUserDataModel:signInUserDataModel})
-    $('#xroom_store_menu_save_cancel_remove').append(storeMenuSaveCancelRemoveView.el)
-    $('#xroom_store_menu_save_cancel_remove').hide()
-    storeMenuSaveCancelRemoveView.render()
-
-    #add the images
-    storeRemoveButton = $.cloudinary.image 'store_remove_button.png',{ alt: "store remove button", id: "store_remove_button"}
-    $('#xroom_store_remove').prepend(storeRemoveButton)
-    storeSaveButton = $.cloudinary.image 'store_save_button.png',{ alt: "store save button", id: "store_save_button"}
-    $('#xroom_store_save').prepend(storeSaveButton)
-    storeCancelButton = $.cloudinary.image 'store_cancel_button.png',{ alt: "store cancel button", id: "store_cancel_button"}
-    $('#xroom_store_cancel').prepend(storeCancelButton)
-  #--------------------------
-  # set browse mode 
-  #--------------------------
-  setBrowseMode:->
-    @browseModeView = new Mywebroom.Views.BrowseModeView()
-    $('#xroom_bookmarks_browse_mode').append(@browseModeView.el)
-    $('#xroom_bookmarks_browse_mode').hide()
-    @browseModeView.render()
+  
   #--------------------------
   # change browse mode. (Pass a new model to it)
   #--------------------------
   changeBrowseMode:(model)->
-    console.log('now we play with BrowseMode for reals!')
-    $('#xroom_bookmarks_browse_mode').show()
-    $('.browse_mode_view').show()
+    $("#xroom_bookmarks_browse_mode").show()
+    $(".browse_mode_view").show()
     @browseModeView.activeSiteChange(model)
-    console.log(@browseModeView)
 
 
 
-  #--------------------------
-  # set arrow for left and right scroll
-  #--------------------------
-
-  setRoomScrolls: (roomUserDataModel)->
-    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
-    roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView({user_items_designs:userItemsDesignsList})
-    $('#xroom_scroll_left').append(roomScrollLeftView.el)
-    roomScrollLeftView.render()
-
-    roomScrollRightView = new Mywebroom.Views.RoomScrollRightView({user_items_designs:userItemsDesignsList})
-    $('#xroom_scroll_right').append(roomScrollRightView.el)
-    roomScrollRightView.render()
-
-
-
-  #--------------------------
-  # set items designs and themes
-  #--------------------------
-  setRoomItemsDesigns: (roomUserDataModel,profileFlag) ->
-    this.setRoom('#xroom_items_0',roomUserDataModel,profileFlag)
-    this.setRoom('#xroom_items_1',roomUserDataModel,profileFlag)
-    this.setRoom('#xroom_items_2',roomUserDataModel,profileFlag)
-    this.setBookmarksRoom(roomUserDataModel,profileFlag)
-
-
+   
+    
   #--------------------------
   # set room on the rooms.html
   #--------------------------
-  setRoom: (xroom_item_num,roomUserDataModel,profileFlag) ->
-
-    console.log(xroom_item_num,roomUserDataModel,profileFlag)
-
-    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
-    user = roomUserDataModel.get('user')
-
-    userThemeList = roomUserDataModel.get('user_theme')
-    userTheme = userThemeList[0]
-    $(xroom_item_num).append(@template(user_theme:userTheme))
-
-    length = userItemsDesignsList.length
-    i = 0
-    while i < length
-      userItemsDesignsView = new Mywebroom.Views.RoomUserItemsDesignsView({user_item_design:userItemsDesignsList[i],user:user,user_items_designs_list:userItemsDesignsList})
-      $(xroom_item_num).append(userItemsDesignsView.el)
-      userItemsDesignsView.render()
-
-      if profileFlag == Mywebroom.Views.RoomView.PUBLIC_ROOM
-        userItemsDesignsView.undelegateEvents()
-      i++
-
-
-  #--------------------------
-  # set bookmarks on the rooms.html
-  #--------------------------
-  setBookmarksRoom: (roomUserDataModel,profileFlag) ->
-
-    $('#xroom_bookmarks').hide()
-
-    console.log(roomUserDataModel,profileFlag)
-
-    userItemsDesignsList = roomUserDataModel.get('user_items_designs')
-    user = roomUserDataModel.get('user')
-
-    length = userItemsDesignsList.length
-    i = 0
-
-    while i < length
-      if userItemsDesignsList[i].clickable == 'yes'
-        bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView({user_item_design:userItemsDesignsList[i],user:user})
-        $('#xroom_bookmarks').append(bookmarkHomeView.el)
-        bookmarkHomeView.render()
-        $('#room_bookmark_item_id_container_'+userItemsDesignsList[i].item_id).hide()
-      i++
-
-
-  setEventTest:->
-    console.log("add global event")
-    Mywebroom.vent.on("some:event",->
-      console.log("in global event")
-      alert "some event was fired!"
+  setRoom: (xroom_item_num) ->    
+    $(xroom_item_num).append(@template(user_theme: Mywebroom.State.get("roomTheme")))
+    
+    
+    _.each(Mywebroom.State.get("roomDesigns"), (design)->  
+      view = new Mywebroom.Views.RoomUserItemsDesignsView({design: design})
+      $(xroom_item_num).append(view.el)
+      view.render()
+      view.undelegateEvents() if Mywebroom.State.get("roomState") is "PUBLIC"
     )
-  setBrowseModeEvents:->
-    self = this
-    Mywebroom.vent.on("BrowseMode:open",((event)->
-      @changeBrowseMode(event.model)),self)
-
+    
+  #-------------------------------
+  # set bookmarks on the rooms.html
+  #-------------------------------
+  setBookmarksRoom: ->
+    $("#xroom_bookmarks").hide()
+    
+    roomUser = Mywebroom.State.get("roomUser")
+    designs  = Mywebroom.State.get("roomDesigns")
+    
+    
+    length = designs.length
+    i = 0
+    
+    while i < length
+      if designs[i].clickable is "yes"
+        bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView(
+          {
+            user_item_design: designs[i],
+            user            : roomUser
+          }
+        )
+        
+        $("#xroom_bookmarks").append(bookmarkHomeView.el)
+        bookmarkHomeView.render()
+        
+        $("#room_bookmark_item_id_container_" + designs[i].item_id).hide()
+        
+      i++
