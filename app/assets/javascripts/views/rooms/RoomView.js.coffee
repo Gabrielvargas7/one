@@ -77,33 +77,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  #--------------------------
-  # set profile global variables
-  #--------------------------
-  setProfileFlags: (signInUser,mainUserModel,userRoomModel) ->
-
-    flagProfile =  Mywebroom.Views.RoomView.PUBLIC_ROOM
-    if signInUser == false
-      flagProfile = Mywebroom.Views.RoomView.PUBLIC_ROOM
-      console.log("flag public user: "+flagProfile)
-
-    else if mainUserModel.id == userRoomModel.id
-      flagProfile = Mywebroom.Views.RoomView.MY_ROOM
-      console.log("flag room user: "+flagProfile)
-
-    else
-      myfriend = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
-      myfriend.fetch
-        url:myfriend.url(mainUserModel.id,userRoomModel.id)
-        async:false
-        success: (response)->
-          console.log("@myfriend: ")
-          console.log(response)
-
-      if myfriend.length == 0
-        flagProfile = Mywebroom.Views.RoomView.PUBLIC_ROOM
-        console.log("flag public user: "+flagProfile)
-
       else
         flagProfile = Mywebroom.Views.RoomView.MY_FRIEND_ROOM
         console.log("flag friend user: "+flagProfile)
