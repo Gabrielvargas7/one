@@ -20,9 +20,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_profile'        :'showProfile'
     'click #xroom_header_forward_profile':'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting':'forwardToRoRSettingPage'
-    'click #xroom_header_logout'         :'logout'
-    'click #xroom_header_storepage'      :'showStorePage'
-    'click #xroom_header_myroom'         :'goToMyRoom'
+    'click #xroom_header_logout':'logout'
+    'click #xroom_header_storepage':'showStorePage'
+    'click #xroom_header_myroom':'goToMyRoom'
+    'keyup #xroom_header_search_box_text':'keyPressOnSearch'
+
   }
 
 
@@ -72,7 +74,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     $('#xroom_header_myroom').remove() if signInState isnt true
       
-
 
 
   #*******************
@@ -266,4 +267,17 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
    
     window.location.replace(origin)
+
+
+  #*******************
+  #**** Functions Search
+  #*******************
+
+  keyPressOnSearch:(event)->
+    event.preventDefault()
+    event.stopPropagation()
+    console.log(event.type, event.keyCode)
+
+
+
 
