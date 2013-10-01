@@ -13,6 +13,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   initialize: ->
     self = @
     
+    # Make the room public to begin with to force the serach box to hid
+    # (5) Set roomState
+    Mywebroom.State.set("roomState", "PUBLIC")
+    
     
     ###
     (1)   Set roomUser
