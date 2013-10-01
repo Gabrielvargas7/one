@@ -65,8 +65,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       $('.dropdown').remove()
       @showProfile(null)
 
-    if !flagsMap['FLAG_SIGN_IN']
-      $('#xroom_header_myroom').remove()
+
+    $('#xroom_header_myroom').remove() if signInState isnt true
+      
 
 
 
