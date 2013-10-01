@@ -31,7 +31,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  initialize: ->
   #Get RoomFlag
   this.model.set 'FLAG_PROFILE', Mywebroom.State.get("roomState")
-  if this.options.FLAG_PROFILE != "SELF"
+  if Mywebroom.State.get("roomState") != "SELF"
     @template=JST['profile/FriendHomeTemplate']
   @collapseFlag = false
   
@@ -103,7 +103,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @activityCollection.reset(@activityCollection.shuffle(),{silent:true})
   initialProfileHomeActivityCollection = new Backbone.Collection
   initialProfileHomeActivityCollection.set(@activityCollection.first 6)
-  if this.options.FLAG_PROFILE is Mywebroom.Views.RoomView.PUBLIC_ROOM
+  if this.options.FLAG_PROFILE is "PUBLIC"
     @activityCollection.reset(@activityCollection.first(9),{silent:true})
   @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView2({collection:initialProfileHomeActivityCollection, headerName:'Latest Room Additions'})
 

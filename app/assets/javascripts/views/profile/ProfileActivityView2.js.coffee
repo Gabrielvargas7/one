@@ -17,7 +17,7 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
 		viewData
 	#OnRender is called after built in render function has completed.
 	onRender:->
-		if @model and @model.get('FLAG_PROFILE') is Mywebroom.Views.RoomView.PUBLIC_ROOM
+		if @model and @model.get('FLAG_PROFILE') is "PUBLIC"
 			#append ask for key overlay.
 			@$(@itemViewContainer).append(JST['profile/ProfileAskForKey']())
 	showGridItemLargeView:(childView,model)->
