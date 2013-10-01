@@ -10,7 +10,7 @@ class Mywebroom.Views.ProfileBookmarksView extends Backbone.View
 			success: (response)->
 				console.log("UsersBookmarks fetched success:")
 				console.log(response)	
-		if(@model.get("FLAG_PROFILE") is Mywebroom.Views.RoomView.PUBLIC_ROOM)
+		if(@model.get("FLAG_PROFILE") is "PUBLIC")
 		 @bookmarksCollection.reset(@bookmarksCollection.first(9), silent:true)
 		@bookmarksGridView = new Mywebroom.Views.ProfileActivityView2(collection:@bookmarksCollection,model:@model,headerName:"Bookmarks")
 	render:->

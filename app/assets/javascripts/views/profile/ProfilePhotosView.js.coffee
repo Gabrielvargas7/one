@@ -15,7 +15,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 		    success: (response)->
 		     console.log("PhotosCollection Fetched Successfully")
 		     console.log(response)
-		if(@model.get("FLAG_PROFILE") is Mywebroom.Views.RoomView.PUBLIC_ROOM)
+		if(@model.get("FLAG_PROFILE") is "PUBLIC")
 		 @photosCollection.reset(@photosCollection.first(9), silent:true)
 	
 	render: ->
