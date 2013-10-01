@@ -74,14 +74,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  #--------------------------
-  # set store menu for save cancel and remove
-  #--------------------------
-  setStoreMenuSaveCancelRemove:(signInUserDataModel) ->
-    storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView({signInUserDataModel:signInUserDataModel})
-    $('#xroom_store_menu_save_cancel_remove').append(storeMenuSaveCancelRemoveView.el)
-    $('#xroom_store_menu_save_cancel_remove').hide()
-    storeMenuSaveCancelRemoveView.render()
 
     #add the images
     storeRemoveButton = $.cloudinary.image 'store_remove_button.png',{ alt: "store remove button", id: "store_remove_button"}
