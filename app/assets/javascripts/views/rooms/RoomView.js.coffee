@@ -328,7 +328,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     length = userItemsDesignsList.length
     i = 0
-
     while i < length
       if userItemsDesignsList[i].clickable == 'yes'
         bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView({user_item_design:userItemsDesignsList[i],user:user})
