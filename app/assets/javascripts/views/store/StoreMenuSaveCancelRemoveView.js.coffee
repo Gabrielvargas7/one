@@ -17,6 +17,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   events:
     'click #xroom_store_save'  :'clickStoreSave'
     'click #xroom_store_cancel':'clickStoreCancel'
+    'click #xroom_store_remove':'clickStoreRemove'
   
 
   #*******************
