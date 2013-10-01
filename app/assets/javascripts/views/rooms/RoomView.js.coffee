@@ -77,20 +77,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  #--------------------------
-  # get the sign in user  if exist
-  #--------------------------
-  getUserSignInCollection: ->
-    userSignInCollection = new Mywebroom.Collections.ShowSignedUserCollection()
-    userSignInCollection.fetch
-      async:false
-      success: (response)->
-        console.log("fetch userSignInCollection: "+userSignInCollection)
-        console.log(response)
-      error: ->
-        userSignInCollection = undefined
-        console.log("error fetch userSignInCollection "+userSignInCollection)
-    return userSignInCollection
 
 
   #--------------------------
