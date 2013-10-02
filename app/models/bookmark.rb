@@ -55,10 +55,8 @@ class Bookmark < ActiveRecord::Base
   validates :like, :numericality => { :only_integer => true }
 
 
-
-
   def id_and_bookmark
-    "#{id}. #{title} -iframe: #{i_frame} - #{bookmark_url}"
+    "Item:#{item_id}.#{item.name}   Bookmark: #{id}.#{title} -iframe: #{i_frame} - #{bookmark_url}"
   end
 
 

@@ -23,12 +23,12 @@
 
         <div class="field">
           <%= f.label :item_id %><br />
-          <%= f.collection_select :item_id, Item.all, :id, :id_and_item , :prompt => true  %>
+          <%= f.collection_select :item_id, Item.order(:id).all, :id, :id_and_item , :prompt => true  %>
         </div>
 
         <div class="field">
           <%= f.label :bookmark %><br />
-          <%= f.collection_select :bookmark_id, Bookmark.all, :id, :id_and_bookmark , :prompt => true  %>
+          <%= f.collection_select :bookmark_id, Bookmark.order(:item_id).all, :id, :id_and_bookmark , :prompt => true  %>
         </div>
 
 

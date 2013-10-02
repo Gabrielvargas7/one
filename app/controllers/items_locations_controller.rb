@@ -65,12 +65,37 @@ class ItemsLocationsController < ApplicationController
     @items_location = ItemsLocation.new(params[:items_location])
 
     respond_to do |format|
-      if @items_location.save
-        format.html { redirect_to @items_location, notice: 'Items location was successfully created.' }
-        format.json { render json: @items_location, status: :created, location: @items_location }
+
+      #if @items_location.save
+      #
+      #  format.html { redirect_to @items_location, notice: 'Items location was successfully created.' }
+      #  format.json { render json: @items_location, status: :created, location: @items_location }
+      #else
+      #  format.html { render action: "new" }
+      #  format.json { render json: @items_location.errors, status: :unprocessable_entity }
+      #end
+
+      if ItemsDesign.exists?(item_id:@items_location.item_id)
+
+        #ActiveRecord::Base.transaction do
+        #begin
+
+             if @items_location.save
+
+                format.html { redirect_to @items_location, notice: 'Items location was successfully created.' }
+
+             else
+               format.html { render action: "new" }
+             end
+
+        #rescue ActiveRecord::StatementInvalid
+        #  format.html { render action: "new" }
+        #  raise ActiveRecord::Rollback
+        #  end
+        #end
+
       else
-        format.html { render action: "new" }
-        format.json { render json: @items_location.errors, status: :unprocessable_entity }
+        format.html { render action: "new",notice: 'Error: you need to create a least one item design for the item element ' }
       end
     end
   end
@@ -78,7 +103,7 @@ class ItemsLocationsController < ApplicationController
   # PUT /items_locations/1
   # PUT /items_locations/1.json
   def update
-    @items_location = ItemsLocation.find(params[:id])
+    #@items_location = ItemsLocation.find(params[:id])
 
     respond_to do |format|
       if @items_location.update_attributes(params[:items_location])
@@ -94,8 +119,8 @@ class ItemsLocationsController < ApplicationController
   # DELETE /items_locations/1
   # DELETE /items_locations/1.json
   def destroy
-    @items_location = ItemsLocation.find(params[:id])
-    @items_location.destroy
+    #@items_location = ItemsLocation.find(params[:id])
+    #@items_location.destroy
 
     respond_to do |format|
       format.html { redirect_to items_locations_url }
