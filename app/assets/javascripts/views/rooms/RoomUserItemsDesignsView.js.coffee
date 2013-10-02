@@ -45,11 +45,12 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
 
     $(id_room_item_designs_container).css({
       'position': 'absolute',
-      'width':width,
-      'left':x,
-      'top':y,
-      'z-index':z
+      'width'   : width,
+      'left'    : x,
+      'top'     : y,
+      'z-index' : z
     })
+     
 
     this
 
