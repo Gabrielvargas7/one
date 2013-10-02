@@ -1,3 +1,6 @@
+###
+View that displays the SAVE, CANCEL, REMOVE buttons
+###
 class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
   #*******************
