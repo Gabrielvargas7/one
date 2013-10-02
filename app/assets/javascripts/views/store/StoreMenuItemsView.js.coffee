@@ -80,14 +80,23 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreItem: (event) ->
-    self = this
-    
+  clickStoreItem: (event) ->  
     event.preventDefault()
-    this.moveToItemsDesignsTab()
-    itemsDesignsCollection = this.getItemsDesignsCollection(this.model.get('id'))
-    this.appendItemsDesignsEntry(itemsDesignsCollection)
-    this.setItemToCenter(this.model)
+
+        
+    self   = this
+    itemId = @model.get("id")
+    
+    
+    
+    
+    
+    
+    
+    @moveToItemsDesignsTab()
+    itemsDesignsCollection = @getItemsDesignsCollection(itemId)
+    @appendItemsDesignsEntry(itemsDesignsCollection)
+    @setItemToCenter(@model)
     
     # $("li").removeClass() <-- this is messing up the stuff below. which class do we actually want to remove?
     
