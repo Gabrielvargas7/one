@@ -15,7 +15,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click .store_container_item':'clickStoreItem'
+    'click .store_container_item'     :'clickStoreItem'
     'mouseenter .store_container_item':'hoverStoreItem'
     'mouseleave .store_container_item':'hoverOffStoreItem'
 
