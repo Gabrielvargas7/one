@@ -145,7 +145,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
   
   removeObject: ->
-    console.log("remove object")
   
   #*******************
   #**** Functions  -save data
