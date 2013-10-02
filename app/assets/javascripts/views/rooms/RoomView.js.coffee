@@ -235,6 +235,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
+    ###
+    Hide all the elements whose data-room-hide property is yes
+    ###
+    $("[data-room-hide=yes]").hide()
   
   
   
