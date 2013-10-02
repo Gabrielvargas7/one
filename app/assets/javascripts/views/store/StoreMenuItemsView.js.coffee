@@ -109,17 +109,22 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     
     
     # SET THE MENUS
-    itemId = this.model.get('id')
-    categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection(itemId)
-    categories.fetch()
-    categories.on('sync', ->
-      model = this.first();
-      self.setCategories(model.get('items_designs_categories'))
-      self.setBrands(model.get('items_designs_brands'))
-      self.setStyles(model.get('items_designs_styles'))
-      self.setColors(model.get('items_designs_colors'))
-      self.setMakes(model.get('items_designs_makes'))
-    )
+    categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection()
+    categories.fetch
+      async  : false
+      url    : categories.url itemId
+      success: (response)->  
+        console.log("IndexItemsDesignsCategoriesByItemIdCollection fetch successful: ")
+        console.log(response)
+        myModel = categories.first();
+        self.setCategories(myModel.get('items_designs_categories'))
+        self.setBrands(myModel.get('items_designs_brands'))
+        self.setStyles(myModel.get('items_designs_styles'))
+        self.setColors(myModel.get('items_designs_colors'))
+        self.setMakes(myModel.get('items_designs_makes'))
+    
+    
+    
   #--------------------------
   # get the items designs data
   #--------------------------
