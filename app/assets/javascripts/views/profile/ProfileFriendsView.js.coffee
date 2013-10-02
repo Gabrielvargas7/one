@@ -13,7 +13,11 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
  render: ->
   tableHeaderHTML = JST['profile/ProfileGridTableHeader'](headerName:"Friends ("+@friendsCollection.length+")")
   $(@el).html(tableHeaderHTML)
-  @friendsCollection.forEach(@friendsAddView,this)
+  if @friendsCollection.length is 0
+    @template = JST['profile/ProfileNoFriendsTemplate']
+    $(@el).append @template()
+  else
+    @friendsCollection.forEach(@friendsAddView,this)
   this
  	
  friendsAddView: (friend) ->

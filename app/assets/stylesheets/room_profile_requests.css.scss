@@ -70,9 +70,11 @@ p.profile_friend_username{
 .profile_request_deny{
 	width:70px;
 	height:23px;
+}
+.profile_request_deny,.profile_key_requested{
 	font-size:15px;
 	background-color:#e2e2e2;
-	color:black;
+	color:#464646;
 	box-shadow: 0px 2px 0px 0px #c1c1c1;
 	border:none;
 }

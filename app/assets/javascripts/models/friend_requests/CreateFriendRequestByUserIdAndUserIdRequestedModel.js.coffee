@@ -3,4 +3,4 @@ class Mywebroom.Models.CreateFriendRequestByUserIdAndUserIdRequestedModel extend
 	@userId
 	@userIdRequested
 	url:(userId,userIdRequested)->
-		'/friend_requests/json/create_friend_request_by_user_id_and_user_id_requested/' + this.get('userId')+'/' + this.get('UserIdRequested') + '.json'
+		'/friend_requests/json/create_friend_request_by_user_id_and_user_id_requested/' + this.get('userId')+'/' + this.get('userIdRequested') + '.json'
