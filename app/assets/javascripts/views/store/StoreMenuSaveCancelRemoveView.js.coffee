@@ -130,8 +130,23 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     # Hide the Save, Cancel, Remove View
     $('#xroom_store_menu_save_cancel_remove').hide()
 
-
+  
+  
+  clickStoreRemove: (event) ->
+    self = this
+    event.preventDefault()
+    console.log("click Store Remove")
+    bootbox.confirm "Are you sure you want to remove this object?", (result) ->
+      if result
+        self.removeObject()
     
+    # Hide the Save, Cancel, Remove View
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
+  
+  removeObject: ->
+    console.log("remove object")
+  
   #*******************
   #**** Functions  -save data
   #*******************
