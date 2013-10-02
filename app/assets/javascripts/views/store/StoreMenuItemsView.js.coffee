@@ -29,7 +29,6 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #**** Render
   #*******************
   render: ->
-#    console.log("Store Menu Items View "+@model.get('id'))
     $(@el).append(@template(item:@model))
     this
 
