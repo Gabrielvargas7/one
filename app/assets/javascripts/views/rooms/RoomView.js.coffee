@@ -117,6 +117,12 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     @setRoom("#xroom_items_2")
     
     
+    ###
+    Hide all the elements whose data-room-hide property is yes
+    ###
+    $("[data-room-hide=yes]").hide()
+    
+    
     
     
     # Initialize Bookmarks Views
@@ -232,18 +238,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       view.render()
       view.undelegateEvents() if Mywebroom.State.get("roomState") is "PUBLIC"
     )
-    
-    
-    
-    ###
-    Hide all the elements whose data-room-hide property is yes
-    ###
-    $("[data-room-hide=yes]").hide()
   
   
   
   
-    
+  
   #-------------------------------
   # set bookmarks on the rooms.html
   #-------------------------------
