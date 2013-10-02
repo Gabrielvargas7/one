@@ -15,9 +15,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
 
   events:
-    'click #xroom_store_save'  :'clickStoreSave'
-    'click #xroom_store_cancel':'clickStoreCancel'
-    'click #xroom_store_remove':'clickStoreRemove'
+    'click #xroom_store_save'  :'clickSave'
+    'click #xroom_store_cancel':'clickCancel'
+    'click #xroom_store_remove':'clickRemove'
   
 
   #*******************
@@ -39,7 +39,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
   #**** Functions  -events
   #*******************
-  clickStoreSave: (event) ->
+  clickSave: (event) ->
     event.preventDefault()
     console.log("click Store Save")
     
@@ -119,7 +119,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
     
     
-  clickStoreCancel: (event) ->
+  clickCancel: (event) ->
     self = this
     event.preventDefault()
     console.log("click Store Cancel")
@@ -132,7 +132,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
   
   
-  clickStoreRemove: (event) ->
+  clickRemove: (event) ->
     self = this
     event.preventDefault()
     console.log("click Store Remove")
