@@ -52,6 +52,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     return itemsDesignsCollection
 
 
+
   collapseAll: ->
     # Add the collapse class
     $('#dropdown-object').addClass('collapse')
