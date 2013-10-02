@@ -82,6 +82,15 @@ ul.bookmark_menu_list {
 	border-bottom:1px solid #707070;
 	padding-bottom:2em;
 }
+.custom_bookmark_confirm_add_wrap{
+	display:none;
+	text-align:center;
+}
+.custom_bookmark_confirm_add_wrap img{
+	width:150px;
+	height:150px;
+	padding-bottom:5px;
+}
 /*END Discover Sub Menu Item Style*/
 .my_bookmarks_list_wrap, .discover_list_wrap{
 	height:100%;
@@ -212,5 +221,23 @@ div.just_added img{
 	position:absolute;
 	right:25px;
 	top:10px;
+}
+#bookmark_sidebar_preview_mode{
+	text-align:center;
+}
+.preview_mode_save_button,.save_site_button {
+	background-color:#0099cb;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:normal;
+	font-style:normal;
+	height:32px;
+	line-height:32px;
+	width:130px;
+	text-decoration:none;
+	text-align:center;
+	border-radius:3px;
 }
 /*END Bookmarks Preview Mode*/

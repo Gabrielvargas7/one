@@ -19,6 +19,12 @@
 				<input name="bookmark_title" placeholder="Bookmark Title">
 				<input type="image" name="submit_btn" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226577/bookmarks-icon-magnifying-glass-search.png">
 			</form>
+			<div class="custom_bookmark_confirm_add_wrap">
+				<!--img goes here-->
+
+				<!--Save Site Button default hidden-->
+				<div class="save_site_button">Save Site</div>
+			</div>
 		</div>
 	</div>
 </div>

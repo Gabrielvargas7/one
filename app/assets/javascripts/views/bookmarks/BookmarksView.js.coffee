@@ -126,19 +126,34 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #set .discover_bookmarks_bottom to 100% width minus the sidebar width
     $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
 
+#PreviewMode: we'll have previewView to correspond to discover_bookmarks
+#and browseMode to correspond to my_bookmarks
   previewMode:(event)->
-    #we'll have previewView to correspond to discover_bookmarks
-    #and browseMode to correspond to my_bookmarks
     #open in iframe
-    bookmarkClicked=@discoverCollection.get(event.currentTarget.dataset.id)
+    bookmarkClicked= @discoverCollection.get(event.currentTarget.dataset.id)
     urlToOpen= bookmarkClicked.get('bookmark_url')
+    
+    #Create Sidebar Interface
     if bookmarkClicked.get('i_frame') is 'y'
       previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
-      #Edit sidebar menu 
-      #hide categories
       $(@el).append(previewModeView.render().el)
       previewModeView.once('closedView',@closePreviewMode,this)
-      
+
+      #Add Site to My Bookmarks from Preview Mode
+      previewModeView.on('PreviewMode:saveSite',((bookmarkClick)->
+        
+        postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:bookmarkClick.get('item_id'), bookmarkId:bookmarkClick.get('id'),userId:Mywebroom.State.get('signInUser').get('id')})
+        lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
+        postBookmarkModel.set 'position',lastBookmarkPosition+1   
+        postBookmarkModel.save {},
+          success: (model, response)->
+            console.log('postBookmarkModel SUCCESS:')
+            console.log(response)
+          error: (model, response)->
+                console.log('postBookmarkModel FAIL:')
+                console.log(response)
+
+      ),this)
       console.log(bookmarkClicked)
     else
       window.open urlToOpen,"_blank" 
@@ -167,21 +182,29 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       src = "http://img.bitpixels.com/getthumbnail?code=67736&size=200&url=" + customURL
       customBookmark = new Mywebroom.Models.CreateCustomUserBookmarkByUserId()
       customBookmark.set
-        'userId':event.data.that.options.user.id
+        'userId':Mywebroom.State.get('signInUser').get('id')
         'bookmark_url':customURL
         'title':title
         'image_name':src
-        'item_id': event.data.that.options.user_item_design.item_id
+        'item_id': event.data.that.options.user_item_design.user_item_design
         'position':parseInt(event.data.that.collection.last().get('position'))+1
         'bookmarks_category_id':event.data.that.discoverCategoriesCollection.first().get('id')
       console.log customBookmark
-      customBookmark.save {},
+      #We want to just display picture now. If click Save Site is clicked, then save the model
+      $('.custom_bookmark_confirm_add_wrap').prepend('<img src="'+customBookmark.get('image_name')+'">')
+      $('.custom_bookmark_confirm_add_wrap').show()
+      $('.save_site_button').on('click',{customBookmark},((event)->
+        event.stopPropagation()
+        event.data.customBookmark.save {},
         success: (model, response)->
           console.log('post CUSTOM BookmarkModel SUCCESS:')
           console.log(response)
         error: (model, response)->
               console.log('post CUSTOM BookmarkModel FAIL:')
               console.log(response)
+        #After 5 seconds, clear form and remove image?
+        ))
+      
     else
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
