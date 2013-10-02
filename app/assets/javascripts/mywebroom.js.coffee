@@ -20,7 +20,7 @@ $(document).ready ->
       signInState   : false     # Boolean: Is the user signed in?
       signInUser    : false     # Backbone Model of signed-in user, or false
       signInData    : false     # Backbone Model of signed-in user's data, or false
-      roomHeaderView: null
+      roomHeaderView: null      # A reference to this view
   })
   
   
