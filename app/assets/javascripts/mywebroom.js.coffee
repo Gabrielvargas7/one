@@ -24,6 +24,7 @@ $(document).ready ->
   })
   
   
+  
   # Listen to changes of room state
   Mywebroom.State.on("change:roomState", ->
     # We need to wait for the DOM to be ready before doing anything with the elements on the page
