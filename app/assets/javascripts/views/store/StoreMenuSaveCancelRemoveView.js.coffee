@@ -176,7 +176,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
 
   saveNewItems: ->
-    userItemsDesignsList = this.options.signInUserDataModel.get('user_items_designs')
+    userItemsDesignsList = Mywebroom.State.get("roomData")
     length = userItemsDesignsList.length
     i = 0
     while i < length
@@ -194,8 +194,11 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id_current",itemDesignIdNew)
         $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'current')
 
-        userId      = this.options.signInUserDataModel.get('user').id
+ 
+        userId = Mywebroom.State.get("roomUser").get("id")
+        
         updateItem = new Mywebroom.Models.UpdateUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({new_items_design_id:itemDesignIdNew, _id: userId})
+        
         updateItem.location_id    = itemLocationId
         updateItem.item_design_id = itemDesignIdCurrent
         updateItem.user_id        = userId
