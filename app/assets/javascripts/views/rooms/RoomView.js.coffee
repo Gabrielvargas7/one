@@ -233,6 +233,13 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       view.undelegateEvents() if Mywebroom.State.get("roomState") is "PUBLIC"
     )
     
+    
+    
+  
+  
+  
+  
+    
   #-------------------------------
   # set bookmarks on the rooms.html
   #-------------------------------
