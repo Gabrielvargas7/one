@@ -38,18 +38,6 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #*******************
 
 
-  #--------------------------
-  # get the items designs data
-  #--------------------------
-  getItemsDesignsCollection: (item_id) ->
-    itemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
-    itemsDesignsCollection.fetch
-      async:false
-      url:itemsDesignsCollection.url item_id
-      success:(response) ->
-        console.log("items designs fetch successful: ")
-        console.log(response)
-    return itemsDesignsCollection
 
 
 
@@ -122,6 +110,20 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
       self.setColors(model.get('items_designs_colors'))
       self.setMakes(model.get('items_designs_makes'))
     )
+  #--------------------------
+  # get the items designs data
+  #--------------------------
+  getItemsDesignsCollection: (item_id)->
+    itemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
+    itemsDesignsCollection.fetch
+      async  : false
+      url    : itemsDesignsCollection.url item_id
+      success: (response)->
+        console.log("items designs fetch successful: ")
+        console.log(response)
+    
+    return itemsDesignsCollection
+    
     
 
   setCategories: (categories) ->
