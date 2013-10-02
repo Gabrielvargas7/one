@@ -4,7 +4,7 @@ class Mywebroom.Views.ProfileFriendsSingleView extends Backbone.View
 	events:
 		'click .profile_unfriend':'unfriendConfirm'
 	render: ->
-		$(@el).html(@template(model:@model,PUBLIC_FLAG:this.options.PUBLIC_FLAG))
+		$(@el).html(@template(model:@model,PUBLIC_FLAG:Mywebroom.State.get('roomState')))
 	unfriendConfirm:(event)->
 		event.stopPropagation()
 		modalHTML = JST['profile/ProfileConfirmUnfriendModal'](model:@model)

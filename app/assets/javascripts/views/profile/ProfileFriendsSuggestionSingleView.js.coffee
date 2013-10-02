@@ -18,3 +18,7 @@ class Mywebroom.Views.ProfileFriendsSuggestionSingleView extends Backbone.View
 		error: (model, response)->
 		  console.log('post requestKey FAIL:')
 		  console.log(response)
+		#Rerender view with request sent info. 
+		#Key Requested Button Template.
+		@template = JST['profile/ProfileFriendsSuggestionSingleRequestedTemplate']
+		@render() 

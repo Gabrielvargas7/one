@@ -95,4 +95,7 @@ footer ul li {
 .social_bar .navbar{
     border-spacing:0;
 }
+.dark_text{
+    color:#464646;
+}
 /*End social bar style*/

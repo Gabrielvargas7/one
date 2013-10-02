@@ -4,7 +4,7 @@
 	<ul class="dropdown-menu profile_friends_dropdown_menu">
 		<li><a href='/room/<%=@model.get('username')%>'>View Room</a></li>
 		<!-- if friend or public, don't show Unfriend -->
-		<%if @.PUBLIC_FLAG is 'MY_ROOM':%>
+		<%if @.PUBLIC_FLAG is 'SELF':%>
 			<li><a href='#' class="profile_unfriend">Unfriend</a></li>
 		<%end%>
 	</ul>
