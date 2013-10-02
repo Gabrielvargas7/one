@@ -109,12 +109,13 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
                 Mywebroom.State.set("signInData", dataCollection.first())
               
         
-
-
+    
+    
     # Place items in the room
     @setRoom("#xroom_items_0")
     @setRoom("#xroom_items_1")
     @setRoom("#xroom_items_2")
+    
     
     
     
@@ -123,20 +124,23 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
+    
     # Create and render Header View
     roomHeaderView = new Mywebroom.Views.RoomHeaderView()
     $("#xroom_header").append(roomHeaderView.el)
     roomHeaderView.render()
     Mywebroom.State.set("roomHeaderView", roomHeaderView)
-
-
-
-
+    
+    
+    
+    
     # Create and render Save, Cancel, Remove View
     storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
     $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)
     $("#xroom_store_menu_save_cancel_remove").hide()
     storeMenuSaveCancelRemoveView.render()
+    
+    
     
     
     # Add Images to the Save, Cancel, Remove View
@@ -148,16 +152,22 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_store_cancel").prepend(storeCancelButton)
     
     
+    
+    
     # Create and render Left Scroller View
     roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView()
     $("#xroom_scroll_left").append(roomScrollLeftView.el)
     roomScrollLeftView.render()
-
-
+    
+    
+    
+    
     # Create and render Right Scroller View
     roomScrollRightView = new Mywebroom.Views.RoomScrollRightView()
     $("#xroom_scroll_right").append(roomScrollRightView.el)
     roomScrollRightView.render()
+    
+    
     
     
     # Create and render Browse Mode View
@@ -166,21 +176,30 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_bookmarks_browse_mode").hide()
     @browseModeView.render()
     
-
+    
+    
+    
     # Center the windows and remove the scroll
     $(window).scrollLeft(0)
     $("body").css("overflow-x", "hidden");
-
-
+    
+    
+    
+    
     # Set up a listener for the BrowseMode:open event
     Mywebroom.App.vent.on("BrowseMode:open", ((event)->
       @changeBrowseMode(event.model)), self)
+    
+    
     
     
     # Create and render the Footer View
     roomFooterView = new Mywebroom.Views.RoomFooterView()
     $('#xroom_footer').append(roomFooterView.el)
     roomFooterView.render()
+    
+    
+    
     
     # Return the view
     @
@@ -194,15 +213,16 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_bookmarks_browse_mode").show()
     $(".browse_mode_view").show()
     @browseModeView.activeSiteChange(model)
-
-
-
+  
+  
+  
    
     
   #--------------------------
   # set room on the rooms.html
   #--------------------------
   setRoom: (xroom_item_num) ->    
+    
     $(xroom_item_num).append(@template(user_theme: Mywebroom.State.get("roomTheme")))
     
     
