@@ -12,15 +12,15 @@ $(document).ready ->
   # Create the state model
   Mywebroom.State = new Backbone.Model({
     defaults:
-      roomState     : "initial" # Who's room are we viewing? PUBLIC, FRIEND, or SELF
+      roomState     : false     # Who's room are we viewing? PUBLIC, FRIEND, or SELF
       roomUser      : false     # Backbone Model of room user, or false
       roomData      : false     # Backbone Model of room data, or false
-      roomDesigns   : []        # Array of item designs, or empty array
-      roomTheme     : {}        # Object containing info on room's theme
+      roomDesigns   : false     # Array of item designs, or empty array
+      roomTheme     : false     # Object containing info on room's theme
       signInState   : false     # Boolean: Is the user signed in?
       signInUser    : false     # Backbone Model of signed-in user, or false
       signInData    : false     # Backbone Model of signed-in user's data, or false
-      roomHeaderView: null      # A reference to this view
+      roomHeaderView: false     # A reference to this view
   })
   
   
