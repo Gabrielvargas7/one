@@ -15,8 +15,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
 
   events:
-    'click #xroom_store_save'  :'clickStoreSave',
+    'click #xroom_store_save'  :'clickStoreSave'
     'click #xroom_store_cancel':'clickStoreCancel'
+    'click #xroom_store_remove':'clickStoreRemove'
   
 
   #*******************
@@ -70,25 +71,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     this.saveNewTheme()
     this.saveNewItems()
     
-    
-    
-  saveTheme: ->  
-    # Capture all the changed themes
-    $('[data-room_theme=' + "new" + ']')
-  
-    # And iterate over them
-    .each( ->
-      # Capture the old src
-      src = $(@).attr("data-room-theme-src")
-    
-      $(@)
-      # Replace the changed source
-      .attr("src", src)
-    
-    
-      # And change the status back to current
-      .attr("data-room_theme", "current")
-    )
   
     
   revert: ->
@@ -137,11 +119,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
     
     
-
-    
-    
-    
-    
   clickStoreCancel: (event) ->
     self = this
     event.preventDefault()
@@ -153,8 +130,23 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     # Hide the Save, Cancel, Remove View
     $('#xroom_store_menu_save_cancel_remove').hide()
 
-
+  
+  
+  clickStoreRemove: (event) ->
+    self = this
+    event.preventDefault()
+    console.log("click Store Remove")
+    bootbox.confirm "Are you sure you want to remove this object?", (result) ->
+      if result
+        self.removeObject()
     
+    # Hide the Save, Cancel, Remove View
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
+  
+  removeObject: ->
+    console.log("remove object")
+  
   #*******************
   #**** Functions  -save data
   #*******************
