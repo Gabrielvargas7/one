@@ -57,11 +57,7 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     
     
     
-    
-    
-    
-    
-    
+        
     
     
     # Show the Save, Cancel, Remove view
