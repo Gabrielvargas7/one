@@ -1,3 +1,6 @@
+###
+This view represents a clickable design in the room
+###
 class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
 
   #*******************
