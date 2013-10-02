@@ -1,0 +1,11 @@
+<div class="search_container">
+  <div
+    class="search_container_entity"
+    data-id_search_entity_id="search_entity_container_id_<%=@entity.get('id')%>"
+  >
+
+        <%= @entity.get('id') %>
+
+
+  </div>
+</div>

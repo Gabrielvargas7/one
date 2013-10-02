@@ -8,7 +8,21 @@ class ShopController < ApplicationController
     #@items = Item.paginate(page: params[:page], :per_page => 10)
     #@items = Item.paginate(page: params[:page]).order('id')
 
-    @items = Item.order(:priority_order,:name).all
+    #@items = Item.order(:priority_order,:name).all
+
+    @items = Item.joins(:items_locations).
+        select('items.*,
+                  locations.z,
+                  locations.x,
+                  locations.y,
+                  locations.height,
+                  locations.width,
+                  locations.section_id').
+        joins('LEFT OUTER JOIN locations  ON locations.id = items_locations.location_id').
+        order(:priority_order,:name).all
+
+
+
     if @items.length < 4
       @item_length = @items.length
     else

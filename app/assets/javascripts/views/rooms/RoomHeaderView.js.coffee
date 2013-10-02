@@ -306,6 +306,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
+
+
   focusOutSearchTextBox:(event)->
     event.preventDefault()
     event.stopPropagation()
