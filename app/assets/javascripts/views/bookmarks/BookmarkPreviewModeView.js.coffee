@@ -29,6 +29,6 @@ class Mywebroom.Views.BookmarkPreviewModeView extends Backbone.View
 		event.preventDefault()
 		event.data.that.trigger('PreviewMode:saveSite',event.data.that.model)
 		#replace Save Site button with Saved button.
-		savedButtonHTML = JST['bookmarks/PreviewModeSaved']()
+		#savedButtonHTML = JST['bookmarks/PreviewModeSaved']()
 		$('.preview_mode_saved').show()
 		$('.preview_mode_save_button').hide()
