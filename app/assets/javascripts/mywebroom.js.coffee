@@ -21,8 +21,15 @@ $(document).ready ->
       signInUser    : false     # Backbone Model of signed-in user, or false
       signInData    : false     # Backbone Model of signed-in user's data, or false
       roomHeaderView: false     # A reference to this view
+      $activeDesign : false     # A refernce to the element of the design in focus*
   })
   
+  ###
+  *At the present, this gets set when either the object this design
+   belongs to is clicked from the store, or a new design was
+   chosen from the store. Would probably be good to have this
+   get set when a room design is click directly.
+  ###
   
   
   # Listen to changes of room state
