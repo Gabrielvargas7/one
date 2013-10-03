@@ -30,23 +30,11 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   initialize: ->
     #fetch bookmark data
-    @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
-    @collection.fetch
-      async:false
-      url:@collection.url this.options.user, this.options.user_item_design
-      success:(response) ->
-        console.log("bookmark fetch successful: ")
-        console.log(response)
-    #@categoryCollection = new Mywebroom.Collections.
-    @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
-    @discoverCategoriesCollection.fetch
-      async:false
-      url: @discoverCategoriesCollection.url this.options.user_item_design
-      success:(response) ->
-        console.log("categories fetch successful: ")
-        console.log(response)
+    @getMyBookmarksCollection() #Referred as @collection
+    @getDiscoverCategoriesCollection() #referred as @discoverCategoriesCollection
+    
     self= this
-    Mywebroom.App.vent.on('BrowseMode:closeBookmarkView',@browseMode,self)
+    Mywebroom.App.vent.on('BrowseMode:closeBookmarkView',@closeView,self)
   #*******************
   #**** Render
   #*******************
@@ -61,6 +49,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
   renderDiscover:->
+    @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
     $('.discover_submenu_section').removeClass('hidden')
@@ -86,7 +75,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
     $('#add_your_own_form').submit({that},@addCustomBookmark)
+
   renderMyBookmarks:->
+    @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
     $('.discover_submenu_section').addClass('hidden')
@@ -126,19 +117,44 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #set .discover_bookmarks_bottom to 100% width minus the sidebar width
     $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
 
+#PreviewMode: we'll have previewView to correspond to discover_bookmarks
+#and browseMode to correspond to my_bookmarks
   previewMode:(event)->
-    #we'll have previewView to correspond to discover_bookmarks
-    #and browseMode to correspond to my_bookmarks
     #open in iframe
-    bookmarkClicked=@discoverCollection.get(event.currentTarget.dataset.id)
+    bookmarkClicked= @discoverCollection.get(event.currentTarget.dataset.id)
     urlToOpen= bookmarkClicked.get('bookmark_url')
+    
+    #Create Sidebar Interface
     if bookmarkClicked.get('i_frame') is 'y'
-      previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
-      #Edit sidebar menu 
-      #hide categories
-      $(@el).append(previewModeView.render().el)
-      previewModeView.once('closedView',@closePreviewMode,this)
-      
+      @previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
+      $(@el).append(@previewModeView.render().el)
+      @previewModeView.once('closedView',@closePreviewMode,this)
+
+      #Add Site to My Bookmarks from Preview Mode
+      @previewModeView.on('PreviewMode:saveSite',((bookmarkClick)->
+        
+        #Need to fetch MyBookmarks to get an accurate last position
+        #If I've added 2 bookmarks from discover, then preview, then save site, 
+        #    the position count is not accurate and save doesn't work.
+        @collection.fetch
+          async:false
+          url:@collection.url this.options.user, this.options.user_item_design
+          success:(response) ->
+            console.log("bookmark fetch successful: ")
+            console.log(response)
+
+        postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:bookmarkClick.get('item_id'), bookmarkId:bookmarkClick.get('id'),userId:Mywebroom.State.get('signInUser').get('id')})
+        lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
+        postBookmarkModel.set 'position',lastBookmarkPosition+1   
+        postBookmarkModel.save {},
+          success: (model, response)->
+            console.log('postBookmarkModel SUCCESS:')
+            console.log(response)
+          error: (model, response)->
+                console.log('postBookmarkModel FAIL:')
+                console.log(response)
+
+      ),this)
       console.log(bookmarkClicked)
     else
       window.open urlToOpen,"_blank" 
@@ -167,23 +183,48 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       src = "http://img.bitpixels.com/getthumbnail?code=67736&size=200&url=" + customURL
       customBookmark = new Mywebroom.Models.CreateCustomUserBookmarkByUserId()
       customBookmark.set
-        'userId':event.data.that.options.user.id
+        'userId':Mywebroom.State.get('signInUser').get('id')
         'bookmark_url':customURL
         'title':title
         'image_name':src
-        'item_id': event.data.that.options.user_item_design.item_id
+        'item_id': event.data.that.options.user_item_design
         'position':parseInt(event.data.that.collection.last().get('position'))+1
         'bookmarks_category_id':event.data.that.discoverCategoriesCollection.first().get('id')
       console.log customBookmark
-      customBookmark.save {},
+      #We want to just display picture now. If click Save Site is clicked, then save the model
+      $('.custom_bookmark_confirm_add_wrap').prepend('<img src="'+customBookmark.get('image_name')+'">')
+      $('.custom_bookmark_confirm_add_wrap').show()
+      $('.save_site_button').on('click',{customBookmark},((event)->
+        event.stopPropagation()
+        event.data.customBookmark.save {},
         success: (model, response)->
           console.log('post CUSTOM BookmarkModel SUCCESS:')
           console.log(response)
         error: (model, response)->
               console.log('post CUSTOM BookmarkModel FAIL:')
               console.log(response)
+        #After 5 seconds, clear form and remove image?
+        ))  
     else
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
+  
+  getMyBookmarksCollection:->
+    @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
+    @collection.fetch
+      async:false
+      url:@collection.url this.options.user, this.options.user_item_design
+      success:(response) ->
+        console.log("bookmark fetch successful: ")
+        console.log(response)
+
+  getDiscoverCategoriesCollection:->
+    @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
+    @discoverCategoriesCollection.fetch
+      async:false
+      url: @discoverCategoriesCollection.url this.options.user_item_design
+      success:(response) ->
+        console.log("categories fetch successful: ")
+        console.log(response)
   closeView:->
     this.remove()
