@@ -195,12 +195,20 @@ div.just_added img{
 	right:0;
 }
 .my_bookmarks_more_square{
-	background-color:#6b6b6b;
-	color:white;
-	font-size:35px;
+    background-color: #707070;
+	height: 180px;
+	width: 180px;
+	color: white;
+	padding:0;
+	margin: 0;
 	text-align: center;
-	font-weight:lighter;
-	display:table
+	font-size: 35px;
+	position: relative;
+}
+.my_bookmarks_more_square p{
+	top: 40%;
+	width: 100%;
+	position: absolute;
 }
 /*END My Bookmarks Grid Items*/
 /*Bookmarks Preview Mode*/

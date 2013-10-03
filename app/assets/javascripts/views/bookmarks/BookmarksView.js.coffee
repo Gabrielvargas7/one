@@ -30,21 +30,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   initialize: ->
     #fetch bookmark data
-    @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
-    @collection.fetch
-      async:false
-      url:@collection.url this.options.user, this.options.user_item_design
-      success:(response) ->
-        console.log("bookmark fetch successful: ")
-        console.log(response)
-    #@categoryCollection = new Mywebroom.Collections.
-    @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
-    @discoverCategoriesCollection.fetch
-      async:false
-      url: @discoverCategoriesCollection.url this.options.user_item_design
-      success:(response) ->
-        console.log("categories fetch successful: ")
-        console.log(response)
+    @getMyBookmarksCollection() #Referred as @collection
+    @getDiscoverCategoriesCollection() #referred as @discoverCategoriesCollection
+    
     self= this
     Mywebroom.App.vent.on('BrowseMode:closeBookmarkView',@closeView,self)
   #*******************
@@ -61,6 +49,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
   renderDiscover:->
+    @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
     $('.discover_submenu_section').removeClass('hidden')
@@ -86,7 +75,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
     $('#add_your_own_form').submit({that},@addCustomBookmark)
+
   renderMyBookmarks:->
+    @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
     $('.discover_submenu_section').addClass('hidden')
@@ -135,13 +126,23 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     
     #Create Sidebar Interface
     if bookmarkClicked.get('i_frame') is 'y'
-      previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
-      $(@el).append(previewModeView.render().el)
-      previewModeView.once('closedView',@closePreviewMode,this)
+      @previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
+      $(@el).append(@previewModeView.render().el)
+      @previewModeView.once('closedView',@closePreviewMode,this)
 
       #Add Site to My Bookmarks from Preview Mode
-      previewModeView.on('PreviewMode:saveSite',((bookmarkClick)->
+      @previewModeView.on('PreviewMode:saveSite',((bookmarkClick)->
         
+        #Need to fetch MyBookmarks to get an accurate last position
+        #If I've added 2 bookmarks from discover, then preview, then save site, 
+        #    the position count is not accurate and save doesn't work.
+        @collection.fetch
+          async:false
+          url:@collection.url this.options.user, this.options.user_item_design
+          success:(response) ->
+            console.log("bookmark fetch successful: ")
+            console.log(response)
+
         postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:bookmarkClick.get('item_id'), bookmarkId:bookmarkClick.get('id'),userId:Mywebroom.State.get('signInUser').get('id')})
         lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
         postBookmarkModel.set 'position',lastBookmarkPosition+1   
@@ -203,10 +204,27 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
               console.log('post CUSTOM BookmarkModel FAIL:')
               console.log(response)
         #After 5 seconds, clear form and remove image?
-        ))
-      
+        ))  
     else
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
+  
+  getMyBookmarksCollection:->
+    @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
+    @collection.fetch
+      async:false
+      url:@collection.url this.options.user, this.options.user_item_design
+      success:(response) ->
+        console.log("bookmark fetch successful: ")
+        console.log(response)
+
+  getDiscoverCategoriesCollection:->
+    @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
+    @discoverCategoriesCollection.fetch
+      async:false
+      url: @discoverCategoriesCollection.url this.options.user_item_design
+      success:(response) ->
+        console.log("categories fetch successful: ")
+        console.log(response)
   closeView:->
     this.remove()
