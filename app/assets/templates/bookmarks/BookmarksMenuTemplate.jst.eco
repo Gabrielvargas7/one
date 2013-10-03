@@ -1,5 +1,5 @@
 <div class="bookmark_menu">
-	<p class="bookmark_object_title bottom_border_padding"><%=@user_item_design.items_name%> Bookmarks</p>
+	<p class="bookmark_object_title bottom_border_padding"><%=@design.items_name%> Bookmarks</p>
 	<ul class="bookmark_menu_list">
 		<a href="#"><li id="my_bookmarks_menu_item">My Bookmarks</li></a>
 		<a href="#"><li id="discover_menu_item">Discover</li></a>

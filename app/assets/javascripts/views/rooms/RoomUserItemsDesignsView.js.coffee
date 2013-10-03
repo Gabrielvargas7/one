@@ -85,7 +85,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     @displayBookmark()
 
     if @design.clickable is "yes"
-      bookmarksView = new Mywebroom.Views.BookmarksView({ user_item_design: @design.item_id, user: Mywebroom.State.get("roomUser").get("id") })
+      bookmarksView = new Mywebroom.Views.BookmarksView({design:@design,user_item_design: @design.item_id, user: Mywebroom.State.get("roomUser").get("id") })
       
       self = this
       $('#room_bookmark_item_id_container_' + @design.item_id).append(bookmarksView.el)
