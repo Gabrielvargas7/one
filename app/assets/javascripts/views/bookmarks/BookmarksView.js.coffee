@@ -22,7 +22,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     'click img.trash_icon':'clickTrash'
     'click .discover_submenu':'showCategory'
     'click .discover_bookmarks_bottom .bookmark_grid_item':'previewMode'
-
+    'click .my_bookmarks_more_square_wrap':'renderDiscover'
   }
   #*******************
   #**** Functions  Initialize Room
@@ -48,7 +48,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
-  renderDiscover:->
+  renderDiscover:(event)->
+    event.stopPropagation if event
     @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
