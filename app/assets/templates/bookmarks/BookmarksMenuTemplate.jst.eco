@@ -23,7 +23,7 @@
 				<!--img goes here-->
 
 				<!--Save Site Button default hidden-->
-				<div class="save_site_button">Save Site</div>
+				<a><div class="save_site_button">Save Site</div></a>
 			</div>
 		</div>
 	</div>

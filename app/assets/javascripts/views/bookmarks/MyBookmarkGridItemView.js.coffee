@@ -11,6 +11,9 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
 	events:
 		'click .trash_icon_hover':'confirmDeleteBookmark'
 		'click .gridItemPicture.my_bookmarks_grid_item':'triggerBrowseMode'
+	initialize:->
+		if @model.get('title') is "MYWEBROOM_LAST"
+			@template = JST['bookmarks/MyBookmarksMoreSquareTemplate']
 	#*******************
     #**** Render
     #*******************

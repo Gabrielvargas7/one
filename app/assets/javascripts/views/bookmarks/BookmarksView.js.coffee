@@ -186,7 +186,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         'bookmark_url':customURL
         'title':title
         'image_name':src
-        'item_id': event.data.that.options.user_item_design.user_item_design
+        'item_id': event.data.that.options.user_item_design
         'position':parseInt(event.data.that.collection.last().get('position'))+1
         'bookmarks_category_id':event.data.that.discoverCategoriesCollection.first().get('id')
       console.log customBookmark
