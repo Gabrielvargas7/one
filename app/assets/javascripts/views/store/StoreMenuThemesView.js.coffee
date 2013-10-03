@@ -15,7 +15,7 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click .store_container_theme':'clickStoreTheme'
+    'click .store_container_theme'     :'clickStoreTheme'
     'mouseenter .store_container_theme':'hoverStoreTheme'
     'mouseleave .store_container_theme':'hoverOffStoreTheme'
 
@@ -54,8 +54,16 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
     $('#xroom_store_menu_save_cancel_remove').show()
     
     
+    # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+    # Show the save button
+    $('#xroom_store_save').show()
+    
+    # Show the cancel button
+    $('#xroom_store_cancel').show()
+    
     # Hide the remove button
     $('#xroom_store_remove').hide()
+    
     
     
     $('.current_background').attr("src", imageName);

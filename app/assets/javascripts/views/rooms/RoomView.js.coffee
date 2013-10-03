@@ -135,6 +135,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     roomHeaderView = new Mywebroom.Views.RoomHeaderView()
     $("#xroom_header").append(roomHeaderView.el)
     roomHeaderView.render()
+    
+    # Save a reference in to the state model
     Mywebroom.State.set("roomHeaderView", roomHeaderView)
     
     
@@ -145,6 +147,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)
     $("#xroom_store_menu_save_cancel_remove").hide()
     storeMenuSaveCancelRemoveView.render()
+    
+    # Save a reference to the state model
+    Mywebroom.State.set("storeMenuSaveCancelRemoveView", storeMenuSaveCancelRemoveView)
     
     
     
@@ -165,6 +170,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_scroll_left").append(roomScrollLeftView.el)
     roomScrollLeftView.render()
     
+    # Save a reference to the state model
+    Mywebroom.State.set("roomScrollLeftView", roomScrollLeftView)
+    
     
     
     
@@ -172,6 +180,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     roomScrollRightView = new Mywebroom.Views.RoomScrollRightView()
     $("#xroom_scroll_right").append(roomScrollRightView.el)
     roomScrollRightView.render()
+    
+    # Save a reference to the state model
+    Mywebroom.State.set("roomScrollRightView", roomScrollRightView)
     
     
     
@@ -181,6 +192,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_bookmarks_browse_mode").append(@browseModeView.el)
     $("#xroom_bookmarks_browse_mode").hide()
     @browseModeView.render()
+    
+    # Save a reference to the state model
+    Mywebroom.State.set("browseModeView", @browseModeView)
     
     
     
@@ -203,6 +217,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     roomFooterView = new Mywebroom.Views.RoomFooterView()
     $('#xroom_footer').append(roomFooterView.el)
     roomFooterView.render()
+    
+    # Save a reference to the state model
+    Mywebroom.State.set("roomFooterView", roomFooterView)
     
     
     

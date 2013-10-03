@@ -70,14 +70,17 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     # Show the Save, Cancel, Remove view
     $("#xroom_store_menu_save_cancel_remove").show()
     
-    # Hide the Remove button
-    $("#xroom_store_remove").hide()
     
-    # Show the Save button
-    $("#xroom_store_save").show()
+    # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+    # Show the save button
+    $('#xroom_store_save').show()
     
-    # Show the Cancel button
-    $("#xroom_store_cancel").show()
+    # Show the cancel button
+    $('#xroom_store_cancel').show()
+    
+    # Hide the remove button
+    $('#xroom_store_remove').hide()
+    
     
 
     

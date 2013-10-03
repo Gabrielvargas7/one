@@ -15,7 +15,7 @@ class Mywebroom.Views.StoreMenuBundlesView  extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click .store_container_bundle':'clickStoreBundle'
+    'click .store_container_bundle'     :'clickStoreBundle'
     'mouseenter .store_container_bundle':'hoverStoreBundle'
     'mouseleave .store_container_bundle':'hoverOffStoreBundle'
 
@@ -70,8 +70,17 @@ class Mywebroom.Views.StoreMenuBundlesView  extends Backbone.View
     # Show the view with the Save, Cancel, Remove buttons
     $('#xroom_store_menu_save_cancel_remove').show()
     
+    
+    # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+    # Show the save button
+    $('#xroom_store_save').show()
+    
+    # Show the cancel button
+    $('#xroom_store_cancel').show()
+    
     # Hide the remove button
     $('#xroom_store_remove').hide()
+    
     
     bundleItemsDesignsCollection = this.getBundleItemDesignsCollection(@model.get('id'))
 
