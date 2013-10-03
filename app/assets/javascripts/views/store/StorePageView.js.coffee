@@ -66,6 +66,9 @@ class Mywebroom.Views.StorePageView extends Backbone.View
     # Menu is open
     if $('#store_collapse_button img').hasClass('flipimg')
       
+      # Capture State of Save, Cancel, Remove View
+      @visible = $('#xroom_store_menu_save_cancel_remove').is(":visible")
+      
       # Hide the Save, Cancel, Remove view
       $('#xroom_store_menu_save_cancel_remove').hide()
       
@@ -77,8 +80,8 @@ class Mywebroom.Views.StorePageView extends Backbone.View
       $('#store_collapse_button img').removeClass('flipimg') # Button returns to facing the right
     else # Menu is collapsed
       
-      # Show the Save, Cancel, Remove view
-      $('#xroom_store_menu_save_cancel_remove').show()
+      # Show Save, Cancel, Remove view if it was previously visible
+      $('#xroom_store_menu_save_cancel_remove').show() if @visible
       
       # DON'T ALTER STATE OF SAVE, CANCEL, REMOVE BUTTONS
       
