@@ -8,6 +8,9 @@ class Mywebroom.Routers.RoomsRouter extends Backbone.Router
     # Create the main view
     view = new Mywebroom.Views.RoomView()
     
+    # Save a reference in the state model
+    Mywebroom.State.set("roomView", view)
+    
     # FIXME - This isn't necessary because RoomView() isn't so much a view as a setup method
     # Render and attach to main div
     # Mywebroom.App.xroom_main_container.show(view)
