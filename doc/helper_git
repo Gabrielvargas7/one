@@ -60,3 +60,35 @@
     git clone  git@github.com:Gabrielvargas7/sample_app.git
     // check is there
     git remote -v
+    
+    
+    
+    
+
+********************
+** How to update local database
+********************
+
+1) Stop local instance of rails server
+
+2) Close PostgreSQL server
+    a) Open pgAdmin3
+    b) Right click on server instance and click 'Disconect server'
+    
+2) Download new database
+    a) From project root (any branch) type into console:  heroku pgbackups:url --remote staging
+    b) Copy generated link into browser (Note: link only good for a few minutes)
+        i) new copy of database will be downloaded
+        
+3) Drop existing database and create a new one
+    a) From project root type into console:  rake db:create
+    b) Then:  rake db:create
+    
+4) Restore database
+    a) Go back to pgAdmin3
+    b) Sign onto server
+    c) Navigate to room_development
+    d) Right click and choose 'restore'
+    e) Choose file that was downloaded
+
+*** You're Done! ***
