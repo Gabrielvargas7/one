@@ -214,8 +214,8 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 # add old user the new item
 ########################
 
-item_id = 25
-location_id = 25
-SeedUpdateUserModule.InsertNewItemsTooldUser(item_id,location_id)
+#item_id = 25
+#location_id = 25
+#SeedUpdateUserModule.InsertNewItemsTooldUser(item_id,location_id)
 
 
