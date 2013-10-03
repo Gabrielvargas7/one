@@ -22,7 +22,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     'click img.trash_icon':'clickTrash'
     'click .discover_submenu':'showCategory'
     'click .discover_bookmarks_bottom .bookmark_grid_item':'previewMode'
-
+    'click .my_bookmarks_more_square_wrap':'renderDiscover'
   }
   #*******************
   #**** Functions  Initialize Room
@@ -41,14 +41,15 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   render: ->
     console.log("bookmark view: "+this.options.user_item_design)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user)
-    $(@el).append(@template(user_item_design:this.options.user_item_design, collection:@collection, categories:@discoverCategoriesCollection))
+    $(@el).append(@template(user_item_design:this.options.user_item_design,design:this.options.design, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
     $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
-  renderDiscover:->
+  renderDiscover:(event)->
+    event.stopPropagation if event
     @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'

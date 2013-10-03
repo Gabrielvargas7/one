@@ -3,5 +3,10 @@
 	<img src="<%=@model.get('image_name_desc').url%>"></img>
 	<p><%=@model.get('description')%></p>
 	<a class="preview_mode_save_button_wrap" href=""><div class="preview_mode_save_button">Save Site</div></a>
-	<div class = "preview_mode_saved"><img>Saved</div>
+	<div class = "preview_mode_saved">
+
+		<p>
+			<img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1380825840/checkmark-icon-bookmark.png">Saved
+		</p>
+	</div>
 </div>
