@@ -83,7 +83,10 @@ class Mywebroom.Views.StorePageView extends Backbone.View
       # DON'T ALTER STATE OF SAVE, CANCEL, REMOVE BUTTONS
       
       $('.store_main_box_right').show() # Un-hide the main box
-      $('#store_main_box').css('width', '700px') 
+      
+      # Note: this width should be the same as #store_main_box in stylesheets/rooms_store.css.scss
+      $('#store_main_box').css('width', '780px') 
+      
       $('#store_collapse_button img').addClass('flipimg') 
     
     
