@@ -12,16 +12,24 @@ $(document).ready ->
   # Create the state model
   Mywebroom.State = new Backbone.Model({
     defaults:
-      roomState     : "initial" # Who's room are we viewing? PUBLIC, FRIEND, or SELF
+      roomState     : false     # Who's room are we viewing? PUBLIC, FRIEND, or SELF
       roomUser      : false     # Backbone Model of room user, or false
       roomData      : false     # Backbone Model of room data, or false
-      roomDesigns   : []        # Array of item designs, or empty array
-      roomTheme     : {}        # Object containing info on room's theme
+      roomDesigns   : false     # Array of item designs, or empty array
+      roomTheme     : false     # Object containing info on room's theme
       signInState   : false     # Boolean: Is the user signed in?
       signInUser    : false     # Backbone Model of signed-in user, or false
       signInData    : false     # Backbone Model of signed-in user's data, or false
-      roomHeaderView: null
+      roomHeaderView: false     # A reference to this view
+      $activeDesign : false     # A refernce to the element of the design in focus*
   })
+  
+  ###
+  *At the present, this gets set when either the object this design
+   belongs to is clicked from the store, or a new design was
+   chosen from the store. Would probably be good to have this
+   get set when a room design is click directly.
+  ###
   
   
   # Listen to changes of room state

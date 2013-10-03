@@ -5,6 +5,7 @@
     <img class="room_user_item_design"
         src="<%=@user_item_design.image_name.url%>"
         data-room-design-src="<%=@user_item_design.image_name.url%>"
+        data-room-hide="<%=@user_item_design.hide%>"
         data-room_item_design_id="<%=@user_item_design.id%>"
         data-room_item_id="<%=@user_item_design.item_id%>"
         data-room_section_id="<%=@user_item_design.section_id%>"

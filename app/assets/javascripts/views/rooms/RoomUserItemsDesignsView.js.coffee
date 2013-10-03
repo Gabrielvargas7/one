@@ -1,3 +1,6 @@
+###
+This view represents a clickable design in the room
+###
 class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
 
   #*******************
@@ -42,11 +45,12 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
 
     $(id_room_item_designs_container).css({
       'position': 'absolute',
-      'width':width,
-      'left':x,
-      'top':y,
-      'z-index':z
+      'width'   : width,
+      'left'    : x,
+      'top'     : y,
+      'z-index' : z
     })
+     
 
     this
 
@@ -60,10 +64,14 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   setHoverOffOnImages: ->
 
     if @design.clickable is "yes"
-      itemId = @design.item_id
+      itemId         = @design.item_id
       imageNameHover = @design.image_name_hover.url
-      imageName = @design.image_name.url
+      imageName      = @design.image_name.url
+      
       $('[data-room_item_id=' + itemId + ']').hover (->  $(this).attr("src", imageNameHover)), -> $(this).attr("src", imageName)
+
+
+
 
 
   #--------------------------
@@ -82,6 +90,10 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
       self = this
       $('#room_bookmark_item_id_container_' + @design.item_id).append(bookmarksView.el)
       bookmarksView.render()
+
+
+
+
 
   #--------------------------
   # change hover image on maouse over

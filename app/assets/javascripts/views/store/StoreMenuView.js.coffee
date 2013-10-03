@@ -327,8 +327,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
 
-  clickObjects: ->      
+  clickObjects: ->
+    
+    # Hide the search filters      
     @collapseAll()
+    
+    
     
     
     

@@ -15,7 +15,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click .store_container_item':'clickStoreItem'
+    'click .store_container_item'     :'clickStoreItem'
     'mouseenter .store_container_item':'hoverStoreItem'
     'mouseleave .store_container_item':'hoverOffStoreItem'
 
@@ -29,7 +29,6 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #**** Render
   #*******************
   render: ->
-#    console.log("Store Menu Items View "+@model.get('id'))
     $(@el).append(@template(item:@model))
     this
 
@@ -39,18 +38,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #*******************
 
 
-  #--------------------------
-  # get the items designs data
-  #--------------------------
-  getItemsDesignsCollection: (item_id) ->
-    itemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
-    itemsDesignsCollection.fetch
-      async:false
-      url:itemsDesignsCollection.url item_id
-      success:(response) ->
-        console.log("items designs fetch successful: ")
-        console.log(response)
-    return itemsDesignsCollection
+
 
 
   collapseAll: ->
@@ -80,14 +68,43 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreItem: (event) ->
-    self = this
-    
+  clickStoreItem: (event) ->  
     event.preventDefault()
-    this.moveToItemsDesignsTab()
-    itemsDesignsCollection = this.getItemsDesignsCollection(this.model.get('id'))
-    this.appendItemsDesignsEntry(itemsDesignsCollection)
-    this.setItemToCenter(this.model)
+
+        
+    self   = this
+    itemId = @model.get("id")
+    
+    
+    
+    ###
+    Find the design that was clicked and 
+    create a reference to it's container element
+    ###
+    $activeDesign = $("[data-room_item_id=" + itemId + "]")
+    
+    
+    # Save this object to our state model
+    Mywebroom.State.set("$activeDesign", $activeDesign)
+    
+    
+    
+    
+    
+    # Un-hide the save, cancel, remove view
+    $("#xroom_store_menu_save_cancel_remove").show()
+    
+    # Hide the buttons we don't want
+    $("#xroom_store_save").hide()
+    $("#xroom_store_cancel").hide()
+    
+    
+    
+    
+    @moveToItemsDesignsTab()
+    itemsDesignsCollection = @getItemsDesignsCollection(itemId)
+    @appendItemsDesignsEntry(itemsDesignsCollection)
+    @setItemToCenter(@model)
     
     # $("li").removeClass() <-- this is messing up the stuff below. which class do we actually want to remove?
     
@@ -102,17 +119,36 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     
     
     # SET THE MENUS
-    itemId = this.model.get('id')
-    categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection(itemId)
-    categories.fetch()
-    categories.on('sync', ->
-      model = this.first();
-      self.setCategories(model.get('items_designs_categories'))
-      self.setBrands(model.get('items_designs_brands'))
-      self.setStyles(model.get('items_designs_styles'))
-      self.setColors(model.get('items_designs_colors'))
-      self.setMakes(model.get('items_designs_makes'))
-    )
+    categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection()
+    categories.fetch
+      async  : false
+      url    : categories.url itemId
+      success: (response)->  
+        console.log("IndexItemsDesignsCategoriesByItemIdCollection fetch successful: ")
+        console.log(response)
+        myModel = categories.first();
+        self.setCategories(myModel.get('items_designs_categories'))
+        self.setBrands(myModel.get('items_designs_brands'))
+        self.setStyles(myModel.get('items_designs_styles'))
+        self.setColors(myModel.get('items_designs_colors'))
+        self.setMakes(myModel.get('items_designs_makes'))
+    
+    
+    
+  #--------------------------
+  # get the items designs data
+  #--------------------------
+  getItemsDesignsCollection: (item_id)->
+    itemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
+    itemsDesignsCollection.fetch
+      async  : false
+      url    : itemsDesignsCollection.url item_id
+      success: (response)->
+        console.log("items designs fetch successful: ")
+        console.log(response)
+    
+    return itemsDesignsCollection
+    
     
 
   setCategories: (categories) ->
