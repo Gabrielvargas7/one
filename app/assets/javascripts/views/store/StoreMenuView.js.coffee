@@ -19,15 +19,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click #themes-store-menu'          :'clickThemes'
     'click #bundles-store-menu'         :'clickBundles'
     'click #entire-rooms-store-menu'    :'clickBundles'
-    'click #store-dropdown-all'         :'clickAllDropdown'
-    'click #store-dropdown-objects'     :'clickObjectsDropdown'
-    'click #store-dropdown-themes'      :'clickThemesDropdown'
-    'click #store-dropdown-bundles'     :'clickBundlesDropdown'
-    'click #store-dropdown-entire-rooms':'clickEntireRoomsDropdown'
     'click .store-dropdown'             :'clickStoreDropdown'
     
     
   clickStoreDropdown: (e) ->
+    
     # DROPDOWN
     # Remove active class
     $('.store-dropdown').removeClass('active')
@@ -329,6 +325,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
   clickObjects: ->
     
+    # Hide the Save, Cancel, Remove view
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
     # Hide the search filters      
     @collapseAll()
     
@@ -337,6 +336,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
   clickThemes: ->
+    
+    # Hide the Save, Cancel, Remove view
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
     self = this
     
     @expandAll()
@@ -362,6 +365,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
   clickBundles: ->
+    
+    # Hide the Save, Cancel, Remove view
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
     self = this
     
     @expandAll()

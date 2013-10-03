@@ -20,8 +20,15 @@ $(document).ready ->
       signInState   : false     # Boolean: Is the user signed in?
       signInUser    : false     # Backbone Model of signed-in user, or false
       signInData    : false     # Backbone Model of signed-in user's data, or false
-      roomHeaderView: false     # A reference to this view
       $activeDesign : false     # A refernce to the element of the design in focus*
+      roomView      : false     # A reference to this view
+      roomHeaderView: false     # A reference to this view
+      storeMenuSaveCancelRemoveView: false  # A reference to this view
+      storeMenuSaveCancelRemoveViewState: false # open or closed
+      roomScrollLeftView : false  # A reference to this view
+      roomScrollRightView: false  # A reference to this view
+      browseModeView     : false  # A reference to this view
+      roomFooterView     : false  # A reference to this view
   })
   
   ###
@@ -38,6 +45,24 @@ $(document).ready ->
     $(document).ready ->
       if Mywebroom.State.get("roomState") is "PUBLIC" then $("#xroom_header_search").hide() else $("#xroom_header_search").show()
   )
+  
+  
+  
+  # Listen to changes of storeMenuSaveCancelRemoveViewState
+  Mywebroom.State.on("change:storeMenuSaveCancelRemoveViewState", ->
+    state = Mywebroom.State.get("storeMenuSaveCancelRemoveViewState")
+    switch state
+      when "open"
+        $("#xroom_menu_save_cancel_remove").show()
+      when "closed"
+        $("#xroom_menu_save_cancel_remove").hide()
+  )
+  
+  
+  
+  
+  
+  
   
   
   # Create the Marionette App Object
