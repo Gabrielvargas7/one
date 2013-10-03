@@ -1,3 +1,6 @@
+###
+View that displays the SAVE, CANCEL, REMOVE buttons
+###
 class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
   #*******************
@@ -15,9 +18,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
 
   events:
-    'click #xroom_store_save'  :'clickStoreSave'
-    'click #xroom_store_cancel':'clickStoreCancel'
-    'click #xroom_store_remove':'clickStoreRemove'
+    'click #xroom_store_save'  :'clickSave'
+    'click #xroom_store_cancel':'clickCancel'
+    'click #xroom_store_remove':'clickRemove'
   
 
   #*******************
@@ -39,7 +42,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
   #**** Functions  -events
   #*******************
-  clickStoreSave: (event) ->
+  clickSave: (event) ->
     event.preventDefault()
     console.log("click Store Save")
     
@@ -119,7 +122,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
     
     
-  clickStoreCancel: (event) ->
+  clickCancel: (event) ->
     self = this
     event.preventDefault()
     console.log("click Store Cancel")
@@ -132,7 +135,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
   
   
-  clickStoreRemove: (event) ->
+  clickRemove: (event) ->
     self = this
     event.preventDefault()
     console.log("click Store Remove")
@@ -145,7 +148,27 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
   
   removeObject: ->
-    console.log("remove object")
+    
+    userId = Mywebroom.State.get("signInUser").get("id")
+    
+    hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: userId})
+    hide.user_id          = userId
+    hide.item_design_id   = Mywebroom.State.get("$activeDesign").data("room_item_design_id_current")
+    hide.location_id      = Mywebroom.State.get("$activeDesign").data("room_location_id")
+    hide.save
+      success: (response) ->
+        console.log "SUCCESS:"
+        console.log response
+      error: (response) ->
+        console.log "FAIL:"
+        console.log response
+        
+     
+  
+    # Hide the element we've just removed
+    $activeDesign = Mywebroom.State.get("$activeDesign")
+    $activeDesign.hide()
+    
   
   #*******************
   #**** Functions  -save data
@@ -177,7 +200,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
 
   saveNewItems: ->
-    userItemsDesignsList = this.options.signInUserDataModel.get('user_items_designs')
+    userItemsDesignsList = Mywebroom.State.get("roomData")
     length = userItemsDesignsList.length
     i = 0
     while i < length
@@ -195,8 +218,11 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id_current",itemDesignIdNew)
         $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'current')
 
-        userId      = this.options.signInUserDataModel.get('user').id
+ 
+        userId = Mywebroom.State.get("roomUser").get("id")
+        
         updateItem = new Mywebroom.Models.UpdateUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({new_items_design_id:itemDesignIdNew, _id: userId})
+        
         updateItem.location_id    = itemLocationId
         updateItem.item_design_id = itemDesignIdCurrent
         updateItem.user_id        = userId
