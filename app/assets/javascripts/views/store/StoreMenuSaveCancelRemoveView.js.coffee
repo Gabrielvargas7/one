@@ -149,10 +149,25 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   
   removeObject: ->
     
+    userId = Mywebroom.State.get("signInUser").get("id")
     
+    hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: userId})
+    hide.user_id          = userId
+    hide.item_design_id   = Mywebroom.State.get("$activeDesign").data("room_item_design_id_current")
+    hide.location_id      = Mywebroom.State.get("$activeDesign").data("room_location_id")
+    hide.save
+      success: (response) ->
+        console.log "SUCCESS:"
+        console.log response
+      error: (response) ->
+        console.log "FAIL:"
+        console.log response
         
      
   
+    # Hide the element we've just removed
+    $activeDesign = Mywebroom.State.get("$activeDesign")
+    $activeDesign.hide()
     
   
   #*******************
