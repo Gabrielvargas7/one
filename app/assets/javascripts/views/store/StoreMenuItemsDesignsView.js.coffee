@@ -54,8 +54,15 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
     console.log("itemId ", itemId)
     
     
+    ###
+    Find the design that was clicked and 
+    create a reference to it's container element
+    ###
+    $activeDesign = $("[data-room_item_id=" + itemId + "]")
     
     
+    # Save this object to our state model
+    Mywebroom.State.set("$activeDesign", $activeDesign)
     
         
     
