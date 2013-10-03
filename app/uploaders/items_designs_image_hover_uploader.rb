@@ -16,7 +16,12 @@ class ItemsDesignsImageHoverUploader < CarrierWave::Uploader::Base
    process :tags => ['items_design_image_name_hover']
 
    def public_id
-     name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-#{mounted_as}-"
+     img_path = "#{model.name}-#{model.category}-#{model.color}-#{model.style}-#{model.brand}-#{model.make}-#{model.special_name}"
+
+     image_path = UploaderImageHelper.set_on_image_the_path_name_for_seo(img_path)
+     name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-"+image_path+"-#{mounted_as}-"
+
+     #name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-#{mounted_as}-"
      filename = File.basename(original_filename, ".*")
      filename.downcase!
      name.to_s+filename.to_s

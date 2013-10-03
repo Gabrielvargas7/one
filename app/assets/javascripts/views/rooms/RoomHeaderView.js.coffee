@@ -56,6 +56,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
+
   #*******************
   #**** Functions header
   #*******************
@@ -300,7 +301,28 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       console.log("do something")
     else
       @displaySearchPage()
-      console.log("do search ")
+      console.log("value "+$('#xroom_header_search_text').val())
+      value = $('#xroom_header_search_text').val()
+
+      searchUsers = new Mywebroom.Collections.IndexSearchesUsersWithLimitAndOffsetAndKeywordCollection()
+      searchUsers.fetch
+        async  : false
+        url    : searchUsers.url(10,0,value)
+        success: ->
+          console.log(searchUsers.toJSON())
+          console.log("- JSON.stringify "+JSON.stringify(searchUsers))
+        error: ->
+          console.log("error")
+      searchUsers.each(user)
+
+    appendEntry: (entry) =>
+    view = new Raffler.Views.EntriesEntry(model:entry)
+    this.$('#entries').append(view.render().el)
+
+
+
+
+
 
 
 
