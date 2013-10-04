@@ -97,6 +97,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 			@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
 			@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
 			$(@el).append(@browseModeSidebarView.render().el)
+			@browseModeSidebarView.setScroll()
 			@setSidebarHover();
 				
 			
