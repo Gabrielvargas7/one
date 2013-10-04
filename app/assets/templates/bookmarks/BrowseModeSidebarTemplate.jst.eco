@@ -23,9 +23,9 @@
 	<div class="sidebar_spacer"></div>
 
 	<%if @collection:%>
-		<li id="browse_mode_list_selected" class="browse_mode_sidebar_icons_list"><img class="browse_mode_sidebar_icons" src="<%=@model.get('image_name').url%>"></li>
-		<%for site in @collection:%>
-		<li class="browse_mode_sidebar_icons_list"><img class="browse_mode_sidebar_icons" src="<%=site.get('image_name').url%>" data-id="<%=site.get('id')%>"></li>
+		
+		<%for site in @collection.models:%>
+		<li class="browse_mode_sidebar_icons_list" <%if site.id is @model.id:%>id="browse_mode_list_selected"<%end%>><img class="browse_mode_sidebar_icons" src="<%=site.get('image_name').url%>" data-id="<%=site.get('id')%>"></li>
 		<%end%>
 	<%end%>
 </ul>

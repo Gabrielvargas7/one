@@ -8,11 +8,11 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
 	render:->
 		if @model
 			#fetch data here
-			@itemBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
-			@itemBookmarksCollection.fetch
-			  url:@itemBookmarksCollection.url('24',@model.get('item_id'))
+			@collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
+			@collection.fetch
+			  url:@collection.url(Mywebroom.State.get('signInUser').get('id'),@model.get('item_id'))
 			  async:false;
-			@collection = @itemBookmarksCollection.first(4)
+			#@collection = @itemBookmarksCollection.first(4)
 			@model.on('change',@render,this)
 		$(@el).html(@template(collection:@collection,model:@model))
 		this
@@ -22,6 +22,6 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
 		console.log 'sidebar active site change. '
 		event.stopPropagation()
 		modelId= event.currentTarget.dataset.id
-		modelClicked = @itemBookmarksCollection.get(modelId)
+		modelClicked = @collection.get(modelId)
 		#trigger an event pass model up.
 		this.trigger 'BrowseMode:sidebarIconClick', modelClicked
