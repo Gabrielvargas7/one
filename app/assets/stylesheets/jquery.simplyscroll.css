@@ -199,9 +199,16 @@ Note all DIVs are generated and should not be hard-coded
 	
 	.vert .simply-scroll-btn {
 		position:static;/*SN Add*/
+		background-size:contain;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		width:24px;
+		height:11px;
+		margin:5px;
 	}
 
 	.vert .simply-scroll-btn-up { /* modified btn pos */
+		background:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371244909/arrow-up.png');
 		right: 0;
 		top: 0;
 	}
@@ -209,6 +216,7 @@ Note all DIVs are generated and should not be hard-coded
 	.vert .simply-scroll-btn-up:hover {}
 	
 	.vert .simply-scroll-btn-down { /* modified btn pos */
+		background:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371244666/arrow-down.png');
 		right: 0;
 		top: 52px;
 	}

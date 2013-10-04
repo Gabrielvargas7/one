@@ -31,11 +31,14 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
 	#Hope it dies quickly when the view closes
 	setScroll:->
 		console.log 'one day i will scroll things beautifully.'
-		$("#browse_mode_scroller").simplyScroll
-		  customClass: "vert"
-		  orientation: "vertical"
-		  auto: false
-		  manualMode: "loop"
-		  frameRate: 20
-		  speed: 5
+		#Determine if we need to scroll.
+		#
+		if @collection.length > 5
+			$("#browse_mode_scroller").simplyScroll
+			  customClass: "vert"
+			  orientation: "vertical"
+			  auto: false
+			  manualMode: "loop"
+			  frameRate: 20
+			  speed: 5
 
