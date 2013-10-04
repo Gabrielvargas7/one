@@ -42,11 +42,11 @@ class User < ActiveRecord::Base
 
   after_create :create_user_notification,
                :send_signup_user_email,
-               :create_random_room
+               :create_random_room,
   #             #:create_specific_room,
-  #             :create_image_name,
-  #             :create_user_profile,
-  #             :create_specific_friends
+               :create_image_name,
+               :create_user_profile,
+               :create_specific_friends
 
 
   #validates :name,
