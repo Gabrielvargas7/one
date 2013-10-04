@@ -313,19 +313,18 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
           console.log("- JSON.stringify "+JSON.stringify(searchUsers))
         error: ->
           console.log("error")
-      searchUsers.each(user)
 
-    appendEntry: (entry) =>
-    view = new Raffler.Views.EntriesEntry(model:entry)
-    this.$('#entries').append(view.render().el)
+      searchUsersModel = searchUsers.first()
+      searchUsersArray = searchUsersModel.get("users")
+      console.log(searchUsersArray)
 
+      _.each(searchUsersArray, (user)->
 
+        console.log(user.user_id)
+        view = new Mywebroom.Views.SearchEntityView({entry:user})
+        this.$('.header_search_wrapper').append(view.render().el)
 
-
-
-
-
-
+      )
 
 
   focusOutSearchTextBox:(event)->

@@ -33,8 +33,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     #*******************
   render: ->
     console.log("Adding the SearchEntityView with model:")
-
-    console.log(@options.user.toString)
-#    $(@el).append(@template(entity:@model))
+    console.log(@options.entry)
+    $(@el).append(@template(entity:@options.entry))
     this
 
