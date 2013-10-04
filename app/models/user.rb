@@ -41,12 +41,12 @@ class User < ActiveRecord::Base
   before_create{ get_username(self.email)}
 
   after_create :create_user_notification,
-               :send_signup_user_email ,
-               :create_random_room,
-               #:create_specific_room,
-               :create_image_name,
-               :create_user_profile,
-               :create_specific_friends
+               :send_signup_user_email,
+               :create_random_room
+  #             #:create_specific_room,
+  #             :create_image_name,
+  #             :create_user_profile,
+  #             :create_specific_friends
 
 
   #validates :name,
@@ -332,12 +332,26 @@ class User < ActiveRecord::Base
 
       #create the initials bookmarks from the bundle
       @bundle_bookmarks = BundlesBookmark.all
+      p = 1;
       @bundle_bookmarks.each do |bundle_bookmark|
-        position = 1
-        while UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
-           position += position
-        end
-          UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
+        p = p+1;
+        puts "position: " +p.to_s
+        puts "bookmark id: " +bundle_bookmark.id.to_s
+        puts "bookmark id: " +bundle_bookmark.bookmark_id.to_s
+        puts "bookmark id: " +self.id.to_s
+        UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:p)
+
+        #while position < 100
+      #    #puts "position: " +position.to_s
+      #   if UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
+      #     position += position
+      #     puts "position: " +position.to_s
+      #   else
+      #     break
+      #   end
+      #  end
+      #    #puts "final position: " +position.to_s
+      #    UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
       end
     end
 
@@ -348,8 +362,12 @@ class User < ActiveRecord::Base
 
   def create_specific_room
 
-    bundle = Bundle.find(6)
-
+    puts "final position"
+    if Bundle.exists?(id:6)
+      bundle = Bundle.find(6)
+    else
+      bundle = Bundle.where("active = 'y'").order("RANDOM()").first
+    end
     #create the theme from the bundle
     UsersTheme.create!(user_id:self.id,theme_id:bundle.theme_id,section_id:bundle.section_id)
 
@@ -364,9 +382,11 @@ class User < ActiveRecord::Base
     @bundle_bookmarks = BundlesBookmark.all
     @bundle_bookmarks.each do |bundle_bookmark|
       position = 1
+      puts
       while UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
         position += position
       end
+      #puts "final position" +position.to_s
       UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
     end
 
