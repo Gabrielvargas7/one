@@ -332,14 +332,25 @@ class User < ActiveRecord::Base
 
       #create the initials bookmarks from the bundle
       @bundle_bookmarks = BundlesBookmark.all
-      p = 1;
       @bundle_bookmarks.each do |bundle_bookmark|
-        p = p+1;
-        puts "position: " +p.to_s
-        puts "bookmark id: " +bundle_bookmark.id.to_s
-        puts "bookmark id: " +bundle_bookmark.bookmark_id.to_s
-        puts "bookmark id: " +self.id.to_s
-        UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:p)
+        position = 1
+        while UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
+          position += position
+        end
+        #puts "final position" +position.to_s
+        UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
+      end
+
+      #p = 1;
+      #@bundle_bookmarks.each do |bundle_bookmark|
+      #  p = p+1;
+      #  puts "position: " +p.to_s
+      #  puts "bookmark id: " +bundle_bookmark.id.to_s
+      #  puts "bookmark id: " +bundle_bookmark.bookmark_id.to_s
+      #  puts "bookmark id: " +self.id.to_s
+      #  UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:p)
+      #
+
 
         #while position < 100
       #    #puts "position: " +position.to_s
@@ -352,7 +363,7 @@ class User < ActiveRecord::Base
       #  end
       #    #puts "final position: " +position.to_s
       #    UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
-      end
+      #end
     end
 
   #***********************************
@@ -382,7 +393,6 @@ class User < ActiveRecord::Base
     @bundle_bookmarks = BundlesBookmark.all
     @bundle_bookmarks.each do |bundle_bookmark|
       position = 1
-      puts
       while UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
         position += position
       end
