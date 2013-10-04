@@ -130,14 +130,15 @@ class BookmarksController < ApplicationController
     #
 
     @bookmark = Bookmark.find(params[:id])
-    @user_bookmark  =  UsersBookmark.find_by_user_id_and_bookmark_id(@bookmark.user_bookmark,@bookmark.id)
 
     respond_to do |format|
       ActiveRecord::Base.transaction do
         begin
 
           @bookmark.destroy
-          @user_bookmark.destroy unless @user_bookmark.nil?
+          UsersBookmark.where(:bookmark_id => params[:id]).delete_all
+          BundlesBookmark.where(:bookmark_id => params[:id]).delete_all
+
           format.html { redirect_to bookmarks_url }
 
         rescue ActiveRecord::StatementInvalid
