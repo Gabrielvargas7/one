@@ -21,40 +21,121 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click #entire-rooms-store-menu'    :'clickBundles'
     'click .store-dropdown'             :'clickStoreDropdown'
     'keyup #store-search-box'           :'clickSearch'
-    'click #dropdown-color .store-dropdown-item a'          :'clickColor'
+    'click .store-dropdown-item a'      :'clickDropdownItem'
     
     
-  clickColor: (e) ->
-    ###
-    We need to determine whether we're currently looking at
-    a design category, themes, bundles, or entire rooms
-    ###
+  clickDropdownItem: (e) ->
+
+    keyword  = e.target.text
+    category = Mywebroom.State.get("storeHelper")
     
-    ###
-    Search
-    ###
-    color = e.target.text
+    @search(keyword, category)
     
     
-    helper = Mywebroom.State.get("storeHelper")
     
-    switch helper
-      when "THEMES"       then console.log(helper)
-      when "BUNDLES"      then console.log(helper)
-      when "ENTIRE ROOMS" then console.log(helper)
+  
+  search: (keyword, category) ->
+    
+    self = this
+    
+    switch category
+      when "ALL"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("items designs search collection fetch success")
+            
+            console.log("\n\n!!!!!\nWARNING! NOT EVERYTHING!\n!!!!!\n\n")
+          
+            # Replace the design collection
+            self.appendItemsEntry(response)
+    
+          error: ->
+            console.log("error")
+      when "OBJECTS"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("items designs search collection fetch success")
+            
+            # Replace the design collection
+            self.appendItemsEntry(response)
+      
+          error: ->
+            console.log("error")
+
+      when "THEMES"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("themes search collection fetch success")
+        
+            # Replace the design collection
+            self.appendThemesEntry(response)
+  
+          error: ->
+            console.log("error")
+      
+      when "BUNDLES"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("bundles search collection fetch success")
+      
+            # Replace the design collection
+            self.appendBundlesEntry(response)
+
+          error: ->
+            console.log("error")
+            
+      when "ENTIRE ROOMS"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("entire rooms search collection fetch success")
+    
+            # Replace the design collection
+            self.appendBundlesSetEntry(response)
+
+          error: ->
+            console.log("error")
+        
       else
-        # Looks like we're on a particular object category
-        console.log(helper)
-        
         ###
-        Now search on that object
+        Looks like it's a specific design category (number)
         ###
-        #collection = new Mywebroom.<something>
-        
+        console.log("YOU'RE SEARCHING ON A SPECIFIC ITEM DESIGN CATEGORY!!!")
+        console.log(category)
+        alert("NOT SUPPORTED YET")
+  
     
     
   clickSearch: (e) ->
-    self = this
     
     if e.keyCode is 13
       input = $("#store-search-box").val()
@@ -63,92 +144,16 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       tab = $("#store-dropdown-btn").text()
       
       
-      switch tab
-        when "ALL"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("items designs search collection fetch success")
-              
-              console.log("\n\n!!!!!\nWARNING! NOT EVERYTHING!\n!!!!!\n\n")
-            
-              # Replace the design collection
-              self.appendItemsEntry(response)
+      @search(input, tab)
       
-            error: ->
-              console.log("error")
-        when "OBJECTS"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("items designs search collection fetch success")
-              
-              # Replace the design collection
-              self.appendItemsEntry(response)
-        
-            error: ->
-              console.log("error")
-
-        when "THEMES"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("themes search collection fetch success")
-          
-              # Replace the design collection
-              self.appendThemesEntry(response)
-    
-            error: ->
-              console.log("error")
-        
-        when "BUNDLES"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("bundles search collection fetch success")
-        
-              # Replace the design collection
-              self.appendBundlesEntry(response)
-  
-            error: ->
-              console.log("error")
-              
-        when "ENTIRE ROOMS"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("entire rooms search collection fetch success")
       
-              # Replace the design collection
-              self.appendBundlesSetEntry(response)
-
-            error: ->
-              console.log("error")
+      ###
+      Clear search box
+      ###
+      $("#store-search-box").val("")
+      
+      
+      
 
    
   
