@@ -49,13 +49,29 @@ class Mywebroom.Views.StorePageView extends Backbone.View
     event.preventDefault()
     
 
-    # Hide the view with the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
+    self = this
+    console.log("click Store Close")
+    bootbox.confirm("Leaving this screen will not save your changes", (result) ->
+      if result
+        Mywebroom.State.get("storeMenuSaveCancelRemoveView").revert()
+        
+        # Hide the view with the Save, Cancel, Remove view
+        $('#xroom_store_menu_save_cancel_remove').hide()
     
     
-    $('#xroom_storepage').hide()
-
-
+        $('#xroom_storepage').hide()
+    
+    
+        # Now that we're hiding the store,
+        # we need to hide the greyed out images
+        # in the user's room
+        $("[data-room-hide=yes]").hide()
+    )
+    
+  
+  
+  
+  
   #--------------------------
   # collapse store page
   #--------------------------
@@ -87,7 +103,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
       $('.store_main_box_right').show() # Un-hide the main box
       
       # Note: this width should be the same as #store_main_box in stylesheets/rooms_store.css.scss
-      $('#store_main_box').css('width', '780px') 
+      $('#store_main_box').css('width', '780px')
       
       $('#store_collapse_button img').addClass('flipimg') 
     

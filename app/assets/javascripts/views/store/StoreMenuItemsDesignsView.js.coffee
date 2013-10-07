@@ -41,61 +41,86 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
   # do something on click
   #--------------------------
   clickStoreItemDesigns: (event) ->
+     
     event.preventDefault()
     
     
-    itemId         = @model.get("item_id")
-    itemDesignId   = @model.get("id")
-    imageName      = @model.get("image_name").url
-    imageNameHover = @model.get("image_name_hover").url
     
     
-    console.log("click Store Menu item design View ", itemDesignId)
-    console.log("itemId ", itemId)
+    
+    # Type of object
+    itemId       = @model.get("item_id")
+    
+    # Item Design ID
+    itemDesignId = @model.get("id")
+    
+    # The URL
+    url          = @model.get("image_name").url
+    
+    # The URL for hovering
+    urlHover     = @model.get("image_name_hover").url
+    
+    
+    
+    
+    
+    
+    console.log("***** CLICK STORE ITEM DESIGN:\t", itemDesignId, " *********")
+    
+    
+    
+    
     
     
     ###
-    Find the design that was clicked and 
-    create a reference to it's container element
+    SAVE, CANCEL, REMOVE
     ###
-    $activeDesign = $("[data-room_item_id=" + itemId + "]")
-    
-    
-    # Save this object to our state model
-    Mywebroom.State.set("$activeDesign", $activeDesign)
-    
-        
-    
-    
     # Show the Save, Cancel, Remove view
     $("#xroom_store_menu_save_cancel_remove").show()
     
-    
-    # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
     # Show the save button
     $('#xroom_store_save').show()
     
     # Show the cancel button
     $('#xroom_store_cancel').show()
     
-    # Hide the remove button
-    $('#xroom_store_remove').hide()
+    # Show the remove button unless the current design is hidden
+    unless $("[data-room_item_id=" + itemId + "]").attr("data-room-hide") is "yes"
+      $('#xroom_store_remove').show()
     
     
-
     
-
-    $('[data-room_item_id='+itemId+']').attr("src", imageName)
-    $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id",itemDesignId)
-    $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'new')
-    $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
-
+    
+    
+    # Change the properties of the design in the DOM
+    $('[data-room_item_id=' + itemId + ']').attr("src", url)
+    $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design_id", itemDesignId)
+    $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design", "new")
+    $('[data-room_item_id=' + itemId + ']').hover (->  $(this).attr("src", urlHover)), -> $(this).attr("src", url)
 
 
     ###
-    Here's where we need to un-hide the dropdowns and populate them
+    Find the design that was clicked and
+    create a reference to it's container element
     ###
+    $activeDesign = $("[data-room_item_id=" + itemId + "]")
+    
 
+    # Save this object to our state model
+    Mywebroom.State.set("$activeDesign", $activeDesign)
+    
+        
+        
+    # Is this a hidden object?
+    activeDesignIsHidden = $activeDesign.data().roomHide
+    Mywebroom.State.set("activeDesignIsHidden", activeDesignIsHidden)
+    
+    
+    # Show
+    $activeDesign.show()
+
+
+    
 
 
 
@@ -104,9 +129,9 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
   #--------------------------
   hoverStoreItemDesigns: (event) ->
     event.preventDefault()
-    console.log("hover "+this.model.get('id'))
+    #console.log("hover " + this.model.get('id'))
     buttonPreview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
-    $('#store_item_designs_container_'+this.model.get('id')).append(buttonPreview)
+    $('#store_item_designs_container_' + @model.get('id')).append(buttonPreview)
 
 
   #--------------------------
@@ -114,5 +139,5 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
   #--------------------------
   hoverOffStoreItemDesigns: (event) ->
     event.preventDefault()
-    console.log("hoverOff"+this.model.get('id'))
+    #console.log("hoverOff" + this.model.get('id'))
     $('#button_preview').remove()

@@ -11,7 +11,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #**** Initialize ***
   #*******************
   initialize: ->
-    self = @
+    self = this
     
     # Make the room public to begin with to force the serach box to hid
     # (5) Set roomState
@@ -31,7 +31,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     # (1) Set roomUser
     roomUsers = new Mywebroom.Collections.ShowRoomUserCollection()
-    roomUsers.fetch 
+    roomUsers.fetch
       async  : false
       success: ->
         roomUser = roomUsers.first()
@@ -76,7 +76,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
-    # roomState is set to PUBLIC by default, so we only need 
+    # roomState is set to PUBLIC by default, so we only need
     # to perform further logic when the user is signed-in
     if Mywebroom.State.get("signInState")
       
@@ -90,7 +90,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         Mywebroom.State.set("signInData", Mywebroom.State.get("roomData"))
       else
         # We're not on our own page, so we've got to check if we're friends with the page owner
-        friends = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection() 
+        friends = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
         friends.fetch
           async  : false
           url    : friends.url(Mywebroom.State.get("roomUser").get("id"), Mywebroom.State.get("signInUser").get("id"))
@@ -157,8 +157,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     # Add Images to the Save, Cancel, Remove View
     storeRemoveButton = $.cloudinary.image "store_remove_button.png",{ alt: "store remove button", id: "store_remove_button"}
     $("#xroom_store_remove").prepend(storeRemoveButton)
+    
     storeSaveButton = $.cloudinary.image "store_save_button.png",{ alt: "store save button", id: "store_save_button"}
     $("#xroom_store_save").prepend(storeSaveButton)
+    
     storeCancelButton = $.cloudinary.image "store_cancel_button.png",{ alt: "store cancel button", id: "store_cancel_button"}
     $("#xroom_store_cancel").prepend(storeCancelButton)
     
@@ -201,7 +203,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     # Center the windows and remove the scroll
     $(window).scrollLeft(0)
-    $("body").css("overflow-x", "hidden");
+    $("body").css("overflow-x", "hidden")
     
     
     
@@ -225,7 +227,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     # Return the view
-    @
+    this
     
 
   
@@ -235,6 +237,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   changeBrowseMode:(model)->
     $("#xroom_bookmarks_browse_mode").show()
     $(".browse_mode_view").show()
+    
     @browseModeView.activeSiteChange(model)
   
   
@@ -244,16 +247,17 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #--------------------------
   # set room on the rooms.html
   #--------------------------
-  setRoom: (xroom_item_num) ->    
+  setRoom: (xroom_item_num) ->
     
     $(xroom_item_num).append(@template(user_theme: Mywebroom.State.get("roomTheme")))
     
     
-    _.each(Mywebroom.State.get("roomDesigns"), (design)->  
+    _.each(Mywebroom.State.get("roomDesigns"), (design) ->
       view = new Mywebroom.Views.RoomUserItemsDesignsView({design: design})
       $(xroom_item_num).append(view.el)
       view.render()
-      view.undelegateEvents() if Mywebroom.State.get("roomState") is "PUBLIC"
+      if Mywebroom.State.get("roomState") is "PUBLIC"
+        view.undelegateEvents()
     )
   
   
@@ -287,4 +291,4 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         
         $("#room_bookmark_item_id_container_" + designs[i].item_id).hide()
         
-      i++
+      i += 1

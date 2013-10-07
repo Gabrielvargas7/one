@@ -68,7 +68,11 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
       imageNameHover = @design.image_name_hover.url
       imageName      = @design.image_name.url
       
-      $('[data-room_item_id=' + itemId + ']').hover (->  $(this).attr("src", imageNameHover)), -> $(this).attr("src", imageName)
+      $el = $('[data-room_item_id=' + itemId + ']')
+      
+      # Turn on conditional hovering unless the designs are hidden
+      unless $el.data("roomHide") is "yes"
+        $el.hover (->  $(this).attr("src", imageNameHover)), -> $(this).attr("src", imageName)
 
 
 
@@ -96,7 +100,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
 
 
   #--------------------------
-  # change hover image on maouse over
+  # change hover image on mouse over
   #--------------------------
   hoverItem: (event) ->
     event.preventDefault()
@@ -121,10 +125,10 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     i = 0
     while i < length
       if bookmark_item_id is designs[i].item_id
-        $('#room_bookmark_item_id_container_' + designs[i].item_id).show();
+        $('#room_bookmark_item_id_container_' + designs[i].item_id).show()
       else
-        $('#room_bookmark_item_id_container_' + designs[i].item_id).hide();
-      i++
+        $('#room_bookmark_item_id_container_' + designs[i].item_id).hide()
+      i += 1
 
   #--------------------------
   # hide store and profile pages
