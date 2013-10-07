@@ -43,19 +43,19 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     navName = e.target.text
     
     switch navName
-      when 'ALL'          
+      when 'ALL'
         $('a[href="#tab_items"]').tab('show')
         @clickObjects()
-      when 'OBJECTS'     
+      when 'OBJECTS'
         $('a[href="#tab_items"]').tab('show')
         @clickObjects()
-      when 'THEMES'       
+      when 'THEMES'
         $('a[href="#tab_themes"]').tab('show')
         @clickThemes()
-      when 'BUNDLES'      
+      when 'BUNDLES'
         $('a[href="#tab_bundles"]').tab('show')
         @clickBundles()
-      when 'ENTIRE ROOMS' 
+      when 'ENTIRE ROOMS'
         $('a[href="#tab_entire_rooms"]').tab('show')
         @clickBundles()
       
@@ -154,27 +154,27 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   # append items views
   #--------------------------
   appendItemsEntry:(itemsCollection) ->
-    @loop_number = 0
-    @row_number = 1
+    @loop_number   = 0
+    @row_number    = 1
     @column_number = 3
 
-    @row_line = "<ul id='row_item_"+@row_number+"'></ul>"
+    @row_line = "<ul id='row_item_" + @row_number + "'></ul>"
     $('#tab_items').append(@row_line)
 
     that = this
 
     itemsCollection.each (entry)  ->
       storeMenuItemsView = new Mywebroom.Views.StoreMenuItemsView(model:entry)
-      $('#row_item_'+that.row_number).append(storeMenuItemsView.el)
+      $('#row_item_' + that.row_number).append(storeMenuItemsView.el)
       storeMenuItemsView.render()
 
-      that.loop_number++
-      u = that.loop_number%that.column_number
+      that.loop_number += 1
+      u = that.loop_number % that.column_number
 
-      if u == 0
-       that.row_number++
-       that.row_line = "<ul id='row_item_"+that.row_number+"'></ul>"
-       $('#tab_items').append(that.row_line)
+      if u is 0
+        that.row_number += 1
+        that.row_line = "<ul id='row_item_"+that.row_number+"'></ul>"
+        $('#tab_items').append(that.row_line)
 
 
   #--------------------------
@@ -188,20 +188,20 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     @row_number = 1
     @column_number = 3
 
-    @row_line = "<ul id='row_item_designs_"+@row_number+"'></ul>"
+    @row_line = "<ul id='row_item_designs_" + @row_number + "'></ul>"
     this.$('#tab_items_designs').append(@row_line)
 
     that = this
     itemsDesignsCollection.each (entry)  ->
       storeMenuItemsDesignsView = new Mywebroom.Views.StoreMenuItemsDesignsView(model:entry)
-      $('#row_item_designs_'+that.row_number).append(storeMenuItemsDesignsView.el)
+      $('#row_item_designs_' + that.row_number).append(storeMenuItemsDesignsView.el)
       storeMenuItemsDesignsView.render()
-      that.loop_number++
+      that.loop_number += 1
 
-      u = that.loop_number%that.column_number
-      if u == 0
-        that.row_number++
-        that.row_line = "<ul id='row_item_designs_"+that.row_number+"'></ul>"
+      u = that.loop_number % that.column_number
+      if u is 0
+        that.row_number += 1
+        that.row_line = "<ul id='row_item_designs_" + that.row_number + "'></ul>"
         $('#tab_items_designs').append(that.row_line)
 
 
@@ -209,26 +209,26 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   # append themes views
   #--------------------------
   appendThemesEntry:(themesCollection) ->
-    @loop_number = 0
-    @row_number = 1
+    @loop_number   = 0
+    @row_number    = 1
     @column_number = 3
 
-    @row_line = "<ul id='row_theme_"+@row_number+"'></ul>"
+    @row_line = "<ul id='row_theme_" + @row_number + "'></ul>"
     $('#tab_themes').append(@row_line)
 
     that = this
 
     themesCollection.each (entry)  ->
       storeMenuThemesView = new Mywebroom.Views.StoreMenuThemesView(model:entry)
-      $('#row_theme_'+that.row_number).append(storeMenuThemesView.el)
+      $('#row_theme_' + that.row_number).append(storeMenuThemesView.el)
       storeMenuThemesView.render()
 
-      that.loop_number++
-      u = that.loop_number%that.column_number
+      that.loop_number += 1
+      u = that.loop_number % that.column_number
 
-      if u == 0
-        that.row_number++
-        that.row_line = "<ul id='row_theme_"+that.row_number+"'></ul>"
+      if u is 0
+        that.row_number += 1
+        that.row_line = "<ul id='row_theme_" + that.row_number + "'></ul>"
         $('#tab_themes').append(that.row_line)
 
 
@@ -237,26 +237,26 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   # append Bundle views
   #--------------------------
   appendBundlesEntry:(bundlesCollection) ->
-    @loop_number = 0
-    @row_number = 1
+    @loop_number   = 0
+    @row_number    = 1
     @column_number = 3
 
-    @row_line = "<ul id='row_bundle_"+@row_number+"'></ul>"
+    @row_line = "<ul id='row_bundle_" + @row_number + "'></ul>"
     $('#tab_bundles').append(@row_line)
 
     that = this
 
     bundlesCollection.each (entry)  ->
       storeMenuBundlesView = new Mywebroom.Views.StoreMenuBundlesView(model:entry)
-      $('#row_bundle_'+that.row_number).append(storeMenuBundlesView.el)
+      $('#row_bundle_' + that.row_number).append(storeMenuBundlesView.el)
       storeMenuBundlesView.render()
 
-      that.loop_number++
-      u = that.loop_number%that.column_number
+      that.loop_number += 1
+      u = that.loop_number % that.column_number
 
-      if u == 0
-        that.row_number++
-        that.row_line = "<ul id='row_bundle_"+that.row_number+"'></ul>"
+      if u is 0
+        that.row_number += 1
+        that.row_line = "<ul id='row_bundle_" + that.row_number + "'></ul>"
         $('#tab_bundles').append(that.row_line)
 
 
@@ -264,25 +264,25 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   # append Bundles Set views
   #--------------------------
   appendBundlesSetEntry:(bundlesCollection) ->
-    @loop_number = 0
-    @row_number = 1
+    @loop_number   = 0
+    @row_number    = 1
     @column_number = 3
 
-    @row_line = "<ul id='row_bundle_set_"+@row_number+"'></ul>"
+    @row_line = "<ul id='row_bundle_set_" + @row_number + "'></ul>"
     $('#tab_entire_rooms').append(@row_line)
     that = this
 
     bundlesCollection.each (entry)  ->
       storeMenuBundlesSetView = new Mywebroom.Views.StoreMenuBundlesSetView(model:entry)
-      $('#row_bundle_set_'+that.row_number).append(storeMenuBundlesSetView.el)
+      $('#row_bundle_set_' + that.row_number).append(storeMenuBundlesSetView.el)
       storeMenuBundlesSetView.render()
 
-      that.loop_number++
-      u = that.loop_number%that.column_number
+      that.loop_number += 1
+      u = that.loop_number % that.column_number
 
-      if u == 0
-        that.row_number++
-        that.row_line = "<ul id='row_bundle_set_"+that.row_number+"'></ul>"
+      if u is 0
+        that.row_number += 1
+        that.row_line = "<ul id='row_bundle_set_" + that.row_number + "'></ul>"
         $('#tab_entire_rooms').append(that.row_line)
 
 
