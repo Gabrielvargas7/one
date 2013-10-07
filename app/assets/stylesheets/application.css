@@ -98,4 +98,9 @@ footer ul li {
 .dark_text{
     color:#464646;
 }
+.toast-top-center{
+    top: 52px; 
+    left: 50%; 
+    margin-left: -150px; 
+}
 /*End social bar style*/

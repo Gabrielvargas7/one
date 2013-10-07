@@ -385,7 +385,28 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.stopPropagation()
     event.preventDefault()
     #If no active sites, toast message
-    console.log 'show active sites from header, plz'
+
+    # Displays save message
+    #Note, SN created class called toast-top-center to position toast appropriately.
+    toastr.options = {
+      "closeButton":     true
+      "debug":           false
+      "positionClass":   "toast-top-center"
+      "onclick":         null
+      "showDuration":    "300"
+      "hideDuration":    "1000"
+      "timeOut":         "5000"
+      "extendedTimeOut": "1000"
+      "showEasing":      "swing"
+      "hideEasing":      "linear"
+      "showMethod":      "fadeIn"
+      "hideMethod":      "fadeOut"
+    }
+    
+    # Display the Toastr message
+    toastr.info("There are no active sites right now. Click on an object bookmark to get started browsing!")
+  
+
     #If active sites, change CSS to show the menu. 
 
 
