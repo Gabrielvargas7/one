@@ -27,13 +27,13 @@
 
   <% @bookmarks.each do |bookmark| %>
       <tr>
-        <%  if bookmark.item.nil? %>
+        <%  if bookmark.bookmarks_category.item.nil? %>
             <td></td>
             <td></td>
 
         <%  else %>
-            <td><%= bookmark.item_id %></td>
-            <td><%= bookmark.item.name %></td>
+            <td><%= bookmark.bookmarks_category.item_id %></td>
+            <td><%= bookmark.bookmarks_category.item.name %></td>
         <%  end %>
 
         <%  if bookmark.bookmarks_category.nil? %>

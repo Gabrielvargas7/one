@@ -21,13 +21,13 @@
 
 <p>
   <b>Item:</b>
-  <%  if @bookmark.item.nil? %>
+  <%  if @bookmark.bookmarks_category.item.nil? %>
     
     
 
 <%  else %>
-    <%= @bookmark.item_id %>
-    <%= @bookmark.item.name %>
+    <%= @bookmark.bookmarks_category.item_id %>
+    <%= @bookmark.bookmarks_category.item.name %>
 <%  end %>
 
 

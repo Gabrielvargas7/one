@@ -23,12 +23,12 @@
 <% @bundles_bookmarks.each do |bundles_bookmark| %>
   <tr>
 
-    <%  if bundles_bookmark.item.nil? %>
+    <%  if bundles_bookmark.bookmark.bookmarks_category.item.nil? %>
         <td></td>
         <td></td>
     <%  else %>
-        <td><%= bundles_bookmark.item.id %></td>
-        <td><%= bundles_bookmark.item.name %></td>
+        <td><%= bundles_bookmark.bookmark.bookmarks_category.item.id %></td>
+        <td><%= bundles_bookmark.bookmark.bookmarks_category.item.name %></td>
     <%  end %>
 
     <%  if bundles_bookmark.bookmark.nil? %>
