@@ -34,7 +34,24 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       
       
       switch tab
-        when "ALL"          then console.log(tab)
+        when "ALL"
+          ###
+          Fetch collection
+          ###
+          collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
+          collection.fetch
+            async  : false
+            url    : collection.url(10,0,input)
+            success: (response) ->
+              console.log("items designs search collection fetch success")
+              
+              console.log("\n\n!!!!!\nWARNING! NOT EVERYTHING!\n!!!!!\n\n")
+            
+              # Replace the design collection
+              self.appendItemsEntry(response)
+      
+            error: ->
+              console.log("error")
         when "OBJECTS"
           ###
           Fetch collection
@@ -47,7 +64,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
               console.log("items designs search collection fetch success")
               
               # Replace the design collection
-              self.appendItemsDesignsEntry(response)
+              self.appendItemsEntry(response)
         
             error: ->
               console.log("error")
@@ -56,10 +73,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           ###
           Fetch collection
           ###
-          collection2 = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
-          collection2.fetch
+          collection = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
+          collection.fetch
             async  : false
-            url    : collection2.url(10,0,input)
+            url    : collection.url(10,0,input)
             success: (response) ->
               console.log("themes search collection fetch success")
           
@@ -69,8 +86,40 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             error: ->
               console.log("error")
         
-        when "BUNDLES"      then console.log(tab)
-        when "ENTIRE ROOMS" then console.log(tab)
+        when "BUNDLES"
+          ###
+          Fetch collection
+          ###
+          collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
+          collection.fetch
+            async  : false
+            url    : collection.url(10,0,input)
+            success: (response) ->
+              console.log("bundles search collection fetch success")
+        
+              # Replace the design collection
+              self.appendBundlesEntry(response)
+  
+            error: ->
+              console.log("error")
+              
+        when "ENTIRE ROOMS"
+          ###
+          Fetch collection
+          ###
+          collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
+          collection.fetch
+            async  : false
+            url    : collection.url(10,0,input)
+            success: (response) ->
+              console.log("entire rooms search collection fetch success")
+      
+              # Replace the design collection
+              self.appendBundlesSetEntry(response)
+
+            error: ->
+              console.log("error")
+
    
   
   
@@ -127,9 +176,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     console.log(@model)
 
     $(@el).append(@template())
-
-    # hide object tab ItemsDesignsTab
-    #this.hideItemsDesignsTab()
 
     # items
     @itemsCollection = this.getItemsCollection()
@@ -207,154 +253,160 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   # append items views
   #--------------------------
-  appendItemsEntry:(itemsCollection) ->
+  appendItemsEntry: (itemsCollection) ->
+    
+    $("#tab_items > ul").remove()
+    
     @loop_number   = 0
     @row_number    = 1
     @column_number = 3
 
     @row_line = "<ul id='row_item_" + @row_number + "'></ul>"
-    $('#tab_items').append(@row_line)
+    this.$('#tab_items').append(@row_line)
 
-    that = this
+    self = this
 
     itemsCollection.each (entry)  ->
       storeMenuItemsView = new Mywebroom.Views.StoreMenuItemsView(model:entry)
-      $('#row_item_' + that.row_number).append(storeMenuItemsView.el)
+      $('#row_item_' + self.row_number).append(storeMenuItemsView.el)
       storeMenuItemsView.render()
 
-      that.loop_number += 1
-      u = that.loop_number % that.column_number
+      self.loop_number += 1
+      u = self.loop_number % self.column_number
 
       if u is 0
-        that.row_number += 1
-        that.row_line = "<ul id='row_item_"+that.row_number+"'></ul>"
-        $('#tab_items').append(that.row_line)
+        self.row_number += 1
+        self.row_line = "<ul id='row_item_" + self.row_number + "'></ul>"
+        $('#tab_items').append(self.row_line)
 
 
   #--------------------------
   # append items designs views
   #--------------------------
 
-  appendItemsDesignsEntry:(itemsDesignsCollection) ->
+  appendItemsDesignsEntry: (itemsDesignsCollection) ->
 
     $("#tab_items_designs > ul").remove()
-    @loop_number = 0
-    @row_number = 1
+    
+    @loop_number   = 0
+    @row_number    = 1
     @column_number = 3
 
     @row_line = "<ul id='row_item_designs_" + @row_number + "'></ul>"
     this.$('#tab_items_designs').append(@row_line)
 
-    that = this
+    self = this
+    
     itemsDesignsCollection.each (entry)  ->
       storeMenuItemsDesignsView = new Mywebroom.Views.StoreMenuItemsDesignsView(model:entry)
-      $('#row_item_designs_' + that.row_number).append(storeMenuItemsDesignsView.el)
+      $('#row_item_designs_' + self.row_number).append(storeMenuItemsDesignsView.el)
       storeMenuItemsDesignsView.render()
-      that.loop_number += 1
-
-      u = that.loop_number % that.column_number
+      
+      self.loop_number += 1
+      u = self.loop_number % self.column_number
+      
       if u is 0
-        that.row_number += 1
-        that.row_line = "<ul id='row_item_designs_" + that.row_number + "'></ul>"
-        $('#tab_items_designs').append(that.row_line)
+        self.row_number += 1
+        self.row_line = "<ul id='row_item_designs_" + self.row_number + "'></ul>"
+        $('#tab_items_designs').append(self.row_line)
 
 
   #--------------------------
   # append themes views
   #--------------------------
-  appendThemesEntry:(themesCollection) ->
+  appendThemesEntry: (themesCollection) ->
+    
+    $("#tab_themes > ul").remove()
+    
     @loop_number   = 0
     @row_number    = 1
     @column_number = 3
 
     @row_line = "<ul id='row_theme_" + @row_number + "'></ul>"
-    $('#tab_themes').append(@row_line)
+    this.$('#tab_themes').append(@row_line)
 
-    that = this
+    self = this
 
     themesCollection.each (entry)  ->
       storeMenuThemesView = new Mywebroom.Views.StoreMenuThemesView(model:entry)
-      $('#row_theme_' + that.row_number).append(storeMenuThemesView.el)
+      $('#row_theme_' + self.row_number).append(storeMenuThemesView.el)
       storeMenuThemesView.render()
 
-      that.loop_number += 1
-      u = that.loop_number % that.column_number
+      self.loop_number += 1
+      u = self.loop_number % self.column_number
 
       if u is 0
-        that.row_number += 1
-        that.row_line = "<ul id='row_theme_" + that.row_number + "'></ul>"
-        $('#tab_themes').append(that.row_line)
+        self.row_number += 1
+        self.row_line = "<ul id='row_theme_" + self.row_number + "'></ul>"
+        $('#tab_themes').append(self.row_line)
 
 
 
   #--------------------------
   # append Bundle views
   #--------------------------
-  appendBundlesEntry:(bundlesCollection) ->
+  appendBundlesEntry: (bundlesCollection) ->
+    
+    $("#tab_bundles > ul").remove()
+    
     @loop_number   = 0
     @row_number    = 1
     @column_number = 3
 
     @row_line = "<ul id='row_bundle_" + @row_number + "'></ul>"
-    $('#tab_bundles').append(@row_line)
+    this.$('#tab_bundles').append(@row_line)
 
-    that = this
+    self = this
 
     bundlesCollection.each (entry)  ->
       storeMenuBundlesView = new Mywebroom.Views.StoreMenuBundlesView(model:entry)
-      $('#row_bundle_' + that.row_number).append(storeMenuBundlesView.el)
+      $('#row_bundle_' + self.row_number).append(storeMenuBundlesView.el)
       storeMenuBundlesView.render()
 
-      that.loop_number += 1
-      u = that.loop_number % that.column_number
+      self.loop_number += 1
+      u = self.loop_number % self.column_number
 
       if u is 0
-        that.row_number += 1
-        that.row_line = "<ul id='row_bundle_" + that.row_number + "'></ul>"
-        $('#tab_bundles').append(that.row_line)
+        self.row_number += 1
+        self.row_line = "<ul id='row_bundle_" + self.row_number + "'></ul>"
+        $('#tab_bundles').append(self.row_line)
 
 
   #--------------------------
   # append Bundles Set views
   #--------------------------
-  appendBundlesSetEntry:(bundlesCollection) ->
+  appendBundlesSetEntry: (bundlesCollection) ->
+    
+    $("#tab_entire_rooms > ul").remove()
+    
     @loop_number   = 0
     @row_number    = 1
     @column_number = 3
 
     @row_line = "<ul id='row_bundle_set_" + @row_number + "'></ul>"
-    $('#tab_entire_rooms').append(@row_line)
-    that = this
+    this.$('#tab_entire_rooms').append(@row_line)
+    
+    self = this
 
     bundlesCollection.each (entry)  ->
       storeMenuBundlesSetView = new Mywebroom.Views.StoreMenuBundlesSetView(model:entry)
-      $('#row_bundle_set_' + that.row_number).append(storeMenuBundlesSetView.el)
+      $('#row_bundle_set_' + self.row_number).append(storeMenuBundlesSetView.el)
       storeMenuBundlesSetView.render()
 
-      that.loop_number += 1
-      u = that.loop_number % that.column_number
+      self.loop_number += 1
+      u = self.loop_number % self.column_number
 
       if u is 0
-        that.row_number += 1
-        that.row_line = "<ul id='row_bundle_set_" + that.row_number + "'></ul>"
-        $('#tab_entire_rooms').append(that.row_line)
+        self.row_number += 1
+        self.row_line = "<ul id='row_bundle_set_" + self.row_number + "'></ul>"
+        $('#tab_entire_rooms').append(self.row_line)
 
 
 
 
   #*******************
-  #**** Functions  - hide tabs
+  #**** Functions ****
   #*******************
-
-  #--------------------------
-  # hide items designs tap
-  #--------------------------
-  hideItemsDesignsTab: ->
-    $tab_item_designs = $('[data-toggle="tab"][href="#tab_items_designs"]')
-    $tab_item_designs.hide()
-
-
-
   collapseAll: ->
     # Add the collapse class
     $('#dropdown-object').addClass('collapse')
@@ -384,8 +436,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Hide the search filters
     @collapseAll()
-    
-    
     
     
     
@@ -436,10 +486,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     # Load the Bundles' Categories Collection
-    categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection();
+    categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
     categories.fetch()
-    categories.on('sync', -> 
-      model = this.first();
+    categories.on('sync', ->
+      model = this.first()
       self.setBrands(model.get('bundles_brands'))
       self.setStyles(model.get('bundles_styles'))
       self.setLocations(model.get('bundles_locations'))
@@ -474,6 +524,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     )
     
     
+    
   setLocations: (locations) ->
     # empty out existing dropdown items
     $('#dropdown-location > .dropdown-menu').empty()
@@ -484,6 +535,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       if location.location
         $('#dropdown-location > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(location.location)+'</a></li>');
     )
+   
    
    
   setColors: (colors) ->
@@ -498,6 +550,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     )
     
     
+    
   setMakes: (makes) ->
     # empty out existing dropdown items
     $('#dropdown-make > .dropdown-menu').empty()
@@ -508,7 +561,3 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       if make.make
         $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(make.make)+'</a></li>');
     )
-       
-    
-    
-  

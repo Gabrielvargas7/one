@@ -56,7 +56,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
     ###
     Display a confirm dialog if there are any un-saved changes
     ###
-    if $("[data-room_item_design=new]").size() > 0
+    if $("[data-room_item_design=new]").size() > 0 or $("[data-room_theme=new]").size() > 0
       bootbox.confirm("Leaving this screen will not save your changes", (result) ->
         if result
           Mywebroom.State.get("storeMenuSaveCancelRemoveView").revert()
