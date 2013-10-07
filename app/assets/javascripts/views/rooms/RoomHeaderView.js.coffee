@@ -389,9 +389,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       if Mywebroom.State.get('activeSitesMenuView').collection.length>0
         #show
         Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
-        $('.browse_mode_view').show()
-        console.log 'try to show active menu'
-        
+        $('.browse_mode_view').show()        
       else
         @noActiveSitesToast()
       #We check if there are any sites in the collection. If yes, 

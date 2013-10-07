@@ -22,6 +22,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
 		@model.set(model.toJSON())
 	sideBarActiveSiteChange:(event)->
 		console.log 'sidebar active site change. '
+		debugger;
 		event.stopPropagation()
 		modelId= event.currentTarget.dataset.id
 		modelClicked = @collection.get(modelId)

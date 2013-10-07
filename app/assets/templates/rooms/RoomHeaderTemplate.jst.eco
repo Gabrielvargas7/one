@@ -44,7 +44,7 @@
 
 
         <!-- Menu  -->
-        <ul class="nav pull-right">
+        <ul class="nav pull-right" id="rooms_header_main_menu">
             <li>
               <a id='xroom_header_active_sites'>
               </a>
