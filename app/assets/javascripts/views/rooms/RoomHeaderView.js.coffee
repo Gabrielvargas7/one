@@ -17,14 +17,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   events:{
-    'click #xroom_header_profile'        :'showProfile'
-    'click #xroom_header_forward_profile':'forwardToRoRProfilePage'
-    'click #xroom_header_forward_setting':'forwardToRoRSettingPage'
-    'click #xroom_header_logout':'logout'
-    'click #xroom_header_storepage':'showStorePage'
-    'click #xroom_header_myroom':'goToMyRoom'
-    'keyup #xroom_header_search_text':'keyPressOnSearch'
-    'focusout #xroom_header_search_text': 'focusOutSearchTextBox',
+    'click #xroom_header_profile'        : 'showProfile'
+    'click #xroom_header_forward_profile': 'forwardToRoRProfilePage'
+    'click #xroom_header_forward_setting': 'forwardToRoRSettingPage'
+    'click #xroom_header_logout'         : 'logout'
+    'click #xroom_header_storepage'      : 'showStorePage'
+    'click #xroom_header_myroom'         : 'goToMyRoom'
+    'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
+    'focusout #xroom_header_search_text' : 'focusOutSearchTextBox',
 
   }
 
@@ -212,7 +212,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function
   #--------------------------
   showStorePage: (event) ->
-    if event  # this is is because this fuction is also call when is PUBLIC_ROOM
+    if event  # This is because this fuction is also called when room is PUBLIC
       event.preventDefault()
       event.stopPropagation()
    
