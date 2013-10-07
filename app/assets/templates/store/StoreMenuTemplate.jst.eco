@@ -23,7 +23,7 @@
         <li>
           <div class="input-append">
             <!-- SEARCH BOX -->
-            <input class="span2" type="text">
+            <input id="store-search-box" class="span2" type="text">
             <div class="btn-group">
               <button id="store-dropdown-btn" class="btn">ALL</button>
               <button class="btn dropdown-toggle" data-toggle="dropdown">
