@@ -75,7 +75,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $(@el).append(@template())
 
     # hide object tab ItemsDesignsTab
-#    this.hideItemsDesignsTab()
+    #this.hideItemsDesignsTab()
 
     # items
     @itemsCollection = this.getItemsCollection()

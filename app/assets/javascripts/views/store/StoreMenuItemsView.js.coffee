@@ -46,9 +46,9 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     $('#dropdown-object').addClass('collapse')
     $('#dropdown-style').addClass('collapse')
     $('#dropdown-brand').addClass('collapse')
-    $('#dropdown-location').addClass('collapse');
-    $('#dropdown-color').addClass('collapse');
-    $('#dropdown-make').addClass('collapse');
+    $('#dropdown-location').addClass('collapse')
+    $('#dropdown-color').addClass('collapse')
+    $('#dropdown-make').addClass('collapse')
 
 
 
@@ -57,9 +57,9 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     $('#dropdown-object').removeClass('collapse')
     $('#dropdown-style').removeClass('collapse')
     $('#dropdown-brand').removeClass('collapse')
-    $('#dropdown-location').removeClass('collapse');
-    $('#dropdown-color').removeClass('collapse');
-    $('#dropdown-make').removeClass('collapse');
+    $('#dropdown-location').removeClass('collapse')
+    $('#dropdown-color').removeClass('collapse')
+    $('#dropdown-make').removeClass('collapse')
 
   #*******************
   #**** Funtions  -events
@@ -68,7 +68,8 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreItem: (event) ->  
+  clickStoreItem: (event) ->
+    
     event.preventDefault()
 
         
@@ -78,7 +79,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     
     
     ###
-    Find the design that was clicked and 
+    Find the design that was clicked and
     create a reference to it's container element
     ###
     $activeDesign = $("[data-room_item_id=" + itemId + "]")
@@ -88,24 +89,37 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     Mywebroom.State.set("$activeDesign", $activeDesign)
     
     
+    # Show the Save, Cancel, Remove view and remove button
+    # iff the object design's roomHide property is "no"
+    if $activeDesign.attr("data-room-hide")  is "no"
+      # Show the Save, Cancel, Remove view
+      $("#xroom_store_menu_save_cancel_remove").show()
     
     
+      # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+      # Hide the save button
+      $('#xroom_store_save').hide()
     
-    # Show the Save, Cancel, Remove view
-    $("#xroom_store_menu_save_cancel_remove").show()
-    
-    
-    # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
-    # Hide the save button
-    $('#xroom_store_save').hide()
-    
-    # Hide the cancel button
-    $('#xroom_store_cancel').hide()
-    
-    # Show the remove button
-    $('#xroom_store_remove').show()
+      # Hide the cancel button
+      $('#xroom_store_cancel').hide()
+      
+      # Show the remove button
+      $('#xroom_store_remove').show()
+    else
+      # Show the Save, Cancel, Remove view
+      $("#xroom_store_menu_save_cancel_remove").hide()
     
     
+      # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+      # Hide the save button
+      $('#xroom_store_save').hide()
+    
+      # Hide the cancel button
+      $('#xroom_store_cancel').hide()
+      
+      # Hide the remove button
+      $('#xroom_store_remove').hide()
+      
     
     
     
@@ -121,7 +135,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     
     
     # COLLAPSE LOCATION
-    $('#dropdown-location').addClass('collapse');
+    $('#dropdown-location').addClass('collapse')
     
     
     
@@ -131,10 +145,10 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     categories.fetch
       async  : false
       url    : categories.url itemId
-      success: (response)->  
-        console.log("IndexItemsDesignsCategoriesByItemIdCollection fetch successful: ")
-        console.log(response)
-        myModel = categories.first();
+      success: (response) ->
+        #console.log("IndexItemsDesignsCategoriesByItemIdCollection fetch successful: ")
+        #console.log(response)
+        myModel = categories.first()
         self.setCategories(myModel.get('items_designs_categories'))
         self.setBrands(myModel.get('items_designs_brands'))
         self.setStyles(myModel.get('items_designs_styles'))
@@ -152,8 +166,8 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
       async  : false
       url    : itemsDesignsCollection.url item_id
       success: (response)->
-        console.log("items designs fetch successful: ")
-        console.log(response)
+        #console.log("items designs fetch successful: ")
+        #console.log(response)
     
     return itemsDesignsCollection
     
@@ -167,7 +181,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     # iterate through the category items and create a li out of each one
     _.each(categories, (category) ->
       if category.category
-        $('#dropdown-object > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(category.category)+'</a></li>');
+        $('#dropdown-object > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(category.category) + '</a></li>')
     )
 
 
@@ -180,7 +194,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     # iterate through the brand items and create a li out of each one
     _.each(brands, (brand) ->
       if brand.brand
-        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(brand.brand)+'</a></li>');
+        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
     )
     
     
@@ -193,7 +207,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     # iterate through the style items and create a li out of each one
     _.each(styles, (style) ->
       if style.style
-        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(style.style)+'</a></li>');
+        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
     )
     
    
@@ -206,7 +220,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     # iterate through the color items and create a li out of each one
     _.each(colors, (color) ->
       if color.color
-        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(color.color)+'</a></li>');
+        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
     )
     
     
@@ -218,7 +232,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     # iterate through the make items and create a li out of each one
     _.each(makes, (make) ->
       if make.make
-        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(make.make)+'</a></li>');
+        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(make.make) + '</a></li>')
     )
   
     
@@ -234,9 +248,9 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #--------------------------
   hoverStoreItem: (event) ->
     event.preventDefault()
-    console.log("hover "+this.model.get('id'))
+    #console.log("hover " + this.model.get('id'))
     button_preview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
-    $('#store_item_container_'+this.model.get('id')).append(button_preview)
+    $('#store_item_container_' + this.model.get('id')).append(button_preview)
 
 
   #--------------------------
@@ -244,7 +258,7 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #--------------------------
   hoverOffStoreItem: (event) ->
     event.preventDefault()
-    console.log("hoverOff"+this.model.get('id'))
+    #console.log("hoverOff" + this.model.get('id'))
     $('#button_preview').remove()
 
 
@@ -264,20 +278,20 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     @row_number = 1
     @column_number = 3
 
-    @row_line = "<ul id='row_item_designs_"+@row_number+"'></ul>"
+    @row_line = "<ul id='row_item_designs_" + @row_number + "'></ul>"
     this.$('#tab_items_designs').append(@row_line)
 
     that = this
     itemsDesignsCollection.each (entry)  ->
       storeMenuItemsDesignsView = new Mywebroom.Views.StoreMenuItemsDesignsView(model:entry)
-      $('#row_item_designs_'+that.row_number).append(storeMenuItemsDesignsView.el)
+      $('#row_item_designs_' + that.row_number).append(storeMenuItemsDesignsView.el)
       storeMenuItemsDesignsView.render()
-      that.loop_number++
+      that.loop_number += 1
 
-      u = that.loop_number%that.column_number
-      if u == 0
-        that.row_number++
-        that.row_line = "<ul id='row_item_designs_"+that.row_number+"'></ul>"
+      u = that.loop_number % that.column_number
+      if u is 0
+        that.row_number += 1
+        that.row_line = "<ul id='row_item_designs_" + that.row_number + "'></ul>"
         $('#tab_items_designs').append(that.row_line)
 
 
@@ -334,22 +348,21 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
   #--------------------------
   setItemToCenter:(itemModel) ->
     # move to the center
-    console.log("center the element with the center room")
-    item_location_x = parseInt(itemModel.get('x'));
-    console.log(item_location_x)
+    #console.log("center the element with the center room")
+    item_location_x = parseInt(itemModel.get('x'))
+    #console.log(item_location_x)
 
     $('#xroom_items_0').attr('data-current_screen_position','0')
     $('#xroom_items_0').css({
-        'left':Math.floor(-1999-item_location_x+100)
+      'left': Math.floor(-1999 - item_location_x + 100)
     })
     $('#xroom_items_1').attr('data-current_screen_position','1')
     $('#xroom_items_1').css({
-          'left':Math.floor(0-item_location_x+100)
+      'left': Math.floor(0 - item_location_x + 100)
     })
     $('#xroom_items_2').attr('data-current_screen_position','2')
     $('#xroom_items_2').css({
-          'left':Math.floor(1999-item_location_x+100)
+      'left': Math.floor(1999 - item_location_x + 100)
     })
-#    $(window).scrollLeft(0)
-    console.log("window location"+$(window).scrollLeft())
 
+    #console.log("window location" + $(window).scrollLeft())

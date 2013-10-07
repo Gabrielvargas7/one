@@ -96,7 +96,3 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
       $('#'+pos2).css({
         'left':initial_position
       })
-
-
-
-

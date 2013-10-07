@@ -80,9 +80,9 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
   #--------------------------
   hoverStoreTheme: (event) ->
     event.preventDefault()
-    console.log("hover "+this.model.get('id'))
+    console.log("hover " + this.model.get('id'))
     buttonPreview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
-    $('#store_theme_container_'+this.model.get('id')).append(buttonPreview)
+    $('#store_theme_container_' + this.model.get('id')).append(buttonPreview)
 
 
 
@@ -91,7 +91,7 @@ class Mywebroom.Views.StoreMenuThemesView  extends Backbone.View
   #--------------------------
   hoverOffStoreTheme: (event) ->
     event.preventDefault()
-    console.log("hoverOff"+this.model.get('id'))
+    console.log("hoverOff" + this.model.get('id'))
     $('#button_preview').remove()
 
 

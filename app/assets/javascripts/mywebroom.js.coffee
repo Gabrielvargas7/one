@@ -12,23 +12,28 @@ $(document).ready ->
   # Create the state model
   Mywebroom.State = new Backbone.Model({
     defaults:
-      roomState     : false     # Who's room are we viewing? PUBLIC, FRIEND, or SELF
-      roomUser      : false     # Backbone Model of room user, or false
-      roomData      : false     # Backbone Model of room data, or false
-      roomDesigns   : false     # Array of item designs, or empty array
-      roomTheme     : false     # Object containing info on room's theme
-      signInState   : false     # Boolean: Is the user signed in?
-      signInUser    : false     # Backbone Model of signed-in user, or false
-      signInData    : false     # Backbone Model of signed-in user's data, or false
-      $activeDesign : false     # A refernce to the element of the design in focus*
-      roomView      : false     # A reference to this view
-      roomHeaderView: false     # A reference to this view
+      roomState     : false  # Who's room are we viewing? PUBLIC, FRIEND, or SELF
+      roomUser      : false  # Backbone Model of room user, or false
+      roomData      : false  # Backbone Model of room data, or false
+      signInState   : false  # Boolean: Is the user signed in?
+      signInUser    : false  # Backbone Model of signed-in user, or false
+      signInData    : false  # Backbone Model of signed-in user's data, or false
+      
+      roomDesigns   : false  # Array of item designs, or empty array
+      roomTheme     : false  # Object containing info on room's theme
+      
+      $activeDesign       : false  # A refernce to the element of the design in focus*
+      activeDesignIsHidden: false  # yes or no
+      
+      roomView                     : false  # A reference to this view
+      roomHeaderView               : false  # A reference to this view
+      storePageView                : false  # A reference to this view
       storeMenuSaveCancelRemoveView: false  # A reference to this view
+      
+      roomViewState                     : false # open or closed
+      roomHeaderViewState               : false # open or closed
+      storePageViewState                : false # open or closed
       storeMenuSaveCancelRemoveViewState: false # open or closed
-      roomScrollLeftView : false  # A reference to this view
-      roomScrollRightView: false  # A reference to this view
-      browseModeView     : false  # A reference to this view
-      roomFooterView     : false  # A reference to this view
   })
   
   ###
