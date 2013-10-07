@@ -57,4 +57,23 @@ class SessionsController < ApplicationController
 
     end
   end
+
+  def verified_user_item(user)
+
+      if UsersItemsDesign.exists?(user_id:user.id)
+
+        @user_items_designs = UsersItemsDesign.find_all_by_user_id(user.id)
+
+        @user_items_designs.each do |user_item_design|
+
+
+        end
+
+
+      end
+
+
+
+
+  end
 end

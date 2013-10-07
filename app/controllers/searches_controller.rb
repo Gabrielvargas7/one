@@ -567,9 +567,8 @@ class SearchesController < ApplicationController
             limit(params[:limit]).
             offset(params[:offset])
 
-        format.json { render json:{
-            items_designs:@items_designs
-        }}
+        format.json { render json:@items_designs
+        }
 
       else
         @items_designs = nil
@@ -640,9 +639,8 @@ class SearchesController < ApplicationController
             limit(params[:limit]).
             offset(params[:offset])
 
-        format.json { render json:{
-            themes:@themes
-        }}
+        format.json { render json:@themes
+        }
 
       else
         @themes = nil
@@ -712,9 +710,8 @@ class SearchesController < ApplicationController
             offset(params[:offset])
 
 
-        format.json { render json:{
-            bundles:@bundles
-        }}
+        format.json { render json:@bundles
+        }
 
       else
         @bundles = nil
@@ -788,9 +785,7 @@ class SearchesController < ApplicationController
 
 
 
-        format.json { render json:{
-            bookmarks:@bookmarks
-        }}
+        format.json { render json:@bookmarks}
 
       else
         @bookmarks = nil
