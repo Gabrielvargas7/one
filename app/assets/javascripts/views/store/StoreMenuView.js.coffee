@@ -129,11 +129,25 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         Looks like it's a specific design category (number)
         ###
-        console.log("YOU'RE SEARCHING ON A SPECIFIC ITEM DESIGN CATEGORY!!!")
+        console.log("YOU'RE SEARCHING ON ITEM DESIGN CATEGORY ", category)
         console.log(category)
-        alert("NOT SUPPORTED YET")
-  
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithItemIdAndLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(category,10,0,keyword)
+          success: (response) ->
+            console.log("item design search collection fetch success")
     
+            # Replace the design collection
+            self.appendItemsDesignsEntry(response)
+
+          error: ->
+            console.log("error")
+  
+  
     
   clickSearch: (e) ->
     
