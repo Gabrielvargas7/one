@@ -116,8 +116,9 @@ class BookmarksCategoriesController < ApplicationController
 
       @bookmarks_categories_count = BookmarksCategory.where("item_id = ?",@bookmarks_category.item_id).count
 
+      # fix this
       if @bookmarks_categories_count > 1
-         @bookmarks_category.destroy
+         #@bookmarks_category.destroy
 
          flash[:success] = "Destroy is successful"
          format.html { redirect_to bookmarks_categories_url }
