@@ -17,6 +17,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   events:{
+    'click #xroom_header_active_sites'   : 'showActiveSites'
     'click #xroom_header_profile'        : 'showProfile'
     'click #xroom_header_forward_profile': 'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting': 'forwardToRoRSettingPage'
@@ -379,6 +380,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.stopPropagation()
     console.log("clean textbox values")
     $('#xroom_header_search_text').val("");
+
+  showActiveSites:(event)->
+    event.stopPropagation()
+    event.preventDefault()
+    #If no active sites, toast message
+    console.log 'show active sites from header, plz'
+    #If active sites, change CSS to show the menu. 
+
 
 
 

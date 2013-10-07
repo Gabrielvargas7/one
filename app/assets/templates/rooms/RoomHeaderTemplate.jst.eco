@@ -46,6 +46,10 @@
         <!-- Menu  -->
         <ul class="nav pull-right">
             <li>
+              <a id='xroom_header_active_sites'>
+              </a>
+            </li>
+            <li>
                 <a id="xroom_header_profile">
                 </a>
             </li>
