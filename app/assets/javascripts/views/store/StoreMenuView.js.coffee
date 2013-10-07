@@ -21,10 +21,121 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click #entire-rooms-store-menu'    :'clickBundles'
     'click .store-dropdown'             :'clickStoreDropdown'
     'keyup #store-search-box'           :'clickSearch'
+    'click .store-dropdown-item a'      :'clickDropdownItem'
+    
+    
+  clickDropdownItem: (e) ->
+
+    keyword  = e.target.text
+    category = Mywebroom.State.get("storeHelper")
+    
+    @search(keyword, category)
+    
+    
+    
+  
+  search: (keyword, category) ->
+    
+    self = this
+    
+    switch category
+      when "ALL"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("items designs search collection fetch success")
+            
+            console.log("\n\n!!!!!\nWARNING! NOT EVERYTHING!\n!!!!!\n\n")
+          
+            # Replace the design collection
+            self.appendItemsEntry(response)
+    
+          error: ->
+            console.log("error")
+      when "OBJECTS"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("items designs search collection fetch success")
+            
+            # Replace the design collection
+            self.appendItemsEntry(response)
+      
+          error: ->
+            console.log("error")
+
+      when "THEMES"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("themes search collection fetch success")
+        
+            # Replace the design collection
+            self.appendThemesEntry(response)
+  
+          error: ->
+            console.log("error")
+      
+      when "BUNDLES"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("bundles search collection fetch success")
+      
+            # Replace the design collection
+            self.appendBundlesEntry(response)
+
+          error: ->
+            console.log("error")
+            
+      when "ENTIRE ROOMS"
+        ###
+        Fetch collection
+        ###
+        collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
+        collection.fetch
+          async  : false
+          url    : collection.url(10,0,keyword)
+          success: (response) ->
+            console.log("entire rooms search collection fetch success")
+    
+            # Replace the design collection
+            self.appendBundlesSetEntry(response)
+
+          error: ->
+            console.log("error")
+        
+      else
+        ###
+        Looks like it's a specific design category (number)
+        ###
+        console.log("YOU'RE SEARCHING ON A SPECIFIC ITEM DESIGN CATEGORY!!!")
+        console.log(category)
+        alert("NOT SUPPORTED YET")
+  
     
     
   clickSearch: (e) ->
-    self = this
     
     if e.keyCode is 13
       input = $("#store-search-box").val()
@@ -33,92 +144,16 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       tab = $("#store-dropdown-btn").text()
       
       
-      switch tab
-        when "ALL"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("items designs search collection fetch success")
-              
-              console.log("\n\n!!!!!\nWARNING! NOT EVERYTHING!\n!!!!!\n\n")
-            
-              # Replace the design collection
-              self.appendItemsEntry(response)
+      @search(input, tab)
       
-            error: ->
-              console.log("error")
-        when "OBJECTS"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("items designs search collection fetch success")
-              
-              # Replace the design collection
-              self.appendItemsEntry(response)
-        
-            error: ->
-              console.log("error")
-
-        when "THEMES"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("themes search collection fetch success")
-          
-              # Replace the design collection
-              self.appendThemesEntry(response)
-    
-            error: ->
-              console.log("error")
-        
-        when "BUNDLES"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("bundles search collection fetch success")
-        
-              # Replace the design collection
-              self.appendBundlesEntry(response)
-  
-            error: ->
-              console.log("error")
-              
-        when "ENTIRE ROOMS"
-          ###
-          Fetch collection
-          ###
-          collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
-          collection.fetch
-            async  : false
-            url    : collection.url(10,0,input)
-            success: (response) ->
-              console.log("entire rooms search collection fetch success")
       
-              # Replace the design collection
-              self.appendBundlesSetEntry(response)
-
-            error: ->
-              console.log("error")
+      ###
+      Clear search box
+      ###
+      $("#store-search-box").val("")
+      
+      
+      
 
    
   
@@ -443,6 +478,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     console.log("click themes")
     
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "THEMES")
+    
+    
+    
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
     
@@ -472,6 +515,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
       
   clickBundles: ->
+    
+    
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "BUNDLES")
+    
+    
     
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
@@ -507,7 +559,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the brand items and create a li out of each one
     _.each(brands, (brand) ->
       if brand.brand
-        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(brand.brand)+'</a></li>');
+        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
     )
     
     
@@ -520,7 +572,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the style items and create a li out of each one
     _.each(styles, (style) ->
       if style.style
-        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(style.style)+'</a></li>');
+        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
     )
     
     
@@ -533,7 +585,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the location items and create a li out of each one
     _.each(locations, (location) ->
       if location.location
-        $('#dropdown-location > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(location.location)+'</a></li>');
+        $('#dropdown-location > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(location.location) + '</a></li>')
     )
    
    
@@ -546,9 +598,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the color items and create a li out of each one
     _.each(colors, (color) ->
       if color.color
-        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(color.color)+'</a></li>');
-    )
-    
+        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
+    )    
     
     
   setMakes: (makes) ->
@@ -559,5 +610,5 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the make items and create a li out of each one
     _.each(makes, (make) ->
       if make.make
-        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(make.make)+'</a></li>');
+        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(make.make) + '</a></li>')
     )

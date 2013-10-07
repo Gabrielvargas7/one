@@ -1,0 +1,56 @@
+//# GET get search items designs by item_id and the keyword with limit and offset
+//# Limit is the number of returns by type that you want it
+//# Offset is where you want to start
+//# /searches/json/index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword/item_id/:limit/:offset/:keyword
+//# /searches/json/index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword/10/10/0/gabriel var.json
+//#Return head
+//#success    ->  head  200 OK
+
+[
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "This green frame represents style and class!",
+        "id": 54,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823020/31576-items_design-image_name-elegante-54.png"
+        },
+        "item_id": 10,
+        "items_name": "Social Canvas",
+        "like": 0,
+        "make": null,
+        "name": "Elegante",
+        "special_name": null,
+        "style": null,
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        }
+    },
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "description": "Go Green",
+        "id": 367,
+        "image_name": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "item_id": 10,
+        "items_name": "Social Canvas",
+        "like": 0,
+        "make": null,
+        "name": "Green",
+        "special_name": null,
+        "style": null,
+        "image_name_hover": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        },
+        "image_name_selection": {
+            "url": "/assets/fallback/items_design/default_items_design.png"
+        }
+    }
+]

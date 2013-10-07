@@ -267,6 +267,11 @@ Mywebroom::Application.routes.draw do
          :searches_json_index_searches_bookmarks_with_limit_and_offset_and_keyword
 
 
+  match '/searches/json/index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword/:item_id/:limit/:offset/:keyword', to:
+        'searches#json_index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword', via: :get, as:
+            :searches_json_index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword
+
+
   #--------------------------
   # end Searches contract
   #--------------------------
