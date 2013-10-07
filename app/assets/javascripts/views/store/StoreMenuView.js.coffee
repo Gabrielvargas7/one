@@ -20,8 +20,62 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click #bundles-store-menu'         :'clickBundles'
     'click #entire-rooms-store-menu'    :'clickBundles'
     'click .store-dropdown'             :'clickStoreDropdown'
+    'keyup #store-search-box'           :'clickSearch'
     
     
+  clickSearch: (e) ->
+    self = this
+    
+    if e.keyCode is 13
+      input = $("#store-search-box").val()
+      
+      # What tab is selected?
+      tab = $("#store-dropdown-btn").text()
+      
+      
+      switch tab
+        when "ALL"          then console.log(tab)
+        when "OBJECTS"
+          ###
+          Fetch collection
+          ###
+          collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
+          collection.fetch
+            async  : false
+            url    : collection.url(10,0,input)
+            success: (response) ->
+              console.log("items designs search collection fetch success")
+              
+              # Replace the design collection
+              self.appendItemsDesignsEntry(response)
+        
+            error: ->
+              console.log("error")
+
+        when "THEMES"
+          ###
+          Fetch collection
+          ###
+          collection2 = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
+          collection2.fetch
+            async  : false
+            url    : collection2.url(10,0,input)
+            success: (response) ->
+              console.log("themes search collection fetch success")
+          
+              # Replace the design collection
+              self.appendThemesEntry(response)
+    
+            error: ->
+              console.log("error")
+        
+        when "BUNDLES"      then console.log(tab)
+        when "ENTIRE ROOMS" then console.log(tab)
+   
+  
+  
+  
+  
   clickStoreDropdown: (e) ->
     
     # DROPDOWN
