@@ -21,6 +21,36 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click #entire-rooms-store-menu'    :'clickBundles'
     'click .store-dropdown'             :'clickStoreDropdown'
     'keyup #store-search-box'           :'clickSearch'
+    'click #dropdown-color .store-dropdown-item a'          :'clickColor'
+    
+    
+  clickColor: (e) ->
+    ###
+    We need to determine whether we're currently looking at
+    a design category, themes, bundles, or entire rooms
+    ###
+    
+    ###
+    Search
+    ###
+    color = e.target.text
+    
+    
+    helper = Mywebroom.State.get("storeHelper")
+    
+    switch helper
+      when "THEMES"       then console.log(helper)
+      when "BUNDLES"      then console.log(helper)
+      when "ENTIRE ROOMS" then console.log(helper)
+      else
+        # Looks like we're on a particular object category
+        console.log(helper)
+        
+        ###
+        Now search on that object
+        ###
+        #collection = new Mywebroom.<something>
+        
     
     
   clickSearch: (e) ->
@@ -443,6 +473,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     console.log("click themes")
     
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "THEMES")
+    
+    
+    
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
     
@@ -472,6 +510,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
       
   clickBundles: ->
+    
+    
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "BUNDLES")
+    
+    
     
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
@@ -507,7 +554,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the brand items and create a li out of each one
     _.each(brands, (brand) ->
       if brand.brand
-        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(brand.brand)+'</a></li>');
+        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
     )
     
     
@@ -520,7 +567,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the style items and create a li out of each one
     _.each(styles, (style) ->
       if style.style
-        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(style.style)+'</a></li>');
+        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
     )
     
     
@@ -533,7 +580,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the location items and create a li out of each one
     _.each(locations, (location) ->
       if location.location
-        $('#dropdown-location > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(location.location)+'</a></li>');
+        $('#dropdown-location > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(location.location) + '</a></li>')
     )
    
    
@@ -546,9 +593,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the color items and create a li out of each one
     _.each(colors, (color) ->
       if color.color
-        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(color.color)+'</a></li>');
-    )
-    
+        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
+    )    
     
     
   setMakes: (makes) ->
@@ -559,5 +605,5 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # iterate through the make items and create a li out of each one
     _.each(makes, (make) ->
       if make.make
-        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">'+_.str.capitalize(make.make)+'</a></li>');
+        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(make.make) + '</a></li>')
     )
