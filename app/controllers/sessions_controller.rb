@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       # Sign the user in and redirect to the user's show page.
 
       sign_in user
+      verified_and_insert_new_item_to_user user
       redirect_back_or user
       #redirect_to user
 
@@ -46,6 +47,7 @@ class SessionsController < ApplicationController
         user = User.from_omniauth(env["omniauth.auth"])
 
         sign_in user
+        verified_and_insert_new_item_to_user user
         redirect_back_or user
       end
     else
@@ -58,22 +60,18 @@ class SessionsController < ApplicationController
     end
   end
 
-  def verified_user_item(user)
+  def verified_and_insert_new_item_to_user(user)
 
-      if UsersItemsDesign.exists?(user_id:user.id)
+        @items_locations = ItemsLocation.all
 
-        @user_items_designs = UsersItemsDesign.find_all_by_user_id(user.id)
+        @items_locations.each do |item_location|
 
-        @user_items_designs.each do |user_item_design|
-
-
+          unless UsersItemsDesign.joins(:items_design).where('user_id = ? and items_designs.item_id =? and location_id = ?',user.id,item_location.item_id,item_location.location_id).exists?
+            if ItemsDesign.exists?(item_id:item_location.item_id)
+              @item_design = ItemsDesign.find_by_item_id(item_location.item_id)
+              UsersItemsDesign.create(items_design_id:@item_design.id, user_id:user.id,hide:"no" ,location_id:item_location.location_id)
+            end
+          end
         end
-
-
-      end
-
-
-
-
   end
 end
