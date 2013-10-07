@@ -22,6 +22,7 @@
 //= require bootbox
 //= require hogan-2.0.0
 //= require underscore.string
+//= require jquery.simplyscroll
 //= require backbone.marionette
 //= require mywebroom
 //= require_tree ../templates

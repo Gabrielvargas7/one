@@ -171,7 +171,16 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   addCustomBookmark:(event)->
     event.preventDefault()
-    console.log "I'd like to add a custom bookmark"
+    #Need to fetch MyBookmarks to get an accurate last position
+    #If I've added 2 bookmarks from discover, then preview, then save site, 
+    #    the position count is not accurate and save doesn't work.
+    event.data.that.collection.fetch
+      async:false
+      url:event.data.that.collection.url event.data.that.options.user, event.data.that.options.user_item_design
+      success:(response) ->
+        console.log("bookmark fetch successful: ")
+        console.log(response)
+
     customURL= $.trim $("input[name=url_input]").val()
     title = $.trim $("input[name=bookmark_title]").val()
     #The regex code is copied from the old Rooms code. 
@@ -191,7 +200,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         'item_id': event.data.that.options.user_item_design
         'position':parseInt(event.data.that.collection.last().get('position'))+1
         'bookmarks_category_id':event.data.that.discoverCategoriesCollection.first().get('id')
-      console.log customBookmark
+
       #We want to just display picture now. If click Save Site is clicked, then save the model
       $('.custom_bookmark_confirm_add_wrap').prepend('<img src="'+customBookmark.get('image_name')+'">')
       $('.custom_bookmark_confirm_add_wrap').show()
@@ -205,6 +214,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
               console.log('post CUSTOM BookmarkModel FAIL:')
               console.log(response)
         #After 5 seconds, clear form and remove image?
+        setTimeout((->
+          $('#add_your_own_form')[0].reset()
+          $('.custom_bookmark_confirm_add_wrap img').remove()),3000)
         ))  
     else
       #Show an error to the user. 

@@ -97,6 +97,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 			@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
 			@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
 			$(@el).append(@browseModeSidebarView.render().el)
+			@browseModeSidebarView.setScroll()
 			@setSidebarHover();
 				
 			
@@ -111,6 +112,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		@browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
 		@browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
 		$(@el).append(@browseModeSidebarView.render().el)
+		@browseModeSidebarView.setScroll()
 		@removeCurrentActiveSite(@$currentActiveSiteHTML())
 		#set current active site to this model in iframe. 
 		@setCurrentActiveSite $('.browse_mode_site[data-id='+siteId+']') 
