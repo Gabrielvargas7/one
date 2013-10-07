@@ -27,8 +27,8 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-    console.log("storepage view: ")
-    console.log(@model)
+    #console.log("storepage view: ")
+    #console.log(@model)
     $(@el).html(@template())
 
     
@@ -47,8 +47,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #--------------------------
   closeStorePageView: (event) ->
     event.preventDefault()
-    console.log('add all the event to the header')
-
+    
 
     # Hide the view with the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
