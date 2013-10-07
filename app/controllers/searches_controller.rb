@@ -490,12 +490,12 @@ class SearchesController < ApplicationController
 
 
   # GET get search items designs by the keyword with limit and offset
-  # Limit is the number of returns by type that you want it
-  # Offset is where you want to start
-  # /searches/json/index_searches_items_designs_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
-  # /searches/json/index_searches_items_designs_with_limit_and_offset_and_keyword/10/0/gabriel var.json
-  #Return head
-  #success    ->  head  200 OK
+# Limit is the number of returns by type that you want it
+# Offset is where you want to start
+# /searches/json/index_searches_items_designs_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
+# /searches/json/index_searches_items_designs_with_limit_and_offset_and_keyword/10/0/gabriel var.json
+#Return head
+#success    ->  head  200 OK
 
   def json_index_searches_items_designs_with_limit_and_offset_and_keyword
 
@@ -793,6 +793,97 @@ class SearchesController < ApplicationController
       end
     end
   end
+
+
+  # GET get search items designs by item_id and the keyword with limit and offset
+  # Limit is the number of returns by type that you want it
+  # Offset is where you want to start
+  # /searches/json/index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword/item_id/:limit/:offset/:keyword
+  # /searches/json/index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword/10/10/0/gabriel var.json
+  #Return head
+  #success    ->  head  200 OK
+
+  def json_index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword
+
+    respond_to do |format|
+      if params[:keyword]
+
+
+        keyword = params[:keyword]
+        keyword.downcase!
+
+        array_keyword = keyword.split(' ')
+
+        @items_designs_array = []
+
+        # Found all the id for every word
+        # example: chair brown wood
+        # find all the users with that words
+        array_keyword.each do |keyword|
+
+          # limit the length of the string to avoid injection
+          if keyword.length < 12
+
+            @items_designs_id_array = ItemsDesign.
+                where('lower(items_designs.name) LIKE ? or
+                           lower(items.name)   LIKE ? or
+                           lower(category)  LIKE ? or
+                           lower(style)     LIKE ? or
+                           lower(brand)     LIKE ? or
+                           lower(color)     LIKE ? or
+                           lower(make)      LIKE ? or
+                           lower(special_name)  LIKE ?',
+                      "%#{keyword}%",
+                      "%#{keyword}%",
+                      "%#{keyword}%",
+                      "%#{keyword}%",
+                      "%#{keyword}%",
+                      "%#{keyword}%",
+                      "%#{keyword}%",
+                      "%#{keyword}%").
+                where('item_id = ?',params[:item_id]).
+                joins(:item).
+                limit(params[:limit]).
+                offset(params[:offset]).
+                pluck(:id)
+
+            @items_designs_array.concat(@items_designs_id_array)
+
+
+          end
+        end
+
+        @items_designs = ItemsDesign.
+            select('items_designs.id,
+                            items_designs.name,
+                            items_designs.item_id,
+                            items_designs.description,
+                            items_designs.category,
+                            items_designs.style,
+                            items_designs.brand,
+                            items_designs.color,
+                            items_designs.make,
+                            items_designs.special_name,
+                            items_designs.like,
+                            items_designs.image_name,
+                            items.name as items_name').
+            where('items_designs.id in (?)',@items_designs_array).
+            where('item_id = ?',params[:item_id]).
+            joins(:item).
+            limit(params[:limit]).
+            offset(params[:offset])
+
+        format.json { render json:@items_designs
+        }
+
+      else
+        @items_designs = nil
+        format.json { render json: @items_designs }
+      end
+    end
+  end
+
+
 
 
 
