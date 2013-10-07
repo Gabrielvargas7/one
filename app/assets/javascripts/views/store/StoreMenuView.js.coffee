@@ -21,6 +21,36 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click #entire-rooms-store-menu'    :'clickBundles'
     'click .store-dropdown'             :'clickStoreDropdown'
     'keyup #store-search-box'           :'clickSearch'
+    'click #dropdown-color .store-dropdown-item a'          :'clickColor'
+    
+    
+  clickColor: (e) ->
+    ###
+    We need to determine whether we're currently looking at
+    a design category, themes, bundles, or entire rooms
+    ###
+    
+    ###
+    Search
+    ###
+    color = e.target.text
+    
+    
+    helper = Mywebroom.State.get("storeHelper")
+    
+    switch helper
+      when "THEMES"       then console.log(helper)
+      when "BUNDLES"      then console.log(helper)
+      when "ENTIRE ROOMS" then console.log(helper)
+      else
+        # Looks like we're on a particular object category
+        console.log(helper)
+        
+        ###
+        Now search on that object
+        ###
+        #collection = new Mywebroom.<something>
+        
     
     
   clickSearch: (e) ->
@@ -443,6 +473,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     console.log("click themes")
     
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "THEMES")
+    
+    
+    
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
     
@@ -472,6 +510,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
       
   clickBundles: ->
+    
+    
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "BUNDLES")
+    
+    
     
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
