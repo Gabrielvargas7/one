@@ -17,6 +17,9 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		$('.browse_mode_site')
 	initialize:->
 		@activeSitesCollection=new Backbone.Collection()
+		@activeMenuView = new Mywebroom.Views.BrowseActiveMenuView(collection:@getActiveSitesCollection())
+		$(@el).append(@activeMenuView.render().el)
+		@activeMenuView.hideActiveMenu()
 	setModelToBrowse:(model)->
 		@modelToBrowse=model
 		#Fetch item+designs info (possibly rerender active menu when we're there)

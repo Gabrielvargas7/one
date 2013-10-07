@@ -34,6 +34,9 @@ $(document).ready ->
       roomHeaderViewState               : false # open or closed
       storePageViewState                : false # open or closed
       storeMenuSaveCancelRemoveViewState: false # open or closed
+
+      activeSitesMenuView: false #A reference to the active Sites Menu View.
+
   })
   
   ###

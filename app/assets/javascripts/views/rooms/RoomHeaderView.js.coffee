@@ -385,29 +385,39 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.stopPropagation()
     event.preventDefault()
     #If no active sites, toast message
+    if Mywebroom.State.get('activeSitesMenuView')
+      if Mywebroom.State.get('activeSitesMenuView').collection.length>0
+        #show
+        Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
+        $('.browse_mode_view').show()
+        console.log 'try to show active menu'
+        
+      else
+        @noActiveSitesToast()
+      #We check if there are any sites in the collection. If yes, 
+      #We check if active is hidden. If yes, show. 
+    else
+      @noActiveSitesToast()
 
-    # Displays save message
+  noActiveSitesToast:->
     #Note, SN created class called toast-top-center to position toast appropriately.
     toastr.options = {
       "closeButton":     true
       "debug":           false
       "positionClass":   "toast-top-center"
       "onclick":         null
-      "showDuration":    "300"
-      "hideDuration":    "1000"
-      "timeOut":         "5000"
-      "extendedTimeOut": "1000"
+      "showDuration":    "0"
+      "hideDuration":    "0"
+      "timeOut":         "3000"
+      "extendedTimeOut": "0"
       "showEasing":      "swing"
       "hideEasing":      "linear"
       "showMethod":      "fadeIn"
       "hideMethod":      "fadeOut"
     }
-    
     # Display the Toastr message
-    toastr.info("There are no active sites right now. Click on an object bookmark to get started browsing!")
-  
+    toastr.info("There are no active sites currently open. Click on an object to start surfing the web!")
 
-    #If active sites, change CSS to show the menu. 
 
 
 
