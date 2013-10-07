@@ -44,10 +44,7 @@ class Mywebroom.Views.StoreMenuItemsDesignsView  extends Backbone.View
      
     event.preventDefault()
     
-    
-    
-    
-    
+  
     # Type of object
     itemId       = @model.get("item_id")
     

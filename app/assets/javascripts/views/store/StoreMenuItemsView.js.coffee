@@ -79,6 +79,13 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     
     
     ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", itemId)
+    
+    
+    
+    ###
     Find the design that was clicked and
     create a reference to it's container element
     ###
