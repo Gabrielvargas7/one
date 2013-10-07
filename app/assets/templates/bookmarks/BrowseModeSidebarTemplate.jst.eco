@@ -20,8 +20,9 @@
 		</a>
 		<div>Bookmarks</div>
 	</li>
+</ul>
 	<div class="sidebar_spacer"></div>
-
+<ul class="browse_mode_list" id="browse_mode_scroller">
 	<%if @collection:%>
 		
 		<%for site in @collection.models:%>
