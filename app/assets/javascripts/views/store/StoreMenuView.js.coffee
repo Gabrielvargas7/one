@@ -360,9 +360,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#dropdown-object').addClass('collapse')
     $('#dropdown-style').addClass('collapse')
     $('#dropdown-brand').addClass('collapse')
-    $('#dropdown-location').addClass('collapse');
-    $('#dropdown-color').addClass('collapse');
-    $('#dropdown-make').addClass('collapse');
+    $('#dropdown-location').addClass('collapse')
+    $('#dropdown-color').addClass('collapse')
+    $('#dropdown-make').addClass('collapse')
 
 
 
@@ -371,9 +371,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#dropdown-object').removeClass('collapse')
     $('#dropdown-style').removeClass('collapse')
     $('#dropdown-brand').removeClass('collapse')
-    $('#dropdown-location').removeClass('collapse');
-    $('#dropdown-color').removeClass('collapse');
-    $('#dropdown-make').removeClass('collapse');
+    $('#dropdown-location').removeClass('collapse')
+    $('#dropdown-color').removeClass('collapse')
+    $('#dropdown-make').removeClass('collapse')
 
 
 
@@ -382,7 +382,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
     
-    # Hide the search filters      
+    # Hide the search filters
     @collapseAll()
     
     
@@ -391,33 +391,36 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
   clickThemes: ->
     
+    console.log("click themes")
+    
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
     
     self = this
-    
     @expandAll()
     
     
      # Add the collapse class
-    $('#dropdown-object').addClass('collapse');
+    $('#dropdown-object').addClass('collapse')
     
     
     # Load the Bundles' Categories Collection
-    categories = new Mywebroom.Collections.IndexThemesCategoriesCollection();
-    categories.fetch();
-    categories.on('sync', -> 
-      model = this.first();
-      self.setBrands(model.get('themes_brands'))
-      self.setStyles(model.get('themes_styles'))
-      self.setLocations(model.get('themes_locations'))
-      self.setColors(model.get('themes_colors'))
-      self.setMakes(model.get('themes_makes'))
-    )  
+    categories = new Mywebroom.Collections.IndexThemesCategoriesCollection()
+    categories.fetch
+      async: false
+      success: (response) ->
+        model = response.first()
+        self.setBrands(model.get('themes_brands'))
+        self.setStyles(model.get('themes_styles'))
+        self.setLocations(model.get('themes_locations'))
+        self.setColors(model.get('themes_colors'))
+        self.setMakes(model.get('themes_makes'))
+      error: (response) ->
+        console.log("theme fetch fail")
+        console.log(response)
     
     
-    
-    
+      
   clickBundles: ->
     
     # Hide the Save, Cancel, Remove view
@@ -429,12 +432,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     # Add the collapse class
-    $('#dropdown-object').addClass('collapse');
+    $('#dropdown-object').addClass('collapse')
     
     
     # Load the Bundles' Categories Collection
     categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection();
-    categories.fetch();
+    categories.fetch()
     categories.on('sync', -> 
       model = this.first();
       self.setBrands(model.get('bundles_brands'))
