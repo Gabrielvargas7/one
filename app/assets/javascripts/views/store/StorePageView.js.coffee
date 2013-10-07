@@ -51,22 +51,40 @@ class Mywebroom.Views.StorePageView extends Backbone.View
 
     self = this
     console.log("click Store Close")
-    bootbox.confirm("Leaving this screen will not save your changes", (result) ->
-      if result
-        Mywebroom.State.get("storeMenuSaveCancelRemoveView").revert()
+    
+    
+    ###
+    Display a confirm dialog if there are any un-saved changes
+    ###
+    if $("[data-room_item_design=new]").size() > 0
+      bootbox.confirm("Leaving this screen will not save your changes", (result) ->
+        if result
+          Mywebroom.State.get("storeMenuSaveCancelRemoveView").revert()
         
-        # Hide the view with the Save, Cancel, Remove view
-        $('#xroom_store_menu_save_cancel_remove').hide()
+          # Hide the view with the Save, Cancel, Remove view
+          $('#xroom_store_menu_save_cancel_remove').hide()
     
     
-        $('#xroom_storepage').hide()
+          $('#xroom_storepage').hide()
     
     
-        # Now that we're hiding the store,
-        # we need to hide the greyed out images
-        # in the user's room
-        $("[data-room-hide=yes]").hide()
-    )
+          # Now that we're hiding the store,
+          # we need to hide the greyed out images
+          # in the user's room
+          $("[data-room-hide=yes]").hide()
+      )
+    else
+      # Hide the view with the Save, Cancel, Remove view
+      $('#xroom_store_menu_save_cancel_remove').hide()
+
+
+      $('#xroom_storepage').hide()
+
+
+      # Now that we're hiding the store,
+      # we need to hide the greyed out images
+      # in the user's room
+      $("[data-room-hide=yes]").hide()
     
   
   
@@ -105,7 +123,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
       # Note: this width should be the same as #store_main_box in stylesheets/rooms_store.css.scss
       $('#store_main_box').css('width', '780px')
       
-      $('#store_collapse_button img').addClass('flipimg') 
+      $('#store_collapse_button img').addClass('flipimg')
     
     
 
