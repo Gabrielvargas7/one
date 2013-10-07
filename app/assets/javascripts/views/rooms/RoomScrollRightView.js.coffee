@@ -84,11 +84,9 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
 
       initial_position = $('#'+pos2).offset().left+1998
 
-      $('#'+pos0).attr('data-current_screen_position','2')
-      $('#'+pos1).attr('data-current_screen_position','0')
-      $('#'+pos2).attr('data-current_screen_position','1')
-      $('#'+pos0).css({
+      $('#' + pos0).attr('data-current_screen_position','2')
+      $('#' + pos1).attr('data-current_screen_position','0')
+      $('#' + pos2).attr('data-current_screen_position','1')
+      $('#' + pos0).css({
         'left':initial_position
       })
-
-
