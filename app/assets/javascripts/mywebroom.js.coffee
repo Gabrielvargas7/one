@@ -67,6 +67,24 @@ $(document).ready ->
   
   
   
+  # Listen to changes of storePageViewState
+  Mywebroom.State.on("change:storePageViewState", ->
+    state = Mywebroom.State.get("storePageViewState")
+    switch state
+      when "open"
+        ###
+        TODO
+        Turn off scrolling left
+        ###
+      when "closed"
+        ###
+        TODO
+        Turn back on scrolling left
+        ###
+  )
+  
+  
+  
   
   
   
