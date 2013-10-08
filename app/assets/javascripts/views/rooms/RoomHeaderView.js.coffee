@@ -287,6 +287,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
+    @hideActiveSites()
 
 
   #--------------------------
@@ -298,6 +299,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_profile').show()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
+    @hideActiveSites()
 
 
 
@@ -307,6 +309,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').show()
+    @hideActiveSites()
 
 
 
@@ -381,21 +384,35 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     console.log("clean textbox values")
     $('#xroom_header_search_text').val("");
 
+  #*******************
+  #**** Functions Active Sites and Browse Mode
+  #*******************
+
   showActiveSites:(event)->
     event.stopPropagation()
     event.preventDefault()
+
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    $('#xroom_storepage').hide()
+    $('#xroom_profile').hide()
+    $('#xroom_bookmarks').hide()
+    $('#xroom_header_search_box').hide()
+
     #If no active sites, toast message
     if Mywebroom.State.get('activeSitesMenuView')
       if Mywebroom.State.get('activeSitesMenuView').collection.length>0
         #show
         Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
-        $('.browse_mode_view').show()        
+        $('.browse_mode_view').show() 
+        $('#xroom_bookmarks_browse_mode').show()       
       else
         @noActiveSitesToast()
-      #We check if there are any sites in the collection. If yes, 
-      #We check if active is hidden. If yes, show. 
     else
       @noActiveSitesToast()
+
+  hideActiveSites:->
+    $('#xroom_bookmarks_browse_mode').hide()
+    $('#browse_mode_item_name').remove()
 
   noActiveSitesToast:->
     #Note, SN created class called toast-top-center to position toast appropriately.
