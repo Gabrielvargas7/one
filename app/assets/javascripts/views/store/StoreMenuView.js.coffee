@@ -151,6 +151,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
   clickSearch: (e) ->
     
+    ###
+    TODO
+    If the user was on the object tab, de-highlight it
+    ###
+    
+    
+    
+    
     if e.keyCode is 13
       input = $("#store-search-box").val()
       
@@ -485,6 +493,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Hide the search filters
     @collapseAll()
+    
+    
+    ###
+    TODO
+    Update dropdown tab to be ALL
+    ###
     
     
     

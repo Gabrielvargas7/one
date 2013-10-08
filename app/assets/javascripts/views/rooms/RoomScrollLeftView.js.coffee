@@ -14,10 +14,9 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
   #**** Events
   #*******************
 
-  events:{
+  events: {
     'mouseenter .room_scroll_left':'hoverRoomScrollLeft'
     'mouseleave .room_scroll_left':'hoverOffRoomScrollLeft'
-#
   }
 
   #*******************
