@@ -9,6 +9,7 @@ class Mywebroom.Views.BrowseActiveMenuView extends Backbone.View
 		self= this
 		@collection.on('add',@render,self)
 		@collection.on('remove',@render,self)
+		Mywebroom.State.set('activeSitesMenuView', this)
 	render:->
 		$(@el).html(@template(collection:@collection))
 		this

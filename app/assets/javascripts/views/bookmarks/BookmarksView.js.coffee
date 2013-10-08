@@ -41,7 +41,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   render: ->
     console.log("bookmark view: "+this.options.user_item_design)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user)
-    $(@el).append(@template(user_item_design:this.options.user_item_design,design:this.options.design, collection:@collection, categories:@discoverCategoriesCollection))
+    $(@el).append(@template(user_item_design:this.options.user_item_design,items_name:this.options.items_name, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
     #set .my_bookmarks_bottom to 100% width minus the sidebar width

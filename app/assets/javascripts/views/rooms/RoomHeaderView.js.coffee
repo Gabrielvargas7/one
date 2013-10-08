@@ -17,6 +17,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   events:{
+    'click #xroom_header_active_sites'   : 'showActiveSites'
     'click #xroom_header_profile'        : 'showProfile'
     'click #xroom_header_forward_profile': 'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting': 'forwardToRoRSettingPage'
@@ -286,6 +287,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
+    @hideActiveSites()
 
 
   #--------------------------
@@ -297,6 +299,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_profile').show()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
+    @hideActiveSites()
 
 
 
@@ -306,6 +309,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').show()
+    @hideActiveSites()
 
 
 
@@ -379,6 +383,57 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.stopPropagation()
     console.log("clean textbox values")
     $('#xroom_header_search_text').val("");
+
+  #*******************
+  #**** Functions Active Sites and Browse Mode
+  #*******************
+
+  showActiveSites:(event)->
+    event.stopPropagation()
+    event.preventDefault()
+
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    $('#xroom_storepage').hide()
+    $('#xroom_profile').hide()
+    $('#xroom_bookmarks').hide()
+    $('#xroom_header_search_box').hide()
+
+    #If no active sites, toast message
+    if Mywebroom.State.get('activeSitesMenuView')
+      if Mywebroom.State.get('activeSitesMenuView').collection.length>0
+        #show
+        Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
+        $('.browse_mode_view').show() 
+        $('#xroom_bookmarks_browse_mode').show()       
+      else
+        @noActiveSitesToast()
+    else
+      @noActiveSitesToast()
+
+  hideActiveSites:->
+    $('#xroom_bookmarks_browse_mode').hide()
+    $('#browse_mode_item_name').remove()
+
+  noActiveSitesToast:->
+    #Note, SN created class called toast-top-center to position toast appropriately.
+    toastr.options = {
+      "closeButton":     true
+      "debug":           false
+      "positionClass":   "toast-top-center"
+      "onclick":         null
+      "showDuration":    "0"
+      "hideDuration":    "0"
+      "timeOut":         "3000"
+      "extendedTimeOut": "0"
+      "showEasing":      "swing"
+      "hideEasing":      "linear"
+      "showMethod":      "fadeIn"
+      "hideMethod":      "fadeOut"
+    }
+    # Display the Toastr message
+    toastr.info("There are no active sites currently open. Click on an object to start surfing the web!")
+
+
 
 
 

@@ -34,8 +34,9 @@ $(document).ready ->
       roomHeaderViewState               : false # open or closed
       storePageViewState                : false # open or closed
       storeMenuSaveCancelRemoveViewState: false # open or closed
-      
       storeHelper: false # Store information about the tab or object we're on
+
+      activeSitesMenuView: false #A reference to the Active Sites Menu View.
   })
   
   ###
