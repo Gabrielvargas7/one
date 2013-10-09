@@ -171,6 +171,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   addCustomBookmark:(event)->
     event.preventDefault()
+    event.stopPropagation()
     #Need to fetch MyBookmarks to get an accurate last position
     #If I've added 2 bookmarks from discover, then preview, then save site, 
     #    the position count is not accurate and save doesn't work.
@@ -204,7 +205,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       #We want to just display picture now. If click Save Site is clicked, then save the model
       $('.custom_bookmark_confirm_add_wrap').prepend('<img src="'+customBookmark.get('image_name')+'">')
       $('.custom_bookmark_confirm_add_wrap').show()
-      $('.save_site_button').on('click',{customBookmark},((event)->
+      $('.save_site_button').show()
+      $('.save_site_button').one('click',{customBookmark},((event)->
         event.stopPropagation()
         event.data.customBookmark.save {},
         success: (model, response)->
@@ -216,6 +218,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         #After 5 seconds, clear form and remove image?
         setTimeout((->
           $('#add_your_own_form')[0].reset()
+          #$('#add_your_own_form').off('submit')
+          $('.save_site_button').hide()
           $('.custom_bookmark_confirm_add_wrap img').remove()),3000)
         ))  
     else
