@@ -22,7 +22,7 @@ describe UsersBookmark do
     @user = FactoryGirl.create(:user)
     @item = FactoryGirl.create(:item)
     @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-    @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
+    @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
     @user_bookmark = FactoryGirl.build(:users_bookmark,user_id:@user.id,bookmark_id:@bookmark.id)
 
   end

@@ -2,12 +2,12 @@
 
 <p>
   <b>Item:</b>
-  <%  if @bundles_bookmark.item.nil? %>
+  <%  if @bundles_bookmark.bookmark.bookmarks_category.item.nil? %>
     
     
 <%  else %>
-    <%= @bundles_bookmark.item.id %>
-    <%= @bundles_bookmark.item.name %>
+    <%= @bundles_bookmark.bookmark.bookmarks_category.item.id %>
+    <%= @bundles_bookmark.bookmark.bookmarks_category.item.name %>
 <%  end %>
 
 

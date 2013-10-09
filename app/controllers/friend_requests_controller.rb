@@ -4,15 +4,15 @@ class FriendRequestsController < ApplicationController
   before_filter :json_signed_in_user,
                 only:[
                     :json_create_friend_request_by_user_id_and_user_id_requested,
-                    :json_destroy_friend_request_by_user_id_and_user_id_requested,
-                    :json_index_friend_request_make_from_your_friend_to_you_by_user_id
+                    :json_index_friend_request_make_from_your_friend_to_you_by_user_id,
+                    :json_destroy_friend_request_by_user_id_and_user_id_that_make_request
                     ]
 
 
   before_filter :json_correct_user,
                 only:[
                     :json_create_friend_request_by_user_id_and_user_id_requested,
-                    :json_destroy_friend_request_by_user_id_and_user_id_requested,
+                    :json_destroy_friend_request_by_user_id_and_user_id_that_make_request,
                     :json_index_friend_request_make_from_your_friend_to_you_by_user_id
                 ]
 

@@ -259,8 +259,7 @@ describe User do
       @user.send_signup_user_email
       #last_email.to.should include (@user.email)
       last_email = ActionMailer::Base.deliveries.last
-      expect(last_email.to).to eq @user.email
-      expect(last_email.subject).to have_content 'Welcome'
+      last_email.to.should include(@user.email)
     end
 
   end

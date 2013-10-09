@@ -10,8 +10,8 @@ describe BundlesBookmarksController do
   before do
     @item = @item = FactoryGirl.create(:item)
     @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-    @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
-    @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+    @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+    @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,bookmark_id:@bookmark.id)
     @admin = FactoryGirl.create(:admin)
     sign_in @admin
   end
@@ -112,8 +112,8 @@ describe BundlesBookmarksController do
       it "assigns a new bundle bookmark as @bundle bookmark" do
         @item = @item = FactoryGirl.create(:item)
         @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-        @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
-        @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+        @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+        @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,bookmark_id:@bookmark.id)
 
         #new_bundles_bookmark = FactoryGirl.create(:bundles_bookmark)
 
@@ -148,8 +148,8 @@ describe BundlesBookmarksController do
 
         @item = @item = FactoryGirl.create(:item)
         @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-        @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
-        @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+        @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+        @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,bookmark_id:@bookmark.id)
 
 
         get :edit, id: @bundles_bookmark
@@ -167,8 +167,8 @@ describe BundlesBookmarksController do
       it "redirect to root " do
         @item = @item = FactoryGirl.create(:item)
         @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-        @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
-        @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+        @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+        @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,bookmark_id:@bookmark.id)
 
         get :edit, id: @bundles_bookmark
         response.should redirect_to root_path
@@ -188,7 +188,7 @@ describe BundlesBookmarksController do
 
       @item = @item = FactoryGirl.create(:item)
       @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-      @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
+      @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
       #@bundles_bookmark = FactoryGirl.create(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
     end
 
@@ -198,20 +198,20 @@ describe BundlesBookmarksController do
         it "creates a new Theme" do
 
           expect {
-            post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+            post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
           }.to change(BundlesBookmark, :count).by(1)
 
 
         end
 
         it "assigns a newly created themes as @themes" do
-          post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+          post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
           assigns(:bundles_bookmark).should be_a(BundlesBookmark)
           assigns(:bundles_bookmark).should be_persisted
         end
 
         it "redirects to the created themes" do
-          post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+          post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
           response.should redirect_to(BundlesBookmark.last)
         end
       end
@@ -220,18 +220,18 @@ describe BundlesBookmarksController do
 
         context "with invalid attributes" do
           it "does not save the new contact" do
-            expect{ post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:nil,bookmark_id:@bookmark.id)
-            }.to_not change(BundlesBookmark,:count)
+            #expect{ post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
+            #}.to_not change(BundlesBookmark,:count)
 
-            expect{ post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:nil)
+            expect{ post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:nil)
             }.to_not change(BundlesBookmark,:count)
           end
           it "re-renders the new method" do
-            post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:nil)
+            post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:nil)
             response.should render_template :new
 
-            post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:nil,bookmark_id:@bookmark.id)
-            response.should render_template :new
+            #post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
+            #response.should render_template :new
 
           end
         end
@@ -247,11 +247,11 @@ describe BundlesBookmarksController do
       end
 
       it "redirects to root" do
-        post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+        post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
         response.should redirect_to(root_path)
       end
       it "not redirects to the created bundle bookmark" do
-        post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+        post :create,bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
         response.should_not redirect_to(BundlesBookmark.last)
       end
     end
@@ -268,7 +268,7 @@ describe BundlesBookmarksController do
     before do
       @item = @item = FactoryGirl.create(:item)
       @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-      @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
+      @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
       #@new_bundles_bookmark = FactoryGirl.create(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
     end
 
@@ -276,43 +276,41 @@ describe BundlesBookmarksController do
 
       context "valid attributes" do
         it "located the requested @bundle bookmark" do
-          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
           assigns(:bundles_bookmark).should eq(@bundles_bookmark)
         end
       end
 
       it "changes @theme's attributes" do
 
-        put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+        put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
         @bundles_bookmark.reload
-        @bundles_bookmark.item_id.should eq(@item.id)
         @bundles_bookmark.bookmark_id.should eq(@bookmark.id)
       end
 
-      it "redirects to the updated theme" do
-        put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+      it "redirects to the updated @bundles_bookmark" do
+        put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
         response.should redirect_to @bundles_bookmark
       end
 
       context "invalid attributes" do
 
-        it "locates the requested @theme" do
-          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:nil,bookmark_id:@bookmark.id)
-          assigns(:bundles_bookmark).should eq(@bundles_bookmark)
-          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:nil)
+        it "locates the requested @bundles_bookmark" do
+          #put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
+          #assigns(:bundles_bookmark).should eq(@bundles_bookmark)
+          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:nil)
           assigns(:bundles_bookmark).should eq(@bundles_bookmark)
         end
 
-        it "does not change @theme's attributes" do
+        it "does not change @bundles_bookmark's attributes" do
 
-          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:nil)
+          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:nil)
 
           @bundles_bookmark.reload
-          @bundles_bookmark.item_id.should_not eq(@item.id)
           @bundles_bookmark.bookmark_id.should_not eq(nil)
         end
         it "re-renders the edit method" do
-          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:nil)
+          put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:nil)
           response.should render_template :edit
         end
       end
@@ -325,7 +323,7 @@ describe BundlesBookmarksController do
       end
 
       it "redirects to root " do
-        put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+        put :update, id: @bundles_bookmark, bundles_bookmark: FactoryGirl.attributes_for(:bundles_bookmark,bookmark_id:@bookmark.id)
         response.should redirect_to root_path
       end
     end

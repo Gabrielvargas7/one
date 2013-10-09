@@ -106,13 +106,13 @@ class ItemsLocationsController < ApplicationController
     #@items_location = ItemsLocation.find(params[:id])
 
     respond_to do |format|
-      if @items_location.update_attributes(params[:items_location])
-        format.html { redirect_to @items_location, notice: 'Items location was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @items_location.errors, status: :unprocessable_entity }
-      end
+      #if @items_location.update_attributes(params[:items_location])
+      #  format.html { redirect_to @items_location, notice: 'Items location was successfully updated.' }
+      #  format.json { head :no_content }
+      #else
+      #  format.html { render action: "edit" }
+      #  format.json { render json: @items_location.errors, status: :unprocessable_entity }
+      #end
     end
   end
 

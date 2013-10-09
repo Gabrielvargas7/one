@@ -105,12 +105,15 @@ def create_init_data
 
       @bookmarks_category = BookmarksCategory.find_by_item_id(item.id)
       (1..3).each do |i|
-        FactoryGirl.create(:bookmark,item_id:item.id,bookmarks_category_id:@bookmarks_category.id)
+        FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
       end
-      @bookmarks = Bookmark.find_all_by_item_id(item.id)
+      @bookmarks = Bookmark.
+                    joins(:bookmarks_category).
+                    where('bookmarks_categories.item_id = ?',item.id)
+
 
       @bookmarks.each do |bookmark|
-        FactoryGirl.create(:bundles_bookmark,item_id:item.id,bookmark_id:bookmark.id)
+        FactoryGirl.create(:bundles_bookmark,bookmark_id:bookmark.id)
         #puts "items : " +item.id.to_s
         #puts "bundle bookmark : "+ bookmark.id.to_s
       end
@@ -120,7 +123,7 @@ def create_init_data
     @bundles = Bundle.all
 
     @bundles.each do |bundle|
-      puts "bundle: "+ bundle.id.to_s
+      #puts "bundle: "+ bundle.id.to_s
 
 
       #items_design = ItemsDesign.first

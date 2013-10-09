@@ -113,7 +113,6 @@ FactoryGirl.define do
     sequence(:image_name_desc)  { |n| "image_name_desc #{n}" }
     i_frame  "y"
     bookmarks_category_id 1
-    #item_id 1
     approval 'y'
     user_bookmark 0 # zero is when all have access to the bookmark
     like 1
@@ -122,7 +121,7 @@ FactoryGirl.define do
 
   factory :bundles_bookmark do
     bookmark_id 1
-    item_id 1
+
   end
 
 

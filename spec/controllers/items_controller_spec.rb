@@ -231,10 +231,6 @@ describe ItemsController do
             expect{ post :create, item: FactoryGirl.attributes_for(:item,clickable:nil)
             }.to_not change(Item,:count)
           end
-          it "re-renders the new method" do
-            post :create, item: FactoryGirl.attributes_for(:item,clickable:nil)
-            response.should render_template :new
-          end
         end
 
       end

@@ -219,3 +219,40 @@ session = GoogleDrive.login("rooms.team@mywebroom.com", "rooms123")
 #SeedUpdateUserModule.InsertNewItemsTooldUser(item_id,location_id)
 
 
+########################
+# clean user_bookmarks and add the preset bookmark
+########################
+
+@users = User.all
+UsersBookmark.delete_all
+
+@items = Item.all
+@bundle_bookmarks = BundlesBookmark.all
+
+  @users.each do |user|
+    puts user.id
+    @items.each do |item|
+      position = 1
+      if BundlesBookmark.
+          joins(:bookmark).
+          joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+          where('bookmarks_categories.item_id = ?',item.id).exists?
+
+
+        @bundle_bookmarks = BundlesBookmark.
+            joins(:bookmark).
+            joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+            where('bookmarks_categories.item_id = ?',item.id)
+
+
+        @bundle_bookmarks.each do |bundle_bookmark|
+          UsersBookmark.create!(user_id:user.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
+          position = position+1
+        end
+      end
+    end
+
+  end
+
+
+
