@@ -25,7 +25,10 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
 		@getMyBookmarksCollection(userId)
 		#Finally call api to add the bookmark.
 		postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:@model.get('item_id'), bookmarkId:@model.get('id'),userId:userId})
-		lastBookmarkPosition = parseInt(_.last(@myBookmarksCollection.models).get('position'))
+		if @myBookmarksCollection.length is 0
+			lastBookmarkPosition = 1
+		else
+			lastBookmarkPosition = parseInt(_.last(@myBookmarksCollection.models).get('position'))
 		postBookmarkModel.set 'position',lastBookmarkPosition+1		
 		postBookmarkModel.save {},
 			success: (model, response)->
