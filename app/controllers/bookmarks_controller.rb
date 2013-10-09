@@ -46,7 +46,7 @@ class BookmarksController < ApplicationController
     #@bookmarks = Bookmark.paginate(page: params[:page]).order('id')
 
 
-    @bookmarks = Bookmark.order("item_id","bookmarks_category_id").all
+    @bookmarks = Bookmark.joins(:bookmarks_category).order('bookmarks_categories.item_id,bookmarks_category_id').all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -156,7 +156,7 @@ class BookmarksController < ApplicationController
 
     def index_bookmarks_approval
 
-    @bookmarks = Bookmark.order("item_id","bookmarks_category_id").where("approval = 'n'")
+    @bookmarks = Bookmark.joins(:bookmarks_category).order('bookmarks_categories.item_id,bookmarks_category_id').where("approval = 'n'")
 
     respond_to do |format|
       format.html  # index_bookmarks_approval.html.erb
@@ -225,7 +225,7 @@ class BookmarksController < ApplicationController
 
         @bookmarks  = Bookmark.
             select('bookmarks.id,
-                      bookmarks.item_id,
+                      bookmarks_categories.item_id,
                       bookmarks_categories.name as bookmarks_category_name,
                       bookmark_url,
                       bookmarks_category_id,
@@ -236,7 +236,7 @@ class BookmarksController < ApplicationController
                       title,
                       "like"').
             joins(:bookmarks_category).
-            where('bookmarks.item_id = ? and user_bookmark = 0', params[:item_id]).order("bookmarks_category_id,bookmarks.id")
+            where('bookmarks_categories.item_id = ? and user_bookmark = 0', params[:item_id]).order('bookmarks_category_id,bookmarks.id')
 
         format.json {render json: @bookmarks.as_json()}
 
@@ -273,7 +273,7 @@ class BookmarksController < ApplicationController
 
           @bookmarks  = Bookmark.
               select('bookmarks.id,
-                      bookmarks.item_id,
+                      bookmarks_categories.item_id,
                       bookmarks_categories.name as bookmarks_category_name,
                       bookmark_url,
                       bookmarks_category_id,
@@ -332,7 +332,7 @@ class BookmarksController < ApplicationController
 
         @bookmarks  = Bookmark.
             select('bookmarks.id,
-                      bookmarks.item_id,
+                      bookmarks_categories.item_id,
                       bookmarks_categories.name as bookmarks_category_name,
                       bookmark_url,
                       bookmarks_category_id,
@@ -343,13 +343,13 @@ class BookmarksController < ApplicationController
                       title,
                       "like"').
             joins(:bookmarks_category).
-            where('bookmarks.bookmarks_category_id = ? and user_bookmark = 0', params[:bookmarks_category_id]).order("bookmarks_category_id,bookmarks.id")
+            where('bookmarks.bookmarks_category_id = ? and user_bookmark = 0', params[:bookmarks_category_id]).order('bookmarks_category_id,bookmarks.id')
 
         format.json {render json: @bookmarks.as_json()}
 
 
       else
-        format.json { render json: 'not bookmark for this item ', status: :not_found }
+        format.json { render json: 'not bookmark for this bookmarks category  ', status: :not_found }
       end
 
     end

@@ -514,5 +514,14 @@ describe ItemsDesignsController do
   end
 
 
+  describe "api #json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset",tag_json_category:true do
+    pending "pending test api"
+  end
+
+  describe "api #json_index_items_designs_categories_by_item_id",tag_json_category:true do
+    pending "pending test api"
+  end
+
+
 
 end

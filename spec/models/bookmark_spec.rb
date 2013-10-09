@@ -22,7 +22,9 @@ describe Bookmark do
   before do
     @item = FactoryGirl.create(:item)
     @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-    @bookmark = FactoryGirl.build(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
+    #@bookmark = FactoryGirl.build(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
+    @bookmark = FactoryGirl.build(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+
   end
 
 
@@ -36,7 +38,7 @@ describe Bookmark do
   it { @bookmark.should respond_to(:image_name_desc)}
   it { @bookmark.should respond_to(:i_frame) }
   it { @bookmark.should respond_to(:bookmarks_category_id) }
-  it { @bookmark.should respond_to(:item_id) }
+  #it { @bookmark.should respond_to(:item_id) }
   it { @bookmark.should respond_to(:approval) }
   it { @bookmark.should respond_to(:user_bookmark) }
   it { @bookmark.should respond_to(:like) }
@@ -99,15 +101,6 @@ describe Bookmark do
     end
   end
 
-  ###############
-  #test validation item_id on bookmark
-  ###############
-  describe "item_id on bookmark ",tag_item_id_on_bookmark:true do
-
-    it "should be valid " do
-      @bookmark.item_id == @item.id
-    end
-  end
 
   ###############
   #test validation item_id on bookmark

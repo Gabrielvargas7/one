@@ -69,8 +69,21 @@ class BookmarksCategoriesController < ApplicationController
 
   # GET /bookmarks_categories/1/edit
   def edit
+
     @bookmarks_category = BookmarksCategory.find(params[:id])
     @bookmarks_category_show_id = BookmarksCategory.find(params[:id])
+    @bookmarks_categories_count = BookmarksCategory.where("item_id = ?",@bookmarks_category.item_id).count
+
+    respond_to do |format|
+    #  if @bookmarks_categories_count > 1
+        format.html
+      #else
+      #  flash[:success] = "Sorry: a least one category must exist for item"
+      #  format.html { redirect_to bookmarks_categories_url }
+      #
+      #end
+    end
+
   end
 
   # POST /bookmarks_categories
@@ -94,13 +107,35 @@ class BookmarksCategoriesController < ApplicationController
   def update
     @bookmarks_category = BookmarksCategory.find(params[:id])
 
+    @bookmarks_categories_count = BookmarksCategory.where("item_id = ?",@bookmarks_category.item_id).count
+
     respond_to do |format|
-      if @bookmarks_category.update_attributes(params[:bookmarks_category])
-        format.html { redirect_to @bookmarks_category, notice: 'Bookmarks category was successfully updated.' }
-        format.json { head :no_content }
+      if @bookmarks_categories_count > 1
+
+            if @bookmarks_category.update_attributes(params[:bookmarks_category])
+                format.html { redirect_to @bookmarks_category, notice: 'Bookmarks category was successfully updated.' }
+                format.json { head :no_content }
+            else
+                format.html { render action: "edit" }
+                format.json { render json: @bookmarks_category.errors, status: :unprocessable_entity }
+            end
+
       else
-        format.html { render action: "edit" }
-        format.json { render json: @bookmarks_category.errors, status: :unprocessable_entity }
+            if params[:bookmarks_category][:item_id].to_s == @bookmarks_category.item_id.to_s
+              if @bookmarks_category.update_attributes(params[:bookmarks_category])
+                  format.html { redirect_to @bookmarks_category, notice: 'Bookmarks category was successfully updated.' }
+                  format.json { head :no_content }
+              else
+                  format.html { render action: "edit" }
+                  format.json { render json: @bookmarks_category.errors, status: :unprocessable_entity }
+              end
+
+            else
+                flash[:success] = "Sorry: a least one category must exist for item"
+                format.html { redirect_to bookmarks_categories_url }
+            end
+
+
       end
     end
   end
@@ -116,7 +151,7 @@ class BookmarksCategoriesController < ApplicationController
 
       @bookmarks_categories_count = BookmarksCategory.where("item_id = ?",@bookmarks_category.item_id).count
 
-      # fix this
+      # if the bookmark category have bookmarks, can no be destroy
       if @bookmarks_categories_count > 1
          #@bookmarks_category.destroy
 

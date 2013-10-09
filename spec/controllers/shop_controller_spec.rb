@@ -25,14 +25,24 @@ describe ShopController do
   describe "GET shop index",tag_index:true do
 
     context "public pages" do
-      let(:item_all) { Item.order(:priority_order,:name).all}
+      let(:items_all) { Item.joins(:items_locations).select('items.*,
+                          locations.z,
+                          locations.x,
+                          locations.y,
+                          locations.height,
+                          locations.width,
+                          locations.section_id').
+                      joins('LEFT OUTER JOIN locations  ON locations.id = items_locations.location_id').
+                      order(:priority_order,:name).all}
 
       it "assigns all items as @item" do
+
         get :index
-        assigns(:items).should eq(item_all)
+        assigns(:items).should eq(items_all)
       end
 
       it "renders the :index view" do
+
         get :index
         response.should render_template :index
       end

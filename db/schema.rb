@@ -11,11 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719181705) do
+ActiveRecord::Schema.define(:version => 20131008210804) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
-    t.integer  "item_id"
     t.text     "bookmark_url"
     t.string   "title"
     t.string   "i_frame",               :default => "y"
@@ -32,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20130719181705) do
   add_index "bookmarks", ["bookmark_url"], :name => "index_bookmarks_on_bookmark_url"
   add_index "bookmarks", ["bookmarks_category_id"], :name => "index_bookmarks_on_bookmarks_category_id"
   add_index "bookmarks", ["id"], :name => "index_bookmarks_on_id"
-  add_index "bookmarks", ["item_id"], :name => "index_bookmarks_on_item_id"
   add_index "bookmarks", ["title"], :name => "index_bookmarks_on_title"
 
   create_table "bookmarks_categories", :force => true do |t|
@@ -79,7 +77,6 @@ ActiveRecord::Schema.define(:version => 20130719181705) do
   add_index "bundles", ["theme_id"], :name => "index_bundles_on_theme_id"
 
   create_table "bundles_bookmarks", :force => true do |t|
-    t.integer  "item_id"
     t.integer  "bookmark_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -87,7 +84,6 @@ ActiveRecord::Schema.define(:version => 20130719181705) do
 
   add_index "bundles_bookmarks", ["bookmark_id"], :name => "index_bundles_bookmarks_on_bookmark_id"
   add_index "bundles_bookmarks", ["id"], :name => "index_bundles_bookmarks_on_id"
-  add_index "bundles_bookmarks", ["item_id"], :name => "index_bundles_bookmarks_on_item_id"
 
   create_table "bundles_items_designs", :force => true do |t|
     t.integer  "items_design_id"

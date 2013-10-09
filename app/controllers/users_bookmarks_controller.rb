@@ -12,6 +12,7 @@ class UsersBookmarksController < ApplicationController
                     :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
                     :json_create_user_bookmark_custom_by_user_id
 
+
                 ]
 
   before_filter :json_correct_user,
@@ -51,9 +52,14 @@ class UsersBookmarksController < ApplicationController
 
         if User.exists?(id: params[:user_id])
 
-          if Bookmark.exists?(id: params[:bookmark_id],item_id:params[:item_id])
+          if Bookmark.
+              joins(:bookmarks_category).
+              where('bookmarks.id = ? and bookmarks_categories.item_id in (0,?)', params[:bookmark_id],params[:item_id]).exists?
 
-              if UsersBookmark.joins(:bookmark).where('user_id = ? and item_id = ? and position = ?',params[:user_id],params[:item_id],params[:position]).exists?
+              if UsersBookmark.
+                  joins(:bookmark).
+                  joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+                  where('user_id = ? and bookmarks_categories.item_id = ? and position = ?',params[:user_id],params[:item_id],params[:position]).exists?
 
                  format.json { render json: 'the position of the bookmark already exists' , status: :ok }
 
@@ -110,8 +116,8 @@ class UsersBookmarksController < ApplicationController
 
 
   # GET get all user's Bookmarks
-  # users_bookmarks/json/json_index_user_bookmarks_by_user_id/:user_id'
-  # users_bookmarks/json/json_index_user_bookmarks_by_user_id/1.json'
+  # users_bookmarks/json_index_user_bookmarks_by_user_id/:user_id'
+  # users_bookmarksjson_index_user_bookmarks_by_user_id/1.json'
   #Return ->
   #Success    ->  head  200 OK
 
@@ -122,8 +128,9 @@ class UsersBookmarksController < ApplicationController
       if UsersBookmark.exists?(user_id: params[:user_id])
 
         @user_bookmarks = Bookmark.
-            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title,position,"like"').
+            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
             joins(:users_bookmarks).
+            joins(:bookmarks_category).
             where('user_id = ? ',params[:user_id])
 
         format.json { render json: @user_bookmarks }
@@ -146,12 +153,16 @@ class UsersBookmarksController < ApplicationController
 
   respond_to do |format|
 
-      if Bookmark.joins(:users_bookmarks).where('user_id = ? and item_id = ?',params[:user_id],params[:item_id]).exists?
+      if Bookmark.
+          joins(:users_bookmarks).
+          joins(:bookmarks_category).
+          where('user_id = ? and bookmarks_categories.item_id = ?',params[:user_id],params[:item_id]).exists?
 
         @user_bookmarks = Bookmark.
-            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, item_id, title,position,"like"').
+            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
             joins(:users_bookmarks).
-            where('user_id = ? and item_id = ?',params[:user_id],params[:item_id] )
+            joins(:bookmarks_category).
+            where('user_id = ? and bookmarks_categories.item_id = ?',params[:user_id],params[:item_id] )
 
           format.json { render json: @user_bookmarks }
       else
@@ -170,7 +181,6 @@ class UsersBookmarksController < ApplicationController
   #             :bookmark_url,
   #             :bookmarks_category_id,
   #             :image_name, (full path)
-  #             :item_id,
   #             :title
   #             :position
   #Return ->
@@ -180,14 +190,17 @@ class UsersBookmarksController < ApplicationController
 
     respond_to do |format|
       #validation of the user_id
-      #validation of the bookmark_id and item_id
+      #validation of the bookmark_id
       #validation of the position
 
       if User.exists?(id: params[:user_id])
 
         if BookmarksCategory.exists?(id: params[:bookmarks_category_id])
 
-          if UsersBookmark.joins(:bookmark).where('user_id = ? and item_id = ? and position = ?',params[:user_id],params[:item_id],params[:position]).exists?
+          if UsersBookmark.
+              joins(:bookmark).
+              joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+              where('user_id = ? and  bookmarks_categories.item_id = ? and position = ?',params[:user_id],params[:item_id],params[:position]).exists?
 
             format.json { render json: 'the position of the bookmark already exists' , status: :ok }
           else
@@ -198,7 +211,6 @@ class UsersBookmarksController < ApplicationController
                                         bookmark_url:params[:bookmark_url],
                                         bookmarks_category_id:params[:bookmarks_category_id],
                                         image_name:params[:image_name],
-                                        item_id:params[:item_id],
                                         approval:'n',
                                         i_frame:'y',
                                         user_bookmark:params[:user_id],

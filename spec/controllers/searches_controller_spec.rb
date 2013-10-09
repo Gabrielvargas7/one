@@ -86,7 +86,7 @@ describe SearchesController do
           # Test user profile
           body["users_profiles"].each do |user|
 
-            @user_profile_json = UsersProfile.find(user["user_id"])
+            @user_profile_json = UsersProfile.find_by_user_id(user["user_id"])
             @user_photo_json = UsersPhoto.find_all_by_user_id(@user_profile_json.id).first
 
             #puts "first name: "+user["firstname"].to_s
@@ -95,7 +95,6 @@ describe SearchesController do
             user["firstname"].should == @user_profile_json.firstname
             user["lastname"].should == @user_profile_json.lastname
             user["user_id"].should == @user_profile_json.user_id
-            user["image_name"]["url"].should == @user_photo_json.image_name.to_s
           end
 
           body["themes"].each do |theme|
@@ -190,6 +189,29 @@ describe SearchesController do
     end
   end
 
+  describe "api #json_index_searches_users_with_limit_and_offset_and_keyword",tag_json_search:true do
+    pending "pending test api"
+  end
+
+  describe "api #json_index_searches_items_designs_with_limit_and_offset_and_keyword",tag_json_search:true do
+    pending "pending test api"
+  end
+
+  describe "api #json_index_searches_themes_with_limit_and_offset_and_keyword",tag_json_search:true do
+    pending "pending test api"
+  end
+
+  describe "api #json_index_searches_bundles_with_limit_and_offset_and_keyword",tag_json_search:true do
+    pending "pending test api"
+  end
+
+  describe "api #json_index_searches_bookmarks_with_limit_and_offset_and_keyword",tag_json_search:true do
+    pending "pending test api"
+  end
+
+  describe "api #json_index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword",tag_json_search:true do
+    pending "pending test api"
+  end
 
 
 

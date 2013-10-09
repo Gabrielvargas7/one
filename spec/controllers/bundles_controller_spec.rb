@@ -537,7 +537,7 @@ describe BundlesController do
           get :json_index_bundles_categories, :format => :json
           body = JSON.parse(response.body)
           #puts body.as_json
-          puts body["category"]
+          #puts body["category"]
           #puts @the
 
           body["bundles_categories"].each do |body_b|
@@ -658,6 +658,13 @@ describe BundlesController do
     end
   end
 
+  describe "api #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset",tag_json_category:true do
+    pending "pending test api"
+  end
+
+  describe "api #json_index_bundles_categories",tag_json_category:true do
+    pending "pending test api"
+  end
 
 
 

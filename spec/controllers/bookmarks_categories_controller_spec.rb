@@ -177,7 +177,12 @@ describe BookmarksCategoriesController do
         get :edit, id: new_bookmark_category
         assigns[:bookmarks_category].should eq(new_bookmark_category)
       end
+
     end
+
+
+
+
 
     context "is not admin user" do
 
@@ -280,11 +285,12 @@ describe BookmarksCategoriesController do
         end
       end
 
-      it "changes @bookmarks_category's attributes" do
-        FactoryGirl.create(:item)
-        put :update, id: @bookmarks_category, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category, item_id:Item.last.id)
-        @bookmarks_category.reload
-        @bookmarks_category.item_id.should eq(Item.last.id)
+      it "changes item_id on @bookmarks_category's attributes when is only on item" do
+        item_new_1 = FactoryGirl.create(:item)
+        item_new_2 = FactoryGirl.create(:item)
+        bookmarks_category_new_1 = FactoryGirl.create(:bookmarks_category,item_id:item_new_1.id)
+        put :update, id: bookmarks_category_new_1, bookmarks_category: FactoryGirl.attributes_for(:bookmarks_category, item_id:item_new_2.id)
+        response.should redirect_to bookmarks_categories_url
       end
 
       it "redirects to the updated bookmarks_category" do
