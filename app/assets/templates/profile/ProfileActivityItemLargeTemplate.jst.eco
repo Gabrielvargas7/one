@@ -22,7 +22,12 @@
 			<div class="navbar-inner">
 				<ul class="nav">
 					<li class ="fb_like_item"><a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376673746/fb-test-like.jpg"></a></li>
-					<li class="pinterest_item"><a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371247321/pinterest-red.png"></a></li>
+<li class="SANITYCHECK"> <a href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&media=http%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&description=Next%20stop%3A%20Pinterest" data-pin-do="buttonPin" data-pin-config="above">
+        <img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" />
+    </a>
+</li>
+					<li class="pinterest_item"><a href="<%=@pinUrl%>" data-pin-do="buttonPin"
+        data-pin-config="above"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371247321/pinterest-red.png" target="_blank"></a></li>
 					<li class="info_button_item"><a href="#">Info</a></li>
 				</ul>
 			</div>

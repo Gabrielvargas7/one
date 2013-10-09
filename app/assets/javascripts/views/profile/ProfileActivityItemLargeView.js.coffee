@@ -5,6 +5,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		 _.bindAll this, 'insideHandler', 'outsideHandler'
 		 @originalCollection=this.options.originalCollection
 		 $('body').on('click', this.outsideHandler);
+		 #$('div').not('.activity_item_large_wrap *').on('click', this.outsideHandler);
 		 if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
   			@template = JST['profile/ProfilePhotosLargeTemplate']
 	events:
@@ -12,9 +13,12 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		'click #large_item_next':'showNext'
 		'click .profile_large_item_try_it_button':'showStore'
 		'click .gridItem':'closeView'
+		'click .pinterest_item':'pinIt'
+		'click .SANITYCHECK':'pinIt'
 	render: ->
 		$("#profile_drawer").css "width", "1320px" 
-		$(@el).html(@template(model:@model))
+		pinUrl= @generatePinterestUrl()
+		$(@el).html(@template(model:@model,pinUrl:pinUrl))
 		#The social View is in the template because
 		#the styling was not right with this view. It needs a parent wrapper div, and the 
 		#social view cannot append elegantly with the current styling.
@@ -26,6 +30,16 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 
 		
 		this
+	generatePinterestUrl:->
+		baseUrl = '//pinterest.com/pin/create/button/?url='
+		targetUrl = @model.get('product_url')
+		targetUrl = "http://mywebroom.com" if targetUrl is null
+		mediaUrl = @model.get('image_name').url
+		description = @model.get('description')+ ' See more Rooms, Inc at http://mywebroom.com'
+		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
+						'&media=' + encodeURIComponent(mediaUrl) +
+						'&description=' + encodeURIComponent(description)
+	
 	insideHandler: (event) ->
 		event.stopPropagation()
 		console.log "insideHandler called"
@@ -91,4 +105,9 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		  async:false
 		  url:@myBookmarksCollection.url userId, @model.get('item_id')
 		parseInt(_.last(@myBookmarksCollection.models).get('position'))
+	pinIt:(event)->
+		event.preventDefault()
+		event.stopPropagation()
+		pinterestURL= @generatePinterestUrl()
+		window.open(pinterestURL,'_blank','width=750,height=350,toolbar=0,location=0,directories=0,status=0');
 
