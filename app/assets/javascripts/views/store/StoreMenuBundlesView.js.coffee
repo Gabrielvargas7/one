@@ -31,6 +31,11 @@ class Mywebroom.Views.StoreMenuBundlesView  extends Backbone.View
     #*******************
   render: ->
 #    console.log("Store Menu Bundle View "+@model.get('id'))
+    
+    
+    console.log("\n\n\n\n\n", @model, "\n\n\n\n\n")
+    
+    
     $(@el).append(@template(bundle:@model))
     this
 

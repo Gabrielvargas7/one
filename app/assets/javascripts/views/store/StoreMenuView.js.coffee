@@ -18,7 +18,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click #objects-store-menu':      'clickObjects'
     'click #themes-store-menu':       'clickThemes'
     'click #bundles-store-menu':      'clickBundles'
-    'click #entire-rooms-store-menu': 'clickBundles'
+    'click #entire-rooms-store-menu': 'clickEntireRooms'
     'click .store-dropdown':          'clickStoreDropdown'
     'keyup #store-search-box':        'clickSearch'
     'click .store-dropdown-item a':   'clickDropdownItem'
@@ -35,8 +35,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   render: ->
     
-    console.log("storemenu view: ")
-    console.log(@model)
+    console.log("storemenu view", @model)
+    
 
     $(@el).append(@template())
 
@@ -53,10 +53,42 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     @bundlesCollection = this.getBundlesCollection()
     this.appendBundlesEntry(@bundlesCollection)
 
-    # bundles set
-    this.appendBundlesSetEntry(@bundlesCollection)
 
+  
+    
+    ###
+    Now we need to re-parse the bundle data for the entire room
+    ###
+    copy = @bundlesCollection
+    
+    ###
+    This is a bundles collection, but we're going to use it as a collection of
+    entire room objects. This means we need to override it's type property.
+    
+    Note that since this mapping is being done outside of the collection's parse
+    method, we need to reset our collection with the model data after mapping.
+    http://stackoverflow.com/questions/17034593/how-does-map-work-with-a-backbone-collection
+    ###
+    
+    # Override the type property
+    parsed = copy.map((model) ->
+      obj = model
+      obj.set("type", "ENTIRE_ROOM")
+      return obj
+    )
+    
+    # Reset the collection
+    reset = copy.reset(parsed)
+    console.log("initial entire rooms III success", reset)
+    
 
+    # Replace the design collection
+    @appendBundlesSetEntry(reset)
+    
+    
+    
+
+    # As per convention, return a reference to this view
     this
 
   
@@ -130,6 +162,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             console.log("error")
       
       when "BUNDLES"
+        
+        console.log("BUNDLES!!!!!!!!!!!!!")
+        
+        
         ###
         Fetch collection
         ###
@@ -146,7 +182,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           error: ->
             console.log("error")
             
-      when "ENTIRE ROOMS"
+      when "ENTIRE_ROOM"
+        
+        
+        console.log("ENTIRE ROOMS!!!!!!!!!!!!!")
+        
         ###
         Fetch collection
         ###
@@ -177,12 +217,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         )
         
         # Reset the collection
-        collection.reset(parsed)
-        console.log("searched entire rooms II success", parsed)
+        reset = collection.reset(parsed)
+        console.log("searched entire rooms II success", reset)
         
     
         # Replace the design collection
-        self.appendBundlesSetEntry(collection)
+        self.appendBundlesSetEntry(reset)
             
             
         
@@ -279,7 +319,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         @clickBundles()
       when 'ENTIRE ROOMS'
         $('a[href="#tab_entire_rooms"]').tab('show')
-        @clickBundles()
+        @clickEntireRooms()
       
 
   
@@ -601,18 +641,61 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Load the Bundles' Categories Collection
     categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
-    categories.fetch()
-    categories.on('sync', ->
-      model = this.first()
-      self.setBrands(model.get('bundles_brands'))
-      self.setStyles(model.get('bundles_styles'))
-      self.setLocations(model.get('bundles_locations'))
-      self.setColors(model.get('bundles_colors'))
-      self.setMakes(model.get('bundles_makes'))
-    )
+    categories.fetch
+      async:   false
+      success: (response) ->
+        model = response.first()
+        self.setBrands(model.get('bundles_brands'))
+        self.setStyles(model.get('bundles_styles'))
+        self.setLocations(model.get('bundles_locations'))
+        self.setColors(model.get('bundles_colors'))
+        self.setMakes(model.get('bundles_makes'))
+      error: ->
+        console.log("bundle category fail")
+  
+  
+  
+  clickEntireRooms: ->
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "ENTIRE_ROOM")
+    
+    
+    
+    # Hide the Save, Cancel, Remove view
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
+    self = this
+    
+    @expandAll()
+    
+    
+    # Add the collapse class
+    $('#dropdown-object').addClass('collapse')
+    
+    
+    # Load the Bundles' Categories Collection
+    categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
+    categories.fetch
+      async:   false
+      success: (response) ->
+        model = response.first()
+        self.setBrands(model.get('bundles_brands'))
+        self.setStyles(model.get('bundles_styles'))
+        self.setLocations(model.get('bundles_locations'))
+        self.setColors(model.get('bundles_colors'))
+        self.setMakes(model.get('bundles_makes'))
+      error: ->
+        console.log("bundle category fail")
   
   
     
+  
+  
+  
+  
   setBrands: (brands) ->
     # empty out existing dropdown items
     $('#dropdown-brand > .dropdown-menu').empty()

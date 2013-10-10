@@ -15,9 +15,9 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
   #**** Events
   #*******************
   events:
-    'click .store_container_bundle_set'     :'clickStoreBundleSet'
-    'mouseenter .store_container_bundle_set':'hoverStoreBundleSet'
-    'mouseleave .store_container_bundle_set':'hoverOffStoreBundleSet'
+    'click .store_container_ENTIRE_ROOM':      'clickStoreBundleSet'
+    'mouseenter .store_container_ENTIRE_ROOM': 'hoverStoreBundleSet'
+    'mouseleave .store_container_ENTIRE_ROOM': 'hoverOffStoreBundleSet'
 
   #*******************
   #**** Initialize
@@ -77,6 +77,9 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
   # do something on click
   #--------------------------
   clickStoreBundleSet: (event) ->
+    
+    console.log("\n\n\nENTIRE_ROOM clicked\n\n\n")
+    
     event.preventDefault()
     
     # Show the view with the Save, Cancel, Remove view
@@ -123,9 +126,9 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
   #--------------------------
   hoverStoreBundleSet: (event) ->
     event.preventDefault()
-    console.log("hover "+this.model.get('id'))
-    button_preview = $.cloudinary.image 'button_preview.png',{ alt: "button preview", id: "button_preview"}
-    $('#store_bundle_set_container_'+this.model.get('id')).append(button_preview)
+    console.log("hover " + @model.get('id'))
+    button_preview = $.cloudinary.image 'button_preview.png', { alt: "button preview", id: "button_preview"}
+    $('#store_ENTIRE_ROOM_container_' + @model.get('id')).append(button_preview)
 
 
 
@@ -135,7 +138,7 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
   #--------------------------
   hoverOffStoreBundleSet: (event) ->
     event.preventDefault()
-    console.log("hoverOff"+this.model.get('id'))
+    console.log("hoverOff" + this.model.get('id'))
     $('#button_preview').remove()
 
 
