@@ -17,7 +17,6 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	
 	render: ->
 		$("#profile_drawer").css "width", "1320px" 
-		pinUrl= @generatePinterestUrl()
 		$(@el).html(@template(model:@model))
 		#The social View is in the template because
 		#the styling was not right with this view. It needs a parent wrapper div, and the 
@@ -105,7 +104,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	generatePinterestUrl:->
 		baseUrl = '//pinterest.com/pin/create/button/?url='
 		targetUrl = @model.get('product_url')
-		targetUrl = "http://mywebroom.com" if targetUrl is null
+		targetUrl = "http://mywebroom.com" if !targetUrl
 		if @model.get('image_name_selection')
 			mediaUrl = @model.get('image_name_selection').url
 		else

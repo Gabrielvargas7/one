@@ -22,7 +22,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 	generatePinterestUrl:->
 		baseUrl = '//pinterest.com/pin/create/button/?url='
 		targetUrl = @model.get('product_url')
-		targetUrl = "http://mywebroom.com" if targetUrl is null
+		targetUrl = "http://mywebroom.com" if !targetUrl
 		mediaUrl = @model.get('image_name').url
 		if @model.get('image_name_selection')
 			mediaUrl = @model.get('image_name_selection').url
