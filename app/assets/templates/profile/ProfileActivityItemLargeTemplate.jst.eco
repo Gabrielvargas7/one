@@ -9,6 +9,8 @@
 		<div class="activity_item_img_wrap">
 			<%if @model.get('image_name_desc'):%>
 				<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name_desc').url%>">
+			<%else if @model.get('image_name_selection'):%>
+				<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name_selection').url%>">
 			<%else:%>
 				<img class="pull-left activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
 			<%end%>
