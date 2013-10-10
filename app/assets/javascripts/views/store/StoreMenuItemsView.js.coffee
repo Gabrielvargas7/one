@@ -172,9 +172,8 @@ class Mywebroom.Views.StoreMenuItemsView  extends Backbone.View
     itemsDesignsCollection.fetch
       async  : false
       url    : itemsDesignsCollection.url item_id
-      success: (response)->
-        #console.log("items designs fetch successful: ")
-        #console.log(response)
+      success: (response) ->
+        console.log("initial design fetch success", response)
     
     return itemsDesignsCollection
     

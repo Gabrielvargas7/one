@@ -86,9 +86,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : collection.url(10,0,keyword)
           success: (response) ->
-            console.log("items designs search collection fetch success")
+            console.log("searched designs success", response)
             
-            console.log("\n\n!!!!!\nWARNING! NOT EVERYTHING!\n!!!!!\n\n")
+            console.log("\n!!!\nWARNING! NOT EVERYTHING!\n!!!\n")
           
             # Replace the design collection
             self.appendItemsEntry(response)
@@ -104,7 +104,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : collection.url(10,0,keyword)
           success: (response) ->
-            console.log("items designs search collection fetch success")
+            console.log("searched designs success", response)
             
             # Replace the design collection
             self.appendItemsEntry(response)
@@ -118,10 +118,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         collection = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
         collection.fetch
-          async  : false
-          url    : collection.url(10,0,keyword)
+          async: false
+          url: collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("themes search collection fetch success")
+            console.log("searched themes success", response)
         
             # Replace the design collection
             self.appendThemesEntry(response)
@@ -135,10 +135,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
         collection.fetch
-          async  : false
-          url    : collection.url(10,0,keyword)
+          async: false
+          url: collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("bundles search collection fetch success")
+            console.log("searched bundles success", response)
       
             # Replace the design collection
             self.appendBundlesEntry(response)
@@ -153,15 +153,39 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
         collection.fetch
           async  : false
-          url    : collection.url(10,0,keyword)
+          url    : collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("entire rooms search collection fetch success")
-    
-            # Replace the design collection
-            self.appendBundlesSetEntry(response)
-
+            console.log("searched entire rooms success", response)
           error: ->
             console.log("error")
+            
+        
+        ###
+        This is a bundles collection, but we're going to use it as a collection of
+        entire room objects. This means we need to override it's type property.
+        
+        Note that since this mapping is being done outside of the collection's parse
+        method, we need to reset our collection with the model data after mapping.
+        http://stackoverflow.com/questions/17034593/how-does-map-work-with-a-backbone-collection
+        ###
+        
+        # Override the type property
+        parsed = collection.map((model) ->
+          obj = model
+          obj.set("type", "ENTIRE_ROOM")
+          return obj
+        )
+        
+        # Reset the collection
+        collection.reset(parsed)
+        console.log("searched entire rooms II success", parsed)
+        
+    
+        # Replace the design collection
+        self.appendBundlesSetEntry(collection)
+            
+            
+        
         
       else
         ###
@@ -174,10 +198,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithItemIdAndLimitAndOffsetAndKeywordCollection()
         collection.fetch
-          async  : false
-          url    : collection.url(category,10,0,keyword)
+          async:   false
+          url:     collection.url(category,10,0,keyword)
           success: (response) ->
-            console.log("item design search collection fetch success")
+            console.log("searched designs II success", response)
     
             # Replace the design collection
             self.appendItemsDesignsEntry(response)
@@ -284,8 +308,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       async:   false
       url:     itemsDesignsCollection.url(item_id)
       success: (response) ->
-        console.log("items designs fetch successful: ")
-        console.log(response)
+        console.log("items design fetch success", response)
+        
     return itemsDesignsCollection
 
 
@@ -295,7 +319,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   getThemesCollection: ->
     themesCollection = new Mywebroom.Collections.IndexThemesCollection()
     themesCollection.fetch 
-      async  : false
+      async:   false
       success: (response) ->
         console.log("initial theme fetch success", response)
     return themesCollection
@@ -306,8 +330,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   getBundlesCollection: ->
     bundlesCollection = new Mywebroom.Collections.IndexBundlesCollection()
     bundlesCollection.fetch 
-      async: false
-#    console.log(JSON.stringify(this.bundlesCollection.toJSON()))
+      async:   false
+      success: (response) ->
+        console.log("initial bundle fetch success", response)
+        
     return bundlesCollection
 
 
