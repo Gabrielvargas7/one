@@ -295,8 +295,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   getThemesCollection: ->
     themesCollection = new Mywebroom.Collections.IndexThemesCollection()
     themesCollection.fetch 
-      async: false
-#    console.log(JSON.stringify(this.themesCollection.toJSON()))
+      async  : false
+      success: (response) ->
+        console.log("initial theme fetch success", response)
     return themesCollection
 
   #--------------------------
