@@ -60,7 +60,7 @@
             </li>
             <li><a href="#" id="xroom_header_myroom" >
                 <img src=<%= @user_data.get('user_photos').image_name.url %> >
-                <%=  @user_data.get('user').username %>
+                <%=  _.str.capitalize(@user_data.get('user').username) %>
 
             </a></li>
 
