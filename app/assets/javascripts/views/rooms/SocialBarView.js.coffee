@@ -33,12 +33,12 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 			#This is an items-design
 			mediaUrl = @model.get('image_name_selection').url
 			targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
-			description = @model.get('name') + '\n'
+			description = @model.get('name') + ' - '
 		else if @model.get('image_name_desc')
 			#this is a bookmark
 			mediaUrl = @model.get('image_name_desc').url
 			targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
-			description = @model.get('title') + '\n'
+			description = @model.get('title') + ' - '
 		else
 			#IDK what this is
 			mediaUrl = @model.get('image_name').url
@@ -47,7 +47,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 			#something is wrong and we can't pin. 
 			console.log "Error with Pinterest Parameters."
 			return false
-		description += @model.get('description')+ ' Found at http://mywebroom.com'
+		description += @model.get('description')+ ' - Found at http://myWebRoom.com'
 		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
 						'&media=' + encodeURIComponent(mediaUrl) +
 						'&description=' + encodeURIComponent(description)
