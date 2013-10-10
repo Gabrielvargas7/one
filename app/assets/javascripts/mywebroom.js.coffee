@@ -10,7 +10,7 @@ window.Mywebroom =
 
 $(document).ready ->
   # Create the state model
-  Mywebroom.State = new Backbone.Model({
+  defaultStateModel = Backbone.Model.extend(
     defaults:
       roomState     : false  # Who's room are we viewing? PUBLIC, FRIEND, or SELF
       roomUser      : false  # Backbone Model of room user, or false
@@ -37,7 +37,20 @@ $(document).ready ->
       storeHelper: false # Store information about the tab or object we're on
 
       activeSitesMenuView: false #A reference to the Active Sites Menu View.
-  })
+
+      test: 1
+
+      #An object containing base URLs for the shop.
+      shopBaseUrl:  
+        itemDesign:'http://staging-mywebroom.herokuapp.com/shop/show/items-design/'
+        bookmark:'http://mywebroom.com'
+        theme: 'http://mywebroom.com'
+        bundle: 'http://mywebroom.com'
+        entireRoom:'http://mywebroom.com'
+        default: 'http://mywebroom.com'
+
+    )
+  Mywebroom.State = new defaultStateModel
   
   ###
   *At the present, this gets set when either the object this design

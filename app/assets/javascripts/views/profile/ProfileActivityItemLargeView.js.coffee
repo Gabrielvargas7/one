@@ -99,18 +99,32 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		event.preventDefault()
 		event.stopPropagation()
 		pinterestURL= @generatePinterestUrl()
-		window.open(pinterestURL,'_blank','width=750,height=350,toolbar=0,location=0,directories=0,status=0');
+		if pinterestURL
+			window.open(pinterestURL,'_blank','width=750,height=350,toolbar=0,location=0,directories=0,status=0');
 	
 	generatePinterestUrl:->
 		baseUrl = '//pinterest.com/pin/create/button/?url='
 		targetUrl = @model.get('product_url')
 		targetUrl = "http://mywebroom.com" if !targetUrl
 		if @model.get('image_name_selection')
+			#This is an items-design
 			mediaUrl = @model.get('image_name_selection').url
+			targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
+			description = @model.get('name') + '\n'
+		else if @model.get('image_name_desc')
+			#this is a bookmark
+			mediaUrl = @model.get('image_name_desc').url
+			targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
+			description = @model.get('title') + '\n'
 		else
+			#IDK what this is
 			mediaUrl = @model.get('image_name').url
-
-		description = @model.get('description')+ ' See more Rooms, Inc at http://mywebroom.com'
+			targetUrl = Mywebroom.State.get('shopBaseUrl').default
+		if !targetUrl or !mediaUrl
+			#something is wrong and we can't pin. 
+			console.log "Error with Pinterest Parameters."
+			return false
+		description += @model.get('description')+ ' Found at http://mywebroom.com'
 		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
 						'&media=' + encodeURIComponent(mediaUrl) +
 						'&description=' + encodeURIComponent(description)
