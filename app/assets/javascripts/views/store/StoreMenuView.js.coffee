@@ -14,14 +14,52 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #**** Events
   #*******************
 
-  events:
-    'click #objects-store-menu'         :'clickObjects'
-    'click #themes-store-menu'          :'clickThemes'
-    'click #bundles-store-menu'         :'clickBundles'
-    'click #entire-rooms-store-menu'    :'clickBundles'
-    'click .store-dropdown'             :'clickStoreDropdown'
-    'keyup #store-search-box'           :'clickSearch'
-    'click .store-dropdown-item a'      :'clickDropdownItem'
+  events: {
+    'click #objects-store-menu':      'clickObjects'
+    'click #themes-store-menu':       'clickThemes'
+    'click #bundles-store-menu':      'clickBundles'
+    'click #entire-rooms-store-menu': 'clickBundles'
+    'click .store-dropdown':          'clickStoreDropdown'
+    'keyup #store-search-box':        'clickSearch'
+    'click .store-dropdown-item a':   'clickDropdownItem'
+  }
+  
+  
+  #*******************
+  #**** Initialize
+  #*******************
+  initialize: ->
+
+  #*******************
+  #**** Render
+  #*******************
+  render: ->
+    
+    console.log("storemenu view: ")
+    console.log(@model)
+
+    $(@el).append(@template())
+
+    # items
+    @itemsCollection = this.getItemsCollection()
+    this.appendItemsEntry(@itemsCollection)
+
+
+    # themes
+    @themesCollection = this.getThemesCollection()
+    this.appendThemesEntry(@themesCollection)
+
+    # bundles
+    @bundlesCollection = this.getBundlesCollection()
+    this.appendBundlesEntry(@bundlesCollection)
+
+    # bundles set
+    this.appendBundlesSetEntry(@bundlesCollection)
+
+
+    this
+
+  
     
     
   clickDropdownItem: (e) ->
@@ -220,43 +258,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         @clickBundles()
       
 
-  #*******************
-  #**** Initialize
-  #*******************
-  initialize: ->
-
-  #*******************
-  #**** Render
-  #*******************
-  render: ->
-    console.log("storemenu view: ")
-    console.log(@model)
-
-    $(@el).append(@template())
-
-    # items
-    @itemsCollection = this.getItemsCollection()
-    this.appendItemsEntry(@itemsCollection)
-
-    # items designs
-    @itemsDesignsCollection = this.getItemsDesignsCollection(@itemsCollection.first().get('id'))
-    this.appendItemsDesignsEntry(@itemsDesignsCollection)
-
-    # themes
-    @themesCollection = this.getThemesCollection()
-    this.appendThemesEntry(@themesCollection)
-
-    # bundles
-    @bundlesCollection = this.getBundlesCollection()
-    this.appendBundlesEntry(@bundlesCollection)
-
-    # bundles set
-    this.appendBundlesSetEntry(@bundlesCollection)
-
-
-    this
-
-
+  
 
   #*******************
   #**** Functions  - get Collection
@@ -267,7 +269,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   getItemsCollection: ->
     itemsCollection = new Mywebroom.Collections.IndexItemsCollection()
-    itemsCollection.fetch async: false
+    itemsCollection.fetch 
+      async  : false
+      success: (response) ->
+        console.log("items fetch success", response)
     return itemsCollection
 
   #--------------------------
@@ -276,9 +281,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   getItemsDesignsCollection: (item_id) ->
     itemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
     itemsDesignsCollection.fetch
-      async:false
-      url:itemsDesignsCollection.url item_id
-      success:(response) ->
+      async:   false
+      url:     itemsDesignsCollection.url(item_id)
+      success: (response) ->
         console.log("items designs fetch successful: ")
         console.log(response)
     return itemsDesignsCollection
@@ -289,7 +294,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   getThemesCollection: ->
     themesCollection = new Mywebroom.Collections.IndexThemesCollection()
-    themesCollection.fetch async: false
+    themesCollection.fetch 
+      async: false
 #    console.log(JSON.stringify(this.themesCollection.toJSON()))
     return themesCollection
 
@@ -298,7 +304,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   getBundlesCollection: ->
     bundlesCollection = new Mywebroom.Collections.IndexBundlesCollection()
-    bundlesCollection.fetch async: false
+    bundlesCollection.fetch 
+      async: false
 #    console.log(JSON.stringify(this.bundlesCollection.toJSON()))
     return bundlesCollection
 
