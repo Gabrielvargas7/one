@@ -65,15 +65,15 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
     $(window).scrollLeft(0)
 
     $('#xroom_items_0').css({
-      'left':Math.floor($("#xroom_items_0").offset().left-15)
+      'left':Math.floor($("#xroom_items_0").offset().left-5)
     })
 
     $('#xroom_items_1').css({
-      'left':Math.floor($("#xroom_items_1").offset().left-15)
+      'left':Math.floor($("#xroom_items_1").offset().left-5)
     })
 
     $('#xroom_items_2').css({
-      'left':Math.floor($("#xroom_items_2").offset().left-15)
+      'left':Math.floor($("#xroom_items_2").offset().left-5)
     })
 
     if $("[data-current_screen_position='1']").offset().left < -1
