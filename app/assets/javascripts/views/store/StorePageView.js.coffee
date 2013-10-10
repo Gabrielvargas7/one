@@ -14,9 +14,10 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #**** Events
   #*******************
 
-  events:
-    'click #store_close_button'   : 'closeStorePageView'
+  events: {
+    'click #store_close_button':    'closeStorePageView'
     'click #store_collapse_button': 'collapseStorePageView'
+  }
 
   #*******************
   #**** Initialize
@@ -34,7 +35,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
     
     @createStoreMenuView(@model)
 
-    @
+    this
 
 
 
