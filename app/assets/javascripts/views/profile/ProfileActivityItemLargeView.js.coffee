@@ -14,35 +14,21 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		'click .profile_large_item_try_it_button':'showStore'
 		'click .gridItem':'closeView'
 		'click .pinterest_item':'pinIt'
-		'click .SANITYCHECK':'pinIt'
+	
 	render: ->
 		$("#profile_drawer").css "width", "1320px" 
 		pinUrl= @generatePinterestUrl()
-		$(@el).html(@template(model:@model,pinUrl:pinUrl))
+		$(@el).html(@template(model:@model))
 		#The social View is in the template because
 		#the styling was not right with this view. It needs a parent wrapper div, and the 
 		#social view cannot append elegantly with the current styling.
 		#Revisit if we use a Backbone Layout Plugin like SubViews or Marionette.
-		# #append social view to el here
-		# socialBarView = new Mywebroom.Views.SocialBarView({model:@model})
-		# $(@el).append(socialBarView.el)
-		# socialBarView.render()
-
-		
 		this
-	generatePinterestUrl:->
-		baseUrl = '//pinterest.com/pin/create/button/?url='
-		targetUrl = @model.get('product_url')
-		targetUrl = "http://mywebroom.com" if targetUrl is null
-		mediaUrl = @model.get('image_name').url
-		description = @model.get('description')+ ' See more Rooms, Inc at http://mywebroom.com'
-		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
-						'&media=' + encodeURIComponent(mediaUrl) +
-						'&description=' + encodeURIComponent(description)
 	
 	insideHandler: (event) ->
 		event.stopPropagation()
 		console.log "insideHandler called"
+	
 	outsideHandler: (event) ->
 		console.log "outsideHandler called"
 		console.log(event)
@@ -51,6 +37,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		#else close view
 		@closeView()
 		return false
+	
 	closeView: ->
 		$('body').off('click', this.outsideHandler);
 		#change profile_drawer widths back to original
@@ -58,9 +45,11 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		this.$el.remove()
 		console.log "ActivityItemLargeView closed"
 		this
+	
 	showNext:(event) ->
 		event.stopPropagation()
 		this.trigger('ProfileActivityLargeView:showNext',event,@model)
+	
 	showStore:(event)->
 		event.stopPropagation()
 		#if item is object, show store. 
@@ -99,15 +88,27 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 			#Should show item in store view with object centered. 
 			#This model only has bundle_id, and id. No item_id or Item Design Name. 
 			@closeView()
+	
 	getMyBookmarksLength:(userId)->
 		@myBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
 		@myBookmarksCollection.fetch
 		  async:false
 		  url:@myBookmarksCollection.url userId, @model.get('item_id')
 		parseInt(_.last(@myBookmarksCollection.models).get('position'))
+	
 	pinIt:(event)->
 		event.preventDefault()
 		event.stopPropagation()
 		pinterestURL= @generatePinterestUrl()
 		window.open(pinterestURL,'_blank','width=750,height=350,toolbar=0,location=0,directories=0,status=0');
-
+	
+	generatePinterestUrl:->
+		baseUrl = '//pinterest.com/pin/create/button/?url='
+		targetUrl = @model.get('product_url')
+		targetUrl = "http://mywebroom.com" if targetUrl is null
+		mediaUrl = @model.get('image_name').url
+		description = @model.get('description')+ ' See more Rooms, Inc at http://mywebroom.com'
+		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
+						'&media=' + encodeURIComponent(mediaUrl) +
+						'&description=' + encodeURIComponent(description)
+	
