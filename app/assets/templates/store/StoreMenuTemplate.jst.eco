@@ -55,32 +55,32 @@
           <ul class="nav nav-pills">
             <li id="dropdown-object" class="dropdown collapse">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Object<b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu pull-right">
               </ul>
             </li>
             <li id="dropdown-style"class="dropdown collapse">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Style<b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu pull-right">
               </ul>
             </li>
             <li id="dropdown-brand" class="dropdown collapse">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Brand<b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu pull-right">
               </ul>
             </li>
             <li id="dropdown-location" class="dropdown collapse">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Location<b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu pull-right">
               </ul>
             </li>
             <li id="dropdown-color" class="dropdown collapse">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Color<b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu pull-right">
               </ul>
             </li>
             <li id="dropdown-make" class="dropdown collapse">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Make<b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu pull-right">
               </ul>
             </li>
           </ul>
