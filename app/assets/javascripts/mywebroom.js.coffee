@@ -37,6 +37,7 @@ $(document).ready ->
       storeHelper: false # Store information about the tab or object we're on
 
       activeSitesMenuView: false #A reference to the Active Sites Menu View.
+      searchViewArray:false #A reference to an Array of view on the search
   })
   
   ###

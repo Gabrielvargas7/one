@@ -47,12 +47,18 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @createProfileView()
     @removeRoomHeaderElemments()
 
-    @
+
     # Create Search Box
     searchView = new Mywebroom.Views.SearchView()
     $("#xroom_header_search_box").append(searchView.el)
     $("#xroom_header_search_box").hide()
     searchView.render()
+    @searchViewArray = new Array()
+    Mywebroom.State.set("searchViewArray", @searchViewArray)
+
+
+
+    @
 
 
 
@@ -137,7 +143,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
-    #*******************
+  #*******************
   #**** Functions the forward to RoR
   #*******************
 
@@ -343,46 +349,81 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Functions Search
   #*******************
 
-  keyPressOnSearch:(event)->
-    event.preventDefault()
-    event.stopPropagation()
-    console.log(event.type, event.keyCode)
-    if  event.keyCode == 13
-      $('#xroom_header_search_box').hide()
-      console.log("do something")
-    else
-      @displaySearchPage()
-      console.log("value "+$('#xroom_header_search_text').val())
-      value = $('#xroom_header_search_text').val()
-
-      searchUsers = new Mywebroom.Collections.IndexSearchesUsersWithLimitAndOffsetAndKeywordCollection()
-      searchUsers.fetch
-        async  : false
-        url    : searchUsers.url(10,0,value)
-        success: ->
-          console.log(searchUsers.toJSON())
-          console.log("- JSON.stringify "+JSON.stringify(searchUsers))
-        error: ->
-          console.log("error")
-
-      searchUsersModel = searchUsers.first()
-      searchUsersArray = searchUsersModel.get("users")
-      console.log(searchUsersArray)
-
-      _.each(searchUsersArray, (user)->
-
-        console.log(user.user_id)
-        view = new Mywebroom.Views.SearchEntityView({entry:user})
-        this.$('.header_search_wrapper').append(view.render().el)
-
-      )
-
-
   focusOutSearchTextBox:(event)->
     event.preventDefault()
     event.stopPropagation()
     console.log("clean textbox values")
-    $('#xroom_header_search_text').val("");
+    $('#xroom_header_search_text').val("")
+
+
+  keyPressOnSearch:(event)->
+    event.preventDefault()
+    event.stopPropagation()
+
+    console.log(event.type, event.keyCode)
+
+    this.destroySearchView()
+    this.$('.header_search_wrapper').empty()
+
+
+    if  event.keyCode == 13
+      $('#xroom_header_search_box').hide()
+      console.log("do something")
+
+    else
+
+      @displaySearchPage()
+      console.log("value "+$('#xroom_header_search_text').val())
+      value = $('#xroom_header_search_text').val()
+
+      if value != ""
+        searchUsers =  @getSearchUserCollection(value)
+        searchUsersModel = searchUsers.first()
+        searchUsersArray = searchUsersModel.get("users")
+        @setDataToSearchEntity(searchUsersArray)
+
+
+  destroySearchView:->
+    search_view_array  = Mywebroom.State.get("searchViewArray")
+    _.each(search_view_array, (view)->
+      view.remove()
+      view.unbind()
+    )
+
+
+
+  setDataToSearchEntity:(searchUsersArray)->
+
+    console.log(searchUsersArray)
+    search_view_array  = Mywebroom.State.get("searchViewArray")
+
+    i = 0
+    _.each(searchUsersArray, (user)->
+      console.log(user.user_id)
+      view = new Mywebroom.Views.SearchEntityView({entry:user})
+      this.$('.header_search_wrapper').append(view.render().el)
+      search_view_array[i] = view
+      i++
+    )
+
+
+  getSearchUserCollection:(value)->
+    searchUsers = new Mywebroom.Collections.IndexSearchesUsersWithLimitAndOffsetAndKeywordCollection()
+    searchUsers.fetch
+      async  : false
+      url    : searchUsers.url(10,0,value)
+      success: ->
+        console.log(searchUsers.toJSON())
+#        console.log("- JSON.stringify "+JSON.stringify(searchUsers))
+      error: ->
+        console.log("error")
+    searchUsers
+
+
+
+
+
+
 
   #*******************
   #**** Functions Active Sites and Browse Mode

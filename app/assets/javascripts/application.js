@@ -24,6 +24,7 @@
 //= require underscore.string
 //= require jquery.simplyscroll
 //= require backbone.marionette
+//= require twitter/typeahead
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models

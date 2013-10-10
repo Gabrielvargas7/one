@@ -489,6 +489,73 @@ class SearchesController < ApplicationController
 
 
 
+  # GET get search users profile by the keyword with limit and offset
+  # Limit is the number of returns by type that you want it
+  # Offset is where you want to start
+  # /searches/json/index_searches_users_profile_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
+  # /searches/json/index_searches_users_profile_with_limit_and_offset_and_keyword/10/0/gabriel var.json
+  #Return head
+  #success    ->  head  200 OK
+
+  def json_index_searches_users_profile_with_limit_and_offset_and_keyword
+
+    respond_to do |format|
+      if params[:keyword]
+
+
+        keyword = params[:keyword]
+        keyword.downcase!
+
+        array_keyword = keyword.split(' ')
+
+        @users_profiles_array = []
+
+
+        # Found all the id for every word
+        # example: chair brown wood
+        # find all the users with that words
+        array_keyword.each do |keyword|
+
+
+          # limit the length of the string to avoid injection
+          if keyword.length < 12
+
+            @users_id_profiles = UsersProfile.
+                where('lower(firstname) LIKE ? or lower(lastname) LIKE ?', "%#{keyword}%","%#{keyword}%").
+                limit(params[:limit]).
+                offset(params[:offset]).
+                pluck(:user_id)
+
+            @users_profiles_array.concat(@users_id_profiles)
+          end
+        end
+
+
+        #get all the profile from users_profiles_array
+        @users_profiles = UsersPhoto.
+            select('users_photos.image_name,
+                          users_photos.user_id,
+                          users_profiles.firstname,
+                          users_profiles.lastname').
+            joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
+            where('users_profiles.user_id in (?)',@users_profiles_array).
+            where(" profile_image = 'y' ").
+            limit(params[:limit]).
+            offset(params[:offset])
+
+        format.json { render json:@users_profiles
+        }
+
+      else
+        @user = nil
+        format.json { render json: @users_profiles }
+      end
+    end
+  end
+
+
+
+
   # GET get search items designs by the keyword with limit and offset
 # Limit is the number of returns by type that you want it
 # Offset is where you want to start
