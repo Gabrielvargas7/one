@@ -16,7 +16,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Events
   #*******************
 
-  events:{
+  events: {
     'click #xroom_header_active_sites'   : 'showActiveSites'
     'click #xroom_header_profile'        : 'showProfile'
     'click #xroom_header_forward_profile': 'forwardToRoRProfilePage'
@@ -25,8 +25,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_storepage'      : 'showStorePage'
     'click #xroom_header_myroom'         : 'goToMyRoom'
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
-    'focusout #xroom_header_search_text' : 'focusOutSearchTextBox',
-
+    'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
   }
 
 
@@ -58,7 +57,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
-    @
+    this
 
 
 
@@ -122,6 +121,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   createProfileView:->
+    
     @profile = new Backbone.Model
     @profile.set(@model.get('user_profile'))
     @profile.set('user', @model.get('user'))
@@ -131,7 +131,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @profileView = new Mywebroom.Views.ProfileHomeView(
       {
         model         : @profile,
-        roomHeaderView: @ 
+        roomHeaderView: this
       }
     )
     
@@ -151,6 +151,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function forwardToRoRProfilePage this function work on RoR, we should change to Backbone
   #--------------------------
   forwardToRoRProfilePage:(event) ->
+    
     event.preventDefault()
    
     origin =  window.location.origin
@@ -163,13 +164,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function  forwardToRoRSettingPage
   #--------------------------
   forwardToRoRSettingPage:(event) ->
+    
     event.preventDefault()
   
     origin =  window.location.origin
     origin += "/users/" + @model.get('user').id
    
     # Why do we use set location.href instead of calling location.replace() ??
-    window.location.href = origin 
+    window.location.href = origin
 
 
 
@@ -202,7 +204,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   #  *** function logout
   #--------------------------
-  logout:(event) ->
+  logout: (event) ->
     event.preventDefault()
    
     origin = window.location.origin
@@ -248,14 +250,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   displayStorePage: ->
     $('#xroom_storepage').show()
     
-    # Now that we're showing the store, 
+    # Now that we're showing the store,
     # we need to show the hidden images
     # in the user's room
     $("[data-room-hide=yes]").show()
     
     
     
-    grey = 
+    grey =
       1 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826528/bed_grey.png"             # Bed
       2 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826555/brid_cage_grey.png"       # Bird Cage
       3 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826571/book_stand_grey.png"      # Book Shelve (sic)
@@ -441,11 +443,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     #If no active sites, toast message
     if Mywebroom.State.get('activeSitesMenuView')
-      if Mywebroom.State.get('activeSitesMenuView').collection.length>0
+      if Mywebroom.State.get('activeSitesMenuView').collection.length > 0
         #show
         Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
-        $('.browse_mode_view').show() 
-        $('#xroom_bookmarks_browse_mode').show()       
+        $('.browse_mode_view').show()
+        $('#xroom_bookmarks_browse_mode').show()
       else
         @noActiveSitesToast()
     else

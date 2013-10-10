@@ -264,6 +264,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   
   
   
+  
   #-------------------------------
   # set bookmarks on the rooms.html
   #-------------------------------
@@ -277,6 +278,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     length = designs.length
     i = 0
     
+    ###
+    TODO
+    Switch to an each loop
+    ###
+    
     while i < length
       if designs[i].clickable is "yes"
         bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView(
@@ -289,6 +295,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         $("#xroom_bookmarks").append(bookmarkHomeView.el)
         bookmarkHomeView.render()
         
+        
+        # Hide the bookmarks
         $("#room_bookmark_item_id_container_" + designs[i].item_id).hide()
         
       i += 1
