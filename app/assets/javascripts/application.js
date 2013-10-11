@@ -25,6 +25,7 @@
 //= require jquery.simplyscroll
 //= require backbone.marionette
 //= require twitter/typeahead
+//= require FB.js
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models

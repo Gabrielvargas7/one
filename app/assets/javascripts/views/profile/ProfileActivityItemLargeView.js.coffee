@@ -8,6 +8,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		 #$('div').not('.activity_item_large_wrap *').on('click', this.outsideHandler);
 		 if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
   			@template = JST['profile/ProfilePhotosLargeTemplate']
+  		@fbUrl = @generateFacebookURL()
 	events:
 		'click #large_item_prev':'showNext'
 		'click #large_item_next':'showNext'
@@ -17,7 +18,8 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	
 	render: ->
 		$("#profile_drawer").css "width", "1320px" 
-		$(@el).html(@template(model:@model))
+		$(@el).html(@template(model:@model,fbUrl:@fbUrl))
+		FB.XFBML.parse($(@el)[0])
 		#The social View is in the template because
 		#the styling was not right with this view. It needs a parent wrapper div, and the 
 		#social view cannot append elegantly with the current styling.
@@ -110,12 +112,12 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 			#This is an items-design
 			mediaUrl = @model.get('image_name_selection').url
 			targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
-			description = @model.get('name') + '\n'
+			description = @model.get('name') + ' - '
 		else if @model.get('image_name_desc')
 			#this is a bookmark
 			mediaUrl = @model.get('image_name_desc').url
 			targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
-			description = @model.get('title') + '\n'
+			description = @model.get('title') + ' - '
 		else
 			#IDK what this is
 			mediaUrl = @model.get('image_name').url
@@ -124,8 +126,15 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 			#something is wrong and we can't pin. 
 			console.log "Error with Pinterest Parameters."
 			return false
-		description += @model.get('description')+ ' Found at http://mywebroom.com'
+		description += @model.get('description')+ ' - Found at http://myWebRoom.com'
 		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
 						'&media=' + encodeURIComponent(mediaUrl) +
 						'&description=' + encodeURIComponent(description)
+	generateFacebookURL:->
+		if @model.get('image_name_selection')
+			return  Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
+		else if @model.get('image_name_desc')
+			return  Mywebroom.State.get('shopBaseUrl').bookmark
+		else
+			return Mywebroom.State.get('shopBaseUrl').default
 	
