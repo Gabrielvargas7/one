@@ -59,7 +59,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     Now we need to re-parse the bundle data for the entire room
     ###
-    copy = @bundlesCollection
+    copy = @bundlesCollection.clone()
     
     ###
     This is a bundles collection, but we're going to use it as a collection of
@@ -106,6 +106,91 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   search: (keyword, category) ->
     
+    $('[data-toggle="tab"][href="#tab_items"]')
+    .parent()
+    .removeClass('active')
+
+
+    $('#tab_items')
+    .removeClass('active')
+    
+    
+    ###
+    $('[data-toggle="tab"][href="#tab_themes"]')
+    .parent()
+    .removeClass('active')
+
+
+    $('#tab_themes')
+    .removeClass('active')
+    
+    
+    
+    
+    $('[data-toggle="tab"][href="#tab_bundles"]')
+    .parent()
+    .removeClass('active')
+
+
+    $('#tab_bundles')
+    .removeClass('active')
+    
+    
+    
+    
+    $('[data-toggle="tab"][href="#tab_entire_rooms"]')
+    .parent()
+    .removeClass('active')
+
+
+    $('#tab_entire_rooms')
+    .removeClass('active')
+    ###
+    
+
+
+
+
+
+
+
+    $('[data-toggle="tab"][href="#tab_items_designs"]')
+    .parent()
+    .addClass('active')
+    
+    
+
+    $('#tab_items_designs')
+    .addClass('active')
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    $('[data-toggle="tab"][href="#tab_items_designs"]')
+    .show()
+    .parent()
+    .addClass('active')
+    
+    
+    $('#tab_items_designs')
+    .addClass('active')
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     self = this
     
     switch category
@@ -116,7 +201,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
         collection.fetch
           async  : false
-          url    : collection.url(10,0,keyword)
+          url    : collection.url(10, 0, keyword)
           success: (response) ->
             console.log("searched designs success", response)
             
@@ -398,7 +483,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     self = this
 
     itemsCollection.each (entry)  ->
-      storeMenuItemsView = new Mywebroom.Views.StoreMenuItemsView(model:entry)
+      storeMenuItemsView = new Mywebroom.Views.StorePreviewView(model:entry)
       $('#row_item_' + self.row_number).append(storeMenuItemsView.el)
       storeMenuItemsView.render()
 
@@ -429,7 +514,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     self = this
     
     itemsDesignsCollection.each (entry)  ->
-      storeMenuItemsDesignsView = new Mywebroom.Views.StoreMenuItemsDesignsView(model:entry)
+      storeMenuItemsDesignsView = new Mywebroom.Views.StorePreviewView(model:entry)
       $('#row_item_designs_' + self.row_number).append(storeMenuItemsDesignsView.el)
       storeMenuItemsDesignsView.render()
       
@@ -459,7 +544,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     self = this
 
     themesCollection.each (entry)  ->
-      storeMenuThemesView = new Mywebroom.Views.StoreMenuThemesView(model:entry)
+      storeMenuThemesView = new Mywebroom.Views.StorePreviewView(model: entry)
       $('#row_theme_' + self.row_number).append(storeMenuThemesView.el)
       storeMenuThemesView.render()
 
@@ -490,7 +575,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     self = this
 
     bundlesCollection.each (entry)  ->
-      storeMenuBundlesView = new Mywebroom.Views.StoreMenuBundlesView(model:entry)
+      storeMenuBundlesView = new Mywebroom.Views.StorePreviewView(model:entry)
       $('#row_bundle_' + self.row_number).append(storeMenuBundlesView.el)
       storeMenuBundlesView.render()
 
@@ -520,7 +605,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     self = this
 
     bundlesCollection.each (entry)  ->
-      storeMenuBundlesSetView = new Mywebroom.Views.StoreMenuBundlesSetView(model:entry)
+      storeMenuBundlesSetView = new Mywebroom.Views.StorePreviewView(model:entry)
       $('#row_bundle_set_' + self.row_number).append(storeMenuBundlesSetView.el)
       storeMenuBundlesSetView.render()
 

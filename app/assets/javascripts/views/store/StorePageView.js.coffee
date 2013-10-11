@@ -136,7 +136,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   # create store menu for Theme, items, bundles
   #--------------------------
   createStoreMenuView:(model) ->
-    storeMenuView = new Mywebroom.Views.StoreMenuView({model:model})
+    storeMenuView = new Mywebroom.Views.StoreMenuView({model: model})
     $('.store_main_box_right').html(storeMenuView.el)
     storeMenuView.render()
 
