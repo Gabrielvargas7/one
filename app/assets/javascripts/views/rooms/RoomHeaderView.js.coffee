@@ -5,7 +5,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
 
   template: JST['rooms/RoomHeaderTemplate']
