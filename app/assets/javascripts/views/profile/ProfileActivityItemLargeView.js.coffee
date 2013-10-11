@@ -8,17 +8,18 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		 #$('div').not('.activity_item_large_wrap *').on('click', this.outsideHandler);
 		 if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
   			@template = JST['profile/ProfilePhotosLargeTemplate']
+  		@fbUrl = @generateFacebookURL()
 	events:
 		'click #large_item_prev':'showNext'
 		'click #large_item_next':'showNext'
 		'click .profile_large_item_try_it_button':'showStore'
 		'click .gridItem':'closeView'
 		'click .pinterest_item':'pinIt'
-		'click .fb_item':'likeIt'
 	
 	render: ->
 		$("#profile_drawer").css "width", "1320px" 
-		$(@el).html(@template(model:@model))
+		$(@el).html(@template(model:@model,fbUrl:@fbUrl))
+		FB.XFBML.parse($(@el)[0])
 		#The social View is in the template because
 		#the styling was not right with this view. It needs a parent wrapper div, and the 
 		#social view cannot append elegantly with the current styling.
@@ -129,4 +130,11 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
 						'&media=' + encodeURIComponent(mediaUrl) +
 						'&description=' + encodeURIComponent(description)
+	generateFacebookURL:->
+		if @model.get('image_name_selection')
+			return  Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
+		else if @model.get('image_name_desc')
+			return  Mywebroom.State.get('shopBaseUrl').bookmark
+		else
+			return Mywebroom.State.get('shopBaseUrl').default
 	

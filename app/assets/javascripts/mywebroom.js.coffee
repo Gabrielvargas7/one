@@ -42,11 +42,11 @@ $(document).ready ->
       #An object containing base URLs for the shop.
       shopBaseUrl:  
         itemDesign:'http://staging-mywebroom.herokuapp.com/shop/show/items-design/'
-        bookmark:'http://mywebroom.com'
-        theme: 'http://mywebroom.com'
-        bundle: 'http://mywebroom.com'
-        entireRoom:'http://mywebroom.com'
-        default: 'http://mywebroom.com'
+        bookmark:'http://mywebroom.com/'
+        theme: 'http://mywebroom.com/'
+        bundle: 'http://mywebroom.com/'
+        entireRoom:'http://mywebroom.com/'
+        default: 'http://mywebroom.com/'
 
     )
   Mywebroom.State = new defaultStateModel
