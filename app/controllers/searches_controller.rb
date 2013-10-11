@@ -407,83 +407,83 @@ class SearchesController < ApplicationController
 
   def json_index_searches_users_with_limit_and_offset_and_keyword
 
-    respond_to do |format|
-      if params[:keyword]
-
-
-        keyword = params[:keyword]
-        keyword.downcase!
-
-        array_keyword = keyword.split(' ')
-
-        @users_array = []
-        @users_profiles_array = []
-
-
-
-        # Found all the id for every word
-        # example: chair brown wood
-        # find all the users with that words
-        array_keyword.each do |keyword|
-
-
-          # limit the length of the string to avoid injection
-          if keyword.length < 12
-
-            @users_id_array = User.
-                where("lower(users.username) LIKE ? ", "%#{keyword}%").
-                limit(params[:limit]).
-                offset(params[:offset]).
-                pluck(:id)
-
-            @users_array.concat(@users_id_array)
-
-
-            @users_id_profiles = UsersProfile.
-                where('lower(firstname) LIKE ? or lower(lastname) LIKE ?', "%#{keyword}%","%#{keyword}%").
-                limit(params[:limit]).
-                offset(params[:offset]).
-                pluck(:user_id)
-
-            @users_profiles_array.concat(@users_id_profiles)
-          end
-        end
-
-        # get all user from users_array
-        @users = UsersPhoto.
-            select('users.username,
-                    users_photos.image_name,
-                    users_photos.user_id').
-            joins(:user).
-            where("user_id in (?)", @users_array).
-            where("profile_image = 'y'").
-            limit(params[:limit]).
-            offset(params[:offset])
-
-        #get all the profile from users_profiles_array
-        @users_profiles = UsersPhoto.
-            select('users_photos.image_name,
-                          users_photos.user_id,
-                          users_profiles.firstname,
-                          users_profiles.lastname').
-            joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
-            where('users_profiles.user_id in (?)',@users_profiles_array).
-            where(" profile_image = 'y' ").
-            limit(params[:limit]).
-            offset(params[:offset])
-
-        format.json { render json:{
-            #users_array:@users_array,
-            users:@users,
-            #users_profiles_array:@users_profiles_array,
-            users_profiles:@users_profiles
-        }}
-
-      else
-        @user = nil
-        format.json { render json: @user }
-      end
-    end
+    #respond_to do |format|
+    #  if params[:keyword]
+    #
+    #
+    #    keyword = params[:keyword]
+    #    keyword.downcase!
+    #
+    #    array_keyword = keyword.split(' ')
+    #
+    #    @users_array = []
+    #    @users_profiles_array = []
+    #
+    #
+    #
+    #    # Found all the id for every word
+    #    # example: chair brown wood
+    #    # find all the users with that words
+    #    array_keyword.each do |keyword|
+    #
+    #
+    #      # limit the length of the string to avoid injection
+    #      if keyword.length < 12
+    #
+    #        @users_id_array = User.
+    #            where("lower(users.username) LIKE ? ", "%#{keyword}%").
+    #            limit(params[:limit]).
+    #            offset(params[:offset]).
+    #            pluck(:id)
+    #
+    #        @users_array.concat(@users_id_array)
+    #
+    #
+    #        @users_id_profiles = UsersProfile.
+    #            where('lower(firstname) LIKE ? or lower(lastname) LIKE ?', "%#{keyword}%","%#{keyword}%").
+    #            limit(params[:limit]).
+    #            offset(params[:offset]).
+    #            pluck(:user_id)
+    #
+    #        @users_profiles_array.concat(@users_id_profiles)
+    #      end
+    #    end
+    #
+    #    # get all user from users_array
+    #    @users = UsersPhoto.
+    #        select('users.username,
+    #                users_photos.image_name,
+    #                users_photos.user_id').
+    #        joins(:user).
+    #        where("user_id in (?)", @users_array).
+    #        where("profile_image = 'y'").
+    #        limit(params[:limit]).
+    #        offset(params[:offset])
+    #
+    #    #get all the profile from users_profiles_array
+    #    @users_profiles = UsersPhoto.
+    #        select('users_photos.image_name,
+    #                      users_photos.user_id,
+    #                      users_profiles.firstname,
+    #                      users_profiles.lastname').
+    #        joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
+    #        where('users_profiles.user_id in (?)',@users_profiles_array).
+    #        where(" profile_image = 'y' ").
+    #        limit(params[:limit]).
+    #        offset(params[:offset])
+    #
+    #    format.json { render json:{
+    #        #users_array:@users_array,
+    #        users:@users,
+    #        #users_profiles_array:@users_profiles_array,
+    #        users_profiles:@users_profiles
+    #    }}
+    #
+    #  else
+    #    @user = nil
+    #    format.json { render json: @user }
+    #  end
+    #end
   end
 
 
@@ -520,8 +520,9 @@ class SearchesController < ApplicationController
           # limit the length of the string to avoid injection
           if keyword.length < 12
 
-            @users_id_profiles = UsersProfile.
+            @users_id_profiles = UsersProfile.joins(:user).
                 where('lower(firstname) LIKE ? or lower(lastname) LIKE ?', "%#{keyword}%","%#{keyword}%").
+                where('lower(users.username) LIKE ? ', "%#{keyword}%").
                 limit(params[:limit]).
                 offset(params[:offset]).
                 pluck(:user_id)
@@ -532,16 +533,31 @@ class SearchesController < ApplicationController
 
 
         #get all the profile from users_profiles_array
+        #@users_profiles = UsersPhoto.
+        #    select('users_photos.image_name,
+        ##                  users_photos.user_id,
+        ##                  users_profiles.firstname,
+        #                  users_profiles.lastname').
+        #     joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
+        ##    where('users_profiles.user_id in (?)',@users_profiles_array).
+        #    where(" profile_image = 'y' ").
+        #    limit(params[:limit]).
+        #    offset(params[:offset])
+
         @users_profiles = UsersPhoto.
-            select('users_photos.image_name,
+                  select('users_photos.image_name,
                           users_photos.user_id,
                           users_profiles.firstname,
-                          users_profiles.lastname').
-            joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
-            where('users_profiles.user_id in (?)',@users_profiles_array).
-            where(" profile_image = 'y' ").
-            limit(params[:limit]).
-            offset(params[:offset])
+                          users_profiles.lastname,
+                          users.username
+                  ').
+                  joins(:user).
+                  joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
+                  where('users_profiles.user_id in (?)',@users_profiles_array).
+                  where(" users_photos.profile_image = 'y' ").
+                  limit(params[:limit]).
+                  offset(params[:offset])
+
 
         format.json { render json:@users_profiles
         }

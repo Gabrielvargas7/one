@@ -4,7 +4,7 @@ class Mywebroom.Views.SearchView extends Backbone.View
   #**** Tag  (no tag = default el "div")
   #*******************
   tagName:'div'
-  className:'header_search_wrapper nav nav-list'
+  className:'header_search_wrapper'
 
 
   #*******************
