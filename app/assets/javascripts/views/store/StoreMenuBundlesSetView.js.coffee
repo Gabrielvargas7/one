@@ -6,9 +6,9 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
 
   tagName: 'li'
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
-  template: JST['store/StoreMenuBundlesSetTemplate']
+  template: JST['store/StorePreviewTemplate']
 
 
   #*******************
@@ -31,8 +31,14 @@ class Mywebroom.Views.StoreMenuBundlesSetView  extends Backbone.View
     #*******************
   render: ->
 
+    ###
+    Sanitize the model for universal template usage
+    ###
+    obj = @model
+    obj.set("image_name", obj.get("image_name_set"))
+
 #    console.log("Store Menu Bundle View "+@model.get('id'))
-    $(@el).append(@template(bundle:@model))
+    $(@el).append(@template(model:obj))
     this
 
   #*******************
