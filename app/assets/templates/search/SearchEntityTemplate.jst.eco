@@ -1,11 +1,16 @@
     <div class="search_container">
       <div
         class="search_container_entity"
-        data-id_search_entity_id="search_entity_container_id_<%=@entity.user_id%>"
+        data-id_search_entity_id="search_entity_container_id_<%=@entity.get('entity_id')%>"
       >
-           <li><a href="#" > <img class="search_image_cell" src="<%=@entity.image_name.url%>" >
-                                <%= @entity.user_id %><br>
-                                <%= @entity.username %></a></li>
+           <li><a href="#" > <img class="search_image_cell" src="<%=@entity.get('imageName')%>" >
+                                <%= @entity.get('entityId') %><br>
+                                <%= @entity.get('displayTopName') %><br>
+                                <%= @entity.get('displayUnderName') %><br>
+                                <%= @entity.get('entityType') %><br>
+
+
+
         </p>
 
       </div>

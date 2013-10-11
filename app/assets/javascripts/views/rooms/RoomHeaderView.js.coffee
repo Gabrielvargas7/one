@@ -26,6 +26,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_myroom'         : 'goToMyRoom'
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
     'focusout #xroom_header_search_text' : 'focusOutSearchTextBox',
+    'keydown #xroom_header_search_text'  : 'keyDownFireRecently'
 
   }
 
@@ -349,6 +350,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Functions Search
   #*******************
 
+  keyDownFireRecently:(event)->
+    @firedRecently = true
+#    alert "fired"
+    resetStatus = window.setTimeout(->
+      @firedRecently = false
+    , 500)
+
+
+
   focusOutSearchTextBox:(event)->
     event.preventDefault()
     event.stopPropagation()
@@ -377,10 +387,124 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       value = $('#xroom_header_search_text').val()
 
       if value != ""
-        searchUsers =  @getSearchUserCollection(value)
-        searchUsersModel = searchUsers.first()
-        searchUsersArray = searchUsersModel.get("users")
-        @setDataToSearchEntity(searchUsersArray)
+#        _.debounce(@insertSearchEntityView(value), 300);
+        @insertSearchEntityView(value)
+
+
+
+  insertSearchEntityView:(value)->
+        searchUsersCollection =  @getSearchUserCollection(value)
+        searchItemDesignsCollection =  @getSearchItemDesignsCollection(value)
+        searchBookmarksCollection =  @getSearchBookmarksCollection(value)
+
+        console.log("set Data Collection")
+        console.log(searchUsersCollection)
+        console.log(searchItemDesignsCollection)
+        console.log(searchBookmarksCollection)
+
+        item_length = searchItemDesignsCollection.length
+        user_length = searchUsersCollection.length
+        bookmark_length = searchBookmarksCollection.length
+
+        i = 0
+        if item_length > user_length
+           i = item_length
+           if bookmark_length> item_length
+             i = bookmark_length
+        else
+           i = user_length
+           if bookmark_length> user_length
+            i = bookmark_length
+        g = 0
+        self = this
+        @number_views = 0
+        search_view_array  = Mywebroom.State.get("searchViewArray")
+        while (g<i)
+          console.log("loop Data Collection")
+#          console.log(searchItemDesignsCollection.at(g))
+#          console.log(searchUsersCollection.at(g))
+
+
+          searchUsersModel =  searchUsersCollection.at(g)
+          searchItemDesignsModel =  searchItemDesignsCollection.at(g)
+          searchBookmarksModel =  searchBookmarksCollection.at(g)
+
+
+          # add user to the search view
+          if searchUsersModel is undefined
+              console.log("---")
+              console.log(" undefined "+g.toString())
+          else
+              console.log("---")
+              console.log("Not undefined "+g.toString())
+
+              entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
+              entityModel.set('entityType',"PEOPLE")
+              entityModel.set('displayTopName',searchUsersModel.get('firstname')+' '+searchUsersModel.get('lastname'))
+              entityModel.set('imageName',searchUsersModel.get('image_name').url)
+              entityModel.set('entityId',searchUsersModel.get('user_id'))
+              entityModel.set('displayUnderName',searchUsersModel.get('username'))
+              #      console.log(entityModel)
+
+              view = new Mywebroom.Views.SearchEntityView({model:entityModel})
+              this.$('.header_search_wrapper').append(view.render().el)
+              search_view_array[self.number_views] = view
+              self.number_view++
+
+          # add item designs to the search view
+          if searchItemDesignsModel is undefined
+            console.log("---")
+            console.log(" undefined "+g.toString())
+          else
+            console.log("---")
+            console.log("Not undefined "+g.toString())
+            entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
+
+            entityModel.set('entityType'," ITEM_DESIGN")
+            entityModel.set('displayTopName',searchItemDesignsModel.get('name'))
+            entityModel.set('imageName',searchItemDesignsModel.get('image_name_selection').url)
+            entityModel.set('entityId',searchItemDesignsModel.get('id'))
+            entityModel.set('displayUnderName','Object')
+            #      console.log(entityModel)
+
+            view = new Mywebroom.Views.SearchEntityView({model:entityModel})
+            this.$('.header_search_wrapper').append(view.render().el)
+            search_view_array[self.number_views] = view
+            self.number_view++
+
+          # add user to the search view
+          if searchBookmarksModel is undefined
+            console.log("---")
+            console.log(" undefined "+g.toString())
+          else
+            console.log("---")
+            console.log("Not undefined "+g.toString())
+
+            entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
+            entityModel.set('entityType',"BOOKMARK")
+            entityModel.set('displayTopName',searchBookmarksModel.get('title'))
+            entityModel.set('imageName',searchBookmarksModel.get('image_name').url)
+            entityModel.set('entityId',searchBookmarksModel.get('id'))
+            entityModel.set('displayUnderName',searchBookmarksModel.get('Bookmark'))
+            #      console.log(entityModel)
+
+            view = new Mywebroom.Views.SearchEntityView({model:entityModel})
+            this.$('.header_search_wrapper').append(view.render().el)
+            search_view_array[self.number_views] = view
+            self.number_view++
+
+
+          g++
+
+
+
+
+
+
+
+
+
+
 
 
   destroySearchView:->
@@ -392,27 +516,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
-  setDataToSearchEntity:(searchUsersArray)->
-
-    console.log(searchUsersArray)
-    search_view_array  = Mywebroom.State.get("searchViewArray")
-
-    i = 0
-    _.each(searchUsersArray, (user)->
-      console.log(user.user_id)
-      view = new Mywebroom.Views.SearchEntityView({entry:user})
-      this.$('.header_search_wrapper').append(view.render().el)
-      search_view_array[i] = view
-      i++
-    )
-
 
   getSearchUserCollection:(value)->
-    searchUsers = new Mywebroom.Collections.IndexSearchesUsersWithLimitAndOffsetAndKeywordCollection()
+    searchUsers = new Mywebroom.Collections.IndexSearchesUsersProfileWithLimitAndOffsetAndKeywordCollection()
     searchUsers.fetch
       async  : false
       url    : searchUsers.url(10,0,value)
       success: ->
+        console.log("print user profile collection on json format")
         console.log(searchUsers.toJSON())
 #        console.log("- JSON.stringify "+JSON.stringify(searchUsers))
       error: ->
@@ -420,6 +531,31 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     searchUsers
 
 
+  getSearchItemDesignsCollection:(value)->
+    searchItemDesignsCollection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
+    searchItemDesignsCollection.fetch
+      async  : false
+      url    : searchItemDesignsCollection.url(10,0,value)
+      success: ->
+        console.log("print item designs collection on json format")
+        console.log(searchItemDesignsCollection.toJSON())
+#        console.log("- JSON.stringify "+JSON.stringify(searchUsers))
+      error: ->
+        console.log("error")
+    searchItemDesignsCollection
+
+  getSearchBookmarksCollection:(value)->
+    searchBookmarksCollection = new Mywebroom.Collections.IndexSearchesBookmarksWithLimitAndOffsetAndKeywordCollection()
+    searchBookmarksCollection.fetch
+      async  : false
+      url    : searchBookmarksCollection.url(10,0,value)
+      success: ->
+        console.log("print bookmarks collection on json format")
+        console.log(searchBookmarksCollection.toJSON())
+#        console.log("- JSON.stringify "+JSON.stringify(searchUsers))
+      error: ->
+        console.log("error")
+    searchBookmarksCollection
 
 
 
