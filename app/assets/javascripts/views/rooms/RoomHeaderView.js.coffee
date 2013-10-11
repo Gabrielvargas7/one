@@ -444,12 +444,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
               entityModel.set('imageName',searchUsersModel.get('image_name').url)
               entityModel.set('entityId',searchUsersModel.get('user_id'))
               entityModel.set('displayUnderName',searchUsersModel.get('username'))
+              entityModel.set('viewNum',self.number_views)
+
               #      console.log(entityModel)
 
               view = new Mywebroom.Views.SearchEntityView({model:entityModel})
               this.$('.header_search_wrapper').append(view.render().el)
               search_view_array[self.number_views] = view
-              self.number_view++
+              self.number_views++
 
           # add item designs to the search view
           if searchItemDesignsModel is undefined
@@ -465,12 +467,13 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
             entityModel.set('imageName',searchItemDesignsModel.get('image_name_selection').url)
             entityModel.set('entityId',searchItemDesignsModel.get('id'))
             entityModel.set('displayUnderName','Object')
+            entityModel.set('viewNum',self.number_views)
             #      console.log(entityModel)
 
             view = new Mywebroom.Views.SearchEntityView({model:entityModel})
             this.$('.header_search_wrapper').append(view.render().el)
             search_view_array[self.number_views] = view
-            self.number_view++
+            self.number_views++
 
           # add user to the search view
           if searchBookmarksModel is undefined
@@ -486,18 +489,16 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
             entityModel.set('imageName',searchBookmarksModel.get('image_name').url)
             entityModel.set('entityId',searchBookmarksModel.get('id'))
             entityModel.set('displayUnderName',searchBookmarksModel.get('Bookmark'))
-            #      console.log(entityModel)
+            entityModel.set('viewNum',self.number_views)
+            #   console.log(entityModel)
 
             view = new Mywebroom.Views.SearchEntityView({model:entityModel})
             this.$('.header_search_wrapper').append(view.render().el)
             search_view_array[self.number_views] = view
-            self.number_view++
+            self.number_views++
 
 
           g++
-
-
-
 
 
 

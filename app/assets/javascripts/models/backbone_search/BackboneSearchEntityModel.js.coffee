@@ -10,6 +10,8 @@ class  Mywebroom.Models.BackboneSearchEntityModel extends Backbone.Model
                               # ITEM_DESIGN = the word object "Object"
                               # BOOKMARK = the word object "Bookmark"
 
-    imageName        : false
+    imageName        : false  #
     entityId         : false  # id of the item_designs or bookmark or user
+    viewNum          : false  # is the number where is the view
+
 

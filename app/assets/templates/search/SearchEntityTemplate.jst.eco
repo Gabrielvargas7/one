@@ -1,17 +1,26 @@
     <div class="search_container">
       <div
         class="search_container_entity"
-        data-id_search_entity_id="search_entity_container_id_<%=@entity.get('entity_id')%>"
+        data-id_search_entity_id="search_entity_container_id_<%=@entity.get('viewNum')%>"
       >
-           <li><a href="#" > <img class="search_image_cell" src="<%=@entity.get('imageName')%>" >
-                                <%= @entity.get('entityId') %><br>
-                                <%= @entity.get('displayTopName') %><br>
-                                <%= @entity.get('displayUnderName') %><br>
-                                <%= @entity.get('entityType') %><br>
+          <div class="media">
+            <a class="pull-left" href="#" >
+                 <img class="media-object search_image_cell" src="<%=@entity.get('imageName')%>" >
+             </a>
+
+            <div class="media-body">
+
+              <p class="search_media_body_top"><%= @entity.get('displayTopName') %> </p>
+              <p class="search_media_body_bottom"> <%= @entity.get('displayUnderName') %> </p>
+
+            </div>
+          </div>
 
 
 
-        </p>
+
+
+
 
       </div>
     </div>
