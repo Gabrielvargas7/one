@@ -16,23 +16,30 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #**** Events
   #*******************
   events: {
+    
+    'click .store_container_ITEM':             'clickItem'
+    'click .store_container_DESIGN':           'clickDesign'
+    'click .store_container_THEME':            'clickTheme'
+    'click .store_container_BUNDLE':           'clickBundle'
+    'click .store_container_ENTIRE_ROOM':      'clickEntireRoom'
+    
     ###
-    'click .store_container_ENTIRE_ROOM':      'clickStoreBundleSet'
     'mouseenter .store_container_ENTIRE_ROOM': 'test'
     'mouseleave .store_container_ENTIRE_ROOM': 'hoverOff'
-    'click .store_container_BUNDLE':           'clickStoreBundle'
+    
     'mouseenter .store_container_BUNDLE':      'hoverOn'
     'mouseleave .store_container_BUNDLE':      'hoverOff'
-    'click .store_container_THEME':            'clickStoreTheme'
+    
     'mouseenter .store_container_THEME':       'hoverOn'
     'mouseleave .store_container_THEME':       'hoverOff'
-    'click .store_container_DESIGN':           'clickStoreItemDesigns'
+    
     'mouseenter .store_container_DESIGN':      'hoverOn'
     'mouseleave .store_container_DESIGN':      'hoverOff'
-    'click .store_container_ITEM':             'clickStoreItem'
+    
     'mouseenter .store_container_ITEM':        'hoverOn'
     'mouseleave .store_container_ITEM':        'hoverOff'
     ###
+    
   }
   
   
@@ -45,7 +52,6 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   initialize: ->
 
     @button_preview = $.cloudinary.image('button_preview.png', {alt: "button preview", id: "button_preview"})
-
     @type = @model.get("type")
     
     

@@ -1,25 +1,28 @@
-<div class="tabbable1"> <!-- Only required for left/right tabs -->
+<div class="tabbable"> 
 
   <!-- Store Menu  -->
-  <ul class="nav nav-tabs">
-      <li id="objects-store-menu" class="active store-nav">
+  <ul class="nav nav-tabs" id="storeTabs">
+      <li class="active store-nav">
           <a href="#tab_items" data-toggle="tab">OBJECTS</a>
       </li>
-      <li id="themes-store-menu" class="store-nav">             
+      <li class="store-nav">             
           <a href="#tab_themes" data-toggle="tab">THEMES</a>
       </li>
-      <li id="bundles-store-menu" class="store-nav">              
+      <li class="store-nav">              
           <a href="#tab_bundles" data-toggle="tab">BUNDLES</a>
       </li>
-      <li id="entire-rooms-store-menu" class="store-nav">              
+      <li class="store-nav">              
           <a href="#tab_entire_rooms" data-toggle="tab">ENTIRE ROOMS</a>
+      </li>
+      <li class="store-nav">              
+          <a href="#tab_hidden" data-toggle="tab"></a>
       </li>
   </ul>
 
   <div class="container">
     <div class="navbar">
       <div class="navbar-inner">
-      <ul class="nav">
+        <ul class="nav">
         <li>
           <div class="input-append">
             <!-- SEARCH BOX -->
@@ -86,17 +89,17 @@
           </ul>
         </li>
       </ul>
-    </div>
+      </div>
     </div>
   </div>
 
   <!-- Store Menu Selection  -->
   <div class="tab-content">
-      <div class="tab-pane active" id="tab_items"> </div>
-      <div class="tab-pane" id="tab_items_designs"></div>
-      <div class="tab-pane" id="tab_themes">       </div>
-      <div class="tab-pane" id="tab_bundles">      </div>
-      <div class="tab-pane" id="tab_entire_rooms"> </div>
+      <div class="tab-pane active" id="tab_items"></div>
+      <div class="tab-pane" id="tab_themes"></div>
+      <div class="tab-pane" id="tab_bundles"></div>
+      <div class="tab-pane" id="tab_entire_rooms"></div>
+      <div class="tab-pane" id="tab_hidden"></div>
   </div>
 
 </div>

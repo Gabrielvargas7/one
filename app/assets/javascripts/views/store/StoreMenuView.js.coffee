@@ -15,7 +15,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
 
   events: {
-    'click #objects-store-menu':      'clickObjects'
+    'click a[href="#tab_items"]':     'clickObjects'
     'click #themes-store-menu':       'clickThemes'
     'click #bundles-store-menu':      'clickBundles'
     'click #entire-rooms-store-menu': 'clickEntireRooms'
@@ -35,27 +35,32 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   render: ->
     
-    console.log("storemenu view", @model)
-    
 
+    # THIS VIEW
     $(@el).append(@template())
 
-    # items
-    @itemsCollection = this.getItemsCollection()
-    this.appendItemsEntry(@itemsCollection)
 
+
+
+
+    ###
+    FETCH INITIAL DATA
+    ###
+
+    # items
+    @itemsCollection = @getItemsCollection()
+    
 
     # themes
-    @themesCollection = this.getThemesCollection()
-    this.appendThemesEntry(@themesCollection)
+    @themesCollection = @getThemesCollection()
+    
 
     # bundles
-    @bundlesCollection = this.getBundlesCollection()
-    this.appendBundlesEntry(@bundlesCollection)
-
-
-  
+    @bundlesCollection = @getBundlesCollection()
     
+
+
+
     ###
     Now we need to re-parse the bundle data for the entire room
     ###
@@ -79,11 +84,30 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Reset the collection
     reset = copy.reset(parsed)
-    console.log("initial entire rooms III success", reset)
+   
     
 
-    # Replace the design collection
-    @appendBundlesSetEntry(reset)
+
+
+
+
+
+
+
+    ###
+    SPLAT DATA TO STORE
+    ###
+    
+    @appendItemsEntry(@itemsCollection)     # ITEMS
+    @appendThemesEntry(@themesCollection)   # THEMES
+    @appendBundlesEntry(@bundlesCollection) # BUNDLES
+    @appendBundlesSetEntry(reset)           # ENTIRE ROOMS
+
+
+
+
+
+    
     
     
     
@@ -91,6 +115,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # As per convention, return a reference to this view
     this
 
+  
+  
+  
+  
+  
+
+  
+  
+  
   
     
     

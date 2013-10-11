@@ -41,10 +41,26 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Render
   #*******************
   render: ->
+    
+    # THIS VIEW
     $(@el).append(@template(user_data: Mywebroom.State.get("roomData")))
+    
+    
+    
+    # STORE VIEW
     @createStorePage()
+    
+    
+    
+    
+    # PROFILE VIEW
     @createProfileView()
+    
+    
+    
+    # ADJUST HEADER
     @removeRoomHeaderElemments()
+
 
 
     # Create Search Box
@@ -118,6 +134,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       event.preventDefault()
     
     @displayProfile()
+
+
+
+
+
 
 
   createProfileView:->
@@ -231,13 +252,18 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
+
+  #--------------
+  # --- STORE ---
+  #--------------
   createStorePage:->
-    @storePageView = new Mywebroom.Views.StorePageView({ model: @model, roomHeaderView: @ })
-    $('#xroom_storepage').html(@storePageView.el)
-    @storePageView.render()
+    
+    @storeLayoutView = new Mywebroom.Views.StoreLayoutView()
+    $('#xroom_storepage').html(@storeLayoutView.el)
+    @storeLayoutView.render()
     
     # Save a reference to the state model
-    Mywebroom.State.set("storePageView", @storePageView)
+    Mywebroom.State.set("storePageView", @storeLayoutView)
     
     $('#xroom_storepage').hide()
     $('#xroom_store_menu_save_cancel_remove').hide()
@@ -248,6 +274,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function display
   #--------------------------
   displayStorePage: ->
+    
     $('#xroom_storepage').show()
     
     # Now that we're showing the store,
