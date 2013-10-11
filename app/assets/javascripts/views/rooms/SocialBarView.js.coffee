@@ -7,10 +7,10 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 		'click social_info_bar .info_button_item':'clickInfoBtn'
 	
 	render: ->
-		fbUrl = @generateFacebookURL()
+		fbUrl = encodeURIComponent(@generateFacebookURL())
 		$(@el).html(@template(model:@model, fbUrl:fbUrl))
 		#apply the FB script to this element.
-		FB.XFBML.parse($(@el)[0])
+		#FB.XFBML.parse($(@el)[0])
 	
 	hide:->
 		$(@el).hide()
@@ -27,11 +27,11 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 	
 	generateFacebookURL:->
 		if @model.get('image_name_selection')
-			return @model.get('image_name_selection').url
+			return  Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
 		else if @model.get('image_name_desc')
-			return @model.get('image_name_desc').url
+			return  Mywebroom.State.get('shopBaseUrl').bookmark
 		else
-			return @model.get('image_name').url
+			return Mywebroom.State.get('shopBaseUrl').default
 
 	pinIt:(event)->
 		event.preventDefault()
