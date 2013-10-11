@@ -14,6 +14,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 		'click .profile_large_item_try_it_button':'showStore'
 		'click .gridItem':'closeView'
 		'click .pinterest_item':'pinIt'
+		'click .fb_item':'likeIt'
 	
 	render: ->
 		$("#profile_drawer").css "width", "1320px" 

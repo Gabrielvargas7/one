@@ -7,8 +7,15 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 		'click social_info_bar .info_button_item':'clickInfoBtn'
 	
 	render: ->
-		$(@el).html(@template(model:@model))
+		fbUrl = @generateFacebookURL()
+		$(@el).html(@template(model:@model, fbUrl:fbUrl))
+		#apply the FB script to this element.
+		FB.XFBML.parse($(@el)[0])
 	
+	hide:->
+		$(@el).hide()
+	show:->
+		$(@el).show()
 	clickFBLikeItem: (event) ->
 		console.log("You clicked FB Like on: "+@model)
 	
@@ -18,6 +25,14 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 	clickInfoBtn: (event) ->
 		console.log("You clicked Info Button on " +@model)
 	
+	generateFacebookURL:->
+		if @model.get('image_name_selection')
+			return @model.get('image_name_selection').url
+		else if @model.get('image_name_desc')
+			return @model.get('image_name_desc').url
+		else
+			return @model.get('image_name').url
+
 	pinIt:(event)->
 		event.preventDefault()
 		event.stopPropagation()
