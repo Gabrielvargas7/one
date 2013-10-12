@@ -25,6 +25,7 @@
         <ul class="nav">
         <li>
           <div class="input-append">
+            
             <!-- SEARCH BOX -->
             <input id="store-search-box" class="span2" type="text">
             <div class="btn-group">
@@ -32,28 +33,32 @@
               <button class="btn dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
               </button>
+              
               <!-- SEARCH DROPDOWN OPTIONS -->
-              <ul class="dropdown-menu">
-                <li class="active store-dropdown" id="store-dropdown-all">
+              <ul id="store-search-dropdown" class="dropdown-menu">
+                <li class="active" id="store-search-all">
                   <a href="#">ALL</a>
                  </li>
-                <li class="store-dropdown" id="store-dropdown-objects">
+                <li id="store-search-objects">
                     <a href="#">OBJECTS</a>
                 </li>
-                <li class="store-dropdown" id="store-dropdown-themes">
+                <li id="store-search-themes">
                     <a href="#">THEMES</a>
                 </li>
-                <li class="store-dropdown" id="store-dropdown-bundles">
+                <li id="store-search-bundles">
                     <a href="#">BUNDLES</a>
                 </li>
-                <li class="store-dropdown" id="store-dropdown-entire-rooms">
+                <li id="store-search-entire-rooms">
                     <a href="#">ENTIRE ROOMS</a>
                 </li>
               </ul>
+              
             </div>
           </div>
         </li>
         <li>
+          
+          
           <!-- FILTERS -->
           <ul class="nav nav-pills">
             <li id="dropdown-object" class="dropdown collapse">
@@ -87,6 +92,8 @@
               </ul>
             </li>
           </ul>
+          
+          
         </li>
       </ul>
       </div>

@@ -1,66 +1,65 @@
 class Mywebroom.Views.StoreMenuView extends Backbone.View
-
+  
   #*******************
   #**** Tag  (no tag = default el "div")
   #*******************
-
-
+  
+  
   #*******************
   #**** Templeate
   #*******************
   template: JST['store/StoreMenuTemplate']
-
+  
   #*******************
   #**** Events
   #*******************
-
+  
   events: {
-    'click a[href="#tab_items"]':     'clickObjects'
-    'click #themes-store-menu':       'clickThemes'
-    'click #bundles-store-menu':      'clickBundles'
-    'click #entire-rooms-store-menu': 'clickEntireRooms'
-    'click .store-dropdown':          'clickStoreDropdown'
-    'keyup #store-search-box':        'clickSearch'
-    'click .store-dropdown-item a':   'clickDropdownItem'
+    'shown #storeTabs a[data-toggle="tab"]': 'navSwitch'      # NAV SWITCH
+    'click #storeTabs a':                'manualNavSwitch'    # NAV SWITCH - MANUAL
+    'click a[href="#tab_items"]':        'clickObjects'       # NAV TABS
+    'click a[href="#tab_themes"]':       'clickThemes'        # NAV TABS
+    'click a[href="#tab_bundles"]':      'clickBundles'       # NAV TABS
+    'click a[href="#tab_entire_rooms"]': 'clickEntireRooms'   # NAV TABS
+    'click a[href="#tab_hidden"]':       'clickHidden'        # NAV TABS <-- Can this ever be triggered??
+    'keyup #store-search-box':           'keyupSearch'        # SEARCH
+    'click #store-search-dropdown li a': 'searchDropdownChange'     # SEARCH DROPDOWN
+    'click .store-dropdown-item a':      'filterSearch'             # FILTER
   }
   
-  
+    
   #*******************
   #**** Initialize
   #*******************
   initialize: ->
-
+  
   #*******************
   #**** Render
   #*******************
   render: ->
-    
 
     # THIS VIEW
     $(@el).append(@template())
-
-
-
-
-
+  
+  
     ###
     FETCH INITIAL DATA
     ###
-
+  
     # items
     @itemsCollection = @getItemsCollection()
     
-
+  
     # themes
     @themesCollection = @getThemesCollection()
     
-
+  
     # bundles
     @bundlesCollection = @getBundlesCollection()
     
-
-
-
+  
+  
+  
     ###
     Now we need to re-parse the bundle data for the entire room
     ###
@@ -120,108 +119,69 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
   
+  
+  
+  
+  navSwitch: (e) ->
+    
+    ###
+    THIS IS TRIGGERED FOR BOTH MANUAL CLICKS AS WELL AS 
+    CHANGES OF THE SEARCH DROPDOWN
+    
+    WE ONLY WANT TO CHANGE THE SEARCH DROPDOWN
+    WHEN SOMEONE MANUALLY CLICKS A SEARCH BOX
+    ###
+    
+    
+    
+    console.log("tab switched")
+    
+    ###
+    TODO
+    What should happen now?
+    ###
 
   
-  
+  manualNavSwitch: (e) ->
+    
+    console.log("Manual tab switch")
+    
+    ###
+    SWITCH THE SEARCH DROPDOWN TO ALL
+    ###
+    
+    # SEARCH DROPDOWN
+    # Remove active class
+    $('#store-search-dropdown li').removeClass('active')
+    
+    
+    # Add active class to ALL
+    $("#store-search-all").addClass("active")
+    
+    
+    # Change the text of the search filter to ALL
+    $('#store-dropdown-btn').text("ALL")
+    
+    
   
   
     
     
-  clickDropdownItem: (e) ->
+  filterSearch: (e) ->
+
+    # Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show')
 
     keyword  = e.target.text
     category = Mywebroom.State.get("storeHelper")
     
+    # PERFORM THE SEARCH
     @search(keyword, category)
     
     
     
   
   search: (keyword, category) ->
-    
-    $('[data-toggle="tab"][href="#tab_items"]')
-    .parent()
-    .removeClass('active')
-
-
-    $('#tab_items')
-    .removeClass('active')
-    
-    
-    ###
-    $('[data-toggle="tab"][href="#tab_themes"]')
-    .parent()
-    .removeClass('active')
-
-
-    $('#tab_themes')
-    .removeClass('active')
-    
-    
-    
-    
-    $('[data-toggle="tab"][href="#tab_bundles"]')
-    .parent()
-    .removeClass('active')
-
-
-    $('#tab_bundles')
-    .removeClass('active')
-    
-    
-    
-    
-    $('[data-toggle="tab"][href="#tab_entire_rooms"]')
-    .parent()
-    .removeClass('active')
-
-
-    $('#tab_entire_rooms')
-    .removeClass('active')
-    ###
-    
-
-
-
-
-
-
-
-    $('[data-toggle="tab"][href="#tab_items_designs"]')
-    .parent()
-    .addClass('active')
-    
-    
-
-    $('#tab_items_designs')
-    .addClass('active')
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    $('[data-toggle="tab"][href="#tab_items_designs"]')
-    .show()
-    .parent()
-    .addClass('active')
-    
-    
-    $('#tab_items_designs')
-    .addClass('active')
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     self = this
@@ -369,23 +329,25 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
     
-  clickSearch: (e) ->
-    
-    ###
-    TODO
-    If the user was on the object tab, de-highlight it
-    ###
-    
-    
+  keyupSearch: (e) ->
     
     
     if e.keyCode is 13
+      
+      
+      # Switch to the hidden tab
+      $('#storeTabs a[href="#tab_hidden"]').tab('show')
+      
+      
+      # Contents of search
       input = $("#store-search-box").val()
+      
       
       # What tab is selected?
       tab = $("#store-dropdown-btn").text()
       
       
+      # Perform search
       @search(input, tab)
       
       
@@ -396,17 +358,38 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       
       
       
-
+  makeDropdownAll: ->
+    
+    ###
+    This algorithm works, but it appears 
+    this can't be triggered from another function.
+    
+    Why is that? Does it have to do with function placement?
+    ###
+    
+    # SEARCH DROPDOWN
+    # Remove active class
+    $('#store-search-dropdown li').removeClass('active')
+    
+    
+    # Add active class to ALL
+    $("#store-search-all").addClass("active")
+    
+    
+    # Change the text of the search filter to ALL
+    $('#store-dropdown-btn').text("ALL")
    
   
   
   
   
-  clickStoreDropdown: (e) ->
+  searchDropdownChange: (e) ->
     
-    # DROPDOWN
+    # SEARCH DROPDOWN
     # Remove active class
-    $('.store-dropdown').removeClass('active')
+    $('#store-search-dropdown li').removeClass('active')
+    
+
     
     # Add active class to just-clicked element
     $(e.target).parent().addClass('active')
@@ -416,9 +399,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     # TAB-PANE
-    # Remove active class for store-nav
-    # $('.store-nav').removeClass('active')
-    
     # Active the correct store-nav tab
     navName = e.target.text
     
@@ -451,8 +431,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   getItemsCollection: ->
     itemsCollection = new Mywebroom.Collections.IndexItemsCollection()
-    itemsCollection.fetch 
-      async  : false
+    itemsCollection.fetch
+      async:   false
       success: (response) ->
         console.log("items fetch success", response)
     return itemsCollection
@@ -461,6 +441,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   # get the items designs data
   #--------------------------
   getItemsDesignsCollection: (item_id) ->
+    
     itemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
     itemsDesignsCollection.fetch
       async:   false
@@ -476,7 +457,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   getThemesCollection: ->
     themesCollection = new Mywebroom.Collections.IndexThemesCollection()
-    themesCollection.fetch 
+    themesCollection.fetch
       async:   false
       success: (response) ->
         console.log("initial theme fetch success", response)
@@ -487,7 +468,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   getBundlesCollection: ->
     bundlesCollection = new Mywebroom.Collections.IndexBundlesCollection()
-    bundlesCollection.fetch 
+    bundlesCollection.fetch
       async:   false
       success: (response) ->
         console.log("initial bundle fetch success", response)
@@ -498,6 +479,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   #**** Functions  - append Collection to room store page
   #*******************
+
+
+
+
 
   #--------------------------
   # append items views
@@ -532,7 +517,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   # append items designs views
   #--------------------------
-
   appendItemsDesignsEntry: (itemsDesignsCollection) ->
 
     $("#tab_items_designs > ul").remove()
@@ -653,8 +637,17 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
   #*******************
-  #**** Functions ****
+  #**** Filter Helpers
   #*******************
   collapseAll: ->
     # Add the collapse class
@@ -678,6 +671,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
 
+  
+  
+  
+  
+  
+  
+  #************
+  # CLICKS ----
+  #************
   clickObjects: ->
     
     # Hide the Save, Cancel, Remove view
@@ -733,6 +735,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         console.log(response)
     
     
+   
+   
       
   clickBundles: ->
     
@@ -814,19 +818,26 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
   
-  setBrands: (brands) ->
-    # empty out existing dropdown items
-    $('#dropdown-brand > .dropdown-menu').empty()
-    
-    
-    # iterate through the brand items and create a li out of each one
-    _.each(brands, (brand) ->
-      if brand.brand
-        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
-    )
-    
-    
-    
+  
+  
+  
+  clickHidden: ->
+    ###
+    DOES THIS FUNCTION NEED TO DO SOMETHING???
+    ###
+  
+  
+  
+  
+  #********************
+  # FILTER SETTING ----
+  #********************
+  
+  ###
+  TODO
+  There needs to be a function for setting objects
+  ###
+
   setStyles: (styles) ->
     # empty out existing dropdown items
     $('#dropdown-style > .dropdown-menu').empty()
@@ -836,6 +847,19 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     _.each(styles, (style) ->
       if style.style
         $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
+    )
+    
+    
+      
+  setBrands: (brands) ->
+    # empty out existing dropdown items
+    $('#dropdown-brand > .dropdown-menu').empty()
+    
+    
+    # iterate through the brand items and create a li out of each one
+    _.each(brands, (brand) ->
+      if brand.brand
+        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
     )
     
     
@@ -862,7 +886,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     _.each(colors, (color) ->
       if color.color
         $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
-    )    
+    )
     
     
   setMakes: (makes) ->

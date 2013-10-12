@@ -43,6 +43,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   }
   
   
+  clickItem: ->
+     
+    # Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show');
   
   
 
@@ -316,102 +320,102 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
  
  
  
- #--------------------------
- # do something on click
- #--------------------------
- clickStoreItem: (event) ->
+  #--------------------------
+  # do something on click
+  #--------------------------
+  clickStoreItem: (event) ->
    
-   event.preventDefault()
+    event.preventDefault()
 
        
-   self   = this
-   itemId = @model.get("id")
+    self   = this
+    itemId = @model.get("id")
    
    
    
-   ###
-   Set our store helper
-   ###
-   Mywebroom.State.set("storeHelper", itemId)
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", itemId)
    
    
    
-   ###
-   Find the design that was clicked and
-   create a reference to it's container element
-   ###
-   $activeDesign = $("[data-room_item_id=" + itemId + "]")
+    ###
+    Find the design that was clicked and
+    create a reference to it's container element
+    ###
+    $activeDesign = $("[data-room_item_id=" + itemId + "]")
    
    
-   # Save this object to our state model
-   Mywebroom.State.set("$activeDesign", $activeDesign)
+    # Save this object to our state model
+    Mywebroom.State.set("$activeDesign", $activeDesign)
    
    
-   # Show the Save, Cancel, Remove view and remove button
-   # iff the object design's roomHide property is "no"
-   if $activeDesign.attr("data-room-hide")  is "no"
-     # Show the Save, Cancel, Remove view
-     $("#xroom_store_menu_save_cancel_remove").show()
+    # Show the Save, Cancel, Remove view and remove button
+    # iff the object design's roomHide property is "no"
+    if $activeDesign.attr("data-room-hide")  is "no"
+      # Show the Save, Cancel, Remove view
+      $("#xroom_store_menu_save_cancel_remove").show()
    
    
-     # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
-     # Hide the save button
-     $('#xroom_store_save').hide()
+      # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+      # Hide the save button
+      $('#xroom_store_save').hide()
    
-     # Hide the cancel button
-     $('#xroom_store_cancel').hide()
+      # Hide the cancel button
+      $('#xroom_store_cancel').hide()
      
-     # Show the remove button
-     $('#xroom_store_remove').show()
-   else
-     # Show the Save, Cancel, Remove view
-     $("#xroom_store_menu_save_cancel_remove").hide()
+      # Show the remove button
+      $('#xroom_store_remove').show()
+    else
+      # Show the Save, Cancel, Remove view
+      $("#xroom_store_menu_save_cancel_remove").hide()
    
    
-     # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
-     # Hide the save button
-     $('#xroom_store_save').hide()
+      # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+      # Hide the save button
+      $('#xroom_store_save').hide()
    
-     # Hide the cancel button
-     $('#xroom_store_cancel').hide()
+      # Hide the cancel button
+      $('#xroom_store_cancel').hide()
      
-     # Hide the remove button
-     $('#xroom_store_remove').hide()
+      # Hide the remove button
+      $('#xroom_store_remove').hide()
      
    
    
+
+    @moveToItemsDesignsTab()
+    itemsDesignsCollection = @getItemsDesignsCollection(itemId)
+    @appendItemsDesignsEntry(itemsDesignsCollection)
+    @setItemToCenter(@model)
    
-   @moveToItemsDesignsTab()
-   itemsDesignsCollection = @getItemsDesignsCollection(itemId)
-   @appendItemsDesignsEntry(itemsDesignsCollection)
-   @setItemToCenter(@model)
-   
-   #$("li").removeClass() <-- this is messing up the stuff below. which class do we actually want to remove?
-   
-   
-   @expandAll()
+    #$("li").removeClass() <-- this is messing up the stuff below. which class do we actually want to remove?
    
    
-   # COLLAPSE LOCATION
-   $('#dropdown-location').addClass('collapse')
+    @expandAll()
+   
+   
+    # COLLAPSE LOCATION
+    $('#dropdown-location').addClass('collapse')
    
    
    
    
-   # SET THE MENUS
-   categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection()
-   categories.fetch
-     async  : false
-     url    : categories.url itemId
-     success: (response) ->
-       #console.log("IndexItemsDesignsCategoriesByItemIdCollection fetch successful: ")
-       #console.log(response)
-       myModel = categories.first()
-       self.setCategories(myModel.get('items_designs_categories'))
-       self.setBrands(myModel.get('items_designs_brands'))
-       self.setStyles(myModel.get('items_designs_styles'))
-       self.setColors(myModel.get('items_designs_colors'))
-       self.setMakes(myModel.get('items_designs_makes'))
+    # SET THE MENUS
+    categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection()
+    categories.fetch
+      async  : false
+      url    : categories.url itemId
+      success: (response) ->
+        #console.log("IndexItemsDesignsCategoriesByItemIdCollection fetch successful: ")
+        #console.log(response)
+        myModel = categories.first()
+        self.setCategories(myModel.get('items_designs_categories'))
+        self.setBrands(myModel.get('items_designs_brands'))
+        self.setStyles(myModel.get('items_designs_styles'))
+        self.setColors(myModel.get('items_designs_colors'))
+        self.setMakes(myModel.get('items_designs_makes'))
  
  
  
@@ -442,7 +446,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     # iterate through the category items and create a li out of each one
     _.each(categories, (category) ->
       if category.category
-        $('#dropdown-object > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(category.category) + '</a></li>')
+        $('#dropdown-object > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(category.category) + '</a></li>')
     )
 
 
@@ -455,7 +459,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     # iterate through the brand items and create a li out of each one
     _.each(brands, (brand) ->
       if brand.brand
-        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
+        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
     )
     
     
@@ -468,7 +472,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     # iterate through the style items and create a li out of each one
     _.each(styles, (style) ->
       if style.style
-        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
+        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
     )
     
    
@@ -481,7 +485,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     # iterate through the color items and create a li out of each one
     _.each(colors, (color) ->
       if color.color
-        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
+        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
     )
     
     
@@ -493,7 +497,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     # iterate through the make items and create a li out of each one
     _.each(makes, (make) ->
       if make.make
-        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(make.make) + '</a></li>')
+        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(make.make) + '</a></li>')
     )
   
     
