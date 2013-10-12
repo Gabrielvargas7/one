@@ -189,8 +189,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             
             console.log("\n!!!\nWARNING! NOT EVERYTHING!\n!!!\n")
           
-            # Replace the design collection
-            self.appendItemsEntry(response)
+            # Replace the views on the hidden tab
+            self.appendHidden(response)
     
           error: ->
             console.log("error")
@@ -205,8 +205,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           success: (response) ->
             console.log("searched designs success", response)
             
-            # Replace the design collection
-            self.appendItemsEntry(response)
+            # Replace the views on the hidden tab
+            self.appendHidden(response)
       
           error: ->
             console.log("error")
@@ -222,8 +222,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           success: (response) ->
             console.log("searched themes success", response)
         
-            # Replace the design collection
-            self.appendThemesEntry(response)
+            # Replace the views on the hidden tab
+            self.appendHidden(response)
   
           error: ->
             console.log("error")
@@ -243,9 +243,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           success: (response) ->
             console.log("searched bundles success", response)
       
-            # Replace the design collection
-            self.appendBundlesEntry(response)
-
+            # Replace the views on the hidden tab
+            self.appendHidden(response)
+            
           error: ->
             console.log("error")
             
@@ -288,8 +288,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         console.log("searched entire rooms II success", reset)
         
     
-        # Replace the design collection
-        self.appendBundlesSetEntry(reset)
+        # Replace the views on the hidden tab
+        self.appendHidden(reset)
             
             
         
@@ -310,8 +310,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           success: (response) ->
             console.log("searched designs II success", response)
     
-            # Replace the design collection
-            self.appendItemsDesignsEntry(response)
+            # Replace the views on the hidden tab
+            self.appendHidden(response)
 
           error: ->
             console.log("error")
@@ -506,16 +506,16 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #--------------------------
   # append items designs views
   #--------------------------
-  appendItemsDesignsEntry: (itemsDesignsCollection) ->
+  appendHidden: (itemsDesignsCollection) ->
 
-    $("#tab_items_designs > ul").remove()
+    $("#tab_hidden > ul").remove()
     
     @loop_number   = 0
     @row_number    = 1
     @column_number = 3
 
     @row_line = "<ul id='row_item_designs_" + @row_number + "'></ul>"
-    this.$('#tab_items_designs').append(@row_line)
+    this.$('#tab_hidden').append(@row_line)
 
     self = this
     
@@ -530,7 +530,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       if u is 0
         self.row_number += 1
         self.row_line = "<ul id='row_item_designs_" + self.row_number + "'></ul>"
-        $('#tab_items_designs').append(self.row_line)
+        $('#tab_hidden').append(self.row_line)
 
 
   #--------------------------

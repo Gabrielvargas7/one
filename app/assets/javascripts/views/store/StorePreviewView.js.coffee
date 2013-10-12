@@ -387,7 +387,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
     @moveToItemsDesignsTab()
     itemsDesignsCollection = @getItemsDesignsCollection(itemId)
-    @appendItemsDesignsEntry(itemsDesignsCollection)
+    @appendHidden(itemsDesignsCollection)
     @setItemToCenter(@model)
    
     #$("li").removeClass() <-- this is messing up the stuff below. which class do we actually want to remove?
@@ -552,15 +552,15 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   # append items designs views
   #--------------------------
 
-  appendItemsDesignsEntry:(itemsDesignsCollection) ->
+  appendHidden:(itemsDesignsCollection) ->
 
-    $("#tab_items_designs > ul").remove()
+    $("#tab_hidden > ul").remove()
     @loop_number = 0
     @row_number = 1
     @column_number = 3
 
     @row_line = "<ul id='row_item_designs_" + @row_number + "'></ul>"
-    this.$('#tab_items_designs').append(@row_line)
+    this.$('#tab_hidden').append(@row_line)
 
     that = this
     itemsDesignsCollection.each (entry)  ->
@@ -573,7 +573,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       if u is 0
         that.row_number += 1
         that.row_line = "<ul id='row_item_designs_" + that.row_number + "'></ul>"
-        $('#tab_items_designs').append(that.row_line)
+        $('#tab_hidden').append(that.row_line)
 
 
 
@@ -597,13 +597,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   showItemsDesignsTab: ->
     
-    $('[data-toggle="tab"][href="#tab_items_designs"]')
+    $('[data-toggle="tab"][href="#tab_hidden"]')
     .show()
     .parent()
     .addClass('active')
     
     
-    $('#tab_items_designs')
+    $('#tab_hidden')
     .addClass('active')
 
 
@@ -660,13 +660,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
 
 
-    $('[data-toggle="tab"][href="#tab_items_designs"]')
+    $('[data-toggle="tab"][href="#tab_hidden"]')
     .parent()
     .addClass('active')
     
     
 
-    $('#tab_items_designs')
+    $('#tab_hidden')
     .addClass('active')
 
   #*******************
