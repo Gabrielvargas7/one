@@ -124,9 +124,9 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreBundleSet: (event) ->
+  clickEntireRoom: (e) ->
     
-    event.preventDefault()
+    e.preventDefault()
     
     
     self = this
@@ -180,9 +180,9 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   # change all items of the room for bundle when click
   #--------------------------
-  clickStoreBundle: (event) ->
-    event.preventDefault()
-    console.log("click Store Bundle View "+@model.get('id'))
+  clickBundle: (e) ->
+    e.preventDefault()
+    console.log("click Store Bundle View " + @model.get('id'))
     
     # Show the view with the Save, Cancel, Remove buttons
     $('#xroom_store_menu_save_cancel_remove').show()
@@ -207,10 +207,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       imageName = entry.get('image_name').url
       imageNameHover = entry.get('image_name_hover').url
 
-      $('[data-room_item_id='+itemId+']').attr("src", imageName)
-      $('[data-room_item_id='+itemId+']').attr("data-room_item_design_id",itemDesignId)
-      $('[data-room_item_id='+itemId+']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
-      $('[data-room_item_id='+itemId+']').attr("data-room_item_design",'new')
+      $('[data-room_item_id=' + itemId + ']').attr("src", imageName)
+      $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design_id",itemDesignId)
+      $('[data-room_item_id=' + itemId + ']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+      $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design",'new')
 
 
 
@@ -221,7 +221,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreTheme: (e) ->
+  clickTheme: (e) ->
     
     e.preventDefault()
     imageName = @model.get('image_name').url
@@ -257,7 +257,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreItemDesigns: (e) ->
+  clickDesign: (e) ->
      
     e.preventDefault()
     
@@ -323,9 +323,9 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   # do something on click
   #--------------------------
-  clickStoreItem: (event) ->
+  clickItem: (e) ->
    
-    event.preventDefault()
+    e.preventDefault()
 
        
     self   = this

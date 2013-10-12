@@ -38,6 +38,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   render: ->
 
+    self = this
+
     # THIS VIEW
     $(@el).append(@template())
   
@@ -47,23 +49,32 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
   
     # items
-    @itemsCollection = @getItemsCollection()
+    itemsCollection = @getItemsCollection()
     
   
     # themes
-    @themesCollection = @getThemesCollection()
+    themesCollection = @getThemesCollection()
     
+  
   
     # bundles
-    @bundlesCollection = @getBundlesCollection()
+    bundlesCollection = new Mywebroom.Collections.IndexBundlesCollection()
+    bundlesCollection.fetch
+      async:   false
+      success: (response) ->
+        self.appendBundlesEntry(response)
+        
+        
+   
     
-  
-  
-  
-    ###
-    Now we need to re-parse the bundle data for the entire room
-    ###
-    copy = @bundlesCollection.clone()
+    
+    
+    entireRooms = new Backbone.Collection(bundlesCollection.toJSON())
+    entireRooms = entireRooms.reset(_.map(entireRooms, (model) ->
+        obj = model
+        obj.set("type", "ENTIRE_ROOM")
+        return obj
+    ))
     
     ###
     This is a bundles collection, but we're going to use it as a collection of
@@ -74,16 +85,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     http://stackoverflow.com/questions/17034593/how-does-map-work-with-a-backbone-collection
     ###
     
-    # Override the type property
-    parsed = copy.map((model) ->
-      obj = model
-      obj.set("type", "ENTIRE_ROOM")
-      return obj
-    )
     
-    # Reset the collection
-    reset = copy.reset(parsed)
+    
+    
+
+    
    
+    
+    
     
 
 
@@ -97,10 +106,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     SPLAT DATA TO STORE
     ###
     
-    @appendItemsEntry(@itemsCollection)     # ITEMS
-    @appendThemesEntry(@themesCollection)   # THEMES
-    @appendBundlesEntry(@bundlesCollection) # BUNDLES
-    @appendBundlesSetEntry(reset)           # ENTIRE ROOMS
+    @appendItemsEntry(itemsCollection)     # ITEMS
+    @appendThemesEntry(themesCollection)   # THEMES
+    @appendBundlesEntry(bundlesCollection) # BUNDLES
+    @appendBundlesSetEntry(entireRooms)    # ENTIRE ROOMS
 
 
 
