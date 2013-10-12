@@ -38,8 +38,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   render: ->
 
-    self = this
-
     # THIS VIEW
     $(@el).append(@template())
   
@@ -61,34 +59,34 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     bundlesCollection = new Mywebroom.Collections.IndexBundlesCollection()
     bundlesCollection.fetch
       async:   false
-      success: (response) ->
-        self.appendBundlesEntry(response)
         
         
    
+    entireRoomsCollection = new Mywebroom.Collections.IndexBundlesCollection()
+    entireRoomsCollection.fetch
+      async:   false
+      
+      
+  
+    copy = entireRoomsCollection.clone()
+    
+    parsed = copy.map((model) ->
+      obj = model
+      model.set("type", "ENTIRE_ROOM")
+      return obj
+    )
+    
+    reset = copy.reset(parsed)
     
     
-    
-    entireRooms = new Backbone.Collection(bundlesCollection.toJSON())
-    entireRooms = entireRooms.reset(_.map(entireRooms, (model) ->
-        obj = model
-        obj.set("type", "ENTIRE_ROOM")
-        return obj
-    ))
-    
-    ###
-    This is a bundles collection, but we're going to use it as a collection of
-    entire room objects. This means we need to override it's type property.
-    
-    Note that since this mapping is being done outside of the collection's parse
-    method, we need to reset our collection with the model data after mapping.
-    http://stackoverflow.com/questions/17034593/how-does-map-work-with-a-backbone-collection
-    ###
-    
-    
-    
-    
+  
+  
 
+    
+    
+    
+    console.log(bundlesCollection, reset)
+    
     
    
     
@@ -109,7 +107,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     @appendItemsEntry(itemsCollection)     # ITEMS
     @appendThemesEntry(themesCollection)   # THEMES
     @appendBundlesEntry(bundlesCollection) # BUNDLES
-    @appendBundlesSetEntry(entireRooms)    # ENTIRE ROOMS
+    @appendBundlesSetEntry(reset) # ENTIRE ROOMS
 
 
 
