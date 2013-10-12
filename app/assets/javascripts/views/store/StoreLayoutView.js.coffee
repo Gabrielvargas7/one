@@ -1,4 +1,12 @@
-class Mywebroom.Views.StorePageView extends Backbone.View
+###
+This view represents the div that holds the main store page and it's collapse bar.
+At this point, the view for the collapse bar has already been created at attached 
+to the #store_main_box_left element of this view's template.
+
+Since that view has already been created, this view just creates the menu view,
+but it also listens to clicks on the children elements of the collapse bar view.
+###
+class Mywebroom.Views.StoreLayoutView extends Backbone.View
 
   #*******************
   #**** Tag  (no tag = default el "div")
@@ -8,15 +16,16 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #*******************
   #**** Templeate
   #*******************
-  template: JST['store/StorePageTemplate']
+  template: JST['store/StoreLayoutTemplate']
 
   #*******************
   #**** Events
   #*******************
 
-  events:
-    'click #store_close_button'   : 'closeStorePageView'
+  events: {
+    'click #store_close_button':    'closeStorePageView'
     'click #store_collapse_button': 'collapseStorePageView'
+  }
 
   #*******************
   #**** Initialize
@@ -27,14 +36,20 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-    #console.log("storepage view: ")
-    #console.log(@model)
+
+    # THIS VIEW
     $(@el).html(@template())
-
     
-    @createStoreMenuView(@model)
+    
+    
+    # STORE MENU VIEW
+    storeMenuView = new Mywebroom.Views.StoreMenuView()
+    $('.store_main_box_right').html(storeMenuView.el)
+    storeMenuView.render()
 
-    @
+
+
+    this
 
 
 
@@ -46,6 +61,7 @@ class Mywebroom.Views.StorePageView extends Backbone.View
   # close store page
   #--------------------------
   closeStorePageView: (event) ->
+    
     event.preventDefault()
     
 
@@ -124,21 +140,3 @@ class Mywebroom.Views.StorePageView extends Backbone.View
       $('#store_main_box').css('width', '780px')
       
       $('#store_collapse_button img').addClass('flipimg')
-    
-    
-
-  #*******************
-  #**** Functions  -  Store Menu
-  #*******************
-  
-  #--------------------------
-  # create store menu for Theme, items, bundles
-  #--------------------------
-  createStoreMenuView:(model) ->
-    storeMenuView = new Mywebroom.Views.StoreMenuView({model:model})
-    $('.store_main_box_right').html(storeMenuView.el)
-    storeMenuView.render()
-
-
-
-

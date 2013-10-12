@@ -172,7 +172,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
         # And now we need replace src with above
         $('[data-room-hide=yes]').each ->
-          $(@).attr("src", grey[$(@).attr("data-room_item_id")])
+          $(this).attr("src", grey[$(this).attr("data-room_item_id")])
       
       
       
@@ -303,7 +303,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
     # And now we need replace src with above
     $('[data-room-hide=yes]').each ->
-      $(this).attr("src", grey[$(@).data("room_item_id")])
+      $(this).attr("src", grey[$(this).data("room_item_id")])
     
     
     
@@ -330,9 +330,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       sectionId   = $('.current_background').attr("data-room_section_id")
       userId      = Mywebroom.State.get("signInUser").get("id")
 
-      updateTheme = new Mywebroom.Models.UpdateUserThemeByUserIdAndSectionIdModel({new_theme_id:themeId, _id: userId})
+      updateTheme = new Mywebroom.Models.UpdateUserThemeByUserIdAndSectionIdModel({new_theme_id: themeId, _id: userId})
       updateTheme.section_id = sectionId
-      updateTheme.user_id    = userId
+      updateTheme.user_id =    userId
       updateTheme.save
         wait: true
       ,

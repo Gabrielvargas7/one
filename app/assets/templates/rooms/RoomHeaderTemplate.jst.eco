@@ -54,13 +54,13 @@
                 </a>
             </li>
             <li>
-                <a id="xroom_header_storepage">
+                <a href="#" id="xroom_header_storepage">
                     <span>&nbsp&nbspRoom<span>
                 </a>
             </li>
-            <li><a id="xroom_header_myroom" >
+            <li><a href="#" id="xroom_header_myroom" >
                 <img src=<%= @user_data.get('user_photos').image_name.url %> >
-                <%=  @user_data.get('user').username %>
+                <%=  _.str.capitalize(@user_data.get('user').username) %>
 
             </a></li>
 
@@ -70,9 +70,9 @@
                            <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                           <li><a id="xroom_header_forward_profile" >Profile</a></li>
-                           <li><a id="xroom_header_forward_setting" >Setting</a></li>
-                           <li><a id="xroom_header_logout" >Logout</a></li>
+                           <li><a href="#" id="xroom_header_forward_profile" >Profile</a></li>
+                           <li><a href="#" id="xroom_header_forward_setting" >Setting</a></li>
+                           <li><a href="#" id="xroom_header_logout" >Logout</a></li>
                         </ul>
             </li>
         </ul>
