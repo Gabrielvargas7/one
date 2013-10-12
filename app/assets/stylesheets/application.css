@@ -98,10 +98,31 @@ footer ul li {
 .dark_text{
     color:#464646;
 }
+.social_bar li.info_button_item{
+    padding-top:8px;
+}
+.navbar .nav > li.info_button_item > a{
+    background-color: #00CCFF;
+    color:white;
+    border-radius:3px;
+    padding:3px;
+    font-size:13px;
+    width:45px;
+    height:20px;
+}
+/*Override Twitter Bootstrap Background Color*/
+.social_bar .navbar-inner{
+    background-image:none;
+    background-color: transparent;
+    border:none;
+}
+.social_bar{
+    background-color: rgba(255,255,255,.4);
+}
+
+/*End social bar style*/
 .toast-top-center{
     top: 52px; 
     left: 50%; 
     margin-left: -150px; 
 }
-
-/*End social bar style*/

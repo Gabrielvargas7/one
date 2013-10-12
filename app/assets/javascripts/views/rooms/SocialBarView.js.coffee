@@ -6,9 +6,11 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 		'click .pinterest_item':'pinIt'
 		'click social_info_bar .info_button_item':'clickInfoBtn'
 	
+	initialize: ->
+		@findTargetUrl()
 	render: ->
 		fbUrl = encodeURIComponent(@generateFacebookURL())
-		$(@el).html(@template(model:@model, fbUrl:fbUrl))
+		$(@el).html(@template(model:@model, fbUrl:fbUrl,targetUrl:@targetUrl))
 		#apply the FB script to this element.
 		#FB.XFBML.parse($(@el)[0])
 	
@@ -23,6 +25,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 		console.log("You clicked Pin Item on: " +@model)
 	
 	clickInfoBtn: (event) ->
+		event.stopPropagation()
 		console.log("You clicked Info Button on " +@model)
 	
 	generateFacebookURL:->
@@ -40,29 +43,42 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 		if pinterestURL
 			window.open(pinterestURL,'_blank','width=750,height=350,toolbar=0,location=0,directories=0,status=0');
 	
+	findTargetUrl:->
+		if @model.get('image_name_selection')
+			#This is an items
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
+		else if @model.get('image_name_desc')
+			#this is a bookmark
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
+		else
+			#IDK what this is
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').default
 	generatePinterestUrl:->
 		baseUrl = '//pinterest.com/pin/create/button/?url='
-		targetUrl = @model.get('product_url')
-		targetUrl = "http://mywebroom.com" if !targetUrl
+		@targetUrl = @model.get('product_url')
+		@targetUrl = "http://mywebroom.com" if !@targetUrl
 		if @model.get('image_name_selection')
 			#This is an items-design
 			mediaUrl = @model.get('image_name_selection').url
-			targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
 			description = @model.get('name') + ' - '
+			signature = ' - Found at myWebRoom.com'
 		else if @model.get('image_name_desc')
 			#this is a bookmark
 			mediaUrl = @model.get('image_name_desc').url
-			targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
 			description = @model.get('title') + ' - '
+			signature = ' - For my virtual room at myWebRoom.com'
 		else
 			#IDK what this is
 			mediaUrl = @model.get('image_name').url
-			targetUrl = Mywebroom.State.get('shopBaseUrl').default
-		if !targetUrl or !mediaUrl
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').default
+			signature = ' - Found at myWebRoom.com'
+		if !@targetUrl or !mediaUrl
 			#something is wrong and we can't pin. 
 			console.log "Error with Pinterest Parameters."
 			return false
-		description += @model.get('description')+ ' - Found at http://myWebRoom.com'
-		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
+		description += @model.get('description')+ signature
+		pinterestUrl = baseUrl + encodeURIComponent(@targetUrl) +
 						'&media=' + encodeURIComponent(mediaUrl) +
 						'&description=' + encodeURIComponent(description)

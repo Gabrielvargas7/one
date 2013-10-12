@@ -106,28 +106,31 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	
 	generatePinterestUrl:->
 		baseUrl = '//pinterest.com/pin/create/button/?url='
-		targetUrl = @model.get('product_url')
-		targetUrl = "http://mywebroom.com" if !targetUrl
+		@targetUrl = @model.get('product_url')
+		@targetUrl = "http://mywebroom.com" if !@targetUrl
 		if @model.get('image_name_selection')
 			#This is an items-design
 			mediaUrl = @model.get('image_name_selection').url
-			targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign + @model.get('id')
 			description = @model.get('name') + ' - '
+			signature = ' - Found at myWebRoom.com'
 		else if @model.get('image_name_desc')
 			#this is a bookmark
 			mediaUrl = @model.get('image_name_desc').url
-			targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
 			description = @model.get('title') + ' - '
+			signature = ' - For my virtual room at myWebRoom.com'
 		else
 			#IDK what this is
 			mediaUrl = @model.get('image_name').url
-			targetUrl = Mywebroom.State.get('shopBaseUrl').default
-		if !targetUrl or !mediaUrl
+			@targetUrl = Mywebroom.State.get('shopBaseUrl').default
+			signature = ' - Found at myWebRoom.com'
+		if !@targetUrl or !mediaUrl
 			#something is wrong and we can't pin. 
 			console.log "Error with Pinterest Parameters."
 			return false
-		description += @model.get('description')+ ' - Found at http://myWebRoom.com'
-		pinterestUrl = baseUrl + encodeURIComponent(targetUrl) +
+		description += @model.get('description')+ signature
+		pinterestUrl = baseUrl + encodeURIComponent(@targetUrl) +
 						'&media=' + encodeURIComponent(mediaUrl) +
 						'&description=' + encodeURIComponent(description)
 	generateFacebookURL:->
