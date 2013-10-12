@@ -80,24 +80,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
   
-  
-
-    
-    
-    
-    console.log(bundlesCollection, reset)
-    
-    
-   
-    
-    
-    
-
-
-
-
-
-
 
 
     ###
@@ -107,7 +89,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     @appendItemsEntry(itemsCollection)     # ITEMS
     @appendThemesEntry(themesCollection)   # THEMES
     @appendBundlesEntry(bundlesCollection) # BUNDLES
-    @appendBundlesSetEntry(reset) # ENTIRE ROOMS
+    @appendBundlesSetEntry(reset)          # ENTIRE ROOMS
 
 
 
