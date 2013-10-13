@@ -132,7 +132,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     self = this
     
     
-    console.log("\n\n\nENTIRE_ROOM clicked\n\n\n")
+    console.log("\n\n\nENTIRE ROOMS clicked\n\n\n")
     
     
     
