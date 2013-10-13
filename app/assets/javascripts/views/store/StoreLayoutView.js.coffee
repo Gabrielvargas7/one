@@ -137,6 +137,6 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
       $('.store_main_box_right').show() # Un-hide the main box
       
       # Note: this width should be the same as #store_main_box in stylesheets/rooms_store.css.scss
-      $('#store_main_box').css('width', '780px')
+      $('#store_main_box').css('width', '700px')
       
       $('#store_collapse_button img').addClass('flipimg')
