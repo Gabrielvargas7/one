@@ -7,17 +7,16 @@
             <!-- Menu  -->
             <ul class="nav pull-left">
                 <li>
-                    <a id="xroom_store_save">
+                    <a href="#" id="xroom_store_save">
                         Save Design
                     </a>
                 </li>
                 <li>
-                    <a id="xroom_store_cancel">
+                    <a href="#" id="xroom_store_cancel">
                         Cancel Changes
-
                     </a>
                 </li>
-                <li><a id="xroom_store_remove" >
+                <li><a href="#" id="xroom_store_remove">
                         Remove Object
                     </a>
                 </li>
