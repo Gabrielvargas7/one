@@ -22,6 +22,8 @@ $(document).ready ->
       roomDesigns   : false  # Array of item designs, or empty array
       roomTheme     : false  # Object containing info on room's theme
       
+      initialItems: false # Backbone collection of room items
+      
       $activeDesign       : false  # A refernce to the element of the design in focus*
       activeDesignIsHidden: false  # yes or no
       

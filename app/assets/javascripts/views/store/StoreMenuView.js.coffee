@@ -48,6 +48,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
     # items
     itemsCollection = @getItemsCollection()
+    Mywebroom.State.set("initialItems", itemsCollection)
     
   
     # themes

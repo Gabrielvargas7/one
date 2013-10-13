@@ -41,14 +41,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     
   }
-  
-  
-  clickItem: ->
-     
-    # Switch to the hidden tab
-    $('#storeTabs a[href="#tab_hidden"]').tab('show');
-  
-  
+   
 
   #*******************
   #**** Initialize
@@ -87,6 +80,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #**** Funtions  -- Collecton
   #*******************
 
+
+
+
+
   #--------------------------
   # get items deisgns of the bundle
   #--------------------------
@@ -120,6 +117,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #*******************
   #**** Funtions  -- events
   #*******************
+
+
+
+
 
   #--------------------------
   # do something on click
@@ -259,6 +260,11 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   clickDesign: (e) ->
      
+     
+    
+     
+     
+     
     e.preventDefault()
     
     itemId =       @model.get("item_id") # <-- type of design
@@ -268,6 +274,30 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   
     
     console.log("***** CLICK STORE ITEM DESIGN:\t", itemDesignId, " *********")
+    
+    
+    
+    
+    
+    
+    ###
+    CENTER
+    ###
+    items = Mywebroom.State.get("initialItems")
+    
+    
+    # Get item that matches this design's item_id
+    item = items.findWhere({"id":itemId})
+    
+    
+    
+    
+     
+    # Center
+    @setItemToCenter(item)
+    
+    
+    
     
     
     ###
@@ -313,6 +343,9 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     # Show
     $activeDesign.show()
+    
+    
+    
 
 
     
@@ -325,6 +358,17 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   clickItem: (e) ->
    
+   
+   
+    console.log("item model", @model)
+   
+   
+   
+    
+    # Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show');
+    
+    
     e.preventDefault()
 
        
@@ -385,7 +429,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
    
    
 
-    @moveToItemsDesignsTab()
+    
     itemsDesignsCollection = @getItemsDesignsCollection(itemId)
     @appendHidden(itemsDesignsCollection)
     @setItemToCenter(@model)
@@ -423,6 +467,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
  
  
  
+  
+  
+  
+  
+  
+  
+  
   #--------------------------
   # get the items designs data
   #--------------------------
@@ -437,7 +488,15 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     return itemsDesignsCollection
     
     
+    
+    
+    
+    
+    
 
+  
+  
+  
   setCategories: (categories) ->
     # empty out existing dropdown items
     $('#dropdown-object > .dropdown-menu').empty()
@@ -517,6 +576,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     
+  
+  
+  
+  
   collapseAll: ->
     # Add the collapse class
     $('#dropdown-object').addClass('collapse')
@@ -544,6 +607,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
 
 
+  
+  
+  
+  
+  
+  
+  
   #*******************
   #**** Functions  - append Collection to room store page
   #*******************
@@ -577,106 +647,25 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
 
 
-  #*******************
-  #**** Functions  - hide and show tabs
-  #*******************
-
-  #--------------------------
-  # hide items tap
-  #--------------------------
-  hideItemsTab: ->
-    $tab_item = $('[data-toggle="tab"][href="#tab_items"]')
-    $tab_item.parent().removeClass('active')
-    $tab_item.hide()
-    $tab_body_item = $('#tab_items')
-    $tab_body_item.removeClass('active')
-    $tab_body_item.hide()
-
-  #--------------------------
-  # show items designs tap
-  #--------------------------
-  showItemsDesignsTab: ->
-    
-    $('[data-toggle="tab"][href="#tab_hidden"]')
-    .show()
-    .parent()
-    .addClass('active')
-    
-    
-    $('#tab_hidden')
-    .addClass('active')
 
 
-  #--------------------------
-  # move to the items designs
-  #--------------------------
-
-  moveToItemsDesignsTab: ->
-    $('[data-toggle="tab"][href="#tab_items"]')
-    .parent()
-    .removeClass('active')
-
-
-    $('#tab_items')
-    .removeClass('active')
-    
-    
-    ###
-    $('[data-toggle="tab"][href="#tab_themes"]')
-    .parent()
-    .removeClass('active')
-
-
-    $('#tab_themes')
-    .removeClass('active')
-    
-    
-    
-    
-    $('[data-toggle="tab"][href="#tab_bundles"]')
-    .parent()
-    .removeClass('active')
-
-
-    $('#tab_bundles')
-    .removeClass('active')
-    
-    
-    
-    
-    $('[data-toggle="tab"][href="#tab_entire_rooms"]')
-    .parent()
-    .removeClass('active')
-
-
-    $('#tab_entire_rooms')
-    .removeClass('active')
-    ###
-    
-
-
-
-
-
-
-
-    $('[data-toggle="tab"][href="#tab_hidden"]')
-    .parent()
-    .addClass('active')
-    
-    
-
-    $('#tab_hidden')
-    .addClass('active')
-
+ 
   #*******************
   #**** Funtions -
   #*******************
 
+  
+  
+  
+  
+  
   #--------------------------
   # do center the element to room that is on the center
   #--------------------------
   setItemToCenter:(itemModel) ->
+    
+    console.log("Center", itemModel)
+    
     # move to the center
     #console.log("center the element with the center room")
     item_location_x = parseInt(itemModel.get('x'))
@@ -707,6 +696,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
 
+  
+  
+  
+  
+  
+  
+  
   #------------------------------------
   # change to hover image on mouse over
   #------------------------------------
