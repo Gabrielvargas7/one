@@ -27,6 +27,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click .store-dropdown-item a':      'filterSearch'             # FILTER
   }
   
+
+  
+  
     
   #*******************
   #**** Initialize

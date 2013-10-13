@@ -23,25 +23,15 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     'click .store_container_BUNDLE':           'clickBundle'
     'click .store_container_ENTIRE_ROOM':      'clickEntireRoom'
     
-    ###
-    'mouseenter .store_container_ENTIRE_ROOM': 'test'
-    'mouseleave .store_container_ENTIRE_ROOM': 'hoverOff'
-    
-    'mouseenter .store_container_BUNDLE':      'hoverOn'
-    'mouseleave .store_container_BUNDLE':      'hoverOff'
-    
-    'mouseenter .store_container_THEME':       'hoverOn'
-    'mouseleave .store_container_THEME':       'hoverOff'
-    
-    'mouseenter .store_container_DESIGN':      'hoverOn'
-    'mouseleave .store_container_DESIGN':      'hoverOff'
-    
-    'mouseenter .store_container_ITEM':        'hoverOn'
-    'mouseleave .store_container_ITEM':        'hoverOff'
-    ###
-    
+    'mouseenter .store_container':       'hoverOn'
+    'mouseleave .store_container':       'hoverOff' 
   }
    
+
+  
+
+
+
 
   #*******************
   #**** Initialize
@@ -650,26 +640,22 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
 
  
+  
+  
+  
   #*******************
   #**** Funtions -
   #*******************
-
-  
-  
-  
-  
-  
-  #--------------------------
-  # do center the element to room that is on the center
-  #--------------------------
+  #-------------------------------
+  # Center the element to the room 
+  #-------------------------------
   setItemToCenter:(itemModel) ->
     
     console.log("Center", itemModel)
     
-    # move to the center
-    #console.log("center the element with the center room")
+   
     item_location_x = parseInt(itemModel.get('x'))
-    #console.log(item_location_x)
+   
 
     $('#xroom_items_0').attr('data-current_screen_position','0')
     $('#xroom_items_0').css({
@@ -684,46 +670,24 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       'left': Math.floor(1999 - item_location_x + 100)
     })
 
-    #console.log("window location" + $(window).scrollLeft())
 
 
 
 
 
 
-
-  
-    
-    
-
-  
-  
-  
-  
-  
-  
-  
-  #------------------------------------
-  # change to hover image on mouse over
-  #------------------------------------
   hoverOn: (e) ->
     
     e.preventDefault()
+    $('#store_' + @type + '_container_' + @model.get('id')).append(@button_preview)
+  
     
-    console.log("mouseenter")
-
-    $('#store_' + @type + '_container_' + @model.get('id')).append(button_preview)
-
-
-
-
-  #-------------------------------------
-  # remove preview button on mouse leave
-  #-------------------------------------
   hoverOff: (e) ->
     
     e.preventDefault()
-    
-    console.log("mouseleave")
-    
     $('#button_preview').remove()
+    
+
+  
+  
+  
