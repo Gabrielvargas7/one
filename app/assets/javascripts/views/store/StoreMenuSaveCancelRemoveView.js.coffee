@@ -102,10 +102,49 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
     
     
+    
+  clickCancel: (event) ->
+    self = this
+    event.preventDefault()
+    console.log("click Store Cancel")
+    bootbox.confirm("Are you sure you want to cancel all the changes you made in your room?", (result) ->
+      if result
+        self.revert()
+        
+        # Hide the Save, Cancel, Remove View
+        $('#xroom_store_menu_save_cancel_remove').hide()
+    )
+    
+    
+
+  
+  
+  clickRemove: (event) ->
+    self = this
+    event.preventDefault()
+    console.log("click Store Remove")
+    bootbox.confirm("Are you sure you want to remove this object?", (result) ->
+      if result
+        self.removeObject()
+        
+        # Hide the Save, Cancel, Remove View
+        $('#xroom_store_menu_save_cancel_remove').hide()
+    )
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  
+  
   revert: ->
     # Revert designs
     # Capture all the changed elements
-    $('[data-room_item_design=' + "new" + ']')
+    $('[data-room_item_design=new]')
     
     # And iterate over them
     .each( ->
@@ -202,41 +241,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
     
     
-  clickCancel: (event) ->
-    self = this
-    event.preventDefault()
-    console.log("click Store Cancel")
-    bootbox.confirm("Are you sure you want to cancel all the changes you made in your room?", (result) ->
-      if result
-        self.revert()
-        
-        # Hide the Save, Cancel, Remove View
-        $('#xroom_store_menu_save_cancel_remove').hide()
-    )
-    
-    
-
   
-  
-  clickRemove: (event) ->
-    self = this
-    event.preventDefault()
-    console.log("click Store Remove")
-    bootbox.confirm("Are you sure you want to remove this object?", (result) ->
-      if result
-        self.removeObject()
-        
-        # Hide the Save, Cancel, Remove View
-        $('#xroom_store_menu_save_cancel_remove').hide()
-    )
-    
-    
-    
-    
-    
-    
-    
-    
   
   removeObject: ->
     
@@ -378,6 +383,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       newId      = $(this).attr("data-room_item_design_id")
       locationId = $(this).attr("data-room_location_id")
       oldHide    = $(this).attr("data-room-hide")
+      newSrc     = $(this).attr("src")
       
       
       
@@ -389,6 +395,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       .attr("data-room_item_design", "current")
       .attr("data-room_item_design_id_current", newId)
       .attr("data-room-hide", "no")
+      .attr("data-room-design-src", newSrc)
       
       
       
