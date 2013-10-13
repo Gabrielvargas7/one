@@ -27,6 +27,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click .store-dropdown-item a':      'filterSearch'             # FILTER
   }
   
+
+  
+  
     
   #*******************
   #**** Initialize
@@ -48,6 +51,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
     # items
     itemsCollection = @getItemsCollection()
+    Mywebroom.State.set("initialItems", itemsCollection)
     
   
     # themes
@@ -175,6 +179,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     self = this
     
+    
     switch category
       when "ALL"
         ###
@@ -249,11 +254,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           error: ->
             console.log("error")
             
-      when "ENTIRE_ROOM"
+      when "ENTIRE ROOMS"
         
         
         console.log("ENTIRE ROOMS!!!!!!!!!!!!!")
-        
+       
         ###
         Fetch collection
         ###
@@ -771,7 +776,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     Set our store helper
     ###
-    Mywebroom.State.set("storeHelper", "ENTIRE_ROOM")
+    Mywebroom.State.set("storeHelper", "ENTIRE ROOMS")
     
     
     
