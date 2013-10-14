@@ -82,8 +82,7 @@ footer ul li {
     height:auto;
 }
 .pinterest_item img{
-    width:20px;
-    height:auto;
+
 }
 .info_button_item img{
     width:50px;
@@ -100,6 +99,7 @@ footer ul li {
 }
 .social_bar li.info_button_item{
     padding-top:8px;
+    width:30px;
 }
 .navbar .nav > li.info_button_item > a{
     background-color: #00CCFF;
