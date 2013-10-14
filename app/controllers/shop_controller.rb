@@ -109,6 +109,9 @@ class ShopController < ApplicationController
     @fb_og_title = @items_design.name.to_s
     @fb_og_description = @items_design.description.to_s
     @fb_app_id = 330390967090243.to_s
+    @fb_url = root_url.to_s + 'shop/' + @items_design.id.to_s
+    #get root url, then chop it with / , then get base
+
 
     if @items_designs_rand.length < 3
       @item_length = @items_designs_rand.length
