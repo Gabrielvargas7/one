@@ -106,6 +106,9 @@ class ShopController < ApplicationController
     @items_designs_rand = ItemsDesign.where('item_id = ?',@items_design.item_id).limit(6).order("RANDOM()")
 
     @fb_og_image = @items_design.image_name_selection.url.to_s
+    @fb_og_title = @items_design.name.to_s
+    @fb_og_description = @items_design.description.to_s
+    @fb_app_id = 330390967090243.to_s
 
     if @items_designs_rand.length < 3
       @item_length = @items_designs_rand.length
