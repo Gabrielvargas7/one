@@ -77,6 +77,22 @@ class ShopController < ApplicationController
     @items_designs_by_style  = ItemsDesign.select("lower(style) as style,max(item_id) as item_id").where("item_id = ?",params[:id]).group("lower(style)").order(:style)
     @items_designs_by_make  = ItemsDesign.select("lower(make) as make,max(item_id) as item_id").where("item_id = ?",params[:id]).group("lower(make)").order(:make)
 
+
+    #set_meta_tags :og =>{
+    #    :image    => 'http://ia.media-imdb.com/rock.jpg'
+    #}
+    #set_meta_tags :title => 'Member Login'
+    #set_meta_tags :og => {
+    #    :title    => 'The Rock',
+    #    :type     => 'video.movie',
+    #    :url      => 'http://www.imdb.com/title/tt0117500/',
+    #    :image    => 'http://ia.media-imdb.com/rock.jpg',
+    #    :video    => {
+    #        :director => 'http://www.imdb.com/name/nm0000881/',
+    #        :writer   => ['http://www.imdb.com/name/nm0918711/', 'http://www.imdb.com/name/nm0177018/']
+    #    }
+
+
     respond_to do |format|
       format.html # show.html.erb
 
@@ -85,8 +101,11 @@ class ShopController < ApplicationController
 
   # GET /shop/show/items-design/:items_design_id
   def shop_show_items_design
+
     @items_design = ItemsDesign.find(params[:items_design_id])
     @items_designs_rand = ItemsDesign.where('item_id = ?',@items_design.item_id).limit(6).order("RANDOM()")
+
+    @fb_og_image = @items_design.image_name_selection.url.to_s
 
     if @items_designs_rand.length < 3
       @item_length = @items_designs_rand.length

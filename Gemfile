@@ -22,10 +22,12 @@ ruby '2.0.0'
   gem 'geocoder', '1.1.8'
 
 
+
   # gem to look for improment like
   # memory leak and time out
   gem 'oink', '0.10.1'
   gem 'rack-timeout'
+
 
 
 
