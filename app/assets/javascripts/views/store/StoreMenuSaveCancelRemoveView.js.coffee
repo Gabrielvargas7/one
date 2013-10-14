@@ -154,6 +154,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       # Capture the old src
       src = $(this).attr("data-room-design-src")
       
+      # Capture the old hover src
+      hoverSrc = $(this).attr("data-hover-src-previous")
+      
   
       $(this)
       # Replace the changed id
@@ -162,8 +165,17 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       # Replace the changed source
       .attr("src", src)
       
+      # Replace the changed hover src
+      .attr("data-hover-src", hoverSrc)
+      
       # And change the status back to current
       .attr("data-room_item_design", "current")
+      
+      
+      
+      # Re-Setup Hovering
+      self = this
+      $(this).hover (->  $(self).attr("src", hoverSrc)), -> $(self).attr("src", src)
       
       
       
@@ -384,6 +396,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       locationId = $(this).attr("data-room_location_id")
       oldHide    = $(this).attr("data-room-hide")
       newSrc     = $(this).attr("src")
+      newHoverSrc = $(this).attr("data-hover-src")
       
       
       
@@ -396,6 +409,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       .attr("data-room_item_design_id_current", newId)
       .attr("data-room-hide", "no")
       .attr("data-room-design-src", newSrc)
+      .attr("data-hover-src-previous", newHoverSrc)
       
       
       
