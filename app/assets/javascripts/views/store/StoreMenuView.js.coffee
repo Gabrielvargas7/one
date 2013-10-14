@@ -182,23 +182,97 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     switch category
       when "ALL"
+        console.log("ALL")
+        
         ###
-        Fetch collection
+        Fetch designs collection
         ###
-        collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
-        collection.fetch
+        designs = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
+        designs.fetch
           async  : false
-          url    : collection.url(10, 0, keyword)
+          url    : designs.url(10, 0, keyword)
           success: (response) ->
             console.log("searched designs success", response)
-            
-            console.log("\n!!!\nWARNING! NOT EVERYTHING!\n!!!\n")
-          
-            # Replace the views on the hidden tab
-            self.appendHidden(response)
-    
           error: ->
             console.log("error")
+            
+            
+         ###
+         Fetch themes collection
+         ###
+         themes = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
+         themes.fetch
+           async: false
+           url: themes.url(10, 0, keyword)
+           success: (response) ->
+             console.log("searched themes success", response)
+           error: ->
+             console.log("error")
+            
+        
+        ###
+        Fetch bundles collection
+        ###
+        bundles = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
+        bundles.fetch
+          async: false
+          url: bundles.url(10, 0, keyword)
+          success: (response) ->
+            console.log("searched bundles success", response)
+          error: ->
+            console.log("error")
+            
+            
+            
+        ###
+        Fetch entire rooms collection
+        ###
+        entireRooms = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
+        entireRooms.fetch
+          async  : false
+          url    : entireRooms.url(10, 0, keyword)
+          success: (response) ->
+            console.log("searched entire rooms I success", response)
+          error: ->
+            console.log("error")
+            
+        
+        ###
+        This is a bundles collection, but we're going to use it as a collection of
+        entire room objects. This means we need to override it's type property.
+        
+        Note that since this mapping is being done outside of the collection's parse
+        method, we need to reset our collection with the model data after mapping.
+        http://stackoverflow.com/questions/17034593/how-does-map-work-with-a-backbone-collection
+        ###
+        
+        # Override the type property
+        parsed = entireRooms.map((model) ->
+          obj = model
+          obj.set("type", "ENTIRE_ROOM")
+          return obj
+        )
+        
+        # Reset the collection
+        reset = entireRooms.reset(parsed)
+        console.log("searched entire rooms II success", reset)
+        
+    
+        ###
+        NOW COMBINE ALL THE COLLECTIONS
+        ###
+        data = designs.toJSON().concat(themes.toJSON()).concat(bundles.toJSON()).concat(reset.toJSON())
+        everything = new Backbone.Collection(data)
+        
+        
+        console.log("everything", everything)
+        
+        
+        # Now splat it to the screen
+        self.appendHidden(everything)
+        
+        
+        
       when "OBJECTS"
         ###
         Fetch collection
@@ -829,7 +903,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   ###
   TODO
-  There needs to be a function for setting objects
+  There needs to be a function for setting object dropdown filter <-- actually, this looks like it's working (not sure how)
   ###
 
   setStyles: (styles) ->
