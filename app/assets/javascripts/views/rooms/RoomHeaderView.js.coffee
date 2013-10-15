@@ -27,6 +27,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
     'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
     'keydown #xroom_header_search_text'  : 'keyDownFireRecently'
+    'click #show_lightbox'               : 'showLightbox'
+    'click #close_lightbox'              : 'closeLightbox'
+    'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
+
   }
 
 
@@ -439,7 +443,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     this.destroySearchView()
     this.$('.header_search_wrapper').empty()
 
-
     if  event.keyCode == 13
       $('#xroom_header_search_box').hide()
       console.log("do something")
@@ -450,35 +453,58 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       console.log("value "+$('#xroom_header_search_text').val())
       value = $('#xroom_header_search_text').val()
 
+      valueSearchBtn =  $('#header-search-dropdown-btn').text()
+
+      console.log("value Search Btn: "+valueSearchBtn)
+
+
       if value != ""
-#        _.debounce(@insertSearchEntityView(value), 300);
-        @insertSearchEntityView(value)
+        @insertSearchEntityView(value,valueSearchBtn)
 
 
 
-  insertSearchEntityView:(value)->
-        searchUsersCollection =  @getSearchUserCollection(value)
-        searchItemDesignsCollection =  @getSearchItemDesignsCollection(value)
-        searchBookmarksCollection =  @getSearchBookmarksCollection(value)
+  insertSearchEntityView:(value,valueSearchBtn)->
+
+
+#        searchUsersCollection =  false
+#        searchItemDesignsCollection = false
+#        searchBookmarksCollection =  false
+        i = 0
+        switch valueSearchBtn
+          when 'ALL'
+            searchUsersCollection =         @getSearchUserCollection(value)
+            searchItemDesignsCollection =   @getSearchItemDesignsCollection(value)
+            searchBookmarksCollection =     @getSearchBookmarksCollection(value)
+            item_length = searchItemDesignsCollection.length
+
+            i = 0
+            if item_length > user_length
+              i = item_length
+              if bookmark_length> item_length
+                i = bookmark_length
+            else
+              i = user_length
+              if bookmark_length> user_length
+                i = bookmark_length
+
+
+          when 'OBJECTS'
+            searchItemDesignsCollection =  @getSearchItemDesignsCollection(value)
+            i = searchItemDesignsCollection.length
+
+          when 'BOOKMARKS'
+            searchBookmarksCollection =  @getSearchBookmarksCollection(value)
+            i = searchBookmarksCollection.length
+          when 'PEOPLE'
+            searchUsersCollection =  @getSearchUserCollection(value)
+            i = searchUsersCollection.length
+
 
         console.log("set Data Collection")
         console.log(searchUsersCollection)
         console.log(searchItemDesignsCollection)
         console.log(searchBookmarksCollection)
 
-        item_length = searchItemDesignsCollection.length
-        user_length = searchUsersCollection.length
-        bookmark_length = searchBookmarksCollection.length
-
-        i = 0
-        if item_length > user_length
-           i = item_length
-           if bookmark_length> item_length
-             i = bookmark_length
-        else
-           i = user_length
-           if bookmark_length> user_length
-            i = bookmark_length
         g = 0
         self = this
         @number_views = 0
@@ -489,9 +515,23 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 #          console.log(searchUsersCollection.at(g))
 
 
-          searchUsersModel =  searchUsersCollection.at(g)
-          searchItemDesignsModel =  searchItemDesignsCollection.at(g)
-          searchBookmarksModel =  searchBookmarksCollection.at(g)
+
+          if searchUsersCollection is undefined
+            searchUsersModel = undefined
+          else
+            searchUsersModel =  searchUsersCollection.at(g)
+
+
+          if searchItemDesignsCollection is undefined
+            searchItemDesignsModel = undefined
+          else
+            searchItemDesignsModel =  searchItemDesignsCollection.at(g)
+
+
+          if searchBookmarksCollection is undefined
+            searchBookmarksModel = undefined
+          else
+            searchBookmarksModel =  searchBookmarksCollection.at(g)
 
 
           # add user to the search view
@@ -518,6 +558,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
               self.number_views++
 
           # add item designs to the search view
+          console.log("is undefines item designs model")
+          console.log(searchItemDesignsModel)
           if searchItemDesignsModel is undefined
             console.log("---")
             console.log(" undefined "+g.toString())
@@ -564,7 +606,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
           g++
-
 
 
 
@@ -622,6 +663,24 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       error: ->
         console.log("error")
     searchBookmarksCollection
+
+
+  #*******************
+  #**** Functions change the search filter
+  #*******************
+  headerSearchDropdownChange: (e) ->
+
+      # SEARCH DROPDOWN
+      # Remove active class
+    console.log("header bth")
+    $('#header-search-dropdown li').removeClass('active')
+
+
+    # Add active class to just-clicked element
+    $(e.target).parent().addClass('active')
+
+    # Change the text of the search filter
+    $('#header-search-dropdown-btn').text(e.target.text)
 
 
 

@@ -197,11 +197,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             console.log("error")
             
             
-         ###
-         Fetch themes collection
-         ###
-         themes = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
-         themes.fetch
+        ###
+        Fetch themes collection
+        ###
+        themes = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
+        themes.fetch
            async: false
            url: themes.url(10, 0, keyword)
            success: (response) ->
