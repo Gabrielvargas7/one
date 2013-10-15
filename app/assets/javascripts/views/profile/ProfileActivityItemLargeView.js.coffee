@@ -75,7 +75,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 				        console.log('postBookmarkModel FAIL:')
 				        console.log(response)
 			#Added confirmation.
-			@$('.activity_item_img_wrap').append("<div class='large_item_just_added'>
+			@$('.activity_item_large_view_img_wrap').append("<div class='large_item_just_added'>
 			<p>Added!</p>
 			<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>
 			</div>")
