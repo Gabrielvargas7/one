@@ -85,7 +85,7 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
       pos1 = $("[data-current_screen_position='1']").attr('id')
       pos2 = $("[data-current_screen_position='2']").attr('id')
 
-      initial_position = $('#'+pos0).offset().left-1998
+      initial_position = $('#'+pos0).offset().left-2200
 
 
       console.log("inside "+$('#'+pos0).offset().left)
