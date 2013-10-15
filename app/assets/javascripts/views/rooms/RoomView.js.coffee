@@ -278,10 +278,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     length = designs.length
     i = 0
     
-    ###
-    TODO
-    Switch to an each loop
-    ###
     
     while i < length
       if designs[i].clickable is "yes"

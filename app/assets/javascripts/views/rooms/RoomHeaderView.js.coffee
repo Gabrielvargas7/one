@@ -27,8 +27,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
     'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
     'keydown #xroom_header_search_text'  : 'keyDownFireRecently'
-    'click #show_lightbox'               : 'showLightbox'
-    'click #close_lightbox'              : 'closeLightbox' 
   }
 
 
@@ -86,77 +84,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Functions header
   #*******************
 
-
-  showLightbox: (insertContent, ajaxContentUrl) ->
-  
-    insertContent = "<p>Hello, World!</p>"
-  
-  
-    self = this
-  
-    console.log("show lightbox")
-  
-    # add lightbox/shadow <div/>'s if not previously added
-    if $("#lightbox").size() is 0
-      theLightbox = $("<div id=\"lightbox\"/>")
-      theShadow = $("<div id=\"lightbox-shadow\"/>")
-      $(theShadow).click (e) ->
-        self.closeLightbox()
-
-      $("body").append theShadow
-      $("body").append theLightbox
-  
-    # remove any previously added content
-    $("#lightbox").empty()
-  
-    # insert HTML content
-    $("#lightbox").append insertContent  if insertContent?
-  
-    # insert AJAX content
-    if ajaxContentUrl?
-    
-      # temporarily add a "Loading..." message in the lightbox
-      $("#lightbox").append "<p class=\"loading\">Loading...</p>"
-    
-      # request AJAX content
-      $.ajax
-        type: "GET"
-        url: ajaxContentUrl
-        success: (data) ->
-        
-          # remove "Loading..." message and append AJAX content
-          $("#lightbox").empty()
-          $("#lightbox").append data
-
-        error: ->
-          alert "AJAX Failure!"
-
-  
-    # move the lightbox to the current window top + 100px
-    $("#lightbox").css "top", $(window).scrollTop() + 100 + "px"
-  
-    # display the lightbox
-    $("#lightbox").show()
-    $("#lightbox-shadow").show()
-   
-    
-    
-    
-    
-    
-  closeLightbox: ->
-  
-    console.log("close lightbox")
-  
-    $("#lightbox").hide()
-    $("#lightbox-shadow").hide()
-  
-    # remove contents of lightbox in case a video or other content is actively playing
-    $("#lightbox").empty()
-    
-    
-    
-    
     
   #--------------------------
   #  *** function remove header elemenst
@@ -350,7 +277,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   displayStorePage: ->
     
+    
+    # Show the store div
     $('#xroom_storepage').show()
+    
+    
+    
+    
+    
+    
     
     # Now that we're showing the store,
     # we need to show the hidden images
@@ -394,10 +329,36 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     
     
     
+    
+    
+    
+    
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
     @hideActiveSites()
+    
+    
+    
+    
+    ###
+    TODO
+    (1) Click the OBJECTS tab <-- DONE
+    (2) Remvove scrollbars    <-- DONE
+    (3) Turn off hover events for images on the page
+    ###
+    
+    # Click OBJECTS tab
+    $('#storeTabs a[href="#tab_items"]').tab('show')
+    
+    
+    Mywebroom.State.get("roomScrollLeftView").remove()
+    Mywebroom.State.get("roomScrollRightView").remove()
+    
+    
+    Mywebroom.State.set("roomScrollLeftView", false)
+    Mywebroom.State.set("roomScrollRightView", false)
+    
 
 
   #--------------------------

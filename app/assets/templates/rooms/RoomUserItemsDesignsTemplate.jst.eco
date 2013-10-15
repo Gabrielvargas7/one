@@ -14,6 +14,7 @@
         data-room_location_id="<%=@user_item_design.location_id%>"
         data-room_item_design_id_current="<%=@user_item_design.id%>"
         data-room_item_design="current"
+        data-room-highlighted=false
 
 
 
