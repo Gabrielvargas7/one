@@ -423,6 +423,18 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     itemsDesignsCollection = @getItemsDesignsCollection(itemId)
     @appendHidden(itemsDesignsCollection)
     @setItemToCenter(@model)
+    
+    
+    ###
+    TODO
+    Highlight Image
+    ###
+    @highlight(@model)
+    
+    
+    
+    
+    
    
     #$("li").removeClass() <-- this is messing up the stuff below. which class do we actually want to remove?
    
@@ -453,6 +465,31 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
  
  
  
+ 
+ 
+ 
+ 
+  highlight: (image) ->
+       
+    console.log("highlighting")
+    
+    ###
+    TODO
+    Finish this
+    (1) We need to return the image back to the old one when they finish
+    --> We should add an attribute that indicates if this image has been highlighted
+    ###
+    
+    
+    img = $("[data-room_item_id=" + image.get("id") + "]")
+    
+    # highlight the image if it isn't hidden
+    if img.attr("data-room-hide") isnt "yes"
+      img.attr("src", img.attr("data-hover-src"))
+      
+      # Change the highlighted property
+      img.attr("data-room-highlighted", true)
+    
  
  
  
@@ -654,23 +691,35 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     console.log("Center", itemModel)
     
    
+    ###
+    BASED ON X and Y COORDINATES
+    ###
     item_location_x = parseInt(itemModel.get('x'))
+    item_location_y = parseInt(itemModel.get('y'))
+    
    
-
+    console.log('item location y', item_location_y)
+    
     $('#xroom_items_0').attr('data-current_screen_position','0')
     $('#xroom_items_0').css({
       'left': Math.floor(-1999 - item_location_x + 100)
+      #'top' : 20
     })
+    
+    console.log('room top', $('#xroom_items_0').css('top'))
+    console.log('room bottom', $('#xroom_items_0').css('bottom'))
+    
     $('#xroom_items_1').attr('data-current_screen_position','1')
     $('#xroom_items_1').css({
       'left': Math.floor(0 - item_location_x + 100)
+      #'top' : 45
     })
+    
     $('#xroom_items_2').attr('data-current_screen_position','2')
     $('#xroom_items_2').css({
       'left': Math.floor(1999 - item_location_x + 100)
+      #'top' : 70
     })
-
-
 
 
 

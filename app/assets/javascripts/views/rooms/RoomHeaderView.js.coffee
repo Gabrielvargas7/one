@@ -277,7 +277,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   displayStorePage: ->
     
+    
+    # Show the store div
     $('#xroom_storepage').show()
+    
+    
+    
+    
+    
+    
     
     # Now that we're showing the store,
     # we need to show the hidden images
@@ -321,10 +329,36 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     
     
     
+    
+    
+    
+    
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
     @hideActiveSites()
+    
+    
+    
+    
+    ###
+    TODO
+    (1) Click the OBJECTS tab <-- DONE
+    (2) Remvove scrollbars    <-- DONE
+    (3) Turn off hover events for images on the page
+    ###
+    
+    # Click OBJECTS tab
+    $('#storeTabs a[href="#tab_items"]').tab('show')
+    
+    
+    Mywebroom.State.get("roomScrollLeftView").remove()
+    Mywebroom.State.get("roomScrollRightView").remove()
+    
+    
+    Mywebroom.State.set("roomScrollLeftView", false)
+    Mywebroom.State.set("roomScrollRightView", false)
+    
 
 
   #--------------------------

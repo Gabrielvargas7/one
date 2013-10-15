@@ -56,7 +56,27 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
   #*******************
   #**** Functions  - events
   #*******************
-
+  renderScrollers: ->
+    
+    console.log("creating new scrollers")
+    
+    left = new Mywebroom.Views.RoomScrollLeftView()
+    right = new Mywebroom.Views.RoomScrollRightView()
+    
+    $("#xroom_scroll_left").empty().append(left.el)
+    $("#xroom_scroll_right").empty().append(right.el)
+    
+    left.render()
+    right.render()
+    
+    Mywebroom.State.set("roomScrollLeftView", left)
+    Mywebroom.State.set("roomScrollRightView", right)
+  
+  
+  
+  
+  
+  
   #--------------------------
   # close store page
   #--------------------------
@@ -88,6 +108,32 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
           # we need to hide the greyed out images
           # in the user's room
           $("[data-room-hide=yes]").hide()
+          
+          
+          
+          ###
+          Change highlighted images back to normal
+          ###
+          $("[data-room-highlighted=true]").each( ->
+            self = this
+            $(this).attr("src", $(self).attr("data-room-design-src"))
+          )
+          
+          
+          self.renderScrollers()
+          
+          
+          ###
+          Return the store page to it's original state
+          ### 
+          if $('#store_collapse_button img').hasClass('flipimg') is false
+        
+            $('#store_main_box').css('width', '700px')
+            $('#store_collapse_button img').addClass('flipimg')
+            $('.store_main_box_right').show()
+    
+           
+            
       )
     else
       # Hide the view with the Save, Cancel, Remove view
@@ -101,6 +147,30 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
       # we need to hide the greyed out images
       # in the user's room
       $("[data-room-hide=yes]").hide()
+      
+      
+      
+      ###
+      Change highlighted images back to normal
+      ###
+      $("[data-room-highlighted=true]").each( ->
+        self = this
+        $(this).attr("src", $(self).attr("data-room-design-src"))
+      )
+      
+      
+      
+      self.renderScrollers()
+      
+      
+      ###
+      Return the store page to it's original state
+      ### 
+      if $('#store_collapse_button img').hasClass('flipimg') is false
+        
+        $('#store_main_box').css('width', '700px')
+        $('#store_collapse_button img').addClass('flipimg')
+        $('.store_main_box_right').show()
     
   
   
@@ -110,6 +180,9 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
   # collapse store page
   #--------------------------
   collapseStorePageView: (event)->
+    
+    self = this
+   
     event.preventDefault()
     
     # Menu is open
@@ -127,6 +200,9 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
       $('#store_main_box').css('width', '40px')
       $('#store_collapse_img').attr('src','http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png')
       $('#store_collapse_button img').removeClass('flipimg') # Button returns to facing the right
+    
+      self.renderScrollers()
+    
     else # Menu is collapsed
       
       # Show Save, Cancel, Remove view if it was previously visible
@@ -140,3 +216,16 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
       $('#store_main_box').css('width', '700px')
       
       $('#store_collapse_button img').addClass('flipimg')
+      
+      
+      if Mywebroom.State.get("roomScrollLeftView") isnt false
+        Mywebroom.State.get("roomScrollLeftView").remove()
+        Mywebroom.State.set("roomScrollLeftView", false)
+      
+      if Mywebroom.State.get("roomScrollRightView") isnt false
+        Mywebroom.State.get("roomScrollRightView").remove()
+        Mywebroom.State.set("roomScrollRightView", false)
+      
+      
+      
+      
