@@ -20,7 +20,7 @@
                       <button class="btn dropdown-toggle" data-toggle="dropdown">
                           <span class="caret"></span>
                       </button>
-                      <ul class="dropdown-menu">
+                      <ul class="dropdown-menu"  id="header-search-dropdown">
                         <li class="active header-search-dropdown" id="header-search-dropdown-all">
                             <a href="#">ALL</a>
                          </li>
