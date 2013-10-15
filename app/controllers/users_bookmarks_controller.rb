@@ -10,7 +10,8 @@ class UsersBookmarksController < ApplicationController
                 only:[
                     :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
                     :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
-                    :json_create_user_bookmark_custom_by_user_id
+                    :json_create_user_bookmark_custom_by_user_id ,
+                    :json_show_user_bookmark_by_user_id_and_bookmark_id
 
 
                 ]
@@ -19,7 +20,8 @@ class UsersBookmarksController < ApplicationController
                 only:[
                     :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
                     :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
-                    :json_create_user_bookmark_custom_by_user_id
+                    :json_create_user_bookmark_custom_by_user_id,
+                    :json_show_user_bookmark_by_user_id_and_bookmark_id
                 ]
 
 
@@ -236,9 +238,37 @@ class UsersBookmarksController < ApplicationController
 
     end
 
+  end
 
+  # GET get a bookmark of the user
+  # /users_bookmarks/json/show_user_bookmark_by_user_id_and_bookmark_id/:user_id/:bookmark_id
+  # /users_bookmarks/json/show_user_bookmark_by_user_id_and_bookmark_id/10000011/1.json
+  #Return ->
+  #Success    ->  head  200 OK
+
+  def json_show_user_bookmark_by_user_id_and_bookmark_id
+
+    respond_to do |format|
+
+      if Bookmark.
+          joins(:users_bookmarks).
+          joins(:bookmarks_category).
+          where('user_id = ? and bookmarks.id = ?',params[:user_id],params[:bookmark_id]).exists?
+
+        @user_bookmark = Bookmark.
+            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+            joins(:users_bookmarks).
+            joins(:bookmarks_category).
+            where('user_id = ? and bookmarks.id = ?',params[:user_id],params[:bookmark_id]).first
+
+        format.json { render json: @user_bookmark }
+      else
+        format.json { render json: 'not found user_id and bookmark id' , status: :not_found }
+      end
+    end
 
   end
+
 
 
 
