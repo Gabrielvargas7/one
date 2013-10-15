@@ -33,7 +33,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     #**** Render
     #*******************
   render: ->
-    console.log("store menu save page view: ")
+    #console.log("store menu save page view: ")
     $(@el).append(@template())
     this
 
@@ -46,7 +46,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   clickSave: (event) ->
     
     event.preventDefault()
-    console.log("click Store Save")
+    #console.log("click Store Save")
     
     
     
@@ -104,9 +104,10 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
     
   clickCancel: (event) ->
+    
     self = this
     event.preventDefault()
-    console.log("click Store Cancel")
+    #console.log("click Store Cancel")
     bootbox.confirm("Are you sure you want to cancel all the changes you made in your room?", (result) ->
       if result
         self.revert()
@@ -120,9 +121,10 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   
   
   clickRemove: (event) ->
+    
     self = this
     event.preventDefault()
-    console.log("click Store Remove")
+    #console.log("click Store Remove")
     bootbox.confirm("Are you sure you want to remove this object?", (result) ->
       if result
         self.removeObject()
@@ -144,32 +146,32 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   revert: ->
     # Revert designs
     # Capture all the changed elements
-    $('[data-room_item_design=new]')
+    $('[data-design-has-changed=true]')
     
     # And iterate over them
     .each( ->
       # Capture the old id
-      id = $(this).attr("data-room_item_design_id_current")
+      id = $(this).attr("data-design-id-client")
       
       # Capture the old src
-      src = $(this).attr("data-room-design-src")
+      src = $(this).attr("data-main-src-server")
       
       # Capture the old hover src
-      hoverSrc = $(this).attr("data-hover-src-previous")
+      hoverSrc = $(this).attr("data-hover-src-server")
       
   
       $(this)
       # Replace the changed id
-      .attr("data-room_item_design_id", id)
+      .attr("data-design-id-server", id)
       
       # Replace the changed source
       .attr("src", src)
       
       # Replace the changed hover src
-      .attr("data-hover-src", hoverSrc)
+      .attr("data-hover-src-client", hoverSrc)
       
       # And change the status back to current
-      .attr("data-room_item_design", "current")
+      .attr("data-design-has-changed", false)
       
       
       
@@ -185,7 +187,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       if $(this).attr("data-room-hide") is "yes"
       
       
-        console.log("******* attr is hidden ********")
+        #console.log("******* attr is hidden ********")
       
       
         # Revert hovering
@@ -223,7 +225,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
         # And now we need replace src with above
         $('[data-room-hide=yes]').each ->
-          $(this).attr("src", grey[$(this).attr("data-room_item_id")])
+          $(this).attr("src", grey[$(this).attr("data-design-item-id")])
       
       
       
@@ -262,13 +264,13 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     # backend
     hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: userId})
     hide.user_id          = userId
-    hide.item_design_id   = Mywebroom.State.get("$activeDesign").attr("data-room_item_design_id_current")
+    hide.item_design_id   = Mywebroom.State.get("$activeDesign").attr("data-design-id-client")
     hide.location_id      = Mywebroom.State.get("$activeDesign").attr("data-room_location_id")
     hide.save
       wait: true
     ,
       success: (model, response) ->
-        console.log("REMOVE OBJECT SUCCESS\n", response)
+        #console.log("REMOVE OBJECT SUCCESS\n", response)
         
       error: (model, response) ->
         console.log("REMOVE OBJECT FAIL\n", response)
@@ -354,17 +356,17 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         wait: true
       ,
         success: (model, response) ->
-          console.log("THEME SAVE SUCCESS\n", response)
+          #console.log("THEME SAVE SUCCESS\n", response)
           
         error: (model, response) ->
-          console.log("THEME SAVE FAIL\n", response)
+          #console.log("THEME SAVE FAIL\n", response)
       
         
 
 
   saveNewItems: ->
     
-    console.log("***** Beginning Item Save *****")
+    #console.log("***** Beginning Item Save *****")
   
   
   
@@ -376,7 +378,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     ###
     Number of new things
     ###
-    console.log("I see ", $("[data-room_item_design=new]").size(), " new designs!")
+    #console.log("I see ", $("[data-design-has-changed=true]").size(), " new designs!")
     
     
   
@@ -384,19 +386,20 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     Capture all changed items
     Note: we only need to capture those in 1 div
     ###
-    $("#xroom_items_0 [data-room_item_design=new]").each( ->
+    $("#xroom_items_0 [data-design-has-changed=true]").each( ->
       
       self = this
       
+            
       ###
       Create some references
       ###
-      oldId      = $(this).attr("data-room_item_design_id_current")
-      newId      = $(this).attr("data-room_item_design_id")
+      oldId      = $(this).attr("data-design-id-client")
+      newId      = $(this).attr("data-design-id-server")
       locationId = $(this).attr("data-room_location_id")
       oldHide    = $(this).attr("data-room-hide")
       newSrc     = $(this).attr("src")
-      newHoverSrc = $(this).attr("data-hover-src")
+      newHoverSrc = $(this).attr("data-hover-src-server")
       
       
       
@@ -404,12 +407,12 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       ###
       Change the properties of this design (and its sibling design) in the DOM
       ###
-      $("[data-room_item_design_id_current=" + oldId + "]")
-      .attr("data-room_item_design", "current")
-      .attr("data-room_item_design_id_current", newId)
+      $("[data-design-id-client=" + oldId + "]")
+      .attr("data-design-has-changed", false)
+      .attr("data-design-id-client", newId)
       .attr("data-room-hide", "no")
-      .attr("data-room-design-src", newSrc)
-      .attr("data-hover-src-previous", newHoverSrc)
+      .attr("data-main-src-server", newSrc)
+      .attr("data-hover-src-client", newHoverSrc)
       
       
       
@@ -436,10 +439,10 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
           wait: true
         ,
           success: (model, response) ->
-            console.log("TOGGLE DESIGN HIDE SUCCESS\n", model)
+            #console.log("TOGGLE DESIGN HIDE SUCCESS\n", model)
           
           error: (model, response) ->
-            console.log("TOGGLE DESIGN HIDE FAIL\n", model)
+            #console.log("TOGGLE DESIGN HIDE FAIL\n", model)
       
       
       
@@ -466,9 +469,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         wait: true
       ,
         success: (model, response) ->
-          console.log("UPDATE DESIGN ID SUCCESS\n", response)
+          #console.log("UPDATE DESIGN ID SUCCESS\n", response)
          
   
         error: (model, response) ->
-          console.log("UPDATE DESIGN ID FAIL\n", response)
+          #console.log("UPDATE DESIGN ID FAIL\n", response)
     )

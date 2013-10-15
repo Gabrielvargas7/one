@@ -27,10 +27,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
     'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
     'keydown #xroom_header_search_text'  : 'keyDownFireRecently'
-    'click #show_lightbox'               : 'showLightbox'
-    'click #close_lightbox'              : 'closeLightbox'
     'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
-
   }
 
 
@@ -397,7 +394,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   removeHeaderEvents: ->
     $(this.el).off('click', '#xroom_header_storepage')
     $(this.el).off('click', '#xroom_header_profile')
-    $('.room_user_item_design_container').off()
 
 
 

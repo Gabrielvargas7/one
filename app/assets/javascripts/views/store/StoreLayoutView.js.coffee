@@ -58,7 +58,7 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
   #*******************
   renderScrollers: ->
     
-    console.log("creating new scrollers")
+    #console.log("creating new scrollers")
     
     left = new Mywebroom.Views.RoomScrollLeftView()
     right = new Mywebroom.Views.RoomScrollRightView()
@@ -86,13 +86,13 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
     
 
     self = this
-    console.log("click Store Close")
+    #console.log("click Store Close")
     
     
     ###
     Display a confirm dialog if there are any un-saved changes
     ###
-    if $("[data-room_item_design=new]").size() > 0 or $("[data-room_theme=new]").size() > 0
+    if $("[data-design-has-changed=true]").size() > 0 or $("[data-room_theme=new]").size() > 0
       
       bootbox.confirm("Leaving this screen will not save your changes", (result) ->
         
@@ -118,7 +118,8 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
           Change highlighted images back to normal
           ###
           $("[data-room-highlighted=true]").each( ->
-            $(this).attr("src", $(this).attr("data-room-design-src"))
+            $(this).attr("src", $(this).attr("data-main-src-server"))
+            $(this).attr("data-room-highlighted", false)
           )
           
           
@@ -156,7 +157,7 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
       Change highlighted images back to normal
       ###
       $("[data-room-highlighted=true]").each( ->
-        $(this).attr("src", $(this).attr("data-room-design-src"))
+        $(this).attr("src", $(this).attr("data-main-src-server"))
       )
       
       

@@ -127,7 +127,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     
-    console.log("tab switched")
+    #console.log("tab switched")
     
     ###
     TODO
@@ -137,7 +137,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   manualNavSwitch: (e) ->
     
-    console.log("Manual tab switch")
+    #console.log("Manual tab switch")
     
     ###
     SWITCH THE SEARCH DROPDOWN TO ALL
@@ -182,7 +182,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     switch category
       when "ALL"
-        console.log("ALL")
+        #console.log("ALL")
         
         ###
         Fetch designs collection
@@ -192,7 +192,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : designs.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched designs success", response)
+            #console.log("searched designs success", response)
           error: ->
             console.log("error")
             
@@ -205,7 +205,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
            async: false
            url: themes.url(10, 0, keyword)
            success: (response) ->
-             console.log("searched themes success", response)
+             #console.log("searched themes success", response)
            error: ->
              console.log("error")
             
@@ -218,7 +218,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async: false
           url: bundles.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched bundles success", response)
+            #console.log("searched bundles success", response)
           error: ->
             console.log("error")
             
@@ -232,7 +232,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : entireRooms.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched entire rooms I success", response)
+            #console.log("searched entire rooms I success", response)
           error: ->
             console.log("error")
             
@@ -255,7 +255,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         
         # Reset the collection
         reset = entireRooms.reset(parsed)
-        console.log("searched entire rooms II success", reset)
+        #console.log("searched entire rooms II success", reset)
         
     
         ###
@@ -265,7 +265,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         everything = new Backbone.Collection(data)
         
         
-        console.log("everything", everything)
+        #console.log("everything", everything)
         
         
         # Now splat it to the screen
@@ -282,7 +282,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : collection.url(10,0,keyword)
           success: (response) ->
-            console.log("searched designs success", response)
+            #console.log("searched designs success", response)
             
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -299,7 +299,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async: false
           url: collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched themes success", response)
+            #console.log("searched themes success", response)
         
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -309,7 +309,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       
       when "BUNDLES"
         
-        console.log("BUNDLES!!!!!!!!!!!!!")
+        #console.log("BUNDLES!!!!!!!!!!!!!")
         
         
         ###
@@ -320,7 +320,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async: false
           url: collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched bundles success", response)
+            #console.log("searched bundles success", response)
       
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -331,7 +331,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       when "ENTIRE ROOMS"
         
         
-        console.log("ENTIRE ROOMS!!!!!!!!!!!!!")
+        #console.log("ENTIRE ROOMS!!!!!!!!!!!!!")
        
         ###
         Fetch collection
@@ -341,7 +341,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched entire rooms success", response)
+            #console.log("searched entire rooms success", response)
           error: ->
             console.log("error")
             
@@ -364,7 +364,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         
         # Reset the collection
         reset = collection.reset(parsed)
-        console.log("searched entire rooms II success", reset)
+        #console.log("searched entire rooms II success", reset)
         
     
         # Replace the views on the hidden tab
@@ -387,7 +387,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async:   false
           url:     collection.url(category,10,0,keyword)
           success: (response) ->
-            console.log("searched designs II success", response)
+            #console.log("searched designs II success", response)
     
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -502,7 +502,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     itemsCollection.fetch
       async:   false
       success: (response) ->
-        console.log("items fetch success", response)
+        #console.log("items fetch success", response)
     return itemsCollection
 
   #--------------------------
@@ -515,7 +515,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       async:   false
       url:     itemsDesignsCollection.url(item_id)
       success: (response) ->
-        console.log("items design fetch success", response)
+        #console.log("items design fetch success", response)
         
     return itemsDesignsCollection
 
@@ -528,7 +528,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     themesCollection.fetch
       async:   false
       success: (response) ->
-        console.log("initial theme fetch success", response)
+        #console.log("initial theme fetch success", response)
     return themesCollection
 
   #--------------------------
@@ -539,7 +539,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     bundlesCollection.fetch
       async:   false
       success: (response) ->
-        console.log("initial bundle fetch success", response)
+        #console.log("initial bundle fetch success", response)
         
     return bundlesCollection
 
@@ -766,7 +766,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
   clickThemes: ->
     
-    console.log("click themes")
+    #console.log("click themes")
     
     
     ###

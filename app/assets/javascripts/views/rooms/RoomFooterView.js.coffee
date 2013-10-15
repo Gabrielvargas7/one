@@ -32,6 +32,6 @@ class Mywebroom.Views.RoomFooterView extends Backbone.View
     #**** Render
     #*******************
   render: ->
-    console.log("Adding the RoomFooterView with model:")
+    #console.log("Adding the RoomFooterView with model:")
     $(@el).append(@template())
     this
