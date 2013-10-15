@@ -96,7 +96,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     $('#xroom_bookmarks').show()
 
     bookmarksView = new Mywebroom.Views.BookmarksView(
-      items_name:"Item name"
+      items_name:@bookmarkModel.get('item_name')
       user_item_design: @bookmarkModel.get('item_id')
       user: Mywebroom.State.get("roomUser").get("id") )
 

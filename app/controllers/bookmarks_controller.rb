@@ -371,18 +371,20 @@ class BookmarksController < ApplicationController
 
 
         @bookmark  = Bookmark.
-            select('bookmarks.id,
+            select('  bookmarks.id,
                       bookmarks_categories.item_id,
                       bookmarks_categories.name as bookmarks_category_name,
-                      bookmark_url,
-                      bookmarks_category_id,
-                      description,
-                      i_frame,
-                      image_name,
-                      image_name_desc,
-                      title,
-                      "like"').
+                      bookmarks.bookmark_url,
+                      bookmarks.bookmarks_category_id,
+                      bookmarks.description,
+                      bookmarks.i_frame,
+                      bookmarks.image_name,
+                      bookmarks.image_name_desc,
+                      bookmarks.title,
+                      bookmarks.like,
+                      items.name as item_name').
             joins(:bookmarks_category).
+            joins('INNER JOIN items  ON items.id = bookmarks_categories.item_id').
             where('bookmarks.id = ? ', params[:bookmark_id]).first
 
         format.json {render json: @bookmark.as_json()}
