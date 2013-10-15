@@ -422,6 +422,13 @@ Mywebroom::Application.routes.draw do
     match '/users_bookmarks/json/create_user_bookmark_custom_by_user_id/:user_id', to:
            'users_bookmarks#json_create_user_bookmark_custom_by_user_id', via: :post
 
+    match '/users_bookmarks/json/show_user_bookmark_by_user_id_and_bookmark_id/:user_id/:bookmark_id', to:
+           'users_bookmarks#json_show_user_bookmark_by_user_id_and_bookmark_id', via: :get, as:
+           :users_bookmarks_json_show_user_bookmark_by_user_id_and_bookmark_id
+
+
+
+
 
 
 
@@ -468,6 +475,13 @@ Mywebroom::Application.routes.draw do
   match '/bookmarks/json/index_bookmarks_by_bookmarks_category_id/:bookmarks_category_id', to:
          'bookmarks#json_index_bookmarks_by_bookmarks_category_id', via: :get  , as:
                    :json_index_bookmarks_by_bookmarks_category_id
+
+  match 'bookmarks/json/show_bookmark_by_bookmark_id/:bookmark_id', to:
+        'bookmarks#json_show_bookmark_by_bookmark_id', via: :get  , as:
+        :json_show_bookmark_by_bookmark_id
+
+
+
 
 
 

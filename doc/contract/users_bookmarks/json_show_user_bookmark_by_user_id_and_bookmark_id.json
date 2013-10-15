@@ -1,0 +1,23 @@
+//# GET get a bookmark of the user
+//# /users_bookmarks/json/show_user_bookmark_by_user_id_and_bookmark_id/:user_id/:bookmark_id
+//# /users_bookmarks/json/show_user_bookmark_by_user_id_and_bookmark_id/10000011/1.json
+//#Return ->
+//#Success    ->  head  200 OK
+
+{
+    "bookmark_url": "http://www.espn.go.com/video",
+    "bookmarks_category_id": 102,
+    "description": "Description Coming Soon!",
+    "i_frame": "y",
+    "id": 1101,
+    "image_name": {
+        "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823937/79571-bookmark-image_name-espn.png"
+    },
+    "image_name_desc": {
+        "url": "/assets/fallback/bookmark/default_bookmark.png"
+    },
+    "item_id": "13",
+    "like": 0,
+    "position": "9",
+    "title": "Espn Go"
+}
