@@ -357,6 +357,45 @@ class BookmarksController < ApplicationController
 
 
 
+  # GET Get a bookmark, item and bookmark category info  by bookmark_id
+  # bookmarks/json/show_bookmark_by_bookmark_id/:bookmark_id
+  # bookmarks/json/show_bookmark_by_bookmark_id/100.json
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_show_bookmark_by_bookmark_id
+
+    respond_to do |format|
+
+      if Bookmark.exists?(id:params[:bookmark_id])
+
+
+        @bookmark  = Bookmark.
+            select('bookmarks.id,
+                      bookmarks_categories.item_id,
+                      bookmarks_categories.name as bookmarks_category_name,
+                      bookmark_url,
+                      bookmarks_category_id,
+                      description,
+                      i_frame,
+                      image_name,
+                      image_name_desc,
+                      title,
+                      "like"').
+            joins(:bookmarks_category).
+            where('bookmarks.id = ? ', params[:bookmark_id]).first
+
+        format.json {render json: @bookmark.as_json()}
+
+
+      else
+        format.json { render json: 'not bookmark found ', status: :not_found }
+      end
+
+    end
+  end
+
+
 
 
 

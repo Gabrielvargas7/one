@@ -15,3 +15,11 @@ class  Mywebroom.Models.BackboneSearchEntityModel extends Backbone.Model
     viewNum          : false  # is the number where is the view
 
 
+
+  @ITEM_DESIGN = "ITEM_DESIGN"
+  @PEOPLE = "PEOPLE"
+  @BOOKMARK = "BOOKMARK"
+
+  @DISPLAY_UNDER_NAME_BOOKMARK = "Bookmark"
+  @DISPLAY_UNDER_NAME_OBJECT = "Object"
+

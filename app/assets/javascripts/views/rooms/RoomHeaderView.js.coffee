@@ -47,9 +47,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     
     # THIS VIEW
     $(@el).append(@template(user_data: Mywebroom.State.get("roomData")))
-    
-    
-    
+
+
+
+
     # STORE VIEW
     @createStorePage()
     
@@ -453,19 +454,18 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Functions Search
   #*******************
 
-  keyDownFireRecently:(event)->
-    @firedRecently = true
-#    alert "fired"
-    resetStatus = window.setTimeout(->
-      @firedRecently = false
-    , 500)
-
-
 
   focusOutSearchTextBox:(event)->
     event.preventDefault()
     event.stopPropagation()
     console.log("clean textbox values")
+#    _.debounce(@hideCleanSearchBox(), 1300);
+
+
+
+
+  hideCleanSearchBox:->
+    $('#xroom_header_search_box').hide()
     $('#xroom_header_search_text').val("")
 
 
@@ -542,7 +542,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
               console.log("Not undefined "+g.toString())
 
               entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
-              entityModel.set('entityType',"PEOPLE")
+              entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.PEOPLE)
               entityModel.set('displayTopName',searchUsersModel.get('firstname')+' '+searchUsersModel.get('lastname'))
               entityModel.set('imageName',searchUsersModel.get('image_name').url)
               entityModel.set('entityId',searchUsersModel.get('user_id'))
@@ -565,11 +565,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
             console.log("Not undefined "+g.toString())
             entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
 
-            entityModel.set('entityType'," ITEM_DESIGN")
+            Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN
+            entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN)
             entityModel.set('displayTopName',searchItemDesignsModel.get('name'))
             entityModel.set('imageName',searchItemDesignsModel.get('image_name_selection').url)
             entityModel.set('entityId',searchItemDesignsModel.get('id'))
-            entityModel.set('displayUnderName','Object')
+            entityModel.set('displayUnderName',Mywebroom.Models.BackboneSearchEntityModel.DISPLAY_UNDER_NAME_OBJECT)
             entityModel.set('viewNum',self.number_views)
             #      console.log(entityModel)
 
@@ -587,11 +588,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
             console.log("Not undefined "+g.toString())
 
             entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
-            entityModel.set('entityType',"BOOKMARK")
+            entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.BOOKMARK)
             entityModel.set('displayTopName',searchBookmarksModel.get('title'))
-            entityModel.set('imageName',searchBookmarksModel.get('image_name').url)
+            entityModel.set('imageName',searchBookmarksModel.get('image_name_desc').url)
             entityModel.set('entityId',searchBookmarksModel.get('id'))
-            entityModel.set('displayUnderName',searchBookmarksModel.get('Bookmark'))
+            entityModel.set('displayUnderName',Mywebroom.Models.BackboneSearchEntityModel.DISPLAY_UNDER_NAME_BOOKMARK)
             entityModel.set('viewNum',self.number_views)
             #   console.log(entityModel)
 
