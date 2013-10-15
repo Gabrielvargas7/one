@@ -250,17 +250,12 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   clickDesign: (e) ->
      
-     
-    
-     
-     
-     
     e.preventDefault()
     
     itemId =       @model.get("item_id") # <-- type of design
     itemDesignId = @model.get("id") 
-    url =          @model.get("image_name").url
-    urlHover =     @model.get("image_name_hover").url
+    url =          @model.get("image_name").url         # <-- new one
+    urlHover =     @model.get("image_name_hover").url   # <-- new one
   
     
     console.log("***** CLICK STORE ITEM DESIGN:\t", itemDesignId, " *********")
@@ -280,13 +275,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     item = items.findWhere({"id":itemId})
     
     
-    
-    
-     
     # Center
     @setItemToCenter(item)
-    
-    
     
     
     
@@ -309,6 +299,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     # Change the properties of the design in the DOM
     $('[data-room_item_id=' + itemId + ']').attr("src", url)
+    $('[data-room_item_id=' + itemId + ']').attr("data-hover-src", urlHover)
     $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design_id", itemDesignId)
     $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design", "new")
     $('[data-room_item_id=' + itemId + ']').hover (->  $(this).attr("src", urlHover)), -> $(this).attr("src", url)
@@ -337,7 +328,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
 
-
+    # Highlight
+    @highlight(@model)
     
  
  
@@ -349,7 +341,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   clickItem: (e) ->
    
    
-   
+    e.preventDefault()
     console.log("item model", @model)
    
    
@@ -359,7 +351,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     $('#storeTabs a[href="#tab_hidden"]').tab('show');
     
     
-    e.preventDefault()
+    
 
        
     self   = this
@@ -383,6 +375,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
    
     # Save this object to our state model
     Mywebroom.State.set("$activeDesign", $activeDesign)
+   
+   
    
    
     # Show the Save, Cancel, Remove view and remove button
@@ -419,14 +413,19 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
    
    
 
-    
+    # Fetch designs that correspond to items
     itemsDesignsCollection = @getItemsDesignsCollection(itemId)
+    
+    # Splat to room
     @appendHidden(itemsDesignsCollection)
+    
+    # Center Item
     @setItemToCenter(@model)
     
     
+    
+    
     ###
-    TODO
     Highlight Image
     ###
     @highlight(@model)
@@ -435,20 +434,18 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     
-   
-    #$("li").removeClass() <-- this is messing up the stuff below. which class do we actually want to remove?
-   
-   
+    ###
+    FILTERS
+    ###
+    # Show all the dropdown filters
     @expandAll()
    
    
-    # COLLAPSE LOCATION
+    # Collapse location filter
     $('#dropdown-location').addClass('collapse')
    
    
-   
-   
-    # SET THE MENUS
+    # Populate the filters
     categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection()
     categories.fetch
       async  : false
@@ -468,27 +465,61 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
  
  
  
- 
-  highlight: (image) ->
+  # TAKES: model
+  # --> either ITEM or DESIGN
+  
+  unHighlight: ->
+    
+    console.log("unHighlighting")
+    
+    $("[data-room-highlighted=true]").each( ->
+      $(this).attr("src", $(this).attr("data-room-design-src"))
+      $(this).attr("data-room-highlighted", false)
+    )
+  
+  highlight: (model) ->
+    
+    @unHighlight()
        
-    console.log("highlighting")
+    console.log("highlighting", model)
+    
     
     ###
     TODO
-    Finish this
-    (1) We need to return the image back to the old one when they finish
-    --> We should add an attribute that indicates if this image has been highlighted
     ###
     
+    type = model.get("type")
     
-    img = $("[data-room_item_id=" + image.get("id") + "]")
+    switch type
+      
+      when "ITEM"
+        
+        img = $("[data-room_item_id=" + model.get("id") + "]")
+        console.log("ITEM", img)
+      
+      when "DESIGN"
+        
+        img = $("[data-room_item_id=" + model.get("item_id") + "]")
+        console.log("DESIGN", img)
+        
+        
+        
     
     # highlight the image if it isn't hidden
     if img.attr("data-room-hide") isnt "yes"
-      img.attr("src", img.attr("data-hover-src"))
       
+      original_src = img.attr("src")
+      new_src =      img.attr("data-hover-src")
+      
+      console.log("old src", original_src)
+      console.log("new src", new_src)
+      
+      img.attr("src", img.attr("data-hover-src"))
+  
       # Change the highlighted property
       img.attr("data-room-highlighted", true)
+    
+    
     
  
  
