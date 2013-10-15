@@ -11,7 +11,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 	render: ->
 		$(@el).html(@template(model:@model, targetUrl:@targetUrl))
 		#apply the FB script to this element.
-		FB.XFBML.parse($(@el)[0])
+		#FB.XFBML.parse($(@el)[0])
 	
 	hide:->
 		$(@el).hide()
