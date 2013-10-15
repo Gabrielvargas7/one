@@ -265,7 +265,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: userId})
     hide.user_id          = userId
     hide.item_design_id   = Mywebroom.State.get("$activeDesign").attr("data-design-id-client")
-    hide.location_id      = Mywebroom.State.get("$activeDesign").attr("data-room_location_id")
+    hide.location_id      = Mywebroom.State.get("$activeDesign").attr("data-design-location-id")
     hide.save
       wait: true
     ,
@@ -396,7 +396,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       ###
       oldId      = $(this).attr("data-design-id-client")
       newId      = $(this).attr("data-design-id-server")
-      locationId = $(this).attr("data-room_location_id")
+      locationId = $(this).attr("data-design-location-id")
       oldHide    = $(this).attr("data-room-hide")
       newSrc     = $(this).attr("src")
       newHoverSrc = $(this).attr("data-hover-src-server")

@@ -1,10 +1,7 @@
-<div
-     class="room_design_container_<%=@design.item_id%>"
-    style="" >
+<div class="room_design_container_<%=@design.item_id%>" style="">
 
     <img class="room_design"
         src="<%=@design.image_name.url%>"
-        
         
         data-main-src-client="<%=@design.image_name.url%>"
         data-main-src-server="<%=@design.image_name.url%>"
@@ -17,24 +14,11 @@
         
         data-design-has-changed=false
       
-      
-      
         data-room-hide="<%=@design.hide%>"
         data-room-highlighted=false
-        
-        
+          
         data-design-item-id="<%=@design.item_id%>"
-        data-room_section_id="<%=@design.section_id%>"
-        data-room_location_id="<%=@design.location_id%>"
-        
-        
-
-        
-        
-
-
-
+        data-design-location-id="<%=@design.location_id%>"
     >
 
 </div>
-
