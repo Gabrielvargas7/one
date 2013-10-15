@@ -58,16 +58,6 @@
                     <span>&nbsp&nbspRoom<span>
                 </a>
             </li>
-            <li>
-                <a href="#" id="show_lightbox">
-                    <span>Show LB<span>
-                </a>
-            </li>
-            <li>
-                <a href="#" id="close_lightbox">
-                    <span>Close LB<span>
-                </a>
-            </li>
             <li><a href="#" id="xroom_header_myroom" >
                 <img src=<%= @user_data.get('user_photos').image_name.url %> >
                 <%=  _.str.capitalize(@user_data.get('user').username) %>
