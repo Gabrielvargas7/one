@@ -424,14 +424,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     console.log("clean textbox values")
-#    _.debounce(@hideCleanSearchBox(), 1300);
+    @hideCleanSearchBox()
 
 
 
 
   hideCleanSearchBox:->
-    $('#xroom_header_search_box').hide()
-    $('#xroom_header_search_text').val("")
+    $('#xroom_header_search_box').delay(500).hide(0)
+    $('#xroom_header_search_text').delay(500).val("")
 
 
   keyPressOnSearch:(event)->
@@ -465,10 +465,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
   insertSearchEntityView:(value,valueSearchBtn)->
 
-
-#        searchUsersCollection =  false
-#        searchItemDesignsCollection = false
-#        searchBookmarksCollection =  false
         i = 0
         switch valueSearchBtn
           when 'ALL'
@@ -476,6 +472,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
             searchItemDesignsCollection =   @getSearchItemDesignsCollection(value)
             searchBookmarksCollection =     @getSearchBookmarksCollection(value)
             item_length = searchItemDesignsCollection.length
+            user_length = searchUsersCollection.length
+            bookmark_length = searchBookmarksCollection.length
 
             i = 0
             if item_length > user_length
@@ -628,7 +626,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     searchUsers = new Mywebroom.Collections.IndexSearchesUsersProfileWithLimitAndOffsetAndKeywordCollection()
     searchUsers.fetch
       async  : false
-      url    : searchUsers.url(10,0,value)
+      url    : searchUsers.url(50,0,value)
       success: ->
         console.log("print user profile collection on json format")
         console.log(searchUsers.toJSON())
@@ -642,7 +640,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     searchItemDesignsCollection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
     searchItemDesignsCollection.fetch
       async  : false
-      url    : searchItemDesignsCollection.url(10,0,value)
+      url    : searchItemDesignsCollection.url(50,0,value)
       success: ->
         console.log("print item designs collection on json format")
         console.log(searchItemDesignsCollection.toJSON())
@@ -655,7 +653,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     searchBookmarksCollection = new Mywebroom.Collections.IndexSearchesBookmarksWithLimitAndOffsetAndKeywordCollection()
     searchBookmarksCollection.fetch
       async  : false
-      url    : searchBookmarksCollection.url(10,0,value)
+      url    : searchBookmarksCollection.url(50,0,value)
       success: ->
         console.log("print bookmarks collection on json format")
         console.log(searchBookmarksCollection.toJSON())
