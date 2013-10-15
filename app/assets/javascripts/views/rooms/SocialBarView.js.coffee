@@ -9,17 +9,22 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 	initialize: ->
 		@findTargetUrl()
 	render: ->
-		fbUrl = encodeURIComponent(@generateFacebookURL())
-		$(@el).html(@template(model:@model, fbUrl:fbUrl,targetUrl:@targetUrl))
+		$(@el).html(@template(model:@model, targetUrl:@targetUrl))
 		#apply the FB script to this element.
-		#FB.XFBML.parse($(@el)[0])
+		FB.XFBML.parse($(@el)[0])
 	
 	hide:->
 		$(@el).hide()
 	show:->
 		$(@el).show()
+
 	clickFBLikeItem: (event) ->
-		console.log("You clicked FB Like on: "+@model)
+	    console.log("You clicked FB Like on: "+@model)
+	    window.open(
+	      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(@generateFacebookURL()), 
+	      'facebook-share-dialog', 
+	      'width=626,height=436') 
+	    return false
 	
 	clickPinItem: (event) ->
 		console.log("You clicked Pin Item on: " +@model)

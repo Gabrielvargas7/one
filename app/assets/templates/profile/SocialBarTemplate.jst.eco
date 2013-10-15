@@ -2,8 +2,8 @@
 <div class ="navbar">
 	<div class="navbar-inner">
 		<ul class="nav">
-			<li style="padding-top:10px;">
-				<iframe src="//www.facebook.com/plugins/like.php?href=<%=@fbUrl%>&amp;width=55&amp;height=65&amp;colorscheme=light&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:25px;" allowTransparency="true"></iframe>
+			<li class="fb_like_item">
+				<a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
 			</li>
 			<li class="pinterest_item"><a href="#"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a></li>
 			<li class="info_button_item"><a href="<%=@targetUrl%>" target="_blank">Info</a></li>
