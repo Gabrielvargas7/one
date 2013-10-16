@@ -22,6 +22,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView',
  	'click #Profile-Collapse-Button':'collapseProfileView'
+  'click #profile_facebook_friends_invite':'inviteFriendsFacebook'
   #'click .profile_suggestion_name':'showUserProfile'
 
   #*******************
@@ -219,7 +220,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
    else
     return ''
 
-
+ inviteFriendsFacebook:->
+  FB.ui
+    method: "apprequests"
+    message: "My Great Request"
+  , (request)->
+    console.log 'inviteFriendsFacebook ui call: '
+    console.log request
  closeProfileView: ->
 # 	this.remove()
 #  Mywebroom.vent.trigger("destroy:profile")
