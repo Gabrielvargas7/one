@@ -18,12 +18,11 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	
 	render: ->
 		$("#profile_drawer").css "width", "1320px" 
-		$(@el).html(@template(model:@model,fbUrl:@fbUrl))
+		#user_profile is sent to template for the case that we are in Photos view
+		$(@el).html(@template(model:@model,fbUrl:@fbUrl,user_profile:Mywebroom.State.get('roomData').get('user_profile')))
 		FB.XFBML.parse($(@el)[0])
 		#The social View is in the template because
-		#the styling was not right with this view. It needs a parent wrapper div, and the 
-		#social view cannot append elegantly with the current styling.
-		#Revisit if we use a Backbone Layout Plugin like SubViews or Marionette.
+		#the styling was not right with this view. 
 		this
 	
 	insideHandler: (event) ->
