@@ -719,7 +719,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   collapseAll: ->
     # Add the collapse class
-    $('#dropdown-object').addClass('collapse')
+    $('#dropdown-category').addClass('collapse')
     $('#dropdown-style').addClass('collapse')
     $('#dropdown-brand').addClass('collapse')
     $('#dropdown-location').addClass('collapse')
@@ -730,7 +730,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
   expandAll: ->
     # Remove the collapse class
-    $('#dropdown-object').removeClass('collapse')
+    $('#dropdown-category').removeClass('collapse')
     $('#dropdown-style').removeClass('collapse')
     $('#dropdown-brand').removeClass('collapse')
     $('#dropdown-location').removeClass('collapse')
@@ -784,7 +784,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
      # Add the collapse class
-    $('#dropdown-object').addClass('collapse')
+    $('#dropdown-category').addClass('collapse')
     
     
     # Load the Bundles' Categories Collection
@@ -826,7 +826,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     # Add the collapse class
-    $('#dropdown-object').addClass('collapse')
+    $('#dropdown-category').addClass('collapse')
     
     
     # Load the Bundles' Categories Collection
@@ -863,7 +863,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     # Add the collapse class
-    $('#dropdown-object').addClass('collapse')
+    $('#dropdown-category').addClass('collapse')
     
     
     # Load the Bundles' Categories Collection
