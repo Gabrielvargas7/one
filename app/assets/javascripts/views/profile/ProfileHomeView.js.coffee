@@ -220,10 +220,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
    else
     return ''
 
+#Create a Facebook Requests Dialog to invite Facebook Friends
  inviteFriendsFacebook:->
+  requestMessage = "Your friend "+Mywebroom.State.get('signInData').get('user_profile').firstname+' '+Mywebroom.State.get('signInData').get('user_profile').lastname+" would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
+
   FB.ui
     method: "apprequests"
-    message: "My Great Request"
+    message: requestMessage
   , (request)->
     console.log 'inviteFriendsFacebook ui call: '
     console.log request
