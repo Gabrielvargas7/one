@@ -27,16 +27,24 @@
 		<li class='activity_item_large_list'><div class="" id="large_item_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></li>
 		</ul>
 	</div>
-	<div class="profile_button_wrap"><button class="profile_large_item_try_it_button" >Try in My Room!</button></div>
-	<div class="social_bar">
-		<div class ="navbar">
-			<div class="navbar-inner">
-				<ul class="nav">
-					<li><div class="fb-like" data-href="<%=@fbUrl%>" data-width="90" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div></li>
-					<li class="pinterest_item"><a href="#" data-pin-do="buttonPin"
-        data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" target="_blank"></a></li>
-				</ul>
+	<ul>
+		<li class='activity_item_large_list'>
+			<div class="social_bar">
+				<div class ="navbar">
+					<div class="navbar-inner">
+						<ul class="nav">
+							<li><div class="fb-like" data-href="<%=@fbUrl%>" data-width="90" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div></li>
+							<li class="pinterest_item"><a href="#" data-pin-do="buttonPin"
+		        data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" target="_blank"></a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
+		</li>
+		<li class='activity_item_large_list profile_button'>
+			<div class="profile_button_wrap"><button class="profile_large_item_try_it_button" >Try in My Room!</button>
+			</div>
+		</li>
+	</ul>
+
 </div>
