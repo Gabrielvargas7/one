@@ -49,13 +49,21 @@
 	float:right;
 }
 .activity_item_large_view .social_bar{
-	width:50%;
-	float:left;
+	// width:50%;
+	// float:left;
+}
+.activity_item_large_list.profile_button{
+	vertical-align:top;
+	padding:0;
 }
 
 .activity_item_large_view .profile_button_wrap{
 	padding-right: 20px;
 	padding-top: 10px;
+}
+.activity_item_large_list{
+	display:inline-block;
+	padding:10px;
 }
 .activity_item_large_view .social_bar .navbar .nav > li > a{
 	padding:0 10px;
