@@ -45,7 +45,11 @@ class Bundle < ActiveRecord::Base
   validates_presence_of :section
 
   VALID_REGEX = /^(?:[^\W_]|\s)*$/u
-  validates :name,presence:true, uniqueness:{ case_sensitive: false },format: { with: VALID_REGEX }
+  validates :name,presence:true,
+            uniqueness:{ case_sensitive: false },
+            #format: { with: VALID_REGEX },
+            length: {minimum: 1, maximum: 50},
+            allow_blank: false
   validates :active, presence:true, format: { with: VALID_Y_N_REGEX }
   #validates :name,presence:true
   validates :theme_id,presence:true, :numericality => { :only_integer => true }

@@ -49,7 +49,11 @@ class Bookmark < ActiveRecord::Base
   #validates :item_id, numericality: { only_integer:  true }
   validates :bookmarks_category_id, numericality: { only_integer: true }
   validates :bookmark_url, format: URI::regexp(%w(http https))
-  validates :title,presence:true
+  validates :title,presence:true,
+              uniqueness:{ case_sensitive: false },
+              length: {minimum: 1, maximum: 50},
+              allow_blank: false
+
   validates :approval, presence:true, format: { with: VALID_Y_N_REGEX }
   validates :user_bookmark, :numericality => { :only_integer => true }
   validates :like, :numericality => { :only_integer => true }

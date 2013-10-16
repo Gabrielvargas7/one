@@ -45,7 +45,12 @@ class ItemsDesign < ActiveRecord::Base
   has_many :bundles_items_designs
 
   VALID_REGEX = /^(?:[^\W_]|\s)*$/u
-  validates :name,presence:true, uniqueness:{ case_sensitive: false },format: { with: VALID_REGEX }
+  validates :name,
+            presence:true,
+            uniqueness:{ case_sensitive: false },
+            #format: { with: VALID_REGEX },
+            length: {minimum: 1, maximum: 50},
+            allow_blank: false
   validates :item_id, :numericality => { :only_integer => true }
   validates :like, :numericality => { :only_integer => true }
   validates :price,presence:true, numericality: true
