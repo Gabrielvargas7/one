@@ -557,13 +557,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   
   setCategories: (categories) ->
     # empty out existing dropdown items
-    $('#dropdown-object > .dropdown-menu').empty()
+    $('#dropdown-category > .dropdown-menu').empty()
     
     
     # iterate through the category items and create a li out of each one
     _.each(categories, (category) ->
       if category.category
-        $('#dropdown-object > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(category.category) + '</a></li>')
+        $('#dropdown-category > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(category.category) + '</a></li>')
     )
 
 
@@ -640,7 +640,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   
   collapseAll: ->
     # Add the collapse class
-    $('#dropdown-object').addClass('collapse')
+    $('#dropdown-category').addClass('collapse')
     $('#dropdown-style').addClass('collapse')
     $('#dropdown-brand').addClass('collapse')
     $('#dropdown-location').addClass('collapse')
@@ -651,7 +651,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
   expandAll: ->
     # Remove the collapse class
-    $('#dropdown-object').removeClass('collapse')
+    $('#dropdown-category').removeClass('collapse')
     $('#dropdown-style').removeClass('collapse')
     $('#dropdown-brand').removeClass('collapse')
     $('#dropdown-location').removeClass('collapse')

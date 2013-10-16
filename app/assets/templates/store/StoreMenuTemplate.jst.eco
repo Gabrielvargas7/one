@@ -61,8 +61,8 @@
           
           <!-- FILTERS -->
           <ul class="nav nav-pills">
-            <li id="dropdown-object" class="dropdown collapse">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Object<b class="caret"></b></a>
+            <li id="dropdown-category" class="dropdown collapse">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<b class="caret"></b></a>
               <ul class="dropdown-menu pull-right">
               </ul>
             </li>
