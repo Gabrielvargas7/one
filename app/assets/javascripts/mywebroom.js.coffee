@@ -130,6 +130,8 @@ $(document).ready ->
   Mywebroom.App.addInitializer ->
     new Mywebroom.Routers.RoomsRouter()
     Backbone.history.start() if Backbone.history
+
+
     
     
   Mywebroom.App.start()

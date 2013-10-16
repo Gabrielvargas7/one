@@ -78,21 +78,6 @@ class ShopController < ApplicationController
     @items_designs_by_make  = ItemsDesign.select("lower(make) as make,max(item_id) as item_id").where("item_id = ?",params[:id]).group("lower(make)").order(:make)
 
 
-    #set_meta_tags :og =>{
-    #    :image    => 'http://ia.media-imdb.com/rock.jpg'
-    #}
-    #set_meta_tags :title => 'Member Login'
-    #set_meta_tags :og => {
-    #    :title    => 'The Rock',
-    #    :type     => 'video.movie',
-    #    :url      => 'http://www.imdb.com/title/tt0117500/',
-    #    :image    => 'http://ia.media-imdb.com/rock.jpg',
-    #    :video    => {
-    #        :director => 'http://www.imdb.com/name/nm0000881/',
-    #        :writer   => ['http://www.imdb.com/name/nm0918711/', 'http://www.imdb.com/name/nm0177018/']
-    #    }
-
-
     respond_to do |format|
       format.html # show.html.erb
 

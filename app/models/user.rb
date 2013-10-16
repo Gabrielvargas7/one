@@ -141,7 +141,8 @@ class User < ActiveRecord::Base
 
         user_image_name = user.id.to_s
         user_image_name = rand(0..100000).to_s+user_image_name+".jpg"
-        facebook_image = "#{Rails.root}/tmp/uploads/cache/facebook/"+user_image_name
+        #facebook_image = "#{Rails.root}/tmp/uploads/cache/facebook/"+user_image_name
+        facebook_image = "#{Rails.root}/tmp/"+user_image_name
 
         open(facebook_image, 'wb') do |file|
           #file << open(auth.info.image).read

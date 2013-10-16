@@ -62,7 +62,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     console.log("displayTopName "+@model.get('displayTopName'))
     console.log("displayUnderName "+@model.get('displayUnderName'))
 
-    $("[data-id_search_entity_id=search_entity_container_id_"+@model.get('viewNum') + "]").css({backgroundColor : "#202020"})
+#    $("[data-id_search_entity_id=search_entity_container_id_"+@model.get('viewNum') + "]").css({backgroundColor : "#202020"})
 
     entityType =  @model.get('entityType')
 
