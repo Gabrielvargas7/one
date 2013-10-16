@@ -87,7 +87,7 @@ FactoryGirl.define do
 
 
   factory :items_design do
-    sequence(:name)  { |n| "item_design #{n}" }
+    sequence(:name)  { |n| "itemdesign #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
     item_id 1
     category "category"

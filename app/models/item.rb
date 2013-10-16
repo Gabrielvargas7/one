@@ -25,13 +25,16 @@ class Item < ActiveRecord::Base
   has_many :bundles_bookmarks
   has_many :items_locations
 
+
+  VALID_REGEX = /^(?:[^\W_]|\s)*$/u
+
   mount_uploader :image_name, ItemsImageUploader
 
   VALID_YES_NO_REGEX = /(yes)|(no)/
 
   before_save { |item| item.clickable = clickable.downcase }
 
-  validates :name,presence:true
+  validates :name,presence:true, uniqueness:{ case_sensitive: false },format: { with: VALID_REGEX }
   validates :clickable, presence:true, format: { with: VALID_YES_NO_REGEX }
   validates :priority_order,presence:true, numericality: true
 
