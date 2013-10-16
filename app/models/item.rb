@@ -34,7 +34,12 @@ class Item < ActiveRecord::Base
 
   before_save { |item| item.clickable = clickable.downcase }
 
-  validates :name,presence:true, uniqueness:{ case_sensitive: false },format: { with: VALID_REGEX }
+  validates :name,
+            presence:true,
+            uniqueness:{ case_sensitive: false },
+            #format: { with: VALID_REGEX } ,
+            length: {minimum: 1, maximum: 50},
+            allow_blank: false
   validates :clickable, presence:true, format: { with: VALID_YES_NO_REGEX }
   validates :priority_order,presence:true, numericality: true
 
