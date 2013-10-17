@@ -199,9 +199,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
     console.log("***** Beginning Save of New Theme *****")
     
-    
+     
     # Check to see if the theme is new
-    if $(".current_background").attr("data-theme-has-changed") is true
+    if $(".current_background").attr("data-theme-has-changed") is "true" # <-- NOTE: string here
       
       ###
       USER ID
@@ -219,9 +219,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       SECTION ID
       ###
       section_id = $(".current_background").attr("data-section-id")
-      
-      
-      
       
       
       
@@ -259,8 +256,8 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   
   
     # Save the userId for use later
-    userId = Mywebroom.State.get("signInUser").get("id")
-  
+    user_id = Mywebroom.State.get("signInUser").get("id")
+    
   
   
     ###
@@ -276,9 +273,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     ###
     $("#xroom_items_0 [data-design-has-changed=true]").each( ->
       
-      user_id = Mywebroom.State.get("roomUser").get("id")
-      
-      
+    
       ###
       ITEM ID
       ###
@@ -288,7 +283,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       ###
       LOCATION ID
       ###
-      location_id = $(this).attr("data-location-id")
+      location_id = $(this).attr("data-design-location-id")
       
       
       ###
@@ -305,6 +300,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       old_design_id = $(this).attr("data-design-id-server")
       old_hide =      $(this).attr("data-room-hide")
     
+      
       
       ###
       UPDATE DOM PROPERTIES
@@ -334,9 +330,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         
         # Change Property in Server
         hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: user_id})
-        hide.user_id        = user_id
+        hide.user_id =        user_id
         hide.item_design_id = old_design_id
-        hide.location_id    = location_id
+        hide.location_id =    location_id
         hide.save
           wait: true
         ,

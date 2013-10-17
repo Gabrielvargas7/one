@@ -487,7 +487,7 @@ $(document).ready ->
     
     
     # (2.3) Save, Cancel, Remove view visibility
-    if flag is true
+    if flag is "true" # <-- NOTE: string here
       $('#xroom_store_menu_save_cancel_remove').show()
     
     

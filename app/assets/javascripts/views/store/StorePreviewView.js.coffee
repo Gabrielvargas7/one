@@ -215,10 +215,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   clickTheme: (e) ->
     
     e.preventDefault()
-    imageName = @model.get('image_name').url
     
-    #console.log("click Store Menu Theme View", @model.get('id'))
-    #console.log(imageName)
+    # New Properties
+    url =      @model.get('image_name').url
+    theme_id = @model.get('id')
     
     
     # Show the view with the Save, Cancel, Remove buttons
@@ -237,12 +237,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     
-    $('.current_background').attr("src", imageName);
-    $('.current_background').attr("data-theme-id-client", @model.get('id'));
-    $('.current_background').attr("data-theme-has-changed", true);
-
-
-
+    $('.current_background').attr("src", url)
+    $('.current_background').attr("data-theme-id-client", theme_id)
+    $('.current_background').attr("data-theme-src-client", url)
+    $('.current_background').attr("data-theme-has-changed", true)
 
 
   #--------------------------
