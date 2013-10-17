@@ -22,6 +22,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  	'click #profile_home':'showHomeGrid',
  	'click #Profile-Close-Button':'closeProfileView',
  	'click #Profile-Collapse-Button':'collapseProfileView'
+  'click #profile_facebook_friends_invite':'inviteFriendsFacebook'
   #'click .profile_suggestion_name':'showUserProfile'
 
   #*******************
@@ -219,7 +220,16 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
    else
     return ''
 
+#Create a Facebook Requests Dialog to invite Facebook Friends
+ inviteFriendsFacebook:->
+  requestMessage = "Your friend "+Mywebroom.State.get('signInData').get('user_profile').firstname+' '+Mywebroom.State.get('signInData').get('user_profile').lastname+" would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
 
+  FB.ui
+    method: "apprequests"
+    message: requestMessage
+  , (request)->
+    console.log 'inviteFriendsFacebook ui call: '
+    console.log request
  closeProfileView: ->
 # 	this.remove()
 #  Mywebroom.vent.trigger("destroy:profile")
