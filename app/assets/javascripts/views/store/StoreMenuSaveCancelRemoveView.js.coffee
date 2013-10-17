@@ -127,6 +127,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     #console.log("click Store Remove")
     bootbox.confirm("Are you sure you want to remove this object?", (result) ->
       if result
+        
         self.removeObject()
         
         
@@ -159,14 +160,15 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   
   removeObject: ->
     
-    console.log("***** Beginning Object Removal *****")
-    
     userId = Mywebroom.State.get("signInUser").get("id")
     
-    # backend
+    
+
+    
+    # Persist to server
     hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: userId})
     hide.user_id          = userId
-    hide.item_design_id   = Mywebroom.State.get("$activeDesign").attr("data-design-id-client")
+    hide.item_design_id   = Mywebroom.State.get("$activeDesign").attr("data-design-id-server")
     hide.location_id      = Mywebroom.State.get("$activeDesign").attr("data-design-location-id")
     hide.save
       wait: true
@@ -181,9 +183,11 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
     ###
     UPDATE DOM
-    ###
-    # Change the properties of the design in the DOM
-    Mywebroom.State.get("$activeDesign").attr("data-room-hide", "yes")
+    ###    
+    Mywebroom.State.get("$activeDesign")
+    .attr("data-room-hide", "yes")
+    .attr("data-room-highlighted", false)
+    .attr("data-design-has-changed", false)
     
     
     
