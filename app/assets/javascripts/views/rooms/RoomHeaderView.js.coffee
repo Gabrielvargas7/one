@@ -22,7 +22,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_forward_profile': 'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting': 'forwardToRoRSettingPage'
     'click #xroom_header_logout'         : 'logout'
-    'click #xroom_header_storepage'      : 'showStorePage'
+    
+    'click #xroom_header_storepage'      : 'toggleStore'
+    
     'click #xroom_header_myroom'         : 'goToMyRoom'
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
     'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
@@ -30,7 +32,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #show_lightbox'               : 'showLightbox'
     'click #close_lightbox'              : 'closeLightbox'
     'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
-
   }
 
 
@@ -249,12 +250,28 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   #  *** function
   #--------------------------
-  showStorePage: (event) ->
-    if event  # This is because this fuction is also called when room is PUBLIC
-      event.preventDefault()
-      event.stopPropagation()
+  toggleStore: (event) ->
+    
+    storeState = Mywebroom.State.get("storeState")
+    
+    switch storeState
+    
+      when "hidden"
+        Mywebroom.Helpers.showStore()
    
-    @displayStorePage()
+      when "shown"
+        Mywebroom.Helpers.hideStore()
+        
+      when "collapsed"
+        Mywebroom.Helpers.expandStore()
+        
+        
+    # Always do this
+    $('#xroom_profile').hide()
+    $('#xroom_bookmarks').hide()
+    $('#xroom_header_search_box').hide()
+    @hideActiveSites()
+    
 
 
 
@@ -280,56 +297,13 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   #  *** function display
   #--------------------------
-  displayStorePage: ->
+
+  
+  
+  
+ 
     
-    
-    # Show the store div
-    $('#xroom_storepage').show()
-    
-    
-    
-    
-    
-    
-    
-    # Now that we're showing the store,
-    # we need to show the hidden images
-    # in the user's room
-    $("[data-room-hide=yes]").show()
-    
-    
-    
-    grey =
-      1 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826528/bed_grey.png"             # Bed
-      2 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826555/brid_cage_grey.png"       # Bird Cage
-      3 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826571/book_stand_grey.png"      # Book Shelve (sic)
-      4 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826593/chair_grey.png"           # Chair
-      5 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826708/newspaper_grey.png"       # Newspaper
-      6 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826862/world_map_grey.png"       # World Map
-      7 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826837/tv_stand_grey.png"        # TV Stand
-      8 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826663/file_box_grey.png"        # File Box
-      9 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826799/shopping_bag_grey.png"    # Shopping Bag
-      10: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826815/social_painting_grey.png" # Social Painting
-      11: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826648/encylco_shelf_grey.png"   # Encyclo Shelf
-      12: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826687/music_box_grey.png"       # Music Box
-      13: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826845/tv_grey.png"              # TV
-      14: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826633/desk_grey.png"            # Desk
-      15: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826721/night_stand_grey.png"     # Night Stand
-      16: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826732/notebook_grey.png"        # Notebook
-      17: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826603/computer_grey.png"        # Computer
-      18: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826751/phone_grey.png"           # Phone
-      19: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826675/lamp_grey.png"            # Lamp
-      20: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826768/pinboard_grey.png"        # Pinboard
-      21: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826784/portrait_grey.png"        # Portrait
-      22: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826826/sports_grey.png"          # Sports
-      23: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826616/curtain_grey.png"         # Curtain
-      24: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826583/box_grey.png"             # Box
-      25: "//upload.wikimedia.org/wikipedia/commons/thumb/1/18/Grey_Square.svg/150px-Grey_Square.svg.png"                     # Games -- FIXME -- not correct image
-    
-    
-    # And now we need replace src with above
-    $('[data-room-hide=yes]').each ->
-      $(@).attr("src", grey[$(@).data("room_item_id")])
+
     
     
     
@@ -338,31 +312,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     
     
     
-    $('#xroom_profile').hide()
-    $('#xroom_bookmarks').hide()
-    $('#xroom_header_search_box').hide()
-    @hideActiveSites()
     
-    
-    
-    
-    ###
-    TODO
-    (1) Click the OBJECTS tab <-- DONE
-    (2) Remvove scrollbars    <-- DONE
-    (3) Turn off hover events for images on the page
-    ###
-    
-    # Click OBJECTS tab
-    $('#storeTabs a[href="#tab_items"]').tab('show')
-    
-    
-    Mywebroom.State.get("roomScrollLeftView").remove()
-    Mywebroom.State.get("roomScrollRightView").remove()
-    
-    
-    Mywebroom.State.set("roomScrollLeftView", false)
-    Mywebroom.State.set("roomScrollRightView", false)
     
 
 
@@ -509,8 +459,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         search_view_array  = Mywebroom.State.get("searchViewArray")
         while (g<i)
           console.log("loop Data Collection")
-#          console.log(searchItemDesignsCollection.at(g))
-#          console.log(searchUsersCollection.at(g))
+          #console.log(searchItemDesignsCollection.at(g))
+          #console.log(searchUsersCollection.at(g))
 
 
 
@@ -630,7 +580,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       success: ->
         console.log("print user profile collection on json format")
         console.log(searchUsers.toJSON())
-#        console.log("- JSON.stringify "+JSON.stringify(searchUsers))
+        #console.log("- JSON.stringify "+JSON.stringify(searchUsers))
       error: ->
         console.log("error")
     searchUsers
@@ -644,7 +594,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       success: ->
         console.log("print item designs collection on json format")
         console.log(searchItemDesignsCollection.toJSON())
-#        console.log("- JSON.stringify "+JSON.stringify(searchUsers))
+        #console.log("- JSON.stringify "+JSON.stringify(searchUsers))
       error: ->
         console.log("error")
     searchItemDesignsCollection
@@ -657,7 +607,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       success: ->
         console.log("print bookmarks collection on json format")
         console.log(searchBookmarksCollection.toJSON())
-#        console.log("- JSON.stringify "+JSON.stringify(searchUsers))
+        #console.log("- JSON.stringify "+JSON.stringify(searchUsers))
       error: ->
         console.log("error")
     searchBookmarksCollection
@@ -732,8 +682,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     }
     # Display the Toastr message
     toastr.info("There are no active sites currently open. Click on an object to start surfing the web!")
-
-
 
 
 

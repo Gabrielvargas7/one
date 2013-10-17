@@ -6,7 +6,7 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
 
 
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
   template: JST['rooms/RoomScrollLeftTemplate']
 
@@ -28,7 +28,6 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     #**** Render
     #*******************
   render: ->
-    console.log("storepage view: ")
     $(@el).append(@template())
     this
 

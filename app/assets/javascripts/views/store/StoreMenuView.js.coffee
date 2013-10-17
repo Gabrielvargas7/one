@@ -15,16 +15,21 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   
   events: {
-    'shown #storeTabs a[data-toggle="tab"]': 'navSwitch'      # NAV SWITCH
-    'click #storeTabs a':                'manualNavSwitch'    # NAV SWITCH - MANUAL
-    'click a[href="#tab_items"]':        'clickObjects'       # NAV TABS
-    'click a[href="#tab_themes"]':       'clickThemes'        # NAV TABS
-    'click a[href="#tab_bundles"]':      'clickBundles'       # NAV TABS
-    'click a[href="#tab_entire_rooms"]': 'clickEntireRooms'   # NAV TABS
-    'click a[href="#tab_hidden"]':       'clickHidden'        # NAV TABS <-- Can this ever be triggered??
-    'keyup #store-search-box':           'keyupSearch'        # SEARCH
-    'click #store-search-dropdown li a': 'searchDropdownChange'     # SEARCH DROPDOWN
-    'click .store-dropdown-item a':      'filterSearch'             # FILTER
+    
+    #'shown #storeTabs a[data-toggle="tab"]': 'navSwitch'      # NAV SWITCH  <-- UNUSED
+    #'click a[href="#tab_hidden"]':       'clickHidden'        # NAV TABS <-- Can this ever be triggered??
+    
+    'click #storeTabs a':                'manualNavSwitch'    # NAV TABS (any)
+    
+    'click a[href="#tab_items"]':        'clickObjects'       # NAV TABS: OBJECTS
+    'click a[href="#tab_themes"]':       'clickThemes'        # NAV TABS: THEMES
+    'click a[href="#tab_bundles"]':      'clickBundles'       # NAV TABS: BUNDLES
+    'click a[href="#tab_entire_rooms"]': 'clickEntireRooms'   # NAV TABS: ENTIRE ROOMS
+    
+    
+    'keyup #store-search-box':           'keyupSearch'           # SEARCH
+    'click #store-search-dropdown li a': 'searchDropdownChange'  # SEARCH DROPDOWN
+    'click .store-dropdown-item a':      'filterSearch'          # FILTER
   }
   
 
@@ -41,14 +46,20 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   render: ->
 
-    # THIS VIEW
+    ###
+    RENDER VIEW - START
+    ###
     $(@el).append(@template())
-  
-  
     ###
-    FETCH INITIAL DATA
+    RENDER VIEW - ENE
     ###
-  
+    
+    
+    
+    
+    ###
+    FETCH INITIAL DATA - START
+    ###
     # items
     itemsCollection = @getItemsCollection()
     Mywebroom.State.set("initialItems", itemsCollection)
@@ -58,21 +69,20 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     themesCollection = @getThemesCollection()
     
   
-  
     # bundles
     bundlesCollection = new Mywebroom.Collections.IndexBundlesCollection()
     bundlesCollection.fetch
       async:   false
         
         
-   
+    # entire rooms
     entireRoomsCollection = new Mywebroom.Collections.IndexBundlesCollection()
     entireRoomsCollection.fetch
       async:   false
       
       
-  
     copy = entireRoomsCollection.clone()
+    
     
     parsed = copy.map((model) ->
       obj = model
@@ -80,87 +90,60 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       return obj
     )
     
+    
     reset = copy.reset(parsed)
-    
-    
-  
-
-
     ###
-    SPLAT DATA TO STORE
+    FETCH INITIAL DATA - END
     ###
     
+    
+    
+    
+    ###
+    SPLAT DATA TO STORE - START
+    ###
     @appendItemsEntry(itemsCollection)     # ITEMS
     @appendThemesEntry(themesCollection)   # THEMES
     @appendBundlesEntry(bundlesCollection) # BUNDLES
     @appendBundlesSetEntry(reset)          # ENTIRE ROOMS
-
-
-
-
-
+    ###
+    SPLAT DATA TO STORE - END
+    ###
     
     
     
     
-
-    # As per convention, return a reference to this view
+    ###
+    CONVENTION - START
+    ###
     this
-
-  
-  
-  
-  
-  
-  
-  
-  
-  navSwitch: (e) ->
-    
     ###
-    THIS IS TRIGGERED FOR BOTH MANUAL CLICKS AS WELL AS 
-    CHANGES OF THE SEARCH DROPDOWN
-    
-    WE ONLY WANT TO CHANGE THE SEARCH DROPDOWN
-    WHEN SOMEONE MANUALLY CLICKS A SEARCH BOX
+    CONVENTION - END
     ###
     
-    
-    
-    console.log("tab switched")
-    
-    ###
-    TODO
-    What should happen now?
-    ###
-
   
+  
+   
   manualNavSwitch: (e) ->
     
     console.log("Manual tab switch")
     
     ###
-    SWITCH THE SEARCH DROPDOWN TO ALL
+    SWITCH THE SEARCH DROPDOWN TO ALL - START
     ###
-    
-    # SEARCH DROPDOWN
-    # Remove active class
-    $('#store-search-dropdown li').removeClass('active')
-    
-    
-    # Add active class to ALL
-    $("#store-search-all").addClass("active")
-    
-    
-    # Change the text of the search filter to ALL
-    $('#store-dropdown-btn').text("ALL")
-    
-    
+    $('#store-search-dropdown li').removeClass('active') # Remove active class
+    $("#store-search-all").addClass("active") # Add active class to ALL
+    $('#store-dropdown-btn').text("ALL") # Change the text of the search filter to ALL
+    ###
+    SWITCH THE SEARCH DROPDOWN TO ALL - END
+    ###
   
   
     
     
   filterSearch: (e) ->
+
+    console.log("FILTER")
 
     # Switch to the hidden tab
     $('#storeTabs a[href="#tab_hidden"]').tab('show')
@@ -205,7 +188,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
            async: false
            url: themes.url(10, 0, keyword)
            success: (response) ->
-             console.log("searched themes success", response)
+             #console.log("searched themes success", response)
            error: ->
              console.log("error")
             
@@ -218,7 +201,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async: false
           url: bundles.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched bundles success", response)
+            #console.log("searched bundles success", response)
           error: ->
             console.log("error")
             
@@ -232,7 +215,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : entireRooms.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched entire rooms I success", response)
+            #console.log("searched entire rooms I success", response)
           error: ->
             console.log("error")
             
@@ -255,7 +238,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         
         # Reset the collection
         reset = entireRooms.reset(parsed)
-        console.log("searched entire rooms II success", reset)
+        #console.log("searched entire rooms II success", reset)
         
     
         ###
@@ -265,7 +248,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         everything = new Backbone.Collection(data)
         
         
-        console.log("everything", everything)
+        #console.log("everything", everything)
         
         
         # Now splat it to the screen
@@ -282,7 +265,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : collection.url(10,0,keyword)
           success: (response) ->
-            console.log("searched designs success", response)
+            #console.log("searched designs success", response)
             
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -299,7 +282,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async: false
           url: collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched themes success", response)
+            #console.log("searched themes success", response)
         
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -309,7 +292,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       
       when "BUNDLES"
         
-        console.log("BUNDLES!!!!!!!!!!!!!")
+        #console.log("BUNDLES!!!!!!!!!!!!!")
         
         
         ###
@@ -320,7 +303,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async: false
           url: collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched bundles success", response)
+            #console.log("searched bundles success", response)
       
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -331,7 +314,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       when "ENTIRE ROOMS"
         
         
-        console.log("ENTIRE ROOMS!!!!!!!!!!!!!")
+        #console.log("ENTIRE ROOMS!!!!!!!!!!!!!")
        
         ###
         Fetch collection
@@ -341,7 +324,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : collection.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched entire rooms success", response)
+            #console.log("searched entire rooms success", response)
           error: ->
             console.log("error")
             
@@ -364,7 +347,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         
         # Reset the collection
         reset = collection.reset(parsed)
-        console.log("searched entire rooms II success", reset)
+        #console.log("searched entire rooms II success", reset)
         
     
         # Replace the views on the hidden tab
@@ -387,7 +370,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async:   false
           url:     collection.url(category,10,0,keyword)
           success: (response) ->
-            console.log("searched designs II success", response)
+            #console.log("searched designs II success", response)
     
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -399,9 +382,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
   keyupSearch: (e) ->
     
-    
     if e.keyCode is 13
       
+      console.log("SEARCH")
       
       # Switch to the hidden tab
       $('#storeTabs a[href="#tab_hidden"]').tab('show')
@@ -453,6 +436,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   searchDropdownChange: (e) ->
     
+    console.log("SEARCH DROPDOWN CHANGE")
+    
     # SEARCH DROPDOWN
     # Remove active class
     $('#store-search-dropdown li').removeClass('active')
@@ -502,7 +487,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     itemsCollection.fetch
       async:   false
       success: (response) ->
-        console.log("items fetch success", response)
+        #console.log("items fetch success", response)
     return itemsCollection
 
   #--------------------------
@@ -515,7 +500,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       async:   false
       url:     itemsDesignsCollection.url(item_id)
       success: (response) ->
-        console.log("items design fetch success", response)
+        #console.log("items design fetch success", response)
         
     return itemsDesignsCollection
 
@@ -528,7 +513,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     themesCollection.fetch
       async:   false
       success: (response) ->
-        console.log("initial theme fetch success", response)
+        #console.log("initial theme fetch success", response)
     return themesCollection
 
   #--------------------------
@@ -539,7 +524,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     bundlesCollection.fetch
       async:   false
       success: (response) ->
-        console.log("initial bundle fetch success", response)
+        #console.log("initial bundle fetch success", response)
         
     return bundlesCollection
 
@@ -599,7 +584,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     self = this
     
     itemsDesignsCollection.each (entry)  ->
-      storeMenuItemsDesignsView = new Mywebroom.Views.StorePreviewView(model:entry)
+      storeMenuItemsDesignsView = new Mywebroom.Views.StorePreviewView(model: entry)
       $('#row_item_designs_' + self.row_number).append(storeMenuItemsDesignsView.el)
       storeMenuItemsDesignsView.render()
       
@@ -750,6 +735,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #************
   clickObjects: ->
     
+    console.log("OBJECTS clicked")
+    
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
     
@@ -766,9 +753,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
   clickThemes: ->
     
-    console.log("click themes")
-    
-    
+    console.log("THEMES clicked")
+     
     ###
     Set our store helper
     ###

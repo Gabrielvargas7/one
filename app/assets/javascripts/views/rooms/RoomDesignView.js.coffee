@@ -1,7 +1,7 @@
 ###
 This view represents a clickable design in the room
 ###
-class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
+class Mywebroom.Views.RoomDesignView  extends Backbone.View
 
   #*******************
   #**** Tag  (no tag = default el "div")
@@ -11,16 +11,14 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #*******************
   #**** Templeate
   #*******************
-  template: JST['rooms/RoomUserItemsDesignsTemplate']
+  template: JST['rooms/RoomDesignTemplate']
 
 
   #*******************
   #**** Events
   #*******************
   events:
-    'click img.room_user_item_design'     : 'clickItem'
-    'mouseenter img.room_user_item_design': 'hoverItem'
-    'mouseleave img.room_user_item_design': 'hoverOffItem'
+    'click img.room_design':      'clickItem'
 
   #*******************
   #**** Initialize
@@ -33,22 +31,22 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
     #*******************
   render: ->
 
-    $(@el).append(@template(user_item_design: @design))
-    this.setHoverOffOnImages()
+    $(@el).append(@template(design: @design))
+    
 
     y = @design.y.toString() + 'px'
     x = @design.x.toString() + 'px'
     z = @design.z.toString()
     
     width = @design.width.toString() + 'px'
-    id_room_item_designs_container = ".room_item_designs_container_" + @design.item_id.toString()
+    container = ".room_design_container_" + @design.item_id.toString()
 
-    $(id_room_item_designs_container).css({
-      'position': 'absolute',
-      'width'   : width,
-      'left'    : x,
-      'top'     : y,
-      'z-index' : z
+    $(container).css({
+      'position': 'absolute'
+      'width':    width
+      'left':     x
+      'top':      y
+      'z-index':  z
     })
      
 
@@ -58,24 +56,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
   #**** Funtions
   #*******************
 
-  #--------------------------
-  # set hover on off images by jquery
-  #--------------------------
-  setHoverOffOnImages: ->
-
-    if @design.clickable is "yes"
-      itemId         = @design.item_id
-      imageNameHover = @design.image_name_hover.url
-      imageName      = @design.image_name.url
-      
-      $el = $('[data-room_item_id=' + itemId + ']')
-      
-      # Turn on conditional hovering unless the designs are hidden
-      unless $el.data("roomHide") is "yes"
-        $el.hover (->  $(this).attr("src", imageNameHover)), -> $(this).attr("src", imageName)
-
-
-
+  
 
 
   #--------------------------
@@ -99,21 +80,7 @@ class Mywebroom.Views.RoomUserItemsDesignsView  extends Backbone.View
 
 
 
-  #--------------------------
-  # change hover image on mouse over
-  #--------------------------
-  hoverItem: (event) ->
-    event.preventDefault()
-
-
-
-  #--------------------------
-  # change normal image on hover
-  #--------------------------
-  hoverOffItem: (event) ->
-    event.preventDefault()
-
-
+ 
   #--------------------------
   # hide bookmarks when is not this item
   #--------------------------

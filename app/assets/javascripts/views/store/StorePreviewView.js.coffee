@@ -16,7 +16,6 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #**** Events
   #*******************
   events: {
-    
     'click .store_container_ITEM':             'clickItem'
     'click .store_container_DESIGN':           'clickDesign'
     'click .store_container_THEME':            'clickTheme'
@@ -46,8 +45,9 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #**** Render
   #*******************
   render: ->
-
+    
     obj =  @model.clone()
+    console.log(obj)
     
     # We set image_name to the matching preview url (when necessary)
     switch @type
@@ -83,8 +83,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       async:   false
       url:     bundleItemsDesignsCollection.url(bundleId)
       success: (response) ->
-        console.log("@bundleItemsDesignsCollection: ")
-        console.log(response)
+        #console.log("@bundleItemsDesignsCollection: ")
+        #console.log(response)
 
     return bundleItemsDesignsCollection
 
@@ -98,8 +98,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       async:   false
       url:     bundleThemeCollection.url(themeId)
       success: (response) ->
-        console.log("bundleTheme: ")
-        console.log(response)
+        #console.log("bundleTheme: ")
+        #console.log(response)
 
     return bundleThemeCollection
 
@@ -146,8 +146,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     bundleThemeCollection = @getBundleThemeCollection(self.model.get('theme_id'))
     bundleThemeModel = bundleThemeCollection.first()
     $('.current_background').attr("src", bundleThemeModel.get('image_name').url);
-    $('.current_background').attr("data-room_theme_id", bundleThemeModel.get('id'));
-    $('.current_background').attr("data-room_theme",'new');
+    $('.current_background').attr("data-theme-id-client", bundleThemeModel.get('id'));
+    $('.current_background').attr("data-theme-has-changed", true);
 
 
     # set the new items
@@ -158,10 +158,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       imageName =      entry.get('image_name').url
       imageNameHover = entry.get('image_name_hover').url
 
-      $('[data-room_item_id=' + itemId + ']').attr("src", imageName)
-      $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design_id", itemDesignId)
-      $('[data-room_item_id=' + itemId + ']').hover (->  $(self).attr("src", imageNameHover)), -> $(self).attr("src", imageName)
-      $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design",'new')
+      $('[data-design-item-id=' + itemId + ']').attr("src", imageName)
+      $('[data-design-item-id=' + itemId + ']').attr("data-design-id-server", itemDesignId)
+      $('[data-design-item-id=' + itemId + ']').hover (->  $(self).attr("src", imageNameHover)), -> $(self).attr("src", imageName)
+      $('[data-design-item-id=' + itemId + ']').attr("data-design-has-changed", true)
 
 
 
@@ -173,7 +173,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   clickBundle: (e) ->
     e.preventDefault()
-    console.log("click Store Bundle View " + @model.get('id'))
+    #console.log("click Store Bundle View " + @model.get('id'))
     
     # Show the view with the Save, Cancel, Remove buttons
     $('#xroom_store_menu_save_cancel_remove').show()
@@ -198,10 +198,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       imageName = entry.get('image_name').url
       imageNameHover = entry.get('image_name_hover').url
 
-      $('[data-room_item_id=' + itemId + ']').attr("src", imageName)
-      $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design_id",itemDesignId)
-      $('[data-room_item_id=' + itemId + ']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
-      $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design",'new')
+      $('[data-design-item-id=' + itemId + ']').attr("src", imageName)
+      $('[data-design-item-id=' + itemId + ']').attr("data-design-id-server",itemDesignId)
+      $('[data-design-item-id=' + itemId + ']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
+      $('[data-design-item-id=' + itemId + ']').attr("data-design-has-changed", true)
 
 
 
@@ -215,10 +215,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   clickTheme: (e) ->
     
     e.preventDefault()
-    imageName = @model.get('image_name').url
     
-    console.log("click Store Menu Theme View", @model.get('id'))
-    console.log(imageName)
+    # New Properties
+    url =      @model.get('image_name').url
+    theme_id = @model.get('id')
     
     
     # Show the view with the Save, Cancel, Remove buttons
@@ -237,28 +237,47 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     
-    $('.current_background').attr("src", imageName);
-    $('.current_background').attr("data-room_theme_id", @model.get('id'));
-    $('.current_background').attr("data-room_theme", 'new');
-
-
-
+    $('.current_background').attr("src", url)
+    $('.current_background').attr("data-theme-id-client", theme_id)
+    $('.current_background').attr("data-theme-src-client", url)
+    $('.current_background').attr("data-theme-has-changed", true)
 
 
   #--------------------------
   # do something on click
   #--------------------------
   clickDesign: (e) ->
+    
+    ###
+    (1) Center
+    (2) Conditionally Show Save Bar
+    (3) Update DOM
+    (4) Highlight
+    ###
+    
+    
+    console.log("click design")
      
     e.preventDefault()
     
-    itemId =       @model.get("item_id") # <-- type of design
-    itemDesignId = @model.get("id") 
-    url =          @model.get("image_name").url         # <-- new one
-    urlHover =     @model.get("image_name_hover").url   # <-- new one
-  
+    ###
+    DESIGN TYPE
+    ###
+    design_type = @model.get("item_id")
     
-    console.log("***** CLICK STORE ITEM DESIGN:\t", itemDesignId, " *********")
+    
+    ###
+    NEW PROPERTIES
+    ###
+    new_design_id = @model.get("id")
+    new_main_src =  @model.get("image_name").url
+    new_hover_src = @model.get("image_name_hover").url
+    
+    
+   
+  
+    console.log("click design", new_design_id)
+    
     
     
     
@@ -266,22 +285,28 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     ###
-    CENTER
+    CENTER - START
     ###
     items = Mywebroom.State.get("initialItems")
     
     
     # Get item that matches this design's item_id
-    item = items.findWhere({"id":itemId})
+    item = items.findWhere({"id": design_type})
     
     
-    # Center
+    # Do the centering
     @setItemToCenter(item)
+    ###
+    CENTER - END
+    ###
+    
+    
+    
     
     
     
     ###
-    SAVE, CANCEL, REMOVE
+    SAVE, CANCEL, REMOVE - START
     ###
     # Show the Save, Cancel, Remove view
     $("#xroom_store_menu_save_cancel_remove").show()
@@ -293,43 +318,69 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     $('#xroom_store_cancel').show()
     
     # Show the remove button unless the current design is hidden
-    unless $("[data-room_item_id=" + itemId + "]").attr("data-room-hide") is "yes"
+    unless $("[data-design-item-id=" + design_type + "]").attr("data-room-hide") is "yes"
       $('#xroom_store_remove').show()
+    ###
+    SAVE, CANCEL, REMOVE - END
+    ###
     
     
-    # Change the properties of the design in the DOM
-    $('[data-room_item_id=' + itemId + ']').attr("src", url)
-    $('[data-room_item_id=' + itemId + ']').attr("data-hover-src", urlHover)
-    $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design_id", itemDesignId)
-    $('[data-room_item_id=' + itemId + ']').attr("data-room_item_design", "new")
-    $('[data-room_item_id=' + itemId + ']').hover (->  $(this).attr("src", urlHover)), -> $(this).attr("src", url)
-
-
+    
+    
+    
+    
+    
+    
+    
     ###
-    Find the design that was clicked and
-    create a reference to it's container element
+    UPDATE DOM PROPERTIES - START
     ###
-    $activeDesign = $("[data-room_item_id=" + itemId + "]")
+    $('[data-design-item-id=' + design_type + ']')
+    .attr("src", new_hover_src)
+    .attr("data-design-id-client", new_design_id)
+    .attr("data-main-src-client", new_main_src)
+    .attr("data-hover-src-client", new_hover_src)
+    .attr("data-design-has-changed", true)
+    .attr("data-room-highlighted", true)
+    ###
+    UPDATE DOM PROPERTIES - END
+    ###
+    
+    
+   
+    # Highlight
+    Mywebroom.Helpers.highLight(design_type)
+    
+    
+    
+    
+    
+    ###
+    UNUSED - START
+    ###
+    
+    
+    # Find the design that was clicked and
+    # create a reference to it's container element
+    $activeDesign = $("[data-design-item-id=" + design_type + "]")
     
 
     # Save this object to our state model
     Mywebroom.State.set("$activeDesign", $activeDesign)
     
-        
-        
+          
     # Is this a hidden object?
     activeDesignIsHidden = $activeDesign.data().roomHide
     Mywebroom.State.set("activeDesignIsHidden", activeDesignIsHidden)
     
     
-    # Show
-    $activeDesign.show()
-    
+    ###
+    UNUSED - END
+    ###
     
     
 
-    # Highlight
-    @highlight(@model)
+    
     
  
  
@@ -340,9 +391,23 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   clickItem: (e) ->
    
+    ###
+    (1) Change to hidden tab
+    (2) Conditionally show remove button
+    (3) Conditionally highlight room item
+    (4) Fetch corresponding designs
+    (5) Update views
+    (6) Center item
+    (7) Update filters
+    ###
+    
+   
+   
+    console.log("click item")
+   
    
     e.preventDefault()
-    console.log("item model", @model)
+    
    
    
    
@@ -370,7 +435,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     Find the design that was clicked and
     create a reference to it's container element
     ###
-    $activeDesign = $("[data-room_item_id=" + itemId + "]")
+    $activeDesign = $("[data-design-item-id=" + itemId + "]")
    
    
     # Save this object to our state model
@@ -395,6 +460,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
      
       # Show the remove button
       $('#xroom_store_remove').show()
+      
+      
+      ###
+      Highlight Image
+      ###
+      Mywebroom.Helpers.highLight(itemId)
+      
     else
       # Show the Save, Cancel, Remove view
       $("#xroom_store_menu_save_cancel_remove").hide()
@@ -409,33 +481,46 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
      
       # Hide the remove button
       $('#xroom_store_remove').hide()
+      
+      
      
    
    
-
-    # Fetch designs that correspond to items
-    itemsDesignsCollection = @getItemsDesignsCollection(itemId)
+    ###
+    FETCH CORRESPONDING DESIGNS - START
+    ###
+    designs = @getItemsDesignsCollection(itemId)
+    ###
+    FETCH CORRESPONDING DESIGNS - END
+    ###
     
-    # Splat to room
-    @appendHidden(itemsDesignsCollection)
     
-    # Center Item
+    
+    
+    ###
+    UPDATE VIEWS - START
+    ###
+    @appendHidden(designs)
+    ###
+    UPDATE VIEWS - END
+    ###
+    
+    
+    
+    
+    ###
+    CENTER ITEM - START
+    ###
     @setItemToCenter(@model)
+    ###
+    CENTER ITEM - END
+    ###
     
     
     
     
     ###
-    Highlight Image
-    ###
-    @highlight(@model)
-    
-    
-    
-    
-    
-    ###
-    FILTERS
+    FILTERS - START
     ###
     # Show all the dropdown filters
     @expandAll()
@@ -459,70 +544,9 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
         self.setStyles(myModel.get('items_designs_styles'))
         self.setColors(myModel.get('items_designs_colors'))
         self.setMakes(myModel.get('items_designs_makes'))
- 
- 
- 
- 
- 
- 
-  # TAKES: model
-  # --> either ITEM or DESIGN
-  
-  unHighlight: ->
-    
-    console.log("unHighlighting")
-    
-    $("[data-room-highlighted=true]").each( ->
-      $(this).attr("src", $(this).attr("data-room-design-src"))
-      $(this).attr("data-room-highlighted", false)
-    )
-  
-  highlight: (model) ->
-    
-    @unHighlight()
-       
-    console.log("highlighting", model)
-    
-    
     ###
-    TODO
+    FILTERS - END
     ###
-    
-    type = model.get("type")
-    
-    switch type
-      
-      when "ITEM"
-        
-        img = $("[data-room_item_id=" + model.get("id") + "]")
-        console.log("ITEM", img)
-      
-      when "DESIGN"
-        
-        img = $("[data-room_item_id=" + model.get("item_id") + "]")
-        console.log("DESIGN", img)
-        
-        
-        
-    
-    # highlight the image if it isn't hidden
-    if img.attr("data-room-hide") isnt "yes"
-      
-      original_src = img.attr("src")
-      new_src =      img.attr("data-hover-src")
-      
-      console.log("old src", original_src)
-      console.log("new src", new_src)
-      
-      img.attr("src", img.attr("data-hover-src"))
-  
-      # Change the highlighted property
-      img.attr("data-room-highlighted", true)
-    
-    
-    
- 
- 
  
  
   
@@ -541,7 +565,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       async  : false
       url    : itemsDesignsCollection.url item_id
       success: (response) ->
-        console.log("initial design fetch success", response)
+        #console.log("initial design fetch success", response)
     
     return itemsDesignsCollection
     
@@ -679,7 +703,6 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #--------------------------
   # append items designs views
   #--------------------------
-
   appendHidden:(itemsDesignsCollection) ->
 
     $("#tab_hidden > ul").remove()
@@ -729,7 +752,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     item_location_y = parseInt(itemModel.get('y'))
     
    
-    console.log('item location y', item_location_y)
+    #console.log('item location y', item_location_y)
     
     $('#xroom_items_0').attr('data-current_screen_position','0')
     $('#xroom_items_0').css({
@@ -737,8 +760,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       #'top' : 20
     })
     
-    console.log('room top', $('#xroom_items_0').css('top'))
-    console.log('room bottom', $('#xroom_items_0').css('bottom'))
+    #console.log('room top', $('#xroom_items_0').css('top'))
+    #console.log('room bottom', $('#xroom_items_0').css('bottom'))
     
     $('#xroom_items_1').attr('data-current_screen_position','1')
     $('#xroom_items_1').css({

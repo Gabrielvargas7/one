@@ -35,6 +35,6 @@ class Mywebroom.Views.SearchView extends Backbone.View
     #**** Render
     #*******************
   render: ->
-    console.log("Adding the SearchView with model:")
+    #console.log("Adding the SearchView with model:")
     $(@el).append(@template())
     this

@@ -6,7 +6,7 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
 
 
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
   template: JST['rooms/RoomScrollRightTemplate']
 
@@ -14,10 +14,9 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
   #**** Events
   #*******************
 
-  events:{
-    'mouseenter .room_scroll_right':'hoverRoomScrollRight'
-    'mouseleave .room_scroll_right':'hoverOffRoomScrollRight'
-
+  events: {
+    'mouseenter .room_scroll_right': 'hoverRoomScrollRight'
+    'mouseleave .room_scroll_right': 'hoverOffRoomScrollRight'
   }
 
   #*******************
@@ -29,7 +28,6 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
     #**** Render
     #*******************
   render: ->
-    console.log("storepage view: ")
     $(@el).append(@template())
     this
 
@@ -43,17 +41,17 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
   #--------------------------
   hoverRoomScrollRight: (event) ->
     event.preventDefault()
-    console.log("hover scroll right ")
-    @loop_interval = setInterval(this.moveToTheRight,1)
+    #console.log("hover scroll right ")
+    @loop_interval = setInterval(this.moveToTheRight, 1)
 
   #--------------------------
   # change normal image on hover
   #--------------------------
   hoverOffRoomScrollRight: (event) ->
     event.preventDefault()
-    console.log("hover Off")
+    #console.log("hover Off")
     window.clearInterval(@loop_interval)
-    console.log($(window).scrollLeft())
+    #console.log($(window).scrollLeft())
 
 
 

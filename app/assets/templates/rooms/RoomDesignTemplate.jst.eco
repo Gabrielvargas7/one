@@ -1,0 +1,24 @@
+<div class="room_design_container_<%=@design.item_id%>" style="">
+
+    <img class="room_design"
+        src="<%=@design.image_name.url%>"
+        
+        data-main-src-client="<%=@design.image_name.url%>"
+        data-main-src-server="<%=@design.image_name.url%>"
+        
+        data-hover-src-client="<%=@design.image_name_hover.url%>"
+        data-hover-src-server="<%=@design.image_name_hover.url%>"
+        
+        data-design-id-client="<%=@design.id%>"
+        data-design-id-server="<%=@design.id%>"
+        
+        data-design-has-changed=false
+      
+        data-room-hide="<%=@design.hide%>"
+        data-room-highlighted=false
+          
+        data-design-item-id="<%=@design.item_id%>"
+        data-design-location-id="<%=@design.location_id%>"
+    >
+
+</div>
