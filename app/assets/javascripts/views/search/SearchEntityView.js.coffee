@@ -155,4 +155,13 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   openStoreEditor:->
     console.log("david code here")
 
+    # (1) Show Store
+    Mywebroom.Helpers.showStore()
 
+
+    # (2) Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show')
+    
+    
+    # (3) Use model to populate view
+    Mywebroom.State.get("storeMenuView").appendOne(@model)
