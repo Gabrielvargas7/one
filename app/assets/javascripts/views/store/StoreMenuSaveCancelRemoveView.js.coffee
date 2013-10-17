@@ -18,9 +18,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
 
   events: {
-    'click #xroom_store_save'  :'clickSave'
-    'click #xroom_store_cancel':'clickCancel'
-    'click #xroom_store_remove':'clickRemove'
+    'click #xroom_store_save'  : 'clickSave'
+    'click #xroom_store_cancel': 'clickCancel'
+    'click #xroom_store_remove': 'clickRemove'
   }
   
 
@@ -33,7 +33,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     #**** Render
     #*******************
   render: ->
-    #console.log("store menu save page view: ")
     $(@el).append(@template())
     this
 
@@ -45,14 +44,11 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
   clickSave: (event) ->
     
+    console.log("save clicked")
+    
     event.preventDefault()
-    #console.log("click Store Save")
     
-    
-    
-    
-    
-    
+
 
     # Displays save message
     toastr.options = {
@@ -76,9 +72,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     # Tweak the Toastr message so it display where we want it to
     $('.toast-bottom-left').css({'bottom':'76%', 'left':'7%'})
   
-
-
-
 
 
 
@@ -110,7 +103,14 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     #console.log("click Store Cancel")
     bootbox.confirm("Are you sure you want to cancel all the changes you made in your room?", (result) ->
       if result
-        self.revert()
+        
+        # Change All DOM properties back to their original
+        Mywebroom.Helpers.cancelChanges()
+        
+        
+        # Turn hidden images grey
+        Mywebroom.Helpers.greyHidden()
+        
         
         # Hide the Save, Cancel, Remove View
         $('#xroom_store_menu_save_cancel_remove').hide()
@@ -129,8 +129,16 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       if result
         self.removeObject()
         
+        
+        ###
+        GREY HIDDE
+        ###
+        Mywebroom.Helpers.greyHidden()
+        
+        
         # Hide the Save, Cancel, Remove View
         $('#xroom_store_menu_save_cancel_remove').hide()
+        
     )
     
     
@@ -142,115 +150,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
   
   
-  
-  revert: ->
-    # Revert designs
-    # Capture all the changed elements
-    $('[data-design-has-changed=true]')
-    
-    # And iterate over them
-    .each( ->
-      # Capture the old id
-      id = $(this).attr("data-design-id-client")
-      
-      # Capture the old src
-      src = $(this).attr("data-main-src-server")
-      
-      # Capture the old hover src
-      hoverSrc = $(this).attr("data-hover-src-server")
-      
-  
-      $(this)
-      # Replace the changed id
-      .attr("data-design-id-server", id)
-      
-      # Replace the changed source
-      .attr("src", src)
-      
-      # Replace the changed hover src
-      .attr("data-hover-src-client", hoverSrc)
-      
-      # And change the status back to current
-      .attr("data-design-has-changed", false)
-      
-      
-      
-      # Re-Setup Hovering
-      self = this
-      $(this).hover (->  $(self).attr("src", hoverSrc)), -> $(self).attr("src", src)
-      
-      
-      
-      
-      
-      # And if the image is hidden, change the src back as well
-      if $(this).attr("data-room-hide") is "yes"
-      
-      
-        #console.log("******* attr is hidden ********")
-      
-      
-        # Revert hovering
-        $(this).off("mouseenter mouseleave")
-      
-      
-        # Make it grey
-        grey =
-          1 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826528/bed_grey.png"             # Bed
-          2 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826555/brid_cage_grey.png"       # Bird Cage
-          3 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826571/book_stand_grey.png"      # Book Shelve (sic)
-          4 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826593/chair_grey.png"           # Chair
-          5 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826708/newspaper_grey.png"       # Newspaper
-          6 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826862/world_map_grey.png"       # World Map
-          7 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826837/tv_stand_grey.png"        # TV Stand
-          8 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826663/file_box_grey.png"        # File Box
-          9 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826799/shopping_bag_grey.png"    # Shopping Bag
-          10: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826815/social_painting_grey.png" # Social Painting
-          11: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826648/encylco_shelf_grey.png"   # Encyclo Shelf
-          12: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826687/music_box_grey.png"       # Music Box
-          13: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826845/tv_grey.png"              # TV
-          14: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826633/desk_grey.png"            # Desk
-          15: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826721/night_stand_grey.png"     # Night Stand
-          16: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826732/notebook_grey.png"        # Notebook
-          17: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826603/computer_grey.png"        # Computer
-          18: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826751/phone_grey.png"           # Phone
-          19: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826675/lamp_grey.png"            # Lamp
-          20: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826768/pinboard_grey.png"        # Pinboard
-          21: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826784/portrait_grey.png"        # Portrait
-          22: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826826/sports_grey.png"          # Sports
-          23: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826616/curtain_grey.png"         # Curtain
-          24: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826583/box_grey.png"             # Box
-          25: "//upload.wikimedia.org/wikipedia/commons/thumb/1/18/Grey_Square.svg/150px-Grey_Square.svg.png"                     # Games -- FIXME -- not correct image
-    
-    
-        # And now we need replace src with above
-        $('[data-room-hide=yes]').each ->
-          $(this).attr("src", grey[$(this).attr("data-design-item-id")])
-      
-      
-      
-    )
-      
-      
-    # Revert the theme
-    # Capture all the changed themes
-    $('[data-room_theme=' + "new" + ']')
-    
-    # And iterate over them
-    .each( ->
-      # Capture the old src
-      src = $(this).attr("data-room-theme-src")
-      
-      $(this)
-      # Replace the changed source
-      .attr("src", src)
-      
-      
-      # And change the status back to current
-      .attr("data-room_theme", "current")
-    )
-    
-    
+
     
     
     
@@ -258,6 +158,8 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   
   
   removeObject: ->
+    
+    console.log("***** Beginning Object Removal *****")
     
     userId = Mywebroom.State.get("signInUser").get("id")
     
@@ -270,7 +172,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       wait: true
     ,
       success: (model, response) ->
-        #console.log("REMOVE OBJECT SUCCESS\n", response)
+        console.log("REMOVE OBJECT SUCCESS\n", response)
         
       error: (model, response) ->
         console.log("REMOVE OBJECT FAIL\n", response)
@@ -282,50 +184,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     ###
     # Change the properties of the design in the DOM
     Mywebroom.State.get("$activeDesign").attr("data-room-hide", "yes")
-    
-    # Change the hover property
-    Mywebroom.State.get("$activeDesign").off("mouseenter mouseleave")
-    
-    
-      
-        
-     
-  
-    # Turn the item grey
-    grey = 
-      1 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826528/bed_grey.png"             # Bed
-      2 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826555/brid_cage_grey.png"       # Bird Cage
-      3 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826571/book_stand_grey.png"      # Book Shelve (sic)
-      4 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826593/chair_grey.png"           # Chair
-      5 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826708/newspaper_grey.png"       # Newspaper
-      6 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826862/world_map_grey.png"       # World Map
-      7 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826837/tv_stand_grey.png"        # TV Stand
-      8 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826663/file_box_grey.png"        # File Box
-      9 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826799/shopping_bag_grey.png"    # Shopping Bag
-      10: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826815/social_painting_grey.png" # Social Painting
-      11: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826648/encylco_shelf_grey.png"   # Encyclo Shelf
-      12: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826687/music_box_grey.png"       # Music Box
-      13: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826845/tv_grey.png"              # TV
-      14: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826633/desk_grey.png"            # Desk
-      15: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826721/night_stand_grey.png"     # Night Stand
-      16: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826732/notebook_grey.png"        # Notebook
-      17: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826603/computer_grey.png"        # Computer
-      18: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826751/phone_grey.png"           # Phone
-      19: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826675/lamp_grey.png"            # Lamp
-      20: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826768/pinboard_grey.png"        # Pinboard
-      21: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826784/portrait_grey.png"        # Portrait
-      22: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826826/sports_grey.png"          # Sports
-      23: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826616/curtain_grey.png"         # Curtain
-      24: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826583/box_grey.png"             # Box
-      25: "//upload.wikimedia.org/wikipedia/commons/thumb/1/18/Grey_Square.svg/150px-Grey_Square.svg.png"                     # Games -- FIXME -- not correct image
-    
-    
-    # And now we need replace src with above
-    $('[data-room-hide=yes]').each ->
-      $(this).attr("src", grey[$(this).data("room_item_id")])
-    
-    
-    
     
     
     
@@ -339,34 +197,64 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
   saveNewTheme: ->
     
+    console.log("***** Beginning Save of New Theme *****")
+    
+    
     # Check to see if the theme is new
-    if $('.current_background').attr("data-room_theme") is "new"
+    if $(".current_background").attr("data-theme-has-changed") is true
       
-      # set the data-theme to current
-      $('.current_background').attr("data-room_theme",'current')
+      ###
+      USER ID
+      ###
+      user_id = Mywebroom.State.get("signInUser").get("id")
+      
+      
+      ###
+      NEW THEME ID
+      ###
+      new_theme_id = $(".current_background").attr("data-theme-id-client")
+      
+      
+      ###
+      SECTION ID
+      ###
+      section_id = $(".current_background").attr("data-section-id")
+      
+      
+      
+      
+      
+      
+      
+      # UPDATE PROPERTIES IN DOM
+      $(".current_background").attr("data-theme-src-server", $(".current_background").attr("data-theme-src-client"))
+      $(".current_background").attr("data-theme-id-server",  $(".current_background").attr("data-theme-id-client"))
+      $(".current_background").attr("data-theme-has-changed", false)
 
-      themeId     = $('.current_background').attr("data-room_theme_id")
-      sectionId   = $('.current_background').attr("data-room_section_id")
-      userId      = Mywebroom.State.get("signInUser").get("id")
 
-      updateTheme = new Mywebroom.Models.UpdateUserThemeByUserIdAndSectionIdModel({new_theme_id: themeId, _id: userId})
-      updateTheme.section_id = sectionId
-      updateTheme.user_id =    userId
+
+
+
+
+      # Persist new theme to server
+      updateTheme = new Mywebroom.Models.UpdateUserThemeByUserIdAndSectionIdModel({new_theme_id: new_theme_id, _id: user_id})
+      updateTheme.section_id = section_id
+      updateTheme.user_id =    user_id
       updateTheme.save
         wait: true
       ,
         success: (model, response) ->
-          #console.log("THEME SAVE SUCCESS\n", response)
+          console.log("THEME SAVE SUCCESS\n", response)
           
         error: (model, response) ->
-          #console.log("THEME SAVE FAIL\n", response)
+          console.log("THEME SAVE FAIL\n", response)
       
         
 
 
   saveNewItems: ->
     
-    #console.log("***** Beginning Item Save *****")
+    console.log("***** Beginning Save of New Designs *****")
   
   
   
@@ -378,7 +266,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     ###
     Number of new things
     ###
-    #console.log("I see ", $("[data-design-has-changed=true]").size(), " new designs!")
+    console.log("I see ", $("[data-design-has-changed=true]").size(), " new designs!")
     
     
   
@@ -388,31 +276,51 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     ###
     $("#xroom_items_0 [data-design-has-changed=true]").each( ->
       
-      self = this
-      
-            
-      ###
-      Create some references
-      ###
-      oldId      = $(this).attr("data-design-id-client")
-      newId      = $(this).attr("data-design-id-server")
-      locationId = $(this).attr("data-design-location-id")
-      oldHide    = $(this).attr("data-room-hide")
-      newSrc     = $(this).attr("src")
-      newHoverSrc = $(this).attr("data-hover-src-server")
-      
-      
+      user_id = Mywebroom.State.get("roomUser").get("id")
       
       
       ###
-      Change the properties of this design (and its sibling design) in the DOM
+      ITEM ID
       ###
-      $("[data-design-id-client=" + oldId + "]")
-      .attr("data-design-has-changed", false)
-      .attr("data-design-id-client", newId)
-      .attr("data-room-hide", "no")
-      .attr("data-main-src-server", newSrc)
-      .attr("data-hover-src-client", newHoverSrc)
+      item_id = $(this).attr("data-design-item-id")
+      
+      
+      ###
+      LOCATION ID
+      ###
+      location_id = $(this).attr("data-location-id")
+      
+      
+      ###
+      NEW DESIGN ID
+      ###
+      new_design_id = $(this).attr("data-design-id-client")
+      
+      
+      ###
+      CAPTURE OLD VARIABLES
+      ###
+      old_src_main =  $(this).attr("data-main-src-server")
+      old_src_hover = $(this).attr("data-hover-src-server")
+      old_design_id = $(this).attr("data-design-id-server")
+      old_hide =      $(this).attr("data-room-hide")
+    
+      
+      ###
+      UPDATE DOM PROPERTIES
+      ###
+      $("[data-design-item-id=" + item_id + "]").each( -> 
+        $(this)
+        .attr("data-main-src-server",  $(this).attr("data-main-src-client"))
+        .attr("data-hover-src-server", $(this).attr("data-hover-src-client"))
+        .attr("data-design-id-server", $(this).attr("data-design-id-client"))
+        .attr("data-room-hide", "no")
+        .attr("data-design-has-changed", false)
+      )
+      
+      
+      
+      
       
       
       
@@ -421,28 +329,22 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       ###
       If the object had been hidden, toggle it's hide property
       ###
-      if oldHide is "yes"
+      if old_hide is "yes"
       
-        ###
-        First, in the DOM
-        ###
-        $(self).show()
-
-        ###
-        Then, to the server
-        ###
-        hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: userId})
-        hide.user_id        = userId
-        hide.item_design_id = oldId
-        hide.location_id    = locationId
+        
+        # Change Property in Server
+        hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: user_id})
+        hide.user_id        = user_id
+        hide.item_design_id = old_design_id
+        hide.location_id    = location_id
         hide.save
           wait: true
         ,
           success: (model, response) ->
-            #console.log("TOGGLE DESIGN HIDE SUCCESS\n", model)
+            console.log("TOGGLE DESIGN HIDE SUCCESS\n", model)
           
           error: (model, response) ->
-            #console.log("TOGGLE DESIGN HIDE FAIL\n", model)
+            console.log("TOGGLE DESIGN HIDE FAIL\n", model)
       
       
       
@@ -453,25 +355,25 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
           
       ###
-      Persist the properties to the server
+      Persist the new design properties to the server
       ###
       model = new Mywebroom.Models.UpdateUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel(
         {
-          new_items_design_id: newId
-          _id                : userId
+          new_items_design_id: new_design_id
+          _id                : user_id
         }
       )
     
-      model.location_id    = locationId
-      model.item_design_id = oldId
-      model.user_id        = userId
+      model.location_id    = location_id
+      model.item_design_id = old_design_id
+      model.user_id        = user_id
       model.save
         wait: true
       ,
         success: (model, response) ->
-          #console.log("UPDATE DESIGN ID SUCCESS\n", response)
+          console.log("UPDATE DESIGN ID SUCCESS\n", response)
          
   
         error: (model, response) ->
-          #console.log("UPDATE DESIGN ID FAIL\n", response)
+          console.log("UPDATE DESIGN ID FAIL\n", response)
     )

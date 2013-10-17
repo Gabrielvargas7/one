@@ -19,8 +19,6 @@ class Mywebroom.Views.RoomDesignView  extends Backbone.View
   #*******************
   events:
     'click img.room_design':      'clickItem'
-    'mouseenter img.room_design': 'hoverItem'
-    'mouseleave img.room_design': 'hoverOffItem'
 
   #*******************
   #**** Initialize
@@ -34,7 +32,7 @@ class Mywebroom.Views.RoomDesignView  extends Backbone.View
   render: ->
 
     $(@el).append(@template(design: @design))
-    @setHoverOffOnImages()
+    
 
     y = @design.y.toString() + 'px'
     x = @design.x.toString() + 'px'
@@ -58,24 +56,7 @@ class Mywebroom.Views.RoomDesignView  extends Backbone.View
   #**** Funtions
   #*******************
 
-  #--------------------------
-  # set hover on off images by jquery
-  #--------------------------
-  setHoverOffOnImages: ->
-
-    if @design.clickable is "yes"
-      itemId         = @design.item_id
-      imageNameHover = @design.image_name_hover.url
-      imageName      = @design.image_name.url
-      
-      $el = $('[data-design-item-id=' + itemId + ']')
-      
-      # Turn on conditional hovering unless the designs are hidden
-      unless $el.data("roomHide") is "yes"
-        $el.hover (->  $(this).attr("src", imageNameHover)), -> $(this).attr("src", imageName)
-
-
-
+  
 
 
   #--------------------------
@@ -99,21 +80,7 @@ class Mywebroom.Views.RoomDesignView  extends Backbone.View
 
 
 
-  #--------------------------
-  # change hover image on mouse over
-  #--------------------------
-  hoverItem: (event) ->
-    event.preventDefault()
-
-
-
-  #--------------------------
-  # change normal image on hover
-  #--------------------------
-  hoverOffItem: (event) ->
-    event.preventDefault()
-
-
+ 
   #--------------------------
   # hide bookmarks when is not this item
   #--------------------------

@@ -3,7 +3,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #*******************
   #**** Template *****
   #*******************
-  template: JST["rooms/RoomTemplate"]
+  template: JST["rooms/RoomThemeTemplate"]
 
 
 
@@ -249,7 +249,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #--------------------------
   setRoom: (xroom_item_num) ->
     
-    $(xroom_item_num).append(@template(user_theme: Mywebroom.State.get("roomTheme")))
+    $(xroom_item_num).append(@template(theme: Mywebroom.State.get("roomTheme")))
     
     
     _.each(Mywebroom.State.get("roomDesigns"), (design) ->
@@ -259,6 +259,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       if Mywebroom.State.get("roomState") is "PUBLIC"
         view.undelegateEvents()
     )
+    
+    
+    Mywebroom.Helpers.hideStore()
+    
   
   
   
