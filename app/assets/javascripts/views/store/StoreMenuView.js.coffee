@@ -698,6 +698,53 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
   
+  
+  
+  
+  appendOne: (model) ->
+    
+    ###
+    We're getting a special form of design model
+    that doesn't fit with all the other designs
+    we fetch. So, we're going to use this model's
+    entityId and then do a fetch for this model
+    ###
+    
+    item_id = model.get("entityId")
+    
+    fetched = new Mywebroom.Models.DesignModel({id: item_id})
+    fetched.fetch
+      async: false
+      success: (model, response, options) ->
+        console.log("model fetch success", model, response, options)
+      error: (model, response, options) ->
+        console.log("model fetch fail", model, response, options)
+    
+    
+    
+    
+    # Clear What's In There
+    $("#tab_hidden > ul").remove()
+    
+   
+    # Append this to it
+    this.$('#tab_hidden').append("<ul id='row_item_designs_1'></ul>")
+
+   
+    # Create the view
+    view = new Mywebroom.Views.StorePreviewView(model: fetched)
+    
+    
+    # Append the element
+    $('#row_item_designs_1').append(view.el)
+    
+    
+    # Render the view
+    view.render()
+    
+    
+  
+  
   #*******************
   #**** Filter Helpers
   #*******************
