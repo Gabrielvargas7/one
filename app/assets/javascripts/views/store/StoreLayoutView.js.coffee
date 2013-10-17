@@ -43,9 +43,12 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
     
     
     # STORE MENU VIEW
-    storeMenuView = new Mywebroom.Views.StoreMenuView()
-    $('.store_main_box_right').html(storeMenuView.el)
-    storeMenuView.render()
+    view = new Mywebroom.Views.StoreMenuView()
+    $('.store_main_box_right').html(view.el)
+    view.render()
+    
+    # Store a reference
+    Mywebroom.State.set("storeMenuView", view)
     
     
     
