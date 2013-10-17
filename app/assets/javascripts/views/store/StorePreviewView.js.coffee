@@ -47,7 +47,6 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   render: ->
     
     obj =  @model.clone()
-    console.log(obj)
     
     # We set image_name to the matching preview url (when necessary)
     switch @type
@@ -123,7 +122,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     self = this
     
     
-    console.log("\n\n\nENTIRE ROOMS clicked\n\n\n")
+    #console.log("\n\n\nENTIRE ROOMS clicked\n\n\n")
     
     
     
@@ -256,7 +255,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     
     
-    console.log("click design")
+    #console.log("click design")
      
     e.preventDefault()
     
@@ -276,7 +275,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
    
   
-    console.log("click design", new_design_id)
+    #console.log("click design", new_design_id)
     
     
     
@@ -403,7 +402,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
    
    
-    console.log("click item")
+    #console.log("click item")
    
    
     e.preventDefault()
@@ -742,7 +741,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #-------------------------------
   setItemToCenter:(itemModel) ->
     
-    console.log("Center", itemModel)
+    #console.log("Center", itemModel)
     
    
     ###

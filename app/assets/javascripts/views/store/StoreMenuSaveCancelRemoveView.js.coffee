@@ -44,7 +44,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
   clickSave: (event) ->
     
-    console.log("save clicked")
+    #console.log("save clicked")
     
     event.preventDefault()
     
@@ -174,7 +174,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       wait: true
     ,
       success: (model, response) ->
-        console.log("REMOVE OBJECT SUCCESS\n", response)
+        #console.log("REMOVE OBJECT SUCCESS\n", response)
         
       error: (model, response) ->
         console.log("REMOVE OBJECT FAIL\n", response)
@@ -201,7 +201,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   #*******************
   saveNewTheme: ->
     
-    console.log("***** Beginning Save of New Theme *****")
+    #console.log("***** Beginning Save of New Theme *****")
     
      
     # Check to see if the theme is new
@@ -245,7 +245,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         wait: true
       ,
         success: (model, response) ->
-          console.log("THEME SAVE SUCCESS\n", response)
+          #console.log("THEME SAVE SUCCESS\n", response)
           
         error: (model, response) ->
           console.log("THEME SAVE FAIL\n", response)
@@ -255,7 +255,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
   saveNewItems: ->
     
-    console.log("***** Beginning Save of New Designs *****")
+    #console.log("***** Beginning Save of New Designs *****")
   
   
   
@@ -267,7 +267,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     ###
     Number of new things
     ###
-    console.log("I see ", $("[data-design-has-changed=true]").size(), " new designs!")
+    #console.log("I see ", $("[data-design-has-changed=true]").size(), " new designs!")
     
     
   
@@ -341,7 +341,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
           wait: true
         ,
           success: (model, response) ->
-            console.log("TOGGLE DESIGN HIDE SUCCESS\n", model)
+            #console.log("TOGGLE DESIGN HIDE SUCCESS\n", model)
           
           error: (model, response) ->
             console.log("TOGGLE DESIGN HIDE FAIL\n", model)
@@ -371,7 +371,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         wait: true
       ,
         success: (model, response) ->
-          console.log("UPDATE DESIGN ID SUCCESS\n", response)
+          #console.log("UPDATE DESIGN ID SUCCESS\n", response)
          
   
         error: (model, response) ->

@@ -126,7 +126,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
    
   manualNavSwitch: (e) ->
     
-    console.log("Manual tab switch")
+    #console.log("Manual tab switch")
     
     ###
     SWITCH THE SEARCH DROPDOWN TO ALL - START
@@ -143,7 +143,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
   filterSearch: (e) ->
 
-    console.log("FILTER")
+    #console.log("FILTER")
 
     # Switch to the hidden tab
     $('#storeTabs a[href="#tab_hidden"]').tab('show')
@@ -165,7 +165,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     switch category
       when "ALL"
-        console.log("ALL")
+        #console.log("ALL")
         
         ###
         Fetch designs collection
@@ -175,7 +175,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async  : false
           url    : designs.url(10, 0, keyword)
           success: (response) ->
-            console.log("searched designs success", response)
+            #console.log("searched designs success", response)
           error: ->
             console.log("error")
             
@@ -360,8 +360,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         Looks like it's a specific design category (number)
         ###
-        console.log("YOU'RE SEARCHING ON ITEM DESIGN CATEGORY ", category)
-        console.log(category)
+        #console.log("YOU'RE SEARCHING ON ITEM DESIGN CATEGORY ", category)
         ###
         Fetch collection
         ###
@@ -384,7 +383,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     if e.keyCode is 13
       
-      console.log("SEARCH")
+      #console.log("SEARCH")
       
       # Switch to the hidden tab
       $('#storeTabs a[href="#tab_hidden"]').tab('show')
@@ -436,7 +435,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   searchDropdownChange: (e) ->
     
-    console.log("SEARCH DROPDOWN CHANGE")
+    #console.log("SEARCH DROPDOWN CHANGE")
     
     # SEARCH DROPDOWN
     # Remove active class
@@ -735,7 +734,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #************
   clickObjects: ->
     
-    console.log("OBJECTS clicked")
+    #console.log("OBJECTS clicked")
     
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
@@ -753,7 +752,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
   clickThemes: ->
     
-    console.log("THEMES clicked")
+    #console.log("THEMES clicked")
      
     ###
     Set our store helper
