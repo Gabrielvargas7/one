@@ -406,7 +406,7 @@ $(document).ready ->
   shown_TO_collapsed
   ###
   Mywebroom.Helpers.collapseStore = ->
-    #console.log("collapse store")
+    console.log("collapse store")
     
     # (1) Store visibility
     $('#xroom_storepage').show()
@@ -468,7 +468,7 @@ $(document).ready ->
   collapsed_TO_shown
   ###
   Mywebroom.Helpers.expandStore = ->
-    #console.log("expand store") 
+    console.log("expand store") 
     
     # (1) Store visibility
     $('#xroom_storepage').show()
@@ -487,7 +487,7 @@ $(document).ready ->
     
     
     # (2.3) Save, Cancel, Remove view visibility
-    if flag is "true" # <-- NOTE: string here
+    if flag is true
       $('#xroom_store_menu_save_cancel_remove').show()
     
     
@@ -508,7 +508,7 @@ $(document).ready ->
     
     
     # (7) Hidden item visibility: grey or hidden
-    Mywebroom.Helpers.greyHidden()
+    # n/a
     
     
     # (8) Highlighted Images

@@ -94,6 +94,8 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
     
     state = Mywebroom.State.get("storeState")
     
+    console.log("store state", state)
+    
     switch state
     
       when "shown"
