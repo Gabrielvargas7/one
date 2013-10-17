@@ -644,6 +644,8 @@ class SearchesController < ApplicationController
                             items_designs.special_name,
                             items_designs.like,
                             items_designs.image_name,
+                            items_designs.image_name_hover,
+                            items_designs.image_name_selection,
                             items.name as items_name').
             where('items_designs.id in (?)',@items_designs_array).
             joins(:item).
