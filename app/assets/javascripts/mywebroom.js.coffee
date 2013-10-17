@@ -80,7 +80,7 @@ $(document).ready ->
   
   Mywebroom.Helpers.greyHidden = ->
     
-    console.log("GREY HIDDEN")
+    #console.log("GREY HIDDEN")
     
     # Show the hidden designs
     $("[data-room-hide=yes]").show()
@@ -123,7 +123,7 @@ $(document).ready ->
   
   Mywebroom.Helpers.hideHidden = ->
     
-    console.log("HIDE HIDDEN")
+    #console.log("HIDE HIDDEN")
     
     # Show the hidden designs
     $("[data-room-hide=yes]").hide()
@@ -132,7 +132,7 @@ $(document).ready ->
   
   Mywebroom.Helpers.unHighlight = ->
   
-    console.log("UNHIGHLIGHT")
+    #console.log("UNHIGHLIGHT")
     
     # Revert the highlighting
     $('[data-room-highlighted=true]').each( ->
@@ -158,7 +158,7 @@ $(document).ready ->
     
   Mywebroom.Helpers.turnOnHover = ->
     
-    console.log("TURN ON HOVER")
+    #console.log("TURN ON HOVER")
     
     $('.room_design').each( -> 
       $(this)
@@ -169,7 +169,7 @@ $(document).ready ->
     
   Mywebroom.Helpers.turnOffHover = ->
     
-    console.log("TURN OFF HOVER")
+    #console.log("TURN OFF HOVER")
     
     $('.room_design').each( ->
       $(this).off("mouseenter mouseleave")
@@ -179,7 +179,7 @@ $(document).ready ->
   
   Mywebroom.Helpers.hideScrollers = ->
     
-    console.log("HIDE SCROLLERS")
+    #console.log("HIDE SCROLLERS")
     
     $("#xroom_scroll_left").hide()
     $("xroom_scroll_right").hide()
@@ -187,7 +187,7 @@ $(document).ready ->
   
   Mywebroom.Helpers.showScrollers = ->
 
-    console.log("SHOW SCROLLERS")
+    #console.log("SHOW SCROLLERS")
     
     $("#xroom_scroll_left").show()
     $("xroom_scroll_right").show()
@@ -195,7 +195,7 @@ $(document).ready ->
     
   Mywebroom.Helpers.shrinkStore = ->
           
-    console.log("SHRINK STORE")
+    #console.log("SHRINK STORE")
     
     $('.store_main_box_right').hide() # Hide the main box
     $('#store_main_box').css('width', '40px')
@@ -206,7 +206,7 @@ $(document).ready ->
     
   Mywebroom.Helpers.unShrinkStore = ->
     
-    console.log("UNSHRINK STORE")
+    #console.log("UNSHRINK STORE")
     
     $('.store_main_box_right').show() # Un-hide the main box
     
@@ -219,7 +219,7 @@ $(document).ready ->
     
   Mywebroom.Helpers.setSaveBarVisibility = ->
     
-    console.log("SET SAVEBAR VISIBILITY")
+    #console.log("SET SAVEBAR VISIBILITY")
     
     visible = $('#xroom_store_menu_save_cancel_remove').is(":visible")
     Mywebroom.State.set("saveBarWasVisible", visible)
@@ -229,7 +229,7 @@ $(document).ready ->
   
   Mywebroom.Helpers.cancelChanges = ->
     
-    console.log("CANCEL CHANGES")
+    #console.log("CANCEL CHANGES")
     
     # CANCEL DESIGNS
     $("[data-design-has-changed=true]").each( ->
@@ -279,7 +279,7 @@ $(document).ready ->
   hidden_to_shown
   ###
   Mywebroom.Helpers.showStore = ->
-    console.log("show store")
+    #console.log("show store")
     
     # (1) Store visibility
     $('#xroom_storepage').show()
@@ -345,7 +345,7 @@ $(document).ready ->
   init_TO_hidden, shown_TO_hidden, collapsed_TO_hidden
   ###
   Mywebroom.Helpers.hideStore = ->
-    console.log("show store")
+    #console.log("show store")
     
     # (1) Store visibility
     $('#xroom_storepage').hide()
@@ -406,7 +406,7 @@ $(document).ready ->
   shown_TO_collapsed
   ###
   Mywebroom.Helpers.collapseStore = ->
-    console.log("collapse store")
+    #console.log("collapse store")
     
     # (1) Store visibility
     $('#xroom_storepage').show()
@@ -468,7 +468,7 @@ $(document).ready ->
   collapsed_TO_shown
   ###
   Mywebroom.Helpers.expandStore = ->
-    console.log("expand store") 
+    #console.log("expand store") 
     
     # (1) Store visibility
     $('#xroom_storepage').show()
