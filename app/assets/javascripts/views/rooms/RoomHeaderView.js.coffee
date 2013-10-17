@@ -252,15 +252,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   toggleStore: (event) ->
     
-    storeState = Mywebroom.State.get("storeState")
+    state = Mywebroom.State.get("storeState")
     
-    switch storeState
+    switch state 
     
       when "hidden"
         Mywebroom.Helpers.showStore()
    
       when "shown"
-        Mywebroom.Helpers.hideStore()
+        console.log("do nothing")
         
       when "collapsed"
         Mywebroom.Helpers.expandStore()
