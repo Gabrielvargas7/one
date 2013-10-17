@@ -8,4 +8,3 @@ class Mywebroom.Collections.IndexItemsDesignsByItemIdCollection extends Backbone
       obj.type = "DESIGN"
       return obj
     )
-
