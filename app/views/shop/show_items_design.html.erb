@@ -1,0 +1,39 @@
+<div id="shop_container">
+  <div id="shop_left">
+    <p>
+      <%= image_tag @items_design.image_name_selection.url.to_s , width: 300,height:300 %>
+    </p>
+  </div>
+  <div id="shop_right">
+    <h4>
+      <%= @items_design.name %>
+    </h4>
+    <p>
+      <%= @items_design.description %>
+    </p>
+  </div>
+</div>
+
+<div id="shop_container">
+  <div id="shop_content_items">
+
+    <div id="shop_table">
+      <table>
+        <% if @item_length > 0 %>
+            <% @items_designs_rand.in_groups_of(@item_length,false).each do |items_design_groups| %>
+                <tr>
+                  <% items_design_groups.each do |items_design| %>
+                      <td >
+                        <%= link_to image_tag(items_design.image_name_selection.url().to_s,:width => 100, :height => 100),
+                                    shop_show_items_design_path(items_design.id), :method => :get %>
+                        </br><%= items_design.name %>
+                      </td>
+
+                  <% end %>
+                </tr>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

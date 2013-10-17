@@ -1,5 +1,45 @@
 <h1>New bookmarks_category</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+
+    <%= form_for(@bookmarks_category) do |f| %>
+        <% if @bookmarks_category.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@bookmarks_category.errors.count, "error") %> prohibited this bookmarks_category from being saved:</h2>
+
+              <ul>
+                <% @bookmarks_category.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="field">
+          <% unless @bookmarks_category_show_id.nil? %><br />
+              <label>id </label>
+              <%= @bookmarks_category_show_id.id %>
+          <% end %>
+        </div>
+
+
+        <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name %>
+        </div>
+            <div class="field">
+              <%= f.label :item_id %><br />
+              <%= f.collection_select :item_id, Item.all, :id, :id_and_item , :prompt => true %>
+            </div>
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+        </div>
+        </div>
+
+    <% end %>
+
 
 <%= link_to 'Back', bookmarks_categories_path %>

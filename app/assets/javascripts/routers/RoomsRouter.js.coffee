@@ -3,6 +3,7 @@ class Mywebroom.Routers.RoomsRouter extends Backbone.Router
   routes:
     '': 'routesRoom'
     # is dont find the route just the default
+
     '*default':'routesRoom'
 
 

@@ -120,6 +120,33 @@ module ApplicationHelper
   end
 
 
+  #***********************************
+  # user  clean name for the url get_clean_name(name)
+  #***********************************
+
+  # create the username for the url
+  def get_clean_name(name)
+
+
+    #my_username = new_username
+    #remove all non- alphanumeric character (expect dashes '-')
+    my_name = name.gsub(/[^0-9a-z -]/i, '')
+
+    #remplace dashes() for empty space because if the user add dash mean that it want separate the username
+    my_name = my_name.gsub(/[-]/i, ' ')
+
+    #remplace the empty space for one dash by word
+    my_name.downcase!
+    my_name.strip!
+    name_split = my_name.split(' ').join('-')
+
+    unique_name = name_split
+
+    unique_name
+
+  end
+
+
 
 
 
