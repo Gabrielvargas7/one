@@ -81,7 +81,7 @@
         i) new copy of database will be downloaded
         
 3) Drop existing database and create a new one
-    a) From project root type into console:  rake db:create
+    a) From project root type into console:  rake db:drop
     b) Then:  rake db:create
     
 4) Restore database
@@ -90,5 +90,6 @@
     c) Navigate to room_development
     d) Right click and choose 'restore'
     e) Choose file that was downloaded
+    f) Click restore
 
 *** You're Done! ***
