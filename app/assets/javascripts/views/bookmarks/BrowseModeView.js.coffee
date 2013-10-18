@@ -34,10 +34,11 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 		@activeSitesCollection
 	getItemNameOfMyBookmark:->
 		#Compare modelToBrowse ID to state room designs items id
-		modelId = @getModelToBrowse().get('item_id')
-		for item in Mywebroom.State.get('roomDesigns')
-			if modelId is item.item_id
-				return item.items_name
+		Mywebroom.Helpers.getItemNameOfItemId(@getModelToBrowse().get('item_id'))
+		# modelId = @getModelToBrowse().get('item_id')
+		# for item in Mywebroom.State.get('roomDesigns')
+		# 	if modelId is item.item_id
+		# 		return item.items_name
 	#render- The nature of this view is that render is called once. 
 	#We frequently rerender the sidebar view. 
 	render:->
