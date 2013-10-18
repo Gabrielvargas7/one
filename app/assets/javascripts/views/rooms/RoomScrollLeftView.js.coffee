@@ -43,6 +43,7 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
   #--------------------------
   hoverRoomScrollLeft: (event) ->
     event.preventDefault()
+    event.stopPropagation()
     console.log("hover scroll left ")
     @loop_interval = setInterval(this.moveToTheLeft, 1)
 
@@ -52,6 +53,7 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
   #--------------------------
   hoverOffRoomScrollLeft: (event) ->
     event.preventDefault()
+    event.stopPropagation()
     console.log("hover Off")
     window.clearInterval(@loop_interval)
     console.log($(window).scrollLeft())
