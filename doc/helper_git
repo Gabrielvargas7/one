@@ -71,7 +71,7 @@
 
 1) Stop local instance of rails server
 
-2) Close PostgreSQL server
+2) Stop PostgreSQL server
     a) Open pgAdmin3
     b) Right click on server instance and click 'Disconect server'
     
@@ -86,10 +86,12 @@
     
 4) Restore database
     a) Go back to pgAdmin3
-    b) Sign onto server
-    c) Navigate to room_development
+    b) Sign into server
+    c) Navigate to database/rooms_development
     d) Right click and choose 'restore'
-    e) Choose file that was downloaded
+    e) Choose file that was downloaded and click open
+        i) may need to Enable: All Files (*) in order to choose file
     f) Click restore
+    g) Wait a few seconds for stuff to happen
 
 *** You're Done! ***
