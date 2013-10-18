@@ -526,7 +526,14 @@ $(document).ready ->
     # (11) Set Store State
     Mywebroom.State.set("storeState", "shown")
  
-  
+    ###
+  get Item Name of room object from the item's id. 
+  ###
+  Mywebroom.Helpers.getItemNameOfItemId =(modelId)->
+    #Compare modelToBrowse ID to state room designs items id
+    for item in Mywebroom.State.get('roomDesigns')
+      if modelId is item.item_id
+        return item.items_name
   
  
   # Create the Marionette App Object
