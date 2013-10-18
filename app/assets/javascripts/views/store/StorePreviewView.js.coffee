@@ -257,7 +257,6 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     #console.log("click design")
      
-    e.preventDefault()
     
     ###
     DESIGN TYPE
@@ -275,29 +274,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
    
   
-    #console.log("click design", new_design_id)
-    
-    
-    
-    
-    
-    
-    
     ###
-    CENTER - START
+    CENTER
     ###
-    items = Mywebroom.State.get("initialItems")
-    
-    
-    # Get item that matches this design's item_id
-    item = items.findWhere({"id": design_type})
-    
-    
-    # Do the centering
-    Mywebroom.Helpers.centerItem(item)
-    ###
-    CENTER - END
-    ###
+    Mywebroom.Helpers.centerItem(design_type)
     
     
     
@@ -483,7 +463,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     ###
-    UPDATE VIEWS - START
+    UPDATE VIEWS
     ###
     @appendHidden(designs)
     
@@ -492,9 +472,9 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     ###
-    CENTER ITEM - START
+    CENTER ITEM
     ###
-    Mywebroom.Helpers.centerItem(@model)
+    Mywebroom.Helpers.centerItem(itemId)
     
     
     
