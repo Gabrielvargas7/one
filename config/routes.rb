@@ -31,6 +31,11 @@ Mywebroom::Application.routes.draw do
   match '/shop/entire_room/:id/:name', to:
         'shop#show_entire_room', via: :get,as: :shop_show_entire_room
 
+  match '/shop/bookmarks', to:
+         'shop#index_bookmarks', via: :get,as: :shop_index_bookmarks
+
+  match '/shop/bookmark/:id/:name', to:
+      'shop#show_bookmark', via: :get,as: :shop_show_bookmark
 
 
   resources :users_profiles
