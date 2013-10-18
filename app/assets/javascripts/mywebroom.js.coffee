@@ -9,7 +9,8 @@ window.Mywebroom =
 
 
 $(document).ready ->
-  # Create the state model
+  
+  # Define the state model
   defaultStateModel = Backbone.Model.extend(
     defaults:
       roomState     : false  # Who's room are we viewing? PUBLIC, FRIEND, or SELF
@@ -57,7 +58,9 @@ $(document).ready ->
         default: 'http://mywebroom.com/'
 
     )
-  Mywebroom.State = new defaultStateModel
+  
+  # Create the state model
+  Mywebroom.State = new defaultStateModel()
   
   ###
   *At the present, this gets set when either the object this design
