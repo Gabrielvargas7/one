@@ -16,7 +16,7 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :clickable, :name ,:priority_order,:image_name
+  attr_accessible :clickable, :name ,:priority_order,:image_name,:image_name_gray
                   #:folder_name, :height, :name, :width, :x, :y, :z
 
   has_many :items_designs
@@ -29,6 +29,8 @@ class Item < ActiveRecord::Base
   VALID_REGEX = /^(?:[^\W_]|\s)*$/u
 
   mount_uploader :image_name, ItemsImageUploader
+  mount_uploader :image_name_gray, ItemsImageGrayUploader
+
 
   VALID_YES_NO_REGEX = /(yes)|(no)/
 

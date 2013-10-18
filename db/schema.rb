@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008210804) do
+ActiveRecord::Schema.define(:version => 20131018190808) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -124,11 +124,12 @@ ActiveRecord::Schema.define(:version => 20131008210804) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
-    t.string   "clickable",      :default => "yes"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.string   "clickable",       :default => "yes"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "image_name"
-    t.integer  "priority_order", :default => 0
+    t.integer  "priority_order",  :default => 0
+    t.string   "image_name_gray"
   end
 
   add_index "items", ["id"], :name => "index_items_on_id"
@@ -153,6 +154,7 @@ ActiveRecord::Schema.define(:version => 20131008210804) do
     t.integer  "like",                                               :default => 0
     t.decimal  "price",                :precision => 8, :scale => 2, :default => 0.0
     t.string   "product_url"
+    t.string   "image_name_logo"
   end
 
   add_index "items_designs", ["brand"], :name => "index_items_designs_on_brand"

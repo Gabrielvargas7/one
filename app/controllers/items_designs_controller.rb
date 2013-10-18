@@ -192,6 +192,7 @@ class ItemsDesignsController < ApplicationController
                             items_designs.special_name,
                             items_designs.like,
                             items_designs.image_name,
+                            items_designs.image_name_logo,
                             items_designs.image_name_hover,
                             items_designs.image_name_selection').
                     joins(:bundles_items_designs).

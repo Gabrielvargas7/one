@@ -25,6 +25,11 @@
   <%= image_tag @item.image_name.url.to_s %>
   <%= @item.image_name.to_s %>
 </p>
+<p>
+  <b>Image name:</b>
+  <%= image_tag @item.image_name_gray.url.to_s %>
+  <%= @item.image_name_gray.to_s %>
+</p>
 
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

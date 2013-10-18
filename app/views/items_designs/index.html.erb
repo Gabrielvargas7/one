@@ -12,6 +12,8 @@
     <th>Name</th>
     <th>Description</th>
     <th>Item_Design Image</th>
+    <th>Item_Design Image logo</th>
+
     <th>Item id</th>
     <th>Item Name</th>
     <th>Item Image</th>
@@ -38,6 +40,7 @@
     <td><%= items_design.name %></td>
     <td><%= items_design.description %></td>
     <td><%= image_tag items_design.image_name.url().to_s ,width: 100, height:100 %></td>
+    <td><%= image_tag items_design.image_name_logo.url().to_s ,width: 100, height:100 %></td>
 
 
     <%  if items_design.item.nil? %>
