@@ -146,6 +146,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   $('#profileHome_top').html ""
   $('#profileHome_bottom').css "height","550px"
  	$('#profileHome_bottom').html(@photosView.render().el)
+  if Mywebroom.State.get("roomState") != "SELF"
+    $('#profile_upload_photos_button').remove()
  
  #Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View 
  showProfileKeyRequests: ->
