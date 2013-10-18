@@ -716,7 +716,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     fetched.fetch
       async: false
       success: (model, response, options) ->
-        console.log("model fetch success", model, response, options)
+        #console.log("model fetch success", model, response, options)
       error: (model, response, options) ->
         console.log("model fetch fail", model, response, options)
     
