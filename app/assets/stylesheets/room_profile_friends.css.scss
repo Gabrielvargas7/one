@@ -14,3 +14,7 @@
 #myModal{
 	color:black;
 }
+/*Z-index to make the settings menu not trigger the click on the div its in*/
+.btn-group.pull-right.profile_friend_button{
+	z-index:2
+}
