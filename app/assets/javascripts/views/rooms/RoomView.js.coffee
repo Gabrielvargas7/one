@@ -253,7 +253,32 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     _.each(Mywebroom.State.get("roomDesigns"), (design) ->
+      
+      # (1) Create a proper backbone model out of the design data
       model = new Backbone.Model(design)
+      
+      
+      # (2) Extract the item_id
+      item_id = model.get("item_id")
+      
+      
+      # (3) Create a set of our item_id's
+      Mywebroom.Data.DesignIds[item_id] = true
+      
+      
+      # (4) Store a reference to our design models based on item_id
+      Mywebroom.Data.DesignModels[item_id] = model
+      
+      
+      # (5) Assocaiate names with item_id's (really only as a developer convenience)
+      name = model.get("items_name")
+      Mywebroom.Data.DesignNames[item_id] = name
+      
+      
+      
+      ###
+      CREATE DESIGN VIEWS
+      ###
       view = new Mywebroom.Views.RoomDesignView({model: model})
       $(xroom_item_num).append(view.el)
       view.render()
@@ -262,6 +287,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     )
     
     
+    # TRANSITION OUR STORE TO A HIDDEN STATE
     Mywebroom.Helpers.hideStore()
     
   

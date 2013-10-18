@@ -294,7 +294,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     # Do the centering
-    @setItemToCenter(item)
+    Mywebroom.Helpers.centerItem(item)
     ###
     CENTER - END
     ###
@@ -354,11 +354,6 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     
-    ###
-    UNUSED - START
-    ###
-    
-    
     # Find the design that was clicked and
     # create a reference to it's container element
     $activeDesign = $("[data-design-item-id=" + design_type + "]")
@@ -368,14 +363,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     Mywebroom.State.set("$activeDesign", $activeDesign)
     
           
-    # Is this a hidden object?
-    activeDesignIsHidden = $activeDesign.data().roomHide
-    Mywebroom.State.set("activeDesignIsHidden", activeDesignIsHidden)
-    
-    
-    ###
-    UNUSED - END
-    ###
+   
     
     
 
@@ -489,9 +477,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     FETCH CORRESPONDING DESIGNS - START
     ###
     designs = @getItemsDesignsCollection(itemId)
-    ###
-    FETCH CORRESPONDING DESIGNS - END
-    ###
+   
     
     
     
@@ -500,9 +486,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     UPDATE VIEWS - START
     ###
     @appendHidden(designs)
-    ###
-    UPDATE VIEWS - END
-    ###
+    
     
     
     
@@ -510,10 +494,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     CENTER ITEM - START
     ###
-    @setItemToCenter(@model)
-    ###
-    CENTER ITEM - END
-    ###
+    Mywebroom.Helpers.centerItem(@model)
     
     
     
@@ -736,48 +717,6 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #*******************
   #**** Funtions -
   #*******************
-  #-------------------------------
-  # Center the element to the room 
-  #-------------------------------
-  setItemToCenter:(itemModel) ->
-    
-    #console.log("Center", itemModel)
-    
-   
-    ###
-    BASED ON X and Y COORDINATES
-    ###
-    item_location_x = parseInt(itemModel.get('x'))
-    item_location_y = parseInt(itemModel.get('y'))
-    
-   
-    #console.log('item location y', item_location_y)
-    
-    $('#xroom_items_0').attr('data-current_screen_position','0')
-    $('#xroom_items_0').css({
-      'left': Math.floor(-1999 - item_location_x + 100)
-      #'top' : 20
-    })
-    
-    #console.log('room top', $('#xroom_items_0').css('top'))
-    #console.log('room bottom', $('#xroom_items_0').css('bottom'))
-    
-    $('#xroom_items_1').attr('data-current_screen_position','1')
-    $('#xroom_items_1').css({
-      'left': Math.floor(0 - item_location_x + 100)
-      #'top' : 45
-    })
-    
-    $('#xroom_items_2').attr('data-current_screen_position','2')
-    $('#xroom_items_2').css({
-      'left': Math.floor(1999 - item_location_x + 100)
-      #'top' : 70
-    })
-
-
-
-
-
   hoverOn: (e) ->
     
     e.preventDefault()
@@ -788,8 +727,3 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     e.preventDefault()
     $('#button_preview').remove()
-    
-
-  
-  
-  
