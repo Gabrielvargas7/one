@@ -4,12 +4,7 @@ This view represents a clickable design in the room
 class Mywebroom.Views.RoomDesignView  extends Backbone.View
 
   #*******************
-  #**** Tag  (no tag = default el "div")
-  #*******************
-
-
-  #*******************
-  #**** Templeate
+  #**** Template
   #*******************
   template: JST['rooms/RoomDesignTemplate']
 
@@ -17,29 +12,32 @@ class Mywebroom.Views.RoomDesignView  extends Backbone.View
   #*******************
   #**** Events
   #*******************
-  events:
-    'click img.room_design':      'clickItem'
+  events: {
+    'click img.room_design': 'clickItem'
+  }
+
 
   #*******************
   #**** Initialize
   #*******************
   initialize: ->
 
-    @design = @options.design
-    #*******************
-    #**** Render
-    #*******************
+    
+  #*******************
+  #**** Render
+  #*******************
   render: ->
-
-    $(@el).append(@template(design: @design))
     
+    this.$el.append(@template(design: @model.toJSON()))    
 
-    y = @design.y.toString() + 'px'
-    x = @design.x.toString() + 'px'
-    z = @design.z.toString()
-    
-    width = @design.width.toString() + 'px'
-    container = ".room_design_container_" + @design.item_id.toString()
+
+    item_id =   @model.get("item_id")
+    y =         @model.get("y") + 'px'
+    x =         @model.get("x") + 'px'
+    z =         @model.get("z")
+    width =     @model.get("width") + 'px'
+    container = ".room_design_container_" + item_id
+
 
     $(container).css({
       'position': 'absolute'
@@ -52,57 +50,64 @@ class Mywebroom.Views.RoomDesignView  extends Backbone.View
 
     this
 
-  #*******************
-  #**** Funtions
-  #*******************
-
-  
-
 
   #--------------------------
   # do something on click
   #--------------------------
-  clickItem: (event) ->
-    event.preventDefault()
-
+  clickItem: () ->
     
-    @hideAndShowBookmarks(@design.item_id)
-    @displayBookmark()
-
-    if @design.clickable is "yes"
-      bookmarksView = new Mywebroom.Views.BookmarksView({items_name:@design.items_name,user_item_design: @design.item_id, user: Mywebroom.State.get("roomUser").get("id") })
-      
-      self = this
-      $('#room_bookmark_item_id_container_' + @design.item_id).append(bookmarksView.el)
-      bookmarksView.render()
-
-
-
-
-
- 
-  #--------------------------
-  # hide bookmarks when is not this item
-  #--------------------------
-  hideAndShowBookmarks:(bookmark_item_id) ->
+    ###
+    (1) Close all bookmark containers
+    (2) Show ours
+    ###
     designs = Mywebroom.State.get("roomDesigns")
+    length =  designs.length
     
-
-    length = designs.length
+    id = @model.get("item_id")
+    
     i = 0
     while i < length
-      if bookmark_item_id is designs[i].item_id
+      if id is designs[i].item_id
         $('#room_bookmark_item_id_container_' + designs[i].item_id).show()
       else
         $('#room_bookmark_item_id_container_' + designs[i].item_id).hide()
       i += 1
-
-  #--------------------------
-  # hide store and profile pages
-  #--------------------------
-  displayBookmark: ->
+    ###
+    END
+    ###
+    
+    
+    
+    
+    ###
+    START
+    ###
     $('#xroom_store_menu_save_cancel_remove').hide()
     $('#xroom_storepage').hide()
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').show()
-
+    ###
+    END
+    ###
+    
+    
+    
+    
+    ###
+    SHOW
+    ###
+    if @model.get("clickable") is "yes"
+      console.log("clickable")
+      view = new Mywebroom.Views.BookmarksView(
+        {
+          items_name:       @model.get("items_name")
+          user_item_design: id
+          user:             Mywebroom.State.get("roomUser").get("id") 
+        }
+      )
+      
+      $('#room_bookmark_item_id_container_' + id).append(view.el)
+      view.render()
+    ###
+    SHOW
+    ###

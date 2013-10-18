@@ -253,7 +253,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     _.each(Mywebroom.State.get("roomDesigns"), (design) ->
-      view = new Mywebroom.Views.RoomDesignView({design: design})
+      model = new Backbone.Model(design)
+      view = new Mywebroom.Views.RoomDesignView({model: model})
       $(xroom_item_num).append(view.el)
       view.render()
       if Mywebroom.State.get("roomState") is "PUBLIC"
