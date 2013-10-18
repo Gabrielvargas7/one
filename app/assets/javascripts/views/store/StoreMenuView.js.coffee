@@ -743,6 +743,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     view.render()
     
     
+    # Center the item
+    Mywebroom.Helpers.centerItem(fetched.get("item_id"))
+    
+    
   
   
   #*******************

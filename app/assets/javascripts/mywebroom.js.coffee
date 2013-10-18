@@ -321,11 +321,13 @@ $(document).ready ->
   
   
   
-  Mywebroom.Helpers.centerItem = (model) ->
+  Mywebroom.Helpers.centerItem = (item_id) ->
     
-    #console.log("Center", itemModel)
-    
-   
+
+    # Look up the item model
+    model = Mywebroom.Data.DesignModels[item_id]
+
+           
     ###
     BASED ON X COORDINATES
     FIXME
@@ -654,6 +656,7 @@ $(document).ready ->
     for item in Mywebroom.State.get('roomDesigns')
       if modelId is item.item_id
         return item.items_name
+  
   
   
   
