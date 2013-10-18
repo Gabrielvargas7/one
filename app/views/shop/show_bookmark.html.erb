@@ -1,0 +1,46 @@
+<div class="shop_container">
+  <%= render 'shop_nav' %>
+  <div class="shop_left">
+    <p>
+      <%= image_tag @bookmark.image_name_desc.url.to_s , width: 180,height:180 %>
+    </p>
+  </div>
+  <div class="shop_right">
+    <br/>
+    <br/>
+    <br/>
+    <h4>
+      <%= @bookmark.title %>
+    </h4>
+    <p>
+      <%= @bookmark.description %>
+    </p>
+  </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="shop_container">
+  <div class="shop_table">
+    <table>
+      <% if @bookmark_length > 0 %>
+          <% @bookmark_rand.in_groups_of(@bookmark_length,false).each do |bookmark_groups| %>
+              <tr>
+                <% bookmark_groups.each do |bookmark| %>
+                    <td >
+                      <%= link_to image_tag(bookmark.image_name_desc.url().to_s,:width => 180, :height => 180),
+                                  shop_show_bookmark_path(bookmark.id,get_clean_name(bookmark.title)), :method => :get %>
+                      </br><%= bookmark.title[0,15] %>
+                    </td>
+                <% end %>
+              </tr>
+          <% end %>
+      <% end %>
+    </table>
+  </div>
+
+</div>

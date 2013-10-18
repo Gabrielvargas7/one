@@ -97,8 +97,9 @@ class ShopController < ApplicationController
   # GET /shop/items-design/:items_design_id/:name
   def show_items_design
 
+    number_of_enties = 5
     @items_design = ItemsDesign.find(params[:items_design_id])
-    @items_designs_rand = ItemsDesign.where('item_id = ?',@items_design.item_id).limit(6).order("RANDOM()")
+    @items_designs_rand = ItemsDesign.where('item_id = ?',@items_design.item_id).limit(number_of_enties*2).order("RANDOM()")
 
     @fb_og_image = @items_design.image_name_selection.url.to_s
     @fb_og_title = @items_design.name.to_s
@@ -108,10 +109,10 @@ class ShopController < ApplicationController
     @fb_url = root_url.to_s + 'shop/items-design/' + @items_design.id.to_s+'/'+get_clean_name(@items_design.name.to_s)
 
 
-    if @items_designs_rand.length < 5
+    if @items_designs_rand.length < number_of_enties
       @item_length = @items_designs_rand.length
     else
-      @item_length = 5
+      @item_length = number_of_enties
     end
 
     respond_to do |format|
@@ -190,8 +191,9 @@ class ShopController < ApplicationController
   # GET /shop/theme/:id/:name
   def show_theme
 
+    number_of_enties = 5
     @theme = Theme.find(params[:id])
-    @themes_rand = Theme.limit(6).order("RANDOM()")
+    @themes_rand = Theme.limit(number_of_enties*2).order("RANDOM()")
 
     @fb_og_image = @theme.image_name_selection.url.to_s
     @fb_og_title = @theme.name.to_s
@@ -200,10 +202,10 @@ class ShopController < ApplicationController
     @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
     @fb_url = root_url.to_s + 'shop/theme/' + @theme.id.to_s+'/'+get_clean_name(@theme.name.to_s)
 
-    if @themes_rand.length < 5
+    if @themes_rand.length < number_of_enties
       @theme_length = @themes_rand.length
     else
-      @theme_length = 5
+      @theme_length = number_of_enties
     end
 
     respond_to do |format|
@@ -280,8 +282,9 @@ class ShopController < ApplicationController
   # GET /shop/bundle/:bundle_id/:name
   def show_bundle
 
+    number_of_enties = 5
     @bundle = Bundle.find(params[:id])
-    @bundles_rand = Bundle.limit(6).order("RANDOM()")
+    @bundles_rand = Bundle.limit(number_of_enties*2).order("RANDOM()")
 
     @fb_og_image = @bundle.image_name.url.to_s
     @fb_og_title = @bundle.name.to_s
@@ -290,10 +293,10 @@ class ShopController < ApplicationController
     @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
     @fb_url = root_url.to_s + 'shop/bundle/' + @bundle.id.to_s+'/'+get_clean_name(@bundle.name.to_s)
 
-    if @bundles_rand.length < 5
+    if @bundles_rand.length < number_of_enties
       @bundle_length = @bundles_rand.length
     else
-      @bundle_length = 5
+      @bundle_length = number_of_enties
     end
 
     respond_to do |format|
@@ -365,22 +368,24 @@ class ShopController < ApplicationController
 
 
   end
-  # GET /shop/entire_room/:entire_room_id
+  # GET /shop/entire_room/:id/name
   def show_entire_room
+
+    number_of_enties = 5
     @bundle = Bundle.find(params[:id])
-    @bundles_rand = Bundle.limit(6).order("RANDOM()")
+    @bundles_rand = Bundle.limit(number_of_enties*2).order("RANDOM()")
 
     @fb_og_image = @bundle.image_name.url.to_s
     @fb_og_title = @bundle.name.to_s
     @fb_og_description = @bundle.description.to_s
     #@fb_app_id = 330390967090243.to_s
     @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
-    @fb_url = root_url.to_s + 'shop/bundle/' + @bundle.id.to_s+'/'+get_clean_name(@bundle.name.to_s)
+    @fb_url = root_url.to_s + 'shop/entire_room/' + @bundle.id.to_s+'/'+get_clean_name(@bundle.name.to_s)
 
-    if @bundles_rand.length < 5
+    if @bundles_rand.length < number_of_enties
       @bundle_length = @bundles_rand.length
     else
-      @bundle_length = 5
+      @bundle_length = number_of_enties
     end
 
     respond_to do |format|
@@ -393,10 +398,46 @@ class ShopController < ApplicationController
   # GET /shop/bookmarks
   def index_bookmarks
 
+    # when is not filter(all filter blank, it should get all the themes
+    @bookmarks = Bookmark.order(:updated_at)
+
+
+    if @bookmarks.length < 4
+      @bookmark_length = @bookmarks.length
+    else
+      @bookmark_length = 4
+    end
+    respond_to do |format|
+      format.html # index_themes.html.erb
+    end
+
+
+
   end
 
-  # GET /shop/bookmark/:bookmark_id
+  # GET /shop/bookmark/:id/name
   def show_bookmark
+
+    number_of_enties = 5
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark_rand = Bookmark.limit(number_of_enties*2).order("RANDOM()")
+
+    @fb_og_image = @bookmark.image_name_desc.url.to_s
+    @fb_og_title = @bookmark.title.to_s
+    @fb_og_description = @bookmark.description.to_s
+    @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
+    @fb_url = root_url.to_s + 'shop/bookmark/' + @bookmark.id.to_s+'/'+get_clean_name(@bookmark.title.to_s)
+
+    if @bookmark_rand.length < number_of_enties
+      @bookmark_length = @bookmark_rand.length
+    else
+      @bookmark_length = number_of_enties
+    end
+
+    respond_to do |format|
+      format.html # shop_items_design.html.erb
+    end
+
 
   end
 
