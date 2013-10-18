@@ -50,8 +50,8 @@ class Bookmark < ActiveRecord::Base
   validates :bookmarks_category_id, numericality: { only_integer: true }
   validates :bookmark_url, format: URI::regexp(%w(http https))
   validates :title,presence:true,
-              uniqueness:{ case_sensitive: false },
-              length: {minimum: 1, maximum: 50},
+              #uniqueness:{ case_sensitive: false },
+              length: {minimum: 1, maximum: 100},
               allow_blank: false
 
   validates :approval, presence:true, format: { with: VALID_Y_N_REGEX }

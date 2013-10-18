@@ -29,13 +29,15 @@ class ItemsDesign < ActiveRecord::Base
                    :special_name,
                    :like,
                    :price,
-                   :product_url
+                   :product_url,
+                   :image_name_logo
 
 
 
   mount_uploader :image_name, ItemsDesignsImageUploader
   mount_uploader :image_name_hover, ItemsDesignsImageHoverUploader
   mount_uploader :image_name_selection, ItemsDesignsImageSelectionUploader
+  mount_uploader :image_name_logo, ItemsDesignsImageLogoUploader
 
   belongs_to :item
   validates_presence_of :item
@@ -47,9 +49,9 @@ class ItemsDesign < ActiveRecord::Base
   VALID_REGEX = /^(?:[^\W_]|\s)*$/u
   validates :name,
             presence:true,
-            uniqueness:{ case_sensitive: false },
+            #uniqueness:{ case_sensitive: false },
             #format: { with: VALID_REGEX },
-            length: {minimum: 1, maximum: 50},
+            length: {minimum: 1, maximum: 100},
             allow_blank: false
   validates :item_id, :numericality => { :only_integer => true }
   validates :like, :numericality => { :only_integer => true }

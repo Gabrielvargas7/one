@@ -1,0 +1,42 @@
+<div class="shop_container">
+  <%= render 'shop_nav' %>
+  <div class="shop_left">
+    <p>
+      <%= image_tag @bundle.image_name.url.to_s , width: 300,height:300 %>
+    </p>
+  </div>
+  <div class="shop_right">
+    <br/>
+    <br/>
+    <br/>
+    <h4>
+      <%= @bundle.name %>
+    </h4>
+    <p>
+      <%= @bundle.description %>
+    </p>
+  </div>
+</div>
+
+
+
+<div class="shop_container">
+  <div class="shop_table">
+    <table>
+      <% if @bundle_length > 0 %>
+          <% @bundles_rand.in_groups_of(@bundle_length,false).each do |bundle_groups| %>
+              <tr>
+                <% bundle_groups.each do |bundle| %>
+                    <td >
+                      <%= link_to image_tag(bundle.image_name.url().to_s,:width => 200, :height => 200),
+                                  shop_show_bundle_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+                      </br><%= bundle.name[0,15] %>
+                    </td>
+                <% end %>
+              </tr>
+          <% end %>
+      <% end %>
+    </table>
+  </div>
+
+</div>

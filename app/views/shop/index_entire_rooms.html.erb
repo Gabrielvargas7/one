@@ -1,0 +1,82 @@
+<div class="shop_container">
+  <%= render 'shop_nav' %>
+  <div class="shop_filter">
+    <h5>Filter by </h5>
+
+    </br>
+    <h5>Color  </h5>
+    <% @bundles_by_color.each do |bundle_color| %>
+        <% unless bundle_color.color.nil? %>
+            <%= link_to bundle_color.color.titleize, shop_index_entire_rooms_path(bundle_color:bundle_color.color), :method => :get %> </br>
+        <% end %>
+    <% end %>
+
+    </br>
+    <h5>Brand </h5>
+    <% @bundles_by_brand.each do |bundle_brand| %>
+        <% unless bundle_brand.brand.nil? %>
+            <%= link_to bundle_brand.brand.titleize,  shop_index_entire_rooms_path(bundle_brand: bundle_brand.brand), :method => :get %></br>
+        <% end %>
+    <% end %>
+
+    </br>
+    <h5>Style </h5>
+    <% @bundles_by_style.each do |bundle_style| %>
+        <% unless bundle_style.style.nil? %>
+            <%= link_to bundle_style.style.titleize,  shop_index_entire_rooms_path(bundle_style: bundle_style.style), :method => :get %> </br>
+        <% end %>
+    <% end %>
+
+    </br>
+    <h5>Make </h5>
+    <% @bundles_by_make.each do |bundle_make| %>
+        <% unless bundle_make.make.nil? %>
+            <%= link_to bundle_make.make.titleize,  shop_index_entire_rooms_path(bundle_make: bundle_make.make), :method => :get %> </br>
+        <% end %>
+    <% end %>
+    </br>
+    <h5>Category </h5>
+    <% @bundles_by_category.each do |bundle_category| %>
+        <% unless bundle_category.category.nil? %>
+            <%= link_to bundle_category.category.titleize,  shop_index_entire_rooms_path(bundle_category: bundle_category.category), :method => :get %> </br>
+        <% end %>
+    <% end %>
+
+    <h5>Category </h5>
+    <% @bundles_by_location.each do |bundle_location| %>
+        <% unless bundle_location.location.nil? %>
+            <%= link_to bundle_location.location.titleize,  shop_index_entire_rooms_path(bundle_location: bundle_location.location), :method => :get %> </br>
+        <% end %>
+    <% end %>
+
+  </div>
+
+  <div class="shop_content_entity">
+    <div class="shop_table">
+      <table >
+
+        <% if @bundle_length > 0 %>
+            <%  @bundles.in_groups_of(@bundle_length,false).each do |bundles_groups| %>
+                <tr>
+                  <% bundles_groups.each do |bundle| %>
+
+                      <td >
+                        <%= link_to image_tag(bundle.image_name_set.url().to_s,width: 200,height:200
+                                    ),
+                                    shop_show_entire_room_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+                        </br><%= bundle.name[0,15] %>
+                      </td>
+
+                  <% end %>
+                </tr>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+
+<br />

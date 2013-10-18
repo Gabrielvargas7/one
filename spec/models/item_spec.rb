@@ -27,6 +27,8 @@ describe Item do
   it { @item.should respond_to(:name) }
   it { @item.should respond_to(:clickable) }
   it { @item.should respond_to(:image_name) }
+  it { @item.should respond_to(:image_name_gray) }
+
   it { @item.should respond_to(:priority_order) }
 
 

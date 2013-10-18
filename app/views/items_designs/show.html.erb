@@ -67,6 +67,12 @@
 </p>
 
 <p>
+  <b>Image name logo:</b>
+  <%= @items_design.image_name_logo %>
+  <%= image_tag @items_design.image_name_logo.url.to_s %>
+</p>
+
+<p>
   <b>Image name hover:</b>
   <%= @items_design.image_name_hover %>
   <%= image_tag @items_design.image_name_hover.url.to_s %>

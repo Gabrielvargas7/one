@@ -52,43 +52,62 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 	
 	showStore:(event)->
 		event.stopPropagation()
-		#if item is object, show store. 
-		#if item is bookmark add bookmark.
-		if @model.get('bookmark_url')
-			console.log 'this is a bookmark. add it to your collection!'
-			console.log @model
-			#get userID, Item ID, BookmarkID
-			helper = new Mywebroom.Helpers.ItemHelper()
-			userId= helper.getUserId()
-			#Post bookmark
-			position = @getMyBookmarksLength(userId)
-			#CHeck if bookmark is here already:
-			if !@myBookmarksCollection.get(@model.id)
-				postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:@model.get('item_id'), bookmarkId:@model.get('id'),userId:userId})
-				postBookmarkModel.set 'position',position+1
-				postBookmarkModel.save {},
-					success: (model, response)->
-						console.log('postBookmarkModel SUCCESS:')
-						console.log(response)
-					error: (model, response)->
-				        console.log('postBookmarkModel FAIL:')
-				        console.log(response)
-			#Added confirmation.
-			@$('.activity_item_large_view_img_wrap').append("<div class='large_item_just_added'>
-			<p>Added!</p>
-			<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>
-			</div>")
+		#If room is not self, go to my room with params. 
+		if Mywebroom.State.get('roomState') != "SELF"
+			if @model.get('bookmark_url')
+				paramType = "bookmark"
+				paramId = @model.get('id')
+				#send item name, send item id
+				paramItemId = @model.get('item_id')
+				parameters = $.param({'type':paramType,'id':paramId,'item_id':paramItemId})
+			else
+				#its an object
+				paramType= "items_design"
+				paramId = @model.get('id')
+			#send to my room
+			parameters = parameters || $.param({'type':paramType,'id':paramId})
+			#TODO If no one signed in, sent to landing page. 
+
+			window.location.href= 'http://localhost:3000/room/'+ Mywebroom.State.get('signInUser').get('username')+'?'+parameters
 		else
-			console.log 'hide ya profile cause the store\'s comin out y\'all'
-			console.log @model
-			#hide Profile , Show Store
-			$('#xroom_storepage').show()
-			$('#xroom_profile').hide()
-			# (trigger store event?)
-			#Should show item in store view with object centered. 
-			#This model only has bundle_id, and id. No item_id or Item Design Name. 
-			@closeView()
-	
+			
+			#if item is object, show store. 
+			#if item is bookmark add bookmark.
+			if @model.get('bookmark_url')
+				console.log 'this is a bookmark. add it to your collection!'
+				console.log @model
+				#get userID, Item ID, BookmarkID
+				helper = new Mywebroom.Helpers.ItemHelper()
+				userId= helper.getUserId()
+				#Post bookmark
+				position = @getMyBookmarksLength(userId)
+				#CHeck if bookmark is here already:
+				if !@myBookmarksCollection.get(@model.id)
+					postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:@model.get('item_id'), bookmarkId:@model.get('id'),userId:userId})
+					postBookmarkModel.set 'position',position+1
+					postBookmarkModel.save {},
+						success: (model, response)->
+							console.log('postBookmarkModel SUCCESS:')
+							console.log(response)
+						error: (model, response)->
+					        console.log('postBookmarkModel FAIL:')
+					        console.log(response)
+				#Added confirmation.
+				@$('.activity_item_large_view_img_wrap').append("<div class='large_item_just_added'>
+				<p>Added!</p>
+				<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>
+				</div>")
+			else
+				console.log 'hide ya profile cause the store\'s comin out y\'all'
+				console.log @model
+				#hide Profile , Show Store
+				$('#xroom_storepage').show()
+				$('#xroom_profile').hide()
+				# (trigger store event?)
+				#Should show item in store view with object centered. 
+				#This model only has bundle_id, and id. No item_id or Item Design Name. 
+				@closeView()
+		
 	getMyBookmarksLength:(userId)->
 		@myBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
 		@myBookmarksCollection.fetch

@@ -224,8 +224,42 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("roomFooterView", roomFooterView)
     
     
-    
-    
+    #Look at url parameters to see if we need to do anything
+    getParameterByName = (name) ->
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
+      regex = new RegExp("[\\?&]" + name + "=([^&#]*)")
+      results = regex.exec(location.search)
+      (if not results? then "" else decodeURIComponent(results[1].replace(/\+/g, " ")))
+
+    type = getParameterByName('type')
+    if type
+      typeId = getParameterByName('id')
+      switch type
+        
+        when "bookmark"
+          itemId = getParameterByName('item_id')
+          console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+          bookmarksView = new Mywebroom.Views.BookmarksView
+            items_name:Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+            user_item_design: itemId
+            user: Mywebroom.State.get("roomUser").get("id") 
+          $('#room_bookmark_item_id_container_'+itemId).append(bookmarksView.el)
+          bookmarksView.render()
+          $('#room_bookmark_item_id_container_'+itemId).show()
+          $('#xroom_bookmarks').show()
+          #TODO Check for bookmark in my bookmarks
+          if !bookmarksView.collection.findWhere('id':typeId)
+            bookmarksView.renderDiscover()
+
+        when "items_design"
+          #store has been created now. Need to show it.
+          Mywebroom.Helpers.showStore()
+        
+        else
+          console.log ''
+
+
+
     # Return the view
     this
     
