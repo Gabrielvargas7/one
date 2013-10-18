@@ -165,3 +165,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     
     # (3) Use model to populate view
     Mywebroom.State.get("storeMenuView").appendOne(@model)
+    
+    
+    # (4) Center Item
+    Mywebroom.Helpers.centerItem(@model)
