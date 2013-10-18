@@ -41,6 +41,7 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
   #--------------------------
   hoverRoomScrollRight: (event) ->
     event.preventDefault()
+    event.stopPropagation()
     #console.log("hover scroll right ")
     @loop_interval = setInterval(this.moveToTheRight, 1)
 
@@ -48,7 +49,9 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
   # change normal image on hover
   #--------------------------
   hoverOffRoomScrollRight: (event) ->
+
     event.preventDefault()
+    event.stopPropagation()
     #console.log("hover Off")
     window.clearInterval(@loop_interval)
     #console.log($(window).scrollLeft())
