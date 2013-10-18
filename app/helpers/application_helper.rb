@@ -142,7 +142,7 @@ module ApplicationHelper
 
     unique_name = name_split
 
-    unique_name
+    unique_name[0,100]
 
   end
 

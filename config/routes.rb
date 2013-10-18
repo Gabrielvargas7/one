@@ -4,17 +4,32 @@ Mywebroom::Application.routes.draw do
 
   #resources :shop
 
-  #match '/shop/show/items-design/:items_design_id', to:
-  #       'shop#shop_show_items_design', via: :get,as: :shop_show_items_design
-
-  match '/shop/items-design/:items_design_id', to:
+  match '/shop/items-design/:items_design_id/:name', to:
          'shop#show_items_design', via: :get,as: :shop_show_items_design
 
   match '/shop', to:
          'shop#index', via: :get,as: :shop_index
 
-  match '/shop/item/:item_id', to:
+  match '/shop/item/:item_id/:name', to:
          'shop#show_item', via: :get,as: :shop_show_item
+
+  match '/shop/themes', to:
+         'shop#index_themes', via: :get,as: :shop_index_themes
+
+  match '/shop/themes/:id/:name', to:
+         'shop#show_theme', via: :get,as: :shop_show_theme
+
+  match '/shop/bundles', to:
+         'shop#index_bundles', via: :get,as: :shop_index_bundles
+
+  match '/shop/bundle/:id/:name', to:
+         'shop#show_bundle', via: :get,as: :shop_show_bundle
+
+  match '/shop/entire_rooms', to:
+        'shop#index_entire_rooms', via: :get,as: :shop_index_entire_rooms
+
+  match '/shop/entire_room/:id/:name', to:
+        'shop#show_entire_room', via: :get,as: :shop_show_entire_room
 
 
 

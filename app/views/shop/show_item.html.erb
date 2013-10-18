@@ -1,17 +1,17 @@
 
-<div id="shop_container">
-  <div id="shop_filter">
+<div class="shop_container">
+  <div class="shop_filter">
     <h5>Filter by </h5>
     <h5>Type  </h5>
     <% @items_by_type.each do |item| %>
-        <%= link_to item.name,  shop_show_item_path(item.id), :method => :get %> </br>
+        <%= link_to item.name,  shop_show_item_path(item.id,get_clean_name(item.name)), :method => :get %> </br>
     <% end %>
 
     </br>
     <h5>Color  </h5>
     <% @items_designs_by_color.each do |item_color| %>
         <% unless item_color.color.nil? %>
-            <%= link_to item_color.color.titleize,  shop_show_item_path(item_color.item_id,item_color:item_color.color), :method => :get %> </br>
+            <%= link_to item_color.color.titleize,  shop_show_item_path(item_color.item_id,get_clean_name(item_color.item.name),item_color:item_color.color), :method => :get %> </br>
         <% end %>
     <% end %>
 
@@ -19,7 +19,7 @@
     <h5>Brand </h5>
     <% @items_designs_by_brand.each do |item_brand| %>
         <% unless item_brand.brand.nil? %>
-            <%= link_to item_brand.brand.titleize,  shop_show_item_path(item_brand.item_id,item_brand: item_brand.brand), :method => :get %></br>
+            <%= link_to item_brand.brand.titleize,  shop_show_item_path(item_brand.item_id,get_clean_name(item_brand.item.name),item_brand: item_brand.brand), :method => :get %></br>
         <% end %>
     <% end %>
 
@@ -27,7 +27,7 @@
     <h5>Style </h5>
     <% @items_designs_by_style.each do |item_style| %>
         <% unless item_style.style.nil? %>
-            <%= link_to item_style.style.titleize,  shop_show_item_path(item_style.item_id,item_style: item_style.style), :method => :get %> </br>
+            <%= link_to item_style.style.titleize,  shop_show_item_path(item_style.item_id,get_clean_name(item_style.item.name),item_style: item_style.style), :method => :get %> </br>
         <% end %>
     <% end %>
 
@@ -35,19 +35,27 @@
     <h5>Make </h5>
     <% @items_designs_by_make.each do |item_make| %>
         <% unless item_make.make.nil? %>
-            <%= link_to item_make.make.titleize,  shop_show_item_path(item_make.item_id,item_make: item_make.make), :method => :get %> </br>
+            <%= link_to item_make.make.titleize,  shop_show_item_path(item_make.item_id,get_clean_name(item_make.item.name),item_make: item_make.make), :method => :get %> </br>
+        <% end %>
+    <% end %>
+    </br>
+    <h5>Category </h5>
+    <% @items_designs_by_category.each do |item_category| %>
+        <% unless item_category.category.nil? %>
+            <%= link_to item_category.category.titleize,  shop_show_item_path(item_category.item_id,get_clean_name(item_category.item.name),item_category: item_category.category), :method => :get %> </br>
         <% end %>
     <% end %>
 
 
+
   </div>
 
-  <div id="shop_content_items">
+  <div class="shop_content_entity">
     <h4>
       <%= @items_designs.first.item.name%>
     </h4>
 
-    <div id="shop_table">
+    <div class="shop_table">
       <table >
 
         <% if @item_length > 0 %>
@@ -58,8 +66,8 @@
                       <td >
                         <%= link_to image_tag(items_design.image_name_selection.url().to_s,width: 200,height:200
                                     ),
-                                    shop_show_items_design_path(items_design.id), :method => :get %>
-                        </br><%= items_design.name %>
+                                    shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+                        </br><%= items_design.name[0,15] %>
                       </td>
 
                   <% end %>

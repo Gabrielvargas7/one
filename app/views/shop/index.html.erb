@@ -1,15 +1,16 @@
-<div id="shop_container1">
+<div class="shop_container">
   <h4>Shop by category</h4>
 
-  <div id="shop_table">
+  <div class="shop_table">
       <table>
           <% if @item_length > 0 %>
           <% @items.in_groups_of(@item_length,false).each do |item_groups| %>
               <tr>
                 <% item_groups.each do |item| %>
                 <td >
-                    <%= link_to image_tag(item.image_name.url().to_s, width: 200,height:200 ),  shop_show_item_path(item.id), :method => :get %>
-                    </br><%= item.name %>
+                    <%= link_to image_tag(item.image_name.url().to_s, width: 200,height:200 ),  shop_show_item_path(item.id,get_clean_name(item.name)), :method => :get %>
+                    </br><%= item.name[0,15] %>
+
                 </td>
                 <% end %>
               </tr>
