@@ -5,6 +5,7 @@ window.Mywebroom =
   Routers: {}
   Helpers:{}
   State:{}
+  Data:{}
   App:{}
 
 
@@ -258,6 +259,105 @@ $(document).ready ->
   
   
   
+  
+  
+  Mywebroom.Helpers.turnOnDesignClick = ->
+    
+    user_id = Mywebroom.State.get("roomUser").get("id")
+    
+    $('img.room_design').each( ->
+      
+      $(this).off('click') # So we don't have multiple click handlers
+      
+      $(this).click( ->
+        
+        # item_id extracted from the clicked element
+        dom_item_id = $(this).data().designItemId
+        
+        
+        # model associated with this item_id
+        model = Mywebroom.Data.DesignModels[dom_item_id]
+        
+        
+        ###
+        Close all bookmark containers except this item's
+        ###
+        for key of Mywebroom.Data.DesignIds
+          el = $('#room_bookmark_item_id_container_' + key)
+          if dom_item_id.toString() is key.toString() then el.show() else el.hide()
+        
+    
+        ###
+        Show / Hide various divs
+        ###
+        $('#xroom_store_menu_save_cancel_remove').hide()
+        $('#xroom_storepage').hide()
+        $('#xroom_profile').hide()
+        $('#xroom_bookmarks').show()
+   
+    
+        ###
+        Create bookmark view
+        ###
+        if model.get("clickable") is "yes"
+          view = new Mywebroom.Views.BookmarksView(
+            {
+              items_name:       model.get("items_name")
+              user_item_design: model.get("item_id")
+              user:             user_id
+            }
+          )
+      
+          $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
+          view.render()
+      )
+    )
+    
+    
+  Mywebroom.Helpers.turnOffDesignClick = ->
+    
+    $('img.room_design').off('click')
+  
+  
+  
+  
+  Mywebroom.Helpers.centerItem = (model) ->
+    
+    #console.log("Center", itemModel)
+    
+   
+    ###
+    BASED ON X COORDINATES
+    FIXME
+    Request is to use y coordinates as well
+    ###
+    item_location_x = parseInt(model.get('x'))
+    item_location_y = parseInt(model.get('y'))
+    
+   
+    #console.log('item location y', item_location_y)
+    
+    $('#xroom_items_0').attr('data-current_screen_position','0')
+    $('#xroom_items_0').css({
+      'left': Math.floor(-1999 - item_location_x + 100)
+      #'top' : 20
+    })
+    
+    #console.log('room top', $('#xroom_items_0').css('top'))
+    #console.log('room bottom', $('#xroom_items_0').css('bottom'))
+    
+    $('#xroom_items_1').attr('data-current_screen_position','1')
+    $('#xroom_items_1').css({
+      'left': Math.floor(0 - item_location_x + 100)
+      #'top' : 45
+    })
+    
+    $('#xroom_items_2').attr('data-current_screen_position','2')
+    $('#xroom_items_2').css({
+      'left': Math.floor(1999 - item_location_x + 100)
+      #'top' : 70
+    })
+    
   ###
   (1) Store visibility
   (1.1) Scroller visibility
@@ -272,6 +372,7 @@ $(document).ready ->
   (8) Highlighted Images
   (9) Room size & Button class
   (10) Image Hover: on or off
+  (10.1) Image Click: on or off 
   (11) Set Store State
   ###
   
@@ -340,6 +441,10 @@ $(document).ready ->
     Mywebroom.Helpers.turnOffHover()
     
     
+    # (10.1) Image Click: on or off
+    Mywebroom.Helpers.turnOffDesignClick()
+    
+    
     # (11) Set Store State
     Mywebroom.State.set("storeState", "shown")
     
@@ -397,6 +502,10 @@ $(document).ready ->
   
     # (10) Image Hover: on or off
     Mywebroom.Helpers.turnOnHover()
+    
+    
+    # (10.1) Image Click: on or off
+    Mywebroom.Helpers.turnOnDesignClick()
     
     
     # (11) Set Store State
@@ -458,6 +567,10 @@ $(document).ready ->
     
     
     # (10) Image Hover: on or off
+    # n/a
+    
+    
+    # (10.1) Image Click: on or off
     # n/a
     
     
@@ -526,9 +639,33 @@ $(document).ready ->
     # n/a
     
     
+    # (10.1) Image Click: on or off
+    # n/a
+    
+    
     # (11) Set Store State
     Mywebroom.State.set("storeState", "shown")
  
+  
+  
+  
+  
+  
+  Mywebroom.Data.DesignModels = {}
+  Mywebroom.Data.DesignNames = {}
+  
+  ###
+  To create a true set, we want an object that doesn't already
+  have any properties on it. 
+  http://stackoverflow.com/questions/7958292/mimicking-sets-in-javascript
+  http://www.devthought.com/2012/01/18/an-object-is-not-a-hash/
+  
+  Note: since this program speaks coffee, our syntax for querrying is '32 of Mywebroom.Data.DesignIds'
+  instead of the JavaScript '32 in Mywebroom.Data.DesignIds'
+  ###
+  Mywebroom.Data.DesignIds = Object.create(null)
+  
+  
   
   
  
