@@ -1,45 +1,28 @@
 class Mywebroom.Views.StoreMenuView extends Backbone.View
   
-  #*******************
-  #**** Tag  (no tag = default el "div")
-  #*******************
-  
   
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
   template: JST['store/StoreMenuTemplate']
+  
   
   #*******************
   #**** Events
   #*******************
-  
-  events: {
-    
-    #'shown #storeTabs a[data-toggle="tab"]': 'navSwitch'      # NAV SWITCH  <-- UNUSED
-    #'click a[href="#tab_hidden"]':       'clickHidden'        # NAV TABS <-- Can this ever be triggered??
-    
-    'click #storeTabs a':                'manualNavSwitch'    # NAV TABS (any)
-    
-    'click a[href="#tab_items"]':        'clickObjects'       # NAV TABS: OBJECTS
-    'click a[href="#tab_themes"]':       'clickThemes'        # NAV TABS: THEMES
-    'click a[href="#tab_bundles"]':      'clickBundles'       # NAV TABS: BUNDLES
-    'click a[href="#tab_entire_rooms"]': 'clickEntireRooms'   # NAV TABS: ENTIRE ROOMS
-    
-    
-    'keyup #store-search-box':           'keyupSearch'           # SEARCH
-    'click #store-search-dropdown li a': 'searchDropdownChange'  # SEARCH DROPDOWN
-    'click .store-dropdown-item a':      'filterSearch'          # FILTER
+  events: {    
+    'click #storeTabs a':                'clickNavTab'         # NAV TABS (any)
+    'click a[href="#tab_items"]':        'clickObjects'        # NAV TABS: OBJECTS
+    'click a[href="#tab_themes"]':       'clickThemes'         # NAV TABS: THEMES
+    'click a[href="#tab_bundles"]':      'clickBundles'        # NAV TABS: BUNDLES
+    'click a[href="#tab_entire_rooms"]': 'clickEntireRooms'    # NAV TABS: ENTIRE ROOMS
+    'keyup #store-search-box':           'keyupSearch'         # SEARCH
+    'click #store-search-dropdown li a': 'clickSearchDropdown' # SEARCH DROPDOWN
+    'click .store-filter-item a':        'clickSearchFilter'   # SEARCH FILTER
   }
   
-
   
   
-    
-  #*******************
-  #**** Initialize
-  #*******************
-  initialize: ->
   
   #*******************
   #**** Render
@@ -47,12 +30,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   render: ->
 
     ###
-    RENDER VIEW - START
+    RENDER VIEW
     ###
     $(@el).append(@template())
-    ###
-    RENDER VIEW - ENE
-    ###
+   
     
     
     
@@ -61,27 +42,49 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     FETCH INITIAL DATA - START
     ###
     # items
-    itemsCollection = @getItemsCollection()
-    Mywebroom.State.set("initialItems", itemsCollection)
+    items = new Mywebroom.Collections.IndexItemsCollection()
+    items.fetch
+      async:   false
+      success: (response) ->
+        #console.log("initial items fetch success", response)
+      error: ->
+        console.log("initial items fetch fail")
+    
+    Mywebroom.State.set("initialItems", items)
     
   
     # themes
-    themesCollection = @getThemesCollection()
+    themes = new Mywebroom.Collections.IndexThemesCollection()
+    themes.fetch
+      async:   false
+      success: (response) ->
+        #console.log("initial theme fetch success", response)
+      error: ->
+        console.log("initial theme fetch fail")
+    
     
   
     # bundles
-    bundlesCollection = new Mywebroom.Collections.IndexBundlesCollection()
-    bundlesCollection.fetch
+    bundles = new Mywebroom.Collections.IndexBundlesCollection()
+    bundles.fetch
       async:   false
+      success: (response) ->
+        #console.log("initial bundle fetch success", response)
+      error: ->
+        console.log("initial bundle fetch fail")
         
         
     # entire rooms
-    entireRoomsCollection = new Mywebroom.Collections.IndexBundlesCollection()
-    entireRoomsCollection.fetch
+    entireRooms = new Mywebroom.Collections.IndexBundlesCollection()
+    entireRooms.fetch
       async:   false
+      success: (response) ->
+        #console.log("initial entire room fetch success", response)
+      error: ->
+        console.log("initial entire room fetch fail")
       
       
-    copy = entireRoomsCollection.clone()
+    copy = entireRooms.clone()
     
     
     parsed = copy.map((model) ->
@@ -102,31 +105,33 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     SPLAT DATA TO STORE - START
     ###
-    @appendItemsEntry(itemsCollection)     # ITEMS
-    @appendThemesEntry(themesCollection)   # THEMES
-    @appendBundlesEntry(bundlesCollection) # BUNDLES
-    @appendBundlesSetEntry(reset)          # ENTIRE ROOMS
-    ###
-    SPLAT DATA TO STORE - END
-    ###
+    @appendItems(items)       # ITEMS
+    @appendThemes(themes)     # THEMES
+    @appendBundles(bundles)   # BUNDLES
+    @appendEntireRooms(reset) # ENTIRE ROOMS
+    
     
     
     
     
     ###
-    CONVENTION - START
+    CONVENTION
     ###
     this
-    ###
-    CONVENTION - END
-    ###
+   
     
   
   
    
-  manualNavSwitch: (e) ->
+  #*******************
+  #**** Events
+  #*******************
+  clickNavTab: (e) ->
     
     #console.log("Manual tab switch")
+    
+    e.preventDefault()
+    #e.stopPropagation() <-- Prevents tabs from functioning
     
     ###
     SWITCH THE SEARCH DROPDOWN TO ALL - START
@@ -134,39 +139,254 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#store-search-dropdown li').removeClass('active') # Remove active class
     $("#store-search-all").addClass("active") # Add active class to ALL
     $('#store-dropdown-btn').text("ALL") # Change the text of the search filter to ALL
-    ###
-    SWITCH THE SEARCH DROPDOWN TO ALL - END
-    ###
+    
   
   
     
     
-  filterSearch: (e) ->
+  clickObjects: (e) ->
+    
+    #console.log("OBJECTS clicked")
+    
+    e.preventDefault()
+    #e.stopPropagation() <-- Prevents tab from working
+    
+    # Hide the Save, Cancel, Remove view
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
+    # Hide the search filters
+    Mywebroom.Helpers.collapseFilters()
+    
+    
+    
+    
+  clickThemes: (e) ->
+    
+    #console.log("THEMES clicked")
+     
+    e.preventDefault()
+    #e.stopPropagation() <-- Prevents tab from working
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "THEMES")
+    
+    
+    
+    # Hide the Save, Cancel, Remove view
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
+    
+    # Re-show nav pills
+    Mywebroom.Helpers.expandFilters()
+    
+    
+     # Add the collapse class
+    $('#dropdown-category').addClass('collapse')
+    
+    
+    # Load the Bundles' Categories Collection
+    categories = new Mywebroom.Collections.IndexThemesCategoriesCollection()
+    categories.fetch
+      async: false
+      success: (response) ->
+        model = response.first()
+        Mywebroom.Helpers.setBrands(model.get('themes_brands'))
+        Mywebroom.Helpers.setStyles(model.get('themes_styles'))
+        Mywebroom.Helpers.setLocations(model.get('themes_locations'))
+        Mywebroom.Helpers.setColors(model.get('themes_colors'))
+        Mywebroom.Helpers.setMakes(model.get('themes_makes'))
+      error: (response) ->
+        console.log("theme fetch fail")
+        console.log(response)
+    
+    
+   
+   
+      
+  clickBundles: (e) ->
+    
+    e.preventDefault()
+    #e.stopPropagation() <-- Prevents tab from working
+    
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "BUNDLES")
+    
+    
+    
+    # Hide the Save, Cancel, Remove view
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
+    
+    # Re-show nav pills
+    Mywebroom.Helpers.expandFilters()
+    
+    
+    # Add the collapse class
+    $('#dropdown-category').addClass('collapse')
+    
+    
+    # Load the Bundles' Categories Collection
+    categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
+    categories.fetch
+      async:   false
+      success: (response) ->
+        model = response.first()
+        Mywebroom.Helpers.setBrands(model.get('bundles_brands'))
+        Mywebroom.Helpers.setStyles(model.get('bundles_styles'))
+        Mywebroom.Helpers.setLocations(model.get('bundles_locations'))
+        Mywebroom.Helpers.setColors(model.get('bundles_colors'))
+        Mywebroom.Helpers.setMakes(model.get('bundles_makes'))
+      error: ->
+        console.log("bundle category fail")
+  
+  
+  
+  clickEntireRooms: (e) ->
+    
+    e.preventDefault()
+    #e.stopPropagation() <-- Prevents tab from working
+    
+    ###
+    Set our store helper
+    ###
+    Mywebroom.State.set("storeHelper", "ENTIRE ROOMS")
+    
+    
+    # Hide the Save, Cancel, Remove view
+    $('#xroom_store_menu_save_cancel_remove').hide()
+    
+   
+    # Re-show nav pills
+    Mywebroom.Helpers.expandFilters()
+    
+    
+    # Add the collapse class
+    $('#dropdown-category').addClass('collapse')
+    
+    
+    # Load the Bundles' Categories Collection
+    categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
+    categories.fetch
+      async:   false
+      success: (response) ->
+        model = response.first()
+        Mywebroom.Helpers.setBrands(model.get('bundles_brands'))
+        Mywebroom.Helpers.setStyles(model.get('bundles_styles'))
+        Mywebroom.Helpers.setLocations(model.get('bundles_locations'))
+        Mywebroom.Helpers.setColors(model.get('bundles_colors'))
+        Mywebroom.Helpers.setMakes(model.get('bundles_makes'))
+      error: ->
+        console.log("bundle category fail")
+  
+  
+  
+  
+  clickSearchFilter: (e) ->
 
-    #console.log("FILTER")
-
+    e.preventDefault()
+    #e.stopPropagation() <-- This prevents the nav pills from closing automatically
+    
     # Switch to the hidden tab
     $('#storeTabs a[href="#tab_hidden"]').tab('show')
 
-    keyword  = e.target.text
+    keyword =  e.target.text
     category = Mywebroom.State.get("storeHelper")
     
     # PERFORM THE SEARCH
-    @search(keyword, category)
+    @performSearch(keyword, category)
     
     
-    
+   
   
-  search: (keyword, category) ->
+  keyupSearch: (e) ->
     
+    e.preventDefault()
+    e.stopPropagation()
+    
+    if e.keyCode is 13
+      
+      #console.log("SEARCH")
+      
+      # Switch to the hidden tab
+      $('#storeTabs a[href="#tab_hidden"]').tab('show')
+      
+      
+      # Contents of search
+      input = $("#store-search-box").val()
+      
+      
+      # What tab is selected?
+      tab = $("#store-dropdown-btn").text()
+      
+      
+      # Perform search
+      @performSearch(input, tab)
+      
+      
+      ###
+      Clear search box
+      ###
+      $("#store-search-box").val("")
+      
+      
+      
+  clickSearchDropdown: (e) ->
+    
+    #console.log("SEARCH DROPDOWN CHANGE")
+    
+    e.preventDefault()
+    #e.stopPropagation() <-- This prevents the dropdown menu from closing automatically
+    
+    # SEARCH DROPDOWN
+    # Remove active class
+    $('#store-search-dropdown li').removeClass('active')
+    
+    
+    # Add active class to just-clicked element
+    $(e.target).parent().addClass('active')
+    
+    
+    # Change the text of the search filter
+    $('#store-dropdown-btn').text(e.target.text)
+    
+    
+    # TAB-PANE
+    # Active the correct store-nav tab
+    navName = e.target.text
+    
+    switch navName
+      when 'ALL'
+        $('a[href="#tab_items"]').tab('show')
+        @clickObjects()
+      when 'OBJECTS'
+        $('a[href="#tab_items"]').tab('show')
+        @clickObjects()
+      when 'THEMES'
+        $('a[href="#tab_themes"]').tab('show')
+        @clickThemes()
+      when 'BUNDLES'
+        $('a[href="#tab_bundles"]').tab('show')
+        @clickBundles()
+      when 'ENTIRE ROOMS'
+        $('a[href="#tab_entire_rooms"]').tab('show')
+        @clickEntireRooms()
+  
+        
+  
+  
+  
+  performSearch: (keyword, category) ->
     
     self = this
     
     
     switch category
       when "ALL"
-        #console.log("ALL")
-        
         ###
         Fetch designs collection
         ###
@@ -290,11 +510,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           error: ->
             console.log("error")
       
-      when "BUNDLES"
-        
-        #console.log("BUNDLES!!!!!!!!!!!!!")
-        
-        
+      when "BUNDLES" 
         ###
         Fetch collection
         ###
@@ -311,11 +527,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           error: ->
             console.log("error")
             
-      when "ENTIRE ROOMS"
-        
-        
-        #console.log("ENTIRE ROOMS!!!!!!!!!!!!!")
-       
+      when "ENTIRE ROOMS"  
         ###
         Fetch collection
         ###
@@ -347,20 +559,18 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         
         # Reset the collection
         reset = collection.reset(parsed)
-        #console.log("searched entire rooms II success", reset)
         
     
         # Replace the views on the hidden tab
         self.appendHidden(reset)
-            
-            
-        
-        
+                 
       else
         ###
         Looks like it's a specific design category (number)
         ###
+        
         #console.log("YOU'RE SEARCHING ON ITEM DESIGN CATEGORY ", category)
+        
         ###
         Fetch collection
         ###
@@ -369,7 +579,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           async:   false
           url:     collection.url(category,10,0,keyword)
           success: (response) ->
-            #console.log("searched designs II success", response)
+            #console.log("searched designs success", response)
     
             # Replace the views on the hidden tab
             self.appendHidden(response)
@@ -378,168 +588,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             console.log("error")
   
   
-    
-  keyupSearch: (e) ->
-    
-    if e.keyCode is 13
-      
-      #console.log("SEARCH")
-      
-      # Switch to the hidden tab
-      $('#storeTabs a[href="#tab_hidden"]').tab('show')
-      
-      
-      # Contents of search
-      input = $("#store-search-box").val()
-      
-      
-      # What tab is selected?
-      tab = $("#store-dropdown-btn").text()
-      
-      
-      # Perform search
-      @search(input, tab)
-      
-      
-      ###
-      Clear search box
-      ###
-      $("#store-search-box").val("")
-      
-      
-      
-  makeDropdownAll: ->
-    
-    ###
-    This algorithm works, but it appears 
-    this can't be triggered from another function.
-    
-    Why is that? Does it have to do with function placement?
-    ###
-    
-    # SEARCH DROPDOWN
-    # Remove active class
-    $('#store-search-dropdown li').removeClass('active')
-    
-    
-    # Add active class to ALL
-    $("#store-search-all").addClass("active")
-    
-    
-    # Change the text of the search filter to ALL
-    $('#store-dropdown-btn').text("ALL")
-   
   
   
-  
-  
-  searchDropdownChange: (e) ->
-    
-    #console.log("SEARCH DROPDOWN CHANGE")
-    
-    # SEARCH DROPDOWN
-    # Remove active class
-    $('#store-search-dropdown li').removeClass('active')
-    
-
-    
-    # Add active class to just-clicked element
-    $(e.target).parent().addClass('active')
-    
-    # Change the text of the search filter
-    $('#store-dropdown-btn').text(e.target.text)
-    
-    
-    # TAB-PANE
-    # Active the correct store-nav tab
-    navName = e.target.text
-    
-    switch navName
-      when 'ALL'
-        $('a[href="#tab_items"]').tab('show')
-        @clickObjects()
-      when 'OBJECTS'
-        $('a[href="#tab_items"]').tab('show')
-        @clickObjects()
-      when 'THEMES'
-        $('a[href="#tab_themes"]').tab('show')
-        @clickThemes()
-      when 'BUNDLES'
-        $('a[href="#tab_bundles"]').tab('show')
-        @clickBundles()
-      when 'ENTIRE ROOMS'
-        $('a[href="#tab_entire_rooms"]').tab('show')
-        @clickEntireRooms()
-      
-
-  
-
-  #*******************
-  #**** Functions  - get Collection
-  #*******************
-
   #--------------------------
-  # get the items data
+  # Append Item Views
   #--------------------------
-  getItemsCollection: ->
-    itemsCollection = new Mywebroom.Collections.IndexItemsCollection()
-    itemsCollection.fetch
-      async:   false
-      success: (response) ->
-        #console.log("items fetch success", response)
-    return itemsCollection
-
-  #--------------------------
-  # get the items designs data
-  #--------------------------
-  getItemsDesignsCollection: (item_id) ->
-    
-    itemsDesignsCollection = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
-    itemsDesignsCollection.fetch
-      async:   false
-      url:     itemsDesignsCollection.url(item_id)
-      success: (response) ->
-        #console.log("items design fetch success", response)
-        
-    return itemsDesignsCollection
-
-
-  #--------------------------
-  # get the Themes data
-  #--------------------------
-  getThemesCollection: ->
-    themesCollection = new Mywebroom.Collections.IndexThemesCollection()
-    themesCollection.fetch
-      async:   false
-      success: (response) ->
-        #console.log("initial theme fetch success", response)
-    return themesCollection
-
-  #--------------------------
-  # get the Bundles data
-  #--------------------------
-  getBundlesCollection: ->
-    bundlesCollection = new Mywebroom.Collections.IndexBundlesCollection()
-    bundlesCollection.fetch
-      async:   false
-      success: (response) ->
-        #console.log("initial bundle fetch success", response)
-        
-    return bundlesCollection
-
-
-  #*******************
-  #**** Functions  - append Collection to room store page
-  #*******************
-
-
-
-
-
-  #--------------------------
-  # append items views
-  #--------------------------
-  appendItemsEntry: (itemsCollection) ->
+  appendItems: (collection) ->
     
     $("#tab_items > ul").remove()
     
@@ -552,10 +606,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
     self = this
 
-    itemsCollection.each (entry)  ->
-      storeMenuItemsView = new Mywebroom.Views.StorePreviewView(model:entry)
-      $('#row_item_' + self.row_number).append(storeMenuItemsView.el)
-      storeMenuItemsView.render()
+    collection.each (item)  ->
+      view = new Mywebroom.Views.StorePreviewView(model: item)
+      $('#row_item_' + self.row_number).append(view.el)
+      view.render()
 
       self.loop_number += 1
       u = self.loop_number % self.column_number
@@ -567,9 +621,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
   #--------------------------
-  # append items designs views
+  # Append Design Views
   #--------------------------
-  appendHidden: (itemsDesignsCollection) ->
+  appendHidden: (designs) ->
 
     $("#tab_hidden > ul").remove()
     
@@ -582,10 +636,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
     self = this
     
-    itemsDesignsCollection.each (entry)  ->
-      storeMenuItemsDesignsView = new Mywebroom.Views.StorePreviewView(model: entry)
-      $('#row_item_designs_' + self.row_number).append(storeMenuItemsDesignsView.el)
-      storeMenuItemsDesignsView.render()
+    designs.each (design)  ->
+      view = new Mywebroom.Views.StorePreviewView(model: design)
+      $('#row_item_designs_' + self.row_number).append(view.el)
+      view.render()
       
       self.loop_number += 1
       u = self.loop_number % self.column_number
@@ -597,9 +651,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
   #--------------------------
-  # append themes views
+  # Append Theme Views
   #--------------------------
-  appendThemesEntry: (themesCollection) ->
+  appendThemes: (themes) ->
     
     $("#tab_themes > ul").remove()
     
@@ -612,10 +666,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
     self = this
 
-    themesCollection.each (entry)  ->
-      storeMenuThemesView = new Mywebroom.Views.StorePreviewView(model: entry)
-      $('#row_theme_' + self.row_number).append(storeMenuThemesView.el)
-      storeMenuThemesView.render()
+    themes.each (theme)  ->
+      view = new Mywebroom.Views.StorePreviewView(model: theme)
+      $('#row_theme_' + self.row_number).append(view.el)
+      view.render()
 
       self.loop_number += 1
       u = self.loop_number % self.column_number
@@ -628,9 +682,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
   #--------------------------
-  # append Bundle views
+  # Append Bundle Views
   #--------------------------
-  appendBundlesEntry: (bundlesCollection) ->
+  appendBundles: (bundles) ->
     
     $("#tab_bundles > ul").remove()
     
@@ -643,10 +697,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
     self = this
 
-    bundlesCollection.each (entry)  ->
-      storeMenuBundlesView = new Mywebroom.Views.StorePreviewView(model:entry)
-      $('#row_bundle_' + self.row_number).append(storeMenuBundlesView.el)
-      storeMenuBundlesView.render()
+    bundles.each (bundle)  ->
+      view = new Mywebroom.Views.StorePreviewView(model: bundle)
+      $('#row_bundle_' + self.row_number).append(view.el)
+      view.render()
 
       self.loop_number += 1
       u = self.loop_number % self.column_number
@@ -658,9 +712,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
   #--------------------------
-  # append Bundles Set views
+  # Append Entire Room View
   #--------------------------
-  appendBundlesSetEntry: (bundlesCollection) ->
+  appendEntireRooms: (entireRooms) ->
     
     $("#tab_entire_rooms > ul").remove()
     
@@ -673,10 +727,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     self = this
 
-    bundlesCollection.each (entry)  ->
-      storeMenuBundlesSetView = new Mywebroom.Views.StorePreviewView(model:entry)
-      $('#row_bundle_set_' + self.row_number).append(storeMenuBundlesSetView.el)
-      storeMenuBundlesSetView.render()
+    entireRooms.each (room)  ->
+      view = new Mywebroom.Views.StorePreviewView(model: room)
+      $('#row_bundle_set_' + self.row_number).append(view.el)
+      view.render()
 
       self.loop_number += 1
       u = self.loop_number % self.column_number
@@ -745,261 +799,3 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Center the item
     Mywebroom.Helpers.centerItem(fetched.get("item_id"))
-    
-    
-  
-  
-  #*******************
-  #**** Filter Helpers
-  #*******************
-  collapseAll: ->
-    # Add the collapse class
-    $('#dropdown-category').addClass('collapse')
-    $('#dropdown-style').addClass('collapse')
-    $('#dropdown-brand').addClass('collapse')
-    $('#dropdown-location').addClass('collapse')
-    $('#dropdown-color').addClass('collapse')
-    $('#dropdown-make').addClass('collapse')
-
-
-
-  expandAll: ->
-    # Remove the collapse class
-    $('#dropdown-category').removeClass('collapse')
-    $('#dropdown-style').removeClass('collapse')
-    $('#dropdown-brand').removeClass('collapse')
-    $('#dropdown-location').removeClass('collapse')
-    $('#dropdown-color').removeClass('collapse')
-    $('#dropdown-make').removeClass('collapse')
-
-
-
-  
-  
-  
-  
-  
-  
-  #************
-  # CLICKS ----
-  #************
-  clickObjects: ->
-    
-    #console.log("OBJECTS clicked")
-    
-    # Hide the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
-    
-    # Hide the search filters
-    @collapseAll()
-    
-    
-    ###
-    TODO
-    Update dropdown tab to be ALL
-    ###
-    
-    
-    
-  clickThemes: ->
-    
-    #console.log("THEMES clicked")
-     
-    ###
-    Set our store helper
-    ###
-    Mywebroom.State.set("storeHelper", "THEMES")
-    
-    
-    
-    # Hide the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
-    
-    self = this
-    @expandAll()
-    
-    
-     # Add the collapse class
-    $('#dropdown-category').addClass('collapse')
-    
-    
-    # Load the Bundles' Categories Collection
-    categories = new Mywebroom.Collections.IndexThemesCategoriesCollection()
-    categories.fetch
-      async: false
-      success: (response) ->
-        model = response.first()
-        self.setBrands(model.get('themes_brands'))
-        self.setStyles(model.get('themes_styles'))
-        self.setLocations(model.get('themes_locations'))
-        self.setColors(model.get('themes_colors'))
-        self.setMakes(model.get('themes_makes'))
-      error: (response) ->
-        console.log("theme fetch fail")
-        console.log(response)
-    
-    
-   
-   
-      
-  clickBundles: ->
-    
-    
-    
-    ###
-    Set our store helper
-    ###
-    Mywebroom.State.set("storeHelper", "BUNDLES")
-    
-    
-    
-    # Hide the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
-    
-    self = this
-    
-    @expandAll()
-    
-    
-    # Add the collapse class
-    $('#dropdown-category').addClass('collapse')
-    
-    
-    # Load the Bundles' Categories Collection
-    categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
-    categories.fetch
-      async:   false
-      success: (response) ->
-        model = response.first()
-        self.setBrands(model.get('bundles_brands'))
-        self.setStyles(model.get('bundles_styles'))
-        self.setLocations(model.get('bundles_locations'))
-        self.setColors(model.get('bundles_colors'))
-        self.setMakes(model.get('bundles_makes'))
-      error: ->
-        console.log("bundle category fail")
-  
-  
-  
-  clickEntireRooms: ->
-    
-    ###
-    Set our store helper
-    ###
-    Mywebroom.State.set("storeHelper", "ENTIRE ROOMS")
-    
-    
-    
-    # Hide the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
-    
-    self = this
-    
-    @expandAll()
-    
-    
-    # Add the collapse class
-    $('#dropdown-category').addClass('collapse')
-    
-    
-    # Load the Bundles' Categories Collection
-    categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
-    categories.fetch
-      async:   false
-      success: (response) ->
-        model = response.first()
-        self.setBrands(model.get('bundles_brands'))
-        self.setStyles(model.get('bundles_styles'))
-        self.setLocations(model.get('bundles_locations'))
-        self.setColors(model.get('bundles_colors'))
-        self.setMakes(model.get('bundles_makes'))
-      error: ->
-        console.log("bundle category fail")
-  
-  
-    
-  
-  
-  
-  
-  
-  
-  
-  clickHidden: ->
-    ###
-    DOES THIS FUNCTION NEED TO DO SOMETHING???
-    ###
-  
-  
-  
-  
-  #********************
-  # FILTER SETTING ----
-  #********************
-  
-  ###
-  TODO
-  There needs to be a function for setting object dropdown filter <-- actually, this looks like it's working (not sure how)
-  ###
-
-  setStyles: (styles) ->
-    # empty out existing dropdown items
-    $('#dropdown-style > .dropdown-menu').empty()
-    
-    
-    # iterate through the style items and create a li out of each one
-    _.each(styles, (style) ->
-      if style.style
-        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
-    )
-    
-    
-      
-  setBrands: (brands) ->
-    # empty out existing dropdown items
-    $('#dropdown-brand > .dropdown-menu').empty()
-    
-    
-    # iterate through the brand items and create a li out of each one
-    _.each(brands, (brand) ->
-      if brand.brand
-        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
-    )
-    
-    
-    
-  setLocations: (locations) ->
-    # empty out existing dropdown items
-    $('#dropdown-location > .dropdown-menu').empty()
-    
-    
-    # iterate through the location items and create a li out of each one
-    _.each(locations, (location) ->
-      if location.location
-        $('#dropdown-location > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(location.location) + '</a></li>')
-    )
-   
-   
-   
-  setColors: (colors) ->
-    # empty out existing dropdown items
-    $('#dropdown-color > .dropdown-menu').empty()
-    
-    
-    # iterate through the color items and create a li out of each one
-    _.each(colors, (color) ->
-      if color.color
-        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
-    )
-    
-    
-  setMakes: (makes) ->
-    # empty out existing dropdown items
-    $('#dropdown-make > .dropdown-menu').empty()
-    
-    
-    # iterate through the make items and create a li out of each one
-    _.each(makes, (make) ->
-      if make.make
-        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-dropdown-item\"><a href=\"#\">' + _.str.capitalize(make.make) + '</a></li>')
-    )
