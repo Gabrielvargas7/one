@@ -28,6 +28,7 @@ class Mywebroom.Views.RoomScrollRightView extends Backbone.View
     #**** Render
     #*******************
   render: ->
+    
     $(@el).append(@template())
     this
 
