@@ -816,3 +816,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Insert the item into the DOM and Conditionally Show the Save Bar
     Mywebroom.Helpers.updateRoomDesign(usable)
+    
+    
+    # Conditionally Show the Save Bar
+    Mywebroom.Helpers.showSaveBar()

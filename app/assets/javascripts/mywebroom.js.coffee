@@ -503,37 +503,29 @@ $(document).ready ->
     
     
     
+    
     ###
-    CHECK TO SEE IF THIS IS A NEW DESIGN
+    UPDATE DOM PROPERTIES
+    ###
+    current_design
+    .attr("src", new_hover_src)
+    .attr("data-design-id-client", new_design_id)
+    .attr("data-main-src-client", new_main_src)
+    .attr("data-hover-src-client", new_hover_src)
+    .attr("data-room-highlighted", true)
+    
+    
+    
+    
+    
+    ###
+    CHECK IF DESIGN IS NEW
     ###
     if old_design_id.toString() isnt new_design_id.toString() or old_main_src.toString() isnt new_main_src.toString() or old_hover_src.toString() isnt new_hover_src.toString()
-      designIsNew = true
-    else
-      designIsNew = false
-    
-    
-    
-    
-    if designIsNew is true
-    
-      ###
-      UPDATE DOM PROPERTIES
-      ###
-      current_design
-      .attr("src", new_hover_src)
-      .attr("data-design-id-client", new_design_id)
-      .attr("data-main-src-client", new_main_src)
-      .attr("data-hover-src-client", new_hover_src)
-      .attr("data-design-has-changed", true)
-      .attr("data-room-highlighted", true)
-    
-    
-    
-    
-    
-      # Show the Save, Cancel, Remove view
-      $("#xroom_store_menu_save_cancel_remove").show()
-    
+      
+      # Design is changed
+      current_design.attr("data-design-has-changed", true)
+      
       # Show the save button
       $('#xroom_store_save').show()
     
@@ -541,13 +533,110 @@ $(document).ready ->
       $('#xroom_store_cancel').show()
     
       # Show the remove button unless the current design is hidden
-      unless $("[data-design-item-id=" + design_type + "]").attr("data-room-hide") is "yes"
+      unless current_design.attr("data-room-hide") is "yes"
         $('#xroom_store_remove').show()
-        
+    
     else
-      # Still Highlight
-      current_design.attr("data-room-highlighted", true)
+      
+      # Design is un-changed
+      current_design.attr("data-design-has-changed", false)
+    
+    
+    
+    
+ 
+
+      
+      
   
+  
+  
+  
+  Mywebroom.Helpers.updateRoomTheme = (model) ->
+    
+    console.log("updateRoomTheme")    
+    
+    ###
+    NEW PROPERTIES
+    ###
+    new_url =      model.get('image_name').url
+    new_theme_id = model.get('id')
+    
+    
+    
+    
+    ###
+    CURRENT THEME
+    ###
+    current_theme = $('.current_background')
+    
+    
+    
+    
+    ###
+    OLD PROPERTIES
+    ###
+    old_url =      current_theme.attr("data-theme-src-server")
+    old_theme_id = current_theme.attr("data-theme-id-server") 
+    
+    
+    
+    
+    ###
+    UPDATE DOM PROPERTIES
+    ###
+    current_theme
+    .attr("src", new_url)
+    .attr("data-theme-id-client", new_theme_id)
+    .attr("data-theme-src-client", new_url)
+    
+    
+    
+    
+    ###
+    CHECK IF THEME IS NEW
+    ###
+    if old_url.toString() isnt new_url.toString() or old_theme_id.toString() isnt new_theme_id.toString()
+      
+      # Theme has changed
+      current_theme.attr("data-theme-has-changed", true)
+    
+      # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+      # Show the save button
+      $('#xroom_store_save').show()
+    
+      # Show the cancel button
+      $('#xroom_store_cancel').show()
+    
+      # Hide the remove button
+      $('#xroom_store_remove').hide()
+    
+    else
+      
+      # Theme is un-changed
+      current_theme.attr("data-theme-has-changed", false)
+    
+    
+    
+    
+    
+    
+      
+  
+
+
+  
+  Mywebroom.Helpers.showSaveBar = ->
+    
+    if $('[data-design-has-changed=true]').size() > 0 or $('[data-theme-has-changed=true]').size() > 0
+      
+      # Show the Save Bar
+      $("#xroom_store_menu_save_cancel_remove").show()
+      
+    else 
+      
+      # Hide the Save Bar
+      $("#xroom_store_menu_save_cancel_remove").hide()
   
   
   ###
