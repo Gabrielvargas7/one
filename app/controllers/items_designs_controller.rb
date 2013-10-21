@@ -296,4 +296,32 @@ class ItemsDesignsController < ApplicationController
 
   end
 
+
+
+
+# GET Get seo_url of items_design
+# /items_designs/json/show_items_design_seo_url_by_items_design_id/:items_design_id'
+# /items_designs/json/show_items_design_seo_url_by_items_design_id/106.json'
+
+# Return head
+# success    ->  head  200 OK
+
+  def json_show_items_design_seo_url_by_items_design_id
+
+    respond_to do |format|
+      if ItemsDesign.exists?(id:params[:items_design_id])
+        @items_design = ItemsDesign.where('id=?',params[:items_design_id]).first
+
+        seo_url = Hash.new
+        seo_url["seo_url"] = shop_show_items_design_url(@items_design.id,get_clean_name(@items_design.name))
+
+        format.json { render json: seo_url }
+      else
+        format.json { render json: 'not found item designs id' , status: :not_found }
+      end
+    end
+
+  end
+
 end
+

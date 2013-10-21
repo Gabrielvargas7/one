@@ -244,6 +244,17 @@ describe FriendRequestsController do
   end
 
 
+  ###############
+  #test validation - create random room
+  ###############
+  describe "#json_show_friend_request_by_user_id_user_id_requested",tag_json:true do
+    pending "json_show_friend_request_by_user_id_user_id_requested #{__FILE__}"
+
+  end
+
+
+
+
 
 
 
