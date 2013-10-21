@@ -1,6 +1,6 @@
 .profile_objects_view .profile_table_inner_div{
-	overflow-y:auto;
-	min-height:500px;
+  overflow-y:auto;
+  min-height:500px;
 }
 
 .profile_objects_view{
@@ -8,13 +8,13 @@
 }
 
 .profile_friends_dropdown_menu{
-	top:10px;
+  top:10px;
 }
 
 #myModal{
-	color:black;
+  color:black;
 }
 /*Z-index to make the settings menu not trigger the click on the div its in*/
 .btn-group.pull-right.profile_friend_button{
-	z-index:2
+  z-index:2
 }

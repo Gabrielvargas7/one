@@ -1,11 +1,11 @@
 
 <div class="browse_mode_site_wrap">
-	<!--iframes go here-->
+  <!--iframes go here-->
 
 
-	<div class="browse_mode_site_nav">
-		<a id="browse_mode_site_nav_close" href="#"><img width="33px" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379713906/Delete_IconBK_24px_d0k55q.png" title="Mywebroom Close"></a>
-		<a id="browse_mode_site_nav_minimize" href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379713922/minimize.png" title="Mywebroom Minimize"></a>
-		<a id="browse_mode_site_nav_refresh" href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379713877/RefreshIcon_NewPNG_xxgnz9.png" title="refresh"></a>
-	</div>
+  <div class="browse_mode_site_nav">
+    <a id="browse_mode_site_nav_close" href="#"><img width="33px" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379713906/Delete_IconBK_24px_d0k55q.png" title="Mywebroom Close"></a>
+    <a id="browse_mode_site_nav_minimize" href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379713922/minimize.png" title="Mywebroom Minimize"></a>
+    <a id="browse_mode_site_nav_refresh" href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379713877/RefreshIcon_NewPNG_xxgnz9.png" title="refresh"></a>
+  </div>
 </div>

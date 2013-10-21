@@ -1,30 +1,30 @@
 <div class="bookmark_menu">
-	<p class="bookmark_object_title bottom_border_padding"><%=@items_name%> Bookmarks</p>
-	<ul class="bookmark_menu_list">
-		<a href="#"><li id="my_bookmarks_menu_item">My Bookmarks</li></a>
-		<a href="#"><li id="discover_menu_item">Discover</li></a>
-	</ul>
-	<div class="hidden discover_submenu_section">
-		<ul class="bookmark_menu_list" id="discover_submenu_list">
-			<%for category in @categories.models:%>
-				<a href="#"><li class="discover_submenu" data-id="<%=category.get('id')%>"><%=category.get('name')%></li></a>
+  <p class="bookmark_object_title bottom_border_padding"><%=@items_name%> Bookmarks</p>
+  <ul class="bookmark_menu_list">
+    <a href="#"><li id="my_bookmarks_menu_item">My Bookmarks</li></a>
+    <a href="#"><li id="discover_menu_item">Discover</li></a>
+  </ul>
+  <div class="hidden discover_submenu_section">
+    <ul class="bookmark_menu_list" id="discover_submenu_list">
+      <%for category in @categories.models:%>
+        <a href="#"><li class="discover_submenu" data-id="<%=category.get('id')%>"><%=category.get('name')%></li></a>
 
-			<%end%>
-		</ul>
-		
-		<div id="add_your_own_box">
-			<p>Add your own!</p>
-			<form id="add_your_own_form">
-				<input name="url_input" placeholder="URL">
-				<input name="bookmark_title" placeholder="Bookmark Title">
-				<input type="image" name="submit_btn" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226577/bookmarks-icon-magnifying-glass-search.png">
-			</form>
-			<div class="custom_bookmark_confirm_add_wrap">
-				<!--img goes here-->
+      <%end%>
+    </ul>
+    
+    <div id="add_your_own_box">
+      <p>Add your own!</p>
+      <form id="add_your_own_form">
+        <input name="url_input" placeholder="URL">
+        <input name="bookmark_title" placeholder="Bookmark Title">
+        <input type="image" name="submit_btn" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226577/bookmarks-icon-magnifying-glass-search.png">
+      </form>
+      <div class="custom_bookmark_confirm_add_wrap">
+        <!--img goes here-->
 
-				<!--Save Site Button default hidden-->
-				<a><div class="save_site_button">Save Site</div></a>
-			</div>
-		</div>
-	</div>
+        <!--Save Site Button default hidden-->
+        <a><div class="save_site_button">Save Site</div></a>
+      </div>
+    </div>
+  </div>
 </div>

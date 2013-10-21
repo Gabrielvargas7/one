@@ -1,50 +1,50 @@
 <div class="activity_item_large_view">
-	<div class="large_view_header">
-		<%if @model.get('name'):%>
-			<h2><%=@model.get('name')%></h2>
-			<%if @model.get('brand'):%>
-				<h4>by <%=@model.get('brand')%></h4>
-			<%end%>
-		<%else if @model.get('title') and @model.get('description') !=null:%>
-			<h2><%=@model.get('title')%></h2>
-			<h4><%=@model.get('description')%></h4>
-		<%end%>
-	</div>
-	<div class='activity_item_large_content_wrap'>
-		<ul>
-		<li class='activity_item_large_list'><div class="" id="large_item_prev"><a  href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></li>
+  <div class="large_view_header">
+    <%if @model.get('name'):%>
+      <h2><%=@model.get('name')%></h2>
+      <%if @model.get('brand'):%>
+        <h4>by <%=@model.get('brand')%></h4>
+      <%end%>
+    <%else if @model.get('title') and @model.get('description') !=null:%>
+      <h2><%=@model.get('title')%></h2>
+      <h4><%=@model.get('description')%></h4>
+    <%end%>
+  </div>
+  <div class='activity_item_large_content_wrap'>
+    <ul>
+    <li class='activity_item_large_list'><div class="" id="large_item_prev"><a  href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></li>
 
-		<li class='activity_item_large_list activity_item_large_view_img_wrap'>
-			<%if @model.get('image_name_desc'):%>
-				<img class="activity_item_large_view_img" src="<%=@model.get('image_name_desc').url%>">
-			<%else if @model.get('image_name_selection'):%>
-				<img class="activity_item_large_view_img" src="<%=@model.get('image_name_selection').url%>">
-			<%else:%>
-				<img class="activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
-			<%end%>
-		</li>
+    <li class='activity_item_large_list activity_item_large_view_img_wrap'>
+      <%if @model.get('image_name_desc'):%>
+        <img class="activity_item_large_view_img" src="<%=@model.get('image_name_desc').url%>">
+      <%else if @model.get('image_name_selection'):%>
+        <img class="activity_item_large_view_img" src="<%=@model.get('image_name_selection').url%>">
+      <%else:%>
+        <img class="activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
+      <%end%>
+    </li>
 
-		<li class='activity_item_large_list'><div class="" id="large_item_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></li>
-		</ul>
-	</div>
-	<ul>
-		<li class='activity_item_large_list'>
-			<div class="social_bar">
-				<div class ="navbar">
-					<div class="navbar-inner">
-						<ul class="nav">
-							<li><div class="fb-like" data-href="<%=@fbUrl%>" data-width="90" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div></li>
-							<li class="pinterest_item"><a href="#" data-pin-do="buttonPin"
-		        data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" target="_blank"></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</li>
-		<li class='activity_item_large_list profile_button'>
-			<div class="profile_button_wrap"><button class="profile_large_item_try_it_button" >Try in My Room!</button>
-			</div>
-		</li>
-	</ul>
+    <li class='activity_item_large_list'><div class="" id="large_item_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></li>
+    </ul>
+  </div>
+  <ul>
+    <li class='activity_item_large_list'>
+      <div class="social_bar">
+        <div class ="navbar">
+          <div class="navbar-inner">
+            <ul class="nav">
+              <li><div class="fb-like" data-href="<%=@fbUrl%>" data-width="90" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div></li>
+              <li class="pinterest_item"><a href="#" data-pin-do="buttonPin"
+            data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" target="_blank"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class='activity_item_large_list profile_button'>
+      <div class="profile_button_wrap"><button class="profile_large_item_try_it_button" >Try in My Room!</button>
+      </div>
+    </li>
+  </ul>
 
 </div>

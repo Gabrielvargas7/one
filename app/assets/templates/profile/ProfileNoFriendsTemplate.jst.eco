@@ -1,16 +1,16 @@
 <style>
 p.dark_text{
-	padding: 2em;
-	color:#464646;
-	font-size:14px;
+  padding: 2em;
+  color:#464646;
+  font-size:14px;
 }
 .profile_no_friends img{
-	float:right;
-	padding:2em 2em 0 0;
+  float:right;
+  padding:2em 2em 0 0;
 }
 </style>
 <div class="profile_no_friends">
-	<img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1380739386/search-friends-up-arrow.png">
+  <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1380739386/search-friends-up-arrow.png">
 <p class="dark_text">
 You have no friends at the moment. You can search for friends using our search bar above. You can also invite your facebook friends to join. 
 </p>
