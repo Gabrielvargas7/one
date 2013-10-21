@@ -435,9 +435,7 @@ $(document).ready ->
 
            
     ###
-    BASED ON X COORDINATES
-    FIXME
-    Request is to use y coordinates as well
+    BASED ON X and Y COORDINATES
     ###
     item_location_x = parseInt(model.get('x'))
     item_location_y = parseInt(model.get('y'))
@@ -448,7 +446,6 @@ $(document).ready ->
     $('#xroom_items_0').attr('data-current_screen_position','0')
     $('#xroom_items_0').css({
       'left': Math.floor(-1999 - item_location_x + 100)
-      #'top' : 20
     })
     
     #console.log('room top', $('#xroom_items_0').css('top'))
@@ -457,14 +454,18 @@ $(document).ready ->
     $('#xroom_items_1').attr('data-current_screen_position','1')
     $('#xroom_items_1').css({
       'left': Math.floor(0 - item_location_x + 100)
-      #'top' : 45
     })
     
     $('#xroom_items_2').attr('data-current_screen_position','2')
     $('#xroom_items_2').css({
       'left': Math.floor(1999 - item_location_x + 100)
-      #'top' : 70
     })
+    
+    
+    ###
+    ScrollTo Y Value - 100
+    ###
+    $.scrollTo(item_location_y - 100, {axis: 'y'})
     
   Mywebroom.Helpers.updateRoomDesign = (model) ->
     
