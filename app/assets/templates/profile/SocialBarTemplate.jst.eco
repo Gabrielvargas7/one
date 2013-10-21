@@ -1,12 +1,12 @@
 
 <div class ="navbar">
-	<div class="navbar-inner">
-		<ul class="nav">
-			<li class="fb_like_item">
-				<a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
-			</li>
-			<li class="pinterest_item"><a href="#"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a></li>
-			<li class="info_button_item"><a href="<%=@targetUrl%>" target="_blank">Info</a></li>
-		</ul>
-	</div>
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li class="fb_like_item">
+        <a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
+      </li>
+      <li class="pinterest_item"><a href="#"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a></li>
+      <li class="info_button_item"><a href="<%=@targetUrl%>" target="_blank">Info</a></li>
+    </ul>
+  </div>
 </div>

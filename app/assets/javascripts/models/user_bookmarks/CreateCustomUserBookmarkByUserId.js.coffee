@@ -14,4 +14,4 @@ class Mywebroom.Models.CreateCustomUserBookmarkByUserId extends Backbone.Model
  @title
  @position
  url: ->
- 	'/users_bookmarks/json/create_user_bookmark_custom_by_user_id/'+this.get('userId')+'.json'
+  '/users_bookmarks/json/create_user_bookmark_custom_by_user_id/'+this.get('userId')+'.json'

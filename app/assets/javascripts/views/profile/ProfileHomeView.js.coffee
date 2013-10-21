@@ -12,16 +12,16 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #*******************
 
  events:
- 	'click #profile_photos':'showProfilePhotos',
- 	'click #profile_friends':'showProfileFriends',
+  'click #profile_photos':'showProfilePhotos',
+  'click #profile_friends':'showProfileFriends',
   'click #profile_home_basic_info .blueLink':'showProfileFriends',
- 	'click #profile_key_requests':'showProfileKeyRequests',
+  'click #profile_key_requests':'showProfileKeyRequests',
   'click #profile_activity':'showProfileActivity',
   'click #profile_objects':'showProfileObjects',
   'click #profile_bookmarks':'showProfileBookmarks',
- 	'click #profile_home':'showHomeGrid',
- 	'click #Profile-Close-Button':'closeProfileView',
- 	'click #Profile-Collapse-Button':'collapseProfileView'
+  'click #profile_home':'showHomeGrid',
+  'click #Profile-Close-Button':'closeProfileView',
+  'click #Profile-Collapse-Button':'collapseProfileView'
   'click #profile_facebook_friends_invite':'inviteFriendsFacebook'
   #'click .profile_suggestion_name':'showUserProfile'
 
@@ -145,7 +145,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   $('#profileHome_top').css "height","auto"
   $('#profileHome_top').html ""
   $('#profileHome_bottom').css "height","550px"
- 	$('#profileHome_bottom').html(@photosView.render().el)
+  $('#profileHome_bottom').html(@photosView.render().el)
   if Mywebroom.State.get("roomState") != "SELF"
     $('#profile_upload_photos_button').remove()
  
@@ -156,7 +156,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   optionalButton = "<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379965946/invite-friends-with-facebook.png'>"
   $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:optionalButton))
   @keyRequestsView = new Mywebroom.Views.ProfileKeyRequestsView(model:@model)
-  $('#profileHome_bottom').html(@keyRequestsView.el) 	
+  $('#profileHome_bottom').html(@keyRequestsView.el)  
   @keyRequestsView.render()
 
  showProfileFriends: ->
@@ -213,25 +213,25 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
 
  collapseProfileView: ->
- 	#If view is open, close it, else reverse.
- 	#Change profile_home_container width to 0
- 	#Change profileHome_container left o 720px
+  #If view is open, close it, else reverse.
+  #Change profile_home_container width to 0
+  #Change profileHome_container left o 720px
   #BUG: Click collapse error while Large Photo View is on
- 	if @collapseFlag is false
+  if @collapseFlag is false
     $("#profileHome_container").css "left", "0px"
     $('#profile_home_container').css "width", "720px"
     $('#profile_drawer').css "width","760px"
     @collapseFlag=true
     $('#profile_collapse_arrow img').removeClass('flipimg')
     #@collapseFlag=true
-  	else
+    else
     $("#profileHome_container").css "left", "-720px"
     $('#profile_drawer').css "width","130px"#sidebarWidth + drawerWidth
     #Collapse Icon turn around.
     $('#profile_collapse_arrow img').addClass('flipimg')
     #To enable hover on objects again set timeout on width
     setTimeout (->
-    	$("#profile_home_container").css "width", "0px"), 1000
+      $("#profile_home_container").css "width", "0px"), 1000
     @collapseFlag = false
  #Calculates and return age. Argument is string YYYY-MM-DD
  getAge:(birthday)->
@@ -264,7 +264,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     console.log 'inviteFriendsFacebook ui call: '
     console.log request
  closeProfileView: ->
-# 	this.remove()
+#   this.remove()
 #  Mywebroom.vent.trigger("destroy:profile")
 #  this.options.roomHeaderView.delegateEvents() # add all header events
    $('#xroom_profile').hide()

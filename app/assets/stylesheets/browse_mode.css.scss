@@ -1,132 +1,132 @@
 .browse_mode_site_nav{
-	position:absolute;
-	top:5px;
-	right:95px;
-	z-index: 2;
-	transition:top .5s ease-in-out;
+  position:absolute;
+  top:5px;
+  right:95px;
+  z-index: 2;
+  transition:top .5s ease-in-out;
 }
 .browse_mode_sidebar{
-	position:fixed;
-	z-index:8;
-	left:0;
-	top:45px;
-	background-color:rgba(0,0,0,.8);
-	padding:0 10px;
-	height:100%;
-	width:50px;
-	color:#d2d4d4;
-	font-size:12px;
-	font-weight:bolder;
-	text-transform:uppercase;
+  position:fixed;
+  z-index:8;
+  left:0;
+  top:45px;
+  background-color:rgba(0,0,0,.8);
+  padding:0 10px;
+  height:100%;
+  width:50px;
+  color:#d2d4d4;
+  font-size:12px;
+  font-weight:bolder;
+  text-transform:uppercase;
 }
 .browse_mode_site_wrap{
-	height:100%;
-	width:100%;
-	position:fixed;
-	z-index:8;
-	left:70px;
-	background-color: white;
+  height:100%;
+  width:100%;
+  position:fixed;
+  z-index:8;
+  left:70px;
+  background-color: white;
 }
 iframe.current_browse_mode_site {
-	width:100%;
-	height:100%;
+  width:100%;
+  height:100%;
 
 }
 .browse_mode_site{
-	display:none;
+  display:none;
 }
 .current_browse_mode_site.browse_mode_site{
-	display:block;
+  display:block;
 }
 iframe.current_browse_mode_site.browse_mode_site{
-	background-color:white;
+  background-color:white;
 }
 div.current_browse_mode_site.browse_mode_site{
-	width:100%;
-	height:100%;
-	position:fixed;
-	padding-top:10%;
-	color:black;
-	text-align:center;
+  width:100%;
+  height:100%;
+  position:fixed;
+  padding-top:10%;
+  color:black;
+  text-align:center;
 }
 /*Browse mode Sidebar*/
 img.browse_mode_sidebar_icons{
-	width:30px;
-	border-radius:3px;
+  width:30px;
+  border-radius:3px;
 }
 
 .browse_mode_list li{
-	padding:12px 0;
-	list-style: none;
-	text-align:center;
+  padding:12px 0;
+  list-style: none;
+  text-align:center;
 }
 .browse_mode_list div{
-	margin:3px 0;
+  margin:3px 0;
 }
 .browse_mode_list{
-	margin:0;
+  margin:0;
 }
 .sidebar_spacer{
-	height:22px;
-	border-top: 1px solid #707070;
+  height:22px;
+  border-top: 1px solid #707070;
 }
 #browse_mode_list_selected .browse_mode_sidebar_icons{
-	border:2px solid #40C3FD;
+  border:2px solid #40C3FD;
 }
 #browse_mode_active_highlight,#browse_mode_discover_highlight,#browse_mode_mybookmarks_highlight{
-	display:none;
+  display:none;
 }
 /*The Bookmarks menu text is too long. Negative margin here to help center it like the others. */
 #browse_mode_bookmarks + div{
-	margin-left:-8px;
-	font-size:10.5px
+  margin-left:-8px;
+  font-size:10.5px
 }
 li.browse_mode_sidebar_icons_list{
-	padding:8px;
+  padding:8px;
 
 }
 /*header Item name in Sidebar*/
 #browse_mode_item_name{
-	color: white;
-	padding-top: 10px;
-	font-size: 16px;
+  color: white;
+  padding-top: 10px;
+  font-size: 16px;
 }
 /*END Browse mode Sidebar*/
 /*Active Sites Menu*/
 .browse_mode_active_sites_menu{
-	width: 100%;
-	top: 45px;
-	position: fixed;
-	z-index: 9;
-	height: 80px;
-	padding: 0;
-	margin: 0;
-	left: -2070px;
-	background-color:rgba(0,0,0,.8);
-	transition: left .5s ease-in-out;
+  width: 100%;
+  top: 45px;
+  position: fixed;
+  z-index: 9;
+  height: 80px;
+  padding: 0;
+  margin: 0;
+  left: -2070px;
+  background-color:rgba(0,0,0,.8);
+  transition: left .5s ease-in-out;
 }
 .horizontal_list{
-	padding-left:20px;
-	padding-top:20px;
-	margin:0;
+  padding-left:20px;
+  padding-top:20px;
+  margin:0;
 }
 .horizontal_list li{
-	display:inline;
-	list-style-type: none;
-	padding-right:15px;
+  display:inline;
+  list-style-type: none;
+  padding-right:15px;
 }
 .active_menu_site_icon{
-	display:inline-block;
-	width: 30px;
-	min-height:30px;
-	border-radius:3px;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
+  display:inline-block;
+  width: 30px;
+  min-height:30px;
+  border-radius:3px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 #active_menu_close_wrap{
-	position:absolute;
-	top:5px;
-	right:90px;
+  position:absolute;
+  top:5px;
+  right:90px;
 }
 /*END Active Sites Menu*/

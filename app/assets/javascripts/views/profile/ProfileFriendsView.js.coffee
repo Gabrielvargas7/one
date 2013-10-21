@@ -19,7 +19,7 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
   else
     @friendsCollection.forEach(@friendsAddView,this)
   this
- 	
+  
  friendsAddView: (friend) ->
   friendView = new Mywebroom.Views.ProfileFriendsSingleView({model:friend,PUBLIC_FLAG:@model.get('FLAG_PROFILE')})
   that = this
