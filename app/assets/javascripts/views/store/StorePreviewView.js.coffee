@@ -236,8 +236,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     ###
     (1) Center
-    (2) Conditionally Show Save Bar
-    (3) Update DOM
+    (3) Update DOM and Conditionally Show Save Bar
     (4) Highlight
     ###
     
@@ -245,78 +244,36 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     #console.log("click design")
      
     
+    
+    
     ###
     DESIGN TYPE
     ###
     design_type = @model.get("item_id")
     
     
-    ###
-    NEW PROPERTIES
-    ###
-    new_design_id = @model.get("id")
-    new_main_src =  @model.get("image_name").url
-    new_hover_src = @model.get("image_name_hover").url
     
     
-   
-  
     ###
-    CENTER
+    (1) CENTER
     ###
     Mywebroom.Helpers.centerItem(design_type)
     
     
     
     
-    
-    
     ###
-    SAVE, CANCEL, REMOVE - START
+    (2) UPDATE DOM and SHOW SAVE BAR
     ###
-    # Show the Save, Cancel, Remove view
-    $("#xroom_store_menu_save_cancel_remove").show()
-    
-    # Show the save button
-    $('#xroom_store_save').show()
-    
-    # Show the cancel button
-    $('#xroom_store_cancel').show()
-    
-    # Show the remove button unless the current design is hidden
-    unless $("[data-design-item-id=" + design_type + "]").attr("data-room-hide") is "yes"
-      $('#xroom_store_remove').show()
-    ###
-    SAVE, CANCEL, REMOVE - END
-    ###
-    
-    
-    
-    
-    
+    Mywebroom.Helpers.updateRoomDesign(@model)
     
     
     
     
     ###
-    UPDATE DOM PROPERTIES - START
+    (3) HIGHLIGHT
     ###
-    $('[data-design-item-id=' + design_type + ']')
-    .attr("src", new_hover_src)
-    .attr("data-design-id-client", new_design_id)
-    .attr("data-main-src-client", new_main_src)
-    .attr("data-hover-src-client", new_hover_src)
-    .attr("data-design-has-changed", true)
-    .attr("data-room-highlighted", true)
-    ###
-    UPDATE DOM PROPERTIES - END
-    ###
-    
-    
-   
-    # Highlight
     Mywebroom.Helpers.highLight(design_type)
-    
     
     
     
@@ -325,21 +282,19 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     # create a reference to it's container element
     $activeDesign = $("[data-design-item-id=" + design_type + "]")
     
-
+    
+    
+    
     # Save this object to our state model
     Mywebroom.State.set("$activeDesign", $activeDesign)
     
-          
-   
     
     
-
     
     
- 
- 
- 
-  
+    
+    
+    
   clickTheme: (e) ->
     
     e.preventDefault()

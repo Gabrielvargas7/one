@@ -100,13 +100,23 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
       else
         console.log 'hide ya profile cause the store\'s comin out y\'all'
         console.log @model
-        #hide Profile , Show Store
-        $('#xroom_storepage').show()
+        
         $('#xroom_profile').hide()
-        # (trigger store event?)
-        #Should show item in store view with object centered. 
-        #This model only has bundle_id, and id. No item_id or Item Design Name. 
         @closeView()
+        
+        
+        # (1) Show Store
+        Mywebroom.Helpers.showStore()
+
+
+        # (2) Switch to the hidden tab
+        $('#storeTabs a[href="#tab_hidden"]').tab('show')
+    
+    
+        # (3) Use model to populate view
+        Mywebroom.State.get("storeMenuView").appendOne(@model)
+        
+        
     
   getMyBookmarksLength:(userId)->
     @myBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()

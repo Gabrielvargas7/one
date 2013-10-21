@@ -760,10 +760,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     console.log("appendOne")
 
     ###
-    This is the code for receieving a model from 
+    This is the code for receiving a model from 
     the social view
     ###
-    
     if model.get("entityId")?
       ###
       We're getting a special form of design model
@@ -771,7 +770,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       we fetch. So, we're going to use this model's
       entityId and then do a fetch for this model.
       ###
-    
       item_id = model.get("entityId")
     
       usable = new Mywebroom.Models.DesignModel({id: item_id})
@@ -783,9 +781,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           console.log("model fetch fail", model, response, options)
     else
       ###
-      We're getting a design model that's basically
-      what we're looking for, except it doesn't have
-      the type property.
+      This is the code for receiving a model from
+      the profile view
       ###
 
       usable = model
@@ -815,3 +812,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Center the item
     Mywebroom.Helpers.centerItem(usable.get("item_id"))
+    
+    
+    # Insert the item into the DOM and Conditionally Show the Save Bar
+    Mywebroom.Helpers.updateRoomDesign(usable)
