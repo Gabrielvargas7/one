@@ -55,6 +55,8 @@ group :development, :test do
   gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.0'
   gem 'debugger','1.5.0'
+  gem 'phantomjs', github: 'colszowka/phantomjs-gem'
+  gem 'teaspoon', github: 'modeset/teaspoon'
   # gem 'guard-rspec', '1.2.1'
   # gem 'guard-spork', '1.2.0'
   # gem 'spork', '0.9.2'
