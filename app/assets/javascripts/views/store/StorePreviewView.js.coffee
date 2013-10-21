@@ -236,7 +236,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     ###
     (1) Center
-    (3) Update DOM and Conditionally Show Save Bar
+    (2) Update DOM
+    (3) Conditionally Show Save Bar
     (4) Highlight
     ###
     
@@ -263,15 +264,22 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     ###
-    (2) UPDATE DOM and SHOW SAVE BAR
+    (2) UPDATE DOM
     ###
     Mywebroom.Helpers.updateRoomDesign(@model)
     
     
     
+    ###
+    (3) CONDITIONALLY SHOW SAVE BAR
+    ###
+    Mywebroom.Helpers.showSaveBar()
+    
+    
+    
     
     ###
-    (3) HIGHLIGHT
+    (4) HIGHLIGHT
     ###
     Mywebroom.Helpers.highLight(design_type)
     
@@ -296,35 +304,21 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
   clickTheme: (e) ->
-    
+     
     e.preventDefault()
     e.stopPropagation()
     
-    # New Properties
-    url =      @model.get('image_name').url
-    theme_id = @model.get('id')
+    
+    ###
+    (1) UPDATE THEME IN DOM
+    ###
+    Mywebroom.Helpers.updateRoomTheme(@model)
     
     
-    # Show the view with the Save, Cancel, Remove buttons
-    $('#xroom_store_menu_save_cancel_remove').show()
-    
-    
-    # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
-    # Show the save button
-    $('#xroom_store_save').show()
-    
-    # Show the cancel button
-    $('#xroom_store_cancel').show()
-    
-    # Hide the remove button
-    $('#xroom_store_remove').hide()
-    
-    
-    
-    $('.current_background').attr("src", url)
-    $('.current_background').attr("data-theme-id-client", theme_id)
-    $('.current_background').attr("data-theme-src-client", url)
-    $('.current_background').attr("data-theme-has-changed", true)
+    ###
+    (2) CONDITIONALLY SHOW SAVE BAR
+    ###
+    Mywebroom.Helpers.showSaveBar()
 
   
   clickBundle: (e) ->
@@ -335,35 +329,29 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     e.stopPropagation()
     
     
-    # Show the view with the Save, Cancel, Remove buttons
-    $('#xroom_store_menu_save_cancel_remove').show()
+    designs = @getBundleDesignsCollection(@model.get('id'))
+
+
+    ###
+    UPDATE DOM
+    ###
+    designs.each (design)  ->
+
+      Mywebroom.Helpers.updateRoomDesign(design)
+      
+     
+     
     
+    ###
+    CONDITIONALLY SHOW SAVE BAR
+    ###
+    Mywebroom.Helpers.showSaveBar()
     
-    # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
-    # Show the save button
-    $('#xroom_store_save').show()
-    
-    # Show the cancel button
-    $('#xroom_store_cancel').show()
-    
-    # Hide the remove button
+      
+    ###
+    NEVER SHOW REMOVE BUTTON FOR A BUNDLE
+    ###
     $('#xroom_store_remove').hide()
-    
-    
-    collection = @getBundleDesignsCollection(@model.get('id'))
-
-    collection.each (entry)  ->
-      itemId = entry.get('item_id')
-      itemDesignId = entry.get('id')
-      imageName = entry.get('image_name').url
-      imageNameHover = entry.get('image_name_hover').url
-
-      $('[data-design-item-id=' + itemId + ']').attr("src", imageName)
-      $('[data-design-item-id=' + itemId + ']').attr("data-design-id-server",itemDesignId)
-      $('[data-design-item-id=' + itemId + ']').hover (->  $(this).attr("src",imageNameHover)), -> $(this).attr("src",imageName)
-      $('[data-design-item-id=' + itemId + ']').attr("data-design-has-changed", true)
-
-
 
 
 
@@ -371,52 +359,55 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   
   clickEntireRoom: (e) ->
     
+    #console.log("\n\n\nENTIRE ROOMS clicked\n\n\n")
+    
     e.preventDefault()
     e.stopPropagation()
     
     
-    self = this
+    
+    ###
+    FETCH THEME
+    ###
+    themes = @getBundleThemeCollection(@model.get('theme_id'))
+    theme = themes.first()
     
     
-    #console.log("\n\n\nENTIRE ROOMS clicked\n\n\n")
+    ###
+    THEME: UPDATE DOM
+    ###
+    Mywebroom.Helpers.updateRoomTheme(theme)
     
     
     
-    # Show the view with the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').show()
+    
+    ###
+    FETCH DESIGNS
+    ###
+    designs = @getBundleDesignsCollection(@model.get('id'))
     
     
-    # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
-    # Show the save button
-    $('#xroom_store_save').show()
-    
-    # Show the cancel button
-    $('#xroom_store_cancel').show()
-    
-    # Hide the remove button
+    ###
+    DESIGNS: UPDATE DOM
+    ###
+    designs.each (design) ->
+      
+      Mywebroom.Helpers.updateRoomDesign(design)
+      
+      
+   
+   
+    ###
+    CONDITIONALLY SHOW SAVE BAR
+    ###
+    Mywebroom.Helpers.showSaveBar()
+   
+      
+      
+    ###
+    NEVER SHOW REMOVE BUTTON FOR A ENTIRE ROOM
+    ###
     $('#xroom_store_remove').hide()
-
-
-    # set the new theme
-    bundleThemeCollection = @getBundleThemeCollection(@model.get('theme_id'))
-    bundleThemeModel = bundleThemeCollection.first()
-    $('.current_background').attr("src", bundleThemeModel.get('image_name').url);
-    $('.current_background').attr("data-theme-id-client", bundleThemeModel.get('id'));
-    $('.current_background').attr("data-theme-has-changed", true);
-
-
-    # set the new items
-    collection = @getBundleDesignsCollection(@model.get('id'))
-    collection.each (entry) ->
-      itemId =         entry.get('item_id')
-      itemDesignId =   entry.get('id')
-      imageName =      entry.get('image_name').url
-      imageNameHover = entry.get('image_name_hover').url
-
-      $('[data-design-item-id=' + itemId + ']').attr("src", imageName)
-      $('[data-design-item-id=' + itemId + ']').attr("data-design-id-server", itemDesignId)
-      $('[data-design-item-id=' + itemId + ']').hover (->  $(self).attr("src", imageNameHover)), -> $(self).attr("src", imageName)
-      $('[data-design-item-id=' + itemId + ']').attr("data-design-has-changed", true)
   
   
   
