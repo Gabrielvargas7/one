@@ -1,7 +1,7 @@
 
 <div id="bookmark_sidebar_preview_mode">
   <img src="<%=@model.get('image_name_desc').url%>"></img>
-  <p><%=@model.get('description')%></p>
+  <p class="bookmark_sidebar_preview_mode_description"><%=@model.get('description')%></p>
   <a class="preview_mode_save_button_wrap" href=""><div class="preview_mode_save_button">Save Site</div></a>
   <div class = "preview_mode_saved">
 

@@ -239,11 +239,16 @@ div.just_added img{
   top:10px;
 }
 #bookmark_sidebar_preview_mode{
-  text-align:center;
-  padding-top: 3em;
-  margin-top: 3em;
+  
+  padding:30px .5em;
+  margin-top: 15px;
   border-top: 1px solid #707070;
   width:230px;
+}
+ /*To make preview mode button align correctly.*/
+#bookmark_sidebar_preview_mode .bookmark_sidebar_preview_mode_description{
+  padding-right:1.5em;
+  margin-top:10px;
 }
 .preview_mode_save_button,.save_site_button {
   background-color:#0099cb;
@@ -259,11 +264,14 @@ div.just_added img{
   text-align:center;
   border-radius:3px;
 }
+.preview_mode_save_button {
+  width:80%;
+}
 .preview_mode_saved{
   background-color: #7d7d7d;
   font-size:18px;
   color:white;
-  width:130px;
+  width:80%;
   line-height:32px;
   height:32px;
   text-align: center;
