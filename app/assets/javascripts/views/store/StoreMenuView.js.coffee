@@ -757,25 +757,41 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   appendOne: (model) ->
     
+    console.log("appendOne")
+
     ###
-    We're getting a special form of design model
-    that doesn't fit with all the other designs
-    we fetch. So, we're going to use this model's
-    entityId and then do a fetch for this model
+    This is the code for receieving a model from 
+    the social view
     ###
     
-    item_id = model.get("entityId")
+    if model.get("entityId")?
+      ###
+      We're getting a special form of design model
+      that doesn't fit with all the other designs
+      we fetch. So, we're going to use this model's
+      entityId and then do a fetch for this model.
+      ###
     
-    fetched = new Mywebroom.Models.DesignModel({id: item_id})
-    fetched.fetch
-      async: false
-      success: (model, response, options) ->
-        #console.log("model fetch success", model, response, options)
-      error: (model, response, options) ->
-        console.log("model fetch fail", model, response, options)
+      item_id = model.get("entityId")
     
-    
-    
+      usable = new Mywebroom.Models.DesignModel({id: item_id})
+      usable.fetch
+        async: false
+        success: (model, response, options) ->
+          #console.log("model fetch success", model, response, options)
+        error: (model, response, options) ->
+          console.log("model fetch fail", model, response, options)
+    else
+      ###
+      We're getting a design model that's basically
+      what we're looking for, except it doesn't have
+      the type property.
+      ###
+
+      usable = model
+      usable.set("type", "DESIGN")
+
+      
     
     # Clear What's In There
     $("#tab_hidden > ul").remove()
@@ -786,7 +802,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
    
     # Create the view
-    view = new Mywebroom.Views.StorePreviewView(model: fetched)
+    view = new Mywebroom.Views.StorePreviewView(model: usable)
     
     
     # Append the element
@@ -798,4 +814,4 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     # Center the item
-    Mywebroom.Helpers.centerItem(fetched.get("item_id"))
+    Mywebroom.Helpers.centerItem(usable.get("item_id"))
