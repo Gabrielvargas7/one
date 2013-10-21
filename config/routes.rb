@@ -485,6 +485,7 @@ Mywebroom::Application.routes.draw do
          :bookmarks_categories_json_index_bookmarks_categories_by_item_id
 
 
+
   #**************************
   # end BookmarksCategory Contract
   #**************************
@@ -516,6 +517,8 @@ Mywebroom::Application.routes.draw do
         'bookmarks#json_show_bookmark_by_bookmark_id', via: :get  , as:
         :json_show_bookmark_by_bookmark_id
 
+  match 'bookmarks/json/show_bookmarks_seo_url_by_bookmark_id/:bookmark_id', to:
+        'bookmarks#json_show_bookmarks_seo_url_by_bookmark_id', via: :get
 
 
 

@@ -1,0 +1,10 @@
+//# GET Get seo_url of bookmarks
+//# /bookmarks/json/show_bookmarks_seo_url_by_bookmark_id/:bookmark_id'
+//# /bookmarks/json/show_bookmarks_seo_url_by_bookmark_id/106.json'
+//
+//# Return head
+//# success    ->  head  200 OK
+
+{
+    "seo_url": "http://localhost:3000/shop/bookmark/1001/you-tube"
+}
