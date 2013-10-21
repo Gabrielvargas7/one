@@ -131,6 +131,21 @@ class ItemsDesignsController < ApplicationController
   #***********************************
 
 
+  # GET Get item_design by id
+  # /items_designs/json/show_item_design_by_id/:id'
+  # /items_designs/json/show_item_design_by_id/1.json
+  # Return head
+  # success    ->  head  200 OK
+  
+  def json_show_item_design_by_id
+    @items_design = ItemsDesign.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @items_design }
+    end
+  end
+
+
   # GET Get all items_designs by item_id
   # /items_designs/json/index_items_designs_by_item_id/:item_id'
   # /items_designs/json/index_items_designs_by_item_id/1.json

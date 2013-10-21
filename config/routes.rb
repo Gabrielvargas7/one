@@ -313,6 +313,10 @@ Mywebroom::Application.routes.draw do
   # start ItemsDesigns Contract
   #**************************
 
+  match '/items_designs/json/show_item_design_by_id/:id', to:
+        'items_designs#json_show_item_design_by_id', via: :get  , as:
+        :items_designs_json_show_item_design_by_id
+        
   match '/items_designs/json/index_items_designs_by_item_id/:item_id', to:
          'items_designs#json_index_items_designs_by_item_id', via: :get  , as:
          :items_designs_json_index_items_designs_by_item_id

@@ -1,0 +1,50 @@
+// controller  ->  ItemsDesignsController
+// method type ->  get
+// method name ->  json_show_item_design_by_id
+
+
+//Security : public
+
+
+//Description
+                //# GET Get item_design by id
+                //#/items_designs/json/show_item_design_by_id/:id'
+                //#/items_designs/json/show_item_design_by_id/1.json
+//Return head
+// success    ->  head  200 OK
+
+
+// back_end   :done
+// front_end :working
+
+
+{
+    "brand": null, 
+    "bundle_id": 10, 
+    "category": null, 
+    "color": null, 
+    "created_at": "2013-05-17T20:45:43Z", 
+    "description": "All Pink everywhere.", 
+    "id": 218, 
+    "image_name": {
+        "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823543/54708-items_design-image_name-pink-218.png"
+    }, 
+    "image_name_hover": {
+        "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823544/24518-items_design-image_name_hover-pink-218-h.png"
+    }, 
+    "image_name_logo": {
+        "url": "/assets/fallback/items_design/default_items_design.png"
+    }, 
+    "image_name_selection": {
+        "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823544/79454-items_design-image_name_selection-pink-218-300x300.jpg"
+    }, 
+    "item_id": 2, 
+    "like": 0, 
+    "make": null, 
+    "name": "Pink", 
+    "price": "0.0", 
+    "product_url": null, 
+    "special_name": null, 
+    "style": null, 
+    "updated_at": "2013-05-17T20:45:43Z"
+}
