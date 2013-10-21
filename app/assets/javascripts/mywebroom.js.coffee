@@ -639,6 +639,20 @@ $(document).ready ->
       $("#xroom_store_menu_save_cancel_remove").hide()
   
   
+  
+  
+  Mywebroom.Helpers.turnOffMousewheel = ->
+    $('#xroom').on('mousewheel', (e) ->
+        e.preventDefault()
+        e.stopPropagation()
+        #console.log("no mousewheel")
+    )
+    
+    
+  Mywebroom.Helpers.turnOnMousewheel = ->
+    $('#xroom').off('mousewheel')
+  
+  
   ###
   (1) Store visibility
   (1.1) Scroller visibility
@@ -653,8 +667,9 @@ $(document).ready ->
   (8) Highlighted Images
   (9) Room size & Button class
   (10) Image Hover: on or off
-  (10.1) Image Click: on or off 
-  (11) Set Store State
+  (10.1) Image Click: on or off
+  (11) Mousewheel 
+  (12) Set Store State
   ###
   
  
@@ -726,7 +741,11 @@ $(document).ready ->
     Mywebroom.Helpers.turnOffDesignClick()
     
     
-    # (11) Set Store State
+    # (11) Mousewheel
+    Mywebroom.Helpers.turnOffMousewheel()
+    
+    
+    # (12) Set Store State
     Mywebroom.State.set("storeState", "shown")
     
     
@@ -789,7 +808,11 @@ $(document).ready ->
     Mywebroom.Helpers.turnOnDesignClick()
     
     
-    # (11) Set Store State
+    # (11) Mousewheel
+    Mywebroom.Helpers.turnOnMousewheel()
+    
+    
+    # (12) Set Store State
     Mywebroom.State.set("storeState", "hidden")
     
     
@@ -855,7 +878,11 @@ $(document).ready ->
     # n/a
     
     
-    # (11) Set Store State
+    # (11) Mousewheel
+    # n/a
+    
+    
+    # (12) Set Store State
     Mywebroom.State.set("storeState", "collapsed")
     
     
@@ -924,7 +951,11 @@ $(document).ready ->
     # n/a
     
     
-    # (11) Set Store State
+    # (11) Mousewheel
+    # n/a
+    
+    
+    # (12) Set Store State
     Mywebroom.State.set("storeState", "shown")
  
     ###
