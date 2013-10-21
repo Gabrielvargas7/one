@@ -667,6 +667,15 @@ describe BundlesController do
   end
 
 
+  describe "api #json_show_bundles_seo_url_by_bundles_id",tag_json_category:true do
+    pending "pending test api"
+  end
+
+  describe "api #json_show_entire_room_seo_url_by_entire_room_id",tag_json_category:true do
+    pending "pending test api"
+  end
+
+
 
 
 

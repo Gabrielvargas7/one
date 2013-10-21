@@ -399,13 +399,13 @@ class BookmarksController < ApplicationController
 
 
   # GET Get seo_url of bookmarks
-  # /bookmarks/json/show_bookmarks_seo_url_by_bookmark_id/:bookmark_id'
-  # /bookmarks/json/show_bookmarks_seo_url_by_bookmark_id/106.json'
+  # /bookmarks/json/show_bookmark_seo_url_by_bookmark_id/:bookmark_id'
+  # /bookmarks/json/show_bookmark_seo_url_by_bookmark_id/1001.json'
 
   # Return head
   # success    ->  head  200 OK
 
-  def json_show_bookmarks_seo_url_by_bookmark_id
+  def json_show_bookmark_seo_url_by_bookmark_id
 
     respond_to do |format|
       if Bookmark.exists?(id:params[:bookmark_id])
@@ -416,7 +416,7 @@ class BookmarksController < ApplicationController
 
         format.json { render json: seo_url }
       else
-        format.json { render json: 'not found item designs id' , status: :not_found }
+        format.json { render json: 'not found bookmark id' , status: :not_found }
       end
     end
 

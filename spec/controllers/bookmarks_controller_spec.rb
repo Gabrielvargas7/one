@@ -611,9 +611,12 @@ describe BookmarksController do
       end
 
     end
-
-
   end
+
+  describe "api #json_show_bookmarks_seo_url_by_bookmark_id",tag_json_category:true do
+    pending "pending test api"
+  end
+
 
 
 

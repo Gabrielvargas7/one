@@ -591,6 +591,11 @@ describe ThemesController do
     pending "pending test api"
   end
 
+  describe "api #json_show_themes_seo_url_by_themes_id",tag_json_category:true do
+    pending "pending test api"
+  end
+
+
 
 
 

@@ -1,0 +1,10 @@
+//
+//# GET Get seo_url of entire room
+//# /bundles/json/show_entire_room_seo_url_by_bundle_id/:bundle_id'
+//# /bundles/json/show_entire_room_seo_url_by_bundle_id/1.json'
+//# Return head
+//# success    ->  head  200 OK
+
+{
+    "seo_url": "http://localhost:3000/shop/bundle/1/cartoonish"
+}

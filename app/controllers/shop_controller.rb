@@ -444,6 +444,14 @@ class ShopController < ApplicationController
 
 
 
+  #***********************************
+  # Json methods for the room users
+  #***********************************
+
+
+
+
+
 
 
 end
