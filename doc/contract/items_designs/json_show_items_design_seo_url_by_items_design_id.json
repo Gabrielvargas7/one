@@ -1,0 +1,10 @@
+//GET Get seo_url of items_design
+//# /items_designs/json/show_items_design_seo_url_by_items_design_id/:items_design_id'
+//# /items_designs/json/show_items_design_seo_url_by_items_design_id/106.json'
+//
+//# Return head
+//# success    ->  head  200 OK
+
+{
+    "seo_url": "http://localhost:3000/shop/items-design/106/telefono"
+}

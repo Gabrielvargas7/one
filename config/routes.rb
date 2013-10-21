@@ -333,6 +333,11 @@ Mywebroom::Application.routes.draw do
          'items_designs#json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset', via: :get  , as:
          :items_designs_json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset
 
+  match '/items_designs/json/show_items_design_seo_url_by_items_design_id/:items_design_id', to:
+         'items_designs#json_show_items_design_seo_url_by_items_design_id', via: :get
+
+
+
 
 
 
@@ -536,6 +541,13 @@ Mywebroom::Application.routes.draw do
   match '/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/:user_id', to:
          'friend_requests#json_index_friend_request_make_from_your_friend_to_you_by_user_id', via: :get, as:
          :friend_requests_json_index_friend_request_make_from_your_friend_to_you_by_user_id
+
+
+  match '/friend_requests/json/show_friend_request_by_user_id_user_id_requested/:user_id/:user_id_requested', to:
+         'friend_requests#json_show_friend_request_by_user_id_user_id_requested', via: :get
+
+
+
 
 
 
