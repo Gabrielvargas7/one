@@ -40,6 +40,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   initialize: ->
+    
     @model = Mywebroom.State.get("roomData")
 
 
@@ -95,7 +96,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function remove header elemenst
   #--------------------------
   removeRoomHeaderElemments: ->
-    roomState   = Mywebroom.State.get("roomState")
+    
+    roomState =   Mywebroom.State.get("roomState")
     signInState = Mywebroom.State.get("signInState")
     
     
@@ -119,7 +121,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   # get the user room info
   #--------------------------
-  getUserSignInDataCollection:(userId) ->
+  getUserSignInDataCollection: (userId) ->
     @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
     @userAllRoomDataCollection.fetch
       async: false
@@ -149,7 +151,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
-  createProfileView:->
+  createProfileView: ->
     
     @profile = new Backbone.Model
     @profile.set(@model.get('user_profile'))
@@ -179,7 +181,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   #  *** function forwardToRoRProfilePage this function work on RoR, we should change to Backbone
   #--------------------------
-  forwardToRoRProfilePage:(event) ->
+  forwardToRoRProfilePage: (event) ->
     
     event.preventDefault()
    
@@ -250,7 +252,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------------------
   #  *** function
   #--------------------------
-  toggleStore: (event) ->
+  toggleStore: (e) ->
+    
+    e.preventDefault()
+    e.stopPropagation()
     
     state = Mywebroom.State.get("storeState")
     
@@ -280,7 +285,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #--------------
   # --- STORE ---
   #--------------
-  createStorePage:->
+  createStorePage: ->
     
     @storeLayoutView = new Mywebroom.Views.StoreLayoutView()
     $('#xroom_storepage').html(@storeLayoutView.el)
@@ -294,32 +299,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
+
   #--------------------------
   #  *** function display
   #--------------------------
-
-  
-  
-  
- 
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-  #--------------------------
-  #  *** function
-  #--------------------------
   displayProfile: ->
+    
     $('#xroom_store_menu_save_cancel_remove').hide()
     $('#xroom_storepage').hide()
     $('#xroom_profile').show()
@@ -330,6 +315,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   displaySearchPage: ->
+    
     $('#xroom_store_menu_save_cancel_remove').hide()
     $('#xroom_storepage').hide()
     $('#xroom_profile').hide()
@@ -345,6 +331,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function
   #--------------------------
   removeHeaderEvents: ->
+    
     $(this.el).off('click', '#xroom_header_storepage')
     $(this.el).off('click', '#xroom_header_profile')
     $('.room_user_item_design_container').off()
@@ -370,21 +357,24 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
 
-  focusOutSearchTextBox:(event)->
+  focusOutSearchTextBox: (event) ->
+    
     event.preventDefault()
     event.stopPropagation()
+    
     console.log("clean textbox values")
+    
     @hideCleanSearchBox()
 
 
 
 
-  hideCleanSearchBox:->
+  hideCleanSearchBox: ->
     $('#xroom_header_search_box').delay(500).hide(0)
     $('#xroom_header_search_text').delay(500).val("")
 
 
-  keyPressOnSearch:(event)->
+  keyPressOnSearch: (event) ->
     event.preventDefault()
     event.stopPropagation()
 

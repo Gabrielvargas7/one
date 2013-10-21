@@ -1,3 +1,5 @@
+
+<a href="/room/<%=@model.get('username')%>"><span class="link_spanner"></span></a>
 <div class="btn-group pull-right profile_friend_button" >
 		<button class="profile_friend_gear" data-toggle="dropdown"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377288874/gear-icon.png"></button>
 		

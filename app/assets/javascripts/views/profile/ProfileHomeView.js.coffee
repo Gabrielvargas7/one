@@ -32,33 +32,56 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  initialize: ->
   #Get RoomFlag
   this.model.set 'FLAG_PROFILE', Mywebroom.State.get("roomState")
+  
   if Mywebroom.State.get("roomState") != "SELF"
     @template=JST['profile/FriendHomeTemplate']
+    
+    #Bookmarks and Items Design will be different for Home and Activity. 
+    activityBookmarksRandomCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdCollection()
+    activityBookmarksRandomCollection.fetch
+      reset:true
+      async:false
+      url:activityBookmarksRandomCollection.url Mywebroom.State.get('roomData').get('user').id
+      success: (response)->
+        console.log("activityBookmarksCollection Fetched Successfully Response:")
+        console.log(response)
+
+    activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexUserItemsDesignsByUserIdCollection()
+    activityItemsDesignsRandomCollection.fetch
+      reset:true
+      async:false
+      url:activityItemsDesignsRandomCollection.url Mywebroom.State.get('roomData').get('user').id
+      success: (response)->
+        console.log("activitItemsDesignssCollection Fetched Successfully Response:")
+        console.log(response)
+  else
+    #initial limit and offset for apis
+    initialLimit = 24
+    initialOffset= 0
+
+    activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
+    activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
+    #Fetch them
+    activityBookmarksRandomCollection.fetch
+      url:activityBookmarksRandomCollection.url initialLimit, initialOffset
+      reset:true
+      async:false
+      success: (response)->
+        #console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
+        #console.log(response)
+    activityItemsDesignsRandomCollection.fetch
+      url:activityItemsDesignsRandomCollection.url initialLimit, initialOffset
+      reset:true
+      async:false
+      success: (response)->
+        #console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
+        #console.log(response)
+  
   @collapseFlag = false
   
-  #initial limit and offset for apis
-  initialLimit = 24
-  initialOffset= 0
-
-  activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
-  activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
-  #Fetch them
-  activityBookmarksRandomCollection.fetch
-    url:activityBookmarksRandomCollection.url initialLimit, initialOffset
-    reset:true
-    async:false
-    success: (response)->
-      #console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
-      #console.log(response)
-  activityItemsDesignsRandomCollection.fetch
-    url:activityItemsDesignsRandomCollection.url initialLimit, initialOffset
-    reset:true
-    async:false
-    success: (response)->
-      #console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
-      #console.log(response)
   #Scramble Activity Collection.
   @scrambleItemsAndBookmarks(activityItemsDesignsRandomCollection,activityBookmarksRandomCollection)
+  
   #Calculate Age
   @model.set('age',@getAge(@model.get('birthday')))
 
@@ -104,9 +127,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   @activityCollection.reset(@activityCollection.shuffle(),{silent:true})
   initialProfileHomeActivityCollection = new Backbone.Collection
   initialProfileHomeActivityCollection.set(@activityCollection.first 6)
-  if this.options.FLAG_PROFILE is "PUBLIC"
+  if Mywebroom.State.get("roomState") is "PUBLIC"
     @activityCollection.reset(@activityCollection.first(9),{silent:true})
-  @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView2({collection:initialProfileHomeActivityCollection, headerName:'Latest Room Additions'})
+  if Mywebroom.State.get("roomState") != "SELF"
+    headerName = "Their things"
+  else
+    headerName = 'Latest Room Additions'
+  @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView2({collection:initialProfileHomeActivityCollection, headerName:headerName})
 
   #*******************
   #**** Functions  Event functions to alter views
@@ -138,7 +165,11 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
  showProfileActivity:->
   #send full collection to this view.
-  @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:"Activity",model:@model})
+  if Mywebroom.State.get("roomState") is "SELF"
+    headerName = "Activity"
+  else
+    headerName = "Their Things"
+  @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:headerName,model:@model})
   #Modify Top Portion
   $('#profileHome_top').css "height","70px"
   $('#profileHome_bottom').css "height","550px"

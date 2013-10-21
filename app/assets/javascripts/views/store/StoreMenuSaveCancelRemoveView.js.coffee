@@ -3,35 +3,26 @@ View that displays the SAVE, CANCEL, REMOVE buttons
 ###
 class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
-  #*******************
-  #**** Tag  (no tag = default el "div")
-  #*******************
-
 
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
   template: JST['store/StoreMenuSaveCancelRemoveTemplate']
+
 
   #*******************
   #**** Events
   #*******************
-
   events: {
     'click #xroom_store_save'  : 'clickSave'
     'click #xroom_store_cancel': 'clickCancel'
     'click #xroom_store_remove': 'clickRemove'
   }
   
-
+  
   #*******************
-  #**** Initialize
+  #**** Render
   #*******************
-  initialize: ->
-
-    #*******************
-    #**** Render
-    #*******************
   render: ->
     $(@el).append(@template())
     this
@@ -40,13 +31,14 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
 
   #*******************
-  #**** Functions  -events
+  #**** Events
   #*******************
-  clickSave: (event) ->
+  clickSave: (e) ->
     
     #console.log("save clicked")
     
-    event.preventDefault()
+    e.preventDefault()
+    e.stopPropagation()
     
 
 
@@ -96,11 +88,16 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
     
     
-  clickCancel: (event) ->
+  clickCancel: (e) ->
+    
+    #console.log("click Store Cancel")
+    
+    e.preventDefault()
+    e.stopPropagation()
     
     self = this
-    event.preventDefault()
-    #console.log("click Store Cancel")
+    
+    
     bootbox.confirm("Are you sure you want to cancel all the changes you made in your room?", (result) ->
       if result
         
@@ -120,11 +117,15 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
   
   
-  clickRemove: (event) ->
+  clickRemove: (e) ->
+    
+    #console.log("click Store Remove")
+    
+    e.preventDefault()
+    e.stopPropagation()
     
     self = this
-    event.preventDefault()
-    #console.log("click Store Remove")
+    
     bootbox.confirm("Are you sure you want to remove this object?", (result) ->
       if result
         
@@ -145,25 +146,12 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     
     
     
-    
-    
-    
-    
-  
-  
-
-    
-    
-    
-    
   
   
   removeObject: ->
     
     userId = Mywebroom.State.get("signInUser").get("id")
     
-    
-
     
     # Persist to server
     hide = new Mywebroom.Models.HideUserItemsDesignByUserIdAndItemsDesignIdAndLocationIdModel({_id: userId})
@@ -189,15 +177,11 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
     .attr("data-room-highlighted", false)
     .attr("data-design-has-changed", false)
     
+  
     
-    
-    
-
-
-
   
   #*******************
-  #**** Functions  -save data
+  #**** Save
   #*******************
   saveNewTheme: ->
     
@@ -228,15 +212,14 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
       
       # UPDATE PROPERTIES IN DOM
-      $(".current_background").attr("data-theme-src-server", $(".current_background").attr("data-theme-src-client"))
-      $(".current_background").attr("data-theme-id-server",  $(".current_background").attr("data-theme-id-client"))
-      $(".current_background").attr("data-theme-has-changed", false)
-
-
-
-
-
-
+      $(".current_background")
+      .attr("data-theme-src-server", $(".current_background").attr("data-theme-src-client"))
+      .attr("data-theme-id-server",  $(".current_background").attr("data-theme-id-client"))
+      .attr("data-theme-has-changed", false)
+      
+      
+      
+      
       # Persist new theme to server
       updateTheme = new Mywebroom.Models.UpdateUserThemeByUserIdAndSectionIdModel({new_theme_id: new_theme_id, _id: user_id})
       updateTheme.section_id = section_id
@@ -256,9 +239,8 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
   saveNewItems: ->
     
     #console.log("***** Beginning Save of New Designs *****")
-  
-  
-  
+    
+    
     # Save the userId for use later
     user_id = Mywebroom.State.get("signInUser").get("id")
     
@@ -321,11 +303,6 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
       
       
-      
-      
-      
-      
-      
       ###
       If the object had been hidden, toggle it's hide property
       ###
@@ -348,12 +325,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
       
       
       
-      
-      
-      
-      
-      
-          
+         
       ###
       Persist the new design properties to the server
       ###

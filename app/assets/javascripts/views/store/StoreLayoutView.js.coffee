@@ -8,30 +8,22 @@ but it also listens to clicks on the children elements of the collapse bar view.
 ###
 class Mywebroom.Views.StoreLayoutView extends Backbone.View
 
-  #*******************
-  #**** Tag  (no tag = default el "div")
-  #*******************
-
 
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
   template: JST['store/StoreLayoutTemplate']
+
 
   #*******************
   #**** Events
   #*******************
-
   events: {
     'click #store_close_button':    'clickClose'
     'click #store_collapse_button': 'clickCollapse'
   }
-
-  #*******************
-  #**** Initialize
-  #*******************
-  initialize: ->
-
+  
+  
   #*******************
   #**** Render
   #*******************
@@ -63,6 +55,7 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
   clickClose: (e) ->
     
     e.preventDefault()
+    e.stopPropagation()
      
     ###
     Display a confirm dialog if there are any un-saved changes
@@ -93,11 +86,12 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
   #--------------------------
   # collapse store page
   #--------------------------
-  clickCollapse: (event)->
+  clickCollapse: (e)->
+    
+    e.preventDefault()
+    e.stopPropagation()
     
     state = Mywebroom.State.get("storeState")
-    
-    console.log("store state", state)
     
     switch state
     
