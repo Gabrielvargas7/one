@@ -266,6 +266,51 @@ class BundlesController < ApplicationController
   end
 
 
+# GET Get seo_url of bundle
+# /bundles/json/show_bundle_seo_url_by_bundle_id/:bundle_id'
+# /bundles/json/show_bundle_seo_url_by_bundle_id/1.json'
+# Return head
+# success    ->  head  200 OK
+
+  def json_show_bundle_seo_url_by_bundle_id
+
+    respond_to do |format|
+      if Bundle.exists?(id:params[:bundle_id])
+        @bundle = Bundle.where('id=?',params[:bundle_id]).first
+
+        seo_url = Hash.new
+        seo_url["seo_url"] = shop_show_bundle_url(@bundle.id,get_clean_name(@bundle.name))
+
+        format.json { render json: seo_url }
+      else
+        format.json { render json: 'not found bundle id' , status: :not_found }
+      end
+    end
+  end
+
+
+# GET Get seo_url of entire room
+# /bundles/json/show_entire_room_seo_url_by_bundle_id/:bundle_id'
+# /bundles/json/show_entire_room_seo_url_by_bundle_id/1.json'
+# Return head
+# success    ->  head  200 OK
+
+  def json_show_entire_room_seo_url_by_bundle_id
+
+    respond_to do |format|
+      if Bundle.exists?(id:params[:bundle_id])
+        @bundle = Bundle.where('id=?',params[:bundle_id]).first
+
+        seo_url = Hash.new
+        seo_url["seo_url"] = shop_show_bundle_url(@bundle.id,get_clean_name(@bundle.name))
+
+        format.json { render json: seo_url }
+      else
+        format.json { render json: 'not found bundle id' , status: :not_found }
+      end
+    end
+  end
+
 
 
 end

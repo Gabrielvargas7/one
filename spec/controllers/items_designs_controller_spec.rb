@@ -522,6 +522,9 @@ describe ItemsDesignsController do
     pending "pending test api"
   end
 
+  describe "api #json_show_items_design_seo_url_by_items_design_id",tag_json_category:true do
+    pending "pending test api"
+  end
 
 
 end
