@@ -216,6 +216,8 @@ Mywebroom::Application.routes.draw do
          'themes#json_index_themes_filter_by_category_by_keyword_and_limit_and_offset', via: :get ,as:
           :themes_index_themes_filter_by_category_by_keywor_and_limit_and_offset
 
+  match '/themes/json/show_theme_seo_url_by_theme_id/:theme_id', to:
+         'themes#json_show_theme_seo_url_by_theme_id', via: :get
 
 
 
@@ -261,6 +263,12 @@ Mywebroom::Application.routes.draw do
          'bundles#json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset', via: :get  , as:
          :bundles_json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset
 
+
+  match '/bundles/json/show_bundle_seo_url_by_bundle_id/:bundle_id', to:
+         'bundles#json_show_bundle_seo_url_by_bundle_id', via: :get
+
+  match '/bundles/json/show_entire_room_seo_url_by_bundle_id/:bundle_id', to:
+         'bundles#json_show_entire_room_seo_url_by_bundle_id', via: :get
 
 
 
@@ -521,8 +529,8 @@ Mywebroom::Application.routes.draw do
         'bookmarks#json_show_bookmark_by_bookmark_id', via: :get  , as:
         :json_show_bookmark_by_bookmark_id
 
-  match 'bookmarks/json/show_bookmarks_seo_url_by_bookmark_id/:bookmark_id', to:
-        'bookmarks#json_show_bookmarks_seo_url_by_bookmark_id', via: :get
+  match 'bookmarks/json/show_bookmark_seo_url_by_bookmark_id/:bookmark_id', to:
+        'bookmarks#json_show_bookmark_seo_url_by_bookmark_id', via: :get
 
 
 
@@ -675,6 +683,16 @@ Mywebroom::Application.routes.draw do
   match '/locations/json/show_location_by_location_id/:location_id', to:
          'locations#json_show_location_by_location_id', via: :get, as:
          :locations_json_show_location_by_location_id
+
+
+  #**************************
+  # start location Contract
+  #**************************
+
+  #match '/shop/json/show_bundle_seo_url_by_bundle_id/:bundle_id', to:
+  #       'shop#json_show_bundle_seo_url_by_bundle_id', via: :get
+  #
+
 
 
 
