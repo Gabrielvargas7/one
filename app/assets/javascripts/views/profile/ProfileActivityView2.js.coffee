@@ -3,7 +3,7 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
   className: 'profileHome_activity generalGrid'
   template: JST['profile/ProfileHomeGridTemplate2']
   itemView:(obj) ->
-    new Mywebroom.Views.AProfileGridItemView2(obj)
+    new Mywebroom.Views.ProfileGridItemView2(obj)
   itemViewContainer:'#gridItemsTest'
   initialize: ->
     @headerName = this.options.headerName
