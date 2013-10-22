@@ -654,6 +654,23 @@ $(document).ready ->
     $('#xroom').off('mousewheel')
   
   
+  Mywebroom.Helpers.getSEOLink = (type, id) ->
+    
+    console.log("getSEOLink()")
+    
+    ###
+    TYPES: ENTIRE_ROOM, BUNDLE, THEME, BOOKMARK, DESIGN
+    ###
+    model = new Mywebroom.Models.SeoLink({id: id, type: type})
+    model.fetch
+      async: false
+      success: (model, response, options) ->
+        console.log("model fetch success", model, response, options)
+      error: (model, response, options) ->
+        console.log("model fetch fail", model, response, options)
+    
+    return model
+  
   ###
   (1) Store visibility
   (1.1) Scroller visibility
