@@ -6,7 +6,7 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
     new Mywebroom.Views.AProfileGridItemView2(obj)
   itemViewContainer:'#gridItemsTest'
   initialize: ->
-    @headerName=this.options.headerName
+    @headerName = this.options.headerName
     this.on('itemview:gridItemLargeView',@showGridItemLargeView)
     
   #The Marionette way to pass additional data to template:

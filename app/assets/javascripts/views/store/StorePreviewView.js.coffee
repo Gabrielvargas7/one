@@ -1,7 +1,7 @@
 class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
   #*******************
-  #**** Tag 
+  #**** Tag
   #*******************
   tagName: 'li'
   
@@ -16,13 +16,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #**** Events
   #*******************
   events: {
-    'click .store_container_ITEM':        'clickItem'
-    'click .store_container_DESIGN':      'clickDesign'
-    'click .store_container_THEME':       'clickTheme'
-    'click .store_container_BUNDLE':      'clickBundle'
-    'click .store_container_ENTIRE_ROOM': 'clickEntireRoom'
-    'mouseenter .store_container':        'hoverOn'
-    'mouseleave .store_container':        'hoverOff' 
+    'click .store_container_ITEM img':        'clickItem'
+    'click .store_container_DESIGN img':      'clickDesign'
+    'click .store_container_THEME img':       'clickTheme'
+    'click .store_container_BUNDLE img':      'clickBundle'
+    'click .store_container_ENTIRE_ROOM img': 'clickEntireRoom'
+    'mouseenter .store_container':            'hoverOn'
+    'mouseleave .store_container':            'hoverOff'
   }
    
   
@@ -33,9 +33,15 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #*******************
   initialize: ->
 
-    @button_preview = $.cloudinary.image('button_preview.png', {alt: "button preview", id: "button_preview"})
+    @button_preview = $.cloudinary.image(
+      'button_preview.png',
+      {alt: "button preview", id: "button_preview"}
+    )
+    
     @type = @model.get("type")
     
+  
+  
     
   #*******************
   #**** Render
@@ -58,6 +64,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
         obj.set("image_name", obj.get("image_name_set"))
 
 
+
     $(@el).append(@template(model: obj))
     this
 
@@ -66,7 +73,21 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
 
 
-
+  addSocialView: ->
+    
+    ###
+    CREATE and RENDER SocialBarView
+    ###
+    @socialView = new Mywebroom.Views.SocialBarView({model: @model})
+    @socialView.render()
+    
+    $('#store_' + @type + '_container_' + @model.get('id'))
+    .append(@socialView.el)
+  
+    @socialView.hide()
+  
+  
+  
   #*******************
   #**** Events
   #*******************
@@ -90,7 +111,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
    
    
     # Switch to the hidden tab
-    $('#storeTabs a[href="#tab_hidden"]').tab('show');
+    $('#storeTabs a[href="#tab_hidden"]').tab('show')
     
     
   
@@ -207,8 +228,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       async  : false
       url    : categories.url itemId
       success: (response) ->
-        #console.log("IndexItemsDesignsCategoriesByItemIdCollection fetch successful: ")
-        #console.log(response)
+        #console.log("designs fetch success", response)
         myModel = categories.first()
         Mywebroom.Helpers.setCategories(myModel.get('items_designs_categories'))
         Mywebroom.Helpers.setBrands(myModel.get('items_designs_brands'))
@@ -413,21 +433,34 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   
   
   hoverOn: (e) ->
-    
+     
     e.preventDefault()
     e.stopPropagation()
     
-    $('#store_' + @type + '_container_' + @model.get('id')).append(@button_preview)
+    
+    if @type is "DESIGN"
+      @socialView.show()
+    else
+      $('#store_' + @type + '_container_' + @model.get('id'))
+      .append(@button_preview)
   
   
   
     
   hoverOff: (e) ->
-    
+     
     e.preventDefault()
     e.stopPropagation()
     
-    $('#button_preview').remove()
+    
+    if @type is "DESIGN"
+      @socialView.hide()
+    else
+      $('#button_preview').remove()
+    
+    
+    
+    
   
   
   
@@ -485,6 +518,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       view = new Mywebroom.Views.StorePreviewView(model: model)
       $('#row_item_designs_' + self.row_number).append(view.el)
       view.render()
+      
+      # Show the social view
+      view.addSocialView()
+      
       self.loop_number += 1
 
       u = self.loop_number % self.column_number
