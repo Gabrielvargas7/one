@@ -102,17 +102,17 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
       when "ENTIRE_ROOM"
         mediaUrl = @model.get('image_name_set').url
         description = @model.get('name')
-        signature = ' - Entire Room'
+        signature = ' - My virtual room at myWebRoom.com'
       
       when "BUNDLE"
         mediaUrl = @model.get('image_name')
         description = @model.get('name')
-        signature = ' - Bundle'
+        signature = ' - For my virtual room at myWebRoom.com'
         
       when "THEME"
         mediaUrl = @model.get('image_name_selection')
         description = @model.get('name')
-        signature = ' - Theme'
+        signature = ' - For my virtual room at myWebRoom.com'
       
      
   
