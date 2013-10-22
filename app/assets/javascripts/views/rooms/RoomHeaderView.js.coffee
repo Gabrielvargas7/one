@@ -50,7 +50,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   render: ->
     
     # THIS VIEW
-    $(@el).append(@template(user_data: Mywebroom.State.get("roomData")))
+    $(@el).append(@template(user_data: Mywebroom.State.get("signInData")))
 
 
 
