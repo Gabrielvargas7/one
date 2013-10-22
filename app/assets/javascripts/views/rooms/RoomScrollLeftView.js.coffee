@@ -17,6 +17,7 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
   events: {
     'mouseenter .room_scroll_left': 'hoverRoomScrollLeft'
     'mouseleave .room_scroll_left': 'hoverOffRoomScrollLeft'
+
   }
 
   #*******************
@@ -46,9 +47,11 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     
-    console.log("hover scroll left ")
-    
-    @loop_interval = setInterval(this.moveToTheLeft, 1)
+    console.log("hover scroll left2 ")
+
+#    this.moveToTheLeft()
+    @loop_interval = setInterval(this.moveToTheLeft, 20)
+    console.log(@loop_interval)
 
 
   #--------------------------
@@ -60,10 +63,9 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     event.stopPropagation()
     
     console.log("hover Off")
-    
+    console.log(@loop_interval)
     window.clearInterval(@loop_interval)
-    
-    #console.log($(window).scrollLeft())
+#    console.log($(window).scrollLeft())
 
 
   #*******************
@@ -74,15 +76,15 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     $(window).scrollLeft(0)
 
     $('#xroom_items_0').css({
-      'left':Math.floor($("#xroom_items_0").offset().left+5)
+      'left':Math.floor($("#xroom_items_0").offset().left+7)
     })
 
     $('#xroom_items_1').css({
-      'left':Math.floor($("#xroom_items_1").offset().left+5)
+      'left':Math.floor($("#xroom_items_1").offset().left+7)
     })
 
     $('#xroom_items_2').css({
-      'left':Math.floor($("#xroom_items_2").offset().left+5)
+      'left':Math.floor($("#xroom_items_2").offset().left+7)
     })
 
 
