@@ -1,4 +1,4 @@
-class Mywebroom.Views.AProfileGridItemView2 extends Marionette.ItemView
+class Mywebroom.Views.ProfileGridItemView2 extends Marionette.ItemView
   
   tagName:'div'
   
