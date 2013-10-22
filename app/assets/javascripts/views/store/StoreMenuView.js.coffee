@@ -641,6 +641,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       $('#row_item_designs_' + self.row_number).append(view.el)
       view.render()
       
+      # Show the social view
+      view.addSocialView()
+      
       self.loop_number += 1
       u = self.loop_number % self.column_number
       
@@ -820,3 +823,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Conditionally Show the Save Bar
     Mywebroom.Helpers.showSaveBar()
+    
+    
+    # Show the social view
+    view.addSocialView()
