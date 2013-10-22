@@ -35,6 +35,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     
     self= this
     Mywebroom.App.vent.on('BrowseMode:closeBookmarkView',@closeView,self)
+
   #*******************
   #**** Render
   #*******************
@@ -49,7 +50,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
   renderDiscover:(event)->
-    event.stopPropagation if event
+    if event
+      event.stopPropagation() 
+      event.preventDefault()
     @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
@@ -79,6 +82,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#add_your_own_form').off('submit').on('submit',{that},@addCustomBookmark)
 
   renderMyBookmarks:->
+    event.preventDefault()
+    event.stopPropagation()
     @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
@@ -99,6 +104,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #$(@el).append(@myBookmarksView.render().el)
     
   showCategory:(event)->
+    event.preventDefault()
+    event.stopPropagation()
     categoryId = event.currentTarget.dataset.id
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
     $('.discover_submenu').removeClass 'bookmark_menu_selected'
@@ -122,6 +129,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 #PreviewMode: we'll have previewView to correspond to discover_bookmarks
 #and browseMode to correspond to my_bookmarks
   previewMode:(event)->
+    event.preventDefault()
+    event.stopPropagation()
     #open in iframe
     bookmarkClicked= @discoverCollection.get(event.currentTarget.dataset.id)
     urlToOpen= bookmarkClicked.get('bookmark_url')
@@ -172,7 +181,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   #*******************
   #**** addCustomBookmark
-  #****** event data contains that (context) 
+  #****** event data must contain that (context) 
   #*******************
   addCustomBookmark:(event)->
     event.preventDefault()
