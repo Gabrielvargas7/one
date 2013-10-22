@@ -137,7 +137,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 
   ###
   METHODS
-  ###  
+  ###
   hide: ->
   
     $(@el).hide()
