@@ -1,4 +1,4 @@
-class Mywebroom.Models.ShowItemDesignById extends Backbone.Model
+class Mywebroom.Models.ShowItemDesignByIdModel extends Backbone.Model
 
   url: ->
     '/items_designs/json/show_item_design_by_id/' + @id + '.json'
