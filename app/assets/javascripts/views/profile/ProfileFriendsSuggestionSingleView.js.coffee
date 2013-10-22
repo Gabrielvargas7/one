@@ -11,7 +11,7 @@ class Mywebroom.Views.ProfileFriendsSuggestionSingleView extends Backbone.View
   
   initialize: ->
     #Check if this user's key has been requested. If so, set template to key Requested. 
-    hasRequested = Mywebroom.Helpers.IsThisMyFriend(@model.get('user_id'))
+    hasRequested = Mywebroom.Helpers.IsThisMyFriendRequest(@model.get('user_id'))
     if hasRequested
       @template = JST['profile/ProfileFriendsSuggestionSingleRequestedTemplate']
     

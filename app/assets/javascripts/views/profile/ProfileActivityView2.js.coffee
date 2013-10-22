@@ -17,9 +17,13 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
     viewData
   #OnRender is called after built in render function has completed.
   onRender:->
-    if @model and @model.get('FLAG_PROFILE') is "PUBLIC"
-      #append ask for key overlay.
-      @$(@itemViewContainer).append(JST['profile/ProfileAskForKey']())
+    if @model and Mywebroom.State.get('roomState') is "PUBLIC"
+      #check if there's a key request. 
+      if Mywebroom.Helpers.IsThisMyFriendRequest(Mywebroom.State.get('roomUser').get('id'))
+        @$(@itemViewContainer).append(JST['profile/ProfileOverlayKeyRequested']())
+      else
+        #append ask for key overlay.
+        @$(@itemViewContainer).append(JST['profile/ProfileAskForKey']())
   showGridItemLargeView:(childView,model)->
     currentGridItem = model
     #launch new view. profile_drawer needs to expand

@@ -968,7 +968,10 @@ $(document).ready ->
       if modelId is item.item_id
         return item.items_name
 
-  Mywebroom.Helpers.IsThisMyFriend = (idRequested)->
+  ###
+  Checks if signed in user has requested a key from idRequested. returns true/false. 
+  ###
+  Mywebroom.Helpers.IsThisMyFriendRequest = (idRequested)->
     hasRequested = new Mywebroom.Collections.ShowFriendRequestByUserIdAndUserIdRequestedCollection()
     hasRequested.fetch
       async  : false
