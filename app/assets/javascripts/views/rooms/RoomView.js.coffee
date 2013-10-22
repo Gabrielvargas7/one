@@ -93,7 +93,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         friends = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
         friends.fetch
           async  : false
-          url    : friends.url(Mywebroom.State.get("roomUser").get("id"), Mywebroom.State.get("signInUser").get("id"))
+          url    : friends.url(Mywebroom.State.get("signInUser").get("id"), Mywebroom.State.get("roomUser").get("id"))
           success: ->
             # We're on a friend's page if the collection isn't empty
             # (6) set roomState

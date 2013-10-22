@@ -75,7 +75,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #set .discover_bookmarks_bottom to 100% width minus the sidebar width
     $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
-    $('#add_your_own_form').submit({that},@addCustomBookmark)
+    #$('#add_your_own_form').submit({that},@addCustomBookmark)
+    $('#add_your_own_form').off('submit').one('submit',{that},@addCustomBookmark)
 
   renderMyBookmarks:->
     @previewModeView.closeView() if @previewModeView
@@ -169,19 +170,15 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #hoveredEl
     console.log "You want to delete an item"
 
+  #*******************
+  #**** addCustomBookmark
+  #****** event data contains that (context) 
+  #*******************
   addCustomBookmark:(event)->
     event.preventDefault()
     event.stopPropagation()
-    #Need to fetch MyBookmarks to get an accurate last position
-    #If I've added 2 bookmarks from discover, then preview, then save site, 
-    #    the position count is not accurate and save doesn't work.
-    event.data.that.collection.fetch
-      async:false
-      url:event.data.that.collection.url event.data.that.options.user, event.data.that.options.user_item_design
-      success:(response) ->
-        console.log("bookmark fetch successful: ")
-        console.log(response)
 
+    #validate the url string
     customURL= $.trim $("input[name=url_input]").val()
     title = $.trim $("input[name=bookmark_title]").val()
     #The regex code is copied from the old Rooms code. 
@@ -189,25 +186,46 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #http://stackoverflow.com/questions/833469/regular-expression-for-url
     url_match = customURL.match(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/)
     title_match = title.length > 0 and title.length < 25
+    
+    #set up custom Bookmark properties and get snapshot
     if url_match and title_match
       #Add custom URL
-      src = "http://img.bitpixels.com/getthumbnail?code=67736&size=200&url=" + customURL
+      snapshot = "http://img.bitpixels.com/getthumbnail?code=67736&size=200&url=" + customURL
       customBookmark = new Mywebroom.Models.CreateCustomUserBookmarkByUserId()
       customBookmark.set
         'userId':Mywebroom.State.get('signInUser').get('id')
         'bookmark_url':customURL
         'title':title
-        'image_name':src
+        'image_name':snapshot
         'item_id': event.data.that.options.user_item_design
-        'position':parseInt(event.data.that.collection.last().get('position'))+1
         'bookmarks_category_id':event.data.that.discoverCategoriesCollection.first().get('id')
 
-      #We want to just display picture now. If click Save Site is clicked, then save the model
+      #Display picture now. Don't save the bookmark until .save_site_button is clicked
       $('.custom_bookmark_confirm_add_wrap').prepend('<img src="'+customBookmark.get('image_name')+'">')
       $('.custom_bookmark_confirm_add_wrap').show()
       $('.save_site_button').show()
-      $('.save_site_button').one('click',{customBookmark},((event)->
+      
+      #clear any save site events and add one listener to save the custom bookmark model.
+      #pass to event: customBookmark and context-that 
+      that = event.data.that
+      $('.save_site_button').off('click').one('click',{customBookmark,that},((event)->
+        
         event.stopPropagation()
+        
+        #Fetch MyBookmarks to get an accurate last position parameter
+        # -Example: If I've added 2 bookmarks from discover, then preview, then save site, the position count is not accurate and save doesn't work.
+        event.data.that.collection.fetch
+          async:false
+          url:event.data.that.collection.url event.data.that.options.user, event.data.that.options.user_item_design
+          success:(response) ->
+            console.log("bookmark fetch successful: ")
+            console.log(response)
+
+        #set the position at the last possible moment so we don't fail.
+        event.data.customBookmark.set
+          'position':parseInt(event.data.that.collection.last().get('position'))+1
+
+        #save the bookmark!
         event.data.customBookmark.save {},
         success: (model, response)->
           console.log('post CUSTOM BookmarkModel SUCCESS:')
@@ -215,16 +233,20 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         error: (model, response)->
               console.log('post CUSTOM BookmarkModel FAIL:')
               console.log(response)
-        #After 5 seconds, clear form and remove image?
+        
+        #After 5 seconds, clear form and remove image
         setTimeout((->
           $('#add_your_own_form')[0].reset()
-          #$('#add_your_own_form').off('submit')
+          #turn this event back on in case user submits another form
+          $('#add_your_own_form').off('submit').one('submit',{that},event.data.that.addCustomBookmark)
           $('.save_site_button').hide()
           $('.custom_bookmark_confirm_add_wrap img').remove()),3000)
-        ))  
+        ))
+      
     else
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
+
   
   getMyBookmarksCollection:->
     @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
