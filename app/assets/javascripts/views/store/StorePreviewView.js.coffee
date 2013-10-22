@@ -438,11 +438,15 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     e.stopPropagation()
     
     
+    # CLICK TO PREVIEW
+    $('#store_' + @type + '_container_' + @model.get('id'))
+    .append(@button_preview)
+    
+    
+    # SOCIAL ICONS
     if @type is "DESIGN"
       @socialView.show()
-    else
-      $('#store_' + @type + '_container_' + @model.get('id'))
-      .append(@button_preview)
+    
   
   
   
@@ -453,10 +457,15 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     e.stopPropagation()
     
     
+    # CLICK TO PREVIEW
+    $('#button_preview').remove()
+    
+    
+    # SOCIAL ICONS
     if @type is "DESIGN"
       @socialView.hide()
-    else
-      $('#button_preview').remove()
+    
+      
     
     
     
