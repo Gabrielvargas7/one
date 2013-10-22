@@ -24,6 +24,16 @@
 
         <!--Save Site Button default hidden-->
         <a><div class="save_site_button">Save Site</div></a>
+
+      </div>
+      <!--Site Was saved -->
+      <div class = "custom_url_saved">
+          <p>
+            <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1380825840/checkmark-icon-bookmark.png">Saved
+          </p>
+      </div>
+      <div class = "err_response hidden">
+        <p></p>
       </div>
     </div>
   </div>
