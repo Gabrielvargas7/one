@@ -32,24 +32,18 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   
   initialize: ->
     
-    if @model.get('image_name_selection')
-      # DESIGN
-      @targetUrl = Mywebroom.State.get('shopBaseUrl').itemDesign +
-                   @model.get('id')
+    id =   @model.get('id')
+    type = @model.get('type')
     
-    else if @model.get('image_name_desc')
-      # BOOKMARK
-      @targetUrl = Mywebroom.State.get('shopBaseUrl').bookmark
     
-    else
-      # UNKNOWN
-      @targetUrl = Mywebroom.State.get('shopBaseUrl').default
-      
+    @seoLinkModel = Mywebroom.Helpers.getSEOLink(id, type)
   
+    
+    
   
   render: ->
     
-    $(@el).html(@template(targetUrl: @targetUrl))
+    $(@el).html(@template(targetUrl: @seoLinkModel.get("seo_url")))
     this
   
     
@@ -58,11 +52,11 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   ###
   clickFBLikeItem: ->
       
-    console.log("You clicked FB Like", @model)
+    #console.log("You clicked FB Like", @model)
     
     window.open(
       'https://www.facebook.com/sharer/sharer.php?u=' +
-      encodeURIComponent(@targetUrl),
+      encodeURIComponent(@seoLinkModel.get("seo_url")),
       'facebook-share-dialog',
       'width=626,height=436'
     )
@@ -75,13 +69,13 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
     
+    
     url = @generatePinterestUrl()
     
-    if url isnt false
-      window.open(url,
-        '_blank',
-        'width=750,height=350,toolbar=0,location=0,directories=0,status=0'
-      )
+    window.open(url,
+      '_blank',
+      'width=750,height=350,toolbar=0,location=0,directories=0,status=0'
+    )
   
   
   ###
@@ -89,50 +83,48 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   ###
   generatePinterestUrl: ->
   
-    baseUrl =   '//pinterest.com/pin/create/button/?url='
+    type = @seoLinkModel.get('type')
+    baseUrl = '//pinterest.com/pin/create/button/?url='
     
     
-    # SET TARGET URL
-    if @targetUrl
-      targetUrl = @targetUrl
+    switch type
+      
+      when "DESIGN"
+        mediaUrl =    @model.get('image_name_selection').url
+        description = @model.get('name') + ' - '
+        signature =   ' - Found at myWebRoom.com'
+        
+      when "BOOKMARK"
+        mediaUrl =    @model.get('image_name_desc').url
+        description = @model.get('title') + ' - '
+        signature =   ' - For my virtual room at myWebRoom.com'
+      
+      when "ENTIRE_ROOM"
+        mediaUrl = @model.get('image_name_set').url
+        description = @model.get('name')
+        signature = ' - Entire Room'
+      
+      when "BUNDLE"
+        mediaUrl = @model.get('image_name')
+        description = @model.get('name')
+        signature = ' - Bundle'
+        
+      when "THEME"
+        mediaUrl = @model.get('image_name_selection')
+        description = @model.get('name')
+        signature = ' - Theme'
+      
+     
+  
+    description += @model.get('description') + signature
+    results = baseUrl +
+              encodeURIComponent(@seoLinkModel.get("seo_url")) +
+              '&media=' +
+              encodeURIComponent(mediaUrl) +
+              '&description=' +
+              encodeURIComponent(description)
     
-    else if @model.get('product_url')
-      targetUrl = @model.get('product_url')
-    
-    else
-      targetUrl = "http://mywebroom.com"
-    
-    
-    
-    
-    if @model.get('image_name_selection')
-      # This is a design
-      mediaUrl =    @model.get('image_name_selection').url
-      description = @model.get('name') + ' - '
-      signature =   ' - Found at myWebRoom.com'
-    
-    else if @model.get('image_name_desc')
-      # This is a bookmark
-      mediaUrl =    @model.get('image_name_desc').url
-      description = @model.get('title') + ' - '
-      signature =   ' - For my virtual room at myWebRoom.com'
-    
-    else
-      # IDK what this is
-      mediaUrl =  @model.get('image_name').url
-      signature = ' - Found at myWebRoom.com'
-    
-    if !mediaUrl
-      return false
-    else
-      description += @model.get('description') + signature
-      results = baseUrl +
-                encodeURIComponent(targetUrl) +
-                '&media=' +
-                encodeURIComponent(mediaUrl) +
-                '&description=' +
-                encodeURIComponent(description)
-      return results
+    return results
 
 
   ###
