@@ -57,6 +57,7 @@ group :development, :test do
   gem 'debugger','1.5.0'
   gem 'phantomjs', github: 'colszowka/phantomjs-gem'
   gem 'teaspoon', github: 'modeset/teaspoon'
+  gem 'tapout'
   # gem 'guard-rspec', '1.2.1'
   # gem 'guard-spork', '1.2.0'
   # gem 'spork', '0.9.2'
