@@ -75,7 +75,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #set .discover_bookmarks_bottom to 100% width minus the sidebar width
     $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
-    $('#add_your_own_form').submit({that},@addCustomBookmark)
+    #$('#add_your_own_form').submit({that},@addCustomBookmark)
+    $('#add_your_own_form').off('submit').one('submit',{that},@addCustomBookmark)
 
   renderMyBookmarks:->
     @previewModeView.closeView() if @previewModeView
@@ -206,7 +207,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       $('.custom_bookmark_confirm_add_wrap').prepend('<img src="'+customBookmark.get('image_name')+'">')
       $('.custom_bookmark_confirm_add_wrap').show()
       $('.save_site_button').show()
-      $('.save_site_button').one('click',{customBookmark},((event)->
+      that = event.data.that
+      $('.save_site_button').off('click').one('click',{customBookmark,that},((event)->
         event.stopPropagation()
         event.data.customBookmark.save {},
         success: (model, response)->
@@ -216,15 +218,19 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
               console.log('post CUSTOM BookmarkModel FAIL:')
               console.log(response)
         #After 5 seconds, clear form and remove image?
+
         setTimeout((->
           $('#add_your_own_form')[0].reset()
-          #$('#add_your_own_form').off('submit')
+          #turn this event back on in case user submits another form
+          $('#add_your_own_form').off('submit').one('submit',{that},event.data.that.addCustomBookmark)
           $('.save_site_button').hide()
           $('.custom_bookmark_confirm_add_wrap img').remove()),3000)
-        ))  
+        ))
+      
     else
       #Show an error to the user. 
       console.log "There was an error in your url or the title was too long."
+
   
   getMyBookmarksCollection:->
     @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
