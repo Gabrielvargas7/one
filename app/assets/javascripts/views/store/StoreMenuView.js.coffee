@@ -775,7 +775,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       ###
       item_id = model.get("entityId")
     
-      usable = new Mywebroom.Models.ShowItemDesignById({id: item_id})
+      usable = new Mywebroom.Models.ShowItemDesignByIdModel({id: item_id})
       usable.fetch
         async: false
         success: (model, response, options) ->

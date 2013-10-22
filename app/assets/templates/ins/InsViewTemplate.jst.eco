@@ -1,0 +1,7 @@
+<div>
+  <p>Description:&nbsp;&nbsp;<%= @model.get('description')%></p>
+  <p>Id:&nbsp;&nbsp;<%= @model.get("id")%></p>
+  <img src="<%= @model.get('image_name').url%>">
+  <p>Name:&nbsp;&nbsp;<%= @model.get("name")%></p>
+  <p>Position:&nbsp;&nbsp;<%= @model.get("position")%></p>
+</div>
