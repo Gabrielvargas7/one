@@ -654,22 +654,22 @@ $(document).ready ->
     $('#xroom').off('mousewheel')
   
   
-  Mywebroom.Helpers.getSEOLink = (type, id) ->
-    
-    console.log("getSEOLink()")
-    
+  Mywebroom.Helpers.getSEOLink = (id, type) ->
+     
     ###
     TYPES: ENTIRE_ROOM, BUNDLE, THEME, BOOKMARK, DESIGN
     ###
-    model = new Mywebroom.Models.SeoLink({id: id, type: type})
+    model = new Mywebroom.Models.ShowSeoLinkByIdModel({id: id, type: type})
     model.fetch
       async: false
       success: (model, response, options) ->
-        console.log("model fetch success", model, response, options)
+        #console.log("model fetch success", model, response, options)
       error: (model, response, options) ->
         console.log("model fetch fail", model, response, options)
     
+    
     return model
+    
   
   ###
   (1) Store visibility
