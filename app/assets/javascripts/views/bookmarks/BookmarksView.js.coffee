@@ -35,6 +35,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     
     self= this
     Mywebroom.App.vent.on('BrowseMode:closeBookmarkView',@closeView,self)
+
   #*******************
   #**** Render
   #*******************
@@ -49,7 +50,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
   renderDiscover:(event)->
-    event.stopPropagation if event
+    if event
+      event.stopPropagation() 
+      event.preventDefault()
     @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
@@ -76,9 +79,11 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
     #$('#add_your_own_form').submit({that},@addCustomBookmark)
-    $('#add_your_own_form').off('submit').one('submit',{that},@addCustomBookmark)
+    $('#add_your_own_form').off('submit').on('submit',{that},@addCustomBookmark)
 
   renderMyBookmarks:->
+    event.preventDefault()
+    event.stopPropagation()
     @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
@@ -99,6 +104,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #$(@el).append(@myBookmarksView.render().el)
     
   showCategory:(event)->
+    event.preventDefault()
+    event.stopPropagation()
     categoryId = event.currentTarget.dataset.id
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
     $('.discover_submenu').removeClass 'bookmark_menu_selected'
@@ -122,6 +129,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 #PreviewMode: we'll have previewView to correspond to discover_bookmarks
 #and browseMode to correspond to my_bookmarks
   previewMode:(event)->
+    event.preventDefault()
+    event.stopPropagation()
     #open in iframe
     bookmarkClicked= @discoverCollection.get(event.currentTarget.dataset.id)
     urlToOpen= bookmarkClicked.get('bookmark_url')
@@ -172,11 +181,17 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   #*******************
   #**** addCustomBookmark
-  #****** event data contains that (context) 
+  #****** event data must contain that (context) 
   #*******************
   addCustomBookmark:(event)->
     event.preventDefault()
     event.stopPropagation()
+    
+    #Case, user clicked search, but not save. Then clicked search again.
+    if $('.custom_bookmark_confirm_add_wrap img').length > 0
+      $('.custom_bookmark_confirm_add_wrap img').remove()
+
+    $('#add_your_own_box .err_response').addClass('hidden') if !$('#add_your_own_box .err_response').hasClass('hidden')
 
     #validate the url string
     customURL= $.trim $("input[name=url_input]").val()
@@ -200,7 +215,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         'item_id': event.data.that.options.user_item_design
         'bookmarks_category_id':event.data.that.discoverCategoriesCollection.first().get('id')
 
-      #Display picture now. Don't save the bookmark until .save_site_button is clicked
+      #Display picture now. Show confirm save.
       $('.custom_bookmark_confirm_add_wrap').prepend('<img src="'+customBookmark.get('image_name')+'">')
       $('.custom_bookmark_confirm_add_wrap').show()
       $('.save_site_button').show()
@@ -230,21 +245,32 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         success: (model, response)->
           console.log('post CUSTOM BookmarkModel SUCCESS:')
           console.log(response)
+          #Style- tell user it saved
+          $('.save_site_button').hide()
+          $('.custom_url_saved').show()
+
         error: (model, response)->
-              console.log('post CUSTOM BookmarkModel FAIL:')
-              console.log(response)
+          console.log('post CUSTOM BookmarkModel FAIL:')
+          console.log(response)
+          #Style- Error
+          $('#add_your_own_box .err_response').removeClass('hidden')
+          $('#add_your_own_box .err_response p').append('Oops! There was an error. Please try refreshing the page and try again.')
+          $('.save_site_button').hide()
+
         
         #After 5 seconds, clear form and remove image
         setTimeout((->
           $('#add_your_own_form')[0].reset()
           #turn this event back on in case user submits another form
-          $('#add_your_own_form').off('submit').one('submit',{that},event.data.that.addCustomBookmark)
-          $('.save_site_button').hide()
+          $('#add_your_own_form').off('submit').on('submit',{that},event.data.that.addCustomBookmark)
+          $('.custom_url_saved').hide()
           $('.custom_bookmark_confirm_add_wrap img').remove()),3000)
         ))
       
     else
-      #Show an error to the user. 
+      #Show an error to the user.
+      $('#add_your_own_box .err_response').removeClass('hidden')
+      $('#add_your_own_box .err_response p').append('Oops! There was an error in your url or the title was too long.')
       console.log "There was an error in your url or the title was too long."
 
   

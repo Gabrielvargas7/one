@@ -267,7 +267,7 @@ div.just_added img{
 .preview_mode_save_button {
   width:80%;
 }
-.preview_mode_saved{
+.preview_mode_saved, .custom_url_saved{
   background-color: #7d7d7d;
   font-size:18px;
   color:white;
@@ -280,10 +280,15 @@ div.just_added img{
   position:relative;
 
 }
-.preview_mode_saved img{
+.preview_mode_saved img, .custom_url_saved img{
   position:absolute;
   left:10px;
   bottom:10px;
 
+}
+.custom_url_saved{
+  display:none;
+  margin: 0 3em;
+  width:130px;
 }
 /*END Bookmarks Preview Mode*/

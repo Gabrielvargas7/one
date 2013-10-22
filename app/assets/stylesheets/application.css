@@ -123,3 +123,8 @@ footer ul li {
     left: 50%; 
     margin-left: -150px; 
 }
+/*Error message.*/
+.err_response p{
+    color:red;
+    font-weight:bolder;
+}
