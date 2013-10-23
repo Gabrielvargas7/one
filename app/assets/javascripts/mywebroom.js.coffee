@@ -83,6 +83,32 @@ $(document).ready ->
   
 
 
+
+  ###
+  STATIC DATA
+  ###
+  Mywebroom.Data = {
+      ItemModels: {} # format -> 2: Backbone.Model
+      ItemNames:  {} # format -> 3: "string"
+      ItemIds:    Object.create(null) # *see below # format -> 7: true
+  }
+ 
+  
+  ###
+  *To create a true set [http://en.wikipedia.org/wiki/Set_(mathematics)], 
+  we want an object that doesn't already have any properties on it. 
+  
+  http://stackoverflow.com/questions/7958292/mimicking-sets-in-javascript
+  http://www.devthought.com/2012/01/18/an-object-is-not-a-hash/
+  
+  Since this program speaks coffee, we use "of" to query instead of "in".
+  
+  http://stackoverflow.com/questions/6408726/iterate-over-associative-array-in-coffeescript/6408784#6408784
+  ###
+  
+  
+
+
   
   Mywebroom.Helpers.showModal = ->
     ###
@@ -236,37 +262,23 @@ $(document).ready ->
     $("[data-room-hide=yes]").show()
     
     
-    grey =
-      1 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826528/bed_grey.png"             # Bed
-      2 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826555/brid_cage_grey.png"       # Bird Cage
-      3 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826571/book_stand_grey.png"      # Book Shelve (sic)
-      4 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826593/chair_grey.png"           # Chair
-      5 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826708/newspaper_grey.png"       # Newspaper
-      6 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826862/world_map_grey.png"       # World Map
-      7 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826837/tv_stand_grey.png"        # TV Stand
-      8 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826663/file_box_grey.png"        # File Box
-      9 : "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826799/shopping_bag_grey.png"    # Shopping Bag
-      10: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826815/social_painting_grey.png" # Social Painting
-      11: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826648/encylco_shelf_grey.png"   # Encyclo Shelf
-      12: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826687/music_box_grey.png"       # Music Box
-      13: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826845/tv_grey.png"              # TV
-      14: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826633/desk_grey.png"            # Desk
-      15: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826721/night_stand_grey.png"     # Night Stand
-      16: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826732/notebook_grey.png"        # Notebook
-      17: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826603/computer_grey.png"        # Computer
-      18: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826751/phone_grey.png"           # Phone
-      19: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826675/lamp_grey.png"            # Lamp
-      20: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826768/pinboard_grey.png"        # Pinboard
-      21: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826784/portrait_grey.png"        # Portrait
-      22: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826826/sports_grey.png"          # Sports
-      23: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826616/curtain_grey.png"         # Curtain
-      24: "//res.cloudinary.com/hpdnx5ayv/image/upload/v1380826583/box_grey.png"             # Box
-      25: "//upload.wikimedia.org/wikipedia/commons/thumb/1/18/Grey_Square.svg/150px-Grey_Square.svg.png"                     # Games -- FIXME -- not correct image
-    
-    
     # And now we need to replace src with above
     $('[data-room-hide=yes]').each ->
-      $(this).attr("src", grey[$(this).attr("data-design-item-id")])
+      
+      
+      # Look up the grey object on the corresponding item
+      grey = Mywebroom.Data.ItemModels[Number($(this).data().designItemId)].get("image_name_grey")
+      
+    
+      # Check to see if the grey link has been added
+      if typeof grey isnt "object"
+        url = "/assets/fallback/item/default_item.png"
+      else
+        url = grey.url
+        
+      
+  
+      $(this).attr("src", url)
   
   
   
@@ -422,13 +434,13 @@ $(document).ready ->
         
         
         # model associated with this item_id
-        model = Mywebroom.Data.DesignModels[dom_item_id]
+        model = Mywebroom.Data.ItemModels[dom_item_id]
         
         
         ###
         Close all bookmark containers except this item's
         ###
-        for key of Mywebroom.Data.DesignIds
+        for key of Mywebroom.Data.ItemIds
           el = $('#room_bookmark_item_id_container_' + key)
           if dom_item_id.toString() is key.toString() then el.show() else el.hide()
         
@@ -471,7 +483,7 @@ $(document).ready ->
     
 
     # Look up the item model
-    model = Mywebroom.Data.DesignModels[item_id]
+    model = Mywebroom.Data.ItemModels[item_id]
 
            
     ###
@@ -710,6 +722,34 @@ $(document).ready ->
     
     return model
     
+  
+  Mywebroom.Helpers.setItemRefs = ->
+    
+    items = Mywebroom.State.get("initialItems")
+    
+    
+    items.each( (item) ->
+      
+      
+      # (1) Create a (unique) set of the item id's
+      id = item.get("id")
+      Mywebroom.Data.ItemIds[id] = true
+      
+    
+      # (2) Store a reference to the item models based on id
+      Mywebroom.Data.ItemModels[id] = item
+      
+     
+      # (3) Assocaiate item names with item ids
+      name = item.get("name")
+      Mywebroom.Data.ItemNames[id] = name
+    )
+    
+    
+  
+  
+  
+  
   
   ###
   (1) Store visibility
@@ -1033,24 +1073,6 @@ $(document).ready ->
   
   
   
-  Mywebroom.Data.DesignModels = {}
-  Mywebroom.Data.DesignNames = {}
-  
-  ###
-  To create a true set, we want an object that doesn't already
-  have any properties on it. 
-  http://stackoverflow.com/questions/7958292/mimicking-sets-in-javascript
-  http://www.devthought.com/2012/01/18/an-object-is-not-a-hash/
-  
-  Note: since this program speaks coffee, our syntax for querrying is '32 of Mywebroom.Data.DesignIds'
-  instead of the JavaScript '32 in Mywebroom.Data.DesignIds'
-  ###
-  Mywebroom.Data.DesignIds = Object.create(null)
-  
-  
-  
-  
- 
   # Create the Marionette App Object
   Mywebroom.App = new Backbone.Marionette.Application()
   
