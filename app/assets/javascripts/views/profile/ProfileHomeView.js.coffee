@@ -68,16 +68,16 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
         reset:true
         async:false
         success: (response)->
-          #console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
-          #console.log(response)
+          console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
+          console.log(response)
     
       activityItemsDesignsRandomCollection.fetch
         url:activityItemsDesignsRandomCollection.url initialLimit, initialOffset
         reset:true
         async:false
         success: (response)->
-          #console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
-          #console.log(response)
+          console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
+          console.log(response)
   
     @collapseFlag = false
   

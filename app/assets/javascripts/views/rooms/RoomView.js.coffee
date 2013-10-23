@@ -43,9 +43,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
           async  : false
           url    : dataCollection.url Mywebroom.State.get("roomUser").get("id")
           success: ->
+
             # Extract the first model
             data = dataCollection.first()
-        
+            console.log 'room data from room View: '
+            console.log data        
             # (2) Set roomData
             Mywebroom.State.set("roomData", data)
             
@@ -298,7 +300,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       
       # (1) Create a proper backbone model out of the design data
       model = new Backbone.Model(design)
-      
       
       # (2) Extract the item_id
       item_id = model.get("item_id")
