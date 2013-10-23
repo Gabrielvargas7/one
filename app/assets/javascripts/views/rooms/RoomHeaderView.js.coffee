@@ -55,6 +55,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
+
     # STORE VIEW
     @createStorePage()
     
@@ -377,6 +378,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   keyPressOnSearch: (event) ->
     event.preventDefault()
     event.stopPropagation()
+    @searchCount = Mywebroom.State.get('searchTypeHeadCount')
 
     console.log(event.type, event.keyCode)
 
@@ -402,15 +404,28 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
       if value != ""
         console.log(" what is search count "+@searchCount)
-#        @insertSearchEntityView(value,valueSearchBtn)
-        setTimeout(@delaySearch(value,valueSearchBtn), 30000)
+        @insertSearchEntityView(value,valueSearchBtn)
 
+#        this one was a test to add some delay to the search function
+#        setTimeout (-> @delaySearch(value,valueSearchBtn)), 3000
+#        setTimeout (->alert "Hello"), 3000
+#        setTimeout (-> if @searchCount == Mywebroom.State.get('searchTypeHeadCount') alert "Hello"), 3000
 
+#        setTimeout this.one, 3000
+#        setTimeout this.delaySearch, 1000
 
-  delaySearch:(value,valueSearchBtn)->
-    if @searchCount == Mywebroom.State.get('searchTypeHeadCount')
-#      @insertSearchEntityView(value,valueSearchBtn)
-      console.log(" waiting for the value  "+@searchCount)
+#  one: ->
+#    alert "Hello"
+#
+#
+#  delaySearch:->
+#    if @searchCount == Mywebroom.State.get('searchTypeHeadCount')
+##      @insertSearchEntityView(value,valueSearchBtn)
+#       console.log(" waiting for the value  "+@searchCount)
+#       alert("Hello1")
+#    else
+#      console.log(" is not the same "+@searchCount)
+#      console.log(" is not the same "+Mywebroom.State.get('searchTypeHeadCount'))
 
 
 

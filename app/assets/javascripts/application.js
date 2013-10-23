@@ -28,6 +28,7 @@
 //= require twitter/typeahead
 //= require backbone.bootstrap-modal
 //= require FB.js
+//= require shop.js
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models
@@ -35,4 +36,5 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
 
