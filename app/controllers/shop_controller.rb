@@ -19,7 +19,9 @@ class ShopController < ApplicationController
                   locations.width,
                   locations.section_id').
         joins('LEFT OUTER JOIN locations  ON locations.id = items_locations.location_id').
-        order(:priority_order,:name).all
+        order("RANDOM()")
+        #order(:priority_order,:name).all
+
 
 
 
@@ -40,7 +42,8 @@ class ShopController < ApplicationController
 
     # when is not filter(all filter blank, it should get all the items
     if params[:item_color].blank? && params[:item_brand].blank?&& params[:item_style].blank?&&params[:item_make].blank?&&params[:item_category].blank?
-      @items_designs = ItemsDesign.where("item_id = ?",params[:item_id]).order(:updated_at)
+      #@items_designs = ItemsDesign.where("item_id = ?",params[:item_id]).order(:updated_at)
+      @items_designs = ItemsDesign.where("item_id = ?",params[:item_id]).order("RANDOM()")
     else
 
       unless params[:item_color].blank?
@@ -128,7 +131,9 @@ class ShopController < ApplicationController
 
     # when is not filter(all filter blank, it should get all the themes
     if params[:theme_color].blank? && params[:theme_brand].blank?&& params[:theme_style].blank?&&params[:theme_make].blank?&&params[:theme_location].blank?&&params[:theme_category].blank?
-      @themes = Theme.order(:updated_at)
+      #@themes = Theme.order(:updated_at)
+      @themes = Theme.order("RANDOM()")
+
     else
 
       unless params[:theme_color].blank?
@@ -218,8 +223,11 @@ class ShopController < ApplicationController
 
     # when is not filter(all filter blank, it should get all the themes
     if params[:bundle_color].blank? && params[:bundle_brand].blank?&& params[:bundle_style].blank?&&params[:bundle_make].blank?&&params[:bundle_location].blank?&&params[:bundle_category].blank?
-      @bundles = Bundle.order(:updated_at)
+      #@bundles = Bundle.order(:updated_at)
+      @bundles = Bundle.order("RANDOM()")
+
     else
+
 
       unless params[:bundle_color].blank?
         @bundles = Bundle
@@ -310,8 +318,11 @@ class ShopController < ApplicationController
 
     # when is not filter(all filter blank, it should get all the themes
     if params[:bundle_color].blank? && params[:bundle_brand].blank?&& params[:bundle_style].blank?&&params[:bundle_make].blank?&&params[:bundle_location].blank?&&params[:bundle_category].blank?
-      @bundles = Bundle.order(:updated_at)
+      #@bundles = Bundle.order(:updated_at)
+      @bundles = Bundle.order("RANDOM()")
+
     else
+
 
       unless params[:bundle_color].blank?
         @bundles = Bundle
@@ -399,7 +410,8 @@ class ShopController < ApplicationController
   def index_bookmarks
 
     # when is not filter(all filter blank, it should get all the themes
-    @bookmarks = Bookmark.order(:updated_at)
+    #@bookmarks = Bookmark.order(:updated_at)
+    @bookmarks = Bookmark.order("RANDOM()")
 
 
     if @bookmarks.length < 4

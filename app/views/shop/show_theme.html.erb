@@ -1,5 +1,14 @@
 <div class="shop_container">
   <%= render 'shop_nav' %>
+
+  <div class="shop_upper_container" >
+    <a href="#" class="btn btn-primary">Let me see it in my room</a>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
   <div class="shop_left">
     <p>
       <%= image_tag @theme.image_name_selection.url.to_s , width: 300,height:300 %>
@@ -13,9 +22,14 @@
       <%= @theme.name %>
     </h4>
     <p>
+      <b><%= @theme.brand.titlecase %></b>
+    </p>
+    <p>
       <%= @theme.description %>
     </p>
+
   </div>
+
 </div>
 
 
