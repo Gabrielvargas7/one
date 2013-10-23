@@ -260,6 +260,14 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
+
+
+    # Conditionally Show Notification Modal
+    Mywebroom.Helpers.showModal()
+    
+    
+    
+    
     # Return the view
     this
     
@@ -294,20 +302,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       
       # (2) Extract the item_id
       item_id = model.get("item_id")
-      
-      
-      # (3) Create a set of our item_id's
-      Mywebroom.Data.DesignIds[item_id] = true
-      
-      
-      # (4) Store a reference to our design models based on item_id
-      Mywebroom.Data.DesignModels[item_id] = model
-      
-      
-      # (5) Assocaiate names with item_id's (really only as a developer convenience)
-      name = model.get("items_name")
-      Mywebroom.Data.DesignNames[item_id] = name
-      
       
       
       ###

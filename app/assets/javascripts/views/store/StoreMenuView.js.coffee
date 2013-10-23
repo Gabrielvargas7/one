@@ -52,6 +52,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     Mywebroom.State.set("initialItems", items)
     
+    
+    ###
+    Set the objects we use to keep handy info about the items
+    ###
+    Mywebroom.Helpers.setItemRefs()
+    
   
     # themes
     themes = new Mywebroom.Collections.IndexThemesCollection()
