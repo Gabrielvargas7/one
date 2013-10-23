@@ -1,18 +1,30 @@
 <div class="shop_container">
   <%= render 'shop_nav' %>
+  <div class="shop_upper_container" data-shop-type="BOOKMARK">
+
+    <a href="#" class="btn btn-primary shop_let_me_see_on_my_room_btn">Let me see it in my room</a>
+    <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
+    <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
   <div class="shop_left">
     <p>
-      <%= image_tag @bookmark.image_name_desc.url.to_s , width: 180,height:180 %>
+      <%= image_tag @bookmark.image_name_desc.url.to_s , width: 180,height:180,:class =>'shop_image_name'  %>
     </p>
   </div>
   <div class="shop_right">
     <br/>
     <br/>
     <br/>
-    <h4>
+    <h4 class="shop_name" >
       <%= @bookmark.title %>
     </h4>
-    <p>
+    <p class="shop_description">
       <%= @bookmark.description %>
     </p>
   </div>

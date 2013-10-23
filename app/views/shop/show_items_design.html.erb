@@ -1,7 +1,7 @@
 <div class="shop_container" xmlns="http://www.w3.org/1999/html">
   <%= render 'shop_nav' %>
 
-  <div class="shop_upper_container" >
+  <div class="shop_upper_container" data-shop-type="DESIGN">
 
 
     <a href="#" class="btn btn-primary shop_let_me_see_on_my_room_btn">Let me see it in my room</a>
@@ -16,17 +16,21 @@
   </div>
   <div class="shop_left">
     <p>
-      <%= image_tag @items_design.image_name_selection.url.to_s , width: 300,height:300 %>
+      <%= image_tag @items_design.image_name_selection.url.to_s , width: 300,height:300, :class =>'shop_image_name' %>
     </p>
   </div>
   <div class="shop_right">
     <br/>
     <br/>
     <br/>
-    <h4>
+    <h4 class="shop_name" >
       <%= @items_design.name %>
     </h4>
     <p>
+      <b><%= @items_design.brand.titlecase unless @items_design.brand.nil? %></b>
+    </p>
+
+    <p class="shop_description">
       <%= @items_design.description %>
     </p>
     <a href="#" >See it in your room before you buy.</a>

@@ -1,18 +1,34 @@
 <div class="shop_container">
   <%= render 'shop_nav' %>
+
+  <div class="shop_upper_container" data-shop-type="ENTIRE_ROOM">
+
+    <a href="#" class="btn btn-primary shop_let_me_see_on_my_room_btn">Let me see it in my room</a>
+    <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
+    <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
   <div class="shop_left">
     <p>
-      <%= image_tag @bundle.image_name_set.url.to_s , width: 300,height:300 %>
+      <%= image_tag @bundle.image_name_set.url.to_s , width: 300,height:300, :class =>'shop_image_name' %>
     </p>
   </div>
   <div class="shop_right">
     <br/>
     <br/>
     <br/>
-    <h4>
+    <h4 class="shop_name">
       <%= @bundle.name %>
     </h4>
     <p>
+      <b><%= @bundle.brand.titlecase unless @bundle.brand.nil? %></b>
+    </p>
+    <p class="shop_description">
       <%= @bundle.description %>
     </p>
   </div>

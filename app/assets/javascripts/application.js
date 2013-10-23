@@ -28,7 +28,7 @@
 //= require twitter/typeahead
 //= require backbone.bootstrap-modal
 //= require FB.js
-//= require shop.js
+//= require shop
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models
