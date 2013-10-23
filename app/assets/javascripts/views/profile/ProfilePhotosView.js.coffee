@@ -3,7 +3,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
   className:'user-photos-view'
   template: JST['profile/ProfilePhotosTemplate']
   events:
-    'click #profile_ask_for_key_overlay button':'askForKey'
+    'click .profile_request_key_button':'askForKey'
 
   initialize: ->
     @photosCollection = new Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection()
@@ -30,4 +30,5 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
     # $(@el).append(JST['profile/ProfileAskForKey']())
     this
   askForKey:(event)->
-    console.log("Photos- Ask for "+@model.get('user_id')+' '+@model.get('firstname')+' key request from ME. (Who am I?)')
+    #Key Request. 
+    Mywebroom.Helpers.RequestKey(@model.get('user_id'))
