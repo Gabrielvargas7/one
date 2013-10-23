@@ -477,7 +477,7 @@ $(document).ready ->
         if model.get("clickable") is "yes"
           view = new Mywebroom.Views.BookmarksView(
             {
-              items_name:       model.get("items_name")
+              items_name:       model.get("name")
               item_id: model.get("id")
               user:             user_id
             }

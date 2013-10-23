@@ -34,7 +34,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     @activeSitesCollection
   getItemNameOfMyBookmark:->
     #Compare modelToBrowse ID to state room designs items id
-    Mywebroom.Helpers.getItemNameOfItemId(@getModelToBrowse().get('item_id'))
+    Mywebroom.Helpers.getItemNameOfItemId(parseInt(@getModelToBrowse().get('item_id')))
     # modelId = @getModelToBrowse().get('item_id')
     # for item in Mywebroom.State.get('roomDesigns')
     #   if modelId is item.item_id
