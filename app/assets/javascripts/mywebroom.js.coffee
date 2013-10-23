@@ -75,10 +75,10 @@ $(document).ready ->
   Mywebroom.State.on("change:roomState", ->
     # We need to wait for the DOM to be ready before doing anything with the elements on the page
     $(document).ready ->
-      if Mywebroom.State.get("roomState") is "PUBLIC" then $("#xroom_header_search").hide() else $("#xroom_header_search").show()
-  
-  
       
+      roomState = Mywebroom.State.get("roomState")
+      
+      if roomState is "PUBLIC" then $("#xroom_header_search").hide() else $("#xroom_header_search").show()  
   )
   
 
@@ -125,27 +125,43 @@ $(document).ready ->
       async: false
       success: (response) ->
         console.log("notification model fetched", response)
+        
+        # View
+        view = new Mywebroom.Views.InsView({model: model})
+    
+    
+        # Modal
+        modal = new Backbone.BootstrapModal({content: view}).open()
+        
+        
+        
+        
+        ###
+        LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
+        ###
+        user_id = Mywebroom.State.get("signInUser").get("id")
+    
+        note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel({_id: user_id})
+        note.user_id = user_id
+        note.save
+          wait: true
+        ,
+          success: (model, response) ->
+            console.log("REMOVE NOTIFICATION SUCCESS\n", response)
+        
+          error: (model, response) ->
+            console.log("REMOVE NOTIFICATION FAIL\n", response)
+        ###
+        LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - END
+        ###
+        
+        
+        
+      
       error: (response) ->
         console.log("notification model fail", response)
         
-        model.set({
-          "description": "default description",
-          "id": 123
-          "image_name": { url: "http://moversandmovingplanner.com/wp-content/uploads/2012/02/11971252291061148562zeimusu_Warning_notification.svg_.med_.png"},
-          "name": "default name",
-          "position": 1
-        })
         
-    
-    
-    # View
-    view = new Mywebroom.Views.InsView({model: model})
-    
-    
-    # Modal
-    modal = new Backbone.BootstrapModal({content: view}).open()
-    
-    
     
   
   Mywebroom.Helpers.setCategories = (categories) ->

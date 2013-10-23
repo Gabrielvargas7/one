@@ -260,6 +260,14 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
+
+
+    # Conditionally Show Notification Modal
+    Mywebroom.Helpers.showModal()
+    
+    
+    
+    
     # Return the view
     this
     
