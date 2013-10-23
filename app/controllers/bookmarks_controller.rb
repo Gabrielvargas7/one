@@ -309,7 +309,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
 
-      @bookmarks = Bookmark.order("RANDOM()").limit(params[:limit]).offset(params[:offset])
+      @bookmarks = Bookmark.select("bookmarks.*,bookmarks_categories.item_id").joins(:bookmarks_category).order("RANDOM()").limit(params[:limit]).offset(params[:offset])
       format.json { render json: @bookmarks }
 
     end

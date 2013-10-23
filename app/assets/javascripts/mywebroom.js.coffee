@@ -48,6 +48,7 @@ $(document).ready ->
 
       activeSitesMenuView: false #A reference to the Active Sites Menu View.
       searchViewArray:false #A reference to an Array of view on the search
+      searchTypeHeadCount:0 # Count the number of events on the search
 
       #An object containing base URLs for the shop.
       shopBaseUrl:

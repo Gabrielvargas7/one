@@ -397,9 +397,22 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
       console.log("value Search Btn: "+valueSearchBtn)
 
+      Mywebroom.State.set('searchTypeHeadCount',Mywebroom.State.get('searchTypeHeadCount')+1)
+      @searchCount = Mywebroom.State.get('searchTypeHeadCount')
 
       if value != ""
-        @insertSearchEntityView(value,valueSearchBtn)
+        console.log(" what is search count "+@searchCount)
+#        @insertSearchEntityView(value,valueSearchBtn)
+        setTimeout(@delaySearch(value,valueSearchBtn), 30000)
+
+
+
+  delaySearch:(value,valueSearchBtn)->
+    if @searchCount == Mywebroom.State.get('searchTypeHeadCount')
+#      @insertSearchEntityView(value,valueSearchBtn)
+      console.log(" waiting for the value  "+@searchCount)
+
+
 
 
 
@@ -566,7 +579,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     searchUsers = new Mywebroom.Collections.IndexSearchesUsersProfileWithLimitAndOffsetAndKeywordCollection()
     searchUsers.fetch
       async  : false
-      url    : searchUsers.url(50,0,value)
+      url    : searchUsers.url(20,0,value)
       success: ->
         console.log("print user profile collection on json format")
         console.log(searchUsers.toJSON())
@@ -580,7 +593,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     searchItemDesignsCollection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
     searchItemDesignsCollection.fetch
       async  : false
-      url    : searchItemDesignsCollection.url(50,0,value)
+      url    : searchItemDesignsCollection.url(20,0,value)
       success: ->
         console.log("print item designs collection on json format")
         console.log(searchItemDesignsCollection.toJSON())
@@ -593,7 +606,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     searchBookmarksCollection = new Mywebroom.Collections.IndexSearchesBookmarksWithLimitAndOffsetAndKeywordCollection()
     searchBookmarksCollection.fetch
       async  : false
-      url    : searchBookmarksCollection.url(50,0,value)
+      url    : searchBookmarksCollection.url(20,0,value)
       success: ->
         console.log("print bookmarks collection on json format")
         console.log(searchBookmarksCollection.toJSON())
