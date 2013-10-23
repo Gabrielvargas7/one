@@ -19,19 +19,8 @@ class Mywebroom.Views.ProfileFriendsSuggestionSingleView extends Backbone.View
     $(@el).html(@template(model:@model))
   
   requestKey:(event)->
-    console.log 'please can i be your friend'
-    requestModel = new Mywebroom.Models.CreateFriendRequestByUserIdAndUserIdRequestedModel()
-    requestModel.set 'userId', Mywebroom.State.get("signInUser").get("id")
-    requestModel.set 'userIdRequested', @model.get('user_id')
-    requestModel.save {},
-    
-    success: (model, response)->
-      console.log('post requestKey SUCCESS:')
-      console.log(response)
-    
-    error: (model, response)->
-      console.log('post requestKey FAIL:')
-      console.log(response)
+    #Key Request. 
+    Mywebroom.Helpers.RequestKey(@model.get('user_id'))
     
     #Rerender view with request sent info. 
     #Key Requested Button Template.

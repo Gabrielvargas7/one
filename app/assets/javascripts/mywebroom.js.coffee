@@ -986,6 +986,33 @@ $(document).ready ->
     else
       false;
   
+  ###
+  Request key from signed in user to idRequested
+  ###
+  Mywebroom.Helpers.RequestKey = (idRequested)->
+    if Mywebroom.State.get('signInUser').get('id')
+      #Make Key Request
+      requestModel = new Mywebroom.Models.CreateFriendRequestByUserIdAndUserIdRequestedModel()
+      requestModel.set 'userId', Mywebroom.State.get("signInUser").get("id")
+      requestModel.set 'userIdRequested', idRequested
+      requestModel.save {},
+      
+      success: (model, response)->
+        console.log('post requestKey SUCCESS:')
+        console.log(response)
+      
+      error: (model, response)->
+        console.log('post requestKey FAIL:')
+        console.log(response)
+
+      #Change style to Key requested.
+      $('#profile_ask_for_key_overlay button').text("Key Requested")
+      $('#profile_ask_for_key_overlay button').addClass("profile_key_requested").removeClass('profile_request_key_button')
+
+
+    else
+     #send to landing page
+     window.location.replace(Mywebroom.State.get("shopBaseUrl").default)
   
   
   
