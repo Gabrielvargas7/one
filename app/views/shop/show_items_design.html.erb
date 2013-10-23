@@ -1,5 +1,30 @@
-<div class="shop_container">
+<div class="shop_container" xmlns="http://www.w3.org/1999/html">
   <%= render 'shop_nav' %>
+
+
+  <script type="text/javascript" charset="utf-8">
+
+  //    $( "#shop" ).click(function() {
+  //        alert( "Handler for .click() called." );
+  //    });
+
+  </script>
+
+
+  <div class="shop_upper_container" >
+    <div id="shop">
+            <a href="#" id="shop11" class="btn btn-primary">Let me see it in my room</a>
+    </div>
+    <a href="#" id="shop_fb_button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
+    <a href="#"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
+    <%= link_to_function "Add Row", "addRow()" %>
+    <%= button_to "rooms_get_show", "javascript:rooms_get_show()" %>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
   <div class="shop_left">
     <p>
       <%= image_tag @items_design.image_name_selection.url.to_s , width: 300,height:300 %>
@@ -15,6 +40,11 @@
     <p>
       <%= @items_design.description %>
     </p>
+    <a href="#" >See it in your room before you buy.</a>
+    <br/>
+    <br/>
+
+    <a href="<%= @items_design.product_url %>#" target="_blank" class="btn btn-success">Buy at <%= @items_design.product_url %></a>
   </div>
 </div>
 
@@ -41,3 +71,29 @@
     </div>
 
 </div>
+
+<script type="text/javascript" charset="utf-8">
+
+//    $( "#shop" ).click(function() {
+//        alert( "Handler for .click() called." );
+//    });
+
+//$(document).ready(function() {
+
+//    $('#shop').click(function(event){
+//        alert('Hooray!');
+//        event.preventDefault(); // Prevent link from following its href
+//    });
+//
+//    function rooms_get_show(){
+//        alert('Hooray!');
+//    }
+//
+//    function addRow(){
+//        alert('Hooray!');
+//    }
+
+
+//});
+
+</script>
