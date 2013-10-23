@@ -69,7 +69,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     #get model item-id, show that bookmark view.
     itemId = @modelToBrowse.get('item_id')
     userId = Mywebroom.State.get('signInUser').get('id')
-    bookmarksView = new Mywebroom.Views.BookmarksView({user_item_design:itemId,user:userId,items_name:@getItemNameOfMyBookmark()})
+    bookmarksView = new Mywebroom.Views.BookmarksView({item_id:itemId,user:userId,items_name:@getItemNameOfMyBookmark()})
     $('#room_bookmark_item_id_container_'+itemId).append(bookmarksView.el)
     bookmarksView.render()
     if event.currentTarget is $('#browse_mode_discover')[0]

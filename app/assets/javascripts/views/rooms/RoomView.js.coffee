@@ -243,7 +243,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
           console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
           bookmarksView = new Mywebroom.Views.BookmarksView
             items_name:Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
-            user_item_design: itemId
+            item_id: itemId
             user: Mywebroom.State.get("roomUser").get("id") 
           $('#room_bookmark_item_id_container_'+itemId).append(bookmarksView.el)
           bookmarksView.render()
@@ -316,7 +316,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     )
     
     
-    # TRANSITION OUR STORE TO A HIDDEN STATE
+    # TRANSITION OUR STORE TO A HIDDEN STATE 
+    # this also adds the click events for objects
     Mywebroom.Helpers.hideStore()
     
   

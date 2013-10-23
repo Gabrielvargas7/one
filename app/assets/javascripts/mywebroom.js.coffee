@@ -478,7 +478,7 @@ $(document).ready ->
           view = new Mywebroom.Views.BookmarksView(
             {
               items_name:       model.get("items_name")
-              user_item_design: model.get("item_id")
+              item_id: model.get("id")
               user:             user_id
             }
           )

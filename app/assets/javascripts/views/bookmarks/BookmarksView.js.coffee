@@ -40,9 +40,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-    console.log("bookmark view: "+this.options.user_item_design)
+    console.log("bookmark view: "+this.options.item_id)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user)
-    $(@el).append(@template(user_item_design:this.options.user_item_design,items_name:this.options.items_name, collection:@collection, categories:@discoverCategoriesCollection))
+    $(@el).append(@template(user_item_design:this.options.item_id,items_name:this.options.items_name, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
@@ -68,12 +68,12 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @discoverCollection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
     @discoverCollection.fetch
       async:false
-      url: @discoverCollection.url this.options.user_item_design
+      url: @discoverCollection.url this.options.item_id
       success:(response)->
         console.log "discover Bookmarks fetch successful: "
         console.log response
     #@fetchDiscoverBookmarks()
-    @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.user_item_design)
+    @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.item_id)
     $(@el).append(@bookmarksDiscoverView.render().el)
     #set .discover_bookmarks_bottom to 100% width minus the sidebar width
     $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
@@ -96,7 +96,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @collection.fetch
       reset:true
       async:false
-      url:@collection.url this.options.user, this.options.user_item_design
+      url:@collection.url this.options.user, this.options.item_id
     #$(@el).append(@myBookmarksView.render().el)
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
     $('.my_bookmarks_bottom').css 'width',$(window).width()-270
@@ -149,7 +149,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         #    the position count is not accurate and save doesn't work.
         @collection.fetch
           async:false
-          url:@collection.url this.options.user, this.options.user_item_design
+          url:@collection.url this.options.user, this.options.item_id
           success:(response) ->
             console.log("bookmark fetch successful: ")
             console.log(response)
@@ -212,7 +212,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         'bookmark_url':customURL
         'title':title
         'image_name':snapshot
-        'item_id': event.data.that.options.user_item_design
+        'item_id': event.data.that.options.item_id
         'bookmarks_category_id':event.data.that.discoverCategoriesCollection.first().get('id')
 
       #Display picture now. Show confirm save.
@@ -231,7 +231,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         # -Example: If I've added 2 bookmarks from discover, then preview, then save site, the position count is not accurate and save doesn't work.
         event.data.that.collection.fetch
           async:false
-          url:event.data.that.collection.url event.data.that.options.user, event.data.that.options.user_item_design
+          url:event.data.that.collection.url event.data.that.options.user, event.data.that.options.item_id
           success:(response) ->
             console.log("bookmark fetch successful: ")
             console.log(response)
@@ -278,7 +278,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
     @collection.fetch
       async:false
-      url:@collection.url this.options.user, this.options.user_item_design
+      url:@collection.url this.options.user, this.options.item_id
       success:(response) ->
         console.log("bookmark fetch successful: ")
         console.log(response)
@@ -287,7 +287,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
     @discoverCategoriesCollection.fetch
       async:false
-      url: @discoverCategoriesCollection.url this.options.user_item_design
+      url: @discoverCategoriesCollection.url this.options.item_id
       success:(response) ->
         console.log("categories fetch successful: ")
         console.log(response)
