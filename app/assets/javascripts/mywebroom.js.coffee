@@ -475,16 +475,25 @@ $(document).ready ->
         Create bookmark view
         ###
         if model.get("clickable") is "yes"
-          view = new Mywebroom.Views.BookmarksView(
-            {
-              items_name:       model.get("name")
-              item_id: model.get("id")
-              user:             user_id
-            }
-          )
-      
-          $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
-          view.render()
+          #Check for Special Items
+          switch (model.get('id'))
+            
+            when 21 #Portrait
+              #Open Profile, not Bookmarks. 
+              $('#xroom_profile').show()
+              $('#xroom_bookmarks').hide()
+
+            else
+              view = new Mywebroom.Views.BookmarksView(
+                {
+                  items_name:       model.get("name")
+                  item_id: model.get("id")
+                  user:             user_id
+                }
+              )
+
+              $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
+              view.render()
       )
     )
     
