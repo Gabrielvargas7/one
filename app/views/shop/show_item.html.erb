@@ -65,9 +65,14 @@
                   <% items_design_groups.each do |items_design| %>
 
                       <td >
-                        <%= link_to image_tag(items_design.image_name_selection.url().to_s,width: 200,height:200
-                                    ),
-                                    shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+
+                        <% if items_design.image_name_selection.blank?  %>
+                            <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+                        <% else %>
+                            <%= link_to cl_image_tag(items_design.image_name_selection , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+                        <% end%>
+
+
                         </br><%= items_design.name[0,15] %>
                       </td>
 

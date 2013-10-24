@@ -1,9 +1,8 @@
 <div class="shop_container">
   <%= render 'shop_nav' %>
 
-  <div class="shop_upper_container" data-shop-type="ENTIRE_ROOM">
-
-    <a href="#" class="btn btn-primary shop_let_me_see_on_my_room_btn">Let me see it in my room</a>
+  <div class="shop_upper_container" data-shop-type="<%= @entity_type %>">
+    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,id:@bundle.id),:class => "btn btn-primary"%>
     <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
     <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
 
@@ -15,7 +14,11 @@
 
   <div class="shop_left">
     <p>
-      <%= image_tag @bundle.image_name_set.url.to_s , width: 300,height:300, :class =>'shop_image_name' %>
+      <% if @bundle.image_name_set.blank?  %>
+          <%= cl_image_tag("default_image_all.png", width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png")%>
+      <% else %>
+          <%= cl_image_tag(@bundle.image_name_set , width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png") %>
+      <% end%>
     </p>
   </div>
   <div class="shop_right">
@@ -44,8 +47,14 @@
               <tr>
                 <% bundle_groups.each do |bundle| %>
                     <td >
-                      <%= link_to image_tag(bundle.image_name_set.url().to_s,:width => 200, :height => 200),
-                                  shop_show_entire_room_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+
+                      <% if bundle.image_name_set.blank?  %>
+                          <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_entire_room_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+                      <% else %>
+                          <%= link_to cl_image_tag(bundle.image_name_set , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"), shop_show_entire_room_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+                      <% end%>
+
+
                       </br><%= bundle.name[0,15] %>
                     </td>
                 <% end %>

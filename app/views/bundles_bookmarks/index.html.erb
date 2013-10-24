@@ -40,7 +40,15 @@
         <td><%= bundles_bookmark.bookmark.id %></td>
         <td><%= bundles_bookmark.bookmark.bookmark_url.to_s %></td>
         <td><%= bundles_bookmark.bookmark.title  %></td>
-        <td> <%= image_tag bundles_bookmark.bookmark.image_name.url().to_s ,width: 50, height:50 %> </td>
+        <td>
+
+          <% if bundles_bookmark.bookmark.image_name.blank?  %>
+              <%= cl_image_tag "default_image_all.png",width:50 , height:50,:crop => :fit,:default_image => "default_image_all.png" %>
+          <% else %>
+              <%= cl_image_tag bundles_bookmark.bookmark.image_name,width:50 , height:100,:crop => :fit,:default_image => "default_image_all.png" %>
+          <% end %>
+
+        </td>
     <%  end %>
 
 

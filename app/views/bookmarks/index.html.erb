@@ -55,10 +55,24 @@
     <td ><%= bookmark.bookmark_url %></td>
     <td><%= bookmark.title %></td>
     <td><%= bookmark.i_frame %></td>
-    <td><%= image_tag bookmark.image_name.url().to_s,width:50 , height:50,  :default_image => "logo_1.png" %></td>
-    <td><%= image_tag bookmark.image_name_desc.url().to_s,width: 50, height:50, :default_image => "logo_1.png" %></td>
+    <td>
+      <% if bookmark.image_name.blank?  %>
+           <%= cl_image_tag "default_image_all.png",width:50 , height:50,:crop => :fit,:default_image => "default_image_all.png" %>
+      <% else %>
+            <%= cl_image_tag bookmark.image_name,width:50 , height:50,:crop => :fit,:default_image => "default_image_all.png" %>
+      <% end %>
+    </td>
+    <td>
+
+      <% if bookmark.image_name_desc.blank?  %>
+          <%= cl_image_tag "default_image_all.png",width:50 , height:50,:crop => :fit,:default_image => "default_image_all.png" %>
+      <% else %>
+          <%= cl_image_tag bookmark.image_name_desc,width:50 , height:50,:crop => :fit,:default_image => "default_image_all.png" %>
+      <% end %>
+
     <td><%= bookmark.description %></td>
     <td><%= bookmark.like %></td>
+
 
 
 

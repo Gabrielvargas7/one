@@ -61,9 +61,14 @@
                   <% bundles_groups.each do |bundle| %>
 
                       <td >
-                        <%= link_to image_tag(bundle.image_name_set.url().to_s,width: 200,height:200
-                                    ),
-                                    shop_show_entire_room_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+
+                        <% if bundle.image_name_set.blank?  %>
+                            <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_entire_room_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+                        <% else %>
+                            <%= link_to cl_image_tag(bundle.image_name_set , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"), shop_show_entire_room_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+                        <% end%>
+
+
                         </br><%= bundle.name[0,15] %>
                       </td>
 

@@ -48,7 +48,15 @@
     <%  else %>
         <td><%= bundles_items_design.bundle.id %></td>
         <td><%= bundles_items_design.bundle.name %></td>
-        <td><%= image_tag bundles_items_design.bundle.image_name.url().to_s,width:50 , height:50 %></td>
+        <td>
+          <% if bundles_items_design.bundle.image_name.blank?  %>
+              <%= cl_image_tag "default_image_all.png",width:50 , height:50,:crop => :fit,:default_image => "default_image_all.png" %>
+          <% else %>
+              <%= cl_image_tag bundles_items_design.bundle.image_name,width:50 , height:100,:crop => :fit,:default_image => "default_image_all.png" %>
+          <% end %>
+
+
+        </td>
     <%  end %>
 
 
@@ -63,7 +71,18 @@
 
         <td><%= bundles_items_design.items_design.id %></td>
         <td><%= bundles_items_design.items_design.name %></td>
-        <td><%= image_tag bundles_items_design.items_design.image_name.url().to_s,width:50 , height:50 %></td>
+        <td>
+
+          <% if bundles_items_design.items_design.image_name.blank?  %>
+              <%= cl_image_tag "default_image_all.png",width:50 , height:50,:crop => :fit,:default_image => "default_image_all.png" %>
+          <% else %>
+              <%= cl_image_tag bundles_items_design.items_design.image_name,width:50 , height:100,:crop => :fit,:default_image => "default_image_all.png" %>
+          <% end %>
+
+
+
+
+        </td>
     <%  end %>
 
 
