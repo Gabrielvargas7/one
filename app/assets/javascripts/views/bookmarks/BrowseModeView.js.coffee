@@ -1,7 +1,12 @@
 class Mywebroom.Views.BrowseModeView extends Backbone.View
+
+  #Browse Mode always has one modelToBrowse which represents the active iframe website showing
   @modelToBrowse
+  
   className:"browse_mode_view"
+  
   template:JST['bookmarks/BrowseModeTemplate']
+  
   events:
     'click #browse_mode_site_nav_close':'closeView'
     'click #browse_mode_site_nav_minimize':'minimizeSite'
@@ -11,11 +16,22 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     'click #browse_mode_discover':'showBookmarksView'
     'click #browse_mode_bookmarks':'showBookmarksView'
     
+  ###
+  Get the current site in view from the DOM. (Note, this can exist if BrowseModeView is hidden)
+  ###
   $currentActiveSiteHTML:->
     $('.current_browse_mode_site')
 
+
+  ###
+  Get the list of active sites from the DOM. These all have iframes representing the different sites.
+  ###
   $activeSites:->
     $('.browse_mode_site')
+
+  ###
+  initialize an ActiveMenuView (the sidebar) and the activeSitesCollection.
+  ###
 
   initialize:->
     @activeSitesCollection=new Backbone.Collection()
@@ -25,20 +41,24 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 
   setModelToBrowse:(model)->
     @modelToBrowse=model
-    #Fetch item+designs info (possibly rerender active menu when we're there)
 
   getModelToBrowse:->
     @modelToBrowse
 
   getActiveSitesCollection:->
     @activeSitesCollection
+
+  ###
+  return the item_name of the ModelToBrowse (current bookmark to browse)
+  ###
   getItemNameOfMyBookmark:->
     #Compare modelToBrowse ID to state room designs items id
+    if @getModelToBrowse() is undefined
+      return "Item"
+      #TODO throw error. 
     Mywebroom.Helpers.getItemNameOfItemId(parseInt(@getModelToBrowse().get('item_id')))
-    # modelId = @getModelToBrowse().get('item_id')
-    # for item in Mywebroom.State.get('roomDesigns')
-    #   if modelId is item.item_id
-    #     return item.items_name
+
+
   #render- The nature of this view is that render is called once. 
   #We frequently rerender the sidebar view. 
   render:->
@@ -69,18 +89,29 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     #get model item-id, show that bookmark view.
     itemId = @modelToBrowse.get('item_id')
     userId = Mywebroom.State.get('signInUser').get('id')
+    
+    #Maybe check if bookmark view is here alreayd. if so, show it. 
+    if $('#room_bookmark_item_id_container_'+itemId+' div.bookmark_view').length>0
+      debugger
+      console.log "DANGER WILL ROBINSON"
+
     bookmarksView = new Mywebroom.Views.BookmarksView({item_id:itemId,user:userId,items_name:@getItemNameOfMyBookmark()})
+    
     $('#room_bookmark_item_id_container_'+itemId).append(bookmarksView.el)
+    $('#room_bookmark_item_id_container_'+itemId).show()
+    $('#xroom_bookmarks').show()
+
     bookmarksView.render()
     if event.currentTarget is $('#browse_mode_discover')[0]
       bookmarksView.renderDiscover()
+
     #hide this view
-        #Hide Active Sites View if it exists. 
+    #Hide Active Sites View if it exists. 
     @activeMenuView.hideActiveMenu() if @activeMenuView
+    
     #Hide Browse Mode View
     $(@el).hide()
-    $('#browse_mode_item_name').remove()  
-    console.log "BrowseMode showBookmarksView"
+    $('#browse_mode_item_name').remove()  #hide "Your Object" hook
 
   #activeSiteChange is called each time a user clicks a bookmark.
   #  It is also called when the user clicks a BrowseMode Sidebar icon.  
@@ -90,7 +121,16 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     if @getActiveSitesCollection().get(model)
       console.log "already here!"
       @setModelToBrowse @getActiveSitesCollection().get(model)
-      @browseModeSidebarView.setModel @getModelToBrowse()
+      
+      # @browseModeSidebarView.setModel @getModelToBrowse()
+
+
+      @browseModeSidebarView.remove() if @browseModeSidebarView
+      @browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
+      @browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
+      $(@el).append(@browseModeSidebarView.render().el)
+
+
       @removeCurrentActiveSite(@$currentActiveSiteHTML())
       $('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') if $('#browse_mode_item_name').length is 0
       #set current active site to this model in iframe. 
