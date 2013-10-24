@@ -1,6 +1,4 @@
 
-#$(document).ready ->
-
 
 Pinterest =
   generatePinterestUrl: ->
@@ -67,22 +65,6 @@ jQuery ->
     console.log $.trim($(".shop_name").text())
     console.log $.trim($(".shop_description").text())
     console.log $(".shop_upper_container").attr("data-shop-type")
-
-
-
-#    baseUrl = '//pinterest.com/pin/create/button/?url='
-#    mediaUrl =   $.trim($(".shop_image_name").attr('src'))
-#    description = $.trim($(".shop_name").text()) + ' - '
-#    signature =  ' - Found at myWebRoom.com'
-#    description += $.trim($(".shop_description").text()) + signature
-#
-#    results = baseUrl +
-#    encodeURIComponent(window.location.href) +
-#    '&media=' +
-#    encodeURIComponent(mediaUrl) +
-#    '&description=' +
-#    encodeURIComponent(description)
-#    url = results
 
     url = Pinterest.generatePinterestUrl()
 

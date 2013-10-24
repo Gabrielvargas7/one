@@ -455,6 +455,18 @@ class ShopController < ApplicationController
 
 
 
+  # GET /shop/forward_to_u_room/:came_from/:type/:id
+  def show_forward_to_u_room
+
+    respond_to do |format|
+      format.html redirect_to room_rooms_path('gabriel')
+      #redirect_to :controller => 'thing', :action => 'edit', :id => 3, :something => 'else'
+    end
+
+
+  end
+
+
 
   #***********************************
   # Json methods for the room users
