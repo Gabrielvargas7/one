@@ -42,7 +42,9 @@
             </div>
 
 
+        <div id="browse_mode_item_name_wrap">
 
+        </div>
         <!-- Menu  -->
         <ul class="nav pull-right" id="rooms_header_main_menu">
             <li>

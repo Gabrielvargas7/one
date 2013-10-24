@@ -162,8 +162,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
             
       @setCurrentActiveSite $('.browse_mode_site[data-id='+model.get('id')+']')
       if $('#browse_mode_item_name').length is 0
-        $('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') 
-
+        #$('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') 
+        $('#browse_mode_item_name_wrap').prepend('<div id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</div>')
     else
     #Add to active sites collection
 
@@ -207,7 +207,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
       @setSidebarHover();
       
       #7 Set Header Item Name
-      $('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') if $('#browse_mode_item_name').length is 0
+      #$('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') if $('#browse_mode_item_name').length is 0
+      $('#browse_mode_item_name_wrap').prepend('<div id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</div>') if $('#browse_mode_item_name').length is 0
   
       
   ###
@@ -244,8 +245,9 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 
     #3. Set Header Item Name
     $('#browse_mode_item_name').remove()
-    $('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') if $('#browse_mode_item_name').length is 0
-    
+    #$('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') if $('#browse_mode_item_name').length is 0
+    $('#browse_mode_item_name_wrap').prepend('<div id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</div>') if $('#browse_mode_item_name').length is 0
+
     #4. Remove Current Active Site
     @removeCurrentActiveSite(@$currentActiveSiteHTML())
     
