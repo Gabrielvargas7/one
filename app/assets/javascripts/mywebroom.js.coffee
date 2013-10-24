@@ -124,7 +124,7 @@ $(document).ready ->
     model = new Mywebroom.Models.ShowUserNotificationByIdModel({id: id})
     model.fetch
       async: false
-      success: (response) ->
+      success: (model, response, options) ->
         console.log("notification model fetched", response)
         
         # View
@@ -159,9 +159,21 @@ $(document).ready ->
         
         
       
-      error: (response) ->
-        console.log("notification model fail", response)
+      error: (model, response, options) ->
         
+        text = response.responseText
+        
+        ###
+        FIXME
+        WE SHOULDN'T RETURN 404's FOR EXPECTED RESULTS
+        ###
+        switch text
+          when "not found notification of user "
+            console.log("(ignore)")
+          when "user already notified "
+            console.log("(ignore)")
+          when "not found user id "
+            console.error(text)
         
     
   

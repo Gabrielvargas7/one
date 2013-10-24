@@ -3,8 +3,57 @@ class Mywebroom.Collections.ShowRoomByUserIdCollection extends Backbone.Collecti
   url: (userId) ->
     '/rooms/json/show_room_by_user_id/' + userId + '.json'
 
-#  url: (userID,limit,offset) ->
-#  '/friends/json/index_friend_by_user_id_by_limit_by_offset/'+userID+'/'+limit+'/'+offset+'.json'
-#
-#  url: ->
-#    '/rooms/json/show_room_by_user_id/'+@user_id+'.json'
+  parse: (response) ->
+    
+    ###
+    USER MODEL
+    ###
+    user = response.user
+    user.type = "USER"
+    
+    
+    ###
+    PHOTO MODEL
+    ###
+    photo = response.user_photos
+    photo.type = "PHOTO"
+    
+    
+    ###
+    PROFILE MODEL
+    ###
+    profile = response.user_profile
+    profile.type = "PROFILE"
+    
+    
+    
+    ###
+    THEME "COLLECTION" (SIZE = 1)
+    ###
+    themes = _.map(response.user_theme, (model) ->
+                obj = model
+                obj.type = "THEME"
+                return obj
+              )
+              
+   
+    
+    ###
+    DESIGN COLLECTION
+    ###
+    designs = _.map(response.user_items_designs, (model) ->
+                obj = model
+                obj.type = "DESIGN"
+                return obj
+              )
+              
+              
+    obj = {
+      user:               user
+      user_photos:        photo
+      user_profile:       profile
+      user_theme:         themes
+      user_items_designs: designs
+    }
+    
+    return obj
