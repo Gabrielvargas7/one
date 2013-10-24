@@ -15,11 +15,25 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
         async:false;
       #@collection = @itemBookmarksCollection.first(4)
       @model.on('change',@render,this)
+      @tagActiveSites()
     $(@el).html(@template(collection:@collection,model:@model))
     #@setScroll()
     this
+  
+  ###
+  Tag items in collection that are active so we can put the right class on them in render
+  ###
+  tagActiveSites:->
+    #for each item collection, see if there's a data-id= to it in DOM
+    @model.set('blueBorder', true,{silent:true})
+    @collection.each(((item)->
+       if $('[data-id='+item.get('id')+']').length>0
+        item.set('blueBorder', true)
+    ))
+     
   setModel:(model)->
     @model.set(model.toJSON())
+  
   sideBarActiveSiteChange:(event)->
     console.log 'sidebar active site change. '
     debugger;
@@ -30,6 +44,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     this.trigger 'BrowseMode:sidebarIconClick', modelClicked
   #Create SimplyScroll event for mybookmarks sidebar
   #Hope it dies quickly when the view closes
+  
   setScroll:->
     console.log 'one day i will scroll things beautifully.'
     #Determine if we need to scroll.
