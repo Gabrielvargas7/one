@@ -37,6 +37,12 @@ Mywebroom::Application.routes.draw do
   match '/shop/bookmark/:id/:name', to:
       'shop#show_bookmark', via: :get,as: :shop_show_bookmark
 
+  match '/shop/forward_to_u_room/:came_from/:type/:id', to:
+        'shop#/forward_to_u_room', via: :get,as: :shop_forward_to_u_room
+
+  # GET /shop/forward_to_u_room/:came_from/:type/:id
+  #show_forward_to_u_room
+
 
   resources :users_profiles
 
