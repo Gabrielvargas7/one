@@ -62,9 +62,15 @@
                   <% themes_groups.each do |theme| %>
 
                       <td >
-                        <%= link_to image_tag(theme.image_name_selection.url().to_s,width: 200,height:200
-                                    ),
-                                    shop_show_theme_path(theme.id,get_clean_name(theme.name)), :method => :get %>
+
+                        <% if theme.image_name_selection.blank?  %>
+                            <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_theme_path(theme.id,get_clean_name(theme.name)), :method => :get %>
+                        <% else %>
+                            <%= link_to cl_image_tag(theme.image_name_selection , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),shop_show_theme_path(theme.id,get_clean_name(theme.name)), :method => :get %>
+                        <% end%>
+
+
+
                         </br><%= theme.name[0,15] %>
                       </td>
 

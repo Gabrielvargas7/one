@@ -1,12 +1,8 @@
 <div class="shop_container" xmlns="http://www.w3.org/1999/html">
   <%= render 'shop_nav' %>
 
-  <div class="shop_upper_container" data-shop-type="DESIGN">
-
-
-
-    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:'PUBLIC_SHOP',type:'ITEM_D',id:'10'),:class => "btn btn-primary"%>
-    <a href="#" class="btn btn-primary shop_let_me_see_on_my_room_btn">Let me see it in my room</a>
+  <div class="shop_upper_container" data-shop-type="<%= @entity_type %>">
+    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,id:@items_design.id),:class => "btn btn-primary"%>
     <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
     <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
 
@@ -18,7 +14,12 @@
   </div>
   <div class="shop_left">
     <p>
-      <%= image_tag @items_design.image_name_selection.url.to_s , width: 300,height:300, :class =>'shop_image_name' %>
+      <% if @items_design.image_name_selection.blank?  %>
+          <%= cl_image_tag("default_image_all.png", width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png")%>
+      <% else %>
+          <%= cl_image_tag(@items_design.image_name_selection , width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png") %>
+      <% end%>
+
     </p>
   </div>
   <div class="shop_right">
@@ -35,7 +36,7 @@
     <p class="shop_description">
       <%= @items_design.description %>
     </p>
-    <a href="#" >See it in your room before you buy.</a>
+    <%= link_to "See it in your room before you buy.", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,id:@items_design.id)%>
     <br/>
     <br/>
 
@@ -53,8 +54,13 @@
                 <tr>
                   <% items_design_groups.each do |items_design| %>
                       <td >
-                        <%= link_to image_tag(items_design.image_name_selection.url().to_s,:width => 200, :height => 200),
-                                    shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+                        <% if items_design.image_name_selection.blank?  %>
+                            <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+                        <% else %>
+                            <%= link_to cl_image_tag(items_design.image_name_selection , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+                        <% end%>
+
+
                         </br><%= items_design.name[0,15] %>
                       </td>
 
@@ -67,28 +73,3 @@
 
 </div>
 
-<script type="text/javascript" charset="utf-8">
-
-//    $( "#shop" ).click(function() {
-//        alert( "Handler for .click() called." );
-//    });
-
-//$(document).ready(function() {
-
-//    $('#shop').click(function(event){
-//        alert('Hooray!');
-//        event.preventDefault(); // Prevent link from following its href
-//    });
-//
-//    function rooms_get_show(){
-//        alert('Hooray!');
-//    }
-//
-//    function addRow(){
-//        alert('Hooray!');
-//    }
-
-
-//});
-
-</script>

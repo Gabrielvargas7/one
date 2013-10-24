@@ -7,8 +7,15 @@
               <tr>
                 <% item_groups.each do |item| %>
                 <td >
-                    <%= link_to image_tag(item.image_name.url().to_s, width: 200,height:200 ),  shop_show_item_path(item.id,get_clean_name(item.name)), :method => :get %>
+                    <% if item.image_name.blank?  %>
+                         <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_item_path(item.id,get_clean_name(item.name)), :method => :get %>
+                    <% else %>
+                          <%= link_to cl_image_tag(item.image_name , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_item_path(item.id,get_clean_name(item.name)), :method => :get %>
+                    <% end%>
+
                     </br><%= item.name[0,15] %>
+
+
 
                 </td>
                 <% end %>
@@ -22,5 +29,4 @@
 
 
 <br />
-
 

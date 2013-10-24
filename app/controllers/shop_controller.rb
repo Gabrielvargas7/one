@@ -111,6 +111,8 @@ class ShopController < ApplicationController
     @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
     @fb_url = root_url.to_s + 'shop/items-design/' + @items_design.id.to_s+'/'+get_clean_name(@items_design.name.to_s)
 
+    @entity_type = "DESIGN"
+    @came_from = "PUBLIC_SHOP"
 
     if @items_designs_rand.length < number_of_enties
       @item_length = @items_designs_rand.length
@@ -207,6 +209,10 @@ class ShopController < ApplicationController
     @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
     @fb_url = root_url.to_s + 'shop/theme/' + @theme.id.to_s+'/'+get_clean_name(@theme.name.to_s)
 
+    @entity_type = "THEME"
+    @came_from = "PUBLIC_SHOP"
+
+
     if @themes_rand.length < number_of_enties
       @theme_length = @themes_rand.length
     else
@@ -301,6 +307,10 @@ class ShopController < ApplicationController
     @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
     @fb_url = root_url.to_s + 'shop/bundle/' + @bundle.id.to_s+'/'+get_clean_name(@bundle.name.to_s)
 
+    @entity_type = "BUNDLE"
+    @came_from = "PUBLIC_SHOP"
+
+
     if @bundles_rand.length < number_of_enties
       @bundle_length = @bundles_rand.length
     else
@@ -393,6 +403,10 @@ class ShopController < ApplicationController
     @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
     @fb_url = root_url.to_s + 'shop/entire_room/' + @bundle.id.to_s+'/'+get_clean_name(@bundle.name.to_s)
 
+    @entity_type = "ENTIRE_ROOM"
+    @came_from = "PUBLIC_SHOP"
+
+
     if @bundles_rand.length < number_of_enties
       @bundle_length = @bundles_rand.length
     else
@@ -440,6 +454,9 @@ class ShopController < ApplicationController
     @fb_app_id = ENV["ROOMS_FACEBOOK_APP_ID"].to_s
     @fb_url = root_url.to_s + 'shop/bookmark/' + @bookmark.id.to_s+'/'+get_clean_name(@bookmark.title.to_s)
 
+    @entity_type = "BOOKMARK"
+    @came_from = "PUBLIC_SHOP"
+
     if @bookmark_rand.length < number_of_enties
       @bookmark_length = @bookmark_rand.length
     else
@@ -455,14 +472,14 @@ class ShopController < ApplicationController
 
 
 
-  # GET /shop/forward_to_u_room/:came_from/:type/:id
-  def show_forward_to_u_room
+  # GET /shop/forward_to_u_room/:came_from/:entity_type/:id
+  def forward_to_u_room
 
-    respond_to do |format|
-      format.html redirect_to room_rooms_path('gabriel')
-      #redirect_to :controller => 'thing', :action => 'edit', :id => 3, :something => 'else'
+    if signed_in?
+      redirect_to room_rooms_path(current_user.username,came_from:params[:came_from],entity_type:params[:entity_type],id:params[:id])
+    else
+      redirect_to root_path
     end
-
 
   end
 

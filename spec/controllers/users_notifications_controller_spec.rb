@@ -31,6 +31,9 @@ describe UsersNotificationsController do
       before  do
         @user = FactoryGirl.create(:user)
         @notification = FactoryGirl.create(:notification)
+        @notification_user = Notification.select('notifications.*,users_notifications.notified,users_notifications.user_id').
+            joins(:users_notifications).where('users_notifications.user_id = ?',@user.id)
+
         @user_notification = UsersNotification.find_all_by_user_id(@user.id).first
         @user_notification.notification_id = @notification.id
         @user_notification.notified = 'n'
@@ -46,7 +49,7 @@ describe UsersNotificationsController do
 
         it "should set user notification" do
           get :json_show_user_notification_by_user, user_id: @user_notification.user_id, :format => :json
-          assigns(:notification).as_json.should == @notification.as_json
+          assigns(:notification).as_json.should == @notification_user.as_json
         end
 
         it "has a 200 status code" do
@@ -62,10 +65,16 @@ describe UsersNotificationsController do
           #puts @user_notification.as_json
           get :json_show_user_notification_by_user, user_id: @user_notification.user_id, :format => :json
           body = JSON.parse(response.body)
-          body["name"].should == @notification.name
-          body["description"].should == @notification.description
-          body["id"].should == @notification.id
-          body["image_name"]["url"].should == @notification.image_name.to_s
+          body.each do |body_notification|
+            body_notification["name"].should == @notification.name
+            body_notification["description"].should == @notification.description.to_s
+            body_notification["id"].should == @notification.id
+            body_notification["image_name"]["url"].should == @notification.image_name.to_s
+            body_notification["notified"].should == 'n'
+            body_notification["user_id"].should == @user.id
+          end
+
+
         end
       end
       end
@@ -82,9 +91,9 @@ describe UsersNotificationsController do
           sign_in @user
         end
 
-        it "has a 404 status code" do
+        it "has a 200 status code" do
           get :json_show_user_notification_by_user, user_id: @user_notification.user_id, :format => :json
-          expect(response.status).to eq(404)
+          expect(response.status).to eq(200)
         end
       end
 

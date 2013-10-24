@@ -6,10 +6,8 @@ class ItemsImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  # include Sprockets::Helpers::RailsHelper
-  # include Sprockets::Helpers::IsolatedHelper
-  # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
+
+  ## Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
 
@@ -31,7 +29,11 @@ class ItemsImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
+
     asset_path("fallback/item/" + [version_name, "default_item.png"].compact.join('_'))
+    #ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default_item.png"].compact.join('_'))
+     #"/images/fallback/" + [version_name, "default.png"].compact.join('_')
+
   end
 
   def cache_dir
