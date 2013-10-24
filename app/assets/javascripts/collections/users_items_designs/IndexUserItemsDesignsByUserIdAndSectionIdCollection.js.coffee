@@ -7,6 +7,6 @@ class Mywebroom.Collections.IndexUserItemsDesignsByUserIdAndSectionIdCollection 
   parse: (response) ->
     _.map(response, (model) ->
       obj = model
-      obj.type = "BOOKMARK"
+      obj.type = "DESIGN"
       return obj
     )
