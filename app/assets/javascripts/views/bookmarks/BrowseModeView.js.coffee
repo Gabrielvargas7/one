@@ -135,9 +135,9 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     $('#browse_mode_item_name').remove()                 #hide "Your Object" hook
 
   ###
-  activeSiteChange is called: - each time a user clicks a bookmark.
+  activeSiteChange is called: - each time a user clicks a bookmark from MyBookmarks.
                               - when the user clicks a BrowseMode Sidebar icon.  
-   It adds the new site to the collection and generates a new iframe
+    It adds the new site to the collection and generates a new iframe
   ###
   activeSiteChange:(model)->
     # Check if the site is already in activeSitesCollection.
@@ -176,53 +176,101 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
       #3 Remove current active site
       @removeCurrentActiveSite(@$currentActiveSiteHTML())
       
-      #4 Check if the site allows iframe
+      #4 Generate the proper newIframeHTML. (Template has current active site tag.)
       if model.get('i_frame') is 'n'
         #open in target
         window.open model.get('bookmark_url'),"_blank"
         newIframeHTML = JST['bookmarks/BrowseModeNoIframeTemplate'](model:@getModelToBrowse())
-      else  
-        #Append it to the el. 
+      else   
         newIframeHTML = JST['bookmarks/BrowseModeIframeTemplate'](model:@getModelToBrowse())
-      $('.browse_mode_site_wrap').append(newIframeHTML)
-      #rerender the sidebar menu if model id is different.
-      @browseModeSidebarView.remove() if @browseModeSidebarView
-      @browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
-      @browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
-      $(@el).append(@browseModeSidebarView.render().el)
-      $('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') if $('#browse_mode_item_name').length is 0
-      @browseModeSidebarView.setScroll()
-      @setSidebarHover();
-        
       
-  #Called when user clicks another site icon in the Active Menu
-  #The model clicked is already part of activeSitesCollection
+      #5 Append newIframeHTML to DOM
+      $('.browse_mode_site_wrap').append(newIframeHTML)
+      
+      #6 Rerender the sidebar menu 
+      # 6i. Remove Sidebar View if there is one.
+      @browseModeSidebarView.remove() if @browseModeSidebarView
+
+      # 6ii. Create New Sidebar View
+      @browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
+
+      # 6iii. Create On Event for clicking the sidebar icons. 
+      @browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
+
+      # 6iv. Append sidebar view to el
+      $(@el).append(@browseModeSidebarView.render().el)
+      
+      # 6v. set the Sidebar Icon scrolling if needed. 
+      @browseModeSidebarView.setScroll()
+
+      # 6vi. Set hover events for sidebar. 
+      @setSidebarHover();
+      
+      #7 Set Header Item Name
+      $('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') if $('#browse_mode_item_name').length is 0
+  
+      
+  ###
+  iconActiveSiteChange is called:  when user clicks icon in the Active Sites Menu
+     changes the current active site in view. 
+  ###
   iconActiveSiteChange:(event)->
-    #get model and pass to activeSiteChange
+    #NOTE: The model clicked is already part of activeSitesCollection
+
+    #1. Get model from activeSitesCollection
+    #1a. Pass to activeSiteChange
+    
     siteId= event.currentTarget.dataset.id
     @setModelToBrowse @getActiveSitesCollection().get(siteId)
-    #rerender the sidebar menu (TODO- onlyif model id is different.)
+   
+    #2. Rerender the sidebar menu 
+    #2i. Remove Sidebar View if there is one.
     @browseModeSidebarView.remove() if @browseModeSidebarView
+
+    #2ii. Create New Sidebar View
     @browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
+    
+    #2iii. Create On Event for clicking the sidebar icons. 
     @browseModeSidebarView.on('BrowseMode:sidebarIconClick',@activeSiteChange,this)
+    
+    #2iv. Append sidebar view to el
     $(@el).append(@browseModeSidebarView.render().el)
     
-    #Remove and readd Header Item Name
+    #2v. set the Sidebar Icon scrolling if needed.
+    @browseModeSidebarView.setScroll()
+
+    #2vi. Set hover events for sidebar. 
+    @setSidebarHover();
+
+    #3. Set Header Item Name
     $('#browse_mode_item_name').remove()
     $('#rooms_header_main_menu').prepend('<li id="browse_mode_item_name">Your '+@getItemNameOfMyBookmark()+'</li>') if $('#browse_mode_item_name').length is 0
     
-    @browseModeSidebarView.setScroll()
+    #4. Remove Current Active Site
     @removeCurrentActiveSite(@$currentActiveSiteHTML())
-    #set current active site to this model in iframe. 
+    
+    #5. set current active site to this model in iframe. 
     @setCurrentActiveSite $('.browse_mode_site[data-id='+siteId+']') 
   
-  #Called when the user clicks Refresh in the Browse Mode Nav.
+  ###
+  Browse Mode Iframe Nav (3 buttons)
+
+  1. Refresh Site 
+  2. Minimize Site
+  3. Close View is unique because it also hides the Browse Mode View 
+  ###
+
+  ###
+  1. Called when the user clicks Refresh in the Browse Mode Nav.
+  ###
   refreshSite:(event)->
     console.log "refresh site!"
     originalURL = $('.current_browse_mode_site').attr 'src'
     $('.current_browse_mode_site').attr 'src',originalURL
   
-  #Called when user clicks Minimize in the Browse Mode Nav.
+  ###
+  2. Called when user clicks Minimize in the Browse Mode Nav.
+  ###
   minimizeSite:(event)->
     console.log("minimize view")
     #Add to active sites by removing class 'current_active_site'
@@ -233,41 +281,49 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     $(@el).hide()
     $('#browse_mode_item_name').remove()
 
-  #Called when user clicks Close in the Browse Mode Nav.
-  #Note that the view is hidden. It is never removed/destroyed.
+  ###
+  3. Called when user clicks Close in the Browse Mode Nav.
+    - Removes the site from Active Sites Collection and hides this view. 
+    - Note that this view is hidden. It is never removed/destroyed.
+  ###
   closeView:->
-    #remove current active site from the active sites list.
+    #1. Remove current active site from the active sites list.
     $(@$currentActiveSiteHTML()).remove()
-    #Remove the model from activeSitesCollection
+
+    #2. Remove the model from activeSitesCollection
     @getActiveSitesCollection().remove(@getModelToBrowse())
-    #Hide Active Sites View if it exists. 
+    
+    #3. Hide Active Sites View if it exists. 
     @activeMenuView.hideActiveMenu() if @activeMenuView
-    #Hide Browse Mode View
+    
+    #4. Hide Browse Mode View
     $(@el).hide() 
+
+    #5. Remove Object Header Name
     $('#browse_mode_item_name').remove()
 
   setSidebarHover:->
-    $('#browse_mode_active_default').mouseover(->
+    $('#browse_mode_active_default').off('mouseover').mouseover(->
       $('#browse_mode_active_highlight').show()
       $('#browse_mode_active_default').hide()
       )
-    $('#browse_mode_active_highlight').mouseout(->
+    $('#browse_mode_active_highlight').off('mouseout').mouseout(->
         $('#browse_mode_active_highlight').hide()
         $('#browse_mode_active_default').show()
       )
-    $('#browse_mode_discover_default').mouseover(->
+    $('#browse_mode_discover_default').off('mouseover').mouseover(->
       $('#browse_mode_discover_highlight').show()
       $('#browse_mode_discover_default').hide()
       )
-    $('#browse_mode_discover_highlight').mouseout(->
+    $('#browse_mode_discover_highlight').off('mouseout').mouseout(->
         $('#browse_mode_discover_highlight').hide()
         $('#browse_mode_discover_default').show()
       )
-    $('#browse_mode_mybookmarks_default').mouseover(->
+    $('#browse_mode_mybookmarks_default').off('mouseover').mouseover(->
       $('#browse_mode_mybookmarks_highlight').show()
       $('#browse_mode_mybookmarks_default').hide()
       )
-    $('#browse_mode_mybookmarks_highlight').mouseout(->
+    $('#browse_mode_mybookmarks_highlight').off('mouseout').mouseout(->
         $('#browse_mode_mybookmarks_highlight').hide()
         $('#browse_mode_mybookmarks_default').show()
       )
