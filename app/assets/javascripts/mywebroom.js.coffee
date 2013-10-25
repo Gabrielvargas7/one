@@ -121,59 +121,57 @@ $(document).ready ->
     
     
     # NOTIFICATION
-    model = new Mywebroom.Models.ShowUserNotificationByIdModel({id: id})
-    model.fetch
+    collection = new Mywebroom.Collections.ShowUserNotificationByUserCollection([], {user_id: id})
+    collection.fetch
       async: false
-      success: (model, response, options) ->
-        console.log("notification model fetched", response)
+      success: (collection, response, options) ->
         
-        # View
-        view = new Mywebroom.Views.InsView({model: model})
+        
+        model = collection.first()
+        
+        console.log("notification collection fetched", model)
+        
+        
+        # Only show the user a message if he hasn't already been notified
+        if model.get("notified") is "n"
+        
+          # View
+          #view = new Mywebroom.Views.InsView({model: model})
     
     
-        # Modal
-        modal = new Backbone.BootstrapModal({content: view}).open()
+          # Modal
+          #modal = new Backbone.BootstrapModal({content: view}).open()
         
         
         
         
-        ###
-        LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
-        ###
-        user_id = Mywebroom.State.get("signInUser").get("id")
+          ###
+          LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
+          ###
+        
+          ###
+          user_id = Mywebroom.State.get("signInUser").get("id")
     
-        note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel({_id: user_id})
-        note.user_id = user_id
-        note.save
-          wait: true
-        ,
-          success: (model, response) ->
-            console.log("REMOVE NOTIFICATION SUCCESS\n", response)
+          note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel({id: user_id})
+          note.save
+            success: (model, response, options) ->
+              console.log("REMOVE NOTIFICATION SUCCESS\n")
+              console.log(model, response, options)
         
-          error: (model, response) ->
-            console.log("REMOVE NOTIFICATION FAIL\n", response)
-        ###
-        LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - END
-        ###
+            error: (model, xhr, options) ->
+              console.error("REMOVE NOTIFICATION FAIL\n")
+              console.error(model, xhr, options)
+          ###
+        
+          ###
+          LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - END
+          ###
         
         
         
       
-      error: (model, response, options) ->
-        
-        text = response.responseText
-        
-        ###
-        FIXME
-        WE SHOULDN'T RETURN 404's FOR EXPECTED RESULTS
-        ###
-        switch text
-          when "not found notification of user "
-            console.log("(ignore)")
-          when "user already notified "
-            console.log("(ignore)")
-          when "not found user id "
-            console.error(text)
+      error: (collection, response, options) ->
+        console.error(response.responseText)
         
     
   
