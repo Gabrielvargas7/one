@@ -802,9 +802,9 @@ $(document).ready ->
   (7) Hidden item visibility: grey or hidden
   (8) Highlighted Images
   (9) Room size & Button class
-  (10) Image Hover: on or off
-  (10.1) Image Click: on or off
-  (11) Mousewheel 
+  (10) Room Item Hover: on or off
+  (10.1) Room Item Click: on or off
+  (11) Room Mousewheel 
   (12) Set Store State
   ###
   
@@ -889,7 +889,7 @@ $(document).ready ->
   init_TO_hidden, shown_TO_hidden, collapsed_TO_hidden
   ###
   Mywebroom.Helpers.hideStore = ->
-    #console.log("show store")
+    #console.log("hide store")
     
     # (1) Store visibility
     $('#xroom_storepage').hide()
