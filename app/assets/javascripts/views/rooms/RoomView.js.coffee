@@ -17,15 +17,19 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     # (5) Set roomState
     Mywebroom.State.set("roomState", "PUBLIC")
     
+    ###
+    FIXME
+    ###
+    
     
     ###
-    (1)   Set roomUser
+    (1)   Set roomUser: {id:123, username: "sherrie"}
     (2)   Set roomData
     (2.1) Set roomDesigns
     (2.2) Set roomTheme
-    (3)   Set signInState
-    (4)   Set signInUser
-    (5)   Set roomState
+    (3)   Set signInState: true, false
+    (4)   Set signInUser: {id:123, username: "bob"}
+    (5)   Set roomState: SELF, PUBLIC, FRIEND
     (6)   Set signInData
     ###
     
@@ -301,9 +305,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       # (1) Create a proper backbone model out of the design data
       model = new Backbone.Model(design)
       
-      # (2) Extract the item_id
-      item_id = model.get("item_id")
-      
       
       ###
       CREATE DESIGN VIEWS
@@ -311,6 +312,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       view = new Mywebroom.Views.RoomDesignView({model: model})
       $(xroom_item_num).append(view.el)
       view.render()
+      
+      
       if Mywebroom.State.get("roomState") is "PUBLIC"
         view.undelegateEvents()
     )
