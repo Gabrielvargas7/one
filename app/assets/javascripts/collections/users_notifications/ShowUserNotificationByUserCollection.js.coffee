@@ -9,7 +9,7 @@ class Mywebroom.Collections.ShowUserNotificationByUserCollection extends Backbon
 
 
   parse: (response) ->
-    _.map(resposne, (model) ->
+    _.map(response, (model) ->
       obj = model
       obj.type = "NOTIFICATION"
       return obj
