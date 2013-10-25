@@ -399,7 +399,8 @@ div.profile_friend_image_holder, .profile_request_single_image_holder,
     height:160px;
   }
 
-  .profileActivity_activity #gridItemList{
+  .profileActivity_activity #gridItemList, .profile_objects_view .profileHome_activity #gridItemList,
+   .profile_bookmarks_view .profileHome_activity #gridItemList{
     height:450px;
   }
 }
