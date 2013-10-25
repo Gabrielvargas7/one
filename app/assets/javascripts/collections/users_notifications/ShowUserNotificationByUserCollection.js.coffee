@@ -1,6 +1,16 @@
 class Mywebroom.Collections.ShowUserNotificationByUserCollection extends Backbone.Collection
+  
+  initialize: (models, options) ->
+    this.user_id = options.user_id
+  
+  
+  url: ->
+    '/users_notifications/json/show_user_notification_by_user/' + this.user_id + '.json'
 
-  url:(userId) ->
-    '/users_notifications/json/show_user_notification_by_user/'+userId+'.json'
 
-
+  parse: (response) ->
+    _.map(resposne, (model) ->
+      obj = model
+      obj.type = "NOTIFICATION"
+      return obj
+    )
