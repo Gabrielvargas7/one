@@ -13,7 +13,7 @@
   max-height:200px;
 }
 .profile_table_innerDiv.profile_suggested_friends{
-  min-height:300px;
+  height:340px;
 }
 #profile_suggested_friends_list{
   overflow:scroll;
@@ -26,7 +26,7 @@
 .profile_table_innerDiv{
   overflow-y:auto;
   padding-top: 1.6em;
-  max-height:575px;
+  // max-height:575px;
 }
 .profile_table_outerDiv thead tr{
   position:absolute;
@@ -96,6 +96,8 @@ p.profile_friend_username{
 
 .profile_friends_view{
   background-color: #f5f5f5;
+  height:500px;
+  overflow-y:scroll;
 
 }
 .user-photos-view{
@@ -133,3 +135,37 @@ p.profile_friend_username{
   width:130px;
 }
 /*END Ask For Key Overlay*/
+
+/*Profile Friends Media Queries*/
+@media screen and (max-height:780px){
+  .profile_table_innerDiv.profile_suggested_friends{
+    min-height:0;
+    max-height:300px;
+  }
+}
+@media screen and (max-height:735px){
+  .profile_table_innerDiv.profile_suggested_friends{
+    min-height:0;
+    max-height:200px;
+  }
+
+}
+@media screen and (max-height:720px){
+  .profile_friends_view{
+    height:420px;
+  }
+}
+@media screen and (max-height:650px){
+  .profile_table_innerDiv.profile_suggested_friends{
+    min-height:0;
+    max-height:250px;
+  }
+
+}
+@media screen and (max-height:630px){
+  .profile_table_innerDiv.profile_suggested_friends{
+    min-height:0;
+    max-height:180px;
+  }
+
+}
