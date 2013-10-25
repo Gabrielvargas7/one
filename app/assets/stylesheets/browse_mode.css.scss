@@ -52,7 +52,7 @@ div.current_browse_mode_site.browse_mode_site{
 /*Browse mode Sidebar*/
 img.browse_mode_sidebar_icons{
   width:30px;
-  border-radius:3px;
+  border-radius:100%;
 }
 
 .browse_mode_list li{
@@ -119,7 +119,7 @@ li.browse_mode_sidebar_icons_list{
   display:inline-block;
   width: 30px;
   min-height:30px;
-  border-radius:3px;
+  border-radius:100%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;
