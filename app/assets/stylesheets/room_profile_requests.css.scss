@@ -145,7 +145,7 @@ p.profile_friend_username{
 }
 @media screen and (max-height:735px){
   .profile_table_innerDiv.profile_suggested_friends{
-    min-height:0;
+
     max-height:200px;
   }
 
@@ -157,14 +157,13 @@ p.profile_friend_username{
 }
 @media screen and (max-height:650px){
   .profile_table_innerDiv.profile_suggested_friends{
-    min-height:0;
+
     max-height:250px;
   }
 
 }
 @media screen and (max-height:630px){
   .profile_table_innerDiv.profile_suggested_friends{
-    min-height:0;
     max-height:180px;
   }
 

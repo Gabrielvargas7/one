@@ -91,6 +91,9 @@ ul.bookmark_menu_list {
   height:150px;
   padding-bottom:5px;
 }
+#add_your_own_box p{
+  margin:5px 0;
+}
 /*END Discover Sub Menu Item Style*/
 .my_bookmarks_list_wrap, .discover_list_wrap{
   height:100%;
@@ -292,3 +295,48 @@ div.just_added img{
   width:130px;
 }
 /*END Bookmarks Preview Mode*/
+/*Bookmarks Media Queries*/
+@media screen and (max-height:675px){
+  .custom_bookmark_confirm_add_wrap img{
+  width:130px;
+  height:130px;
+  }
+  .bookmark_menu_list li{
+    padding:2px 0;
+  }
+  #discover_submenu_list{
+    padding-bottom:1em;
+  }
+}
+@media screen and (max-height:625px){
+  .custom_bookmark_confirm_add_wrap img{
+  width:100px;
+  height:100px;
+  padding: 0 1em;
+  }
+}
+@media screen and (max-height:580px){
+  .custom_bookmark_confirm_add_wrap img{
+    width:50px;
+    height:50px;
+  }
+}
+@media screen and (max-height:475px){
+  .discover_submenu_section{
+    height:300px;
+    overflow-y:scroll;
+  }
+}@media screen and (max-height:451px){
+  #discover_submenu_list{
+    display:none;
+  }
+}
+@media screen and (max-width:1280px){
+  .bookmark_grid_item{
+    width:160px;
+    height:180px;
+  }
+  .bookmark_grid_item .gridItemPicture{
+    width:160px;
+  }
+}
