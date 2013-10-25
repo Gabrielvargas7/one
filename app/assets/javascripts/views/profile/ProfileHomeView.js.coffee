@@ -183,7 +183,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     else
       headerName = "Their Things"
   
-    @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:headerName,model:@model})
+    @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:headerName,model:@model,className:"profileActivity_activity generalGrid"})
   
     # Modify Top Portion
     $('#profileHome_top').css "height","70px"
