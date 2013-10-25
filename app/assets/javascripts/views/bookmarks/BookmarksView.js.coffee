@@ -81,7 +81,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #$('#add_your_own_form').submit({that},@addCustomBookmark)
     $('#add_your_own_form').off('submit').on('submit',{that},@addCustomBookmark)
 
-  renderMyBookmarks:->
+  renderMyBookmarks:(event)->
     event.preventDefault()
     event.stopPropagation()
     @previewModeView.closeView() if @previewModeView
