@@ -73,7 +73,7 @@
                         </a>
                         <ul class="dropdown-menu">
                            <li><a href="#" id="xroom_header_forward_profile" >Profile</a></li>
-                           <li><a href="#" id="xroom_header_forward_setting" >Setting</a></li>
+                           <li><a href="#" id="xroom_header_forward_setting" >Settings</a></li>
                            <li><a href="#" id="xroom_header_logout" >Logout</a></li>
                         </ul>
             </li>
