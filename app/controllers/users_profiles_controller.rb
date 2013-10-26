@@ -139,6 +139,7 @@ class UsersProfilesController < ApplicationController
     @start_date = Time.now.year - 100
     @end_date = Time.now.year
     @users_profile = UsersProfile.find_all_by_user_id(params[:id]).first
+    @users_photo = UsersPhoto.find_by_user_id_and_profile_image(params[:id],'y')
 
 
   end

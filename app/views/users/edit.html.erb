@@ -1,5 +1,10 @@
-<% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<div class="profile_title_box" >
+  MY PROFILE
+</div>
+
+<%= render 'users_profiles/profile_nav' %>
+
+
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f|  %>
@@ -15,7 +20,6 @@
         <label> please type you current password </label>
         <%= f.label :password %>
         <%= f.password_field :password %>
-
 
         <%= f.submit "Save changes",class: "btn btn-large btn-primary" %>
   <% end %>

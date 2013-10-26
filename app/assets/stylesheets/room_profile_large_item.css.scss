@@ -111,3 +111,9 @@ div.large_item_just_added img{
   top:0;
   right:0;
 }
+/*PROFILE Media Queries*/
+@media screen and (max-height:630px){
+  .activity_item_large_view{
+    height:540px;
+  }
+}

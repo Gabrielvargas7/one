@@ -383,3 +383,24 @@ div.profile_friend_image_holder, .profile_request_single_image_holder,
 .profile_friend_button{
   padding-right:20px;
 }
+
+/*PROFILE Media Queries*/
+@media screen and (max-height:720px){
+  .profileHome_activity #gridItemList{
+    height:365px;
+  }
+}
+@media screen and (max-height:650px){
+  .profileHome_activity #gridItemList{
+    height:335px;
+  }
+
+  .gridItemPicture{
+    height:160px;
+  }
+
+  .profileActivity_activity #gridItemList, .profile_objects_view .profileHome_activity #gridItemList,
+   .profile_bookmarks_view .profileHome_activity #gridItemList{
+    height:450px;
+  }
+}

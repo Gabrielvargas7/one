@@ -14,21 +14,26 @@ class Mywebroom.Views.ProfileGridItemView2 extends Marionette.ItemView
   
   onRender: ->
     
-    #Depending on FLAG_PROFILE, hover will cause different view here. 
-    @socialBarView = new Mywebroom.Views.SocialBarView(model: @model)
+    #Depending on Model Type, show social view
+    if @model.get('type') is 'PHOTO'
+      #don't create social view. 
+      return
     
-    $(@el).children(".gridItem").children(".gridItemPicture").append(@socialBarView.el)
-    
-    @socialBarView.render()
-    @socialBarView.hide()
+    else
+      @socialBarView = new Mywebroom.Views.SocialBarView(model: @model)
+      
+      $(@el).children(".gridItem").children(".gridItemPicture").append(@socialBarView.el)
+      
+      @socialBarView.render()
+      @socialBarView.hide()
   
   
   showSocialBarView: (event) ->
-    @socialBarView.show()
+    @socialBarView.show() if @socialBarView
   
   
   closeSocialBarView: ->
-    @socialBarView.hide()
+    @socialBarView.hide() if @socialBarView
   
   
   getGridItemModel: (event) ->

@@ -14,12 +14,13 @@
                    <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
+                  <li><%= link_to "My Room", room_rooms_path(current_user.username) %></li>
                   <li><%= link_to "Profile", show_users_profiles_by_user_id_path(current_user.id) %></li>
                   <li><%= link_to "Settings", current_user %></li>
 
                   <li class="divider"></li>
                   <li>
-                    <%= link_to "Sign out", signout_path, method: "delete" %>
+                    <%= link_to "Logout", signout_path, method: "delete" %>
                   </li>
 
                 </ul>

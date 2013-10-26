@@ -1,0 +1,84 @@
+.profile_title_box {
+  margin: 10px 0px 0px 0px;
+  padding: 10px;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: lighter;
+
+}
+
+
+.profile_menu_box ul
+{
+  margin: 0;
+  padding: 2px 0px;
+  list-style-type: none;
+  background-color: #7f8c8d;
+}
+
+.profile_menu_box ul li { display: inline; }
+
+.profile_menu_box ul li a
+{
+  text-decoration: none;
+  padding: 4px 100px 3px 100px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: lighter;
+
+}
+
+.profile_menu_box ul li a:hover
+{
+  color: #ffffff;
+  background-color: #474f50;
+}
+
+#users_profile_container_right{
+
+  float:right;
+  width:395px;
+  background-color: #39b54a;
+}
+
+#users_profile_container_left{
+
+  float:left;
+  width:540px;
+  background-color: #0077b3;
+  border-color: #e2e2e2;
+  border-width:2px;
+  border-right-style:solid;
+  text-align: right;
+
+}
+#users_profile_container_left input[type="text"]{
+
+  margin: 10px 100px 10px 10px;
+  width: 300px;
+}
+
+#users_profile_container_left input[type="submit"]{
+
+  margin: 10px 300px 10px 10px;
+
+}
+
+#users_profile_container_left select{
+  //width: 102px;
+}
+#users_profile_birthday_3i{
+  margin: 10px 100px 10px 2px;
+  width: 100px;
+}
+#users_profile_birthday_1i, #users_profile_birthday_2i {
+  width: 100px;
+  margin: 10px 2px 10px 2px;
+}
+#users_profile_gender
+ {
+  width: 315px;
+  margin: 10px 100px 10px 10px;
+}
+

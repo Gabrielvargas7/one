@@ -1,5 +1,6 @@
 class Mywebroom.Views.ProfileBookmarksView extends Backbone.View
   template:JST['profile/ProfileBookmarksTemplate']
+  className: "profile_bookmarks_view"
   events:
     'click .profile_request_key_button':'askForKey'
 

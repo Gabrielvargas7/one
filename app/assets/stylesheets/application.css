@@ -24,6 +24,7 @@
 body {
     padding-top: 45px;
     font-family: "Open Sans";
+
 }
 
 .center {
@@ -128,3 +129,10 @@ footer ul li {
     color:red;
     font-weight:bolder;
 }
+
+input[type=text] {
+    border: 1px solid #dbdbdb;
+    border-radius:1px;
+}
+
+label {display: inline;}
