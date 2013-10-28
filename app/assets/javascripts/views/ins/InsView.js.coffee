@@ -21,4 +21,15 @@ class Mywebroom.Views.InsView extends Backbone.View
     
     position = @model.get("position")
     
-    if position is 2 or position is 3 then Mywebroom.Helpers.showStore()
+
+    switch position
+      when 2
+        # Design
+        Mywebroom.Helpers.showStore()
+      
+      when 3
+        # Theme
+        Mywebroom.Helpers.showStore()
+
+        # Switch to Theme Tab
+        $('a[href="#tab_themes"]').tab('show')
