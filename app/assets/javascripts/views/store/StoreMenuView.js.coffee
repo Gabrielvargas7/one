@@ -680,6 +680,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       $('#row_theme_' + self.row_number).append(view.el)
       view.render()
 
+      # Show the social view
+      view.addSocialView()
+      
       self.loop_number += 1
       u = self.loop_number % self.column_number
 
@@ -711,6 +714,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       $('#row_bundle_' + self.row_number).append(view.el)
       view.render()
 
+      # Show the social view
+      view.addSocialView()
+      
       self.loop_number += 1
       u = self.loop_number % self.column_number
 
@@ -741,6 +747,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       $('#row_bundle_set_' + self.row_number).append(view.el)
       view.render()
 
+      # Show the social view
+      view.addSocialView()
+      
       self.loop_number += 1
       u = self.loop_number % self.column_number
 
@@ -766,36 +775,17 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   appendOne: (model) ->
     
-    console.log("appendOne")
 
     ###
-    This is the code for receiving a model from 
-    the social view
+    Make sure model has type and
+    create reference if it does
     ###
-    if model.get("entityId")?
-      ###
-      We're getting a special form of design model
-      that doesn't fit with all the other designs
-      we fetch. So, we're going to use this model's
-      entityId and then do a fetch for this model.
-      ###
-      item_id = model.get("entityId")
-    
-      usable = new Mywebroom.Models.ShowItemDesignByIdModel({id: item_id})
-      usable.fetch
-        async: false
-        success: (model, response, options) ->
-          #console.log("model fetch success", model, response, options)
-        error: (model, response, options) ->
-          console.log("model fetch fail", model, response, options)
-    else
-      ###
-      This is the code for receiving a model from
-      the profile view
-      ###
+    if model.has("type")
+      type = model.get("type")
+    else 
+      throw new Error("model without type")
 
-      usable = model
-      usable.set("type", "DESIGN")
+ 
 
       
     
@@ -808,7 +798,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
    
     # Create the view
-    view = new Mywebroom.Views.StorePreviewView(model: usable)
+    view = new Mywebroom.Views.StorePreviewView(model: model)
     
     
     # Append the element
@@ -817,19 +807,137 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Render the view
     view.render()
-    
-    
-    # Center the item
-    Mywebroom.Helpers.centerItem(usable.get("item_id"))
-    
-    
-    # Insert the item into the DOM and Conditionally Show the Save Bar
-    Mywebroom.Helpers.updateRoomDesign(usable)
-    
-    
-    # Conditionally Show the Save Bar
-    Mywebroom.Helpers.showSaveBar()
-    
-    
+
+
     # Show the social view
     view.addSocialView()
+    
+    
+
+    ###
+    DO STUFF DEPENDING ON THE TYPE OF THE MODEL
+    ###
+    switch type
+
+      when "DESIGN"
+        
+        # Center the item
+        Mywebroom.Helpers.centerItem(model.get("item_id"))
+
+        # Insert the item into the DOM
+        Mywebroom.Helpers.updateRoomDesign(model)
+
+        ###
+        CONDITIONALLY SHOW SAVE BAR
+        ###
+        Mywebroom.Helpers.showSaveBar()
+
+
+      
+
+      when "THEME"
+
+        # Insert the item into the DOM
+        Mywebroom.Helpers.updateRoomTheme(model)
+
+        ###
+        CONDITIONALLY SHOW SAVE BAR
+        ###
+        Mywebroom.Helpers.showSaveBar()
+
+
+
+
+      when "BUNDLE"
+        
+        ###
+        FETCH DESIGNS
+        ###
+        designs = new Mywebroom.Collections.IndexItemsDesignsOfBundleByBundleIdCollection()
+        designs.fetch
+          async: false
+          url: designs.url(model.get("id"))
+          success: (collection, response, options) ->
+            #console.log("designs fetch success")
+          error: (collection, response, options) ->
+            console.error("design fetch fail", response.responseText)
+
+
+        ###
+        UPDATE DOM
+        ###
+        designs.each (design)  ->
+
+          Mywebroom.Helpers.updateRoomDesign(design)
+           
+        
+        ###
+        CONDITIONALLY SHOW SAVE BAR
+        ###
+        Mywebroom.Helpers.showSaveBar()
+        
+          
+        ###
+        NEVER SHOW REMOVE BUTTON FOR A BUNDLE
+        ###
+        $('#xroom_store_remove').hide()
+
+
+
+
+      when "ENTIRE_ROOM"
+
+        ###
+        FETCH THEME
+        ###
+        theme = new Mywebroom.Models.ShowThemeByIdModel({id: model.get("theme_id")})
+        theme.fetch
+          async:   false
+          success: (model, response, options) ->
+            #console.log("theme fetch success")
+          error: (model, response, options) ->
+            console.error("theme fetch fail", response.responseText)
+        
+        
+        ###
+        THEME: UPDATE DOM
+        ###
+        Mywebroom.Helpers.updateRoomTheme(theme)
+        
+        
+        
+        
+        ###
+        FETCH DESIGNS
+        ###
+        designs = new Mywebroom.Collections.IndexItemsDesignsOfBundleByBundleIdCollection()
+        designs.fetch
+          async: false
+          url: designs.url(model.get("id"))
+          success: (collection, response, options) ->
+            #console.log("designs fetch success")
+          error: (collection, response, options) ->
+            console.error("designs fetch fail", response.responseText)
+
+        
+        
+        ###
+        DESIGNS: UPDATE DOM
+        ###
+        designs.each (design) ->
+          
+          Mywebroom.Helpers.updateRoomDesign(design)
+          
+          
+        
+        ###
+        CONDITIONALLY SHOW SAVE BAR
+        ###
+        Mywebroom.Helpers.showSaveBar()
+        
+        
+
+        ###
+        NEVER SHOW REMOVE BUTTON FOR AN ENTIRE ROOM
+        ###
+        $('#xroom_store_remove').hide()

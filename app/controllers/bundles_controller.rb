@@ -166,13 +166,29 @@ class BundlesController < ApplicationController
   # Json methods for the room users
   #***********************************
 
+  
+  # GET Get bundle by id
+  # /bundles/json/show_bundle_by_id/:id'
+  # /bundles/json/show_bundle_by_id/1.json
+  # Return head
+  # success    ->  head  200 OK
+  
+  #public api
+  
+  def json_show_bundle_by_id
+    @bundle = Bundle.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @bundle }
+    end
+  end
+
+
   # GET Get all bundles
   # /bundles/json/index_bundles
   # /bundles/json/index_bundles.json
   #Return head
   #success    ->  head  200 OK
-
-  #public api
 
   def json_index_bundles
 

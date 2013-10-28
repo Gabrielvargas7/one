@@ -53,22 +53,36 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
   showStore:(event)->
     event.stopPropagation()
     #If room is not self, go to my room with params. 
+    
+    ###
+    URL Encoded Params
+
+    entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- model.get("type")
+    entity_id  : i.e. 123 <-- model.get("id")
+    came_from  : PUBLIC_SHOP, SEARCH, FRIEND, ?? <-- TODO
+    item_id    : model.get("item_id") <-- should only need for bookmarks
+    ###
+
+
     if Mywebroom.State.get('roomState') != "SELF"
       if @model.get('bookmark_url')
-        paramType = "bookmark"
+        paramType = "BOOKMARK"
         paramId = @model.get('id')
         #send item name, send item id
         paramItemId = @model.get('item_id')
-        parameters = $.param({'type':paramType,'id':paramId,'item_id':paramItemId})
+        parameters = $.param({'entity_type': paramType, 'entity_id': paramId, 'item_id': paramItemId})
       else
         #its an object
-        paramType= "items_design"
+        paramType = "DESIGN"
         paramId = @model.get('id')
       #send to my room
-      parameters = parameters || $.param({'type':paramType,'id':paramId})
+      parameters = parameters || $.param({'entity_type': paramType, 'entity_id': paramId})
       #TODO If no one signed in, sent to landing page. 
 
-      window.location.href= 'http://localhost:3000/room/'+ Mywebroom.State.get('signInUser').get('username')+'?'+parameters
+      ###
+      FIXME
+      ###
+      window.location.href= 'http://localhost:3000/room/'+ Mywebroom.State.get('signInUser').get('username') + '?' + parameters
     else
       
       #if item is object, show store. 

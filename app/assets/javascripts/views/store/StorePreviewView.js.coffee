@@ -444,7 +444,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     # SOCIAL ICONS
-    if @type is "DESIGN"
+    if @type isnt "ITEM"
       @socialView.show()
     
   
@@ -462,7 +462,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     
     
     # SOCIAL ICONS
-    if @type is "DESIGN"
+    if @type isnt "ITEM"
       @socialView.hide()
     
       
