@@ -141,7 +141,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfile
   #--------------------------
   showProfile: (event) ->
-    debugger;
     if event  # this is is because this fuction is also called when room is PUBLIC
       event.preventDefault()
     #If profile is not open
@@ -151,7 +150,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       if @profileView.collapseFlag is false
         @profileView.collapseProfileView()
     else
-      @profileView.closeProfileView()
+      @hideProfile()
 
 
 
@@ -319,6 +318,21 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
     @hideActiveSites()
+
+    #Turn off events:
+    #1. Image Hover: on or off
+    Mywebroom.Helpers.turnOffHover()
+    #2. Image Click: on or off
+    Mywebroom.Helpers.turnOffDesignClick()
+    #3. Mousewheel on or off.
+    Mywebroom.Helpers.turnOffMousewheel()
+    #4. Scroller visibility
+    $("#xroom_scroll_left").hide()
+    $("#xroom_scroll_right").hide()
+
+  hideProfile:->
+    @profileView.closeProfileView()
+    #Turn on events are in profileView.closeProfileView()
 
 
 

@@ -581,8 +581,9 @@ $(document).ready ->
             
             when 21 #Portrait
               #Open Profile, not Bookmarks. 
-              $('#xroom_profile').show()
-              $('#xroom_bookmarks').hide()
+              # $('#xroom_profile').show()
+              # $('#xroom_bookmarks').hide()
+              Mywebroom.State.get('roomHeaderView').displayProfile()
 
             else
               view = new Mywebroom.Views.BookmarksView(
