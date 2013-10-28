@@ -1,9 +1,11 @@
 <div id="profile_home_info_img">
-  <figure>
+  <div class="profile_home_img_wrap">
     <img id="profile_picture" src="<%=@user_info.get('user_photos').image_name.url%>">
-    <figcaption>Member since Aug 2013.</figcaption>
-    <figcaption><a href="/users_profiles/show_users_profiles_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></figcaption>
-  </figure>
+    <%if @user_info.get('member_since'):%>
+      <p>Member since <%=@user_info.get('member_since')%>.</p>
+    <%end%>
+    <p><a href="/users_profiles/show_users_profiles_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></p>
+  </div>
 </div>
 <div id="profile_home_info_wrap" class="user_info">
   <div class="profile_info_name">

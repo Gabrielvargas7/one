@@ -20,6 +20,13 @@
   left:0px;
   font-family:"Open Sans",sans-serif
 }
+.user_profile p{
+  font-weight:normal;
+  font-size:16px;
+  margin:0;
+  padding:0;
+  color:#f5f5f5;
+}
 #profile_drawer{
   width:760px; /*profile container width - drawer_handle width*/
   transition:all 1s ease-in-out;
@@ -39,10 +46,14 @@ nav.profile {
     background-color: rgba(0,0,0,.8); /* your choice here */
     width:40px;/*Sara add width*/
 }
-#profile_home_wrapper figure{
+#profile_home_wrapper .profile_home_img_wrap{
   margin:0;
   padding:0;
   display:table;
+}
+.profile_home_img_wrap p{
+  font-size:11px;
+  white-space:nowrap;
 }
 #profile_home_wrapper figcaption{
   font-size:8px;
@@ -50,13 +61,7 @@ nav.profile {
   white-space:nowrap;
   
 }
-.user_profile p{
-  font-weight:normal;
-  font-size:16px;
-  margin:0;
-  padding:0;
-  color:#f5f5f5;
-}
+
 #profile_home_wrapper td{
     width:200px;
     // background-color:white;
