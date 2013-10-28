@@ -155,6 +155,20 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   openStoreEditor:->
     console.log("david code here")
 
+
+    item_id = @model.get("entityId")
+    
+    usable = new Mywebroom.Models.ShowItemDesignByIdModel({id: item_id})
+    usable.fetch
+      async: false
+      success: (model, response, options) ->
+        #console.log("model fetch success")
+      error: (model, response, options) ->
+        console.error("model fetch fail", response.responseText)
+
+
+    
+
     # (1) Show Store
     Mywebroom.Helpers.showStore()
 
@@ -164,4 +178,4 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     
     
     # (3) Use model to populate view
-    Mywebroom.State.get("storeMenuView").appendOne(@model)
+    Mywebroom.State.get("storeMenuView").appendOne(usable)

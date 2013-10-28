@@ -476,7 +476,7 @@ class ShopController < ApplicationController
   def forward_to_u_room
 
     if signed_in?
-      redirect_to room_rooms_path(current_user.username,came_from:params[:came_from],entity_type:params[:entity_type],id:params[:id])
+      redirect_to room_rooms_path(current_user.username,came_from:params[:came_from],entity_type:params[:entity_type],entity_id:params[:entity_id])
     else
       redirect_to root_path
     end

@@ -2,7 +2,7 @@
   <%= render 'shop_nav' %>
 
   <div class="shop_upper_container" data-shop-type="<%= @entity_type %>">
-    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,id:@bookmark.id),:class => "btn btn-primary"%>
+    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@bookmark.id),:class => "btn btn-primary"%>
     <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
     <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
 

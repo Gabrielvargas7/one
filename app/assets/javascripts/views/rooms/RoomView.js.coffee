@@ -230,40 +230,158 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("roomFooterView", roomFooterView)
     
     
-    #Look at url parameters to see if we need to do anything
-    getParameterByName = (name) ->
-      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
-      regex = new RegExp("[\\?&]" + name + "=([^&#]*)")
-      results = regex.exec(location.search)
-      (if not results? then "" else decodeURIComponent(results[1].replace(/\+/g, " ")))
+    
 
-    type = getParameterByName('type')
-    if type
-      typeId = getParameterByName('id')
-      switch type
+
+
+    ###
+    DEAL WITH URL ENCODED PARAMS
+    ###
+
+    ###
+    entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- i.e. model.get("type")
+    entity_id  : e.g. 123 <-- model.get("id")
+    came_from  : PUBLIC_SHOP, ?? <-- TODO
+    item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
+    ###
+    entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
+
+    if entity_type
+
+      entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
+    
+      switch entity_type
         
-        when "bookmark"
-          itemId = getParameterByName('item_id')
+        when "BOOKMARK"
+          
+          itemId = Mywebroom.Helpers.getParameterByName('item_id')
+          
+
+          if not itemId
+            throw new Error("BOOKMARK WITHOUT item_id")
+
+
           console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+          
           bookmarksView = new Mywebroom.Views.BookmarksView
-            items_name:Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+            items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
             item_id: itemId
             user: Mywebroom.State.get("roomUser").get("id") 
-          $('#room_bookmark_item_id_container_'+itemId).append(bookmarksView.el)
+          
+          $('#room_bookmark_item_id_container_' + itemId).append(bookmarksView.el)
           bookmarksView.render()
-          $('#room_bookmark_item_id_container_'+itemId).show()
+          
+          $('#room_bookmark_item_id_container_' + itemId).show()
           $('#xroom_bookmarks').show()
-          #TODO Check for bookmark in my bookmarks
-          if !bookmarksView.collection.findWhere('id':typeId)
+          
+          # TODO Check for bookmark in my bookmarks
+          if !bookmarksView.collection.findWhere('id': entity_id)
             bookmarksView.renderDiscover()
 
-        when "items_design"
-          #store has been created now. Need to show it.
-          Mywebroom.Helpers.showStore()
         
-        else
-          console.log ''
+        
+        
+        when "DESIGN"
 
+          # (1) Show Store
+          Mywebroom.Helpers.showStore()
+
+
+          # (2) Switch to the hidden tab
+          $('#storeTabs a[href="#tab_hidden"]').tab('show')
+    
+    
+          # (3) Fetch the corresponding model
+          model = new Mywebroom.Models.ShowItemDesignByIdModel({id: entity_id})
+          model.fetch
+            async: false
+            success: (model, response, options) ->
+              #console.log("model fetch success", response)
+            error: (model, response, options) ->
+              console.error("model fetch fail", response.responseText)
+
+          
+
+          # (4) Use model to populate view
+          Mywebroom.State.get("storeMenuView").appendOne(model)
+        
+
+
+
+        when "THEME"
+          
+          # (1) Show Store
+          Mywebroom.Helpers.showStore()
+
+
+          # (2) Switch to the hidden tab
+          $('#storeTabs a[href="#tab_hidden"]').tab('show')
+    
+    
+          # (3) Fetch the corresponding model
+          model = new Mywebroom.Models.ShowThemeByIdModel({id: entity_id})
+          model.fetch
+            async: false
+            success: (model, response, options) ->
+              #console.log("model fetch success")
+            error: (model, response, options) ->
+              console.error("model fetch fail", response.responseText)
+
+
+          # (4) Use model to populate view
+          Mywebroom.State.get("storeMenuView").appendOne(model)
+
+
+
+
+        when "BUNDLE"
+          
+          # (1) Show Store
+          Mywebroom.Helpers.showStore()
+
+
+          # (2) Switch to the hidden tab
+          $('#storeTabs a[href="#tab_hidden"]').tab('show')
+    
+    
+          # (3) Fetch the corresponding model
+          model = new Mywebroom.Models.ShowBundleByIdModel({id: entity_id})
+          model.fetch
+            async: false
+            success: (model, response, options) ->
+              #console.log("model fetch success")
+            error: (model, response, options) ->
+              console.error("model fetch fail", response.responseText)
+
+
+          # (4) Use model to populate view
+          Mywebroom.State.get("storeMenuView").appendOne(model)
+
+
+        
+        
+        when "ENTIRE_ROOM"
+          
+          # (1) Show Store
+          Mywebroom.Helpers.showStore()
+
+
+          # (2) Switch to the hidden tab
+          $('#storeTabs a[href="#tab_hidden"]').tab('show')
+    
+    
+          # (3) Fetch the corresponding model
+          model = new Mywebroom.Models.ShowEntireRoomByIdModel({id: entity_id})
+          model.fetch
+            async: false
+            success: (model, response, options) ->
+              #console.log("model fetch success")
+            error: (model, response, options) ->
+              console.error("model fetch fail", response.responseText)
+
+
+          # (4) Use model to populate view
+          Mywebroom.State.get("storeMenuView").appendOne(model)
 
 
 

@@ -37,7 +37,7 @@ Mywebroom::Application.routes.draw do
   match '/shop/bookmark/:id/:name', to:
         'shop#show_bookmark', via: :get,as: :shop_show_bookmark
 
-  match '/shop/forward_to_u_room/:came_from/:entity_type/:id', to:
+  match '/shop/forward_to_u_room/:came_from/:entity_type/:entity_id', to:
         'shop#forward_to_u_room', via: :get,as: :shop_forward_to_u_room
 
 
@@ -253,6 +253,11 @@ Mywebroom::Application.routes.draw do
   #**************************
   #  start Bundles contract
   #**************************
+  match '/bundles/json/show_bundle_by_id/:id', to:
+        'bundles#json_show_bundle_by_id', via: :get  , as:
+        :bundles_json_show_bundle_by_id
+
+
   match '/bundles/json/index_bundles', to:
          'bundles#json_index_bundles', via: :get , as:
          :bundles_json_index_bundles
