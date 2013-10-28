@@ -837,16 +837,14 @@ $(document).ready ->
   
   
   Mywebroom.Helpers.turnOffMousewheel = ->
-    $('#xroom').on('mousewheel', (e) ->
-        e.preventDefault()
-        e.stopPropagation()
-        #console.log("no mousewheel")
-    )
+    console.log("turn off mousewheel")
+
+    $(".current_background").mousewheel (event, delta, deltaX, deltaY) ->
+      if deltaX
+        event.preventDefault()
+        event.stopPropagation()
     
-    
-  Mywebroom.Helpers.turnOnMousewheel = ->
-    $('#xroom').off('mousewheel')
-  
+      
   
   Mywebroom.Helpers.getSEOLink = (id, type) ->
      
@@ -982,7 +980,7 @@ $(document).ready ->
     
     
     # (11) Mousewheel
-    Mywebroom.Helpers.turnOffMousewheel()
+    # n/a
     
     
     # (12) Set Store State
@@ -1049,7 +1047,7 @@ $(document).ready ->
     
     
     # (11) Mousewheel
-    Mywebroom.Helpers.turnOnMousewheel()
+    # n/a
     
     
     # (12) Set Store State

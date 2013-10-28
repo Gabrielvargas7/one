@@ -388,7 +388,12 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     # Conditionally Show Notification Modal
     Mywebroom.Helpers.showModal()
-    
+
+
+
+
+    # Turn off mousewheel
+    Mywebroom.Helpers.turnOffMousewheel()
     
     
     

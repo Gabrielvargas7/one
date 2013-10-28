@@ -265,8 +265,33 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       when "hidden"
         Mywebroom.Helpers.showStore()
    
+
+
+
       when "shown"
-        console.log("do nothing")
+        ###
+        Display a confirm dialog if there are any un-saved changes
+        ###
+        if $("[data-design-has-changed=true]").size() > 0 or $("[data-theme-has-changed=true]").size() > 0
+          
+          bootbox.confirm("Leaving this screen will not save your changes", (result) ->
+            
+            if result
+              
+              # Change All DOM properties back to their original
+              Mywebroom.Helpers.cancelChanges()
+            
+              
+              # Proceed with hiding the store
+              Mywebroom.Helpers.hideStore()
+          )
+        else
+          
+          # Hide the store
+          Mywebroom.Helpers.hideStore()
+       
+
+
         
       when "collapsed"
         Mywebroom.Helpers.expandStore()
