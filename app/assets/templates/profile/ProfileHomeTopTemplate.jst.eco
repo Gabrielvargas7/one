@@ -14,9 +14,9 @@
   <div id="profile_home_basic_info">
     <p id = "info_username"><%=@user_info.get('user').username%> </p>
     <ul>
-      <li>Age: <%if @user_info.get('age'):%><%=@user_info.get('age')%><%end%></li>
+      <%if @user_info.get('age'):%> <li>Age: <%=@user_info.get('age')%><%end%></li>
       <li><%=@user_info.get('gender')%></li>
-      <li><%=@user_info.get('city') %>, <%=@user_info.get('country')%></li>
+      <li><%if @user_info.get('city'):%><span class="capitalize"><%=@user_info.get('city') %></span> ,<%end%> <%=@user_info.get('country')%></li>
     </ul>
     <a class="blueLink" href="#">Friends (<%=@user_info.get('friends_number')%>)</a>
   </div>

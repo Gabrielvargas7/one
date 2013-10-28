@@ -222,7 +222,6 @@ div.spacer{
   margin:1em;
 }
 #profile_home_info_img img{
-  width:100px;
   height:120px;
   border:1px solid #919191
 }
@@ -279,6 +278,7 @@ div.profile_info_name{
 }
 #profile_info_name{
   font-size:22px;
+  text-transform: capitalize;
 }
 .blueLink{
   color:#0099cb;

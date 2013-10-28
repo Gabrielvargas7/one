@@ -74,6 +74,9 @@ footer ul li {
     filter: FlipH;
     -ms-filter: "FlipH";
 }
+.capitalize{
+    text-transform: capitalize;
+}
 .hidden{
     visibility:hidden;
 }
