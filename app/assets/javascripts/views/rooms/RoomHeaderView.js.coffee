@@ -141,10 +141,17 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfile
   #--------------------------
   showProfile: (event) ->
+    debugger;
     if event  # this is is because this fuction is also called when room is PUBLIC
       event.preventDefault()
-    
-    @displayProfile()
+    #If profile is not open
+    if $('#xroom_profile:hidden').length > 0
+      @displayProfile()
+      #if its collapsed, uncollapse it
+      if @profileView.collapseFlag is false
+        @profileView.collapseProfileView()
+    else
+      @profileView.closeProfileView()
 
 
 
