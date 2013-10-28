@@ -4,7 +4,14 @@
     <%if @user_info.get('member_since'):%>
       <p>Member since <%=@user_info.get('member_since')%>.</p>
     <%end%>
-    <p><a href="/users_profiles/show_users_profiles_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></p>
+    <%if Mywebroom.State.get('roomState') is 'SELF':%>
+      <p><a href="/users_profiles/show_users_profiles_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></p>
+    <%else:%>
+      <%if Mywebroom.State.get('roomState') is 'PUBLIC': %>
+        <button class="profile_request_key_button">Request Key</button>
+        <button class="profile_key_requested">Key Requested</button>
+      <%end%>
+    <%end%>
   </div>
 </div>
 <div id="profile_home_info_wrap" class="user_info">
