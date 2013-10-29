@@ -25,25 +25,17 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   EVENTS
   ###
   events: {
-    'click .fb_like_item':   'clickFBLikeItem'
-    'click .pinterest_item': 'clickPinIt'
+    'click .fb_like_item':     'clickFBLikeItem'
+    'click .pinterest_item':   'clickPinIt'
+    'click .info_button_item': 'clickInfo'
   }
   
   
-  initialize: ->
-    
-    id =   @model.get('id')
-    type = @model.get('type')
-    
-    
-    @seoLinkModel = Mywebroom.Helpers.getSEOLink(id, type)
-  
-    
     
   
   render: ->
     
-    $(@el).html(@template(targetUrl: @seoLinkModel.get("seo_url")))
+    $(@el).html(@template())
     this
   
     
@@ -63,6 +55,8 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
     
     return false
   
+
+
  
   clickPinIt: (e) ->
     
@@ -78,6 +72,18 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
     )
   
   
+
+  clickInfo: (e) ->
+    
+    e.preventDefault()
+    e.stopPropagation()
+
+    url = Mywebroom.Helpers.getSEOLink(@model.get('id'), @model.get('type'))
+
+    window.open(url, '_blank')
+
+    
+
   ###
   EVENT HELPERS
   ###

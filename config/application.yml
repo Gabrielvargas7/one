@@ -10,5 +10,3 @@ ROOMS_MAIL_USERNAME_PRO: "mywebroom@mywebroom.com"
 ROOMS_MAIL_HOST_PRO: "sleepy-scrubland-1880.herokuapp.com"
 
 ROOMS_IMAGE_MAGICK_PATH: "/usr/bin/"
-
-
