@@ -146,7 +146,10 @@ div.spacer{
   height:100px;
 }
 
-.profile_small_top_template .profile_info_name,.profile_small_top_optional_button_outer{
+.profile_small_top_template .profile_info_name,
+.profile_small_top_optional_button_outer,
+.profile_bookmarks_view .profile_info_name,
+.profile_objects_view .profile_info_name{
   padding:2em;
 }
 #profile_upload_photos_button

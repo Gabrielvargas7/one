@@ -3,5 +3,5 @@
   <img id="profile_small_user_picture" src="<%=@model.get('user_photos').image_name.url%>"/>
 </div>
 <div class="pull-left">
-  <p id="profile_info_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p>
+  <div class="profile_info_name"><p id="profile_info_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p></div>
 </div>
