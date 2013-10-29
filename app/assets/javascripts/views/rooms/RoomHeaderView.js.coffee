@@ -344,13 +344,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @hideActiveSites()
 
     #Turn off events:
+    
     #1. Image Hover: on or off
     Mywebroom.Helpers.turnOffHover()
+    
     #2. Image Click: on or off
     Mywebroom.Helpers.turnOffDesignClick()
-    #3. Mousewheel on or off.
-    Mywebroom.Helpers.turnOffMousewheel()
-    #4. Scroller visibility
+    
+    #3. Scroller visibility
     $("#xroom_scroll_left").hide()
     $("#xroom_scroll_right").hide()
 
