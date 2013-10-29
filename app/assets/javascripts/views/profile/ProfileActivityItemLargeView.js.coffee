@@ -70,23 +70,40 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 
     if Mywebroom.State.get('roomState') != "SELF"
       if @model.get('bookmark_url')
-        paramType = "BOOKMARK"
-        paramId = @model.get('id')
-        #send item name, send item id
-        paramItemId = @model.get('item_id')
-        parameters = $.param({'entity_type': paramType, 'entity_id': paramId, 'item_id': paramItemId})
+        console.log 'this is a bookmark. add it to your collection!'
+        console.log @model
+        #get userID, Item ID, BookmarkID
+        helper = new Mywebroom.Helpers.ItemHelper()
+        userId= helper.getUserId()
+        #Post bookmark
+        position = @getMyBookmarksLength(userId)
+        #CHeck if bookmark is here already:
+        if !@myBookmarksCollection.get(@model.id)
+          postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:@model.get('item_id'), bookmarkId:@model.get('id'),userId:userId})
+          postBookmarkModel.set 'position',position+1
+          postBookmarkModel.save {},
+            success: (model, response)->
+              console.log('postBookmarkModel SUCCESS:')
+              console.log(response)
+            error: (model, response)->
+                  console.log('postBookmarkModel FAIL:')
+                  console.log(response)
+        #Added confirmation.
+        #@$('.profile_large_item_try_it_button').append("<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>")
+        @$('.profile_large_item_try_it_button').text("Added to your " + Mywebroom.Data.ItemNames[ parseInt( @model.get('item_id') ) ] + '!')
+        @$('.profile_large_item_try_it_button').addClass('profile_large_item_tried_it').removeClass('profile_large_item_try_it_button')
       else
         #its an object
         paramType = "DESIGN"
         paramId = @model.get('id')
-      #send to my room
-      parameters = parameters || $.param({'entity_type': paramType, 'entity_id': paramId})
-      #TODO If no one signed in, sent to landing page. 
+        #send to my room
+        parameters = parameters || $.param({'entity_type': paramType, 'entity_id': paramId})
+        #TODO If no one signed in, sent to landing page. 
 
-      ###
-      FIXME
-      ###
-      window.location.href= window.location.origin + Mywebroom.State.get('signInUser').get('username') + '?' + parameters
+        ###
+        FIXME
+        ###
+        window.location.href= window.location.origin + '/room/' + Mywebroom.State.get('signInUser').get('username') + '?' + parameters
    
     else
       
