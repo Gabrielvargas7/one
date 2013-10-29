@@ -28,9 +28,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_myroom'         : 'goToMyRoom'
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
     'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
-    'keydown #xroom_header_search_text'  : 'keyDownFireRecently'
-    'click #show_lightbox'               : 'showLightbox'
-    'click #close_lightbox'              : 'closeLightbox'
+
     'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
   }
 
