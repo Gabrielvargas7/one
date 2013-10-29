@@ -1,4 +1,4 @@
-window.Mywebroom =
+window.Mywebroom = {
   Models: {}
   Collections: {}
   Views: {}
@@ -7,6 +7,7 @@ window.Mywebroom =
   State:{}
   Data:{}
   App:{}
+}
 
 
 $(document).ready ->
@@ -835,7 +836,7 @@ $(document).ready ->
   Mywebroom.Helpers.turnOffMousewheel = ->
     console.log("turn off mousewheel")
 
-    $(".current_background").mousewheel (event, delta, deltaX, deltaY) ->
+    $('#xroom_main_container').mousewheel (event, delta, deltaX, deltaY) ->
       if deltaX
         event.preventDefault()
         event.stopPropagation()
