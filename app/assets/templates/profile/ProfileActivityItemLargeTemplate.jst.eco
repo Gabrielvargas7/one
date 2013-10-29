@@ -42,7 +42,8 @@
       </div>
     </li>
     <li class='activity_item_large_list profile_button'>
-      <div class="profile_button_wrap"><button class="profile_large_item_try_it_button" >Try in My Room!</button>
+
+      <div class="profile_button_wrap"><button class="profile_large_item_try_it_button" ><%if @model.get('type') is 'BOOKMARK':%>Add It!<%else:%>Try in My Room!<%end%></button>
       </div>
     </li>
   </ul>

@@ -99,8 +99,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     roomState =   Mywebroom.State.get("roomState")
     signInState = Mywebroom.State.get("signInState")
     
-    
-    $('#xroom_header_storepage').remove() if roomState isnt "SELF"
+    if roomState isnt "SELF"
+      $('#xroom_header_active_sites').remove()
+      $('#xroom_header_storepage').remove()
       
 
     if roomState is "PUBLIC"
