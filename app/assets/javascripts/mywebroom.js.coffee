@@ -473,7 +473,7 @@ $(document).ready ->
     #console.log("HIDE SCROLLERS")
     
     $("#xroom_scroll_left").hide()
-    $("xroom_scroll_right").hide()
+    $("#xroom_scroll_right").hide()
     
   
   Mywebroom.Helpers.showScrollers = ->
@@ -481,7 +481,7 @@ $(document).ready ->
     #console.log("SHOW SCROLLERS")
     
     $("#xroom_scroll_left").show()
-    $("xroom_scroll_right").show()
+    $("#xroom_scroll_right").show()
  
     
   Mywebroom.Helpers.shrinkStore = ->
@@ -927,7 +927,7 @@ $(document).ready ->
     
     # (1.1) Scroller visibility
     $("#xroom_scroll_left").hide()
-    $("xroom_scroll_right").hide()
+    $("#xroom_scroll_right").hide()
     
     
     # (2.1) Get saveBarWasVisible
@@ -1001,7 +1001,7 @@ $(document).ready ->
     
     # (1.1) Scroller visibility
     $("#xroom_scroll_left").show()
-    $("xroom_scroll_right").show()
+    $("#xroom_scroll_right").show()
     
     
     # (2.1) Get saveBarWasVisible
@@ -1070,7 +1070,7 @@ $(document).ready ->
     
     # (1.1) Scroller visibility
     $("#xroom_scroll_left").show()
-    $("xroom_scroll_right").show()
+    $("#xroom_scroll_right").show()
     
     
     # (2.1) Get saveBarWasVisible    
@@ -1140,7 +1140,7 @@ $(document).ready ->
     
     # (1.1) Scroller visibility
     $("#xroom_scroll_left").hide()
-    $("xroom_scroll_right").hide()
+    $("#xroom_scroll_right").hide()
     
     
     # (2.1) Get saveBarWasVisible
