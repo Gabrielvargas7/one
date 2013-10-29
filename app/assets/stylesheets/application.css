@@ -24,21 +24,49 @@
 body {
     padding-top: 45px;
     font-family: "Open Sans";
+    zoom: 100%;
 
 
 }
+@media screen and (max-height:1020px){
+    body{
+        zoom: 120%;
+    }
+}
+
+@media screen and (max-height:920px){
+    body{
+        zoom: 110%;
+    }
+}
+
+@media screen and (max-height:820px){
+    body{
+        zoom: 100%;
+    }
+}
+
 
 @media screen and (max-height:720px){
     body{
-        padding-top: 45px;
+        zoom: 90%;
     }
 }
 
-@media screen and (max-height:600px){
+@media screen and (max-height:620px){
     body{
-        padding-top: 30px;
+
+        zoom: 80%
     }
 }
+@media screen and (max-height:520px){
+    body{
+
+        zoom: 70%
+    }
+}
+
+
 
 .center {
     text-align: center;
