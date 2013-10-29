@@ -132,11 +132,11 @@ $(document).ready ->
     ###
     
     ###
-    x (1) Get ID of Signed-In User
-    x (2) Look Up his notifications 
-          x a. Handle Error
-    x (3) Extract first model
-    x (4) Check that the model has the notified field
+    (1) Get ID of Signed-In User
+    (2) Look Up his notifications 
+          a. Handle Error
+    (3) Extract first model
+    (4) Check that the model has the notified field
     (5) Only do something if the user hasn't been notified
     (6) Inform server that we've been notified
     ###
@@ -151,129 +151,124 @@ $(document).ready ->
       async: false
       success: (collection, response, options) ->
         #console.log("Notification fetch success", response)
-
+        
+        # (3) Extract first model
+        model = collection.first()
+        
+        
+        # (4) Check for existance of property we'll need to use
+        if model.has("notified")
+          
+          # (5) Only show the user a message if he hasn't already been notified
+          if model.get("notified") is "n"
+          
+            # View
+            view = new Mywebroom.Views.InsView({model: model})
+            view.render()
+    
+            # Modal
+            modal = new Backbone.BootstrapModal({
+              content:     view
+              title:       model.get('description')
+              okText:      'Check it out!'
+              focusOk:     true 
+              okCloses:    true
+              cancelText:  false
+              allowCancel: true 
+              animate:     false
+            }).open()
+        
+         
+        
+         
+            ###
+            STYLE
+            ###
+            # (1) Make modal transparent
+            $('.modal').css("background-color", "rgba(46,46,46,.8)")
+        
+        
+            # (2) Make background visible
+            $('.modal-backdrop').css("background-color", "transparent")
+         
+        
+            # (3) Make Title Text White
+            $('h3')
+            .css('color', '#ffffff') # (5) Make text white
+            .css('font-size', '2em') # (6) Make text 24pt - based on 12pt = 1em
+        
+        
+            # (4) Make Description Text White
+            $('.modal-text')
+            .css('color', '#ffffff') # (3) Make text white
+            .css('font-size', '1.2em') # (4) Make text 15pt - based on 12pt = 1em
+        
+        
+            # (5) Change hr color
+            $('hr').css('border-color', '#2a2727')
+        
+        
+            # (6) Make footer transparent
+            $('.modal-footer').css("background-color", "rgba(46,46,46,.8)")
+        
+        
+      
+            if model.has("position")
+          
+              position = model.get("position")
+      
+              switch position
+          
+                when 1
+                  #console.log("bookmark notification")
+                  modal.$el.css("left", "-=200")
+          
+                when 2
+                  #console.log("item notification")
+                  modal.$el.css("left", "+=200")
+          
+                when 3
+                  #console.log("theme notification")
+                  modal.$el.css("left", "+=200")
+          
+        
+      
+      
+              ###
+              LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
+              ###
+        
+        
+              note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
+              note.save({id: user_id},
+                {
+                  success: (model, response, options) ->
+                    console.log("REMOVE NOTIFICATION SUCCESS")
+                    #console.log(model, response, options)
+                  ,
+                  error: (model, xhr, options) ->
+                    console.error("REMOVE NOTIFICATION FAIL")
+                    #console.error(model, xhr, options)
+                }
+              )
+        
+        
+              ###
+              LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - END
+              ###
+        
+            else  
+              throw new Error("position field missing")
+        
+        else
+          throw new Error("notified field missing")
+        
       error: (collection, response, options) ->
         console.error("Notification fetch fail", response.responseText)
         
     
   
-  
-  
-  
-  
-  
-    # (3) Extract first model
-    model = collection.first()
     
-    
-    
-    # (4) Check for existance of property we'll need to use
-    unless model.has("notified")
-      throw new Error("notified field missing")
-      
-
-    
-  
-    # (5) Only show the user a message if he hasn't already been notified
-    if model.get("notified") is "n"
-      
-       
-      # View
-      view = new Mywebroom.Views.InsView({model: model})
-      view.render()
-  
-      # Modal
-      modal = new Backbone.BootstrapModal({
-        content:     view
-        title:       model.get('description')
-        okText:      'Check it out!'
-        focusOk:     true 
-        okCloses:    true
-        cancelText:  false
-        allowCancel: true 
-        animate:     false
-      }).open()
-      
-       
-      
-       
-      ###
-      STYLE
-      ###
-      # (1) Make modal transparent
-      $('.modal').css("background-color", "rgba(46,46,46,.8)")
-      
-      
-      # (2) Make background visible
-      $('.modal-backdrop').css("background-color", "transparent")
-       
-      
-      # (3) Make Title Text White
-      $('h3')
-      .css('color', '#ffffff') # (5) Make text white
-      .css('font-size', '2em') # (6) Make text 24pt - based on 12pt = 1em
-      
-      
-      # (4) Make Description Text White
-      $('.modal-text')
-      .css('color', '#ffffff') # (3) Make text white
-      .css('font-size', '1.2em') # (4) Make text 15pt - based on 12pt = 1em
-      
-      
-      # (5) Change hr color
-      $('hr').css('border-color', '#2a2727')
-      
-      
-      # (6) Make ooter transparent
-      $('.modal-footer').css("background-color", "rgba(46,46,46,.8)")
-      
-      
-    
-      if not model.has("position")
-        throw new Error("model without position")
-      
-      
-      position = model.get("position")
-    
-      switch position
-        
-        when 1
-          #console.log("bookmark notification")
-          modal.$el.css("left", "-=200")
-        
-        when 2
-          #console.log("item notification")
-          modal.$el.css("left", "+=200")
-        
-        when 3
-          #console.log("theme notification")
-          modal.$el.css("left", "+=200")
-        
-      
-    
-    
-      ###
-      LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
-      ###
-      
-      
-      note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
-      note.save({id: user_id},
-        {
-          success: (model, response, options) ->
-            console.log("REMOVE NOTIFICATION SUCCESS")
-            #console.log(model, response, options)
-          ,
-          error: (model, xhr, options) ->
-            console.error("REMOVE NOTIFICATION FAIL")
-            #console.error(model, xhr, options)
-        }
-      )
-      
-      
-      ###
-      LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - END
-      ###
 
   
   
