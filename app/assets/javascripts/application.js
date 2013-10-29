@@ -20,12 +20,10 @@
 //= require backbone
 //= require backbone.marionette
 //= require bootbox
-//= require hogan-2.0.0
 //= require underscore.string
 //= require jquery.simplyscroll
 //= require jquery.scrollTo
 //= require backbone.marionette
-//= require twitter/typeahead
 //= require backbone.bootstrap-modal
 //= require jquery.mousewheel
 //= require FB.js
