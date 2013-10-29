@@ -46,7 +46,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
-    $('.my_bookmarks_bottom').css 'width',$(window).width()-270
+    # $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     
   renderDiscover:(event)->
@@ -76,7 +76,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.item_id)
     $(@el).append(@bookmarksDiscoverView.render().el)
     #set .discover_bookmarks_bottom to 100% width minus the sidebar width
-    $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
+    # $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
     #$('#add_your_own_form').submit({that},@addCustomBookmark)
     $('#add_your_own_form').off('submit').on('submit',{that},@addCustomBookmark)
@@ -124,7 +124,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @currentBookmarkbyCategoryView = new Mywebroom.Views.DiscoverBookmarksView(collection:@currentBookmarkbyCategoryCollection)
     $(@el).append(@currentBookmarkbyCategoryView.render().el)
     #set .discover_bookmarks_bottom to 100% width minus the sidebar width
-    $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
+    # $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
 
 #PreviewMode: we'll have previewView to correspond to discover_bookmarks
 #and browseMode to correspond to my_bookmarks
