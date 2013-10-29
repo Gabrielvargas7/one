@@ -27,10 +27,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     
     'click #xroom_header_myroom'         : 'goToMyRoom'
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
-    #'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
+    'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
 
     'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
   }
+ 
+    
 
 
   #*******************
@@ -48,7 +50,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   render: ->
     
     # THIS VIEW
-    $(@el).append(@template(user_data: Mywebroom.State.get("signInData")))
+    $(@el).append(@template({user_data: Mywebroom.State.get("signInData")}))
 
 
 
@@ -122,10 +124,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   # get the user room info
   #--------------------------
   getUserSignInDataCollection: (userId) ->
+    
     @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
-    @userAllRoomDataCollection.fetch
+    @userAllRoomDataCollection.fetch({
       async: false
-      url  : @userAllRoomDataCollection.url userId
+      url  : @userAllRoomDataCollection.url(userId)
+    })
       
       
 
@@ -140,6 +144,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfile
   #--------------------------
   showProfile: (event) ->
+    
     if event  # this is is because this fuction is also called when room is PUBLIC
       event.preventDefault()
     #If profile is not open
@@ -159,7 +164,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
   createProfileView: ->
     
-    @profile = new Backbone.Model
+    @profile = new Backbone.Model()
     @profile.set(@model.get('user_profile'))
     @profile.set('user', @model.get('user'))
     @profile.set('user_photos', @model.get('user_photos'))
@@ -221,9 +226,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function createCookies
   #--------------------------
   createCookie: (name, value, days) ->
+    
     if days
       date = new Date()
-      date.setTime date.getTime() + (days * 24 * 60 * 60 * 1000)
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000))
       expires = "; expires=" + date.toGMTString()
     else
       expires = ""
@@ -242,11 +248,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function logout
   #--------------------------
   logout: (event) ->
+    
     event.preventDefault()
    
     origin = window.location.origin
    
-    this.eraseCookie "remember_token"
+    this.eraseCookie("remember_token")
     window.location.href = origin
 
 
@@ -265,7 +272,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     
     state = Mywebroom.State.get("storeState")
     
-    switch state 
+    switch state
     
       when "hidden"
         Mywebroom.Helpers.showStore()
@@ -302,7 +309,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         Mywebroom.Helpers.expandStore()
         
         
-    # Always do this
+    # Always take these actions
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
@@ -355,7 +362,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $("#xroom_scroll_left").hide()
     $("#xroom_scroll_right").hide()
 
-  hideProfile:->
+
+
+
+  hideProfile: ->
     @profileView.closeProfileView()
     #Turn on events are in profileView.closeProfileView()
 
@@ -409,7 +419,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     
-    console.log("clean textbox values")
+    #console.log("clean textbox values")
     
     @hideCleanSearchBox()
 
@@ -417,218 +427,213 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   hideCleanSearchBox: ->
+    
     $('#xroom_header_search_box').delay(500).hide(0)
     $('#xroom_header_search_text').delay(500).val("")
 
 
-  keyPressOnSearch: (event) ->
-    event.preventDefault()
-    event.stopPropagation()
-    @searchCount = Mywebroom.State.get('searchTypeHeadCount')
 
-    console.log(event.type, event.keyCode)
 
-    this.destroySearchView()
-    this.$('.header_search_wrapper').empty()
 
-    if  event.keyCode == 13
-      $('#xroom_header_search_box').hide()
-      console.log("do something")
 
-    else
-
-      @displaySearchPage()
-      console.log("value "+$('#xroom_header_search_text').val())
-      value = $('#xroom_header_search_text').val()
-
-      valueSearchBtn =  $('#header-search-dropdown-btn').text()
-
-      console.log("value Search Btn: "+valueSearchBtn)
-
-      Mywebroom.State.set('searchTypeHeadCount',Mywebroom.State.get('searchTypeHeadCount')+1)
+  slowDown:
+    
+    _.debounce( (keyCode) ->
+      
       @searchCount = Mywebroom.State.get('searchTypeHeadCount')
+      @destroySearchView()
+      this.$('.header_search_wrapper').empty()
+      
+      ###
+      HIDE THE SEARCH BOX WHEN A USER HITS ENTER
+      ###
+      if keyCode is 13
+        $('#xroom_header_search_box').hide()
 
+      
+      @displaySearchPage()
+      
+      value =          $('#xroom_header_search_text').val()
+      valueSearchBtn = $('#header-search-dropdown-btn').text()
+      
+      Mywebroom.State.set('searchTypeHeadCount', Mywebroom.State.get('searchTypeHeadCount') + 1)
+      @searchCount = Mywebroom.State.get('searchTypeHeadCount')
+      
       if value != ""
-        console.log(" what is search count "+@searchCount)
-        @insertSearchEntityView(value,valueSearchBtn)
+        @insertSearchEntityView(value, valueSearchBtn)
 
-#        this one was a test to add some delay to the search function
-#        setTimeout (-> @delaySearch(value,valueSearchBtn)), 3000
-#        setTimeout (->alert "Hello"), 3000
-#        setTimeout (-> if @searchCount == Mywebroom.State.get('searchTypeHeadCount') alert "Hello"), 3000
+    , 500)
 
-#        setTimeout this.one, 3000
-#        setTimeout this.delaySearch, 1000
 
-#  one: ->
-#    alert "Hello"
-#
-#
-#  delaySearch:->
-#    if @searchCount == Mywebroom.State.get('searchTypeHeadCount')
-##      @insertSearchEntityView(value,valueSearchBtn)
-#       console.log(" waiting for the value  "+@searchCount)
-#       alert("Hello1")
-#    else
-#      console.log(" is not the same "+@searchCount)
-#      console.log(" is not the same "+Mywebroom.State.get('searchTypeHeadCount'))
+
+  
+
+  keyPressOnSearch: (event) ->
+    
+    ###
+    SEARCH LOGIC GETS WRAPPED IN DEBOUNCE FUNCTION
+    ###
+    @slowDown(event.keyCode)
+
+    
 
 
 
 
 
-  insertSearchEntityView:(value,valueSearchBtn)->
+  insertSearchEntityView:(value,valueSearchBtn) ->
+
+    i = 0
+    switch valueSearchBtn
+      when 'ALL'
+        searchUsersCollection =         @getSearchUserCollection(value)
+        searchItemDesignsCollection =   @getSearchItemDesignsCollection(value)
+        searchBookmarksCollection =     @getSearchBookmarksCollection(value)
+        item_length = searchItemDesignsCollection.length
+        user_length = searchUsersCollection.length
+        bookmark_length = searchBookmarksCollection.length
 
         i = 0
-        switch valueSearchBtn
-          when 'ALL'
-            searchUsersCollection =         @getSearchUserCollection(value)
-            searchItemDesignsCollection =   @getSearchItemDesignsCollection(value)
-            searchBookmarksCollection =     @getSearchBookmarksCollection(value)
-            item_length = searchItemDesignsCollection.length
-            user_length = searchUsersCollection.length
-            bookmark_length = searchBookmarksCollection.length
-
-            i = 0
-            if item_length > user_length
-              i = item_length
-              if bookmark_length> item_length
-                i = bookmark_length
-            else
-              i = user_length
-              if bookmark_length> user_length
-                i = bookmark_length
+        if item_length > user_length
+          i = item_length
+          if bookmark_length > item_length
+            i = bookmark_length
+        else
+          i = user_length
+          if bookmark_length > user_length
+            i = bookmark_length
 
 
-          when 'OBJECTS'
-            searchItemDesignsCollection =  @getSearchItemDesignsCollection(value)
-            i = searchItemDesignsCollection.length
+      when 'OBJECTS'
+        searchItemDesignsCollection =  @getSearchItemDesignsCollection(value)
+        i = searchItemDesignsCollection.length
 
-          when 'BOOKMARKS'
-            searchBookmarksCollection =  @getSearchBookmarksCollection(value)
-            i = searchBookmarksCollection.length
-          when 'PEOPLE'
-            searchUsersCollection =  @getSearchUserCollection(value)
-            i = searchUsersCollection.length
-
-
-        console.log("set Data Collection")
-        console.log(searchUsersCollection)
-        console.log(searchItemDesignsCollection)
-        console.log(searchBookmarksCollection)
-
-        g = 0
-        self = this
-        @number_views = 0
-        search_view_array  = Mywebroom.State.get("searchViewArray")
-        while (g<i)
-          console.log("loop Data Collection")
-          #console.log(searchItemDesignsCollection.at(g))
-          #console.log(searchUsersCollection.at(g))
+      when 'BOOKMARKS'
+        searchBookmarksCollection =  @getSearchBookmarksCollection(value)
+        i = searchBookmarksCollection.length
+      when 'PEOPLE'
+        searchUsersCollection =  @getSearchUserCollection(value)
+        i = searchUsersCollection.length
 
 
+    #console.log("set Data Collection")
+    #console.log(searchUsersCollection)
+    #console.log(searchItemDesignsCollection)
+    #console.log(searchBookmarksCollection)
 
-          if searchUsersCollection is undefined
-            searchUsersModel = undefined
-          else
-            searchUsersModel =  searchUsersCollection.at(g)
-
-
-          if searchItemDesignsCollection is undefined
-            searchItemDesignsModel = undefined
-          else
-            searchItemDesignsModel =  searchItemDesignsCollection.at(g)
-
-
-          if searchBookmarksCollection is undefined
-            searchBookmarksModel = undefined
-          else
-            searchBookmarksModel =  searchBookmarksCollection.at(g)
-
-
-          # add user to the search view
-          if searchUsersModel is undefined
-              console.log("---")
-              console.log(" undefined "+g.toString())
-          else
-              console.log("---")
-              console.log("Not undefined "+g.toString())
-
-              entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
-              entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.PEOPLE)
-              entityModel.set('displayTopName',searchUsersModel.get('firstname')+' '+searchUsersModel.get('lastname'))
-              entityModel.set('imageName',searchUsersModel.get('image_name').url)
-              entityModel.set('entityId',searchUsersModel.get('user_id'))
-              entityModel.set('displayUnderName',searchUsersModel.get('username'))
-              entityModel.set('viewNum',self.number_views)
-
-              #      console.log(entityModel)
-
-              view = new Mywebroom.Views.SearchEntityView({model:entityModel})
-              this.$('.header_search_wrapper').append(view.render().el)
-              search_view_array[self.number_views] = view
-              self.number_views++
-
-          # add item designs to the search view
-          console.log("is undefines item designs model")
-          console.log(searchItemDesignsModel)
-          if searchItemDesignsModel is undefined
-            console.log("---")
-            console.log(" undefined "+g.toString())
-          else
-            console.log("---")
-            console.log("Not undefined "+g.toString())
-            entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
-
-            Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN
-            entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN)
-            entityModel.set('displayTopName',searchItemDesignsModel.get('name'))
-            entityModel.set('imageName',searchItemDesignsModel.get('image_name_selection').url)
-            entityModel.set('entityId',searchItemDesignsModel.get('id'))
-            entityModel.set('displayUnderName',Mywebroom.Models.BackboneSearchEntityModel.DISPLAY_UNDER_NAME_OBJECT)
-            entityModel.set('viewNum',self.number_views)
-            #      console.log(entityModel)
-
-            view = new Mywebroom.Views.SearchEntityView({model:entityModel})
-            this.$('.header_search_wrapper').append(view.render().el)
-            search_view_array[self.number_views] = view
-            self.number_views++
-
-          # add user to the search view
-          if searchBookmarksModel is undefined
-            console.log("---")
-            console.log(" undefined "+g.toString())
-          else
-            console.log("---")
-            console.log("Not undefined "+g.toString())
-
-            entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
-            entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.BOOKMARK)
-            entityModel.set('displayTopName',searchBookmarksModel.get('title'))
-            entityModel.set('imageName',searchBookmarksModel.get('image_name_desc').url)
-            entityModel.set('entityId',searchBookmarksModel.get('id'))
-            entityModel.set('displayUnderName',Mywebroom.Models.BackboneSearchEntityModel.DISPLAY_UNDER_NAME_BOOKMARK)
-            entityModel.set('viewNum',self.number_views)
-            #   console.log(entityModel)
-
-            view = new Mywebroom.Views.SearchEntityView({model:entityModel})
-            this.$('.header_search_wrapper').append(view.render().el)
-            search_view_array[self.number_views] = view
-            self.number_views++
-
-
-          g++
-
-
-
-
-
-
-
-
-  destroySearchView:->
+    g = 0
+    self = this
+    @number_views = 0
     search_view_array  = Mywebroom.State.get("searchViewArray")
-    _.each(search_view_array, (view)->
+    while (g < i)
+      #console.log("loop Data Collection")
+      #console.log(searchItemDesignsCollection.at(g))
+      #console.log(searchUsersCollection.at(g))
+
+
+
+      if searchUsersCollection is undefined
+        searchUsersModel = undefined
+      else
+        searchUsersModel =  searchUsersCollection.at(g)
+
+
+      if searchItemDesignsCollection is undefined
+        searchItemDesignsModel = undefined
+      else
+        searchItemDesignsModel =  searchItemDesignsCollection.at(g)
+
+
+      if searchBookmarksCollection is undefined
+        searchBookmarksModel = undefined
+      else
+        searchBookmarksModel =  searchBookmarksCollection.at(g)
+
+
+      # add user to the search view
+      if searchUsersModel is undefined
+        #console.log("---")
+        #console.log(" undefined "+g.toString())
+      else
+        #console.log("---")
+        #console.log("Not undefined "+g.toString())
+
+        entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
+        entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.PEOPLE)
+        entityModel.set('displayTopName',searchUsersModel.get('firstname') + ' ' + searchUsersModel.get('lastname'))
+        entityModel.set('imageName',searchUsersModel.get('image_name').url)
+        entityModel.set('entityId',searchUsersModel.get('user_id'))
+        entityModel.set('displayUnderName',searchUsersModel.get('username'))
+        entityModel.set('viewNum',self.number_views)
+
+        #      console.log(entityModel)
+
+        view = new Mywebroom.Views.SearchEntityView({model:entityModel})
+        this.$('.header_search_wrapper').append(view.render().el)
+        search_view_array[self.number_views] = view
+        self.number_views += 1
+
+      # add item designs to the search view
+      #console.log("is undefines item designs model")
+      #console.log(searchItemDesignsModel)
+      if searchItemDesignsModel is undefined
+        #console.log("---")
+        #console.log(" undefined "+g.toString())
+      else
+        #console.log("---")
+        #console.log("Not undefined "+g.toString())
+        entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
+
+        Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN
+        entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN)
+        entityModel.set('displayTopName',searchItemDesignsModel.get('name'))
+        entityModel.set('imageName',searchItemDesignsModel.get('image_name_selection').url)
+        entityModel.set('entityId',searchItemDesignsModel.get('id'))
+        entityModel.set('displayUnderName',Mywebroom.Models.BackboneSearchEntityModel.DISPLAY_UNDER_NAME_OBJECT)
+        entityModel.set('viewNum',self.number_views)
+        #      console.log(entityModel)
+
+        view = new Mywebroom.Views.SearchEntityView({model:entityModel})
+        this.$('.header_search_wrapper').append(view.render().el)
+        search_view_array[self.number_views] = view
+        self.number_views += 1
+
+      # add user to the search view
+      if searchBookmarksModel is undefined
+        #console.log("---")
+        #console.log(" undefined "+g.toString())
+      else
+        #console.log("---")
+        #console.log("Not undefined "+g.toString())
+
+        entityModel  = new Mywebroom.Models.BackboneSearchEntityModel()
+        entityModel.set('entityType',Mywebroom.Models.BackboneSearchEntityModel.BOOKMARK)
+        entityModel.set('displayTopName',searchBookmarksModel.get('title'))
+        entityModel.set('imageName',searchBookmarksModel.get('image_name_desc').url)
+        entityModel.set('entityId',searchBookmarksModel.get('id'))
+        entityModel.set('displayUnderName',Mywebroom.Models.BackboneSearchEntityModel.DISPLAY_UNDER_NAME_BOOKMARK)
+        entityModel.set('viewNum',self.number_views)
+        #   console.log(entityModel)
+
+        view = new Mywebroom.Views.SearchEntityView({model:entityModel})
+        this.$('.header_search_wrapper').append(view.render().el)
+        search_view_array[self.number_views] = view
+        self.number_views += 1
+
+
+      g += 1
+
+
+
+
+
+
+
+
+  destroySearchView: ->
+    
+    search_view_array  = Mywebroom.State.get("searchViewArray")
+    _.each(search_view_array, (view) ->
       view.remove()
       view.unbind()
     )
@@ -636,44 +641,55 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
-  getSearchUserCollection:(value)->
+  getSearchUserCollection:(value) ->
+    
     searchUsers = new Mywebroom.Collections.IndexSearchesUsersProfileWithLimitAndOffsetAndKeywordCollection()
-    searchUsers.fetch
+    searchUsers.fetch({
       async  : false
-      url    : searchUsers.url(20,0,value)
+      url    : searchUsers.url(20, 0, value)
       success: ->
-        console.log("print user profile collection on json format")
-        console.log(searchUsers.toJSON())
+        #console.log("print user profile collection on json format")
+        #console.log(searchUsers.toJSON())
         #console.log("- JSON.stringify "+JSON.stringify(searchUsers))
       error: ->
-        console.log("error")
+        #console.log("error")
+    })
     searchUsers
 
 
-  getSearchItemDesignsCollection:(value)->
+
+
+  getSearchItemDesignsCollection:(value) ->
+    
     searchItemDesignsCollection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
-    searchItemDesignsCollection.fetch
+    searchItemDesignsCollection.fetch({
       async  : false
-      url    : searchItemDesignsCollection.url(20,0,value)
+      url    : searchItemDesignsCollection.url(20, 0, value)
       success: ->
-        console.log("print item designs collection on json format")
-        console.log(searchItemDesignsCollection.toJSON())
+        #console.log("print item designs collection on json format")
+        #console.log(searchItemDesignsCollection.toJSON())
         #console.log("- JSON.stringify "+JSON.stringify(searchUsers))
       error: ->
-        console.log("error")
+        #console.log("error")
+    })
     searchItemDesignsCollection
 
-  getSearchBookmarksCollection:(value)->
+
+
+
+  getSearchBookmarksCollection:(value) ->
+    
     searchBookmarksCollection = new Mywebroom.Collections.IndexSearchesBookmarksWithLimitAndOffsetAndKeywordCollection()
-    searchBookmarksCollection.fetch
+    searchBookmarksCollection.fetch({
       async  : false
-      url    : searchBookmarksCollection.url(20,0,value)
+      url    : searchBookmarksCollection.url(20, 0, value)
       success: ->
-        console.log("print bookmarks collection on json format")
-        console.log(searchBookmarksCollection.toJSON())
+        #console.log("print bookmarks collection on json format")
+        #console.log(searchBookmarksCollection.toJSON())
         #console.log("- JSON.stringify "+JSON.stringify(searchUsers))
       error: ->
-        console.log("error")
+        #console.log("error")
+    })
     searchBookmarksCollection
 
 
@@ -682,9 +698,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
   headerSearchDropdownChange: (e) ->
 
-      # SEARCH DROPDOWN
-      # Remove active class
-    console.log("header bth")
+    # SEARCH DROPDOWN
+    # Remove active class
+    #console.log("header bth")
     $('#header-search-dropdown li').removeClass('active')
 
 
@@ -702,7 +718,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Functions Active Sites and Browse Mode
   #*******************
 
-  showActiveSites:(event)->
+  showActiveSites:(event) ->
+    
     event.stopPropagation()
     event.preventDefault()
 
@@ -724,12 +741,20 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     else
       @noActiveSitesToast()
 
-  hideActiveSites:->
+
+
+
+  hideActiveSites: ->
+    
     $('#xroom_bookmarks_browse_mode').hide()
     $('#browse_mode_item_name').remove()
 
-  noActiveSitesToast:->
-    #Note, SN created class called toast-top-center to position toast appropriately.
+
+
+
+  noActiveSitesToast: ->
+    
+    # Note, SN created class called toast-top-center to position toast appropriately.
     toastr.options = {
       "closeButton":     true
       "debug":           false
@@ -746,7 +771,3 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     }
     # Display the Toastr message
     toastr.info("There are no active sites currently open. Click on an object to start surfing the web!")
-
-
-
-

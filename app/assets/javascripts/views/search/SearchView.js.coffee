@@ -4,13 +4,14 @@ class Mywebroom.Views.SearchView extends Backbone.View
   #**** Tag  (no tag = default el "div")
   #*******************
   tagName:'div'
+  
+
   className:'header_search_wrapper'
 
 
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
-
   template: JST['search/SearchTemplate']
 
 
@@ -19,7 +20,7 @@ class Mywebroom.Views.SearchView extends Backbone.View
   #**** Events
   #*******************
 
-  events:{
+  events: {
 
   }
 
@@ -31,9 +32,9 @@ class Mywebroom.Views.SearchView extends Backbone.View
   initialize: ->
 
 
-    #*******************
-    #**** Render
-    #*******************
+  #*******************
+  #**** Render
+  #*******************
   render: ->
     #console.log("Adding the SearchView with model:")
     $(@el).append(@template())
