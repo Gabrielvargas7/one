@@ -80,8 +80,9 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 
     url = Mywebroom.Helpers.getSEOLink(@model.get('id'), @model.get('type'))
 
-    window.open(url, '_blank')
-
+  
+    window.open(url.get("seo_url"), '_blank')
+    
     
 
   ###
