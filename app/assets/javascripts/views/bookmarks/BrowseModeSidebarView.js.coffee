@@ -25,11 +25,16 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
   ###
   tagActiveSites:->
     #for each item collection, see if there's a data-id= to it in DOM
+    #Check for active sites list first. If none, then model has blueBorder. 
+    #Otherwise, iterate through dom. 
     @model.set('blueBorder', true,{silent:true})
-    @collection.each(((item)->
-       if $('[data-id='+item.get('id')+']').length>0
-        item.set('blueBorder', true)
-    ))
+    
+    #Check for active sites list to see if there's others in the DOM. 
+    if $('.browse_mode_site').length>0
+      @collection.each(((item)->
+         if $('[data-id='+item.get('id')+']').length>0
+          item.set('blueBorder', true)
+      ))
      
   setModel:(model)->
     @model.set(model.toJSON())

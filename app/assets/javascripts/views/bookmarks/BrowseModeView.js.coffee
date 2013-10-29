@@ -289,6 +289,10 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     - Note that this view is hidden. It is never removed/destroyed.
   ###
   closeView:->
+    
+    #1a. Remove blue border style applied to active sites in sidebar.
+    $('[data-id='+ @modelToBrowse.get('id') + ']').removeClass('blue_border')
+
     #1. Remove current active site from the active sites list.
     $(@$currentActiveSiteHTML()).remove()
 
@@ -303,6 +307,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 
     #5. Remove Object Header Name
     $('#browse_mode_item_name').remove()
+
+
 
   setSidebarHover:->
     $('#browse_mode_active_default').off('mouseover').mouseover(->
