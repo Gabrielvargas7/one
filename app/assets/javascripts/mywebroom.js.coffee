@@ -849,7 +849,7 @@ $(document).ready ->
     TYPES: ENTIRE_ROOM, BUNDLE, THEME, BOOKMARK, DESIGN
     ###
     
-    ###
+    
     model = new Mywebroom.Models.ShowSeoLinkByIdModel({id: id, type: type})
     model.fetch
       async: false
@@ -860,9 +860,7 @@ $(document).ready ->
     
     
     return model
-    ###
-    model = new Backbone.Model({seo_url: "http://google.com"})
-    return model
+    
     
   
   Mywebroom.Helpers.setItemRefs = ->
