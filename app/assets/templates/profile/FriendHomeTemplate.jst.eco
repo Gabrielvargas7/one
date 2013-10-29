@@ -35,12 +35,14 @@
       </div><!--profile_home_container-->
     </div><!--end profile home wrapper-->
     <div id="profile_drawer_handle">
-      <div id="profile_close_button">
-        <a href="#" id="Profile-Close-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" width="15px"></a>
-      </div>
-      <div id="profile_collapse_arrow">
-        <a href="#" id="Profile-Collapse-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png"></a>
-      </div>
+      <%if Mywebroom.State.get('roomState') !='PUBLIC':%>
+        <div id="profile_close_button">
+          <a href="#" id="Profile-Close-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" width="15px"></a>
+        </div>
+        <div id="profile_collapse_arrow">
+          <a href="#" id="Profile-Collapse-Button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png"></a>
+        </div>
+      <%end%>
     </div><!--end profile_drawer_handle-->
 
   </div><!--end profile drawer-->

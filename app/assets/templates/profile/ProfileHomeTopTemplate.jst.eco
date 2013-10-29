@@ -1,9 +1,18 @@
 <div id="profile_home_info_img">
-  <figure>
+  <div class="profile_home_img_wrap">
     <img id="profile_picture" src="<%=@user_info.get('user_photos').image_name.url%>">
-    <figcaption>Member since Aug 2013.</figcaption>
-    <figcaption><a href="/users_profiles/show_users_profiles_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></figcaption>
-  </figure>
+    <%if @user_info.get('member_since'):%>
+      <p>Member since <%=@user_info.get('member_since')%>.</p>
+    <%end%>
+    <%if Mywebroom.State.get('roomState') is 'SELF':%>
+      <p><a href="/users_profiles/show_users_profiles_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></p>
+    <%else:%>
+      <%if Mywebroom.State.get('roomState') is 'PUBLIC': %>
+        <button class="profile_request_key_button">Request Key</button>
+        <button class="profile_key_requested">Key Requested</button>
+      <%end%>
+    <%end%>
+  </div>
 </div>
 <div id="profile_home_info_wrap" class="user_info">
   <div class="profile_info_name">
@@ -12,9 +21,9 @@
   <div id="profile_home_basic_info">
     <p id = "info_username"><%=@user_info.get('user').username%> </p>
     <ul>
-      <li>Age: <%if @user_info.get('age'):%><%=@user_info.get('age')%><%end%></li>
+      <%if @user_info.get('age'):%> <li>Age: <%=@user_info.get('age')%><%end%></li>
       <li><%=@user_info.get('gender')%></li>
-      <li><%=@user_info.get('city') %>, <%=@user_info.get('country')%></li>
+      <li><%if @user_info.get('city'):%><span class="capitalize"><%=@user_info.get('city') %></span> ,<%end%> <%=@user_info.get('country')%></li>
     </ul>
     <a class="blueLink" href="#">Friends (<%=@user_info.get('friends_number')%>)</a>
   </div>

@@ -79,7 +79,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
           console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
           console.log(response)
   
-    @collapseFlag = false
+    @collapseFlag = true
   
     #Scramble Activity Collection.
     @scrambleItemsAndBookmarks(activityItemsDesignsRandomCollection,activityBookmarksRandomCollection)
@@ -132,7 +132,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     if Mywebroom.State.get("roomState") is "PUBLIC"
       @activityCollection.reset(@activityCollection.first(9),{silent:true})
     if Mywebroom.State.get("roomState") != "SELF"
-      headerName = "Their things"
+      headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s things"
     else
       headerName = 'Latest Room Additions'
     
@@ -181,7 +181,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     if Mywebroom.State.get("roomState") is "SELF"
       headerName = "Activity"
     else
-      headerName = "Their Things"
+      headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s things"
   
     @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:headerName,model:@model,className:"profileActivity_activity generalGrid"})
   
@@ -302,7 +302,15 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
  
  
   closeProfileView: ->
-    # 	this.remove()
-    #  Mywebroom.vent.trigger("destroy:profile")
-    #  this.options.roomHeaderView.delegateEvents() # add all header events
     $('#xroom_profile').hide()
+    #turn on events
+    #Turn on events:
+    #1. Image Hover: on or off
+    Mywebroom.Helpers.turnOnHover()
+    #2. Image Click: on or off
+    Mywebroom.Helpers.turnOnDesignClick()
+    #3. Mousewheel on or off.
+    Mywebroom.Helpers.turnOnMousewheel()
+    #4. Scroller visibility
+    $("#xroom_scroll_left").show()
+    $("#xroom_scroll_right").show()
