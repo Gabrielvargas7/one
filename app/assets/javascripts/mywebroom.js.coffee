@@ -660,7 +660,7 @@ $(document).ready ->
     
   Mywebroom.Helpers.updateRoomDesign = (model) ->
     
-    console.log("updateRoomDesign")
+    #console.log("updateRoomDesign")
   
     ###
     DESIGN TYPE
@@ -746,7 +746,7 @@ $(document).ready ->
   
   Mywebroom.Helpers.updateRoomTheme = (model) ->
     
-    console.log("updateRoomTheme")    
+    #console.log("updateRoomTheme")    
     
     ###
     NEW PROPERTIES
