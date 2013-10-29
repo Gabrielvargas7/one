@@ -45,7 +45,7 @@
             </div>
             <div class="field">
               <%= f.label :birthday %>
-              <%= f.date_select :birthday , start_year:@start_date, end_year:@end_date %>
+              <%= f.date_select :birthday , start_year:@start_date, end_year:@end_date, :include_blank => true, :default => nil %>
             </div>
             <div class="field">
               <%= f.label :description %>
@@ -59,22 +59,31 @@
   </div>
   <div id=users_profile_container_right>
 
-    <p>
-      <b>User image :</b>
-      <%  unless @users_photo.nil? %>
-          </br>
-          <%= image_tag(@users_photo.image_name.url().to_s,width: 180, height:180) %>
-          </br>
-          <b>image description:</b>
-          <%= @users_photo.description %>
+    <div id="users_profile_container_right_top" >
+        <p>
+          <% if @users_photo.description.blank? %>
+              Photo
+          <%else %>
+               <%= @users_photo.description[0,20] %>
+          <%end%>
 
-      <% end %>
-    </p>
+              <% if @users_photo.image_name.blank?  %>
+                  <%= cl_image_tag("default-user.png", width: 250,height:250,:crop => :fill,:default_image => "default-user.png")%>
+              <% else %>
+                  <%=cl_image_tag(@users_photo.image_name , width: 250,height:250,:crop => :fill,:default_image => "default-user.png")%>
+              <% end%>
 
-    <li><%= link_to "Edit your profile image", index_users_photos_by_user_id_path(@users_photo.user_id) %></li>
+        </p>
+   </div>
+    <div id="users_profile_container_right_bottom" >
+      <br/>
+      <%= link_to "Edit your profile Picture", index_users_photos_by_user_id_path(@users_photo.user_id) %>
+    </div>
+
 
 
   </div>
 
 
  </div>
+<div class="clear"></div>

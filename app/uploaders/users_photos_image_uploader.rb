@@ -29,7 +29,7 @@ class UsersPhotosImageUploader < CarrierWave::Uploader::Base
    end
 
    def default_url
-     asset_path("fallback/users_photos/" + [version_name, "default_user.png"].compact.join('_'))
+     asset_path("fallback/users_photos/" + [version_name, "default-user.png"].compact.join('_'))
    end
 
 

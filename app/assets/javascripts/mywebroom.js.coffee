@@ -639,7 +639,7 @@ $(document).ready ->
     
     $('#xroom_items_0').attr('data-current_screen_position','0')
     $('#xroom_items_0').css({
-      'left': Math.floor(-1999 - item_location_x + 100)
+      'left': Math.floor(-2199 - item_location_x + 100)
     })
     
     #console.log('room top', $('#xroom_items_0').css('top'))
@@ -652,7 +652,7 @@ $(document).ready ->
     
     $('#xroom_items_2').attr('data-current_screen_position','2')
     $('#xroom_items_2').css({
-      'left': Math.floor(1999 - item_location_x + 100)
+      'left': Math.floor(2199 - item_location_x + 100)
     })
     
     

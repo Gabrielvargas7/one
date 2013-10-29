@@ -173,6 +173,7 @@ class SearchesController < ApplicationController
                     "%#{keyword}%",
                     "%#{keyword}%",
                     "%#{keyword}%").
+              where("active = 'y'").
               limit(params[:limit]).
               offset(params[:offset]).
               pluck(:id)
@@ -782,6 +783,7 @@ class SearchesController < ApplicationController
                       "%#{keyword}%",
                       "%#{keyword}%",
                       "%#{keyword}%").
+                where("active = 'y'").
                 limit(params[:limit]).
                 offset(params[:offset]).
                 pluck(:id)

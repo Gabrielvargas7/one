@@ -25,6 +25,19 @@ body {
     padding-top: 45px;
     font-family: "Open Sans";
 
+
+}
+
+@media screen and (max-height:720px){
+    body{
+        padding-top: 45px;
+    }
+}
+
+@media screen and (max-height:600px){
+    body{
+        padding-top: 30px;
+    }
 }
 
 .center {
@@ -135,4 +148,6 @@ input[type=text] {
     border-radius:1px;
 }
 
-label {display: inline;}
+label {
+   /*display: inline;*/
+    }

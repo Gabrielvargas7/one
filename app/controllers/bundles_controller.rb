@@ -213,22 +213,22 @@ class BundlesController < ApplicationController
     respond_to do |format|
 
 
-      @bundles_categories = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(category)))) as category")
+      @bundles_categories = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(category)))) as category").where("active = 'y'")
 
 
-      @bundles_brands = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(brand)))) as brand")
+      @bundles_brands = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(brand)))) as brand").where("active = 'y'")
 
 
-      @bundles_styles = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(style)))) as style")
+      @bundles_styles = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(style)))) as style").where("active = 'y'")
 
 
-      @bundles_colors = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(color)))) as color")
+      @bundles_colors = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(color)))) as color").where("active = 'y'")
 
 
-      @bundles_makes = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(make)))) as make")
+      @bundles_makes = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(make)))) as make").where("active = 'y'")
 
 
-      @bundles_locations = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(location)))) as location")
+      @bundles_locations = Bundle.select("DISTINCT(LOWER(LTRIM(RTRIM(location)))) as location").where("active = 'y'")
 
 
 
@@ -266,6 +266,7 @@ class BundlesController < ApplicationController
 
         @bundles = Bundle.
             where("LOWER(LTRIM(RTRIM("+category+"))) LIKE ? ", "%#{keyword}%").
+            where("active = 'y'").
             limit(params[:limit]).
             offset(params[:offset])
 
@@ -291,8 +292,8 @@ class BundlesController < ApplicationController
   def json_show_bundle_seo_url_by_bundle_id
 
     respond_to do |format|
-      if Bundle.exists?(id:params[:bundle_id])
-        @bundle = Bundle.where('id=?',params[:bundle_id]).first
+      if Bundle.where("active = 'y'").exists?(id:params[:bundle_id])
+        @bundle = Bundle.where("active = 'y'").where('id=?',params[:bundle_id]).first
 
         seo_url = Hash.new
         seo_url["seo_url"] = shop_show_bundle_url(@bundle.id,get_clean_name(@bundle.name))
@@ -314,8 +315,9 @@ class BundlesController < ApplicationController
   def json_show_entire_room_seo_url_by_bundle_id
 
     respond_to do |format|
-      if Bundle.exists?(id:params[:bundle_id])
-        @bundle = Bundle.where('id=?',params[:bundle_id]).first
+
+      if Bundle.where("active = 'y'").exists?(id:params[:bundle_id])
+        @bundle = Bundle.where("active = 'y'").where('id=?',params[:bundle_id]).first
 
         seo_url = Hash.new
         seo_url["seo_url"] = shop_show_bundle_url(@bundle.id,get_clean_name(@bundle.name))
