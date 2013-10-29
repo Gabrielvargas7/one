@@ -1,6 +1,9 @@
 class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
+  
   template: JST['profile/ProfileActivityItemLargeTemplate']
+  
   className: 'activity_item_large_wrap'
+  
   initialize: ->
      _.bindAll this, 'insideHandler', 'outsideHandler'
      @originalCollection=this.options.originalCollection
@@ -9,6 +12,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
      if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
         @template = JST['profile/ProfilePhotosLargeTemplate']
       @fbUrl = @generateFacebookURL()
+  
   events:
     'click #large_item_prev':'showNext'
     'click #large_item_next':'showNext'
@@ -82,7 +86,8 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
       ###
       FIXME
       ###
-      window.location.href= 'http://localhost:3000/room/'+ Mywebroom.State.get('signInUser').get('username') + '?' + parameters
+      window.location.href= window.location.origin + Mywebroom.State.get('signInUser').get('username') + '?' + parameters
+   
     else
       
       #if item is object, show store. 
@@ -107,10 +112,9 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
                   console.log('postBookmarkModel FAIL:')
                   console.log(response)
         #Added confirmation.
-        @$('.activity_item_large_view_img_wrap').append("<div class='large_item_just_added'>
-        <p>Added!</p>
-        <img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>
-        </div>")
+        #@$('.profile_large_item_try_it_button').append("<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>")
+        @$('.profile_large_item_try_it_button').text("Added to your " + Mywebroom.Data.ItemNames[ parseInt( @model.get('item_id') ) ] + '!')
+        @$('.profile_large_item_try_it_button').addClass('profile_large_item_tried_it').removeClass('profile_large_item_try_it_button')
       else
         console.log 'hide ya profile cause the store\'s comin out y\'all'
         console.log @model

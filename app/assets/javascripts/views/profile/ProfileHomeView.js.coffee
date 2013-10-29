@@ -305,12 +305,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $('#xroom_profile').hide()
     #turn on events
     #Turn on events:
+
     #1. Image Hover: on or off
     Mywebroom.Helpers.turnOnHover()
+
     #2. Image Click: on or off
     Mywebroom.Helpers.turnOnDesignClick()
-    #3. Mousewheel on or off.
-    Mywebroom.Helpers.turnOnMousewheel()
-    #4. Scroller visibility
+
+    #3. Scroller visibility
     $("#xroom_scroll_left").show()
     $("#xroom_scroll_right").show()
