@@ -1,0 +1,51 @@
+.users_container label{
+  display: inline;
+}
+
+
+#users_container_right{
+
+  float:right;
+  width:295px;
+  text-align: center;
+  margin: 50px 50px;
+}
+
+
+
+#users_container_left{
+
+  padding: 30px 0px;
+  float:left;
+  width:540px;
+  border-color: #e2e2e2;
+  border-width:2px;
+  border-right-style:solid;
+  text-align: right;
+
+}
+
+#users_container_left input[type="text"]{
+
+  margin: 10px 100px 10px 10px;
+  width: 300px;
+}
+#users_container_left input[type="password"]{
+  margin: 10px 100px 10px 10px;
+  width: 300px;
+}
+#users_container_left p{
+  margin: 10px 100px 10px 10px;
+}
+
+#users_container_left input[type="submit"]{
+
+  margin: 10px 300px 10px 10px;
+
+}
+
+
+.clear{
+  clear:  both;
+}
+

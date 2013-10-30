@@ -5,24 +5,34 @@
 <%= render 'users_profiles/profile_nav' %>
 
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f|  %>
 
-        <%= render 'shared/error_messages' %>
+<div class="users_container">
 
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+   <div id=users_container_left>
+        <%= form_for(@user) do |f|  %>
 
-        <%= f.label :username %>
-        <%= f.text_field :username %>
+            <%= render 'shared/error_messages' %>
 
-        <label> please type you current password </label>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+            <div class="field">
+                <%= f.label :email %>
+                <%= f.text_field :email %>
+            </div>
+            <div class="field">
+                <%= f.label :username %>
+                <%= f.text_field :username %>
+            </div>
+            <div class="field">
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+            </div>
+            <div class="actions">
+                <%= f.submit "Save changes",class: "btn  btn-primary" %>
+            </div>
+      <% end %>
 
-        <%= f.submit "Save changes",class: "btn btn-large btn-primary" %>
-  <% end %>
+  </div>
+  <div id=users_container_right>
 
   </div>
 </div>
+<div class="clear"></div>
