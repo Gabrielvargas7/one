@@ -49,7 +49,21 @@ $(document).ready ->
 
       activeSitesMenuView: false #A reference to the Active Sites Menu View.
       searchViewArray:false #A reference to an Array of view on the search
-      searchTypeHeadCount:0 # Count the number of events on the search
+      room0:
+        position:-2200
+        screen_position:0
+        id:"#xroom_items_0"
+      room1:
+        position:0
+        screen_position:1
+        id:"#xroom_items_1"
+      room2:
+        position:2200
+        screen_position:2
+        id:"#xroom_items_2"
+
+
+
 
       #An object containing base URLs for the shop.
       shopBaseUrl:
@@ -280,7 +294,7 @@ $(document).ready ->
   Mywebroom.Helpers.setCategories = (categories) ->
     
     # empty out existing dropdown items
-    $('#dropdown-category > .dropdown-menu').empty()
+    $('#dropdown-category > .dropdown-menu').empty();
   
   
     # iterate through the category items and create a li out of each one
@@ -633,25 +647,61 @@ $(document).ready ->
     
    
     #console.log('item location y', item_location_y)
-    
-    $('#xroom_items_0').attr('data-current_screen_position','0')
-    $('#xroom_items_0').css({
-      'left': Math.floor(-2199 - item_location_x + 100)
+
+    @room0 = Mywebroom.State.get('room0')
+    @room0.position = -2200 - item_location_x + 100
+    @room0.screen_position = 0
+    $(@room0.id).css({
+      'left': @room0.position
     })
-    
-    #console.log('room top', $('#xroom_items_0').css('top'))
-    #console.log('room bottom', $('#xroom_items_0').css('bottom'))
-    
-    $('#xroom_items_1').attr('data-current_screen_position','1')
-    $('#xroom_items_1').css({
-      'left': Math.floor(0 - item_location_x + 100)
+
+
+    @room1 = Mywebroom.State.get('room1')
+    @room1.position = 0 - item_location_x + 100
+    @room1.screen_position = 1
+    $(@room1.id).css({
+      'left': @room1.position
     })
-    
-    $('#xroom_items_2').attr('data-current_screen_position','2')
-    $('#xroom_items_2').css({
-      'left': Math.floor(2199 - item_location_x + 100)
+
+
+    @room2 = Mywebroom.State.get('room2')
+    @room2.position = 2200 - item_location_x + 100
+    @room2.screen_position = 2
+    $(@room2.id).css({
+      'left': @room2.position
     })
-    
+    Mywebroom.State.set('room0',@room0)
+    Mywebroom.State.set('room1',@room1)
+    Mywebroom.State.set('room2',@room2)
+    console.log("p0")
+    console.log(@room0)
+    console.log("p1")
+    console.log(@room1)
+    console.log("p2")
+    console.log(@room2)
+
+
+
+
+
+    #  $('#xroom_items_0').attr('data-current_screen_position','0')
+#    $('#xroom_items_0').css({
+#      'left': Math.floor(-2200 - item_location_x + 100)
+#    })
+#
+#    #console.log('room top', $('#xroom_items_0').css('top'))
+#    #console.log('room bottom', $('#xroom_items_0').css('bottom'))
+#
+#    $('#xroom_items_1').attr('data-current_screen_position','1')
+#    $('#xroom_items_1').css({
+#      'left': Math.floor(0 - item_location_x + 100)
+#    })
+#
+#    $('#xroom_items_2').attr('data-current_screen_position','2')
+#    $('#xroom_items_2').css({
+#      'left': Math.floor(2200 - item_location_x + 100)
+#    })
+#
     
     ###
     ScrollTo Y Value - 100
