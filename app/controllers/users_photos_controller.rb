@@ -208,6 +208,12 @@ class UsersPhotosController < ApplicationController
 
           format.html #index_users_photos_by_user_id.html.erb
 
+          if @users_photos.length < 3
+            @photo_length = @users_photos.length
+          else
+            @photo_length = 3
+          end
+
       else
         format.html { redirect_to root_path  }
       end

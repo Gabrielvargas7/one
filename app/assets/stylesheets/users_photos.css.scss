@@ -47,7 +47,7 @@ $users_photos_large_viewWidth: 384px;
 }
 
 /*Column 1*/
-#users_photos_container .gridItemList{
+#users_photos_container .user_photos_list_container{
   width: $users_photos_listWidth;
   border: 1px dashed green;
   float: left;
@@ -87,4 +87,46 @@ $users_photos_large_viewWidth: 384px;
 }
 .users_photos_large_view p{
   margin: 15px;
+}
+.users_photo_list{
+  display:table-cell;
+  width: $users_photos_listWidth;
+}
+
+.users_photo_item{
+  position:relative;
+  display:inline-block;
+  width:180px;
+  height:180px;
+  margin:6px;
+  border: 1px solid #e2e2e2;
+}
+
+.users_photo_item img{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}
+
+.users_photo_item.add_square{
+  font-size:21pt;
+  background-color: gray;
+  text-align:center;
+  border:none;
+  color:white;
+}
+.users_photo_item.add_square div{
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  margin:auto;
+  margin-top:-10%;
+}
+/*Plus sign for Add Box*/
+.users_photo_item.add_square div span{
+  font-size:62pt;
 }

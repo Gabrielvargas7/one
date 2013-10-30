@@ -9,9 +9,37 @@
   <div class="user_photos_content_wrap2">
     <div class = "user_photos_content_wrap1">
 
-      <div class="gridItemList">
-      Photos go here. 
+      <div class="user_photos_list_container">
+        <div class="user_photos_list">
+        
+          <% if @photo_length > 0 %>
+            <% @users_photos.in_groups_of(@photo_length,false).each do |photo_groups| %>
+              
+                <% photo_groups.each do |single_photo|%>
+                  <div class="users_photo_item">
+                    <% if single_photo.image_name.blank? %>
+                      <%= cl_image_tag "default-user.png",width:180 , height:180,:crop => :fit,:default_image => "default-user.png" %>
+                    
+                    <% else %>
+                      <%= cl_image_tag single_photo.image_name,width:180 , height:180,:crop => :fit,:default_image => "default-user.png" %>
+                    <% end %>
+
+                  </div>
+                <%end%>
+              
+            <%end%>
+          <%end%>
+          
+          <div class="users_photo_item add_square">
+            <div>
+            <p><span>+</span></p>
+            <p>Add</p>
+          </div>
+          </div>
+        </div>
+        Photos go here. 
         <p>Add square at the end</p>
+
       </div>
 
       <div class="users_photos_large_view">
