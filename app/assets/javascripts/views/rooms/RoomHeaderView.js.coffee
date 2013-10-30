@@ -197,10 +197,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
    
     origin =  window.location.origin
-    origin += "/users_profiles/show_users_profiles_by_user_id/" + @model.get('user').id
+    origin += "/users_profiles/edit_users_profiles_by_user_id/" + @model.get('user').id
     
     window.location.replace(origin)
-
 
   #--------------------------
   #  *** function  forwardToRoRSettingPage
@@ -208,12 +207,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   forwardToRoRSettingPage:(event) ->
     
     event.preventDefault()
-  
+
     origin =  window.location.origin
-    origin += "/users/" + @model.get('user').id
-   
-    # Why do we use set location.href instead of calling location.replace() ??
-    window.location.href = origin
+    origin += "/users/"+@model.get('user').id.toString()+"/edit"
+    window.location.replace(origin)
 
 
 

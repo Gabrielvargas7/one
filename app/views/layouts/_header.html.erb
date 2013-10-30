@@ -1,14 +1,26 @@
 <header class="navbar navbar-fixed-top navbar-inverse" >
   <div class="navbar-inner" >
     <div class="container">
-      <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), root_path , class: "brand"  %>
+
+      <% if signed_in? %>
+          <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), room_rooms_path(current_user.username), class: "brand"  %>
+      <%else%>
+          <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), root_path , class: "brand"  %>
+      <%end%>
+
       <!--<nav>-->
         <ul class="nav pull-right" >
 
 
           <!-- Start If  -->
           <% if signed_in? %>
-              <li><%= link_to "My Room", room_rooms_path(current_user.username) %></li>
+              <li>
+                <% if get_current_user_image_name.image_name.blank?  %>
+                    <%= link_to cl_image_tag("default-user.jpg", :width => 23, :height => 23, :crop => :fill)+"  "+current_user.username.titleize, room_rooms_path(current_user.username) %>
+                <% else %>
+                    <%= link_to cl_image_tag(get_current_user_image_name.image_name, :width => 23, :height => 23, :crop => :fill )+"  "+current_user.username.titleize, room_rooms_path(current_user.username) %>
+                <% end%>
+              </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                    <b class="caret"></b>

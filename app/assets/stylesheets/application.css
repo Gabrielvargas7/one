@@ -88,9 +88,10 @@ body {
 
 footer {
     margin-top: 45px;
-    padding-top: 5px;
+    padding: 20px;
     border-top: 1px solid #eaeaea;
     color: #999;
+
 }
 
 footer a {
@@ -183,6 +184,10 @@ footer ul li {
 }
 
 input[type=text] {
+    border: 1px solid #dbdbdb;
+    border-radius:1px;
+}
+input[type=password] {
     border: 1px solid #dbdbdb;
     border-radius:1px;
 }
