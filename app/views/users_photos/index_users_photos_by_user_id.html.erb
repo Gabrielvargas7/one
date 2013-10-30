@@ -63,7 +63,12 @@
       </div>
 
       <div class="users_photos_large_view">
-        <h2>Photo Description</h2>
+        <h2><%if @users_profile_photo.description %>
+              <%= @users_profile_photo.description %>
+            <%else%>
+              (no description)
+            <%end%>
+        </h2>
         <hr>
         <div>
           <%= cl_image_tag @users_profile_photo.image_name,width:250 , height:250,:crop => :fit,:default_image => "default-user.png" %>
