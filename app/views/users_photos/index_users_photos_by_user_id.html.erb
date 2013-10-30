@@ -4,13 +4,15 @@
     <h1>MY PHOTOS</h1>
   </div>
 
-  <%= link_to 'New Users photo', new_users_photos_by_user_id_path(@photos_user.id),method: :get  %>
-
   <div class="user_photos_content_wrap2">
     <div class = "user_photos_content_wrap1">
 
       <div class="user_photos_list_container">
         <div class="user_photos_list">
+          <div id="upload_new_photo_button">
+            <%= link_to (raw("" +("<span class= 'link_spanner'></span>"))),new_users_photos_by_user_id_path(@photos_user.id),method: :get%>
+            <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383162444/upload_icon.png">Upload New Photo</div>
+
         
           <% if @photo_length > 0 %>
             <% @users_photos.in_groups_of(@photo_length,false).each do |photo_groups| %>
@@ -31,6 +33,7 @@
           <%end%>
           
           <div class="users_photo_item add_square">
+            <%= link_to (raw("" +("<span class= 'link_spanner'></span>"))),new_users_photos_by_user_id_path(@photos_user.id),method: :get%>
             <div>
             <p><span>+</span></p>
             <p>Add</p>

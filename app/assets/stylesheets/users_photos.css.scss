@@ -49,7 +49,6 @@ $users_photos_large_viewWidth: 384px;
 /*Column 1*/
 #users_photos_container .user_photos_list_container{
   width: $users_photos_listWidth;
-  border: 1px dashed green;
   float: left;
   position: relative;
   left: $users_photos_large_viewWidth;
@@ -91,6 +90,8 @@ $users_photos_large_viewWidth: 384px;
 .users_photo_list{
   display:table-cell;
   width: $users_photos_listWidth;
+
+  padding-left: 7px;
 }
 
 .users_photo_item{
@@ -99,7 +100,6 @@ $users_photos_large_viewWidth: 384px;
   width:180px;
   height:180px;
   margin:6px;
-  border: 1px solid #e2e2e2;
 }
 
 .users_photo_item img{
@@ -129,4 +129,29 @@ $users_photos_large_viewWidth: 384px;
 /*Plus sign for Add Box*/
 .users_photo_item.add_square div span{
   font-size:62pt;
+}
+.users_photo_item.add_square .link_spanner{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+}
+#upload_new_photo_button{
+  width:217px;
+  text-align:center;
+  padding:5px 15px;
+  white-space: nowrap;
+  background-color: #00ccff;
+  color:white;
+  font-size:14pt;
+  font-weight:normal;
+  margin-left: 9px;
+  margin-bottom: -18px; /*To offset picture padding on top row*/
+  position:relative;
+}
+#upload_new_photo_button img{
+  padding-right:10px;
+  padding-bottom:2px;
 }
