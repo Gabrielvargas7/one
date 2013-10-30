@@ -28,21 +28,26 @@ body {
 
 
 }
+
 @media screen and (max-height:1020px){
     body{
-        zoom: 120%;
+        zoom: 135%;
     }
 }
 
 @media screen and (max-height:920px){
     body{
-        zoom: 110%;
+        zoom: 115%;
     }
 }
 
 @media screen and (max-height:820px){
     body{
         zoom: 100%;
+        /*firefox zoon break the css*/
+        /*-moz-transform: scale(1);*/
+        /*-moz-transform-origin: 0 0*/
+
     }
 }
 
@@ -50,19 +55,23 @@ body {
 @media screen and (max-height:720px){
     body{
         zoom: 90%;
+        /*firefox zoon break the css*/
+        /*-moz-transform: scale(0.5);*/
+        /*-moz-transform-origin: 0 0*/
+        /**/
     }
 }
 
 @media screen and (max-height:620px){
     body{
+        zoom: 80%;
 
-        zoom: 80%
     }
 }
 @media screen and (max-height:520px){
     body{
+        zoom: 70%;
 
-        zoom: 70%
     }
 }
 
