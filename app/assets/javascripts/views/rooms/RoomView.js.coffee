@@ -50,8 +50,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
             # Extract the first model
             data = dataCollection.first()
-            console.log 'room data from room View: '
-            console.log data        
+            #console.log 'room data from room View: '
+            #console.log data        
             # (2) Set roomData
             Mywebroom.State.set("roomData", data)
             

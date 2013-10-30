@@ -52,8 +52,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
         async:false
         url:activityItemsDesignsRandomCollection.url Mywebroom.State.get('roomData').get('user').id
         success: (response)->
-          console.log("activitItemsDesignssCollection Fetched Successfully Response:")
-          console.log(response)
+          #console.log("activitItemsDesignssCollection Fetched Successfully Response:")
+          #console.log(response)
     else
       #initial limit and offset for apis
       initialLimit = 24
@@ -68,16 +68,16 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
         reset:true
         async:false
         success: (response)->
-          console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
-          console.log(response)
+          #console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
+          #console.log(response)
     
       activityItemsDesignsRandomCollection.fetch
         url:activityItemsDesignsRandomCollection.url initialLimit, initialOffset
         reset:true
         async:false
         success: (response)->
-          console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
-          console.log(response)
+          #console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
+          #console.log(response)
   
     @collapseFlag = true
   

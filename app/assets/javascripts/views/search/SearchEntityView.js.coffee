@@ -1,43 +1,38 @@
 class Mywebroom.Views.SearchEntityView extends Backbone.View
 
   #*******************
-  #**** Tag  (no tag = default el "div")
+  #**** Class
   #*******************
-  tagName:'div'
   className:'class_search_entity_view'
+
+
 
 
   #*******************
   #**** Template
   #*******************
-
   template: JST['search/SearchEntityTemplate']
+
 
 
 
   #*******************
   #**** Events
   #*******************
-
-  events:{
-    'click .search_container_entity'      :'clickEntity'
-    'mouseenter  .search_container_entity':'enterEntity'
-    'mouseleave .search_container_entity' :'leaveEntity'
-
+  events: {
+    'click .search_container_entity'      : 'clickEntity'
+    'mouseenter  .search_container_entity': 'enterEntity'
+    'mouseleave .search_container_entity' : 'leaveEntity'
   }
 
 
+
+
   #*******************
-  #**** Initialize
+  #**** Render
   #*******************
-
-  initialize: ->
-
-
-    #*******************
-    #**** Render
-    #*******************
   render: ->
+    
     #console.log("Adding the SearchEntityView with model:")
     #console.log("Search Entity")
     #console.log(@model)
@@ -47,29 +42,32 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     this
 
 
-  enterEntity: ->
-    #console.log("Enter to entity "+@model.get('viewNum'))
-    $("[data-id_search_entity_id=search_entity_container_id_" + @model.get('viewNum') + "]").css({backgroundColor : "#bbb"})
 
-  leaveEntity: ->
-    #console.log("Leave to entity "+@model.get('viewNum'))
-    $("[data-id_search_entity_id=search_entity_container_id_" + @model.get('viewNum') + "]").css({backgroundColor : "#fff"})
-
+  #*******************
+  #**** Event Functions
+  #*******************
   clickEntity: ->
+
     #console.log("click the entity "+@model.get('viewNum'))
     #console.log("display Type "+@model.get('entityType'))
     #console.log("entityId "+@model.get('entityId'))
     #console.log("displayTopName "+@model.get('displayTopName'))
     #console.log("displayUnderName "+@model.get('displayUnderName'))
 
-#    $("[data-id_search_entity_id=search_entity_container_id_"+@model.get('viewNum') + "]").css({backgroundColor : "#202020"})
+    #$("[data-id_search_entity_id=search_entity_container_id_"+@model.get('viewNum') + "]").css({backgroundColor : "#202020"})
 
+
+
+  
     entityType =  @model.get('entityType')
 
     switch entityType
+      
       when Mywebroom.Models.BackboneSearchEntityModel.BOOKMARK
+        
         #console.log("is a Bookmark")
         @openBookmarkView()
+
 
       when Mywebroom.Models.BackboneSearchEntityModel.PEOPLE
 
@@ -79,13 +77,50 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
         origin += '/room/' + @model.get('displayUnderName')
         window.location.replace(origin)
 
+
       when Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN
+        
         #console.log("is a Item Design")
         @openStoreEditor()
 
 
 
+
+    # Clear Search
+    Mywebroom.State.get("roomHeaderView").hideCleanSearchBox()
+
+
+
+
+
+
+  enterEntity: ->
+
+    #console.log("Enter to entity "+@model.get('viewNum'))
+    $("[data-id_search_entity_id=search_entity_container_id_" + @model.get('viewNum') + "]").css({backgroundColor : "#bbb"})
+
+
+
+
+  leaveEntity: ->
+
+    #console.log("Leave to entity "+@model.get('viewNum'))
+    $("[data-id_search_entity_id=search_entity_container_id_" + @model.get('viewNum') + "]").css({backgroundColor : "#fff"})
+
+
+
+
+
+
+
+
+
+
+  #*******************
+  #**** Event Helpers
+  #*******************
   openBookmarkView: ->
+    
     # find the item designs of the bookmark
 
     @bookmarkModel = @getShowBookmarkByBookmarkIdModel()
@@ -112,56 +147,6 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
     $('#xroom_header_search_box').hide()
     $('#xroom_header_search_text').val("")
-
-
-
-  getShowBookmarkByBookmarkIdModel: ->
-    
-    bookmarkCollection = new Mywebroom.Collections.ShowBookmarkByBookmarkIdCollection()
-    bookmarkCollection.fetch({
-      async  : false
-      url    : bookmarkCollection.url(@model.get('entityId'))
-      success: ->
-        #console.log("print bookmark info")
-        #console.log(bookmarkCollection.toJSON())
-
-      error: ->
-        #console.log("error")
-    })
-
-    bookmarkModel = bookmarkCollection.first()
-    bookmarkModel
-
-
-
-
-  existUserBookmarkByBookmarkIdModel: (bookmark_id) ->
-    
-    signInData = Mywebroom.State.get("signInData")
-    console.log("existBookmark function")
-    console.log(signInData)
-    userBookmarkCollection = new Mywebroom.Collections.ShowUserBookmarkByUserIdAndBookmarkIdCollection()
-    userBookmarkCollection.fetch({
-      async  : false
-      url    : userBookmarkCollection.url(signInData.get('user').id,bookmark_id)
-      success: ->
-        #console.log("print user bookmark info")
-        #console.log(userBookmarkCollection.toJSON())
-
-      error: ->
-        #console.log("error")
-    })
-
-    userBookmarkModel = userBookmarkCollection.first()
-    
-    #console.log(userBookmarkModel)
-    
-    if userBookmarkModel is undefined
-      value = false
-    else
-      value = true
-    #console.log("value "+value.toString())
-    value
 
 
 
@@ -192,3 +177,56 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     
     # (3) Use model to populate view
     Mywebroom.State.get("storeMenuView").appendOne(usable)
+
+
+
+
+  #*******************
+  #**** Bookmark Helpers
+  #*******************
+  getShowBookmarkByBookmarkIdModel: ->
+    
+    bookmarkCollection = new Mywebroom.Collections.ShowBookmarkByBookmarkIdCollection()
+    bookmarkCollection.fetch({
+      async  : false
+      url    : bookmarkCollection.url(@model.get('entityId'))
+      success: ->
+        #console.log("print bookmark info")
+        #console.log(bookmarkCollection.toJSON())
+      error: ->
+        console.error("error")
+    })
+
+    bookmarkModel = bookmarkCollection.first()
+    bookmarkModel
+
+
+
+
+  existUserBookmarkByBookmarkIdModel: (bookmark_id) ->
+    
+    signInData = Mywebroom.State.get("signInData")
+    console.log("existBookmark function")
+    console.log(signInData)
+    userBookmarkCollection = new Mywebroom.Collections.ShowUserBookmarkByUserIdAndBookmarkIdCollection()
+    userBookmarkCollection.fetch({
+      async  : false
+      url    : userBookmarkCollection.url(signInData.get('user').id,bookmark_id)
+      success: ->
+        #console.log("print user bookmark info")
+        #console.log(userBookmarkCollection.toJSON())
+
+      error: ->
+        console.error("error")
+    })
+
+    userBookmarkModel = userBookmarkCollection.first()
+    
+    #console.log(userBookmarkModel)
+    
+    if userBookmarkModel is undefined
+      value = false
+    else
+      value = true
+    #console.log("value "+value.toString())
+    value

@@ -40,7 +40,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-    console.log("bookmark view: "+this.options.item_id)
+    #console.log("bookmark view: "+this.options.item_id)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user)
     $(@el).append(@template(user_item_design:this.options.item_id,items_name:this.options.items_name, collection:@collection, categories:@discoverCategoriesCollection))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
@@ -70,8 +70,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       async:false
       url: @discoverCollection.url this.options.item_id
       success:(response)->
-        console.log "discover Bookmarks fetch successful: "
-        console.log response
+        #console.log "discover Bookmarks fetch successful: "
+        #console.log response
     #@fetchDiscoverBookmarks()
     @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.item_id)
     $(@el).append(@bookmarksDiscoverView.render().el)
@@ -117,8 +117,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       async:false
       url: @currentBookmarkbyCategoryCollection.url categoryId
       success:(response) ->
-        console.log("BookmarkbyCategoryCollection fetch successful:")
-        console.log(response)
+        #console.log("BookmarkbyCategoryCollection fetch successful:")
+        #console.log(response)
     #display the category bookmarks
     @bookmarksDiscoverView.remove()
     @currentBookmarkbyCategoryView = new Mywebroom.Views.DiscoverBookmarksView(collection:@currentBookmarkbyCategoryCollection)
@@ -151,33 +151,33 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
           async:false
           url:@collection.url this.options.user, this.options.item_id
           success:(response) ->
-            console.log("bookmark fetch successful: ")
-            console.log(response)
+            #console.log("bookmark fetch successful: ")
+            #console.log(response)
 
         postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:bookmarkClick.get('item_id'), bookmarkId:bookmarkClick.get('id'),userId:Mywebroom.State.get('signInUser').get('id')})
         lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
         postBookmarkModel.set 'position',lastBookmarkPosition+1   
         postBookmarkModel.save {},
           success: (model, response)->
-            console.log('postBookmarkModel SUCCESS:')
-            console.log(response)
+            #console.log('postBookmarkModel SUCCESS:')
+            #console.log(response)
           error: (model, response)->
-                console.log('postBookmarkModel FAIL:')
-                console.log(response)
+            console.error('postBookmarkModel FAIL:')
+            console.error(response)
 
       ),this)
-      console.log(bookmarkClicked)
+      #console.log(bookmarkClicked)
     else
       window.open urlToOpen,"_blank" 
   closePreviewMode:->
-    console.log 'close previewmode.'
+    #console.log 'close previewmode.'
 
 
     #show sidebar categories.
   clickTrash: (event)->
     #hoveredEl = event.currentTarget
     #hoveredEl
-    console.log "You want to delete an item"
+    #console.log "You want to delete an item"
 
   #*******************
   #**** addCustomBookmark
@@ -233,8 +233,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
           async:false
           url:event.data.that.collection.url event.data.that.options.user, event.data.that.options.item_id
           success:(response) ->
-            console.log("bookmark fetch successful: ")
-            console.log(response)
+            #console.log("bookmark fetch successful: ")
+            #console.log(response)
 
         #set the position at the last possible moment so we don't fail.
         event.data.customBookmark.set
@@ -243,15 +243,15 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         #save the bookmark!
         event.data.customBookmark.save {},
         success: (model, response)->
-          console.log('post CUSTOM BookmarkModel SUCCESS:')
-          console.log(response)
+          #console.log('post CUSTOM BookmarkModel SUCCESS:')
+          #console.log(response)
           #Style- tell user it saved
           $('.save_site_button').hide()
           $('.custom_url_saved').show()
 
         error: (model, response)->
-          console.log('post CUSTOM BookmarkModel FAIL:')
-          console.log(response)
+          console.error('post CUSTOM BookmarkModel FAIL:')
+          console.error(response)
           #Style- Error
           $('#add_your_own_box .err_response').removeClass('hidden')
           $('#add_your_own_box .err_response p').append('Oops! There was an error. Please try refreshing the page and try again.')
@@ -271,7 +271,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       #Show an error to the user.
       $('#add_your_own_box .err_response').removeClass('hidden')
       $('#add_your_own_box .err_response p').append('Oops! There was an error in your url or the title was too long.')
-      console.log "There was an error in your url or the title was too long."
+      #console.log "There was an error in your url or the title was too long."
 
   
   getMyBookmarksCollection:->
@@ -280,8 +280,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       async:false
       url:@collection.url this.options.user, this.options.item_id
       success:(response) ->
-        console.log("bookmark fetch successful: ")
-        console.log(response)
+        #console.log("bookmark fetch successful: ")
+        #console.log(response)
 
   getDiscoverCategoriesCollection:->
     @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
@@ -289,7 +289,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       async:false
       url: @discoverCategoriesCollection.url this.options.item_id
       success:(response) ->
-        console.log("categories fetch successful: ")
-        console.log(response)
+        #console.log("categories fetch successful: ")
+        #console.log(response)
   closeView:->
     this.remove()
