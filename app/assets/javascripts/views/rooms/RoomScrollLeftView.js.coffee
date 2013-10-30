@@ -47,12 +47,12 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     
-    console.log("hover scroll left2 ")
+    #console.log("hover scroll left2 ")
 
 #    this.moveToTheLeft()
 
     @loop_interval = setInterval(this.moveToTheLeft, 20)
-    console.log(@loop_interval)
+    #console.log(@loop_interval)
 
 
   #--------------------------
@@ -63,8 +63,8 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     
-    console.log("hover Off")
-    console.log(@loop_interval)
+    #console.log("hover Off")
+    #console.log(@loop_interval)
     window.clearInterval(@loop_interval)
 #    console.log($(window).scrollLeft())
 
@@ -121,7 +121,7 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
           initial_position = @room0.position-2200
           @room2.position = initial_position
           $(@room2.id).css({'left':initial_position})
-          console.log("id room2 "+@room2.id)
+          #console.log("id room2 "+@room2.id)
 
         else if @room1.screen_position == 0
 
@@ -132,7 +132,7 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
                 initial_position = @room1.position-2200
                 @room0.position = initial_position
                 $(@room0.id).css({'left':initial_position})
-                console.log("id room0 "+@room0.id)
+                #console.log("id room0 "+@room0.id)
 
              else
                 @room2.screen_position = 1
@@ -141,17 +141,17 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
                 initial_position = @room2.position-2200
                 @room1.position = initial_position
                 $(@room1.id).css({'left':initial_position})
-                console.log("id room1 "+@room1.id)
+                #console.log("id room1 "+@room1.id)
 
     Mywebroom.State.set('room0',@room0)
     Mywebroom.State.set('room1',@room1)
     Mywebroom.State.set('room2',@room2)
-    console.log("p0")
-    console.log(@room0)
-    console.log("p1")
-    console.log(@room1)
-    console.log("p2")
-    console.log(@room2)
+    #console.log("p0")
+    #console.log(@room0)
+    #console.log("p1")
+    #console.log(@room1)
+    #console.log("p2")
+    #console.log(@room2)
 
 
 

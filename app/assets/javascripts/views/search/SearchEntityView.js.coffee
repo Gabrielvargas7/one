@@ -121,32 +121,59 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   #*******************
   openBookmarkView: ->
     
-    # find the item designs of the bookmark
+    bookmark = @getBookmark(@model.get('entityId'))
 
-    @bookmarkModel = @getShowBookmarkByBookmarkIdModel()
-    existUserBookmark = @existUserBookmarkByBookmarkIdModel(@bookmarkModel.get('id'))
 
-    $('#xroom_store_menu_save_cancel_remove').hide()
-    $('#xroom_storepage').hide()
-    $('#xroom_profile').hide()
-    $('#xroom_bookmarks').show()
+    hasId = bookmark.has("id")
+    hasItemId = bookmark.has("item_id")
+    hasItemName = bookmark.has("item_name")
 
-    bookmarksView = new Mywebroom.Views.BookmarksView({
-      items_name: @bookmarkModel.get('item_name')
-      item_id: @bookmarkModel.get('item_id')
-      user: Mywebroom.State.get("roomUser").get("id")
-    })
 
-    self = this
-    $('#room_bookmark_item_id_container_' + @bookmarkModel.get('item_id')).append(bookmarksView.el)
-    bookmarksView.render()
-    if existUserBookmark == false
-      bookmarksView.renderDiscover()
+    if hasId and hasItemId and hasItemName
 
-    $('#room_bookmark_item_id_container_' + @bookmarkModel.get('item_id')).show()
+      existUserBookmark = @existUserBookmarkByBookmarkIdModel(bookmark.get('id'))
 
-    $('#xroom_header_search_box').hide()
-    $('#xroom_header_search_text').val("")
+      $('#xroom_store_menu_save_cancel_remove').hide()
+      $('#xroom_storepage').hide()
+      $('#xroom_profile').hide()
+      $('#xroom_bookmarks').show()
+
+      bookmarksView = new Mywebroom.Views.BookmarksView({
+        items_name: bookmark.get('item_name')
+        item_id: bookmark.get('item_id')
+        user: Mywebroom.State.get("roomUser").get("id")
+      })
+
+      self = this
+      
+      $('#room_bookmark_item_id_container_' + bookmark.get('item_id')).append(bookmarksView.el)
+      
+      bookmarksView.render()
+      
+      if existUserBookmark is false
+        bookmarksView.renderDiscover()
+
+      
+      $('#room_bookmark_item_id_container_' + bookmark.get('item_id')).show()
+
+      $('#xroom_header_search_box').hide()
+      $('#xroom_header_search_text').val("")
+
+    else
+      
+      message = "Bookmark does not have:\n\n"
+
+      if not hasId
+        message += "id\n"
+
+      if not hasItemId
+        message += "item_id\n"
+
+      if not hasItemName
+        message += "item_name\n"
+
+      alert(message)
+    
 
 
 
@@ -161,9 +188,10 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     usable.fetch({
       async: false
       success: (model, response, options) ->
-        #console.log("model fetch success")
+        console.log("openStoreEditor success")
+      
       error: (model, response, options) ->
-        #console.error("model fetch fail", response.responseText)
+        console.error("openStoreEditor fail", response.responseText)
     })
     
 
@@ -184,49 +212,44 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   #*******************
   #**** Bookmark Helpers
   #*******************
-  getShowBookmarkByBookmarkIdModel: ->
+  getBookmark: (id) ->
     
-    bookmarkCollection = new Mywebroom.Collections.ShowBookmarkByBookmarkIdCollection()
-    bookmarkCollection.fetch({
-      async  : false
-      url    : bookmarkCollection.url(@model.get('entityId'))
-      success: ->
-        #console.log("print bookmark info")
-        #console.log(bookmarkCollection.toJSON())
-      error: ->
-        console.error("error")
+    bookmark = new Mywebroom.Models.ShowBookmarkByIdModel({id: id})
+    bookmark.fetch({
+      async: false
+      success: (model, response, options) ->
+        #console.log("bookmark fetch success")
+      
+      error: (model, response, options) ->
+        console.error("bookmark fetch fail")
     })
 
-    bookmarkModel = bookmarkCollection.first()
-    bookmarkModel
+    bookmark
+    
+
+
 
 
 
 
   existUserBookmarkByBookmarkIdModel: (bookmark_id) ->
     
-    signInData = Mywebroom.State.get("signInData")
-    console.log("existBookmark function")
-    console.log(signInData)
-    userBookmarkCollection = new Mywebroom.Collections.ShowUserBookmarkByUserIdAndBookmarkIdCollection()
+
+    userBookmarkCollection = new Mywebroom.Collections.ShowUserBookmarkByUserIdAndBookmarkIdCollection([],
+      {
+        user_id: Mywebroom.State.get("signInUser").id
+        bookmark_id: bookmark_id
+      }
+    )
+
+    console.log("url", userBookmarkCollection.url())
+
     userBookmarkCollection.fetch({
-      async  : false
-      url    : userBookmarkCollection.url(signInData.get('user').id,bookmark_id)
-      success: ->
-        #console.log("print user bookmark info")
-        #console.log(userBookmarkCollection.toJSON())
-
-      error: ->
-        console.error("error")
+      async: false
+      success: (collection, response, options) ->
+        return true
+      
+      error: (collection, response, options) ->
+        console.log("(ignore)")
+        return false
     })
-
-    userBookmarkModel = userBookmarkCollection.first()
-    
-    #console.log(userBookmarkModel)
-    
-    if userBookmarkModel is undefined
-      value = false
-    else
-      value = true
-    #console.log("value "+value.toString())
-    value
