@@ -58,11 +58,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
 
 
-    # Clear Search
-    Mywebroom.State.get("roomHeaderView").hideCleanSearchBox()
-
-
-
+  
     entityType =  @model.get('entityType')
 
     switch entityType
@@ -86,6 +82,12 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
         
         #console.log("is a Item Design")
         @openStoreEditor()
+
+
+
+
+    # Clear Search
+    Mywebroom.State.get("roomHeaderView").hideCleanSearchBox()
 
 
 
