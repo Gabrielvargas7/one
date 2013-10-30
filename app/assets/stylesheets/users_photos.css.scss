@@ -20,6 +20,7 @@ $users_photos_large_viewWidth: 384px;
   width: $user_photos_header_width;
   border-bottom: 1px solid #d2d2d2;
   margin-bottom:10px;
+  padding-bottom: 5px;
 }
 /*Layout Pattern from http://matthewjamestaylor.com/blog/equal-height-columns-2-column.htm*/
 
@@ -44,6 +45,8 @@ $users_photos_large_viewWidth: 384px;
     overflow: hidden;
     position: relative;
     left: 0;
+
+    padding-left:9px;
 }
 
 /*Column 1*/
@@ -99,7 +102,7 @@ $users_photos_large_viewWidth: 384px;
   display:inline-block;
   width:180px;
   height:180px;
-  margin:6px;
+  margin:8px;
 }
 
 .users_photo_item img{
@@ -139,15 +142,14 @@ $users_photos_large_viewWidth: 384px;
   z-index: 1;
 }
 #upload_new_photo_button{
-  width:217px;
+  width:187px; /*To account for padding*/
   text-align:center;
   padding:5px 15px;
   white-space: nowrap;
   background-color: #00ccff;
   color:white;
-  font-size:14pt;
+  font-size:14px;
   font-weight:normal;
-  margin-left: 9px;
   margin-bottom: -18px; /*To offset picture padding on top row*/
   position:relative;
 }
