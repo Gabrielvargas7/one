@@ -834,7 +834,7 @@ $(document).ready ->
   
   
   Mywebroom.Helpers.turnOffMousewheel = ->
-    console.log("turn off mousewheel")
+    #console.log("turn off mousewheel")
 
     $('#xroom_main_container').mousewheel (event, delta, deltaX, deltaY) ->
       if deltaX
@@ -1060,7 +1060,7 @@ $(document).ready ->
   shown_TO_collapsed
   ###
   Mywebroom.Helpers.collapseStore = ->
-    console.log("collapse store")
+    #console.log("collapse store")
     
     # (1) Store visibility
     $('#xroom_storepage').show()

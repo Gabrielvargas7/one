@@ -47,11 +47,11 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     
-    console.log("hover scroll left2 ")
+    #console.log("hover scroll left2 ")
 
 #    this.moveToTheLeft()
     @loop_interval = setInterval(this.moveToTheLeft, 20)
-    console.log(@loop_interval)
+    #console.log(@loop_interval)
 
 
   #--------------------------
@@ -62,8 +62,8 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     
-    console.log("hover Off")
-    console.log(@loop_interval)
+    #console.log("hover Off")
+    #console.log(@loop_interval)
     window.clearInterval(@loop_interval)
 #    console.log($(window).scrollLeft())
 
@@ -98,7 +98,7 @@ class Mywebroom.Views.RoomScrollLeftView extends Backbone.View
       initial_position = $('#'+pos0).offset().left-2200
 
 
-      console.log("inside "+$('#'+pos0).offset().left)
+      #console.log("inside "+$('#'+pos0).offset().left)
       $('#'+pos0).attr('data-current_screen_position','1')
       $('#'+pos1).attr('data-current_screen_position','2')
       $('#'+pos2).attr('data-current_screen_position','0')
