@@ -43,6 +43,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     
     @model = Mywebroom.State.get("roomData")
 
+    @searchNum = null
+
 
   #*******************
   #**** Render
@@ -378,6 +380,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').show()
+    
     @hideActiveSites()
 
 
@@ -435,32 +438,107 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
-
   slowDown:
     
     _.debounce( (keyCode) ->
       
+
+      ###
+      (1) Get count
+      ###
       @searchCount = Mywebroom.State.get('searchTypeHeadCount')
+      
+
+      ###
+      (2) Destroy Search View
+      ###
       @destroySearchView()
+      
+
+      ###
+      (3) Empty
+      ###
       this.$('.header_search_wrapper').empty()
       
+
       ###
-      HIDE THE SEARCH BOX WHEN A USER HITS ENTER
+      (4) HIDE THE SEARCH BOX WHEN A USER HITS ENTER
       ###
       if keyCode is 13
         $('#xroom_header_search_box').hide()
 
       
-      @displaySearchPage()
       
+      
+
+      ###
+      (6) Capture value of search text
+      ###
       value =          $('#xroom_header_search_text').val()
+      
+
+      ###
+      (7) Capture value of search filter
+      ###
       valueSearchBtn = $('#header-search-dropdown-btn').text()
       
+
+      ###
+      (8) Increment count
+      ###
       Mywebroom.State.set('searchTypeHeadCount', Mywebroom.State.get('searchTypeHeadCount') + 1)
+      
+
+      ###
+      (9) Create a second reference to count
+      ###
       @searchCount = Mywebroom.State.get('searchTypeHeadCount')
       
-      if value != ""
+      
+
+      ###
+      (10) If there's text, perform a search
+      ###
+      if value.trim() isnt ""
+
+        ###
+        (5) Hide other views / show search results view
+        ###
+        @displaySearchPage()
+
+
+        ###
+        (6) Actually perform search
+        ###
         @insertSearchEntityView(value, valueSearchBtn)
+
+
+
+        ###
+        (7) If there are results, highlight the first one
+        ###
+        if $('[data-id_search_entity_id=search_entity_container_id_0]').length isnt 0
+
+          # Highlight
+          $('[data-id_search_entity_id=search_entity_container_id_0]').trigger('mouseenter')
+
+          # Set initial value of searchNum
+          @searchNum = 1
+
+
+        else
+
+          ###
+          NO SEARCH RESULTS: HIDE RESULTS BOX
+          ###
+          $('#xroom_header_search_box').hide()
+
+      else
+
+        ###
+        Hide search box
+        ###
+        @hideCleanSearchBox()
 
     , 500)
 
@@ -473,15 +551,102 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     ###
     SEARCH LOGIC GETS WRAPPED IN DEBOUNCE FUNCTION
     ###
-    @slowDown(event.keyCode)
+    if event.keyCode is 40 # <-- DOWN
+      
+      if $('#xroom_header_search_box').is(':visible')
+        
+        ###
+        Is there another search result?
+        ###
+        if $('[data-id_search_entity_id=search_entity_container_id_' + @searchNum + ']').length isnt 0
+
+          # Leave Previous
+          $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum - 1) + ']').trigger('mouseleave')
+
+          # Enter Next
+          $('[data-id_search_entity_id=search_entity_container_id_' + @searchNum + ']').trigger('mouseenter')
+
+          # Increment
+          @searchNum += 1
+
+        else
+          ###
+          WE'VE REACHED THE END OF OUR SEARCH RESULTS - GO BACK TO THE START
+          ###
+
+          # Leave Previous
+          $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum - 1) + ']').trigger('mouseleave')
+
+          # Enter First
+          $('[data-id_search_entity_id=search_entity_container_id_' + 0 + ']').trigger('mouseenter')
+
+          # Set searchNum to 1
+          @searchNum = 1
+
+
+      else
+        # console.log("search results not visible")
+
+
+
+      
+    
+    else if event.keyCode is 13 # <-- ENTER
+      
+      $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum - 1) + ']').trigger('click')
+
+
+      @hideCleanSearchBox()
+
+
+
+    else if event.keyCode is 38 # <-- UP
+
+      if $('#xroom_header_search_box').is(':visible')
+        
+      
+        ###
+        Is there a previous search result?
+        ###
+        if $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum - 2) + ']').length isnt 0
+
+          # Leave Previous
+          $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum - 1) + ']').trigger('mouseleave')
+
+          # Enter Next
+          $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum - 2) + ']').trigger('mouseenter')
+
+          # Decrement
+          @searchNum -= 1
+
+        else
+          ###
+          WE'VE REACHED THE TOP OF OUR SEARCH RESULTS - DO NOTHING
+          ###
+
+          #console.log("WE'VE REACHED THE TOP OF OUR SEARCH RESULTS - DO NOTHING")
+
+
+      else
+        #console.log("search results not visible")
+
+
+
+      
+
+
+    else
+      @slowDown(event.keyCode)
 
     
 
+      
 
 
 
 
-  insertSearchEntityView:(value,valueSearchBtn) ->
+
+  insertSearchEntityView: (value,valueSearchBtn) ->
 
     i = 0
     switch valueSearchBtn

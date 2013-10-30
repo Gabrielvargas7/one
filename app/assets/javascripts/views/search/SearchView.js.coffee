@@ -1,37 +1,21 @@
 class Mywebroom.Views.SearchView extends Backbone.View
 
   #*******************
-  #**** Tag  (no tag = default el "div")
+  #**** Class
   #*******************
-  tagName:'div'
-  
-
   className:'header_search_wrapper'
+
+
 
 
   #*******************
   #**** Template
   #*******************
-  template: JST['search/SearchTemplate']
-
-
-
-  #*******************
-  #**** Events
-  #*******************
-
-  events: {
-
-  }
-
-
-  #*******************
-  #**** Initialize
-  #*******************
-
-  initialize: ->
-
-
+  template: JST['search/SearchTemplate']  # <-- Blank File
+  
+  
+  
+  
   #*******************
   #**** Render
   #*******************
