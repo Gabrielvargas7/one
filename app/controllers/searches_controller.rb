@@ -15,66 +15,6 @@ class SearchesController < ApplicationController
 
 
 
-
-  #***********************************
-  # Json methods for the room users
-  #***********************************
-
-  # GET get user that was found by the keyword with limit and offset
-  # Limit is the number of user that you want it
-  # Offset is where you want to start
-  # /searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/:user_id/:limit/:offset/:keyword
-  # /searches/json/index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword/206/10/0/gabriel var.json
-  #Return head
-  #success    ->  head  200 OK
-
-  def json_index_searches_user_name_by_user_id_with_limit_and_offset_and_keyword
-
-    #respond_to do |format|
-    #    if params[:keyword]
-    #
-    #      keyword = params[:keyword]
-    #      keyword.downcase!
-    #
-    #     # limit the length of the string to avoid injection
-    #     if keyword.length < 12
-    #
-    #       @user = User.
-    #           select('id,name,image_name').
-    #           where('lower(name) LIKE ? and id != ?', "%#{keyword}%",params[:user_id]).
-    #           limit(params[:limit]).
-    #           offset(params[:offset])
-    #
-    #
-    #
-    #       @search = Hash.new
-    #       @user.each  do |i|
-    #
-    #
-    #
-    #         @search[i.id] = Hash.new()
-    #         @search[i.id]['user'] = i
-    #         @search[i.id]['friend'] = Friend.select('user_id').where(user_id:params[:user_id],user_id_friend: i.id)
-    #         @search[i.id]['request'] = FriendRequest.select('user_id').where(user_id:params[:user_id],user_id_requested: i.id)
-    #         @search[i.id]['requested'] = FriendRequest.select('user_id').where(user_id_requested:params[:user_id],user_id: i.id)
-    #       end
-    #
-    #       format.json { render json: @search
-    #
-    #       }
-    #
-    #     else
-    #       @user = nil
-    #       format.json { render json: @user }
-    #     end
-    #    else
-    #      @user = nil
-    #      format.json { render json: @user }
-    #    end
-    #end
-  end
-
-
   #***********************************
   # Json methods for the room users
   #***********************************
@@ -216,89 +156,6 @@ class SearchesController < ApplicationController
           @bookmarks_array.concat(@bookmarks_id_array)
 
 
-
-            #@users = UsersPhoto.
-          #    select('users.username,
-          #            users_photos.image_name,
-          #            users_photos.user_id').
-          #    joins(:user).
-          #    where("lower(users.username) LIKE ? ", "%#{keyword}%").
-          #    where("profile_image = 'y'").
-          #    limit(params[:limit]).
-          #    offset(params[:offset])
-
-
-
-          #@users_profiles = UsersPhoto.
-          #        select('users_photos.image_name,
-          #                users_photos.user_id,
-          #                users_profiles.firstname,
-          #                users_profiles.lastname').
-          #    joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
-          #    where('lower(firstname) LIKE ? or lower(lastname) LIKE ?', "%#{keyword}%","%#{keyword}%").
-          #    where(" profile_image = 'y' ").
-          #    limit(params[:limit]).
-          #    offset(params[:offset])
-          #@themes = Theme.
-          #          where('lower(name)      LIKE ? or
-          #                 lower(category)  LIKE ? or
-          #                 lower(style)     LIKE ? or
-          #                 lower(brand)     LIKE ? or
-          #                 lower(location)  LIKE ? or
-          #                 lower(color)     LIKE ? or
-          #                 lower(make)      LIKE ? or
-          #                 lower(special_name)  LIKE ?',
-          #                "%#{keyword}%",
-          #                "%#{keyword}%",
-          #                "%#{keyword}%",
-          #                "%#{keyword}%",
-          #                "%#{keyword}%",
-          #                "%#{keyword}%",
-          #                "%#{keyword}%",
-          #                "%#{keyword}%").
-          #            limit(params[:limit]).
-          #            offset(params[:offset])
-
-          #@bundles = Bundle.
-          #    where('lower(name)      LIKE ? or
-          #                 lower(category)  LIKE ? or
-          #                 lower(style)     LIKE ? or
-          #                 lower(brand)     LIKE ? or
-          #                 lower(location)  LIKE ? or
-          #                 lower(color)     LIKE ? or
-          #                 lower(make)      LIKE ? or
-          #                 lower(special_name)  LIKE ?',
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%").
-          #    limit(params[:limit]).
-          #    offset(params[:offset])
-
-          #@items_designs =ItemsDesign.
-          #          where('lower(items_designs.name) LIKE ? or
-          #                 lower(items.name)         LIKE ? or
-          #                 lower(category)  LIKE ? or
-          #                 lower(style)     LIKE ? or
-          #                 lower(brand)     LIKE ? or
-          #                 lower(color)     LIKE ? or
-          #                 lower(make)      LIKE ? or
-          #                 lower(special_name)  LIKE ?',
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%",
-          #          "%#{keyword}%").
-          #          joins(:item).
-          #          limit(params[:limit]).
-          #          offset(params[:offset])
           end
         end
 
@@ -398,98 +255,6 @@ class SearchesController < ApplicationController
 
 
 
-  # GET get search users by the keyword with limit and offset
-  # Limit is the number of returns by type that you want it
-  # Offset is where you want to start
-  # /searches/json/index_searches_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword
-  # /searches/json/index_searches_users_with_limit_and_offset_and_keyword/10/0/gabriel var.json
-  #Return head
-  #success    ->  head  200 OK
-
-  def json_index_searches_users_with_limit_and_offset_and_keyword
-
-    #respond_to do |format|
-    #  if params[:keyword]
-    #
-    #
-    #    keyword = params[:keyword]
-    #    keyword.downcase!
-    #
-    #    array_keyword = keyword.split(' ')
-    #
-    #    @users_array = []
-    #    @users_profiles_array = []
-    #
-    #
-    #
-    #    # Found all the id for every word
-    #    # example: chair brown wood
-    #    # find all the users with that words
-    #    array_keyword.each do |keyword|
-    #
-    #
-    #      # limit the length of the string to avoid injection
-    #      if keyword.length < 12
-    #
-    #        @users_id_array = User.
-    #            where("lower(users.username) LIKE ? ", "%#{keyword}%").
-    #            limit(params[:limit]).
-    #            offset(params[:offset]).
-    #            pluck(:id)
-    #
-    #        @users_array.concat(@users_id_array)
-    #
-    #
-    #        @users_id_profiles = UsersProfile.
-    #            where('lower(firstname) LIKE ? or lower(lastname) LIKE ?', "%#{keyword}%","%#{keyword}%").
-    #            limit(params[:limit]).
-    #            offset(params[:offset]).
-    #            pluck(:user_id)
-    #
-    #        @users_profiles_array.concat(@users_id_profiles)
-    #      end
-    #    end
-    #
-    #    # get all user from users_array
-    #    @users = UsersPhoto.
-    #        select('users.username,
-    #                users_photos.image_name,
-    #                users_photos.user_id').
-    #        joins(:user).
-    #        where("user_id in (?)", @users_array).
-    #        where("profile_image = 'y'").
-    #        limit(params[:limit]).
-    #        offset(params[:offset])
-    #
-    #    #get all the profile from users_profiles_array
-    #    @users_profiles = UsersPhoto.
-    #        select('users_photos.image_name,
-    #                      users_photos.user_id,
-    #                      users_profiles.firstname,
-    #                      users_profiles.lastname').
-    #        joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
-    #        where('users_profiles.user_id in (?)',@users_profiles_array).
-    #        where(" profile_image = 'y' ").
-    #        limit(params[:limit]).
-    #        offset(params[:offset])
-    #
-    #    format.json { render json:{
-    #        #users_array:@users_array,
-    #        users:@users,
-    #        #users_profiles_array:@users_profiles_array,
-    #        users_profiles:@users_profiles
-    #    }}
-    #
-    #  else
-    #    @user = nil
-    #    format.json { render json: @user }
-    #  end
-    #end
-  end
-
-
-
-
   # GET get search users profile by the keyword with limit and offset
   # Limit is the number of returns by type that you want it
   # Offset is where you want to start
@@ -522,8 +287,7 @@ class SearchesController < ApplicationController
           if keyword.length < 12
 
             @users_id_profiles = UsersProfile.joins(:user).
-                where('lower(firstname) LIKE ? or lower(lastname) LIKE ?', "%#{keyword}%","%#{keyword}%").
-                where('lower(users.username) LIKE ? ', "%#{keyword}%").
+                where('lower(firstname) LIKE ? or lower(lastname) LIKE ? or lower(users.username) LIKE ?', "%#{keyword}%","%#{keyword}%","%#{keyword}%").
                 limit(params[:limit]).
                 offset(params[:offset]).
                 pluck(:user_id)
@@ -531,19 +295,6 @@ class SearchesController < ApplicationController
             @users_profiles_array.concat(@users_id_profiles)
           end
         end
-
-
-        #get all the profile from users_profiles_array
-        #@users_profiles = UsersPhoto.
-        #    select('users_photos.image_name,
-        ##                  users_photos.user_id,
-        ##                  users_profiles.firstname,
-        #                  users_profiles.lastname').
-        #     joins('LEFT OUTER JOIN users_profiles  ON users_profiles.user_id = users_photos.user_id').
-        ##    where('users_profiles.user_id in (?)',@users_profiles_array).
-        #    where(" profile_image = 'y' ").
-        #    limit(params[:limit]).
-        #    offset(params[:offset])
 
         @users_profiles = UsersPhoto.
                   select('users_photos.image_name,

@@ -476,7 +476,20 @@ class ShopController < ApplicationController
   def forward_to_u_room
 
     if signed_in?
-      redirect_to room_rooms_path(current_user.username,came_from:params[:came_from],entity_type:params[:entity_type],entity_id:params[:entity_id])
+
+      if params[:entity_type] = 'BOOKMARK'
+
+        if Bookmark.exists?(id:params[:entity_id])
+          bookmark = Bookmark.find(params[:entity_id])
+          item_id = bookmark.bookmarks_category.item_id
+        else
+          item_id = 0
+        end
+        redirect_to room_rooms_path(current_user.username,came_from:params[:came_from],entity_type:params[:entity_type],entity_id:params[:entity_id],item_id:item_id)
+
+      else
+        redirect_to room_rooms_path(current_user.username,came_from:params[:came_from],entity_type:params[:entity_type],entity_id:params[:entity_id])
+      end
     else
       redirect_to root_path
     end
