@@ -15,16 +15,14 @@
 
         
           <% if @photo_length > 0 %>
-            <% @users_photos.in_groups_of(@photo_length,false).each do |photo_groups| %>
-              
-                <% photo_groups.each do |single_photo|%>
-                  <div class="users_photo_item">
+            <% @users_photos.each do |single_photo|%>
+                  <div class="users_photo_item" data-updatepath="<%=update_users_photos_profile_image_by_user_id_by_users_photo_id_path(single_photo.user_id,single_photo.id)%>" data-description="<%=single_photo.description%>">
 
                     <% if single_photo.image_name.blank? %>
-                      <%= cl_image_tag "default-user.png",width:180 , height:180,:crop => :fit,:default_image => "default-user.png" %>
+                      <%= cl_image_tag "default-user.png",width:180 , height:180,:crop => :fill,:default_image => "default-user.png" %>
                     
                     <% else %>
-                      <%= cl_image_tag single_photo.image_name,width:180 , height:180,:crop => :fit,:default_image => "default-user.png" %>
+                      <%= cl_image_tag single_photo.image_name,width:180 , height:180,:crop => :fill,:default_image => "default-user.png" %>
                     <% end %>
                     <div class="user_photos_menu">
                       <ul class="nav nav-tabs">
@@ -46,9 +44,7 @@
                         </li>
                       </ul>
                     </div>
-                  </div>
-                <%end%>
-              
+                  </div>              
             <%end%>
           <%end%>
           
@@ -63,7 +59,7 @@
       </div>
 
       <div class="users_photos_large_view">
-        <h2><%if @users_profile_photo.description %>
+        <h2><%if @users_profile_photo.description != "" %>
               <%= @users_profile_photo.description %>
             <%else%>
               (no description)
@@ -71,9 +67,9 @@
         </h2>
         <hr>
         <div>
-          <%= cl_image_tag @users_profile_photo.image_name,width:250 , height:250,:crop => :fit,:default_image => "default-user.png" %>
+          <%= cl_image_tag @users_profile_photo.image_name,width:250 , height:250,:crop => :fill,:default_image => "default-user.png" %>
         </div>
-        <%= link_to 'Set a profile image', update_users_photos_profile_image_by_user_id_by_users_photo_id_path(@users_profile_photo.user_id, @users_profile_photo.id), method: :put %>
+        <%= link_to 'Set as profile image', update_users_photos_profile_image_by_user_id_by_users_photo_id_path(@users_profile_photo.user_id, @users_profile_photo.id), method: :put %>
       </div>
 
     </div>
@@ -128,3 +124,22 @@
 <br />
 
 </div>
+<script type="text/javascript">
+console.log("I'm running js")
+$('#users_photos_container .users_photo_item').click(function(event) {
+  //Rerender .users_photos_large_view
+  
+  //1. Description change
+  if( event.currentTarget.dataset.description != "")
+    $('.users_photos_large_view h2').html(event.currentTarget.dataset.description)
+  else
+    $('.users_photos_large_view h2').html('(no description)')
+  
+  //2. Image change
+  $('.users_photos_large_view img').attr('src', event.target.src)
+  
+  //3. Set as profile link change
+  $('.users_photos_large_view a').attr('href', event.currentTarget.dataset.updatepath)
+
+});
+</script>

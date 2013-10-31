@@ -63,12 +63,16 @@ $users_photos_large_viewWidth: 384px;
   
   width: $users_photos_large_viewWidth;
   overflow:hidden;
-  margin:0;
-  padding:0;
-  position:relative;
+  margin: 0;
+  padding: 0;
+  position: relative;
   left: 384px ;/*$users_photos_large_viewWidth because Header width is 1000px, there's a 16px gap that will be padding.;*/
-  float:left;
+  float: left;
+  margin-bottom: 30px;
 
+}
+.users_photos_large_view img{
+  width:250px;
 }
 .users_photos_large_view div{
   width:250px;
@@ -108,11 +112,11 @@ $users_photos_large_viewWidth: 384px;
   height:180px;
   margin:8px;
 }
+/*Show Menu on photo*/
 .users_photo_item:hover{
   .user_photos_menu{
     display:block;
   }
-
 }
 .users_photo_item img,.users_photos_large_view img{
   position:absolute;
