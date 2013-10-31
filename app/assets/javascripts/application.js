@@ -28,7 +28,6 @@
 //= require jquery.mousewheel
 //= require FB.js
 //= require shop
-//= require userPhotos.js
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models
