@@ -46,8 +46,11 @@ body {
         /*firefox zoon break the css*/
         /*-moz-transform: scale(1);*/
         /*-moz-transform-origin: 0 0*/
-
     }
+    .shop_container{
+        zoom: 110%;
+    }
+
 }
 
 
@@ -59,19 +62,29 @@ body {
         /*-moz-transform-origin: 0 0*/
         /**/
     }
+    .shop_container{
+        zoom: 100%;
+    }
+
 }
 
 @media screen and (max-height:620px){
     body{
         zoom: 80%;
-
     }
+    .shop_container{
+        zoom: 95%;
+    }
+
 }
 @media screen and (max-height:520px){
     body{
         zoom: 70%;
-
     }
+    .shop_container{
+        zoom: 90%;
+    }
+
 }
 
 

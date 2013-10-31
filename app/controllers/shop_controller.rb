@@ -477,7 +477,7 @@ class ShopController < ApplicationController
 
     if signed_in?
 
-      if params[:entity_type] = 'BOOKMARK'
+      if params[:entity_type] == 'BOOKMARK'
 
         if Bookmark.exists?(id:params[:entity_id])
           bookmark = Bookmark.find(params[:entity_id])
