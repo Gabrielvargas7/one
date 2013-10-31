@@ -191,7 +191,14 @@ input[type=password] {
     border: 1px solid #dbdbdb;
     border-radius:1px;
 }
+.btn-group > .btn:first-child {
+    margin-left: 0;
+    -webkit-border-top-left-radius: 0px;
+    -moz-border-radius-topleft: 0px;
+    border-top-left-radius: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    -moz-border-radius-bottomleft: 0px;
+    border-bottom-left-radius: 0px;
+}
 
-label {
-   /*display: inline;*/
-    }
+

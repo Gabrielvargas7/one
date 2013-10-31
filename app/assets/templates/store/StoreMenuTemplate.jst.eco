@@ -25,7 +25,7 @@
         <ul class="nav">
         <li>
           <div class="input-append">
-            
+
             <!-- SEARCH BOX -->
             <input id="store-search-box" class="span2" type="text">
             <div class="btn-group">
@@ -33,7 +33,7 @@
               <button class="btn dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
               </button>
-              
+
               <!-- SEARCH DROPDOWN OPTIONS -->
               <ul id="store-search-dropdown" class="dropdown-menu">
                 <li class="active" id="store-search-all">
@@ -52,13 +52,13 @@
                     <a href="#">ENTIRE ROOMS</a>
                 </li>
               </ul>
-              
+
             </div>
           </div>
         </li>
         <li>
-          
-          
+
+
           <!-- FILTERS -->
           <ul class="nav nav-pills">
             <li id="dropdown-category" class="dropdown collapse">
@@ -92,8 +92,8 @@
               </ul>
             </li>
           </ul>
-          
-          
+
+
         </li>
       </ul>
       </div>
