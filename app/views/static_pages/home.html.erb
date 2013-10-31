@@ -1,82 +1,8 @@
 <% provide(:title, 'Home') %>
-<div class="center hero-unit">
-  <h1>Welcome to the MyWebRoom on ruby </h1>
 
-  <h2>
-    This is the home page for the
-    <a href="http://mywebroom.com/">MyWebRoom.com </a>
-
-  </h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-primary" %>
-</div>
-
-<h1>Sign in</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(:session, url: sessions_path) do |f| %>
-
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-
-        <%= f.submit "Sign in", class: "btn btn-primary" %>
-    <% end %>
-
-    <!-- //NOTE: Problems with the JS login
-        <%= link_to "Sign in with Facebook", "/auth/facebook" , id: "sign_in" %>
-    -->
-
-    <%= link_to "Sign in with Facebook", "/auth/facebook"  %>
-
-    <h2>
-      <p><%= link_to "forgotten password?", new_password_reset_path %></p>
-    </h2>
-
-    <h2>
-      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-    </h2>
+<a href="javascript:lightbox('Hello!');">Show me the lightbox</a>
 
 
-
-  </div>
-</div>
-
-<h1>Or</h1>
-
-<h1>Sign up</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages' %>
-
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-
-
-        <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
-
-    <p><%= link_to "forgotten password?", new_password_reset_path %></p>
-
-
-  </div>
-</div>
-
-
-
-
-
-
-<%= link_to cl_image_tag("logo_bqoyii.png", alt: "logo"), 'http://mywebroom.com/' %>
-<%= link_to cl_image_tag("rails_awdiq8.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 
 
 

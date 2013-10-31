@@ -26,6 +26,7 @@
 //= require backbone.marionette
 //= require backbone.bootstrap-modal
 //= require jquery.mousewheel
+//= require lightbox
 //= require FB.js
 //= require shop
 //= require mywebroom
