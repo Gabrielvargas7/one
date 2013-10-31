@@ -1,3 +1,7 @@
+<div class="users_photos_header">
+    <h1>PHOTO UPLOAD</h1>
+</div>
+<div class="new_users_photo_wrap">
 <%= form_for(@users_photo, url: create_users_photos_by_user_id_path(@users_photo.user_id),:html => {:multipart => true}) do |f| %>
     <% if @users_photo.errors.any? %>
         <div id="error_explanation">
@@ -12,17 +16,20 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :description %><br />
+      <%= f.label "Image Description" %>
       <%= f.text_field :description %>
     </div>
 
     <div class="field">
-      <%= f.label :image_name %><br />
+      <br />
       <%= f.file_field :image_name %>
+      <br />
     </div>
 
 
     <div class="actions">
-      <%= f.submit %>
+      <br />
+      <%= f.submit "Upload Photo" %>
     </div>
 <% end %>
+</div>

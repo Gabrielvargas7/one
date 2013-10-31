@@ -1,7 +1,8 @@
 // Place all the styles related to the UsersPhotos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$user_photos_header_width: 989px;
+$user_photos_header_width: 1000px;
+$user_photo_layout_total_width: 989px;
 $users_photos_large_viewBGColor: #f3f3f3;
 $users_photos_listWidth:600px;
 $users_photos_large_viewWidth: 384px;
@@ -20,7 +21,7 @@ $users_photosButtonColor: #00ccff;
   line-height:30px;
 }
 .users_photos_header{
-  width:1000px ;//$user_photos_header_width
+  width: $user_photos_header_width;
   border-bottom: 1px solid #d2d2d2;
   margin-bottom:10px;
   margin-top:20px;
@@ -30,7 +31,7 @@ $users_photosButtonColor: #00ccff;
 
 /*Container 1 - Inner Wrap*/
 .user_photos_content_wrap1{
-  width: $user_photos_header_width;
+  width: $user_photo_layout_total_width;
   border-right: 2px solid #d2d2d2;
   background-color: white;
   float: left;
@@ -44,13 +45,14 @@ $users_photosButtonColor: #00ccff;
     border: 1px solid #d2d2d2;
     border-radius: 3px;
     float: left;
-    width: $user_photos_header_width;
+    width: $user_photo_layout_total_width;
     background-color: $users_photos_large_viewBGColor;
     overflow: hidden;
     position: relative;
     left: 0;
 
-    padding-left:9px;
+    padding-left: 9px;
+    margin-bottom: 30px;
 }
 
 /*Column 1*/
@@ -185,4 +187,31 @@ $users_photosButtonColor: #00ccff;
 #users_photos_container .dropdown-menu > li > a:hover{
   background: none;
   background-color: $users_photosButtonColor;
+}
+
+/*new_users_photo*/
+#new_users_photo{
+  margin-top:20px;
+
+}
+.new_users_photo_wrap{
+  width: 950px;
+  border: 1px solid #d2d2d2;
+  padding: 0 25px 50px;
+}
+
+form#new_users_photo input[type=submit]{
+  background-color: $users_photosButtonColor;
+  border:none;
+  color:white;
+  font-size:14px;
+  width:180px;
+  padding: 9px 0;
+
+}
+form#new_users_photo #users_photo_description{
+  width: 420px;
+}
+form#new_users_photo label[for="users_photo_Image Description"]{
+  text-transform: capitalize;
 }
