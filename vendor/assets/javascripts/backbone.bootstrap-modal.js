@@ -31,7 +31,7 @@
       </div>\
     <% } %>\
     <div class="modal-body">{{content}}</div>\
-    <div class="modal-footer" style="border-color:#2a2727">\
+    <div class="modal-footer" style="border-color:#2a2727; background-color: transparent">\
       <div class="text-center">\
         <% if (allowCancel) { %>\
           <% if (cancelText) { %>\
