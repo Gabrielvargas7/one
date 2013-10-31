@@ -201,4 +201,8 @@ input[type=password] {
     border-bottom-left-radius: 0px;
 }
 
+.blue_button{
+    background-color: #00ccff;
+    color:white;
+}
 
