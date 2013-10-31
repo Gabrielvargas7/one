@@ -206,14 +206,14 @@ class UsersPhotosController < ApplicationController
           @users_photos = UsersPhoto.find_all_by_user_id(params[:user_id])
           @photos_user = User.find(params[:user_id])
 
-          format.html #index_users_photos_by_user_id.html.erb
-
+          @users_profile_photo = UsersPhoto.where("user_id = ? and profile_image = ?",params[:user_id],'y').first
           if @users_photos.length < 3
             @photo_length = @users_photos.length
           else
             @photo_length = 3
           end
 
+          format.html #index_users_photos_by_user_id.html.erb
       else
         format.html { redirect_to root_path  }
       end
