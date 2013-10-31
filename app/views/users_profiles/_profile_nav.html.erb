@@ -1,0 +1,11 @@
+<div class="profile_menu_box " >
+    <ul>
+      <li>
+        <%= link_to "Profile",  edit_users_profiles_by_user_id_path(current_user.id)%>
+      </li>
+      <li>
+        <%= link_to "Settings", edit_user_path(current_user.id) %>
+      </li>
+
+    </ul>
+</div>

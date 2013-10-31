@@ -1,3 +1,17 @@
+#xroom_header_active_sites{
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 23px;
+  height: 21px;
+}
+#xroom_header_active_sites {
+  background-image: url('http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_23/v1379697970/browse-mode-active.png');
+  width:auto;
+
+}
+#xroom_header_active_sites:hover{
+  background-image: url('http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_23/v1379697987/browse-mode-active-highlight.png');
+}
 
 #xroom_header_profile {
 
@@ -35,4 +49,14 @@
 #xroom_header_myroom img{
   width: 23px;
   height: 23px;
+}
+
+#xroom_header_search {
+  padding-top: 10px;
+}
+/*Browse Mode Your Item*/
+#browse_mode_item_name_wrap{
+  display:inline-block;
+  padding:0 3em;
+  margin: 0 1em;
 }

@@ -7,28 +7,26 @@
 //#success    ->  head  200 OK
 
 
-{
-    "themes": [
-        {
-            "brand": null,
-            "category": null,
-            "color": null,
-            "created_at": "2013-05-17T20:33:23Z",
-            "description": "The Sky is the Limit.",
-            "id": 12,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822804/61186-theme-image_name-blue-skies.jpg"
-            },
-            "image_name_selection": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822804/97008-theme-image_name_selection-blue-skies-popthumb.jpg"
-            },
-            "like": 0,
-            "location": null,
-            "make": null,
-            "name": "Blue Skies",
-            "special_name": null,
-            "style": null,
-            "updated_at": "2013-05-17T20:33:23Z"
-        }
-    ]
-}
+[
+    {
+        "brand": null,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:33:23Z",
+        "description": "The Sky is the Limit.",
+        "id": 12,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822804/61186-theme-image_name-blue-skies.jpg"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822804/97008-theme-image_name_selection-blue-skies-popthumb.jpg"
+        },
+        "like": 0,
+        "location": null,
+        "make": null,
+        "name": "Blue Skies",
+        "special_name": null,
+        "style": null,
+        "updated_at": "2013-05-17T20:33:23Z"
+    }
+]

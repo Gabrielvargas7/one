@@ -1,0 +1,18 @@
+//#GET get user if I request to be my friend
+//#  /friend_requests/json/show_friend_request_by_user_id_user_id_requested/:user_id/:user_id_requested
+//#  /friend_requests/json/show_friend_request_by_user_id_user_id_requested/206.json
+//#  //# success    ->  head  200 OK
+
+
+[
+    {
+        "firstname": "rawr",
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1374021754/59014-users_photo-image_name-about_0524_team_profileimage_roomsie2.jpg"
+        },
+        "lastname": "rawr",
+        "profile_image": "y",
+        "user_id": 24,
+        "username": "saran"
+    }
+]

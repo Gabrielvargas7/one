@@ -46,7 +46,7 @@ class BookmarksController < ApplicationController
     #@bookmarks = Bookmark.paginate(page: params[:page]).order('id')
 
 
-    @bookmarks = Bookmark.order("item_id","bookmarks_category_id").all
+    @bookmarks = Bookmark.joins(:bookmarks_category).order('bookmarks_categories.item_id,bookmarks_category_id').all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -130,14 +130,15 @@ class BookmarksController < ApplicationController
     #
 
     @bookmark = Bookmark.find(params[:id])
-    @user_bookmark  =  UsersBookmark.find_by_user_id_and_bookmark_id(@bookmark.user_bookmark,@bookmark.id)
 
     respond_to do |format|
       ActiveRecord::Base.transaction do
         begin
 
           @bookmark.destroy
-          @user_bookmark.destroy unless @user_bookmark.nil?
+          UsersBookmark.where(:bookmark_id => params[:id]).delete_all
+          BundlesBookmark.where(:bookmark_id => params[:id]).delete_all
+
           format.html { redirect_to bookmarks_url }
 
         rescue ActiveRecord::StatementInvalid
@@ -155,7 +156,7 @@ class BookmarksController < ApplicationController
 
     def index_bookmarks_approval
 
-    @bookmarks = Bookmark.order("item_id","bookmarks_category_id").where("approval = 'n'")
+    @bookmarks = Bookmark.joins(:bookmarks_category).order('bookmarks_categories.item_id,bookmarks_category_id').where("approval = 'n'")
 
     respond_to do |format|
       format.html  # index_bookmarks_approval.html.erb
@@ -224,7 +225,7 @@ class BookmarksController < ApplicationController
 
         @bookmarks  = Bookmark.
             select('bookmarks.id,
-                      bookmarks.item_id,
+                      bookmarks_categories.item_id,
                       bookmarks_categories.name as bookmarks_category_name,
                       bookmark_url,
                       bookmarks_category_id,
@@ -235,7 +236,7 @@ class BookmarksController < ApplicationController
                       title,
                       "like"').
             joins(:bookmarks_category).
-            where('bookmarks.item_id = ? and user_bookmark = 0', params[:item_id]).order("bookmarks_category_id,bookmarks.id")
+            where('bookmarks_categories.item_id = ? and user_bookmark = 0', params[:item_id]).order('bookmarks_category_id,bookmarks.id')
 
         format.json {render json: @bookmarks.as_json()}
 
@@ -272,7 +273,7 @@ class BookmarksController < ApplicationController
 
           @bookmarks  = Bookmark.
               select('bookmarks.id,
-                      bookmarks.item_id,
+                      bookmarks_categories.item_id,
                       bookmarks_categories.name as bookmarks_category_name,
                       bookmark_url,
                       bookmarks_category_id,
@@ -308,7 +309,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
 
-      @bookmarks = Bookmark.order("RANDOM()").limit(params[:limit]).offset(params[:offset])
+      @bookmarks = Bookmark.select("bookmarks.*,bookmarks_categories.item_id").joins(:bookmarks_category).order("RANDOM()").limit(params[:limit]).offset(params[:offset])
       format.json { render json: @bookmarks }
 
     end
@@ -331,7 +332,7 @@ class BookmarksController < ApplicationController
 
         @bookmarks  = Bookmark.
             select('bookmarks.id,
-                      bookmarks.item_id,
+                      bookmarks_categories.item_id,
                       bookmarks_categories.name as bookmarks_category_name,
                       bookmark_url,
                       bookmarks_category_id,
@@ -342,13 +343,13 @@ class BookmarksController < ApplicationController
                       title,
                       "like"').
             joins(:bookmarks_category).
-            where('bookmarks.bookmarks_category_id = ? and user_bookmark = 0', params[:bookmarks_category_id]).order("bookmarks_category_id,bookmarks.id")
+            where('bookmarks.bookmarks_category_id = ? and user_bookmark = 0', params[:bookmarks_category_id]).order('bookmarks_category_id,bookmarks.id')
 
         format.json {render json: @bookmarks.as_json()}
 
 
       else
-        format.json { render json: 'not bookmark for this item ', status: :not_found }
+        format.json { render json: 'not bookmark for this bookmarks category  ', status: :not_found }
       end
 
     end
@@ -356,6 +357,70 @@ class BookmarksController < ApplicationController
 
 
 
+  # GET Get a bookmark, item and bookmark category info  by bookmark_id
+  # bookmarks/json/show_bookmark_by_bookmark_id/:bookmark_id
+  # bookmarks/json/show_bookmark_by_bookmark_id/100.json
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_show_bookmark_by_bookmark_id
+
+    respond_to do |format|
+
+      if Bookmark.exists?(id:params[:bookmark_id])
+
+
+        @bookmark  = Bookmark.
+            select('  bookmarks.id,
+                      bookmarks_categories.item_id,
+                      bookmarks_categories.name as bookmarks_category_name,
+                      bookmarks.bookmark_url,
+                      bookmarks.bookmarks_category_id,
+                      bookmarks.description,
+                      bookmarks.i_frame,
+                      bookmarks.image_name,
+                      bookmarks.image_name_desc,
+                      bookmarks.title,
+                      bookmarks.like,
+                      items.name as item_name').
+            joins(:bookmarks_category).
+            joins('INNER JOIN items  ON items.id = bookmarks_categories.item_id').
+            where('bookmarks.id = ? ', params[:bookmark_id]).first
+
+        format.json {render json: @bookmark.as_json()}
+
+
+      else
+        format.json { render json: 'not bookmark found ', status: :not_found }
+      end
+
+    end
+  end
+
+
+  # GET Get seo_url of bookmarks
+  # /bookmarks/json/show_bookmark_seo_url_by_bookmark_id/:bookmark_id'
+  # /bookmarks/json/show_bookmark_seo_url_by_bookmark_id/1001.json'
+
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_show_bookmark_seo_url_by_bookmark_id
+
+    respond_to do |format|
+      if Bookmark.exists?(id:params[:bookmark_id])
+        @bookmark = Bookmark.where('id=?',params[:bookmark_id]).first
+
+        seo_url = Hash.new
+        seo_url["seo_url"] = shop_show_bookmark_url(@bookmark.id,get_clean_name(@bookmark.title))
+
+        format.json { render json: seo_url }
+      else
+        format.json { render json: 'not found bookmark id' , status: :not_found }
+      end
+    end
+
+  end
 
 
 

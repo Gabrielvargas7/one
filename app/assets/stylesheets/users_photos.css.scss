@@ -1,16 +1,159 @@
 // Place all the styles related to the UsersPhotos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$user_photos_header_width: 1000px;
+$users_photos_large_viewBGColor: #f3f3f3;
+$users_photos_listWidth:600px;
+$users_photos_large_viewWidth: 384px;
 
+#users_photos_container{
+  
+}
+.users_photos_header h1{
+  font-weight: lighter;
+  font-size: 21pt;
+  color: #343434;
+  margin: 0 5px;
+  line-height:30px;
+}
+.users_photos_header{
+  width: $user_photos_header_width;
+  border-bottom: 1px solid #d2d2d2;
+  margin-bottom:10px;
+  padding-bottom: 5px;
+}
+/*Layout Pattern from http://matthewjamestaylor.com/blog/equal-height-columns-2-column.htm*/
 
-#old_users_photos_container{
+/*Container 1 - Inner Wrap*/
+.user_photos_content_wrap1{
+  width: $user_photos_header_width;
+  border-right: 2px solid #d2d2d2;
+  background-color: white;
+  float: left;
+  position: relative;
+  right: $users_photos_large_viewWidth;
+
+}
+
+/*Container 2- Outermost Wrap*/
+.user_photos_content_wrap2{
+    border: 1px solid #d2d2d2;
+    border-radius: 3px;
+    float: left;
+    width: $user_photos_header_width;
+    background-color: $users_photos_large_viewBGColor;
+    overflow: hidden;
+    position: relative;
+    left: 0;
+
+    padding-left:9px;
+}
+
+/*Column 1*/
+#users_photos_container .user_photos_list_container{
+  width: $users_photos_listWidth;
+  float: left;
+  position: relative;
+  left: $users_photos_large_viewWidth;
+}
+
+/*Column 2*/
+.users_photos_large_view{
+  text-align:center;
+  
+  width: $users_photos_large_viewWidth;
   overflow:hidden;
-  width:remainder;
-  line-height:1.5;
-  font-size:12px;
-  color:#5A5A5A;
-  background:#fff;
-  font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
+  margin:0;
+  padding:0;
+  position:relative;
+  left: 400px ;/*$users_photos_large_viewWidth because Header width is 1000px, there's a 16px gap that will be padding.;*/
+  float:left;
+
+}
+
+.users_photos_large_view h2{
+  color: #343434;
+  font-size: 16pt;
+  font-weight: lighter;
+  margin: 2em 0 0 5px;
+}
+.users_photos_large_view img{
+  margin: 15px 0;
+}
+.users_photos_large_view hr{
+  width: 300px;
+  border: 0;
+  border-top: 1px solid #d2d2d2;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.users_photos_large_view p{
+  margin: 15px;
+}
+.users_photo_list{
+  display:table-cell;
+  width: $users_photos_listWidth;
+
+  padding-left: 7px;
+}
+
+.users_photo_item{
+  position:relative;
+  display:inline-block;
+  width:180px;
+  height:180px;
+  margin:8px;
+}
+
+.users_photo_item img{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}
+
+.users_photo_item.add_square{
+  font-size:21pt;
+  background-color: gray;
+  text-align:center;
+  border:none;
+  color:white;
+}
+.users_photo_item.add_square div{
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  margin:auto;
+  margin-top:-10%;
+}
+/*Plus sign for Add Box*/
+.users_photo_item.add_square div span{
+  font-size:62pt;
+}
+.users_photo_item.add_square .link_spanner{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+}
+#upload_new_photo_button{
+  width:187px; /*To account for padding*/
+  text-align:center;
+  padding:5px 15px;
+  white-space: nowrap;
+  background-color: #00ccff;
+  color:white;
+  font-size:14px;
+  font-weight:normal;
+  margin-bottom: -18px; /*To offset picture padding on top row*/
+  position:relative;
+}
+#upload_new_photo_button img{
+  padding-right:10px;
+  padding-bottom:2px;
 }

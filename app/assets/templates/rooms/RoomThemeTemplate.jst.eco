@@ -1,0 +1,19 @@
+<!-- ************************ -->
+<!-- Room Background  -->
+<!-- ************************ -->
+
+<img class="current_background"
+     
+     src="<%=@theme.image_name.url%>"
+     
+     data-theme-src-client="<%=@theme.image_name.url%>"
+     data-theme-src-server="<%=@theme.image_name.url%>"
+     
+     data-theme-id-client="<%=@theme.id%>" 
+     data-theme-id-server="<%=@theme.id%>" 
+     
+     data-theme-has-changed=false 
+     
+     data-section-id="<%=@theme.section_id%>"
+     
+>

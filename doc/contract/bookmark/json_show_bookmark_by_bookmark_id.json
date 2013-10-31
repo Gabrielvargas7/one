@@ -1,0 +1,23 @@
+//# GET Get a bookmark, item and bookmark category info  by bookmark_id
+//# bookmarks/json/show_bookmark_by_bookmark_id/:bookmark_id
+//# bookmarks/json/show_bookmark_by_bookmark_id/100.json
+//# Return head
+//# success    ->  head  200 OK
+
+{
+    "bookmark_url": "http://www.youtube.com",
+    "bookmarks_category_id": 101,
+    "bookmarks_category_name": "Popular",
+    "description": "Description Coming Soon!",
+    "i_frame": "n",
+    "id": 1001,
+    "image_name": {
+        "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823919/98148-bookmark-image_name-youtube.png"
+    },
+    "image_name_desc": {
+        "url": "/assets/fallback/bookmark/default_bookmark.png"
+    },
+    "item_id": "17",
+    "like": 0,
+    "title": "You Tube"
+}

@@ -1,0 +1,25 @@
+
+<a href="/room/<%=@model.get('username')%>"><span class="link_spanner"></span></a>
+<div class="btn-group pull-right profile_friend_button" >
+    <button class="profile_friend_gear" data-toggle="dropdown"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377288874/gear-icon.png"></button>
+    
+  <ul class="dropdown-menu profile_friends_dropdown_menu">
+    <li><a href='/room/<%=@model.get('username')%>'>View Room</a></li>
+    <!-- if friend or public, don't show Unfriend -->
+    <%if @.PUBLIC_FLAG is 'SELF':%>
+      <li><a href='#' class="profile_unfriend">Unfriend</a></li>
+    <%end%>
+  </ul>
+</div>
+<div class="pull-left profile_friend_image_holder" style="background-image:url('<%=@model.get('image_name').url%>');">
+  
+</div>
+<div class="media-body">
+  <p class="media-heading profile_friend_name">
+    <a href="/room/<%=@model.get('username')%>"><%=@model.get('firstname')%> <%=@model.get('lastname')%></a>
+  </p>
+  <p class="profile_friend_username"><%=@model.get('username')%></p>
+</div>
+
+
+

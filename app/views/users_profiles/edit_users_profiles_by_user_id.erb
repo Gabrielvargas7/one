@@ -1,50 +1,89 @@
-<div id="users_profile_container">
-
-  <%= form_for(@users_profile, url: update_users_profiles_by_user_id_path(@users_profile.user_id)) do |f| %>
-      <% if @users_profile.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@users_profile.errors.count, "error") %> prohibited this users_profile from being saved:</h2>
-
-            <ul>
-              <% @users_profile.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
-
-
-      <div class="field">
-      <%= f.label :firstname %><br />
-      <%= f.text_field :firstname %>
-    </div>
-    <div class="field">
-      <%= f.label :lastname %><br />
-      <%= f.text_field :lastname %>
-    </div>
-    <div class="field">
-      <%= f.label :gender %><br />
-      <%= f.text_field :gender %>
-    </div>
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_field :description %>
-    </div>
-    <div class="field">
-      <%= f.label :city %><br />
-      <%= f.text_field :city %>
-    </div>
-    <div class="field">
-      <%= f.label :country %><br />
-      <%= f.text_field :country %>
-    </div>
-    <div class="field">
-      <%= f.label :birthday %><br />
-      <%= f.date_select :birthday , start_year:@start_date, end_year:@end_date %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
-
+<div class="profile_title_box" >
+  MY PROFILE
 </div>
+
+<%= render 'profile_nav' %>
+
+<div class="users_profile_container">
+
+  <div id=users_profile_container_left>
+
+          <%= form_for(@users_profile, url: update_users_profiles_by_user_id_path(@users_profile.user_id)) do |f| %>
+
+              <% if @users_profile.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@users_profile.errors.count, "error") %> prohibited this users_profile from being saved:</h2>
+
+                    <ul>
+                      <% @users_profile.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+
+
+            <div class="field">
+              <%= f.label :firstname %>
+              <%= f.text_field :firstname %>
+            </div>
+            <div class="field">
+              <%= f.label :lastname %>
+              <%= f.text_field :lastname %>
+            </div>
+            <div class="field">
+              <%= f.label :gender %>
+              <%= f.select :gender, [['Male', 'male'], ['Female','female']] %>
+            </div>
+            <div class="field">
+              <%= f.label :city %>
+              <%= f.text_field :city %>
+            </div>
+            <div class="field">
+              <%= f.label :country %>
+              <%= f.text_field :country %>
+            </div>
+            <div class="field">
+              <%= f.label :birthday %>
+              <%= f.date_select :birthday , start_year:@start_date, end_year:@end_date, :include_blank => true, :default => nil %>
+            </div>
+            <div class="field">
+              <%= f.label :description %>
+              <%= f.text_field :description %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Save Changes", :class => "btn btn-primary"  %>
+            </div>
+        <% end %>
+
+  </div>
+  <div id=users_profile_container_right>
+
+    <div id="users_profile_container_right_top" >
+        <p>
+          <% if @users_photo.description.blank? %>
+              Photo
+          <%else %>
+               <%= @users_photo.description[0,20] %>
+          <%end%>
+
+              <% if @users_photo.image_name.blank?  %>
+                  <%= cl_image_tag("default-user.png", width: 250,height:250,:crop => :fill,:default_image => "default-user.png")%>
+              <% else %>
+                  <%=cl_image_tag(@users_photo.image_name , width: 250,height:250,:crop => :fill,:default_image => "default-user.png")%>
+              <% end%>
+
+        </p>
+   </div>
+    <div id="users_profile_container_right_bottom" >
+      <br/>
+      <%= link_to "Edit your profile Picture", index_users_photos_by_user_id_path(@users_photo.user_id) %>
+    </div>
+
+
+
+  </div>
+
+
+ </div>
+<div class="clear"></div>

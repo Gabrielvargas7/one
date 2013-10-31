@@ -1,42 +1,51 @@
 source 'https://rubygems.org'
 
-#ruby "1.9.3"
-ruby "2.0.0"
+
+ruby '2.0.0'
+
+################
+# gem for rails
+################
+
+  gem 'rails', '3.2.13'
+  gem 'bcrypt-ruby', '3.0.1'
+  gem 'faker', '1.1.2'
+  gem 'omniauth-facebook', '1.4.1'
+  gem 'oauth2', '0.8.0'
+  gem 'google_drive' , '0.3.5'
+  gem 'fileutils', '0.7'
+  gem 'carrierwave', '0.8.0'
+  gem 'cloudinary', '1.0.57'
+  gem 'jbuilder', '1.4.1'
+  gem 'railties', '3.2.13'
+  gem 'unicorn', '4.6.3'
+  gem 'geocoder', '1.1.8'
+  gem 'newrelic_rpm'
 
 
-gem 'rails', '3.2.13'
-gem 'bootstrap-sass', '2.3.2.2'
-gem 'bcrypt-ruby', '3.0.1'
-gem 'faker', '1.1.2'
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.6'
-gem 'jquery-rails', '3.0.4'
-gem 'omniauth-facebook', '1.4.1'
-gem 'oauth2', '0.8.0'
+
+  # gem to look for improment like
+  # memory leak and time out
+  gem 'oink', '0.10.1'
+  gem 'rack-timeout'
 
 
-gem 'google_drive' , '0.3.5'
-gem "fileutils", '0.7'
-gem "carrierwave", '0.8.0'
-gem "cloudinary","1.0.57"
-
-gem 'jbuilder','1.4.1'
-
-gem "railties", "3.2.13"
-
-gem "backbone-on-rails", "1.0.0.1"
-
-gem "unicorn", "4.6.3"
-
-gem 'geocoder', "1.1.8"
-
-gem 'toastr-rails', '1.0.3'
 
 
-# gem to look for improment like
-# memory leak and time out
-gem "oink", '0.10.1'
-gem "rack-timeout"
+
+
+
+####################
+# gems for front end
+####################
+  gem 'bootstrap-sass', '2.3.2.2'
+  gem 'will_paginate', '3.0.4'
+  gem 'bootstrap-will_paginate', '0.0.6'
+  gem 'jquery-rails', '3.0.4'
+  gem 'backbone-on-rails', '1.0.0.1'
+  gem 'toastr-rails', '1.0.3'
+  gem 'marionette-rails', '1.1.0'
+  gem 'twitter-typeahead-rails', '0.9.3'
 
 
 
@@ -46,6 +55,9 @@ group :development, :test do
   gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.0'
   gem 'debugger','1.5.0'
+  gem 'phantomjs', github: 'colszowka/phantomjs-gem'
+  gem 'teaspoon', github: 'modeset/teaspoon'
+  gem 'tapout'
   # gem 'guard-rspec', '1.2.1'
   # gem 'guard-spork', '1.2.0'
   # gem 'spork', '0.9.2'
@@ -62,7 +74,6 @@ group :assets do
   gem 'sass-rails', '3.2.6'
   gem 'coffee-rails','3.2.2'
   gem 'uglifier', '2.0.1'
-  gem 'marionette-rails', '1.1.0'
 end
 
 group :test do
@@ -75,7 +86,7 @@ group :test do
 
 group :production do
   gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+  #gem 'rails_12factor', '0.0.2'
 end
 
 # Bundle edge Rails instead:

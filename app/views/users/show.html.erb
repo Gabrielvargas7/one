@@ -1,21 +1,26 @@
-<% provide(:title, @user.username) %>
-<h1>This is my Settings</h1>
-<div class="row">
-  <aside class="span4">
-    <section>
-
-      <p>
-        <b>Email:</b>
-        <%= @user.email %></br>
-      </p>
-      <p>
-        <b>User Name:</b>
-        <%= @user.username %></br>
-      </p>
-      <li><%= link_to "Edit ", edit_user_path(current_user) %></li>
-    </section>
-  </aside>
-
-
+<div class="profile_title_box" >
+  MY PROFILE
 </div>
 
+<%= render 'users_profiles/profile_nav' %>
+
+
+
+<div class="users_container">
+
+  <div id=users_container_left>
+    <p>
+      <b>Email:</b>
+      <%= @user.email %></br>
+    </p>
+    <p>
+      <b>User Name:</b>
+      <%= @user.username %></br>
+    </p>
+
+  </div>
+  <div id=users_container_right>
+
+  </div>
+</div>
+<div class="clear"></div>

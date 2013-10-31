@@ -22,7 +22,7 @@ class Bookmark < ActiveRecord::Base
                   :i_frame,
                   :image_name,
                   :image_name_desc,
-                  :item_id,
+                  #:item_id,
                   :title,
                   :approval,
                   :user_bookmark,
@@ -33,32 +33,34 @@ class Bookmark < ActiveRecord::Base
 
   VALID_Y_N_REGEX = /(y)|(n)/
 
-  belongs_to :item
+  #belongs_to :item
   belongs_to :bookmarks_category
   has_many :bundles_bookmarks
 
   has_many :users_bookmarks
 
 
-  validates_associated  :item
-  validates_presence_of :item
+  #validates_associated  :item
+  #validates_presence_of :item
   validates_associated  :bookmarks_category
   validates_presence_of :bookmarks_category
 
   validates :i_frame, presence:true, format: { with: VALID_Y_N_REGEX }
-  validates :item_id, numericality: { only_integer:  true }
+  #validates :item_id, numericality: { only_integer:  true }
   validates :bookmarks_category_id, numericality: { only_integer: true }
   validates :bookmark_url, format: URI::regexp(%w(http https))
-  validates :title,presence:true
+  validates :title,presence:true,
+              #uniqueness:{ case_sensitive: false },
+              length: {minimum: 1, maximum: 100},
+              allow_blank: false
+
   validates :approval, presence:true, format: { with: VALID_Y_N_REGEX }
   validates :user_bookmark, :numericality => { :only_integer => true }
   validates :like, :numericality => { :only_integer => true }
 
 
-
-
   def id_and_bookmark
-    "#{id}. #{title} -iframe: #{i_frame} - #{bookmark_url}"
+    "Item:#{bookmarks_category.item_id}.#{bookmarks_category.item.name} -> Bookmark: #{id}.#{title} -iframe: #{i_frame} - #{bookmark_url}"
   end
 
 

@@ -9,7 +9,7 @@ describe BookmarksController do
   before  do
     @item  = FactoryGirl.create(:item)
     @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-    @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
+    @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
     @admin = FactoryGirl.create(:admin)
     sign_in @admin
   end
@@ -26,7 +26,7 @@ describe BookmarksController do
   describe "GET index",tag_index:true do
 
     context "is admin user" do
-      let(:bookmarks_all) { Bookmark.order("item_id","bookmarks_category_id").all }
+      let(:bookmarks_all) { Bookmark.joins(:bookmarks_category).order('bookmarks_categories.item_id,bookmarks_category_id').all }
 
       it "assigns all bookmark as :bookmark" do
         get :index
@@ -114,7 +114,7 @@ describe BookmarksController do
         #puts bookmarks_category_new.id.to_s
         #puts bookmarks_category_new.item_id.to_s
 
-        new_bookmark = FactoryGirl.create(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        new_bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
         Bookmark.should_receive(:new).and_return(new_bookmark)
         get :new
         assigns[:bookmark].should eq(new_bookmark)
@@ -147,7 +147,7 @@ describe BookmarksController do
       it "assigns the requested bookmarks as @bookmark " do
 
 
-        new_bookmark = FactoryGirl.create(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        new_bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
         get :edit, id: new_bookmark
         assigns[:bookmark].should eq(new_bookmark)
       end
@@ -162,7 +162,7 @@ describe BookmarksController do
       end
 
       it "redirect to root " do
-        new_bookmark = FactoryGirl.create(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        new_bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
         get :edit, id: new_bookmark
         response.should redirect_to root_path
       end
@@ -183,19 +183,19 @@ describe BookmarksController do
 
           expect {
 
-            post :create,bookmark: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+            post :create,bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
           }.to change(Bookmark, :count).by(1)
 
         end
 
         it "assigns a newly created bookmark as @bookmark" do
-          post :create,bookmark: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+          post :create,bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
           assigns(:bookmark).should be_a(Bookmark)
           assigns(:bookmark).should be_persisted
         end
 
         it "redirects to the created bookmark" do
-          post :create, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+          post :create, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
           response.should redirect_to(Bookmark.last)
         end
       end
@@ -205,15 +205,15 @@ describe BookmarksController do
         context "with invalid attributes" do
           it "does not save the new contact" do
 
-            expect{ post :create, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:nil,bookmarks_category_id:bookmarks_category_new.id)
-            }.to_not change(Bookmark,:count)
+            #expect{ post :create, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
+            #}.to_not change(Bookmark,:count)
 
-            expect{ post :create, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:nil)
+            expect{ post :create, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:nil)
             }.to_not change(Bookmark,:count)
 
           end
           it "re-renders the new method" do
-            post :create, bookmarks: FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:nil)
+            post :create, bookmarks: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:nil)
             response.should render_template :new
           end
         end
@@ -229,11 +229,11 @@ describe BookmarksController do
       end
 
       it "redirects to root" do
-        post :create, bookmark:  FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        post :create, bookmark:  FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
         response.should redirect_to(root_path)
       end
       it "not redirects to the created bookmarks_category" do
-        post :create, bookmark:  FactoryGirl.attributes_for(:bookmark,item_id:bookmarks_category_new.item_id,bookmarks_category_id:bookmarks_category_new.id)
+        post :create, bookmark:  FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
         response.should_not redirect_to(Bookmark.last)
       end
     end
@@ -252,7 +252,7 @@ describe BookmarksController do
           FactoryGirl.create(:item)
           FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
 
-          put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+          put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
           assigns(:bookmark).should eq(@bookmark)
         end
       end
@@ -261,15 +261,14 @@ describe BookmarksController do
         FactoryGirl.create(:item)
         FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
 
-        put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+        put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
         @bookmark.reload
-        @bookmark.item_id.should eq(BookmarksCategory.last.item_id)
         @bookmark.bookmarks_category_id.should eq(BookmarksCategory.last.id)
 
       end
 
       it "redirects to the updated bookmarks" do
-        put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+        put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
         response.should redirect_to @bookmark
       end
 
@@ -279,25 +278,12 @@ describe BookmarksController do
         let(:bookmark_same){ @bookmark.dup}
 
         it "locates the requested @bookmarks" do
-          put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:nil)
+          put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:nil)
           assigns(:bookmark).should eq(@bookmark)
-        end
-        it "does not change @bookmark's attributes" do
-
-          FactoryGirl.create(:item)
-          FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
-
-          #puts "same "+bookmark_same.item_id.to_s
-          #puts "same old "+@bookmark.item_id.to_s
-
-          put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
-          @bookmark.reload
-          #puts "new item_id "+@bookmark.item_id.to_s
-          @bookmark.item_id.should_not eq(bookmark_same)
         end
 
         it "re-renders the edit method" do
-          put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:nil)
+          put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:nil)
           response.should render_template :edit
         end
       end
@@ -310,7 +296,7 @@ describe BookmarksController do
       end
 
       it "redirects to root " do
-        put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,item_id:BookmarksCategory.last.item_id,bookmarks_category_id:BookmarksCategory.last.id)
+        put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
         response.should redirect_to root_path
       end
 
@@ -331,13 +317,13 @@ describe BookmarksController do
     before do
       @item_approval  = FactoryGirl.create(:item)
       @bookmarks_category_approval = FactoryGirl.create(:bookmarks_category,item_id:@item_approval.id)
-      @bookmark_approval = FactoryGirl.create(:bookmark,item_id:@item_approval.id,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n')
+      @bookmark_approval = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n')
 
     end
 
 
     context "is admin user" do
-      let(:bookmarks_all) { Bookmark.where("approval = 'n'").order("item_id","bookmarks_category_id").all }
+      let(:bookmarks_all) { Bookmark.joins(:bookmarks_category).where("approval = 'n'").order('bookmarks_categories.item_id,bookmarks_category_id').all }
 
 
 
@@ -384,7 +370,7 @@ describe BookmarksController do
       @user = FactoryGirl.create(:user)
       @item_approval  = FactoryGirl.create(:item)
       @bookmarks_category_approval = FactoryGirl.create(:bookmarks_category,item_id:@item_approval.id)
-      @bookmark_approval = FactoryGirl.create(:bookmark,item_id:@item_approval.id,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n',user_bookmark:@user.id)
+      @bookmark_approval = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n',user_bookmark:@user.id)
 
     end
 
@@ -440,7 +426,7 @@ describe BookmarksController do
       @user = FactoryGirl.create(:user)
       @item_approval  = FactoryGirl.create(:item)
       @bookmarks_category_approval = FactoryGirl.create(:bookmarks_category,item_id:@item_approval.id)
-      @bookmark_approval = FactoryGirl.create(:bookmark,item_id:@item_approval.id,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n',user_bookmark:@user.id)
+      @bookmark_approval = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category_approval.id,approval:'n',user_bookmark:@user.id)
 
     end
 
@@ -500,13 +486,13 @@ describe BookmarksController do
       end
 
       it "should be successful" do
-        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmark.item_id, :format => :json
+        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
         response.should be_success
       end
 
 
       it "has a 200 status code" do
-        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmark.item_id, :format => :json
+        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
         expect(response.status).to eq(200)
       end
 
@@ -516,7 +502,8 @@ describe BookmarksController do
 
         it "should return json_index_bookmarks_with_bookmarks_category_by_item_id in json" do
           # depend on what you return in action
-          get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmark.item_id, :format => :json
+
+          get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
 
           body = JSON.parse(response.body)
           #puts "body ---- > "+body.to_s
@@ -532,13 +519,12 @@ describe BookmarksController do
 
             body_bookmark["id"].should == @bookmark_json.id
             body_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
-            body_bookmark["item_id"].should == @bookmark_json.item_id
+            #body_bookmark["item_id"].should == @bookmark_json.item_id
             body_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
             body_bookmark["bookmarks_category_name"].should == @bookmarks_category_json.name
             body_bookmark["description"].should == @bookmark_json.description
             body_bookmark["i_frame"].should == @bookmark_json.i_frame
             body_bookmark["title"].should == @bookmark_json.title
-            body_bookmark["item_id"].should == @bookmark_json.item_id
             body_bookmark["image_name"]["url"].should == @bookmark_json.image_name.to_s
             body_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
             body_bookmark["like"].should == @bookmark_json.like
@@ -567,13 +553,13 @@ describe BookmarksController do
       end
 
       it "should be successful" do
-        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmark.item_id, :format => :json
+        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmarks_category.item_id, :format => :json
         response.should be_success
       end
 
 
       it "has a 200 status code" do
-        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmark.item_id, :format => :json
+        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmarks_category.item_id, :format => :json
         expect(response.status).to eq(200)
       end
 
@@ -581,7 +567,7 @@ describe BookmarksController do
 
         it "should return json_index_bookmarks_with_bookmarks_category_by_item_id in json" do
           # depend on what you return in action
-          get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmark.item_id, :format => :json
+          get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmarks_category.item_id, :format => :json
 
           body = JSON.parse(response.body)
           #puts "body ---- > "+body.to_s
@@ -597,13 +583,13 @@ describe BookmarksController do
 
             body_bookmark["id"].should == @bookmark_json.id
             body_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
-            body_bookmark["item_id"].should == @bookmark_json.item_id
+
             body_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
             body_bookmark["bookmarks_category_name"].should == @bookmarks_category_json.name
             body_bookmark["description"].should == @bookmark_json.description
             body_bookmark["i_frame"].should == @bookmark_json.i_frame
             body_bookmark["title"].should == @bookmark_json.title
-            body_bookmark["item_id"].should == @bookmark_json.item_id
+
             body_bookmark["image_name"]["url"].should == @bookmark_json.image_name.to_s
             body_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
             body_bookmark["like"].should == @bookmark_json.like
@@ -620,14 +606,17 @@ describe BookmarksController do
 
       it "response should be 404 " do
 
-        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:User.first.id,item_id: @bookmark.item_id, :format => :json
+        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:User.first.id,item_id: @bookmarks_category.item_id, :format => :json
         expect(response.status).to eq(404)
       end
 
     end
-
-
   end
+
+  describe "api #json_show_bookmarks_seo_url_by_bookmark_id",tag_json_category:true do
+    pending "pending test api"
+  end
+
 
 
 

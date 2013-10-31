@@ -3,7 +3,7 @@
 class UsersPhotosImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-   include CarrierWave::RMagick
+  # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -23,13 +23,17 @@ class UsersPhotosImageUploader < CarrierWave::Uploader::Base
      name.to_s+filename.to_s
    end
 
+   cloudinary_transformation :transformation => [
+       {:width => 1000, :height => 1200, :crop => :limit}
+   ]
+
 
    def cache_dir
      "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
    end
 
    def default_url
-     asset_path("fallback/users_photos/" + [version_name, "default_user.png"].compact.join('_'))
+     asset_path("fallback/users_photos/" + [version_name, "default-user.jpg"].compact.join('_'))
    end
 
 

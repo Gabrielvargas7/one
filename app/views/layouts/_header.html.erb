@@ -1,25 +1,38 @@
 <header class="navbar navbar-fixed-top navbar-inverse" >
   <div class="navbar-inner" >
     <div class="container">
-      <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), root_path , class: "brand"  %>
+
+      <% if signed_in? %>
+          <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), room_rooms_path(current_user.username), class: "brand"  %>
+      <%else%>
+          <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), root_path , class: "brand"  %>
+      <%end%>
+
       <!--<nav>-->
         <ul class="nav pull-right" >
 
 
           <!-- Start If  -->
           <% if signed_in? %>
-              <li><%= link_to "My Room", room_rooms_path(current_user.username) %></li>
+              <li>
+                <% if get_current_user_image_name.image_name.blank?  %>
+                    <%= link_to cl_image_tag("default-user.jpg", :width => 23, :height => 23, :crop => :fill)+"  "+current_user.username.titleize, room_rooms_path(current_user.username) %>
+                <% else %>
+                    <%= link_to cl_image_tag(get_current_user_image_name.image_name, :width => 23, :height => 23, :crop => :fill )+"  "+current_user.username.titleize, room_rooms_path(current_user.username) %>
+                <% end%>
+              </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                    <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Profile", show_users_profiles_by_user_id_path(current_user.id) %></li>
-                  <li><%= link_to "Settings", current_user %></li>
+                  <li><%= link_to "My Room", room_rooms_path(current_user.username) %></li>
+                  <li><%= link_to "Profile", edit_users_profiles_by_user_id_path(current_user.id) %></li>
+                  <li><%= link_to "Settings", edit_user_path(current_user.id)  %></li>
 
                   <li class="divider"></li>
                   <li>
-                    <%= link_to "Sign out", signout_path, method: "delete" %>
+                    <%= link_to "Logout", signout_path, method: "delete" %>
                   </li>
 
                 </ul>
@@ -45,7 +58,7 @@
                   <li><%= link_to "Items_design", items_designs_path  %></li>
                   <li><%= link_to "Themes", themes_path  %></li>
                   <li><%= link_to "Bundles", bundles_path  %></li>
-                  <li><%= link_to "Bundles Bookmark", bundles_bookmarks_path  %></li>
+                  <li><%= link_to "Preset Bookmark", bundles_bookmarks_path  %></li>
                   <li><%= link_to "Bundles Items Design ", bundles_items_designs_path  %></li>
                   <li><%= link_to "Bookmarks", bookmarks_path  %></li>
                   <li><%= link_to "Bookmarks for approval ", index_bookmarks_approval_path  %></li>

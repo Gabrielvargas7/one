@@ -1,0 +1,33 @@
+<div class="shop_container">
+  <%= render 'shop_nav' %>
+    <div class="shop_table">
+      <table >
+
+        <% if @bookmark_length > 0 %>
+            <%  @bookmarks.in_groups_of(@bookmark_length,false).each do |bookmarks_groups| %>
+                <tr>
+                  <% bookmarks_groups.each do |bookmark| %>
+                      <td >
+
+                        <% if bookmark.image_name_desc.blank?  %>
+                            <%= link_to cl_image_tag("default_image_all.png", width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_bookmark_path(bookmark.id,get_clean_name(bookmark.title)), :method => :get %>
+                        <% else %>
+                            <%= link_to cl_image_tag(bookmark.image_name_desc , width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_bookmark_path(bookmark.id,get_clean_name(bookmark.title)), :method => :get %>
+                        <% end%>
+
+
+                        </br><%= bookmark.title[0,15] %>
+                      </td>
+
+                  <% end %>
+                </tr>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+
+</div>
+
+
+
+<br />

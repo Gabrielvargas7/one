@@ -38,16 +38,17 @@ class UsersNotificationsController < ApplicationController
       if UsersNotification.exists?(user_id: params[:user_id])
         @user_notification = UsersNotification.find_all_by_user_id(params[:user_id]).first
 
-          if @user_notification.notified == 'n'
             if Notification.exists?(id:@user_notification.notification_id)
-              @notification = Notification.find(@user_notification.notification_id)
-              format.json { render json: @notification.as_json(only: [:id,:name,:description,:image_name,:position] ) }
+
+                @notification = Notification.select('notifications.*,users_notifications.notified,users_notifications.user_id').
+                                  joins(:users_notifications).where('users_notifications.user_id = ?',params[:user_id])
+
+                format.json { render json: @notification.as_json(only: [:id,:name,:description,:image_name,:position,:notified,:user_id] ) }
+
             else
               format.json { render json: 'not found notification of user ' , status: :not_found }
             end
-          else
-            format.json { render json: 'user already notified ' , status: :not_found }
-          end
+
       else
         format.json { render json: 'not found user id ' , status: :not_found }
       end

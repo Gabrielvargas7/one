@@ -41,9 +41,9 @@ class User < ActiveRecord::Base
   before_create{ get_username(self.email)}
 
   after_create :create_user_notification,
-               :send_signup_user_email ,
+               :send_signup_user_email,
                :create_random_room,
-               #:create_specific_room,
+  #             #:create_specific_room,
                :create_image_name,
                :create_user_profile,
                :create_specific_friends
@@ -73,9 +73,9 @@ class User < ActiveRecord::Base
 
   # Send email after the user sign up
   def send_signup_user_email
-    if Rails.env.production?
+    #if Rails.env.production?
         UsersMailer.signup_email(self).deliver
-    end
+    #end
   end
 
   #***********************************
@@ -141,7 +141,8 @@ class User < ActiveRecord::Base
 
         user_image_name = user.id.to_s
         user_image_name = rand(0..100000).to_s+user_image_name+".jpg"
-        facebook_image = "#{Rails.root}/tmp/uploads/cache/facebook/"+user_image_name
+        #facebook_image = "#{Rails.root}/tmp/uploads/cache/facebook/"+user_image_name
+        facebook_image = "#{Rails.root}/tmp/"+user_image_name
 
         open(facebook_image, 'wb') do |file|
           #file << open(auth.info.image).read
@@ -331,14 +332,43 @@ class User < ActiveRecord::Base
       end
 
       #create the initials bookmarks from the bundle
+      #@bundle_bookmarks = BundlesBookmark.all
+      #@bundle_bookmarks.each do |bundle_bookmark|
+      #  position = 1
+      #
+      #  while UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
+      #    position += position
+      #  end
+      #  #puts "final position" +position.to_s
+      #  UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
+      #end
+
+
+      @items = Item.all
       @bundle_bookmarks = BundlesBookmark.all
-      @bundle_bookmarks.each do |bundle_bookmark|
+
+      @items.each do |item|
         position = 1
-        while UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
-           position += position
+        if BundlesBookmark.
+          joins(:bookmark).
+          joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+          where('bookmarks_categories.item_id = ?',item.id).exists?
+
+
+          @bundle_bookmarks = BundlesBookmark.
+                              joins(:bookmark).
+                              joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+                              where('bookmarks_categories.item_id = ?',item.id)
+
+
+          @bundle_bookmarks.each do |bundle_bookmark|
+            UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
+            position = position+1
+          end
         end
-          UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
       end
+
+
     end
 
   #***********************************
@@ -348,8 +378,12 @@ class User < ActiveRecord::Base
 
   def create_specific_room
 
-    bundle = Bundle.find(6)
-
+    puts "final position"
+    if Bundle.exists?(id:6)
+      bundle = Bundle.find(6)
+    else
+      bundle = Bundle.where("active = 'y'").order("RANDOM()").first
+    end
     #create the theme from the bundle
     UsersTheme.create!(user_id:self.id,theme_id:bundle.theme_id,section_id:bundle.section_id)
 
@@ -361,14 +395,44 @@ class User < ActiveRecord::Base
     end
 
     #create the initials bookmarks from the bundle
+    #@items = Item.all
+    #@bundle_bookmarks = BundlesBookmark.all
+    #
+    #@items.each do |item|
+    #  position = 1
+    #  if BundlesBookmark.exists?(item_id:item.id)
+    #    @bundle_bookmarks = BundlesBookmark.where(item_id:item.id)
+    #    @bundle_bookmarks.each do |bundle_bookmark|
+    #      UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
+    #      position = position+1
+    #    end
+    #  end
+    #end
+
+    @items = Item.all
     @bundle_bookmarks = BundlesBookmark.all
-    @bundle_bookmarks.each do |bundle_bookmark|
+
+    @items.each do |item|
       position = 1
-      while UsersBookmark.exists?(position:position,user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id)
-        position += position
+      if BundlesBookmark.
+          joins(:bookmark).
+          joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+          where('bookmarks_categories.item_id = ?',item.id).exists?
+
+
+        @bundle_bookmarks = BundlesBookmark.
+            joins(:bookmark).
+            joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+            where('bookmarks_categories.item_id = ?',item.id)
+
+
+        @bundle_bookmarks.each do |bundle_bookmark|
+          UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
+          position = position+1
+        end
       end
-      UsersBookmark.create!(user_id:self.id,bookmark_id:bundle_bookmark.bookmark_id,position:position)
     end
+
 
 
   end

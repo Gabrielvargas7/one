@@ -257,7 +257,9 @@ describe User do
   describe "#send_signup_user_email", tag_send_signup_user_email:true do
     it "delivers email to user" do
       @user.send_signup_user_email
-      last_email.to.should include (@user.email)
+      #last_email.to.should include (@user.email)
+      last_email = ActionMailer::Base.deliveries.last
+      last_email.to.should include(@user.email)
     end
 
   end

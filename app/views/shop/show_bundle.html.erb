@@ -1,0 +1,67 @@
+<div class="shop_container">
+  <%= render 'shop_nav' %>
+
+  <div class="shop_upper_container" data-shop-type="<%= @entity_type %>">
+    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@bundle.id),:class => "btn btn-primary"%>
+    <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
+    <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
+  <div class="shop_left">
+    <p>
+      <% if @bundle.image_name.blank?  %>
+          <%= cl_image_tag("default_image_all.png", width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png")%>
+      <% else %>
+          <%= cl_image_tag(@bundle.image_name , width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png") %>
+      <% end%>
+
+    </p>
+  </div>
+  <div class="shop_right">
+    <br/>
+    <br/>
+    <br/>
+    <h4 class="shop_name">
+      <%= @bundle.name %>
+    </h4>
+    <p>
+      <b><%= @bundle.brand.titlecase unless @bundle.brand.nil? %></b>
+    </p>
+    <p class="shop_description">
+      <%= @bundle.description %>
+    </p>
+  </div>
+</div>
+
+
+
+<div class="shop_container">
+  <div class="shop_table">
+    <table>
+      <% if @bundle_length > 0 %>
+          <% @bundles_rand.in_groups_of(@bundle_length,false).each do |bundle_groups| %>
+              <tr>
+                <% bundle_groups.each do |bundle| %>
+                    <td >
+                      <% if bundle.image_name.blank?  %>
+                          <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_bundle_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+                      <% else %>
+                          <%= link_to cl_image_tag(bundle.image_name , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"), shop_show_bundle_path(bundle.id,get_clean_name(bundle.name)), :method => :get %>
+                      <% end%>
+
+
+                      </br><%= bundle.name[0,15] %>
+                    </td>
+                <% end %>
+              </tr>
+          <% end %>
+      <% end %>
+    </table>
+  </div>
+
+</div>

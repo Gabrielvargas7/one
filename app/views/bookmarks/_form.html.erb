@@ -22,11 +22,6 @@
         </div>
 
         <div class="field">
-          <%= f.label :item_id %><br />
-          <%= f.collection_select :item_id, Item.all, :id, :id_and_item , :prompt => true %>
-        </div>
-
-        <div class="field">
           <%= f.label :bookmarks_category %><br />
           <%= f.collection_select :bookmarks_category_id, BookmarksCategory.all, :id, :id_and_bookmark_category , :prompt => true %>
         </div>

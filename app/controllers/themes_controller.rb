@@ -229,6 +229,31 @@ class ThemesController < ApplicationController
 
   end
 
+  # GET Get seo_url of theme
+  # /themes/json/show_theme_seo_url_by_theme_id/:theme_id'
+  # /themes/json/show_theme_seo_url_by_theme_id/106.json'
+
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_show_theme_seo_url_by_theme_id
+
+    respond_to do |format|
+      if Theme.exists?(id:params[:theme_id])
+        @theme = Theme.where('id=?',params[:theme_id]).first
+
+        seo_url = Hash.new
+        seo_url["seo_url"] = shop_show_theme_url(@theme.id,get_clean_name(@theme.name))
+
+        format.json { render json: seo_url }
+      else
+        format.json { render json: 'not found item designs id' , status: :not_found }
+      end
+    end
+
+  end
+
+
 
 
 

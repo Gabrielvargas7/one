@@ -18,11 +18,16 @@
 //= require toastr
 //= require underscore
 //= require backbone
-//= require bootbox
-//= require hogan-2.0.0
-//= require underscore.string
-//= require typeahead
 //= require backbone.marionette
+//= require bootbox
+//= require underscore.string
+//= require jquery.simplyscroll
+//= require jquery.scrollTo
+//= require backbone.marionette
+//= require backbone.bootstrap-modal
+//= require jquery.mousewheel
+//= require FB.js
+//= require shop
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models
@@ -30,3 +35,5 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+

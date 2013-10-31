@@ -33,36 +33,66 @@ def create_init_data
 
   if Theme.count == 0
 
+    #####################
+    #  Creating Section
+    #####################
+
     2.times {FactoryGirl.create(:section)}
     @section = Section.first
     #puts "--- Start creating seed data for test  "
 
+    #####################
+    #  Creating Themes
+    #####################
 
-    5.times {FactoryGirl.create(:theme)}
+    6.times {FactoryGirl.create(:theme)}
     @themes = Theme.all
+
+    #####################
+    #  Creating Bundles
+    #####################
 
     @themes.each do |theme|
       FactoryGirl.create(:bundle,theme_id:theme.id,section_id:@section.id,active:'y')
     end
 
-    #@bundle = Bundle.first
 
-    2.times {FactoryGirl.create(:item)}
+    #####################
+    #  Creating Item
+    #####################
+
+    10.times {FactoryGirl.create(:item)}
     @items = Item.all
 
-    2.times {FactoryGirl.create(:location,section_id:@section.id)}
-    @locations = Location.all
+    #####################
+    #  Creating Locations
+    #####################
 
-    item =  Item.first
-    location = Location.first
-    #puts "items : " +item.id.to_s
-    #puts "location : "+ location.id.to_s
+    #10.times {FactoryGirl.create(:location,section_id:@section.id)}
+    #@locations = Location.all
+    #
+    ##puts "items : " +item.id.to_s
+    ##puts "location : "+ location.id.to_s
+    #
+    #
+    #
+    #item =  Item.first
+    #location = Location.first
+    #
+    #FactoryGirl.create(:items_location,item_id:item.id,location_id:location.id)
+    #
+    #item =  Item.last
+    #location = Location.last
+    #FactoryGirl.create(:items_location,item_id:item.id,location_id:location.id)
 
-    FactoryGirl.create(:items_location,item_id:item.id,location_id:location.id)
+    @items.each do |item|
+      location = FactoryGirl.create(:location,section_id:@section.id)
+      FactoryGirl.create(:items_location,item_id:item.id,location_id:location.id)
+      #puts "items : " +item.id.to_s
+      #puts "location : "+ location.id.to_s
 
-    item =  Item.last
-    location = Location.last
-    FactoryGirl.create(:items_location,item_id:item.id,location_id:location.id)
+    end
+
 
 
 
@@ -75,23 +105,45 @@ def create_init_data
 
       @bookmarks_category = BookmarksCategory.find_by_item_id(item.id)
       (1..3).each do |i|
-        FactoryGirl.create(:bookmark,item_id:item.id,bookmarks_category_id:@bookmarks_category.id)
+        FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
       end
-      @bookmark = Bookmark.find_by_item_id(item.id)
+      @bookmarks = Bookmark.
+                    joins(:bookmarks_category).
+                    where('bookmarks_categories.item_id = ?',item.id)
 
-      FactoryGirl.create(:bundles_bookmark,item_id:item.id,bookmark_id:@bookmark.id)
+
+      @bookmarks.each do |bookmark|
+        FactoryGirl.create(:bundles_bookmark,bookmark_id:bookmark.id)
+        #puts "items : " +item.id.to_s
+        #puts "bundle bookmark : "+ bookmark.id.to_s
+      end
+
     end
 
     @bundles = Bundle.all
 
     @bundles.each do |bundle|
-      items_design = ItemsDesign.first
-      items_location = ItemsLocation.find_by_item_id(items_design.item_id)
-      FactoryGirl.create(:bundles_items_design,bundle_id:bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
+      #puts "bundle: "+ bundle.id.to_s
 
-      items_design = ItemsDesign.last
-      items_location = ItemsLocation.find_by_item_id(items_design.item_id)
-      FactoryGirl.create(:bundles_items_design,bundle_id:bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
+
+      #items_design = ItemsDesign.first
+      #items_location = ItemsLocation.find_by_item_id(items_design.item_id)
+      #FactoryGirl.create(:bundles_items_design,bundle_id:bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
+      #
+      #items_design = ItemsDesign.last
+      #items_location = ItemsLocation.find_by_item_id(items_design.item_id)
+      #FactoryGirl.create(:bundles_items_design,bundle_id:bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
+
+
+      @items_designs = ItemsDesign.all
+      @items_designs.each do |items_design|
+        items_location = ItemsLocation.find_by_item_id(items_design.item_id)
+        FactoryGirl.create(:bundles_items_design,bundle_id:bundle.id,location_id:items_location.location_id,items_design_id:items_design.id)
+        #puts "bundle item designs: "+ items_design.id.to_s
+
+      end
+
+
     end
 
     #puts "--- End creating seed data for test  "
@@ -102,7 +154,7 @@ end
 
 def delete_init_data
 
-  #puts "--- Start deleteing init data for test  "
+  #puts "--- Start deleting init data for test  "
 
   Section.delete_all
   Location.delete_all

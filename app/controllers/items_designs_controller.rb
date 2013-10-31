@@ -131,6 +131,21 @@ class ItemsDesignsController < ApplicationController
   #***********************************
 
 
+  # GET Get item_design by id
+  # /items_designs/json/show_item_design_by_id/:id'
+  # /items_designs/json/show_item_design_by_id/1.json
+  # Return head
+  # success    ->  head  200 OK
+  
+  def json_show_item_design_by_id
+    @items_design = ItemsDesign.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @items_design }
+    end
+  end
+
+
   # GET Get all items_designs by item_id
   # /items_designs/json/index_items_designs_by_item_id/:item_id'
   # /items_designs/json/index_items_designs_by_item_id/1.json
@@ -192,6 +207,7 @@ class ItemsDesignsController < ApplicationController
                             items_designs.special_name,
                             items_designs.like,
                             items_designs.image_name,
+                            items_designs.image_name_logo,
                             items_designs.image_name_hover,
                             items_designs.image_name_selection').
                     joins(:bundles_items_designs).
@@ -295,4 +311,32 @@ class ItemsDesignsController < ApplicationController
 
   end
 
+
+
+
+# GET Get seo_url of items_design
+# /items_designs/json/show_items_design_seo_url_by_items_design_id/:items_design_id'
+# /items_designs/json/show_items_design_seo_url_by_items_design_id/106.json'
+
+# Return head
+# success    ->  head  200 OK
+
+  def json_show_items_design_seo_url_by_items_design_id
+
+    respond_to do |format|
+      if ItemsDesign.exists?(id:params[:items_design_id])
+        @items_design = ItemsDesign.where('id=?',params[:items_design_id]).first
+
+        seo_url = Hash.new
+        seo_url["seo_url"] = shop_show_items_design_url(@items_design.id,get_clean_name(@items_design.name))
+
+        format.json { render json: seo_url }
+      else
+        format.json { render json: 'not found item designs id' , status: :not_found }
+      end
+    end
+
+  end
+
 end
+

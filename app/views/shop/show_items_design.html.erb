@@ -1,0 +1,75 @@
+<div class="shop_container" xmlns="http://www.w3.org/1999/html">
+  <%= render 'shop_nav' %>
+
+  <div class="shop_upper_container" data-shop-type="<%= @entity_type %>">
+    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id),:class => "btn btn-primary"%>
+    <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
+    <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+  <div class="shop_left">
+    <p>
+      <% if @items_design.image_name_selection.blank?  %>
+          <%= cl_image_tag("default_image_all.png", width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png")%>
+      <% else %>
+          <%= cl_image_tag(@items_design.image_name_selection , width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png") %>
+      <% end%>
+
+    </p>
+  </div>
+  <div class="shop_right">
+    <br/>
+    <br/>
+    <br/>
+    <h4 class="shop_name" >
+      <%= @items_design.name %>
+    </h4>
+    <p>
+      <b><%= @items_design.brand.titlecase unless @items_design.brand.nil? %></b>
+    </p>
+
+    <p class="shop_description">
+      <%= @items_design.description %>
+    </p>
+    <%= link_to "See it in your room before you buy.", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id)%>
+    <br/>
+    <br/>
+
+    <a href="<%= @items_design.product_url %>#" target="_blank" class="btn btn-success">Buy at <%= @items_design.product_url %></a>
+  </div>
+</div>
+
+
+
+<div class="shop_container">
+    <div class="shop_table">
+      <table>
+        <% if @item_length > 0 %>
+            <% @items_designs_rand.in_groups_of(@item_length,false).each do |items_design_groups| %>
+                <tr>
+                  <% items_design_groups.each do |items_design| %>
+                      <td >
+                        <% if items_design.image_name_selection.blank?  %>
+                            <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+                        <% else %>
+                            <%= link_to cl_image_tag(items_design.image_name_selection , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
+                        <% end%>
+
+
+                        </br><%= items_design.name[0,15] %>
+                      </td>
+
+                  <% end %>
+                </tr>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+
+</div>
+

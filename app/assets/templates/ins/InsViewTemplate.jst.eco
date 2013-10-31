@@ -1,0 +1,8 @@
+<div class="media">
+  <a class="pull-left" href="#">
+    <img src="<%= @model.get('image_name').url%>">
+  </a>
+  <div class="media-body">
+    <p class="modal-text"><%= @model.get('description')%></p>
+  </div>
+</div>

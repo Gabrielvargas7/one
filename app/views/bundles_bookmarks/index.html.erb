@@ -1,7 +1,7 @@
-<h1>Listing bundles_bookmarks</h1>
+<h1>Listing preset bookmarks</h1>
 
 <h3>
-  <%= link_to 'New Bundles bookmark', new_bundles_bookmark_path %>
+  <%= link_to 'New Preset bookmark', new_bundles_bookmark_path %>
 </h3>
 
 
@@ -23,12 +23,12 @@
 <% @bundles_bookmarks.each do |bundles_bookmark| %>
   <tr>
 
-    <%  if bundles_bookmark.item.nil? %>
+    <%  if bundles_bookmark.bookmark.bookmarks_category.item.nil? %>
         <td></td>
         <td></td>
     <%  else %>
-        <td><%= bundles_bookmark.item.id %></td>
-        <td><%= bundles_bookmark.item.name %></td>
+        <td><%= bundles_bookmark.bookmark.bookmarks_category.item.id %></td>
+        <td><%= bundles_bookmark.bookmark.bookmarks_category.item.name %></td>
     <%  end %>
 
     <%  if bundles_bookmark.bookmark.nil? %>
@@ -40,7 +40,15 @@
         <td><%= bundles_bookmark.bookmark.id %></td>
         <td><%= bundles_bookmark.bookmark.bookmark_url.to_s %></td>
         <td><%= bundles_bookmark.bookmark.title  %></td>
-        <td> <%= image_tag bundles_bookmark.bookmark.image_name.url().to_s ,width: 50, height:50 %> </td>
+        <td>
+
+          <% if bundles_bookmark.bookmark.image_name.blank?  %>
+              <%= cl_image_tag "default_image_all.png",width:50 , height:50,:crop => :fit,:default_image => "default_image_all.png" %>
+          <% else %>
+              <%= cl_image_tag bundles_bookmark.bookmark.image_name,width:50 , height:100,:crop => :fit,:default_image => "default_image_all.png" %>
+          <% end %>
+
+        </td>
     <%  end %>
 
 

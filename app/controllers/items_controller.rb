@@ -43,6 +43,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
@@ -74,12 +75,28 @@ class ItemsController < ApplicationController
     @item = Item.new(params[:item])
 
     respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item, status: :created, location: @item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+      #if @item.save
+      #
+      #  format.html { redirect_to @item, notice: 'Item was successfully created.' }
+      #  format.json { render json: @item, status: :created, location: @item }
+      #
+      #else
+      #  format.html { render action: "new" }
+      #  format.json { render json: @item.errors, status: :unprocessable_entity }
+      #end
+
+      ActiveRecord::Base.transaction do
+        begin
+          @item.save
+          @item_designs = ItemsDesign.new(item_id:@item.id,name:@item.name)
+          @item_designs.save
+          #UsersItemsDesign.create(user_id:user.id,items_design_id:@items_design.id,hide:'no',location_id:@items_location.location_id)
+          format.html { redirect_to @item, notice: 'Item was successfully created. and also a general item_design' }
+
+        rescue ActiveRecord::StatementInvalid
+          format.html { render action: "new" }
+          raise ActiveRecord::Rollback
+        end
       end
     end
   end

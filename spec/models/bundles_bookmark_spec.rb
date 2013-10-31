@@ -18,8 +18,8 @@ describe BundlesBookmark do
   before do
     @item = @item = FactoryGirl.create(:item)
     @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-    @bookmark = FactoryGirl.create(:bookmark,item_id:@item.id,bookmarks_category_id:@bookmarks_category.id)
-    @bundles_bookmark = FactoryGirl.build(:bundles_bookmark,item_id:@item.id,bookmark_id:@bookmark.id)
+    @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+    @bundles_bookmark = FactoryGirl.build(:bundles_bookmark,bookmark_id:@bookmark.id)
 
   end
 
@@ -28,8 +28,6 @@ describe BundlesBookmark do
 
   #theme info
   it { @bundles_bookmark.should respond_to(:bookmark_id) }
-  it { @bundles_bookmark.should respond_to(:item_id) }
-
   it { @bundles_bookmark.should be_valid }
 
 
@@ -38,7 +36,7 @@ describe BundlesBookmark do
   ###############
   describe " item_id ",tag_item_id:true do
     it "should be valid " do
-      @bundles_bookmark.item_id == @item.id
+
       @bundles_bookmark.bookmark_id == @bookmark.id
 
     end

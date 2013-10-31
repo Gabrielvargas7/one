@@ -27,7 +27,15 @@ class Theme < ActiveRecord::Base
                   :special_name,
                   :like
 
-  validates :name,presence:true
+
+  VALID_REGEX = /^(?:[^\W_]|\s)*$/u
+
+  validates :name,presence:true,
+            #uniqueness:{ case_sensitive: false },
+            #format: { with: VALID_REGEX },
+            length: {minimum: 1, maximum: 100},
+            allow_blank: false
+
   validates :like, :numericality => { :only_integer => true }
 
   mount_uploader :image_name, ThemesImageUploader

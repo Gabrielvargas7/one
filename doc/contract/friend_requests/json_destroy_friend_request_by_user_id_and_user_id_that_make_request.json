@@ -1,0 +1,11 @@
+//#DELETE if the user deny the request, it will be destroy
+//# /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_that_make_request/:user_id/:user_id_that_make_request
+//# /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_that_make_request/100001/999.json
+//#Return head
+//# success          ->  head  204 no content
+//# already destroy  ->  head  200 OK
+
+
+
+
+{}

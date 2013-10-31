@@ -60,3 +60,58 @@
     git clone  git@github.com:Gabrielvargas7/sample_app.git
     // check is there
     git remote -v
+    
+    
+   
+   
+   
+********************
+** How to add Heroku as staging
+********************
+(1) Navigate to root of project
+(2) git remote add staging git@heroku.com:staging-mywebroom.git
+    --> where staging is the name you'd like to call the remote branch
+(3) type git remote -v to then see a list of your remote repo's
+
+https://help.github.com/articles/adding-a-remote
+https://help.github.com/articles/removing-a-remote
+
+Note: if you accidentily add a remote branch that you'd like to remove, 
+      type git remote rm <name you want to remove>
+   
+   
+   
+   
+    
+    
+
+********************
+** How to update local database
+********************
+
+1) Stop local instance of rails server
+
+2) Stop PostgreSQL server
+    a) Open pgAdmin3
+    b) Right click on server instance and click 'Disconect server'
+    
+2) Download new database
+    a) From project root (any branch) type into console:  heroku pgbackups:url --remote staging
+    b) Copy generated link into browser (Note: link only good for a few minutes)
+        i) new copy of database will be downloaded
+        
+3) Drop existing database and create a new one
+    a) From project root type into console:  rake db:drop
+    b) Then:  rake db:create
+    
+4) Restore database
+    a) Go back to pgAdmin3
+    b) Sign into server
+    c) Navigate to database/rooms_development
+    d) Right click and choose 'restore'
+    e) Choose file that was downloaded and click open
+        i) may need to Enable: All Files (*) in order to choose file
+    f) Click restore
+    g) Wait a few seconds for stuff to happen
+
+*** You're Done! ***

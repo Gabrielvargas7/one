@@ -1,0 +1,8 @@
+<div id="store_main_box" >
+  <div class="store_main_box_left">
+    <a href="#" id="store_close_button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png" ></a>
+    <a href="#" id="store_collapse_button"><img class="flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png"></a>
+  </div>
+  <div class="store_main_box_right">
+  </div>
+</div>

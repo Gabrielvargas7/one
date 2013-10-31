@@ -1,88 +1,170 @@
 /*Profile Key Request Structure CSS*/
 #profile_key_request_list , #profile_suggested_friends_list,
 #profile_key_request_list td, #profile_suggested_friends_list td{
-	background-color:#f5f5f5;
+  // background-color:#f5f5f5;
 
 }
 #profile_key_request_list{
-	overflow:scroll;
-	width:100%;
+  overflow:scroll;
+  width:100%;
+  min-height:50px;
 }
 .profile_table_innerDiv.profile_key_request{
-	max-height:200px;
+  max-height:200px;
 }
 .profile_table_innerDiv.profile_suggested_friends{
-	min-height:300px;
+  height:340px;
 }
 #profile_suggested_friends_list{
-	overflow:scroll;
-	width:100%;
+  overflow:scroll;
+  width:100%;
 }
 .profile_table_outerDiv{
-	position:relative;
-	background-color: #f5f5f5;
+  position:relative;
+  background-color: #f5f5f5;
 }
 .profile_table_innerDiv{
-	overflow-y:auto;
-	padding-top: 1.6em;
-	max-height:575px;
+  overflow-y:auto;
+  padding-top: 1.6em;
+  // max-height:575px;
 }
 .profile_table_outerDiv thead tr{
-	position:absolute;
-	top:0px;
+  position:absolute;
+  top:0px;
 
 }
 .profile_table_innerDiv thead th{
-	width:800px !important;  /*This needs to be the width of the table to keep the text from overlapping on table scroll. */
+  width:800px !important;  /*This needs to be the width of the table to keep the text from overlapping on table scroll. */
 }
 
 /*End Profile Key Request Structure*/
 /*Profile Single Request and Single Suggestion CSS*/
 .profile_single_request .media, .profile_friend.media{
-	background-color:#f5f5f5;
-	border-bottom:1px solid #f4f4f4;
+  // background-color:#f5f5f5;
+  border-bottom:1px solid #f4f4f4;
+  position:relative;
+}
+.link_spanner{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+}
+.profile_friend.media:hover,.profile_single_request:hover,.profile_friends_suggestion_single:hover{
+  background-color: #e2e2e2;
 }
 p.profile_request_name, p.profile_suggestion_name,
 p.profile_friend_name{
-	color:#0073a5;
-	font-size: 16px;
+  color:#0073a5;
+  font-size: 16px;
 }
 p.profile_request_username, p.profile_suggestion_username,
 p.profile_friend_username{
-	color:#898989;
-	font-size:12px;
+  color:#898989;
+  font-size:12px;
 }
 .profile_request_accept, .profile_request_key_button,.profile_large_item_try_it_button{
-	width:70px;
-	height:23px;
-	font-size:15px;
-	background-color:#39b54a;
-	color:#ffffff;
-	box-shadow: 0px 2px 0px 0px #179340;
-	border:none;
+  width:70px;
+  height:23px;
+  font-size:15px;
+  background-color:#39b54a;
+  color:#ffffff;
+  box-shadow: 0px 2px 0px 0px #179340;
+  border:none;
 
 }
 .profile_request_key_button{
-	width:108px;
-	height:23px;
+  width:108px;
+  height:23px;
 }
 .profile_request_deny{
-	width:70px;
-	height:23px;
-	font-size:15px;
-	background-color:#e2e2e2;
-	color:black;
-	box-shadow: 0px 2px 0px 0px #c1c1c1;
-	border:none;
+  width:70px;
+  height:23px;
+}
+.profile_request_deny,.profile_key_requested, .profile_large_item_tried_it{
+  font-size:15px;
+  background-color:#e2e2e2;
+  color:#464646;
+  box-shadow: 0px 2px 0px 0px #c1c1c1;
+  border:none;
 }
 .profile_request_buttons{
-	padding-right:30px;
+  padding-right:30px;
 }
 
 .profile_friends_view{
-	background-color: #f5f5f5;
+  background-color: #f5f5f5;
+  height:500px;
+  overflow-y:scroll;
 
 }
 .user-photos-view{
   background-color: transparent;
+}
+
+/*Ask For Key Overlay*/
+#profile_ask_for_key_overlay{
+  height:200px;
+  width:600px;
+  position:absolute;
+  bottom:0;
+
+}
+
+#profile_ask_for_key_overlay{
+  /*56% to white Gradient*/
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 56%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(56%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+#profile_ask_for_key_overlay button{
+  margin:auto;
+  position:absolute;
+  top:50%;
+  right:35%;
+  width:auto;
+  font-family:"Open Sans";
+}
+#profile_ask_for_key_overlay button.profile_key_requested{
+  width:130px;
+}
+/*END Ask For Key Overlay*/
+
+/*Profile Friends Media Queries*/
+@media screen and (max-height:780px){
+  .profile_table_innerDiv.profile_suggested_friends{
+    min-height:0;
+    max-height:300px;
+  }
+}
+@media screen and (max-height:735px){
+  .profile_table_innerDiv.profile_suggested_friends{
+
+    max-height:200px;
+  }
+
+}
+@media screen and (max-height:720px){
+  .profile_friends_view{
+    height:420px;
+  }
+}
+@media screen and (max-height:650px){
+  .profile_table_innerDiv.profile_suggested_friends{
+
+    max-height:250px;
+  }
+
+}
+@media screen and (max-height:630px){
+  .profile_table_innerDiv.profile_suggested_friends{
+    max-height:180px;
+  }
+
 }

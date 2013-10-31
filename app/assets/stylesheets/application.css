@@ -11,7 +11,6 @@
  *= require bootstrap
  *= require toastr
  *= require toastr-responsive
- *= require typeahead-bootstrap
  *= require_self
  *= require_tree .
  */
@@ -23,8 +22,59 @@
 
 body {
     padding-top: 45px;
-    font-family:"Open Sans";
+    font-family: "Open Sans";
+    zoom: 100%;
+
+
 }
+
+@media screen and (max-height:1020px){
+    body{
+        zoom: 135%;
+    }
+}
+
+@media screen and (max-height:920px){
+    body{
+        zoom: 115%;
+    }
+}
+
+@media screen and (max-height:820px){
+    body{
+        zoom: 100%;
+        /*firefox zoon break the css*/
+        /*-moz-transform: scale(1);*/
+        /*-moz-transform-origin: 0 0*/
+
+    }
+}
+
+
+@media screen and (max-height:720px){
+    body{
+        zoom: 90%;
+        /*firefox zoon break the css*/
+        /*-moz-transform: scale(0.5);*/
+        /*-moz-transform-origin: 0 0*/
+        /**/
+    }
+}
+
+@media screen and (max-height:620px){
+    body{
+        zoom: 80%;
+
+    }
+}
+@media screen and (max-height:520px){
+    body{
+        zoom: 70%;
+
+    }
+}
+
+
 
 .center {
     text-align: center;
@@ -38,9 +88,10 @@ body {
 
 footer {
     margin-top: 45px;
-    padding-top: 5px;
+    padding: 20px;
     border-top: 1px solid #eaeaea;
     color: #999;
+
 }
 
 footer a {
@@ -73,17 +124,16 @@ footer ul li {
     filter: FlipH;
     -ms-filter: "FlipH";
 }
+.capitalize{
+    text-transform: capitalize;
+}
 .hidden{
     visibility:hidden;
 }
 /*Social Bar Style*/
-.fb_like_item img{
-    width:50px;
-    height:auto;
-}
+
 .pinterest_item img{
-    width:20px;
-    height:auto;
+
 }
 .info_button_item img{
     width:50px;
@@ -95,4 +145,60 @@ footer ul li {
 .social_bar .navbar{
     border-spacing:0;
 }
+.dark_text{
+    color:#464646;
+}
+.social_bar li.info_button_item{
+    padding-top:8px;
+    width:30px;
+}
+.navbar .nav > li.info_button_item > a{
+    background-color: #00CCFF;
+    color:white;
+    border-radius:3px;
+    padding:3px;
+    font-size:13px;
+    width:45px;
+    height:20px;
+}
+/*Override Twitter Bootstrap Background Color*/
+.social_bar .navbar-inner{
+    background-image:none;
+    background-color: transparent;
+    border:none;
+}
+.social_bar{
+    background-color: rgba(255,255,255,.4);
+}
+
 /*End social bar style*/
+.toast-top-center{
+    top: 52px; 
+    left: 50%; 
+    margin-left: -150px; 
+}
+/*Error message.*/
+.err_response p{
+    color:red;
+    font-weight:bolder;
+}
+
+input[type=text] {
+    border: 1px solid #dbdbdb;
+    border-radius:1px;
+}
+input[type=password] {
+    border: 1px solid #dbdbdb;
+    border-radius:1px;
+}
+.btn-group > .btn:first-child {
+    margin-left: 0;
+    -webkit-border-top-left-radius: 0px;
+    -moz-border-radius-topleft: 0px;
+    border-top-left-radius: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    -moz-border-radius-bottomleft: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+

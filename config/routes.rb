@@ -2,10 +2,44 @@ Mywebroom::Application.routes.draw do
 
 
 
-  resources :shop
+  #resources :shop
 
-  match '/shop/show/items-design/:items_design_id', to:
-         'shop#shop_show_items_design', via: :get,as: :shop_show_items_design
+  match '/shop/items-design/:items_design_id/:name', to:
+         'shop#show_items_design', via: :get,as: :shop_show_items_design
+
+  match '/shop', to:
+         'shop#index', via: :get,as: :shop_index
+
+  match '/shop/item/:item_id/:name', to:
+         'shop#show_item', via: :get,as: :shop_show_item
+
+  match '/shop/themes', to:
+         'shop#index_themes', via: :get,as: :shop_index_themes
+
+  match '/shop/themes/:id/:name', to:
+         'shop#show_theme', via: :get,as: :shop_show_theme
+
+  match '/shop/bundles', to:
+         'shop#index_bundles', via: :get,as: :shop_index_bundles
+
+  match '/shop/bundle/:id/:name', to:
+         'shop#show_bundle', via: :get,as: :shop_show_bundle
+
+  match '/shop/entire_rooms', to:
+        'shop#index_entire_rooms', via: :get,as: :shop_index_entire_rooms
+
+  match '/shop/entire_room/:id/:name', to:
+        'shop#show_entire_room', via: :get,as: :shop_show_entire_room
+
+  match '/shop/bookmarks', to:
+         'shop#index_bookmarks', via: :get,as: :shop_index_bookmarks
+
+  match '/shop/bookmark/:id/:name', to:
+        'shop#show_bookmark', via: :get,as: :shop_show_bookmark
+
+  match '/shop/forward_to_u_room/:came_from/:entity_type/:entity_id', to:
+        'shop#forward_to_u_room', via: :get,as: :shop_forward_to_u_room
+
 
   resources :users_profiles
 
@@ -185,6 +219,8 @@ Mywebroom::Application.routes.draw do
          'themes#json_index_themes_filter_by_category_by_keyword_and_limit_and_offset', via: :get ,as:
           :themes_index_themes_filter_by_category_by_keywor_and_limit_and_offset
 
+  match '/themes/json/show_theme_seo_url_by_theme_id/:theme_id', to:
+         'themes#json_show_theme_seo_url_by_theme_id', via: :get
 
 
 
@@ -217,6 +253,11 @@ Mywebroom::Application.routes.draw do
   #**************************
   #  start Bundles contract
   #**************************
+  match '/bundles/json/show_bundle_by_id/:id', to:
+        'bundles#json_show_bundle_by_id', via: :get  , as:
+        :bundles_json_show_bundle_by_id
+
+
   match '/bundles/json/index_bundles', to:
          'bundles#json_index_bundles', via: :get , as:
          :bundles_json_index_bundles
@@ -230,6 +271,12 @@ Mywebroom::Application.routes.draw do
          'bundles#json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset', via: :get  , as:
          :bundles_json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset
 
+
+  match '/bundles/json/show_bundle_seo_url_by_bundle_id/:bundle_id', to:
+         'bundles#json_show_bundle_seo_url_by_bundle_id', via: :get
+
+  match '/bundles/json/show_entire_room_seo_url_by_bundle_id/:bundle_id', to:
+         'bundles#json_show_entire_room_seo_url_by_bundle_id', via: :get
 
 
 
@@ -245,10 +292,6 @@ Mywebroom::Application.routes.draw do
   match '/searches/json/index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
          'searches#json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword', via: :get, as:
          :searches_json_index_searches_items_themes_bundles_bookmarks_users_with_limit_and_offset_and_keyword
-
-  match '/searches/json/index_searches_users_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
-         'searches#json_index_searches_users_with_limit_and_offset_and_keyword', via: :get, as:
-         :searches_json_index_searches_users_with_limit_and_offset_and_keyword
 
   match '/searches/json/index_searches_items_designs_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
          'searches#json_index_searches_items_designs_with_limit_and_offset_and_keyword', via: :get, as:
@@ -267,6 +310,16 @@ Mywebroom::Application.routes.draw do
          :searches_json_index_searches_bookmarks_with_limit_and_offset_and_keyword
 
 
+  match '/searches/json/index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword/:item_id/:limit/:offset/:keyword', to:
+        'searches#json_index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword', via: :get, as:
+            :searches_json_index_searches_items_designs_with_item_id_and_limit_and_offset_and_keyword
+
+  match '/searches/json/index_searches_users_profile_with_limit_and_offset_and_keyword/:limit/:offset/:keyword', to:
+         'searches#json_index_searches_users_profile_with_limit_and_offset_and_keyword', via: :get, as:
+         :searches_json_index_searches_users_profile_with_limit_and_offset_and_keyword
+
+
+
   #--------------------------
   # end Searches contract
   #--------------------------
@@ -276,6 +329,10 @@ Mywebroom::Application.routes.draw do
   # start ItemsDesigns Contract
   #**************************
 
+  match '/items_designs/json/show_item_design_by_id/:id', to:
+        'items_designs#json_show_item_design_by_id', via: :get  , as:
+        :items_designs_json_show_item_design_by_id
+        
   match '/items_designs/json/index_items_designs_by_item_id/:item_id', to:
          'items_designs#json_index_items_designs_by_item_id', via: :get  , as:
          :items_designs_json_index_items_designs_by_item_id
@@ -295,6 +352,11 @@ Mywebroom::Application.routes.draw do
   match '/items_designs/json/index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset/:category/:item_id/:keyword/:limit/:offset', to:
          'items_designs#json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset', via: :get  , as:
          :items_designs_json_index_items_designs_filter_by_category_by_item_id_by_keyword_and_limit_and_offset
+
+  match '/items_designs/json/show_items_design_seo_url_by_items_design_id/:items_design_id', to:
+         'items_designs#json_show_items_design_seo_url_by_items_design_id', via: :get
+
+
 
 
 
@@ -416,6 +478,13 @@ Mywebroom::Application.routes.draw do
     match '/users_bookmarks/json/create_user_bookmark_custom_by_user_id/:user_id', to:
            'users_bookmarks#json_create_user_bookmark_custom_by_user_id', via: :post
 
+    match '/users_bookmarks/json/show_user_bookmark_by_user_id_and_bookmark_id/:user_id/:bookmark_id', to:
+           'users_bookmarks#json_show_user_bookmark_by_user_id_and_bookmark_id', via: :get, as:
+           :users_bookmarks_json_show_user_bookmark_by_user_id_and_bookmark_id
+
+
+
+
 
 
 
@@ -434,6 +503,7 @@ Mywebroom::Application.routes.draw do
   match '/bookmarks_categories/json/index_bookmarks_categories_by_item_id/:item_id', to:
          'bookmarks_categories#json_index_bookmarks_categories_by_item_id', via: :get, as:
          :bookmarks_categories_json_index_bookmarks_categories_by_item_id
+
 
 
   #**************************
@@ -463,6 +533,15 @@ Mywebroom::Application.routes.draw do
          'bookmarks#json_index_bookmarks_by_bookmarks_category_id', via: :get  , as:
                    :json_index_bookmarks_by_bookmarks_category_id
 
+  match 'bookmarks/json/show_bookmark_by_bookmark_id/:bookmark_id', to:
+        'bookmarks#json_show_bookmark_by_bookmark_id', via: :get  , as:
+        :json_show_bookmark_by_bookmark_id
+
+  match 'bookmarks/json/show_bookmark_seo_url_by_bookmark_id/:bookmark_id', to:
+        'bookmarks#json_show_bookmark_seo_url_by_bookmark_id', via: :get
+
+
+
 
 
 
@@ -479,12 +558,19 @@ Mywebroom::Application.routes.draw do
   match '/friend_requests/json/create_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
          'friend_requests#json_create_friend_request_by_user_id_and_user_id_requested', via: :post
 
-  match '/friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested', to:
-         'friend_requests#json_destroy_friend_request_by_user_id_and_user_id_requested', via: :delete
+  match '/friend_requests/json/destroy_friend_request_by_user_id_and_user_id_that_make_request/:user_id/:user_id_that_make_request', to:
+         'friend_requests#json_destroy_friend_request_by_user_id_and_user_id_that_make_request', via: :delete
 
   match '/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/:user_id', to:
          'friend_requests#json_index_friend_request_make_from_your_friend_to_you_by_user_id', via: :get, as:
          :friend_requests_json_index_friend_request_make_from_your_friend_to_you_by_user_id
+
+
+  match '/friend_requests/json/show_friend_request_by_user_id_user_id_requested/:user_id/:user_id_requested', to:
+         'friend_requests#json_show_friend_request_by_user_id_user_id_requested', via: :get
+
+
+
 
 
 
@@ -605,6 +691,16 @@ Mywebroom::Application.routes.draw do
   match '/locations/json/show_location_by_location_id/:location_id', to:
          'locations#json_show_location_by_location_id', via: :get, as:
          :locations_json_show_location_by_location_id
+
+
+  #**************************
+  # start location Contract
+  #**************************
+
+  #match '/shop/json/show_bundle_seo_url_by_bundle_id/:bundle_id', to:
+  #       'shop#json_show_bundle_seo_url_by_bundle_id', via: :get
+  #
+
 
 
 

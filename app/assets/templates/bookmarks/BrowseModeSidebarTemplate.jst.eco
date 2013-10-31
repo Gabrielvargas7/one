@@ -1,31 +1,32 @@
 <ul class="browse_mode_list">
-	<li>
-		<a id="browse_mode_active" href="#">
-			<img id="browse_mode_active_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697970/browse-mode-active.png">
-			<img id="browse_mode_active_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697987/browse-mode-active-highlight.png">
-		</a>
-		<div>Active</div>
-	</li>
-	<li>
-		<a id="browse_mode_discover" >
-			<img id="browse_mode_discover_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698076/browse-mode-discover-bookmarks.png">
-			<img id="browse_mode_discover_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698097/browse-mode-discover-bookmarks-highlight.png">
-		</a>
-		<div>Discover</div>
-	</li>
-	<li>
-		<a id="browse_mode_bookmarks" >
-			<img id="browse_mode_mybookmarks_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698023/browse-mode-my-bookmarks.png">
-			<img id="browse_mode_mybookmarks_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698041/browse-mode-my-bookmarks-highlight.png">
-		</a>
-		<div>Bookmarks</div>
-	</li>
-	<div class="sidebar_spacer"></div>
-
-	<%if @collection:%>
-		<li id="browse_mode_list_selected" class="browse_mode_sidebar_icons_list"><img class="browse_mode_sidebar_icons" src="<%=@model.get('image_name').url%>"></li>
-		<%for site in @collection:%>
-		<li class="browse_mode_sidebar_icons_list"><img class="browse_mode_sidebar_icons" src="<%=site.get('image_name').url%>" data-id="<%=site.get('id')%>"></li>
-		<%end%>
-	<%end%>
+  <li>
+    <a id="browse_mode_active" href="#">
+      <img id="browse_mode_active_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697970/browse-mode-active.png">
+      <img id="browse_mode_active_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697987/browse-mode-active-highlight.png">
+    </a>
+    <div>Active</div>
+  </li>
+  <li>
+    <a id="browse_mode_discover" >
+      <img id="browse_mode_discover_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698076/browse-mode-discover-bookmarks.png">
+      <img id="browse_mode_discover_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698097/browse-mode-discover-bookmarks-highlight.png">
+    </a>
+    <div>Discover</div>
+  </li>
+  <li>
+    <a id="browse_mode_bookmarks" >
+      <img id="browse_mode_mybookmarks_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698023/browse-mode-my-bookmarks.png">
+      <img id="browse_mode_mybookmarks_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698041/browse-mode-my-bookmarks-highlight.png">
+    </a>
+    <div>Bookmarks</div>
+  </li>
+</ul>
+  <div class="sidebar_spacer"></div>
+<ul class="browse_mode_list" id="browse_mode_scroller">
+  <%if @collection:%>
+    
+    <%for site in @collection.models:%>
+    <li class="browse_mode_sidebar_icons_list"> <img class="browse_mode_sidebar_icons <%if site.get('blueBorder'):%>blue_border<%end%>" src="<%=site.get('image_name').url%>" data-id="<%=site.get('id')%>"></li>
+    <%end%>
+  <%end%>
 </ul>

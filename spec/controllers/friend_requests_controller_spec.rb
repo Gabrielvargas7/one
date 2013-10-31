@@ -205,16 +205,16 @@ describe FriendRequestsController do
   #***********************************
 
 
-  # /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_requested/:user_id/:user_id_requested
-  describe 'DELETE json_destroy_friend_request_by_user_id_and_user_id_requested',tag_destroy:true do
+  # /friend_requests/json/destroy_friend_request_by_user_id_and_user_id_that_make_request/100001/999.json
+  describe 'json_destroy_friend_request_by_user_id_and_user_id_that_make_request',tag_destroy:true do
     before do
       @friend_request = FactoryGirl.create(:friend_request,user_id:@user.id,user_id_requested:@user_requested.id)
-      sign_in @user
+      sign_in @user_requested
     end
 
     it "deletes friend request" do
       expect{
-        delete :json_destroy_friend_request_by_user_id_and_user_id_requested, user_id: @user.id,user_id_requested:@user_requested.id , :format => :json
+        delete :json_destroy_friend_request_by_user_id_and_user_id_that_make_request, user_id: @user_requested.id,user_id_that_make_request:@user.id , :format => :json
       }.to change(FriendRequest,:count).by(-1)
     end
 
@@ -224,7 +224,7 @@ describe FriendRequestsController do
         sign_in @user1
       end
       it "has a 404 status code" do
-        delete :json_destroy_friend_request_by_user_id_and_user_id_requested, user_id: @user.id,user_id_requested:@user_requested.id,:format => :json
+        delete :json_destroy_friend_request_by_user_id_and_user_id_that_make_request, user_id: @user_requested.id,user_id_that_make_request:@user.id , :format => :json
         expect(response.status).to eq(404)
       end
     end
@@ -235,13 +235,24 @@ describe FriendRequestsController do
         sign_out
       end
       it "has a 404 status code" do
-        delete :json_destroy_friend_request_by_user_id_and_user_id_requested, user_id: @user.id,user_id_requested:@user_requested.id , :format => :json
+        delete :json_destroy_friend_request_by_user_id_and_user_id_that_make_request, user_id: @user_requested.id,user_id_that_make_request:@user.id , :format => :json
         expect(response.status).to eq(404)
       end
     end
 
 
   end
+
+
+  ###############
+  #test validation - create random room
+  ###############
+  describe "#json_show_friend_request_by_user_id_user_id_requested",tag_json:true do
+    pending "json_show_friend_request_by_user_id_user_id_requested #{__FILE__}"
+
+  end
+
+
 
 
 

@@ -1,6 +1,6 @@
 <div class="preview_mode_title">
-	<p><%=@model.get('title')%></p>
-	<div class="close_button"><a href="#">X</a></div>
+  <p><%=@model.get('title')%></p>
+  <div class="close_button"><a href="#">X</a></div>
 </div>
 <iframe src="<%=@model.get('bookmark_url')%>">
 </iframe>

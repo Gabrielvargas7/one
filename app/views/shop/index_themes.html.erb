@@ -1,0 +1,89 @@
+<div class="shop_container">
+  <%= render 'shop_nav' %>
+  <div class="shop_filter">
+    <h5>Filter by </h5>
+
+    </br>
+    <h5>Color  </h5>
+    <% @themes_by_color.each do |theme_color| %>
+        <% unless theme_color.color.nil? %>
+            <%= link_to theme_color.color.titleize, shop_index_themes_path(theme_color:theme_color.color), :method => :get %> </br>
+        <% end %>
+    <% end %>
+
+    </br>
+    <h5>Brand </h5>
+    <% @themes_by_brand.each do |theme_brand| %>
+        <% unless theme_brand.brand.nil? %>
+            <%= link_to theme_brand.brand.titleize,  shop_index_themes_path(theme_brand: theme_brand.brand), :method => :get %></br>
+        <% end %>
+    <% end %>
+
+    </br>
+    <h5>Style </h5>
+    <% @themes_by_style.each do |theme_style| %>
+        <% unless theme_style.style.nil? %>
+            <%= link_to theme_style.style.titleize,  shop_index_themes_path(theme_style: theme_style.style), :method => :get %> </br>
+        <% end %>
+    <% end %>
+
+    </br>
+    <h5>Make </h5>
+    <% @themes_by_make.each do |theme_make| %>
+        <% unless theme_make.make.nil? %>
+            <%= link_to theme_make.make.titleize,  shop_index_themes_path(theme_make: theme_make.make), :method => :get %> </br>
+        <% end %>
+    <% end %>
+    </br>
+    <h5>Category </h5>
+    <% @themes_by_category.each do |theme_category| %>
+        <% unless theme_category.category.nil? %>
+            <%= link_to theme_category.category.titleize,  shop_index_themes_path(theme_category: theme_category.category), :method => :get %> </br>
+        <% end %>
+    <% end %>
+
+    <h5>Category </h5>
+    <% @themes_by_location.each do |theme_location| %>
+        <% unless theme_location.location.nil? %>
+            <%= link_to theme_location.location.titleize,  shop_index_themes_path(theme_location: theme_location.location), :method => :get %> </br>
+        <% end %>
+    <% end %>
+
+
+  </div>
+
+  <div class="shop_content_entity">
+    <div class="shop_table">
+      <table >
+
+        <% if @theme_length > 0 %>
+            <%  @themes.in_groups_of(@theme_length,false).each do |themes_groups| %>
+                <tr>
+                  <% themes_groups.each do |theme| %>
+
+                      <td >
+
+                        <% if theme.image_name_selection.blank?  %>
+                            <%= link_to cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),  shop_show_theme_path(theme.id,get_clean_name(theme.name)), :method => :get %>
+                        <% else %>
+                            <%= link_to cl_image_tag(theme.image_name_selection , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),shop_show_theme_path(theme.id,get_clean_name(theme.name)), :method => :get %>
+                        <% end%>
+
+
+
+                        </br><%= theme.name[0,15] %>
+                      </td>
+
+                  <% end %>
+                </tr>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+
+<br />

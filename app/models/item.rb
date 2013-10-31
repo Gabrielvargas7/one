@@ -16,7 +16,7 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :clickable, :name ,:priority_order,:image_name
+  attr_accessible :clickable, :name ,:priority_order,:image_name,:image_name_gray
                   #:folder_name, :height, :name, :width, :x, :y, :z
 
   has_many :items_designs
@@ -25,13 +25,23 @@ class Item < ActiveRecord::Base
   has_many :bundles_bookmarks
   has_many :items_locations
 
+
+  VALID_REGEX = /^(?:[^\W_]|\s)*$/u
+
   mount_uploader :image_name, ItemsImageUploader
+  mount_uploader :image_name_gray, ItemsImageGrayUploader
+
 
   VALID_YES_NO_REGEX = /(yes)|(no)/
 
   before_save { |item| item.clickable = clickable.downcase }
 
-  validates :name,presence:true
+  validates :name,
+            presence:true,
+            #uniqueness:{ case_sensitive: false },
+            #format: { with: VALID_REGEX } ,
+            length: {minimum: 1, maximum: 100},
+            allow_blank: false
   validates :clickable, presence:true, format: { with: VALID_YES_NO_REGEX }
   validates :priority_order,presence:true, numericality: true
 
