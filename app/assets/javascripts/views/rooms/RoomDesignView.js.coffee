@@ -32,6 +32,12 @@ class Mywebroom.Views.RoomDesignView  extends Backbone.View
       'top':      y
       'z-index':  z
     })
-     
+
+    #EXCEPTION: Portrait:
+    if item_id is 21
+      #add the profile pic to this. 
+      #pic should position absolutely in div, with z-index z+1, left- 20px, top- 20px
+      profilePic = Mywebroom.State.get('roomData').get('user_photos').image_name.url
+     this.$(container).append("<img id=room_design_portrait_pic src='"+profilePic+"' style='z-index:"+ (z-1)+"'>")
 
     this
