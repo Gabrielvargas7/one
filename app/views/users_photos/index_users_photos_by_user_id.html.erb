@@ -76,57 +76,8 @@
   </div>
 
 </div>
-
-
-
-  <table class="table table-bordered">
-  <tr>
-
-    <th>Description</th>
-    <th>Image name</th>
-    <th>Profile image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-
-  </tr>
-
-  <% @users_photos.each do |users_photo| %>
-      <tr>
-
-        <td><%= users_photo.description %></td>
-        <td>
-
-          <% if users_photo.image_name.blank?  %>
-              <%= cl_image_tag "default-user.png",width:100 , height:100,:crop => :fit,:default_image => "default-user.png" %>
-          <% else %>
-              <%= cl_image_tag users_photo.image_name,width:100 , height:100,:crop => :fit,:default_image => "default-user.png" %>
-          <% end %>
-
-
-        </td>
-        <td><%= users_photo.profile_image %></td>
-
-        <td><%= link_to 'Set a profile image', update_users_photos_profile_image_by_user_id_by_users_photo_id_path(users_photo.user_id,users_photo.id), method: :put %></td>
-        <td><%= link_to 'Edit image', edit_users_photos_by_user_id_by_users_photo_id_path(users_photo.user_id,users_photo.id), method: :get %></td>
-
-        <%  if users_photo.profile_image == 'n' %>
-            <td><%= link_to 'Delete',destroy_users_photos_by_user_id_by_users_photo_id_path(users_photo.user_id,users_photo.id), method: :delete %></td>
-        <%  else  %>
-            <td></td>
-        <%  end %>
-
-
-      </tr>
-  <% end %>
-</table>
-
-<br />
-
-</div>
 <script type="text/javascript">
-console.log("I'm running js")
-$('#users_photos_container .users_photo_item').click(function(event) {
+$('#users_photos_container .users_photo_item > img').click(function(event) {
   //Rerender .users_photos_large_view
   
   //1. Description change
