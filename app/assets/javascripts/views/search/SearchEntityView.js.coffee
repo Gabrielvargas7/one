@@ -242,7 +242,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
       }
     )
 
-    console.log("url", userBookmarkCollection.url())
+    #console.log("url", userBookmarkCollection.url())
 
     userBookmarkCollection.fetch({
       async: false

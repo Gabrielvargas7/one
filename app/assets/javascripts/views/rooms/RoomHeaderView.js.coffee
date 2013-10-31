@@ -27,7 +27,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     
     'click #xroom_header_myroom'         : 'goToMyRoom'
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
-    'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
+    #'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
 
     'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
   }
@@ -209,7 +209,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
 
     origin =  window.location.origin
-    origin += "/users/"+@model.get('user').id.toString()+"/edit"
+    origin += "/users/" + @model.get('user').id.toString() + "/edit"
     window.location.replace(origin)
 
 
@@ -454,7 +454,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       ###
       (3) Capture value of search text
       ###
-      value = $('#xroom_header_search_text').val()
+      value = $('#xroom_header_search_text').val().trim()
       
 
       ###
@@ -482,9 +482,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       ###
       if $('[data-id_search_entity_id=search_entity_container_id_0]').length isnt 0
 
+        # Scroll
+        $('.class_search_entity_view')[0].scrollIntoView(true)
+
         # Highlight
         $('[data-id_search_entity_id=search_entity_container_id_0]').trigger('mouseenter')
-
+        
         # Set initial value of searchNum
         @searchNum = 0
 
@@ -506,6 +509,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
   keyPressOnSearch: (event) ->
     
+    
     ###
     SEARCH LOGIC GETS WRAPPED IN DEBOUNCE FUNCTION
     ###
@@ -519,11 +523,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         ###
         if $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum + 1) + ']').length isnt 0
 
+          # Scroll
+          $('.class_search_entity_view')[@searchNum + 1].scrollIntoView(true)
+
           # Leave Previous
           $('[data-id_search_entity_id=search_entity_container_id_' + @searchNum + ']').trigger('mouseleave')
 
           # Enter Next
-          $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum + 1) + ']').trigger('mouseenter')
+          $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum + 1) + ']').trigger('mouseleave')
 
           # Increment
           @searchNum += 1
@@ -532,6 +539,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
           ###
           WE'VE REACHED THE END OF OUR SEARCH RESULTS - GO BACK TO THE START
           ###
+
+          # Scroll
+          $('.class_search_entity_view')[0].scrollIntoView(true)
 
           # Leave Previous
           $('[data-id_search_entity_id=search_entity_container_id_' + @searchNum + ']').trigger('mouseleave')
@@ -559,6 +569,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
           # Enter Previous
           $('[data-id_search_entity_id=search_entity_container_id_' + (@searchNum - 1) + ']').trigger('mouseenter')
+
+          # Scroll
+          $('.class_search_entity_view')[@searchNum - 1].scrollIntoView(true)
 
           # Decrement
           @searchNum -= 1
@@ -601,6 +614,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
         @slowDown(event.keyCode)
 
+      else
+
+        ###
+        If it is empty, clear the results
+        ###
+        @destroySearchView()
+        this.$('.header_search_wrapper').empty()
+        $('#xroom_header_search_box').hide()
     
 
       

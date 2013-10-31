@@ -224,7 +224,7 @@ $(document).ready ->
         
         
             # (5) Make footer transparent
-            $('.modal-footer').css("background-color", "rgba(46,46,46,.8)")
+            $('.modal-footer').css("background-color", "transparent")
         
         
             # (6) Change x color
