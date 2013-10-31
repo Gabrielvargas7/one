@@ -1,6 +1,6 @@
 <div class="media">
   <a class="pull-left" href="#">
-    <img class="img-rounded" src="<%= @model.get('image_name').url%>">
+    <img src="<%= @model.get('image_name').url%>">
   </a>
   <div class="media-body">
     <p class="modal-text"><%= @model.get('description')%></p>

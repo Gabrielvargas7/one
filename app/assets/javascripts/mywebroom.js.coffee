@@ -200,7 +200,11 @@ $(document).ready ->
             STYLE
             ###
             # (1) Make modal transparent
-            $('.modal').css("background-color", "rgba(46,46,46,.8)")
+            $('.modal').css({
+              "background-color": "rgba(46,46,46,.8)"
+              "width": "25%"
+              "border-radius": "0%"
+            })
         
         
             # (2) Make background visible
@@ -219,14 +223,13 @@ $(document).ready ->
             .css('font-size', '1.2em') # (4) Make text 15pt - based on 12pt = 1em
         
         
-            # (5) Change hr color
-            $('hr').css('border-color', '#2a2727')
-        
-        
-            # (6) Make footer transparent
+            # (5) Make footer transparent
             $('.modal-footer').css("background-color", "rgba(46,46,46,.8)")
         
         
+            # (6) Change x color
+            $('.close').css("color", "#aeaeae")
+
       
             if model.has("position")
           
