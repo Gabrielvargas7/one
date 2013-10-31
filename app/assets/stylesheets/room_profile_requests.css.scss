@@ -137,34 +137,34 @@ p.profile_friend_username{
 /*END Ask For Key Overlay*/
 
 /*Profile Friends Media Queries*/
-@media screen and (max-height:780px){
-  .profile_table_innerDiv.profile_suggested_friends{
-    min-height:0;
-    max-height:300px;
-  }
-}
-@media screen and (max-height:735px){
-  .profile_table_innerDiv.profile_suggested_friends{
+// @media screen and (max-height:780px){
+//   .profile_table_innerDiv.profile_suggested_friends{
+//     min-height:0;
+//     max-height:300px;
+//   }
+// }
+// @media screen and (max-height:735px){
+//   .profile_table_innerDiv.profile_suggested_friends{
 
-    max-height:200px;
-  }
+//     max-height:200px;
+//   }
 
-}
-@media screen and (max-height:720px){
-  .profile_friends_view{
-    height:420px;
-  }
-}
-@media screen and (max-height:650px){
-  .profile_table_innerDiv.profile_suggested_friends{
+// }
+// @media screen and (max-height:720px){
+//   .profile_friends_view{
+//     height:420px;
+//   }
+// }
+// @media screen and (max-height:650px){
+//   .profile_table_innerDiv.profile_suggested_friends{
 
-    max-height:250px;
-  }
+//     max-height:250px;
+//   }
 
-}
-@media screen and (max-height:630px){
-  .profile_table_innerDiv.profile_suggested_friends{
-    max-height:180px;
-  }
+// }
+// @media screen and (max-height:630px){
+//   .profile_table_innerDiv.profile_suggested_friends{
+//     max-height:180px;
+//   }
 
-}
+// }
