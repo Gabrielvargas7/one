@@ -275,8 +275,12 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
           $('#xroom_bookmarks').show()
           
           # TODO Check for bookmark in my bookmarks
-          if !bookmarksView.collection.findWhere('id': entity_id)
+          if !bookmarksView.collection.findWhere(id: parseInt(entity_id))
             bookmarksView.renderDiscover()
+            bookmarksView.highlightItem(entity_id)
+          else
+            # we're already on MyBookmarks so don't bookmarksView.renderMyBookmarks()
+            bookmarksView.highlightItem(entity_id)
 
         
         

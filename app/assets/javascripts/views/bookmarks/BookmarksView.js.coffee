@@ -82,8 +82,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#add_your_own_form').off('submit').on('submit',{that},@addCustomBookmark)
 
   renderMyBookmarks:(event)->
-    event.preventDefault()
-    event.stopPropagation()
+    event.preventDefault() if event
+    event.stopPropagation() if event
     @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
@@ -291,5 +291,22 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       success:(response) ->
         #console.log("categories fetch successful: ")
         #console.log(response)
+  
+  ###
+  # Highlight a bookmark item by and make sure the user sees it. (From "Try in My Room")
+  ###
+  highlightItem:(id)->
+    #1. Highlight item
+    $('.bookmark_grid_item[data-id="'+id+'"]').addClass('blue_highlight')
+    
+    #2. Make sure its in the view-port. 
+    container = $('.discover_bookmarks_bottom')
+    if container.length is 0
+      container = $('.my_bookmarks_bottom')
+    if container.length is 1
+      scrollTo = $('.bookmark_grid_item[data-id="'+id+'"]')[0]
+      scrollTo.scrollIntoView(true)
+      #container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop())
+
   closeView:->
     this.remove()
