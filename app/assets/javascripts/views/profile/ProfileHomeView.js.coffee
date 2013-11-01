@@ -131,7 +131,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     initialProfileHomeActivityCollection.set(@activityCollection.first 6)
     if Mywebroom.State.get("roomState") is "PUBLIC"
       @activityCollection.reset(@activityCollection.first(9),{silent:true})
-    if Mywebroom.State.get("roomState") != "SELF"
+    if Mywebroom.State.get("roomState") != "SELF" and Mywebroom.State.get('roomData').get('user_profile').firstname
       headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s things"
     else
       headerName = 'Latest Room Additions'
