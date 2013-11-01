@@ -199,10 +199,12 @@ footer ul li {
 input[type=text] {
     border: 1px solid #dbdbdb;
     border-radius:1px;
+    margin: 0;
 }
 input[type=password] {
     border: 1px solid #dbdbdb;
     border-radius:1px;
+    margin: 0;
 }
 .btn-group > .btn:first-child {
     margin-left: 0;
