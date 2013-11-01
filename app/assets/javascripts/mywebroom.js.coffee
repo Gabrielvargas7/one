@@ -107,6 +107,7 @@ $(document).ready ->
       ItemModels: {} # format -> 2: Backbone.Model
       ItemNames:  {} # format -> 3: "string"
       ItemIds:    Object.create(null) # *see below # format -> 7: true
+      searchNum: false
   }
  
   
