@@ -3,9 +3,7 @@ class Mywebroom.Views.SearchView extends Backbone.View
   #*******************
   #**** Class
   #*******************
-  className:'header_search_wrapper'
-
-
+  className:'search-wrapper'
 
 
   #*******************
@@ -13,6 +11,7 @@ class Mywebroom.Views.SearchView extends Backbone.View
   #*******************
   template: JST['search/SearchTemplate']  # <-- Blank File
   
+
   
   
   
