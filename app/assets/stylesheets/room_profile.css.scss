@@ -54,6 +54,7 @@ nav.profile {
 .profile_home_img_wrap p{
   font-size:11px;
   white-space:nowrap;
+  line-height:15px;
 }
 #profile_home_wrapper figcaption{
   font-size:8px;
@@ -241,7 +242,7 @@ div.spacer{
   float:left;
   width:460px;
   background: #1d1d1d;
-  margin:1em 0;
+  margin:1em 0 1em 1em;
   color:#f5f5f5
 }
 /*this refers to top section of the profile container */
