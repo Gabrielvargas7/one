@@ -108,6 +108,7 @@ $(document).ready ->
       ItemNames:  {} # format -> 3: "string"
       ItemIds:    Object.create(null) # *see below # format -> 7: true
       searchNum: -1
+      FriendItemPopupUrls: {} #format -> 1:"string"
   }
  
   
@@ -600,31 +601,38 @@ $(document).ready ->
         $('#xroom_profile').hide()
         $('#xroom_bookmarks').show()
    
-    
         ###
         Create bookmark view
         ###
-        if model.get("clickable") is "yes"
-          #Check for Special Items
-          switch (model.get('id'))
-            
-            when 21 #Portrait
-              #Open Profile, not Bookmarks. 
-              # $('#xroom_profile').show()
-              # $('#xroom_bookmarks').hide()
-              Mywebroom.State.get('roomHeaderView').displayProfile()
+        if model.get("clickable") is "yes" 
+          
+          #Check if Friend's Room
+          if Mywebroom.State.get('roomState') is "FRIEND" #Public is not clickable so no worry here.
+            #show the popups
+            view = new Mywebroom.Views.PopupFriendItemView()
+            $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
+            view.render()
+          
+          else
+            #show the bookmarks interface.
+            #Check for Special Items
+            switch (model.get('id'))
+              
+              when 21 #Portrait
+                #Open Profile, not Bookmarks. 
+                Mywebroom.State.get('roomHeaderView').displayProfile()
 
-            else
-              view = new Mywebroom.Views.BookmarksView(
-                {
-                  items_name:       model.get("name")
-                  item_id: model.get("id")
-                  user:             user_id
-                }
-              )
+              else
+                view = new Mywebroom.Views.BookmarksView(
+                  {
+                    items_name:       model.get("name")
+                    item_id: model.get("id")
+                    user:             user_id
+                  }
+                )
 
-              $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
-              view.render()
+                $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
+                view.render()
       )
     )
     
@@ -938,6 +946,44 @@ $(document).ready ->
       name = item.get("name")
       Mywebroom.Data.ItemNames[id] = name
     )
+
+    Mywebroom.Data.FriendItemPopupUrls =
+      1:   ""#sofa
+      2:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348300/birdcage-Friend-Pop-Up-Object_gxaui5.png" #birdcage
+      3:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348427/bookstand-Friend-Pop-Up-Object_up9cyp.png" #bookcase
+      4:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348575/chair-Friend-Pop-Up-Object_wagoi1.png" #chair
+      5:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348940/newspaper-Friend-Pop-Up-Object_nhybid.png" #newspaper
+      6:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348860/map-Friend-Pop-Up-Object_gp3jlo.png" #world map
+      7:   "" #tv stan
+      8:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348727/dresser-Friend-Pop-Up-Object_mwf3fb.png" #dresser
+      9:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349229/shoppingbag-Friend-Pop-Up-Object_p5ojy3.png" #shopping bag
+      10:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349273/socialcanvas-Friend-Pop-Up-Object_pvzhz4.png" #social canvas 
+      11:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349372/wallshelf-Friend-Pop-Up-Object_ylcro0.png" #wall shelf
+      12:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348903/music-Friend-Pop-Up-Object_n4bmwf.png" #music player
+      13:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349332/tv-Friend-Pop-Up-Object_ufnnkq.png" #tv
+      14:  "" #desk
+      15:  "" #nightstand
+      16:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349004/notebook-Friend-Pop-Up-Object_xmertw.png" #notebook
+      17:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348606/computer-Friend-Pop-Up-Object_n8smns.png" #computer
+      18:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349077/phone-Friend-Pop-Up-Object_a43ejg.png" #phone
+      19:  "" #lamp
+      20:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349151/pinboard-Friend-Pop-Up-Object_iztyad.png" #pinboard
+      21:  "" #SPECIAL portrait
+      22:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349306/sport-Friend-Pop-Up-Object_yxtfe5.png" #sports
+      23:  "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383349438/window-Friend-Pop-Up-Object_gbupwg.png" #window
+      24:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348514/box-Friend-Pop-Up-Object_eixd0j.png" #box
+      25:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348798/games-Friend-Pop-Up-Object_qphqgk.png" #games
+      26:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348829/hobbies-Friend-Pop-Up-Object_x4ev1a.png" #hobbies
+      27:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349110/photography-Friend-Pop-Up-Object_izyrpc.png" #photography
+      28:  "" #table
+      29:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348775/food-Friend-Pop-Up-Object_t3g7ir.png" #food
+      30:  "" #stool
+      31:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349192/poster-Friend-Pop-Up-Object_dsplbv.png" #poster
+      32:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349037/pets-Friend-Pop-Up-Object_xtsvfq.png" #pet
+      33:  "" #chandelier
+      34:  "" #rug
+      35:  "" #carpet
+      ##DECOR? https://res.cloudinary.com/hpdnx5ayv/image/upload/v1383348640/decor-Friend-Pop-Up-Object_phompc.png
     
     
   
