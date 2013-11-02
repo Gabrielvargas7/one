@@ -9,9 +9,9 @@
   </div>
   <div class="bookmark_grid_item_bottom"> 
     <img src="<%=@model.get('image_name_desc').url%>">
-    <form class="my_bookmarks_bookmark_name_form">
-        <input name="q" placeholder="<%=@model.get('title')%>">
-      </form>
-    <!--<%=@model.get('id')%> <%=@model.get('title')%>-->
+    <div class="my_bookmarks_bookmark_name_form">
+      <%=@model.get('title')%>
+    </div>
+
   </div>
 </div>
