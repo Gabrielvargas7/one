@@ -1,28 +1,18 @@
 class Mywebroom.Views.SearchEntityView extends Backbone.View
 
   #*******************
-  #**** Class
-  #*******************
-  className:'class_search_entity_view'
-
-
-
-
-  #*******************
   #**** Template
   #*******************
   template: JST['search/SearchEntityTemplate']
-
-
 
 
   #*******************
   #**** Events
   #*******************
   events: {
-    'click .search_container_entity'      : 'clickEntity'
-    'mouseenter  .search_container_entity': 'enterEntity'
-    'mouseleave .search_container_entity' : 'leaveEntity'
+    'click':      'click'
+    'mouseenter': 'mouseEnter'
+    'mouseleave': 'mouseLeave'
   }
 
 
@@ -46,7 +36,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   #*******************
   #**** Event Functions
   #*******************
-  clickEntity: ->
+  click: ->
 
     #console.log("click the entity "+@model.get('viewNum'))
     #console.log("display Type "+@model.get('entityType'))
@@ -54,7 +44,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     #console.log("displayTopName "+@model.get('displayTopName'))
     #console.log("displayUnderName "+@model.get('displayUnderName'))
 
-    #$("[data-id_search_entity_id=search_entity_container_id_"+@model.get('viewNum') + "]").css({backgroundColor : "#202020"})
+    #$("[data-search-id="+@model.get('viewNum') + "]").css({backgroundColor : "#202020"})
 
 
 
@@ -94,20 +84,32 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
 
 
-  enterEntity: ->
+  mouseEnter: ->
 
+    if not @model.has('viewNum')
+      alert('Model without viewNum')
+    
+    ###
+    SET SEARCH NUM
+    ###
+    Mywebroom.Data.searchNum = @model.get('viewNum')
+
+
+    ###
+    TURN ON HIGHLIGHTING
+    ###
+    this.$el.toggleClass('highlight-search', true)
+    
+    
+    ###
+    TURN OFF HIGHLIGHTING
+    ###
+    $('.highlight-search')
+    .not(this.$el)
+    .toggleClass('highlight-search', false)
+    
     #console.log("Enter to entity "+@model.get('viewNum'))
-    $("[data-id_search_entity_id=search_entity_container_id_" + @model.get('viewNum') + "]").css({backgroundColor : "#bbb"})
-
-
-
-
-  leaveEntity: ->
-
-    #console.log("Leave to entity "+@model.get('viewNum'))
-    $("[data-id_search_entity_id=search_entity_container_id_" + @model.get('viewNum') + "]").css({backgroundColor : "#fff"})
-
-
+    #$("[data-search-id=" + @model.get('viewNum') + "]").addClass('highlight-search')
 
 
 
