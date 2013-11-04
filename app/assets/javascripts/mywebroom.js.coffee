@@ -609,7 +609,7 @@ $(document).ready ->
           #Check if Friend's Room
           if Mywebroom.State.get('roomState') is "FRIEND" #Public is not clickable so no worry here.
             #show the popups
-            view = new Mywebroom.Views.PopupFriendItemView()
+            view = new Mywebroom.Views.PopupFriendItemView(itemData: model)
             $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
             view.render()
           
