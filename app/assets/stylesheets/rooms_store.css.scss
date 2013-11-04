@@ -76,6 +76,14 @@
   font-size: 11px;
   width: 180px;
   height: 200px;
+  position: relative;
+}
+
+.store_container .social_bar {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  top: 0;
 }
 
 
@@ -97,7 +105,23 @@ li a[href="#tab_hidden"] {
 }
 
 
-#store_btn_search{
+#store_btn_search {
   color: #179340;
+}
 
+
+.nav-tabs-store {
+  margin: 5px;
+}
+
+
+.navbar-inner-store {
+  padding-left: 7px;
+  border: none;
+}
+
+
+.input-append-store {
+  margin-top: 4px;
+  margin-bottom: 0px;
 }
