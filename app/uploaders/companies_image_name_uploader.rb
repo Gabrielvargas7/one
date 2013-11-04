@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ItemsDesignsImageLogoUploader < CarrierWave::Uploader::Base
+class CompaniesImageNameUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -16,37 +16,34 @@ class ItemsDesignsImageLogoUploader < CarrierWave::Uploader::Base
 
   include Cloudinary::CarrierWave
 
-  #process :convert => 'png'
-  process :tags => ['items_design_image_name_logo']
+  process :tags => ['company_image_name']
+
 
   def public_id
-
-
-    img_path = "#{model.name}-#{model.category}-#{model.color}-#{model.style}-#{model.brand}-#{model.make}-#{model.special_name}"
+    img_path = "#{model.name}"
     image_path = UploaderImageHelper.set_on_image_the_path_name_for_seo(img_path)
-
-    #name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-"+ica+"-#{model.color}-#{model.style}-#{model.brand}-#{model.make}-#{model.special_name}-#{mounted_as}-"
     name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-"+image_path+"-#{mounted_as}-"
     filename = File.basename(original_filename, ".*")
     filename.downcase!
     name.to_s+filename.to_s
   end
 
+  def default_url
+    asset_path("fallback/company/" + [version_name, "default.png"].compact.join('_'))
+  end
+
   def cache_dir
     "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def default_url
-    asset_path("fallback/items_design/" + [version_name, "default_items_design.png"].compact.join('_'))
-  end
 
 
   # Choose what kind of storage to use for this uploader:
   #storage :file
-  ## storage :fog
-  #
-  ## Override the directory where uploaded files will be stored.
-  ## This is a sensible default for uploaders that are meant to be mounted:
+  # storage :fog
+
+  # Override the directory where uploaded files will be stored.
+  # This is a sensible default for uploaders that are meant to be mounted:
   #def store_dir
   #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   #end

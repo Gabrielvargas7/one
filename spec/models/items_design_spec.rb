@@ -34,7 +34,7 @@ describe ItemsDesign do
   it { @items_designs.should respond_to(:image_name_hover)}
   it { @items_designs.should respond_to(:image_name_selection)}
   it { @items_designs.should respond_to(:image_name)}
-  it { @items_designs.should respond_to(:image_name_logo)}
+  it { @items_designs.should respond_to(:company_id)}
 
   it { @items_designs.should respond_to(:item_id) }
   it { @items_designs.should respond_to(:special_name) }

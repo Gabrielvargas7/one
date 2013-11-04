@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131018190808) do
+ActiveRecord::Schema.define(:version => 20131104195528) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(:version => 20131018190808) do
     t.text     "description"
     t.integer  "theme_id"
     t.string   "image_name"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "image_name_set"
     t.integer  "section_id"
-    t.string   "active",         :default => "n"
+    t.string   "active",                 :default => "n"
     t.string   "category"
     t.string   "style"
     t.string   "brand"
@@ -61,7 +61,8 @@ ActiveRecord::Schema.define(:version => 20131018190808) do
     t.string   "color"
     t.string   "make"
     t.string   "special_name"
-    t.integer  "like",           :default => 0
+    t.integer  "like",                   :default => 0
+    t.string   "image_name_entire_room"
   end
 
   add_index "bundles", ["brand"], :name => "index_bundles_on_brand"
@@ -91,6 +92,14 @@ ActiveRecord::Schema.define(:version => 20131018190808) do
     t.integer  "bundle_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "image_name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -124,12 +133,13 @@ ActiveRecord::Schema.define(:version => 20131018190808) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
-    t.string   "clickable",       :default => "yes"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.string   "clickable",                   :default => "yes"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.string   "image_name"
-    t.integer  "priority_order",  :default => 0
+    t.integer  "priority_order",              :default => 0
     t.string   "image_name_gray"
+    t.string   "image_name_first_time_click"
   end
 
   add_index "items", ["id"], :name => "index_items_on_id"
@@ -154,7 +164,7 @@ ActiveRecord::Schema.define(:version => 20131018190808) do
     t.integer  "like",                                               :default => 0
     t.decimal  "price",                :precision => 8, :scale => 2, :default => 0.0
     t.string   "product_url"
-    t.string   "image_name_logo"
+    t.integer  "company_id"
   end
 
   add_index "items_designs", ["brand"], :name => "index_items_designs_on_brand"
@@ -219,6 +229,16 @@ ActiveRecord::Schema.define(:version => 20131018190808) do
 
   add_index "sections", ["description"], :name => "index_sections_on_description"
   add_index "sections", ["name"], :name => "index_sections_on_name"
+
+  create_table "static_contents", :force => true do |t|
+    t.string   "name"
+    t.string   "image_name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "static_contents", ["name"], :name => "index_static_contents_on_name", :unique => true
 
   create_table "themes", :force => true do |t|
     t.string   "name"

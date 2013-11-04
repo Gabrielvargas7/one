@@ -67,9 +67,14 @@
 </p>
 
 <p>
-  <b>Image name logo:</b>
-  <%= @items_design.image_name_logo %>
-  <%= image_tag @items_design.image_name_logo.url.to_s %>
+  <b>Company :</b>
+  <%  if @items_design.company.nil? %>
+
+  <%  else %>
+      <%= @items_design.company_id %>
+      <%= @items_design.company.name %>
+      <%= image_tag @items_design.company.image_name.url.to_s %>
+  <%  end %>
 </p>
 
 <p>

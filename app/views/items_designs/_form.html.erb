@@ -76,23 +76,39 @@
           <%= f.label :product_url %><br />
           <%= f.url_field :product_url %>
         </div>
+        <br/>
+        <br/>
+        <br/>
+
 
         <div class="field">
-            <%= f.label :image_name %><br />
+            <%= f.label :image_name %>
             <%= f.file_field :image_name %>
         </div>
 
-        <div class="field">
-          <%= f.label :image_name_logo %><br />
-          <%= f.file_field :image_name_logo %>
-        </div>
+        <br/>
+        <br/>
+        <br/>
 
         <div class="field">
-          <%= f.label :image_name_hover %><br />
+          <%= f.label :company_id %><br />
+          <%= f.collection_select :company_id, Company.all, :id, :id_and_company, :prompt => true  %>
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+
+        <div class="field">
+          <%= f.label :image_name_hover %>
           <%= f.file_field :image_name_hover %>
         </div>
+        <br/>
+        <br/>
+        <br/>
+
         <div class="field">
-          <%= f.label :image_name_selection %><br />
+          <%= f.label :image_name_selection %>
           <%= f.file_field :image_name_selection %>
         </div>
 
