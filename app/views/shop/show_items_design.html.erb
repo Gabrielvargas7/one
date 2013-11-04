@@ -1,54 +1,60 @@
-<div class="shop_container" xmlns="http://www.w3.org/1999/html">
+<div class="shop_container">
   <%= render 'shop_nav' %>
 
   <div class="shop_upper_container" data-shop-type="<%= @entity_type %>">
-    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id),:class => "btn btn-primary"%>
+    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id),:class => "blue_button blue_button_light"%>
     <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
     <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
-
-
     <br/>
     <br/>
     <br/>
     <br/>
   </div>
-  <div class="shop_left">
-    <p>
-      <% if @items_design.image_name_selection.blank?  %>
-          <%= cl_image_tag("default_image_all.png", width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png")%>
-      <% else %>
-          <%= cl_image_tag(@items_design.image_name_selection , width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png") %>
-      <% end%>
 
-    </p>
-  </div>
-  <div class="shop_right">
-    <p>
-      <% if @items_design.image_name_logo.blank?  %>
-          <%= cl_image_tag("default_image_all.png", width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png")%>
-      <% else %>
-          <%= cl_image_tag(@items_design.image_name_logo , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png") %>
-      <% end%>
-    </p>
-    <br/>
-    <h4 class="shop_name" >
-      <%= @items_design.name %>
-    </h4>
-    <p>
-      <b><%= @items_design.brand.titlecase unless @items_design.brand.nil? %></b>
-    </p>
+  <div class="shop_container_box">
+      <div class="shop_left">
+        <p>
+          <% if @items_design.image_name_selection.blank?  %>
+              <%= cl_image_tag("default_image_all.png", width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png")%>
+          <% else %>
+              <%= cl_image_tag(@items_design.image_name_selection , width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png") %>
+          <% end%>
 
-    <p class="shop_description">
-      <%= @items_design.description %>
-    </p>
-    <%= link_to "See it in your room before you buy.", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id)%>
-    <br/>
-    <br/>
+        </p>
+      </div>
+      <div class="shop_right">
+        <p>
+          <% if @items_design.image_name_logo.blank?  %>
+              <%= cl_image_tag("default_image_all.png", width: 400,height:150,:crop => :fit,:default_image => "default_image_all.png")%>
+          <% else %>
+              <%= cl_image_tag(@items_design.image_name_logo , width: 300,height:100,:crop => :fit,:default_image => "default_image_all.png") %>
+          <% end%>
+        </p>
+        <br/>
+        <p class="shop_name" >
+          <%= @items_design.name %>
+        </p>
+        <p class="brand_name">
+          <b><%= @items_design.brand.titlecase unless @items_design.brand.nil? %></b>
+        </p>
 
-    <a href="<%= @items_design.product_url %>#" target="_blank" class="btn btn-success">Buy at <%= @items_design.product_url %></a>
+        <p class="shop_description">
+          <%= @items_design.description %>
+        </p>
+
+        <%= link_to "See it in your room before you buy.", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id), :id => "shop_see_it_in_your_room_before_you_buy"%>
+
+        <br/>
+        <br/>
+        <form>
+          <input type="button" id="shop_green_button" class="green_button green_button_light" value="Buy at <%=@items_design.product_url.to_s%>"  onclick="window.location.href='<%=@items_design.product_url%>'">
+        </form>
+      </div>
+
   </div>
 </div>
-
+<div class="clear"></div>
+<br/>
 
 
 <div class="shop_container">

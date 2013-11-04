@@ -2,7 +2,7 @@
   <%= render 'shop_nav' %>
 
   <div class="shop_upper_container" data-shop-type="<%= @entity_type %>">
-    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@bookmark.id),:class => "btn btn-primary"%>
+    <%= link_to "Let me see it in my room", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@bookmark.id),:class => "blue_button blue_button_light"%>
     <a href="#" class="shop_fb_btn"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,h_21,w_36/v1371241692/facebook.png"></a>
     <a href="#" class="shop_pinterest_btn"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
 
@@ -11,30 +11,35 @@
     <br/>
     <br/>
   </div>
+  <div class="shop_container_box">
 
-  <div class="shop_left">
-    <p>
-      <% if @bookmark.image_name_desc.blank?  %>
-          <%= cl_image_tag("default_image_all.png", width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png")%>
-      <% else %>
-          <%= cl_image_tag(@bookmark.image_name_desc , width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png") %>
-      <% end%>
+      <div class="shop_left">
+        <p>
+          <% if @bookmark.image_name_desc.blank?  %>
+              <%= cl_image_tag("default_image_all.png", width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png")%>
+          <% else %>
+              <%= cl_image_tag(@bookmark.image_name_desc , width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png") %>
+          <% end%>
 
 
-    </p>
-  </div>
-  <div class="shop_right">
-    <br/>
-    <br/>
-    <br/>
-    <h4 class="shop_name" >
-      <%= @bookmark.title %>
-    </h4>
-    <p class="shop_description">
-      <%= @bookmark.description %>
-    </p>
+        </p>
+      </div>
+      <div class="shop_right">
+        <br/>
+        <br/>
+        <br/>
+        <p class="shop_name" >
+          <%= @bookmark.title %>
+        </p>
+        <p class="shop_description">
+          <%= @bookmark.description %>
+        </p>
+      </div>
   </div>
 </div>
+<div class="clear"></div>
+<br/>
+
 
 <br/>
 <br/>
