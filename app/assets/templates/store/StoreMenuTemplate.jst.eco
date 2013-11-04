@@ -1,7 +1,7 @@
 <div class="tabbable"> 
 
   <!-- Store Menu  -->
-  <ul class="nav nav-tabs" id="storeTabs">
+  <ul class="nav nav-tabs nav-tabs-store" id="storeTabs">
       <li class="active store-nav">
           <a href="#tab_items" data-toggle="tab">OBJECTS</a>
       </li>
@@ -21,10 +21,10 @@
 
   <div class="container">
     <div class="navbar">
-      <div class="navbar-inner">
+      <div class="navbar-inner navbar-inner-store">
         <ul class="nav">
         <li>
-          <div class="input-append">
+          <div class="input-append input-append-store">
 
             <!-- SEARCH BOX -->
             <input id="store-search-box" class="span2" type="text">
