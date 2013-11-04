@@ -29,6 +29,12 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
       @friendsCollection.forEach(@friendsAddView,this)
       if @friendsTotal!= undefined and @friendsTotal > 26 #Totally a hack until we know what the limit is. 
         $(@el).append("<div id='friends_show_more'><a href='#showMore'>Show More</a></div>")
+    that = this
+    $(@el).off('scroll').on('scroll',that,(event)->
+      if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+        event.data.showMore(event)
+        console.log("SHOW MORE PLZK");
+        )
     this
   
   friendsAddView: (friend) ->
@@ -42,22 +48,21 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
   showMore: (event)->
     event.preventDefault()
     event.stopPropagation()
-    @offset += @limit;
+    event.data.offset += event.data.limit;
     nextCollection = new Mywebroom.Collections.IndexFriendByUserIdByLimitByOffsetCollection()
     nextCollection.fetch
-      url:@friendsCollection.url @model.get('user_id'), @limit, @offset
+      url:@friendsCollection.url event.data.model.get('user_id'), event.data.limit, event.data.offset
       async:false
       success: (response)->
        console.log("nextCollection Fetched Successfully")
        console.log(response)
 
-    @.$('#friends_show_more').remove()
+    #event.data.$('#friends_show_more').remove()
     
     #render the new friends loaded.
     nextCollection.forEach(@friendsAddView,this)
 
     #if there's still more to fetch, add show more button. 
-    if @offset < @friendsTotal
-      $(@el).append("<div id='friends_show_more'><a href='#showMore'>Show More</a></div>")
-
+    if event.data.offset >= event.data.friendsTotal
+      $(@el).off('scroll');
 
