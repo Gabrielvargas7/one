@@ -30,21 +30,23 @@ class ItemsDesign < ActiveRecord::Base
                    :like,
                    :price,
                    :product_url,
-                   :image_name_logo
+                   :company_id
 
 
 
   mount_uploader :image_name, ItemsDesignsImageUploader
   mount_uploader :image_name_hover, ItemsDesignsImageHoverUploader
   mount_uploader :image_name_selection, ItemsDesignsImageSelectionUploader
-  mount_uploader :image_name_logo, ItemsDesignsImageLogoUploader
+
 
   belongs_to :item
+  belongs_to :company
   validates_presence_of :item
 
 
   has_many :users_items_designs
   has_many :bundles_items_designs
+
 
   VALID_REGEX = /^(?:[^\W_]|\s)*$/u
   validates :name,

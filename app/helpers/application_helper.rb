@@ -124,7 +124,7 @@ module ApplicationHelper
   # user  clean name for the url get_clean_name(name)
   #***********************************
 
-  # create the username for the url
+  # create the name for the url
   def get_clean_name(name)
 
 

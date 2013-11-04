@@ -2,6 +2,12 @@ Mywebroom::Application.routes.draw do
 
 
 
+  resources :static_contents
+
+
+  resources :companies
+
+
   #resources :shop
 
   match '/shop/items-design/:items_design_id/:name', to:

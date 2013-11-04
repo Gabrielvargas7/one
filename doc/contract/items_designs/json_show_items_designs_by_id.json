@@ -31,10 +31,7 @@
     }, 
     "image_name_hover": {
         "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823544/24518-items_design-image_name_hover-pink-218-h.png"
-    }, 
-    "image_name_logo": {
-        "url": "/assets/fallback/items_design/default_items_design.png"
-    }, 
+    },
     "image_name_selection": {
         "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823544/79454-items_design-image_name_selection-pink-218-300x300.jpg"
     }, 

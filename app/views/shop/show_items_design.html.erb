@@ -24,10 +24,12 @@
       </div>
       <div class="shop_right">
         <p>
-          <% if @items_design.image_name_logo.blank?  %>
-              <%= cl_image_tag("default_image_all.png", width: 400,height:150,:crop => :fit,:default_image => "default_image_all.png")%>
+          <% if @items_design.company.nil?  %>
           <% else %>
-              <%= cl_image_tag(@items_design.image_name_logo , width: 300,height:100,:crop => :fit,:default_image => "default_image_all.png") %>
+             <% if @items_design.company.image_name.blank?  %>
+                <% else %>
+                     <%= cl_image_tag(@items_design.company.image_name , width: 300,height:100,:crop => :fit,:default_image => "default_image_all.png") %>
+                <% end%>
           <% end%>
         </p>
         <br/>
