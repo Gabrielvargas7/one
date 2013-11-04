@@ -25,8 +25,13 @@ body {
     font-family: "Open Sans";
     zoom: 100%;
 
+}
+
+input {
+    font-family: "Open Sans";
 
 }
+
 
 @media screen and (max-height:1020px){
     body{
@@ -48,7 +53,7 @@ body {
         /*-moz-transform-origin: 0 0*/
     }
     .shop_container{
-        zoom: 110%;
+        /*zoom: 120%;*/
     }
 
 }
@@ -73,7 +78,7 @@ body {
         zoom: 80%;
     }
     .shop_container{
-        zoom: 95%;
+        zoom: 100%;
     }
 
 }
@@ -82,7 +87,7 @@ body {
         zoom: 70%;
     }
     .shop_container{
-        zoom: 90%;
+        zoom: 100%;
     }
 
 }
@@ -219,11 +224,46 @@ input[type=password] {
 .blue_button{
     background-color: #00ccff;
     color:white;
+    border:none;
 }
+
+.blue_button_light{
+    font-family: "Open Sans";
+    font-weight: lighter;
+    font-size:13px;
+    text-align: center;
+    padding: 6px 26px;
+}
+
 
 .blue_highlight{
     -webkit-box-shadow: 0px 0px 15px 4px rgba(0,204,255,1);
     -moz-box-shadow: 0px 0px 15px 4px rgba(0,204,255,1);
     box-shadow: 0px 0px 15px 4px rgba(0,204,255,1);
+}
+
+
+a.blue_button_light:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.green_button{
+    background-color: #39b54A;
+    color:white;
+    border:none;
+}
+
+.green_button_light{
+    font-family: "Open Sans";
+    font-weight: lighter;
+    font-size:13px;
+    text-align: center;
+    padding: 6px 26px;
+}
+
+a.green_button_light:hover{
+    color: #ffffff;
+    text-decoration: none;
 }
 

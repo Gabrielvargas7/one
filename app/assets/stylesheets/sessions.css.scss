@@ -42,13 +42,15 @@
 
 input#session_email_box:focus {
   border-color:  #0099cb;
-  //background: url(http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383249432/login-email-image.png) 5px -5px;
-  //background-repeat: no-repeat;
+
 }
 
 input#session_email_box{
   background: url(http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383249432/login-email-image.png) 10px 12px;
   background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 1;
+  border-color:  #898989;
 
 }
 
@@ -60,25 +62,37 @@ input#session_password_box:focus{
 input#session_password_box{
   background: url(http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383249467/login-password-image.png) 13px 9px;
   background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 1;
+  border-color:  #898989;
 }
 
 
 
 .session_container_main input {
   width: 296px;
-  border-style: solid;
-  border-width: 1;
-  border-color:  #898989;
-  //background-color: #ffffff;
   padding: 13px 13px 13px 50px;
   margin: 10px 73px 10px 10px;
 
-
+}
+.session_container_main input[type=submit]{
+  font-size:18px;
+  width: 362px;
+  text-align: center;
+  padding: 13px 0px;
+  margin-bottom: 0px;
 }
 
 #session_facebook_btn{
   margin: 0px 73px 0px 0px;
 
+}
+#session_forgot_password{
+  font-weight: 14px;
+  text-decoration: none;
+  font-weight: normal;
+  color: #464646;
+  margin-right: 318px;
 
 }
 

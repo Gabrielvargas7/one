@@ -5,14 +5,14 @@
 
 
 .shop_container{
-  overflow:hidden;
-  width:remainder;
-  line-height:1.5;
-  font-size:12px;
-  color:#5A5A5A;
-  background:#fff;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
+  //overflow:hidden;
+  //width:remainder;
+  //line-height:1.5;
+  //font-size:12px;
+  //color:#5A5A5A;
+  //background:#fff;
+  //text-rendering: optimizelegibility;
+  //-webkit-font-smoothing: antialiased;
 }
 
 .shop_filter{
@@ -33,6 +33,7 @@
   float:right;
 
 }
+
 .shop_content_entity a:hover {background-color:#f0f0f0;}
 
 .shop_left{
@@ -40,23 +41,23 @@
   float:left;
   text-align: center;
 }
-.shop_left a{
-  background-color:#f0f0f0;
-  color:#006daf;
-}
-.shop_left a:hover {
-  background-color:#f0f0f0;
-  color:#000000;
-}
 
 .shop_right{
-  width:remainder;
   float:right;
   width:40%;
 }
+.shop_description{
+  font-size: 12px;
+  font-weight: normal;
+}
+.brand_name{
+  font-size: 12px;
+  font-weight: bold;
+}
 
-.shop_right p {
-  font-size:90%;
+.shop_name  {
+  font-size:18px;
+  font-weight: lighter;
 }
 
 
@@ -75,6 +76,16 @@
 }
 
 
+#shop_green_button{
+  width: 362px;
+  text-align: left;
+
+}
+
+#shop_see_it_in_your_room_before_you_buy{
+  font-size:13px;
+
+}
 
 
 
