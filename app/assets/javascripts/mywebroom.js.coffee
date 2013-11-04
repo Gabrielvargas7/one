@@ -575,7 +575,7 @@ $(document).ready ->
       
       $(this).off('click') # So we don't have multiple click handlers
       
-      $(this).click( ->
+      $(this).click( (event)->
         
         # item_id extracted from the clicked element
         dom_item_id = $(this).data().designItemId
@@ -609,7 +609,18 @@ $(document).ready ->
           #Check if Friend's Room
           if Mywebroom.State.get('roomState') is "FRIEND" #Public is not clickable so no worry here.
             #show the popups
-            view = new Mywebroom.Views.PopupFriendItemView(itemData: model)
+            #1. get coordinates of click 
+            if event
+              coordinates =
+                left:event.pageX
+                top:event.pageY
+            else
+              coordinates =
+                top:model.get('y')
+                left:model.get('x')
+
+
+            view = new Mywebroom.Views.PopupFriendItemView(itemData: model,coordinates:coordinates)
             $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
             view.render()
           
@@ -956,7 +967,7 @@ $(document).ready ->
       6:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348860/map-Friend-Pop-Up-Object_gp3jlo.png" #world map
       7:   "" #tv stan
       8:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348727/dresser-Friend-Pop-Up-Object_mwf3fb.png" #dresser
-      9:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349229/shoppingbag-Friend-Pop-Up-Object_p5ojy3.png" #shopping bag
+      9:   "https://res.cloudinary.com/hpdnx5ayv/image/upload/v1383594435/shoppingbag-Friend-Pop-Up-Object.png" #shopping bag
       10:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349273/socialcanvas-Friend-Pop-Up-Object_pvzhz4.png" #social canvas 
       11:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349372/wallshelf-Friend-Pop-Up-Object_ylcro0.png" #wall shelf
       12:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348903/music-Friend-Pop-Up-Object_n4bmwf.png" #music player
