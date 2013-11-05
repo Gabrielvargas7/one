@@ -121,17 +121,28 @@ class BundlesController < ApplicationController
     end
   end
 
+
   # DELETE /bundles/1
   # DELETE /bundles/1.json
   def destroy
-    # sorry but not delete is not allow
-    #@bundle = Bundle.find(params[:id])
-    #@bundle.destroy
+    @bundle = Bundle.find(params[:id])
 
     respond_to do |format|
-      format.html { redirect_to bundles_url }
-      format.json { head :no_content }
+      ActiveRecord::Base.transaction do
+        begin
+          @bundles_items_design = BundlesItemsDesign.where(:bundle_id => params[:id]).delete_all
+          @bundle.destroy
+          format.html { redirect_to bundles_url }
+
+        rescue ActiveRecord::StatementInvalid
+          format.json { render json: 'failure to destroy bundle ', status: :unprocessable_entity }
+          raise ActiveRecord::Rollback
+        end
+
+      end
+
     end
+
   end
 
   # PUT /active_bundles/1
@@ -181,6 +192,12 @@ class BundlesController < ApplicationController
     respond_to do |format|
       format.json { render json: @bundle }
     end
+
+
+
+
+
+
   end
 
 
