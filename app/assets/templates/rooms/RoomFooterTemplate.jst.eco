@@ -13,6 +13,7 @@
             <li><a href="#">Join The Team</a></li>
             <li><a href="#">Partnerships</a></li>
             <li><a href="#">Contact Us</a></li>
+            <li><a id="feedbackLink" title="Click to send feedback" href="#" onclick="lightbox('Send feedback from a client-side page!');return false;">Send Feedback!</a></li>
             <li class="disabled"> <a href="#"> &copy; Copyright 2012 Rooms Inc. All Rights Reserved</a></li>
         </ul>
     </div>
