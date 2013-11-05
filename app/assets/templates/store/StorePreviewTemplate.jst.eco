@@ -1,6 +1,11 @@
 <div class="store_container">
   <div class="store_container_<%=@model.get('type')%> store-preview" id="store_<%=@model.get('type')%>_container_<%=@model.get('id')%>">
     <img class="store_image_cell" src="<%=@model.get('image_name').url%>"></br>
-    <%= @model.get('name') %></br>
+    <% if @model.get('name').trim().length > 30: %>
+    <%= @model.get('name').substr(0, 27).trim() + '...' %>
+    <% else: %>
+    <%= @model.get('name').trim() %>
+    <% end %>
+    </br>
   </div>
 </div>
