@@ -9,265 +9,806 @@
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "322",
         "id": 2,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171417/40133-item-bird-cage-image_name-birdcage.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383606514/71406-item-bird-cage-image_name_first_time_click-box.jpg"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171417/83417-item-bird-cage-image_name_gray-grey-birdcage.png"
         },
         "name": "Bird Cage",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-11-04T23:10:57Z",
+        "width": "136",
+        "x": "1816.0",
+        "y": "345.0",
+        "z": "5"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "350",
         "id": 3,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171453/32196-item-bookcase-image_name-bookcase.jpg"
         },
-        "name": "Book Stand",
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171454/89132-item-bookcase-image_name_gray-grey-bookcase.png"
+        },
+        "name": "Bookcase",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:17:33Z",
+        "width": "268",
+        "x": "356.0",
+        "y": "158.0",
+        "z": "0"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "80",
         "id": 24,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171498/67658-item-box-image_name-box.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171498/36366-item-box-image_name_gray-grey-box.png"
         },
         "name": "Box",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:18:18Z",
+        "width": "114",
+        "x": "478.0",
+        "y": "449.0",
+        "z": "2"
     },
     {
-        "clickable": "yes",
+        "clickable": "no",
+        "created_at": "2013-10-16T01:54:15Z",
+        "height": "140",
+        "id": 35,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171540/65394-item-carpet-image_name-carpet.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237773/32829-item-carpet-image_name_gray-grey-carpet.png"
+        },
+        "name": "Carpet",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:42:53Z",
+        "width": "530",
+        "x": "1120.0",
+        "y": "523.0",
+        "z": "0"
+    },
+    {
+        "clickable": "no",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "250",
         "id": 4,
         "image_name": {
-            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375301216/8174-item-image_name-asian-fusion-244-300x300.jpg"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171564/70320-item-chair-image_name-chair.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171564/64702-item-chair-image_name_gray-grey-chair.png"
         },
         "name": "Chair",
         "priority_order": 0,
-        "updated_at": "2013-07-31T20:06:56Z"
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:19:24Z",
+        "width": "210",
+        "x": "212.0",
+        "y": "369.0",
+        "z": "1"
+    },
+    {
+        "clickable": "no",
+        "created_at": "2013-10-16T01:49:27Z",
+        "height": "160",
+        "id": 33,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171612/18244-item-chandelier-image_name-chandelier.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171612/54286-item-chandelier-image_name_gray-grey-chandelier.png"
+        },
+        "name": "Chandelier",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:20:12Z",
+        "width": "254",
+        "x": "864.0",
+        "y": "0.0",
+        "z": "0"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "115",
         "id": 17,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171650/39291-item-computer-image_name-computer.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171650/6519-item-computer-image_name_gray-grey-computer.png"
         },
         "name": "Computer",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
-    },
-    {
-        "clickable": "yes",
-        "created_at": "2013-05-17T20:32:53Z",
-        "id": 23,
-        "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
-        },
-        "name": "Curtain",
-        "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:20:50Z",
+        "width": "146",
+        "x": "147.0",
+        "y": "345.0",
+        "z": "1"
     },
     {
         "clickable": "no",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "190",
         "id": 14,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171689/17865-item-desk-image_name-desk.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171689/97021-item-desk-image_name_gray-grey-desk.png"
         },
         "name": "Desk",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:21:29Z",
+        "width": "286",
+        "x": "41.0",
+        "y": "434.0",
+        "z": "0"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
-        "id": 11,
-        "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
-        },
-        "name": "Encyclo Shelf",
-        "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
-    },
-    {
-        "clickable": "yes",
-        "created_at": "2013-05-17T20:32:53Z",
+        "height": "576",
         "id": 8,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171739/46317-item-dresser-image_name-dresser.jpg"
         },
-        "name": "File Box",
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171740/1514-item-dresser-image_name_gray-grey-dresser.png"
+        },
+        "name": "Dresser",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:22:19Z",
+        "width": "216",
+        "x": "1984.0",
+        "y": "103.0",
+        "z": "0"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-10-16T01:42:34Z",
+        "height": "98",
+        "id": 29,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171773/508-item-food-image_name-food.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171773/97390-item-food-image_name_gray-grey-food.png"
+        },
+        "name": "Food",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:22:52Z",
+        "width": "200",
+        "x": "1299.0",
+        "y": "418.0",
+        "z": "4"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-10-01T23:21:38Z",
+        "height": "90",
+        "id": 25,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171809/64996-item-games-image_name-games.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171809/51432-item-games-image_name_gray-grey-game.png"
+        },
+        "name": "Games",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:23:29Z",
+        "width": "110",
+        "x": "968.0",
+        "y": "482.0",
+        "z": "1"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-10-03T23:16:56Z",
+        "height": "260",
+        "id": 26,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171842/40664-item-hobbies-image_name-hobby.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237793/14437-item-hobbies-image_name_gray-grey-hobby.png"
+        },
+        "name": "Hobbies",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:43:13Z",
+        "width": "170",
+        "x": "580.0",
+        "y": "240.0",
+        "z": "1"
     },
     {
         "clickable": "no",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "300",
         "id": 19,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171874/34939-item-lamp-image_name-lamp.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237818/79197-item-lamp-image_name_gray-grey-lamp.png"
         },
         "name": "Lamp",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:43:38Z",
+        "width": "120",
+        "x": "1491.0",
+        "y": "196.0",
+        "z": "1"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "104",
         "id": 12,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171909/76052-item-music-player-image_name-music.jpg"
         },
-        "name": "Music Box",
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237874/28677-item-music-player-image_name_gray-grey-musicplayer.png"
+        },
+        "name": "Music Player",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:44:34Z",
+        "width": "140",
+        "x": "1676.0",
+        "y": "390.0",
+        "z": "4"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "84",
         "id": 5,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171926/32682-item-newspaper-image_name-news.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237857/10541-item-newspaper-image_name_gray-grey-news.png"
         },
         "name": "Newspaper",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:44:17Z",
+        "width": "114",
+        "x": "779.0",
+        "y": "500.0",
+        "z": "2"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "130",
         "id": 15,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171944/6598-item-night-stand-image_name-nightstand.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237891/50821-item-night-stand-image_name_gray-grey-nightstand.png"
         },
         "name": "Night Stand",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:44:51Z",
+        "width": "140",
+        "x": "1680.0",
+        "y": "480.0",
+        "z": "3"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "50",
         "id": 16,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172008/75038-item-notebook-image_name-notebook.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237908/42037-item-notebook-image_name_gray-grey-notebook.png"
         },
         "name": "Notebook",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:45:08Z",
+        "width": "88",
+        "x": "142.0",
+        "y": "422.0",
+        "z": "2"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-10-16T01:47:08Z",
+        "height": "90",
+        "id": 32,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172024/91183-item-pet-image_name-pets.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237925/80679-item-pet-image_name_gray-grey-pet.png"
+        },
+        "name": "Pet",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:45:25Z",
+        "width": "150",
+        "x": "573.0",
+        "y": "534.0",
+        "z": "1"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "70",
         "id": 18,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172042/81898-item-phone-image_name-phone.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237941/61060-item-phone-image_name_gray-grey-phone.png"
         },
         "name": "Phone",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:45:41Z",
+        "width": "78",
+        "x": "64.0",
+        "y": "410.0",
+        "z": "1"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-10-03T23:19:08Z",
+        "height": "100",
+        "id": 27,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172061/34015-item-photography-image_name-photography.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237962/99123-item-photography-image_name_gray-grey-camera.png"
+        },
+        "name": "Photography",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:46:01Z",
+        "width": "72",
+        "x": "768.0",
+        "y": "320.0",
+        "z": "2"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "114",
         "id": 20,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172156/46642-item-pinboard-image_name-pinboard.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237989/36337-item-pinboard-image_name_gray-grey-pinboard.png"
         },
         "name": "Pinboard",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
-    },
-    {
-        "clickable": "yes",
-        "created_at": "2013-05-17T20:32:53Z",
-        "id": 21,
-        "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
-        },
-        "name": "Portrait",
-        "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
-    },
-    {
-        "clickable": "yes",
-        "created_at": "2013-05-17T20:32:53Z",
-        "id": 9,
-        "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
-        },
-        "name": "Shopping Bag",
-        "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
-    },
-    {
-        "clickable": "yes",
-        "created_at": "2013-05-17T20:32:53Z",
-        "id": 10,
-        "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
-        },
-        "name": "Social Painting",
-        "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
-    },
-    {
-        "clickable": "yes",
-        "created_at": "2013-05-17T20:32:53Z",
-        "id": 22,
-        "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
-        },
-        "name": "Sports",
-        "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
-    },
-    {
-        "clickable": "yes",
-        "created_at": "2013-05-17T20:32:53Z",
-        "id": 13,
-        "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
-        },
-        "name": "TV",
-        "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:46:29Z",
+        "width": "112",
+        "x": "41.0",
+        "y": "300.0",
+        "z": "0"
     },
     {
         "clickable": "no",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "170",
+        "id": 21,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172175/32250-item-portrait-image_name-portrait.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382652778/35059-item-portrait-image_name_gray-grey-portrait.png"
+        },
+        "name": "Portrait",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:29:35Z",
+        "width": "170",
+        "x": "907.0",
+        "y": "160.0",
+        "z": "0"
+    },
+    {
+        "clickable": "no",
+        "created_at": "2013-10-16T01:45:45Z",
+        "height": "264",
+        "id": 31,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172192/28625-item-poster-image_name-poster.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238019/26576-item-poster-image_name_gray-grey-poster.png"
+        },
+        "name": "Poster",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:46:59Z",
+        "width": "208",
+        "x": "620.0",
+        "y": "190.0",
+        "z": "0"
+    },
+    {
+        "clickable": "no",
+        "created_at": "2013-10-16T01:53:07Z",
+        "height": "140",
+        "id": 34,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172218/47926-item-rug-image_name-rug.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238038/65743-item-rug-image_name_gray-grey-rug.png"
+        },
+        "name": "Rug",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:47:18Z",
+        "width": "530",
+        "x": "351.0",
+        "y": "523.0",
+        "z": "0"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-05-17T20:32:53Z",
+        "height": "132",
+        "id": 9,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172234/96595-item-shopping-bag-image_name-shopbag.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238061/5339-item-shopping-bag-image_name_gray-grey-shopping.png"
+        },
+        "name": "Shopping Bag",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:47:41Z",
+        "width": "160",
+        "x": "1088.0",
+        "y": "511.0",
+        "z": "2"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-05-17T20:32:53Z",
+        "height": "180",
+        "id": 10,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172250/81200-item-social-canvas-image_name-socialcanvas.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238082/21861-item-social-canvas-image_name_gray-grey-socialcanvas.png"
+        },
+        "name": "Social Canvas",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:48:02Z",
+        "width": "190",
+        "x": "1733.0",
+        "y": "146.0",
+        "z": "0"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-05-17T20:32:53Z",
+        "height": "260",
+        "id": 1,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172267/24486-item-sofa-image_name-sofa.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238100/27493-item-sofa-image_name_gray-grey-sofa.png"
+        },
+        "name": "Sofa",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:48:20Z",
+        "width": "500",
+        "x": "1311.0",
+        "y": "330.0",
+        "z": "2"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-05-17T20:32:53Z",
+        "height": "300",
+        "id": 22,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172286/6788-item-sports-image_name-sports.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238116/34224-item-sports-image_name_gray-grey-sports.png"
+        },
+        "name": "Sports",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:48:36Z",
+        "width": "230",
+        "x": "1140.0",
+        "y": "210.0",
+        "z": "1"
+    },
+    {
+        "clickable": "no",
+        "created_at": "2013-10-16T01:44:15Z",
+        "height": "90",
+        "id": 30,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172307/55448-item-stool-image_name-stool.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238136/98095-item-stool-image_name_gray-grey-stool.png"
+        },
+        "name": "Stool",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:48:56Z",
+        "width": "80",
+        "x": "762.0",
+        "y": "411.0",
+        "z": "1"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-05-17T20:32:53Z",
+        "height": "120",
+        "id": 13,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172346/7529-item-tv-image_name-tv.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238177/73310-item-tv-image_name_gray-grey-tv.png"
+        },
+        "name": "TV",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:49:37Z",
+        "width": "228",
+        "x": "878.0",
+        "y": "334.0",
+        "z": "1"
+    },
+    {
+        "clickable": "no",
+        "created_at": "2013-05-17T20:32:53Z",
+        "height": "100",
         "id": 7,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172363/80173-item-tv-stand-image_name-tvstand.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238200/84817-item-tv-stand-image_name_gray-grey-tvstand.png"
         },
         "name": "TV Stand",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:50:00Z",
+        "width": "270",
+        "x": "857.0",
+        "y": "442.0",
+        "z": "0"
+    },
+    {
+        "clickable": "no",
+        "created_at": "2013-10-16T01:39:24Z",
+        "height": "140",
+        "id": 28,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172331/60148-item-table-image_name-table.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238155/47625-item-table-image_name_gray-grey-table.png"
+        },
+        "name": "Table",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:49:15Z",
+        "width": "250",
+        "x": "1270.0",
+        "y": "464.0",
+        "z": "3"
     },
     {
         "clickable": "yes",
         "created_at": "2013-05-17T20:32:53Z",
+        "height": "140",
+        "id": 11,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172382/3587-item-wall-shelf-image_name-wallshelf.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238223/95342-item-wall-shelf-image_name_gray-grey-shelf.png"
+        },
+        "name": "Wall Shelf",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:50:23Z",
+        "width": "200",
+        "x": "63.0",
+        "y": "163.0",
+        "z": "0"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-05-17T20:32:53Z",
+        "height": "326",
+        "id": 23,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172397/14274-item-window-image_name-windows.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "/assets/fallback/item/default_item.png"
+        },
+        "name": "Window",
+        "priority_order": 0,
+        "section_id": "1",
+        "updated_at": "2013-10-30T22:33:17Z",
+        "width": "422",
+        "x": "1147.0",
+        "y": "162.0",
+        "z": "0"
+    },
+    {
+        "clickable": "yes",
+        "created_at": "2013-05-17T20:32:53Z",
+        "height": "160",
         "id": 6,
         "image_name": {
-            "url": "/assets/fallback/item/default_item.png"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172422/7745-item-world-map-image_name-map.jpg"
+        },
+        "image_name_first_time_click": {
+            "url": "/assets/fallback/item/default.png"
+        },
+        "image_name_gray": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238259/86706-item-world-map-image_name_gray-grey-map.png"
         },
         "name": "World Map",
         "priority_order": 0,
-        "updated_at": "2013-05-17T20:32:53Z"
-    },
-    {
-        "clickable": "yes",
-        "created_at": "2013-05-17T20:32:53Z",
-        "id": 1,
-        "image_name": {
-            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375300795/28555-item-image_name-asian-fusion-241-300x300.jpg"
-        },
-        "name": "Bed",
-        "priority_order": 2,
-        "updated_at": "2013-07-31T19:59:54Z"
+        "section_id": "1",
+        "updated_at": "2013-10-31T16:50:59Z",
+        "width": "124",
+        "x": "1602.0",
+        "y": "165.0",
+        "z": "0"
     }
 ]

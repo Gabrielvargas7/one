@@ -1,8 +1,16 @@
 <h1>Listing bookmarks</h1>
 
+<% @items.each do |item| %>
+    <%= link_to item.name, bookmarks_path(item_id:item.id), :method => :get %>
+<% end %>
+
+
+
 <h3><%= link_to 'New Bookmark', new_bookmark_path %> &nbsp;&nbsp;|&nbsp;&nbsp;
     <%= link_to 'Bookmarks Approval ', index_bookmarks_approval_path %>
 </h3>
+
+<%= will_paginate %>
 
 
 <table class="table table-bordered">
@@ -85,6 +93,8 @@
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate %>
 
 
 <br />

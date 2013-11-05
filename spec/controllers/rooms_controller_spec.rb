@@ -191,6 +191,9 @@ describe RoomsController do
           end
         end
 
+  end
 
+  describe "Room api" do
+    pending "add test items with image first_time_click on the room api #{__FILE__}"
+  end
 
-      end

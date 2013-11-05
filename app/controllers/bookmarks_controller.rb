@@ -45,8 +45,22 @@ class BookmarksController < ApplicationController
     #@bookmarks = Bookmark.paginate(page: params[:page], :per_page => 30)
     #@bookmarks = Bookmark.paginate(page: params[:page]).order('id')
 
+    # when is not filter( it should get first
+    if params[:item_id].blank?
+      @item = Item.first
+    else
+      @item = Item.find(params[:item_id])
+    end
 
-    @bookmarks = Bookmark.joins(:bookmarks_category).order('bookmarks_categories.item_id,bookmarks_category_id').all
+    @items= Item.order(:id).all
+
+
+
+    @bookmarks = Bookmark.joins(:bookmarks_category).
+                where("bookmarks_categories.item_id = ?",@item.id).
+                order('bookmarks_categories.item_id,bookmarks_category_id').
+                paginate(page: params[:page],:per_page => 200)
+
 
     respond_to do |format|
       format.html # index.html.erb

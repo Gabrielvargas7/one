@@ -1,12 +1,16 @@
 <h1>Listing bundles_items_designs</h1>
 
+
+<% @bundles.each do |bundle| %>
+    <%= link_to bundle.name,   bundles_items_designs_path(bundle_id:bundle.id), :method => :get %>
+<% end %>
+
+
 <h3>
-
   <%= link_to 'New Bundles items design ', index_bundle_selection_path %>
-
-
 </h3>
 
+<%= will_paginate %>
 
 
 <table class="table table-bordered">
@@ -23,12 +27,6 @@
     <th>Items design id</th>
     <th>Items design name</th>
     <th>Items design image name</th>
-
-    <th>Location id</th>
-    <th>Location name</th>
-    <th>Section id </th>
-    <th>Section name</th>
-
 
 
     <th></th>
@@ -86,17 +84,17 @@
     <%  end %>
 
 
-    <%  if bundles_items_design.location.nil? %>
-        <td></td>
-        <td></td>
+    <!--<%  if bundles_items_design.location.nil? %>-->
+        <!--<td></td>-->
+        <!--<td></td>-->
 
-    <%  else %>
-        <td><%= bundles_items_design.location.id %></td>
-        <td><%= bundles_items_design.location.name %></td>
-        <td><%= bundles_items_design.location.section.id %></td>
-        <td><%= bundles_items_design.location.section.name %></td>
+    <!--<%  else %>-->
+        <!--<td><%= bundles_items_design.location.id %></td>-->
+        <!--<td><%= bundles_items_design.location.name %></td>-->
+        <!--<td><%= bundles_items_design.location.section.id %></td>-->
+        <!--<td><%= bundles_items_design.location.section.name %></td>-->
 
-    <%  end %>
+    <!--<%  end %>-->
 
 
     <td><%= link_to 'Show', bundles_items_design %></td>
@@ -104,6 +102,8 @@
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate %>
 
 <br />
 

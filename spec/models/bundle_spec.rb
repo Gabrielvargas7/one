@@ -33,6 +33,8 @@ describe Bundle do
   it { @bundle.should respond_to(:name) }
   it { @bundle.should respond_to(:description) }
   it { @bundle.should respond_to(:image_name_set)}
+  it { @bundle.should respond_to(:image_name_entire_room)}
+
   it { @bundle.should respond_to(:image_name)}
   it { @bundle.should respond_to(:theme_id) }
   it { @bundle.should respond_to(:section_id) }

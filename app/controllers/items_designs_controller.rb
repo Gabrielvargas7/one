@@ -29,7 +29,18 @@ class ItemsDesignsController < ApplicationController
   # GET /items_designs.json
   def index
 
-    @items_designs = ItemsDesign.order(:item_id,:id).all
+    # when is not filter( it should get first
+    if params[:item_id].blank?
+      @item = Item.first
+    else
+      @item = Item.find(params[:item_id])
+    end
+
+    @items= Item.order(:id).all
+
+    @items_designs = ItemsDesign.where("item_id = ?",@item.id).order(:item_id,:id).paginate(page: params[:page],:per_page => 200)
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items_designs }

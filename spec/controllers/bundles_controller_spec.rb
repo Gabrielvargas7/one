@@ -676,6 +676,10 @@ describe BundlesController do
   end
 
 
+  describe "destroy bundle" do
+    pending "add test destroy bundle #{__FILE__}"
+  end
+
 
 
 

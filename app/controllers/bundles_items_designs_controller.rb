@@ -38,8 +38,19 @@ class BundlesItemsDesignsController < ApplicationController
   # GET /bundles_items_designs
   # GET /bundles_items_designs.json
   def index
+
+    # when is not filter( it should get first
+    if params[:bundle_id].blank?
+       @bundle = Bundle.first
+    else
+       @bundle = Bundle.find(params[:bundle_id])
+    end
+
+    @bundles= Bundle.order(:id).all
     @bundles_items_designs = BundlesItemsDesign.order('bundle_id,items_designs.item_id ').
-        joins('LEFT OUTER JOIN items_designs ON items_designs.id = bundles_items_designs.items_design_id')
+        joins('LEFT OUTER JOIN items_designs ON items_designs.id = bundles_items_designs.items_design_id').
+        where('bundles_items_designs.bundle_id = ?',@bundle.id).
+        paginate(page: params[:page],:per_page => 200)
 
     respond_to do |format|
       format.html # index.html.erb
