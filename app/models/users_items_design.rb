@@ -11,7 +11,7 @@
 #
 
 class UsersItemsDesign < ActiveRecord::Base
-  attr_accessible :items_design_id, :user_id ,:hide ,:location_id
+  attr_accessible :items_design_id, :user_id ,:hide ,:location_id,:first_time_click
 
   belongs_to :user
   belongs_to :items_design
@@ -27,5 +27,6 @@ class UsersItemsDesign < ActiveRecord::Base
   validates :items_design_id,presence:true, numericality: { only_integer: true }
   validates :hide,presence:true, format: { with: VALID_Y_N_REGEX }
   validates :location_id,presence:true, numericality: { only_integer: true }
+  validates :first_time_click,presence:false,format: { with: VALID_Y_N_REGEX }
 
 end

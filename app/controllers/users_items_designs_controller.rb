@@ -6,13 +6,15 @@ class UsersItemsDesignsController < ApplicationController
   before_filter :json_signed_in_user,
                 only:[
                     :json_update_user_items_design_by_user_id_and_items_design_id_and_location_id,
-                    :json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id
+                    :json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id,
+                    :json_update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id
                 ]
 
   before_filter :json_correct_user,
                 only:[
                     :json_update_user_items_design_by_user_id_and_items_design_id_and_location_id,
-                    :json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id
+                    :json_update_hide_user_items_design_by_user_id_and_items_design_id_and_location_id,
+                    :json_update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id
 
                 ]
 
@@ -86,7 +88,7 @@ class UsersItemsDesignsController < ApplicationController
 
             if @user_items_design.hide.eql?("yes")
                 if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:items_design_id],hide:'no',location_id:params[:location_id] )
-                  format.json { head :no_content }
+                  format.json { render json: @user_items_design, status: :ok }
                 else
                   format.json { render json: @user_items_design.errors, status: :unprocessable_entity }
                 end
@@ -229,6 +231,34 @@ class UsersItemsDesignsController < ApplicationController
       end
     end
   end
+
+
+  #   PUT update the user items design first time click to no (n)
+  #  /users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/:user_id/:items_design_id/:location_id
+  #  /users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
+  #       toggle operation -> yes -> no
+  #Return ->
+  #success    ->  head  200 OK
+
+  def json_update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id
+
+    respond_to do |format|
+      #  validate if exists on the user
+      if UsersItemsDesign.exists?(user_id:params[:user_id],items_design_id:params[:items_design_id])
+         @user_items_design = UsersItemsDesign.find_by_user_id_and_items_design_id_and_location_id(params[:user_id],params[:items_design_id],params[:location_id])
+
+          if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:items_design_id],first_time_click:'n',location_id:params[:location_id] )
+            format.json { render json: @user_items_design, status: :ok }
+
+          else
+            format.json { render json: @user_items_design.errors, status: :unprocessable_entity }
+          end
+      else
+        format.json { render json: 'not found user id with items design' , status: :not_found }
+      end
+    end
+  end
+
 
 
 end

@@ -175,13 +175,36 @@ class RoomsController < ApplicationController
                     joins('LEFT OUTER JOIN sections ON sections.id = locations.section_id')
 
 
+                @user_items = Item.
+                    select('
+                            users_items_designs.items_design_id,
+                            users_items_designs.hide,
+                            users_items_designs.location_id,
+                            users_items_designs.first_time_click,
+                            users_items_designs.user_id,
 
-                  format.json { render json: {
+                            items.id as item_id,
+                            items.name,
+                            items.image_name_first_time_click,
+                            items.image_name,
+                            items.image_name_gray').
+                    joins(:items_designs).
+                    joins('inner join users_items_designs ON users_items_designs.items_design_id= items_designs.id').
+                    where('users_items_designs.user_id = ?',@user.id)
+
+
+
+
+
+
+
+                format.json { render json: {
                                               user: @user,
                                               user_photos: @user_photos,
                                               user_profile:@user_profile,
                                               user_theme: @user_theme,
-                                              user_items_designs: @user_items_designs
+                                              user_items_designs: @user_items_designs,
+                                              user_items: @user_items
 
                   }}
           else

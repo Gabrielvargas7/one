@@ -16,8 +16,8 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :clickable, :name ,:priority_order,:image_name,:image_name_gray
-                  #:folder_name, :height, :name, :width, :x, :y, :z
+  attr_accessible :clickable, :name ,:priority_order,:image_name,:image_name_gray,:image_name_first_time_click
+
 
   has_many :items_designs
   has_many :bookmarks_categories
@@ -30,6 +30,8 @@ class Item < ActiveRecord::Base
 
   mount_uploader :image_name, ItemsImageUploader
   mount_uploader :image_name_gray, ItemsImageGrayUploader
+  mount_uploader :image_name_first_time_click, ItemsImageNameFirstTimeClickUploader
+
 
 
   VALID_YES_NO_REGEX = /(yes)|(no)/

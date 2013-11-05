@@ -454,6 +454,12 @@ Mywebroom::Application.routes.draw do
          :users_items_designs_json_index_user_items_designs_by_user_id_and_section_id
 
 
+  match '/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/:user_id/:items_design_id/:location_id', to:
+         'users_items_designs#json_update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id', via: :put
+
+
+
+
   #--------------------------
   # end UsersItemsDesign Contract
   #--------------------------

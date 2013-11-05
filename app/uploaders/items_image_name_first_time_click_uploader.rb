@@ -10,15 +10,46 @@ class ItemsImageNameFirstTimeClickUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  include Cloudinary::CarrierWave
+
+  #process :convert => 'jpg'
+  process :tags => ['item_image_name_first_time_click']
+
+
+  def public_id
+    img_path = "#{model.name}"
+    image_path = UploaderImageHelper.set_on_image_the_path_name_for_seo(img_path)
+    name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-"+image_path+"-#{mounted_as}-"
+
+    #name = "#{rand(0..100000)}-#{model.class.to_s.underscore}-#{mounted_as}-"
+    filename = File.basename(original_filename, ".*")
+    filename.downcase!
+    name.to_s+filename.to_s
   end
+
+  def default_url
+    asset_path("fallback/item/" + [version_name, "default.png"].compact.join('_'))
+  end
+
+  def cache_dir
+    #"/PATH/RAILSAPPLICATION/tmp/uploads/cache/#{model.id}"
+    "#{Rails.root}/tmp/uploads/cache/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+
+
+  # Choose what kind of storage to use for this uploader:
+  #storage :file
+  ## storage :fog
+  #
+  ## Override the directory where uploaded files will be stored.
+  ## This is a sensible default for uploaders that are meant to be mounted:
+  #def store_dir
+  #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
