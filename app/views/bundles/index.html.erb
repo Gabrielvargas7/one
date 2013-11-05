@@ -33,6 +33,7 @@
     <th>Special Name</th>
     <th>Like</th>
     <th>Active</th>
+    <th></th>
 
 
 
@@ -129,6 +130,7 @@
     <td><%= link_to 'Show', bundle %></td>
     <td><%= link_to 'Edit', edit_bundle_path(bundle) %></td>
     <td><%= link_to 'Active',bundles_active_update_path(bundle.id), :method => :put %></td>
+    <td><%= link_to 'Destroy', bundle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
 
   </tr>
