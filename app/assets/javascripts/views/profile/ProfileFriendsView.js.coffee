@@ -46,7 +46,11 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
   paginate: (event)->
     event.preventDefault()
     event.stopPropagation()
+
+    #1. Increment offset
     event.data.offset += event.data.limit;
+    
+    #2. Fetch new items
     nextCollection = new Mywebroom.Collections.IndexFriendByUserIdByLimitByOffsetCollection()
     nextCollection.fetch
       url:@friendsCollection.url event.data.model.get('user_id'), event.data.limit, event.data.offset
@@ -55,16 +59,13 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
        console.log("nextCollection Fetched Successfully")
        console.log(response)
 
-    #Add to FriendsCollection so Menu Items still work   
+    #3. Add to FriendsCollection so Menu Items still work   
     @friendsCollection.add(nextCollection.toJSON(),{silent:true})
-    debugger;
     
-    #event.data.$('#friends_show_more').remove()
-    
-    #render the new friends loaded.
+    #4. Render the new friends loaded.
     nextCollection.forEach(@friendsAddView,this)
 
-    #if there's still more to fetch, add show more button. 
+    #5. if there's no more to fetch, turn off event. 
     if event.data.offset >= event.data.friendsTotal
       $(@el).off('scroll');
 

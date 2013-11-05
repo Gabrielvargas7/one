@@ -117,10 +117,11 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
 
   ###
-  #showMoreRandomDesignsAndBookmarks - handles pagination
-  #       -called from $('#gridItemList') scroll event in showActivity->
+  #paginateActivity - handles pagination
+  #       -called from $('#gridItemList') scroll event in showActivity
+  #       -Function only intended for SELF state
   ###
-  showMoreRandomDesignsAndBookmarks:(event) ->
+  paginateActivity:(event) ->
     event.preventDefault()
     event.stopPropagation()
     
@@ -132,34 +133,28 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
     activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
     
-    #Fetch them
+    #3. Fetch them
     activityBookmarksRandomCollection.fetch
       url:activityBookmarksRandomCollection.url event.data.fetchLimit, event.data.fetchOffset
       reset:true
       async:false
-      success: (response)->
-        #console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
-        #console.log(response)
   
     activityItemsDesignsRandomCollection.fetch
       url:activityItemsDesignsRandomCollection.url event.data.fetchLimit, event.data.fetchOffset
       reset:true
       async:false
-      success: (response)->
-        #console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
-        #console.log(response)
     
-    #3. Shuffle them
+    #4. Shuffle them
     tempCollection = new Backbone.Collection()
     tempCollection.add(activityItemsDesignsRandomCollection.toJSON(),{silent:true})
     tempCollection.add(activityBookmarksRandomCollection.toJSON(),{silent:true})
     tempCollection.reset(tempCollection.shuffle(),{silent:true})
 
 
-    #4. Add them to the collection
+    #5. Add them to the collection. (Marionette takes care of render)
     event.data.activityCollection.add(tempCollection.toJSON())
 
-    #5. If nothing fetched, turn off the scroll event.
+    #6. If nothing fetched, turn off the scroll event.
     if activityItemsDesignsRandomCollection.models.length < event.data.fetchLimit or activityBookmarksRandomCollection < event.data.fetchLimit
       @$('#gridItemList').off('scroll')
 
@@ -244,12 +239,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $('#profileHome_bottom').html(@profileActivityView.el)
     @profileActivityView.render()
     #if room is Self, allow endless activity scrolling. 
-    #set scroll event - 
+    
+    #set Paginate Activity event - 
     that = this
     if Mywebroom.State.get("roomState") is "SELF"
       @$('#gridItemList').off('scroll').on('scroll',that,(event)->
         if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
-          event.data.showMoreRandomDesignsAndBookmarks(event)
+          event.data.paginateActivity(event)
       )
 
 

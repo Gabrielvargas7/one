@@ -46,7 +46,10 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
     #Need Photos Total
     event.preventDefault()
     event.stopPropagation()
+    #1. Increment offset
     event.data.offset += event.data.fetchLimit;
+
+    #2. Fetch new items
     nextCollection = new Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection()
     nextCollection.fetch
         url: @photosCollection.url event.data.model.get('user_id'),event.data.fetchLimit,event.data.offset
@@ -55,15 +58,15 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
          console.log("PhotosCollection Fetched Successfully")
          console.log(response)
     
-    #render the new data's view.
+    #3. Render the new data's view.
     if nextCollection
-      #add to collection and Marionette- ProfileActivityView2 will auto render it. Yay! 
+      #3a. Add to collection and Marionette- ProfileActivityView2 will auto render it. Yay! 
       event.data.photosCollection.add(nextCollection.toJSON())
       # nextCollection.each((item)->
       #   itemView = new Mywebroom.Views.ProfileGridItemView2(model:item)
       #   $('#gridItemList').append(itemView.render().el)
       #   )
 
-    #if no data was fetched, turn off event.
+    #4. if no data was fetched, turn off event.
     if !nextCollection.models.length or nextCollection.models.length < event.data.fetchLimit
       event.data.$('#gridItemList').off('scroll');
