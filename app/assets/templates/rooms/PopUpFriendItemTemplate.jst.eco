@@ -1,31 +1,8 @@
-<style>
-  #popup_friend_item_wrap{
-    width:400px;
-    height:256px;
-  }
-  #popup_friend_item_wrap #popup_friend_item_close{
-    position:absolute;
-    top:2px;
-    right:2px;
-  }
-  .popup_friend_green_button{
-    position: absolute;
-    bottom: 45px;
-    right: 49px;
-    color:white;
-    background-color: #39b54a;
-    width:150px;
-    border-radius:3px;
-    text-align:center;
-    font-size: 14px;
-    padding: 3px 0;
-  }
-</style>
 <div id="popup_friend_item_wrap" style="position:absolute; top:<%=@coordinates.top%>px;left:<%=@coordinates.left%>px;">
-  <img src="<%=@urlToPopup%>">  
-  <div href="#" class="popup_friend_green_button">
-    <a><span class="link_spanner"></span></a>
+  <img src="<%=@urlToPopup%>">
+  <div href="#" class="popup_friend_green_button green_button">
+    <a href="#"><span class="link_spanner"></span></a>
     Close
   </div>
-  <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383590506/x-button_rqdoti.png" id="popup_friend_item_close">
+  <a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383590506/x-button_rqdoti.png" id="popup_friend_item_close"> </a>
 </div>
