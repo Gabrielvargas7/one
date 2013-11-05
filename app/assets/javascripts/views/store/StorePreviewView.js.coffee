@@ -189,9 +189,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     designs.fetch
       async  : false
       url    : designs.url(itemId)
-      success: (response) ->
+      success: (collection, response, options) ->
         #console.log("initial design fetch success", response)
-    
+      error: (collection, response, options) ->
+        console.error("initial design fetch error", response.responseText)
     
     
     
@@ -519,7 +520,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     @row_number = 1
     @column_number = 3
 
-    @row_line = "<ul id='row_item_designs_" + @row_number + "'></ul>"
+    @row_line = "<ul id=row_item_designs_1></ul>"
     this.$('#tab_hidden').append(@row_line)
 
     self = this
