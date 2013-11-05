@@ -1,29 +1,36 @@
 <%= form_for(@static_content) do |f| %>
-  <% if @static_content.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@static_content.errors.count, "error") %> prohibited this static_content from being saved:</h2>
+    <% if @static_content.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@static_content.errors.count, "error") %> prohibited this static_content from being saved:</h2>
 
-      <ul>
-      <% @static_content.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @static_content.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :image_name %><br />
-    <%= f.text_field :image_name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="field">
+      <%= f.label :image_name %>
+      <%= f.file_field :image_name %>
+    </div>
+
+
+
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_field :description %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

@@ -27,10 +27,12 @@ class Bundle < ActiveRecord::Base
                   :color,
                   :make,
                   :special_name,
-                  :like
+                  :like,
+                  :image_name_entire_room
 
   mount_uploader :image_name, BundlesImageUploader
   mount_uploader :image_name_set, BundlesImageSetUploader
+  mount_uploader :image_name_entire_room,BundlesImageNameEntireRoomUploader
 
 
   belongs_to :section
