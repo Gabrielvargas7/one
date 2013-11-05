@@ -171,11 +171,10 @@ Mywebroom::Application.routes.draw do
   #room page
   match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
 
-  #match '/xroom/:username', to: 'rooms#xroom', via: :get,as: :xroom_rooms
+  match '/xroom', to: 'rooms#xroom', via: :get,as: :xroom_rooms
 
 
   root to: 'static_pages#home'
-  #root to: 'users#new'
 
 
 # Contract Back-end -- Front-end only Json responce

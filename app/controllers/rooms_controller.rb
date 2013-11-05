@@ -25,27 +25,23 @@ class RoomsController < ApplicationController
 
 
   # GET Get room with the username
-  # /xroom/:username
+  # /xroom
   # xroom_rooms_path // xroom_rooms_url
   # public
-  #def xroom
-  #
-  #  if User.exists?(username:params[:username])
-  #
-  #    @username = params[:username]
-  #    @user = User.find_by_username(params[:username])
-  #
-  #    set_room_user @user
-  #    @skip_header = true
-  #    @skip_footer = true
-  #
-  #    respond_to do |format|
-  #      format.html
-  #    end
-  #  else
-  #    redirect_to(root_path)
-  #  end
-  #end
+  def xroom
+
+      #@bundles = Bundle.where("active = 'y'").order(:id)
+
+      @themes = Theme.all
+      @skip_header = true
+      @skip_footer = true
+      @room_backgroud_color = true
+
+      respond_to do |format|
+        format.html
+      end
+
+  end
 
 
   # GET Get room with the username
@@ -76,6 +72,9 @@ class RoomsController < ApplicationController
       redirect_to(root_path)
     end
   end
+
+
+
 
   #***********************************
   # Json methods for the room users
