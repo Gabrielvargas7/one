@@ -1,0 +1,19 @@
+#popup_friend_item_wrap{
+    width:400px;
+    height:256px;
+  }
+#popup_friend_item_wrap #popup_friend_item_close{
+  position:absolute;
+  top:2px;
+  right:2px;
+}
+.popup_friend_green_button{
+  position: absolute;
+  bottom: 45px;
+  right: 49px;
+  width:150px;
+  border-radius:3px;
+  text-align:center;
+  font-size: 14px;
+  padding: 3px 0;
+}

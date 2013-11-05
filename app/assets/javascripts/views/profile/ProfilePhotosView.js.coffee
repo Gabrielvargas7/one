@@ -8,9 +8,10 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
   initialize: ->
     @photosCollection = new Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection()
     #If global flag, fetch 9 instead
-    fetchLimit = 24
+    @fetchLimit = 9
+    @offset=0
     @photosCollection.fetch
-        url: @photosCollection.url @model.get('user_id'),fetchLimit,0
+        url: @photosCollection.url @model.get('user_id'),@fetchLimit,0
         async:false
         success: (response)->
          console.log("PhotosCollection Fetched Successfully")
@@ -25,10 +26,47 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
     #create table with data
     tableView = new Mywebroom.Views.ProfileActivityView2(collection: @photosCollection, model:@model)
     $(@el).append(tableView.render().el)
-    #if(@model.get F"LAG_PROFILE" is Mywebroom.Views.RoomView.PUBLIC_ROOM)
-    #if @photosCollection.length > 6
-    # $(@el).append(JST['profile/ProfileAskForKey']())
+
+    if @photosCollection.length is @fetchLimit
+      #set scroll event to fetch more photos. Try creating new tableview and appending it to the el. 
+      that = this
+      @$('#gridItemList').off('scroll').on('scroll',that, (event)-> 
+        if $('#gridItemList').scrollTop() + $('#gridItemList').innerHeight() >= $('#gridItemList')[0].scrollHeight-10
+          event.data.paginate(event)
+          )
+
+
     this
+  
   askForKey:(event)->
     #Key Request. 
     Mywebroom.Helpers.RequestKey(@model.get('user_id'))
+  
+  paginate:(event)->
+    #Need Photos Total
+    event.preventDefault()
+    event.stopPropagation()
+    #1. Increment offset
+    event.data.offset += event.data.fetchLimit;
+
+    #2. Fetch new items
+    nextCollection = new Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection()
+    nextCollection.fetch
+        url: @photosCollection.url event.data.model.get('user_id'),event.data.fetchLimit,event.data.offset
+        async:false
+        success: (response)->
+         console.log("PhotosCollection Fetched Successfully")
+         console.log(response)
+    
+    #3. Render the new data's view.
+    if nextCollection
+      #3a. Add to collection and Marionette- ProfileActivityView2 will auto render it. Yay! 
+      event.data.photosCollection.add(nextCollection.toJSON())
+      # nextCollection.each((item)->
+      #   itemView = new Mywebroom.Views.ProfileGridItemView2(model:item)
+      #   $('#gridItemList').append(itemView.render().el)
+      #   )
+
+    #4. if no data was fetched, turn off event.
+    if !nextCollection.models.length or nextCollection.models.length < event.data.fetchLimit
+      event.data.$('#gridItemList').off('scroll');

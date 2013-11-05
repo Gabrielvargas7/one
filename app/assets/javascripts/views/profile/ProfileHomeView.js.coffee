@@ -56,15 +56,15 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
           #console.log(response)
     else
       #initial limit and offset for apis
-      initialLimit = 24
-      initialOffset= 0
+      @fetchLimit = 24
+      @fetchOffset= 0
 
       activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
       activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
       
       #Fetch them
       activityBookmarksRandomCollection.fetch
-        url:activityBookmarksRandomCollection.url initialLimit, initialOffset
+        url:activityBookmarksRandomCollection.url @fetchLimit, @fetchOffset
         reset:true
         async:false
         success: (response)->
@@ -72,7 +72,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
           #console.log(response)
     
       activityItemsDesignsRandomCollection.fetch
-        url:activityItemsDesignsRandomCollection.url initialLimit, initialOffset
+        url:activityItemsDesignsRandomCollection.url @fetchLimit, @fetchOffset
         reset:true
         async:false
         success: (response)->
@@ -113,6 +113,51 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $("#profileHome_bottom").html(tableHeader())
     $('#profileHome_bottom').append(@ProfileHomeActivityView.el)
     @ProfileHomeActivityView.render()
+
+
+
+  ###
+  #paginateActivity - handles pagination
+  #       -called from $('#gridItemList') scroll event in showActivity
+  #       -Function only intended for SELF state
+  ###
+  paginateActivity:(event) ->
+    event.preventDefault()
+    event.stopPropagation()
+    
+    #1a. Increment Offset
+    event.data.fetchOffset += event.data.fetchLimit;
+    
+    #1. Grab more Designs
+    #2. Grab more Bookmarks
+    activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
+    activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
+    
+    #3. Fetch them
+    activityBookmarksRandomCollection.fetch
+      url:activityBookmarksRandomCollection.url event.data.fetchLimit, event.data.fetchOffset
+      reset:true
+      async:false
+  
+    activityItemsDesignsRandomCollection.fetch
+      url:activityItemsDesignsRandomCollection.url event.data.fetchLimit, event.data.fetchOffset
+      reset:true
+      async:false
+    
+    #4. Shuffle them
+    tempCollection = new Backbone.Collection()
+    tempCollection.add(activityItemsDesignsRandomCollection.toJSON(),{silent:true})
+    tempCollection.add(activityBookmarksRandomCollection.toJSON(),{silent:true})
+    tempCollection.reset(tempCollection.shuffle(),{silent:true})
+
+
+    #5. Add them to the collection. (Marionette takes care of render)
+    event.data.activityCollection.add(tempCollection.toJSON())
+
+    #6. If nothing fetched, turn off the scroll event.
+    if activityItemsDesignsRandomCollection.models.length < event.data.fetchLimit or activityBookmarksRandomCollection < event.data.fetchLimit
+      @$('#gridItemList').off('scroll')
+
 
   #*******************
   #**** Functions  Initialize Profile Welcome View
@@ -193,6 +238,15 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     #$('#profileHome_bottom').html(JST['profile/ProfileGridTableHeader'](headerName:"Activity"))
     $('#profileHome_bottom').html(@profileActivityView.el)
     @profileActivityView.render()
+    #if room is Self, allow endless activity scrolling. 
+    
+    #set Paginate Activity event - 
+    that = this
+    if Mywebroom.State.get("roomState") is "SELF"
+      @$('#gridItemList').off('scroll').on('scroll',that,(event)->
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+          event.data.paginateActivity(event)
+      )
 
 
 

@@ -979,7 +979,7 @@ $(document).ready ->
       18:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349077/phone-Friend-Pop-Up-Object_a43ejg.png" #phone
       19:  "" #lamp
       20:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349151/pinboard-Friend-Pop-Up-Object_iztyad.png" #pinboard
-      21:  "" #SPECIAL portrait
+      21:  "" #portrait
       22:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349306/sport-Friend-Pop-Up-Object_yxtfe5.png" #sports
       23:  "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383349438/window-Friend-Pop-Up-Object_gbupwg.png" #window
       24:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348514/box-Friend-Pop-Up-Object_eixd0j.png" #box
