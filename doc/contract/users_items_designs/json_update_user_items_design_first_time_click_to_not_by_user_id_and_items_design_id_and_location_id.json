@@ -1,0 +1,11 @@
+//#   PUT update the user items design first time click to no (n)
+//#  /users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/:user_id/:items_design_id/:location_id
+//#  /users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
+//#       toggle operation -> yes -> no
+//#Return ->
+//#success    ->  head  200 OK
+
+
+{"created_at":"2013-07-16T22:34:48Z",
+    "first_time_click":"n",
+    "hide":"yes","id":661,"items_design_id":27,"location_id":5,"updated_at":"2013-11-04T23:55:30Z","user_id":28}

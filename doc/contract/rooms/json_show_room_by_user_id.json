@@ -20,44 +20,52 @@
 
 {
     "user": {
-        "id": 23,
-        "username": "oneone"
+        "id": 28,
+        "username": "gabriel"
     },
     "user_photos": {
-        "created_at": "2013-06-20T17:32:00Z",
-        "description": "",
-        "id": 40,
+        "created_at": "2013-07-16T22:34:49Z",
+        "description": "burrito",
+        "id": 18,
         "image_name": {
-            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1373412029/13940-users_photo-image_name-2012-02-21_19.23.53.jpg"
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376419707/61296-users_photo-image_name-2013-07-13_12.23.42.jpg"
         },
         "profile_image": "y",
-        "updated_at": "2013-07-09T23:20:27Z",
-        "user_id": 23
+        "updated_at": "2013-08-13T18:48:26Z",
+        "user_id": 28
     },
     "user_profile": {
-        "friends_number": 0
-        "birthday": null,
-        "city": null,
-        "country": null,
-        "created_at": "2013-06-20T17:32:00Z",
-        "description": null,
-        "firstname": null,
-        "gender": null,
-        "id": 23,
-        "lastname": null,
-        "updated_at": "2013-07-06T00:16:48Z",
-        "user_id": 23
+        "birthday": "1949-08-13",
+        "city": "richmond",
+        "country": "United States",
+        "created_at": "2013-07-16T22:34:49Z",
+        "description": "good man",
+        "firstname": "Gabriel",
+        "friends_number": 6327,
+        "gender": "male",
+        "id": 17,
+        "lastname": "vargas",
+        "updated_at": "2013-11-04T23:56:48Z",
+        "user_id": 28
     },
     "user_theme": [
         {
-            "description": "This shinny room is perfect if you are that type of person that vacuums everyday. haha. Monk anyone? ",
-            "id": 2,
+            "brand": "",
+            "category": "",
+            "color": "",
+            "description": "",
+            "id": 1,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822777/36665-theme-image_name-neat-studio.jpg"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383253518/19217-theme-puerto-rico-new---------image_name-puertorico-room.jpg"
             },
-            "name": "Neat Studio",
+            "like": 0,
+            "location": "",
+            "make": "",
+            "name": "Puerto Rico New ",
             "section_id": "1",
             "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
             "image_name_selection": {
                 "url": "/assets/fallback/theme/default_theme.png"
             }
@@ -65,431 +73,934 @@
     ],
     "user_items_designs": [
         {
-            "description": "A more elegant looking bird cage with a modern table to place it on. Why not have a nice \"crib\" for the bird. ",
-            "height": "225",
-            "hide": "no",
-            "id": 24,
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "A mix of old school and modern newspapers (the paper ones I mean). This design is our CEO's favorite (yes, he still reads the newspaper in paper form). ",
+            "height": "84",
+            "hide": "yes",
+            "id": 27,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822927/66461-items_design-image_name-crystal-24.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822937/99461-items_design-image_name-rooms-times-27.png"
             },
-            "item_id": 2,
-            "items_name": "Bird Cage",
-            "location_id": "2",
-            "name": "Crystal",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "109",
-            "x": "156.0",
-            "y": "360.0",
-            "z": "2",
             "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822938/65125-items_design-image_name_hover-rooms-times-27-h.png"
             },
             "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "For all of us who have becomed attached to our office chairs, this design was made to bring our office chair to our home office but leaving behind the black boring color. ",
-            "height": "231",
-            "hide": "no",
-            "id": 26,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822933/41021-items_design-image_name-green-office-26.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822939/31846-items_design-image_name_selection-rooms-times-27-300x300.jpg"
             },
-            "item_id": 4,
-            "items_name": "Chair",
-            "location_id": "4",
-            "name": "Green Office",
+            "item_id": 5,
+            "items_name": "Newspaper",
+            "like": 0,
+            "location_id": "5",
+            "make": null,
+            "name": "Rooms Times",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "164",
-            "x": "1209.0",
-            "y": "416.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "114",
+            "x": "779.0",
+            "y": "500.0",
+            "z": "2"
         },
         {
-            "description": "A tall and basic book stand that matches with any type of room design. If you are unsure of what shelf to pick, this white one is your best choice.",
-            "height": "335",
-            "hide": "no",
-            "id": 25,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822930/11500-items_design-image_name-whitey-25.png"
-            },
-            "item_id": 3,
-            "items_name": "Book Stand",
-            "location_id": "3",
-            "name": "Whitey",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "193",
-            "x": "673.0",
-            "y": "257.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "This messy bed its a design inspired by a couple of us who actually know that sleeping in your bed when its messy is more comfortable than having to unfold the sheets and find the comfy spot. ",
-            "height": "322",
-            "hide": "no",
-            "id": 23,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822924/1156-items_design-image_name-messy-23.png"
-            },
-            "item_id": 1,
-            "items_name": "Bed",
-            "location_id": "1",
-            "name": "Messy",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "448",
-            "x": "1493.0",
-            "y": "420.5",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "A decent looking t.v. stand with a great combination of lime green and white. We think it looks stylish, how about you?",
-            "height": "116",
-            "hide": "no",
-            "id": 29,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822943/70745-items_design-image_name-key-lime-29.png"
-            },
-            "item_id": 7,
-            "items_name": "TV Stand",
-            "location_id": "7",
-            "name": "Key Lime",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "237",
-            "x": "851.0",
-            "y": "491.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
             "description": "Nothing too special about his one, just a modern geographical world map. ",
-            "height": "142",
+            "height": "160",
             "hide": "no",
             "id": 28,
             "image_name": {
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822940/12147-items_design-image_name-simple-map-28.png"
             },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822941/99611-items_design-image_name_hover-simple-map-28-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822942/73771-items_design-image_name_selection-simple-map-28-300x300.jpg"
+            },
             "item_id": 6,
             "items_name": "World Map",
+            "like": 0,
             "location_id": "6",
+            "make": null,
             "name": "Simple Map",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "167",
-            "x": "1811.5",
-            "y": "269.5",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "124",
+            "x": "1602.0",
+            "y": "165.0",
+            "z": "0"
         },
         {
-            "description": "A mix of old school and modern newspapers (the paper ones I mean). This design is our CEO's favorite (yes, he still reads the newspaper in paper form). ",
-            "height": "74",
+            "brand": "mr martinez",
+            "category": "electronics",
+            "clickable": "yes",
+            "color": "black",
+            "description": "This is a Mr Martinez Classroom, Professional DJ equipment!",
+            "height": "260",
             "hide": "no",
-            "id": 27,
+            "id": 23,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822937/99461-items_design-image_name-rooms-times-27.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382945606/30177-items_design-mr-martinez--electronics-black-modern-mr-martinez--classroom-image_name-mr-martinez-classroom.png"
             },
-            "item_id": 5,
-            "items_name": "Newspaper",
-            "location_id": "5",
-            "name": "Rooms Times",
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382945607/64685-items_design-mr-martinez--electronics-black-modern-mr-martinez--classroom-image_name_hover-mr-martinez-classroom.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382945608/18943-items_design-mr-martinez--electronics-black-modern-mr-martinez--classroom-image_name_selection-mr-martinez-classroom.png"
+            },
+            "item_id": 12,
+            "items_name": "Music Player",
+            "like": 0,
+            "location_id": "1",
+            "make": "",
+            "name": "Mr. Martinez ",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "142",
-            "x": "71.5",
-            "y": "550.5",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": "Classroom",
+            "style": "modern",
+            "width": "500",
+            "x": "1311.0",
+            "y": "330.0",
+            "z": "2"
         },
         {
-            "description": "Really elegant piece of furniture with seven elves... shelves. Delicate and tall, this is a fan favorite in our office. ",
-            "height": "178",
-            "hide": "no",
-            "id": 30,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822947/18117-items_design-image_name-snow-white-30.png"
-            },
-            "item_id": 8,
-            "items_name": "File Box",
-            "location_id": "8",
-            "name": "Snow White",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "100",
-            "x": "1335.0",
-            "y": "414.0",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "This blue shopping bag has a great color scheme. If you look closely its brighter on the top and darker as it gets closer to the bottom. Just like the sea!",
-            "height": "111",
-            "hide": "no",
-            "id": 31,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822951/90046-items_design-image_name-deep-blue-sea-31.png"
-            },
-            "item_id": 9,
-            "items_name": "Shopping Bag",
-            "location_id": "9",
-            "name": "Deep Blue Sea",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "136",
-            "x": "461.0",
-            "y": "525.5",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
             "description": "A wooden frame surrounding your picture collage. Its a more relaxed design that lets the images attract the attention.  ",
-            "height": "128",
+            "height": "180",
             "hide": "no",
             "id": 32,
             "image_name": {
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822954/18040-items_design-image_name-woody-32.png"
             },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822955/73091-items_design-image_name_hover-woody-32-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822956/73544-items_design-image_name_selection-woody-32-300x300.jpg"
+            },
             "item_id": 10,
-            "items_name": "Social Painting",
+            "items_name": "Social Canvas",
+            "like": 0,
             "location_id": "10",
+            "make": null,
             "name": "Woody",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "144",
-            "x": "266.0",
-            "y": "266.5",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "190",
+            "x": "1733.0",
+            "y": "146.0",
+            "z": "0"
         },
         {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
             "description": "If you ignore the books, both of these book shelfs look like old school cannoes. ",
-            "height": "118",
+            "height": "140",
             "hide": "no",
             "id": 33,
             "image_name": {
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822957/54838-items_design-image_name-wooden-canoes-33.png"
             },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822958/93663-items_design-image_name_hover-wooden-canoes-33-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822959/93939-items_design-image_name_selection-wooden-canoes-33-300x300.jpg"
+            },
             "item_id": 11,
-            "items_name": "Encyclo Shelf",
+            "items_name": "Wall Shelf",
+            "like": 0,
             "location_id": "11",
+            "make": null,
             "name": "Wooden Canoes",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "157",
-            "x": "1090.0",
-            "y": "259.0",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "200",
+            "x": "63.0",
+            "y": "163.0",
+            "z": "0"
         },
         {
-            "description": "Populated pinboard with a sticky note. If you are a hardcore \"pinner\" this is how your pinboard should look like. ",
-            "height": "67",
+            "brand": null,
+            "category": null,
+            "clickable": "no",
+            "color": null,
+            "description": "\"Stay golden Pony boy\". This picture frame will make your profile picture pop out and make it look glamorous.",
+            "height": "170",
             "hide": "no",
-            "id": 42,
+            "id": 43,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822982/71404-items_design-image_name-sticky-42.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822985/14058-items_design-image_name-pony-boy-43.png"
             },
-            "item_id": 20,
-            "items_name": "Pinboard",
-            "location_id": "20",
-            "name": "Sticky",
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822985/63107-items_design-image_name_hover-pony-boy-43-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822986/15504-items_design-image_name_selection-pony-boy-43-300x300.jpg"
+            },
+            "item_id": 21,
+            "items_name": "Portrait",
+            "like": 0,
+            "location_id": "21",
+            "make": null,
+            "name": "Pony Boy",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "101",
-            "x": "1222.5",
-            "y": "363.0",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "170",
+            "x": "907.0",
+            "y": "160.0",
+            "z": "0"
         },
         {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "Really elegant piece of furniture with seven elves... shelves. Delicate and tall, this is a fan favorite in our office. ",
+            "height": "576",
+            "hide": "no",
+            "id": 30,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822947/18117-items_design-image_name-snow-white-30.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822950/51316-items_design-image_name_hover-snow-white-30-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822950/90403-items_design-image_name_selection-snow-white-30-300x300.jpg"
+            },
+            "item_id": 8,
+            "items_name": "Dresser",
+            "like": 0,
+            "location_id": "8",
+            "make": null,
+            "name": "Snow White",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "216",
+            "x": "1984.0",
+            "y": "103.0",
+            "z": "0"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "Enjoy the new ambiance in your room.",
+            "height": "326",
+            "hide": "no",
+            "id": 134,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823263/26592-items_design-image_name-joy-134.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823264/21893-items_design-image_name_hover-joy-134-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823266/51099-items_design-image_name_selection-joy-134-300x300.jpg"
+            },
+            "item_id": 23,
+            "items_name": "Window",
+            "like": 0,
+            "location_id": "23",
+            "make": null,
+            "name": "Joy",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "422",
+            "x": "1147.0",
+            "y": "162.0",
+            "z": "0"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "Do you actually read them? or just stack them?",
+            "height": "350",
+            "hide": "no",
+            "id": 91,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823129/61125-items_design-image_name-libros-91.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823130/80713-items_design-image_name_hover-libros-91-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823131/17690-items_design-image_name_selection-libros-91-300x300.jpg"
+            },
+            "item_id": 3,
+            "items_name": "Bookcase",
+            "like": 0,
+            "location_id": "3",
+            "make": null,
+            "name": "Libros",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "268",
+            "x": "356.0",
+            "y": "158.0",
+            "z": "0"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
             "description": "Hipster meets modern design in this music box. Looks stylish and no more Cd's. ",
-            "height": "106",
+            "height": "104",
             "hide": "no",
             "id": 34,
             "image_name": {
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822960/90020-items_design-image_name-pod-player-34.png"
             },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822961/74164-items_design-image_name_hover-pod-player-34-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822962/93408-items_design-image_name_selection-pod-player-34-300x300.jpg"
+            },
             "item_id": 12,
-            "items_name": "Music Box",
+            "items_name": "Music Player",
+            "like": 0,
             "location_id": "12",
+            "make": null,
             "name": "Pod Player",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "119",
-            "x": "1329.5",
-            "y": "353.5",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "140",
+            "x": "1676.0",
+            "y": "390.0",
+            "z": "4"
         },
         {
-            "description": "A trendy, fashionable desktop that looks awesome on your desk. Show others that you care about technology by placing this beautiful machine on your desk. ",
-            "height": "81",
-            "hide": "no",
-            "id": 39,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822974/28559-items_design-image_name-high-end-desktop-39.png"
-            },
-            "item_id": 17,
-            "items_name": "Computer",
-            "location_id": "17",
-            "name": "High end desktop",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "93",
-            "x": "1140.0",
-            "y": "406.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "Now this is more like it! A flat screen hd t.v. which adds finesse to your room design.",
-            "height": "118",
-            "hide": "no",
-            "id": 35,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822963/23517-items_design-image_name-flat-screen-35.png"
-            },
-            "item_id": 13,
-            "items_name": "TV",
-            "location_id": "13",
-            "name": "Flat Screen",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "145",
-            "x": "897.0",
-            "y": "407.0",
-            "z": "3",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
-            "description": "For all the basketball fans out there, this the way to express your passion for the sport. Michael Jordan is the best player to ever play the sport, just saying. ",
-            "height": "120",
-            "hide": "no",
-            "id": 44,
-            "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822987/75695-items_design-image_name-b-ball-44.png"
-            },
-            "item_id": 22,
-            "items_name": "Sports",
-            "location_id": "22",
-            "name": "B-ball",
-            "section_id": "1",
-            "section_name": "Main Room",
-            "width": "120",
-            "x": "278.0",
-            "y": "473.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
-        },
-        {
+            "brand": null,
+            "category": null,
+            "clickable": "no",
+            "color": null,
             "description": "A more modern looking desk with a smooth beige color. ",
-            "height": "170",
+            "height": "190",
             "hide": "no",
             "id": 36,
             "image_name": {
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822966/78837-items_design-image_name-beach-sand-36.png"
             },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822967/68996-items_design-image_name_hover-beach-sand-36-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822968/22337-items_design-image_name_selection-beach-sand-36-300x300.jpg"
+            },
             "item_id": 14,
             "items_name": "Desk",
+            "like": 0,
             "location_id": "14",
+            "make": null,
             "name": "Beach Sand",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "210",
-            "x": "1066.0",
-            "y": "443.0",
-            "z": "1",
+            "special_name": null,
+            "style": null,
+            "width": "286",
+            "x": "41.0",
+            "y": "434.0",
+            "z": "0"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "Now this is more like it! A flat screen hd t.v. which adds finesse to your room design.",
+            "height": "120",
+            "hide": "no",
+            "id": 35,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822963/23517-items_design-image_name-flat-screen-35.png"
+            },
             "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822964/925-items_design-image_name_hover-flat-screen-35-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822965/12018-items_design-image_name_selection-flat-screen-35-300x300.jpg"
+            },
+            "item_id": 13,
+            "items_name": "TV",
+            "like": 0,
+            "location_id": "13",
+            "make": null,
+            "name": "Flat Screen",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "228",
+            "x": "878.0",
+            "y": "334.0",
+            "z": "1"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "This blue shopping bag has a great color scheme. If you look closely its brighter on the top and darker as it gets closer to the bottom. Just like the sea!",
+            "height": "132",
+            "hide": "no",
+            "id": 31,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822951/90046-items_design-image_name-deep-blue-sea-31.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822952/2567-items_design-image_name_hover-deep-blue-sea-31-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822953/22464-items_design-image_name_selection-deep-blue-sea-31-300x300.jpg"
+            },
+            "item_id": 9,
+            "items_name": "Shopping Bag",
+            "like": 0,
+            "location_id": "9",
+            "make": null,
+            "name": "Deep Blue Sea",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "160",
+            "x": "1088.0",
+            "y": "511.0",
+            "z": "2"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "A blue notebook for notes!",
+            "height": "50",
+            "hide": "no",
+            "id": 38,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822971/89335-items_design-image_name-jean-book-38.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822972/77193-items_design-image_name_hover-jean-book-38-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822973/18368-items_design-image_name_selection-jean-book-38-300x300.jpg"
+            },
+            "item_id": 16,
+            "items_name": "Notebook",
+            "like": 0,
+            "location_id": "16",
+            "make": null,
+            "name": "Jean Book",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "88",
+            "x": "142.0",
+            "y": "422.0",
+            "z": "2"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "This wooden bird cage gives your room design a nice touch. Hopefully the bird doesn't go \"woody wood pecker\" mode and starts flying around the room!",
+            "height": "322",
+            "hide": "no",
+            "id": 68,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823060/77040-items_design-image_name-wooden-68.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823061/94532-items_design-image_name_hover-wooden-68-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823062/62064-items_design-image_name_selection-wooden-68-300x300.jpg"
+            },
+            "item_id": 2,
+            "items_name": "Bird Cage",
+            "like": 0,
+            "location_id": "2",
+            "make": null,
+            "name": "Wooden",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "136",
+            "x": "1816.0",
+            "y": "345.0",
+            "z": "5"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "yes",
+            "color": "",
+            "description": "",
+            "height": "260",
+            "hide": "no",
+            "id": 661,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989379/82717-items_design-grey-hobby-------image_name-grey-hobby.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989379/86569-items_design-grey-hobby-------image_name_hover-grey-hobby-h.png"
             },
             "image_name_selection": {
                 "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            },
+            "item_id": 26,
+            "items_name": "Hobbies",
+            "like": 0,
+            "location_id": "26",
+            "make": "",
+            "name": "grey hobby",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "170",
+            "x": "580.0",
+            "y": "240.0",
+            "z": "1"
         },
         {
+            "brand": "",
+            "category": "",
+            "clickable": "yes",
+            "color": "",
+            "description": "",
+            "height": "100",
+            "hide": "no",
+            "id": 659,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989237/61780-items_design-grey-camera--------image_name-grey-camera.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989237/37352-items_design-grey-camera--------image_name_hover-grey-camera-h.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 27,
+            "items_name": "Photography",
+            "like": 0,
+            "location_id": "27",
+            "make": "",
+            "name": "grey camera ",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "72",
+            "x": "768.0",
+            "y": "320.0",
+            "z": "2"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "yes",
+            "color": "",
+            "description": "",
+            "height": "90",
+            "hide": "no",
+            "id": 681,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989007/9345-items_design-grey-game-------image_name-grey-game.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989008/38455-items_design-grey-game-------image_name_hover-grey-game-h.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 25,
+            "items_name": "Games",
+            "like": 0,
+            "location_id": "25",
+            "make": "",
+            "name": "grey game",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "110",
+            "x": "968.0",
+            "y": "482.0",
+            "z": "1"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "no",
+            "color": "",
+            "description": "",
+            "height": "264",
+            "hide": "no",
+            "id": 715,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989326/39033-items_design-grey-poster--------image_name-grey-poster.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989326/20238-items_design-grey-poster--------image_name_hover-grey-poster-h.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 31,
+            "items_name": "Poster",
+            "like": 0,
+            "location_id": "31",
+            "make": "",
+            "name": "grey poster ",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "208",
+            "x": "620.0",
+            "y": "190.0",
+            "z": "0"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "yes",
+            "color": "",
+            "description": "",
+            "height": "98",
+            "hide": "no",
+            "id": 687,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382988751/53813-items_design-grey-food-------image_name-grey-food.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382988751/98822-items_design-grey-food-------image_name_hover-grey-food-h.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 29,
+            "items_name": "Food",
+            "like": 0,
+            "location_id": "29",
+            "make": "",
+            "name": "grey food",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "200",
+            "x": "1299.0",
+            "y": "418.0",
+            "z": "4"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "yes",
+            "color": "",
+            "description": "",
+            "height": "90",
+            "hide": "no",
+            "id": 708,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382990137/25107-items_design-grey-pet-------image_name-grey-pet.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382990137/19981-items_design-grey-pet-------image_name_hover-grey-pet-h.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 32,
+            "items_name": "Pet",
+            "like": 0,
+            "location_id": "32",
+            "make": "",
+            "name": "grey pet",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "150",
+            "x": "573.0",
+            "y": "534.0",
+            "z": "1"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "no",
+            "color": "",
+            "description": "",
+            "height": "140",
+            "hide": "no",
+            "id": 660,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382988688/66281-items_design-grey-table--------image_name-grey-table.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382988689/84036-items_design-grey-table--------image_name_hover-grey-table.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 28,
+            "items_name": "Table",
+            "like": 0,
+            "location_id": "28",
+            "make": "",
+            "name": "grey table ",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "250",
+            "x": "1270.0",
+            "y": "464.0",
+            "z": "3"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "no",
+            "color": "",
+            "description": "",
+            "height": "90",
+            "hide": "no",
+            "id": 658,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989132/95638-items_design-grey-stool--------image_name-grey-stool.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382989132/37022-items_design-grey-stool--------image_name_hover-grey-stool.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 30,
+            "items_name": "Stool",
+            "like": 0,
+            "location_id": "30",
+            "make": "",
+            "name": "grey stool ",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "80",
+            "x": "762.0",
+            "y": "411.0",
+            "z": "1"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "no",
+            "color": "",
+            "description": "",
+            "height": "160",
+            "hide": "no",
+            "id": 683,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382990281/43988-items_design-grey-chandelier--------image_name-grey-chandelier.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382990282/24568-items_design-grey-chandelier--------image_name_hover-grey-chandelier-h.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 33,
+            "items_name": "Chandelier",
+            "like": 0,
+            "location_id": "33",
+            "make": "",
+            "name": "grey chandelier ",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "254",
+            "x": "864.0",
+            "y": "0.0",
+            "z": "0"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "no",
+            "color": "",
+            "description": "",
+            "height": "140",
+            "hide": "no",
+            "id": 712,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382990178/74388-items_design-grey-rug--------image_name-grey-rug.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382990179/81183-items_design-grey-rug--------image_name_hover-grey-rug-h.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 34,
+            "items_name": "Rug",
+            "like": 0,
+            "location_id": "34",
+            "make": "",
+            "name": "grey rug ",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "530",
+            "x": "351.0",
+            "y": "523.0",
+            "z": "0"
+        },
+        {
+            "brand": "",
+            "category": "",
+            "clickable": "no",
+            "color": "",
+            "description": "",
+            "height": "140",
+            "hide": "no",
+            "id": 713,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382990229/5131-items_design-grey-carpet--------image_name-grey-carpet.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382990229/14380-items_design-grey-carpet--------image_name_hover-grey-carpet.png"
+            },
+            "image_name_selection": {
+                "url": "/assets/fallback/items_design/default_items_design.png"
+            },
+            "item_id": 35,
+            "items_name": "Carpet",
+            "like": 0,
+            "location_id": "35",
+            "make": "",
+            "name": "grey carpet ",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": "",
+            "style": "",
+            "width": "530",
+            "x": "1120.0",
+            "y": "523.0",
+            "z": "0"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "no",
+            "color": null,
+            "description": "A decent looking t.v. stand with a great combination of lime green and white. We think it looks stylish, how about you?",
+            "height": "100",
+            "hide": "no",
+            "id": 29,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822943/70745-items_design-image_name-key-lime-29.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822944/2092-items_design-image_name_hover-key-lime-29-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822945/55251-items_design-image_name_selection-key-lime-29-300x300.jpg"
+            },
+            "item_id": 7,
+            "items_name": "TV Stand",
+            "like": 0,
+            "location_id": "7",
+            "make": null,
+            "name": "Key Lime",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "270",
+            "x": "857.0",
+            "y": "442.0",
+            "z": "0"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "A trendy, fashionable desktop that looks awesome on your desk. Show others that you care about technology by placing this beautiful machine on your desk. ",
+            "height": "115",
+            "hide": "no",
+            "id": 39,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822974/28559-items_design-image_name-high-end-desktop-39.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822975/62811-items_design-image_name_hover-high-end-desktop-39-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822976/6085-items_design-image_name_selection-high-end-desktop-39-300x300.jpg"
+            },
+            "item_id": 17,
+            "items_name": "Computer",
+            "like": 0,
+            "location_id": "17",
+            "make": null,
+            "name": "High end desktop",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "146",
+            "x": "147.0",
+            "y": "345.0",
+            "z": "1"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
             "description": "Yes! A station for our smart phone. Who uses home lines anyways? If its for me, they call me at my cell phone. ",
             "height": "70",
             "hide": "no",
@@ -497,172 +1008,907 @@
             "image_name": {
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822977/46900-items_design-image_name-mobile-40.png"
             },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822978/97368-items_design-image_name_hover-mobile-40-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822979/57211-items_design-image_name_selection-mobile-40-300x300.jpg"
+            },
             "item_id": 18,
             "items_name": "Phone",
+            "like": 0,
             "location_id": "18",
+            "make": null,
             "name": "Mobile",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "60",
-            "x": "1100.0",
-            "y": "444.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "78",
+            "x": "64.0",
+            "y": "410.0",
+            "z": "1"
         },
         {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "For all the basketball fans out there, this the way to express your passion for the sport. Michael Jordan is the best player to ever play the sport, just saying. ",
+            "height": "300",
+            "hide": "no",
+            "id": 44,
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822987/75695-items_design-image_name-b-ball-44.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822990/11556-items_design-image_name_hover-b-ball-44-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822991/32296-items_design-image_name_selection-b-ball-44-300x300.jpg"
+            },
+            "item_id": 22,
+            "items_name": "Sports",
+            "like": 0,
+            "location_id": "22",
+            "make": null,
+            "name": "B-ball",
+            "section_id": "1",
+            "section_name": "Main Room",
+            "special_name": null,
+            "style": null,
+            "width": "230",
+            "x": "1140.0",
+            "y": "210.0",
+            "z": "1"
+        },
+        {
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
             "description": "Even though it has nothing to do with golf, this piece of furniture has a hole in one pice of wood. Makes sense huh? Perfect to place your night-time books and journals.",
-            "height": "104",
+            "height": "130",
             "hide": "no",
             "id": 37,
             "image_name": {
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822969/366-items_design-image_name-hole-in-one-37.png"
             },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822970/71731-items_design-image_name_hover-hole-in-one-37-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822971/55786-items_design-image_name_selection-hole-in-one-37-300x300.jpg"
+            },
             "item_id": 15,
             "items_name": "Night Stand",
+            "like": 0,
             "location_id": "15",
+            "make": null,
             "name": "hole in one",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "91",
-            "x": "1431.0",
-            "y": "492.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "140",
+            "x": "1680.0",
+            "y": "480.0",
+            "z": "3"
         },
         {
-            "description": "\"Stay golden Pony boy\". This picture frame will make your profile picture pop out and make it look glamorous.",
-            "height": "147",
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "Populated pinboard with a sticky note. If you are a hardcore \"pinner\" this is how your pinboard should look like. ",
+            "height": "114",
             "hide": "no",
-            "id": 43,
+            "id": 42,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822985/14058-items_design-image_name-pony-boy-43.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822982/71404-items_design-image_name-sticky-42.png"
             },
-            "item_id": 21,
-            "items_name": "Portrait",
-            "location_id": "21",
-            "name": "Pony Boy",
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822983/25619-items_design-image_name_hover-sticky-42-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822984/89803-items_design-image_name_selection-sticky-42-300x300.jpg"
+            },
+            "item_id": 20,
+            "items_name": "Pinboard",
+            "like": 0,
+            "location_id": "20",
+            "make": null,
+            "name": "Sticky",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "118",
-            "x": "913.0",
-            "y": "252.0",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "112",
+            "x": "41.0",
+            "y": "300.0",
+            "z": "0"
         },
         {
-            "description": "A blue notebook for notes!",
-            "height": "40",
+            "brand": "cb2",
+            "category": "furniture",
+            "clickable": "no",
+            "color": "blue",
+            "description": "Bright hide. Authentic calf hide saddles up hands-on texture in a fun pop of aqua. Squares up as ottoman or occasional seating…even tall enough to dine at the table.\r\nCalf hair-on-hide dyed aqua Color may vary due to natural material100% cotton baseInner shell is 100% cottonPolystyrene bead fill, Made in India",
+            "height": "250",
             "hide": "no",
-            "id": 38,
+            "id": 26,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822971/89335-items_design-image_name-jean-book-38.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383455328/67973-items_design-pony-up-aqua-pouf-furniture-blue-hipster-cb2-cotton-light-blue-ottoman-relax-seat-image_name-pony-up-aqua-pouf.png"
             },
-            "item_id": 16,
-            "items_name": "Notebook",
-            "location_id": "16",
-            "name": "Jean Book",
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383455328/67510-items_design-pony-up-aqua-pouf-furniture-blue-hipster-cb2-cotton-light-blue-ottoman-relax-seat-image_name_hover-pony-up-aqua-pouf-highlight.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383455328/10170-items_design-pony-up-aqua-pouf-furniture-blue-hipster-cb2-cotton-light-blue-ottoman-relax-seat-image_name_selection-pony-up-aqua-pouf-shop.jpg"
+            },
+            "item_id": 4,
+            "items_name": "Chair",
+            "like": 0,
+            "location_id": "4",
+            "make": "cotton",
+            "name": "Pony Up Aqua Pouf",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "60",
-            "x": "1225.5",
-            "y": "419.5",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": "Light Blue Ottoman relax seat",
+            "style": "hipster",
+            "width": "210",
+            "x": "212.0",
+            "y": "369.0",
+            "z": "1"
         },
         {
+            "brand": null,
+            "category": null,
+            "clickable": "no",
+            "color": null,
             "description": "Just a simple white lamp that looks luxurious in its own way. ",
-            "height": "87",
+            "height": "300",
             "hide": "no",
             "id": 41,
             "image_name": {
                 "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822979/21959-items_design-image_name-blanc-41.png"
             },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822980/60770-items_design-image_name_hover-blanc-41-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822981/56113-items_design-image_name_selection-blanc-41-300x300.jpg"
+            },
             "item_id": 19,
             "items_name": "Lamp",
+            "like": 0,
             "location_id": "19",
+            "make": null,
             "name": "Blanc",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "50",
-            "x": "1456.0",
-            "y": "430.0",
-            "z": "3",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "120",
+            "x": "1491.0",
+            "y": "196.0",
+            "z": "1"
         },
         {
-            "description": "Enjoy the new ambiance in your room.",
-            "height": "424",
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "Duerme como un rey!",
+            "height": "260",
             "hide": "no",
-            "id": 134,
+            "id": 89,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823263/26592-items_design-image_name-joy-134.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823123/59513-items_design-image_name-cama-89.png"
             },
-            "item_id": 23,
-            "items_name": "Curtain",
-            "location_id": "23",
-            "name": "Joy",
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823124/86993-items_design-image_name_hover-cama-89-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823125/93527-items_design-image_name_selection-cama-89-300x300.jpg"
+            },
+            "item_id": 1,
+            "items_name": "Sofa",
+            "like": 0,
+            "location_id": "1",
+            "make": null,
+            "name": "Cama",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "287",
-            "x": "395.0",
-            "y": "174.0",
-            "z": "1",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "special_name": null,
+            "style": null,
+            "width": "500",
+            "x": "1311.0",
+            "y": "330.0",
+            "z": "2"
         },
         {
-            "description": "store your documents and files!",
+            "brand": null,
+            "category": null,
+            "clickable": "yes",
+            "color": null,
+            "description": "Store your documents and files!",
             "height": "80",
             "hide": "no",
-            "id": 186,
+            "id": 187,
             "image_name": {
-                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823434/48090-items_design-image_name-boxy-186.png"
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823439/78724-items_design-image_name-box-187.png"
+            },
+            "image_name_hover": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823440/53935-items_design-image_name_hover-box-187-h.png"
+            },
+            "image_name_selection": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823441/59718-items_design-image_name_selection-box-187-300x300.jpg"
             },
             "item_id": 24,
             "items_name": "Box",
+            "like": 0,
             "location_id": "24",
-            "name": "Boxy",
+            "make": null,
+            "name": "Box",
             "section_id": "1",
             "section_name": "Main Room",
-            "width": "80",
-            "x": "619.0",
-            "y": "525.0",
-            "z": "2",
-            "image_name_hover": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
+            "special_name": null,
+            "style": null,
+            "width": "114",
+            "x": "478.0",
+            "y": "449.0",
+            "z": "2"
+        }
+    ],
+    "user_items": [
+        {
+            "first_time_click": "n",
+            "hide": "yes",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171926/32682-item-newspaper-image_name-news.jpg"
             },
-            "image_name_selection": {
-                "url": "/assets/fallback/items_design/default_items_design.png"
-            }
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237857/10541-item-newspaper-image_name_gray-grey-news.png"
+            },
+            "item_id": "5",
+            "items_design_id": "27",
+            "location_id": "5",
+            "name": "Newspaper",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172422/7745-item-world-map-image_name-map.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238259/86706-item-world-map-image_name_gray-grey-map.png"
+            },
+            "item_id": "6",
+            "items_design_id": "28",
+            "location_id": "6",
+            "name": "World Map",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171909/76052-item-music-player-image_name-music.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237874/28677-item-music-player-image_name_gray-grey-musicplayer.png"
+            },
+            "item_id": "12",
+            "items_design_id": "23",
+            "location_id": "1",
+            "name": "Music Player",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172250/81200-item-social-canvas-image_name-socialcanvas.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238082/21861-item-social-canvas-image_name_gray-grey-socialcanvas.png"
+            },
+            "item_id": "10",
+            "items_design_id": "32",
+            "location_id": "10",
+            "name": "Social Canvas",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172382/3587-item-wall-shelf-image_name-wallshelf.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238223/95342-item-wall-shelf-image_name_gray-grey-shelf.png"
+            },
+            "item_id": "11",
+            "items_design_id": "33",
+            "location_id": "11",
+            "name": "Wall Shelf",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172175/32250-item-portrait-image_name-portrait.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382652778/35059-item-portrait-image_name_gray-grey-portrait.png"
+            },
+            "item_id": "21",
+            "items_design_id": "43",
+            "location_id": "21",
+            "name": "Portrait",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171739/46317-item-dresser-image_name-dresser.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171740/1514-item-dresser-image_name_gray-grey-dresser.png"
+            },
+            "item_id": "8",
+            "items_design_id": "30",
+            "location_id": "8",
+            "name": "Dresser",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "n",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172397/14274-item-window-image_name-windows.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "/assets/fallback/item/default_item.png"
+            },
+            "item_id": "23",
+            "items_design_id": "134",
+            "location_id": "23",
+            "name": "Window",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171453/32196-item-bookcase-image_name-bookcase.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171454/89132-item-bookcase-image_name_gray-grey-bookcase.png"
+            },
+            "item_id": "3",
+            "items_design_id": "91",
+            "location_id": "3",
+            "name": "Bookcase",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171909/76052-item-music-player-image_name-music.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237874/28677-item-music-player-image_name_gray-grey-musicplayer.png"
+            },
+            "item_id": "12",
+            "items_design_id": "34",
+            "location_id": "12",
+            "name": "Music Player",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171689/17865-item-desk-image_name-desk.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171689/97021-item-desk-image_name_gray-grey-desk.png"
+            },
+            "item_id": "14",
+            "items_design_id": "36",
+            "location_id": "14",
+            "name": "Desk",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172346/7529-item-tv-image_name-tv.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238177/73310-item-tv-image_name_gray-grey-tv.png"
+            },
+            "item_id": "13",
+            "items_design_id": "35",
+            "location_id": "13",
+            "name": "TV",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172234/96595-item-shopping-bag-image_name-shopbag.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238061/5339-item-shopping-bag-image_name_gray-grey-shopping.png"
+            },
+            "item_id": "9",
+            "items_design_id": "31",
+            "location_id": "9",
+            "name": "Shopping Bag",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172008/75038-item-notebook-image_name-notebook.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237908/42037-item-notebook-image_name_gray-grey-notebook.png"
+            },
+            "item_id": "16",
+            "items_design_id": "38",
+            "location_id": "16",
+            "name": "Notebook",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171417/40133-item-bird-cage-image_name-birdcage.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383606514/71406-item-bird-cage-image_name_first_time_click-box.jpg"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171417/83417-item-bird-cage-image_name_gray-grey-birdcage.png"
+            },
+            "item_id": "2",
+            "items_design_id": "68",
+            "location_id": "2",
+            "name": "Bird Cage",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171842/40664-item-hobbies-image_name-hobby.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237793/14437-item-hobbies-image_name_gray-grey-hobby.png"
+            },
+            "item_id": "26",
+            "items_design_id": "661",
+            "location_id": "26",
+            "name": "Hobbies",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172061/34015-item-photography-image_name-photography.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237962/99123-item-photography-image_name_gray-grey-camera.png"
+            },
+            "item_id": "27",
+            "items_design_id": "659",
+            "location_id": "27",
+            "name": "Photography",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171809/64996-item-games-image_name-games.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171809/51432-item-games-image_name_gray-grey-game.png"
+            },
+            "item_id": "25",
+            "items_design_id": "681",
+            "location_id": "25",
+            "name": "Games",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172192/28625-item-poster-image_name-poster.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238019/26576-item-poster-image_name_gray-grey-poster.png"
+            },
+            "item_id": "31",
+            "items_design_id": "715",
+            "location_id": "31",
+            "name": "Poster",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171773/508-item-food-image_name-food.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171773/97390-item-food-image_name_gray-grey-food.png"
+            },
+            "item_id": "29",
+            "items_design_id": "687",
+            "location_id": "29",
+            "name": "Food",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172024/91183-item-pet-image_name-pets.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237925/80679-item-pet-image_name_gray-grey-pet.png"
+            },
+            "item_id": "32",
+            "items_design_id": "708",
+            "location_id": "32",
+            "name": "Pet",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172331/60148-item-table-image_name-table.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238155/47625-item-table-image_name_gray-grey-table.png"
+            },
+            "item_id": "28",
+            "items_design_id": "660",
+            "location_id": "28",
+            "name": "Table",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172307/55448-item-stool-image_name-stool.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238136/98095-item-stool-image_name_gray-grey-stool.png"
+            },
+            "item_id": "30",
+            "items_design_id": "658",
+            "location_id": "30",
+            "name": "Stool",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171612/18244-item-chandelier-image_name-chandelier.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171612/54286-item-chandelier-image_name_gray-grey-chandelier.png"
+            },
+            "item_id": "33",
+            "items_design_id": "683",
+            "location_id": "33",
+            "name": "Chandelier",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172218/47926-item-rug-image_name-rug.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238038/65743-item-rug-image_name_gray-grey-rug.png"
+            },
+            "item_id": "34",
+            "items_design_id": "712",
+            "location_id": "34",
+            "name": "Rug",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171540/65394-item-carpet-image_name-carpet.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237773/32829-item-carpet-image_name_gray-grey-carpet.png"
+            },
+            "item_id": "35",
+            "items_design_id": "713",
+            "location_id": "35",
+            "name": "Carpet",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172363/80173-item-tv-stand-image_name-tvstand.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238200/84817-item-tv-stand-image_name_gray-grey-tvstand.png"
+            },
+            "item_id": "7",
+            "items_design_id": "29",
+            "location_id": "7",
+            "name": "TV Stand",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171650/39291-item-computer-image_name-computer.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171650/6519-item-computer-image_name_gray-grey-computer.png"
+            },
+            "item_id": "17",
+            "items_design_id": "39",
+            "location_id": "17",
+            "name": "Computer",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172042/81898-item-phone-image_name-phone.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237941/61060-item-phone-image_name_gray-grey-phone.png"
+            },
+            "item_id": "18",
+            "items_design_id": "40",
+            "location_id": "18",
+            "name": "Phone",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172286/6788-item-sports-image_name-sports.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238116/34224-item-sports-image_name_gray-grey-sports.png"
+            },
+            "item_id": "22",
+            "items_design_id": "44",
+            "location_id": "22",
+            "name": "Sports",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171944/6598-item-night-stand-image_name-nightstand.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237891/50821-item-night-stand-image_name_gray-grey-nightstand.png"
+            },
+            "item_id": "15",
+            "items_design_id": "37",
+            "location_id": "15",
+            "name": "Night Stand",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172156/46642-item-pinboard-image_name-pinboard.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237989/36337-item-pinboard-image_name_gray-grey-pinboard.png"
+            },
+            "item_id": "20",
+            "items_design_id": "42",
+            "location_id": "20",
+            "name": "Pinboard",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171564/70320-item-chair-image_name-chair.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171564/64702-item-chair-image_name_gray-grey-chair.png"
+            },
+            "item_id": "4",
+            "items_design_id": "26",
+            "location_id": "4",
+            "name": "Chair",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171874/34939-item-lamp-image_name-lamp.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383237818/79197-item-lamp-image_name_gray-grey-lamp.png"
+            },
+            "item_id": "19",
+            "items_design_id": "41",
+            "location_id": "19",
+            "name": "Lamp",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383172267/24486-item-sofa-image_name-sofa.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383238100/27493-item-sofa-image_name_gray-grey-sofa.png"
+            },
+            "item_id": "1",
+            "items_design_id": "89",
+            "location_id": "1",
+            "name": "Sofa",
+            "user_id": "28"
+        },
+        {
+            "first_time_click": "y",
+            "hide": "no",
+            "image_name": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171498/67658-item-box-image_name-box.jpg"
+            },
+            "image_name_first_time_click": {
+                "url": "/assets/fallback/item/default.png"
+            },
+            "image_name_gray": {
+                "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383171498/36366-item-box-image_name_gray-grey-box.png"
+            },
+            "item_id": "24",
+            "items_design_id": "187",
+            "location_id": "24",
+            "name": "Box",
+            "user_id": "28"
         }
     ]
 }
