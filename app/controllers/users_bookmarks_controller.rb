@@ -270,6 +270,38 @@ class UsersBookmarksController < ApplicationController
   end
 
 
+  # GET get all user's Bookmarks by item id and limit and offset
+  # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset/:user_id/:item_id/:limit/:offset
+  # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/10000011/1/10/0.json
+  #Return ->
+  #Success    ->  head  200 OK
+
+  def json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset
+
+    respond_to do |format|
+
+      if Bookmark.
+          joins(:users_bookmarks).
+          joins(:bookmarks_category).
+          where('user_id = ? and bookmarks_categories.item_id = ?',params[:user_id],params[:item_id]).exists?
+
+        @user_bookmarks = Bookmark.
+            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+            joins(:users_bookmarks).
+            joins(:bookmarks_category).
+            where('user_id = ? and bookmarks_categories.item_id = ?',params[:user_id],params[:item_id]).
+            limit(params[:limit]).
+            offset(params[:offset])
+
+        format.json { render json: @user_bookmarks }
+      else
+        format.json { render json: 'not found user_id and item id' , status: :not_found }
+      end
+    end
+
+  end
+
+
 
 
 

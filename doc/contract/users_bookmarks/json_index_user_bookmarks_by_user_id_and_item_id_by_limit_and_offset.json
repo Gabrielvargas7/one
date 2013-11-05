@@ -1,0 +1,78 @@
+//# GET get all user's Bookmarks by item id and limit and offset
+//# /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset/:user_id/:item_id/:limit/:offset
+//# /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/10000011/1/10/0.json
+//#Return ->
+//#Success    ->  head  200 OK
+
+
+
+[
+    {
+        "bookmark_url": "http://www.vimeo.com",
+        "bookmarks_category_id": 101,
+        "description": "Vimeo is the home for high-quality videos and the people who love them.",
+        "i_frame": "y",
+        "id": 1010,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823927/20097-bookmark-image_name-vimeo.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382667804/66759-bookmark-vimeo-http-www-vimeo-com-image_name_desc-vimeo.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "position": "5",
+        "title": "Vimeo"
+    },
+    {
+        "bookmark_url": "http://www.liveleak.com",
+        "bookmarks_category_id": 101,
+        "description": "LiveLeak is a video sharing website that lets users post and share videos. Liveleak places emphasis on current events, politics and reality-based footage.",
+        "i_frame": "y",
+        "id": 1018,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823933/90648-bookmark-image_name-liveleak.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383001616/59977-bookmark-live-leak-http-www-liveleak-com-image_name_desc-liveleak.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "position": "4",
+        "title": "Live Leak"
+    },
+    {
+        "bookmark_url": "http://blip.tv",
+        "bookmarks_category_id": 101,
+        "description": "Blip is home to the best in original web series from professional and up-and- coming producers. Watch dramas, comedies and other online videos for free.",
+        "i_frame": "y",
+        "id": 1017,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823932/57706-bookmark-image_name-blip.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382668529/32540-bookmark-blip-tv-http-blip-tv-image_name_desc-blip.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "position": "3",
+        "title": "Blip TV"
+    },
+    {
+        "bookmark_url": "http://www.vimeo.com",
+        "bookmarks_category_id": 101,
+        "description": "Vimeo is the home for high-quality videos and the people who love them.",
+        "i_frame": "y",
+        "id": 1010,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823927/20097-bookmark-image_name-vimeo.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382667804/66759-bookmark-vimeo-http-www-vimeo-com-image_name_desc-vimeo.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "position": "2",
+        "title": "Vimeo"
+    }
+]

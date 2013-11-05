@@ -107,4 +107,38 @@ class StaticContentsController < ApplicationController
     #  format.json { head :no_content }
     #end
   end
+
+
+  #***********************************
+  # Json methods for the room users
+  #***********************************
+
+
+  # Get all static content
+  # GET 'static_contents/json/index_static_contents'
+  #     'static_contents/json/index_static_contents.json'
+  #Return head 200 OK
+  def json_index_static_contents
+    @static_contents = StaticContent.all
+    respond_to do |format|
+
+      format.json { render json: @static_contents }
+    end
+  end
+
+
+  # Get a static content by name
+  # GET 'static_contents/json/show_static_content_by_name/:name'
+  #     'static_contents/json/show_static_content_by_name/:name.json'
+  #Return head 200 OK
+  def json_show_static_content_by_name
+
+    @static_content = StaticContent.find_by_name(params[:name])
+    respond_to do |format|
+      format.json { render json: @static_content }
+    end
+  end
+
+
+
 end

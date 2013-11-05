@@ -437,5 +437,50 @@ class BookmarksController < ApplicationController
   end
 
 
+  # GET Get all bookmarks with bookmarks category by item id that are approval
+  # bookmarks/json/index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset/:item_id/:limit/:offset
+  # bookmarks/json/index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset/1/10/1.json
+  # Return head
+  # success    ->  head  200 OK
+
+  def json_index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset
+
+    respond_to do |format|
+
+      if BookmarksCategory.exists?(item_id:params[:item_id])
+
+
+        @bookmarks  = Bookmark.
+            select('bookmarks.id,
+                      bookmarks_categories.item_id,
+                      bookmarks_categories.name as bookmarks_category_name,
+                      bookmark_url,
+                      bookmarks_category_id,
+                      description,
+                      i_frame,
+                      image_name,
+                      image_name_desc,
+                      title,
+                      "like"').
+            joins(:bookmarks_category).
+            where('bookmarks_categories.item_id = ? and user_bookmark = 0', params[:item_id]).order('bookmarks_category_id,bookmarks.id').
+            limit(params[:limit]).
+            offset(params[:offset])
+
+        format.json {render json: @bookmarks.as_json()}
+
+
+
+
+      else
+        format.json { render json: 'not bookmark for this item ', status: :not_found }
+      end
+
+    end
+  end
+
+
+
+
 
 end

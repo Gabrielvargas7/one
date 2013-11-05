@@ -260,5 +260,51 @@ class UsersItemsDesignsController < ApplicationController
   end
 
 
+  #   GET get all the Item design of the user by limit and offset
+  #  /users_items_designs/json/index_user_items_designs_by_user_id_by_limit_and_offset/:user_id/:limit/:offset
+  #  /users_items_designs/json/index_user_items_designs_by_user_id_by_limit_and_offset/28/10/0.json
+  # Return ->
+  # success    ->  head  200 OK
+  def json_index_user_items_designs_by_user_id_by_limit_and_offset
+
+    respond_to do |format|
+
+      # validate if the user exist
+      if UsersItemsDesign.exists?(user_id: params[:user_id])
+
+        @user_items_designs = ItemsDesign.
+            select('items_designs.id ,
+                                        items_designs.name,
+                                        items_designs.item_id,
+                                        items_designs.description,
+                                        items_designs.image_name,
+                                            items_designs.category,
+                                            items_designs.style,
+                                            items_designs.brand,
+                                            items_designs.color,
+                                            items_designs.make,
+                                            items_designs.special_name,
+                                            items_designs.like,
+
+                                        users_items_designs.hide,
+                                        users_items_designs.location_id,
+                                        locations.section_id').
+            joins(:users_items_designs).
+            joins('LEFT OUTER JOIN locations  ON locations.id = users_items_designs.location_id').
+            where('user_id = ?',params[:user_id]).
+            limit(params[:limit]).
+            offset(params[:offset])
+
+        format.json { render json: @user_items_designs }
+
+      else
+        format.json { render json: 'not found user id', status: :not_found }
+      end
+    end
+  end
+
+
+
+
 
 end

@@ -1,0 +1,178 @@
+//# GET Get all bookmarks with bookmarks category by item id that are approval
+//# bookmarks/json/index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset/:item_id/:limit/:offset
+//# bookmarks/json/index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset/1/10/1.json
+//# Return head
+//# success    ->  head  200 OK
+//
+
+[
+    {
+        "bookmark_url": "http://www.youtube.com",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "Share your videos with friends, family, and the world.",
+        "i_frame": "n",
+        "id": 1001,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823919/98148-bookmark-image_name-youtube.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382667648/65000-bookmark-you-tube-http-www-youtube-com-image_name_desc-youtube.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "You Tube"
+    },
+    {
+        "bookmark_url": "http://vk.com/video?section=tagged",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "The only social network in the world with free video content! Watch movies series and more!",
+        "i_frame": "n",
+        "id": 1005,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378508397/52318-bookmark-image_name-vkvideo-ad.jpg"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382739013/78644-bookmark-vkontakte-http-vk-com-video-section-tagged-image_name_desc-vk-video.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "VKontakte"
+    },
+    {
+        "bookmark_url": "http://dailymotion.com/us",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 1006,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378508427/60257-bookmark-image_name-dailymotion-ad.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378502819/30619-bookmark-image_name_desc-dailymotion-ad.png"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "Daily Motion"
+    },
+    {
+        "bookmark_url": "http://screen.yahoo.com",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "Watch videos online for free on Yahoo Screen. Find sports, kids and funny videos including the latest news video clips.",
+        "i_frame": "y",
+        "id": 1009,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823926/41185-bookmark-image_name-yahooscreen.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382740467/37732-bookmark-yahoo-screen-http-screen-yahoo-com-image_name_desc-yahoo-screen-video.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "Yahoo Screen"
+    },
+    {
+        "bookmark_url": "http://www.vimeo.com",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "Vimeo is the home for high-quality videos and the people who love them.",
+        "i_frame": "y",
+        "id": 1010,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823927/20097-bookmark-image_name-vimeo.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382667804/66759-bookmark-vimeo-http-www-vimeo-com-image_name_desc-vimeo.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "Vimeo"
+    },
+    {
+        "bookmark_url": "http://www.break.com",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "Watch funny videos and video clips at Break.com. Our editors find the best funny videos, clips and pictures for you to watch right now.",
+        "i_frame": "y",
+        "id": 1011,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823928/48811-bookmark-image_name-break.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382740370/23712-bookmark-break-http-www-break-com-image_name_desc-break-videos.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "Break"
+    },
+    {
+        "bookmark_url": "http://www.ustream.tv/new",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 1012,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378508561/77230-bookmark-image_name-ustream-ad.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378502969/46055-bookmark-image_name_desc-ustream-ad.png"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "U Stream"
+    },
+    {
+        "bookmark_url": "http://on.aol.com",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "AOL On is the web's largest curated library of premium video, and the home of AOL Originals. We feature the latest and hottest videos in News, Entertainment and more ...",
+        "i_frame": "y",
+        "id": 1016,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823931/82876-bookmark-image_name-aolon.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382667992/443-bookmark-aol-on-http-on-aol-com-image_name_desc-on-aol-platform.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "AOL On"
+    },
+    {
+        "bookmark_url": "http://blip.tv",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "Blip is home to the best in original web series from professional and up-and- coming producers. Watch dramas, comedies and other online videos for free.",
+        "i_frame": "y",
+        "id": 1017,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823932/57706-bookmark-image_name-blip.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1382668529/32540-bookmark-blip-tv-http-blip-tv-image_name_desc-blip.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "Blip TV"
+    },
+    {
+        "bookmark_url": "http://www.liveleak.com",
+        "bookmarks_category_id": 101,
+        "bookmarks_category_name": "Videos",
+        "description": "LiveLeak is a video sharing website that lets users post and share videos. Liveleak places emphasis on current events, politics and reality-based footage.",
+        "i_frame": "y",
+        "id": 1018,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823933/90648-bookmark-image_name-liveleak.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383001616/59977-bookmark-live-leak-http-www-liveleak-com-image_name_desc-liveleak.jpg"
+        },
+        "item_id": "13",
+        "like": 0,
+        "title": "Live Leak"
+    }

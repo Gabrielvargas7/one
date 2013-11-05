@@ -1,0 +1,18 @@
+
+
+//# Get a static content by name
+//# GET 'static_contents/json/show_static_content_by_name/:name'
+//#     'static_contents/json/show_static_content_by_name/:name.json'
+//#Return head 200 OK
+
+
+{
+    "created_at": "2013-11-05T21:42:47Z",
+    "description": "",
+    "id": 7,
+    "image_name": {
+        "url": "/assets/fallback/static_content/default.png"
+    },
+    "name": "bookcase-gree",
+    "updated_at": "2013-11-05T21:42:47Z"
+}
