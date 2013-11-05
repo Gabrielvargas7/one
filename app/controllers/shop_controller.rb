@@ -120,6 +120,23 @@ class ShopController < ApplicationController
       @item_length = number_of_enties
     end
 
+
+    if @items_design.product_url.nil?
+       @items_design_btn_url_name = ""
+    else
+      begin
+       url = @items_design.product_url
+       @items_design_btn_url_name = URI.parse(url).host.downcase
+       if @items_design_btn_url_name.start_with?('www.')
+         @items_design_btn_url_name = @items_design_btn_url_name[4..-1]
+       end
+      rescue
+        # if is an invalid url
+        @items_design_btn_url_name = ""
+      end
+    end
+
+
     respond_to do |format|
       format.html # shop_items_design.html.erb
 
