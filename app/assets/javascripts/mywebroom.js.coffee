@@ -564,9 +564,21 @@ $(document).ready ->
   
   
   
-  
-  
-  
+  Mywebroom.Helpers.createBookmarksView = (itemModel, DomItemId) ->
+    view = new Mywebroom.Views.BookmarksView(
+      {
+        items_name:       itemModel.get("name")
+        item_id:          itemModel.get("id")
+        user:             Mywebroom.State.get("roomUser").get("id")
+      }
+    )
+
+    $('#room_bookmark_item_id_container_' + DomItemId).append(view.el)
+    view.render()
+
+
+
+
   Mywebroom.Helpers.turnOnDesignClick = ->
     
     user_id = Mywebroom.State.get("roomUser").get("id")
@@ -602,14 +614,21 @@ $(document).ready ->
         $('#xroom_bookmarks').show()
    
         ###
-        Create bookmark view
+        Create bookmark view (maybe)
         ###
+        #1. Check if model is clickable
+        #2. Check if roomState is Friend or self
+        #(2.1) - Friends Popups
+        #(2.2) - Check if this is the first click. 
+        #      - a. Check if this is a special item with special view. (Ex. Portrait)
+        #      - b. Create Bookmarks View
+            
         if model.get("clickable") is "yes" 
           
-          #Check if Friend's Room
+          #2. Check if Friend's Room
           if Mywebroom.State.get('roomState') is "FRIEND" #Public is not clickable so no worry here.
-            #show the popups
-            #1. get coordinates of click 
+           #(2.1)show the popups
+            #A. get coordinates of click 
             if event
               coordinates =
                 left:event.pageX
@@ -619,33 +638,47 @@ $(document).ready ->
                 top:model.get('y')
                 left:model.get('x')
 
-
+            #B. Create PopupFriendItemView
+            urlToPopup = Mywebroom.Data.FriendItemPopupUrls[ model.get('id') ]
+            model.set('urlToPopup', urlToPopup)
+            console.log model
             view = new Mywebroom.Views.PopupFriendItemView(itemData: model,coordinates:coordinates)
             $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
             view.render()
           
-          else
-            #show the bookmarks interface.
-            #Check for Special Items
+          else #roomState is "SELF" 
+            #(2.2) Check for Special Items or #show the bookmarks interface.
             switch (model.get('id'))
               
               when 21 #Portrait
-                #Open Profile, not Bookmarks. 
+                #1. Open Profile, not Bookmarks. 
                 Mywebroom.State.get('roomHeaderView').displayProfile()
 
-              else
-                view = new Mywebroom.Views.BookmarksView(
-                  {
-                    items_name:       model.get("name")
-                    item_id: model.get("id")
-                    user:             user_id
-                  }
-                )
+              else 
+                #1. Check for first click
+                firstTimeClickedItem = Mywebroom.State.get('roomItems').findWhere({'item_id':model.get('id').toString()})
+                
+                if firstTimeClickedItem.get('first_time_click') is "y"
+                  #1. Create First Time Popup View
+                  console.log firstTimeClickedItem
+                  model.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
+                  
+                  firstClickView = new Mywebroom.Views.PopupFriendItemView({
+                                    template:JST['rooms/PopUpItemFirstClickTemplate'],
+                                    itemData:model,
+                                    className:"popup_item_first_click_view"
+                                  })
+                  
+                  $('body').append(firstClickView.render().el)
+                  #Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
+                
+                else
+                 #1. Create the Bookmarks View for real!
+                  Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
 
-                $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
-                view.render()
-      )
-    )
+
+      ) #end .click for img.room_design 
+    ) #end $('img.room_design').each
     
     
   Mywebroom.Helpers.turnOffDesignClick = ->

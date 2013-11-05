@@ -1,5 +1,5 @@
 <div id="popup_friend_item_wrap" style="position:absolute; top:<%=@coordinates.top%>px;left:<%=@coordinates.left%>px;">
-  <img src="<%=@urlToPopup%>">
+  <img src="<%=@itemData.urlToPopup%>">
   <div href="#" class="popup_friend_green_button green_button">
     <a href="#"><span class="link_spanner"></span></a>
     Close
