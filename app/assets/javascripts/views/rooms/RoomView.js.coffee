@@ -60,6 +60,12 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
             
             # (2.2) Set roomTheme
             Mywebroom.State.set("roomTheme", data.get("user_theme")[0])
+
+            # (2.3) Set roomItems
+            tempItemsCollection = new Backbone.Collection(data.get("user_items"))
+            Mywebroom.State.set("roomItems", tempItemsCollection)
+            console.log("RoomItems: ")
+            console.log(Mywebroom.State.get('roomItems'))
     
     
     

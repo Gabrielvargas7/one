@@ -46,6 +46,15 @@ class Mywebroom.Collections.ShowRoomByUserIdCollection extends Backbone.Collecti
                 obj.type = "DESIGN"
                 return obj
               )
+
+    ###
+    ITEMS COLLECTION
+    ###
+    items = _.map(response.user_items, (model) ->
+              obj = model
+              obj.type = "ITEM"
+              return obj
+            )
               
               
     obj = {
@@ -54,6 +63,7 @@ class Mywebroom.Collections.ShowRoomByUserIdCollection extends Backbone.Collecti
       user_profile:       profile
       user_theme:         themes
       user_items_designs: designs
+      user_items:         items
     }
     
     return obj
