@@ -3,10 +3,13 @@ class Mywebroom.Views.ProfileKeyRequestsView extends Backbone.View
  template:JST['profile/ProfileKeyRequestsTemplate']
  
  initialize: ->
+  @friendsFetchLimit = 6
+  @friendsOffset = 0
+
   @getFriendsSuggestionCollection()
   @getKeyRequestsCollection()
   @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({model:@model}) 
- 
+
  render: ->
   $(@el).html(@template)
   if @keyRequestsCollection.length is 0
@@ -14,6 +17,15 @@ class Mywebroom.Views.ProfileKeyRequestsView extends Backbone.View
   else
     @keyRequestsCollection.forEach(@keyRequestAddView,this)
   @showSuggestedFriends()
+  #Set Scroll Event for Paginate Suggested Friends
+  if @friendsSuggestionsCollection.length > 0
+    that = this
+    if Mywebroom.State.get("roomState") is "SELF"
+      @$('.profile_table_innerDiv.profile_suggested_friends').off('scroll').on('scroll',that,(event)->
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+          event.data.paginateSuggestedFriends(event)
+      )
+
   this
     
  keyRequestAddView: (keyRequest) ->
@@ -50,9 +62,34 @@ class Mywebroom.Views.ProfileKeyRequestsView extends Backbone.View
  getFriendsSuggestionCollection:()->
   @friendsSuggestionsCollection = new Mywebroom.Collections.IndexFriendsSuggestionByUserIdByLimitByOffsetCollection()
   @friendsSuggestionsCollection.fetch
-      url:@friendsSuggestionsCollection.url @model.get('user_id'), 6, 0
+      url:@friendsSuggestionsCollection.url @model.get('user_id'), @friendsFetchLimit, @friendsOffset
       reset:true
       async:false
       success: (response)->
        console.log("friendsSuggestionsCollection Fetched Successfully")
        console.log(response)
+
+ paginateSuggestedFriends:(event)->
+    event.preventDefault()
+    event.stopPropagation()
+    
+    #1 Increment Offset
+    event.data.friendsOffset += event.data.friendsFetchLimit;
+    
+    #2. Grab more Friends
+    tempCollection = new Mywebroom.Collections.IndexFriendsSuggestionByUserIdByLimitByOffsetCollection()
+    tempCollection.fetch
+        url:tempCollection.url event.data.model.get('user_id'), event.data.friendsFetchLimit, event.data.friendsOffset
+        reset:true
+        async:false
+        success: (response)->
+         console.log("friendsSuggestionsCollection Fetched Successfully")
+         console.log(response)
+       
+    #3. Render the view
+    tempCollection.forEach(event.data.friendsSuggestionAddView)
+    #event.data.friendsSuggestionsCollection.add(tempCollection.toJSON())
+
+    #4. If nothing fetched, turn off the scroll event.
+    if tempCollection.models.length < event.data.friendsFetchLimit
+      @$('.profile_table_innerDiv.profile_suggested_friends').off('scroll')
