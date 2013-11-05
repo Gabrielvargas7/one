@@ -18,7 +18,7 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
     this.listenTo(@friendsCollection,'remove',@render)
   
   render: ->
-    tableHeaderHTML = JST['profile/ProfileGridTableHeader'](headerName:"Friends ("+@friendsCollection.length+")")
+    tableHeaderHTML = JST['profile/ProfileGridTableHeader'](headerName:"Friends ("+@friendsTotal+")")
     $(@el).html(tableHeaderHTML)
     if @friendsCollection.length is 0
       @template = JST['profile/ProfileNoFriendsTemplate']
