@@ -1,21 +1,29 @@
+#ActivityView2 is used to display Activity Items, Photos, Bookmarks, and Objects.
 class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
   tagName:'div'
+  
   className: 'profileHome_activity generalGrid'
+  
   template: JST['profile/ProfileHomeGridTemplate2']
+  
   itemView:(obj) ->
     new Mywebroom.Views.ProfileGridItemView2(obj)
+  
   itemViewContainer:'#gridItemsTest'
+  
   initialize: ->
     @headerName = this.options.headerName
     this.on('itemview:gridItemLargeView',@showGridItemLargeView)
     
   #The Marionette way to pass additional data to template:
   #Override serializeData method to pass additional data to this template. 
+  
   serializeData:->
     viewData= {}
     viewData.headerName = @options.headerName
     viewData
   #OnRender is called after built in render function has completed.
+  
   onRender:->
     if @model and Mywebroom.State.get('roomState') is "PUBLIC"
       #check if there's a key request. 
@@ -24,6 +32,7 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
       else
         #append ask for key overlay.
         @$(@itemViewContainer).append(JST['profile/ProfileAskForKey']())
+  
   showGridItemLargeView:(childView,model)->
     currentGridItem = model
     #launch new view. profile_drawer needs to expand
