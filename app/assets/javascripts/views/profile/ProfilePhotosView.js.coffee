@@ -32,7 +32,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
       that = this
       @$('#gridItemList').off('scroll').on('scroll',that, (event)-> 
         if $('#gridItemList').scrollTop() + $('#gridItemList').innerHeight() >= $('#gridItemList')[0].scrollHeight-10
-          event.data.showMore(event)
+          event.data.paginate(event)
           )
 
 
@@ -42,7 +42,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
     #Key Request. 
     Mywebroom.Helpers.RequestKey(@model.get('user_id'))
   
-  showMore:(event)->
+  paginate:(event)->
     #Need Photos Total
     event.preventDefault()
     event.stopPropagation()

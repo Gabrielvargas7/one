@@ -2,13 +2,10 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
   
   className:'profile_friends_view media'
 
-  events:
-    'click #friends_show_more a':'showMore'
-
   initialize: ->
     @friendsCollection = new Mywebroom.Collections.IndexFriendByUserIdByLimitByOffsetCollection()
     @friendsTotal = Mywebroom.State.get('roomData').get('user_profile').friends_number
-   # Fetch friends data for Profile Friends
+    #Fetch friends data for Profile Friends
     
     @limit = 26;
     @offset = 0;
@@ -19,6 +16,7 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
        console.log("FriendsCollection Fetched Successfully")
        console.log(response)
     this.listenTo(@friendsCollection,'remove',@render)
+  
   render: ->
     tableHeaderHTML = JST['profile/ProfileGridTableHeader'](headerName:"Friends ("+@friendsCollection.length+")")
     $(@el).html(tableHeaderHTML)
@@ -28,24 +26,24 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
     else
       @friendsCollection.forEach(@friendsAddView,this)
       if @friendsTotal!= undefined and @friendsTotal > 26 #Totally a hack until we know what the limit is. 
-        $(@el).append("<div id='friends_show_more'><a href='#showMore'>Show More</a></div>")
-    that = this
-    $(@el).off('scroll').on('scroll',that,(event)->
-      if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
-        event.data.showMore(event)
-        console.log("SHOW MORE PLZK");
-        )
+        that = this
+        $(@el).off('scroll').on('scroll',that,(event)->
+
+          if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+            event.data.paginate(event)            
+            )
     this
   
   friendsAddView: (friend) ->
     friendView = new Mywebroom.Views.ProfileFriendsSingleView({model:friend,PUBLIC_FLAG:@model.get('FLAG_PROFILE')})
     that = this
-    friendView.on('Profile:friendRemoved',(->
-      @friendsCollection.remove(friendView.model)),that)
+    friendView.off('Profile:friendRemoved').on('Profile:friendRemoved',(->
+      #Note, used to be find cid. But cid is not the same after pagination since I have a temp collection hold them. 
+      @friendsCollection.remove(@friendsCollection.findWhere({'user_id':friendView.model.get('user_id')}))),that)
     $(@el).append(friendView.el)
     friendView.render()
 
-  showMore: (event)->
+  paginate: (event)->
     event.preventDefault()
     event.stopPropagation()
     event.data.offset += event.data.limit;
@@ -57,6 +55,10 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
        console.log("nextCollection Fetched Successfully")
        console.log(response)
 
+    #Add to FriendsCollection so Menu Items still work   
+    @friendsCollection.add(nextCollection.toJSON(),{silent:true})
+    debugger;
+    
     #event.data.$('#friends_show_more').remove()
     
     #render the new friends loaded.

@@ -5,6 +5,7 @@ class Mywebroom.Views.ProfileFriendsSingleView extends Backbone.View
     'click .profile_unfriend':'unfriendConfirm'
   render: ->
     $(@el).html(@template(model:@model,PUBLIC_FLAG:Mywebroom.State.get('roomState')))
+  
   unfriendConfirm:(event)->
     event.stopPropagation()
     modalHTML = JST['profile/ProfileConfirmUnfriendModal'](model:@model)
@@ -12,10 +13,11 @@ class Mywebroom.Views.ProfileFriendsSingleView extends Backbone.View
     $('#myModal').modal(backdrop:false)
     that = this
     #NOTE: This .on is jQuery NOT Backbone.on. 
-    $('.profile_unfriend_confirm_button').on('click',that,@unfriendFriend)
+    $('.profile_unfriend_confirm_button').off('click').on('click',that,@unfriendFriend)
     #Destroy the modal instead of hide it, since we have changing data inside it. (model name)
-    $("#myModal").on "hidden", ->
+    $("#myModal").off("hidden").on( "hidden", ->
       $('#myModal').remove()
+    )
 
   unfriendFriend:(event)->
     deleteFriendModel = new Mywebroom.Models.DestroyFriendByUserIdAndUserIdFriendModel()
