@@ -5,7 +5,7 @@
 
 
 .shop_container{
-  //overflow:hidden;
+    //overflow:hidden;
   //width:remainder;
   //line-height:1.5;
   //font-size:12px;
@@ -39,7 +39,7 @@
 .shop_left{
   width:60%;
   float:left;
-  text-align: center;
+  text-align: left;
 }
 
 .shop_right{
@@ -87,6 +87,15 @@
 
 }
 
+.shop_main_image_name{
+  margin: 50px 100px;
+
+}
+
+.shop_main_image_name_bookmark{
+  margin: 50px 150px;
+
+}
 
 
 

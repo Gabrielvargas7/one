@@ -234,6 +234,11 @@ input[type=password] {
     font-size:13px;
     text-align: center;
     padding: 6px 26px;
+
+}
+a.blue_button_light{
+    color: #ffffff;
+    text-decoration: none;
 }
 
 a.blue_button_light:hover{
@@ -256,6 +261,10 @@ a.blue_button_light:hover{
 }
 
 a.green_button_light:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+a.green_button_light{
     color: #ffffff;
     text-decoration: none;
 }
