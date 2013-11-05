@@ -619,5 +619,11 @@ describe BookmarksController do
 
 
 
+  describe "#json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset" do
+    pending "add some examples to (or delete) #{__FILE__}"
+  end
+
+
+
 
 end

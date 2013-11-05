@@ -538,6 +538,11 @@ describe UsersBookmarksController do
   end
 
 
+  describe "#json/index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset" do
+    pending "add some examples to (or delete) #{__FILE__}"
+  end
+
+
 
 
 end

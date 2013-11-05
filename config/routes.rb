@@ -457,6 +457,10 @@ Mywebroom::Application.routes.draw do
   match '/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/:user_id/:items_design_id/:location_id', to:
          'users_items_designs#json_update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id', via: :put
 
+  match '/users_items_designs/json/index_user_items_designs_by_user_id_by_limit_and_offset/:user_id/:limit/:offset', to:
+         'users_items_designs#json_index_user_items_designs_by_user_id_by_limit_and_offset', via: :get
+
+
 
 
 
@@ -493,6 +497,12 @@ Mywebroom::Application.routes.draw do
     match '/users_bookmarks/json/show_user_bookmark_by_user_id_and_bookmark_id/:user_id/:bookmark_id', to:
            'users_bookmarks#json_show_user_bookmark_by_user_id_and_bookmark_id', via: :get, as:
            :users_bookmarks_json_show_user_bookmark_by_user_id_and_bookmark_id
+
+
+  match '/users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset/:user_id/:item_id/:limit/:offset', to:
+         'users_bookmarks#json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset', via: :get
+
+
 
 
 
@@ -551,6 +561,11 @@ Mywebroom::Application.routes.draw do
 
   match 'bookmarks/json/show_bookmark_seo_url_by_bookmark_id/:bookmark_id', to:
         'bookmarks#json_show_bookmark_seo_url_by_bookmark_id', via: :get
+
+
+  match '/bookmarks/json/index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset/:item_id/:limit/:offset', to:
+         'bookmarks#json_index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset', via: :get
+
 
 
 
@@ -704,14 +719,18 @@ Mywebroom::Application.routes.draw do
          'locations#json_show_location_by_location_id', via: :get, as:
          :locations_json_show_location_by_location_id
 
-
   #**************************
-  # start location Contract
+  # start static content
   #**************************
 
-  #match '/shop/json/show_bundle_seo_url_by_bundle_id/:bundle_id', to:
-  #       'shop#json_show_bundle_seo_url_by_bundle_id', via: :get
-  #
+  match '/static_contents/json/index_static_contents', to:
+         'static_contents#json_index_static_contents', via: :get
+
+  match '/static_contents/json/show_static_content_by_name/:name', to:
+         'static_contents#json_show_static_content_by_name', via: :get, as:
+         :static_contents_json_show_static_content_by_name
+
+
 
 
 

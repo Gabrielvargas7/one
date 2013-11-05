@@ -619,7 +619,9 @@ describe UsersItemsDesignsController do
 
     end
 
-
+  describe "#son/index_user_items_designs_by_user_id_by_limit_and_offset" do
+    pending "add some examples to (or delete) #{__FILE__}"
+  end
 
 
 
