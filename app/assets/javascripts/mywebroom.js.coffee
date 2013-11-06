@@ -651,24 +651,36 @@ $(document).ready ->
             switch (model.get('id'))
               
               when 21 #Portrait
-                #1. Open Profile, not Bookmarks. 
+                # Open Profile, not Bookmarks. 
                 Mywebroom.State.get('roomHeaderView').displayProfile()
 
               else 
-                #1. Check for first click
+                # Check for first click
                 firstTimeClickedItem = Mywebroom.State.get('roomItems').findWhere({'item_id':model.get('id').toString()})
                 
                 if firstTimeClickedItem.get('first_time_click') is "y"
                   #1. Create First Time Popup View
                   console.log firstTimeClickedItem
                   model.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
+                  #2. Let database know the user clicked
                   
-                  firstClickView = new Mywebroom.Views.PopupFriendItemView({
+                  #3. Set up event to show view when popup closes. 
+                  FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
                                     template:JST['rooms/PopUpItemFirstClickTemplate'],
-                                    itemData:model,
-                                    className:"popup_item_first_click_view"
+                                    className:"popup_item_first_click_view",
+                                    remove: ->
+                                      # Send DB clicked item.
+                                      #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
+                                      #Show bookmarks view. 
+
+                                      Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
+                                      # call the base class remove method 
+                                      Backbone.View::remove.apply this
+
                                   })
-                  
+                  firstClickView = new FirstClickView(
+                                    itemData:model
+                                    dom_item_id:dom_item_id)
                   $('body').append(firstClickView.render().el)
                   #Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
                 
