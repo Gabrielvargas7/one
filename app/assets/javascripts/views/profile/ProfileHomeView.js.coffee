@@ -288,6 +288,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #**** Functions  View layout
   #*******************
   collapseProfileView: ->
+
+    #TODO If Large View is open, close LargeView. Otherwise, proceed. 
  	
     # If view is open, close it, else reverse.
  	  # Change profile_home_container width to 0

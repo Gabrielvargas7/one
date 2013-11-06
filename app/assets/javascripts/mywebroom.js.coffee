@@ -565,16 +565,24 @@ $(document).ready ->
   
   
   Mywebroom.Helpers.createBookmarksView = (itemModel, DomItemId) ->
-    view = new Mywebroom.Views.BookmarksView(
-      {
-        items_name:       itemModel.get("name")
-        item_id:          itemModel.get("id")
-        user:             Mywebroom.State.get("roomUser").get("id")
-      }
-    )
+    
+    switch (itemModel.get('id'))
+                
+      when 21 #Portrait
+        # Open Profile, not Bookmarks. 
+        Mywebroom.State.get('roomHeaderView').displayProfile()
 
-    $('#room_bookmark_item_id_container_' + DomItemId).append(view.el)
-    view.render()
+      else 
+        view = new Mywebroom.Views.BookmarksView(
+          {
+            items_name:       itemModel.get("name")
+            item_id:          itemModel.get("id")
+            user:             Mywebroom.State.get("roomUser").get("id")
+          }
+        )
+
+        $('#room_bookmark_item_id_container_' + DomItemId).append(view.el)
+        view.render()
 
 
 
@@ -619,9 +627,8 @@ $(document).ready ->
         #1. Check if model is clickable
         #2. Check if roomState is Friend or self
         #(2.1) - Friends Popups
-        #(2.2) - Check if this is the first click. 
-        #      - a. Check if this is a special item with special view. (Ex. Portrait)
-        #      - b. Create Bookmarks View
+        #(2.2) - Check if this is the first click.
+        #      - a. Create Bookmarks View (which checks for special items like portrait)
             
         if model.get("clickable") is "yes" 
           
@@ -639,18 +646,33 @@ $(document).ready ->
                 left:model.get('x')
 
             #B. Create PopupFriendItemView
+
+            #B1. if a popup is already made, make sure we close it before creating the new one. 
+            if Mywebroom.State.get('friendItemPopupView')
+              Mywebroom.State.get('friendItemPopupView').closeView()
+
+            #B2. set Data we need for the view
             urlToPopup = Mywebroom.Data.FriendItemPopupUrls[ model.get('id') ]
             model.set('urlToPopup', urlToPopup)
-            console.log model
+            
+            #B3. create Popup view
             view = new Mywebroom.Views.PopupFriendItemView(itemData: model,coordinates:coordinates)
+            
+            #B4. Render Popup view
             $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
             view.render()
+
+            #B5. update State view tracker
+            Mywebroom.State.set('friendItemPopupView',view)
           
           else #roomState is "SELF" 
+          #(2.2) Create the Bookmarks View.
+          
+            #get the corresponding model to check for first click
             firstTimeClickedItem = Mywebroom.State.get('roomItems').findWhere({'item_id':model.get('id').toString()})
             
             # Check for first click
-            if firstTimeClickedItem.get('first_time_click') is "y"
+            if firstTimeClickedItem.get('first_time_click') is "y" and model.get('id')!=21
               #Merge model and firstTimeClickedItem since we need both where we're going. 
               itemData = new Backbone.Model(firstTimeClickedItem.toJSON())
               itemData.set(model.toJSON())
@@ -660,16 +682,8 @@ $(document).ready ->
               Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
 
             else
-              #(2.2) Check for Special Items or #show the bookmarks interface.
-              switch (model.get('id'))
-                
-                when 21 #Portrait
-                  # Open Profile, not Bookmarks. 
-                  Mywebroom.State.get('roomHeaderView').displayProfile()
-
-                else 
-                  #1. Create the Bookmarks View for real!
-                   Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
+              #(2.2) Create the Bookmarks View. (Function checks for special items like Portrait)
+              Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
 
       ) #end .click for img.room_design 
     ) #end $('img.room_design').each
