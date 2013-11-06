@@ -647,52 +647,65 @@ $(document).ready ->
             view.render()
           
           else #roomState is "SELF" 
-            #(2.2) Check for Special Items or #show the bookmarks interface.
-            switch (model.get('id'))
+            firstTimeClickedItem = Mywebroom.State.get('roomItems').findWhere({'item_id':model.get('id').toString()})
+            
+            # Check for first click
+            if firstTimeClickedItem.get('first_time_click') is "y"
+              #Merge model and firstTimeClickedItem since we need both where we're going. 
+              itemData = new Backbone.Model(firstTimeClickedItem.toJSON())
+              itemData.set(model.toJSON())
+              itemData.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
               
-              when 21 #Portrait
-                # Open Profile, not Bookmarks. 
-                Mywebroom.State.get('roomHeaderView').displayProfile()
+              #Show Popup
+              Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
 
-              else 
-                # Check for first click
-                firstTimeClickedItem = Mywebroom.State.get('roomItems').findWhere({'item_id':model.get('id').toString()})
+            else
+              #(2.2) Check for Special Items or #show the bookmarks interface.
+              switch (model.get('id'))
                 
-                if firstTimeClickedItem.get('first_time_click') is "y"
-                  #1. Create First Time Popup View
-                  console.log firstTimeClickedItem
-                  model.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
-                  #2. Let database know the user clicked
-                  
-                  #3. Set up event to show view when popup closes. 
-                  FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
-                                    template:JST['rooms/PopUpItemFirstClickTemplate'],
-                                    className:"popup_item_first_click_view",
-                                    remove: ->
-                                      # Send DB clicked item.
-                                      #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
-                                      #Show bookmarks view. 
+                when 21 #Portrait
+                  # Open Profile, not Bookmarks. 
+                  Mywebroom.State.get('roomHeaderView').displayProfile()
 
-                                      Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
-                                      # call the base class remove method 
-                                      Backbone.View::remove.apply this
-
-                                  })
-                  firstClickView = new FirstClickView(
-                                    itemData:model
-                                    dom_item_id:dom_item_id)
-                  $('body').append(firstClickView.render().el)
-                  #Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
-                
-                else
-                 #1. Create the Bookmarks View for real!
-                  Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
-
+                else 
+                  #1. Create the Bookmarks View for real!
+                   Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
 
       ) #end .click for img.room_design 
     ) #end $('img.room_design').each
     
+  Mywebroom.Helpers.createFirstTimeClickPopupView = (itemData,dom_item_id)->
     
+    #1. Define Special view for firstTimeClicks
+    #1a. When popup closes, Tell DB user item was clicked
+    #1b. When popup closes, show Bookmarks Interface. 
+    
+    #This view extends PopupFriendItemView. remove() is override so we can show bookmarks view when popup closes. 
+    FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
+                      template:JST['rooms/PopUpItemFirstClickTemplate'],
+                      className:"popup_item_first_click_view",
+                      #Override Backbone.View::remove
+                      remove: ->
+                        #1a. Send DB clicked item.
+                        #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
+                        
+                        #1b. Show bookmarks view.                         
+                        Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
+                        
+                        #1c. Call the base class remove method 
+                        Backbone.View::remove.apply this
+
+                    })
+
+    #2. Create First Time Popup View instance
+    firstClickView = new FirstClickView(
+                      itemData:itemData
+                      dom_item_id:dom_item_id)
+    #3. Render the view
+    $('body').append(firstClickView.render().el)
+
+  
+
   Mywebroom.Helpers.turnOffDesignClick = ->
     
     $('img.room_design').off('click')
