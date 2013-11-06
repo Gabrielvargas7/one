@@ -667,18 +667,18 @@ $(document).ready ->
           
           else #roomState is "SELF" 
           #(2.2) Create the Bookmarks View.
-          
-            #get the corresponding model to check for first click
+
+            #A. get the corresponding model to check for first click
             firstTimeClickedItem = Mywebroom.State.get('roomItems').findWhere({'item_id':model.get('id').toString()})
             
-            # Check for first click
+            #B. Check for first click
             if firstTimeClickedItem.get('first_time_click') is "y" and model.get('id')!=21
-              #Merge model and firstTimeClickedItem since we need both where we're going. 
+              #1. Merge model and firstTimeClickedItem since we need both where we're going. 
               itemData = new Backbone.Model(firstTimeClickedItem.toJSON())
               itemData.set(model.toJSON())
               itemData.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
               
-              #Show Popup
+              #2. Show Popup
               Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
 
             else
@@ -694,14 +694,26 @@ $(document).ready ->
     #1a. When popup closes, Tell DB user item was clicked
     #1b. When popup closes, show Bookmarks Interface. 
     
-    #This view extends PopupFriendItemView. remove() is override so we can show bookmarks view when popup closes. 
+    #This view extends PopupFriendItemView. remove() is overriding Backbone's so we can show bookmarks view when popup closes. 
     FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
                       template:JST['rooms/PopUpItemFirstClickTemplate'],
                       className:"popup_item_first_click_view",
+                      
                       #Override Backbone.View::remove
                       remove: ->
-                        #1a. Send DB clicked item.
-                        #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
+                        
+                        #1a. Send DB clicked item. Also, change the StateModel, so clicking again won't count as first time.           
+                        updateClickedItemModel = new Mywebroom.Models.UpdateUserItemDesignFirstTimeClickByUserIdAndDesignIdAndLocationId({id:0})
+                        updateClickedItemModel.userId = Mywebroom.State.get('roomData').get('user').id
+                        updateClickedItemModel.designId = itemData.get('items_design_id')
+                        updateClickedItemModel.locationId = itemData.get('location_id')
+                        updateClickedItemModel.save
+                          wait: true
+
+                       #Makes PUT request to DB at #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
+                        
+                        #1a. Update State Model
+                        Mywebroom.State.get('roomItems').findWhere({'item_id':itemData.get('item_id').toString()}).set('first_time_click',"n")
                         
                         #1b. Show bookmarks view.                         
                         Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
