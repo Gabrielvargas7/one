@@ -567,12 +567,35 @@ $(document).ready ->
   Mywebroom.Helpers.createBookmarksView = (itemModel, DomItemId) ->
     
     switch (itemModel.get('id'))
-                
+      
+      # when 2 #BirdCage
+      # #Open Popup and on close, go to website.
+      # itemData = {}
+
+      # when 20 #Pinboard
+      # #Get static content
+      # # $.get('static_contents/json/show_static_content_by_name/pinboard-external-site-popup.json'
+      # #       ,(data)->
+      # #         data.image_name.url
+      # #   )
+      # #Open Popup and on close, go to website.
+      # #Get popupUrl
+      # #Get coordinates
+      # itemData = {}
+      # coordinates = {}
+      # pinboardPopupView = new Mywebroom.Views.PopupFriendItemView(
+      #                                 {
+      #                                   itemData:itemData
+      #                                   coordinates:coordinates
+      #                                 })
+      # pinboardPopupView.render().el
+
+
       when 21 #Portrait
         # Open Profile, not Bookmarks. 
         Mywebroom.State.get('roomHeaderView').displayProfile()
 
-      else 
+      else #Everything else- create Bookmarks View
         view = new Mywebroom.Views.BookmarksView(
           {
             items_name:       itemModel.get("name")
@@ -707,12 +730,10 @@ $(document).ready ->
                         updateClickedItemModel.userId = Mywebroom.State.get('roomData').get('user').id
                         updateClickedItemModel.designId = itemData.get('items_design_id')
                         updateClickedItemModel.locationId = itemData.get('location_id')
-                        updateClickedItemModel.save
+                        updateClickedItemModel.save #Makes PUT request to DB at #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
                           wait: true
 
-                       #Makes PUT request to DB at #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
-                        
-                        #1a. Update State Model
+                        #1a.. Update State Model locally so we don't have to refetch
                         Mywebroom.State.get('roomItems').findWhere({'item_id':itemData.get('item_id').toString()}).set('first_time_click',"n")
                         
                         #1b. Show bookmarks view.                         

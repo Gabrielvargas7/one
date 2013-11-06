@@ -1,3 +1,7 @@
+#PopUp View made for User Item clicks. 
+
+#Required: itemData with urlToPopUp populated with img src.
+#Options: Coordinates, className, template
 class Mywebroom.Views.PopupFriendItemView extends Backbone.View
   @urlToPopup
   
