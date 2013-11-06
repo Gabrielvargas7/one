@@ -37,8 +37,17 @@ class UsersMailer < ActionMailer::Base
 
     @user = user
     @user_requested = user_requested
+    @user_photo  = UsersPhoto.where("profile_image = 'y' and user_id = ? ", user.id).first
+
+    @user_profile = UsersProfile.where("user_id = ?", user.id).first
+
+    @user_photo.image_name
+    @came_from_email_request_key = 'EMAIL_REQUEST_KEY'
+
+
     @greeting = "Hi, "+@user.username+" want to be your friend"
 
     mail to: @user_requested.email,subject: "A friend request from MyWebRoom"
+
   end
 end

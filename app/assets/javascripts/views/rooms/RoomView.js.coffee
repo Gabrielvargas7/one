@@ -156,20 +156,21 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     # Save a reference to the state model
     Mywebroom.State.set("storeMenuSaveCancelRemoveView", storeMenuSaveCancelRemoveView)
-    
-    
-    
-    
+
+
+
+
+
     # Add Images to the Save, Cancel, Remove View
-    storeRemoveButton = $.cloudinary.image "store_remove_button.png",{ alt: "store remove button", id: "store_remove_button"}
+    storeRemoveButton = $.cloudinary.image "store_remove_button.png",{id: "store_remove_button"}
     $("#xroom_store_remove").prepend(storeRemoveButton)
-    
-    storeSaveButton = $.cloudinary.image "store_save_button.png",{ alt: "store save button", id: "store_save_button"}
+
+    storeSaveButton = $.cloudinary.image "store_save_button.png",{id: "store_save_button"}
     $("#xroom_store_save").prepend(storeSaveButton)
-    
-    storeCancelButton = $.cloudinary.image "store_cancel_button.png",{ alt: "store cancel button", id: "store_cancel_button"}
+
+    storeCancelButton = $.cloudinary.image "store_cancel_button.png",{id: "store_cancel_button"}
     $("#xroom_store_cancel").prepend(storeCancelButton)
-    
+
     
     
     

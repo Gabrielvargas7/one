@@ -1,8 +1,38 @@
 <%= @greeting %>
 
 <h1> your friend <%= @user.username %> want to connect with you</h1>
-<p>  </p>
 
 
+<h1> name <%= @user_profile.firstname %> </h1>
+<h1> last name <%= @user_profile.lastname %> </h1>
+
+
+<% if @user_photo.image_name.blank? %>
+    <%= cl_image_tag "default-user.png",width:180 , height:180,:crop => :fill,:default_image => "default-user.png" %>
+
+<% else %>
+    <%= cl_image_tag @user_photo.image_name,width:180 , height:180,:crop => :fill,:default_image => "default-user.png" %>
+<% end %>
+
+
+
+<div style="
+        background-color: #179340;
+        width: 200px;
+        padding: 10px;">
+
+  <%= link_to "Accept the Request ",
+              room_rooms_url(@user.username,came_from:@came_from_email_request_key),
+              :style => 'display: block;
+                        height: 100%;
+                        width: 100%;
+                        text-decoration: none;
+                        color: #ffffff;
+                        font-family: "Open Sans";
+                        font-weight: lighter;
+                        font-size:13px;
+                        text-align: center;
+                         ' %>
+</div>
 
 

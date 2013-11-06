@@ -1,0 +1,56 @@
+#xroom_logo {
+  margin: 0px 20px;
+
+}
+
+#xroom_entire_room_background{
+  position:absolute;
+  left:0px;
+  top:45px;
+  z-index: -1;
+  width: 2200px;
+  text-align: center;
+
+}
+
+#xroom_entire_room_left{
+  position:fixed;
+  z-index:4;
+  top:40%;
+  left:0px;
+  width:60px;
+  height: 50px;
+  background-color: rgba(0,0,0,0);
+  padding: 50px 0;
+  background-repeat:no-repeat;
+  background-position: -8px 40px;
+
+}
+
+#xroom_entire_room_left:hover{
+  background-color: rgba(0,0,0,.8);
+}
+#xroom_entire_room_right{
+  position:fixed;
+  z-index:4;
+  top:40%;
+  right:0px;
+  width:60px;
+  height: 50px;
+  background-color: rgba(0,0,0,0);
+  padding: 50px 0;
+  background-repeat:no-repeat;
+  background-position: -78px 40px;
+
+}
+
+#xroom_entire_room_right:hover{
+  background-color: rgba(0,0,0,.8);
+}
+
+a.xroom_entire_room_right_fill-div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
