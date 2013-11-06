@@ -30,9 +30,35 @@ class RoomsController < ApplicationController
   # public
   def xroom
 
-      #@bundles = Bundle.where("active = 'y'").order(:id)
+    # when is not filter( it should get first
+    if params[:bundle_id].blank?
+      @bundle = Bundle.where("active = 'y'").first
+    else
 
-      @themes = Theme.all
+      if params[:moving_toward] =='next'
+        #@bundle = Bundle.find(params[:bundle_id])
+        if Bundle.where("active = 'y' and id > ?", params[:bundle_id]).exists?
+            @bundle = Bundle.where("active = 'y' and id > ?", params[:bundle_id]).first
+        else
+          @bundle = Bundle.where("active = 'y'").first
+        end
+      else
+
+        if Bundle.where("active = 'y' and id < ?", params[:bundle_id]).exists?
+          @bundle = Bundle.where("active = 'y' and id < ?", params[:bundle_id]).last
+        else
+          @bundle = Bundle.where("active = 'y'").last
+        end
+      end
+    end
+
+      @bundles = Bundle.where("active = 'y'").order("RANDOM()")
+
+
+      @static_content_logo = StaticContent.find_by_name("mywebroom-logo")
+      @static_content_arrows = StaticContent.find_by_name("arrows")
+
+
       @skip_header = true
       @skip_footer = true
       @room_backgroud_color = true

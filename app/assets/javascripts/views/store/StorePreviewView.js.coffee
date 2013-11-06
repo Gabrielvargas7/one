@@ -35,7 +35,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
     @button_preview = $.cloudinary.image(
       'button_preview.png',
-      {alt: "button preview", id: "button_preview"}
+      {id: "button_preview"}
     )
     
     @type = @model.get("type")

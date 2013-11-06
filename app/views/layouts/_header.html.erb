@@ -2,10 +2,21 @@
   <div class="navbar-inner" >
     <div class="container">
 
+      <% @static_content = StaticContent.find_by_name("mywebroom-logo") %>
       <% if signed_in? %>
-          <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), room_rooms_path(current_user.username), class: "brand"  %>
+          <% if @static_content.image_name.blank?  %>
+          <% else %>
+              <%= link_to cl_image_tag(@static_content.image_name, :width => 112, :height => 32 ),  room_rooms_path(current_user.username), class: "brand"  %>
+          <% end %>
       <%else%>
-          <%= link_to cl_image_tag("logo-mywebroom.png", :width => 112, :height => 32 ), root_path , class: "brand"  %>
+          <% if @static_content.image_name.blank?  %>
+          <% else %>
+            <%= link_to cl_image_tag(@static_content.image_name, :width => 112, :height => 32 ), root_path , class: "brand"  %>
+          <% end %>
+
+
+
+
       <%end%>
 
       <!--<nav>-->
