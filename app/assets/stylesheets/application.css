@@ -276,7 +276,7 @@ a.green_button_light{
     -moz-box-shadow: 0px 0px 15px 4px rgba(0,204,255,1);
     box-shadow: 0px 0px 15px 4px rgba(0,204,255,1);
 }
-/*Span to make Element clickable*/
+/*Span used to make Element clickable*/
 .link_spanner{
   position:absolute; 
   width:100%;
