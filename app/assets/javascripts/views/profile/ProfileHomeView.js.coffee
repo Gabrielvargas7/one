@@ -20,7 +20,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     'click #profile_objects':'showProfileObjects'
     'click #profile_bookmarks':'showProfileBookmarks'
     'click #profile_home':'showHomeGrid'
-    'click #Profile-Close-Button':'closeProfileView'
+    'click #profile_close_button':'closeProfileView'
     'click #Profile-Collapse-Button':'collapseProfileView'
     'click #profile_facebook_friends_invite':'inviteFriendsFacebook'
     #'click .profile_suggestion_name':'showUserProfile'

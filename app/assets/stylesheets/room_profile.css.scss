@@ -125,13 +125,15 @@ nav.profile {
   height:100%;
 
 }
-#profile_sidebar li{
-  
-}
+
 #profile_sidebar li, #profile_sidebar li a{
   list-style-type: none;
   text-align:center;
   padding-top:60px;
+}
+#profile_sidebar li a{
+  padding-top: 70px;
+  
 }
 #profile_sidebar ul{
   font-family:"Open Sans Condensed";
@@ -211,7 +213,7 @@ div.spacer{
 }
 #profile_bookmarks a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-default_n2c6yp.png") no-repeat center;
-  font-size:13px;
+  font-size:18px;
 }
 #profile_bookmarks a:hover{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-active_csktwe.png") no-repeat center;
@@ -361,14 +363,23 @@ table.generalGrid{
   font-size:12px;
   font-weight:lighter;
 }
-#profile_close_button{
+#profile_close_button_wrap{
   position:absolute;
-  right:0;
-  top:0;
+  right:9px;
+  top:10px;
+}
+#profile_close_button{
+  background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-btn_gkzdgt.png');
+  background-position: 0 0;
+  display:block;
+  height:14px;
+  width:14px;
 }
 #profile_collapse_arrow{
   position:absolute;
   right:0;
+  left:50%;
+  margin-left:-9px;
   top:50%;
 }
 /*image holders for profile friends, requests, and suggestions*/
