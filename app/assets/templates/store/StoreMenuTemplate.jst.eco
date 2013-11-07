@@ -2,7 +2,7 @@
 
   <!-- Store Menu  -->
   <ul class="nav nav-tabs nav-tabs-store" id="storeTabs">
-      <li class="active store-nav">
+      <li class="store-nav">
           <a href="#tab_items" data-toggle="tab">OBJECTS</a>
       </li>
       <li class="store-nav">             
@@ -102,7 +102,7 @@
 
   <!-- Store Menu Selection  -->
   <div class="tab-content">
-      <div class="tab-pane active" id="tab_items"></div>
+      <div class="tab-pane" id="tab_items"></div>
       <div class="tab-pane" id="tab_themes"></div>
       <div class="tab-pane" id="tab_bundles"></div>
       <div class="tab-pane" id="tab_entire_rooms"></div>

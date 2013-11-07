@@ -132,11 +132,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   #**** Events
   #*******************
-  clickNavTab: (e) ->
+  clickNavTab: (event) ->
     
     #console.log("Manual tab switch")
     
-    e.preventDefault()
+    event.preventDefault()
     #e.stopPropagation() <-- Prevents tabs from functioning
     
     ###
@@ -157,12 +157,29 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
     
     
-  clickObjects: (e) ->
+  clickObjects: (event) ->
     
-    console.log("OBJECTS clicked")
+    #console.log("OBJECTS clicked")
     
-    e.preventDefault()
+    event.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
+
+
+
+    ###
+    FIXME
+    THIS SHOULDN'T BE NECESSARY! WHY DID THIS BREAK?
+    ###
+    if not $('#tab_items').is(':visible')
+      $('#storeTabs a[href="#tab_items"]').tab('show')
+
+
+    if $('#store-search-dropdown').is(':visible')
+      console.log("BUG: DROPDOWN MENU SHOULD CLOSE")
+      #$('#store-search-dropdown').dropdown('toggle') <-- turns off dropdown permanently!
+
+
+
     
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
@@ -176,11 +193,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     
-  clickThemes: (e) ->
+  clickThemes: (event) ->
     
     #console.log("THEMES clicked")
-     
-    e.preventDefault()
+
+    event.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
     
     ###
@@ -228,9 +245,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
    
   
-  clickBundles: (e) ->
+  clickBundles: (event) ->
     
-    e.preventDefault()
+    event.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
     
     
@@ -277,9 +294,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
   
-  clickEntireRooms: (e) ->
+  clickEntireRooms: (event) ->
     
-    e.preventDefault()
+    event.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
     
     ###
@@ -325,16 +342,16 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
   
-  clickSearchFilter: (e) ->
+  clickSearchFilter: (event) ->
 
-    e.preventDefault()
+    event.preventDefault()
     #e.stopPropagation() <-- This prevents the nav pills from closing automatically
     
     # Switch to the hidden tab
     $('#storeTabs a[href="#tab_hidden"]').tab('show')
 
 
-    keyword =  e.target.text
+    keyword =  event.target.text
     category = Mywebroom.State.get("storeHelper")
     
     # PERFORM THE SEARCH
@@ -343,12 +360,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
    
   
-  keyupSearch: (e) ->
+  keyupSearch: (event) ->
     
-    e.preventDefault()
-    e.stopPropagation()
+    event.preventDefault()
+    event.stopPropagation()
     
-    if e.keyCode is 13
+    if event.keyCode is 13
       
       #console.log("SEARCH")
       
@@ -376,11 +393,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       
       
       
-  clickSearchDropdown: (e) ->
+  clickSearchDropdown: (event) ->
     
     #console.log("SEARCH DROPDOWN CHANGE")
     
-    e.preventDefault()
+    event.preventDefault()
     #e.stopPropagation() <-- This prevents the dropdown menu from closing automatically
     
     # SEARCH DROPDOWN
@@ -389,33 +406,38 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
     # Add active class to just-clicked element
-    $(e.target).parent().addClass('active')
+    $(event.target).parent().addClass('active')
     
     
     # Change the text of the search filter
-    $('#store-dropdown-btn').text(e.target.text)
+    $('#store-dropdown-btn').text(event.target.text)
     
     
     # TAB-PANE
     # Active the correct store-nav tab
-    navName = e.target.text
+    navName = event.target.text
     
     switch navName
+      
       when 'ALL'
         $('a[href="#tab_items"]').tab('show')
-        @clickObjects()
+        @clickObjects(event)
+      
       when 'OBJECTS'
         $('a[href="#tab_items"]').tab('show')
-        @clickObjects()
+        @clickObjects(event)
+      
       when 'THEMES'
         $('a[href="#tab_themes"]').tab('show')
-        @clickThemes()
+        @clickThemes(event)
+      
       when 'BUNDLES'
         $('a[href="#tab_bundles"]').tab('show')
-        @clickBundles()
+        @clickBundles(event)
+      
       when 'ENTIRE ROOMS'
         $('a[href="#tab_entire_rooms"]').tab('show')
-        @clickEntireRooms()
+        @clickEntireRooms(event)
   
         
   
@@ -443,8 +465,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         designs = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
         designs.fetch
-          async  : false
-          url    : designs.url(10, 0, keyword)
+          async: false
+          url: designs.url(10, 0, keyword)
           success: (response) ->
             #console.log("searched designs success", response)
           error: ->
@@ -474,7 +496,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           success: (response) ->
             #console.log("searched bundles success", response)
           error: ->
-            console.log("error")
+            console.error("error")
             
             
             
@@ -483,12 +505,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         entireRooms = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
         entireRooms.fetch
-          async  : false
-          url    : entireRooms.url(10, 0, keyword)
+          async: false
+          url: entireRooms.url(10, 0, keyword)
           success: (response) ->
             #console.log("searched entire rooms I success", response)
           error: ->
-            console.log("error")
+            console.error("error")
             
         
         ###
@@ -534,7 +556,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
         collection.fetch
           async  : false
-          url    : collection.url(10,0,keyword)
+          url    : collection.url(10, 0, keyword)
           success: (response) ->
             #console.log("searched designs success", response)
             
@@ -542,7 +564,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             self.appendHidden(response)
       
           error: ->
-            console.log("error")
+            console.error("error")
 
       when "THEMES"
         ###
@@ -559,7 +581,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             self.appendHidden(response)
   
           error: ->
-            console.log("error")
+            console.error("error")
       
       when "BUNDLES" 
         ###
@@ -576,7 +598,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             self.appendHidden(response)
             
           error: ->
-            console.log("error")
+            console.error("error")
             
       when "ENTIRE ROOMS"  
         ###
@@ -589,7 +611,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           success: (response) ->
             #console.log("searched entire rooms success", response)
           error: ->
-            console.log("error")
+            console.error("error")
             
         
         ###
@@ -628,7 +650,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithItemIdAndLimitAndOffsetAndKeywordCollection()
         collection.fetch
           async:   false
-          url:     collection.url(category,10,0,keyword)
+          url:     collection.url(category, 10, 0, keyword)
           success: (response) ->
             #console.log("searched designs success", response)
     
@@ -636,7 +658,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             self.appendHidden(response)
 
           error: ->
-            console.log("error")
+            console.error("error")
   
   
   
@@ -648,27 +670,26 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     $("#tab_items > ul").remove()
     
-    @loop_number   = 0
-    @row_number    = 1
-    @column_number = 3
+    loop_number   = 0
+    row_number    = 1
+    column_number = 3
 
-    @row_line = "<ul id='row_item_" + @row_number + "'></ul>"
-    this.$('#tab_items').append(@row_line)
+    row_line = "<ul id='row_item_1'></ul>"
+    $('#tab_items').append(row_line)
 
-    self = this
-
+    
     collection.each (item)  ->
       view = new Mywebroom.Views.StorePreviewView(model: item)
-      $('#row_item_' + self.row_number).append(view.el)
+      $('#row_item_' + row_number).append(view.el)
       view.render()
 
-      self.loop_number += 1
-      u = self.loop_number % self.column_number
+      loop_number += 1
+      u = loop_number % column_number
 
       if u is 0
-        self.row_number += 1
-        self.row_line = "<ul id='row_item_" + self.row_number + "'></ul>"
-        $('#tab_items').append(self.row_line)
+        row_number += 1
+        row_line = "<ul id='row_item_" + row_number + "'></ul>"
+        $('#tab_items').append(row_line)
 
 
   #--------------------------
@@ -678,30 +699,29 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
     $("#tab_hidden > ul").remove()
     
-    @loop_number   = 0
-    @row_number    = 1
-    @column_number = 3
+    loop_number =   0
+    row_number =    1
+    column_number = 3
 
-    @row_line = "<ul id='row_item_designs_" + @row_number + "'></ul>"
-    this.$('#tab_hidden').append(@row_line)
+    row_line = "<ul id='row_item_designs_1'></ul>"
+    $('#tab_hidden').append(row_line)
 
-    self = this
     
     designs.each (design)  ->
       view = new Mywebroom.Views.StorePreviewView(model: design)
-      $('#row_item_designs_' + self.row_number).append(view.el)
+      $('#row_item_designs_' + row_number).append(view.el)
       view.render()
       
       # Show the social view
       view.addSocialView()
       
-      self.loop_number += 1
-      u = self.loop_number % self.column_number
+      loop_number += 1
+      u = loop_number % column_number
       
       if u is 0
-        self.row_number += 1
-        self.row_line = "<ul id='row_item_designs_" + self.row_number + "'></ul>"
-        $('#tab_hidden').append(self.row_line)
+        row_number += 1
+        row_line = "<ul id='row_item_designs_" + row_number + "'></ul>"
+        $('#tab_hidden').append(row_line)
 
 
   #--------------------------
@@ -711,30 +731,29 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     $("#tab_themes > ul").remove()
     
-    @loop_number   = 0
-    @row_number    = 1
-    @column_number = 3
+    loop_number =   0
+    row_number =    1
+    column_number = 3
 
-    @row_line = "<ul id='row_theme_" + @row_number + "'></ul>"
-    this.$('#tab_themes').append(@row_line)
+    row_line = "<ul id='row_theme_1'></ul>"
+    $('#tab_themes').append(row_line)
 
-    self = this
 
     themes.each (theme)  ->
       view = new Mywebroom.Views.StorePreviewView(model: theme)
-      $('#row_theme_' + self.row_number).append(view.el)
+      $('#row_theme_' + row_number).append(view.el)
       view.render()
 
       # Show the social view
       view.addSocialView()
       
-      self.loop_number += 1
-      u = self.loop_number % self.column_number
+      loop_number += 1
+      u = loop_number % column_number
 
       if u is 0
-        self.row_number += 1
-        self.row_line = "<ul id='row_theme_" + self.row_number + "'></ul>"
-        $('#tab_themes').append(self.row_line)
+        row_number += 1
+        row_line = "<ul id='row_theme_" + row_number + "'></ul>"
+        $('#tab_themes').append(row_line)
 
 
 
@@ -745,30 +764,29 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     $("#tab_bundles > ul").remove()
     
-    @loop_number   = 0
-    @row_number    = 1
-    @column_number = 3
+    loop_number =   0
+    row_number =    1
+    column_number = 3
 
-    @row_line = "<ul id='row_bundle_" + @row_number + "'></ul>"
-    this.$('#tab_bundles').append(@row_line)
+    row_line = "<ul id='row_bundle_1'></ul>"
+    $('#tab_bundles').append(row_line)
 
-    self = this
 
     bundles.each (bundle)  ->
       view = new Mywebroom.Views.StorePreviewView(model: bundle)
-      $('#row_bundle_' + self.row_number).append(view.el)
+      $('#row_bundle_' + row_number).append(view.el)
       view.render()
 
       # Show the social view
       view.addSocialView()
       
-      self.loop_number += 1
-      u = self.loop_number % self.column_number
+      loop_number += 1
+      u = loop_number % column_number
 
       if u is 0
-        self.row_number += 1
-        self.row_line = "<ul id='row_bundle_" + self.row_number + "'></ul>"
-        $('#tab_bundles').append(self.row_line)
+        row_number += 1
+        row_line = "<ul id='row_bundle_" + row_number + "'></ul>"
+        $('#tab_bundles').append(row_line)
 
 
   #--------------------------
@@ -778,30 +796,29 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     $("#tab_entire_rooms > ul").remove()
     
-    @loop_number   = 0
-    @row_number    = 1
-    @column_number = 3
+    loop_number =   0
+    row_number =    1
+    column_number = 3
 
-    @row_line = "<ul id='row_bundle_set_" + @row_number + "'></ul>"
-    this.$('#tab_entire_rooms').append(@row_line)
+    row_line = "<ul id='row_bundle_set_1'></ul>"
+    $('#tab_entire_rooms').append(row_line)
     
-    self = this
 
     entireRooms.each (room)  ->
       view = new Mywebroom.Views.StorePreviewView(model: room)
-      $('#row_bundle_set_' + self.row_number).append(view.el)
+      $('#row_bundle_set_' + row_number).append(view.el)
       view.render()
 
       # Show the social view
       view.addSocialView()
       
-      self.loop_number += 1
-      u = self.loop_number % self.column_number
+      loop_number += 1
+      u = loop_number % column_number
 
       if u is 0
-        self.row_number += 1
-        self.row_line = "<ul id='row_bundle_set_" + self.row_number + "'></ul>"
-        $('#tab_entire_rooms').append(self.row_line)
+        row_number += 1
+        row_line = "<ul id='row_bundle_set_" + row_number + "'></ul>"
+        $('#tab_entire_rooms').append(row_line)
 
 
 
@@ -839,7 +856,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
    
     # Append this to it
-    this.$('#tab_hidden').append("<ul id='row_item_designs_1'></ul>")
+    $('#tab_hidden').append("<ul id='row_item_designs_1'></ul>")
 
    
     # Create the view
