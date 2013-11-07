@@ -67,7 +67,11 @@
         </h2>
         <hr>
         <div>
+          <% if @users_profile_photo.image_name.blank? %>
+              <%= cl_image_tag "default-user.png",width:250 , height:250,:crop => :fill,:default_image => "default-user.png" %>
+          <% else %>
           <%= cl_image_tag @users_profile_photo.image_name,width:250 , height:250,:crop => :fill,:default_image => "default-user.png" %>
+          <% end %>
         </div>
         <%= link_to 'Set as profile image', update_users_photos_profile_image_by_user_id_by_users_photo_id_path(@users_profile_photo.user_id, @users_profile_photo.id), method: :put %>
       </div>

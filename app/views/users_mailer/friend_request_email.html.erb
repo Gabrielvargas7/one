@@ -1,10 +1,17 @@
 <%= @greeting %>
 
-<h1> your friend <%= @user.username %> want to connect with you</h1>
 
+<% if @user_profile.firstname.blank? %>
 
-<h1> name <%= @user_profile.firstname %> </h1>
-<h1> last name <%= @user_profile.lastname %> </h1>
+    <h1> your friend <%= @user.username %> want to connect with you</h1>
+
+<% else %>
+    <h1> your friend <%= @user_profile.firstname %> want to connect with you</h1>
+
+    <h1> name <%= @user_profile.firstname %> </h1>
+    <h1> last name <%= @user_profile.lastname %> </h1>
+
+<% end %>
 
 
 <% if @user_photo.image_name.blank? %>
