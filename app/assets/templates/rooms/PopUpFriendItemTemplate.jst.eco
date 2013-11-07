@@ -2,7 +2,11 @@
   <img src="<%=@itemData.urlToPopup%>">
   <div href="#" class="popup_friend_green_button green_button">
     <a href="#"><span class="link_spanner"></span></a>
-    Close
+    <%if @itemData.buttonText:%>
+      <%=@itemData.buttonText%>
+    <%else:%>
+      Close
+    <%end%>
   </div>
   <a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383590506/x-button_rqdoti.png" id="popup_friend_item_close"> </a>
 </div>
