@@ -1,35 +1,44 @@
-<header class="navbar navbar-fixed-top navbar-inverse" >
-  <div class="navbar-inner" >
-
-
-    <% if @static_content_logo.image_name.blank?  %>
-    <% else %>
-        <%= link_to cl_image_tag(@static_content_logo.image_name, :width => 112, :height => 32 ), root_path , class:"brand",id:  "xroom_logo"  %>
-    <% end %>
-
-
-</div>
-</header>
-
-
-
 <div id="xroom_entire_room_container">
+    <header class="navbar navbar-fixed-top navbar-inverse" >
+        <div class="navbar-inner" >
 
-        <div id="xroom_entire_room_background">
-            <% if @bundle.theme.image_name.blank?  %>
+
+            <% if @static_content_logo.image_name.blank?  %>
             <% else %>
-                <%= cl_image_tag @bundle.theme.image_name,:default_image => "default_image_all.png" %>
+                <%= link_to cl_image_tag(@static_content_logo.image_name, :width => 112, :height => 32 ), root_path , class:"brand",id:  "xroom_logo"  %>
             <% end %>
-        </div>
 
-        <div id="xroom_entire_room_left" style="background-image: url('<%= @static_content_arrows.image_name%>')" >
-          <%= link_to "", xroom_rooms_path(bundle_id:@bundle.id,moving_toward:'prev'), :method => :get, class:'xroom_entire_room_right_fill-div' %>
-        </div>
 
-        <div id="xroom_entire_room_right" style="background-image: url('<%= @static_content_arrows.image_name%>')" >
-          <%= link_to "", xroom_rooms_path(bundle_id:@bundle.id,moving_toward:'next'), :method => :get, class:'xroom_entire_room_right_fill-div' %>
         </div>
+    </header>
 
+
+        <div>
+
+
+            <div id="xroom_entire_room_background">
+                <% if @bundle.theme.image_name.blank?  %>
+                <% else %>
+                    <%= cl_image_tag @bundle.theme.image_name,:default_image => "default_image_all.png" %>
+                <% end %>
+            </div>
+
+            <div id="xroom_entire_room_left" style="background-image: url('<%= @static_content_arrows.image_name%>')" >
+              <%= link_to "", xroom_rooms_path(bundle_id:@bundle.id,moving_toward:'prev'), :method => :get, class:'xroom_entire_room_right_fill-div' %>
+            </div>
+
+            <div id="xroom_entire_room_right" style="background-image: url('<%= @static_content_arrows.image_name%>')" >
+              <%= link_to "", xroom_rooms_path(bundle_id:@bundle.id,moving_toward:'next'), :method => :get, class:'xroom_entire_room_right_fill-div' %>
+            </div>
+
+          <div>
+            <form>
+              <input type="button" id="xroom_entire_room_btn" class="blue_button blue_button_light" value="Use this Room"  onclick="window.location.href=''">
+            </form>
+          </div>
+
+
+        </div>
 </div>
 
 <script>

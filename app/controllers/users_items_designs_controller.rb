@@ -246,13 +246,22 @@ class UsersItemsDesignsController < ApplicationController
       #  validate if exists on the user
       if UsersItemsDesign.exists?(user_id:params[:user_id],items_design_id:params[:items_design_id])
          @user_items_design = UsersItemsDesign.find_by_user_id_and_items_design_id_and_location_id(params[:user_id],params[:items_design_id],params[:location_id])
-
-          if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:items_design_id],first_time_click:'n',location_id:params[:location_id] )
+        if  @user_items_design.first_time_click == 'y'
+            if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:items_design_id],first_time_click:'n',location_id:params[:location_id] )
+              format.json { render json: @user_items_design, status: :ok }
+            else
+              format.json { render json: @user_items_design.errors, status: :unprocessable_entity }
+            end
+        else
+          if @user_items_design.update_attributes(user_id: params[:user_id],items_design_id: params[:items_design_id],first_time_click:'y',location_id:params[:location_id] )
             format.json { render json: @user_items_design, status: :ok }
-
           else
             format.json { render json: @user_items_design.errors, status: :unprocessable_entity }
           end
+        end
+
+
+
       else
         format.json { render json: 'not found user id with items design' , status: :not_found }
       end
