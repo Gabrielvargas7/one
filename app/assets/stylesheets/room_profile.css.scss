@@ -56,7 +56,18 @@ nav.profile {
   white-space:nowrap;
   line-height:15px;
 }
+.profile_picture{
+
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position:relative;
+}
 .profile_home_img_wrap{
+  .profile_picture{
+    width:120px;
+    height:120px;
+  }
   
   #profile_image_edit{
     display:none;
@@ -262,7 +273,8 @@ div.spacer{
   margin:1em;
 }
 #profile_home_info_img img{
-  height:120px;
+  height:100%;
+  width:100%;
   border:1px solid #919191
 }
 #profile_home_info_img img:hover{
@@ -373,6 +385,9 @@ table.generalGrid{
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
+.user-photos-view .gridItemPicture{
+ background-size:cover; 
+}
 #gridItemsTest{
   background-color: white;
   display:table-cell;
@@ -395,6 +410,7 @@ table.generalGrid{
 .user-photos-view div.gridItem{
   padding:0 10px;
 }
+
 .gridItemDescription{
   color:black;
   font-size:12px;
