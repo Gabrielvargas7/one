@@ -45,10 +45,12 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   clickFBLikeItem: ->
       
     #console.log("You clicked FB Like", @model)
-    
+    url = Mywebroom.Helpers.getSEOLink(@model.get('id'), @model.get('type'))
+
+
     window.open(
       'https://www.facebook.com/sharer/sharer.php?u=' +
-      encodeURIComponent(@seoLinkModel.get("seo_url")),
+      encodeURIComponent(url.get("seo_url")),
       'facebook-share-dialog',
       'width=626,height=436'
     )
@@ -90,7 +92,20 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   ###
   generatePinterestUrl: ->
   
-    type = @seoLinkModel.get('type')
+
+    if not @model.has('id')
+      console.error('model without id', @model)
+
+
+    if not @model.has('type')
+      console.error('model without type', @model)
+
+
+
+    type = @model.get('type')
+    url = Mywebroom.Helpers.getSEOLink(@model.get('id'), type)
+
+
     baseUrl = '//pinterest.com/pin/create/button/?url='
     
     
@@ -125,7 +140,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   
     description += @model.get('description') + signature
     results = baseUrl +
-              encodeURIComponent(@seoLinkModel.get("seo_url")) +
+              encodeURIComponent(url.get("seo_url")) +
               '&media=' +
               encodeURIComponent(mediaUrl) +
               '&description=' +

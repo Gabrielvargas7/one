@@ -414,11 +414,15 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-
     # Turn off mousewheel
     Mywebroom.Helpers.turnOffMousewheel()
+
+
+
+    # Listen for editor scroll
+    Mywebroom.Helpers.onEditorScroll()
     
-    
+
     
     # Return the view
     this

@@ -110,6 +110,14 @@ $(document).ready ->
       ItemModels: {} # format -> 2: Backbone.Model
       ItemNames:  {} # format -> 3: "string"
       ItemIds:    Object.create(null) # *see below # format -> 7: true
+      Editor: {
+        paginate: false
+        contentPath: false # INITIAL, SEARCH
+        contentType: false
+        keyword: false
+        offset: 0
+        limit: 10
+      }
       searchNum: -1
       FriendItemPopupUrls: {} #format -> 1:"string"
   }
@@ -128,6 +136,90 @@ $(document).ready ->
   ###
   
   
+
+
+  
+  
+
+
+
+
+
+  Mywebroom.Helpers.onEditorScroll = ->
+
+    ###
+    Here, we setup a scroll handler for the editor.
+    We trigger actions when the page is scrolled to the bottom.
+    ###
+
+    $('.tab-content').scroll( ->
+
+      ###
+      ARE WE AT THE BOTTOM?
+      ###
+      if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 100
+
+        
+        ###
+        IS PAGINATE TRUE?
+        ###
+        if Mywebroom.Data.Editor.paginate is true
+
+
+          path =    Mywebroom.Data.Editor.contentPath
+          type =    Mywebroom.Data.Editor.contentType
+          keyword = Mywebroom.Data.Editor.keyword
+
+
+          ###
+          FIXME
+          For development purposes only
+          ###
+          if path is false then alert("no pagination type!")
+
+
+
+
+          switch path            
+
+            when "INITIAL"
+
+              console.log("PAGINATE INITIAL - " + type)
+
+
+
+            when "SEARCH"
+
+              console.log("PAGINATE SEARCH - " + type + "\nKeyword: " + keyword)
+
+        else
+
+          console.log(
+            "paginate", 
+            Mywebroom.Data.Editor.paginate, 
+            "contentPath", 
+            Mywebroom.Data.Editor.contentPath,
+            "contentType",
+            Mywebroom.Data.Editor.contentType,
+            "keyword",
+            Mywebroom.Data.Editor.keyword
+          )
+    )
+    
+
+
+
+
+
+
+
+    
+    
+
+    
+    
+
+
 
 
   Mywebroom.Helpers.getParameterByName = (name) ->
