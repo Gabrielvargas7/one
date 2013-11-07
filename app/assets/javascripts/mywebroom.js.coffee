@@ -15,6 +15,8 @@ $(document).ready ->
   # Define the state model
   defaultStateModel = Backbone.Model.extend(
     defaults:
+      staticContent : false  #Collection of static content images
+
       roomState     : false  # Who's room are we viewing? PUBLIC, FRIEND, or SELF
       roomUser      : false  # Backbone Model of room user, or false
       roomData      : false  # Backbone Model of room data, or false
@@ -36,6 +38,7 @@ $(document).ready ->
       storeMenuSaveCancelRemoveView: false  # A reference to this view
       roomScrollerLeftView         : false  # A reference to this view
       roomScrollerRightView        : false  # A reference to this view
+      friendItemPopupView          : false  # A reference to the popup view
       
       roomViewState                     : false # open or closed
       roomHeaderViewState               : false # open or closed
@@ -572,23 +575,24 @@ $(document).ready ->
       # #Open Popup and on close, go to website.
       # itemData = {}
 
-      # when 20 #Pinboard
-      # #Get static content
-      # # $.get('static_contents/json/show_static_content_by_name/pinboard-external-site-popup.json'
-      # #       ,(data)->
-      # #         data.image_name.url
-      # #   )
-      # #Open Popup and on close, go to website.
-      # #Get popupUrl
-      # #Get coordinates
-      # itemData = {}
-      # coordinates = {}
-      # pinboardPopupView = new Mywebroom.Views.PopupFriendItemView(
-      #                                 {
-      #                                   itemData:itemData
-      #                                   coordinates:coordinates
-      #                                 })
-      # pinboardPopupView.render().el
+      when 20 #Pinboard
+      #Open Popup and on close, go to website.
+      #Get popupUrl
+        urlToPopup = Mywebroom.State.get('staticContent').findWhere({"name":"pinboard-external-site-popup"})
+        urlToPopup = urlToPopup.get('image_name').url if urlToPopup
+
+        #Get coordinates
+
+        itemModel.set('urlToPopup',urlToPopup)
+        itemModel.set('buttonText',"Continue")
+        coordinates = itemModel.get('coordinates') 
+        pinboardPopupView = new Mywebroom.Views.PopupFriendItemView(
+                                        {
+                                          itemData:itemModel
+                                          coordinates:coordinates
+                                        })
+        pinboardPopupView.render().el
+        $('#room_bookmark_item_id_container_' + DomItemId).append(pinboardPopupView.el)
 
 
       when 21 #Portrait
@@ -656,36 +660,38 @@ $(document).ready ->
         if model.get("clickable") is "yes" 
           
           #2. Check if Friend's Room
+          #2A. get coordinates of click for case of POPUPS
+          if event
+            coordinates =
+              left:event.pageX
+              top:event.pageY
+          else
+            coordinates =
+              top:model.get('y')
+              left:model.get('x')
+
           if Mywebroom.State.get('roomState') is "FRIEND" #Public is not clickable so no worry here.
            #(2.1)show the popups
-            #A. get coordinates of click 
-            if event
-              coordinates =
-                left:event.pageX
-                top:event.pageY
-            else
-              coordinates =
-                top:model.get('y')
-                left:model.get('x')
+            
 
-            #B. Create PopupFriendItemView
+            #A. Create PopupFriendItemView
 
-            #B1. if a popup is already made, make sure we close it before creating the new one. 
+            #A1. if a popup is already made, make sure we close it before creating the new one. 
             if Mywebroom.State.get('friendItemPopupView')
               Mywebroom.State.get('friendItemPopupView').closeView()
 
-            #B2. set Data we need for the view
+            #A2. set Data we need for the view
             urlToPopup = Mywebroom.Data.FriendItemPopupUrls[ model.get('id') ]
             model.set('urlToPopup', urlToPopup)
             
-            #B3. create Popup view
+            #A3. create Popup view
             view = new Mywebroom.Views.PopupFriendItemView(itemData: model,coordinates:coordinates)
             
-            #B4. Render Popup view
+            #A4. Render Popup view
             $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
             view.render()
 
-            #B5. update State view tracker
+            #A5. update State view tracker
             Mywebroom.State.set('friendItemPopupView',view)
           
           else #roomState is "SELF" 
@@ -693,19 +699,21 @@ $(document).ready ->
 
             #A. get the corresponding model to check for first click
             firstTimeClickedItem = Mywebroom.State.get('roomItems').findWhere({'item_id':model.get('id').toString()})
-            
+
             #B. Check for first click
             if firstTimeClickedItem.get('first_time_click') is "y" and model.get('id')!=21
               #1. Merge model and firstTimeClickedItem since we need both where we're going. 
               itemData = new Backbone.Model(firstTimeClickedItem.toJSON())
               itemData.set(model.toJSON())
               itemData.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
-              
+              itemData.set('coordinates',coordinates) #Setting these for the case when: firstClick to Special Item Popup View
+
               #2. Show Popup
               Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
 
             else
               #(2.2) Create the Bookmarks View. (Function checks for special items like Portrait)
+              model.set('coordinates',coordinates)
               Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
 
       ) #end .click for img.room_design 

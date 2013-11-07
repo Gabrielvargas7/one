@@ -44,7 +44,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         staticContentCollection = new Backbone.Collection()
         staticContentCollection.add(data)
         Mywebroom.State.set('staticContent',staticContentCollection)
-        debugger;
+
     # (1) Set roomUser
     roomUsers = new Mywebroom.Collections.ShowRoomUserCollection()
     roomUsers.fetch
