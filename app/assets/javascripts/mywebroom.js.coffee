@@ -97,6 +97,24 @@ $(document).ready ->
       
       roomState = Mywebroom.State.get("roomState")
       
+      ###
+      console.log("roomState", roomState)
+
+      switch roomState
+
+        when "SELF"
+          console.log("transition to SELF")
+
+        when "FRIEND"
+          console.log("transition to FRIEND")
+
+        when "PUBLIC"
+          console.log("transition to PUBLIC")
+
+        when "NONE"
+          console.log("transition")
+      ###
+
       if roomState is "PUBLIC" then $("#xroom_header_search").hide() else $("#xroom_header_search").show()  
   )
   
