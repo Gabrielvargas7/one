@@ -530,4 +530,9 @@ describe ItemsDesignsController do
     pending "pending test api"
   end
 
+  describe "json_index_items_design_by_limit_and_offset" do
+    pending "add #{__FILE__}"
+  end
+
+
 end

@@ -227,7 +227,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       #format.json { render json: @current_user.as_json(only:[:id,:username]), status: :ok}
       if @current_user.nil?
-        format.json { render json: 'user not found' , status: :not_found }
+        format.json { render json: 'user not found' , status: :no_content }
       else
         format.json { render json: @current_user.as_json(only:[:id,:username]), status: :ok}
       end
@@ -235,6 +235,30 @@ class UsersController < ApplicationController
 
     end
   end
+
+
+  # GET get signed user info
+  #  /users/json/is_signed_user
+  #  /users/json/is_signed_user
+  #  /# success    ->  head  200 OK
+
+  def json_is_signed_user
+    @current_user =  current_user
+    respond_to do |format|
+
+      if @current_user.nil?
+        @is_signed_user = JSON.parse('{"signed":"not"}')
+
+        format.json { render json: @is_signed_user , status: :ok}
+      else
+        @is_signed_user = JSON.parse('{"signed":"yes"}')
+        format.json { render json: @is_signed_user , status: :ok}
+      end
+
+
+    end
+  end
+
 
 
 

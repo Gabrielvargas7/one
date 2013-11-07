@@ -375,7 +375,6 @@ Mywebroom::Application.routes.draw do
          'items_designs#json_show_items_design_seo_url_by_items_design_id', via: :get
 
 
-
   match '/items_designs/json/index_items_designs_by_item_id_and_limit_offset/:item_id/:limit/:offset', to:
         'items_designs#json_index_items_designs_by_item_id_and_limit_offset', via: :get
 
@@ -413,6 +412,10 @@ Mywebroom::Application.routes.draw do
   match '/users/json/show_signed_user', to:
          'users#json_show_signed_user', via: :get , as:
          :users_json_show_signed_user
+
+
+  match '/users/json/is_signed_user', to:
+         'users#json_is_signed_user', via: :get
 
 
 

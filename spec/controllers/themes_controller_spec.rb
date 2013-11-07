@@ -596,6 +596,11 @@ describe ThemesController do
   end
 
 
+  describe "json_index_themes_by_limit_and_offset" do
+    pending "add #{__FILE__}"
+  end
+
+
 
 
 

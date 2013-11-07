@@ -681,8 +681,8 @@ describe BundlesController do
   end
 
 
-  describe "destroy bundle" do
-    pending "add test destroy bundle #{__FILE__}"
+  describe "json_index_bundles_by_limit_and_offset" do
+    pending "add bundle #{__FILE__}"
   end
 
 

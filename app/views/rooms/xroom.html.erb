@@ -31,11 +31,12 @@
               <%= link_to "", xroom_rooms_path(bundle_id:@bundle.id,moving_toward:'next'), :method => :get, class:'xroom_entire_room_right_fill-div' %>
             </div>
 
-          <div>
-            <form>
-              <input type="button" id="xroom_entire_room_btn" class="blue_button blue_button_light" value="Use this Room"  onclick="window.location.href=''">
-            </form>
+
+          <div id="xroom_entire_room_btn"  >
+            <%= link_to "Use this Room ",xroom_rooms_path,:class => "blue_button blue_button_light", :id => "xroom_entire_room_btn_blue"%>
           </div>
+
+
 
 
         </div>

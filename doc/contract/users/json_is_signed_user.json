@@ -1,0 +1,6 @@
+//# GET get signed user info
+//#  /users/json/is_signed_user
+//#  /users/json/is_signed_user
+//#  /# success    ->  head  200 OK
+
+{"signed":"not"}
