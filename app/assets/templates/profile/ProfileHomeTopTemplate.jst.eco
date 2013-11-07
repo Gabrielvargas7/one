@@ -1,11 +1,19 @@
 <div id="profile_home_info_img">
+  
   <div class="profile_home_img_wrap">
-    <img id="profile_picture" src="<%=@user_info.get('user_photos').image_name.url%>">
+    
+    <div style="height:120px;position:relative;">
+      <img id="profile_picture" src="<%=@user_info.get('user_photos').image_name.url%>">
+      <%if Mywebroom.State.get('roomState') is 'SELF':%>
+        <div id="profile_image_edit"><a href="/users_photos/index_users_photos_by_user_id/<%=@user_info.get('user_id')%>">Change Picture</a></div>
+      <%end%>
+    </div>
+
     <%if @user_info.get('member_since'):%>
       <p>Member since <%=@user_info.get('member_since')%>.</p>
     <%end%>
     <%if Mywebroom.State.get('roomState') is 'SELF':%>
-      <p><a href="/users_photos/index_users_photos_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></p>
+      <!-- <p id="profile_image_edit"><a href="/users_photos/index_users_photos_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></p> -->
     <%else:%>
       <%if Mywebroom.State.get('roomState') is 'PUBLIC': %>
         <button class="profile_request_key_button">Request Key</button>
@@ -13,6 +21,7 @@
       <%end%>
     <%end%>
   </div>
+  
 </div>
 <div id="profile_home_info_wrap" class="user_info">
   <div class="profile_info_name">

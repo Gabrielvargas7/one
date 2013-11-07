@@ -56,6 +56,35 @@ nav.profile {
   white-space:nowrap;
   line-height:15px;
 }
+.profile_home_img_wrap{
+  
+  #profile_image_edit{
+    display:none;
+
+    position:absolute;
+    bottom:0;
+    left:2px;
+    width:116px;
+
+    background: rgba(255,255,255,.8);
+    color:black;
+    font-size:12px;
+    margin:5px 1px;
+    text-align:center;
+  }
+  
+  #profile_image_edit a,#profile_image_edit a:hover{
+    color:black;
+    text-decoration: none;
+  }
+}
+
+.profile_home_img_wrap:hover{
+  //display change picture div here. 
+  #profile_image_edit{
+    display:block;
+  }
+}
 #profile_home_wrapper figcaption{
   font-size:8px;
   display:table-row;
