@@ -352,7 +352,11 @@ table.generalGrid{
   overflow-y:scroll;
   width:620px;
   height:585px;
+  text-align:center;
 
+}
+.user-photos-view #gridItemList{
+  text-align:left;
 }
 #profileHome_activity_header, .profileTableHeader{
   border-collapse:collapse;
@@ -380,7 +384,7 @@ table.generalGrid{
   text-align:center;
   border:1px solid #ebebeb;
   display:inline-block;
-  margin:5px;
+  margin:9px 5px;
   
 }
 /*center the picture*/
@@ -391,6 +395,10 @@ table.generalGrid{
   color:black;
   font-size:12px;
   font-weight:lighter;
+  /*To prevent grid from slipping if description is long*/
+  white-space: nowrap;
+  display:inline-block;
+  width:180px;
 }
 #profile_close_button_wrap{
   position:absolute;
