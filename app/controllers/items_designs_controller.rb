@@ -157,17 +157,20 @@ class ItemsDesignsController < ApplicationController
   end
 
 
-  # GET Get all items_designs by item_id
-  # /items_designs/json/index_items_designs_by_item_id/:item_id'
-  # /items_designs/json/index_items_designs_by_item_id/1.json
+  # GET Get  items_designs by item_id, limit and offset
+  # /items_designs/json/index_items_designs_by_item_id_and_limit_offset/:item_id/:limit/:offset
+  # /items_designs/json/index_items_designs_by_item_id/1/10/0.json
   # Return head
   # success    ->  head  200 OK
-
-  def json_index_items_designs_by_item_id
+  def json_index_items_designs_by_item_id_and_limit_offset
 
     respond_to do |format|
       if ItemsDesign.exists?(item_id:params[:item_id])
-        @items_designs = ItemsDesign.where('item_id=?',params[:item_id]).order("id")
+
+        @items_designs = ItemsDesign.
+            where('item_id=?',params[:item_id]).order("id").
+            limit(params[:limit]).
+            offset(params[:offset])
 
         format.json { render json: @items_designs }
       else
@@ -175,6 +178,9 @@ class ItemsDesignsController < ApplicationController
       end
     end
   end
+
+
+
 
 
   # GET Get random items_designs

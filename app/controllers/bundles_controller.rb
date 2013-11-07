@@ -219,6 +219,28 @@ class BundlesController < ApplicationController
   end
 
 
+  # GET Get bundles by limit and offset
+  # /bundles/json/index_bundles_by_limit_and_offset/:limit/:offset
+  # /bundles/json/index_bundles_by_limit_and_offset/2/0.json
+  #Return head
+  #success    ->  head  200 OK
+
+  def json_index_bundles_by_limit_and_offset
+
+    @bundles = Bundle.where("active = 'y'").order(:id).
+        limit(params[:limit]).
+        offset(params[:offset])
+
+    respond_to do |format|
+      format.json { render json: @bundles.as_json()
+
+      }
+    end
+
+  end
+
+
+
   # GET Get all bundles categories group
   # /bundles/json/index_bundles_categories'
   # /bundles/json/index_bundles_categories.json'

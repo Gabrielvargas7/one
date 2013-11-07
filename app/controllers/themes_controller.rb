@@ -254,6 +254,21 @@ class ThemesController < ApplicationController
   end
 
 
+  # Get themes by limit and offset
+  # GET 'themes/json/index_themes_by_limit_and_offset/:limit/:offset'
+  #     'themes/json/index_themes_by_limit_and_offset/10/0.json'
+  #Return head 200 OK
+  def json_index_themes_by_limit_and_offset
+    @themes = Theme.order(:id).
+              limit(params[:limit]).
+              offset(params[:offset])
+
+    respond_to do |format|
+      format.json { render json: @themes }
+    end
+  end
+
+
 
 
 

@@ -228,6 +228,13 @@ Mywebroom::Application.routes.draw do
          'themes#json_show_theme_seo_url_by_theme_id', via: :get
 
 
+   match 'themes/json/index_themes_by_limit_and_offset/:limit/:offset', to:
+         'themes#json_index_themes_by_limit_and_offset', via: :get
+
+
+
+
+
 
 
 
@@ -258,6 +265,7 @@ Mywebroom::Application.routes.draw do
   #**************************
   #  start Bundles contract
   #**************************
+
   match '/bundles/json/show_bundle_by_id/:id', to:
         'bundles#json_show_bundle_by_id', via: :get  , as:
         :bundles_json_show_bundle_by_id
@@ -282,6 +290,11 @@ Mywebroom::Application.routes.draw do
 
   match '/bundles/json/show_entire_room_seo_url_by_bundle_id/:bundle_id', to:
          'bundles#json_show_entire_room_seo_url_by_bundle_id', via: :get
+
+  match '/bundles/json/index_bundles_by_limit_and_offset/:limit/:offset', to:
+           'bundles#json_index_bundles_by_limit_and_offset', via: :get
+
+
 
 
 
@@ -361,6 +374,10 @@ Mywebroom::Application.routes.draw do
   match '/items_designs/json/show_items_design_seo_url_by_items_design_id/:items_design_id', to:
          'items_designs#json_show_items_design_seo_url_by_items_design_id', via: :get
 
+
+
+  match '/items_designs/json/index_items_designs_by_item_id_and_limit_offset/:item_id/:limit/:offset', to:
+        'items_designs#json_index_items_designs_by_item_id_and_limit_offset', via: :get
 
 
 

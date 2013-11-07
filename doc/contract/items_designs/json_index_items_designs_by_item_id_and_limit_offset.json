@@ -1,0 +1,65 @@
+//# GET Get  items_designs by item_id, limit and offset
+//# /items_designs/json/index_items_designs_by_item_id_and_limit_offset/:item_id/:limit/:offset
+//# /items_designs/json/index_items_designs_by_item_id/1/10/0.json
+//# Return head
+//# success    ->  head  200 OK
+
+
+[
+    {
+        "brand": "brand",
+        "bundle_id": 1,
+        "category": "category",
+        "color": "color",
+        "company_id": 1,
+        "created_at": "2013-05-17T20:34:16Z",
+        "description": "This elegant design has a distinct color and it shows that your bed is an important piece of furniture for you. Its organized, spacious, and adds color to your room design. ",
+        "id": 1,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1381866445/29406-items_design-peach-queen-category-color-style-brand-make-special-name-image_name-sofa-01.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1381866446/37407-items_design-peach-queen-category-color-style-brand-make-special-name-image_name_hover-sofa-01.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822859/70275-items_design-image_name_selection-peach-queen-1-300x300.jpg"
+        },
+        "item_id": 1,
+        "like": 121,
+        "make": "make",
+        "name": "Peach Queen",
+        "price": "99.99",
+        "product_url": "https://mywebroom.com",
+        "special_name": "special name",
+        "style": "style",
+        "updated_at": "2013-11-05T00:44:39Z"
+    },
+    {
+        "brand": "",
+        "bundle_id": 3,
+        "category": "furniture",
+        "color": "blue",
+        "company_id": null,
+        "created_at": "2013-05-17T20:36:31Z",
+        "description": "If you are looking for some of suggestion, There’s no doubt that this Modern Sofa Design WIth Iron Leg Blue Sofas For Two Seater is a beneficial choice for your design suggestion upcoming, so don’t forget to check out the main content Stunning Blue Sofas as Most Comfortable Seat in Living Rooms to read the complete story. We hope our picture encourage you to be implemented in your fabulous house.",
+        "id": 45,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383507770/84658-items_design-modern-sofa-design-with-iron-leg-furniture-blue-modern--fabric-blue-custom-made-couch-image_name-modern-sofa-design-with-iron-leg-blue-sofas-for-two-seater.png"
+        },
+        "image_name_hover": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383507771/96117-items_design-modern-sofa-design-with-iron-leg-furniture-blue-modern--fabric-blue-custom-made-couch-image_name_hover-modern-sofa-design-with-iron-leg-blue-sofas-for-two-seater-highlight.png"
+        },
+        "image_name_selection": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383507305/21047-items_design-modern-sofa-design-with-iron-leg-furniture-blue-modern--fabric-blue-custom-made-couch-image_name_selection-modern-sofa-design-with-iron-leg-blue-sofas-for-two-seater-shop.png"
+        },
+        "item_id": 1,
+        "like": 0,
+        "make": "fabric",
+        "name": "Modern Sofa Design WIth Iron Leg",
+        "price": "0.0",
+        "product_url": "http://www.gnibo.com/stunning-blue-sofas-as-most-comfortable-seat-in-living-rooms/modern-sofa-design-with-iron-leg-blue-sofas-for-two-seater",
+        "special_name": "Blue Custom Made couch",
+        "style": "modern",
+        "updated_at": "2013-11-03T19:42:50Z"
+    }
+]

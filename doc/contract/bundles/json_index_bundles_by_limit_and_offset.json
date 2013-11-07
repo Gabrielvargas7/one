@@ -1,0 +1,63 @@
+//# GET Get  bundles by limit and offset
+//# /bundles/json/index_bundles_by_limit_and_offset/:limit/:offset
+//# /bundles/json/index_bundles_by_limit_and_offset/2/0.json
+//#Return head
+//#success    ->  head  200 OK
+
+
+[
+    {
+        "active": "y",
+        "brand": null,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:34:00Z",
+        "description": "This particular set of objects is a look in to the future of home design. More modern, tech-friendly, and sleek looking than any other.",
+        "id": 3,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822840/10342-bundle-image_name-elegante.png"
+        },
+        "image_name_entire_room": {
+            "url": "/assets/fallback/bundle/default.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "like": 0,
+        "location": null,
+        "make": null,
+        "name": "Elegante",
+        "section_id": 1,
+        "special_name": null,
+        "style": null,
+        "theme_id": 3,
+        "updated_at": "2013-07-02T00:30:40Z"
+    },
+    {
+        "active": "y",
+        "brand": null,
+        "category": null,
+        "color": null,
+        "created_at": "2013-05-17T20:34:01Z",
+        "description": "This objects were web-crafted by guys that lived in 60's here in San Francisco. These objects are some of the goods that this duet owned in the past. ",
+        "id": 4,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368822842/89336-bundle-image_name-english-hipster.png"
+        },
+        "image_name_entire_room": {
+            "url": "/assets/fallback/bundle/default.png"
+        },
+        "image_name_set": {
+            "url": "/assets/fallback/bundle/default_bundle.png"
+        },
+        "like": 0,
+        "location": null,
+        "make": null,
+        "name": "English Hipster",
+        "section_id": 1,
+        "special_name": null,
+        "style": null,
+        "theme_id": 4,
+        "updated_at": "2013-07-02T00:30:48Z"
+    }
+]
