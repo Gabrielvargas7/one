@@ -23,6 +23,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     ###
+    (0)   Set staticContent
     (1)   Set roomUser: {id:123, username: "sherrie"}
     (2)   Set roomData
     (2.1) Set roomDesigns
@@ -33,6 +34,17 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     (6)   Set signInData
     ###
     
+    #(0) set staticContent images
+    $.ajax
+      url:'/static_contents/json/index_static_contents.json'
+      type:'get'
+      dataType: 'json'
+      async:true
+      success: (data)->
+        staticContentCollection = new Backbone.Collection()
+        staticContentCollection.add(data)
+        Mywebroom.State.set('staticContent',staticContentCollection)
+
     # (1) Set roomUser
     roomUsers = new Mywebroom.Collections.ShowRoomUserCollection()
     roomUsers.fetch

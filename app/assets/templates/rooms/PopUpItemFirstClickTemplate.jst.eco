@@ -12,10 +12,10 @@
 
 </style>
 <div id="popup_item_first_click_wrap">
-  <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383669825/83939-item-bird-cage-image_name_first_time_click-tweet.jpg"><!--<%=@itemData.urlToPopup%>-->
+  <img src="<%=@itemData.urlToPopup%>">
   <div href="#" class="popup_first_click_green_button green_button">
     <a href="#"><span class="link_spanner"></span></a>
-    Close
+    Continue
   </div>
   <a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383693029/x-button-white-on-dark.png" id="popup_item_first_click_close"> </a>
 </div>
