@@ -29,6 +29,12 @@ class Mywebroom.Views.PopupFriendItemView extends Backbone.View
     @coordinates = this.options.coordinates
     @template = this.options.template if this.options.template
     @className = this.options.className if this.options.className
+
+    #Update the State Model View Tracker and insure only one view is open at a time. 
+    if Mywebroom.State.get("friendItemPopupView")
+      Mywebroom.State.get("friendItemPopupView").closeView()
+
+    Mywebroom.State.set("friendItemPopupView",this) 
  
   
   render: ->
@@ -50,9 +56,13 @@ class Mywebroom.Views.PopupFriendItemView extends Backbone.View
     #Remove this view
     this.remove()
 
-class Mywebroom.Views.PopupExternalSiteWarning extends Mywebroom.Views.PopupFriendItemView
-  remove: ->
-    debugger                 
-    window.open(@options.externalUrl, '_blank') if @options.externalUrl                 
-    #1c. Call the base class remove method 
-    Backbone.View::remove.apply this
+class Mywebroom.Views.PopupExternalSiteWarningView extends Mywebroom.Views.PopupFriendItemView
+  events:
+    'click #popup_friend_item_close':'closeView'
+    'click .green_button':'openSite'
+  openSite:(event) ->             
+    debugger   
+    # event.stopPropagation()
+    # event.preventDefault()
+    window.open(@options.externalUrl, '_blank') if @options.externalUrl
+    @closeView()
