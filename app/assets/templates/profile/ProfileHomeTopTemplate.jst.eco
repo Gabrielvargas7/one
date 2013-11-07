@@ -22,7 +22,7 @@
     <p id = "info_username"><%=@user_info.get('user').username%> </p>
     <ul>
       <%if @user_info.get('age'):%> <li>Age: <%=@user_info.get('age')%><%end%></li>
-      <li><%=@user_info.get('gender')%></li>
+      <li><span class="light_font"><%=@user_info.get('gender')%></span></li>
       <li><%if @user_info.get('city'):%><span class="capitalize"><%=@user_info.get('city') %></span> ,<%end%> <%=@user_info.get('country')%></li>
     </ul>
     <a class="blueLink" href="#">Friends (<%=@user_info.get('friends_number')%>)</a>

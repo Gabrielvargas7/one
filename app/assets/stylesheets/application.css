@@ -145,6 +145,9 @@ footer ul li {
 .capitalize{
     text-transform: capitalize;
 }
+.light_font{
+   font-weight:300;
+}
 .hidden{
     visibility:hidden;
 }
