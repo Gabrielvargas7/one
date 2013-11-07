@@ -19,7 +19,7 @@
             <div id="xroom_entire_room_background">
                 <% if @bundle.theme.image_name.blank?  %>
                 <% else %>
-                    <%= cl_image_tag @bundle.theme.image_name,:default_image => "default_image_all.png" %>
+                    <%= cl_image_tag @bundle.theme.image_name,:quality => 50, :default_image => "default_image_all.png" %>
                 <% end %>
             </div>
 

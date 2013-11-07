@@ -180,6 +180,27 @@ class ItemsDesignsController < ApplicationController
   end
 
 
+  # GET Get  items_designs by item_id
+  # /items_designs/json/index_items_designs_by_item_id_and_limit_offset/:item_id/:limit/:offset
+  # /items_designs/json/index_items_designs_by_item_id/1/10/0.json
+  # Return head
+  # success    ->  head  200 OK
+  def json_index_items_designs_by_item_id
+
+    respond_to do |format|
+      if ItemsDesign.exists?(item_id:params[:item_id])
+
+        @items_designs = ItemsDesign.
+            where('item_id=?',params[:item_id]).order("id")
+
+
+        format.json { render json: @items_designs }
+      else
+        format.json { render json: 'not found item id' , status: :not_found }
+      end
+    end
+  end
+
 
 
 

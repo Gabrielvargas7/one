@@ -48,13 +48,18 @@
   background-color: rgba(0,0,0,.8);
 }
 
+a.xroom_entire_room_right_fill-div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+
+
 #xroom_entire_room_btn{
   position:fixed;
   z-index:4;
   top:10%;
   left:38%;
-}
-
-#xroom_entire_room_btn_blue {
-  padding: 6px 36px;
+  width:180px;
 }
