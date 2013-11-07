@@ -99,6 +99,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     e.stopPropagation()
    
     ###
+    (0) Pagination 
     (1) Change to hidden tab
     (2) Conditionally show remove button
     (3) Conditionally highlight room item
@@ -108,6 +109,11 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     (7) Update filters
     ###
     
+
+    # Pagination
+    Mywebroom.Data.Editor.paginate = true
+    Mywebroom.Data.Editor.contentPath = "INITIAL"
+
    
    
     # Switch to the hidden tab
@@ -117,6 +123,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   
        
     itemId = @model.get("id")
+    Mywebroom.Data.Editor.contentType = itemId
    
    
    

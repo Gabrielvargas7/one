@@ -20,8 +20,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     'click #store-search-dropdown li a': 'clickSearchDropdown' # SEARCH DROPDOWN
     'click .store-filter-item a':        'clickSearchFilter'   # SEARCH FILTER
   }
-  
-  
+
+
   
   
   #*******************
@@ -145,6 +145,13 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#store-search-dropdown li').removeClass('active') # Remove active class
     $("#store-search-all").addClass("active") # Add active class to ALL
     $('#store-dropdown-btn').text("ALL") # Change the text of the search filter to ALL
+
+
+    ###
+    SCROLL TO THE TOP
+    ###
+    $('.tab-content').scrollTop(0)
+
     
   
   
@@ -152,7 +159,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
   clickObjects: (e) ->
     
-    #console.log("OBJECTS clicked")
+    console.log("OBJECTS clicked")
     
     e.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
@@ -162,6 +169,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Hide the search filters
     Mywebroom.Helpers.collapseFilters()
+
+    # Turn pagination off
+    Mywebroom.Data.Editor.paginate = false
     
     
     
@@ -190,6 +200,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
      # Add the collapse class
     $('#dropdown-category').addClass('collapse')
+
+
+    ###
+    PAGINATION
+    ###
+    Mywebroom.Data.Editor.paginate = true
+    Mywebroom.Data.Editor.contentPath = "INITIAL"
+    Mywebroom.Data.Editor.contentType = "THEMES"
     
     
     # Load the Bundles' Categories Collection
@@ -209,8 +227,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
    
-   
-      
+  
   clickBundles: (e) ->
     
     e.preventDefault()
@@ -234,6 +251,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Add the collapse class
     $('#dropdown-category').addClass('collapse')
+
+
+    ###
+    PAGINATION
+    ###
+    Mywebroom.Data.Editor.paginate = true
+    Mywebroom.Data.Editor.contentPath = "INITIAL"
+    Mywebroom.Data.Editor.contentType = "BUNDLES"
     
     
     # Load the Bundles' Categories Collection
@@ -273,6 +298,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Add the collapse class
     $('#dropdown-category').addClass('collapse')
+
+
+    ###
+    PAGINATION
+    ###
+    Mywebroom.Data.Editor.paginate = true
+    Mywebroom.Data.Editor.contentPath = "INITIAL"
+    Mywebroom.Data.Editor.contentType = "ENTIRE ROOMS"
     
     
     # Load the Bundles' Categories Collection
@@ -299,6 +332,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     # Switch to the hidden tab
     $('#storeTabs a[href="#tab_hidden"]').tab('show')
+
 
     keyword =  e.target.text
     category = Mywebroom.State.get("storeHelper")
@@ -332,6 +366,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       
       # Perform search
       @performSearch(input, tab)
+
       
       
       ###
@@ -386,8 +421,18 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
   
-  performSearch: (keyword, category) ->
+  performSearch: (category, keyword) ->
     
+    ###
+    PAGINATION
+    ###
+    Mywebroom.Data.Editor.paginate = true
+    Mywebroom.Data.Editor.contentPath = "SEARCH"
+    Mywebroom.Data.Editor.contentType = category
+    Mywebroom.Data.Editor.keyword = keyword
+    
+
+
     self = this
     
     
