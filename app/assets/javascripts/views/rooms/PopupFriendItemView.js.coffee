@@ -50,3 +50,9 @@ class Mywebroom.Views.PopupFriendItemView extends Backbone.View
     #Remove this view
     this.remove()
 
+class Mywebroom.Views.PopupExternalSiteWarning extends Mywebroom.Views.PopupFriendItemView
+  remove: ->
+    debugger                 
+    window.open(@options.externalUrl, '_blank') if @options.externalUrl                 
+    #1c. Call the base class remove method 
+    Backbone.View::remove.apply this

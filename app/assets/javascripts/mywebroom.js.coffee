@@ -586,10 +586,11 @@ $(document).ready ->
         itemModel.set('urlToPopup',urlToPopup)
         itemModel.set('buttonText',"Continue")
         coordinates = itemModel.get('coordinates') 
-        pinboardPopupView = new Mywebroom.Views.PopupFriendItemView(
+        pinboardPopupView = new Mywebroom.Views.PopupExternalSiteWarning(
                                         {
-                                          itemData:itemModel
-                                          coordinates:coordinates
+                                          itemData:    itemModel
+                                          coordinates: coordinates
+                                          externalUrl: "http://www.pinterest.com"
                                         })
         pinboardPopupView.render().el
         $('#room_bookmark_item_id_container_' + DomItemId).append(pinboardPopupView.el)
