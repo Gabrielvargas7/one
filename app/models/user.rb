@@ -17,6 +17,9 @@ require 'open-uri'
 
 class User < ActiveRecord::Base
   attr_accessible :email,:password,:username ,:provider,:uid
+  #,:specific_room_id
+
+  attr_accessor :specific_room_id
 
   #mount_uploader :image_name, UsersImageUploader
 
@@ -42,8 +45,8 @@ class User < ActiveRecord::Base
 
   after_create :create_user_notification,
                :send_signup_user_email,
-               :create_random_room,
-  #             #:create_specific_room,
+               #:create_random_room,
+               :create_specific_room,
                :create_image_name,
                :create_user_profile,
                :create_specific_friends
@@ -95,7 +98,7 @@ class User < ActiveRecord::Base
   #***********************************
 
   # create(facebook.. )the user if don't exist
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth,specific_room_id)
 
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
 
@@ -105,6 +108,15 @@ class User < ActiveRecord::Base
       #---------------------------------
       # create user from facebook
       #---------------------------------
+
+      #puts "omniauth cookies facebook"+cookies[:facebook_bundle_id].to_s
+      #
+      #if cookies[:facebook_bundle_id].nil?
+      #
+      #else
+      user.specific_room_id = specific_room_id
+      #end
+
 
       user.provider = auth.provider
       user.uid = auth.uid
@@ -377,13 +389,33 @@ class User < ActiveRecord::Base
 
 
   def create_specific_room
+    puts "inside of the specific room"
 
-    puts "final position"
-    if Bundle.exists?(id:6)
-      bundle = Bundle.find(6)
+    if self.specific_room_id.nil?
+      puts "specific_room_id is nil"
+
+      if Bundle.exists?(id:6)
+        bundle = Bundle.find(6)
+      else
+        bundle = Bundle.where("active = 'y'").order("RANDOM()").first
+      end
+
     else
-      bundle = Bundle.where("active = 'y'").order("RANDOM()").first
+      puts "specific_room_id is not nil"
+      if Bundle.exists?(id:self.specific_room_id)
+        bundle = Bundle.find(self.specific_room_id)
+      else
+        bundle = Bundle.where("active = 'y'").order("RANDOM()").first
+      end
+
     end
+
+    #puts "final position"
+    #if Bundle.exists?(id:6)
+    #  bundle = Bundle.find(6)
+    #else
+    #  bundle = Bundle.where("active = 'y'").order("RANDOM()").first
+    #end
     #create the theme from the bundle
     UsersTheme.create!(user_id:self.id,theme_id:bundle.theme_id,section_id:bundle.section_id)
 

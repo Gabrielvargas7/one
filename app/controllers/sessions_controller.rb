@@ -31,29 +31,32 @@ class SessionsController < ApplicationController
 
 
   def create_facebook
+    puts "create facebook cookies facebook: "+cookies[:facebook_bundle_id].to_s
     auth = env["omniauth.auth"]
     email = auth.extra.raw_info.email
 
     # if the user exist, check it is a facebook user
     if User.exists?(email:email)
       user = User.find_by_email(email)
+      #user.specific_room_id = cookies[:facebook_bundle_id]
+
+      #puts "user cookies facebook: "+user.specific_room_id.to_s
 
       if user.uid.blank? then
       # this user is already on the system with room login
         flash.now[:error] = 'Invalid email/password combination' # Not quite right!
         render 'new'
       else
-       # this user is on the system with facebook login (login fine)
-        user = User.from_omniauth(env["omniauth.auth"])
+
+        # this user is on the system with facebook login (login fine)
+        user = User.from_omniauth(env["omniauth.auth"],'')
 
         sign_in user
         verified_and_insert_new_item_to_user user
         redirect_back_or user
       end
     else
-      #this user is new
-      user = User.from_omniauth(env["omniauth.auth"])
-
+      user = User.from_omniauth(env["omniauth.auth"],cookies[:facebook_bundle_id])
       sign_in user
       redirect_back_or user
 
