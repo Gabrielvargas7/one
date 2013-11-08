@@ -55,8 +55,15 @@ class RoomsController < ApplicationController
       @bundles = Bundle.where("active = 'y'").order("RANDOM()")
 
 
-      @static_content_logo = StaticContent.find_by_name("mywebroom-logo")
-      @static_content_arrows = StaticContent.find_by_name("arrows")
+      #@static_content_logo = StaticContent.find_by_name("mywebroom-logo")
+      if StaticContent.exists?(name:"arrows")
+        @static_content_arrows = StaticContent.find_by_name("arrows")
+        @arrows_image = @static_content_arrows.image_name
+      else
+        @arrows_image = ''
+      end
+
+
 
 
       @skip_header = true

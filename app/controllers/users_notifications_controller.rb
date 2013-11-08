@@ -46,6 +46,10 @@ class UsersNotificationsController < ApplicationController
                 format.json { render json: @notification.as_json(only: [:id,:name,:description,:image_name,:position,:notified,:user_id] ) }
 
             else
+              Notification.exists?
+
+
+
               format.json { render json: 'not found notification of user ' , status: :not_found }
             end
 
