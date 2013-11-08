@@ -1,16 +1,24 @@
 
 <div class = "profile_small_top_template">
   <div id="profile_small_user_picture_wrap" class="pull-left">
-    <img id="profile_small_user_picture" src="<%=@model.get('user_photos').image_name.url%>"/>
+    <div class="profile_picture profile_small_picture" style="background-image:url(<%=@model.get('user_photos').image_name.url%>)">
+      <!-- <img id="profile_small_user_picture" src="user_photos').image_name.url"/> -->
+    </div>
   </div>
   <div class="pull-left profile_info_name">
     <p id="profile_info_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p>
   </div>
   
     <div class="pull-right profile_small_top_optional_button_outer" >
-      <a href="/users_photos/index_users_photos_by_user_id/<%=@model.get('user_id')%>" id="profile_upload_photos_button">
-        <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379966504/profile-photos-upload-photo-button.png">
-      </a>
+
+      <div id="upload_new_photo_button" class="blue_button blue_button_light">
+
+            <a href="/users_photos/index_users_photos_by_user_id/<%=@model.get('user_id')%>"><span class= 'link_spanner'></span></a>
+            <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383162444/upload_icon.png">Upload Photo
+
+      </div>
+      
+
     </div>
   
 </div>

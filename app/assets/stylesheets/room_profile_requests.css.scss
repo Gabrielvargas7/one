@@ -1,4 +1,9 @@
 /*Profile Key Request Structure CSS*/
+
+.profile_key_requests{
+  width:620px;
+}
+
 #profile_key_request_list , #profile_suggested_friends_list,
 #profile_key_request_list td, #profile_suggested_friends_list td{
   // background-color:#f5f5f5;
@@ -43,6 +48,8 @@
   // background-color:#f5f5f5;
   border-bottom:1px solid #f4f4f4;
   position:relative;
+  padding: 1em;
+  margin:0;
 }
 .profile_single_request .media, .profile_request_buttons .btn-group{
   position: static;
@@ -87,19 +94,22 @@ p.profile_friend_username{
   border:none;
 }
 .profile_request_buttons{
-  padding-right:30px;
+  padding-right:1em;
 }
 
 .profile_friends_view{
-  background-color: #f5f5f5;
+  background-color: white;
   height:500px;
+  width: 620px;
   overflow-y:scroll;
 
 }
 .user-photos-view{
   background-color: transparent;
 }
-
+.user-photos-view #profile_small_user_picture_wrap{
+  padding:1em 1em 1em 0;
+}
 /*Ask For Key Overlay*/
 #profile_ask_for_key_overlay{
   height:200px;
@@ -129,6 +139,9 @@ p.profile_friend_username{
 }
 #profile_ask_for_key_overlay button.profile_key_requested{
   width:130px;
+}
+.profile_friends_suggestion_single .media{
+  padding: 0 1em;
 }
 /*END Ask For Key Overlay*/
 
