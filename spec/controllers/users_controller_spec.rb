@@ -487,6 +487,12 @@ describe UsersController do
   end
 
 
+  describe "is_signed_user" do
+    pending "add #{__FILE__}"
+  end
+
+
+
 
 
 

@@ -52,9 +52,27 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+
+    if params[:bundle_id].blank?
+
+    else
+      @bundle_id = params[:bundle_id]
+      cookies.permanent[:facebook_bundle_id] = @bundle_id
+
+    end
+
   end
   def create
     @user = User.new(params[:user])
+    if params[:bundle_id].blank?
+
+    else
+      @user.specific_room_id = params[:bundle_id]
+      puts "Bundle id "+@user.specific_room_id.to_s
+    end
+    #puts "Bundle id specifit room"+@user.specific_room_id.to_s
+
+
     #puts "------------------------------------------"
     #puts  "this is the city "+ request.location.city
     #puts "------------------------------------------"
@@ -70,6 +88,9 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+
+
+
   end
 
   def edit
