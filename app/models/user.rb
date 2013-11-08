@@ -17,7 +17,7 @@ require 'open-uri'
 
 class User < ActiveRecord::Base
   attr_accessible :email,:password,:username ,:provider,:uid
-  #,:specific_room_id
+
 
   attr_accessor :specific_room_id
 

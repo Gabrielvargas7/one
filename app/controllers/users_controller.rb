@@ -24,7 +24,6 @@ class UsersController < ApplicationController
                 only:[
                     :json_show_user_profile_by_user_id,
                     :json_create_user_full_bundle_by_user_id_and_bundle_id
-
                 ]
 
 
