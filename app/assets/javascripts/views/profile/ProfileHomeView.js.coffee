@@ -299,29 +299,35 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #*******************
   collapseProfileView: ->
 
-    #TODO If Large View is open, close LargeView. Otherwise, proceed. 
- 	
-    # If view is open, close it, else reverse.
- 	  # Change profile_home_container width to 0
- 	  # Change profileHome_container left o 720px
-    # BUG: Click collapse error while Large Photo View is on
-    if @collapseFlag is false
-      $("#profileHome_container").css "left", "0px"
-      $('#profile_home_container').css "width", "720px"
-      $('#profile_drawer').css "width","760px"
-      @collapseFlag = true
-      $('#profile_collapse_arrow img').removeClass('flipimg')
-      #@collapseFlag=true
+    #If Large View is open, close LargeView. Otherwise, proceed. 
+ 	  if Mywebroom.State.get('profileLargeView')
+      Mywebroom.State.get('profileLargeView').closeView()
     else
-      $("#profileHome_container").css "left", "-720px"
-      $('#profile_drawer').css "width","130px"#sidebarWidth + drawerWidth
-      #Collapse Icon turn around.
-      $('#profile_collapse_arrow img').addClass('flipimg')
-      #To enable hover on objects again set timeout on width
-      setTimeout (->
-        $("#profile_home_container").css "width", "0px"), 1000
-      @collapseFlag = false
- 
+      # If view is open, close it, else reverse.
+   	  # Change profile_home_container width to 0
+   	  # Change profileHome_container left o 720px
+      # BUG: Click collapse error while Large Photo View is on
+      if @collapseFlag is false
+        $("#profileHome_container").css "left", "0px"
+        $('#profile_home_container').css "width", "720px"
+        setTimeout (->
+          $('#profile_drawer').css "width","760px"
+          $('#profile_collapse_arrow img').removeClass('flipimg')
+          ),500
+        #$('#profile_drawer').css "width","760px"
+        @collapseFlag = true
+        
+        #@collapseFlag=true
+      else
+        $("#profileHome_container").css "left", "-2720px"
+        $('#profile_drawer').css "width","130px"#sidebarWidth + drawerWidth
+        #Collapse Icon turn around.
+        $('#profile_collapse_arrow img').addClass('flipimg')
+        #To enable hover on objects again set timeout on width
+        setTimeout (->
+          $("#profile_home_container").css "width", "0px"), 1000
+        @collapseFlag = false
+   
  
  
  

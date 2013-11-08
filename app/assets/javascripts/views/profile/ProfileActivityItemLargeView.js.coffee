@@ -5,13 +5,18 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
   className: 'activity_item_large_wrap'
   
   initialize: ->
-     _.bindAll this, 'insideHandler', 'outsideHandler'
-     @originalCollection=this.options.originalCollection
-     $('body').on('click', this.outsideHandler);
-     #$('div').not('.activity_item_large_wrap *').on('click', this.outsideHandler);
-     if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
-        @template = JST['profile/ProfilePhotosLargeTemplate']
-      @fbUrl = @generateFacebookURL()
+    #1. Set events to close the view when clicked outside profile Activity. 
+
+    _.bindAll this, 'insideHandler', 'outsideHandler'
+    @originalCollection=this.options.originalCollection
+    $('body').on('click', this.outsideHandler);
+    #$('div').not('.activity_item_large_wrap *').on('click', this.outsideHandler);
+    #2. Add transition to profile_drawer
+    $('#profile_drawer').css('transition','all 1s ease-in-out')
+
+    if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
+      @template = JST['profile/ProfilePhotosLargeTemplate']
+    @fbUrl = @generateFacebookURL()
   
   events:
     'click #large_item_prev':'showNext'
@@ -20,8 +25,6 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     'click .gridItem':'closeView'
     'click .pinterest_item':'pinIt'
     "click #profile_photos_set_as_profile_picture":"setAsProfilePicture"
-    "click #profile_close_button_wrap":'closeViewNoProp'
-    "click #profile_collapse_arrow":'closeViewNoProp'
   
   render: ->
     $("#profile_drawer").css "width", "1320px" 
@@ -30,6 +33,10 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     FB.XFBML.parse($(@el)[0])
     #The social View is in the template because
     #the styling was not right with this view. 
+
+    #Set State for LargeView tracker;
+    Mywebroom.State.set('profileLargeView',this)
+
     this
   
   insideHandler: (event) ->
@@ -44,21 +51,29 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     #else close view
     @closeView()
     return false
+
   setAsProfilePicture:(event)->
     event.stopPropagation()
-    alert('you clicked me')
+
   closeView: ->
     $('body').off('click', this.outsideHandler);
     #change profile_drawer widths back to original
     $("#profile_drawer").css "width", "760px"
+    setTimeout (->
+      $('#profile_drawer').css('transition','none')
+      ),1000
+    
+
+    #Set State for LargeView tracker;
+    Mywebroom.State.set('profileLargeView',false)
+
     this.$el.remove()
-    console.log "ActivityItemLargeView closed"
     this
   
   closeViewNoProp:(event)->
     event.stopPropagation()
     alert('you clicked me')
-    @closeView()
+    event.data.closeView()
   
   showNext:(event) ->
     event.stopPropagation()
