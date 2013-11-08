@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131104230054) do
+ActiveRecord::Schema.define(:version => 20131108182340) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -268,6 +268,17 @@ ActiveRecord::Schema.define(:version => 20131104230054) do
   add_index "themes", ["special_name"], :name => "index_themes_on_special_name"
   add_index "themes", ["style"], :name => "index_themes_on_style"
 
+  create_table "tutorials", :force => true do |t|
+    t.string   "name"
+    t.string   "image_name"
+    t.string   "description"
+    t.integer  "step"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "tutorials", ["step"], :name => "index_tutorials_on_step", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.datetime "created_at",                                :null => false
@@ -348,6 +359,7 @@ ActiveRecord::Schema.define(:version => 20131104230054) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.integer  "friends_number", :default => 0
+    t.integer  "tutorial_step",  :default => 0
   end
 
   add_index "users_profiles", ["birthday"], :name => "index_users_profiles_on_birthday"
