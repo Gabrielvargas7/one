@@ -14,15 +14,9 @@
     <li class='activity_item_large_list'><div id="large_item_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></li>
     </ul>
     <div class="social_bar">
-      <div class ="navbar">
-        <div class="navbar-inner">
-          <ul class="nav">
-            <li class ="fb_like_item"><a href="#"><img style="width:53px" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1376673746/fb-test-like.jpg"></a></li>
-            <li class="pinterest_item"><a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371247321/pinterest-red.png"></a></li>
-          </ul>
-        </div>
-      </div>
-      <div><a href="/users_photos/index_users_photos_by_user_id/<%=@model.get('user_id')%>">Set As Profile Photo</a></div>
+      <div>
+        <a id="profile_photos_set_as_profile_picture" 
+        href="http://localhost:3000/users_photos/index_users_photos_by_user_id/<%=@model.get('user_id')%>">Set As Profile Photo</a></div>
     </div>
 
   </div>

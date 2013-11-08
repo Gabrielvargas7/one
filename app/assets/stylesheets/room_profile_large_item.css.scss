@@ -18,8 +18,9 @@
 .activity_item_large_view .large_view_header{
   background-color:#ececec;
   margin:0;
-  padding:10px 0 10px 40px;
+  padding:10px 35px 10px 40px;
   text-align:left;
+  margin-bottom:10px;
 }
 .large_view_header h2{
   font-size: 24px;
@@ -49,12 +50,15 @@
   float:right;
 }
 .activity_item_large_view .social_bar{
-  // width:50%;
-  // float:left;
+  background-color: transparent;
 }
 .activity_item_large_list.profile_button{
   vertical-align:top;
   padding:0;
+  padding-right: 80px;
+  text-align: right;
+  float: right;
+  display:inline-block;
 }
 
 .activity_item_large_view .profile_button_wrap{

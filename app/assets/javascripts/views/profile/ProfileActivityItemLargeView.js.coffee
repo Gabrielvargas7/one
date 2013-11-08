@@ -19,6 +19,9 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     'click .profile_large_item_try_it_button':'showStore'
     'click .gridItem':'closeView'
     'click .pinterest_item':'pinIt'
+    "click #profile_photos_set_as_profile_picture":"setAsProfilePicture"
+    "click #profile_close_button_wrap":'closeViewNoProp'
+    "click #profile_collapse_arrow":'closeViewNoProp'
   
   render: ->
     $("#profile_drawer").css "width", "1320px" 
@@ -41,7 +44,9 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     #else close view
     @closeView()
     return false
-  
+  setAsProfilePicture:(event)->
+    event.stopPropagation()
+    alert('you clicked me')
   closeView: ->
     $('body').off('click', this.outsideHandler);
     #change profile_drawer widths back to original
@@ -49,6 +54,11 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     this.$el.remove()
     console.log "ActivityItemLargeView closed"
     this
+  
+  closeViewNoProp:(event)->
+    event.stopPropagation()
+    alert('you clicked me')
+    @closeView()
   
   showNext:(event) ->
     event.stopPropagation()

@@ -4,6 +4,9 @@ class Mywebroom.Views.PhotosLargeView extends Backbone.View
   events:
     "click #photos_next":"insideHandler"
     "click #photos_prev":"insideHandler"
+    "click .social_bar":"setAsProfilePicture"
+    "click #profile_close_button_wrap":'closeViewNoProp'
+    "click #profile_collapse_arrow":'closeViewNoProp'
   initialize: ->
      _.bindAll this, 'insideHandler', 'outsideHandler'
   render: ->
@@ -20,11 +23,21 @@ class Mywebroom.Views.PhotosLargeView extends Backbone.View
     console.log "outsideHandler called"
     @closeView()
     return false
-  closeView: ->
+  
+  setAsProfilePicture:(event)->
+    event.stopPropagation()
+    alert('you clicked me')
+
+  closeView:->
+
     $('body').off('click', this.outsideHandler);
     #change profile_draw widths back to original
     $("#profile_drawer").css "width", "760px"
     this.$el.remove()
     console.log "PhotosLargeView closed"
     this
+  closeViewNoProp:(event)->
+    event.stopPropagation()
+    alert('you clicked me')
+    @closeView()
     
