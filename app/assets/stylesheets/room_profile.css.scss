@@ -29,7 +29,7 @@
 }
 #profile_drawer{
   width:760px; /*profile container width - drawer_handle width*/
-  transition:all 1s ease-in-out;
+  // transition:all 1s ease-in-out;
 }
 nav.profile {
      position:fixed;
@@ -378,7 +378,7 @@ table.generalGrid{
   text-align:center;
 
 }
-.user-photos-view #gridItemList,.profile_objects_view #gridItemList,.profile_bookmarks_view #gridItemList{
+.profile_objects_view #gridItemList,.profile_bookmarks_view #gridItemList{
   text-align:left;
 }
 #profileHome_activity_header, .profileTableHeader{
@@ -415,7 +415,9 @@ table.generalGrid{
 }
 /*center the picture*/
 .user-photos-view div.gridItem{
-  padding:0 10px;
+  padding:0;
+  margin:0;
+
 }
 
 .gridItemDescription{
@@ -452,7 +454,7 @@ div.profile_friend_image_holder, .profile_request_single_image_holder,
 .profile_friend_suggestion_single_image_holder, {
    width:70px;
    height:70px;
-   background-size:contain;
+   background-size:cover;
    background-repeat: no-repeat;
    background-position: 50% 50%;
    border:1px solid #e2e2e2;
@@ -466,6 +468,7 @@ div.profile_friend_image_holder, .profile_request_single_image_holder,
 .profile_friend_gear{
   padding:0;
   border:0;
+  height:32px;
 }
 .profile_friend_button{
   // padding-right:20px;
