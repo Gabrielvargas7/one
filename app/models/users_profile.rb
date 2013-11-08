@@ -7,7 +7,8 @@ class UsersProfile < ActiveRecord::Base
                   :gender,
                   :lastname,
                   :user_id,
-                  :friends_number
+                  :friends_number,
+                  :tutorial_step
 
 
   #before_save{ get_location}

@@ -2,6 +2,9 @@ Mywebroom::Application.routes.draw do
 
 
 
+  resources :tutorials
+
+
   resources :static_contents
 
 
@@ -750,6 +753,12 @@ Mywebroom::Application.routes.draw do
          :static_contents_json_show_static_content_by_name
 
 
+  #**************************
+  # start static content
+  #**************************
+
+  match '/tutorials/json/index_tutorials_by_limit_and_offset/:limit/:offset', to:
+         'tutorials#json_index_tutorials_by_limit_and_offset', via: :get
 
 
 

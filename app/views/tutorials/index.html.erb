@@ -1,0 +1,40 @@
+<h1>Listing tutorials</h1>
+
+<%= link_to 'New Tutorial', new_tutorial_path, class:"btn btn-primary" %>
+
+
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Image name</th>
+    <th>Description</th>
+    <th>Step</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tutorials.each do |tutorial| %>
+  <tr>
+    <td><%= tutorial.name %></td>
+    <td>
+
+      <% if tutorial.image_name.blank?  %>
+          <%= cl_image_tag "default_image_all.png",width:200 , height:200,:crop => :fit,:default_image => "default_image_all.png" %>
+      <% else %>
+          <%= cl_image_tag tutorial.image_name,width:200 , height:200,:crop => :fit,:default_image => "default_image_all.png" %>
+      <% end %>
+    </td>
+
+
+    <td><%= tutorial.description %></td>
+    <td><%= tutorial.step %></td>
+    <td><%= link_to 'Show', tutorial %></td>
+    <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
