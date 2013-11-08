@@ -47,15 +47,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     switch isSignedIn
 
-      ###
-      CASE: SIGNED OUT
-      ###
-      when false
+  
+      when false #CASE: SIGNED OUT
         
-        ###
-        ...AND IN A ROOM
-        ###
-        if isInARoom
+   
+        if isInARoom #...AND IN A ROOM
         
           roomUser =   @getRoomUser()
           signInUser = false
@@ -69,10 +65,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         
 
 
-        ###
-        ...AND NOT IN A ROOM
-        ###
-        else
+  
+        else #...AND NOT IN A ROOM
           
           roomUser =   false
           signInUser = false
@@ -89,10 +83,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-      ###
-      CASE: SIGNED IN
-      ###
-      when true
+      when true #CASE: SIGNED IN
 
 
         if not isInARoom
@@ -105,7 +96,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
           Mywebroom.State.set("roomState", "NONE")
           Mywebroom.State.set("roomUser", roomUser)
           
-          @signedId()
+          @signedIn()
         
 
         
@@ -231,7 +222,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     )
     
     
-    # TRANSITION OUR STORE TO A HIDDEN STATE 
+    # TRANSITION OUR STORE TO A HIDDEN STATE
     # this also adds the click events for objects
     Mywebroom.Helpers.hideStore()
     
@@ -288,11 +279,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     path = window.location.pathname
     
-    if path.split('/')[1] is 'room' and typeof path.split('/')[2] is "string" and path.split('/')[2].length > 0 
+    if path.split('/')[1] is 'room' and typeof path.split('/')[2] is "string" and path.split('/')[2].length > 0
 
       return true
 
-    else 
+    else
 
       return false
       
@@ -304,7 +295,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       
   ###
   DETERMINE IF USER IS SIGNED IN
-  ###      
+  ###
   isSignedIn: ->
 
     isSignedInModel = new Mywebroom.Models.ShowIsSignedUserModel()
@@ -391,7 +382,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
     dataModel = dataCollection.first()
-    return dataModel   
+    return dataModel
 
 
 
@@ -404,6 +395,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
   signedOut: ->
+
+    console.log("SIGNED OUT - NOT IN A ROOM")
 
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "NONE" then console.error("ERROR: signedOut.roomState should be NONE but is " + roomState)
@@ -444,7 +437,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   signedOutRoom: ->
 
-    
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "PUBLIC" then console.error("ERROR: signedOutRoom.roomState should be PUBLIC but is " + roomState)
       
@@ -462,6 +454,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
+    console.log("SIGNED OUT - IN " + roomUser.get("username") + "\'s ROOM")
+
+
 
 
     # roomData
@@ -475,7 +470,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
 
     # roomTheme
-    theme = data.get('user_theme')[0])
+    theme = data.get('user_theme')[0]
     Mywebroom.State.set("roomTheme", theme)
     
 
@@ -488,7 +483,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("signInData", false)
 
 
-    # (10) Setup Room    
+    # (10) Setup Room
     @doRoomStuff()
     
 
@@ -498,6 +493,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
   signedIn: ->
+
+    console.log("SIGNED IN - NOT IN ROOM")
+
 
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "NONE" then console.error("ERROR: signedIn.roomState should be NONE but is " + roomState)
@@ -557,6 +555,13 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
+
+    console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (public)")
+
+
+
+
+
     data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
     
@@ -565,7 +570,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("roomDesigns", designs)
     
     
-    theme = data.get('user_theme')[0])
+    theme = data.get('user_theme')[0]
     Mywebroom.State.set("roomTheme", theme)
     
   
@@ -581,7 +586,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
-    # Setup Room    
+    # Setup Room
     @doRoomStuff()
 
 
@@ -615,6 +620,13 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     if roomUser.get("id") is signInUser.get("id") then console.error("ERROR: signedInFriend.signInUser.id equals signedInFriend.roomUser.id but shouldnt")
 
 
+    
+
+    console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (friend)")
+
+
+
+
     data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
     
@@ -623,7 +635,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("roomDesigns", designs)
     
     
-    theme = data.get('user_theme')[0])
+    theme = data.get('user_theme')[0]
     Mywebroom.State.set("roomTheme", theme)
     
   
@@ -639,7 +651,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
-    # Setup Room    
+    # Setup Room
     @doRoomStuff()
     
     
@@ -653,6 +665,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   signedInSelf: ->
 
+    
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "SELF" then console.error("ERROR: signedInSelf.roomState should be SELF but is " + roomState)
       
@@ -672,6 +685,13 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     if roomUser.get("id") isnt signInUser.get("id") then console.error("ERROR: signedInSelf.signInUser.id doesnt equal signedInSelf.roomUser.id but it should")
 
 
+    
+
+    console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (self)")
+
+
+
+
     data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
     
@@ -680,7 +700,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("roomDesigns", designs)
     
     
-    theme = data.get('user_theme')[0])
+    theme = data.get('user_theme')[0]
     Mywebroom.State.set("roomTheme", theme)
     
   
@@ -712,8 +732,22 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   doRoomStuff: ->
 
+
+
+
+    console.log("SETTING UP ROOM")
+
     
-    #(0) set staticContent images
+
+    ###
+    SETUP STEPS FOR BOTH SIGNED IN 
+    AND NON-SIGNED IN USERS
+    ###
+
+
+
+
+    # (1) set staticContent images
     $.ajax
       url: '/static_contents/json/index_static_contents.json'
       type: 'get'
@@ -727,64 +761,43 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    # Place items in the room
+    # (2) Place items in the room
     @setRoom("#xroom_items_0")
     @setRoom("#xroom_items_1")
     @setRoom("#xroom_items_2")
     
     
+
+
+
+
+
     ###
-    Hide all the elements whose data-room-hide property is yes
+    (3) Hide all the elements whose data-room-hide property is yes
     ###
     $("[data-room-hide=yes]").hide()
     
     
     
+
+
+
+
+
     
-    # Initialize Bookmarks Views
+    # (4) Initialize Bookmarks Views
     @setBookmarksRoom()
     
     
     
     
-    # Create and render Header View
-    roomHeaderView = new Mywebroom.Views.RoomHeaderView()
-    $("#xroom_header").append(roomHeaderView.el)
-    roomHeaderView.render()
+
     
-    # Save a ref to the state model
-    Mywebroom.State.set("roomHeaderView", roomHeaderView)
-    
-    
-    
-    
-    # Create and render Save, Cancel, Remove View
-    storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
-    $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)
-    $("#xroom_store_menu_save_cancel_remove").hide()
-    storeMenuSaveCancelRemoveView.render()
-    
-    # Save a reference to the state model
-    Mywebroom.State.set("storeMenuSaveCancelRemoveView", storeMenuSaveCancelRemoveView)
-
-
-
-
-
-    # Add Images to the Save, Cancel, Remove View
-    storeRemoveButton = $.cloudinary.image "store_remove_button.png",{id: "store_remove_button"}
-    $("#xroom_store_remove").prepend(storeRemoveButton)
-
-    storeSaveButton = $.cloudinary.image "store_save_button.png",{id: "store_save_button"}
-    $("#xroom_store_save").prepend(storeSaveButton)
-
-    storeCancelButton = $.cloudinary.image "store_cancel_button.png",{id: "store_cancel_button"}
-    $("#xroom_store_cancel").prepend(storeCancelButton)
 
     
     
     
-    # Create and render Left Scroller View
+    # (5) Create and render Left Scroller View
     roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView()
     $("#xroom_scroll_left").append(roomScrollLeftView.el)
     roomScrollLeftView.render()
@@ -794,8 +807,12 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
+
+
+
+
     
-    # Create and render Right Scroller View
+    # (6) Create and render Right Scroller View
     roomScrollRightView = new Mywebroom.Views.RoomScrollRightView()
     $("#xroom_scroll_right").append(roomScrollRightView.el)
     roomScrollRightView.render()
@@ -805,8 +822,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
+
+
+
     
-    # Create and render Browse Mode View
+    # (7) Create and render Browse Mode View
     @browseModeView = new Mywebroom.Views.BrowseModeView()
     $("#xroom_bookmarks_browse_mode").append(@browseModeView.el)
     $("#xroom_bookmarks_browse_mode").hide()
@@ -817,22 +837,35 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     
+
+
+
+
     
-    # Center the windows and remove the scroll
+    # (8) Center the windows and remove the scroll
     $(window).scrollLeft(0)
     $("body").css("overflow-x", "hidden")
     
     
+
+
+
+
     
     
-    # Set up a listener for the BrowseMode:open event
-    Mywebroom.App.vent.on("BrowseMode:open", ((event)->
+    # (9) Set up a listener for the BrowseMode:open event
+    Mywebroom.App.vent.on("BrowseMode:open", ((event) ->
       @changeBrowseMode(event.model)), self)
     
     
     
+
+
+
+
+
     
-    # Create and render the Footer View
+    # (10) Create and render the Footer View
     roomFooterView = new Mywebroom.Views.RoomFooterView()
     $('#xroom_footer').append(roomFooterView.el)
     roomFooterView.render()
@@ -846,7 +879,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
     ###
-    DEAL WITH URL ENCODED PARAMS
+    (11) DEAL WITH URL ENCODED PARAMS
     ###
 
     ###
@@ -877,7 +910,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
           bookmarksView = new Mywebroom.Views.BookmarksView
             items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
             item_id: itemId
-            user: Mywebroom.State.get("roomUser").get("id") 
+            user: Mywebroom.State.get("roomUser").get("id")
           
           $('#room_bookmark_item_id_container_' + itemId).append(bookmarksView.el)
           bookmarksView.render()
@@ -1001,21 +1034,93 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    # Conditionally Show Notification Modal
-    Mywebroom.Helpers.showModal()
+    
 
 
 
-    # Turn off mousewheel
+
+
+
+    # (12) Turn off mousewheel
     Mywebroom.Helpers.turnOffMousewheel()
 
 
 
-    # Listen for editor scroll
+
+
+
+
+
+
+    # (13) Listen for editor scroll
     Mywebroom.Helpers.onEditorScroll()
     
 
+
+
+
+
+
+
+
+
+
+
+    ###
+    SETUP STEPS FOR SIGNED IN USERS ONLY
+    ###
+    if Mywebroom.State.get("signInState")
+
+
+
+
+
+      # (14) Create and render Header View
+      roomHeaderView = new Mywebroom.Views.RoomHeaderView()
+      $("#xroom_header").append(roomHeaderView.el)
+      roomHeaderView.render()
+      
+      # Save a ref to the state model
+      Mywebroom.State.set("roomHeaderView", roomHeaderView)
+
+
+
+
+
+
+
+
+      # (15) Create and render Save, Cancel, Remove View
+      storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
+      $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)
+      $("#xroom_store_menu_save_cancel_remove").hide()
+      storeMenuSaveCancelRemoveView.render()
     
-    # Return the view
-    this
+      # Save a reference to the state model
+      Mywebroom.State.set("storeMenuSaveCancelRemoveView", storeMenuSaveCancelRemoveView)
+
+
+
+
+
+
+
+
+      # (16) Add Images to the Save, Cancel, Remove View
+      storeRemoveButton = $.cloudinary.image "store_remove_button.png",{id: "store_remove_button"}
+      $("#xroom_store_remove").prepend(storeRemoveButton)
+
+      storeSaveButton = $.cloudinary.image "store_save_button.png",{id: "store_save_button"}
+      $("#xroom_store_save").prepend(storeSaveButton)
+
+      storeCancelButton = $.cloudinary.image "store_cancel_button.png",{id: "store_cancel_button"}
+      $("#xroom_store_cancel").prepend(storeCancelButton)
+
+
+
+
+
+
+      # (17) Conditionally Show Notification Modal
+      Mywebroom.Helpers.showModal()
 
