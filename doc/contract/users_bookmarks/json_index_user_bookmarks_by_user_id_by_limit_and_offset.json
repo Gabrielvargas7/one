@@ -1,0 +1,179 @@
+//# GET get all user's Bookmarks  by limit and offset
+//# users_bookmarks/json_index_user_bookmarks_by_user_id_by_limit_and_offset/:user_id/:limit/:offset'
+//# users_bookmarks/json_index_user_bookmarks_by_user_id_by_limit_and_offset/1/10/0.json'
+//#Return ->
+//#Success    ->  head  200 OK
+
+
+[
+    {
+        "bookmark_url": "http://www.stumbleupon.com",
+        "bookmarks_category_id": 201,
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 2001,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368823987/17243-bookmark-image_name-stumbleupon.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": "1",
+        "like": 0,
+        "position": "1",
+        "title": "Stumble Upon"
+    },
+    {
+        "bookmark_url": "http://www.twitter.com",
+        "bookmarks_category_id": 1606,
+        "description": "Description Coming Soon!",
+        "i_frame": "n",
+        "id": 101,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824055/84896-bookmark-image_name-twitter.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": "2",
+        "like": 0,
+        "position": "1",
+        "title": "Twitter"
+    },
+    {
+        "bookmark_url": "http://www.hypebeast.com",
+        "bookmarks_category_id": 1607,
+        "description": "",
+        "i_frame": "y",
+        "id": 102,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824197/88780-bookmark-image_name-hypebeast.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": "4",
+        "like": 0,
+        "position": "1",
+        "title": "Hype Beast"
+    },
+    {
+        "bookmark_url": "http://www.cnn.com",
+        "bookmarks_category_id": 401,
+        "description": "CNN.com delivers the latest breaking news and information on the latest top stories, weather, business, entertainment, politics, and more.",
+        "i_frame": "y",
+        "id": 4001,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824199/64003-bookmark-image_name-cnn.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379012988/37681-bookmark-image_name_desc-cnn.jpg"
+        },
+        "item_id": "5",
+        "like": 0,
+        "position": "1",
+        "title": "CNN"
+    },
+    {
+        "bookmark_url": "http://www.bebo.com",
+        "bookmarks_category_id": 701,
+        "description": "Bebo provides an open, engaging, and fun environment that empowers a new generation to discover, connect and express themselves. Sync it with your Facebook and Twitter!",
+        "i_frame": "y",
+        "id": 7004,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1381968739/47675-bookmark-bebo-http-www-bebo-com-image_name-bebo_ad_social-network.jpg"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1381968740/23676-bookmark-bebo-http-www-bebo-com-image_name_desc-bebo_ad_social-network.jpg"
+        },
+        "item_id": "10",
+        "like": 0,
+        "position": "1",
+        "title": "Bebo"
+    },
+    {
+        "bookmark_url": "http://www.sports.yahoo.com",
+        "bookmarks_category_id": 1401,
+        "description": "All the latest sports news, scores, rumors, fantasy games, and more.",
+        "i_frame": "y",
+        "id": 14005,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824874/85400-bookmark-image_name-yahoosports.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1380752661/3575-bookmark-image_name_desc-yahoo-sports.jpg"
+        },
+        "item_id": "22",
+        "like": 0,
+        "position": "1",
+        "title": "Yahoo Sports"
+    },
+    {
+        "bookmark_url": "http://www.ebay.com",
+        "bookmarks_category_id": 601,
+        "description": "eBay is The World's Online Marketplace®, enabling local, national and international trade. We offer an online platform where millions of items are traded daily.",
+        "i_frame": "y",
+        "id": 6101,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1380139446/35325-bookmark-image_name-ebay_logo.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1380139447/94393-bookmark-image_name_desc-ebay_logo_new_mywebroom_icons.png"
+        },
+        "item_id": "9",
+        "like": 0,
+        "position": "1",
+        "title": "Ebay"
+    },
+    {
+        "bookmark_url": "http://www.weather.com/theweatherchannel",
+        "bookmarks_category_id": 1501,
+        "description": "The Weather Channel and weather.com provide a national and local weather forecast for cities, as well as weather radar, report and hurricane coverage.",
+        "i_frame": "y",
+        "id": 15001,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1381971091/94213-bookmark-weather-http-www-weather-com-theweatherchannel-image_name-the-weather-channel.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1381971091/1505-bookmark-weather-http-www-weather-com-theweatherchannel-image_name_desc-the-weather-channel.png"
+        },
+        "item_id": "23",
+        "like": 0,
+        "position": "1",
+        "title": "Weather"
+    },
+    {
+        "bookmark_url": "http://www.dropbox.com",
+        "bookmarks_category_id": 1609,
+        "description": "Dropbox is a file hosting service operated by Dropbox, Inc., headquartered in San Francisco, California, that offers cloud storage, file synchronization, and client software. Dropbox allows users to create a special folder on each of their computers, which Dropbox then synchronizes so that it appears to be the same folder (with the same contents) regardless of which computer is used to view it.",
+        "i_frame": "n",
+        "id": 103,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824196/78450-bookmark-image_name-dropbox.png"
+        },
+        "image_name_desc": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383175911/972-bookmark-dropbox-http-www-dropbox-com-image_name_desc-dropbox-logo-lateam.jpg"
+        },
+        "item_id": "24",
+        "like": 0,
+        "position": "1",
+        "title": "Dropbox"
+    },
+    {
+        "bookmark_url": "http://www.nationalgeographic.com",
+        "bookmarks_category_id": 305,
+        "description": "Description Coming Soon!",
+        "i_frame": "y",
+        "id": 3300,
+        "image_name": {
+            "url": "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368824156/29139-bookmark-image_name-nationalgeographic.png"
+        },
+        "image_name_desc": {
+            "url": "/assets/fallback/bookmark/default_bookmark.png"
+        },
+        "item_id": "3",
+        "like": 0,
+        "position": "1",
+        "title": "National Geographic"
+    }
+]

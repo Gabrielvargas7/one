@@ -521,9 +521,12 @@ Mywebroom::Application.routes.draw do
            :users_bookmarks_json_show_user_bookmark_by_user_id_and_bookmark_id
 
 
-  match '/users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset/:user_id/:item_id/:limit/:offset', to:
+    match '/users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset/:user_id/:item_id/:limit/:offset', to:
          'users_bookmarks#json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset', via: :get
 
+
+    match '/users_bookmarks/json/index_user_bookmarks_by_user_id_by_limit_and_offset/:user_id/:limit/:offset', to:
+         'users_bookmarks#json_index_user_bookmarks_by_user_id_by_limit_and_offset', via: :get
 
 
 
