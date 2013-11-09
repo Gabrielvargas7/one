@@ -248,7 +248,21 @@ class User < ActiveRecord::Base
 
   # create the user notification on the table  when the user sign-up
     def create_user_notification
-      UsersNotification.create(user_id:self.id,notified:'y')
+
+      if Notification.count.zero?
+        # if notification is we need to create one
+
+        UsersNotification.create(user_id:self.id,notified:'y')
+
+
+      else
+        notification = Notification.last
+        UsersNotification.create(user_id:self.id,notified:'y',notification_id:notification.id)
+      end
+
+
+
+
     end
 
   #***********************************
