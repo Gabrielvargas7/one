@@ -161,7 +161,7 @@ $(document).ready ->
           path =    Mywebroom.Data.Editor.contentPath
           type =    Mywebroom.Data.Editor.contentType
           keyword = Mywebroom.Data.Editor.keyword
-
+          offset  = Mywebroom.Data.Editor.offset + Mywebroom.Data.Editor.limit
 
           ###
           FIXME
@@ -176,13 +176,13 @@ $(document).ready ->
 
             when "INITIAL"
 
-              console.log("PAGINATE INITIAL - " + type)
+              console.log("PAGINATE INITIAL - " + type + "\tOffset: " + offset)
 
 
 
             when "SEARCH"
 
-              console.log("PAGINATE SEARCH - " + type + "\nKeyword: " + keyword)
+              console.log("PAGINATE SEARCH - " + type + "\tOffset: " + offset + "\tKeyword: " + keyword)
 
         else
 
@@ -193,6 +193,8 @@ $(document).ready ->
             Mywebroom.Data.Editor.contentPath,
             "contentType",
             Mywebroom.Data.Editor.contentType,
+            "offset",
+            Mywebroom.Data.Editor.offset,
             "keyword",
             Mywebroom.Data.Editor.keyword
           )
