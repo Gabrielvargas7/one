@@ -44,7 +44,8 @@
 
 
 .tab-content {
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
   width:640px;
   height:540px;  
 }
