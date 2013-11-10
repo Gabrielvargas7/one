@@ -10,7 +10,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   #*******************
   #**** Events
   #*******************
-  events: {    
+  events: {
     'click #storeTabs a':                'clickNavTab'         # NAV TABS (any)
     'click a[href="#tab_items"]':        'clickObjects'        # NAV TABS: OBJECTS
     'click a[href="#tab_themes"]':       'clickThemes'         # NAV TABS: THEMES
@@ -45,10 +45,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     items = new Mywebroom.Collections.IndexItemsCollection()
     items.fetch
       async:   false
-      success: (response) ->
-        #console.log("initial items fetch success", response)
-      error: ->
-        console.log("initial items fetch fail")
+      success: (collection, response, options) ->
+        #console.log("initial items fetch success", collection)
+      error: (collection, response, options) ->
+        console.log("initial items fetch fail", response.responseText)
     
     Mywebroom.State.set("initialItems", items)
     
@@ -62,11 +62,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     # themes
     themes = new Mywebroom.Collections.IndexThemesCollection()
     themes.fetch
-      async:   false
-      success: (response) ->
-        #console.log("initial theme fetch success", response)
-      error: ->
-        console.log("initial theme fetch fail")
+      async: false
+      success: (collection, response, options) ->
+        #console.log("initial theme fetch success", collection)
+      error: (collection, response, options) ->
+        console.error("initial theme fetch fail", response.responseText)
     
     
   
@@ -74,20 +74,20 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     bundles = new Mywebroom.Collections.IndexBundlesCollection()
     bundles.fetch
       async:   false
-      success: (response) ->
-        #console.log("initial bundle fetch success", response)
-      error: ->
-        console.log("initial bundle fetch fail")
+      success: (collection, response, options) ->
+        #console.log("initial bundle fetch success", collection)
+      error: (collection, response, responseText) ->
+        console.error("initial bundle fetch fail", response.responseText)
         
         
     # entire rooms
     entireRooms = new Mywebroom.Collections.IndexBundlesCollection()
     entireRooms.fetch
-      async:   false
-      success: (response) ->
-        #console.log("initial entire room fetch success", response)
-      error: ->
-        console.log("initial entire room fetch fail")
+      async: false
+      success: (collection, response, options) ->
+        #console.log("initial entire room fetch success", collection)
+      error: (collection, response, options) ->
+        console.error("initial entire room fetch fail", response.responseText)
       
       
     copy = entireRooms.clone()
@@ -231,16 +231,16 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     categories = new Mywebroom.Collections.IndexThemesCategoriesCollection()
     categories.fetch
       async: false
-      success: (response) ->
-        model = response.first()
+      success: (collection, response, options) ->
+        model = collection.first()
         Mywebroom.Helpers.setBrands(model.get('themes_brands'))
         Mywebroom.Helpers.setStyles(model.get('themes_styles'))
         Mywebroom.Helpers.setLocations(model.get('themes_locations'))
         Mywebroom.Helpers.setColors(model.get('themes_colors'))
         Mywebroom.Helpers.setMakes(model.get('themes_makes'))
-      error: (response) ->
-        console.log("theme fetch fail")
-        console.log(response)
+      error: (collection, response, options) ->
+        console.error("theme fetch fail", response.responseText)
+       
     
     
    
@@ -282,15 +282,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
     categories.fetch
       async:   false
-      success: (response) ->
-        model = response.first()
+      success: (collection, response, options) ->
+        model = collection.first()
         Mywebroom.Helpers.setBrands(model.get('bundles_brands'))
         Mywebroom.Helpers.setStyles(model.get('bundles_styles'))
         Mywebroom.Helpers.setLocations(model.get('bundles_locations'))
         Mywebroom.Helpers.setColors(model.get('bundles_colors'))
         Mywebroom.Helpers.setMakes(model.get('bundles_makes'))
-      error: ->
-        console.log("bundle category fail")
+      error: (collection, response, options) ->
+        console.error("bundle category fail", response.responseText)
   
   
   
@@ -329,15 +329,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
     categories.fetch
       async:   false
-      success: (response) ->
-        model = response.first()
+      success: (collection, response, options) ->
+        model = collection.first()
         Mywebroom.Helpers.setBrands(model.get('bundles_brands'))
         Mywebroom.Helpers.setStyles(model.get('bundles_styles'))
         Mywebroom.Helpers.setLocations(model.get('bundles_locations'))
         Mywebroom.Helpers.setColors(model.get('bundles_colors'))
         Mywebroom.Helpers.setMakes(model.get('bundles_makes'))
-      error: ->
-        console.log("bundle category fail")
+      error: (collection, response, options) ->
+        console.error("bundle category fail", response.responseText)
   
   
   
@@ -467,10 +467,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         designs.fetch
           async: false
           url: designs.url(10, 0, keyword)
-          success: (response) ->
-            #console.log("searched designs success", response)
-          error: ->
-            console.log("error")
+          success: (collection, response, options) ->
+            console.log(collection.length + " designs found! <-- ALL")
+          
+          error: (collection, response, options) ->
+            console.error("search all: designs fetch fail", response.responseText)
             
             
         ###
@@ -478,12 +479,13 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         themes = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
         themes.fetch
-           async: false
-           url: themes.url(10, 0, keyword)
-           success: (response) ->
-             #console.log("searched themes success", response)
-           error: ->
-             console.log("error")
+          async: false
+          url: themes.url(10, 0, keyword)
+          success: (collection, response, options) ->
+            console.log(collection.length + " themes found! <-- ALL")
+          
+          error: ->
+            console.error("search all: themes fetch fail", response.responseText)
             
         
         ###
@@ -493,10 +495,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         bundles.fetch
           async: false
           url: bundles.url(10, 0, keyword)
-          success: (response) ->
-            #console.log("searched bundles success", response)
-          error: ->
-            console.error("error")
+          success: (collection, response, options) ->
+            console.log(collection.length + " bundles found! <-- ALL")
+          
+          error: (collection, response, options) ->
+            console.error("search all: bundles fetch fail", response.responseText)
             
             
             
@@ -507,10 +510,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         entireRooms.fetch
           async: false
           url: entireRooms.url(10, 0, keyword)
-          success: (response) ->
-            #console.log("searched entire rooms I success", response)
-          error: ->
-            console.error("error")
+          success: (collection, response, options) ->
+            console.log(collection.length + " entire rooms found! <-- ALL")
+          
+          error: (collection, response, options) ->
+            console.error("search all: entire rooms fetch fail", response.responseText)
             
         
         ###
@@ -539,6 +543,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         data = designs.toJSON().concat(themes.toJSON()).concat(bundles.toJSON()).concat(reset.toJSON())
         everything = new Backbone.Collection(data)
+
+
+        console.log(everything.length + " total things found! <-- ALL")
         
         
         #console.log("everything", everything)
@@ -557,14 +564,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection.fetch
           async  : false
           url    : collection.url(10, 0, keyword)
-          success: (response) ->
-            #console.log("searched designs success", response)
+          success: (collection, response, options) ->
+            
+            console.log(collection.length + " designs found!")
             
             # Replace the views on the hidden tab
-            self.appendHidden(response)
+            self.appendHidden(collection)
       
-          error: ->
-            console.error("error")
+          error: (collection, response, options) ->
+            console.error("search objects fetch fail", response.responseText)
 
       when "THEMES"
         ###
@@ -574,16 +582,17 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection.fetch
           async: false
           url: collection.url(10, 0, keyword)
-          success: (response) ->
-            #console.log("searched themes success", response)
-        
+          success: (collection, response, options) ->
+            
+            console.log(collection.length + " themes found!")
+
             # Replace the views on the hidden tab
-            self.appendHidden(response)
+            self.appendHidden(collection)
   
-          error: ->
-            console.error("error")
+          error: (collection, response, options) ->
+            console.error("search themes fetch fail", response.responseText)
       
-      when "BUNDLES" 
+      when "BUNDLES"
         ###
         Fetch collection
         ###
@@ -591,16 +600,17 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection.fetch
           async: false
           url: collection.url(10, 0, keyword)
-          success: (response) ->
-            #console.log("searched bundles success", response)
+          success: (collection, response, options) ->
+
+            console.log(collection.length + " bundles found!")
       
             # Replace the views on the hidden tab
-            self.appendHidden(response)
+            self.appendHidden(collection)
             
-          error: ->
-            console.error("error")
+          error: (collection, response, options) ->
+            console.error("search bundles fetch fail", response.responseText)
             
-      when "ENTIRE ROOMS"  
+      when "ENTIRE ROOMS"
         ###
         Fetch collection
         ###
@@ -608,10 +618,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection.fetch
           async  : false
           url    : collection.url(10, 0, keyword)
-          success: (response) ->
-            #console.log("searched entire rooms success", response)
-          error: ->
-            console.error("error")
+          success: (collection, response, options) ->
+            
+            console.log(collection.length + " entire rooms found!")
+
+          error: (collection, response, options) ->
+            console.error("search entire rooms fetch fail", response.responseText)
             
         
         ###
@@ -632,7 +644,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         
         # Reset the collection
         reset = collection.reset(parsed)
-        
+
+        console.log(reset.length + " entire rooms found! (after parse)")
     
         # Replace the views on the hidden tab
         self.appendHidden(reset)
@@ -651,14 +664,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         collection.fetch
           async:   false
           url:     collection.url(category, 10, 0, keyword)
-          success: (response) ->
-            #console.log("searched designs success", response)
+          success: (collection, response, options) ->
+
+            console.log(collection.length + " designs found!")
     
             # Replace the views on the hidden tab
-            self.appendHidden(response)
+            self.appendHidden(collection)
 
-          error: ->
-            console.error("error")
+          error: (collection, response, options) ->
+            console.error("search designs fetch fail", response.responseText)
   
   
   
@@ -678,7 +692,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#tab_items').append(row_line)
 
     
-    collection.each (item)  ->
+    collection.each (item) ->
       view = new Mywebroom.Views.StorePreviewView(model: item)
       $('#row_item_' + row_number).append(view.el)
       view.render()
@@ -707,7 +721,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#tab_hidden').append(row_line)
 
     
-    designs.each (design)  ->
+    designs.each (design) ->
       view = new Mywebroom.Views.StorePreviewView(model: design)
       $('#row_item_designs_' + row_number).append(view.el)
       view.render()
@@ -739,7 +753,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#tab_themes').append(row_line)
 
 
-    themes.each (theme)  ->
+    themes.each (theme) ->
       view = new Mywebroom.Views.StorePreviewView(model: theme)
       $('#row_theme_' + row_number).append(view.el)
       view.render()
@@ -772,7 +786,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#tab_bundles').append(row_line)
 
 
-    bundles.each (bundle)  ->
+    bundles.each (bundle) ->
       view = new Mywebroom.Views.StorePreviewView(model: bundle)
       $('#row_bundle_' + row_number).append(view.el)
       view.render()
@@ -804,7 +818,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     $('#tab_entire_rooms').append(row_line)
     
 
-    entireRooms.each (room)  ->
+    entireRooms.each (room) ->
       view = new Mywebroom.Views.StorePreviewView(model: room)
       $('#row_bundle_set_' + row_number).append(view.el)
       view.render()
@@ -844,7 +858,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     if model.has("type")
       type = model.get("type")
-    else 
+    else
       throw new Error("model without type")
 
  
@@ -928,7 +942,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         UPDATE DOM
         ###
-        designs.each (design)  ->
+        designs.each (design) ->
 
           Mywebroom.Helpers.updateRoomDesign(design)
            
