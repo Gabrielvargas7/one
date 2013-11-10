@@ -355,7 +355,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     category = Mywebroom.State.get("storeHelper")
     
     # PERFORM THE SEARCH
-    @performSearch(keyword, category)
+    @performSearch(category, keyword)
     
     
    
@@ -367,7 +367,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     if event.keyCode is 13
       
-      #console.log("SEARCH")
+      #console.log("EDITOR SEARCH")
       
       # Switch to the hidden tab
       $('#storeTabs a[href="#tab_hidden"]').tab('show')
@@ -382,7 +382,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       
       
       # Perform search
-      @performSearch(input, tab)
+      @performSearch(tab, input)
 
       
       
