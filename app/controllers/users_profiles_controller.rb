@@ -149,7 +149,7 @@ class UsersProfilesController < ApplicationController
 
     respond_to do |format|
       if @users_profile.update_attributes(params[:users_profile])
-        format.html { redirect_to show_users_profiles_by_user_id_path(@users_profile.user_id), notice: 'Users profile was successfully updated.' }
+        format.html { redirect_to edit_users_profiles_by_user_id_path(@users_profile.user_id), notice: 'Users profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit_users_profiles_by_user_id" }
