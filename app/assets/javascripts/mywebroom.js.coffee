@@ -161,7 +161,8 @@ $(document).ready ->
           path =    Mywebroom.Data.Editor.contentPath
           type =    Mywebroom.Data.Editor.contentType
           keyword = Mywebroom.Data.Editor.keyword
-          offset  = Mywebroom.Data.Editor.offset + Mywebroom.Data.Editor.limit
+          limit =   Mywebroom.Data.Editor.limit
+          offset  = Mywebroom.Data.Editor.offset + limit
 
           ###
           FIXME
