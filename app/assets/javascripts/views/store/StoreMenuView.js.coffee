@@ -189,6 +189,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
     # Turn pagination off
     Mywebroom.Data.Editor.paginate = false
+    Mywebroom.Data.Editor.offset = 0 # <-- is this necessary?
     
     
     
@@ -225,6 +226,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Data.Editor.paginate = true
     Mywebroom.Data.Editor.contentPath = "INITIAL"
     Mywebroom.Data.Editor.contentType = "THEMES"
+    Mywebroom.Data.Editor.offset = 0
     
     
     # Load the Bundles' Categories Collection
@@ -276,6 +278,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Data.Editor.paginate = true
     Mywebroom.Data.Editor.contentPath = "INITIAL"
     Mywebroom.Data.Editor.contentType = "BUNDLES"
+    Mywebroom.Data.Editor.offset = 0
     
     
     # Load the Bundles' Categories Collection
@@ -323,6 +326,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Data.Editor.paginate = true
     Mywebroom.Data.Editor.contentPath = "INITIAL"
     Mywebroom.Data.Editor.contentType = "ENTIRE ROOMS"
+    Mywebroom.Data.Editor.offset = 0
     
     
     # Load the Bundles' Categories Collection
@@ -452,6 +456,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Data.Editor.contentPath = "SEARCH"
     Mywebroom.Data.Editor.contentType = category
     Mywebroom.Data.Editor.keyword = keyword
+    Mywebroom.Data.Editor.offset = 0
     
 
 

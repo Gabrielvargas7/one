@@ -113,6 +113,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     # Pagination
     Mywebroom.Data.Editor.paginate = true
     Mywebroom.Data.Editor.contentPath = "INITIAL"
+    Mywebroom.Data.Editor.offset = 0
 
    
    

@@ -1052,8 +1052,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    # (13) Listen for editor scroll
-    Mywebroom.Helpers.onEditorScroll()
+    
     
 
 
