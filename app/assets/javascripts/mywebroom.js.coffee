@@ -158,19 +158,19 @@ $(document).ready ->
   STATIC DATA
   ###
   Mywebroom.Data = {
-      ItemModels: {} # format -> 2: Backbone.Model
-      ItemNames:  {} # format -> 3: "string"
-      ItemIds:    Object.create(null) # *see below # format -> 7: true
-      Editor: {
-        paginate: false
-        contentPath: false # INITIAL, SEARCH
-        contentType: false
-        keyword: false
-        offset: 0
-        limit: 10
-      }
-      searchNum: -1
-      FriendItemPopupUrls: {} #format -> 1:"string"
+    ItemModels: {} # format -> 2: Backbone.Model
+    ItemNames:  {} # format -> 3: "string"
+    ItemIds:    Object.create(null) # *see below # format -> 7: true
+    Editor: {
+      paginate: false
+      contentPath: false # INITIAL, SEARCH
+      contentType: false
+      keyword: false
+      offset: 0
+      limit: 10
+    }
+    searchNum: -1
+    FriendItemPopupUrls: {} #format -> 1:"string"
   }
  
   
@@ -393,54 +393,36 @@ $(document).ready ->
             view = new Mywebroom.Views.InsView({model: model})
             view.render()
     
-            # Modal
-            modal = new Backbone.BootstrapModal({
-              content:     view
-              title:       model.get('description')
-              okText:      'Check it out!'
-              focusOk:     true 
-              okCloses:    true
-              cancelText:  false
-              allowCancel: true 
-              animate:     false
-            }).open()
+            
         
-         
+            window.lightbox('lightbox-ins', 'shadow-ins') 
+
+
+            $('#lightbox').append(view.el)
         
-         
+
+
             ###
-            STYLE
+            LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
             ###
-            # (1) Make modal transparent
-            $('.modal').css({
-              "background-color": "rgba(46,46,46,.8)"
-              "width": "25%"
-              "border-radius": "0%"
-            })
-        
-        
-            # (2) Make background visible
-            $('.modal-backdrop').css("background-color", "transparent")
-         
-        
-            # (3) Make Title Text White
-            $('h3')
-            .css('color', '#ffffff') # (5) Make text white
-            .css('font-size', '2em') # (6) Make text 24pt - based on 12pt = 1em
-        
-        
-            # (4) Make Description Text White
-            $('.modal-text')
-            .css('color', '#ffffff') # (3) Make text white
-            .css('font-size', '1.2em') # (4) Make text 15pt - based on 12pt = 1em
-        
-        
-            # (5) Make footer transparent
-            $('.modal-footer').css("background-color", "transparent")
-        
-        
-            # (6) Change x color
-            $('.close').css("color", "#aeaeae")
+      
+            console.log("fake tell sever we saw notification")
+
+            ###
+            note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
+            note.save({id: user_id},
+              {
+                success: (model, response, options) ->
+                  console.log("REMOVE NOTIFICATION SUCCESS")
+                  #console.log(model, response, options)
+                ,
+                error: (model, xhr, options) ->
+                  console.error("REMOVE NOTIFICATION FAIL")
+                  #console.error(model, xhr, options)
+              }
+            )
+            ###
+
 
       
             if model.has("position")
@@ -450,48 +432,26 @@ $(document).ready ->
               switch position
           
                 when 1
-                  #console.log("bookmark notification")
-                  modal.$el.css("left", "-=200")
+                  console.log("bookmark notification")
+                  $('#lightbox').css("left", "-=500")
           
                 when 2
-                  #console.log("item notification")
-                  modal.$el.css("left", "+=200")
+                  console.log("item notification")
+                  $('#lightbox').css("left", "+=500")
           
                 when 3
-                  #console.log("theme notification")
-                  modal.$el.css("left", "+=200")
+                  console.log("theme notification")
+                  $('#lightbox').css("left", "+=500")
+
+                when 4
+                  console.log("other notification - don't move")
           
         
-      
-      
-              ###
-              LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
-              ###
-        
-        
-              note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
-              note.save({id: user_id},
-                {
-                  success: (model, response, options) ->
-                    console.log("REMOVE NOTIFICATION SUCCESS")
-                    #console.log(model, response, options)
-                  ,
-                  error: (model, xhr, options) ->
-                    console.error("REMOVE NOTIFICATION FAIL")
-                    #console.error(model, xhr, options)
-                }
-              )
-        
-        
-              ###
-              LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - END
-              ###
-        
             else  
-              throw new Error("position field missing")
+              console.error("position field missing", model)
         
         else
-          throw new Error("notified field missing")
+          console.error("notified field missing", model)
         
       error: (collection, response, options) ->
         console.error("Notification fetch fail", response.responseText)
