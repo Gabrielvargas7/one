@@ -46,7 +46,6 @@ text-align: center;"> You have no key requests!</p>'
  
  #Remove key request and re-render. Called when user denies a key request.
  removeKeyRequest:(modelToRemove)->
-  debugger
   @keyRequestsCollection.remove(modelToRemove)
   this.render()
 

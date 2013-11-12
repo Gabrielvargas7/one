@@ -196,7 +196,10 @@ nav.profile {
 div.spacer{
   height:100px;
 }
-
+.profile_objects_view #profile_small_user_picture_wrap,
+.profile_bookmarks_view #profile_small_user_picture_wrap{
+  padding: 1em 1em 1em 0;
+}
 .profile_small_top_template .profile_info_name,
 .profile_small_top_optional_button_outer,
 .profile_bookmarks_view .profile_info_name,

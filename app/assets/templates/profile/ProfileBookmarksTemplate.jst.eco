@@ -1,6 +1,8 @@
 <div id="profile_small_user_picture_wrap" class="pull-left">
-  <img id="profile_small_user_picture" src="<%=@model.get('user_photos').image_name.url%>"/>
-</div>
+    <div class="profile_picture profile_small_picture" style="background-image:url(<%=@model.get('user_photos').image_name.url%>)">
+      <!-- <img id="profile_small_user_picture" src="user_photos').image_name.url"/> -->
+    </div>
+  </div>
 <div class="pull-left">
   <div class="profile_info_name"><p id="profile_info_name"><%=@model.get('firstname')%> <%=@model.get('lastname')%></p><div>
 </div>
