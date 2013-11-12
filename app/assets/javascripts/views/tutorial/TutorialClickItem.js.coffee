@@ -1,17 +1,17 @@
-class Mywebroom.Views.TutorialWelcomeView extends Backbone.View
+class Mywebroom.Views.TutorialClickItemView extends Backbone.View
 
 
   #*******************
   #**** Template
   #*******************
-  template: JST['tutorial/TutorialWelcomeTemplate']
+  template: JST['tutorial/TutorialClickItemTemplate']
 
 
   #*******************
   #**** Events
   #*******************
   events: {
-    'click #tutorial_welcome_btn':    'welcomeButton'
+    'click #tutorial_click_item_btn':    'tutorialClickItemSkipBtn'
 
   }
 
@@ -32,17 +32,17 @@ class Mywebroom.Views.TutorialWelcomeView extends Backbone.View
   #--------------------------
   # close store page
   #--------------------------
-  welcomeButton: (e) ->
+  tutorialClickItemSkipBtn: (e) ->
 
     e.preventDefault()
     e.stopPropagation()
 
-    console.log("welcome to tutorial")
+    console.log("tutorial click item")
 
-
-    view = new Mywebroom.Views.TutorialClickItemView()
+    view = new Mywebroom.Views.TutorialOpenStoreView()
     $("#xroom_tutorial_container").append(view.el)
     view.render()
+
 
     console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings

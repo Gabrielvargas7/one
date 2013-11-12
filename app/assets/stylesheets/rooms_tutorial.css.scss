@@ -1,10 +1,182 @@
-#tutorial_welcome_container {
+////
+// turorial welcome
+////
+
+.tutorial_container {
   position:fixed;
-  z-index:7;
-  top:50%;
-  right:50%;
-  width:50%;
-  height:50%;
-  background-color: rgba(0,0,0,.8);
+  z-index:1500;
+  top: 0;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,.3);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
 }
+
+#tutorial_welcome_container_box {
+  position:fixed;
+  z-index:1501;
+  top:20%;
+  left:15%;
+  width:70%;
+  height:400px;
+  background-color: rgba(0,0,0,.8);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+}
+
+#tutorial_welcome_container p {
+  padding: 10px;
+  font-size: 24px;
+
+}
+
+
+#tutorial_welcome_welcome_text{
+
+  font-size: 70px;
+  padding: 40px;
+  margin: 20px 100px;
+  border-style: solid;
+  border-width: thin;
+  border-color:transparent;
+  border-bottom-color: #ffffff;
+
+
+}
+#tutorial_welcome_btn{
+  font-size: 24px;
+  margin: 20px;
+  padding: 10px 100px;
+
+}
+
+#tutorial_welcome_btn_container{
+  margin: 60px;
+}
+
+////
+// turorial Click Item
+////
+
+
+#tutorial_click_item_container{
+  position:fixed;
+  z-index:1500;
+  top: 0;
+  width:100%;
+  height:45px;
+  background-color: rgba(0,0,0,.5);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+
+#tutorial_click_item_btn{
+  font-size: 14px;
+  margin: 20px;
+  padding: 10px 100px;
+}
+#tutorial_click_item_btn_container{
+  margin: 10px;
+
+}
+
+////
+// turorial Open Store
+////
+
+
+#tutorial_open_store_container_box{
+  position:fixed;
+  z-index:1502;
+  top: 0;
+  right: 0;
+  width:700px;
+  height:100%;
+  background-color: rgba(0,0,0,.8);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+
+#tutorial_open_store_btn{
+  font-size: 16px;
+  margin: 20px;
+  padding: 10px 100px;
+}
+
+
+#tutorial_open_store_container_box p {
+  padding: 20px;
+  font-size: 17px;
+}
+
+
+#tutorial_open_store_text{
+  font-size: 32px;
+  padding: 40px;
+  margin-top: 200px;
+}
+
+////
+// turorial Editor
+////
+
+
+#tutorial_editor_open_container_header{
+  position:fixed;
+  z-index:1500;
+  top: 0;
+  width:100%;
+  height:100px;
+  background-color: rgba(0,0,0,.5);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+
+#tutorial_editor_open_container_box{
+  position:fixed;
+  z-index:1501;
+  top: 0;
+  right: 650px;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,.1);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+
+
+
+#tutorial_editor_open_container_small_box {
+  margin: 150px 100px;
+  float: right;
+  width: 300px;
+  font-size: 17px;
+  background-color: rgba(0,0,0,.8);
+  padding: 40px 60px;
+}
+#tutorial_editor_open_container_small_box p {
+  padding-bottom: 20px;
+  font-size: 17px;
+
+}
+
+#tutorial_editor_open_btn{
+  font-size: 16px;
+  margin: 20px;
+
+}
+
+
+
 

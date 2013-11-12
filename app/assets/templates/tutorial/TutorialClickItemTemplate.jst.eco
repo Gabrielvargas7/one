@@ -1,0 +1,6 @@
+<div id="tutorial_click_item_container">
+            <div id="tutorial_click_item_btn_container">
+                <a href="#" class="blue_button blue_button_light" id="tutorial_click_item_btn" > Click Any Object</a>
+            </div>
+</div>
+

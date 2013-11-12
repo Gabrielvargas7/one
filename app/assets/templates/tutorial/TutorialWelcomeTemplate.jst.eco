@@ -1,4 +1,23 @@
-<div id="tutorial_welcome_container">
+<div class="tutorial_container">
+</div>
 
-    Welcome
-<div>
+<div id="tutorial_welcome_container_box">
+
+            <div id="tutorial_welcome_welcome_text">
+                Welcome Home!
+            </div>
+            <p>
+                All the things you love are in one place.
+
+            </p>
+            <p>
+                Begin exploring by clicking on any object in this room
+            </p>
+
+
+            <div id="tutorial_welcome_btn_container">
+                <a href="#" class="blue_button blue_button_light" id="tutorial_welcome_btn" >Start Clicking!</a>
+
+            </div>
+</div>
+
