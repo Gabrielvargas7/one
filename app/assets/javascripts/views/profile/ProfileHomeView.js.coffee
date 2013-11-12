@@ -32,11 +32,18 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   initialize: ->
     #Get RoomFlag
     this.model.set 'FLAG_PROFILE', Mywebroom.State.get("roomState")
-  
+    
+    #initial limit and offset for apis
+    @fetchLimit = 24
+    @fetchOffset= 0
+    
     if Mywebroom.State.get("roomState") != "SELF"
       @template=JST['profile/FriendHomeTemplate']
     
       #Bookmarks and Items Design will be different for Home and Activity
+      # new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdByLimitAndOffset(
+      #   userId: Mywebroom.State.get('roomData').get('user').id
+      #   )
       activityBookmarksRandomCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdCollection()
       activityBookmarksRandomCollection.fetch
         reset:true
@@ -46,18 +53,15 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
           console.log("activityBookmarksCollection Fetched Successfully Response:")
           console.log(response)
 
-      activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexUserItemsDesignsByUserIdCollection()
+      activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexUserItemsDesignsByUserIdByLimitAndOffset()
       activityItemsDesignsRandomCollection.fetch
         reset:true
         async:false
-        url:activityItemsDesignsRandomCollection.url Mywebroom.State.get('roomData').get('user').id
+        url:activityItemsDesignsRandomCollection.url Mywebroom.State.get('roomData').get('user').id, @fetchLimit, @fetchOffset
         success: (response)->
-          #console.log("activitItemsDesignssCollection Fetched Successfully Response:")
-          #console.log(response)
+          console.log("Friend's Items Page Fetched Successfully Response:")
+          console.log(response)
     else
-      #initial limit and offset for apis
-      @fetchLimit = 24
-      @fetchOffset= 0
 
       activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
       activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
