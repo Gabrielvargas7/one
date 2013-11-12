@@ -150,12 +150,13 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     FIXME
     THIS SHOULDN'T BE NECESSARY! WHY DID THIS BREAK?
     ###
-    if not $('#tab_items').is(':visible')
-      $('#storeTabs a[href="#tab_items"]').tab('show')
+    #if not $('#tab_items').is(':visible') <-- yeah, this works now. wtf.
+      #console.log("had to manually show tab...")
+      #$('#storeTabs a[href="#tab_items"]').tab('show')
 
 
-    if $('#store-search-dropdown').is(':visible')
-      console.log("BUG: DROPDOWN MENU SHOULD CLOSE")
+    #if $('#store-search-dropdown').is(':visible')
+      #console.log("BUG: DROPDOWN MENU SHOULD CLOSE") <-- um... now this is working ??
       #$('#store-search-dropdown').dropdown('toggle') <-- turns off dropdown permanently!
 
 
@@ -515,7 +516,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
    
     # Create the view
-    view = new Mywebroom.Views.StorePreviewView(model: model)
+    view = new Mywebroom.Views.StorePreviewView({model: model})
     
     
     # Append the element

@@ -89,7 +89,6 @@ Mywebroom.Helpers.Editor = {
 
   paginateSearch: (type, limit, offset, keyword) ->
 
-
     switch type
       when "ALL"
         ###
@@ -315,7 +314,7 @@ Mywebroom.Helpers.Editor = {
         collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithItemIdAndLimitAndOffsetAndKeywordCollection()
         collection.fetch
           async:   false
-          url:     collection.url(category, limit, offset, keyword)
+          url:     collection.url(type, limit, offset, keyword)
           success: (collection, response, options) ->
             console.log(collection.length + " designs found!")
     
@@ -325,6 +324,9 @@ Mywebroom.Helpers.Editor = {
 
 
         return collection
+
+
+
 
 
 
@@ -385,7 +387,7 @@ Mywebroom.Helpers.Editor = {
     
 
     collection.each (model) ->
-      view = new Mywebroom.Views.StorePreviewView(model: model)
+      view = new Mywebroom.Views.StorePreviewView({model: model})
       $('#' + row_id + row_number).append(view.el)
       view.render()
 

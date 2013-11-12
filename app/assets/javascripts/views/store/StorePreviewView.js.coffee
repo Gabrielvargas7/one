@@ -1,4 +1,4 @@
-class Mywebroom.Views.StorePreviewView  extends Backbone.View
+class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
 
   #*******************
   #**** Tag
@@ -39,15 +39,10 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     )
     
     @type = @model.get("type")
-    
-  
-  
-    
-  #*******************
-  #**** Render
-  #*******************
-  render: ->
-    
+
+
+
+
     obj =  @model.clone()
     
     # We set image_name to the matching preview url (when necessary)
@@ -64,9 +59,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
         obj.set("image_name", obj.get("image_name_set"))
 
 
-
-    $(@el).append(@template(model: obj))
-    this
+    @model = obj
+    
 
 
 
@@ -99,7 +93,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     e.stopPropagation()
    
     ###
-    (0) Pagination 
+    (0) Pagination
     (1) Change to hidden tab
     (2) Conditionally show remove button
     (3) Conditionally highlight room item

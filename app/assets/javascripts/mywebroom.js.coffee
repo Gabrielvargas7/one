@@ -175,8 +175,8 @@ $(document).ready ->
  
   
   ###
-  *To create a true set [http://en.wikipedia.org/wiki/Set_(mathematics)], 
-  we want an object that doesn't already have any properties on it. 
+  *To create a true set [http://en.wikipedia.org/wiki/Set_(mathematics)],
+  we want an object that doesn't already have any properties on it.
   
   http://stackoverflow.com/questions/7958292/mimicking-sets-in-javascript
   http://www.devthought.com/2012/01/18/an-object-is-not-a-hash/
@@ -223,16 +223,13 @@ $(document).ready ->
           limit =   Mywebroom.Data.Editor.limit
           offset  = Mywebroom.Data.Editor.offset + limit
 
-          ###
-          FIXME
-          For development purposes only
-          ###
-          if path is false then alert("no pagination type!")
+          
+          if path is false then console.error("no pagination type!")
 
 
 
 
-          switch path            
+          switch path
 
             when "INITIAL"
 
@@ -308,9 +305,9 @@ $(document).ready ->
         else
 
           console.log(
-            "paginate", 
-            Mywebroom.Data.Editor.paginate, 
-            "contentPath", 
+            "paginate",
+            Mywebroom.Data.Editor.paginate,
+            "contentPath",
             Mywebroom.Data.Editor.contentPath,
             "contentType",
             Mywebroom.Data.Editor.contentType,
@@ -360,7 +357,7 @@ $(document).ready ->
     
     ###
     (1) Get ID of Signed-In User
-    (2) Look Up his notifications 
+    (2) Look Up his notifications
           a. Handle Error
     (3) Extract first model
     (4) Check that the model has the notified field
@@ -395,7 +392,7 @@ $(document).ready ->
     
             
         
-            window.lightbox('lightbox-ins', 'shadow-ins') 
+            window.lightbox('lightbox-ins', 'shadow-ins')
 
 
             $('#lightbox').append(view.el)
@@ -406,9 +403,9 @@ $(document).ready ->
             LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
             ###
       
-            console.log("fake tell sever we saw notification")
+            #console.log("fake tell sever we saw notification")
 
-            ###
+            
             note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
             note.save({id: user_id},
               {
@@ -421,7 +418,7 @@ $(document).ready ->
                   #console.error(model, xhr, options)
               }
             )
-            ###
+            
 
 
       
@@ -447,7 +444,7 @@ $(document).ready ->
                   console.log("other notification - don't move")
           
         
-            else  
+            else
               console.error("position field missing", model)
         
         else
@@ -469,7 +466,7 @@ $(document).ready ->
   Mywebroom.Helpers.setCategories = (categories) ->
     
     # empty out existing dropdown items
-    $('#dropdown-category > .dropdown-menu').empty();
+    $('#dropdown-category > .dropdown-menu').empty()
   
   
     # iterate through the category items and create a li out of each one
@@ -640,7 +637,7 @@ $(document).ready ->
     
     #console.log("TURN ON HOVER")
     
-    $('.room_design').each( -> 
+    $('.room_design').each( ->
       $(this)
       .mouseenter( -> $(this).attr("src", $(this).attr("data-hover-src-client")))
       .mouseleave( -> $(this).attr("src", $(this).attr("data-main-src-client")))
@@ -680,7 +677,7 @@ $(document).ready ->
     $('.store_main_box_right').hide() # Hide the main box
     $('#store_main_box').css('width', '40px')
     $('#store_collapse_img').attr('src','http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png')
-    $('#store_collapse_button img').removeClass('flipimg') # Button now faces the left 
+    $('#store_collapse_button img').removeClass('flipimg') # Button now faces the left
     
     
     
@@ -748,9 +745,9 @@ $(document).ready ->
 
         itemModel.set('urlToPopup',urlToPopup)
         itemModel.set('buttonText',"Continue")
-        coordinates = itemModel.get('coordinates') 
+        coordinates = itemModel.get('coordinates')
         
-      #3. Create View. View handles external link opening. 
+      #3. Create View. View handles external link opening.
         twitterPopupView = new Mywebroom.Views.PopupExternalSiteWarningView(
                                         {
                                           itemData:    itemModel
@@ -773,9 +770,9 @@ $(document).ready ->
 
         itemModel.set('urlToPopup',urlToPopup)
         itemModel.set('buttonText',"Continue")
-        coordinates = itemModel.get('coordinates') 
+        coordinates = itemModel.get('coordinates')
         
-      #3. Create View. View handles external link opening. 
+      #3. Create View. View handles external link opening.
         pinboardPopupView = new Mywebroom.Views.PopupExternalSiteWarningView(
                                         {
                                           itemData:    itemModel
@@ -788,7 +785,7 @@ $(document).ready ->
 
 
       when 21 #Portrait
-        # Open Profile, not Bookmarks. 
+        # Open Profile, not Bookmarks.
         Mywebroom.State.get('roomHeaderView').displayProfile()
 
       else #All other Items- create Bookmarks View
@@ -814,7 +811,7 @@ $(document).ready ->
       
       $(this).off('click') # So we don't have multiple click handlers
       
-      $(this).click( (event)->
+      $(this).click( (event) ->
         
         # item_id extracted from the clicked element
         dom_item_id = $(this).data().designItemId
@@ -849,7 +846,7 @@ $(document).ready ->
         #(2.2) - Check if this is the first click.
         #      - a. Create Bookmarks View (which checks for special items like portrait)
             
-        if model.get("clickable") is "yes" 
+        if model.get("clickable") is "yes"
           
           #2. Check if Friend's Room
           #2A. get coordinates of click for case of POPUPS
@@ -868,7 +865,7 @@ $(document).ready ->
 
             #A. Create PopupFriendItemView
 
-            #A1. if a popup is already made, make sure we close it before creating the new one. 
+            #A1. if a popup is already made, make sure we close it before creating the new one.
             if Mywebroom.State.get('friendItemPopupView')
               Mywebroom.State.get('friendItemPopupView').closeView()
 
@@ -886,15 +883,15 @@ $(document).ready ->
             #A5. update State view tracker
             Mywebroom.State.set('friendItemPopupView',view)
           
-          else #roomState is "SELF" 
+          else #roomState is "SELF"
           #(2.2) Create the Bookmarks View.
 
             #A. get the corresponding model to check for first click
             firstTimeClickedItem = Mywebroom.State.get('roomItems').findWhere({'item_id':model.get('id').toString()})
 
             #B. Check for first click
-            if firstTimeClickedItem.get('first_time_click') is "y" and model.get('id')!=21
-              #1. Merge model and firstTimeClickedItem since we need both where we're going. 
+            if firstTimeClickedItem.get('first_time_click') is "y" and model.get('id') != 21
+              #1. Merge model and firstTimeClickedItem since we need both where we're going.
               itemData = new Backbone.Model(firstTimeClickedItem.toJSON())
               itemData.set(model.toJSON())
               itemData.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
@@ -908,16 +905,16 @@ $(document).ready ->
               model.set('coordinates',coordinates)
               Mywebroom.Helpers.createBookmarksView(model, dom_item_id)
 
-      ) #end .click for img.room_design 
+      ) #end .click for img.room_design
     ) #end $('img.room_design').each
     
-  Mywebroom.Helpers.createFirstTimeClickPopupView = (itemData,dom_item_id)->
+  Mywebroom.Helpers.createFirstTimeClickPopupView = (itemData, dom_item_id) ->
     
     #1. Define Special view for firstTimeClicks
     #1a. When popup closes, Tell DB user item was clicked
-    #1b. When popup closes, show Bookmarks Interface. 
+    #1b. When popup closes, show Bookmarks Interface.
     
-    #This view extends PopupFriendItemView. remove() is overriding Backbone's so we can show bookmarks view when popup closes. 
+    #This view extends PopupFriendItemView. remove() is overriding Backbone's so we can show bookmarks view when popup closes.
     FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
                       template:JST['rooms/PopUpItemFirstClickTemplate'],
                       className:"popup_item_first_click_view",
@@ -925,7 +922,7 @@ $(document).ready ->
                       #Override Backbone.View::remove
                       remove: ->
                         
-                        #1a. Send DB clicked item. Also, change the StateModel, so clicking again won't count as first time.           
+                        #1a. Send DB clicked item. Also, change the StateModel, so clicking again won't count as first time.
                         updateClickedItemModel = new Mywebroom.Models.UpdateUserItemDesignFirstTimeClickByUserIdAndDesignIdAndLocationId({id:0})
                         updateClickedItemModel.userId = Mywebroom.State.get('roomData').get('user').id
                         updateClickedItemModel.designId = itemData.get('items_design_id')
@@ -936,10 +933,10 @@ $(document).ready ->
                         #1a.. Update State Model locally so we don't have to refetch
                         Mywebroom.State.get('roomItems').findWhere({'item_id':itemData.get('item_id').toString()}).set('first_time_click',"n")
                         
-                        #1b. Show bookmarks view.                         
+                        #1b. Show bookmarks view.
                         Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
                         
-                        #1c. Call the base class remove method 
+                        #1c. Call the base class remove method
                         Backbone.View::remove.apply this
 
                     })
@@ -1124,7 +1121,7 @@ $(document).ready ->
   
   Mywebroom.Helpers.updateRoomTheme = (model) ->
     
-    #console.log("updateRoomTheme")    
+    #console.log("updateRoomTheme")
     
     ###
     NEW PROPERTIES
@@ -1147,7 +1144,7 @@ $(document).ready ->
     OLD PROPERTIES
     ###
     old_url =      current_theme.attr("data-theme-src-server")
-    old_theme_id = current_theme.attr("data-theme-id-server") 
+    old_theme_id = current_theme.attr("data-theme-id-server")
     
     
     
@@ -1203,7 +1200,7 @@ $(document).ready ->
       # Show the Save Bar
       $("#xroom_store_menu_save_cancel_remove").show()
       
-    else 
+    else
       
       # Hide the Save Bar
       $("#xroom_store_menu_save_cancel_remove").hide()
@@ -1273,7 +1270,7 @@ $(document).ready ->
       7:   "" #tv stan
       8:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348727/dresser-Friend-Pop-Up-Object_mwf3fb.png" #dresser
       9:   "https://res.cloudinary.com/hpdnx5ayv/image/upload/v1383594435/shoppingbag-Friend-Pop-Up-Object.png" #shopping bag
-      10:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349273/socialcanvas-Friend-Pop-Up-Object_pvzhz4.png" #social canvas 
+      10:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349273/socialcanvas-Friend-Pop-Up-Object_pvzhz4.png" #social canvas
       11:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349372/wallshelf-Friend-Pop-Up-Object_ylcro0.png" #wall shelf
       12:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348903/music-Friend-Pop-Up-Object_n4bmwf.png" #music player
       13:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349332/tv-Friend-Pop-Up-Object_ufnnkq.png" #tv
@@ -1322,7 +1319,7 @@ $(document).ready ->
   (9) Room size & Button class
   (10) Room Item Hover: on or off
   (10.1) Room Item Click: on or off
-  (11) Room Mousewheel 
+  (11) Room Mousewheel
   (12) Set Store State
   ###
   
@@ -1367,12 +1364,7 @@ $(document).ready ->
     
     
     # (6) Dropdown filters
-    $('#dropdown-object').removeClass('collapse')
-    $('#dropdown-style').removeClass('collapse')
-    $('#dropdown-brand').removeClass('collapse')
-    $('#dropdown-location').removeClass('collapse')
-    $('#dropdown-color').removeClass('collapse')
-    $('#dropdown-make').removeClass('collapse')
+    Mywebroom.Helpers.collapseFilters()
     
     
     # (7) Hidden item visibility: grey or hidden
@@ -1427,7 +1419,7 @@ $(document).ready ->
     
     
     # (3) Button Visibility
-    # n/a 
+    # n/a
     
     
     # (4) Active Nav Tab
@@ -1487,7 +1479,7 @@ $(document).ready ->
     $("#xroom_scroll_right").show()
     
     
-    # (2.1) Get saveBarWasVisible    
+    # (2.1) Get saveBarWasVisible
     # (2.2) Set saveBarWasVisible
     Mywebroom.Helpers.setSaveBarVisibility()
     
@@ -1497,7 +1489,7 @@ $(document).ready ->
     
     
     # (3) Button Visibility
-    # n/a 
+    # n/a
     
     
     # (4) Active Nav Tab
@@ -1546,7 +1538,7 @@ $(document).ready ->
   collapsed_TO_shown
   ###
   Mywebroom.Helpers.expandStore = ->
-    console.log("expand store") 
+    console.log("expand store")
     
     # (1) Store visibility
     $('#xroom_storepage').show()
@@ -1613,7 +1605,7 @@ $(document).ready ->
     Mywebroom.State.set("storeState", "shown")
  
   ###
-  get Item Name of room object from the item's id. 
+  get Item Name of room object from the item's id.
   ###
   Mywebroom.Helpers.getItemNameOfItemId = (modelId) ->
     
@@ -1623,27 +1615,27 @@ $(document).ready ->
         return item.items_name
 
   ###
-  Checks if signed in user has requested a key from idRequested. returns true/false. 
+  Checks if signed in user has requested a key from idRequested. returns true/false.
   ###
-  Mywebroom.Helpers.IsThisMyFriendRequest = (idRequested)->
+  Mywebroom.Helpers.IsThisMyFriendRequest = (idRequested) ->
     hasRequested = new Mywebroom.Collections.ShowFriendRequestByUserIdAndUserIdRequestedCollection()
     hasRequested.fetch
       async  : false
       url    : hasRequested.url(Mywebroom.State.get("signInUser").get("id"),idRequested)
-      success:(response) ->
+      success: (response) ->
         console.log(response)
-      error:(response)->
+      error: (response) ->
         console.log(response)
 
-    if hasRequested.models.length >0
-      true;
+    if hasRequested.models.length > 0
+      true
     else
-      false;
+      false
   
   ###
   Request key from signed in user to idRequested
   ###
-  Mywebroom.Helpers.RequestKey = (idRequested)->
+  Mywebroom.Helpers.RequestKey = (idRequested) ->
     if Mywebroom.State.get('signInUser').get('id')
       #Make Key Request
       requestModel = new Mywebroom.Models.CreateFriendRequestByUserIdAndUserIdRequestedModel()
@@ -1651,16 +1643,16 @@ $(document).ready ->
       requestModel.set 'userIdRequested', idRequested
       requestModel.save {},
       
-      success: (model, response)->
+      success: (model, response) ->
         console.log('post requestKey SUCCESS:')
         console.log(response)
       
-      error: (model, response)->
+      error: (model, response) ->
         console.log('post requestKey FAIL:')
         console.log(response)
 
       #Change style to Key requested.
-      if $('#profile_ask_for_key_overlay button').length>1
+      if $('#profile_ask_for_key_overlay button').length > 1
         $requestButton = $('#profile_ask_for_key_overlay button')
       else
         $requestButton = $('.profile_request_key_button')
@@ -1669,8 +1661,8 @@ $(document).ready ->
 
 
     else
-     #send to landing page
-     window.location.replace(Mywebroom.State.get("shopBaseUrl").default)
+      #send to landing page
+      window.location.replace(Mywebroom.State.get("shopBaseUrl").default)
   
   
   
