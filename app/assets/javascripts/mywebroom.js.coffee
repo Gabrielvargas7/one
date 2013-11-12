@@ -43,6 +43,20 @@ $(document).ready ->
       roomViewState                     : false # open or closed
       roomHeaderViewState               : false # open or closed
       storeLayoutViewState              : false # open or closed
+
+
+
+
+      tabContentItems         : false
+      tabContentThemes        : false
+      tabContentBundles       : false
+      tabContentEntireRooms   : false
+      tabContentHidden        : false
+
+
+
+
+
       
       storeState : false # hidden, collapsed, or shown
       
@@ -91,7 +105,52 @@ $(document).ready ->
   
   
 
-  
+  Mywebroom.State.on('change:tabContentItems', ->
+
+    data = Mywebroom.State.get('tabContentItems')
+    Mywebroom.Helpers.Editor.appendCollection(data, 'ITEMS')
+
+  )
+
+
+
+
+  Mywebroom.State.on('change:tabContentThemes', ->
+
+    data = Mywebroom.State.get('tabContentThemes')
+    Mywebroom.Helpers.Editor.appendCollection(data, 'THEMES')
+
+  )
+
+
+
+
+  Mywebroom.State.on('change:tabContentBundles', ->
+
+    data = Mywebroom.State.get('tabContentBundles')
+    Mywebroom.Helpers.Editor.appendCollection(data, 'BUNDLES')
+
+  )
+
+
+
+
+  Mywebroom.State.on('change:tabContentEntireRooms', ->
+
+    data = Mywebroom.State.get('tabContentEntireRooms')
+    Mywebroom.Helpers.Editor.appendCollection(data, 'ENTIRE ROOMS')
+
+  )
+
+
+
+
+  Mywebroom.State.on('change:tabContentHidden', ->
+
+    data = Mywebroom.State.get('tabContentHidden')
+    Mywebroom.Helpers.Editor.appendCollection(data, 'HIDDEN')
+
+  )
 
 
 
@@ -130,7 +189,7 @@ $(document).ready ->
   
 
 
-  
+
   
 
 
@@ -179,11 +238,72 @@ $(document).ready ->
 
               console.log("PAGINATE INITIAL - " + type + "\tOffset: " + offset)
 
+              data = Mywebroom.Helpers.Editor.paginateInitial(type, limit, offset)
+              console.log(data)
+
+              switch type
+
+                when "THEMES"
+
+                  col = Mywebroom.State.get('tabContentThemes')
+                  col.add(data.toJSON(), {silent: true})
+                  Mywebroom.State.set('tabContentThemes', col)
+
+                when "BUNDLES"
+
+                  col = Mywebroom.State.get('tabContentBundles')
+                  col.add(data.toJSON(), {silent: true})
+                  Mywebroom.State.set('tabContentBundles', col)
+
+                when "ENTIRE ROOMS"
+
+                  col = Mywebroom.State.get('tabContentEntireRooms')
+                  col.add(data.toJSON(), {silent: true})
+                  Mywebroom.State.set('tabContentEntireRooms', col)
+
+                else
+
+                  col = Mywebroom.State.get('tabContentHidden')
+                  col.add(data.toJSON(), {silent: true})
+                  Mywebroom.State.set('tabContentHidden', col)
+
+
+
 
 
             when "SEARCH"
 
               console.log("PAGINATE SEARCH - " + type + "\tOffset: " + offset + "\tKeyword: " + keyword)
+
+              data = Mywebroom.Helpers.Editor.paginateSearch(type, limit, offset, keyword)
+              console.log(data)
+
+
+              switch type
+
+                when "THEMES"
+
+                  col = Mywebroom.State.get('tabContentThemes')
+                  col.add(data.toJSON(), {silent: true})
+                  Mywebroom.State.set('tabContentThemes', col)
+
+                when "BUNDLES"
+
+                  col = Mywebroom.State.get('tabContentBundles')
+                  col.add(data.toJSON(), {silent: true})
+                  Mywebroom.State.set('tabContentBundles', col)
+
+                when "ENTIRE ROOMS"
+
+                  col = Mywebroom.State.get('tabContentEntireRooms')
+                  col.add(data.toJSON(), {silent: true})
+                  Mywebroom.State.set('tabContentEntireRooms', col)
+
+                else
+
+                  col = Mywebroom.State.get('tabContentHidden')
+                  col.add(data.toJSON(), {silent: true})
+                  Mywebroom.State.set('tabContentHidden', col)
 
         else
 

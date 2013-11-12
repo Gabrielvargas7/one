@@ -93,7 +93,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
   #*******************
   clickItem: (e) ->
     
-    #console.log("click item")
+    console.log("click item")
    
     e.preventDefault()
     e.stopPropagation()
@@ -193,21 +193,16 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     FETCH CORRESPONDING DESIGNS
     ###
-    designs = new Mywebroom.Collections.IndexItemsDesignsByItemIdCollection()
-    designs.fetch
-      async  : false
-      url    : designs.url(itemId)
-      success: (collection, response, options) ->
-        #console.log("initial design fetch success", response)
-      error: (collection, response, options) ->
-        console.error("initial design fetch error", response.responseText)
+    designs = Mywebroom.Helpers.Editor.paginateInitial(itemId, 10, 0)
+
     
     
     
     ###
     UPDATE VIEWS
     ###
-    @appendHidden(designs)
+    Mywebroom.State.set('tabContentHidden', designs)
+
     
     
     
@@ -513,37 +508,3 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
         console.log("bundle theme collection fail")
 
     return collection
-  
-  
-  
-  
-  #--------------------
-  # Append Design Views
-  #--------------------
-  appendHidden: (collection) ->
-
-    $("#tab_hidden > ul").remove()
-    
-    @loop_number = 0
-    @row_number = 1
-    @column_number = 3
-
-    @row_line = "<ul id=row_item_designs_1></ul>"
-    this.$('#tab_hidden').append(@row_line)
-
-    self = this
-    collection.each (model)  ->
-      view = new Mywebroom.Views.StorePreviewView(model: model)
-      $('#row_item_designs_' + self.row_number).append(view.el)
-      view.render()
-      
-      # Show the social view
-      view.addSocialView()
-      
-      self.loop_number += 1
-
-      u = self.loop_number % self.column_number
-      if u is 0
-        self.row_number += 1
-        self.row_line = "<ul id='row_item_designs_" + self.row_number + "'></ul>"
-        $('#tab_hidden').append(self.row_line)

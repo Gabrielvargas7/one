@@ -59,48 +59,26 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Helpers.setItemRefs()
     
   
+
+
     # themes
-    themes = new Mywebroom.Collections.IndexThemesCollection()
-    themes.fetch
-      async: false
-      success: (collection, response, options) ->
-        #console.log("initial theme fetch success", collection)
-      error: (collection, response, options) ->
-        console.error("initial theme fetch fail", response.responseText)
-    
-    
+    themes = Mywebroom.Helpers.Editor.paginateInitial("THEMES", 10, 0)
+  
+
+
   
     # bundles
-    bundles = new Mywebroom.Collections.IndexBundlesCollection()
-    bundles.fetch
-      async:   false
-      success: (collection, response, options) ->
-        #console.log("initial bundle fetch success", collection)
-      error: (collection, response, responseText) ->
-        console.error("initial bundle fetch fail", response.responseText)
-        
-        
+    bundles = Mywebroom.Helpers.Editor.paginateInitial("BUNDLES", 10, 0)
+  
+
+
+
     # entire rooms
-    entireRooms = new Mywebroom.Collections.IndexBundlesCollection()
-    entireRooms.fetch
-      async: false
-      success: (collection, response, options) ->
-        #console.log("initial entire room fetch success", collection)
-      error: (collection, response, options) ->
-        console.error("initial entire room fetch fail", response.responseText)
-      
-      
-    copy = entireRooms.clone()
-    
-    
-    parsed = copy.map((model) ->
-      obj = model
-      model.set("type", "ENTIRE_ROOM")
-      return obj
-    )
-    
-    
-    reset = copy.reset(parsed)
+    entireRooms = Mywebroom.Helpers.Editor.paginateInitial("ENTIRE ROOMS", 10, 0)
+
+
+
+
     ###
     FETCH INITIAL DATA - END
     ###
@@ -111,10 +89,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     SPLAT DATA TO STORE - START
     ###
-    @appendItems(items)       # ITEMS
-    @appendThemes(themes)     # THEMES
-    @appendBundles(bundles)   # BUNDLES
-    @appendEntireRooms(reset) # ENTIRE ROOMS
+    Mywebroom.State.set('tabContentItems', items)
+    Mywebroom.State.set('tabContentThemes', themes)
+    Mywebroom.State.set('tabContentBundles', bundles)
+    Mywebroom.State.set('tabContentEntireRooms', entireRooms)
+
+   
     
     
     
@@ -296,6 +276,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         console.error("bundle category fail", response.responseText)
   
   
+
+
+
   
   clickEntireRooms: (event) ->
     
@@ -345,6 +328,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
   
+
+
+
   
   clickSearchFilter: (event) ->
 
@@ -363,6 +349,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
     
    
+
+
+
   
   keyupSearch: (event) ->
     
@@ -396,6 +385,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       $("#store-search-box").val("")
       
       
+
+
+
+
       
   clickSearchDropdown: (event) ->
     
@@ -447,6 +440,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   
   
   
+
+
+
+  
   performSearch: (category, keyword) ->
     
     ###
@@ -460,386 +457,25 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     
 
 
-    self = this
+
+    limit = Mywebroom.Data.Editor.limit
+
+
+
     
+    data = Mywebroom.Helpers.Editor.paginateSearch(category, limit, 0, keyword)
+
+
     
-    switch category
-      when "ALL"
-        ###
-        Fetch designs collection
-        ###
-        designs = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
-        designs.fetch
-          async: false
-          url: designs.url(10, 0, keyword)
-          success: (collection, response, options) ->
-            console.log(collection.length + " designs found! <-- ALL")
-          
-          error: (collection, response, options) ->
-            console.error("search all: designs fetch fail", response.responseText)
-            
-            
-        ###
-        Fetch themes collection
-        ###
-        themes = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
-        themes.fetch
-          async: false
-          url: themes.url(10, 0, keyword)
-          success: (collection, response, options) ->
-            console.log(collection.length + " themes found! <-- ALL")
-          
-          error: ->
-            console.error("search all: themes fetch fail", response.responseText)
-            
-        
-        ###
-        Fetch bundles collection
-        ###
-        bundles = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
-        bundles.fetch
-          async: false
-          url: bundles.url(10, 0, keyword)
-          success: (collection, response, options) ->
-            console.log(collection.length + " bundles found! <-- ALL")
-          
-          error: (collection, response, options) ->
-            console.error("search all: bundles fetch fail", response.responseText)
-            
-            
-            
-        ###
-        Fetch entire rooms collection
-        ###
-        entireRooms = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
-        entireRooms.fetch
-          async: false
-          url: entireRooms.url(10, 0, keyword)
-          success: (collection, response, options) ->
-            console.log(collection.length + " entire rooms found! <-- ALL")
-          
-          error: (collection, response, options) ->
-            console.error("search all: entire rooms fetch fail", response.responseText)
-            
-        
-        ###
-        This is a bundles collection, but we're going to use it as a collection of
-        entire room objects. This means we need to override it's type property.
-        
-        Note that since this mapping is being done outside of the collection's parse
-        method, we need to reset our collection with the model data after mapping.
-        http://stackoverflow.com/questions/17034593/how-does-map-work-with-a-backbone-collection
-        ###
-        
-        # Override the type property
-        parsed = entireRooms.map((model) ->
-          obj = model
-          obj.set("type", "ENTIRE_ROOM")
-          return obj
-        )
-        
-        # Reset the collection
-        reset = entireRooms.reset(parsed)
-        #console.log("searched entire rooms II success", reset)
-        
-    
-        ###
-        NOW COMBINE ALL THE COLLECTIONS
-        ###
-        data = designs.toJSON().concat(themes.toJSON()).concat(bundles.toJSON()).concat(reset.toJSON())
-        everything = new Backbone.Collection(data)
-
-
-        console.log(everything.length + " total things found! <-- ALL")
-        
-        
-        #console.log("everything", everything)
-        
-        
-        # Now splat it to the screen
-        self.appendHidden(everything)
-        
-        
-        
-      when "OBJECTS"
-        ###
-        Fetch collection
-        ###
-        collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
-        collection.fetch
-          async  : false
-          url    : collection.url(10, 0, keyword)
-          success: (collection, response, options) ->
-            
-            console.log(collection.length + " designs found!")
-            
-            # Replace the views on the hidden tab
-            self.appendHidden(collection)
-      
-          error: (collection, response, options) ->
-            console.error("search objects fetch fail", response.responseText)
-
-      when "THEMES"
-        ###
-        Fetch collection
-        ###
-        collection = new Mywebroom.Collections.IndexSearchesThemesWithLimitAndOffsetAndKeywordCollection()
-        collection.fetch
-          async: false
-          url: collection.url(10, 0, keyword)
-          success: (collection, response, options) ->
-            
-            console.log(collection.length + " themes found!")
-
-            # Replace the views on the hidden tab
-            self.appendHidden(collection)
-  
-          error: (collection, response, options) ->
-            console.error("search themes fetch fail", response.responseText)
-      
-      when "BUNDLES"
-        ###
-        Fetch collection
-        ###
-        collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
-        collection.fetch
-          async: false
-          url: collection.url(10, 0, keyword)
-          success: (collection, response, options) ->
-
-            console.log(collection.length + " bundles found!")
-      
-            # Replace the views on the hidden tab
-            self.appendHidden(collection)
-            
-          error: (collection, response, options) ->
-            console.error("search bundles fetch fail", response.responseText)
-            
-      when "ENTIRE ROOMS"
-        ###
-        Fetch collection
-        ###
-        collection = new Mywebroom.Collections.IndexSearchesBundlesWithLimitAndOffsetAndKeywordCollection()
-        collection.fetch
-          async  : false
-          url    : collection.url(10, 0, keyword)
-          success: (collection, response, options) ->
-            
-            console.log(collection.length + " entire rooms found!")
-
-          error: (collection, response, options) ->
-            console.error("search entire rooms fetch fail", response.responseText)
-            
-        
-        ###
-        This is a bundles collection, but we're going to use it as a collection of
-        entire room objects. This means we need to override it's type property.
-        
-        Note that since this mapping is being done outside of the collection's parse
-        method, we need to reset our collection with the model data after mapping.
-        http://stackoverflow.com/questions/17034593/how-does-map-work-with-a-backbone-collection
-        ###
-        
-        # Override the type property
-        parsed = collection.map((model) ->
-          obj = model
-          obj.set("type", "ENTIRE_ROOM")
-          return obj
-        )
-        
-        # Reset the collection
-        reset = collection.reset(parsed)
-
-        console.log(reset.length + " entire rooms found! (after parse)")
-    
-        # Replace the views on the hidden tab
-        self.appendHidden(reset)
-                 
-      else
-        ###
-        Looks like it's a specific design category (number)
-        ###
-        
-        #console.log("YOU'RE SEARCHING ON ITEM DESIGN CATEGORY ", category)
-        
-        ###
-        Fetch collection
-        ###
-        collection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithItemIdAndLimitAndOffsetAndKeywordCollection()
-        collection.fetch
-          async:   false
-          url:     collection.url(category, 10, 0, keyword)
-          success: (collection, response, options) ->
-
-            console.log(collection.length + " designs found!")
-    
-            # Replace the views on the hidden tab
-            self.appendHidden(collection)
-
-          error: (collection, response, options) ->
-            console.error("search designs fetch fail", response.responseText)
+    Mywebroom.State.set('tabContentHidden', data)
   
   
   
+ 
+
+
   
-  #--------------------------
-  # Append Item Views
-  #--------------------------
-  appendItems: (collection) ->
-    
-    $("#tab_items > ul").remove()
-    
-    loop_number   = 0
-    row_number    = 1
-    column_number = 3
-
-    row_line = "<ul id='row_item_1'></ul>"
-    $('#tab_items').append(row_line)
-
-    
-    collection.each (item) ->
-      view = new Mywebroom.Views.StorePreviewView(model: item)
-      $('#row_item_' + row_number).append(view.el)
-      view.render()
-
-      loop_number += 1
-      u = loop_number % column_number
-
-      if u is 0
-        row_number += 1
-        row_line = "<ul id='row_item_" + row_number + "'></ul>"
-        $('#tab_items').append(row_line)
-
-
-  #--------------------------
-  # Append Design Views
-  #--------------------------
-  appendHidden: (designs) ->
-
-    $("#tab_hidden > ul").remove()
-    
-    loop_number =   0
-    row_number =    1
-    column_number = 3
-
-    row_line = "<ul id='row_item_designs_1'></ul>"
-    $('#tab_hidden').append(row_line)
-
-    
-    designs.each (design) ->
-      view = new Mywebroom.Views.StorePreviewView(model: design)
-      $('#row_item_designs_' + row_number).append(view.el)
-      view.render()
-      
-      # Show the social view
-      view.addSocialView()
-      
-      loop_number += 1
-      u = loop_number % column_number
-      
-      if u is 0
-        row_number += 1
-        row_line = "<ul id='row_item_designs_" + row_number + "'></ul>"
-        $('#tab_hidden').append(row_line)
-
-
-  #--------------------------
-  # Append Theme Views
-  #--------------------------
-  appendThemes: (themes) ->
-    
-    $("#tab_themes > ul").remove()
-    
-    loop_number =   0
-    row_number =    1
-    column_number = 3
-
-    row_line = "<ul id='row_theme_1'></ul>"
-    $('#tab_themes').append(row_line)
-
-
-    themes.each (theme) ->
-      view = new Mywebroom.Views.StorePreviewView(model: theme)
-      $('#row_theme_' + row_number).append(view.el)
-      view.render()
-
-      # Show the social view
-      view.addSocialView()
-      
-      loop_number += 1
-      u = loop_number % column_number
-
-      if u is 0
-        row_number += 1
-        row_line = "<ul id='row_theme_" + row_number + "'></ul>"
-        $('#tab_themes').append(row_line)
-
-
-
-  #--------------------------
-  # Append Bundle Views
-  #--------------------------
-  appendBundles: (bundles) ->
-    
-    $("#tab_bundles > ul").remove()
-    
-    loop_number =   0
-    row_number =    1
-    column_number = 3
-
-    row_line = "<ul id='row_bundle_1'></ul>"
-    $('#tab_bundles').append(row_line)
-
-
-    bundles.each (bundle) ->
-      view = new Mywebroom.Views.StorePreviewView(model: bundle)
-      $('#row_bundle_' + row_number).append(view.el)
-      view.render()
-
-      # Show the social view
-      view.addSocialView()
-      
-      loop_number += 1
-      u = loop_number % column_number
-
-      if u is 0
-        row_number += 1
-        row_line = "<ul id='row_bundle_" + row_number + "'></ul>"
-        $('#tab_bundles').append(row_line)
-
-
-  #--------------------------
-  # Append Entire Room View
-  #--------------------------
-  appendEntireRooms: (entireRooms) ->
-    
-    $("#tab_entire_rooms > ul").remove()
-    
-    loop_number =   0
-    row_number =    1
-    column_number = 3
-
-    row_line = "<ul id='row_bundle_set_1'></ul>"
-    $('#tab_entire_rooms').append(row_line)
-    
-
-    entireRooms.each (room) ->
-      view = new Mywebroom.Views.StorePreviewView(model: room)
-      $('#row_bundle_set_' + row_number).append(view.el)
-      view.render()
-
-      # Show the social view
-      view.addSocialView()
-      
-      loop_number += 1
-      u = loop_number % column_number
-
-      if u is 0
-        row_number += 1
-        row_line = "<ul id='row_bundle_set_" + row_number + "'></ul>"
-        $('#tab_entire_rooms').append(row_line)
-
-
+ 
 
 
   
