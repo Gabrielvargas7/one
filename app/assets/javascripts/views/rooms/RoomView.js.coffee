@@ -41,45 +41,49 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     DETERMINE IF USER IS SIGNED IN
     ###
     isSignedIn = @isSignedIn()
-    
-    
-    
-    
+
+
+
+#    view = new Mywebroom.Views.TutorialWelcomeView()
+#    $("#xroom_tutorial_container").append(view.el)
+#    view.render()
+
+
     switch isSignedIn
 
-  
+
       when false #CASE: SIGNED OUT
-        
-   
+
+
         if isInARoom #...AND IN A ROOM
-        
+
           roomUser =   @getRoomUser()
           signInUser = false
-          
+
           Mywebroom.State.set("signInState", false)
           Mywebroom.State.set("signInUser", signInUser)
           Mywebroom.State.set("roomState", "PUBLIC")
           Mywebroom.State.set("roomUser", roomUser)
-          
+
           @signedOutRoom()
-        
 
 
-  
+
+
         else #...AND NOT IN A ROOM
-          
+
           roomUser =   false
           signInUser = false
-          
+
           Mywebroom.State.set("signInState", false)
           Mywebroom.State.set("signInUser", signInUser)
           Mywebroom.State.set("roomState", "NONE")
           Mywebroom.State.set("roomUser", roomUser)
-          
+
           @signedOut()
 
-  
-      
+
+
 
 
 
@@ -90,19 +94,20 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
           roomUser =   false
           signInUser = @getSignInUser()
-        
+
           Mywebroom.State.set("signInState", true)
           Mywebroom.State.set("signInUser", signInUser)
           Mywebroom.State.set("roomState", "NONE")
           Mywebroom.State.set("roomUser", roomUser)
-          
-          @signedIn()
-        
 
-        
-        
-        
+          @signedIn()
+
+
+
+
+
         else
+
 
 
           roomUser =   @getRoomUser()
@@ -116,7 +121,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
             Mywebroom.State.set("signInUser", signInUser)
             Mywebroom.State.set("roomState", "SELF")
             Mywebroom.State.set("roomUser", roomUser)
-            
+
             @signedInSelf()
 
 
@@ -125,37 +130,37 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
           else
 
-            
+
             roomUser =   @getRoomUser()
             signInUser = @getSignInUser()
-            
-            
-            
+
+
+
             friends = new Mywebroom.Collections.ShowIsMyFriendByUserIdAndFriendIdCollection()
             friends.fetch
               async: false
               url: friends.url(signInUser.get("id"), roomUser.get("id"))
               success: (collection, response, options) ->
                 # console.log("isMyFriend fetch success", response)
-              
+
               error: (collection, response, options) ->
                 console.error("isMyFriend fetch fail", response.responseText)
 
 
-            
+
 
             if friends.length > 0
 
               ###
               ...AND IN A FRIEND'S ROOM
               ###
-              
-              
+
+
               Mywebroom.State.set("signInState", true)
               Mywebroom.State.set("signInUser", signInUser)
               Mywebroom.State.set("roomState", "FRIEND")
               Mywebroom.State.set("roomUser", roomUser)
-              
+
               @signedInFriend()
 
 
@@ -165,22 +170,17 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
               ###
               ...AND IN A PUBLIC ROOM
               ###
-              
+
               Mywebroom.State.set("signInState", true)
               Mywebroom.State.set("signInUser", signInUser)
               Mywebroom.State.set("roomState", "PUBLIC")
               Mywebroom.State.set("roomUser", roomUser)
-              
-              
+
+
               @signedInPublic()
 
-              
-           
-          
-          
 
 
-  
   #--------------------------
   # change browse mode. (Pass a new model to it)
   #--------------------------
@@ -872,176 +872,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     # Save a reference to the state model
     Mywebroom.State.set("roomFooterView", roomFooterView)
-    
-    
-    
 
 
 
-    ###
-    (11) DEAL WITH URL ENCODED PARAMS
-    ###
-
-    ###
-    entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- i.e. model.get("type")
-    entity_id  : e.g. 123 <-- model.get("id")
-    came_from  : PUBLIC_SHOP, ?? <-- TODO
-    item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
-    ###
-    entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
-
-    if entity_type
-
-      entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
-    
-      switch entity_type
-        
-        when "BOOKMARK"
-          
-          itemId = Mywebroom.Helpers.getParameterByName('item_id')
-          
-
-          if not itemId
-            throw new Error("BOOKMARK WITHOUT item_id")
-
-
-          console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
-          
-          bookmarksView = new Mywebroom.Views.BookmarksView
-            items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
-            item_id: itemId
-            user: Mywebroom.State.get("roomUser").get("id")
-          
-          $('#room_bookmark_item_id_container_' + itemId).append(bookmarksView.el)
-          bookmarksView.render()
-          
-          $('#room_bookmark_item_id_container_' + itemId).show()
-          $('#xroom_bookmarks').show()
-          
-          # TODO Check for bookmark in my bookmarks
-          if !bookmarksView.collection.findWhere(id: parseInt(entity_id))
-            bookmarksView.renderDiscover()
-            bookmarksView.highlightItem(entity_id)
-          else
-            # we're already on MyBookmarks so don't bookmarksView.renderMyBookmarks()
-            bookmarksView.highlightItem(entity_id)
-
-        
-        
-        
-        when "DESIGN"
-
-          # (1) Show Store
-          Mywebroom.Helpers.showStore()
-
-
-          # (2) Switch to the hidden tab
-          $('#storeTabs a[href="#tab_hidden"]').tab('show')
-    
-    
-          # (3) Fetch the corresponding model
-          model = new Mywebroom.Models.ShowItemDesignByIdModel({id: entity_id})
-          model.fetch
-            async: false
-            success: (model, response, options) ->
-              #console.log("model fetch success", response)
-            error: (model, response, options) ->
-              console.error("model fetch fail", response.responseText)
-
-          
-
-          # (4) Use model to populate view
-          Mywebroom.State.get("storeMenuView").appendOne(model)
-        
-
-
-
-        when "THEME"
-          
-          # (1) Show Store
-          Mywebroom.Helpers.showStore()
-
-
-          # (2) Switch to the hidden tab
-          $('#storeTabs a[href="#tab_hidden"]').tab('show')
-    
-    
-          # (3) Fetch the corresponding model
-          model = new Mywebroom.Models.ShowThemeByIdModel({id: entity_id})
-          model.fetch
-            async: false
-            success: (model, response, options) ->
-              #console.log("model fetch success")
-            error: (model, response, options) ->
-              console.error("model fetch fail", response.responseText)
-
-
-          # (4) Use model to populate view
-          Mywebroom.State.get("storeMenuView").appendOne(model)
-
-
-
-
-        when "BUNDLE"
-          
-          # (1) Show Store
-          Mywebroom.Helpers.showStore()
-
-
-          # (2) Switch to the hidden tab
-          $('#storeTabs a[href="#tab_hidden"]').tab('show')
-    
-    
-          # (3) Fetch the corresponding model
-          model = new Mywebroom.Models.ShowBundleByIdModel({id: entity_id})
-          model.fetch
-            async: false
-            success: (model, response, options) ->
-              #console.log("model fetch success")
-            error: (model, response, options) ->
-              console.error("model fetch fail", response.responseText)
-
-
-          # (4) Use model to populate view
-          Mywebroom.State.get("storeMenuView").appendOne(model)
-
-
-        
-        
-        when "ENTIRE_ROOM"
-          
-          # (1) Show Store
-          Mywebroom.Helpers.showStore()
-
-
-          # (2) Switch to the hidden tab
-          $('#storeTabs a[href="#tab_hidden"]').tab('show')
-    
-    
-          # (3) Fetch the corresponding model
-          model = new Mywebroom.Models.ShowEntireRoomByIdModel({id: entity_id})
-          model.fetch
-            async: false
-            success: (model, response, options) ->
-              #console.log("model fetch success")
-            error: (model, response, options) ->
-              console.error("model fetch fail", response.responseText)
-
-
-          # (4) Use model to populate view
-          Mywebroom.State.get("storeMenuView").appendOne(model)
-
-
-
-
-    
-
-
-
-
-
-
-    # (12) Turn off mousewheel
+    # (11) Turn off mousewheel
     Mywebroom.Helpers.turnOffMousewheel()
 
 
@@ -1049,11 +883,41 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
+    # (12) Listen for editor scroll
+    Mywebroom.Helpers.onEditorScroll()
+
+    # (13) Create and render Header View
+    roomHeaderView = new Mywebroom.Views.RoomHeaderView()
+    $("#xroom_header").append(roomHeaderView.el)
+    roomHeaderView.render()
+
+    # Save a ref to the state model
+    Mywebroom.State.set("roomHeaderView", roomHeaderView)
+
+    # (14) Create and render Save, Cancel, Remove View
+    storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
+    $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)
+    $("#xroom_store_menu_save_cancel_remove").hide()
+    storeMenuSaveCancelRemoveView.render()
+
+    # Save a reference to the state model
+    Mywebroom.State.set("storeMenuSaveCancelRemoveView", storeMenuSaveCancelRemoveView)
 
 
 
-    
-    
+
+
+
+
+    # (15) Add Images to the Save, Cancel, Remove View
+    storeRemoveButton = $.cloudinary.image "store_remove_button.png",{id: "store_remove_button"}
+    $("#xroom_store_remove").prepend(storeRemoveButton)
+
+    storeSaveButton = $.cloudinary.image "store_save_button.png",{id: "store_save_button"}
+    $("#xroom_store_save").prepend(storeSaveButton)
+
+    storeCancelButton = $.cloudinary.image "store_cancel_button.png",{id: "store_cancel_button"}
+    $("#xroom_store_cancel").prepend(storeCancelButton)
 
 
 
@@ -1062,25 +926,109 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
+    signInState = Mywebroom.State.get("signInState")
+    roomState = Mywebroom.State.get("roomState")
 
-
+    console.log("Tutorial Room State "+roomState)
+    console.log("Tutorial SignIn State "+signInState)
 
     ###
     SETUP STEPS FOR SIGNED IN USERS ONLY
     ###
-    if Mywebroom.State.get("signInState")
+    if (Mywebroom.State.get("roomState") == "SELF") and Mywebroom.State.get("signInState")
 
 
 
 
 
-      # (14) Create and render Header View
-      roomHeaderView = new Mywebroom.Views.RoomHeaderView()
-      $("#xroom_header").append(roomHeaderView.el)
-      roomHeaderView.render()
-      
-      # Save a ref to the state model
-      Mywebroom.State.set("roomHeaderView", roomHeaderView)
+      ##########################
+      #  Tutorial  if the user didn't fining the tutorial, open the tutorial window
+      ##########################
+
+
+
+      console.log("sign in data")
+      console.log(Mywebroom.State.get("signInData"))
+      user_profile = Mywebroom.State.get("signInData").get("user_profile")
+      console.log(user_profile)
+      console.log(user_profile.tutorial_step)
+
+
+      # the user finish the tutorial step = 0
+      if user_profile.tutorial_step == 0
+        console.log(" user finish the tutorail ")
+
+        # (16) Conditionally Show Notification Modal
+        Mywebroom.Helpers.showModal()
+
+
+        ###
+         (11) DEAL WITH URL ENCODED PARAMS WHEN the user is Sign in his/her Room State
+        ###
+        ###
+              entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- i.e. model.get("type")
+              entity_id  : e.g. 123 <-- model.get("id")
+              came_from  : PUBLIC_SHOP, ?? <-- TODO
+              item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
+        ###
+
+        entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
+
+
+        if entity_type
+
+          entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
+
+          switch entity_type
+
+            when "BOOKMARK"
+              console.log("bookmark entity ")
+              @entityTypeBookmark(entity_id)
+
+            when "DESIGN"
+              console.log("designs entity ")
+              @entityTypeItemDesign(entity_id)
+
+            when "THEME"
+              console.log("theme entity ")
+              @entityTypeTheme(entity_id)
+
+            when "BUNDLE"
+              console.log("Bundle entity ")
+              @entityTypeBundle(entity_id)
+
+            when "ENTIRE_ROOM"
+              console.log("Entire room entity")
+              @entityTypeEntireRoom(entity_id)
+
+      else
+        # tutorial user
+        console.log("user did not finish the tutorial")
+
+        switch user_profile.tutorial_step
+
+          when 1
+            console.log("tutorial step 1 welcome ")
+            # welcome
+            view = new Mywebroom.Views.TutorialWelcomeView()
+            $("#xroom_tutorial_container").append(view.el)
+            view.render()
+
+          when 2
+            console.log("tutorial step 2 click an object ")
+            view = new Mywebroom.Views.TutorialWelcomeView()
+            $("#xroom_tutorial_container").append(view.el)
+            view.render()
+
+
+
+
+
+
+
+  ##########################
+  #  DEAL WITH URL ENCODED PARAMS
+  ##########################
 
 
 
@@ -1089,14 +1037,38 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-      # (15) Create and render Save, Cancel, Remove View
-      storeMenuSaveCancelRemoveView = new Mywebroom.Views.StoreMenuSaveCancelRemoveView()
-      $("#xroom_store_menu_save_cancel_remove").append(storeMenuSaveCancelRemoveView.el)
-      $("#xroom_store_menu_save_cancel_remove").hide()
-      storeMenuSaveCancelRemoveView.render()
-    
-      # Save a reference to the state model
-      Mywebroom.State.set("storeMenuSaveCancelRemoveView", storeMenuSaveCancelRemoveView)
+  # ENCODED PARAMS Bookmarks
+  entityTypeBookmark:(entity_id) ->
+
+    itemId = Mywebroom.Helpers.getParameterByName('item_id')
+
+
+    if not itemId
+      throw new Error("BOOKMARK WITHOUT item_id")
+
+
+    console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+
+
+    bookmarksView = new Mywebroom.Views.BookmarksView
+      items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+      item_id: itemId
+      user: Mywebroom.State.get("roomUser").get("id")
+
+
+    $('#room_bookmark_item_id_container_' + itemId).append(bookmarksView.el)
+    bookmarksView.render()
+
+    $('#room_bookmark_item_id_container_' + itemId).show()
+    $('#xroom_bookmarks').show()
+
+    # TODO Check for bookmark in my bookmarks
+    if !bookmarksView.collection.findWhere(id: parseInt(entity_id))
+      bookmarksView.renderDiscover()
+      bookmarksView.highlightItem(entity_id)
+    else
+      # we're already on MyBookmarks so don't bookmarksView.renderMyBookmarks()
+      bookmarksView.highlightItem(entity_id)
 
 
 
@@ -1105,21 +1077,288 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-      # (16) Add Images to the Save, Cancel, Remove View
-      storeRemoveButton = $.cloudinary.image "store_remove_button.png",{id: "store_remove_button"}
-      $("#xroom_store_remove").prepend(storeRemoveButton)
 
-      storeSaveButton = $.cloudinary.image "store_save_button.png",{id: "store_save_button"}
-      $("#xroom_store_save").prepend(storeSaveButton)
+  # ENCODED PARAMS Item design
+  entityTypeItemDesign:(entity_id) ->
+    console.log("designs entity ")
 
-      storeCancelButton = $.cloudinary.image "store_cancel_button.png",{id: "store_cancel_button"}
-      $("#xroom_store_cancel").prepend(storeCancelButton)
+    # (1) Show Store
+    Mywebroom.Helpers.showStore()
 
 
+    # (2) Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show')
+
+
+    # (3) Fetch the corresponding model
+    model = new Mywebroom.Models.ShowItemDesignByIdModel({id: entity_id})
+    model.fetch
+      async: false
+      success: (model, response, options) ->
+        console.log("model fetch success", response)
+      error: (model, response, options) ->
+        console.error("model fetch fail", response.responseText)
+
+
+
+    # (4) Use model to populate view
+    Mywebroom.State.get("storeMenuView").appendOne(model)
 
 
 
 
-      # (17) Conditionally Show Notification Modal
-      Mywebroom.Helpers.showModal()
 
+
+
+
+  # ENCODED PARAMS theme
+  entityTypeTheme:(entity_id) ->
+    console.log("theme entity ")
+
+    # (1) Show Store
+    Mywebroom.Helpers.showStore()
+
+
+    # (2) Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show')
+
+
+    # (3) Fetch the corresponding model
+    model = new Mywebroom.Models.ShowThemeByIdModel({id: entity_id})
+    model.fetch
+      async: false
+      success: (model, response, options) ->
+        #console.log("model fetch success")
+        error: (model, response, options) ->
+          console.error("model fetch fail", response.responseText)
+
+
+    # (4) Use model to populate view
+    Mywebroom.State.get("storeMenuView").appendOne(model)
+
+
+
+
+
+
+
+
+  # ENCODED PARAMS Bundle
+  entityTypeBundle:(entity_id) ->
+    # (1) Show Store
+    Mywebroom.Helpers.showStore()
+
+
+    # (2) Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show')
+
+
+    # (3) Fetch the corresponding model
+    model = new Mywebroom.Models.ShowBundleByIdModel({id: entity_id})
+    model.fetch
+      async: false
+      success: (model, response, options) ->
+        #console.log("model fetch success")
+        error: (model, response, options) ->
+          console.error("model fetch fail", response.responseText)
+
+
+    # (4) Use model to populate view
+    Mywebroom.State.get("storeMenuView").appendOne(model)
+
+
+
+
+
+
+
+
+
+  entityTypeEntireRoom:(entity_id) ->
+
+    # (1) Show Store
+    Mywebroom.Helpers.showStore()
+
+
+    # (2) Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show')
+
+
+    # (3) Fetch the corresponding model
+    model = new Mywebroom.Models.ShowEntireRoomByIdModel({id: entity_id})
+    model.fetch
+      async: false
+      success: (model, response, options) ->
+        #console.log("model fetch success")
+        error: (model, response, options) ->
+          console.error("model fetch fail", response.responseText)
+
+
+    # (4) Use model to populate view
+    Mywebroom.State.get("storeMenuView").appendOne(model)
+
+
+
+
+
+
+#
+#    ###
+#        (11) DEAL WITH URL ENCODED PARAMS WHEN the user is Sign in his/her Room State
+#      ###
+#
+#    ###
+#    entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- i.e. model.get("type")
+#    entity_id  : e.g. 123 <-- model.get("id")
+#    came_from  : PUBLIC_SHOP, ?? <-- TODO
+#    item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
+#    ###
+#    entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
+#
+#    if Mywebroom.State.get("roomState") == "SEFT"
+#
+#      if entity_type
+#
+#        entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
+#
+#        switch entity_type
+#
+#          when "BOOKMARK"
+#            @entityTypeBookmark(entity_id)
+#
+#            itemId = Mywebroom.Helpers.getParameterByName('item_id')
+#
+#
+#            if not itemId
+#              throw new Error("BOOKMARK WITHOUT item_id")
+#
+#
+#            console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+#
+#            bookmarksView = new Mywebroom.Views.BookmarksView
+#              items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+#              item_id: itemId
+#              user: Mywebroom.State.get("roomUser").get("id")
+#
+#            $('#room_bookmark_item_id_container_' + itemId).append(bookmarksView.el)
+#            bookmarksView.render()
+#
+#            $('#room_bookmark_item_id_container_' + itemId).show()
+#            $('#xroom_bookmarks').show()
+#
+#            # TODO Check for bookmark in my bookmarks
+#            if !bookmarksView.collection.findWhere(id: parseInt(entity_id))
+#              bookmarksView.renderDiscover()
+#              bookmarksView.highlightItem(entity_id)
+#            else
+#              # we're already on MyBookmarks so don't bookmarksView.renderMyBookmarks()
+#              bookmarksView.highlightItem(entity_id)
+#
+#
+#
+#
+#          when "DESIGN"
+#
+#          # (1) Show Store
+#            Mywebroom.Helpers.showStore()
+#
+#
+#            # (2) Switch to the hidden tab
+#            $('#storeTabs a[href="#tab_hidden"]').tab('show')
+#
+#
+#            # (3) Fetch the corresponding model
+#            model = new Mywebroom.Models.ShowItemDesignByIdModel({id: entity_id})
+#            model.fetch
+#              async: false
+#              success: (model, response, options) ->
+#                #console.log("model fetch success", response)
+#                error: (model, response, options) ->
+#                  console.error("model fetch fail", response.responseText)
+#
+#
+#
+#            # (4) Use model to populate view
+#            Mywebroom.State.get("storeMenuView").appendOne(model)
+#
+#
+#
+#
+#          when "THEME"
+#
+#          # (1) Show Store
+#            Mywebroom.Helpers.showStore()
+#
+#
+#            # (2) Switch to the hidden tab
+#            $('#storeTabs a[href="#tab_hidden"]').tab('show')
+#
+#
+#            # (3) Fetch the corresponding model
+#            model = new Mywebroom.Models.ShowThemeByIdModel({id: entity_id})
+#            model.fetch
+#              async: false
+#              success: (model, response, options) ->
+#                #console.log("model fetch success")
+#                error: (model, response, options) ->
+#                  console.error("model fetch fail", response.responseText)
+#
+#
+#            # (4) Use model to populate view
+#            Mywebroom.State.get("storeMenuView").appendOne(model)
+#
+#
+#
+#
+#          when "BUNDLE"
+#
+#          # (1) Show Store
+#            Mywebroom.Helpers.showStore()
+#
+#
+#            # (2) Switch to the hidden tab
+#            $('#storeTabs a[href="#tab_hidden"]').tab('show')
+#
+#
+#            # (3) Fetch the corresponding model
+#            model = new Mywebroom.Models.ShowBundleByIdModel({id: entity_id})
+#            model.fetch
+#              async: false
+#              success: (model, response, options) ->
+#                #console.log("model fetch success")
+#                error: (model, response, options) ->
+#                  console.error("model fetch fail", response.responseText)
+#
+#
+#            # (4) Use model to populate view
+#            Mywebroom.State.get("storeMenuView").appendOne(model)
+#
+#
+#
+#
+#          when "ENTIRE_ROOM"
+#
+#          # (1) Show Store
+#            Mywebroom.Helpers.showStore()
+#
+#
+#            # (2) Switch to the hidden tab
+#            $('#storeTabs a[href="#tab_hidden"]').tab('show')
+#
+#
+#            # (3) Fetch the corresponding model
+#            model = new Mywebroom.Models.ShowEntireRoomByIdModel({id: entity_id})
+#            model.fetch
+#              async: false
+#              success: (model, response, options) ->
+#                #console.log("model fetch success")
+#                error: (model, response, options) ->
+#                  console.error("model fetch fail", response.responseText)
+#
+#
+#            # (4) Use model to populate view
+#            Mywebroom.State.get("storeMenuView").appendOne(model)
+#
+#
+#
+#

@@ -1,0 +1,19 @@
+<div class="tutorial_container">
+</div>
+
+<div id="tutorial_open_store_container_box">
+
+            <div id="tutorial_open_store_text">
+                Customize your Room!
+            </div>
+            <p>
+                Choose from a wide array of designs.
+            </p>
+
+
+            <div id="tutorial_open_store_btn_container">
+                <a href="#" class="blue_button blue_button_light" id="tutorial_open_store_btn" >Continue</a>
+
+            </div>
+</div>
+
