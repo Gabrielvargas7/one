@@ -47,6 +47,9 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
 
+    #Turn off event so multiple scrolls dont' fetch multiple times
+    $(@el).off('scroll')
+
     #1. Increment offset
     event.data.offset += event.data.limit;
     
@@ -68,4 +71,11 @@ class Mywebroom.Views.ProfileFriendsView extends Backbone.View
     #5. if there's no more to fetch, turn off event. 
     if event.data.offset >= event.data.friendsTotal
       $(@el).off('scroll');
+    else
+      that = this
+      $(@el).off('scroll').on('scroll',that,(event)->
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+          event.data.paginate(event)            
+          )
+
 

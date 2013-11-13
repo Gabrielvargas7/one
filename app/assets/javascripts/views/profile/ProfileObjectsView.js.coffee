@@ -34,6 +34,9 @@ class Mywebroom.Views.ProfileObjectsView extends Backbone.View
     #Need Objects Total
     event.preventDefault()
     event.stopPropagation()
+
+    #Turn off event so fast scroll doesn't trigger multiple fetches
+    event.data.$('#gridItemList').off('scroll')
     #1. Increment offset
     event.data.offset += event.data.fetchLimit;
 
@@ -58,3 +61,9 @@ class Mywebroom.Views.ProfileObjectsView extends Backbone.View
     #4. if no data was fetched, turn off event.
     if !nextCollection.models.length or nextCollection.models.length < event.data.fetchLimit
       event.data.$('#gridItemList').off('scroll');
+    else
+      that = this
+      $('#gridItemList').off('scroll').on('scroll',that, (event)->
+        if $('#gridItemList').scrollTop() + $('#gridItemList').innerHeight() >= $('#gridItemList')[0].scrollHeight-100
+          event.data.paginate(event)
+        )

@@ -39,13 +39,17 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
     this
   
   askForKey:(event)->
-    #Key Request. 
+    #Key Request if a public user visits this page. 
     Mywebroom.Helpers.RequestKey(@model.get('user_id'))
   
   paginate:(event)->
     #Need Photos Total
     event.preventDefault()
     event.stopPropagation()
+
+    #Turn off scroll so multiple scrolls don't fetch multiple times
+    @$('#gridItemList').off('scroll')
+    
     #1. Increment offset
     event.data.offset += event.data.fetchLimit;
 
@@ -70,3 +74,9 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
     #4. if no data was fetched, turn off event.
     if !nextCollection.models.length or nextCollection.models.length < event.data.fetchLimit
       event.data.$('#gridItemList').off('scroll');
+    else
+      that = this
+      $('#gridItemList').off('scroll').on('scroll',that, (event)-> 
+        if $('#gridItemList').scrollTop() + $('#gridItemList').innerHeight() >= $('#gridItemList')[0].scrollHeight-10
+          event.data.paginate(event)
+          )

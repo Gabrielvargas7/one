@@ -42,6 +42,8 @@ class Mywebroom.Views.ProfileBookmarksView extends Backbone.View
 
   paginate:(event)->
 
+    $('#gridItemList').off('scroll')
+    
     event.preventDefault()
     event.stopPropagation()
     #1. Increment offset
@@ -68,3 +70,9 @@ class Mywebroom.Views.ProfileBookmarksView extends Backbone.View
     #4. if no data was fetched, turn off event.
     if !nextCollection.models.length or nextCollection.models.length < event.data.fetchLimit
       event.data.$('#gridItemList').off('scroll');
+    else
+      that = this
+      $('#gridItemList').off('scroll').on('scroll',that, (event)-> 
+        if $('#gridItemList').scrollTop() + $('#gridItemList').innerHeight() >= $('#gridItemList')[0].scrollHeight-50
+          event.data.paginate(event)
+          )
