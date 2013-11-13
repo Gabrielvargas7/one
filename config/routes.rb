@@ -764,7 +764,12 @@ Mywebroom::Application.routes.draw do
          'tutorials#json_index_tutorials_by_limit_and_offset', via: :get
 
 
+  #**************************
+  # start static content
+  #**************************
 
+  match '/users_profiles/json/update_users_profiles_tutorial_step_by_user_id_and_tutorial_step/:user_id/:tutorial_step', to:
+         'users_profiles#json_update_users_profiles_tutorial_step_by_user_id_and_tutorial_step', via: :put
 
 
 

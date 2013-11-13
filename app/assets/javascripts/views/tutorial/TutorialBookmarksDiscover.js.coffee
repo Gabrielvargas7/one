@@ -40,6 +40,13 @@ class Mywebroom.Views.TutorialBookmarksDiscoverView extends Backbone.View
     $('#xroom_bookmarks').hide()
     $('#xroom_profile').show()
 
+    user_id  = Mywebroom.State.get("signInUser").get("id")
+    tutorial_step = 7
+    # save the new step on the tutorial
+    Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
+
+
+
 
     console.log("tutorial Bookmark Discover btn")
     view = new Mywebroom.Views.TutorialWelcomeProfileView()

@@ -40,6 +40,18 @@ class Mywebroom.Views.TutorialWelcomeView extends Backbone.View
     console.log("welcome to tutorial")
 
 
+
+    #    signInUser  = Mywebroom.State.get("signInUser").get("id")
+    #    user_id = signInUser.get('id')
+
+    user_id  = Mywebroom.State.get("signInUser").get("id")
+    tutorial_step = 2
+    console.log("user id "+user_id+" and tutorial step "+tutorial_step)
+    # save the new step on the tutorial
+    Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
+
+
+
     view = new Mywebroom.Views.TutorialClickItemView()
     $("#xroom_tutorial_container").append(view.el)
     view.render()

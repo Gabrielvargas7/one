@@ -38,6 +38,12 @@ class Mywebroom.Views.TutorialShowMeMyRoomView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+    user_id  = Mywebroom.State.get("signInUser").get("id")
+    tutorial_step = 0
+    # save the new step on the tutorial
+    Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
+
+
     console.log("tutorial Show me my Room ")
 
     console.log('Kill: ', this);

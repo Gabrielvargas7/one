@@ -180,6 +180,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     $('#xroom_profile').html(@profileView.el)
     @profileView.render()
     $('#xroom_profile').hide()
+    Mywebroom.State.set('profileHomeView',@profileView)
 
 
 

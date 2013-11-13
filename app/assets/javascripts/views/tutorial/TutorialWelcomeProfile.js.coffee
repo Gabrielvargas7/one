@@ -37,6 +37,17 @@ class Mywebroom.Views.TutorialWelcomeProfileView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+    @profileHomeView = Mywebroom.State.get('profileHomeView')
+    @profileHomeView.showProfileFriends()
+
+    user_id  = Mywebroom.State.get("signInUser").get("id")
+    tutorial_step = 8
+    # save the new step on the tutorial
+    Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
+
+
+
+
     console.log("tutorial welcome profile btn")
     view = new Mywebroom.Views.TutorialFriendsProfileView()
     $("#xroom_tutorial_container").append(view.el)

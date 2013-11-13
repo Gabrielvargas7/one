@@ -16,8 +16,8 @@ class UsersProfilesController < ApplicationController
 
 
   before_filter :correct_user, only:[
-        :edit_users_profiles_by_user_id,
-        :update_users_profiles_by_user_id
+                    :edit_users_profiles_by_user_id,
+                    :update_users_profiles_by_user_id
   ]
 
   before_filter :admin_user,
@@ -29,6 +29,19 @@ class UsersProfilesController < ApplicationController
                       :update,
                       :create,
                 ]
+
+  before_filter :json_signed_in_user,
+                only:[
+                    :json_update_users_profiles_tutorial_step_by_user_id_and_tutorial_step
+
+                ]
+
+  before_filter :json_correct_user,
+                only:[
+                    :json_update_users_profiles_tutorial_step_by_user_id_and_tutorial_step
+                ]
+
+
 
 
 
@@ -157,5 +170,39 @@ class UsersProfilesController < ApplicationController
       end
     end
   end
+
+
+
+  #***********************************
+  # Json methods for the room users
+  #***********************************
+
+  # PUT change tutorial step
+  #  /users_profiles/json/update_users_profiles_tutorial_step_by_user_id_and_tutorial_step/:user_id/:tutorial_step
+  #  /users_profiles/json/update_users_profiles_tutorial_step_by_user_id_and_tutorial_step/24/1.json
+  # Return ->
+  # Success    ->  head  200 ok
+
+
+  def json_update_users_profiles_tutorial_step_by_user_id_and_tutorial_step
+
+
+    respond_to do |format|
+      if UsersProfile.exists?(user_id:params[:user_id])
+        @user_profile = UsersProfile.find_by_user_id(params[:user_id])
+
+        if @user_profile.update_attributes(tutorial_step:params[:tutorial_step])
+
+          format.json { render json: @user_profile.as_json(only: [:user_id,:tutorial_step]), status: :ok }
+
+        else
+          format.json { render json: @user_profile.errors, status: :unprocessable_entity }
+        end
+
+
+      end
+    end
+  end
+
 
 end

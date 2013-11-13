@@ -46,8 +46,16 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
 
     Mywebroom.Helpers.StoreSaveCancelRemoveHelper.saveNewItems()
 
-    #Open bookmarks discovery
 
+    user_id  = Mywebroom.State.get("signInUser").get("id")
+    tutorial_step = 5
+    # save the new step on the tutorial
+    Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
+
+
+
+
+    #Open bookmarks discovery
     itemId = Mywebroom.State.get("tutorialItem")
 
     bookmarksView = new Mywebroom.Views.BookmarksView
