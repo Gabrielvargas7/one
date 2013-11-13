@@ -38,6 +38,8 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+    $('#xroom_profile').hide()
+
     console.log("tutorial Friends Profile")
     view = new Mywebroom.Views.TutorialShowMeMyRoomView()
     $("#xroom_tutorial_container").append(view.el)

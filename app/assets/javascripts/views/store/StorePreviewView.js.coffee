@@ -59,7 +59,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
         obj.set("image_name", obj.get("image_name_set"))
 
 
-    @model = obj
+    #@model = obj
 
 
 

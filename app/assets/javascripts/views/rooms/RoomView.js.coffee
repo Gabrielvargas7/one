@@ -1063,6 +1063,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $('#room_bookmark_item_id_container_' + itemId).show()
     $('#xroom_bookmarks').show()
 
+
     # TODO Check for bookmark in my bookmarks
     if !bookmarksView.collection.findWhere(id: parseInt(entity_id))
       bookmarksView.renderDiscover()

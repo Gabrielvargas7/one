@@ -31,6 +31,7 @@ $(document).ready ->
 
       $activeDesign       : false  # A refernce to the element of the design in focus*
       activeDesignIsHidden: false  # yes or no
+      tutorialItem        : 13     # is the number of the item the where click on the turotial default is 13
 
       roomView                     : false  # A reference to this view
       roomHeaderView               : false  # A reference to this view
@@ -860,9 +861,11 @@ $(document).ready ->
           # Tutorial -> open the editor store on the item that was click
           dom_item_id = $(this).data().designItemId
 
+
           console.log("Tutorial -> click item: "+dom_item_id)
           console.log("room step "+Mywebroom.State.get("signInData").get("user_profile").tutorial_step.toString())
           console.log("Open the editor here on the item that where click-it")
+
 
 
           model = Mywebroom.Data.ItemModels[dom_item_id]
@@ -870,6 +873,14 @@ $(document).ready ->
           if model.get("clickable") is "yes"
             # this are specila item 2 = bird cage , 21 = portrait , 20 = pinboard
             if (dom_item_id != 2 and dom_item_id != 20 and dom_item_id != 21)
+
+              ###
+                CENTER ITEM
+              ###
+              Mywebroom.Helpers.centerItem(dom_item_id)
+
+              # set the item for the tutorial
+              Mywebroom.State.set("tutorialItem",dom_item_id)
 
 
               console.log("David code should be here -> Open the editor here on the item that where click-it")
