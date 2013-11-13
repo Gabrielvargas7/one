@@ -29,9 +29,13 @@ $(document).ready ->
 
       initialItems: false # Backbone collection of room items
 
-      $activeDesign       : false  # A refernce to the element of the design in focus*
-      activeDesignIsHidden: false  # yes or no
-      tutorialItem        : 13     # is the number of the item the where click on the turotial default is 13
+      $activeDesign           : false  # A refernce to the element of the design in focus*
+      activeDesignIsHidden    : false  # yes or no
+      tutorialItem            : 13     # is the number of the item the where click on the turotial default is 13
+      tutorialBookmarkCounter : 0      #  counter number of bookmark on tutorial
+      tutorialStep            : 0      #  step of the tutorial default is 0
+
+
 
       roomView                     : false  # A reference to this view
       roomHeaderView               : false  # A reference to this view
@@ -40,6 +44,8 @@ $(document).ready ->
       roomScrollerLeftView         : false  # A reference to this view
       roomScrollerRightView        : false  # A reference to this view
       tutorialItemClick            : false  # A reference to this view
+      tutorialBookmarkDiscover     : false  # A reference to this view
+
       friendItemPopupView          : false  # A reference to the popup view
       profileHomeView              : false  # A reference to this view
 
@@ -865,7 +871,10 @@ $(document).ready ->
       $(this).click( (event)->
 
 
-        if ((Mywebroom.State.get("roomState") == "SELF") and Mywebroom.State.get("signInState") and Mywebroom.State.get("signInData").get("user_profile").tutorial_step != 0)
+        if ((Mywebroom.State.get("roomState") == "SELF") and Mywebroom.State.get("signInState") and Mywebroom.State.get("tutorialStep") != 0)
+
+
+
 
           # Tutorial -> open the editor store on the item that was click
           dom_item_id = $(this).data().designItemId
@@ -900,6 +909,7 @@ $(document).ready ->
 
               console.log("David code should be here -> Open the editor here on the item that where click-it")
               Mywebroom.Helpers.showStore()
+              Mywebroom.Helpers.Editor.clickItem(dom_item_id)
 
 
 

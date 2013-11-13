@@ -508,7 +508,7 @@ class ShopController < ApplicationController
         redirect_to room_rooms_path(current_user.username,came_from:params[:came_from],entity_type:params[:entity_type],entity_id:params[:entity_id])
       end
     else
-      redirect_to root_path
+      redirect_to xroom_rooms_path
     end
 
   end

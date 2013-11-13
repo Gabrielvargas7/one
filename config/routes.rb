@@ -772,6 +772,10 @@ Mywebroom::Application.routes.draw do
          'users_profiles#json_update_users_profiles_tutorial_step_by_user_id_and_tutorial_step', via: :put
 
 
+  match '/users_profiles/json/show_users_profile_tutorial_step_by_user_id/:user_id', to:
+         'users_profiles#json_show_users_profile_tutorial_step_by_user_id', via: :get
+
+
 
   #get "users/new"
 

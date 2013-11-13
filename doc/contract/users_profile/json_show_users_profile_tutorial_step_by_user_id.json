@@ -1,0 +1,10 @@
+//# Get tutorial steps
+//# GET /users_profiles/json/show_users_profile_tutorial_step_by_user_id/:user_id
+//# GET /users_profiles/json/show_users_profile_tutorial_step_by_user_id/28.json
+//#Return head 200 OK
+
+{
+    "tutorial_step":0,
+    "user_id":27
+
+}
