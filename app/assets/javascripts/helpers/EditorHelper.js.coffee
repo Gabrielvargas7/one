@@ -406,4 +406,27 @@ Mywebroom.Helpers.Editor = {
         row_number += 1
         row_line = "<ul id=" + row_id + row_number + "></ul>"
         $(tab_id).append(row_line)
+
+
+
+
+
+
+
+  showItem: (num) ->
+
+
+    ###
+    Takes the id of an item. This corresponds to the item_id of a design.
+    We then do 3 things:
+
+    (1) Switch to the 'hidden' tab
+    (2) Look up all the models associated with this id
+    (3) Render a view for ea. of the models to the display area
+
+    Note: we don't need to add social views when we're in the tutorial
+    ###
+
+
+
 }
