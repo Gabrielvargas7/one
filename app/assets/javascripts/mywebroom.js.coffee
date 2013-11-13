@@ -108,7 +108,7 @@ $(document).ready ->
 
   Mywebroom.State.on('change:tabContentItems', ->
 
-    console.log('change:tabContentItems')
+    #console.log('change:tabContentItems')
 
     data = Mywebroom.State.get('tabContentItems')
     Mywebroom.Helpers.Editor.appendCollection(data, 'ITEMS')
@@ -120,7 +120,7 @@ $(document).ready ->
 
   Mywebroom.State.on('change:tabContentThemes', ->
 
-    console.log('change:tabContentThemes')
+    #console.log('change:tabContentThemes')
 
     data = Mywebroom.State.get('tabContentThemes')
     Mywebroom.Helpers.Editor.appendCollection(data, 'THEMES')
@@ -132,7 +132,7 @@ $(document).ready ->
 
   Mywebroom.State.on('change:tabContentBundles', ->
 
-    console.log('change:tabContentBundles')
+    #console.log('change:tabContentBundles')
 
     data = Mywebroom.State.get('tabContentBundles')
     Mywebroom.Helpers.Editor.appendCollection(data, 'BUNDLES')
@@ -144,7 +144,7 @@ $(document).ready ->
 
   Mywebroom.State.on('change:tabContentEntireRooms', ->
 
-    console.log('change:tabContentEntireRooms')
+    #console.log('change:tabContentEntireRooms')
 
     data = Mywebroom.State.get('tabContentEntireRooms')
     Mywebroom.Helpers.Editor.appendCollection(data, 'ENTIRE ROOMS')
@@ -156,7 +156,7 @@ $(document).ready ->
 
   Mywebroom.State.on('change:tabContentHidden', ->
 
-    console.log('change:tabContentHidden')
+    #console.log('change:tabContentHidden')
 
     data = Mywebroom.State.get('tabContentHidden')
     Mywebroom.Helpers.Editor.appendCollection(data, 'HIDDEN')
@@ -850,8 +850,8 @@ $(document).ready ->
     $('img.room_design').each( ->
 
       $(this).off('click') # So we don't have multiple click handlers
-      
-      
+
+
       $(this).click( (event)->
 
 
@@ -893,20 +893,20 @@ $(document).ready ->
           # item_id extracted from the clicked element
           dom_item_id = $(this).data().designItemId
 
-        
-        
+
+
           # model associated with this item_id
           model = Mywebroom.Data.ItemModels[dom_item_id]
-        
-        
+
+
           ###
           Close all bookmark containers except this item's
           ###
           for key of Mywebroom.Data.ItemIds
             el = $('#room_bookmark_item_id_container_' + key)
             if dom_item_id.toString() is key.toString() then el.show() else el.hide()
-        
-    
+
+
           ###
           Show / Hide various divs
           ###
@@ -914,7 +914,7 @@ $(document).ready ->
           $('#xroom_storepage').hide()
           $('#xroom_profile').hide()
           $('#xroom_bookmarks').show()
-   
+
           ###
           Create bookmark view (maybe)
           ###

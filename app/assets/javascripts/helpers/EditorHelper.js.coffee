@@ -99,7 +99,7 @@ Mywebroom.Helpers.Editor = {
           async: false
           url: designs.url(limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " designs found! <-- ALL")
+            #console.log(collection.length + " designs found! <-- ALL")
 
           error: (collection, response, options) ->
             console.error("search all: designs fetch fail", response.responseText)
@@ -113,7 +113,7 @@ Mywebroom.Helpers.Editor = {
           async: false
           url: themes.url(limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " themes found! <-- ALL")
+            #console.log(collection.length + " themes found! <-- ALL")
 
           error: ->
             console.error("search all: themes fetch fail", response.responseText)
@@ -127,7 +127,7 @@ Mywebroom.Helpers.Editor = {
           async: false
           url: bundles.url(limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " bundles found! <-- ALL")
+            #console.log(collection.length + " bundles found! <-- ALL")
 
           error: (collection, response, options) ->
             console.error("search all: bundles fetch fail", response.responseText)
@@ -142,7 +142,7 @@ Mywebroom.Helpers.Editor = {
           async: false
           url: entireRooms.url(limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " entire rooms found! <-- ALL")
+            #console.log(collection.length + " entire rooms found! <-- ALL")
 
           error: (collection, response, options) ->
             console.error("search all: entire rooms fetch fail", response.responseText)
@@ -176,7 +176,7 @@ Mywebroom.Helpers.Editor = {
         everything = new Backbone.Collection(data)
 
 
-        console.log(everything.length + " total things found! <-- ALL")
+        #console.log(everything.length + " total things found! <-- ALL")
 
 
         #console.log("everything", everything)
@@ -199,7 +199,7 @@ Mywebroom.Helpers.Editor = {
           async  : false
           url    : collection.url(limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " designs found!")
+            #console.log(collection.length + " designs found!")
 
           error: (collection, response, options) ->
             console.error("search objects fetch fail", response.responseText)
@@ -222,7 +222,7 @@ Mywebroom.Helpers.Editor = {
           async: false
           url: collection.url(limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " themes found!")
+            #console.log(collection.length + " themes found!")
 
           error: (collection, response, options) ->
             console.error("search themes fetch fail", response.responseText)
@@ -243,7 +243,7 @@ Mywebroom.Helpers.Editor = {
           async: false
           url: collection.url(limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " bundles found!")
+            #console.log(collection.length + " bundles found!")
 
           error: (collection, response, options) ->
             console.error("search bundles fetch fail", response.responseText)
@@ -266,7 +266,7 @@ Mywebroom.Helpers.Editor = {
           async  : false
           url    : collection.url(limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " entire rooms found!")
+            #console.log(collection.length + " entire rooms found!")
 
           error: (collection, response, options) ->
             console.error("search entire rooms fetch fail", response.responseText)
@@ -291,7 +291,7 @@ Mywebroom.Helpers.Editor = {
         # Reset the collection
         reset = collection.reset(parsed)
 
-        console.log(reset.length + " entire rooms found! (after parse)")
+        #console.log(reset.length + " entire rooms found! (after parse)")
 
         return reset
 
@@ -316,7 +316,7 @@ Mywebroom.Helpers.Editor = {
           async:   false
           url:     collection.url(type, limit, offset, keyword)
           success: (collection, response, options) ->
-            console.log(collection.length + " designs found!")
+            #console.log(collection.length + " designs found!")
 
           error: (collection, response, options) ->
             console.error("search designs fetch fail", response.responseText)
@@ -406,8 +406,4 @@ Mywebroom.Helpers.Editor = {
         row_number += 1
         row_line = "<ul id=" + row_id + row_number + "></ul>"
         $(tab_id).append(row_line)
-
-
-
-
 }
