@@ -974,33 +974,46 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         ###
 
         entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
+        came_from = Mywebroom.Helpers.getParameterByName('came_from')
 
+        #Friends has no parameter: came_from
+        #The only things that have Came_from are SHOP and EMAIL. 
+        #Test for CAME_FROM Email case. Then test entity_type. 
 
-        if entity_type
+        if came_from
+          switch came_from
 
-          entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
+            when "EMAIL_REQUEST_KEY"
+              console.log("Profile Request Accept entity")
+              @entityTypeRequest()
 
-          switch entity_type
+            when "PUBLIC_SHOP", "FRIEND_ROOM" , "PUBLIC_ROOM"
 
-            when "BOOKMARK"
-              console.log("bookmark entity ")
-              @entityTypeBookmark(entity_id)
+              if entity_type
+                entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
 
-            when "DESIGN"
-              console.log("designs entity ")
-              @entityTypeItemDesign(entity_id)
+                switch entity_type
 
-            when "THEME"
-              console.log("theme entity ")
-              @entityTypeTheme(entity_id)
+                  when "BOOKMARK"
+                    console.log("bookmark entity ")
+                    @entityTypeBookmark(entity_id)
 
-            when "BUNDLE"
-              console.log("Bundle entity ")
-              @entityTypeBundle(entity_id)
+                  when "DESIGN"
+                    console.log("designs entity ")
+                    @entityTypeItemDesign(entity_id)
 
-            when "ENTIRE_ROOM"
-              console.log("Entire room entity")
-              @entityTypeEntireRoom(entity_id)
+                  when "THEME"
+                    console.log("theme entity ")
+                    @entityTypeTheme(entity_id)
+
+                  when "BUNDLE"
+                    console.log("Bundle entity ")
+                    @entityTypeBundle(entity_id)
+
+                  when "ENTIRE_ROOM"
+                    console.log("Entire room entity")
+                    @entityTypeEntireRoom(entity_id)
+
 
       else
         # tutorial user
@@ -1181,6 +1194,18 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     # (4) Use model to populate view
     Mywebroom.State.get("storeMenuView").appendOne(model)
+
+  entityTypeRequest:() ->
+    #Show Profile Requests Page. 
+
+    #1. Grab Profile View reference
+    profileView = Mywebroom.State.get('profileHomeView')
+
+    #2. Show Requests Page. 
+    profileView.showProfileKeyRequests() if profileView
+
+    #displayProfile
+    Mywebroom.State.get('roomHeaderView').displayProfile()
 
 
 
