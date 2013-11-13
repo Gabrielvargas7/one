@@ -1115,23 +1115,23 @@ $(document).ready ->
 
 
     #  $('#xroom_items_0').attr('data-current_screen_position','0')
-#    $('#xroom_items_0').css({
-#      'left': Math.floor(-2200 - item_location_x + 100)
-#    })
-#
-#    #console.log('room top', $('#xroom_items_0').css('top'))
-#    #console.log('room bottom', $('#xroom_items_0').css('bottom'))
-#
-#    $('#xroom_items_1').attr('data-current_screen_position','1')
-#    $('#xroom_items_1').css({
-#      'left': Math.floor(0 - item_location_x + 100)
-#    })
-#
-#    $('#xroom_items_2').attr('data-current_screen_position','2')
-#    $('#xroom_items_2').css({
-#      'left': Math.floor(2200 - item_location_x + 100)
-#    })
-#
+    #    $('#xroom_items_0').css({
+    #      'left': Math.floor(-2200 - item_location_x + 100)
+    #    })
+    #
+    #    #console.log('room top', $('#xroom_items_0').css('top'))
+    #    #console.log('room bottom', $('#xroom_items_0').css('bottom'))
+    #
+    #    $('#xroom_items_1').attr('data-current_screen_position','1')
+    #    $('#xroom_items_1').css({
+    #      'left': Math.floor(0 - item_location_x + 100)
+    #    })
+    #
+    #    $('#xroom_items_2').attr('data-current_screen_position','2')
+    #    $('#xroom_items_2').css({
+    #      'left': Math.floor(2200 - item_location_x + 100)
+    #    })
+    #
 
     ###
     ScrollTo Y Value - 100
