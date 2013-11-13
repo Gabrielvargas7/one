@@ -247,59 +247,61 @@ $(document).ready ->
               #console.log("PAGINATE INITIAL - " + type + "\tOffset: " + offset)
 
               data = Mywebroom.Helpers.Editor.paginateInitial(type, limit, offset)
-              #console.log(data)
+              #console.log(data.length)
 
-              switch type
+              unless data.length is 0
 
-                when "THEMES"
+                switch type
 
-                  col = Mywebroom.State.get('tabContentThemes')
-                  #console.log('initial length', col.length)
+                  when "THEMES"
 
-                  col.add(data.toJSON(), {silent: false})
-                  #console.log('length after add', col.length)
+                    col = Mywebroom.State.get('tabContentThemes')
+                    #console.log('initial length', col.length)
 
-                  Mywebroom.State.set('tabContentThemes', col)
-                  Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
+                    col.add(data.toJSON(), {silent: false})
+                    #console.log('length after add', col.length)
 
-                when "BUNDLES"
+                    Mywebroom.State.set('tabContentThemes', col)
+                    Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
 
-                  col = Mywebroom.State.get('tabContentBundles')
-                  #console.log('initial length', col.length)
+                  when "BUNDLES"
 
-                  col.add(data.toJSON(), {silent: false})
-                  #console.log('length after add', col.length)
+                    col = Mywebroom.State.get('tabContentBundles')
+                    #console.log('initial length', col.length)
 
-
-                  Mywebroom.State.set('tabContentBundles', col)
-                  Mywebroom.Helpers.Editor.appendCollection(col, 'BUNLDES')
-
-                when "ENTIRE ROOMS"
-
-                  col = Mywebroom.State.get('tabContentEntireRooms')
-                  #console.log('initial length', col.length)
-
-                  col.add(data.toJSON(), {silent: false})
-                  #console.log('length after add', col.length)
+                    col.add(data.toJSON(), {silent: false})
+                    #console.log('length after add', col.length)
 
 
-                  Mywebroom.State.set('tabContentEntireRooms', col)
-                  Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
+                    Mywebroom.State.set('tabContentBundles', col)
+                    Mywebroom.Helpers.Editor.appendCollection(col, 'BUNLDES')
 
-                else
+                  when "ENTIRE ROOMS"
 
-                  col = Mywebroom.State.get('tabContentHidden')
-                  #console.log('initial length', col.length)
+                    col = Mywebroom.State.get('tabContentEntireRooms')
+                    #console.log('initial length', col.length)
 
-                  col.add(data.toJSON(), {silent: false})
-                  #console.log('length after add', col.length)
-
-
-                  Mywebroom.State.set('tabContentHidden', col)
-                  Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
+                    col.add(data.toJSON(), {silent: false})
+                    #console.log('length after add', col.length)
 
 
+                    Mywebroom.State.set('tabContentEntireRooms', col)
+                    Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
 
+                  else
+
+                    col = Mywebroom.State.get('tabContentHidden')
+                    #console.log('initial length', col.length)
+
+                    col.add(data.toJSON(), {silent: false})
+                    #console.log('length after add', col.length)
+
+
+                    Mywebroom.State.set('tabContentHidden', col)
+                    Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
+
+
+                Mywebroom.Data.Editor.offset += limit
 
 
             when "SEARCH"
@@ -307,38 +309,43 @@ $(document).ready ->
               #console.log("PAGINATE SEARCH - " + type + "\tOffset: " + offset + "\tKeyword: " + keyword)
 
               data = Mywebroom.Helpers.Editor.paginateSearch(type, limit, offset, keyword)
-              #console.log(data)
+              #console.log(data.length)
 
 
-              switch type
+              unless data.length is 0
 
-                when "THEMES"
+                switch type
 
-                  col = Mywebroom.State.get('tabContentThemes')
-                  col.add(data.toJSON(), {silent: false})
-                  Mywebroom.State.set('tabContentThemes', col)
-                  Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
+                  when "THEMES"
 
-                when "BUNDLES"
+                    col = Mywebroom.State.get('tabContentThemes')
+                    col.add(data.toJSON(), {silent: false})
+                    Mywebroom.State.set('tabContentThemes', col)
+                    Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
 
-                  col = Mywebroom.State.get('tabContentBundles')
-                  col.add(data.toJSON(), {silent: false})
-                  Mywebroom.State.set('tabContentBundles', col)
-                  Mywebroom.Helpers.Editor.appendCollection(col, 'BUNDLES')
+                  when "BUNDLES"
 
-                when "ENTIRE ROOMS"
+                    col = Mywebroom.State.get('tabContentBundles')
+                    col.add(data.toJSON(), {silent: false})
+                    Mywebroom.State.set('tabContentBundles', col)
+                    Mywebroom.Helpers.Editor.appendCollection(col, 'BUNDLES')
 
-                  col = Mywebroom.State.get('tabContentEntireRooms')
-                  col.add(data.toJSON(), {silent: false})
-                  Mywebroom.State.set('tabContentEntireRooms', col)
-                  Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
+                  when "ENTIRE ROOMS"
 
-                else
+                    col = Mywebroom.State.get('tabContentEntireRooms')
+                    col.add(data.toJSON(), {silent: false})
+                    Mywebroom.State.set('tabContentEntireRooms', col)
+                    Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
 
-                  col = Mywebroom.State.get('tabContentHidden')
-                  col.add(data.toJSON(), {silent: false})
-                  Mywebroom.State.set('tabContentHidden', col)
-                  Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
+                  else
+
+                    col = Mywebroom.State.get('tabContentHidden')
+                    col.add(data.toJSON(), {silent: false})
+                    Mywebroom.State.set('tabContentHidden', col)
+                    Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
+
+
+                Mywebroom.Data.Editor.offset += limit
     )
 
 
