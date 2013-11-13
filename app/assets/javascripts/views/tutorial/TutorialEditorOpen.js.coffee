@@ -37,6 +37,8 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+    Mywebroom.Helpers.StoreSaveCancelRemoveHelper.saveNewItems()
+
     console.log("tutorial editor open")
 
     view = new Mywebroom.Views.TutorialWelcomeBookmarksView()
