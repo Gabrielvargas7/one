@@ -12,7 +12,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
       @collection.fetch
         url:@collection.url(Mywebroom.State.get('signInUser').get('id'),@model.get('item_id'))
-        async:false;
+        async:false
       #@collection = @itemBookmarksCollection.first(4)
       @model.on('change',@render,this)
       @tagActiveSites()
