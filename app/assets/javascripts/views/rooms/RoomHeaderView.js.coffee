@@ -110,7 +110,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       $('#xroom_header_profile').remove()
       $('.dropdown').remove()
       @showProfile(null)
-
+      
+    if roomState is "FRIEND"
+      @showProfile(null)
 
     $('#xroom_header_myroom').remove() if signInState isnt true
       
