@@ -864,6 +864,11 @@ $(document).ready ->
           console.log("room step "+Mywebroom.State.get("signInData").get("user_profile").tutorial_step.toString())
           console.log("Open the editor here on the item that where click-it")
 
+          ###
+            CENTER ITEM
+          ###
+          Mywebroom.Helpers.centerItem(dom_item_id)
+
 
           model = Mywebroom.Data.ItemModels[dom_item_id]
 
