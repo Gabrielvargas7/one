@@ -411,22 +411,153 @@ Mywebroom.Helpers.Editor = {
 
 
 
+  clickItem: (itemId) ->
 
 
-  showItem: (num) ->
+    console.log("click item")
+
+    ###
+    (0) Pagination
+    (1) Change to hidden tab
+    (2) Conditionally show remove button
+    (3) Conditionally highlight room item
+    (4) Fetch corresponding designs
+    (5) Update views
+    (6) Center item
+    (7) Update filters
+    ###
+
+
+    # Pagination
+    Mywebroom.Data.Editor.paginate = true
+    Mywebroom.Data.Editor.contentPath = "INITIAL"
+    Mywebroom.Data.Editor.offset = 0
+
+
+
+    # Switch to the hidden tab
+    $('#storeTabs a[href="#tab_hidden"]').tab('show')
+
+
+
+
+
+    Mywebroom.Data.Editor.contentType = itemId
+
 
 
     ###
-    Takes the id of an item. This corresponds to the item_id of a design.
-    We then do 3 things:
-
-    (1) Switch to the 'hidden' tab
-    (2) Look up all the models associated with this id
-    (3) Render a view for ea. of the models to the display area
-
-    Note: we don't need to add social views when we're in the tutorial
+    Set our store helper
     ###
+    Mywebroom.State.set("storeHelper", itemId)
 
 
 
+    ###
+    Find the design that was clicked and
+    create a reference to it's container element
+    ###
+    $activeDesign = $("[data-design-item-id=" + itemId + "]")
+
+
+    # Save this object to our state model
+    Mywebroom.State.set("$activeDesign", $activeDesign)
+
+
+
+
+    # Show the Save, Cancel, Remove view and remove button
+    # iff the object design's roomHide property is "no"
+    if $activeDesign.attr("data-room-hide")  is "no"
+      # Show the Save, Cancel, Remove view
+      $("#xroom_store_menu_save_cancel_remove").show()
+
+
+      # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+      # Hide the save button
+      $('#xroom_store_save').hide()
+
+      # Hide the cancel button
+      $('#xroom_store_cancel').hide()
+
+      # Show the remove button
+      $('#xroom_store_remove').show()
+
+
+      ###
+      Highlight Image
+      ###
+      Mywebroom.Helpers.highLight(itemId)
+
+    else
+      # Show the Save, Cancel, Remove view
+      $("#xroom_store_menu_save_cancel_remove").hide()
+
+
+      # SET STATE OF SAVE, CANCEL, REMOVE BUTTONS
+      # Hide the save button
+      $('#xroom_store_save').hide()
+
+      # Hide the cancel button
+      $('#xroom_store_cancel').hide()
+
+      # Hide the remove button
+      $('#xroom_store_remove').hide()
+
+
+
+
+
+    ###
+    FETCH CORRESPONDING DESIGNS
+    ###
+    designs = Mywebroom.Helpers.Editor.paginateInitial(itemId, 10, 0)
+
+
+
+
+    ###
+    UPDATE VIEWS
+    ###
+    Mywebroom.State.set('tabContentHidden', designs)
+
+
+
+
+
+    ###
+    CENTER ITEM
+    ###
+    Mywebroom.Helpers.centerItem(itemId)
+
+
+
+
+    ###
+    FILTERS - START
+    ###
+    # Show all the dropdown filters
+    Mywebroom.Helpers.expandFilters()
+
+
+    # Collapse location filter
+    $('#dropdown-location').addClass('collapse')
+
+
+    # Populate the filters
+    categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection()
+    categories.fetch
+      async  : false
+      url    : categories.url itemId
+      success: (response) ->
+        #console.log("designs fetch success", response)
+        myModel = categories.first()
+        Mywebroom.Helpers.setCategories(myModel.get('items_designs_categories'))
+        Mywebroom.Helpers.setBrands(myModel.get('items_designs_brands'))
+        Mywebroom.Helpers.setStyles(myModel.get('items_designs_styles'))
+        Mywebroom.Helpers.setColors(myModel.get('items_designs_colors'))
+        Mywebroom.Helpers.setMakes(myModel.get('items_designs_makes'))
+    ###
+    FILTERS - END
+    ###
 }
