@@ -1,12 +1,12 @@
 class Mywebroom.Views.StoreMenuView extends Backbone.View
-  
-  
+
+
   #*******************
   #**** Template
   #*******************
   template: JST['store/StoreMenuTemplate']
-  
-  
+
+
   #*******************
   #**** Events
   #*******************
@@ -22,8 +22,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   }
 
 
-  
-  
+
+
   #*******************
   #**** Render
   #*******************
@@ -33,11 +33,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     RENDER VIEW
     ###
     $(@el).append(@template())
-   
-    
-    
-    
-    
+
+
+
+
+
     ###
     FETCH INITIAL DATA - START
     ###
@@ -49,10 +49,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         #console.log("initial items fetch success", collection)
       error: (collection, response, options) ->
         console.log("initial items fetch fail", response.responseText)
-    
+
     Mywebroom.State.set("initialItems", items)
-    
-    
+
+
     ###
     Set the objects we use to keep handy info about the items
     ###
@@ -65,19 +65,19 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Turn on hover
     ###
     if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
-    
-  
+
+
 
 
     # themes
     themes = Mywebroom.Helpers.Editor.paginateInitial("THEMES", 10, 0)
-  
 
 
-  
+
+
     # bundles
     bundles = Mywebroom.Helpers.Editor.paginateInitial("BUNDLES", 10, 0)
-  
+
 
 
 
@@ -90,10 +90,10 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     FETCH INITIAL DATA - END
     ###
-    
-    
-    
-    
+
+
+
+
     ###
     SPLAT DATA TO STORE - START
     ###
@@ -102,33 +102,33 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.State.set('tabContentBundles', bundles)
     Mywebroom.State.set('tabContentEntireRooms', entireRooms)
 
-   
-    
-    
-    
-    
-    
+
+
+
+
+
+
     ###
     CONVENTION
     ###
     this
-   
-    
-  
-  
-   
+
+
+
+
+
   #*******************
   #**** Events
   #*******************
   clickNavTab: (event) ->
-    
+
     #console.log("Manual tab switch")
-    
+
     event.preventDefault()
     #e.stopPropagation() <-- Prevents tabs from functioning
-    
+
     ###
-    SWITCH THE SEARCH DROPDOWN TO ALL - START
+    SWITCH THE SEARCH DROPDOWN TO ALL
     ###
     $('#store-search-dropdown li').removeClass('active') # Remove active class
     $("#store-search-all").addClass("active") # Add active class to ALL
@@ -140,15 +140,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     $('.tab-content').scrollTop(0)
 
-    
-  
-  
-    
-    
+
+
+
+
+
   clickObjects: (event) ->
-    
+
     #console.log("OBJECTS clicked")
-    
+
     event.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
 
@@ -169,42 +169,42 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
 
-    
+
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
-    
+
     # Hide the search filters
     Mywebroom.Helpers.collapseFilters()
 
     # Turn pagination off
     Mywebroom.Data.Editor.paginate = false
     Mywebroom.Data.Editor.offset = 0 # <-- is this necessary?
-    
-    
-    
-    
+
+
+
+
   clickThemes: (event) ->
-    
+
     #console.log("THEMES clicked")
 
     event.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
-    
+
     ###
     Set our store helper
     ###
     Mywebroom.State.set("storeHelper", "THEMES")
-    
-    
-    
+
+
+
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
-    
-    
+
+
     # Re-show nav pills
     Mywebroom.Helpers.expandFilters()
-    
-    
+
+
      # Add the collapse class
     $('#dropdown-category').addClass('collapse')
 
@@ -216,8 +216,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Data.Editor.contentPath = "INITIAL"
     Mywebroom.Data.Editor.contentType = "THEMES"
     Mywebroom.Data.Editor.offset = 0
-    
-    
+
+
     # Load the Bundles' Categories Collection
     categories = new Mywebroom.Collections.IndexThemesCategoriesCollection()
     categories.fetch
@@ -231,32 +231,32 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         Mywebroom.Helpers.setMakes(model.get('themes_makes'))
       error: (collection, response, options) ->
         console.error("theme fetch fail", response.responseText)
-       
-    
-    
-   
-  
+
+
+
+
+
   clickBundles: (event) ->
-    
+
     event.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
-    
-    
+
+
     ###
     Set our store helper
     ###
     Mywebroom.State.set("storeHelper", "BUNDLES")
-    
-    
-    
+
+
+
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
-    
-    
+
+
     # Re-show nav pills
     Mywebroom.Helpers.expandFilters()
-    
-    
+
+
     # Add the collapse class
     $('#dropdown-category').addClass('collapse')
 
@@ -268,8 +268,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Data.Editor.contentPath = "INITIAL"
     Mywebroom.Data.Editor.contentType = "BUNDLES"
     Mywebroom.Data.Editor.offset = 0
-    
-    
+
+
     # Load the Bundles' Categories Collection
     categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
     categories.fetch
@@ -283,31 +283,31 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         Mywebroom.Helpers.setMakes(model.get('bundles_makes'))
       error: (collection, response, options) ->
         console.error("bundle category fail", response.responseText)
-  
-  
 
 
 
-  
+
+
+
   clickEntireRooms: (event) ->
-    
+
     event.preventDefault()
     #e.stopPropagation() <-- Prevents tab from working
-    
+
     ###
     Set our store helper
     ###
     Mywebroom.State.set("storeHelper", "ENTIRE ROOMS")
-    
-    
+
+
     # Hide the Save, Cancel, Remove view
     $('#xroom_store_menu_save_cancel_remove').hide()
-    
-   
+
+
     # Re-show nav pills
     Mywebroom.Helpers.expandFilters()
-    
-    
+
+
     # Add the collapse class
     $('#dropdown-category').addClass('collapse')
 
@@ -319,8 +319,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Data.Editor.contentPath = "INITIAL"
     Mywebroom.Data.Editor.contentType = "ENTIRE ROOMS"
     Mywebroom.Data.Editor.offset = 0
-    
-    
+
+
     # Load the Bundles' Categories Collection
     categories = new Mywebroom.Collections.IndexBundlesCategoriesCollection()
     categories.fetch
@@ -334,127 +334,127 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         Mywebroom.Helpers.setMakes(model.get('bundles_makes'))
       error: (collection, response, options) ->
         console.error("bundle category fail", response.responseText)
-  
-  
-  
 
 
 
-  
+
+
+
+
   clickSearchFilter: (event) ->
 
     event.preventDefault()
     #e.stopPropagation() <-- This prevents the nav pills from closing automatically
-    
+
     # Switch to the hidden tab
     $('#storeTabs a[href="#tab_hidden"]').tab('show')
 
 
     keyword =  event.target.text
     category = Mywebroom.State.get("storeHelper")
-    
+
     # PERFORM THE SEARCH
     @performSearch(category, keyword)
-    
-    
-   
 
 
 
-  
+
+
+
+
   keyupSearch: (event) ->
-    
+
     event.preventDefault()
     event.stopPropagation()
-    
+
     if event.keyCode is 13
-      
+
       #console.log("EDITOR SEARCH")
-      
+
       # Switch to the hidden tab
       $('#storeTabs a[href="#tab_hidden"]').tab('show')
-      
-      
+
+
       # Contents of search
       input = $("#store-search-box").val()
-      
-      
+
+
       # What tab is selected?
       tab = $("#store-dropdown-btn").text()
-      
-      
+
+
       # Perform search
       @performSearch(tab, input)
 
-      
-      
+
+
       ###
       Clear search box
       ###
       $("#store-search-box").val("")
-      
-      
 
 
 
 
-      
+
+
+
   clickSearchDropdown: (event) ->
-    
+
     #console.log("SEARCH DROPDOWN CHANGE")
-    
+
     event.preventDefault()
     #e.stopPropagation() <-- This prevents the dropdown menu from closing automatically
-    
+
     # SEARCH DROPDOWN
     # Remove active class
     $('#store-search-dropdown li').removeClass('active')
-    
-    
+
+
     # Add active class to just-clicked element
     $(event.target).parent().addClass('active')
-    
-    
+
+
     # Change the text of the search filter
     $('#store-dropdown-btn').text(event.target.text)
-    
-    
+
+
     # TAB-PANE
     # Active the correct store-nav tab
     navName = event.target.text
-    
+
     switch navName
-      
+
       when 'ALL'
         $('a[href="#tab_items"]').tab('show')
         @clickObjects(event)
-      
+
       when 'OBJECTS'
         $('a[href="#tab_items"]').tab('show')
         @clickObjects(event)
-      
+
       when 'THEMES'
         $('a[href="#tab_themes"]').tab('show')
         @clickThemes(event)
-      
+
       when 'BUNDLES'
         $('a[href="#tab_bundles"]').tab('show')
         @clickBundles(event)
-      
+
       when 'ENTIRE ROOMS'
         $('a[href="#tab_entire_rooms"]').tab('show')
         @clickEntireRooms(event)
-  
-        
-  
-  
-  
 
 
 
-  
+
+
+
+
+
+
   performSearch: (category, keyword) ->
-    
+
     ###
     PAGINATION
     ###
@@ -463,7 +463,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.Data.Editor.contentType = category
     Mywebroom.Data.Editor.keyword = keyword
     Mywebroom.Data.Editor.offset = 0
-    
+
 
 
 
@@ -471,36 +471,36 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
 
-    
+
     data = Mywebroom.Helpers.Editor.paginateSearch(category, limit, 0, keyword)
 
 
-    
+
     Mywebroom.State.set('tabContentHidden', data)
-  
-  
-  
- 
 
 
-  
- 
 
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   appendOne: (model) ->
-    
+
 
     ###
     Make sure model has type and
@@ -511,34 +511,34 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     else
       throw new Error("model without type")
 
- 
 
-      
-    
+
+
+
     # Clear What's In There
     $("#tab_hidden > ul").remove()
-    
-   
+
+
     # Append this to it
     $('#tab_hidden').append("<ul id='row_item_designs_1'></ul>")
 
-   
+
     # Create the view
     view = new Mywebroom.Views.StorePreviewView({model: model})
-    
-    
+
+
     # Append the element
     $('#row_item_designs_1').append(view.el)
-    
-    
+
+
     # Render the view
     view.render()
 
 
     # Show the social view
     view.addSocialView()
-    
-    
+
+
 
     ###
     DO STUFF DEPENDING ON THE TYPE OF THE MODEL
@@ -546,7 +546,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     switch type
 
       when "DESIGN"
-        
+
         # Center the item
         Mywebroom.Helpers.centerItem(model.get("item_id"))
 
@@ -559,7 +559,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         Mywebroom.Helpers.showSaveBar()
 
 
-      
+
 
       when "THEME"
 
@@ -575,7 +575,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
       when "BUNDLE"
-        
+
         ###
         FETCH DESIGNS
         ###
@@ -595,14 +595,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         designs.each (design) ->
 
           Mywebroom.Helpers.updateRoomDesign(design)
-           
-        
+
+
         ###
         CONDITIONALLY SHOW SAVE BAR
         ###
         Mywebroom.Helpers.showSaveBar()
-        
-          
+
+
         ###
         NEVER SHOW REMOVE BUTTON FOR A BUNDLE
         ###
@@ -623,16 +623,16 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
             #console.log("theme fetch success")
           error: (model, response, options) ->
             console.error("theme fetch fail", response.responseText)
-        
-        
+
+
         ###
         THEME: UPDATE DOM
         ###
         Mywebroom.Helpers.updateRoomTheme(theme)
-        
-        
-        
-        
+
+
+
+
         ###
         FETCH DESIGNS
         ###
@@ -645,23 +645,23 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
           error: (collection, response, options) ->
             console.error("designs fetch fail", response.responseText)
 
-        
-        
+
+
         ###
         DESIGNS: UPDATE DOM
         ###
         designs.each (design) ->
-          
+
           Mywebroom.Helpers.updateRoomDesign(design)
-          
-          
-        
+
+
+
         ###
         CONDITIONALLY SHOW SAVE BAR
         ###
         Mywebroom.Helpers.showSaveBar()
-        
-        
+
+
 
         ###
         NEVER SHOW REMOVE BUTTON FOR AN ENTIRE ROOM
