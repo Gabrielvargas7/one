@@ -128,6 +128,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   paginateActivity:(event) ->
     event.preventDefault()
     event.stopPropagation()
+
+    #Turn event off then on again if needed so each scroll event doesn't trigger another fetch. 
+    @$('#gridItemList').off('scroll')
+    
     
     #1a. Increment Offset
     event.data.fetchOffset += event.data.fetchLimit;
@@ -161,6 +165,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     #6. If nothing fetched, turn off the scroll event.
     if activityItemsDesignsRandomCollection.models.length < event.data.fetchLimit or activityBookmarksRandomCollection < event.data.fetchLimit
       @$('#gridItemList').off('scroll')
+    else
+      that = this
+      @$('#gridItemList').off('scroll').on('scroll',that,(event)->
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+          event.data.paginateActivity(event)
+      )
 
   ###
   #paginateFriendActivity - handles pagination of Friend's Activity Page
@@ -170,6 +180,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   paginateFriendActivity:(event) ->
     event.preventDefault()
     event.stopPropagation()
+
+    #Turn event off then on again if needed so each scroll event doesn't trigger another fetch. 
+    @$('#gridItemList').off('scroll')
     
     #1a. Increment Offset
     event.data.fetchOffset += event.data.fetchLimit;
@@ -193,7 +206,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     #4. Shuffle them
     tempCollection = new Backbone.Collection()
     tempCollection.add(activityFriendItemsDesignsCollection.toJSON(),{silent:true})
-    tempCollection.add(activityFriendItemsDesignsCollection.toJSON(),{silent:true})
+    tempCollection.add(activityFriendBookmarksCollection.toJSON(),{silent:true})
     tempCollection.reset(tempCollection.shuffle(),{silent:true})
 
 
@@ -203,6 +216,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     #6. If nothing fetched, turn off the scroll event.
     if activityFriendItemsDesignsCollection.models.length < event.data.fetchLimit and activityFriendBookmarksCollection.models.length < event.data.fetchLimit
       @$('#gridItemList').off('scroll')
+    else
+      that = this
+      @$('#gridItemList').off('scroll').on('scroll',that,(event)->
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+          event.data.paginateFriendActivity(event)
+      )
+
 
   #*******************
   #**** Functions  Initialize Profile Welcome View

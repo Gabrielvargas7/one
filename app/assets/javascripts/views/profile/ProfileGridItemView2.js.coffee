@@ -13,7 +13,7 @@ class Mywebroom.Views.ProfileGridItemView2 extends Marionette.ItemView
   }
   
   onRender: ->
-    
+    console.log @model.get('type')
     #Depending on Model Type, show social view
     if @model.get('type') is 'PHOTO'
       #don't create social view. 
