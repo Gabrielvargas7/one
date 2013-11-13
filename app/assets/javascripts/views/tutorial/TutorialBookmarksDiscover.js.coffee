@@ -37,6 +37,10 @@ class Mywebroom.Views.TutorialBookmarksDiscoverView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+    $('#xroom_bookmarks').hide()
+    $('#xroom_profile').show()
+
+
     console.log("tutorial Bookmark Discover btn")
     view = new Mywebroom.Views.TutorialWelcomeProfileView()
     $("#xroom_tutorial_container").append(view.el)
