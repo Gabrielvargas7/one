@@ -1004,23 +1004,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       else
         # tutorial user
         console.log("user did not finish the tutorial")
-
-        switch user_profile.tutorial_step
-
-          when 1
-            console.log("tutorial step 1 welcome ")
-            # welcome
-            view = new Mywebroom.Views.TutorialWelcomeView()
-            $("#xroom_tutorial_container").append(view.el)
-            view.render()
-
-          when 2
-            console.log("tutorial step 2 click an object ")
-            view = new Mywebroom.Views.TutorialWelcomeView()
-            $("#xroom_tutorial_container").append(view.el)
-            view.render()
-
-
+        console.log("tutorial step 1 welcome ")
+        # welcome
+        view = new Mywebroom.Views.TutorialWelcomeView()
+        $("#xroom_tutorial_container").append(view.el)
+        view.render()
 
 
 
@@ -1029,11 +1017,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   ##########################
   #  DEAL WITH URL ENCODED PARAMS
   ##########################
-
-
-
-
-
 
 
 

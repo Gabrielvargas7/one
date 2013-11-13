@@ -41,6 +41,8 @@ $(document).ready ->
       roomScrollerRightView        : false  # A reference to this view
       tutorialItemClick            : false  # A reference to this view
       friendItemPopupView          : false  # A reference to the popup view
+      profileHomeView              : false  # A reference to this view
+
 
       roomViewState                     : false # open or closed
       roomHeaderViewState               : false # open or closed
@@ -879,8 +881,14 @@ $(document).ready ->
               ###
               Mywebroom.Helpers.centerItem(dom_item_id)
 
-              # set the item for the tutorial
+              # Set the item for the tutorial
               Mywebroom.State.set("tutorialItem",dom_item_id)
+
+              user_id  = Mywebroom.State.get("signInUser").get("id")
+              tutorial_step = 3
+              # save the new step on the tutorial
+              Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
+
 
 
               console.log("David code should be here -> Open the editor here on the item that where click-it")

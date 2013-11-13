@@ -1,0 +1,10 @@
+//# PUT change tutorial step
+//#  /users_profiles/json/update_users_profiles_tutorial_step_by_user_id_and_tutorial_step/:user_id/:tutorial_step
+//#  /users_profiles/json/update_users_profiles_tutorial_step_by_user_id_and_tutorial_step/24/1.json
+//# Return ->
+//# Success    ->  head  200 ok
+
+
+{   "tutorial_step":0,
+    "user_id":28
+}
