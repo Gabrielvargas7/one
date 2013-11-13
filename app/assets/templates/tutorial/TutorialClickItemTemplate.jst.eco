@@ -1,6 +1,7 @@
 <div id="tutorial_click_item_container">
-            <div id="tutorial_click_item_btn_container">
-                <a href="#" class="blue_button blue_button_light" id="tutorial_click_item_btn" > Click Any Object</a>
-            </div>
+
+        <div id="tutorial_click_item_img" >
+                     <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384307487/tutorial-click-on-image.png" >
+        </div>
 </div>
 

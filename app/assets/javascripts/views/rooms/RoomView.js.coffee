@@ -942,7 +942,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
       ##########################
-      #  Tutorial  if the user didn't fining the tutorial, open the tutorial window
+      #  Tutorial  if the user didn't finish the tutorial, open the tutorial window
       ##########################
 
 
@@ -954,7 +954,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       console.log(user_profile.tutorial_step)
 
 
-      # the user finish the tutorial step = 0
+      # if the user finish the tutorial step = 0
       if user_profile.tutorial_step == 0
         console.log(" user finish the tutorail ")
 
@@ -1202,7 +1202,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-#
+
+#  old code, delete in after december 1
+
+
 #    ###
 #        (11) DEAL WITH URL ENCODED PARAMS WHEN the user is Sign in his/her Room State
 #      ###
