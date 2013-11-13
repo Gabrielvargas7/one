@@ -462,19 +462,16 @@ $(document).ready ->
               switch position
 
                 when 1
-                  console.log("bookmark notification")
-                  $('#lightbox').css("left", "-=500")
+                  #console.log("bookmark notification")
+                  $('#lightbox').css("left", "-=200")
 
                 when 2
-                  console.log("item notification")
-                  $('#lightbox').css("left", "+=500")
+                  #console.log("item notification")
+                  $('#lightbox').css("left", "+=200")
 
                 when 3
-                  console.log("theme notification")
-                  $('#lightbox').css("left", "+=500")
-
-                when 4
-                  console.log("other notification - don't move")
+                  #console.log("theme notification")
+                  $('#lightbox').css("left", "+=200")
 
 
             else
