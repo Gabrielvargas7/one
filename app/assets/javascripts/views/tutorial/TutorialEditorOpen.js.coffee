@@ -37,7 +37,34 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+
+    # Hide the Save, Cancel, Remove View
+    $('#xroom_store_menu_save_cancel_remove').hide()
+
+    # Hide the store
+    Mywebroom.Helpers.hideStore()
+
     Mywebroom.Helpers.StoreSaveCancelRemoveHelper.saveNewItems()
+
+    #Open bookmarks discovery
+
+    itemId = Mywebroom.State.get("tutorialItem")
+
+    bookmarksView = new Mywebroom.Views.BookmarksView
+      items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+      item_id: itemId
+      user: Mywebroom.State.get("roomUser").get("id")
+
+
+    $('#room_bookmark_item_id_container_' + itemId).append(bookmarksView.el)
+    bookmarksView.render()
+
+    $('#room_bookmark_item_id_container_' + itemId).show()
+    $('#xroom_bookmarks').show()
+    bookmarksView.renderDiscover()
+
+
+
 
     console.log("tutorial editor open")
 
