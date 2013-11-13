@@ -854,8 +854,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     # (9) Set up a listener for the BrowseMode:open event
-    Mywebroom.App.vent.on("BrowseMode:open", ((event) ->
-      @changeBrowseMode(event.model)), self)
+    that = this
+    Mywebroom.App.vent.on("BrowseMode:open", ((that) ->
+      Mywebroom.State.get('roomView').changeBrowseMode(that.model)), self)
     
     
     
@@ -1061,6 +1062,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     $('#room_bookmark_item_id_container_' + itemId).show()
     $('#xroom_bookmarks').show()
+
 
     # TODO Check for bookmark in my bookmarks
     if !bookmarksView.collection.findWhere(id: parseInt(entity_id))

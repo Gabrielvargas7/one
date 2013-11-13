@@ -44,11 +44,11 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       # new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdByLimitAndOffset(
       #   userId: Mywebroom.State.get('roomData').get('user').id
       #   )
-      activityBookmarksRandomCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdCollection()
+      activityBookmarksRandomCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdByLimitAndOffset()
       activityBookmarksRandomCollection.fetch
         reset:true
         async:false
-        url:activityBookmarksRandomCollection.url Mywebroom.State.get('roomData').get('user').id
+        url:activityBookmarksRandomCollection.url Mywebroom.State.get('roomData').get('user').id, @fetchLimit, @fetchOffset
         success: (response)->
           console.log("activityBookmarksCollection Fetched Successfully Response:")
           console.log(response)
@@ -162,6 +162,47 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     if activityItemsDesignsRandomCollection.models.length < event.data.fetchLimit or activityBookmarksRandomCollection < event.data.fetchLimit
       @$('#gridItemList').off('scroll')
 
+  ###
+  #paginateFriendActivity - handles pagination of Friend's Activity Page
+  #       -called from $('#gridItemList') scroll event in showActivity
+  #       -Function only intended for FRIEND state
+  ###
+  paginateFriendActivity:(event) ->
+    event.preventDefault()
+    event.stopPropagation()
+    
+    #1a. Increment Offset
+    event.data.fetchOffset += event.data.fetchLimit;
+    
+    #1. Grab more Designs
+    #2. Grab more Bookmarks
+    activityFriendBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdByLimitAndOffset()
+    activityFriendItemsDesignsCollection = new Mywebroom.Collections.IndexUserItemsDesignsByUserIdByLimitAndOffset()
+    
+    #3. Fetch them
+    activityFriendBookmarksCollection.fetch
+      url:activityFriendBookmarksCollection.url @model.get('user_id'), event.data.fetchLimit, event.data.fetchOffset
+      reset:true
+      async:false
+  
+    activityFriendItemsDesignsCollection.fetch
+      url:activityFriendItemsDesignsCollection.url @model.get('user_id'), event.data.fetchLimit, event.data.fetchOffset
+      reset:true
+      async:false
+    
+    #4. Shuffle them
+    tempCollection = new Backbone.Collection()
+    tempCollection.add(activityFriendItemsDesignsCollection.toJSON(),{silent:true})
+    tempCollection.add(activityFriendItemsDesignsCollection.toJSON(),{silent:true})
+    tempCollection.reset(tempCollection.shuffle(),{silent:true})
+
+
+    #5. Add them to the collection. (Marionette takes care of render)
+    event.data.activityCollection.add(tempCollection.toJSON())
+
+    #6. If nothing fetched, turn off the scroll event.
+    if activityFriendItemsDesignsCollection.models.length < event.data.fetchLimit and activityFriendBookmarksCollection.models.length < event.data.fetchLimit
+      @$('#gridItemList').off('scroll')
 
   #*******************
   #**** Functions  Initialize Profile Welcome View
@@ -260,6 +301,11 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       @$('#gridItemList').off('scroll').on('scroll',that,(event)->
         if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
           event.data.paginateActivity(event)
+      )
+    else if Mywebroom.State.get("roomState") is "FRIEND"
+      @$('#gridItemList').off('scroll').on('scroll',that,(event)->
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+          event.data.paginateFriendActivity(event)
       )
 
 
