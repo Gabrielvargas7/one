@@ -1,0 +1,25 @@
+<div class="tutorial_welcome_bookmarks_container">
+</div>
+
+
+
+<div id="tutorial_welcome_bookmarks_box">
+
+
+            <div id="tutorial_welcome_bookmarks_text">
+                Welcome to Bookmarks!
+            </div>
+
+            <p>
+                Now add 3 of your favorite sites ans they will be appear inside your object!
+            </p>
+            <p>
+                A bookmark is placed inside the object where it intuitively makes sense
+            </p>
+
+
+            <div id="tutorial_welcome_bookmarks_btn_container">
+                <a href="#" class="blue_button blue_button_light" id="tutorial_welcome_bookmarks_btn" >Add 3 Sites!</a>
+            </div>
+</div>
+

@@ -5,6 +5,8 @@ class Company < ActiveRecord::Base
 
   has_many :items_design
 
+  validates :name,  uniqueness:{ case_sensitive: false }
+
   def id_and_company
     "#{id}. #{name}"
   end

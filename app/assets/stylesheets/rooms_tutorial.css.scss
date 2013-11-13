@@ -27,7 +27,7 @@
   font-weight: lighter;
 }
 
-#tutorial_welcome_container p {
+#tutorial_welcome_container_box p {
   padding: 10px;
   font-size: 24px;
 
@@ -119,8 +119,8 @@
 
 #tutorial_open_store_text{
   font-size: 32px;
-  padding: 40px;
-  margin-top: 200px;
+  padding: 10px;
+  margin-top: 100px;
 }
 
 ////
@@ -132,9 +132,10 @@
   position:fixed;
   z-index:1500;
   top: 0;
-  width:100%;
-  height:100px;
-  background-color: rgba(0,0,0,.5);
+  width:660px;
+  right: 0;
+  height:150px;
+  background-color: rgba(0,0,0,.1);
   text-align: center;
   color: #ffffff;
   font-weight: lighter;
@@ -145,7 +146,8 @@
   position:fixed;
   z-index:1501;
   top: 0;
-  right: 650px;
+  float: right;
+  right: 660px;
   width:100%;
   height:100%;
   background-color: rgba(0,0,0,.1);
@@ -160,7 +162,7 @@
 #tutorial_editor_open_container_small_box {
   margin: 150px 100px;
   float: right;
-  width: 300px;
+  width: 350px;
   font-size: 17px;
   background-color: rgba(0,0,0,.8);
   padding: 40px 60px;
@@ -176,6 +178,253 @@
   margin: 20px;
 
 }
+
+
+////
+// turorial Welcome Bookmarks
+////
+
+.tutorial_welcome_bookmarks_container{
+  position:fixed;
+  z-index:1500;
+  top: 0;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,.8);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+
+#tutorial_welcome_bookmarks_box{
+  position:fixed;
+  z-index:1501;
+  top:20%;
+  left:15%;
+  width:70%;
+  height:400px;
+  background-color: rgba(0,0,0,0);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+}
+
+#tutorial_welcome_bookmarks_box p {
+  padding: 0px;
+  font-size: 17px;
+
+}
+
+
+#tutorial_welcome_bookmarks_text{
+
+  font-size: 32px;
+  padding: 40px;
+  margin: 20px 100px;
+
+
+}
+#tutorial_welcome_bookmarks_btn{
+  font-size: 18px;
+  margin: 20px;
+  padding: 10px 100px;
+
+}
+
+#tutorial_welcome_bookmarks_btn_container{
+  margin: 60px;
+}
+
+
+////
+// turorial Bookmarks Discover
+////
+
+
+
+#tutorial_bookmarks_discover_container_header{
+  position:fixed;
+  z-index:1500;
+  top: 0;
+  right: 0;
+  width:80%;
+  height:110px;
+  background-color: rgba(0,0,0,.5);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+#tutorial_bookmarks_discovery_img{
+  padding-top: 75px;
+}
+
+#tutorial_bookmarks_discover_container_box{
+  position:fixed;
+  z-index:1501;
+  top: 0;
+  float: left;
+  width:20%;
+  height:100%;
+  background-color: rgba(0,0,0,.5);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+
+////
+// turorial welcome profile
+////
+
+
+.tutorial_welcome_profile_container_side_bar{
+  position:fixed;
+  z-index:1501;
+  top: 45px;
+  left: 0;
+  width:100px;
+  height:100%;
+  background-color: rgba(0,0,0,.8);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+
+}
+
+#tutorial_welcome_profile_container_box{
+  position:fixed;
+  z-index:1502;
+  top: 0;
+  left: 0;
+  width:760px;
+  height:100%;
+  background-color: rgba(0,0,0,.8);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+
+
+
+#tutorial_welcome_profile_btn{
+  font-size: 16px;
+  margin: 20px;
+  padding: 10px 100px;
+}
+
+
+#tutorial_welcome_profile_container_box p {
+  font-size: 32px;
+  padding: 40px;
+  margin-top: 50px;
+}
+
+#tutorial_welcome_profile_img{
+
+  margin-top: 120px;
+  text-align: left;
+
+}
+#tutorial_welcome_profile_social_img{
+  text-align: right;
+
+}
+
+
+
+////
+// turorial friends profile
+////
+
+
+#tutorial_friends_profile_facebook_btn{
+  text-align: right;
+  padding: 10px 34px 10px 10px;
+
+}
+
+#tutorial_friends_profile_container_box{
+  position:fixed;
+  z-index:1502;
+  top: 45px;
+  left: 100px;
+  width:660px;
+  height:100%;
+  background-color: rgba(0,0,0,.7);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+#tutorial_friends_profile_btn{
+  color: #0099cb;
+}
+#tutorial_friends_profile_container_box p{
+  padding: 40px 150px 40px 150px;
+  line-height:200%;
+}
+
+
+
+////
+// turorial Show me my Room
+////
+
+.tutorial_show_me_my_room_container{
+  position:fixed;
+  z-index:1500;
+  top: 0;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,.8);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+
+#tutorial_show_me_my_room_box{
+  position:fixed;
+  z-index:1501;
+  top:35%;
+  left:15%;
+  width:70%;
+  height:400px;
+  background-color: rgba(0,0,0,0);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+}
+
+
+#tutorial_show_me_my_room_text{
+
+  font-size: 32px;
+  padding: 40px;
+  //margin: 20px 100px;
+
+
+}
+#tutorial_show_me_my_room_btn{
+  font-size: 18px;
+  //margin: 20px;
+  padding: 10px 100px;
+
+}
+
+#tutorial_show_me_my_room_btn_container{
+  //margin: 60px;
+}
+
+
+
+
+
 
 
 
