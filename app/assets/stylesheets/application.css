@@ -170,17 +170,17 @@ footer ul li {
     color:#464646;
 }
 .social_bar li.info_button_item{
-    padding-top:8px;
+    padding-top:11px;
     width:30px;
 }
 .navbar .nav > li.info_button_item > a{
     background-color: #00CCFF;
     color:white;
     border-radius:3px;
-    padding:3px;
+    padding:0 3px;
     font-size:13px;
     width:45px;
-    height:20px;
+    /*height:20px;*/
 }
 /*Override Twitter Bootstrap Background Color*/
 .social_bar .navbar-inner{
