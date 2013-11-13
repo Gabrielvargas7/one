@@ -147,8 +147,8 @@ class UsersBookmarksController < ApplicationController
 
 
   # GET get all user's Bookmarks  by limit and offset
-  # users_bookmarks/json_index_user_bookmarks_by_user_id_by_limit_and_offset/:user_id/:limit/:offset'
-  # users_bookmarks/json_index_user_bookmarks_by_user_id_by_limit_and_offset/1/10/0.json'
+  # users_bookmarks/json/index_user_bookmarks_by_user_id_by_limit_and_offset/:user_id/:limit/:offset'
+  # users_bookmarks/json/index_user_bookmarks_by_user_id_by_limit_and_offset/1/10/0.json'
   #Return ->
   #Success    ->  head  200 OK
 
