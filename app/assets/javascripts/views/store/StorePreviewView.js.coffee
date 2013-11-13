@@ -1,4 +1,4 @@
-class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
+class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
   #*******************
   #**** Tag
@@ -43,6 +43,14 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
 
 
 
+
+
+
+
+
+  render: ->
+
+
     obj =  @model.clone()
 
     # We set image_name to the matching preview url (when necessary)
@@ -59,9 +67,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
         obj.set("image_name", obj.get("image_name_set"))
 
 
-    #@model = obj
-
-
+    $(@el).append(@template({model: obj.toJSON()}))
+    this
 
 
 
@@ -86,6 +93,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
   #**** Events
   #*******************
   clickItem: (e) ->
+
+    console.log(@model)
 
     #console.log("click item")
 
@@ -249,6 +258,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
 
   clickDesign: (e) ->
 
+    console.log(@model)
+
     e.preventDefault()
     e.stopPropagation()
 
@@ -323,6 +334,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
 
   clickTheme: (e) ->
 
+    console.log(@model)
+
     e.preventDefault()
     e.stopPropagation()
 
@@ -340,6 +353,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
 
 
   clickBundle: (e) ->
+
+    console.log(@model)
 
     #console.log("click Store Bundle View " + @model.get('id'))
 
@@ -376,6 +391,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.Marionette.ItemView
 
 
   clickEntireRoom: (e) ->
+
+    console.log(@model)
 
     #console.log("\n\n\nENTIRE ROOMS clicked\n\n\n")
 
