@@ -1,10 +1,10 @@
 <div class="store_container">
-  <div class="store_container_<%= this.type %> store-preview" id="store_<%= this.type %>_container_<%= this.id %>">
-    <img class="store_image_cell" src="<%= this.image_name.url %>"></br>
-    <% if this.name.trim().length > 30: %>
-    <%= this.name.substr(0, 27).trim() + '...' %>
+  <div class="store_container_<%= @model.type %> store-preview" id="store_<%= @model.type %>_container_<%= @model.id %>">
+    <img class="store_image_cell" src="<%= @model.image_name.url %>"></br>
+    <% if @model.name.trim().length > 30: %>
+    <%= @model.name.substr(0, 27).trim() + '...' %>
     <% else: %>
-    <%= this.name.trim() %>
+    <%= @model.name.trim() %>
     <% end %>
     </br>
   </div>
