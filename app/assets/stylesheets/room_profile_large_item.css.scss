@@ -51,6 +51,11 @@
 }
 .activity_item_large_view .social_bar{
   background-color: transparent;
+
+  .navbar-inner{
+    box-shadow:none;
+  }
+
 }
 .activity_item_large_list.profile_button{
   vertical-align:top;
