@@ -108,6 +108,8 @@ $(document).ready ->
 
   Mywebroom.State.on('change:tabContentItems', ->
 
+    console.log('change:tabContentItems')
+
     data = Mywebroom.State.get('tabContentItems')
     Mywebroom.Helpers.Editor.appendCollection(data, 'ITEMS')
 
@@ -117,6 +119,8 @@ $(document).ready ->
 
 
   Mywebroom.State.on('change:tabContentThemes', ->
+
+    console.log('change:tabContentThemes')
 
     data = Mywebroom.State.get('tabContentThemes')
     Mywebroom.Helpers.Editor.appendCollection(data, 'THEMES')
@@ -128,6 +132,8 @@ $(document).ready ->
 
   Mywebroom.State.on('change:tabContentBundles', ->
 
+    console.log('change:tabContentBundles')
+
     data = Mywebroom.State.get('tabContentBundles')
     Mywebroom.Helpers.Editor.appendCollection(data, 'BUNDLES')
 
@@ -138,6 +144,8 @@ $(document).ready ->
 
   Mywebroom.State.on('change:tabContentEntireRooms', ->
 
+    console.log('change:tabContentEntireRooms')
+
     data = Mywebroom.State.get('tabContentEntireRooms')
     Mywebroom.Helpers.Editor.appendCollection(data, 'ENTIRE ROOMS')
 
@@ -147,6 +155,8 @@ $(document).ready ->
 
 
   Mywebroom.State.on('change:tabContentHidden', ->
+
+    console.log('change:tabContentHidden')
 
     data = Mywebroom.State.get('tabContentHidden')
     Mywebroom.Helpers.Editor.appendCollection(data, 'HIDDEN')
@@ -244,25 +254,25 @@ $(document).ready ->
                 when "THEMES"
 
                   col = Mywebroom.State.get('tabContentThemes')
-                  col.add(data.toJSON(), {silent: true})
+                  col.add(data.toJSON(), {silent: false})
                   Mywebroom.State.set('tabContentThemes', col)
 
                 when "BUNDLES"
 
                   col = Mywebroom.State.get('tabContentBundles')
-                  col.add(data.toJSON(), {silent: true})
+                  col.add(data.toJSON(), {silent: false})
                   Mywebroom.State.set('tabContentBundles', col)
 
                 when "ENTIRE ROOMS"
 
                   col = Mywebroom.State.get('tabContentEntireRooms')
-                  col.add(data.toJSON(), {silent: true})
+                  col.add(data.toJSON(), {silent: false})
                   Mywebroom.State.set('tabContentEntireRooms', col)
 
                 else
 
                   col = Mywebroom.State.get('tabContentHidden')
-                  col.add(data.toJSON(), {silent: true})
+                  col.add(data.toJSON(), {silent: false})
                   Mywebroom.State.set('tabContentHidden', col)
 
 
@@ -282,25 +292,25 @@ $(document).ready ->
                 when "THEMES"
 
                   col = Mywebroom.State.get('tabContentThemes')
-                  col.add(data.toJSON(), {silent: true})
+                  col.add(data.toJSON(), {silent: false})
                   Mywebroom.State.set('tabContentThemes', col)
 
                 when "BUNDLES"
 
                   col = Mywebroom.State.get('tabContentBundles')
-                  col.add(data.toJSON(), {silent: true})
+                  col.add(data.toJSON(), {silent: false})
                   Mywebroom.State.set('tabContentBundles', col)
 
                 when "ENTIRE ROOMS"
 
                   col = Mywebroom.State.get('tabContentEntireRooms')
-                  col.add(data.toJSON(), {silent: true})
+                  col.add(data.toJSON(), {silent: false})
                   Mywebroom.State.set('tabContentEntireRooms', col)
 
                 else
 
                   col = Mywebroom.State.get('tabContentHidden')
-                  col.add(data.toJSON(), {silent: true})
+                  col.add(data.toJSON(), {silent: false})
                   Mywebroom.State.set('tabContentHidden', col)
 
         else
@@ -641,37 +651,26 @@ $(document).ready ->
     #console.log("TURN ON HOVER")
     
 
-    console.log(Mywebroom.Data.ItemModels)
-
     $('.room_design').each( ->
       
       dom_item_id = $(this).data().designItemId
 
-      console.log("dom_item_id", dom_item_id)
-
-
-
+      
       # model associated with this item_id
       model = Mywebroom.Data.ItemModels[dom_item_id]
 
-      console.log("model", model)
-
-
-      if model and not model.has('clickable')
+     
+      if not model.has('clickable')
 
         console.error('model without clickable property', model)
 
       else 
 
-        if model and model.get('clickable') is 'yes'
+        if model.get('clickable') is 'yes'
 
           $(this)
           .mouseenter( -> $(this).attr("src", $(this).attr("data-hover-src-client")))
           .mouseleave( -> $(this).attr("src", $(this).attr("data-main-src-client")))
-
-        else
-
-          console.log("no model!")
     )
     
     

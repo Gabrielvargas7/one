@@ -337,6 +337,10 @@ Mywebroom.Helpers.Editor = {
 
   appendCollection: (collection, type) ->
 
+
+    console.log('appendCollection')
+
+
     switch type
 
       when 'ITEMS'
