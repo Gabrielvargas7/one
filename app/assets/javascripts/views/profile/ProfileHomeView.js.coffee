@@ -181,12 +181,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     
     #3. Fetch them
     activityFriendBookmarksCollection.fetch
-      url:activityFriendBookmarksCollection.url event.data.fetchLimit, event.data.fetchOffset
+      url:activityFriendBookmarksCollection.url @model.get('user_id'), event.data.fetchLimit, event.data.fetchOffset
       reset:true
       async:false
   
     activityFriendItemsDesignsCollection.fetch
-      url:activityFriendItemsDesignsCollection.url event.data.fetchLimit, event.data.fetchOffset
+      url:activityFriendItemsDesignsCollection.url @model.get('user_id'), event.data.fetchLimit, event.data.fetchOffset
       reset:true
       async:false
     
@@ -201,7 +201,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     event.data.activityCollection.add(tempCollection.toJSON())
 
     #6. If nothing fetched, turn off the scroll event.
-    if activityFriendItemsDesignsCollection.models.length < event.data.fetchLimit and activityFriendBookmarksCollection < event.data.fetchLimit
+    if activityFriendItemsDesignsCollection.models.length < event.data.fetchLimit and activityFriendBookmarksCollection.models.length < event.data.fetchLimit
       @$('#gridItemList').off('scroll')
 
   #*******************

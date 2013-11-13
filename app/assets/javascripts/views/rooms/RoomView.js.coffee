@@ -854,8 +854,9 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     
     
     # (9) Set up a listener for the BrowseMode:open event
-    Mywebroom.App.vent.on("BrowseMode:open", ((event) ->
-      @changeBrowseMode(event.model)), self)
+    that = this
+    Mywebroom.App.vent.on("BrowseMode:open", ((that) ->
+      Mywebroom.State.get('roomView').changeBrowseMode(that.model)), self)
     
     
     
