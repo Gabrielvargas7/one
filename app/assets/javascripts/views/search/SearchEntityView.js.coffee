@@ -22,7 +22,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-    
+
     #console.log("Adding the SearchEntityView with model:")
     #console.log("Search Entity")
     #console.log(@model)
@@ -48,13 +48,13 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
 
 
-  
+
     entityType =  @model.get('entityType')
 
     switch entityType
-      
+
       when Mywebroom.Models.BackboneSearchEntityModel.BOOKMARK
-        
+
         #console.log("is a Bookmark")
         @openBookmarkView()
 
@@ -69,7 +69,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
 
       when Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN
-        
+
         #console.log("is a Item Design")
         @openStoreEditor()
 
@@ -87,8 +87,8 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   mouseEnter: ->
 
     if not @model.has('viewNum')
-      alert('Model without viewNum')
-    
+      console.error('Model without viewNum', @model)
+
     ###
     SET SEARCH NUM
     ###
@@ -99,15 +99,15 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     TURN ON HIGHLIGHTING
     ###
     this.$el.toggleClass('highlight-search', true)
-    
-    
+
+
     ###
     TURN OFF HIGHLIGHTING
     ###
     $('.highlight-search')
     .not(this.$el)
     .toggleClass('highlight-search', false)
-    
+
     #console.log("Enter to entity "+@model.get('viewNum'))
     #$("[data-search-id=" + @model.get('viewNum') + "]").addClass('highlight-search')
 
@@ -122,7 +122,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   #**** Event Helpers
   #*******************
   openBookmarkView: ->
-    
+
     bookmark = @getBookmark(@model.get('entityId'))
 
 
@@ -147,22 +147,22 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
       })
 
       self = this
-      
+
       $('#room_bookmark_item_id_container_' + bookmark.get('item_id')).append(bookmarksView.el)
-      
+
       bookmarksView.render()
-      
+
       if existUserBookmark is false
         bookmarksView.renderDiscover()
 
-      
+
       $('#room_bookmark_item_id_container_' + bookmark.get('item_id')).show()
 
       $('#xroom_header_search_box').hide()
       $('#xroom_header_search_text').val("")
 
     else
-      
+
       message = "Bookmark does not have:\n\n"
 
       if not hasId
@@ -175,27 +175,27 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
         message += "item_name\n"
 
       alert(message)
-    
+
 
 
 
 
   openStoreEditor: ->
-    
+
     #console.log("david code here")
 
     item_id = @model.get("entityId")
-    
+
     usable = new Mywebroom.Models.ShowItemDesignByIdModel({id: item_id})
     usable.fetch({
       async: false
       success: (model, response, options) ->
         console.log("openStoreEditor success")
-      
+
       error: (model, response, options) ->
         console.error("openStoreEditor fail", response.responseText)
     })
-    
+
 
     # (1) Show Store
     Mywebroom.Helpers.showStore()
@@ -203,8 +203,8 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
     # (2) Switch to the hidden tab
     $('#storeTabs a[href="#tab_hidden"]').tab('show')
-    
-    
+
+
     # (3) Use model to populate view
     Mywebroom.State.get("storeMenuView").appendOne(usable)
 
@@ -215,19 +215,19 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   #**** Bookmark Helpers
   #*******************
   getBookmark: (id) ->
-    
+
     bookmark = new Mywebroom.Models.ShowBookmarkByIdModel({id: id})
     bookmark.fetch({
       async: false
       success: (model, response, options) ->
         #console.log("bookmark fetch success")
-      
+
       error: (model, response, options) ->
         console.error("bookmark fetch fail")
     })
 
     bookmark
-    
+
 
 
 
@@ -235,7 +235,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
 
   existUserBookmarkByBookmarkIdModel: (bookmark_id) ->
-    
+
 
     userBookmarkCollection = new Mywebroom.Collections.ShowUserBookmarkByUserIdAndBookmarkIdCollection([],
       {
@@ -250,7 +250,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
       async: false
       success: (collection, response, options) ->
         return true
-      
+
       error: (collection, response, options) ->
         console.log("(ignore)")
         return false

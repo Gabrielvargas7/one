@@ -22,17 +22,17 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_forward_profile': 'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting': 'forwardToRoRSettingPage'
     'click #xroom_header_logout'         : 'logout'
-    
+
     'click #xroom_header_storepage'      : 'toggleStore'
-    
+
     'click #xroom_header_myroom'         : 'goToMyRoom'
     'keyup #xroom_header_search_text'    : 'keyPressOnSearch'
     'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
 
     'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
   }
- 
-    
+
+
 
 
   #*******************
@@ -40,7 +40,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   initialize: ->
-    
+
     @model = Mywebroom.State.get("roomData")
 
 
@@ -48,9 +48,17 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-    
+
+
+    if Mywebroom.State.get("signInState")
+      user_data = Mywebroom.State.get("signInData")
+
+    else
+      user_data = Mywebroom.State.get("roomData")
+
+
     # THIS VIEW
-    $(@el).append(@template({user_data: Mywebroom.State.get("signInData")}))
+    $(@el).append(@template({user_data: user_data}))
 
 
 
@@ -58,15 +66,16 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     # STORE VIEW
     @createStorePage()
-    
-    
-    
-    
+
+
+
+
     # PROFILE VIEW
-    @createProfileView()
-    
-    
-    
+    if Mywebroom.State.get('signInState')
+      @createProfileView()
+
+
+
     # ADJUST HEADER
     @removeRoomHeaderElemments()
 
@@ -92,19 +101,19 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Functions header
   #*******************
 
-    
+
   #--------------------------
   #  *** function remove header elemenst
   #--------------------------
   removeRoomHeaderElemments: ->
-    
+
     roomState =   Mywebroom.State.get("roomState")
     signInState = Mywebroom.State.get("signInState")
-    
+
     if roomState isnt "SELF"
       $('#xroom_header_active_sites').remove()
       $('#xroom_header_storepage').remove()
-      
+
 
     if roomState is "PUBLIC"
       $('#xroom_header_profile').remove()
@@ -113,7 +122,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
     $('#xroom_header_myroom').remove() if signInState isnt true
-      
+
 
 
   #*******************
@@ -124,14 +133,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   # get the user room info
   #--------------------------
   getUserSignInDataCollection: (userId) ->
-    
+
     @userAllRoomDataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
     @userAllRoomDataCollection.fetch({
       async: false
       url  : @userAllRoomDataCollection.url(userId)
     })
-      
-      
+
+
 
 
 
@@ -144,7 +153,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function showProfile
   #--------------------------
   showProfile: (event) ->
-    
+
     if event  # this is is because this fuction is also called when room is PUBLIC
       event.preventDefault()
     #If profile is not open
@@ -163,7 +172,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   createProfileView: ->
-    
+
     @profile = new Backbone.Model()
     @profile.set(@model.get('user_profile'))
     @profile.set('user', @model.get('user'))
@@ -176,7 +185,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         roomHeaderView: this
       }
     )
-    
+
     $('#xroom_profile').html(@profileView.el)
     @profileView.render()
     $('#xroom_profile').hide()
@@ -194,19 +203,19 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function forwardToRoRProfilePage this function work on RoR, we should change to Backbone
   #--------------------------
   forwardToRoRProfilePage: (event) ->
-    
+
     event.preventDefault()
-   
+
     origin =  window.location.origin
     origin += "/users_profiles/edit_users_profiles_by_user_id/" + @model.get('user').id
-    
+
     window.location.replace(origin)
 
   #--------------------------
   #  *** function  forwardToRoRSettingPage
   #--------------------------
   forwardToRoRSettingPage:(event) ->
-    
+
     event.preventDefault()
 
     origin =  window.location.origin
@@ -224,14 +233,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function createCookies
   #--------------------------
   createCookie: (name, value, days) ->
-    
+
     if days
       date = new Date()
       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000))
       expires = "; expires=" + date.toGMTString()
     else
       expires = ""
-      
+
     document.cookie = name + "=" + value + expires + "; path=/"
 
 
@@ -239,7 +248,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function eraseCookies
   #--------------------------
   eraseCookie: (name) ->
-    
+
     this.createCookie(name, "", -1)
 
 
@@ -247,11 +256,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function logout
   #--------------------------
   logout: (event) ->
-    
+
     event.preventDefault()
-   
+
     origin = window.location.origin
-   
+
     this.eraseCookie("remember_token")
     window.location.href = origin
 
@@ -265,17 +274,17 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function
   #--------------------------
   toggleStore: (e) ->
-    
+
     e.preventDefault()
     e.stopPropagation()
-    
+
     state = Mywebroom.State.get("storeState")
-    
+
     switch state
-    
+
       when "hidden"
         Mywebroom.Helpers.showStore()
-   
+
 
 
 
@@ -284,36 +293,36 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         Display a confirm dialog if there are any un-saved changes
         ###
         if $("[data-design-has-changed=true]").size() > 0 or $("[data-theme-has-changed=true]").size() > 0
-          
+
           bootbox.confirm("Leaving this screen will not save your changes", (result) ->
-            
+
             if result
-              
+
               # Change All DOM properties back to their original
               Mywebroom.Helpers.cancelChanges()
-            
-              
+
+
               # Proceed with hiding the store
               Mywebroom.Helpers.hideStore()
           )
         else
-          
+
           # Hide the store
           Mywebroom.Helpers.hideStore()
-       
 
 
-        
+
+
       when "collapsed"
         Mywebroom.Helpers.expandStore()
-        
-        
+
+
     # Always take these actions
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
     @hideActiveSites()
-    
+
 
 
 
@@ -323,14 +332,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   # --- STORE ---
   #--------------
   createStorePage: ->
-    
+
     @storeLayoutView = new Mywebroom.Views.StoreLayoutView()
     $('#xroom_storepage').html(@storeLayoutView.el)
     @storeLayoutView.render()
-    
+
     # Save a reference to the state model
     Mywebroom.State.set("storePageView", @storeLayoutView)
-    
+
     $('#xroom_storepage').hide()
     $('#xroom_store_menu_save_cancel_remove').hide()
 
@@ -341,7 +350,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function display
   #--------------------------
   displayProfile: ->
-    
+
     $('#xroom_store_menu_save_cancel_remove').hide()
     $('#xroom_storepage').hide()
     $('#xroom_profile').show()
@@ -350,13 +359,13 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @hideActiveSites()
 
     #Turn off events:
-    
+
     #1. Image Hover: on or off
     Mywebroom.Helpers.turnOffHover()
-    
+
     #2. Image Click: on or off
     Mywebroom.Helpers.turnOffDesignClick()
-    
+
     #3. Scroller visibility
     $("#xroom_scroll_left").hide()
     $("#xroom_scroll_right").hide()
@@ -365,19 +374,19 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   hideProfile: ->
-    @profileView.closeProfileView()
+    @profileView.closeProfileView() if @profileView
     #Turn on events are in profileView.closeProfileView()
 
 
 
   displaySearchPage: ->
-    
+
     $('#xroom_store_menu_save_cancel_remove').hide()
     $('#xroom_storepage').hide()
     $('#xroom_profile').hide()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').show()
-    
+
     @hideActiveSites()
 
 
@@ -388,7 +397,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #  *** function
   #--------------------------
   removeHeaderEvents: ->
-    
+
     $(this.el).off('click', '#xroom_header_storepage')
     $(this.el).off('click', '#xroom_header_profile')
     $('.room_user_item_design_container').off()
@@ -400,13 +409,13 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   goToMyRoom: (event) ->
-    
+
     event.preventDefault()
     event.stopPropagation()
 
     origin =  window.location.origin
     origin += '/room/' + Mywebroom.State.get("signInUser").get("username")
-   
+
     window.location.replace(origin)
 
 
@@ -416,19 +425,19 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   focusOutSearchTextBox: (event) ->
-    
+
     event.preventDefault()
     event.stopPropagation()
-    
+
     #console.log("clean textbox values")
-    
+
     @hideCleanSearchBox()
 
 
 
 
   hideCleanSearchBox: ->
-    
+
     $('#xroom_header_search_box').delay(500).hide(0)
     $('#xroom_header_search_text').delay(500).val("")
 
@@ -437,32 +446,32 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   slowDown:
-    
+
     _.debounce( (keyCode) ->
-      
+
       ###
       (1) Destroy Search View
       ###
       @destroySearchView()
-      
+
 
       ###
       (2) Empty
       ###
       this.$('.search-wrapper').empty()
-      
+
 
       ###
       (3) Capture value of search text
       ###
       val = $('#xroom_header_search_text').val().trim()
-      
+
 
       ###
       (4) Capture value of search filter
       ###
       btn = $('#header-search-dropdown-btn').text()
-      
+
 
       ###
       (5) Hide other views / show search results view
@@ -480,53 +489,53 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
       # If there aren't any search results, hide the box
       if $('.search-container').length is 0 then $('#xroom_header_search_box').hide()
-      
-    
+
+
 
     , 500)
 
 
 
-  
+
 
   keyPressOnSearch: (event) ->
-    
-    
+
+
     ###
     SEARCH LOGIC GETS WRAPPED IN DEBOUNCE FUNCTION
     ###
     if event.keyCode is 40 # <-- DOWN
-      
+
 
       if $('#xroom_header_search_box').is(':visible')
-        
+
         ###
         Is there another search result?
         ###
         unless $('[data-search-id=' + (Mywebroom.Data.searchNum + 1) + ']').length is 0
-          
+
           # (1) Enter Next
           $('[data-search-id=' + (Mywebroom.Data.searchNum + 1) + ']').trigger('mouseenter')
-          
+
           # (2) Scroll
           try
             #$('[data-search-id=' + (Mywebroom.Data.searchNum + 1) + ']').scrollTo(200)
             $('.search-container')[Mywebroom.Data.searchNum + 1].scrollIntoView()
           catch error
             #alert("error #1")
-          
 
-          
+
+
 
         else
-          
+
           ###
           WE'VE REACHED THE END OF OUR SEARCH RESULTS - GO BACK TO THE START
           ###
 
           # (1) Enter First
           $('[data-search-id=0]').trigger('mouseenter')
-          
+
           # (2) Scroll
           try
             #$('[data-search-id=0]').scrollTo(200)
@@ -534,15 +543,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
           catch error
             #alert("error #2")
 
-          
 
 
-      
+
+
 
     else if event.keyCode is 38 # <-- UP
 
       if $('#xroom_header_search_box').is(':visible')
-        
+
         ###
         Check for previous search containers
         ###
@@ -558,11 +567,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
           catch error
             #alert("error #3")
 
-        
+
 
     else if event.keyCode is 13 # <-- ENTER
-      
-      
+
+
       if $('#xroom_header_search_box').is(':visible')
 
         ###
@@ -576,12 +585,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         Just clear the search text
         ###
         @hideCleanSearchBox()
-      
+
 
 
 
     else
-      
+
       ###
       Capture value of search text
       ###
@@ -603,9 +612,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         @destroySearchView()
         this.$('.search-wrapper').empty()
         $('#xroom_header_search_box').hide()
-    
 
-      
+
+
 
 
 
@@ -761,7 +770,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   destroySearchView: ->
-    
+
     search_view_array  = Mywebroom.State.get("searchViewArray")
     _.each(search_view_array, (view) ->
       view.remove()
@@ -772,7 +781,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   getSearchUserCollection:(value) ->
-    
+
     searchUsers = new Mywebroom.Collections.IndexSearchesUsersProfileWithLimitAndOffsetAndKeywordCollection()
     searchUsers.fetch({
       async  : false
@@ -790,7 +799,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   getSearchItemDesignsCollection:(value) ->
-    
+
     searchItemDesignsCollection = new Mywebroom.Collections.IndexSearchesItemsDesignsWithLimitAndOffsetAndKeywordCollection()
     searchItemDesignsCollection.fetch({
       async  : false
@@ -808,7 +817,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   getSearchBookmarksCollection:(value) ->
-    
+
     searchBookmarksCollection = new Mywebroom.Collections.IndexSearchesBookmarksWithLimitAndOffsetAndKeywordCollection()
     searchBookmarksCollection.fetch({
       async  : false
@@ -849,7 +858,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   showActiveSites:(event) ->
-    
+
     event.stopPropagation()
     event.preventDefault()
 
@@ -875,7 +884,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   hideActiveSites: ->
-    
+
     $('#xroom_bookmarks_browse_mode').hide()
     $('#browse_mode_item_name').remove()
 
@@ -883,7 +892,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
   noActiveSitesToast: ->
-    
+
     # Note, SN created class called toast-top-center to position toast appropriately.
     toastr.options = {
       "closeButton":     true
