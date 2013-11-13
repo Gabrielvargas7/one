@@ -1727,10 +1727,6 @@ $(document).ready ->
     hasRequested.fetch
       async  : false
       url    : hasRequested.url(Mywebroom.State.get("signInUser").get("id"),idRequested)
-      success: (response) ->
-        console.log(response)
-      error: (response) ->
-        console.log(response)
 
     if hasRequested.models.length > 0
       true

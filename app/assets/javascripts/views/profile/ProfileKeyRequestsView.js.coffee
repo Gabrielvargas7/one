@@ -72,7 +72,10 @@ text-align: center;"> You have no key requests!</p>'
  paginateSuggestedFriends:(event)->
     event.preventDefault()
     event.stopPropagation()
-    
+
+    #Turn off event so multiple scrolls don't cause multiple fetches. (We'll turn it back on at the end of the function)
+    @$('.profile_table_innerDiv.profile_suggested_friends').off('scroll')
+
     #1 Increment Offset
     event.data.friendsOffset += event.data.friendsFetchLimit;
     
@@ -93,3 +96,9 @@ text-align: center;"> You have no key requests!</p>'
     #4. If nothing fetched, turn off the scroll event.
     if tempCollection.models.length < event.data.friendsFetchLimit
       @$('.profile_table_innerDiv.profile_suggested_friends').off('scroll')
+    else
+      that = this
+      $('.profile_table_innerDiv.profile_suggested_friends').off('scroll').on('scroll',that,(event)->
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+          event.data.paginateSuggestedFriends(event)
+      )
