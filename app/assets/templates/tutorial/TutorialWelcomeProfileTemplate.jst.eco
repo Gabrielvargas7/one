@@ -1,0 +1,29 @@
+<div class="tutorial_container">
+            <div id="tutorial_welcome_profile_social_img" >
+                    <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384297457/social_icon_tutorial.jpg" >
+             </div>
+
+</div>
+
+<div class="tutorial_welcome_profile_container_side_bar">
+</div>
+
+
+<div id="tutorial_welcome_profile_container_box">
+            <p>
+                Welcome to your Profile Page
+            </p>
+
+            <div id="tutorial_welcome_profile_btn_container">
+                <a href="#" class="blue_button blue_button_light" id="tutorial_welcome_profile_btn">Continue </a>
+
+            </div>
+
+             <div id="tutorial_welcome_profile_img" >
+                    <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384288328/social_welcome_tutorial.png" >
+             </div>
+
+
+
+</div>
+

@@ -2,6 +2,9 @@
 </div>
 
 <div id="tutorial_open_store_container_box">
+            <div id="tutorial_open_store_img" >
+                 <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384285454/store_icon_tutorial.png" >
+            </div>
 
             <div id="tutorial_open_store_text">
                 Customize your Room!

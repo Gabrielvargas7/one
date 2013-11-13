@@ -1,17 +1,18 @@
-class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
+class Mywebroom.Views.TutorialShowMeMyRoomView extends Backbone.View
 
 
   #*******************
   #**** Template
   #*******************
-  template: JST['tutorial/TutorialEditorOpenTemplate']
+  template: JST['tutorial/TutorialShowMeMyRoomTemplate']
 
 
   #*******************
   #**** Events
   #*******************
   events: {
-    'click #tutorial_editor_open_btn':    'tutorialEditorOpenBtn'
+    'click #tutorial_show_me_my_room_btn':    'tutorialShowMeMyRoomBtn'
+
 
   }
 
@@ -32,24 +33,18 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
   #--------------------------
   # close store page
   #--------------------------
-  tutorialEditorOpenBtn: (e) ->
+  tutorialShowMeMyRoomBtn: (e) ->
 
     e.preventDefault()
     e.stopPropagation()
 
-    console.log("tutorial editor open")
-
-    view = new Mywebroom.Views.TutorialWelcomeBookmarksView()
-    $("#xroom_tutorial_container").append(view.el)
-    view.render()
-
+    console.log("tutorial Show me my Room ")
 
     console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable
     delete this.el;
-
 
 
 

@@ -1,0 +1,13 @@
+<div id="tutorial_bookmarks_discover_container_header">
+        <div id="tutorial_bookmarks_discovery_img" >
+                 <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384285557/bookmark_add3_tutorial.png" >
+        </div>
+</div>
+
+<div id="tutorial_bookmarks_discover_container_box">
+         <div id="tutorial_bookmarks_discover_btn_container">
+                <a href="#" class="blue_button blue_button_light" id="tutorial_bookmarks_discover_btn">Continue </a>
+         </div>
+
+</div>
+
