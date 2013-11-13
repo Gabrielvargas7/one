@@ -304,6 +304,7 @@ $(document).ready ->
 
         else
 
+          ###
           console.log(
             "paginate",
             Mywebroom.Data.Editor.paginate,
@@ -316,6 +317,7 @@ $(document).ready ->
             "keyword",
             Mywebroom.Data.Editor.keyword
           )
+          ###
     )
     
 
@@ -637,10 +639,38 @@ $(document).ready ->
     
     #console.log("TURN ON HOVER")
     
+
+    console.log(Mywebroom.Data.ItemModels)
+
     $('.room_design').each( ->
-      $(this)
-      .mouseenter( -> $(this).attr("src", $(this).attr("data-hover-src-client")))
-      .mouseleave( -> $(this).attr("src", $(this).attr("data-main-src-client")))
+      
+      dom_item_id = $(this).data().designItemId
+
+      console.log("dom_item_id", dom_item_id)
+
+
+
+      # model associated with this item_id
+      model = Mywebroom.Data.ItemModels[dom_item_id]
+
+      console.log("model", model)
+
+
+      if model and not model.has('clickable')
+
+        console.error('model without clickable property', model)
+
+      else 
+
+        if model and model.get('clickable') is 'yes'
+
+          $(this)
+          .mouseenter( -> $(this).attr("src", $(this).attr("data-hover-src-client")))
+          .mouseleave( -> $(this).attr("src", $(this).attr("data-main-src-client")))
+
+        else
+
+          console.log("no model!")
     )
     
     
@@ -1447,7 +1477,7 @@ $(document).ready ->
     
   
     # (10) Image Hover: on or off
-    Mywebroom.Helpers.turnOnHover()
+    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
     
     
     # (10.1) Image Click: on or off

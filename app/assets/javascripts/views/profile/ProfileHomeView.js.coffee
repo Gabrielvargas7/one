@@ -383,7 +383,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     #Turn on events:
 
     #1. Image Hover: on or off
-    Mywebroom.Helpers.turnOnHover()
+    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
+      
 
     #2. Image Click: on or off
     Mywebroom.Helpers.turnOnDesignClick()

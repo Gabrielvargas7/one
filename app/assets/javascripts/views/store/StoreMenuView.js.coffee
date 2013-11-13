@@ -57,6 +57,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Set the objects we use to keep handy info about the items
     ###
     Mywebroom.Helpers.setItemRefs()
+
+
+
+
+    ###
+    Turn on hover
+    ###
+    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
     
   
 
