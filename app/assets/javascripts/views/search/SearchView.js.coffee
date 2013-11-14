@@ -10,11 +10,11 @@ class Mywebroom.Views.SearchView extends Backbone.View
   #**** Template
   #*******************
   template: JST['search/SearchTemplate']  # <-- Blank File
-  
 
-  
-  
-  
+
+
+
+
   #*******************
   #**** Render
   #*******************
