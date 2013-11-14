@@ -1,0 +1,22 @@
+<div class="tutorial_welcome_bookmarks_container">
+</div>
+
+
+
+<div id="tutorial_welcome_bookmarks_box">
+
+
+            <div id="tutorial_welcome_bookmarks_text">
+                Congratulations, you just added 3 Bookmarks!
+            </div>
+
+            <p>
+                You can always edit your sites later by clicking on the same object.
+            </p>
+
+
+            <div id="tutorial_welcome_bookmarks_btn_container">
+                <a href="#" class="blue_button blue_button_light" id="tutorial_congratulations_bookmarks_btn" >Continue</a>
+            </div>
+</div>
+

@@ -70,6 +70,8 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
     $('#room_bookmark_item_id_container_' + itemId).show()
     $('#xroom_bookmarks').show()
     bookmarksView.renderDiscover()
+    Mywebroom.State.set("tutorialBookmarkView",bookmarksView)
+
 
 
 

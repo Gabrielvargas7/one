@@ -45,6 +45,8 @@ $(document).ready ->
       roomScrollerRightView        : false  # A reference to this view
       tutorialItemClick            : false  # A reference to this view
       tutorialBookmarkDiscover     : false  # A reference to this view
+      tutorialBookmarkView         : false  # A reference to this view
+
 
       friendItemPopupView          : false  # A reference to the popup view
       profileHomeView              : false  # A reference to this view

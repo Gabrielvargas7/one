@@ -18,9 +18,9 @@
   position:fixed;
   z-index:1501;
   top:20%;
-  left:15%;
-  width:70%;
-  height:400px;
+  left:20%;
+  width:60%;
+  height:500px;
   background-color: rgba(0,0,0,.8);
   text-align: center;
   color: #ffffff;
@@ -30,6 +30,7 @@
 #tutorial_welcome_container_box p {
   padding: 10px;
   font-size: 24px;
+  margin: 0;
 
 }
 
@@ -37,8 +38,8 @@
 #tutorial_welcome_welcome_text{
 
   font-size: 70px;
-  padding: 40px;
-  margin: 20px 100px;
+  padding: 40px 40px 50px 40px;
+  margin: 40px 50px;
   border-style: solid;
   border-width: thin;
   border-color:transparent;
@@ -68,7 +69,7 @@
   top: 0;
   width:100%;
   height:45px;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.8);
   text-align: center;
   color: #ffffff;
   font-weight: lighter;
@@ -140,7 +141,21 @@
   width:660px;
   right: 0;
   height:150px;
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(0,0,0,.8);
+  text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+
+}
+#tutorial_editor_open_container_box_header{
+  position:fixed;
+  z-index:1501;
+  top: 0;
+  float: right;
+  right: 660px;
+  width:100%;
+  height:90px;
+  background-color: rgba(0,0,0,.8);
   text-align: center;
   color: #ffffff;
   font-weight: lighter;
@@ -149,7 +164,7 @@
 
 #tutorial_editor_open_container_box{
   position:fixed;
-  z-index:1501;
+  z-index:1502;
   top: 0;
   float: right;
   right: 660px;
@@ -255,7 +270,7 @@
   right: 0;
   width:80%;
   height:110px;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.8);
   text-align: center;
   color: #ffffff;
   font-weight: lighter;
@@ -278,6 +293,17 @@
   font-weight: lighter;
 
 }
+
+////
+// turorial congratulation bookmarks
+////
+
+#tutorial_congratulations_bookmarks_btn{
+  font-size: 18px;
+  margin: 20px;
+  padding: 10px 100px;
+}
+
 
 ////
 // turorial welcome profile
