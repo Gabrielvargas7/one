@@ -43,6 +43,37 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
       <p>Added!</p>
       <img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>
       </div>")
+
+
+
+    # if the user is on the tutorial
+    if ((Mywebroom.State.get("roomState") == "SELF") and Mywebroom.State.get("signInState") and Mywebroom.State.get("tutorialStep") != 0)
+
+      tutorialBookmarkCounter = Mywebroom.State.get("tutorialBookmarkCounter")
+      tutorialBookmarkCounter = tutorialBookmarkCounter + 1
+      Mywebroom.State.set("tutorialBookmarkCounter",tutorialBookmarkCounter)
+      if tutorialBookmarkCounter >= 3
+
+        $('#xroom_bookmarks').hide()
+        $('#xroom_profile').show()
+
+        user_id  = Mywebroom.State.get("signInUser").get("id")
+        tutorial_step = 7
+        # save the new step on the tutorial
+        Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
+
+
+        console.log("tutorial Bookmark Discover ")
+        view = new Mywebroom.Views.TutorialWelcomeProfileView()
+        $("#xroom_tutorial_container").append(view.el)
+        view.render()
+        tutorialBookmarkDiscover = Mywebroom.State.get("tutorialBookmarkDiscover")
+        tutorialBookmarkDiscover.tutorialBookmarkDicoverDestroy()
+
+
+
+
+
   #--------------------------
   # Retrieve the signed in user id. Called from addBookmark
   #--------------------------

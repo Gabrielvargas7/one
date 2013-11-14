@@ -75,10 +75,11 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
 
 
     console.log("tutorial editor open")
-
+    # create Bookmark Welcome
     view = new Mywebroom.Views.TutorialWelcomeBookmarksView()
     $("#xroom_tutorial_container").append(view.el)
     view.render()
+
 
 
     console.log('Kill: ', this);

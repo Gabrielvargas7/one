@@ -205,4 +205,21 @@ class UsersProfilesController < ApplicationController
   end
 
 
+  # Get tutorial steps
+  # GET /users_profiles/json/show_users_profile_tutorial_step_by_user_id/:user_id
+  # GET /users_profiles/json/show_users_profile_tutorial_step_by_user_id/28.json
+  #Return head 200 OK
+  def json_show_users_profile_tutorial_step_by_user_id
+
+    respond_to do |format|
+      if UsersProfile.exists?(user_id:params[:user_id])
+        @user_profile = UsersProfile.find_by_user_id(params[:user_id])
+        format.json { render json: @user_profile.as_json(only: [:user_id,:tutorial_step]), status: :ok }
+
+      end
+    end
+  end
+
+
+
 end

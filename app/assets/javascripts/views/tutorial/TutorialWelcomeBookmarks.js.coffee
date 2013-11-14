@@ -44,9 +44,14 @@ class Mywebroom.Views.TutorialWelcomeBookmarksView extends Backbone.View
     Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
 
     console.log("tutorial Bookmark Discover")
+    # create Bookmark Discover
     view = new Mywebroom.Views.TutorialBookmarksDiscoverView()
     $("#xroom_tutorial_container").append(view.el)
     view.render()
+
+    # add the view on the state model
+    Mywebroom.State.set("tutorialBookmarkDiscover",view)
+
 
 
     console.log('Kill: ', this);

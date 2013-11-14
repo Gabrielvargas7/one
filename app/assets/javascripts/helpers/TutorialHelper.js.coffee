@@ -16,4 +16,6 @@ Mywebroom.Helpers.TutorialHelper = {
 
         error: (model, response) ->
           console.log("Tutorial Step "+tutorial_step+" SAVE FAIL\n", response)
+
+
 }

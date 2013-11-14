@@ -310,7 +310,8 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
     # SOCIAL ICONS
     if @type isnt "ITEM"
-      @socialView.show()
+      if ((Mywebroom.State.get("roomState") == "SELF") and Mywebroom.State.get("signInState") and  Mywebroom.State.get("tutorialStep") == 0)
+          @socialView.show()
 
 
 
