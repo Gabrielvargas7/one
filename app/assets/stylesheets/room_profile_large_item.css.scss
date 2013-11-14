@@ -48,6 +48,7 @@
 .activity_item_large_view .profile_large_item_try_it_button{
   width:auto;
   float:right;
+  padding:0 20px;
 }
 .activity_item_large_view .social_bar{
   background-color: transparent;
@@ -60,7 +61,7 @@
 .activity_item_large_list.profile_button{
   vertical-align:top;
   padding:0;
-  padding-right: 80px;
+  padding-left: 80px;
   text-align: right;
   float: right;
   display:inline-block;
@@ -68,7 +69,7 @@
 
 .activity_item_large_view .profile_button_wrap{
   padding-right: 20px;
-  padding-top: 10px;
+  // padding-top: 10px;
 }
 .activity_item_large_list{
   display:inline-block;

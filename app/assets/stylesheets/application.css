@@ -161,7 +161,7 @@ footer ul li {
     height:auto;
 }
 .social_bar .navbar .nav > li > a{
-    padding:10px 5px 10px;
+    padding:10px 3px;
 }
 .social_bar .navbar{
     border-spacing:0;
@@ -171,6 +171,7 @@ footer ul li {
 }
 .social_bar li.info_button_item{
     padding-top:11px;
+    padding-left:15px;
     width:30px;
 }
 .navbar .nav > li.info_button_item > a{
@@ -179,6 +180,7 @@ footer ul li {
     border-radius:3px;
     padding:0 3px;
     font-size:13px;
+    font-weight:lighter;
     width:45px;
     /*height:20px;*/
 }
@@ -187,6 +189,7 @@ footer ul li {
     background-image:none;
     background-color: transparent;
     border:none;
+    box-shadow:none;
 }
 .social_bar{
     background-color: rgba(255,255,255,.4);

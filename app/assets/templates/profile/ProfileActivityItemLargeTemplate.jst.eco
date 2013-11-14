@@ -40,16 +40,19 @@ display:inline-block;">
               <li><div class="fb-like" data-href="<%=@fbUrl%>" data-width="90" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div></li>
               <li class="pinterest_item"><a href="#" data-pin-do="buttonPin"
             data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" target="_blank"></a></li>
+
+              <li class='activity_item_large_list profile_button'>
+
+                <div class="profile_button_wrap"><button class="profile_large_item_try_it_button green_button green_button_light" ><%if @model.get('type') is 'BOOKMARK':%>Add It!<%else:%>Try in My Room!<%end%></button>
+                </div>
+              </li>
+
             </ul>
           </div>
         </div>
       </div>
     </li>
-    <li class='activity_item_large_list profile_button'>
 
-      <div class="profile_button_wrap"><button class="profile_large_item_try_it_button" ><%if @model.get('type') is 'BOOKMARK':%>Add It!<%else:%>Try in My Room!<%end%></button>
-      </div>
-    </li>
   </ul>
 
 </div>
