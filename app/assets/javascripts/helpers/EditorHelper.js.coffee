@@ -386,7 +386,7 @@ Mywebroom.Helpers.Editor = {
     row_number =    1
     column_number = 3
 
-    row_line = "<ul id=" + row_id + "1></ul>"
+    row_line = "<ul id=" + row_id + "1 class=editor-tab-content></ul>"
     $(tab_id).append(row_line)
 
 
@@ -404,7 +404,7 @@ Mywebroom.Helpers.Editor = {
 
       if u is 0
         row_number += 1
-        row_line = "<ul id=" + row_id + row_number + "></ul>"
+        row_line = "<ul id=" + row_id + row_number + " class=editor-tab-content></ul>"
         $(tab_id).append(row_line)
 
 

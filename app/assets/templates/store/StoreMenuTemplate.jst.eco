@@ -1,20 +1,20 @@
-<div class="tabbable"> 
+<div class="tabbable">
 
   <!-- Store Menu  -->
   <ul class="nav nav-tabs nav-tabs-store" id="storeTabs">
       <li class="store-nav">
           <a href="#tab_items" data-toggle="tab">OBJECTS</a>
       </li>
-      <li class="store-nav">             
+      <li class="store-nav">
           <a href="#tab_themes" data-toggle="tab">THEMES</a>
       </li>
-      <li class="store-nav">              
+      <li class="store-nav">
           <a href="#tab_bundles" data-toggle="tab">BUNDLES</a>
       </li>
-      <li class="store-nav">              
+      <li class="store-nav">
           <a href="#tab_entire_rooms" data-toggle="tab">ENTIRE ROOMS</a>
       </li>
-      <li class="store-nav">              
+      <li class="store-nav">
           <a href="#tab_hidden" data-toggle="tab"></a>
       </li>
   </ul>
