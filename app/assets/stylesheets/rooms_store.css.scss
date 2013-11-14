@@ -47,7 +47,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   width:640px;
-  height:540px;  
+  height:540px;
 }
 
 
@@ -126,4 +126,11 @@ li a[href="#tab_hidden"] {
 .input-append-store {
   margin-top: 4px;
   margin-bottom: 0px;
+}
+
+
+.tab-content ul.editor-tab-content {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 25px;
 }
