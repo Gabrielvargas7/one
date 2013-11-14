@@ -71,8 +71,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
     # PROFILE VIEW
-    if Mywebroom.State.get('signInState')
-      @createProfileView()
+    @createProfileView()
 
 
 

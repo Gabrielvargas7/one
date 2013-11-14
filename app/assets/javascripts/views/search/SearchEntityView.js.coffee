@@ -37,25 +37,22 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   #*******************
   click: ->
 
-    #console.log("click the entity "+@model.get('viewNum'))
-    #console.log("display Type "+@model.get('entityType'))
-    #console.log("entityId "+@model.get('entityId'))
-    #console.log("displayTopName "+@model.get('displayTopName'))
-    #console.log("displayUnderName "+@model.get('displayUnderName'))
-
-    #$("[data-search-id="+@model.get('viewNum') + "]").css({backgroundColor : "#202020"})
-
-
-
-
     entityType =  @model.get('entityType')
 
     switch entityType
 
       when Mywebroom.Models.BackboneSearchEntityModel.BOOKMARK
 
-        #console.log("is a Bookmark")
-        @openBookmarkView()
+
+        if Mywebroom.State.get("signInState")
+
+          #console.log("is a Bookmark")
+          @openBookmarkView()
+
+        else
+
+          console.log(@model)
+          alert("open public store for this bookmark!")
 
 
       when Mywebroom.Models.BackboneSearchEntityModel.PEOPLE
@@ -69,8 +66,15 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
       when Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN
 
-        #console.log("is a Item Design")
-        @openStoreEditor()
+        if Mywebroom.State.get("signInState")
+
+          #console.log("is a Item Design")
+          @openStoreEditor()
+
+        else
+
+          console.log(@model)
+          alert("open public store for this design!")
 
 
 
@@ -107,8 +111,6 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     .not(this.$el)
     .toggleClass('highlight-search', false)
 
-    #console.log("Enter to entity "+@model.get('viewNum'))
-    #$("[data-search-id=" + @model.get('viewNum') + "]").addClass('highlight-search')
 
 
 
@@ -243,7 +245,6 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
       }
     )
 
-    #console.log("url", userBookmarkCollection.url())
 
     userBookmarkCollection.fetch({
       async: false
@@ -251,6 +252,10 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
         return true
 
       error: (collection, response, options) ->
+        ###
+        FIXME
+        ###
+
         console.log("(ignore)")
         return false
     })
