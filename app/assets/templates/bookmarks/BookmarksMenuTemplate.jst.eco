@@ -1,3 +1,45 @@
+<style>
+#add_your_own_form
+{
+    border:1px solid #40C3FD;
+}
+
+#add_your_own_submit{
+  float:left;
+  position:relative;
+  height:55px;
+  width:45px;
+  text-align: center;
+  background-color:#7d7d7d;
+}
+.add_your_own_submit_middle{
+  height:100%;
+  display:table;
+  margin:0 auto;
+
+}
+.add_your_own_submit_inner{
+  display:table-cell;
+  vertical-align: middle;
+}
+#add_your_own_form input{
+  display:block;
+  border: none;
+  box-shadow:none;
+  outline:none;
+  height:24px;
+  background-color:transparent;
+  color:white;
+}
+#add_your_own_form input#add_your_own_url_input{
+  border-bottom:1px solid #707070;
+
+
+}
+#add_your_own_bookmark_title{
+
+}
+</style>
 <div class="bookmark_menu">
   <p class="bookmark_object_title bottom_border_padding"><%=@items_name%> Bookmarks</p>
   <ul class="bookmark_menu_list">
@@ -14,11 +56,19 @@
     
     <div id="add_your_own_box">
       <p>Add your own!</p>
-      <form id="add_your_own_form">
-        <input name="url_input" placeholder="URL">
-        <input name="bookmark_title" placeholder="Bookmark Title">
-        <input type="image" name="submit_btn" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226577/bookmarks-icon-magnifying-glass-search.png">
-      </form>
+      <div id="add_your_own_form" class="input-append">
+        <div class="pull-left">
+          <input name="url_input" placeholder="URL" id="add_your_own_url_input">
+          <input name="bookmark_title" placeholder="Bookmark Title" id="add_your_own_bookmark_title">
+        </div>
+        <div id="add_your_own_submit">
+          <div class="add_your_own_submit_middle">
+            <div class= "add_your_own_submit_inner">
+              <input  type="image" name="submit_btn" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226577/bookmarks-icon-magnifying-glass-search.png">
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="custom_bookmark_confirm_add_wrap">
         <!--img goes here-->
 
