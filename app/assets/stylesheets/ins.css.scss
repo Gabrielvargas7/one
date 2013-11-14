@@ -1,0 +1,42 @@
+.lightbox-ins {
+    width: 500px;
+    height: 320px;
+}
+
+.ins-button-wrapper {
+    margin: 60px;
+}
+
+.ins-button {
+    position: absolute;
+    bottom: 45px;
+    right: 45px;
+    width: 187px;
+    height: 35px;
+
+    background-color: #00ccff;
+    color: white;
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 18px;
+
+    text-align: center;
+
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
+    padding-top: 10px;
+}
+.ins-button:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+.ins-close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
