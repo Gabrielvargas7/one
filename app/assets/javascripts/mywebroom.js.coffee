@@ -1732,6 +1732,8 @@ $(document).ready ->
   Checks if signed in user has requested a key from idRequested. returns true/false.
   ###
   Mywebroom.Helpers.IsThisMyFriendRequest = (idRequested) ->
+    
+    return false if !Mywebroom.State.get("signInUser")
     hasRequested = new Mywebroom.Collections.ShowFriendRequestByUserIdAndUserIdRequestedCollection()
     hasRequested.fetch
       async  : false
@@ -1746,7 +1748,7 @@ $(document).ready ->
   Request key from signed in user to idRequested
   ###
   Mywebroom.Helpers.RequestKey = (idRequested) ->
-    if Mywebroom.State.get('signInUser').get('id')
+    if Mywebroom.State.get('signInUser') and Mywebroom.State.get('signInUser').get('id')
       #Make Key Request
       requestModel = new Mywebroom.Models.CreateFriendRequestByUserIdAndUserIdRequestedModel()
       requestModel.set 'userId', Mywebroom.State.get("signInUser").get("id")
@@ -1772,7 +1774,7 @@ $(document).ready ->
 
     else
       #send to landing page
-      window.location.replace(Mywebroom.State.get("shopBaseUrl").default)
+      window.location.assign(window.location.protocol + "//" + window.location.host)
 
 
 

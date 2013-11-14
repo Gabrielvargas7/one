@@ -27,7 +27,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
     tableView = new Mywebroom.Views.ProfileActivityView2(collection: @photosCollection, model:@model)
     $(@el).append(tableView.render().el)
 
-    if @photosCollection.length is @fetchLimit
+    if @photosCollection.length is @fetchLimit && Mywebroom.State.get('roomState')!="PUBLIC" && Mywebroom.State.get('roomState')!="NONE"
       #set scroll event to fetch more photos. Try creating new tableview and appending it to the el. 
       that = this
       @$('#gridItemList').off('scroll').on('scroll',that, (event)-> 

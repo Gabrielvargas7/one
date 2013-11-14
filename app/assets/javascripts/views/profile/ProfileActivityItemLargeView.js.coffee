@@ -92,6 +92,12 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     item_id    : model.get("item_id") <-- should only need for bookmarks
     ###
 
+    ###
+    If user not signed in, send to landing page. Otherwise, send to their room with params.
+    ###
+    if !Mywebroom.State.get('signInUser')
+     return window.location.assign(window.location.protocol + "//" + window.location.host)
+    
 
     if Mywebroom.State.get('roomState') != "SELF"
       if @model.get('bookmark_url')
@@ -118,18 +124,16 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
         @$('.profile_large_item_try_it_button').text("Added to your " + Mywebroom.Data.ItemNames[ parseInt( @model.get('item_id') ) ] + '!')
         @$('.profile_large_item_try_it_button').addClass('profile_large_item_tried_it').removeClass('profile_large_item_try_it_button')
       else
-        #its an object
+        #its an object/design
         paramType = "DESIGN"
         paramId = @model.get('id')
+        
         #send to my room
         paramCameFrom = Mywebroom.State.get('roomState') + "_ROOM"
         parameters = parameters || $.param({'entity_type': paramType, 'entity_id': paramId,'came_from': paramCameFrom})
-        #TODO If no one signed in, sent to landing page. 
+        
+        window.location.href= window.location.protocol + "//" + window.location.host + '/room/' + Mywebroom.State.get('signInUser').get('username') + '?' + parameters
 
-        ###
-        FIXME
-        ###
-        window.location.href= window.location.origin + '/room/' + Mywebroom.State.get('signInUser').get('username') + '?' + parameters
    
     else
       
