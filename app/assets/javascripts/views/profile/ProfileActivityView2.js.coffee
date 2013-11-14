@@ -5,6 +5,9 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
   className: 'profileHome_activity generalGrid'
   
   template: JST['profile/ProfileHomeGridTemplate2']
+
+  events:
+    'click .profile_request_key_button':'askForKey'
   
   itemView:(obj) ->
     new Mywebroom.Views.ProfileGridItemView2(obj)
@@ -66,6 +69,10 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
         @currentView.on('ProfileActivityLargeView:showNext',@showNextItem,this)
         $("#profile_home_wrapper").append(@currentView.el)
         @currentView.render() 
+
+  askForKey:(event)->
+    #Key Request. 
+    Mywebroom.Helpers.RequestKey(@model.get('user_id'))
 
 #When the itemView prototype is set, 
 #Mywebroom.Views.ProfileGridItemView2 does not exist yet.
