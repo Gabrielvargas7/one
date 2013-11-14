@@ -83,11 +83,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     # Create Search Box
     searchView = new Mywebroom.Views.SearchView()
+    searchView.render()
+
     $("#xroom_header_search_box").append(searchView.el)
     $("#xroom_header_search_box").hide()
-    searchView.render()
-    @searchViewArray = new Array()
-    Mywebroom.State.set("searchViewArray", @searchViewArray)
+
+    Mywebroom.State.set("searchViewArray", [])
 
 
 
@@ -487,6 +488,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
+      # Highlight the first one
+      $('[data-search-id=0]').trigger('mouseenter')
+
+
       # If there aren't any search results, hide the box
       if $('.search-container').length is 0 then $('#xroom_header_search_box').hide()
 
@@ -520,7 +525,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
           # (2) Scroll
           try
             #$('[data-search-id=' + (Mywebroom.Data.searchNum + 1) + ']').scrollTo(200)
-            $('.search-container')[Mywebroom.Data.searchNum + 1].scrollIntoView()
+            $('.search-container')[Mywebroom.Data.searchNum].scrollIntoView()
           catch error
             #alert("error #1")
 
@@ -563,7 +568,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
           # (2) Scroll
           try
             #$('[data-search-id=' + (Mywebroom.Data.searchNum - 1) + ']').scrollTo(200)
-            $('.search-container')[Mywebroom.Data.searchNum - 1].scrollIntoView()
+            $('.search-container')[Mywebroom.Data.searchNum].scrollIntoView()
           catch error
             #alert("error #3")
 

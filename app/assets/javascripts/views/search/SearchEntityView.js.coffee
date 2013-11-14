@@ -12,7 +12,6 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   events: {
     'click':      'click'
     'mouseenter': 'mouseEnter'
-    'mouseleave': 'mouseLeave'
   }
 
 
