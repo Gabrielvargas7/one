@@ -32,7 +32,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     #Check for active sites list to see if there's others in the DOM. 
     if $('.browse_mode_site').length>0
       @collection.each(((item)->
-         if $('[data-id='+item.get('id')+']').length>0
+         if $('.browse_mode_view [data-id='+item.get('id')+']').length>0
           item.set('blueBorder', true)
       ))
      

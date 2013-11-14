@@ -51,8 +51,14 @@ div.current_browse_mode_site.browse_mode_site{
 }
 /*Browse mode Sidebar*/
 img.browse_mode_sidebar_icons{
-  width:30px;
+  width:35px;
   border-radius:100%;
+  -webkit-background-clip: padding-box; /*To help with the rough circle edges*/
+  display:inline;
+
+}
+.browse_mode_view .vert .simply-scroll-btn{
+  width:40px;
 }
 
 .browse_mode_list li{
@@ -71,7 +77,7 @@ img.browse_mode_sidebar_icons{
   border-top: 1px solid #707070;
 }
 #browse_mode_list_selected .browse_mode_sidebar_icons,.blue_border{
-  border:3px solid #40C3FD;
+  border:2px solid #40C3FD;
 }
 #browse_mode_active_highlight,#browse_mode_discover_highlight,#browse_mode_mybookmarks_highlight{
   display:none;
@@ -117,8 +123,8 @@ li.browse_mode_sidebar_icons_list{
 }
 .active_menu_site_icon{
   display:inline-block;
-  width: 30px;
-  min-height:30px;
+  width: 40px;
+  min-height:40px;
   border-radius:100%;
   background-size: contain;
   background-repeat: no-repeat;

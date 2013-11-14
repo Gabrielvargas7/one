@@ -53,13 +53,13 @@ Note all DIVs are generated and should not be hard-coded
     }
   
     .simply-scroll-list li img {
-      border: none;
-      display: block;
+      /*border: none;*/
+      /*display: block;*/
     }
   
   .simply-scroll-btn {
     position: absolute;
-    background-image: url(http://placekitten.com/50/50);
+   /* background-image: url(http://placekitten.com/50/50);*/
     width: 42px;
     height: 44px;
     z-index:3;
@@ -179,13 +179,13 @@ Note all DIVs are generated and should not be hard-coded
 /* Vertical scroller example */
 
 .vert { /* wider than clip to position buttons to side */
-  width: 340px;
+  /*width: 340px; //makes it not possible to click on iframe*/
   height: 400px;
   margin-bottom: 1.5em;
 }
 
   .vert .simply-scroll-clip {
-    width: 290px;
+    /*width: 290px;//makes it not possible to click on iframe*/
     height: 400px;
   }
   
@@ -208,7 +208,7 @@ Note all DIVs are generated and should not be hard-coded
   }
 
   .vert .simply-scroll-btn-up { /* modified btn pos */
-    background:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371244909/arrow-up.png');
+    background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371244909/arrow-up.png');
     right: 0;
     top: 0;
   }
@@ -216,7 +216,7 @@ Note all DIVs are generated and should not be hard-coded
   .vert .simply-scroll-btn-up:hover {}
   
   .vert .simply-scroll-btn-down { /* modified btn pos */
-    background:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371244666/arrow-down.png');
+    background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371244666/arrow-down.png');
     right: 0;
     top: 52px;
   }
