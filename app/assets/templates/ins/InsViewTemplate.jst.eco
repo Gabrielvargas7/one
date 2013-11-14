@@ -1,5 +1,14 @@
-<div class="lighbox-ins">
-	<a href="#">
-		<img src="<%= @model.get('image_name').url%>">
-	</a>
+<div class="lightbox-ins" >
+
+    <img src="<%= @model.get('image_name').url %>" />
+
+    <div class="ins-button-wrapper">
+        <a href="#" class="ins-button">Check it out!</a>
+    </div>
+
+
+    <a href="#">
+        <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383590506/x-button_rqdoti.png" class="ins-close">
+    </a>
+
 </div>
