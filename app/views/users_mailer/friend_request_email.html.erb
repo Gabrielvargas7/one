@@ -29,7 +29,7 @@
         padding: 10px;">
 
   <%= link_to "Accept the Request ",
-              room_rooms_url(@user.username,came_from:@came_from_email_request_key),
+              room_rooms_url(@user_requested.username,came_from:@came_from_email_request_key),
               :style => 'display: block;
                         height: 100%;
                         width: 100%;

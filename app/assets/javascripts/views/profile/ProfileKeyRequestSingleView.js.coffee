@@ -31,7 +31,6 @@ class Mywebroom.Views.ProfileKeyRequestSingleView extends Backbone.View
     
   denyKeyRequest:(event)->
     denyKeyRequestModel = new Mywebroom.Models.DestroyFriendRequestByUserIdAndUserIdRequestedModel()
-    debugger
     this.trigger('ProfileKeyRequest:Deny',@model)
     denyKeyRequestModel.set('url', denyKeyRequestModel.url(@userId.getUserId(),this.model.get('user_id')))
     denyKeyRequestModel.destroyUserFriendRequest()

@@ -122,7 +122,8 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
         paramType = "DESIGN"
         paramId = @model.get('id')
         #send to my room
-        parameters = parameters || $.param({'entity_type': paramType, 'entity_id': paramId})
+        paramCameFrom = Mywebroom.State.get('roomState') + "_ROOM"
+        parameters = parameters || $.param({'entity_type': paramType, 'entity_id': paramId,'came_from': paramCameFrom})
         #TODO If no one signed in, sent to landing page. 
 
         ###
