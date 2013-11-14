@@ -3,6 +3,13 @@
     height: 320px;
 }
 
+.lightbox-shadow-ins {
+    filter: alpha(opacity=30);
+    -moz-opacity: 0.3;
+    -khtml-opacity: 0.3;
+    opacity: 0.3;
+}
+
 .ins-button-wrapper {
     margin: 60px;
 }
@@ -10,14 +17,14 @@
 .ins-button {
     position: absolute;
     bottom: 45px;
-    right: 45px;
+    right: 60px;
     width: 187px;
-    height: 35px;
+    height: 25px;
 
     background-color: #00ccff;
     color: white;
     font-family: "Open Sans";
-    font-weight: 400;
+    font-weight: 200;
     font-size: 18px;
 
     text-align: center;
@@ -29,7 +36,7 @@
     border: none;
     color: #ffffff;
     text-decoration: none;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .ins-button:hover {
     color: #ffffff;

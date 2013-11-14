@@ -446,7 +446,8 @@ $(document).ready ->
 
             #console.log("fake tell sever we saw notification")
 
-    
+
+            
             note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
             note.save({id: user_id},
               {
@@ -459,7 +460,7 @@ $(document).ready ->
                   #console.error(model, xhr, options)
               }
             )
-
+            
 
 
 
@@ -469,17 +470,30 @@ $(document).ready ->
 
               switch position
 
-                when 1
-                  #console.log("bookmark notification")
-                  $('#lightbox').css("left", "-=200")
+                when 1 then false
+                  #console.log("bookmark notification - no position change")
 
                 when 2
-                  #console.log("item notification")
-                  $('#lightbox').css("left", "+=200")
+                  #console.log("item notification - move top right")
+                  $('#lightbox').css({
+                    "left": "80%"
+                    "top": "-=140"
+                  })
 
                 when 3
-                  #console.log("theme notification")
-                  $('#lightbox').css("left", "+=200")
+                  #console.log("theme notification - move top right")
+                  $('#lightbox').css({
+                    "left": "80%"
+                    "top": "-=140"
+                  })
+
+                when 4
+                  #console.log("new version notification - move top right")
+                  $('#lightbox').css({
+                    "left": "80%"
+                    "top": "-=140"
+                  })
+
 
 
             else
@@ -1732,7 +1746,7 @@ $(document).ready ->
   Checks if signed in user has requested a key from idRequested. returns true/false.
   ###
   Mywebroom.Helpers.IsThisMyFriendRequest = (idRequested) ->
-    
+
     return false if !Mywebroom.State.get("signInUser")
     hasRequested = new Mywebroom.Collections.ShowFriendRequestByUserIdAndUserIdRequestedCollection()
     hasRequested.fetch

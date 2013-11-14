@@ -14,10 +14,6 @@
     width: 100%;
     height: 100%;
     background: #000;
-    filter: alpha(opacity=75);
-    -moz-opacity: 0.75;
-    -khtml-opacity: 0.75;
-    opacity: 0.75;
     z-index: 1500;
     display: none;
 }
