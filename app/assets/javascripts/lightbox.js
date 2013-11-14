@@ -13,7 +13,7 @@ function lightbox(lbClass, shadowClass){
 
         // add lightbox/shadow <div/>'s if not previously added
         if($('#lightbox').size() == 0){
-            
+
 
             if(lbClass){
                 var theLightbox = $('<div id="lightbox"' + 'class=' + lbClass + '/>');
@@ -28,7 +28,7 @@ function lightbox(lbClass, shadowClass){
                 var theShadow = $('<div id="lightbox-shadow"/>');
             }
 
-            
+
 
             $('body').append(theShadow);
             $('body').append(theLightbox);
@@ -37,9 +37,9 @@ function lightbox(lbClass, shadowClass){
         // remove any previously added content
         $('#lightbox').empty();
 
-        
-        // move the lightbox to the current window top + 100px
-        $('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
+
+        // move the lightbox to the current window top + 200px
+        $('#lightbox').css('top', $(window).scrollTop() + 200 + 'px');
 
         // display the lightbox
         $('#lightbox').show();
