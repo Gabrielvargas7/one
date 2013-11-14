@@ -433,7 +433,7 @@ $(document).ready ->
 
 
 
-            window.lightbox('lightbox-ins', 'shadow-ins')
+            window.lightbox('lightbox-ins', 'lightbox-shadow-ins')
 
 
             $('#lightbox').append(view.el)
@@ -446,7 +446,7 @@ $(document).ready ->
 
             #console.log("fake tell sever we saw notification")
 
-
+    
             note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
             note.save({id: user_id},
               {
