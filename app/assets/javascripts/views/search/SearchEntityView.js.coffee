@@ -22,9 +22,6 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
   #*******************
   render: ->
 
-    #console.log("Adding the SearchEntityView with model:")
-    #console.log("Search Entity")
-    #console.log(@model)
     $(@el).append(@template({entity: @model}))
 
 
@@ -51,8 +48,9 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
         else
 
-          console.log(@model)
-          alert("open public store for this bookmark!")
+          seoModel = Mywebroom.Helpers.getSEOLink(@model.get('entityId'), 'BOOKMARK')
+          window.open(seoModel.get("seo_url"), '_blank')
+
 
 
       when Mywebroom.Models.BackboneSearchEntityModel.PEOPLE
@@ -73,9 +71,8 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
         else
 
-          console.log(@model)
-          alert("open public store for this design!")
-
+          seoModel = Mywebroom.Helpers.getSEOLink(@model.get('entityId'), 'DESIGN')
+          window.open(seoModel.get("seo_url"), '_blank')
 
 
 
