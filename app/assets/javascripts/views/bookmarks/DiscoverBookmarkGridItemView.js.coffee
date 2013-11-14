@@ -29,7 +29,7 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
       lastBookmarkPosition = 1
     else
       lastBookmarkPosition = parseInt(_.last(@myBookmarksCollection.models).get('position'))
-    postBookmarkModel.set 'position',lastBookmarkPosition+1   
+    postBookmarkModel.set 'position',lastBookmarkPosition+1
     postBookmarkModel.save {},
       success: (model, response)->
         console.log('postBookmarkModel SUCCESS:')
@@ -54,9 +54,6 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
       Mywebroom.State.set("tutorialBookmarkCounter",tutorialBookmarkCounter)
       if tutorialBookmarkCounter >= 3
 
-        $('#xroom_bookmarks').hide()
-        $('#xroom_profile').show()
-
         user_id  = Mywebroom.State.get("signInUser").get("id")
         tutorial_step = 7
         # save the new step on the tutorial
@@ -64,7 +61,7 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
 
 
         console.log("tutorial Bookmark Discover ")
-        view = new Mywebroom.Views.TutorialWelcomeProfileView()
+        view = new Mywebroom.Views.TutorialCongratulationsBookmarksView()
         $("#xroom_tutorial_container").append(view.el)
         view.render()
         tutorialBookmarkDiscover = Mywebroom.State.get("tutorialBookmarkDiscover")

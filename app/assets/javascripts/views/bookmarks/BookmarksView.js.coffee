@@ -309,4 +309,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       #container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop())
 
   closeView:->
-    this.remove()
+    this.unbind(); # Unbind all local event bindings
+    this.remove(); # Remove view from DOM
+    delete this.$el; # Delete the jQuery wrapped object variable
+    delete this.el;
+

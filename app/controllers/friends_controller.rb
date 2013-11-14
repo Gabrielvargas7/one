@@ -6,8 +6,6 @@ class FriendsController < ApplicationController
                     :json_destroy_friend_by_user_id_and_user_id_friend,
                     :json_show_is_my_friend_by_user_id_and_friend_id,
                     :json_index_friends_suggestion_by_user_id_by_limit_by_offset,
-                    :json_index_friend_by_user_id,
-                    :json_index_friend_by_user_id_by_limit_by_offset,
                     :json_show_is_my_friend_by_user_id_and_friend_id
                 ]
 
@@ -21,8 +19,6 @@ class FriendsController < ApplicationController
                 ]
   before_filter :json_is_my_friend_the_sign_in_by_friend_id,
                 only:[
-                      :json_index_friend_by_user_id,
-                      :json_index_friend_by_user_id_by_limit_by_offset,
                       :json_show_is_my_friend_by_user_id_and_friend_id
 
                      ]

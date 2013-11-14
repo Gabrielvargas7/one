@@ -2,7 +2,6 @@
     <header class="navbar navbar-fixed-top navbar-inverse" >
         <div class="navbar-inner" >
 
-
             <% if @static_content_logo.nil? or @static_content_logo.image_name.blank?   %>
             <% else %>
                 <%= link_to cl_image_tag(@static_content_logo.image_name, :width => 112, :height => 32 ), root_path , class:"brand",id:  "xroom_logo"  %>
