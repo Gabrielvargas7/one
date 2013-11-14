@@ -7,6 +7,8 @@
   margin-left: -250px;
   background: #ffffff;
   z-index: 1501;
+  text-align: right;
+
 
 }
 #feedback-shadow {
@@ -15,8 +17,33 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.8);
   opacity: 0.75;
   z-index: 1500;
+
+}
+
+#feedback_lightbox input[type="text"]{
+  width: 100%;
+  margin: 10px;
+
+}
+
+#feedback_lightbox textarea{
+  width: 100%;
+  resize: none;
+  margin: 10px;
+
+}
+
+
+#feedback_btn_container{
+  display: inline;
+}
+
+
+#feedback_close_btn{
+  margin: 20px;
+
 
 }
