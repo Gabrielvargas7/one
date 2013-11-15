@@ -21,6 +21,7 @@ class UsersBookmark < ActiveRecord::Base
 
   validates :user_id,presence:true, numericality: { only_integer: true }
   validates :bookmark_id,presence:true, numericality: { only_integer: true }
+  validates :position,presence:true, numericality: { only_integer: true }
 
 
 

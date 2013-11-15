@@ -1,14 +1,15 @@
 #feedback_lightbox {
   position: fixed;
-  top: 0;
+  top: 150px;
   left: 50%;
-  width: 500px;
+  width: 445px;
   height: 320px;
   margin-left: -250px;
   background: #ffffff;
   z-index: 1501;
   text-align: right;
-
+  border-style: solid;
+  border-color:  #474f50;
 
 }
 #feedback-shadow {
@@ -24,17 +25,31 @@
 }
 
 #feedback_lightbox input[type="text"]{
-  width: 100%;
-  margin: 10px;
-
+  width: 390px;
+  margin-right: 20px;
 }
 
 #feedback_lightbox textarea{
-  width: 100%;
+  width: 390px;
   resize: none;
-  margin: 10px;
+  margin-right: 20px;
+}
+
+
+#feedback_label_title{
+  font-size: 24px;
 
 }
+
+#feeedback_label_name{
+  margin-right: 100px;
+
+}
+
+#feeedback_label_comment{
+  margin-right: 100px;
+}
+
 
 
 #feedback_btn_container{

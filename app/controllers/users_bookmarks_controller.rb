@@ -58,6 +58,7 @@ class UsersBookmarksController < ApplicationController
               joins(:bookmarks_category).
               where('bookmarks.id = ? and bookmarks_categories.item_id in (0,?)', params[:bookmark_id],params[:item_id]).exists?
 
+
               if UsersBookmark.
                   joins(:bookmark).
                   joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
@@ -66,16 +67,25 @@ class UsersBookmarksController < ApplicationController
                  format.json { render json: 'the position of the bookmark already exists' , status: :ok }
 
               else
+                if UsersBookmark.
+                    joins(:bookmark).
+                    joins('inner join bookmarks_categories ON bookmarks_categories.id = bookmarks.bookmarks_category_id').
+                    where('user_id = ? and bookmarks_categories.item_id = ? and bookmark_id = ?',params[:user_id],params[:item_id],params[:bookmark_id]).exists?
 
-                @user_bookmark = UsersBookmark.new(user_id:params[:user_id],bookmark_id:params[:bookmark_id],position:params[:position])
+                    format.json { render json: 'the bookmark already exists' , status: :ok }
 
-                if @user_bookmark.save
-                    format.json { render json: @user_bookmark, status: :created }
                 else
-                    format.json { render json: @user_bookmark.errors, status: :unprocessable_entity }
+                      @user_bookmark = UsersBookmark.new(user_id:params[:user_id],bookmark_id:params[:bookmark_id],position:params[:position])
+
+                    if @user_bookmark.save
+                        format.json { render json: @user_bookmark, status: :created }
+                    else
+                        format.json { render json: @user_bookmark.errors, status: :unprocessable_entity }
+                    end
                 end
 
               end
+
           else
             format.json { render json: 'bookmark and items not found' , status: :not_found }
           end

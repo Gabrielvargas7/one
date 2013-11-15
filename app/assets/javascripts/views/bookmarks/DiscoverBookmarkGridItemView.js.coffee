@@ -30,6 +30,8 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
     else
       lastBookmarkPosition = parseInt(_.last(@myBookmarksCollection.models).get('position'))
     postBookmarkModel.set 'position',lastBookmarkPosition+1
+    #console.log(lastBookmarkPosition)
+    #console.log(@myBookmarksCollection.models)
     postBookmarkModel.save {},
       success: (model, response)->
         console.log('postBookmarkModel SUCCESS:')
