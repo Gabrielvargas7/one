@@ -148,7 +148,7 @@ class UsersBookmarksController < ApplicationController
         format.json { render json: @user_bookmarks }
 
       else
-        format.json { render json: 'not found user_id ' , status: :not_found }
+        format.json { render json: 'not found user_id ' , status: :no_content }
       end
     end
 
@@ -179,7 +179,7 @@ class UsersBookmarksController < ApplicationController
         format.json { render json: @user_bookmarks }
 
       else
-        format.json { render json: 'not found user_id ' , status: :not_found }
+        format.json { render json: 'not found user_id ' , status: :no_content }
       end
     end
 
@@ -209,7 +209,7 @@ class UsersBookmarksController < ApplicationController
 
           format.json { render json: @user_bookmarks }
       else
-        format.json { render json: 'not found user_id and item id' , status: :not_found }
+        format.json { render json: 'not found user_id and item id' , status: :no_content }
       end
   end
 
@@ -304,7 +304,7 @@ class UsersBookmarksController < ApplicationController
 
         format.json { render json: @user_bookmark }
       else
-        format.json { render json: 'not found user_id and bookmark id' , status: :not_found }
+        format.json { render json: 'not found user_id and bookmark id' , status: :no_content }
       end
     end
 
@@ -336,7 +336,7 @@ class UsersBookmarksController < ApplicationController
 
         format.json { render json: @user_bookmarks }
       else
-        format.json { render json: 'not found user_id and item id' , status: :not_found }
+        format.json { render json: 'not found user_id and item id' , status: :no_content }
       end
     end
 

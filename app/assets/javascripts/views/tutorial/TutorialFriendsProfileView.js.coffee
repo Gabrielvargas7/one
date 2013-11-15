@@ -42,7 +42,7 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
 
 
     user_id  = Mywebroom.State.get("signInUser").get("id")
-    tutorial_step = 9
+    tutorial_step = 10
     # save the new step on the tutorial
     Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
 

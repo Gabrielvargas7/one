@@ -45,7 +45,7 @@ class Mywebroom.Views.TutorialCongratulationsBookmarksView extends Backbone.View
     bookmarksView.closeView()
 
     user_id  = Mywebroom.State.get("signInUser").get("id")
-    tutorial_step = 7.5
+    tutorial_step = 8
     # save the new step on the tutorial
     Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
 

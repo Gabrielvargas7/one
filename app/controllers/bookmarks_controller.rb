@@ -258,7 +258,7 @@ class BookmarksController < ApplicationController
 
 
       else
-        format.json { render json: 'not bookmark for this item ', status: :not_found }
+        format.json { render json: 'not bookmark for this item ', status: :no_content }
       end
 
     end
@@ -304,7 +304,7 @@ class BookmarksController < ApplicationController
           format.json {render json:@bookmarks.as_json()}
 
         else
-          format.json { render json: 'not bookmark category for this item ', status: :not_found }
+          format.json { render json: 'not bookmark category for this item ', status: :no_content }
         end
       else
         format.json { render json: 'not user found', status: :not_found }
@@ -363,7 +363,7 @@ class BookmarksController < ApplicationController
 
 
       else
-        format.json { render json: 'not bookmark for this bookmarks category  ', status: :not_found }
+        format.json { render json: 'not bookmark for this bookmarks category  ', status: :no_content }
       end
 
     end
@@ -405,7 +405,7 @@ class BookmarksController < ApplicationController
 
 
       else
-        format.json { render json: 'not bookmark found ', status: :not_found }
+        format.json { render json: 'not bookmark found ', status: :no_content}
       end
 
     end
@@ -430,7 +430,7 @@ class BookmarksController < ApplicationController
 
         format.json { render json: seo_url }
       else
-        format.json { render json: 'not found bookmark id' , status: :not_found }
+        format.json { render json: 'not found bookmark id' , status: :no_content }
       end
     end
 
@@ -473,7 +473,7 @@ class BookmarksController < ApplicationController
 
 
       else
-        format.json { render json: 'not bookmark for this item ', status: :not_found }
+        format.json { render json: 'not bookmark for this item ', status: :no_content }
       end
 
     end

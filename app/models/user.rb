@@ -332,7 +332,7 @@ class User < ActiveRecord::Base
   #***********************************
   def create_user_profile
     if self.uid.blank?
-      UsersProfile.create(user_id:self.id,tutorial_step:0)
+      UsersProfile.create(user_id:self.id,tutorial_step:1)
     end
   end
 

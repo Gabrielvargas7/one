@@ -110,13 +110,14 @@ class FeedbacksController < ApplicationController
     end
   end
 
+
   #***********************************
   # Json methods for the room users
   #***********************************
 
   # POST set new feedback - all option are optional
-  # POST /feedbacks/json_create_feedback
-  # POST /feedbacks/json_create_feedback.json
+  # POST /feedbacks/json/create_feedback
+  # POST /feedbacks/json/create_feedback.json
   # Form Parameters:
   #                :description
   #                :email   (optional)
