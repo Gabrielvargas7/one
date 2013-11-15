@@ -23,7 +23,7 @@ function feedback_close_lightbox(){
 
 
 ////
-//  Show the feedback sumit Form
+//  Show the feedback submit Form
 ////
 
 function feedback_lightbox(){
