@@ -79,7 +79,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     # $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
     that = this
     #$('#add_your_own_form').submit({that},@addCustomBookmark)
-    $('#add_your_own_form').off('submit').on('submit',{that},@addCustomBookmark)
+    $('#add_your_own_submit input').off('click').on('click',{that},@addCustomBookmark)
 
   renderMyBookmarks:(event)->
     event.preventDefault() if event
@@ -260,9 +260,10 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
         
         #After 5 seconds, clear form and remove image
         setTimeout((->
-          $('#add_your_own_form')[0].reset()
+          $('#add_your_own_url_input').val("")
+          $('#add_your_own_bookmark_title').val("")
           #turn this event back on in case user submits another form
-          $('#add_your_own_form').off('submit').on('submit',{that},event.data.that.addCustomBookmark)
+          $('#add_your_own_submit input').off('click').on('click',{that},event.data.that.addCustomBookmark)
           $('.custom_url_saved').hide()
           $('.custom_bookmark_confirm_add_wrap img').remove()),3000)
         ))
