@@ -7,15 +7,21 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  
+
   #*******************
   #**** Initialize ***
   #*******************
   initialize: ->
-    
+
+
+
+    Mywebroom.Helpers.setItemRefs()
+
+
+
     self = this
-    
-    
+
+
     ###
     (0)   Set staticContent
     (1)   Set roomUser: {id:123, username: "sherrie"}
@@ -27,16 +33,16 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     (5)   Set roomState: SELF, PUBLIC, FRIEND
     (6)   Set signInData
     ###
-    
+
 
     ###
     DETERMINE IF USER IS IN A ROOM
     ###
     isInARoom = @isInARoom()
-     
-    
-    
-    
+
+
+
+
     ###
     DETERMINE IF USER IS SIGNED IN
     ###
@@ -90,7 +96,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       when true #CASE: SIGNED IN
 
 
-        if not isInARoom
+        if not isInARoom #...AND NOT IN A ROOM
 
           roomUser =   false
           signInUser = @getSignInUser()
@@ -106,7 +112,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-        else
+        else #...AND IN A ROOM
 
 
 
@@ -114,7 +120,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
           signInUser = @getSignInUser()
 
 
-          if roomUser.get("id") is signInUser.get("id")
+          if roomUser.get("id") is signInUser.get("id") # ROOM: SELF
 
 
             Mywebroom.State.set("signInState", true)
@@ -128,7 +134,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-          else
+          else # ROOM: FRIEND OR PUBLIC
 
 
             roomUser =   @getRoomUser()
@@ -149,12 +155,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-            if friends.length > 0
-
-              ###
-              ...AND IN A FRIEND'S ROOM
-              ###
-
+            if friends.length > 0 # ROOM: FRIEND
 
               Mywebroom.State.set("signInState", true)
               Mywebroom.State.set("signInUser", signInUser)
@@ -165,11 +166,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-            else
-
-              ###
-              ...AND IN A PUBLIC ROOM
-              ###
+            else # ROOM: PUBLIC
 
               Mywebroom.State.set("signInState", true)
               Mywebroom.State.set("signInUser", signInUser)
@@ -185,68 +182,68 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   # change browse mode. (Pass a new model to it)
   #--------------------------
   changeBrowseMode: (model) ->
-    
+
     $("#xroom_bookmarks_browse_mode").show()
     $(".browse_mode_view").show()
-    
+
     @browseModeView.activeSiteChange(model)
-  
-  
-  
-   
-    
+
+
+
+
+
   #--------------------------
   # set room on the rooms.html
   #--------------------------
   setRoom: (xroom_item_num) ->
-    
+
     $(xroom_item_num).append(@template(theme: Mywebroom.State.get("roomTheme")))
-    
-    
+
+
     _.each(Mywebroom.State.get("roomDesigns"), (design) ->
-      
+
       # (1) Create a proper backbone model out of the design data
       model = new Backbone.Model(design)
-      
-      
+
+
       ###
       CREATE DESIGN VIEWS
       ###
       view = new Mywebroom.Views.RoomDesignView({model: model})
       $(xroom_item_num).append(view.el)
       view.render()
-      
-      
+
+
       if Mywebroom.State.get("roomState") is "PUBLIC"
         view.undelegateEvents()
     )
-    
-    
+
+
     # TRANSITION OUR STORE TO A HIDDEN STATE
     # this also adds the click events for objects
     Mywebroom.Helpers.hideStore()
-    
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
   #-------------------------------
   # set bookmarks on the rooms.html
   #-------------------------------
   setBookmarksRoom: ->
-    
+
     $("#xroom_bookmarks").hide()
-    
+
     roomUser = Mywebroom.State.get("roomUser")
     designs  = Mywebroom.State.get("roomDesigns")
-    
-    
+
+
     length = designs.length
     i = 0
-    
-    
+
+
     while i < length
       if designs[i].clickable is "yes"
         bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView(
@@ -255,14 +252,14 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
             user            : roomUser
           }
         )
-        
+
         $("#xroom_bookmarks").append(bookmarkHomeView.el)
         bookmarkHomeView.render()
-        
-        
+
+
         # Hide the bookmarks
         $("#room_bookmark_item_id_container_" + designs[i].item_id).hide()
-        
+
       i += 1
 
 
@@ -270,7 +267,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-  
+
   ###
   Determines if user is in a room
   Returns boolean
@@ -278,7 +275,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   isInARoom: ->
 
     path = window.location.pathname
-    
+
     if path.split('/')[1] is 'room' and typeof path.split('/')[2] is "string" and path.split('/')[2].length > 0
 
       return true
@@ -286,13 +283,13 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     else
 
       return false
-      
-      
-      
-    
-    
-    
-      
+
+
+
+
+
+
+
   ###
   DETERMINE IF USER IS SIGNED IN
   ###
@@ -309,27 +306,27 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
     isSignedIn = isSignedInModel.get('signed')
-    
-    
+
+
     switch isSignedIn
-    
+
       when "yes"
         return true
-        
+
       when "not"
         return false
-        
+
       else
         console.error("UNEXPECTED VALUE FOR ShowIsSignedeUserModel", isSignedIn)
         return false
 
-    
-    
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
   getRoomUser: ->
 
     # Set roomUser
@@ -344,23 +341,23 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     roomUser = roomUsers.first()
     return roomUser
-    
-    
-    
-    
-    
+
+
+
+
+
   getSignInUser: ->
-    
+
     signInUsers = new Mywebroom.Collections.ShowSignedUserCollection()
     signInUsers.fetch
       async: false
       success: (collection, response, options) ->
         # console.log('signedUser collection fetch success', resposne)
-      
+
       error: (collection, response, options) ->
         console.error('signInUsers collection fetch fail', response.responseText)
-        
-    
+
+
     signInUser = signInUsers.first()
     return signInUser
 
@@ -369,7 +366,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
   getRoomData: (userId) ->
-    
+
     dataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
     dataCollection.fetch
       async: false
@@ -400,8 +397,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "NONE" then console.error("ERROR: signedOut.roomState should be NONE but is " + roomState)
-      
-      
+
+
     signInState = Mywebroom.State.get("signInState")
     if signInState isnt false then console.error("ERROR: signedOut.signInState should be false but is " + signInState)
 
@@ -409,7 +406,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     roomUser = Mywebroom.State.get("roomUser")
     if roomUser isnt false then console.error("ERROR: signedOut.roomUser should be false but is " + roomUser)
 
-    
+
     signInUser = Mywebroom.State.get("signInUser")
     if signInUser isnt false then console.error("ERROR: signedOut.signInUser should be false but is " + signInUser)
 
@@ -421,17 +418,17 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("roomTheme", false)
     Mywebroom.State.set("roomItems", false)
 
-    
+
     Mywebroom.State.set("signInData", false)
 
-    
-    
 
 
 
-  
-         
-    
+
+
+
+
+
 
 
 
@@ -439,21 +436,21 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "PUBLIC" then console.error("ERROR: signedOutRoom.roomState should be PUBLIC but is " + roomState)
-      
-      
+
+
     signInState = Mywebroom.State.get("signInState")
     if signInState isnt false then console.error("ERROR: signedOutRoom.signInState should be false but is " + signInState)
 
 
     roomUser = Mywebroom.State.get("roomUser")
     if roomUser is false then console.error("ERROR: signedOutRoom.roomUser shouldnt be false but it is")
-    
-    
+
+
     signInUser = Mywebroom.State.get("signInUser")
     if signInUser isnt false then console.error("ERROR: signedOutRoom.signInUser should be false but is " + signInUser)
-    
-    
-    
+
+
+
     console.log("SIGNED OUT - IN " + roomUser.get("username") + "\'s ROOM")
 
 
@@ -462,17 +459,17 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     # roomData
     data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
-    
+
 
     # roomDesigns
     designs = data.get('user_items_designs')
     Mywebroom.State.set("roomDesigns", designs)
-    
+
 
     # roomTheme
     theme = data.get('user_theme')[0]
     Mywebroom.State.set("roomTheme", theme)
-    
+
 
     # roomItems
     items = new Backbone.Collection(data.get("user_items"))
@@ -485,7 +482,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     # (10) Setup Room
     @doRoomStuff()
-    
+
 
 
 
@@ -499,8 +496,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "NONE" then console.error("ERROR: signedIn.roomState should be NONE but is " + roomState)
-      
-      
+
+
     signInState = Mywebroom.State.get("signInState")
     if signInState isnt true then console.error("ERROR: signedIn.signInState should be true but is " + signInState)
 
@@ -508,7 +505,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     roomUser = Mywebroom.State.get("roomUser")
     if roomUser isnt false then console.error("ERROR: signedIn.roomUser should be false but is " + roomUser)
 
-    
+
     signInUser = Mywebroom.State.get("signInUser")
     if signInUser is false then console.error("ERROR: signedIn.signInUser shouldnt be false but it is")
 
@@ -520,7 +517,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("roomTheme", false)
     Mywebroom.State.set("roomItems", false)
 
-    
+
     data = @getRoomData(signInUser.get('id'))
     Mywebroom.State.set("signInData", data)
 
@@ -537,8 +534,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "PUBLIC" then console.error("ERROR: signedInPublic.roomState should be PUBLIC but is " + roomState)
-      
-      
+
+
     signInState = Mywebroom.State.get("signInState")
     if signInState isnt true then console.error("ERROR: signedInPublic.signInState should be true but is " + signInState)
 
@@ -546,11 +543,11 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     roomUser = Mywebroom.State.get("roomUser")
     if roomUser is false then console.error("ERROR: signedInPublic.roomUser shouldnt be false but it is")
 
-    
+
     signInUser = Mywebroom.State.get("signInUser")
     if signInUser is false then console.error("ERROR: signedInPublic.signInUser shouldnt be false but it is")
-    
-    
+
+
     if roomUser.get("id") is signInUser.get("id") then console.error("ERROR: signedInPublic.signInUser.id equals signedInPublic.roomUser.id but shouldnt")
 
 
@@ -564,28 +561,28 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
-    
-    
+
+
     designs = data.get('user_items_designs')
     Mywebroom.State.set("roomDesigns", designs)
-    
-    
+
+
     theme = data.get('user_theme')[0]
     Mywebroom.State.set("roomTheme", theme)
-    
-  
+
+
     items = new Backbone.Collection(data.get("user_items"))
     Mywebroom.State.set("roomItems", items)
 
-    
-    
-    
+
+
+
     signInData = @getRoomData(signInUser.get('id'))
     Mywebroom.State.set("signInData", signInData)
-    
-    
-    
-    
+
+
+
+
     # Setup Room
     @doRoomStuff()
 
@@ -603,8 +600,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "FRIEND" then console.error("ERROR: signedInFriend.roomState should be FRIEND but is " + roomState)
-      
-      
+
+
     signInState = Mywebroom.State.get("signInState")
     if signInState isnt true then console.error("ERROR: signedInFriend.signInState should be true but is " + signInState)
 
@@ -612,7 +609,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     roomUser = Mywebroom.State.get("roomUser")
     if roomUser is false then console.error("ERROR: signedInFriend.roomUser shouldnt be false but it is")
 
-    
+
     signInUser = Mywebroom.State.get("signInUser")
     if signInUser is false then console.error("ERROR: signedInFriend.signInUser shouldnt be false but it is")
 
@@ -620,7 +617,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     if roomUser.get("id") is signInUser.get("id") then console.error("ERROR: signedInFriend.signInUser.id equals signedInFriend.roomUser.id but shouldnt")
 
 
-    
+
 
     console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (friend)")
 
@@ -629,47 +626,47 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
-    
-    
+
+
     designs = data.get('user_items_designs')
     Mywebroom.State.set("roomDesigns", designs)
-    
-    
+
+
     theme = data.get('user_theme')[0]
     Mywebroom.State.set("roomTheme", theme)
-    
-  
+
+
     items = new Backbone.Collection(data.get("user_items"))
     Mywebroom.State.set("roomItems", items)
 
-    
-    
-    
+
+
+
     signInData = @getRoomData(signInUser.get('id'))
     Mywebroom.State.set("signInData", signInData)
-    
-    
-    
-    
+
+
+
+
     # Setup Room
     @doRoomStuff()
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
 
   signedInSelf: ->
 
-    
+
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "SELF" then console.error("ERROR: signedInSelf.roomState should be SELF but is " + roomState)
-      
-      
+
+
     signInState = Mywebroom.State.get("signInState")
     if signInState isnt true then console.error("ERROR: signedInSelf.signInState should be true but is " + signInState)
 
@@ -677,7 +674,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     roomUser = Mywebroom.State.get("roomUser")
     if roomUser is false then console.error("ERROR: signedInSelf.roomUser shouldnt be false but it is")
 
-    
+
     signInUser = Mywebroom.State.get("signInUser")
     if signInUser is false then console.error("ERROR: signedInSelf.signInUser shouldnt be false but it is")
 
@@ -685,7 +682,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     if roomUser.get("id") isnt signInUser.get("id") then console.error("ERROR: signedInSelf.signInUser.id doesnt equal signedInSelf.roomUser.id but it should")
 
 
-    
+
 
     console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (self)")
 
@@ -694,29 +691,29 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
-    
-    
+
+
     designs = data.get('user_items_designs')
     Mywebroom.State.set("roomDesigns", designs)
-    
-    
+
+
     theme = data.get('user_theme')[0]
     Mywebroom.State.set("roomTheme", theme)
-    
-  
+
+
     items = new Backbone.Collection(data.get("user_items"))
     Mywebroom.State.set("roomItems", items)
 
-    
-    
-    
-    
+
+
+
+
     Mywebroom.State.set("signInData", data)
-    
-    
-    
-    
-    # Setup Room    
+
+
+
+
+    # Setup Room
     @doRoomStuff()
 
 
@@ -737,10 +734,10 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     console.log("SETTING UP ROOM")
 
-    
+
 
     ###
-    SETUP STEPS FOR BOTH SIGNED IN 
+    SETUP STEPS FOR BOTH SIGNED IN
     AND NON-SIGNED IN USERS
     ###
 
@@ -765,8 +762,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     @setRoom("#xroom_items_0")
     @setRoom("#xroom_items_1")
     @setRoom("#xroom_items_2")
-    
-    
+
+
 
 
 
@@ -776,101 +773,101 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     (3) Hide all the elements whose data-room-hide property is yes
     ###
     $("[data-room-hide=yes]").hide()
-    
-    
-    
 
 
 
 
 
-    
+
+
+
+
     # (4) Initialize Bookmarks Views
     @setBookmarksRoom()
-    
-    
-    
-    
 
-    
 
-    
-    
-    
+
+
+
+
+
+
+
+
     # (5) Create and render Left Scroller View
     roomScrollLeftView = new Mywebroom.Views.RoomScrollLeftView()
     $("#xroom_scroll_left").append(roomScrollLeftView.el)
     roomScrollLeftView.render()
-    
+
     # Save a reference to the state model
     Mywebroom.State.set("roomScrollLeftView", roomScrollLeftView)
-    
-    
-    
 
 
 
 
-    
+
+
+
+
     # (6) Create and render Right Scroller View
     roomScrollRightView = new Mywebroom.Views.RoomScrollRightView()
     $("#xroom_scroll_right").append(roomScrollRightView.el)
     roomScrollRightView.render()
-    
+
     # Save a reference to the state model
     Mywebroom.State.set("roomScrollRightView", roomScrollRightView)
-    
-    
-    
 
 
 
-    
+
+
+
+
     # (7) Create and render Browse Mode View
     @browseModeView = new Mywebroom.Views.BrowseModeView()
     $("#xroom_bookmarks_browse_mode").append(@browseModeView.el)
     $("#xroom_bookmarks_browse_mode").hide()
     @browseModeView.render()
-    
+
     # Save a reference to the state model
     Mywebroom.State.set("browseModeView", @browseModeView)
-    
-    
-    
 
 
 
 
-    
+
+
+
+
     # (8) Center the windows and remove the scroll
     $(window).scrollLeft(0)
     $("body").css("overflow-x", "hidden")
-    
-    
 
 
 
 
-    
-    
+
+
+
+
     # (9) Set up a listener for the BrowseMode:open event
     that = this
     Mywebroom.App.vent.on("BrowseMode:open", ((that) ->
       Mywebroom.State.get('roomView').changeBrowseMode(that.model)), self)
-    
-    
-    
 
 
 
 
 
-    
+
+
+
+
     # (10) Create and render the Footer View
     roomFooterView = new Mywebroom.Views.RoomFooterView()
     $('#xroom_footer').append(roomFooterView.el)
     roomFooterView.render()
-    
+
     # Save a reference to the state model
     Mywebroom.State.set("roomFooterView", roomFooterView)
 
@@ -977,8 +974,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         came_from = Mywebroom.Helpers.getParameterByName('came_from')
 
         #Friends has no parameter: came_from
-        #The only things that have Came_from are SHOP and EMAIL. 
-        #Test for CAME_FROM Email case. Then test entity_type. 
+        #The only things that have Came_from are SHOP and EMAIL.
+        #Test for CAME_FROM Email case. Then test entity_type.
 
         if came_from
           switch came_from
@@ -1196,12 +1193,12 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.get("storeMenuView").appendOne(model)
 
   entityTypeRequest:() ->
-    #Show Profile Requests Page. 
+    #Show Profile Requests Page.
 
     #1. Grab Profile View reference
     profileView = Mywebroom.State.get('profileHomeView')
 
-    #2. Show Requests Page. 
+    #2. Show Requests Page.
     profileView.showProfileKeyRequests() if profileView
 
     #displayProfile
