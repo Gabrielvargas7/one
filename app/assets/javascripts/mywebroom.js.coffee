@@ -447,7 +447,7 @@ $(document).ready ->
             #console.log("fake tell sever we saw notification")
 
 
-            
+
             note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
             note.save({id: user_id},
               {
@@ -460,7 +460,7 @@ $(document).ready ->
                   #console.error(model, xhr, options)
               }
             )
-            
+
 
 
 
@@ -1368,11 +1368,22 @@ $(document).ready ->
 
   Mywebroom.Helpers.setItemRefs = ->
 
-    items = Mywebroom.State.get("initialItems")
+
+    # items
+    items = new Mywebroom.Collections.IndexItemsCollection()
+    items.fetch
+      async: false
+      success: (collection, response, options) ->
+        #console.log("initial items fetch success", collection)
+      error: (collection, response, options) ->
+        console.error("initial items fetch fail", response.responseText)
+
+
+    Mywebroom.State.set("initialItems", items)
+
 
 
     items.each( (item) ->
-
 
       # (1) Create a (unique) set of the item id's
       id = item.get("id")
@@ -1386,16 +1397,21 @@ $(document).ready ->
       # (3) Assocaiate item names with item ids
       name = item.get("name")
       Mywebroom.Data.ItemNames[id] = name
+
     )
 
-    Mywebroom.Data.FriendItemPopupUrls =
-      1:   ""#sofa
+
+
+
+
+  Mywebroom.Data.FriendItemPopupUrls = {
+      1:   "" #sofa
       2:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348300/birdcage-Friend-Pop-Up-Object_gxaui5.png" #birdcage
       3:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348427/bookstand-Friend-Pop-Up-Object_up9cyp.png" #bookcase
       4:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348575/chair-Friend-Pop-Up-Object_wagoi1.png" #chair
       5:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348940/newspaper-Friend-Pop-Up-Object_nhybid.png" #newspaper
       6:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348860/map-Friend-Pop-Up-Object_gp3jlo.png" #world map
-      7:   "" #tv stan
+      7:   "" #tv stand
       8:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348727/dresser-Friend-Pop-Up-Object_mwf3fb.png" #dresser
       9:   "https://res.cloudinary.com/hpdnx5ayv/image/upload/v1383594435/shoppingbag-Friend-Pop-Up-Object.png" #shopping bag
       10:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349273/socialcanvas-Friend-Pop-Up-Object_pvzhz4.png" #social canvas
@@ -1425,6 +1441,10 @@ $(document).ready ->
       34:  "" #rug
       35:  "" #carpet
       ##DECOR? https://res.cloudinary.com/hpdnx5ayv/image/upload/v1383348640/decor-Friend-Pop-Up-Object_phompc.png
+  }
+
+
+
 
 
 

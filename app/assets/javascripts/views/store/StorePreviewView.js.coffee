@@ -215,13 +215,15 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     designs = @getBundleDesignsCollection(@model.get('id'))
 
 
+    #console.log("rug", designs.where({item_id: 34}))
+
+
     ###
     UPDATE DOM
     ###
-    designs.each (design)  ->
-
+    designs.each( (design) ->
       Mywebroom.Helpers.updateRoomDesign(design)
-
+    )
 
 
 
@@ -272,12 +274,33 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     designs = @getBundleDesignsCollection(@model.get('id'))
 
 
+    #console.log("rug", designs.where({item_id: 34}))
+
+
+    d1 = designs.length
+    d2 = Object.keys(Mywebroom.Data.ItemModels).length
+
+    if d1 isnt d1
+
+      if d1 < d2
+
+        alert("There are " + d2 + " items, but this user only has " + d1 + "!")
+
+      else
+
+        alert("This user has " + d1 + " designs, but the room only has " + d2 + " total items!")
+
+
+
+
     ###
     DESIGNS: UPDATE DOM
     ###
-    designs.each (design) ->
+    designs.each( (design) ->
 
       Mywebroom.Helpers.updateRoomDesign(design)
+      
+    )
 
 
 

@@ -41,25 +41,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     FETCH INITIAL DATA - START
     ###
-    # items
-    items = new Mywebroom.Collections.IndexItemsCollection()
-    items.fetch
-      async:   false
-      success: (collection, response, options) ->
-        #console.log("initial items fetch success", collection)
-      error: (collection, response, options) ->
-        console.log("initial items fetch fail", response.responseText)
-
-    Mywebroom.State.set("initialItems", items)
-
-
-    ###
-    Set the objects we use to keep handy info about the items
-    ###
-    Mywebroom.Helpers.setItemRefs()
-
-
-
 
     ###
     Turn on hover
@@ -97,6 +78,8 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     SPLAT DATA TO STORE - START
     ###
+    items = Mywebroom.State.get("initialItems")
+
     Mywebroom.State.set('tabContentItems', items)
     Mywebroom.State.set('tabContentThemes', themes)
     Mywebroom.State.set('tabContentBundles', bundles)
