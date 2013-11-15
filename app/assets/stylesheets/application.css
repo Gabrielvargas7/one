@@ -274,6 +274,30 @@ a.green_button_light{
     color: #ffffff;
     text-decoration: none;
 }
+
+.grey_button{
+    background-color: #e2e2e2;
+    color:#000000;
+    border:none;
+}
+
+.grey_button_light{
+    font-family: "Open Sans";
+    font-weight: normal;
+    font-size:13px;
+    text-align: center;
+    padding: 6px 26px;
+}
+
+a.grey_button_light:hover{
+    color: #000000;
+    text-decoration: none;
+}
+a.grey_button_light{
+    color: #000000;
+    text-decoration: none;
+}
+
 /*END Mywebroom Button Style*/
 
 /*Box shadow blue border highlight*/

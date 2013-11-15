@@ -1,14 +1,19 @@
+////
+// feedback submit page
+////
+
 #feedback_lightbox {
   position: fixed;
   top: 150px;
   left: 50%;
-  width: 445px;
-  height: 320px;
+  width: 473px;
+  height: 434px;
   margin-left: -250px;
   background: #ffffff;
   z-index: 1501;
   text-align: right;
   border-style: solid;
+  border-width: 1px;
   border-color:  #474f50;
 
 }
@@ -25,40 +30,83 @@
 }
 
 #feedback_lightbox input[type="text"]{
-  width: 390px;
-  margin-right: 20px;
+  width: 405px;
+  margin-right: 25px;
 }
 
 #feedback_lightbox textarea{
-  width: 390px;
+  width: 405px;
   resize: none;
-  margin-right: 20px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+
 }
 
 
 #feedback_label_title{
   font-size: 24px;
+  margin: 35px 0px;
+  text-align: center;
 
 }
 
 #feeedback_label_name{
-  margin-right: 100px;
+  margin-right: 360px;
 
 }
 
 #feeedback_label_comment{
-  margin-right: 100px;
+  margin-right: 378px;
+  margin-top: 20px;
 }
-
 
 
 #feedback_btn_container{
   display: inline;
+  margin-right:25px;
 }
 
 
 #feedback_close_btn{
   margin: 20px;
+  padding: 5px 50px 8px 50px;
 
+}
+#feedback_send_btn{
+  padding: 6px 50px;
+}
 
+////
+// feedback thankyou page
+////
+
+#feedback_thk_lightbox{
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  width: 473px;
+  height: 300px;
+  margin-left: -250px;
+  background: #ffffff;
+  z-index: 1501;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color:  #474f50;
+
+}
+#feedback_thk_label_title{
+  font-size: 24px;
+  margin: 50px 0px;
+
+}
+
+#feedback_thk_content{
+  font-size: 18px;
+  margin: 15px;
+
+}
+
+#feedback_thk_btn_container{
+  margin: 80px 0px;
 }
