@@ -3,16 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#shop-main-nav a{
+  color: #009bce;
 
-.shop_container{
-    //overflow:hidden;
-  //width:remainder;
-  //line-height:1.5;
-  //font-size:12px;
-  //color:#5A5A5A;
-  //background:#fff;
-  //text-rendering: optimizelegibility;
-  //-webkit-font-smoothing: antialiased;
+}
+
+#shop-main-nav a:hover{
+  color: #343434;
+  background-color: #e2e2e2;
+
+}
+
+
+.shop_container h5{
+  color: #464646;
+  font-family: "Open Sans";
 }
 
 .shop_filter{
@@ -20,11 +25,15 @@
   float:left;
 }
 .shop_filter a{
-  background-color:#f0f0f0;
-  color:#006daf;
+  color:#009bce;
 }
+
+.shop_filter a:before{
+  content: "\00a0 \00a0 \00a0";
+}
+
+
 .shop_filter a:hover {
-  background-color:#f0f0f0;
   color:#000000;
 }
 
@@ -34,7 +43,9 @@
 
 }
 
-.shop_content_entity a:hover {background-color:#f0f0f0;}
+.shop_content_entity a:hover {
+  background-color:#f0f0f0;
+}
 
 .shop_left{
   width:60%;
@@ -63,15 +74,14 @@
 
 .shop_table table {
 
-  border: 2px solid #ededee ;
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 15px 15px;
 }
 
 .shop_table td {
-
-  border-spacing: 2px;
-  padding: 3px;
   text-align: center;
+  border: 1px solid #e2e2e2;
 
 }
 
@@ -84,6 +94,7 @@
 
 #shop_see_it_in_your_room_before_you_buy{
   font-size:13px;
+  color: #0073a5;
 
 }
 
@@ -95,6 +106,11 @@
 .shop_main_image_name_bookmark{
   margin: 50px 150px;
 
+}
+.shop_related_items{
+  font-size:18px;
+  font-weight: normal;
+  margin: 0px 15px;
 }
 
 

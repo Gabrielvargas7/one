@@ -3,7 +3,7 @@
   <div class="shop_filter">
     <h5>Filter by </h5>
 
-    </br>
+
     <h5>Color  </h5>
     <% @themes_by_color.each do |theme_color| %>
         <% unless theme_color.color.nil? %>
@@ -11,7 +11,7 @@
         <% end %>
     <% end %>
 
-    </br>
+
     <h5>Brand </h5>
     <% @themes_by_brand.each do |theme_brand| %>
         <% unless theme_brand.brand.nil? %>
@@ -19,7 +19,7 @@
         <% end %>
     <% end %>
 
-    </br>
+
     <h5>Style </h5>
     <% @themes_by_style.each do |theme_style| %>
         <% unless theme_style.style.nil? %>
@@ -27,14 +27,14 @@
         <% end %>
     <% end %>
 
-    </br>
     <h5>Make </h5>
     <% @themes_by_make.each do |theme_make| %>
         <% unless theme_make.make.nil? %>
             <%= link_to theme_make.make.titleize,  shop_index_themes_path(theme_make: theme_make.make), :method => :get %> </br>
         <% end %>
     <% end %>
-    </br>
+
+
     <h5>Category </h5>
     <% @themes_by_category.each do |theme_category| %>
         <% unless theme_category.category.nil? %>

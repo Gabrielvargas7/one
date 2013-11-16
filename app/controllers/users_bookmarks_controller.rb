@@ -148,7 +148,7 @@ class UsersBookmarksController < ApplicationController
         format.json { render json: @user_bookmarks }
 
       else
-        format.json { render json: 'not found user_id ' , status: :no_content }
+        format.json { render json: 'not found user_id' , status: :no_content }
       end
     end
 

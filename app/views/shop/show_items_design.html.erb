@@ -14,9 +14,9 @@
 
       <p class="shop_main_image_name">
           <% if @items_design.image_name_selection.blank?  %>
-              <%= cl_image_tag("default_image_all.png", width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png")%>
+              <%= cl_image_tag("default_image_all.png", width: 400,height:400,:crop => :fit,:default_image => "default_image_all.png")%>
           <% else %>
-              <%= cl_image_tag(@items_design.image_name_selection , width: 300,height:300,:crop => :fit,:default_image => "default_image_all.png") %>
+              <%= cl_image_tag(@items_design.image_name_selection , width: 400,height:400,:crop => :fit,:default_image => "default_image_all.png") %>
           <% end%>
 
         </p>
@@ -40,15 +40,31 @@
         </p>
 
         <p class="shop_description">
-          <%= @items_design.description %>
+          <%= @items_design.description[0,490] %>
         </p>
+        <% @static_content = StaticContent.find_by_name("publicstore-icon")  %>
+        <% if @static_content.nil? or @static_content.image_name.blank?  %>
 
-        <%= link_to "See it in your room before you buy.", shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id), :id => "shop_see_it_in_your_room_before_you_buy"%>
+        <% else %>
+
+            <%= link_to cl_image_tag(@static_content.image_name,
+                                     :transformation => { :width => 80, :height => 72, :x => 40, :y => 0, :crop => :crop },
+                                     :width => 30, :height => 15, :crop => :fill)+
+                                "See it in your room before you buy.",
+                        shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id),
+                        :id => "shop_see_it_in_your_room_before_you_buy"%>
+        <% end %>
+
 
         <br/>
         <br/>
+
         <form>
-          <input type="button" id="shop_green_button" class="green_button green_button_light" value="Buy at <%=@items_design_btn_url_name.to_s%>"  onclick="window.location.href='<%=@items_design.product_url%>'">
+          <%= cl_image_tag(@static_content.image_name,:transformation => { :width => 80, :height => 72, :x => 40, :y => 0, :crop => :crop }, :width => 30, :height => 15, :crop => :fill)%>
+          <input type="button" id="shop_green_button" class="green_button green_button_light"
+                 value="Buy at <%=@items_design_btn_url_name.to_s%>"
+
+                 onclick="window.location.href='<%=@items_design.product_url%>'">
         </form>
       </div>
 
@@ -59,6 +75,9 @@
 
 
 <div class="shop_container">
+    <div class="shop_related_items">
+      Related Objects
+    </div>
     <div class="shop_table">
       <table>
         <% if @item_length > 0 %>
