@@ -55,16 +55,16 @@ jQuery ->
 
   $(".shop_fb_btn").click (event) ->
     event.preventDefault() # Prevent link from following its href
-    console.log window.location.href
+    #console.log window.location.href
     window.open "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href), "facebook-share-dialog", "width=626,height=436"
 
   $(".shop_pinterest_btn").click (event) ->
 
     event.preventDefault() # Prevent link from following its href
-    console.log  $(".shop_image_name").attr('src')
-    console.log $.trim($(".shop_name").text())
-    console.log $.trim($(".shop_description").text())
-    console.log $(".shop_upper_container").attr("data-shop-type")
+    #console.log  $(".shop_image_name").attr('src')
+    #console.log $.trim($(".shop_name").text())
+    #console.log $.trim($(".shop_description").text())
+    #console.log $(".shop_upper_container").attr("data-shop-type")
 
     url = Pinterest.generatePinterestUrl()
 

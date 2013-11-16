@@ -37,7 +37,7 @@ class Mywebroom.Views.TutorialWelcomeView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
-    console.log("welcome to tutorial")
+    #console.log("welcome to tutorial")
 
 
 
@@ -46,7 +46,7 @@ class Mywebroom.Views.TutorialWelcomeView extends Backbone.View
 
     user_id  = Mywebroom.State.get("signInUser").get("id")
     tutorial_step = 2
-    console.log("user id "+user_id+" and tutorial step "+tutorial_step)
+    #console.log("user id "+user_id+" and tutorial step "+tutorial_step)
     # save the new step on the tutorial
     Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
 
@@ -57,7 +57,7 @@ class Mywebroom.Views.TutorialWelcomeView extends Backbone.View
     view.render()
     Mywebroom.State.set("tutorialItemClick",view)
 
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable

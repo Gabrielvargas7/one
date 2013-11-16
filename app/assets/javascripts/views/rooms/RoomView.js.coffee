@@ -491,7 +491,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   signedIn: ->
 
-    console.log("SIGNED IN - NOT IN ROOM")
+    #console.log("SIGNED IN - NOT IN ROOM")
 
 
     roomState = Mywebroom.State.get("roomState")
@@ -553,7 +553,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (public)")
+    #console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (public)")
 
 
 
@@ -619,7 +619,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (friend)")
+    #console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (friend)")
 
 
 
@@ -684,7 +684,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (self)")
+    #console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (self)")
 
 
 
@@ -732,7 +732,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    console.log("SETTING UP ROOM")
+    #console.log("SETTING UP ROOM")
 
 
 
@@ -927,8 +927,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     signInState = Mywebroom.State.get("signInState")
     roomState = Mywebroom.State.get("roomState")
 
-    console.log("Tutorial Room State "+roomState)
-    console.log("Tutorial SignIn State "+signInState)
+    #console.log("Tutorial Room State " + roomState)
+    #console.log("Tutorial SignIn State " + signInState)
 
     ###
     SETUP STEPS FOR SIGNED IN USERS ONLY
@@ -945,16 +945,16 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-      console.log("sign in data")
-      console.log(Mywebroom.State.get("signInData"))
+      #console.log("sign in data")
+      #console.log(Mywebroom.State.get("signInData"))
       user_profile = Mywebroom.State.get("signInData").get("user_profile")
-      console.log(user_profile)
-      console.log(user_profile.tutorial_step)
+      #console.log(user_profile)
+      #console.log(user_profile.tutorial_step)
 
 
       # if the user finish the tutorial step = 0
       if user_profile.tutorial_step == 0
-        console.log(" user finish the tutorail ")
+        #console.log(" user finish the tutorail ")
 
         # (16) Conditionally Show Notification Modal
         Mywebroom.Helpers.showModal()
@@ -981,7 +981,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
           switch came_from
 
             when "EMAIL_REQUEST_KEY"
-              console.log("Profile Request Accept entity")
+              #console.log("Profile Request Accept entity")
               @entityTypeRequest()
 
             when "PUBLIC_SHOP", "FRIEND_ROOM" , "PUBLIC_ROOM"
@@ -992,30 +992,30 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
                 switch entity_type
 
                   when "BOOKMARK"
-                    console.log("bookmark entity ")
+                    #console.log("bookmark entity ")
                     @entityTypeBookmark(entity_id)
 
                   when "DESIGN"
-                    console.log("designs entity ")
+                    #console.log("designs entity ")
                     @entityTypeItemDesign(entity_id)
 
                   when "THEME"
-                    console.log("theme entity ")
+                    #console.log("theme entity ")
                     @entityTypeTheme(entity_id)
 
                   when "BUNDLE"
-                    console.log("Bundle entity ")
+                    #console.log("Bundle entity ")
                     @entityTypeBundle(entity_id)
 
                   when "ENTIRE_ROOM"
-                    console.log("Entire room entity")
+                    #console.log("Entire room entity")
                     @entityTypeEntireRoom(entity_id)
 
 
       else
         # tutorial user
-        console.log("user did not finish the tutorial")
-        console.log("tutorial step 1 welcome ")
+        #console.log("user did not finish the tutorial")
+        #console.log("tutorial step 1 welcome ")
         # welcome
         view = new Mywebroom.Views.TutorialWelcomeView()
         $("#xroom_tutorial_container").append(view.el)
@@ -1041,7 +1041,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
       throw new Error("BOOKMARK WITHOUT item_id")
 
 
-    console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+    #console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
 
 
     bookmarksView = new Mywebroom.Views.BookmarksView
@@ -1075,7 +1075,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   # ENCODED PARAMS Item design
   entityTypeItemDesign:(entity_id) ->
-    console.log("designs entity ")
+    #console.log("designs entity ")
 
     # (1) Show Store
     Mywebroom.Helpers.showStore()
@@ -1090,7 +1090,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     model.fetch
       async: false
       success: (model, response, options) ->
-        console.log("model fetch success", response)
+        #console.log("model fetch success", response)
       error: (model, response, options) ->
         console.error("model fetch fail", response.responseText)
 
@@ -1108,7 +1108,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   # ENCODED PARAMS theme
   entityTypeTheme:(entity_id) ->
-    console.log("theme entity ")
+    #console.log("theme entity ")
 
     # (1) Show Store
     Mywebroom.Helpers.showStore()

@@ -44,9 +44,9 @@ class Mywebroom.Views.TutorialShowMeMyRoomView extends Backbone.View
     Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
 
 
-    console.log("tutorial Show me my Room ")
+    #console.log("tutorial Show me my Room ")
 
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable

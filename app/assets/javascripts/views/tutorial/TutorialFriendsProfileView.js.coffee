@@ -47,13 +47,13 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
     Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
 
 
-    console.log("tutorial Friends Profile")
+    #console.log("tutorial Friends Profile")
     view = new Mywebroom.Views.TutorialShowMeMyRoomView()
     $("#xroom_tutorial_container").append(view.el)
     view.render()
 
 
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable
@@ -72,5 +72,5 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
       method: "apprequests"
       message: requestMessage
     , (request) ->
-      console.log 'inviteFriendsFacebook ui call: '
-      console.log request
+      #console.log 'inviteFriendsFacebook ui call: '
+      #console.log request

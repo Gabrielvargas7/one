@@ -2,7 +2,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
   #*******************
   #**** Tag  / Class
   #*******************
-  
+
   className:"my_bookmarks_list_wrap"
   #*******************
   #**** Initialize
@@ -17,11 +17,11 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
   #**** Template
   #*******************
   template:JST['bookmarks/MyBookmarksTemplate']
-  
+
   #*******************
     #**** Render
     #*******************
-  
+
   render:->
     @$el.empty()
     $(@el).append(@template())
@@ -31,22 +31,22 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
     @appendItems()
     @collection.remove(moreSquare,{silent:true})
     this
-  
+
   #*******************
-  #**** Functions  
+  #**** Functions
   #*******************
-  
+
   #--------------------------
   # append bookmark items to this view. called from render(). Views here listen for deleteBookmark event.
   #--------------------------
   appendItems:->
-    #Divide collection into rows of 5. 
-    #Insert ul element. 
-    #For each in 5ple, append a grid item view. 
+    #Divide collection into rows of 5.
+    #Insert ul element.
+    #For each in 5ple, append a grid item view.
     k=0
     columnNum=5
     rowArray= []
-    console.log("@collection.models.length: "+@collection.models.length)
+    #console.log("@collection.models.length: "+@collection.models.length)
     while k < @collection.models.length
       i = 0
       while i < columnNum
@@ -68,7 +68,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
 
   #--------------------------
   # Delete the bookmark from the server. Called when user confirms delete a bookmark in modal.
-  #   
+  #
   #--------------------------
   triggerDeleteBookmark:(model)->
     bookmarkId= model.get('id')
@@ -76,7 +76,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
     userId= @getUserSignedInId()
     deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
     deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
-    #Delete the bookmark from the server. 
+    #Delete the bookmark from the server.
     deletedBookmark.destroyUserBookmark()
     #destroy the modal
     $('#myModal').remove()
@@ -90,7 +90,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
     userSignInCollection.models[0].get('id')
 
   triggerBrowseMode:(model)->
-    console.log "BrowseMode triggered in MyBookmarksView:"
-    console.log model
+    #console.log "BrowseMode triggered in MyBookmarksView:"
+    #console.log model
     this.trigger('browseMode1',model)
 

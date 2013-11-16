@@ -27,7 +27,7 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
     $(@el).append(modalHTML)
     $('#myModal').modal(backdrop:false)
     that=this
-    #NOTE: This .on is jQuery NOT Backbone.on. 
+    #NOTE: This .on is jQuery NOT Backbone.on.
     $('.delete_bookmark_button').on('click',{@model, that},
       ->
         that.trigger('deleteBookmark',that.model)
@@ -36,7 +36,7 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
     $("#myModal").on "hidden", ->
         $('#myModal').remove()
   triggerBrowseMode:(event)->
-    console.log "Welcome to browse mode! You are browsing:"
-    console.log @model
+    #console.log "Welcome to browse mode! You are browsing:"
+    #console.log @model
     Mywebroom.App.vent.trigger('BrowseMode:open',{@model})
     Mywebroom.App.vent.trigger('BrowseMode:closeBookmarkView')

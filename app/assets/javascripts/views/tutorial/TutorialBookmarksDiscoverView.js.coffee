@@ -63,7 +63,7 @@ class Mywebroom.Views.TutorialBookmarksDiscoverView extends Backbone.View
 
 
   tutorialBookmarkDicoverDestroy: ->
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable

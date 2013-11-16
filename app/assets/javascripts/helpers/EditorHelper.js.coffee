@@ -414,7 +414,7 @@ Mywebroom.Helpers.Editor = {
   clickItem: (itemId) ->
 
 
-    console.log("click item")
+    #console.log("click item")
 
     ###
     (0) Pagination

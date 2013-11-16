@@ -76,7 +76,7 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
 
 
 
-    console.log("tutorial editor open")
+    #console.log("tutorial editor open")
     # create Bookmark Welcome
     view = new Mywebroom.Views.TutorialWelcomeBookmarksView()
     $("#xroom_tutorial_container").append(view.el)
@@ -84,7 +84,7 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
 
 
 
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable

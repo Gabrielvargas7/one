@@ -111,7 +111,7 @@ Mywebroom.Helpers.StoreSaveCancelRemoveHelper = {
 
 
           error: (model, response) ->
-            console.log("UPDATE DESIGN ID FAIL\n", response)
+            console.error("UPDATE DESIGN ID FAIL\n", response)
     )
 
 }

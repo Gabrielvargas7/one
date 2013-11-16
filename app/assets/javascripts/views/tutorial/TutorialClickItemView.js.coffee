@@ -43,7 +43,7 @@ class Mywebroom.Views.TutorialClickItemView extends Backbone.View
     $("#xroom_tutorial_container").append(view.el)
     view.render()
 
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable
@@ -51,7 +51,7 @@ class Mywebroom.Views.TutorialClickItemView extends Backbone.View
 
 
   tutorialClickItemDestroy: ->
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable

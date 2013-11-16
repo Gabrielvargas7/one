@@ -9,20 +9,20 @@ class Mywebroom.Views.DiscoverBookmarksView extends Backbone.View
       #   success:(response)->
       #     console.log "discover Bookmarks fetch successful: "
       #     console.log response
-      
-    
+
+
   render:->
     $(@el).append(@template())
     @appendDiscoverItems(@collection)
     this
   appendDiscoverItems:(collection)->
-    #Divide collection into rows of 5. 
-    #Insert ul element. 
-    #For each in 5ple, append a grid item view. 
+    #Divide collection into rows of 5.
+    #Insert ul element.
+    #For each in 5ple, append a grid item view.
     k=0
     columnNum=5
     rowArray= []
-    console.log("collection.models.length: "+collection.models.length)
+    #console.log("collection.models.length: "+collection.models.length)
     while k < collection.models.length
       i = 0
       while i < columnNum
@@ -42,6 +42,6 @@ class Mywebroom.Views.DiscoverBookmarksView extends Backbone.View
       rowArray.length = 0
   addCustomBookmark:->
 
-    console.log "I'd like to add a custom bookmark!"
-    console.log $("input:first").val()
+    #console.log "I'd like to add a custom bookmark!"
+    #console.log $("input:first").val()
 

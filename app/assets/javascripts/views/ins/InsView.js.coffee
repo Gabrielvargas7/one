@@ -18,7 +18,7 @@ class Mywebroom.Views.InsView extends Backbone.View
   continue: ->
 
 
-    console.log('ins lightbox clicked!')
+    #console.log('ins lightbox clicked!')
 
 
     if not @model.has("position")
@@ -36,16 +36,18 @@ class Mywebroom.Views.InsView extends Backbone.View
       switch position
 
         when 1
-          console.log("bookmark - don't open store")
+          false
+          #console.log("bookmark - don't open store")
 
         when 2
-          console.log("design - open store")
+          false
+          #console.log("design - open store")
 
           # Design
           Mywebroom.Helpers.showStore()
 
         when 3
-          console.log("theme - open store, show theme tab")
+          #console.log("theme - open store, show theme tab")
 
           # Theme
           Mywebroom.Helpers.showStore()

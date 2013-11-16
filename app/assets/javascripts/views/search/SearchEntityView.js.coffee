@@ -188,7 +188,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
     usable.fetch({
       async: false
       success: (model, response, options) ->
-        console.log("openStoreEditor success")
+        #console.log("openStoreEditor success")
 
       error: (model, response, options) ->
         console.error("openStoreEditor fail", response.responseText)
@@ -249,10 +249,5 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
         return true
 
       error: (collection, response, options) ->
-        ###
-        FIXME
-        ###
-
-        console.log("(ignore)")
         return false
     })

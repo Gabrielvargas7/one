@@ -1,14 +1,14 @@
 class Mywebroom.Views.ProfileKeyRequestsView extends Backbone.View
  className:'profile_key_requests'
  template:JST['profile/ProfileKeyRequestsTemplate']
- 
+
  initialize: ->
   @friendsFetchLimit = 6
   @friendsOffset = 0
 
   @getFriendsSuggestionCollection()
   @getKeyRequestsCollection()
-  @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({model:@model}) 
+  @friendsSuggestionsView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({model:@model})
 
  render: ->
   $(@el).html(@template)
@@ -28,22 +28,22 @@ text-align: center;"> You have no key requests!</p>'
       )
 
   this
-    
+
  keyRequestAddView: (keyRequest) ->
   keyRequestSingleView = new Mywebroom.Views.ProfileKeyRequestSingleView({model:keyRequest})
   $('#profile_key_request_list').append(keyRequestSingleView.$el)
   keyRequestSingleView.render()
   keyRequestSingleView.on('ProfileKeyRequest:Deny',@removeKeyRequest,this)
- 
+
  #Friend Suggestions Functions
  showSuggestedFriends: ->
   @friendsSuggestionsCollection.forEach(@friendsSuggestionAddView, this)
- 
+
  friendsSuggestionAddView: (friendSuggestion) ->
   friendSuggestionSingleView = new Mywebroom.Views.ProfileFriendsSuggestionSingleView({model:friendSuggestion})
   $('#profile_suggested_friends_list').append(friendSuggestionSingleView.$el)
   friendSuggestionSingleView.render()
- 
+
  #Remove key request and re-render. Called when user denies a key request.
  removeKeyRequest:(modelToRemove)->
   @keyRequestsCollection.remove(modelToRemove)
@@ -56,9 +56,9 @@ text-align: center;"> You have no key requests!</p>'
     url: @keyRequestsCollection.url @model.get('user_id')
     async:false
     success: (response)->
-     console.log("KeyRequestsCollection Fetched Successfully")
-     console.log(response)
- 
+      #console.log("KeyRequestsCollection Fetched Successfully")
+      #console.log(response)
+
  getFriendsSuggestionCollection:()->
   @friendsSuggestionsCollection = new Mywebroom.Collections.IndexFriendsSuggestionByUserIdByLimitByOffsetCollection()
   @friendsSuggestionsCollection.fetch
@@ -66,8 +66,8 @@ text-align: center;"> You have no key requests!</p>'
       reset:true
       async:false
       success: (response)->
-       console.log("friendsSuggestionsCollection Fetched Successfully")
-       console.log(response)
+        #console.log("friendsSuggestionsCollection Fetched Successfully")
+        #console.log(response)
 
  paginateSuggestedFriends:(event)->
     event.preventDefault()
@@ -78,7 +78,7 @@ text-align: center;"> You have no key requests!</p>'
 
     #1 Increment Offset
     event.data.friendsOffset += event.data.friendsFetchLimit;
-    
+
     #2. Grab more Friends
     tempCollection = new Mywebroom.Collections.IndexFriendsSuggestionByUserIdByLimitByOffsetCollection()
     tempCollection.fetch
@@ -86,9 +86,9 @@ text-align: center;"> You have no key requests!</p>'
         reset:true
         async:false
         success: (response)->
-         console.log("friendsSuggestionsCollection Fetched Successfully")
-         console.log(response)
-       
+          #console.log("friendsSuggestionsCollection Fetched Successfully")
+          #console.log(response)
+
     #3. Render the view
     tempCollection.forEach(event.data.friendsSuggestionAddView)
     #event.data.friendsSuggestionsCollection.add(tempCollection.toJSON())

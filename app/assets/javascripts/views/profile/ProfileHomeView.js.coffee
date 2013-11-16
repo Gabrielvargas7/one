@@ -32,14 +32,14 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   initialize: ->
     #Get RoomFlag
     this.model.set 'FLAG_PROFILE', Mywebroom.State.get("roomState")
-    
+
     #initial limit and offset for apis
     @fetchLimit = 24
     @fetchOffset= 0
-    
+
     if Mywebroom.State.get("roomState") != "SELF"
       @template=JST['profile/FriendHomeTemplate']
-    
+
       #Bookmarks and Items Design will be different for Home and Activity
       # new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdByLimitAndOffset(
       #   userId: Mywebroom.State.get('roomData').get('user').id
@@ -50,8 +50,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
         async:false
         url:activityBookmarksRandomCollection.url Mywebroom.State.get('roomData').get('user').id, @fetchLimit, @fetchOffset
         success: (response)->
-          console.log("activityBookmarksCollection Fetched Successfully Response:")
-          console.log(response)
+          #console.log("activityBookmarksCollection Fetched Successfully Response:")
+          #console.log(response)
 
       activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexUserItemsDesignsByUserIdByLimitAndOffset()
       activityItemsDesignsRandomCollection.fetch
@@ -59,13 +59,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
         async:false
         url:activityItemsDesignsRandomCollection.url Mywebroom.State.get('roomData').get('user').id, @fetchLimit, @fetchOffset
         success: (response)->
-          console.log("Friend's Items Page Fetched Successfully Response:")
-          console.log(response)
+          #console.log("Friend's Items Page Fetched Successfully Response:")
+          #console.log(response)
     else
 
       activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
       activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
-      
+
       #Fetch them
       activityBookmarksRandomCollection.fetch
         url:activityBookmarksRandomCollection.url @fetchLimit, @fetchOffset
@@ -74,7 +74,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
         success: (response)->
           #console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
           #console.log(response)
-    
+
       activityItemsDesignsRandomCollection.fetch
         url:activityItemsDesignsRandomCollection.url @fetchLimit, @fetchOffset
         reset:true
@@ -82,19 +82,19 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
         success: (response)->
           #console.log("activityItemsDesignsRandomCollection Fetched Successfully Response:")
           #console.log(response)
-  
+
     @collapseFlag = true
-  
+
     #Scramble Activity Collection.
     @scrambleItemsAndBookmarks(activityItemsDesignsRandomCollection,activityBookmarksRandomCollection)
-  
+
     #Calculate Age
     @model.set('age',@getAge(@model.get('birthday')))
 
   #*******************
   #**** Render - sets up initial structure and layout of the view
   #*******************
- 
+
   render: ->
     #Template shows structure of the view
     $(@el).html(@template(user_info:@model))     #pass variables into template.
@@ -129,29 +129,29 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
 
-    #Turn event off then on again if needed so each scroll event doesn't trigger another fetch. 
+    #Turn event off then on again if needed so each scroll event doesn't trigger another fetch.
     @$('#gridItemList').off('scroll')
-    
-    
+
+
     #1a. Increment Offset
     event.data.fetchOffset += event.data.fetchLimit;
-    
+
     #1. Grab more Designs
     #2. Grab more Bookmarks
     activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
     activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
-    
+
     #3. Fetch them
     activityBookmarksRandomCollection.fetch
       url:activityBookmarksRandomCollection.url event.data.fetchLimit, event.data.fetchOffset
       reset:true
       async:false
-  
+
     activityItemsDesignsRandomCollection.fetch
       url:activityItemsDesignsRandomCollection.url event.data.fetchLimit, event.data.fetchOffset
       reset:true
       async:false
-    
+
     #4. Shuffle them
     tempCollection = new Backbone.Collection()
     tempCollection.add(activityItemsDesignsRandomCollection.toJSON(),{silent:true})
@@ -181,28 +181,28 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
 
-    #Turn event off then on again if needed so each scroll event doesn't trigger another fetch. 
+    #Turn event off then on again if needed so each scroll event doesn't trigger another fetch.
     @$('#gridItemList').off('scroll')
-    
+
     #1a. Increment Offset
     event.data.fetchOffset += event.data.fetchLimit;
-    
+
     #1. Grab more Designs
     #2. Grab more Bookmarks
     activityFriendBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdByLimitAndOffset()
     activityFriendItemsDesignsCollection = new Mywebroom.Collections.IndexUserItemsDesignsByUserIdByLimitAndOffset()
-    
+
     #3. Fetch them
     activityFriendBookmarksCollection.fetch
       url:activityFriendBookmarksCollection.url @model.get('user_id'), event.data.fetchLimit, event.data.fetchOffset
       reset:true
       async:false
-  
+
     activityFriendItemsDesignsCollection.fetch
       url:activityFriendItemsDesignsCollection.url @model.get('user_id'), event.data.fetchLimit, event.data.fetchOffset
       reset:true
       async:false
-    
+
     #4. Shuffle them
     tempCollection = new Backbone.Collection()
     tempCollection.add(activityFriendItemsDesignsCollection.toJSON(),{silent:true})
@@ -245,7 +245,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s things"
     else
       headerName = 'Latest Room Additions'
-    
+
     @ProfileHomeActivityView = new Mywebroom.Views.ProfileActivityView2({collection:initialProfileHomeActivityCollection, headerName:headerName})
 
   #*******************
@@ -261,17 +261,17 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $('#profileHome_bottom').html(@photosView.render().el)
     if Mywebroom.State.get("roomState") != "SELF"
       $('#profile_upload_photos_button').remove()
- 
- 
- 
- 
+
+
+
+
   # Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View
   showProfileKeyRequests: ->
-  
+
     # /*Note on key request view, we do not want profile-bottom overflow on. */
     topTemplate= JST['profile/ProfileSmallTopTemplate']
     optionalButton = "<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379965946/invite-friends-with-facebook.png'>"
-    
+
     $('#profileHome_top').css "height","auto"
     $('#profileHome_top').html ""
 
@@ -283,12 +283,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
   showProfileFriends: ->
     topTemplate = JST['profile/ProfileSmallTopTemplate']
-    
+
     $('#profileHome_top').css "height","auto"
     $('#profileHome_top').html ""
 
     $('#profileHome_top').html(topTemplate(user_info:@model,optionalButton:"Invite Friends With FB!"))
-    
+
 
     @friendsView = new Mywebroom.Views.ProfileFriendsView(model:@model)
     $('#profileHome_bottom').html(@friendsView.render().el)
@@ -302,9 +302,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
       headerName = "Activity"
     else
       headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s things"
-  
+
     @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:headerName,model:@model,className:"profileActivity_activity generalGrid"})
-  
+
     # Modify Top Portion
     $('#profileHome_top').css "height","70px"
     $('#profileHome_bottom').css "height","550px"
@@ -313,9 +313,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     #$('#profileHome_bottom').html(JST['profile/ProfileGridTableHeader'](headerName:"Activity"))
     $('#profileHome_bottom').html(@profileActivityView.el)
     @profileActivityView.render()
-    #if room is Self, allow endless activity scrolling. 
-    
-    #set Paginate Activity event - 
+    #if room is Self, allow endless activity scrolling.
+
+    #set Paginate Activity event -
     that = this
     if Mywebroom.State.get("roomState") is "SELF"
       @$('#gridItemList').off('scroll').on('scroll',that,(event)->
@@ -335,7 +335,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   # showProfileBookmarks - Only shows on Friend/Public Profile View
   #--------------------------
   showProfileBookmarks:->
-    
+
     # show user Bookmarks
     @profileBookmarksView = new Mywebroom.Views.ProfileBookmarksView({model:@model})
     $('#profileHome_top').html('')
@@ -343,14 +343,14 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $("#profileHome_bottom").html(@profileBookmarksView.el)
     @profileBookmarksView.render()
 
-  
-  
-  
+
+
+
   #--------------------------
   # showProfileObjects - Only shows on Friend/Public Profile View
   #--------------------------
   showProfileObjects:->
-    
+
     # Show user Objects
     profileObjectsCollection = new Backbone.Collection()
     profileObjectsCollection.set(@model.get('user_items_designs'))
@@ -369,7 +369,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #*******************
   collapseProfileView: ->
 
-    #If Large View is open, close LargeView. Otherwise, proceed. 
+    #If Large View is open, close LargeView. Otherwise, proceed.
  	  if Mywebroom.State.get('profileLargeView')
       Mywebroom.State.get('profileLargeView').closeView()
     else
@@ -386,7 +386,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
           ),500
         #$('#profile_drawer').css "width","760px"
         @collapseFlag = true
-        
+
         #@collapseFlag=true
       else
         $("#profileHome_container").css "left", "-2720px"
@@ -397,21 +397,21 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
         setTimeout (->
           $("#profile_home_container").css "width", "0px"), 1000
         @collapseFlag = false
-   
- 
- 
- 
+
+
+
+
   # Calculates and return age. Argument is string YYYY-MM-DD
   getAge: (birthday) ->
     if birthday is undefined || birthday is null || birthday is ''
       return
-    
-    
+
+
     now = new Date()
-    
+
     dob = birthday.split '-'
-    
-    
+
+
     if dob.length is 3
       born = new Date(parseInt(dob[0]), parseInt(dob[1]) - 1, parseInt(dob[2]))
       age = now.getFullYear() - (born.getFullYear())
@@ -432,17 +432,17 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
   # Create a Facebook Requests Dialog to invite Facebook Friends
   inviteFriendsFacebook: ->
-  
+
     requestMessage = "Your friend " + Mywebroom.State.get("signInData").get("user_profile").firstname + " " + Mywebroom.State.get("signInData").get("user_profile").lastname + " would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
     FB.ui
       method: "apprequests"
       message: requestMessage
     , (request) ->
-      console.log 'inviteFriendsFacebook ui call: '
-      console.log request
- 
- 
- 
+      #console.log 'inviteFriendsFacebook ui call: '
+      #console.log request
+
+
+
   closeProfileView: ->
     $('#xroom_profile').hide()
     #turn on events
@@ -450,7 +450,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
     #1. Image Hover: on or off
     if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
-      
+
 
     #2. Image Click: on or off
     Mywebroom.Helpers.turnOnDesignClick()

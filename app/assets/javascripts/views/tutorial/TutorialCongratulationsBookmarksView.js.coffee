@@ -49,13 +49,13 @@ class Mywebroom.Views.TutorialCongratulationsBookmarksView extends Backbone.View
     # save the new step on the tutorial
     Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
 
-    console.log("tutorial congratulation bookmark")
+    #console.log("tutorial congratulation bookmark")
     view = new Mywebroom.Views.TutorialWelcomeProfileView()
     $("#xroom_tutorial_container").append(view.el)
     view.render()
 
 
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable

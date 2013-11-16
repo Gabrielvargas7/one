@@ -5,7 +5,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     'click .browse_mode_sidebar_icons':'sideBarActiveSiteChange'
   initialize:->
     this.on('render',@setScroll)
-    
+
   render:->
     if @model
       #fetch data here
@@ -19,29 +19,28 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     $(@el).html(@template(collection:@collection,model:@model))
     #@setScroll()
     this
-  
+
   ###
   Tag items in collection that are active so we can put the right class on them in render
   ###
   tagActiveSites:->
     #for each item collection, see if there's a data-id= to it in DOM
-    #Check for active sites list first. If none, then model has blueBorder. 
-    #Otherwise, iterate through dom. 
+    #Check for active sites list first. If none, then model has blueBorder.
+    #Otherwise, iterate through dom.
     @model.set('blueBorder', true,{silent:true})
-    
-    #Check for active sites list to see if there's others in the DOM. 
+
+    #Check for active sites list to see if there's others in the DOM.
     if $('.browse_mode_site').length>0
       @collection.each(((item)->
          if $('.browse_mode_view [data-id='+item.get('id')+']').length>0
           item.set('blueBorder', true)
       ))
-     
+
   setModel:(model)->
     @model.set(model.toJSON())
-  
+
   sideBarActiveSiteChange:(event)->
-    console.log 'sidebar active site change. '
-    debugger;
+    #console.log 'sidebar active site change. '
     event.stopPropagation()
     modelId= event.currentTarget.dataset.id
     modelClicked = @collection.get(modelId)
@@ -49,9 +48,9 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     this.trigger 'BrowseMode:sidebarIconClick', modelClicked
   #Create SimplyScroll event for mybookmarks sidebar
   #Hope it dies quickly when the view closes
-  
+
   setScroll:->
-    console.log 'one day i will scroll things beautifully.'
+    #console.log 'one day i will scroll things beautifully.'
     #Determine if we need to scroll.
     #
     if @collection.length > 5

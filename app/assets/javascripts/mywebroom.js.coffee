@@ -893,9 +893,9 @@ $(document).ready ->
           dom_item_id = $(this).data().designItemId
 
 
-          console.log("Tutorial -> click item: "+dom_item_id)
-          console.log("room step "+Mywebroom.State.get("signInData").get("user_profile").tutorial_step.toString())
-          console.log("Open the editor here on the item that where click-it")
+          #console.log("Tutorial -> click item: "+dom_item_id)
+          #console.log("room step "+Mywebroom.State.get("signInData").get("user_profile").tutorial_step.toString())
+          #console.log("Open the editor here on the item that where click-it")
 
 
 
@@ -920,7 +920,7 @@ $(document).ready ->
 
 
 
-              console.log("David code should be here -> Open the editor here on the item that where click-it")
+              #console.log("David code should be here -> Open the editor here on the item that where click-it")
               Mywebroom.Helpers.showStore()
               Mywebroom.Helpers.Editor.clickItem(dom_item_id)
 
@@ -934,11 +934,11 @@ $(document).ready ->
               $("#xroom_tutorial_container").append(view.el)
               view.render()
             else
-              console.log("No valid item -> click item: "+dom_item_id)
+              #console.log("No valid item -> click item: "+dom_item_id)
 
 
         else
-          console.log("No on the Tutorial -> click item")
+          #console.log("No on the Tutorial -> click item")
           # item_id extracted from the clicked element
           dom_item_id = $(this).data().designItemId
 
@@ -1126,12 +1126,12 @@ $(document).ready ->
     Mywebroom.State.set('room0',@room0)
     Mywebroom.State.set('room1',@room1)
     Mywebroom.State.set('room2',@room2)
-    console.log("p0")
-    console.log(@room0)
-    console.log("p1")
-    console.log(@room1)
-    console.log("p2")
-    console.log(@room2)
+    #console.log("p0")
+    #console.log(@room0)
+    #console.log("p1")
+    #console.log(@room1)
+    #console.log("p2")
+    #console.log(@room2)
 
 
 
@@ -1359,7 +1359,7 @@ $(document).ready ->
       success: (model, response, options) ->
         #console.log("model fetch success", model, response, options)
       error: (model, response, options) ->
-        console.log("model fetch fail", model, response, options)
+        console.error("model fetch fail", response.responseText)
 
 
     return model
@@ -1686,7 +1686,7 @@ $(document).ready ->
   collapsed_TO_shown
   ###
   Mywebroom.Helpers.expandStore = ->
-    console.log("expand store")
+    #console.log("expand store")
 
     # (1) Store visibility
     $('#xroom_storepage').show()
@@ -1790,12 +1790,12 @@ $(document).ready ->
       requestModel.save {},
 
       success: (model, response) ->
-        console.log('post requestKey SUCCESS:')
-        console.log(response)
+        #console.log('post requestKey SUCCESS:')
+        #console.log(response)
 
       error: (model, response) ->
-        console.log('post requestKey FAIL:')
-        console.log(response)
+        console.error('post requestKey FAIL:')
+        console.error(response)
 
       #Change style to Key requested.
       if $('#profile_ask_for_key_overlay button').length > 1

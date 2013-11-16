@@ -299,7 +299,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     designs.each( (design) ->
 
       Mywebroom.Helpers.updateRoomDesign(design)
-      
+
     )
 
 
@@ -374,7 +374,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       success: (response) ->
         #console.log("bundle design collection fetch success", response)
       error: ->
-        console.log("bundle design collection fail")
+        console.error("bundle design collection fail")
 
     return collection
 
@@ -390,6 +390,6 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
       success: (response) ->
         #console.log("bundle theme collection fetch success", response)
       error: ->
-        console.log("bundle theme collection fail")
+        console.error("bundle theme collection fail")
 
     return collection

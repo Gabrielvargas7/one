@@ -18,13 +18,13 @@ class Mywebroom.Views.ProfileHomeTopView extends Backbone.View
     if(@model.get("FLAG_PROFILE") is "PUBLIC")
       if Mywebroom.Helpers.IsThisMyFriendRequest(Mywebroom.State.get('roomUser').get('id'))
         @.$('.profile_request_key_button').hide()
-        console.log 'hide key requested'
+        #console.log 'hide key requested'
       else
         @.$('.profile_key_requested').hide()
-        console.log 'show key requested'
+        #console.log 'show key requested'
 
     this
 
   askForKey:(event)->
-    #Key Request. 
+    #Key Request.
     Mywebroom.Helpers.RequestKey(@model.get('user_id'))

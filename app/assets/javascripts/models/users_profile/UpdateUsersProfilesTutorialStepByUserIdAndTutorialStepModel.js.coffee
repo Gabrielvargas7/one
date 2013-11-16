@@ -11,6 +11,6 @@ class Mywebroom.Models.UpdateUsersProfilesTutorialStepByUserIdAndTutorialStepMod
   parse: (response) ->
       model = response
       Mywebroom.State.set("tutorialStep",model.tutorial_step)
-      console.log("tutorialStep: "+Mywebroom.State.get("tutorialStep"))
+      #console.log("tutorialStep: "+Mywebroom.State.get("tutorialStep"))
       return model
 

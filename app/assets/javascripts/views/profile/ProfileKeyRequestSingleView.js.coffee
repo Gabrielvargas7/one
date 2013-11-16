@@ -20,15 +20,15 @@ class Mywebroom.Views.ProfileKeyRequestSingleView extends Backbone.View
       'userIdRequest':this.model.get('user_id')
     acceptKeyRequestModel.save {},
       success: (model, response)->
-        console.log('post AcceptKeyRequest SUCCESS:')
-        console.log(response) 
+        #console.log('post AcceptKeyRequest SUCCESS:')
+        #console.log(response)
       error: (model, response)->
-        console.log('post AcceptKeyRequest FAIL:')
-        console.log(response)
+        console.error('post AcceptKeyRequest FAIL:')
+        console.error(response)
     #Rerender the view with view room button.
     @template = JST['profile/ProfileRequestSingleAcceptedTemplate']
     this.render()
-    
+
   denyKeyRequest:(event)->
     denyKeyRequestModel = new Mywebroom.Models.DestroyFriendRequestByUserIdAndUserIdRequestedModel()
     this.trigger('ProfileKeyRequest:Deny',@model)

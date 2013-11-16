@@ -14,22 +14,22 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
     #*******************
   render:->
     $(@el).html(@template(model:@model))
-  
+
   #--------------------------
-  # Add bookmark to server. Append "Added" to the el. 
+  # Add bookmark to server. Append "Added" to the el.
   #--------------------------
-  addBookmark:(event)-> 
+  addBookmark:(event)->
     event.stopPropagation()
     #To determine position, we need the user id, and bookmarks collection.
-    userId = @getUserId() 
+    userId = @getUserId()
     @getMyBookmarksCollection(userId)
     #Finally call api to add the bookmark.
     postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:@model.get('item_id'), bookmarkId:@model.get('id'),userId:userId})
     # postBookmarkModel.itemId = @model.get('item_id')
     # postBookmarkModel.userId = userId
     # postBookmarkModel.bookmarkId = @model.get('id')
-    
-    console.log(@myBookmarksCollection)
+
+    #console.log(@myBookmarksCollection)
     if @myBookmarksCollection.length is 0
       lastBookmarkPosition = 1
     else
@@ -39,12 +39,12 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
     #console.log(@myBookmarksCollection.models)
     postBookmarkModel.save {},
       success: (model, response)->
-        console.log('postBookmarkModel SUCCESS:')
-        console.log(response)
+        #console.log('postBookmarkModel SUCCESS:')
+        #console.log(response)
       error: (model, response)->
-            console.log('postBookmarkModel FAIL:')
-            console.log(response)
-       #Append Added Confirmation HTML 
+            console.error('postBookmarkModel FAIL:')
+            console.error(response)
+       #Append Added Confirmation HTML
        #TODO- make added dialog disappear after 5-10 seconds. (Keep checkmark)
     @$('.bookmark_grid_item').append("<div class='just_added'>
       <p>Added!</p>
@@ -67,7 +67,7 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
         Mywebroom.Helpers.TutorialHelper.saveTutorialStep(user_id,tutorial_step)
 
 
-        console.log("tutorial Bookmark Discover ")
+        #console.log("tutorial Bookmark Discover ")
         view = new Mywebroom.Views.TutorialCongratulationsBookmarksView()
         $("#xroom_tutorial_container").append(view.el)
         view.render()
@@ -86,7 +86,7 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
     userSignInCollection.fetch async: false
     userSignInCollection.models[0].get('id')
   #--------------------------
-  # Retrieve the MyBookmarks Collection. Called from addBookmark.  
+  # Retrieve the MyBookmarks Collection. Called from addBookmark.
   #--------------------------
   getMyBookmarksCollection:(userId)->
     @myBookmarksCollection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()

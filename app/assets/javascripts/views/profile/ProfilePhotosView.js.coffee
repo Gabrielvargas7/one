@@ -14,11 +14,11 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
         url: @photosCollection.url @model.get('user_id'),@fetchLimit,0
         async:false
         success: (response)->
-         console.log("PhotosCollection Fetched Successfully")
-         console.log(response)
+          #console.log("PhotosCollection Fetched Successfully")
+          #console.log(response)
     if(@model.get("FLAG_PROFILE") is "PUBLIC")
      @photosCollection.reset(@photosCollection.first(9), silent:true)
-  
+
   render: ->
     #FOR TESTING ONLY- set flag profile
     #@model.set 'FLAG_PROFILE', Mywebroom.Views.RoomView.PUBLIC_ROOM
@@ -28,20 +28,20 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
     $(@el).append(tableView.render().el)
 
     if @photosCollection.length is @fetchLimit && Mywebroom.State.get('roomState')!="PUBLIC" && Mywebroom.State.get('roomState')!="NONE"
-      #set scroll event to fetch more photos. Try creating new tableview and appending it to the el. 
+      #set scroll event to fetch more photos. Try creating new tableview and appending it to the el.
       that = this
-      @$('#gridItemList').off('scroll').on('scroll',that, (event)-> 
+      @$('#gridItemList').off('scroll').on('scroll',that, (event)->
         if $('#gridItemList').scrollTop() + $('#gridItemList').innerHeight() >= $('#gridItemList')[0].scrollHeight-10
           event.data.paginate(event)
           )
 
 
     this
-  
+
   askForKey:(event)->
-    #Key Request if a public user visits this page. 
+    #Key Request if a public user visits this page.
     Mywebroom.Helpers.RequestKey(@model.get('user_id'))
-  
+
   paginate:(event)->
     #Need Photos Total
     event.preventDefault()
@@ -49,7 +49,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
 
     #Turn off scroll so multiple scrolls don't fetch multiple times
     @$('#gridItemList').off('scroll')
-    
+
     #1. Increment offset
     event.data.offset += event.data.fetchLimit;
 
@@ -59,12 +59,12 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
         url: @photosCollection.url event.data.model.get('user_id'),event.data.fetchLimit,event.data.offset
         async:false
         success: (response)->
-         console.log("PhotosCollection Fetched Successfully")
-         console.log(response)
-    
+          #console.log("PhotosCollection Fetched Successfully")
+          #console.log(response)
+
     #3. Render the new data's view.
     if nextCollection
-      #3a. Add to collection and Marionette- ProfileActivityView2 will auto render it. Yay! 
+      #3a. Add to collection and Marionette- ProfileActivityView2 will auto render it. Yay!
       event.data.photosCollection.add(nextCollection.toJSON())
       # nextCollection.each((item)->
       #   itemView = new Mywebroom.Views.ProfileGridItemView2(model:item)
@@ -76,7 +76,7 @@ class Mywebroom.Views.ProfilePhotosView extends Backbone.View
       event.data.$('#gridItemList').off('scroll');
     else
       that = this
-      $('#gridItemList').off('scroll').on('scroll',that, (event)-> 
+      $('#gridItemList').off('scroll').on('scroll',that, (event)->
         if $('#gridItemList').scrollTop() + $('#gridItemList').innerHeight() >= $('#gridItemList')[0].scrollHeight-10
           event.data.paginate(event)
           )

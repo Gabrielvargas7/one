@@ -48,13 +48,13 @@ class Mywebroom.Views.TutorialWelcomeProfileView extends Backbone.View
 
 
 
-    console.log("tutorial welcome profile btn")
+    #console.log("tutorial welcome profile btn")
     view = new Mywebroom.Views.TutorialFriendsProfileView()
     $("#xroom_tutorial_container").append(view.el)
     view.render()
 
 
-    console.log('Kill: ', this);
+    #console.log('Kill: ', this);
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable

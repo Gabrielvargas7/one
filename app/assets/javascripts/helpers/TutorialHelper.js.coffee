@@ -12,7 +12,7 @@ Mywebroom.Helpers.TutorialHelper = {
       wait: true
     ,
       success: (model, response) ->
-        console.log(" SAVE tutorial Step "+tutorial_step+" SUCCESS\n", response)
+        #console.log(" SAVE tutorial Step "+tutorial_step+" SUCCESS\n", response)
 
         error: (model, response) ->
           console.log("Tutorial Step "+tutorial_step+" SAVE FAIL\n", response)
