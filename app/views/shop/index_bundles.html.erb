@@ -3,7 +3,7 @@
   <div class="shop_filter">
     <h5>Filter by </h5>
 
-    </br>
+
     <h5>Color  </h5>
     <% @bundles_by_color.each do |bundle_color| %>
         <% unless bundle_color.color.nil? %>
@@ -11,7 +11,7 @@
         <% end %>
     <% end %>
 
-    </br>
+
     <h5>Brand </h5>
     <% @bundles_by_brand.each do |bundle_brand| %>
         <% unless bundle_brand.brand.nil? %>
@@ -19,7 +19,7 @@
         <% end %>
     <% end %>
 
-    </br>
+
     <h5>Style </h5>
     <% @bundles_by_style.each do |bundle_style| %>
         <% unless bundle_style.style.nil? %>
@@ -27,14 +27,14 @@
         <% end %>
     <% end %>
 
-    </br>
+
     <h5>Make </h5>
     <% @bundles_by_make.each do |bundle_make| %>
         <% unless bundle_make.make.nil? %>
             <%= link_to bundle_make.make.titleize,  shop_index_bundles_path(bundle_make: bundle_make.make), :method => :get %> </br>
         <% end %>
     <% end %>
-    </br>
+
     <h5>Category </h5>
     <% @bundles_by_category.each do |bundle_category| %>
         <% unless bundle_category.category.nil? %>
