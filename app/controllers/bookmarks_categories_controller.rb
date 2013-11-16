@@ -189,7 +189,7 @@ class BookmarksCategoriesController < ApplicationController
           format.json {render json:  @bookmarks_categories.as_json() }
 
         else
-          format.json { render json: 'not bookmark category for this item ', status: :not_found }
+          format.json { render json: 'not bookmark category for this item ', status: :no_content }
         end
 
       end
