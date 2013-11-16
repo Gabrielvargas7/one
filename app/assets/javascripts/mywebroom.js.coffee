@@ -1216,7 +1216,7 @@ $(document).ready ->
     ###
     CHECK IF DESIGN IS NEW
     ###
-    if old_design_id.toString() isnt new_design_id.toString() or old_main_src.toString() isnt new_main_src.toString() or old_hover_src.toString() isnt new_hover_src.toString()
+    if not old_design_id or not new_design_id or not old_main_src or not new_main_src or old_design_id.toString() isnt new_design_id.toString() or old_main_src.toString() isnt new_main_src.toString() or old_hover_src.toString() isnt new_hover_src.toString()
 
       # Design is changed
       current_design.attr("data-design-has-changed", true)
