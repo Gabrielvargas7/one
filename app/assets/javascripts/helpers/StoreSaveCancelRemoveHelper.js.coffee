@@ -85,7 +85,7 @@ Mywebroom.Helpers.StoreSaveCancelRemoveHelper = {
             #console.log("TOGGLE DESIGN HIDE SUCCESS\n", model)
 
             error: (model, response) ->
-              console.log("TOGGLE DESIGN HIDE FAIL\n", model)
+              console.error("TOGGLE DESIGN HIDE FAIL\n", model)
 
 
 

@@ -1,7 +1,7 @@
 Mywebroom.Helpers.TutorialHelper = {
 
 
-  saveTutorialStep:(user_id,tutorial_step) ->
+  saveTutorialStep: (user_id, tutorial_step) ->
 
 
     # Persist new tutorial step to server
@@ -15,7 +15,7 @@ Mywebroom.Helpers.TutorialHelper = {
         #console.log(" SAVE tutorial Step "+tutorial_step+" SUCCESS\n", response)
 
         error: (model, response) ->
-          console.log("Tutorial Step "+tutorial_step+" SAVE FAIL\n", response)
+          console.error("Tutorial Step " + tutorial_step + " SAVE FAIL\n", response)
 
 
 }

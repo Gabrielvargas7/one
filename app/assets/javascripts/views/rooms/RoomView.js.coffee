@@ -393,7 +393,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
   signedOut: ->
 
-    console.log("SIGNED OUT - NOT IN A ROOM")
+    #console.log("SIGNED OUT - NOT IN A ROOM")
 
     roomState = Mywebroom.State.get("roomState")
     if roomState isnt "NONE" then console.error("ERROR: signedOut.roomState should be NONE but is " + roomState)
@@ -451,7 +451,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    console.log("SIGNED OUT - IN " + roomUser.get("username") + "\'s ROOM")
+    #console.log("SIGNED OUT - IN " + roomUser.get("username") + "\'s ROOM")
 
 
 

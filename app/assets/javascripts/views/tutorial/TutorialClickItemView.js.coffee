@@ -32,30 +32,30 @@ class Mywebroom.Views.TutorialClickItemView extends Backbone.View
   #--------------------------
   # close store page
   #--------------------------
-  tutorialClickItemSkipBtn: (e) ->
+  tutorialClickItemSkipBtn: (event) ->
 
-    e.preventDefault()
-    e.stopPropagation()
+    event.preventDefault()
+    event.stopPropagation()
 
-    console.log("tutorial click item")
+    #console.log("tutorial click item")
 
     view = new Mywebroom.Views.TutorialOpenStoreView()
     $("#xroom_tutorial_container").append(view.el)
     view.render()
 
     #console.log('Kill: ', this);
-    this.unbind(); # Unbind all local event bindings
-    this.remove(); # Remove view from DOM
-    delete this.$el; # Delete the jQuery wrapped object variable
-    delete this.el;
+    this.unbind() # Unbind all local event bindings
+    this.remove() # Remove view from DOM
+    delete this.$el # Delete the jQuery wrapped object variable
+    delete this.el
 
 
   tutorialClickItemDestroy: ->
     #console.log('Kill: ', this);
-    this.unbind(); # Unbind all local event bindings
-    this.remove(); # Remove view from DOM
-    delete this.$el; # Delete the jQuery wrapped object variable
-    delete this.el;
+    this.unbind() # Unbind all local event bindings
+    this.remove() # Remove view from DOM
+    delete this.$el # Delete the jQuery wrapped object variable
+    delete this.el
 
 
 

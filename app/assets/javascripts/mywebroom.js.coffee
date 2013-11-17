@@ -452,7 +452,7 @@ $(document).ready ->
             note.save({id: user_id},
               {
                 success: (model, response, options) ->
-                  console.log("REMOVE NOTIFICATION SUCCESS")
+                  #console.log("REMOVE NOTIFICATION SUCCESS")
                   #console.log(model, response, options)
                 ,
                 error: (model, xhr, options) ->
