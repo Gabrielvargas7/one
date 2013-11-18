@@ -41,6 +41,25 @@ class Mywebroom.Views.PopupFriendItemView extends Backbone.View
     @$el.append(@template( itemData:@itemData.toJSON(), coordinates:@coordinates))
     this
 
+
+  ###
+  # Call this function after view is rendered and appended. If the popup is not in viewport,
+  #   the popup's position will be adjusted to the center of the page based on 400x256 popup size. 
+  ###
+  detectViewportAndCenter: ->
+    #A4(i) Detect if Popup view is in viewport
+    rect = $('#popup_friend_item_wrap')[0].getBoundingClientRect()
+
+    if not (rect.top >=0 and rect.left >=0) or 
+    not (rect.bottom <= (window.innerHeight or document. documentElement.clientHeight)) or 
+    not (rect.right <= (window.innerWidth or document. documentElement.clientWidth))
+      $('#popup_friend_item_wrap').css(
+                                       "position":"absolute"
+                                       "top":"50%"
+                                       "left":"50%"
+                                       "margin-left":"-200px"
+                                       "margin-top":"-125px")
+
   closeView:->
 
     #Turn on Design Clicks
