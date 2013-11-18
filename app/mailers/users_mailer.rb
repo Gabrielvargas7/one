@@ -11,6 +11,7 @@ class UsersMailer < ActionMailer::Base
   #
   def forget_password_email(user)
     @user  = user
+    @user_profile = UsersProfile.where("user_id = ?", user.id).first
     @greeting = "Hi, you forget password"
 
     mail to: @user.email,subject: "Help, MyWebRoom "
