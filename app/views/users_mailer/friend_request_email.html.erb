@@ -365,13 +365,13 @@ background-color: #00ccff; border: none; color: white; font-weight: normal; font
                             <table class="container message_content" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: inherit; width: 580px; margin: 10px auto 0; padding: 0; border: 1px solid #d2d2d2;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="twelve subcolumns text-pad message_content_header" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; width: 100% !important; padding: 0px 10px 20px;" align="left" valign="top">
                                   <h4 style="color: #0073a5; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: lighter; text-align: center; line-height: 1.3; word-break: normal; font-size: 28px; border-bottom-color: #d2d2d2; border-bottom-width: 1px; border-bottom-style: solid; margin: 0; padding: 15px;" align="center">
                                     <% if @user_profile.firstname.blank? %>\
-                                      <h1> <%= @user.username %>  wants a key to your WebRoom!</h1>
+                                      <%= @user.username %>  wants a key to your WebRoom!
                                     <% else %>
-                                        <h1> <%= @user_profile.firstname %>  wants a key to your WebRoom!</h1>
+                                        <%= @user_profile.firstname %>  wants a key to your WebRoom!
                                     <% end %>
                                   </h4>
                                 </td>
-                              </tr><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><center style="width: 100%; min-width: 580px;">
+                              </tr><tr style="vertical-align: top; text-align: left; padding: 0;" align="left">
                                 <td align="center" class="center" valign="top" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; padding: 0px 0px 10px;">
                                 <table class="row" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 100%; position: relative; display: block; padding: 0px;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="wrapper" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; position: relative; padding: 0px 0px 10px;" align="left" valign="top">
 
@@ -401,9 +401,9 @@ background-color: #00ccff; border: none; color: white; font-weight: normal; font
                                       <table class="seven columns" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 330px; margin: 0 auto; padding: 0;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="text-pad message_content_message" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; padding: 0px 10px 30px;" align="left" valign="top">
                                               <br /><p class="lead" style="color: #222222; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 14px; margin: 0; padding: 0 30px;" align="left"><span style="font-weight: bolder; margin-top: 10px;">
                                               <% if @user_profile.firstname.blank? %>\
-                                                Hi <%= @user.username %>,
+                                                Hi <%= @user_requested.username %>,
                                               <% else %>
-                                                Hi <%= @user_profile.firstname %> ,
+                                                Hi <%= @user_requested_profile.firstname %> ,
                                               <% end %></span></p>                                            
                                               <p style="color: #222222; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 14px; margin: 0; padding: 0 30px;" align="left">I'd like to check out your online room! Please accept my Key Request.</p>
 
@@ -425,7 +425,6 @@ background-color: #00ccff; border: none; color: white; font-weight: normal; font
                                           <td class="expander" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; visibility: hidden; width: 0px; padding: 0;" align="left" valign="top"></td>
                                         </tr></table></td>
                                   </tr></table></td>
-                              </center>
                               </tr></table></td>
                           <td class="expander" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; visibility: hidden; width: 0px; padding: 0;" align="left" valign="top"></td>
                         </tr></table></td>
@@ -436,9 +435,9 @@ background-color: #00ccff; border: none; color: white; font-weight: normal; font
                 <table class="twelve columns message_footer_content" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 580px; margin: 0 10%; padding: 0;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="left-text-pad" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; padding: 0px 0px 10px 10px;" align="left" valign="top">
 
                       <p style="color: #222222; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 12px; margin: 0; padding: 10px 0;" align="left"><% if @user_profile.firstname.blank? %>\
-                                               This email is for myWebRoom.com resident <%= @user.username %>
+                                               This email is for myWebRoom.com resident <%= @user_requested.username %>
                                               <% else %>
-                                               This email is for myWebRoom.com resident <%= @user_profile.firstname %> 
+                                               This email is for myWebRoom.com resident <%= @user_requested_profile.firstname %> 
                                               <% end %>
                         <br />
                         © 2013, Rooms Inc.

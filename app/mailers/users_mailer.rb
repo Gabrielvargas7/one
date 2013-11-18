@@ -40,6 +40,7 @@ class UsersMailer < ActionMailer::Base
     @user_photo  = UsersPhoto.where("profile_image = 'y' and user_id = ? ", user.id).first
 
     @user_profile = UsersProfile.where("user_id = ?", user.id).first
+    @user_requested_profile = UsersProfile.where("user_id = ?", user_requested.id).first
 
     @user_photo.image_name
     @came_from_email_request_key = 'EMAIL_REQUEST_KEY'
