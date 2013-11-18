@@ -54,18 +54,27 @@
                         shop_forward_to_u_room_path(came_from:@came_from,entity_type:@entity_type,entity_id:@items_design.id),
                         :id => "shop_see_it_in_your_room_before_you_buy"%>
         <% end %>
-
-
         <br/>
         <br/>
 
         <form>
-          <%= cl_image_tag(@static_content.image_name,:transformation => { :width => 80, :height => 72, :x => 40, :y => 0, :crop => :crop }, :width => 30, :height => 15, :crop => :fill)%>
-          <input type="button" id="shop_green_button" class="green_button green_button_light"
+          <input type="button" id="shop_green_button1" class="green_button green_button_light"
                  value="Buy at <%=@items_design_btn_url_name.to_s%>"
 
                  onclick="window.location.href='<%=@items_design.product_url%>'">
         </form>
+
+
+        <div id="shop_btn_container">
+        <a id="shop_green_button" class="green_button green_button_light" href="#">
+          <%= cl_image_tag(@static_content.image_name,
+                           :transformation => { :width => 80, :height => 72, :x => 40, :y => 0, :crop => :crop },
+                           :width => 30, :height => 15, :crop => :fill)%>
+          Cancel</a>
+        </div>
+
+
+
       </div>
 
   </div>
