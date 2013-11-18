@@ -363,7 +363,13 @@ background-color: #00ccff; border: none; color: white; font-weight: normal; font
                   
                       <table class="twelve columns" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 580px; margin: 0 auto; padding: 0;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; padding: 0px 0px 10px;" align="left" valign="top">
                             <table class="container message_content" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: inherit; width: 580px; margin: 10px auto 0; padding: 0; border: 1px solid #d2d2d2;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="twelve subcolumns text-pad message_content_header" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; width: 100% !important; padding: 0px 10px 20px;" align="left" valign="top">
-                                  <h4 style="color: #0073a5; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: lighter; text-align: center; line-height: 1.3; word-break: normal; font-size: 28px; border-bottom-color: #d2d2d2; border-bottom-width: 1px; border-bottom-style: solid; margin: 0; padding: 15px;" align="center">%%REQUESTOR_FIRST_NAME wants a key to your WebRoom!</h4>
+                                  <h4 style="color: #0073a5; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: lighter; text-align: center; line-height: 1.3; word-break: normal; font-size: 28px; border-bottom-color: #d2d2d2; border-bottom-width: 1px; border-bottom-style: solid; margin: 0; padding: 15px;" align="center">
+                                    <% if @user_profile.firstname.blank? %>\
+                                      <h1> <%= @user.username %>  wants a key to your WebRoom!</h1>
+                                    <% else %>
+                                        <h1> <%= @user_profile.firstname %>  wants a key to your WebRoom!</h1>
+                                    <% end %>
+                                  </h4>
                                 </td>
                               </tr><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><center style="width: 100%; min-width: 580px;">
                                 <td align="center" class="center" valign="top" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; padding: 0px 0px 10px;">
@@ -371,18 +377,48 @@ background-color: #00ccff; border: none; color: white; font-weight: normal; font
 
                                       <table class="five columns" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 230px; margin: 0 auto; padding: 0;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="center" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; padding: 0px 0px 10px;" align="center" valign="top">
 
-                                            <img class="user_profile_image" height="150" width="150" var="%%REQUeSTER_IMAGE" src="http://placekitten.com/130/130" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: none; clear: both; display: inline;" align="none" /><br /><span class="center" style="display: block; width: 100%; text-align: center; margin-top: 10px;">%%REQUESTOR_FIRST_NAME</span>
+                                        
+
+                                            <img class="user_profile_image" height="150" width="150"  
+                                            src="<% if @user_photo.image_name.blank? %>
+                                              <%= cl_image_path "default-user.png",width:150 , height:150,:crop => :fill,:default_image => "default-user.png" %>
+
+                                            <% else %>
+                                              <%= cl_image_path @user_photo.image_name,width:150 , height:150,:crop => :fill,:default_image => "default-user.png" %>
+                                            <% end %>" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: none; clear: both; display: inline;" align="none" /><br />
+                                            <span class="center" style="display: block; width: 100%; text-align: center; margin-top: 10px;">
+                                              <% if @user_profile.firstname.blank? %>\
+                                                <%= @user.username %>  
+                                              <% else %>
+                                                <%= @user_profile.firstname %> 
+                                              <% end %>
+                                            </span>
                                           </td>
                                           <td class="expander" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; visibility: hidden; width: 0px; padding: 0;" align="left" valign="top"></td>
                                         </tr></table></td>
                                     <td class="wrapper last" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; position: relative; padding: 0px 0px 10px;" align="left" valign="top">
 
                                       <table class="seven columns" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 330px; margin: 0 auto; padding: 0;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="text-pad message_content_message" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; padding: 0px 10px 30px;" align="left" valign="top">
-                                              <br /><p class="lead" style="color: #222222; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 14px; margin: 0; padding: 0 30px;" align="left"><span style="font-weight: bolder; margin-top: 10px;">Hi %%FIRSTNAME,</span></p>                                            
+                                              <br /><p class="lead" style="color: #222222; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 14px; margin: 0; padding: 0 30px;" align="left"><span style="font-weight: bolder; margin-top: 10px;">
+                                              <% if @user_profile.firstname.blank? %>\
+                                                Hi <%= @user_requested.username %>,
+                                              <% else %>
+                                                Hi <%= @user_requested.firstname %> ,
+                                              <% end %></span></p>                                            
                                               <p style="color: #222222; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 14px; margin: 0; padding: 0 30px;" align="left">I'd like to check out your online room! Please accept my Key Request.</p>
 
                                               <br /><table id="give_key_button" class="button" style="width: 200px; border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: center; overflow: hidden; color: #ffffff !important; font-family: 'Open Sans',Helvetica, Arial, sans-serif; text-decoration: none; margin: 20px auto 0; padding: 0;"><tr style="vertical-align: top; text-align: center; margin: 0 auto; padding: 0;" align="center"><td style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; display: block; width: auto !important; color: white; font-weight: normal; font-style: none; font-size: 14px; background: #00ccff; margin: 0 auto; padding: 8px 0; border: 1px none #2284a1;" align="center" bgcolor="#00ccff" valign="top">
-                                                      <a href="%%ADDRESSmywebroom.com" style="color: white; text-decoration: none; font-weight: normal; font-family: 'Open Sans',Helvetica, Arial, sans-serif; font-size: 14px; font-style: none; background: #00ccff; border: none;">Give Key</a>
+                                              <%= link_to "Give Key ",
+                                                            room_rooms_url(@user_requested.username,came_from:@came_from_email_request_key),
+                                                            :style => 'color: white; 
+                                                            text-decoration: none; 
+                                                            font-weight: normal; 
+                                                            font-family: 'Open Sans',Helvetica, Arial, sans-serif; 
+                                                            font-size: 14px; 
+                                                            font-style: none; 
+                                                            background: #00ccff; 
+                                                            border: none;' %>                                             
+                                                      
                                                     </td>
                                                   </tr></table></td>
 
@@ -399,7 +435,11 @@ background-color: #00ccff; border: none; color: white; font-weight: normal; font
                       
                 <table class="twelve columns message_footer_content" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 580px; margin: 0 10%; padding: 0;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="left-text-pad" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; padding: 0px 0px 10px 10px;" align="left" valign="top">
 
-                      <p style="color: #222222; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 12px; margin: 0; padding: 10px 0;" align="left">This email is for myWebRoom.com resident %%REQUESTOR_FIRST_NAME.
+                      <p style="color: #222222; display: block; font-family: 'Open Sans','Helvetica', 'Arial', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 12px; margin: 0; padding: 10px 0;" align="left"><% if @user_profile.firstname.blank? %>\
+                                               This email is for myWebRoom.com resident <%= @user_requested.username %>
+                                              <% else %>
+                                               This email is for myWebRoom.com resident <%= @user_requested.firstname %> 
+                                              <% end %>
                         <br />
                         © 2013, Rooms Inc.
                       </p>
