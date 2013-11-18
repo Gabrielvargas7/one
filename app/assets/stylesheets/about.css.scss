@@ -4,13 +4,21 @@
   font-style: normal;
 }
 
-
 .about-us-margin {
   margin: 50px;
 }
 
 .about-us-blue {
   background-color: #00ccff;
+}
+
+.about-us-grey {
+  background-color: #dcdcdc;
+}
+
+.about-us-blue-border {
+  border-color: #00ccff;
+  border: 3px;
 }
 
 .about-us-white-text {
@@ -25,7 +33,6 @@
   padding: 20px;
 }
 
-
 .about-us-picture {
   border: none;
   -webkit-border-radius: none;
@@ -33,4 +40,9 @@
           box-shadow: none;
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
+}
+
+.partner-padding {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
