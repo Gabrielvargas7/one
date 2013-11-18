@@ -1,7 +1,7 @@
 .about-us-header {
   font-family: "Open Sans";
   font-weight: 200;
-  font-style: normal
+  font-style: normal;
 }
 
 
@@ -11,4 +11,26 @@
 
 .about-us-blue {
   background-color: #00ccff;
+}
+
+.about-us-white-text {
+  color: white;
+}
+
+.about-us-blue-picture {
+  padding-top: 30px;
+}
+
+.picture-padding {
+  padding: 20px;
+}
+
+
+.about-us-picture {
+  border: none;
+  -webkit-border-radius: none;
+          border-radius: none;
+          box-shadow: none;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
 }
