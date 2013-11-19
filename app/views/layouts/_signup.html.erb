@@ -1,0 +1,22 @@
+<div id="signup_lightbox">
+  <div><a id="signup_close" class="grey_button_light grey_button" href="javascript:signup_lightbox_hide();">Close</a></div>
+
+  <p id="signup_lightbox_login_text">Sign up </p>
+
+  <a href="/auth/facebook" id="signup_lightbox_facebook_btn"><img alt="Facebook-btn" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_fit,d_default_image_all.png,h_52,w_360/facebook-btn.png"></a>
+
+  <p id="signup_lightbox_or_text">OR</p>
+
+  <form accept-charset="UTF-8" action="/users?bundle_id=17" class="new_user" id="new_user" method="post">
+      <div class="field">
+        <input id="signup_lightbox_email_box" name="user[email]" placeholder="Email" size="30" type="text">
+      </div>
+      <div class="field">
+        <input id="signup_lightbox_password_box" name="user[password]" placeholder="Password" size="30" type="password">
+      </div>
+      <div class="actions">
+        <input class="blue_button" name="commit" type="submit" value="SIGN UP">
+      </div>
+  </form>
+
+</div>

@@ -26,8 +26,9 @@
 </head>
 <body  class="<%= @room_backgroud_color ? 'room_backgroud_color' : ''%>"  >
     <%= render 'layouts/header'  unless @skip_header %>
+    <%= render 'layouts/signup' %>
 
-    <div class=<%= "container" unless @skip_header %>>
+    <div class=<%= "container" unless @skip_container %>>
 
 
       <% flash.each do |key, value| %>

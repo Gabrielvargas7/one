@@ -1,0 +1,108 @@
+#signup_lightbox-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,1);
+  opacity: 0.75;
+  z-index: 1510;
+}
+
+#signup_lightbox{
+  position: fixed;
+  top: -500px;
+  left:50%;
+  width: 500px;
+  height: 434px;
+  margin-left: -250px;
+  background: #ffffff;
+  z-index: 1;
+  text-align: right;
+  background-color: #eeeeee;
+  border-color: #898989;
+  border-width: 1px;
+  border-style: solid;
+  opacity: 0;
+  transition: opacity 0.7s linear 0s, top 0.7s ease-out 0s;
+}
+
+
+
+
+#signup_lightbox_login_text{
+  padding: 20px 0px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 28px;
+  font-weight: normal;
+  color: #323232;
+}
+
+
+#signup_lightbox_or_text{
+
+  padding: 20px 0px 0px 0px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #323232;
+
+}
+
+input#signup_lightbox_email_box:focus {
+  border-color:  #0099cb;
+
+}
+
+input#signup_lightbox_email_box{
+  background: url(http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383249432/login-email-image.png) 10px 12px;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 1;
+  border-color:  #898989;
+
+}
+
+input#signup_lightbox_password_box:focus{
+  border-color:  #0099cb;
+
+}
+
+input#signup_lightbox_password_box{
+  background: url(http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383249467/login-password-image.png) 13px 9px;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 1;
+  border-color:  #898989;
+}
+
+
+#signup_lightbox input {
+  width: 296px;
+  padding: 13px 13px 13px 50px;
+  margin: 10px 73px 10px 10px;
+
+}
+#signup_lightbox input[type=submit]{
+  font-size:18px;
+  width: 362px;
+  text-align: center;
+  padding: 13px 0px;
+  margin-bottom: 0px;
+}
+
+#signup_lightbox_facebook_btn{
+  margin: 0px 73px 0px 0px;
+
+}
+#signup_lightbox_forgot_password{
+  font-weight: 14px;
+  text-decoration: none;
+  font-weight: normal;
+  color: #464646;
+  margin-right: 318px;
+
+}
+
