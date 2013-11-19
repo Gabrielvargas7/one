@@ -37,7 +37,7 @@ function feedback_lightbox(){
 
             var theLightbox =  $('<div id="feedback_lightbox"> ' +
                 '<p id="feedback_label_title">Please feel free to leave us feeedback.</p>'+
-                '<form action="/feedbacks/json/create_feedback" data-remote="true" id="searchForm" method="POST">' +
+                '<form action="/feedbacks/json/create_feedback" data-remote="true" id="feedback_form" method="POST">' +
                     '<label id="feeedback_label_name">Name/Email</label>'+
                     '<input name="name" type="text">'+
                     '<label id="feeedback_label_comment">Comment</label>'+
@@ -68,7 +68,7 @@ function feedback_lightbox(){
     })(jQuery); // end jQuery wrapper
 
 
-    $( "#searchForm" ).submit(function( event ) {
+    $( "#feedback_form" ).submit(function( event ) {
         event.preventDefault();
         feedback_thk_lightbox()
     });
