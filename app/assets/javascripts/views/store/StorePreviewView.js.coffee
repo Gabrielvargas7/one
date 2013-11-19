@@ -103,6 +103,11 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
 
     Mywebroom.Helpers.Editor.clickItem(itemId)
 
+    ###
+    SCROLL TO THE TOP
+    ###
+    $('.tab-content').scrollTop(0)
+
 
 
 

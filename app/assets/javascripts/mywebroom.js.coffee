@@ -70,37 +70,37 @@ $(document).ready ->
 
 
 
-      storeState : false # hidden, collapsed, or shown
+      storeState: false # hidden, collapsed, or shown
 
-      saveBarWasVisible                 : false # Lets us know if the save bar was showing when we collapsed the store
+      saveBarWasVisible: false # Lets us know if the save bar was showing when we collapsed the store
 
       storeHelper: false # Store information about the tab or object we're on
 
       activeSitesMenuView: false #A reference to the Active Sites Menu View.
-      searchViewArray:false #A reference to an Array of view on the search
+      searchViewArray: false #A reference to an Array of view on the search
       room0:
-        position:-2200
-        screen_position:0
-        id:"#xroom_items_0"
+        position: -2200
+        screen_position: 0
+        id: "#xroom_items_0"
       room1:
-        position:0
-        screen_position:1
-        id:"#xroom_items_1"
+        position: 0
+        screen_position: 1
+        id: "#xroom_items_1"
       room2:
-        position:2200
-        screen_position:2
-        id:"#xroom_items_2"
+        position: 2200
+        screen_position: 2
+        id: "#xroom_items_2"
 
 
 
 
       #An object containing base URLs for the shop.
       shopBaseUrl:
-        itemDesign:'http://staging-mywebroom.herokuapp.com/shop/show/items-design/'
-        bookmark:'http://mywebroom.com/'
+        itemDesign: 'http://staging-mywebroom.herokuapp.com/shop/show/items-design/'
+        bookmark: 'http://mywebroom.com/'
         theme: 'http://mywebroom.com/'
         bundle: 'http://mywebroom.com/'
-        entireRoom:'http://mywebroom.com/'
+        entireRoom: 'http://mywebroom.com/'
         default: 'http://mywebroom.com/'
 
     )
@@ -240,6 +240,7 @@ $(document).ready ->
             # IS PAGINATE TRUE?
             if Mywebroom.Data.Editor.paginate is true
 
+              #console.log("paginate")
 
               path =    Mywebroom.Data.Editor.contentPath
               type =    Mywebroom.Data.Editor.contentType
