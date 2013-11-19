@@ -1,7 +1,6 @@
 <% provide(:title, 'About Us') %>
 <div>
-  <%= cl_image_tag("bongo.png", height: 650, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-</div>
+  <img src="<%= cl_image_path('bongo.png') %>">
 <div class="about-us-margin">
     <h2 class="about-us-header">OUR PRODUCT</h2>
     <p>
