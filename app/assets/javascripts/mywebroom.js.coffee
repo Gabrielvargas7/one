@@ -224,141 +224,141 @@ $(document).ready ->
     Here, we setup a scroll handler for the editor.
     We trigger actions when the page is scrolled to the bottom.
     ###
+    $(".tab-content").on "mousewheel",
+      mousewheel:
+        behavior: "throttle"
+        delay: 300
+      , (event) ->
 
-    $('.tab-content').scroll( ->
-
-      ###
-      ARE WE AT THE BOTTOM?
-      ###
-      if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 100
-
-
-        ###
-        IS PAGINATE TRUE?
-        ###
-        if Mywebroom.Data.Editor.paginate is true
+        if event.deltaY > 0
 
 
-          path =    Mywebroom.Data.Editor.contentPath
-          type =    Mywebroom.Data.Editor.contentType
-          keyword = Mywebroom.Data.Editor.keyword
-          limit =   Mywebroom.Data.Editor.limit
-          offset  = Mywebroom.Data.Editor.offset + limit
+          # ARE WE AT THE BOTTOM?
+          if $('.tab-content').scrollTop() + $('.tab-content').innerHeight() >= $('.tab-content')[0].scrollHeight - 150
 
 
-          if path is false then console.error("no pagination type!")
+            # IS PAGINATE TRUE?
+            if Mywebroom.Data.Editor.paginate is true
+
+
+              path =    Mywebroom.Data.Editor.contentPath
+              type =    Mywebroom.Data.Editor.contentType
+              keyword = Mywebroom.Data.Editor.keyword
+              limit =   Mywebroom.Data.Editor.limit
+              offset  = Mywebroom.Data.Editor.offset + limit
+
+
+              if path is false then console.error("no pagination type!")
 
 
 
 
-          switch path
+              switch path
 
-            when "INITIAL"
+                when "INITIAL"
 
-              #console.log("PAGINATE INITIAL - " + type + "\tOffset: " + offset)
+                  #console.log("PAGINATE INITIAL - " + type + "\tOffset: " + offset)
 
-              data = Mywebroom.Helpers.Editor.paginateInitial(type, limit, offset)
-              #console.log(data.length)
+                  data = Mywebroom.Helpers.Editor.paginateInitial(type, limit, offset)
+                  #console.log(data.length)
 
-              unless data.length is 0
+                  unless data.length is 0
 
-                switch type
+                    switch type
 
-                  when "THEMES"
+                      when "THEMES"
 
-                    col = Mywebroom.State.get('tabContentThemes')
-                    #console.log('initial length', col.length)
+                        col = Mywebroom.State.get('tabContentThemes')
+                        #console.log('initial length', col.length)
 
-                    col.add(data.toJSON(), {silent: false})
-                    #console.log('length after add', col.length)
+                        col.add(data.toJSON(), {silent: false})
+                        #console.log('length after add', col.length)
 
-                    Mywebroom.State.set('tabContentThemes', col)
-                    Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
+                        Mywebroom.State.set('tabContentThemes', col)
+                        Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
 
-                  when "BUNDLES"
+                      when "BUNDLES"
 
-                    col = Mywebroom.State.get('tabContentBundles')
-                    #console.log('initial length', col.length)
+                        col = Mywebroom.State.get('tabContentBundles')
+                        #console.log('initial length', col.length)
 
-                    col.add(data.toJSON(), {silent: false})
-                    #console.log('length after add', col.length)
-
-
-                    Mywebroom.State.set('tabContentBundles', col)
-                    Mywebroom.Helpers.Editor.appendCollection(col, 'BUNLDES')
-
-                  when "ENTIRE ROOMS"
-
-                    col = Mywebroom.State.get('tabContentEntireRooms')
-                    #console.log('initial length', col.length)
-
-                    col.add(data.toJSON(), {silent: false})
-                    #console.log('length after add', col.length)
+                        col.add(data.toJSON(), {silent: false})
+                        #console.log('length after add', col.length)
 
 
-                    Mywebroom.State.set('tabContentEntireRooms', col)
-                    Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
+                        Mywebroom.State.set('tabContentBundles', col)
+                        Mywebroom.Helpers.Editor.appendCollection(col, 'BUNLDES')
 
-                  else
+                      when "ENTIRE ROOMS"
 
-                    col = Mywebroom.State.get('tabContentHidden')
-                    #console.log('initial length', col.length)
+                        col = Mywebroom.State.get('tabContentEntireRooms')
+                        #console.log('initial length', col.length)
 
-                    col.add(data.toJSON(), {silent: false})
-                    #console.log('length after add', col.length)
-
-
-                    Mywebroom.State.set('tabContentHidden', col)
-                    Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
+                        col.add(data.toJSON(), {silent: false})
+                        #console.log('length after add', col.length)
 
 
-                Mywebroom.Data.Editor.offset += limit
+                        Mywebroom.State.set('tabContentEntireRooms', col)
+                        Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
+
+                      else
+
+                        col = Mywebroom.State.get('tabContentHidden')
+                        #console.log('initial length', col.length)
+
+                        col.add(data.toJSON(), {silent: false})
+                        #console.log('length after add', col.length)
 
 
-            when "SEARCH"
-
-              #console.log("PAGINATE SEARCH - " + type + "\tOffset: " + offset + "\tKeyword: " + keyword)
-
-              data = Mywebroom.Helpers.Editor.paginateSearch(type, limit, offset, keyword)
-              #console.log(data.length)
+                        Mywebroom.State.set('tabContentHidden', col)
+                        Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
 
 
-              unless data.length is 0
-
-                switch type
-
-                  when "THEMES"
-
-                    col = Mywebroom.State.get('tabContentThemes')
-                    col.add(data.toJSON(), {silent: false})
-                    Mywebroom.State.set('tabContentThemes', col)
-                    Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
-
-                  when "BUNDLES"
-
-                    col = Mywebroom.State.get('tabContentBundles')
-                    col.add(data.toJSON(), {silent: false})
-                    Mywebroom.State.set('tabContentBundles', col)
-                    Mywebroom.Helpers.Editor.appendCollection(col, 'BUNDLES')
-
-                  when "ENTIRE ROOMS"
-
-                    col = Mywebroom.State.get('tabContentEntireRooms')
-                    col.add(data.toJSON(), {silent: false})
-                    Mywebroom.State.set('tabContentEntireRooms', col)
-                    Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
-
-                  else
-
-                    col = Mywebroom.State.get('tabContentHidden')
-                    col.add(data.toJSON(), {silent: false})
-                    Mywebroom.State.set('tabContentHidden', col)
-                    Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
+                    Mywebroom.Data.Editor.offset += limit
 
 
-                Mywebroom.Data.Editor.offset += limit
-    )
+                when "SEARCH"
 
+                  #console.log("PAGINATE SEARCH - " + type + "\tOffset: " + offset + "\tKeyword: " + keyword)
+
+                  data = Mywebroom.Helpers.Editor.paginateSearch(type, limit, offset, keyword)
+                  #console.log(data.length)
+
+
+                  unless data.length is 0
+
+                    switch type
+
+                      when "THEMES"
+
+                        col = Mywebroom.State.get('tabContentThemes')
+                        col.add(data.toJSON(), {silent: false})
+                        Mywebroom.State.set('tabContentThemes', col)
+                        Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
+
+                      when "BUNDLES"
+
+                        col = Mywebroom.State.get('tabContentBundles')
+                        col.add(data.toJSON(), {silent: false})
+                        Mywebroom.State.set('tabContentBundles', col)
+                        Mywebroom.Helpers.Editor.appendCollection(col, 'BUNDLES')
+
+                      when "ENTIRE ROOMS"
+
+                        col = Mywebroom.State.get('tabContentEntireRooms')
+                        col.add(data.toJSON(), {silent: false})
+                        Mywebroom.State.set('tabContentEntireRooms', col)
+                        Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
+
+                      else
+
+                        col = Mywebroom.State.get('tabContentHidden')
+                        col.add(data.toJSON(), {silent: false})
+                        Mywebroom.State.set('tabContentHidden', col)
+                        Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
+
+
+                    Mywebroom.Data.Editor.offset += limit
 
 
 
@@ -416,7 +416,7 @@ $(document).ready ->
       async: false
       success: (collection, response, options) ->
 
-        if collection and collection.length 
+        if collection and collection.length
 
           #console.log("Notification fetch success", collection)
 
@@ -1345,10 +1345,11 @@ $(document).ready ->
   Mywebroom.Helpers.turnOffMousewheel = ->
     #console.log("turn off mousewheel")
 
-    $('#xroom_main_container').mousewheel (event, delta, deltaX, deltaY) ->
-      if deltaX
-        event.preventDefault()
-        event.stopPropagation()
+    $('#xroom_main_container').on "mousewheel",
+      (event) ->
+        if event.deltaX
+          event.preventDefault()
+          event.stopPropagation()
 
 
 
