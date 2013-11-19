@@ -119,7 +119,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       $('#xroom_header_profile').remove()
       $('.dropdown').remove()
       @showProfile(null)
-      
+
     if roomState is "FRIEND"
       @showProfile(null)
 
@@ -490,7 +490,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
       # Highlight the first one
-      $('[data-search-id=0]').trigger('mouseenter')
+      #$('[data-search-id=0]').trigger('mouseenter')
 
 
       # If there aren't any search results, hide the box
@@ -582,15 +582,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
         ###
         Trigger the click event on the container
+        unless the user hasn't entered a search container
         ###
-        $('[data-search-id=' + Mywebroom.Data.searchNum + ']').trigger('click')
-
-      else
-
-        ###
-        Just clear the search text
-        ###
-        @hideCleanSearchBox()
+        unless Mywebroom.Data.searchNum is -1
+          $('[data-search-id=' + Mywebroom.Data.searchNum + ']').trigger('click')
 
 
 
