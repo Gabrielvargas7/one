@@ -20,6 +20,9 @@ Mywebroom.Helpers.Editor = {
             console.error("themes fetch fail", response.responseText)
         })
 
+        if Themes.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
+
         return Themes
 
 
@@ -39,6 +42,9 @@ Mywebroom.Helpers.Editor = {
             console.error("bundles fetch fail", response.responseText)
         })
 
+        if Bundles.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
+
         return Bundles
 
 
@@ -56,6 +62,9 @@ Mywebroom.Helpers.Editor = {
           error: (collection, response, options) ->
             console.error("entire rooms fetch fail", response.responseText)
         })
+
+        if EntireRooms.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
 
         return EntireRooms
 
@@ -75,6 +84,9 @@ Mywebroom.Helpers.Editor = {
           error: (collection, response, options) ->
             console.error("designs fetch fail", response.responseText)
         })
+
+        if Designs.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
 
         return Designs
 
@@ -180,7 +192,8 @@ Mywebroom.Helpers.Editor = {
 
 
         #console.log("everything", everything)
-
+        if everything.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
 
         # Now splat it to the screen
         return everything
@@ -205,6 +218,9 @@ Mywebroom.Helpers.Editor = {
             console.error("search objects fetch fail", response.responseText)
 
 
+        if collection.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
+
         return collection
 
 
@@ -228,6 +244,9 @@ Mywebroom.Helpers.Editor = {
             console.error("search themes fetch fail", response.responseText)
 
 
+        if collection.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
+
         return collection
 
 
@@ -247,6 +266,10 @@ Mywebroom.Helpers.Editor = {
 
           error: (collection, response, options) ->
             console.error("search bundles fetch fail", response.responseText)
+
+
+        if collection.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
 
         return collection
 
@@ -293,6 +316,9 @@ Mywebroom.Helpers.Editor = {
 
         #console.log(reset.length + " entire rooms found! (after parse)")
 
+        if reset.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
+
         return reset
 
 
@@ -322,6 +348,8 @@ Mywebroom.Helpers.Editor = {
             console.error("search designs fetch fail", response.responseText)
 
 
+        if collection.length < Mywebroom.Data.Editor.limit
+          Mywebroom.Data.Editor.paginate = false
 
         return collection
 
@@ -336,7 +364,6 @@ Mywebroom.Helpers.Editor = {
 
 
   appendCollection: (collection, type) ->
-
 
     #console.log('appendCollection')
 
@@ -392,8 +419,11 @@ Mywebroom.Helpers.Editor = {
 
     collection.each (model) ->
       view = new Mywebroom.Views.StorePreviewView({model: model})
-      $('#' + row_id + row_number).append(view.el)
       view.render()
+
+      $('#' + row_id + row_number).append(view.el)
+
+
 
 
       if social then view.addSocialView()

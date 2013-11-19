@@ -67,6 +67,7 @@ class RoomsController < ApplicationController
 
 
       @skip_header = true
+      @skip_container = true
       @skip_footer = true
       @room_backgroud_color = true
 
@@ -92,6 +93,7 @@ class RoomsController < ApplicationController
 
         set_room_user @user
         @skip_header = true
+        @skip_container = true
         @skip_footer = true
         @room_backgroud_color = true
 
