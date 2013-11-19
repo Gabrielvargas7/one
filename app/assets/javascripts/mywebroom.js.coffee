@@ -833,6 +833,9 @@ $(document).ready ->
         twitterPopupView.render().el
         $('#room_bookmark_item_id_container_' + DomItemId).append(twitterPopupView.el)
 
+      #A4(i) Detect if Popup view is in viewport and adjust
+        twitterPopupView.detectViewportAndCenter()
+
 
 
       when 20 #Pinboard
@@ -858,6 +861,8 @@ $(document).ready ->
         pinboardPopupView.render().el
         $('#room_bookmark_item_id_container_' + DomItemId).append(pinboardPopupView.el)
 
+      #A4(i) Detect if Popup view is in viewport and adjust
+        pinboardPopupView.detectViewportAndCenter()
 
       when 21 #Portrait
         # Open Profile, not Bookmarks.
@@ -1013,6 +1018,9 @@ $(document).ready ->
               #A4. Render Popup view
               $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
               view.render()
+
+              #A4(i) Detect if Popup view is in viewport and adjust
+              view.detectViewportAndCenter()
 
               #A5. update State view tracker
               Mywebroom.State.set('friendItemPopupView',view)
