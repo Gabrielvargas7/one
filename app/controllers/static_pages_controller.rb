@@ -10,4 +10,8 @@ class StaticPagesController < ApplicationController
   end
   def contact
   end
+  def landing
+    @skip_header = true
+    @skip_footer = true
+  end
 end
