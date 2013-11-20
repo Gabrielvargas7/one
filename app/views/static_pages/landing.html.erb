@@ -96,6 +96,29 @@ body{
   font-size:14px;
   color:black;
 }
+.landing_header{
+  position:fixed;
+  right:20px;
+  top:20px;
+}
+.landing_header li
+{
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px
+}
+.landing_header li a{
+  color:black;
+  font-size:14px;
+
+}
+li.landing_login{
+  padding:0;
+}
+.landing_header #signup_btn{
+  margin:0;
+}
+
 /* keep full widget on smaller screens */
 @media (max-width: 767px) { 
   body {
@@ -108,6 +131,21 @@ body{
   <div id="landing_logo">
     <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904370/mywebroomlogo365x64.png">
 
+  </div>
+
+  <div class="landing_header">
+    
+    <ul class="pull-right" >
+
+
+              <li><%= link_to 'ABOUT US',about_path %>  </li>
+              <li><%= link_to 'BLOG', "http://blog.mywebroom.com" %>      </li>
+              <li><%= link_to 'SHOP',shop_index_path %> </li>
+              
+              <li class="landing_login"> <%= link_to_function "LOGIN", "javascript:login_lightbox_show()",:class => "grey_button_light grey_button", :id => "login_btn"%></li>
+              <li><%= link_to "SIGN UP", xroom_rooms_path , :id =>"signup_btn" %></li>
+    </ul>
+  
   </div>
 </div>
 <div id="myCarousel" class="carousel slide">
