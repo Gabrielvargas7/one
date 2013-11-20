@@ -118,7 +118,14 @@ li.landing_login{
 .landing_header #signup_btn{
   margin:0;
 }
-
+.landing_page_view .carousel-control{
+  width:auto;
+  height:auto;
+  border:none;
+  background:none;
+  border-radius: 0;
+  opacity:1;
+}
 /* keep full widget on smaller screens */
 @media (max-width: 767px) { 
   body {
@@ -240,8 +247,8 @@ li.landing_login{
     </div>    
   </div>
   <div class="pull-center">
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384913522/white-left-arrow.png"</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384913533/white-right-arrow.png"></a>
   </div>
 </div>
 
@@ -250,6 +257,6 @@ li.landing_login{
 </div>
 
   <script type="text/javascript">
-  $('.container').addClass("fill")
+  $('.container').addClass("fill landing_page_view")
   $('.carousel').carousel()
   </script>
