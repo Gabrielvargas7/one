@@ -136,6 +136,8 @@ class User < ActiveRecord::Base
         user_profile  = UsersProfile.find_by_user_id(user.id)
       else
         user_profile  = UsersProfile.new()
+        user_profile.tutorial_step = 1
+
       end
       user_profile.firstname = auth.extra.raw_info.first_name
       user_profile.lastname = auth.extra.raw_info.last_name

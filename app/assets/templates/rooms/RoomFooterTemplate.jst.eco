@@ -6,15 +6,14 @@
 <div class="navbar navbar-inverse navbar-fixed-top" id="xroom_footer">
     <div class="navbar-inner">
         <ul class="nav pull-left">
-            <li><a href="#">Product</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">Future Plans</a></li>
-            <li><a href="#">Join The Team</a></li>
-            <li><a href="#">Partnerships</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#" id="footer_about_us">About Us</a></li>
+            <li><a href="#" id="footer_blog">Blog</a></li>
+            <li><a href="#" id="footer_shop">Shop</a></li>
+            <li><a href="#" id="footer_help">Help</a></li>
             <li><a href="javascript:feedback_lightbox();">Send Feedback!</a></li>
-            <li class="disabled"> <a href="#"> &copy; Copyright 2012 Rooms Inc. All Rights Reserved</a></li>
+            <li class="disabled"> <a href="#"> &copy; Copyright 2014 Rooms Inc. All Rights Reserved</a></li>
         </ul>
     </div>
 </div>
+
+

@@ -18,7 +18,7 @@ function signup_lightbox_hide(){
     $('#signup_lightbox').css('top', '-500px')
     $('#signup_lightbox').css('opacity', '0')
 
-    $('#signup_lightbox').css('z-index', '1')
+    $('#signup_lightbox').css('z-index', '1511')
 
     $('#signup_lightbox-shadow').hide();
     $('#signup_lightbox-shadow').empty();

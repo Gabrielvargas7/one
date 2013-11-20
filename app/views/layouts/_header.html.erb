@@ -24,6 +24,14 @@
         <ul class="nav pull-right" >
 
 
+              <li><%= link_to 'ABOUT US',about_path %>  </li>
+              <li><%= link_to 'BLOG', "http://blog.mywebroom.com" %>      </li>
+              <li><%= link_to 'SHOP',shop_index_path %> </li>
+              <li><%= link_to 'HELP',help_path %> </li>
+
+
+
+
           <!-- Start If  -->
           <% if signed_in? %>
               <li>
@@ -86,9 +94,8 @@
               <% end %>
 
           <% else %>
-              <li><%= link_to "Login", signin_path %></li>
-              <li><%= link_to "Sign Up", xroom_rooms_path %></li>
-
+              <li> <%= link_to_function "LOGIN", "javascript:login_lightbox_show()",:class => "grey_button_light grey_button", :id => "login_btn"%></li>
+              <li><%= link_to "SIGN UP", xroom_rooms_path , :id =>"signup_btn" %></li>
           <% end %>
           <!-- End If -->
 

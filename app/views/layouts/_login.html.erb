@@ -1,0 +1,30 @@
+
+
+<div id="login_lightbox">
+  <div><a id="login_close" class="grey_button_light grey_button" href="javascript:login_lightbox_hide();">Close</a></div>
+
+
+  <p id="login_lightbox_login_text">Login</p>
+
+    <%= link_to cl_image_tag("facebook-btn.png" , width: 360,height:52,:crop => :fit,:default_image => "default_image_all.png") , "/auth/facebook", id: "login_lightbox_facebook_btn" %>
+
+    <p id="login_lightbox_or_text">OR</p>
+
+
+    <%= form_for(:session, url: sessions_path) do |f| %>
+
+        <div class="field">
+          <%= f.text_field :email , :placeholder => "Email" , :id => "login_lightbox_email_box"%>
+        </div>
+        <div class="field">
+          <%= f.password_field :password , :placeholder => "Password", :id => "login_lightbox_password_box"%>
+        </div>
+        <div class="actions">
+          <%= f.submit "LOGIN", class: "blue_button" %>
+        </div>
+        <p><%= link_to "Forgot Password?", new_password_reset_path , :id => "login_lightbox_forgot_password" %></p>
+    <% end %>
+
+
+
+  </div>

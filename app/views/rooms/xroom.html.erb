@@ -7,6 +7,10 @@
                 <%= link_to cl_image_tag(@static_content_logo.image_name, :width => 112, :height => 32 ), root_path , class:"brand",id:  "xroom_logo"  %>
             <% end %>
 
+          <ul class="nav pull-right" >
+            <li> <%= link_to_function "LOGIN", "javascript:login_lightbox_show()",:class => "grey_button_light grey_button", :id => "login_btn"%></li>
+          </ul>
+
         </div>
     </header>
 
@@ -30,9 +34,7 @@
 
 
           <div id="xroom_entire_room_btn"  >
-            <%= link_to "Use this Room ",signup_path(bundle_id:@bundle.id),:class => "blue_button blue_button_light", :id => "xroom_entire_room_btn_blue"%>
-
-            <a href="javascript:signup_lightbox_show();">sign up!</a>
+            <%= link_to_function "Click here to  this Room", "javascript:signup_lightbox_show()",:class => "blue_button blue_button_light", :id => "xroom_entire_room_btn_blue"%>
           </div>
 
 
