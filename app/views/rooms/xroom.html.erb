@@ -2,6 +2,7 @@
     <header class="navbar navbar-fixed-top navbar-inverse" >
         <div class="navbar-inner" >
 
+
             <% if @static_content_logo.nil? or @static_content_logo.image_name.blank?   %>
             <% else %>
                 <%= link_to cl_image_tag(@static_content_logo.image_name, :width => 112, :height => 32 ), root_path , class:"brand",id:  "xroom_logo"  %>
@@ -34,7 +35,7 @@
 
 
           <div id="xroom_entire_room_btn"  >
-            <%= link_to_function "Click here to  this Room", "javascript:signup_lightbox_show()",:class => "blue_button blue_button_light", :id => "xroom_entire_room_btn_blue"%>
+            <%= link_to_function "Click here to use this Room", "javascript:signup_lightbox_show()",:class => "blue_button blue_button_light", :id => "xroom_entire_room_btn_blue"%>
           </div>
 
 

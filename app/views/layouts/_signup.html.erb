@@ -1,5 +1,19 @@
 <div id="signup_lightbox">
-  <div><a id="signup_close" class="grey_button_light grey_button" href="javascript:signup_lightbox_hide();">Close</a></div>
+  <div>
+
+
+    <% @static_content_x_img = StaticContent.find_by_name("x-btn-sml")  %>
+    <% if @static_content_x_img.nil? or @static_content_x_img.image_name.blank?   %>
+        <%= link_to_function "X", 'javascript:signup_lightbox_hide()'  %>
+    <% else %>
+        <%= link_to_function cl_image_tag(@static_content_x_img.image_name,
+                                    :transformation => { :width => 150, :height => 50, :x => -90, :y => 0, :crop => :crop },
+                                    :width => 40, :height => 40, :crop => :fill
+                             ), 'javascript:signup_lightbox_hide()'  %>
+    <% end %>
+
+
+  </div>
 
   <p id="signup_lightbox_login_text">Sign up </p>
 
