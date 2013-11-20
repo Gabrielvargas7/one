@@ -23,10 +23,13 @@
   <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <%= render 'layouts/shim' %>
+
 </head>
 <body  class="<%= @room_backgroud_color ? 'room_backgroud_color' : ''%>"  >
     <%= render 'layouts/header'  unless @skip_header %>
     <%= render 'layouts/signup' %>
+    <%= render 'layouts/login' %>
+
 
     <div class=<%= "container" unless @skip_container %>>
 

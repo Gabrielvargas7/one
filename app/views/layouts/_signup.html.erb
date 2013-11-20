@@ -7,7 +7,7 @@
 
   <p id="signup_lightbox_or_text">OR</p>
 
-  <form accept-charset="UTF-8" action="/users?bundle_id=17" class="new_user" id="new_user" method="post">
+  <form accept-charset="UTF-8" action="/users?bundle_id=<%= @bundle.id unless @bundle.nil? %>" class="new_user" id="new_user" method="post">
       <div class="field">
         <input id="signup_lightbox_email_box" name="user[email]" placeholder="Email" size="30" type="text">
       </div>

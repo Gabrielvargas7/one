@@ -32,48 +32,60 @@ class RoomsController < ApplicationController
 
     # when is not filter( it should get first
     if params[:bundle_id].blank?
-      @bundle = Bundle.where("active = 'y'").first
+      @bundle = Bundle.where("active = 'y'").order(:id).first
     else
 
       if params[:moving_toward] =='next'
         #@bundle = Bundle.find(params[:bundle_id])
         if Bundle.where("active = 'y' and id > ?", params[:bundle_id]).exists?
-            @bundle = Bundle.where("active = 'y' and id > ?", params[:bundle_id]).first
+            @bundle = Bundle.where("active = 'y' and id > ?", params[:bundle_id]).order(:id).first
+
         else
-          @bundle = Bundle.where("active = 'y'").first
+          @bundle = Bundle.where("active = 'y'").order(:id).first
         end
       else
 
         if Bundle.where("active = 'y' and id < ?", params[:bundle_id]).exists?
-          @bundle = Bundle.where("active = 'y' and id < ?", params[:bundle_id]).last
+          @bundle = Bundle.where("active = 'y' and id < ?", params[:bundle_id]).order(:id).last
         else
-          @bundle = Bundle.where("active = 'y'").last
+          @bundle = Bundle.where("active = 'y'").order(:id).last
         end
       end
     end
 
-      @bundles = Bundle.where("active = 'y'").order("RANDOM()")
+    # add cookies for facebook signup
+    cookies.permanent[:facebook_bundle_id] = @bundle.id
 
 
-      #@static_content_logo = StaticContent.find_by_name("mywebroom-logo")
-      if StaticContent.exists?(name:"arrows")
+    #@static_content_logo = StaticContent.find_by_name("mywebroom-logo")
+
+    if StaticContent.exists?(name:"arrows")
         @static_content_arrows = StaticContent.find_by_name("arrows")
         @arrows_image = @static_content_arrows.image_name
-      else
+    else
         @arrows_image = ''
-      end
+    end
+
+    if StaticContent.exists?(name:"mywebroom-logo")
+      @static_content_logo = StaticContent.find_by_name("mywebroom-logo")
+    else
+    end
 
 
 
 
-      @skip_header = true
-      @skip_container = true
-      @skip_footer = true
-      @room_backgroud_color = true
 
-      respond_to do |format|
+
+
+    @skip_header = true
+    @skip_container = true
+    @skip_footer = true
+    @room_backgroud_color = true
+
+
+    respond_to do |format|
         format.html
-      end
+    end
 
   end
 
