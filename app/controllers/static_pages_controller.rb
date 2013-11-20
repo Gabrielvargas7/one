@@ -7,6 +7,8 @@ class StaticPagesController < ApplicationController
   end
   def about
     @skip_container = true
+    @skip_header = true
+    @skip_footer = true
   end
   def contact
   end
