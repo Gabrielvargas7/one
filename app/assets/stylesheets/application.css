@@ -145,6 +145,9 @@ footer ul li {
 .capitalize{
     text-transform: capitalize;
 }
+.uppercase{
+    text-transform: uppercase;
+}
 .light_font{
    font-weight:300;
 }
