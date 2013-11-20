@@ -6,7 +6,7 @@
     <div class="navbar-inner">
 
         <!-- Logo  -->
-        <a class="brand">
+        <a class="brand" href="#" id="xroom_header_logo">
               <span>&nbsp<span>
               <img alt="logo-mywebroom" src="//res.cloudinary.com/hpdnx5ayv/image/upload/w_132,h_30/logo-mywebroom.png" >
         </a>

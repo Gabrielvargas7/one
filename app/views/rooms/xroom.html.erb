@@ -1,3 +1,10 @@
+<% content_for :head do %>
+    <!-- your tags -->
+    <meta name="description" content="This is my web room ">
+<% end %>
+
+
+
 <div id="xroom_entire_room_container">
     <header class="navbar navbar-fixed-top navbar-inverse" >
         <div class="navbar-inner" >
@@ -5,7 +12,7 @@
 
             <% if @static_content_logo.nil? or @static_content_logo.image_name.blank?   %>
             <% else %>
-                <%= link_to cl_image_tag(@static_content_logo.image_name, :width => 112, :height => 32 ), root_path , class:"brand",id:  "xroom_logo"  %>
+                <%= link_to cl_image_tag(@static_content_logo.image_name, :width => 112, :height => 32, :alt => "my web room logo" ), root_path , class:"brand",id:  "xroom_logo"  %>
             <% end %>
 
           <ul class="nav pull-right" >
@@ -15,14 +22,12 @@
         </div>
     </header>
 
-
         <div>
-
 
             <div id="xroom_entire_room_background">
                 <% if @bundle.theme.image_name.blank?  %>
                 <% else %>
-                    <%= cl_image_tag @bundle.image_name_entire_room,:quality => 50, :default_image => "default_image_all.png" %>
+                    <%= cl_image_tag @bundle.image_name_entire_room ,:quality => 50, :default_image => "default_image_all.png", :alt => "enrire room"  %>
                 <% end %>
             </div>
             <div id="xroom_entire_room_left" style="background-image: url('<%= @arrows_image %>')" >
