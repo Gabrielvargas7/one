@@ -1,5 +1,5 @@
 <% provide(:title, 'myWebRoom Virtual Room') %>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
 <style>
 html,body{height:100%;}
 body{
@@ -40,6 +40,10 @@ body{
   left:35px;
 }
 
+#landing_logo img{
+  width:250px;
+}
+
 .landing_slide_content{
   width:900px;
   height:480px;
@@ -49,15 +53,15 @@ body{
   left:50%;
   margin-top:-265px;
   margin-left:-450px;
-  background-attachment: fixed;
+/*  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position:center;
-  background-size:cover;
+  background-size:cover;*/
 
   font-family:"Open Sans",sans-serif;
   color:white;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0,0,0,.2);
+  text-shadow: 2px 2px 4px rgba(0,0,0,.4);
 }
 .landing_text_1{
   font-family:Georgia,serif;
@@ -74,6 +78,7 @@ body{
 .landing_text_3{
   font-size:25px;
   font-weight:400;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.8);
   
 }
 
@@ -88,9 +93,13 @@ body{
   margin:auto;
 }
 .landing_copyright{
+  width:200px;
   position:fixed;
   bottom:10px;
-  right:10px;
+  left:50%;
+  margin-left:-100px;
+
+  text-align:center;
   font-family: "Open Sans",sans-serif;
   font-weight:400;
   font-size:14px;
@@ -99,7 +108,7 @@ body{
 .landing_header{
   position:fixed;
   right:20px;
-  top:20px;
+  top:30px;
 }
 .landing_header li
 {
@@ -159,9 +168,9 @@ li.landing_login{
   <div class="carousel-inner">
     <!-- 1.-->
     <div class="active item">
-      <div class="fill" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904607/landing-page-industrial.jpg');">
+      <div class="fill" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384971399/landing-page-industrial-blur-center.jpg');">
         <div class="container">
-          <div class="landing_slide_content" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904623/landing-page-industrial-blur.jpg');">
+          <div class="landing_slide_content">
             <p class="landing_text_1"> Your place to</p>
             <p class="landing_text_2" >EXPRESS</p><br>
             <p class="landing_text_3 uppercase">Style &nbsp;  &#183; &nbsp;  Personality &nbsp;  &#183; &nbsp;  Interests</p><br>
@@ -178,7 +187,7 @@ li.landing_login{
       <div class="fill" style="background-image:url('http://placekitten.com/1024/700');">
         <div class="container">
 
-          <div class="landing_slide_content" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904623/landing-page-industrial-blur.jpg');">
+          <div class="landing_slide_content">
             <p class="landing_text_1"> Your place to</p>
             <p class="landing_text_2" >ORGANIZE</p><br>
             <p class="landing_text_3 uppercase">Bookmarks &nbsp;  &#183; &nbsp;  Ideas &nbsp;  &#183; &nbsp;  Activities</p><br>
@@ -196,7 +205,7 @@ li.landing_login{
       <div class="fill" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384908277/landing-page-paris.jpg');">
         <div class="container">
           
-          <div class="landing_slide_content" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384908248/landing-page-paris-blur.jpg');">
+          <div class="landing_slide_content">
             <p class="landing_text_1"> Your place to</p>
             <p class="landing_text_2" >DISCOVER</p><br>
             <p class="landing_text_3 uppercase">Trends &nbsp;  &#183; &nbsp;  Sites &nbsp;  &#183; &nbsp;  Stores</p><br>
@@ -214,7 +223,7 @@ li.landing_login{
       <div class="fill" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384908296/landing-page-urban.jpg');">
         <div class="container">
           
-          <div class="landing_slide_content" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384908309/landing-page-urban-blur.jpg');">
+          <div class="landing_slide_content">
             <p class="landing_text_1"> Your place to</p>
             <p class="landing_text_2" >SHARE</p><br>
             <p class="landing_text_3 uppercase">Products &nbsp;  &#183; &nbsp;  Contents &nbsp;  &#183; &nbsp;  Designs</p><br>
@@ -232,7 +241,7 @@ li.landing_login{
       <div class="fill" style="background-image:url('http://placekitten.com/900/600');">
         <div class="container">
           
-          <div class="landing_slide_content" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904623/landing-page-industrial-blur.jpg');">
+          <div class="landing_slide_content">
             <p class="landing_text_1"> Your place to</p>
             <p class="landing_text_2" >CREATE</p><br>
             <p class="landing_text_3 ">a home on the web</p><br>
@@ -253,10 +262,10 @@ li.landing_login{
 </div>
 
 <div class="landing_copyright">
-  <span>&#169; Copyright 2013 Rooms Inc. All Rights Reserved</span>
+  <span>&#169; Copyright 2014 Rooms Inc.</span>
 </div>
 
   <script type="text/javascript">
   $('.container').addClass("fill landing_page_view")
-  $('.carousel').carousel()
+  // $('.carousel').carousel()
   </script>
