@@ -170,6 +170,7 @@ Mywebroom::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+  match '/landing', to:'static_pages#landing'
 
   #room page
   match '/room/:username', to: 'rooms#room', via: :get,as: :room_rooms
