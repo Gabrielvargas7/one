@@ -1,4 +1,5 @@
 <% provide(:title, 'myWebRoom Virtual Room') %>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
 <style>
 html,body{height:100%;}
 body{
@@ -35,14 +36,14 @@ body{
 #landing_logo{
   position:fixed;
   z-index:1;
-  top:50px;
+  top:20px;
   left:35px;
 }
 
 .landing_slide_content{
   width:900px;
-  height:530px;
-  background:pink;
+  height:480px;
+  padding-top:50px;
   position:absolute;
   top:50%;
   left:50%;
@@ -53,7 +54,38 @@ body{
   background-position:center;
   background-size:cover;
 
+  font-family:"Open Sans",sans-serif;
+  color:white;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.2);
+}
+.landing_text_1{
+  font-family:Georgia,serif;
+  font-size:50px;
+  color:white;
+}
+.landing_text_2{
+  
+  font-size:100px;
+  font-weight:800;
+  text-transform: uppercase;
+  color:white;
+}
+.landing_text_3{
+  font-size:25px;
+  font-weight:400;
+  text-transform: uppercase;
+}
+
+.landing_get_started{
+  width:450px;
+  font-size: 30px;
+  margin:auto;
+  padding:25px 0;
+  position:relative;
+}
+.landing_get_started .link_spanner{
+  margin:auto;
 }
 
 /* keep full widget on smaller screens */
@@ -66,20 +98,20 @@ body{
 </style>
 <div id="toolbar_overlay">
   <div id="landing_logo">
-    <img src="http://placekitten.com/300/100">
+    <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904370/mywebroomlogo365x64.png">
 
   </div>
 </div>
 <div id="myCarousel" class="carousel slide">
   <div class="carousel-inner">
     <div class="active item">
-      <div class="fill" style="background-image:url('http:///placekitten.com/1000/600');">
+      <div class="fill" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904607/landing-page-industrial.jpg');">
         <div class="container">
-          <div class="landing_slide_content" style="background-image:url('http:///placekitten.com/1000/600');">
-            <p> Hello!!!"</p>
-            <span>EXPRESS</span><br>
-            <span>Style . Personality . Interests</span><br>
-            <button class="blue_button">GET STARTED</button>
+          <div class="landing_slide_content" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904623/landing-page-industrial-blur.jpg');">
+            <p class="landing_text_1"> Your place to</p>
+            <p class="landing_text_2" >EXPRESS</p><br>
+            <p class="landing_text_3">Style &nbsp;  &#183; &nbsp;  Personality &nbsp;  &#183; &nbsp;  Interests</p><br>
+            <div class="blue_button landing_get_started"><span>GET STARTED<span><a href="/xroom"><span class="link_spanner"></span></a></div>
           </div>
         </div>
       </div>
