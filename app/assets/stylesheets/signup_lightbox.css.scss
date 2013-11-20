@@ -104,4 +104,26 @@ input#signup_lightbox_password_box{
   margin-right: 318px;
 
 }
+#signup_term_of_use{
+  display: none;
+  position: fixed;
+  top: -1000px;
+  left:32%;
+  width: 700px;
+  height: 500px;
+  background: #ffffff;
+  z-index: 1512;
+  text-align: right;
+  background-color: #eeeeee;
+  border-color: #898989;
+  border-width: 1px;
+  border-style: solid;
+  overflow:scroll;
+
+}
+
+#signup_term_of_use_link{
+margin-right: 210px;
+
+}
 

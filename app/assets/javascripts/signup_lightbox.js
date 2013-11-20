@@ -25,5 +25,13 @@ function signup_lightbox_hide(){
     $('#signup_lightbox-shadow').remove();
 }
 
+function signup_lightbox_term_of_use_hide(){
+    $('#signup_term_of_use').css('display', 'none')
+    $('#signup_term_of_use').css('top', '-1000px')
+}
 
+function signup_lightbox_term_of_use_show(){
+    $('#signup_term_of_use').css('display', 'block')
+    $('#signup_term_of_use').css('top', '50px')
+}
 
