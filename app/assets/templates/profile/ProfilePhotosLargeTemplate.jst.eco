@@ -16,7 +16,7 @@
     <div class="social_bar">
       <div>
         <a id="profile_photos_set_as_profile_picture" 
-        href="http://localhost:3000/users_photos/index_users_photos_by_user_id/<%=@model.get('user_id')%>">Set As Profile Photo</a></div>
+        href="/users_photos/index_users_photos_by_user_id/<%=@model.get('user_id')%>">Set As Profile Photo</a></div>
     </div>
 
   </div>

@@ -15,6 +15,7 @@ class Mywebroom.Views.ProfileKeyRequestsView extends Backbone.View
   if @keyRequestsCollection.length is 0
     $('#profile_key_request_list tbody').append '<p style="color:black;padding: 1em;
 text-align: center;"> You have no key requests!</p>'
+    $('.profile_table_innerDiv.profile_suggested_friends').css "height","500px"
   else
     @keyRequestsCollection.forEach(@keyRequestAddView,this)
   @showSuggestedFriends()
