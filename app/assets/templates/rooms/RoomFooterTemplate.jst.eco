@@ -11,7 +11,10 @@
             <li><a href="#" id="footer_shop">Shop</a></li>
             <li><a href="#" id="footer_help">Help</a></li>
             <li><a href="javascript:feedback_lightbox();">Send Feedback!</a></li>
-            <li class="disabled"> <a href="#"> &copy; Copyright 2014 Rooms Inc. All Rights Reserved</a></li>
+        </ul>
+        <ul class="nav pull-right">
+            <li class="disabled"> <a href="#"> &copy; 2014 Rooms Inc. </a></li>
+
         </ul>
     </div>
 </div>

@@ -30,6 +30,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'focusout #xroom_header_search_text' : 'focusOutSearchTextBox'
 
     'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
+    'click #xroom_header_logo'           : 'goToMyRoom'
   }
 
 
@@ -48,7 +49,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #**** Render
   #*******************
   render: ->
-
 
     if Mywebroom.State.get("signInState")
       user_data = Mywebroom.State.get("signInData")
@@ -117,7 +117,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     if roomState is "PUBLIC"
       $('#xroom_header_profile').remove()
-      $('.dropdown').remove()
+      $('.dropdown').remove() if signInState isnt true
       @showProfile(null)
 
     if roomState is "FRIEND"
@@ -171,8 +171,6 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
 
-
-
   createProfileView: ->
 
     @profile = new Backbone.Model()
@@ -209,7 +207,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
 
     origin =  window.location.origin
-    origin += "/users_profiles/edit_users_profiles_by_user_id/" + @model.get('user').id
+    origin += "/users_profiles/edit_users_profiles_by_user_id/" + Mywebroom.State.get("signInUser").get("id")
+
 
     window.location.replace(origin)
 
@@ -221,7 +220,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
 
     origin =  window.location.origin
-    origin += "/users/" + @model.get('user').id.toString() + "/edit"
+    origin += "/users/" + Mywebroom.State.get("signInUser").get("id") + "/edit"
+
     window.location.replace(origin)
 
 
@@ -415,10 +415,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
 
-    origin =  window.location.origin
-    origin += '/room/' + Mywebroom.State.get("signInUser").get("username")
+    if Mywebroom.State.get("signInUser")
+      origin =  window.location.origin
+      origin += '/room/' + Mywebroom.State.get("signInUser").get("username")
 
-    window.location.replace(origin)
+      window.location.replace(origin)
+    else
+      origin =  window.location.origin
+      window.location.replace(origin)
+
 
 
   #*******************

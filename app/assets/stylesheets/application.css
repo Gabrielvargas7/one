@@ -25,19 +25,19 @@ body {
     font-family: "Open Sans";
     zoom: 100%;
 
+
 }
 
 input {
     font-family: "Open Sans";
-
 }
 
-
-@media screen and (max-height:1020px){
+@media screen and (max-height:1520px){
     body{
         zoom: 135%;
     }
 }
+
 
 @media screen and (max-height:920px){
     body{
