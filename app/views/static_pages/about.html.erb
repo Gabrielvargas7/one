@@ -1,340 +1,503 @@
 <% provide(:title, 'About Us') %>
-<div class="test"></div>
-<div class="about-us-margin">
-    <h2 class="about-us-header">OUR PRODUCT</h2>
-    <p>
-    MyWebRoom.com is a visual place where you can access your favorite websites, connect with friends, and interact with the products you love all from one beautiful interface. MyWebRoom.com is a visual place where you can access your favorite websites, connect with friends, and interact with the products you love all from one beautiful interface. MyWebRoom.com is a visual place where you can access your favorite websites, connect with friends, and interact with the products you love all from one beautiful interface. MyWebRoom.com is a visual place where you can access your favorite websites, connect with friends, and interact with the products you love all from one beautiful interface.
-    </p>
 
-    <p>
-    MyWebRoom.com is a visual place where you can access your favorite websites, connect with friends, and interact with the products you love all from one beautiful interface. MyWebRoom.com is a visual place where you can access your favorite websites, connect with friends, and interact with the products you love all from one beautiful interface.
-    </p>
 
+<!-- (1) HEADER -->
+
+
+
+
+<!-- (2) TOP IMAGE -->
+<div id="about-top-image-wrap">
+    <div class="about-top-image"></div>
+</div>
+
+
+
+
+<!-- (3) OUR PRODUCT -->
+<div class="about-margin">
+    <h2 class="about-heading-black">OUR PRODUCT</h2>
+    <p class="about-text-black">
+        We’ve created an easy and exciting new way for you to keep your online life organized and accessible. Your web room is a visual profile of everything you love. It’s a place where you can express yourself through design, bookmark your favorite sites, interact with products, and connect with friends, all from one beautiful interface.
+    </p>
+    <p class="about-text-black">
+        Choose a room, fill it with furniture, organize sites in objects. The birdcage will take you to Twitter, fill the shopping bag with online stores, the music player is ready to rock the room with playlists you made on Spotify. It’s fun, it’s free, it’s time to make your room.
+    </p>
     <hr>
-
-    <div class="about-us-margin">
-
-        <p class="text-center">
-            MyWebRoom.com is a visual place where you can access your favorite websites, connect with friends, and<br>interact with the products you love all from one eautiful interface.
-        </p><br>
-
-        <div>
-        <%= cl_image_tag("product-image.png", height: 1500, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-        </div>
-
-        <p class="text-center">
-            MyWebRoom.com is a visual place where you can access your favorite websites, connect with friends, and interact with the products you love all from one eautiful interface.
+    <div class="about-margin">
+        <p class="text-center about-text-black">
+            MyWebRoom.com is a visual place where you can access your favorite websites, discover new content, connect with friends and interact with the products you love, all from one beautiful interface.
         </p>
-
+        <br>
+        <br>
         <div>
-        <%= cl_image_tag("product-image-2.png", height: 1500, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("product-image.png", height: 1500, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
-
-        <div class="container-fluid about-us-blue">
-            <div class="row-fluid">
-                <div class="span6">
-                    <h4 class="about-us-header about-us-white-text">ABOUT US</h4>
-                    <p class="about-us-header about-us-white-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                    <p class="about-us-header about-us-white-text">
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentiall unchanged. It was popularised int he 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
-                    <p class="about-us-header about-us-white-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                </div>
-                <div class="span6 about-us-blue-picture">
-                <%= cl_image_tag("about-us-image.png", height: 420, width: 420, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                </div>
-            </div> <!-- ROW -->
-        </div> <!-- ABOUT US BLUE -->
-
-
-        <div class="container-fluid">
-            <ul class="row-fluid">
-                <ul class="thumbnails">
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                     <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </ul>
-            <ul class="row-fluid">
-                <ul class="thumbnails">
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                     <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </ul>
-            <ul class="row-fluid">
-                <ul class="thumbnails">
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                     <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span3">
-                        <div class="thumbnail about-us-picture">
-                            <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            <div class="caption">
-                                <h4>This is Roomsie</h4>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </ul>
+        <br>
+        <br>
+        <p class="text-center about-text-black">
+            Shop, study, book a vacation, listen to music, watch movies and more from the comfort of your private online room.
+        </p>
+        <br>
+        <br>
+        <div>
+            <%= cl_image_tag("product-image-2.png", height: 1500, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
+    </div>
+</div>
 
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span6 about-us-blue-picture">
-                <%= cl_image_tag("italy.png", height: 420, width: 420, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+
+
+
+<!-- (4) ABOUT US -->
+<div class="container-fluid about-background-blue">
+    <div class="row-fluid">
+        <div class="about-margin">
+            <div class="span6">
+                <h4 class="about-heading-white">ABOUT US</h4>
+                <p class="about-text-white">
+                    We are a young and driven team that’s creating a web experience like no other. Smart, tech-savvy and design-oriented, we’re working hard to make the internet a fun place where everyone has a stylish and useful platform to express themselves.
+                </p>
+                <p class="about-text-white">
+                    Hailing from all over the globe, we’re an international and diverse group of artists, programmers and visionaries that’s staying on top of trends to deliver cool, curated content right to your online room.
+                </p>
+                <p class="about-text-white">
+                    You might find us coding, rendering awesome furniture, or chasing our company mascot Roomsy around our loft in San Francisco. We enjoy board games, bowling, beer, and taking turns being the resident DJ for the day.
+                </p>
+            </div>
+            <div class="span6 about-large-round-picture">
+            <%= cl_image_tag("about-us-image.png", height: 420, width: 420, :crop => :fit, :quality => 50, :default_image => "default_image_all.png")%>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- (5) ROOMS TEAM -->
+<div class="container-fluid">
+    <h2 class="text-center about-heading-black">ROOMS TEAM</h2>
+    <br>
+    <br>
+    <ul class="row-fluid">
+        <ul class="thumbnails">
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
                 </div>
-                <div class="span6">
-                    <h4 class="about-us-header">JOIN THE TEAM</h4>
-                    <p class="about-us-header">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                    <ul class="about-us-header">
-                        <li>Programmers</li>
-                        <li>Designers</li>
-                        <li>Marketing</li>
-                        <li>Interior Designer</li>
-                        <li>Other</li>
-                    </ul>
-                    <p class="about-us-header">
-                        SUBMIT YOUR RESUME
-                    </p>
-                    <p class="about-us-header">
-                        career@mywebroom.com
-                    </p>
+            </li>
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
                 </div>
-            </div> <!-- ROW -->
-        </div> <!-- ABOUT US BLUE -->
+            </li>
+             <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ul>
+    <ul class="row-fluid">
+        <ul class="thumbnails">
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+             <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ul>
+    <ul class="row-fluid">
+        <ul class="thumbnails">
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+             <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+            <li class="span3">
+                <div class="thumbnail about-team-picture">
+                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                    <div class="caption text-center">
+                        <h4>This is Roomsie</h4>
+                        <h4 class="about-text-blue">CEO</h4>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ul>
+</div>
 
 
-         <div class="container-fluid about-us-blue">
-            <div class="row-fluid">
-                <div class="span6">
-                    <h4 class="about-us-header about-us-white-text">PARTNERS</h4>
-                    <p class="about-us-header about-us-white-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 15s. Lorem Ipsum has been the industry's standard dummy text ever since the 15s.
-                    </p>
-                    <div class="container-fluid">
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                 <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
+
+
+<!-- (6) JOIN THE TEAM -->
+<div class="container-fluid about-background-grey">
+    <div class="row-fluid">
+        <div class="about-margin">
+            <div class="span6 about-large-round-picture">
+            <%= cl_image_tag("italy.png", height: 420, width: 420, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            </div>
+            <div class="span6">
+                <h4 class="about-heading-black">JOIN THE TEAM</h4>
+                <p class="about-text-black">
+                    Want to be part of the Rooms team? We’re always looking for talented and motivated Roommates who are ready to step into a pair of house slippers. You can get in touch with us at hr@mywebroom.com. The positions we have open now:
+                </p>
+                <ul class="about-text-black">
+                    <li>Programmers</li>
+                    <li>Designers</li>
+                    <li>Marketers</li>
+                    <li>Interior Designer</li>
+                </ul>
+                <p class="about-text-black">
+                    SUBMIT YOUR RESUME
+                </p>
+                <div class="media">
+                    <a class="pull-left" href="mailto:info@mywebroom.com">
+                        <img class="media-object" src="<%= cloudinary_url('email.png') %>">
+                    </a>
+                    <div class="media-body">
+                        <br>
+                        <div class="about-text-black">info@mywebroom.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- (7) PARTNERS -->
+<div class="container-fluid about-background-blue">
+    <div class="row-fluid">
+        <div class="about-margin">
+            <div class="span6">
+                <h4 class="about-heading-white about-text-above-rectangle-padding">PARTNERS</h4>
+                <p class="about-text-white about-text-above-rectangle-padding">
+                    We’re excited to have so many cool partners on board and we’re always open to new business opportunities. Let’s see how we can help each other out! If you’re interested in doing business with Rooms, please contact us at <a href="mailto:partners@mywebroom.com">partners@mywebroom.com</a>.
+                </p>
+                <br>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span4 partner-padding">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4 partner-padding">
-                                 <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4 partner-padding">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
+                        <div class="span4">
+                             <%= cl_image_tag("allmodern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                 <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
+                        <div class="span4">
+                            <%= cl_image_tag("apt2b.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
                         </div>
-                    </div> <!-- CONTAINER FLUID -->
-                </div>
-                <div class="span6 about-us-blue-picture">
-                <%= cl_image_tag("thinking-guy.png", height: 420, width: 420, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                </div>
-            </div> <!-- ROW -->
-        </div> <!-- ABOUT US BLUE -->
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4 about-rectangle-padding">
+                            <%= cl_image_tag("roomandboard.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4 about-rectangle-padding">
+                             <%= cl_image_tag("sfdesigncenter.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4 about-rectangle-padding">
+                            <%= cl_image_tag("sony.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <%= cl_image_tag("wayfair.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                             <%= cl_image_tag("urbanoutfitters.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                            <%= cl_image_tag("jointeam.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                </div> <!-- CONTAINER FLUID -->
+            </div>
+            <div class="span6 about-large-round-picture">
+            <%= cl_image_tag("thinking-guy.png", height: 420, width: 420, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span6 about-us-blue-picture">
+
+
+<!-- (8) FEEDBACK -->
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="about-margin">
+            <div class="span6 about-large-round-picture">
                 <%= cl_image_tag("phone-guy.png", height: 420, width: 420, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            </div>
+            <div class="span6">
+                <h4 class="about-heading-black">FEEDBACK</h4>
+                <p class="about-text-black">
+                    This website is for you, so we want to hear your opinions about how we can improve your experience on myWebRoom.com to make it the best place to be online. Have a great idea for a new room design, think your favorite site should be added to Rooms so everyone can discover it? Let us know!
+                </p>
+                <p class="about-text-black">
+                    SEND FEEDBACK
+                </p>
+                <div class="media">
+                    <a class="pull-left" href="mailto:info@mywebroom.com">
+                        <img class="media-object" src="<%= cloudinary_url('email.png') %>">
+                    </a>
+                    <div class="media-body">
+                        <br>
+                        <div class="about-text-black">info@mywebroom.com</div>
+                    </div>
                 </div>
-                <div class="span6">
-                    <h4 class="about-us-header">FEEDBACK</h4>
-                    <p class="about-us-header">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentiall unchanged. It was popularised int he 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
-                    <p class="about-us-header">
-                        SEND FEEDBACK
-                    </p>
-                    <p class="about-us-header">
-                        feedback@mywebroom.com
-                    </p>
-                </div>
-            </div> <!-- ROW -->
-        </div> <!-- ABOUT US BLUE -->
+            </div>
+        </div>
+    </div>
+</div>
 
 
-        <div class="container-fluid about-us-grey">
-            <div class="row-fluid">
-                <div class="span6">
-                    <h4 class="about-us-header">PRESS</h4>
-                    <p class="about-us-header">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 15s. Lorem Ipsum has been the industry's standard dummy text ever since the 15s.
-                    </p>
-                    <div class="container-fluid">
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                 <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span4 partner-padding">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4 partner-padding">
-                                 <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4 partner-padding">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                 <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-                            </div>
-                        </div>
-                    </div> <!-- CONTAINER FLUID -->
-                </div>
-                <div class="span6 about-us-blue-picture">
-                <%= cl_image_tag("about-us-image.png", :height => 420, :width => 420, :crop => :fit, :quality => 50, :default_image => "default_image_all.png", :border => { :width => 4, :color => 'blue' }) %>
-                </div>
-            </div> <!-- ROW -->
-        </div> <!-- ABOUT US BLUE -->
 
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span6 about-us-blue-picture">
+
+<!-- (9) PRESS -->
+<div class="container-fluid about-background-grey">
+    <div class="row-fluid">
+        <div class="about-margin">
+            <div class="span6">
+                <h4 class="about-heading-black about-text-above-rectangle-padding">PRESS</h4>
+                <p class="about-text-black about-text-above-rectangle-padding">
+                    The news about myWebRoom.com is spreading! We’ve been featured on tech, startup, and interior design sites. Here are a few articles so you can see and share the love.
+                </p>
+                <br>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <%= cl_image_tag("bloomberg.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                             <%= cl_image_tag("inc.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                            <%= cl_image_tag("killerstartups.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4 about-rectangle-padding">
+                            <%= cl_image_tag("pandodaily.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4 about-rectangle-padding">
+                             <%= cl_image_tag("techcocktail.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4 about-rectangle-padding">
+                            <%= cl_image_tag("techcrunch.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <%= cl_image_tag("tumblr.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                             <%= cl_image_tag("venturebeat.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                            <%= cl_image_tag("techvista.png", width: 180, height: 100, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                </div> <!-- CONTAINER FLUID -->
+            </div>
+            <div class="span6 about-large-round-picture">
+            <%= cl_image_tag("about-us-image.png", :height => 420, :width => 420, :crop => :fit, :quality => 50, :default_image => "default_image_all.png") %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- (10) CONTACT US -->
+<div class="container-fluid about-background-blue">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="about-large-round-picture">
                 <%= cl_image_tag("roomsy.png", height: 420, width: 420, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            </div>
+        </div>
+        <div class="span6">
+            <h2 class="about-heading-white">CONTACT US</h2>
+            <div class="row-fluid">
+                <div class="span6">
+
+                    <div class="media">
+                        <a class="pull-left" href="mailto:info@mywebroom.com">
+                            <img class="media-object" src="<%= cloudinary_url('email.png') %>">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading about-heading-white">EMAIL</h4>
+                            <div class="about-text-white">info@mywebroom.com</div>
+                        </div>
+                    </div>
+
+
+                    <div class="media">
+                        <a class="pull-left" href="http://facebook.com/myWebRoom">
+                            <img class="media-object" src="<%= cloudinary_url('facebook.png') %>">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading about-heading-white">FACEBOOK</h4>
+                            <div class="about-text-white">facebook.com/myWebRoom</div>
+                        </div>
+                    </div>
+
+
+                    <div class="media">
+                        <a class="pull-left" href="http://twitter.com/roomsInc">
+                            <img class="media-object" src="<%= cloudinary_url('twitter.png') %>">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading about-heading-white">TWITTER</h4>
+                            <div class="about-text-white">twitter.com/roomsInc</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="span6">
-                    <h2 class="about-us-header">CONTACT US</h2>
-                    <p class="about-us-header">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                    <ul class="about-us-header">
-                        <li>Programmers</li>
-                        <li>Designers</li>
-                        <li>Marketing</li>
-                        <li>Interior Designer</li>
-                        <li>Other</li>
-                    </ul>
-                    <p class="about-us-header">
-                        SUBMIT YOUR RESUME
-                    </p>
-                    <p class="about-us-header">
-                        career@mywebroom.com
-                    </p>
+
+                    <div class="media">
+                        <a class="pull-left" href="http://pinterest.com/myWebRoom">
+                            <img class="media-object" src="<%= cloudinary_url('pinterest.png') %>">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading about-heading-white">PINTEREST</h4>
+                            <div class="about-text-white">pinterest.com/myWebRoom</div>
+                        </div>
+                    </div>
+
+
+                    <div class="media">
+                        <a class="pull-left" href="http://linkedin.com/myWebRoom">
+                            <img class="media-object" src="<%= cloudinary_url('linkedin.png') %>">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading about-heading-white">LINKEDIN</h4>
+                            <div class="about-text-white">linkedin.com/myWebRoom</div>
+                        </div>
+                    </div>
+
+
+                    <div class="media">
+                        <a class="pull-left" href="http://instagram.com/myWebRoom">
+                            <img class="media-object" src="<%= cloudinary_url('instagram.png') %>">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading about-heading-white">INSTAGRAM</h4>
+                            <div class="about-text-white">instagram.com/myWebRoom</div>
+                        </div>
+                    </div>
+
                 </div>
-            </div> <!-- ROW -->
-        </div> <!-- ABOUT US BLUE -->
-    </div> <!-- 2nd ABOUT US MARGIN -->
-</div> <!-- 1st ABOUT US MARGIN -->
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <hr>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <h3 class="about-heading-white">ADDRESS</h3>
+                    <address class="about-text-white">
+                        340 6th St. Unit 303<br>
+                        San Francisco, CA 94103<br>
+                        <br>
+                        Phone: (201) 336-4186
+                    </address>
+                </div>
+                <div class="span6">
+                    <!-- EMPTY SPACE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- (11) SIGN UP -->
+<div class="center about-background-black">
+    <br>
+    <br>
+    <%= link_to "SIGN UP", xroom_rooms_path, :id => "about-signup-button" %>
+</div>
