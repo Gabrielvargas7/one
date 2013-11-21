@@ -113,15 +113,31 @@ input#signup_lightbox_password_box{
   height: 600px;
   background: #ffffff;
   z-index: 1512;
-  text-align: justify;
+  text-align: right;
   background-color: #eeeeee;
   border-color: #898989;
   border-width: 1px;
   border-style: solid;
-  overflow:scroll;
-  padding: 20px;
 
 }
+#signup_term_of_use_content{
+  position:relative;
+  overflow-y:scroll;
+  width: 90%;
+  height: 410px;
+  padding: 0px 31px;
+  text-align: justify;
+
+}
+#signup_term_of_use_btn_container{
+  position:relative;
+  text-align: center;
+  margin: 30px 0px;
+}
+#signup_term_of_use_btn{
+  padding: 6px 33px;
+}
+
 
 #signup_term_of_use_link{
   margin-right: 210px;
@@ -146,4 +162,5 @@ input#signup_lightbox_password_box{
   font-size:12px;
   text-align: justify;
 }
+
 
