@@ -41,7 +41,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
       when Mywebroom.Models.BackboneSearchEntityModel.BOOKMARK
 
 
-        if Mywebroom.State.get("signInState")
+        if Mywebroom.State.get("signInState") and Mywebroom.State.get("roomState") is "SELF"
 
           #console.log("is a Bookmark")
           @openBookmarkView()
@@ -64,7 +64,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
       when Mywebroom.Models.BackboneSearchEntityModel.ITEM_DESIGN
 
-        if Mywebroom.State.get("signInState")
+        if Mywebroom.State.get("signInState") and Mywebroom.State.get("roomState") is "SELF"
 
           #console.log("is a Item Design")
           @openStoreEditor()
