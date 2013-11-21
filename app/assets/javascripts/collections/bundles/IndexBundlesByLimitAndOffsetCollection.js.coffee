@@ -17,3 +17,4 @@ class Mywebroom.Collections.IndexBundlesByLimitAndOffsetCollection extends Backb
         obj.type = "BUNDLE"
         return obj
     )
+

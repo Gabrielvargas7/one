@@ -5,9 +5,13 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
+
+
   <!-- Configure Cloudinary jQuery plugin -->
   <%= cloudinary_js_config %>
+
 
   <!-- Insert image to facebook og:image -->
   <% if @fb_app_id %>
@@ -24,9 +28,32 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <%= render 'layouts/shim' %>
 
+  <!-- this is for  meta data information-->
   <% if content_for?(:head) %>
       <%= yield(:head) %>
   <% end %>
+
+
+
+  <!-- Start Google analytics -->
+
+  <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34648501-1']);
+      _gaq.push(['_setDomainName', 'mywebroom.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+  </script>
+
+  <!-- End Google analytics -->
+
 
 </head>
 <body  class="<%= @room_backgroud_color ? 'room_backgroud_color' : ''%>"  >
@@ -47,11 +74,5 @@
       <%= debug(params) if Rails.env.development? unless @skip_header %>
 
     </div>
-
-<!--  if we're in a frame, kill it  -->
-<script>
-    // if (top != self){ 
-    //   top.location.replace(location);}
-</script>
 </body>
 </html>
