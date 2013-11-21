@@ -108,22 +108,42 @@ input#signup_lightbox_password_box{
   display: none;
   position: fixed;
   top: -1000px;
-  left:32%;
-  width: 700px;
-  height: 500px;
+  left:30%;
+  width: 650px;
+  height: 600px;
   background: #ffffff;
   z-index: 1512;
-  text-align: right;
+  text-align: justify;
   background-color: #eeeeee;
   border-color: #898989;
   border-width: 1px;
   border-style: solid;
   overflow:scroll;
+  padding: 20px;
 
 }
 
 #signup_term_of_use_link{
-margin-right: 210px;
+  margin-right: 210px;
+}
+#signup_term_of_use_title{
 
+  font-size:24px;
+  text-align: center;
+}
+
+#signup_term_of_use_agreement{
+  font-size:16px;
+  text-align: center;
+}
+#signup_term_of_use_header{
+  font-size:14px;
+  text-align: justify;
+  font-weight: bold;
+
+}
+#signup_term_of_use_body{
+  font-size:12px;
+  text-align: justify;
 }
 

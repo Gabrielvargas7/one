@@ -32,6 +32,6 @@ function signup_lightbox_term_of_use_hide(){
 
 function signup_lightbox_term_of_use_show(){
     $('#signup_term_of_use').css('display', 'block')
-    $('#signup_term_of_use').css('top', '50px')
+    $('#signup_term_of_use').css('top', '20px')
 }
 
