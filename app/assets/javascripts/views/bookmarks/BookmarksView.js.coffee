@@ -34,7 +34,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @getDiscoverCategoriesCollection() #referred as @discoverCategoriesCollection
     
     self= this
-    Mywebroom.App.vent.on('BrowseMode:closeBookmarkView',@closeView,self)
+    Mywebroom.App.vent.off('BrowseMode:closeBookmarkView').on('BrowseMode:closeBookmarkView',@closeView,self)
 
   #*******************
   #**** Render

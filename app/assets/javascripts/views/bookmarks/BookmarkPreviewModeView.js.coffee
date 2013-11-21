@@ -10,8 +10,8 @@ class Mywebroom.Views.BookmarkPreviewModeView extends Backbone.View
     sidebarPreviewHTML= JST['bookmarks/BookmarkSidebarPreviewMode'](model:@model)
     $('.bookmark_menu').append(sidebarPreviewHTML)
     $('.discover_submenu_section').hide()
-    $(@el).css "width",$(window).width()-$('.bookmark_menu').width()
-    $(@el).css "left",$('.bookmark_menu').width()
+    #$(@el).css "width",$(window).width()-$('.bookmark_menu').width()
+    #$(@el).css "left",$('.bookmark_menu').width()
     $('.preview_mode_saved').hide()
     that=this
     #NOTE this is jquery .on NOT Backbone.on
