@@ -385,7 +385,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     $('#xroom_store_menu_save_cancel_remove').hide()
     $('#xroom_storepage').hide()
-    $('#xroom_profile').hide()
+
+    if Mywebroom.State.get("roomState") is "SELF" then $('#xroom_profile').hide()
+
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').show()
 
