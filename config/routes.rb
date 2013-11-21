@@ -168,7 +168,7 @@ Mywebroom::Application.routes.draw do
 
   # static pages
   match '/help',    to: 'static_pages#help'
-  match '/about',   to: 'static_pages#about'
+  match '/about-us',  to: 'static_pages#about', via: :get,as: :about
   match '/contact', to: 'static_pages#contact'
   match '/landing', to:'static_pages#landing'
 
