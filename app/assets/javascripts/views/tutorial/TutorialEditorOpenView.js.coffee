@@ -72,6 +72,9 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
     bookmarksView.renderDiscover()
     Mywebroom.State.set("tutorialBookmarkView",bookmarksView)
 
+    #Turn off preview mode event
+    bookmarksView.detachClicksTutorial()
+
 
 
 

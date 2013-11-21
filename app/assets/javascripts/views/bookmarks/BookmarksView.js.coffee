@@ -309,6 +309,32 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       scrollTo.scrollIntoView(true)
       #container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop())
 
+  ###
+  #detach events for tutorial
+  ###
+
+  detachClicksTutorial:->
+    #Turn events off in this view
+    debugger
+    @undelegateEvents()
+
+    #grab original events for this view.
+    @originalEvents = _.clone(@events)
+    newEvents = _.clone(@events)
+
+    #delete what we don't need.
+    #delete newEvents["click .discover_bookmarks_bottom .bookmark_grid_item"]
+
+    #Add other events in this view.
+    @delegateEvents({})
+
+  attachClicksTutorial:->
+    if @originalEvents
+      @undelegateEvents()
+      @delegateEvents(@originalEvents)
+
+
+
   closeView:->
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
