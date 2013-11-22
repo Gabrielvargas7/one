@@ -2,13 +2,15 @@
 <!-- Room Header -->
 <!-- ************************ -->
 
+
+
 <div class="navbar  navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
 
         <!-- Logo  -->
         <a class="brand" href="#" id="xroom_header_logo">
               <span>&nbsp<span>
-              <img alt="logo-mywebroom" src="//res.cloudinary.com/hpdnx5ayv/image/upload/w_132,h_30/logo-mywebroom.png" >
+              <img alt="logo-mywebroom" src=<%= @mywebroom_logo.get('image_name').url %>  >
         </a>
 
         <!-- Search Box  -->
@@ -49,7 +51,7 @@
         <!-- Menu  -->
         <ul class="nav pull-right" id="rooms_header_main_menu">
             <li>
-              <a id='xroom_header_active_sites'>
+              <a id='xroom_header_active_sites' class="xroom_header_active_sites_img">
               </a>
             </li>
             <li>
@@ -57,11 +59,11 @@
                 </a>
             </li>
             <li>
-                <a href="#" id="xroom_header_storepage">
+                <a href="#" id="xroom_header_storepage" class="xroom_header_storepage_img">
                     <span>&nbsp&nbspRoom<span>
                 </a>
             </li>
-            <li><a href="#" id="xroom_header_myroom" >
+            <li><a href="#" id="xroom_header_myroom" class="xroom_header_user_room"  >
                 <img src=<%= @user_data.get('user_photos').image_name.url %> >
 
                 <%=  _.str.capitalize(@user_data.get('user').username) %>
@@ -69,9 +71,9 @@
             </a></li>
 
             <!-- sub menu (dropdown menu) -->
-            <li class="dropdown">
+            <li class="dropdown xroom_header_user_room">
                         <a class="dropdown-toggle" data-toggle="dropdown"  href="#">
-                           <b class="caret"></b>
+                           <b class="caret" id="xroom_header_caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                            <li><a href="#" id="xroom_header_forward_profile" >Profile</a></li>
