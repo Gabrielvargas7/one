@@ -25,7 +25,9 @@ class UsersMailer < ActionMailer::Base
   def signup_email(user)
 
     @user = user
+    @user_profile = UsersProfile.where("user_id = ?", user.id).first
     @greeting = "Hi"
+    #Need user's room url. which is rooms url + /user.username
     mail to: @user.email,subject: "Welcome to MyWebRoom"
   end
 
