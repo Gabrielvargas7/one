@@ -116,6 +116,10 @@ Mywebroom::Application.routes.draw do
   resources :sections
 
   resources :password_resets
+  match '/thank_you_page', to:   'password_resets#thank_you_page', via: :get,as:
+            :password_resets_thank_you_page
+
+  match '/signup',  to: 'users#new'
 
   resources :notifications
 

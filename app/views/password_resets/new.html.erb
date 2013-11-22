@@ -1,10 +1,44 @@
-<h1>Reset Password</h1>
+<% provide(:title, 'Forget password') %>
 
-<%= form_tag password_resets_path, :method => :post do %>
-    <div class="field">
-      <%= label_tag :email %>
-      <%= text_field_tag :email, params[:email] %>
-    </div>
-    <div class="actions"><%= submit_tag "Reset Password" %></div>
+<% content_for :head do %>
+    <!-- your tags -->
+    <meta name="description" content="forget password">
 <% end %>
+
+
+
+<div id="password_reset_container" >
+
+  <div id="pasword_reset_container_right" >
+      <div id="password_reset_title">
+           Forgot your password?
+      </div>
+      <div id="password_reset_content">
+           No worries! Please enter your email address below and we will send you an email with instructions on how to reset your password
+      </div>
+
+
+              <%= form_tag password_resets_path, :method => :post do %>
+                  <div class="field">
+                    <div id="password_reset_email_text"> Your email here </br>
+                    </div>
+                    <%= text_field_tag :email, params[:email], :id => "password_reset_email_field" %>
+                  </div>
+                  <div class="actions"><%= submit_tag "Send Instructions",:class => "green_button green_button_light", :id => "password_reset_email_btn"%></div>
+              <% end %>
+
+
+
+      <div id="password_reset_content">
+        Don't need to reset your password?
+        <%= link_to "Go back to the main page", root_url %>
+      </div>
+   </div>
+  <div id="pasword_reset_container_left" >
+  </div>
+
+</div>
+
+
+
 
