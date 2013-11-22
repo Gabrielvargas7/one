@@ -88,8 +88,18 @@
     </div>
 
 
+
+
     <!-- MAIN -->
     <div class="span8 help-main">
+
+
+      <div class="help-page-top-button">
+        <a href="#top"> <!-- THIS IS MAGIC! THERE'S NO ELEMENT WITH ID #top! -->
+          <%= cl_image_tag("up-icon.png", :quality => 100, :default_image => "default_image_all.png")%>
+        </a>
+      </div>
+
 
       <!-- PAGE 1 -->
       <h1>Decorate</h1>
