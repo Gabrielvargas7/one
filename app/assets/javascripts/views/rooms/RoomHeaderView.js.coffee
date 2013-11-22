@@ -34,6 +34,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     'mouseenter #xroom_header_profile': 'hoverHeaderProfile'
     'mouseleave #xroom_header_profile': 'hoverOffHeaderProfile'
+
+    'mouseenter #xroom_header_storepage': 'hoverHeaderStorePage'
+    'mouseleave #xroom_header_storepage': 'hoverOffHeaderStorePage'
+
+    'mouseenter #xroom_header_active_sites': 'hoverHeaderActiveSites'
+    'mouseleave #xroom_header_active_sites': 'hoverOffHeaderActiveSites'
   }
 
 
@@ -60,10 +66,15 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       user_data = Mywebroom.State.get("roomData")
 
 
+    mywebroom_logo = Mywebroom.State.get('staticContent').findWhere({"name":"mywebroom-logo"})
     # THIS VIEW
-    $(@el).append(@template({user_data: user_data}))
+    $(@el).append(@template({user_data: user_data,mywebroom_logo:mywebroom_logo}))
+
     # add profile image to the header
     Mywebroom.Helpers.RoomHeaderHelper.addHeaderImageProfile()
+    Mywebroom.Helpers.RoomHeaderHelper.addHeaderImageStorePage()
+    Mywebroom.Helpers.RoomHeaderHelper.addHeaderImageActiveSites()
+
 
 
 
@@ -938,6 +949,31 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.preventDefault()
     Mywebroom.Helpers.RoomHeaderHelper.addHeaderImageProfile()
 
+
+
+  hoverOffHeaderStorePage:(event) ->
+    event.stopPropagation()
+    event.preventDefault()
+    Mywebroom.Helpers.RoomHeaderHelper.addHeaderImageStorePage()
+
+
+  hoverHeaderStorePage:(event) ->
+    event.stopPropagation()
+    event.preventDefault()
+    Mywebroom.Helpers.RoomHeaderHelper.addHoverHeaderImageStorePage()
+
+
+
+  hoverOffHeaderActiveSites:(event) ->
+    event.stopPropagation()
+    event.preventDefault()
+    Mywebroom.Helpers.RoomHeaderHelper.addHeaderImageActiveSites()
+
+
+  hoverHeaderActiveSites:(event) ->
+    event.stopPropagation()
+    event.preventDefault()
+    Mywebroom.Helpers.RoomHeaderHelper.addHoverHeaderImageActiveSites()
 
 
 
