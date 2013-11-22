@@ -1,0 +1,61 @@
+////
+// play_video submit page
+////
+
+#play_video_lightbox {
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  // width: 500px;
+  // height: 500px;
+  margin-left: -250px;
+  background: transparent;
+  z-index: 1501;
+  text-align:center;
+
+}
+#play_video-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.8);
+  opacity: 0.75;
+  z-index: 1500;
+
+}
+
+#play_video_lightbox input[type="text"]{
+  width: 405px;
+  margin-right: 25px;
+}
+
+#play_video_lightbox textarea{
+  width: 405px;
+  resize: none;
+  margin-right: 25px;
+  margin-bottom: 20px;
+
+}
+
+
+#play_video_label_title{
+  font-size: 24px;
+  margin: 35px 0px;
+  text-align: center;
+
+}
+
+
+#play_video_iframe_wrap{
+  text-align:center;
+  padding-bottom:10px;
+}
+
+#play_video_close_btn{
+  margin: 20px;
+  padding: 5px 50px 8px 50px;
+
+}
+
