@@ -875,6 +875,7 @@ body.outlook img {
     }
 
     #check_out_button{
+      margin:0 auto;
       margin-top:20px;
     }
     #check_out_button td,#check_out_button td a, #check_out_button td a:hover, #check_out_button td a:visited {
@@ -932,7 +933,8 @@ body.outlook img {
           
                 </center>
               </td>
-              </table>
+           
+          </table>
            
         <center>
           <table class="container">
@@ -949,7 +951,11 @@ body.outlook img {
                             <table class="container message_content">
                               <tr>
                                 <td class = "twelve subcolumns text-pad message_content_header">
-                                  <h5>Welcome to myWebRoom.com, %%Aubrey!</h5>
+                                  %% if @user_profile.firstname.blank? %%
+                                    <h5>Welcome to myWebRoom.com, %%=@user.username%%!</h5>
+                                  %% else %%
+                                    <h5>Welcome to myWebRoom.com, %%=@user_profile.firstname%%!</h5>
+                                  %% end %%                            
                                   <h6>We're happy you've joined our community. Settle in and let's see
                                   </h6><h6>what you can do in your Room.</h6>
                                 </td>
@@ -967,15 +973,16 @@ body.outlook img {
 
                                             <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1385076206/email-image-01_sw09s5.png">
                                           
-                                          </td><td class="">
+                                          </td>
+                                          <td class="">
                                             <span class="bolder_plus">Create Your Room</span>
-                                            <p>By <a href="#%%">mixing and matching</a> themes and furniture</p>
+                                            <p>By <a href="%%=room_rooms_url(@user.username)%%">mixing and matching</a> themes and furniture</p>
 
                                             <span class="bolder_plus">Express Yourself</span>
                                             <p>Through designs that show off your style.</p>
 
                                             <span class="bolder_plus">Discover the Web</span>
-                                            <p>By adding curated stores, sites, and <a href="#%%">products</a>.</p>
+                                            <p>By adding curated stores, sites, and <a href="%%=room_rooms_url(@user.username)%%">products</a>.</p>
 
                                             <span class="bolder_plus">Organize your Bookmarks</span>
                                             <p>In furniture and objects you can purchase!</p>
@@ -995,13 +1002,15 @@ body.outlook img {
                                       <center>
                                         <table>
                                           <tr>
-                                            <table id="check_out_button" class="button" style="width:200px;">
-                                                  <tr>
-                                                    <td>
-                                                      <a href="%%ADDRESSmywebroom.com"><span class="link_spanner">Give Key</span></a>
-                                                    </td>
-                                                  </tr>
-                                            </table>
+                                            <td class="center" align="center">
+                                              <table id="check_out_button" class="button" style="width:300px;">
+                                                    <tr>
+                                                      <td class="center" align="center">
+                                                        <a href="%%=room_rooms_url(@user.username)%%"><span class="link_spanner">Check out my Room</span></a>
+                                                      </td>
+                                                    </tr>
+                                              </table>
+                                            </td>
                                           </tr>
                                           <tr>
                                             <td class="center" align="center">
@@ -1017,13 +1026,13 @@ body.outlook img {
                                       </center>
                                     </td>
                                   </tr>
-                                </table>
+                                </table> <!-- end container table -->
                                 </td>
                               
                               </tr>
                             
                             
-                            </table>
+                            </table> <!-- end container message_content -->
                           </td>
                           <td class="expander"></td>
                         </tr>
