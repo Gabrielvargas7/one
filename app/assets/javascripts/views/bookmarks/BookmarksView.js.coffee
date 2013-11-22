@@ -32,7 +32,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #fetch bookmark data
     @getMyBookmarksCollection() #Referred as @collection
     @getDiscoverCategoriesCollection() #referred as @discoverCategoriesCollection
-    
+
     self= this
     Mywebroom.App.vent.off('BrowseMode:closeBookmarkView').on('BrowseMode:closeBookmarkView',@closeView,self)
 
@@ -48,10 +48,10 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
     # $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
-    
+
   renderDiscover:(event)->
     if event
-      event.stopPropagation() 
+      event.stopPropagation()
       event.preventDefault()
     @previewModeView.closeView() if @previewModeView
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
@@ -102,7 +102,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $(@myBookmarksView.el).show()
     #$(@el).append(@myBookmarksView.render().el)
-    
+
   showCategory:(event)->
     event.preventDefault()
     event.stopPropagation()
@@ -110,7 +110,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
     $('.discover_submenu').removeClass 'bookmark_menu_selected'
     $(event.currentTarget).addClass('bookmark_menu_selected')
-    @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView 
+    @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     #get the category bookmarks
     @currentBookmarkbyCategoryCollection = new Mywebroom.Collections.IndexBookmarksByBookmarksCategoryId()
     @currentBookmarkbyCategoryCollection.fetch
@@ -134,7 +134,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #open in iframe
     bookmarkClicked= @discoverCollection.get(event.currentTarget.dataset.id)
     urlToOpen= bookmarkClicked.get('bookmark_url')
-    
+
     #Create Sidebar Interface
     if bookmarkClicked.get('i_frame') is 'y'
       @previewModeView = new Mywebroom.Views.BookmarkPreviewModeView(model:bookmarkClicked)
@@ -143,9 +143,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
       #Add Site to My Bookmarks from Preview Mode
       @previewModeView.on('PreviewMode:saveSite',((bookmarkClick)->
-        
+
         #Need to fetch MyBookmarks to get an accurate last position
-        #If I've added 2 bookmarks from discover, then preview, then save site, 
+        #If I've added 2 bookmarks from discover, then preview, then save site,
         #    the position count is not accurate and save doesn't work.
         @collection.fetch
           async:false
@@ -156,7 +156,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
         postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:bookmarkClick.get('item_id'), bookmarkId:bookmarkClick.get('id'),userId:Mywebroom.State.get('signInUser').get('id')})
         lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
-        postBookmarkModel.set 'position',lastBookmarkPosition+1   
+        postBookmarkModel.set 'position',lastBookmarkPosition+1
         postBookmarkModel.save {},
           success: (model, response)->
             #console.log('postBookmarkModel SUCCESS:')
@@ -168,7 +168,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       ),this)
       #console.log(bookmarkClicked)
     else
-      window.open urlToOpen,"_blank" 
+      window.open urlToOpen,"_blank"
   closePreviewMode:->
     #console.log 'close previewmode.'
 
@@ -181,12 +181,12 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   #*******************
   #**** addCustomBookmark
-  #****** event data must contain that (context) 
+  #****** event data must contain that (context)
   #*******************
   addCustomBookmark:(event)->
     event.preventDefault()
     event.stopPropagation()
-    
+
     #Case, user clicked search, but not save. Then clicked search again.
     if $('.custom_bookmark_confirm_add_wrap img').length > 0
       $('.custom_bookmark_confirm_add_wrap img').remove()
@@ -196,12 +196,12 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     #validate the url string
     customURL= $.trim $("input[name=url_input]").val()
     title = $.trim $("input[name=bookmark_title]").val()
-    #The regex code is copied from the old Rooms code. 
+    #The regex code is copied from the old Rooms code.
     customURL = "http://" + customURL  unless customURL.match(/^https?:\/\//) or customURL.match(/^spdy:\/\//)
     #http://stackoverflow.com/questions/833469/regular-expression-for-url
     url_match = customURL.match(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/)
     title_match = title.length > 0 and title.length < 25
-    
+
     #set up custom Bookmark properties and get snapshot
     if url_match and title_match
       #Add custom URL
@@ -219,14 +219,14 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       $('.custom_bookmark_confirm_add_wrap').prepend('<img src="'+customBookmark.get('image_name')+'">')
       $('.custom_bookmark_confirm_add_wrap').show()
       $('.save_site_button').show()
-      
+
       #clear any save site events and add one listener to save the custom bookmark model.
-      #pass to event: customBookmark and context-that 
+      #pass to event: customBookmark and context-that
       that = event.data.that
       $('.save_site_button').off('click').one('click',{customBookmark,that},((event)->
-        
+
         event.stopPropagation()
-        
+
         #Fetch MyBookmarks to get an accurate last position parameter
         # -Example: If I've added 2 bookmarks from discover, then preview, then save site, the position count is not accurate and save doesn't work.
         event.data.that.collection.fetch
@@ -257,7 +257,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
           $('#add_your_own_box .err_response p').append('Oops! There was an error. Please try refreshing the page and try again.')
           $('.save_site_button').hide()
 
-        
+
         #After 5 seconds, clear form and remove image
         setTimeout((->
           $('#add_your_own_url_input').val("")
@@ -267,14 +267,14 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
           $('.custom_url_saved').hide()
           $('.custom_bookmark_confirm_add_wrap img').remove()),3000)
         ))
-      
+
     else
       #Show an error to the user.
       $('#add_your_own_box .err_response').removeClass('hidden')
       $('#add_your_own_box .err_response p').append('Oops! There was an error in your url or the title was too long.')
       #console.log "There was an error in your url or the title was too long."
 
-  
+
   getMyBookmarksCollection:->
     @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
     @collection.fetch
@@ -292,15 +292,15 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       success:(response) ->
         #console.log("categories fetch successful: ")
         #console.log(response)
-  
+
   ###
   # Highlight a bookmark item by and make sure the user sees it. (From "Try in My Room")
   ###
   highlightItem:(id)->
     #1. Highlight item
     $('.bookmark_grid_item[data-id="'+id+'"]').addClass('blue_highlight')
-    
-    #2. Make sure its in the view-port. 
+
+    #2. Make sure its in the view-port.
     container = $('.discover_bookmarks_bottom')
     if container.length is 0
       container = $('.my_bookmarks_bottom')
@@ -315,7 +315,6 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   detachClicksTutorial:->
     #Turn events off in this view
-    debugger
     @undelegateEvents()
 
     #grab original events for this view.
