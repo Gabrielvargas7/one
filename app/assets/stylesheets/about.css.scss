@@ -42,51 +42,48 @@
 }
 
 .about-wrapper {
-  border: solid #00ccff 2px;
   -webkit-border-radius: 50%;
      -moz-border-radius: 50%;
           border-radius: 50%;
-  height: 250px;
-  width: 250px;
+  max-height: 250px;
+  max-width: 250px;
   position: relative;
   margin-left: auto;
   margin-right: auto;
 }
 
 .about-individual-picture {
-  height: 250px;
-  width: 250px;
+  border: solid #00ccff 2px;
+  max-height: 250px;
+  max-width: 250px;
   -webkit-border-radius: 50%;
      -moz-border-radius: 50%;
           border-radius: 50%;
 }
 
 .about-background {
-  height: 250px;
-  width: 250px;
+  max-height: 250px;
+  max-width: 250px;
   border-radius: 50%;
   position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
 }
 
 /*
 To calculate height, width, take image size (in our case 250) squared / 2, root-ed
 So... x = (250^2/2)^(1/2)
       x = 176
-
-TODO
-Look into changing all the heights/widths to max-widths
-and max-heights and seeing if that still works good
 */
 .about-quote {
   cursor: default;
   color: #ffffff;
-  font-style: "Open Sans";
+  font-family: "Open Sans";
   font-size: 1.1em;
   font-weight: 200;
   margin: auto;
   top: 0; bottom: 0; left: 0; right: 0;
-  height: 50px; // Adjust for each quote based on length
-  width: 176px;
+  max-height: 176px; // If this needed to be adjusted for each quote, we'd put a smaller number for a shorter quote, bigger number for a longer quote
+  max-width: 176px;
   position: absolute;
   text-align: center;
   -moz-text-align-last: center;
@@ -127,10 +124,6 @@ and max-heights and seeing if that still works good
 /*
 (11) SIGN UP
 */
-.about-background-black {
-  background-color: black;
-  height: 100px;
-}
 #about-signup-button {
   font-family: "Open Sans";
   font-weight: normal;
