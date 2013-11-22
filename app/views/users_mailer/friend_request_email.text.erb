@@ -5,3 +5,23 @@ your friend <%= @user.username %> want to connect with you
 
 
 thank you
+
+ <% if @user_profile.firstname.blank? %>
+  <%= @user.username %>  wants a key to your WebRoom!
+<% else %>
+    <%= @user_profile.firstname %>  wants a key to your WebRoom!
+<% end %>
+______________________________________________________
+
+Hi rawr ,
+I'd like to check out your online room! Please accept my Key Request.
+
+-<% if @user_profile.firstname.blank? %>
+  <%= @user.username %>  
+<% else %>
+  <%= @user_profile.firstname %> 
+<% end %>
+
+______________________________________________________
+
+Give Key: <%=room_rooms_url(@user_requested.username)%>

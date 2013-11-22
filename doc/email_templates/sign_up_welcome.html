@@ -305,7 +305,9 @@ h3 {font-size: 37px;}
 h4 {font-size: 28px;}
 h5 {font-size: 23px;}
 h6 {font-size: 17px;}
-body, p {font-size: 14px;line-height:19px;}
+body, p {font-size: 16px;
+  line-height:19px;
+  color:#343434;}
 
 p { 
   padding-bottom: 10px;
@@ -810,7 +812,10 @@ body.outlook img {
       margin:0 10%;
       
     }
-
+    .link_spanner{
+      width:100%;
+      height:100%;
+    }
     .message_footer_content p{
       font-size:12px;
       padding-top:10px;
@@ -819,16 +824,20 @@ body.outlook img {
       border: 1px solid #d2d2d2;
       margin-top:10px;
     }
-    .message_content h4{
-      color: #0073a5;
+    .message_content h5{
+      font-size:24px;
       text-align:center;
-      border-bottom:1px solid #d2d2d2;
       font-weight:lighter;
-      padding:15px;
+      padding:5px;
+      
     }
-    .message_content p{
-      padding: 0 30px;
+    .message_content h6{
+      font-size:16px;
+      text-align:center;
+      font-weight:normal;
+      
     }
+
     table.columns td.message_content_message{
       padding-bottom:30px;
 
@@ -844,31 +853,37 @@ body.outlook img {
     }
 
 /*Specific Key Request style*/
-    .user_profile_image{
-      display:inline;
-      float:none;
+    .message_content td.user_profile_image{
+      padding:10px;
     }
     .message_content span{
       margin-top:10px;
     }
+
+    .message_content span.bolder_plus{
+      font-weight:600;
+      font-size:16px;
+    }
+
     table.columns td.message_content_header{
-      padding-bottom:20px;
+      padding-bottom:30px;
+      padding-top: 10px;
     }
     .message_content_message table.button, table.button tr, table.button td{
       margin:0 auto;
       text-align:center;
     }
 
-    #give_key_button{
+    #check_out_button{
       margin-top:20px;
     }
-    #give_key_button td,#give_key_button td a, #give_key_button td a:hover, #give_key_button td a:visited {
+    #check_out_button td,#check_out_button td a, #check_out_button td a:hover, #check_out_button td a:visited {
       background-color:#00ccff;
       border:none;
       color:white;
       font-weight:normal;
       font-style:none;
-      font-size:14px;
+      font-size:18px;
 
     }
 
@@ -896,28 +911,35 @@ body.outlook img {
 <body>
   <table class="body">
     <tr>
-      <td class="center" align="center" valign="top">
+      <td class="center" align="center" valign="top">         
           <table class="row header">
             <tr>
-              <td id="message_header_padding">
-                
+              <td class="center" align="center">
+                <center>
           
                   <table class="container message_header_container">
                     <tr>
                       <td class="wrapper last">
             
-                        
-                        <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904370/mywebroomlogo365x64.png">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="six sub-columns">
+                              <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_scale,w_365/v1376094245/logo-mywebroom.com.png">
                             
-                      </td>
+               
+                            </td>
+                            <td class="expander"></td>
                                 
+                          </tr>
+                        </table>
+            
+                      </td>
                     </tr>
                   </table>
-            
-                </td>
-              </tr>
-
-            </table>
+          
+                </center>
+              </td>
+              </table>
            
         <center>
           <table class="container">
@@ -934,55 +956,71 @@ body.outlook img {
                             <table class="container message_content">
                               <tr>
                                 <td class = "twelve subcolumns text-pad message_content_header">
-                                  <h4>%%REQUESTOR_FIRST_NAME wants a key to your WebRoom!</h4>
+                                  <h5>Welcome to myWebRoom.com, %%Aubrey!</h5>
+                                  <h6>We're happy you've joined our community. Settle in and let's see what you can do in your Room.</h6>
                                 </td>
                               </tr>
                               <tr>
                               
                                 <td align="center" class="center" valign="top">
-                                <table class="row">
+                                <table class="container">
                                   <tr>
-                                    <td class="wrapper">
+                                    <td class="">
 
-                                      <table class="five columns">
+                                      <table class="block-grid two-up">
                                         <tr>
-                                          <td class="center">
+                                          <td class="center user_profile_image">
 
-                                            <img class="user_profile_image" height="150" width="150" var="%%REQUeSTER_IMAGE" src="http://placekitten.com/130/130">
-                                            <br>
-                                            <span class="center">%%REQUESTOR_FIRST_NAME</span>
+                                            <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1385076206/email-image-01_sw09s5.png">
+                                          
+                                          </td><td class="">
+                                            <span class="bolder_plus">Create Your Room</span>
+                                            <p>By <a href="#%%">mixing and matching</a> themes and furniture</p>
+
+                                            <span class="bolder_plus">Express Yourself</span>
+                                            <p>Through designs that show off your style.</p>
+
+                                            <span class="bolder_plus">Discover the Web</span>
+                                            <p>By adding curated stores, sites, and <a href="#%%">products</a>.</p>
+
+                                            <span class="bolder_plus">Organize your Bookmarks</span>
+                                            <p>In furniture and objects you can purchase!</p>
+
+                                            <span class="bolder_plus">Share your Favorite Finds</span>
+                                            <p>With friends and family.</p>
+                                             
                                           </td>
-                                          <td class="expander"></td>
                                         </tr>
                                       </table>
 
                                     </td>
-                                    <td class="wrapper last">
-
-                                      <table class="seven columns">
-                                        <tr>
-                                          
-                                            <td class = "text-pad message_content_message">
-                                              <br>
-                                              <p class="lead"><span>Hi %%FIRSTNAME,</span></p>                                            
-                                              <p>I'd like to check out your online room! Please accept my Key Request.</p>
-
-                                              <br>
-
-                                              <table id="give_key_button" class="button" style="width:200px;">
+                                    
+                                  </tr>
+                                  <tr>
+                                    <td class="center" align="center">
+                                      <center>
+                                        <table>
+                                          <tr>
+                                            <table id="check_out_button" class="button" style="width:200px;">
                                                   <tr>
                                                     <td>
-                                                      <a href="%%ADDRESSmywebroom.com">Give Key</a>
+                                                      <a href="%%ADDRESSmywebroom.com"><span class="link_spanner">Give Key</span></a>
                                                     </td>
                                                   </tr>
-                                                </table>
+                                            </table>
+                                          </tr>
+                                          <tr>
+                                            <td class="center" align="center">
+                                              <center>
+                                              <br>
+                                              Enjoy your Room! <br><br>
+                                              Artem & John <br>
+                                              Co-counders, myWebRoom.com
+                                            </center>
                                             </td>
-
-                                          <td class="expander"></td>
-                                        </tr>
-
-                                      </table>
-
+                                          </tr>
+                                        </table>
+                                      </center>
                                     </td>
                                   </tr>
                                 </table>
@@ -1012,31 +1050,7 @@ body.outlook img {
 
 
         </center>
-        <table class="row footer">
-            <tr>
-              <td class="wrapper">
-                      
-                <table class="twelve columns message_footer_content">
-                  <tr>
-                    <td class="left-text-pad">
 
-                      <p>This email is for myWebRoom.com resident %%REQUESTOR_FIRST_NAME.
-                        <br/>
-                        &copy; 2013, Rooms Inc.
-                      </p>
-                     
-
-                      
-
-                    </td>
-                    <td class="expander"></td>
-                  </tr>
-                </table>
-
-              </td>
-              
-            </tr>
-          </table>
       </td>
     </tr>
   </table>

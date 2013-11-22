@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-
+    @skip_header = true
+    @skip_footer = true
   end
 
   def help
@@ -11,9 +12,5 @@ class StaticPagesController < ApplicationController
     @skip_footer = false
   end
   def contact
-  end
-  def landing
-    @skip_header = true
-    @skip_footer = true
   end
 end
