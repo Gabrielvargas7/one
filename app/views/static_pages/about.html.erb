@@ -39,8 +39,8 @@
         </p>
         <br>
         <br>
-        <div>
-            <%= cl_image_tag("product-image.png", height: 1500, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        <div class="center">
+            <%= cl_image_tag("product-image.png", :quality => 100,:default_image => "default_image_all.png")%>
         </div>
         <br>
         <br>
@@ -49,8 +49,8 @@
         </p>
         <br>
         <br>
-        <div>
-            <%= cl_image_tag("product-image-2.png", height: 1500, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        <div class="center">
+            <%= cl_image_tag("product-image-2.png", :quality => 100,:default_image => "default_image_all.png")%>
         </div>
     </div>
 </div>
@@ -74,8 +74,8 @@
                     You might find us coding, rendering awesome furniture, or chasing our company mascot Roomsy around our loft in San Francisco. We enjoy board games, bowling, beer, and taking turns being the resident DJ for the day.
                 </p>
             </div>
-            <div class="span6 about-large-round-picture">
-            <%= cl_image_tag("about-us-image.png", height: 420, width: 420, :crop => :fit, :quality => 50, :default_image => "default_image_all.png")%>
+            <div class="span6 about-large-round-picture center">
+            <%= cl_image_tag("about-us-image.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
             </div>
         </div>
     </div>
@@ -96,7 +96,7 @@
                     <div class="about-wrapper">
                         <div class="about-background"></div>
                         <div class="about-individual-picture">
-                            <%= cl_image_tag("roomsy.png", height: 250, width: 250, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                            <%= cl_image_tag("roomsy.png", height: 250, width: 250, :crop => :fit, :quality => 80,:default_image => "default_image_all.png")%>
                         </div>
                         <p class="about-quote">
                             "I want to put a ding in the universe."<br>Steve Jobs
@@ -427,7 +427,7 @@
                     </div>
                 </div> <!-- CONTAINER FLUID -->
             </div>
-            <div class="span6 about-large-round-picture">
+            <div class="span6 about-large-round-picture center">
             <%= cl_image_tag("thinking-guy.png", height: 420, width: 420, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
             </div>
         </div>
@@ -515,7 +515,7 @@
                     </div>
                 </div> <!-- CONTAINER FLUID -->
             </div>
-            <div class="span6 about-large-round-picture">
+            <div class="span6 about-large-round-picture center">
             <%= cl_image_tag("about-us-image.png", :height => 420, :width => 420, :crop => :fit, :quality => 50, :default_image => "default_image_all.png") %>
             </div>
         </div>
