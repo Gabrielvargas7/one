@@ -74,17 +74,24 @@
 
 
 
-
 <!-- (5) ROOMS TEAM -->
-<div class="container-fluid">
+<div class="container-fluid about-rooms-team">
     <h2 class="text-center about-heading-black">ROOMS TEAM</h2>
     <br>
     <br>
     <ul class="row-fluid">
         <ul class="thumbnails">
             <li class="span3">
-                <div class="thumbnail about-team-picture">
-                    <%= cl_image_tag("roomsy.png", height: 220, width: 220, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                <div class="thumbnail about-thumbnail">
+                    <div class="about-wrapper">
+                        <div class="about-background"></div>
+                        <div class="about-individual-picture">
+                            <%= cl_image_tag("roomsy.png", height: 250, width: 250, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="about-quote">
+                            "This is one small step for Roomsy."
+                        </div>
+                    </div>
                     <div class="caption text-center">
                         <h4>This is Roomsie</h4>
                         <h4 class="about-text-blue">CEO</h4>

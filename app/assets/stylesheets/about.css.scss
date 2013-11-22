@@ -34,14 +34,76 @@
 /*
 (5) ROOMS TEAM
 */
-.about-team-picture {
+.about-thumbnail {
   border: none;
-  -webkit-border-radius: none;
-          border-radius: none;
-          box-shadow: none;
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
+          box-shadow: none;
 }
+
+.about-wrapper {
+  border: solid #00ccff 2px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-individual-picture {
+  height: 250px;
+  width: 250px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.about-background {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/*
+To calculate height, width, take image size (in our case 250) squared / 2, root-ed
+So... x = (250^2/2)^(1/2)
+      x = 176
+
+TODO
+Look into changing all the heights/widths to max-widths
+and max-heights and seeing if that still works good
+*/
+.about-quote {
+  cursor: default;
+  color: #ffffff;
+  font-style: "Open Sans";
+  font-size: 1.1em;
+  font-weight: 200;
+  margin: auto;
+  top: 0; bottom: 0; left: 0; right: 0;
+  height: 50px; // Adjust for each quote based on length
+  width: 176px;
+  position: absolute;
+  text-align: center;
+  -moz-text-align-last: center;
+  text-align-last: center;
+  overflow: auto;
+  opacity: 0;
+}
+
+
+.about-wrapper:hover .about-quote {
+  opacity: 1;
+}
+
+.about-wrapper:hover .about-background {
+  background-color:rgba(0,0,0,0.8);
+}
+
 /*
 (6) JOIN THE TEAM
 */
