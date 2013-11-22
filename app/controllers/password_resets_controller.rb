@@ -8,7 +8,8 @@ class PasswordResetsController < ApplicationController
   def create
     user = User.find_by_email(params[:email])
     user.send_password_reset if user
-    redirect_to root_url, :notice => "Email sent with password reset instructions."
+    redirect_to password_resets_thank_you_page_path
+    #redirect_to root_url, :notice => "Email sent with password reset instructions."
   end
 
 
@@ -28,6 +29,13 @@ class PasswordResetsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def thank_you_page
+    respond_to do |format|
+      format.html
+    end
+
   end
 
 
