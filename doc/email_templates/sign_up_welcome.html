@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width"/>
-	<style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width"/>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
+<style>
 /**********************************************
 * Ink v1.0.2 - Copyright 2013 ZURB Inc        *
 **********************************************/
-
 /* Client-specific Styles & Reset */
 
 #outlook a { 
@@ -287,7 +287,7 @@ img.center {
 body, h1, h2, h3, h4, h5, h6, p { 
   color: #222222;
   display: block; 
-  font-family: "Helvetica", "Arial", sans-serif; 
+  font-family: "Open Sans","Helvetica", "Arial", sans-serif; 
   font-weight: normal; 
   padding:0; 
   margin: 0;
@@ -305,7 +305,9 @@ h3 {font-size: 37px;}
 h4 {font-size: 28px;}
 h5 {font-size: 23px;}
 h6 {font-size: 17px;}
-body, p {font-size: 14px;line-height:19px;}
+body, p {font-size: 16px;
+  line-height:19px;
+  color:#343434;}
 
 p { 
   padding-bottom: 10px;
@@ -316,20 +318,20 @@ small {
 }
 
 a {
-  color: #2ba6cb; 
+  color: #0073a5; 
   text-decoration: none;
 }
 
 a:hover { 
-  color: #2795b6 !important;
+  color: #2795b6 ;
 }
 
 a:active { 
-  color: #2795b6 !important;
+  color: #2795b6 ;
 }
 
 a:visited { 
-  color: #2ba6cb !important;
+  color: #0073a5 ;
 }
 
 h1 a, 
@@ -338,7 +340,7 @@ h3 a,
 h4 a, 
 h5 a, 
 h6 a {
-  color: #2ba6cb !important;
+  color: #0073a5 !important;
 }
 
 h1 a:active, 
@@ -347,7 +349,7 @@ h3 a:active,
 h4 a:active, 
 h5 a:active, 
 h6 a:active { 
-  color: #2ba6cb !important; 
+  color: #0073a5 !important; 
 } 
 
 h1 a:visited, 
@@ -356,7 +358,7 @@ h3 a:visited,
 h4 a:visited, 
 h5 a:visited, 
 h6 a:visited { 
-  color: #2ba6cb !important; 
+  color: #0073a5 !important; 
 } 
 
 /* Panels */
@@ -415,7 +417,7 @@ table.medium-button td a,
 table.large-button td a {
   font-weight: bold;
   text-decoration: none;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Open Sans",Helvetica, Arial, sans-serif;
   color: #ffffff;
   font-size: 16px;
 }
@@ -440,7 +442,7 @@ table.large-button td a {
 table.button:hover td,
 table.button:visited td,
 table.button:active td {
-  background: #2795b6 !important;
+  background: #00ccff !important;
 }
 
 table.button:hover td a,
@@ -454,7 +456,7 @@ table.tiny-button:hover td,
 table.small-button:hover td,
 table.medium-button:hover td,
 table.large-button:hover td {
-  background: #2795b6 !important;
+  background: #00ccff !important;
 }
 
 table.button:hover td a,
@@ -545,7 +547,7 @@ table.round td {
   text-align: center;
   font-weight: bold;
   text-decoration: none;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Open Sans",Helvetica, Arial, sans-serif;
   color: #ffffff;
   background: #2ba6cb;
   border: 1px solid #2284a1;
@@ -578,7 +580,7 @@ table.round td {
 .small-button:hover table td,
 .medium-button:hover table td,
 .large-button:hover table td {
-  background: #2795b6 !important;
+  background: #00ccff !important;
 }
 
 .button,
@@ -602,7 +604,7 @@ table.round td {
 .large-button:active,
 .large-button:visited {
   color: #ffffff !important; 
-  font-family: Helvetica, Arial, sans-serif; 
+  font-family: "Open Sans",Helvetica, Arial, sans-serif; 
   text-decoration: none;
 }
 
@@ -729,7 +731,7 @@ body.outlook img {
 }
   </style>
   <style>
-		
+    
     table.facebook td {
       background: #3b5998;
       border-color: #2d4473;
@@ -797,6 +799,94 @@ body.outlook img {
       padding-right: 10px;
     }
 
+    /*myWebRoom Additions*/
+    .header{
+      background-color:white;
+      border-bottom:1px solid #d2d2d2;
+    }
+    #message_header_padding{
+      padding-bottom:15px;
+    }
+
+    table.container.message_header_container, table.columns.message_footer_content{
+      margin:0 10%;
+      
+    }
+    .link_spanner{
+      width:100%;
+      height:100%;
+    }
+    .message_footer_content p{
+      font-size:12px;
+      padding-top:10px;
+    }
+    table.container.message_content{
+      border: 1px solid #d2d2d2;
+      margin-top:10px;
+    }
+    .message_content h5{
+      font-size:24px;
+      text-align:center;
+      font-weight:lighter;
+      padding:5px;
+      
+    }
+    .message_content h6{
+      font-size:16px;
+      text-align:center;
+      font-weight:normal;
+      
+    }
+
+    table.columns td.message_content_message{
+      padding-bottom:30px;
+
+    }
+    .message_content a{
+      color:#0073a5;
+    }
+    .lead span{
+      font-weight:bolder;
+    }
+    table.row.footer{
+      margin-top:30px;
+    }
+
+/*Specific Key Request style*/
+    .message_content td.user_profile_image{
+      padding:10px;
+    }
+    .message_content span{
+      margin-top:10px;
+    }
+
+    .message_content span.bolder_plus{
+      font-weight:600;
+      font-size:16px;
+    }
+
+    table.columns td.message_content_header{
+      padding-bottom:30px;
+      padding-top: 10px;
+    }
+    .message_content_message table.button, table.button tr, table.button td{
+      margin:0 auto;
+      text-align:center;
+    }
+
+    #check_out_button{
+      margin-top:20px;
+    }
+    #check_out_button td,#check_out_button td a, #check_out_button td a:hover, #check_out_button td a:visited {
+      background-color:#00ccff;
+      border:none;
+      color:white;
+      font-weight:normal;
+      font-style:none;
+      font-size:18px;
+
+    }
+
     @media only screen and (max-width: 600px) {
 
       table[class="body"] .right-text-pad {
@@ -806,33 +896,39 @@ body.outlook img {
       table[class="body"] .left-text-pad {
         padding-right: 10px !important;
       }
+      
+    }
+    @media only screen and (max-width: 730px){
+
+      table.container.message_header_container, table.columns.message_footer_content{
+      margin:0 auto;
+      }
+
     }
 
-	</style>
+  </style>
 </head>
 <body>
-	<table class="body">
-		<tr>
-			<td class="center" align="center" valign="top">
-        <center>
-         
+  <table class="body">
+    <tr>
+      <td class="center" align="center" valign="top">         
           <table class="row header">
             <tr>
               <td class="center" align="center">
                 <center>
           
-                  <table class="container">
+                  <table class="container message_header_container">
                     <tr>
                       <td class="wrapper last">
             
                         <table class="twelve columns">
                           <tr>
                             <td class="six sub-columns">
-                              <img src="http://www.placekitten.com/200/50">
+                              <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/c_scale,w_365/v1376094245/logo-mywebroom.com.png">
+                            
+               
                             </td>
-                            <td class="six sub-columns last" style="text-align:right; vertical-align:middle;">
-                              <span class="template-label">BASIC</span>
-                            </td>
+                            <td class="expander"></td>
                                 
                           </tr>
                         </table>
@@ -843,9 +939,9 @@ body.outlook img {
           
                 </center>
               </td>
-            </tr>
-          </table> 
-
+              </table>
+           
+        <center>
           <table class="container">
             <tr>
               <td>
@@ -857,9 +953,83 @@ body.outlook img {
                       <table class="twelve columns">
                         <tr>
                           <td>
-                            <h3>Hi, Susan Calvin</h3>
-                						<p class="lead">Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae.</p>
-                						<p>Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae. consequat vel lacus. Sed iaculis pulvinar ligula, ornare fringilla ante viverra et. In hac habitasse platea dictumst. Donec vel orci mi, eu congue justo. Integer eget odio est, eget malesuada lorem. Aenean sed tellus dui, vitae viverra risus. Nullam massa sapien, pulvinar eleifend fringilla id, convallis eget nisi. Mauris a sagittis dui. Pellentesque non lacinia mi. Fusce sit amet libero sit amet erat venenatis sollicitudin vitae vel eros. Cras nunc sapien, interdum sit amet porttitor ut, congue quis urna.</p>
+                            <table class="container message_content">
+                              <tr>
+                                <td class = "twelve subcolumns text-pad message_content_header">
+                                  <h5>Welcome to myWebRoom.com, %%Aubrey!</h5>
+                                  <h6>We're happy you've joined our community. Settle in and let's see what you can do in your Room.</h6>
+                                </td>
+                              </tr>
+                              <tr>
+                              
+                                <td align="center" class="center" valign="top">
+                                <table class="container">
+                                  <tr>
+                                    <td class="">
+
+                                      <table class="block-grid two-up">
+                                        <tr>
+                                          <td class="center user_profile_image">
+
+                                            <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1385076206/email-image-01_sw09s5.png">
+                                          
+                                          </td><td class="">
+                                            <span class="bolder_plus">Create Your Room</span>
+                                            <p>By <a href="#%%">mixing and matching</a> themes and furniture</p>
+
+                                            <span class="bolder_plus">Express Yourself</span>
+                                            <p>Through designs that show off your style.</p>
+
+                                            <span class="bolder_plus">Discover the Web</span>
+                                            <p>By adding curated stores, sites, and <a href="#%%">products</a>.</p>
+
+                                            <span class="bolder_plus">Organize your Bookmarks</span>
+                                            <p>In furniture and objects you can purchase!</p>
+
+                                            <span class="bolder_plus">Share your Favorite Finds</span>
+                                            <p>With friends and family.</p>
+                                             
+                                          </td>
+                                        </tr>
+                                      </table>
+
+                                    </td>
+                                    
+                                  </tr>
+                                  <tr>
+                                    <td class="center" align="center">
+                                      <center>
+                                        <table>
+                                          <tr>
+                                            <table id="check_out_button" class="button" style="width:200px;">
+                                                  <tr>
+                                                    <td>
+                                                      <a href="%%ADDRESSmywebroom.com"><span class="link_spanner">Give Key</span></a>
+                                                    </td>
+                                                  </tr>
+                                            </table>
+                                          </tr>
+                                          <tr>
+                                            <td class="center" align="center">
+                                              <center>
+                                              <br>
+                                              Enjoy your Room! <br><br>
+                                              Artem & John <br>
+                                              Co-counders, myWebRoom.com
+                                            </center>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </center>
+                                    </td>
+                                  </tr>
+                                </table>
+                                </td>
+                              
+                              </tr>
+                            
+                            
+                            </table>
                           </td>
                           <td class="expander"></td>
                         </tr>
@@ -869,112 +1039,20 @@ body.outlook img {
                   </tr>
                 </table>
               
-                <table class="row callout">
-                  <tr>
-                    <td class="wrapper last">
 
-                      <table class="twelve columns">
-                        <tr>
-                          <td class="panel">
-                            <p>Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae. <a href="#">Click it! »</a></p>
-                          </td>
-                          <td class="expander"></td>
-                        </tr>
-                      </table>
-
-                    </td>
-                  </tr>
-                </table>
               
-                <table class="row footer">
-                  <tr>
-                    <td class="wrapper">
-                            
-                      <table class="six columns">
-                        <tr>
-                          <td class="left-text-pad">
 
-                            <h5>Connect With Us:</h5>
-
-                            <table class="tiny-button facebook">
-                              <tr>
-                                <td>
-                                  <a href="#">Facebook</a>
-                                </td>
-                              </tr>
-                            </table>
-
-                            <br>
-
-                            <table class="tiny-button twitter">
-                              <tr>
-                                <td>
-                                  <a href="#">Twitter</a>
-                                </td>
-                              </tr>
-                            </table>
-
-                            <br>
-
-                            <table class="tiny-button google-plus">
-                              <tr>
-                                <td>
-                                  <a href="#">Google +</a>
-                                </td>
-                              </tr>
-                            </table>
-
-                          </td>
-                          <td class="expander"></td>
-                        </tr>
-                      </table>
-
-                    </td>
-                    <td class="wrapper last">
-
-                      <table class="six columns">
-                        <tr>
-                          <td class="last right-text-pad">
-                            <h5>Contact Info:</h5>
-                            <p>Phone: 408.341.0600</p>
-                            <p>Email: <a href="mailto:hseldon@trantor.com">hseldon@trantor.com</a></p>
-                          </td>          
-                          <td class="expander"></td>
-                        </tr>
-                      </table>
-
-                    </td>
-                  </tr>
-                </table>
-              
-              
-                <table class="row">
-                  <tr>
-                    <td class="wrapper last">
-            
-                      <table class="twelve columns">
-                        <tr>
-                          <td align="center">
-                            <center>
-                              <p style="text-align:center;"><a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Unsubscribe</a></p>
-                            </center>
-                          </td>
-                          <td class="expander"></td>
-                        </tr>
-                      </table>
-            
-                    </td>
-                  </tr>
-                </table>
               
               <!-- container end below -->
               </td>
             </tr>
           </table> 
 
+
         </center>
-			</td>
-		</tr>
-	</table>
+
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
