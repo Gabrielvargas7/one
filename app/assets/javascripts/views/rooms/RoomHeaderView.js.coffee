@@ -31,6 +31,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     'click #header-search-dropdown li a' : 'headerSearchDropdownChange'     # SEARCH DROPDOWN
     'click #xroom_header_logo'           : 'goToMyRoom'
+
+    'mouseenter #xroom_header_profile': 'hoverHeaderProfile'
+    'mouseleave #xroom_header_profile': 'hoverOffHeaderProfile'
   }
 
 
@@ -59,6 +62,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     # THIS VIEW
     $(@el).append(@template({user_data: user_data}))
+    # add profile image to the header
+    Mywebroom.Helpers.RoomHeaderHelper.addHeaderImageProfile()
 
 
 
@@ -918,3 +923,23 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     }
     # Display the Toastr message
     toastr.info("There are no active sites currently open. Click on an object to start surfing the web!")
+
+
+
+  hoverHeaderProfile:(event) ->
+    event.stopPropagation()
+    event.preventDefault()
+    Mywebroom.Helpers.RoomHeaderHelper.addHoverHeaderImageProfile()
+
+
+
+  hoverOffHeaderProfile:(event) ->
+    event.stopPropagation()
+    event.preventDefault()
+    Mywebroom.Helpers.RoomHeaderHelper.addHeaderImageProfile()
+
+
+
+
+
+

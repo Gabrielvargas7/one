@@ -13,6 +13,18 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #*******************
   initialize: ->
 
+    # (1) set staticContent images
+    $.ajax
+      url: '/static_contents/json/index_static_contents.json'
+      type: 'get'
+      dataType: 'json'
+      async: false
+      success: (data) ->
+        staticContentCollection = new Backbone.Collection()
+        staticContentCollection.add(data)
+        Mywebroom.State.set('staticContent', staticContentCollection)
+
+
 
 
     Mywebroom.Helpers.setItemRefs()
@@ -744,17 +756,17 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    # (1) set staticContent images
-    $.ajax
-      url: '/static_contents/json/index_static_contents.json'
-      type: 'get'
-      dataType: 'json'
-      async: true
-      success: (data) ->
-        staticContentCollection = new Backbone.Collection()
-        staticContentCollection.add(data)
-        Mywebroom.State.set('staticContent', staticContentCollection)
-
+#    # (1) set staticContent images
+#    $.ajax
+#      url: '/static_contents/json/index_static_contents.json'
+#      type: 'get'
+#      dataType: 'json'
+#      async: true
+#      success: (data) ->
+#        staticContentCollection = new Backbone.Collection()
+#        staticContentCollection.add(data)
+#        Mywebroom.State.set('staticContent', staticContentCollection)
+#
 
 
 

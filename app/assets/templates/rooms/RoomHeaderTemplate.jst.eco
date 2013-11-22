@@ -12,7 +12,7 @@
         </a>
 
         <!-- Search Box  -->
-            <div class="input-append" id="xroom_header_search"  >
+            <div class="input-append" id="xroom_header_search">
                     <input id="xroom_header_search_text" type="text" class="span5" placeholder="Search for people, objects and bookmarks">
 
                     <div class="btn-group">
@@ -42,6 +42,7 @@
             </div>
 
 
+
         <div id="browse_mode_item_name_wrap">
 
         </div>
@@ -52,7 +53,7 @@
               </a>
             </li>
             <li>
-                <a id="xroom_header_profile">
+                <a id="xroom_header_profile" class="xroom_header_profile_img">
                 </a>
             </li>
             <li>
@@ -62,6 +63,7 @@
             </li>
             <li><a href="#" id="xroom_header_myroom" >
                 <img src=<%= @user_data.get('user_photos').image_name.url %> >
+
                 <%=  _.str.capitalize(@user_data.get('user').username) %>
 
             </a></li>
