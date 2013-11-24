@@ -628,9 +628,9 @@ $(document).ready ->
 
 
 
-  Mywebroom.Helpers.greyHidden = ->
+  Mywebroom.Helpers.grayHidden = ->
 
-    #console.log("GREY HIDDEN")
+    #console.log("GRAY HIDDEN")
 
     # Show the hidden designs
     $("[data-room-hide=yes]").show()
@@ -640,15 +640,15 @@ $(document).ready ->
     $('[data-room-hide=yes]').each ->
 
 
-      # Look up the grey object on the corresponding item
-      grey = Mywebroom.Data.ItemModels[Number($(this).data().designItemId)].get("image_name_grey")
+      # Look up the gray object on the corresponding item
+      gray = Mywebroom.Data.ItemModels[Number($(this).data().designItemId)].get("image_name_gray")
 
 
-      # Check to see if the grey link has been added
-      if typeof grey isnt "object"
+      # Check to see if the gray link has been added
+      if typeof gray isnt "object"
         url = "/assets/fallback/item/default_item.png"
       else
-        url = grey.url
+        url = gray.url
 
 
 
@@ -1478,7 +1478,7 @@ $(document).ready ->
   (4) Active Nav Tab
   (5) Search filter
   (6) Dropdown filters
-  (7) Hidden item visibility: grey or hidden
+  (7) Hidden item visibility: gray or hidden
   (8) Highlighted Images
   (9) Room size & Button class
   (10) Room Item Hover: on or off
@@ -1531,8 +1531,8 @@ $(document).ready ->
     Mywebroom.Helpers.collapseFilters()
 
 
-    # (7) Hidden item visibility: grey or hidden
-    Mywebroom.Helpers.greyHidden()
+    # (7) Hidden item visibility: gray or hidden
+    Mywebroom.Helpers.grayHidden()
 
 
     # (8) Highlighted Images
@@ -1598,7 +1598,7 @@ $(document).ready ->
     # n/a
 
 
-    # (7) Hidden item visibility: grey or hidden
+    # (7) Hidden item visibility: gray or hidden
     Mywebroom.Helpers.hideHidden()
 
 
@@ -1668,7 +1668,7 @@ $(document).ready ->
     # n/a
 
 
-    # (7) Hidden item visibility: grey or hidden
+    # (7) Hidden item visibility: gray or hidden
     # n/a
 
 
@@ -1741,7 +1741,7 @@ $(document).ready ->
     # n/a
 
 
-    # (7) Hidden item visibility: grey or hidden
+    # (7) Hidden item visibility: gray or hidden
     # n/a
 
 
