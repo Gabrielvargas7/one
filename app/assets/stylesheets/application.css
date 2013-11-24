@@ -278,13 +278,13 @@ a.green_button_light{
     text-decoration: none;
 }
 
-.grey_button{
+.gray_button{
     background-color: #e2e2e2;
     color:#000000;
     border:none;
 }
 
-.grey_button_light{
+.gray_button_light{
     font-family: "Open Sans";
     font-weight: normal;
     font-size:13px;
@@ -292,11 +292,11 @@ a.green_button_light{
     padding: 6px 26px;
 }
 
-a.grey_button_light:hover{
+a.gray_button_light:hover{
     color: #000000;
     text-decoration: none;
 }
-a.grey_button_light{
+a.gray_button_light{
     color: #000000;
     text-decoration: none;
 }

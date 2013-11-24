@@ -106,8 +106,8 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         Mywebroom.Helpers.cancelChanges()
 
 
-        # Turn hidden images grey
-        Mywebroom.Helpers.greyHidden()
+        # Turn hidden images gray
+        Mywebroom.Helpers.grayHidden()
 
 
         # Hide the Save, Cancel, Remove View
@@ -134,9 +134,9 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
 
         ###
-        GREY HIDDE
+        GRAY HIDDE
         ###
-        Mywebroom.Helpers.greyHidden()
+        Mywebroom.Helpers.grayHidden()
 
 
         # Hide the Save, Cancel, Remove View
