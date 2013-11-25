@@ -267,10 +267,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-typeahead-rails (0.9.3)
-      actionpack (>= 3.1)
-      jquery-rails
-      railties (>= 3.1)
     tzinfo (0.3.38)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -323,7 +319,6 @@ DEPENDENCIES
   tapout
   teaspoon!
   toastr-rails (= 1.0.3)
-  twitter-typeahead-rails (= 0.9.3)
   uglifier (= 2.0.1)
   unicorn (= 4.6.3)
   will_paginate (= 3.0.4)
