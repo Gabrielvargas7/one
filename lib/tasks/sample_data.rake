@@ -16,8 +16,8 @@ namespace :db do
     puts("creating admin user" )
     admin = User.create!(name: "admin user",
                  email: "rooms.team@mywebroom.com",
-                 password: "PRico_2000j",
-                 password_confirmation: "PRico_2000j")
+                 password: "asasadsds",
+                 password_confirmation: "awaedqawe")
     admin.toggle!(:admin)
 
 

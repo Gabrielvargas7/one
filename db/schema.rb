@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108182340) do
+ActiveRecord::Schema.define(:version => 20131125214224) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20131108182340) do
     t.integer  "priority_order",              :default => 0
     t.string   "image_name_gray"
     t.string   "image_name_first_time_click"
+    t.string   "name_singular"
   end
 
   add_index "items", ["id"], :name => "index_items_on_id"
