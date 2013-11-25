@@ -162,8 +162,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
             #console.log('postBookmarkModel SUCCESS:')
             #console.log(response)
           error: (model, response)->
-            console.error('postBookmarkModel FAIL:')
-            console.error(response)
+            if response.responseText != "the bookmark already exists" 
+              console.error('postBookmarkModel FAIL:')
+              console.error(response)
 
       ),this)
       #console.log(bookmarkClicked)

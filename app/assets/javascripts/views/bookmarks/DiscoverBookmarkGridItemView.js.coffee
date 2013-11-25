@@ -42,10 +42,11 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
         #console.log('postBookmarkModel SUCCESS:')
         #console.log(response)
       error: (model, response)->
-            console.error('postBookmarkModel FAIL:')
-            console.error(response)
-       #Append Added Confirmation HTML
-       #TODO- make added dialog disappear after 5-10 seconds. (Keep checkmark)
+        if response.responseText != "the bookmark already exists" 
+          console.error('postBookmarkModel FAIL:')
+          console.error(response)
+
+    #Append Added Confirmation HTML
     @$('.bookmark_grid_item').append("<div class='just_added'>
       <p>Added!</p>
       <img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>

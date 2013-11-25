@@ -1,22 +1,94 @@
+<style>
+.pw_reset_content_wrap{
+  text-align:center;
+  padding-top:80px;
+  height:360px;
+}
+.pw_reset_logo{
+  width:45%;
+  float:left;
+  height:260px;
+  border-right: 1px solid #e2e2e2;
+  text-align:center;
+  vertical-align:middle;
+  display:table;
+  padding-right:3%;
+}
 
+.pw_logo_helper{
+  display:inline-block;
+  height:100%;
+  vertical-align: middle;
+}
 
-<h1>Reset Password</h1>
+.pw_reset_logo img{
+  vertical-align: middle;
+}
 
-<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
-    <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+.pw_reset_form{
+  width:40%;
+  float:left;
+  text-align: left;
+  padding:0 5%;
+}
+
+.actions.pw_reset_btn_wrap input{
+  background-color: #39b54A;
+  color: white;
+  font-size:12px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: none;
+  width: 136px;
+  margin-top:15px;
+}
+.pw_reset_content_wrap .field label{
+  font-size:12px;
+  margin-top:5px;
+  margin-bottom:3px;
+}
+.pw_reset_content_wrap .field input{
+  width:315px;
+}
+
+</style>
+
+<div class="pw_reset_content_wrap">
+
+  <div class="pw_reset_logo">
+    <span class="pw_logo_helper"></span>
+    <% @static_content = StaticContent.find_by_name("mywebroom-logo-large")  %>
+    <% if @static_content.nil? or @static_content.image_name.blank?  %>
+        No static content found
+    <% else %>
+        <%= cl_image_tag(@static_content.image_name)%>
     <% end %>
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-    <div class="actions"><%= f.submit "Update Password" %></div>
-<% end %>
+  </div>
+
+  <div class="pw_reset_form">
+    <h4>Reset Your Password</h4>
+
+    <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+        <% if @user.errors.any? %>
+            <div class="error_messages">
+              <h2>Form is invalid</h2>
+              <ul>
+                <% for message in @user.errors.full_messages %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <div class="field">
+          <%= f.label :new_password%>
+          <%= f.password_field :password %>
+        </div>
+
+        <div class="actions pw_reset_btn_wrap"><%= f.submit "Apply & Login" %></div>
+    <% end %>
+  </div>
+
+</div>
+
+
 
