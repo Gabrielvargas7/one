@@ -335,7 +335,7 @@ class User < ActiveRecord::Base
   #***********************************
   def create_user_profile
     if self.uid.blank?
-      UsersProfile.create(user_id:self.id,tutorial_step:1)
+      UsersProfile.create(user_id:self.id,tutorial_step:0)
     end
   end
 
@@ -411,8 +411,8 @@ class User < ActiveRecord::Base
     if self.specific_room_id.nil?
       puts "specific_room_id is nil"
 
-      if Bundle.exists?(id:6)
-        bundle = Bundle.find(6)
+      if Bundle.exists?(id:27)
+        bundle = Bundle.find(27)
       else
         bundle = Bundle.where("active = 'y'").order("RANDOM()").first
       end
