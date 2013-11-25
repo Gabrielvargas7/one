@@ -92,6 +92,23 @@ So... x = (250^2/2)^(1/2)
   opacity: 0;
 }
 
+.about-quote-small {
+  max-height: 60px;
+}
+
+.about-quote-medium {
+  max-height: 95px;
+}
+
+.about-quote-large {
+  max-height: 130px;
+}
+
+.about-quote-x-large {
+  max-height: 165px;
+}
+
+
 
 .about-wrapper:hover .about-quote {
   opacity: 1;
