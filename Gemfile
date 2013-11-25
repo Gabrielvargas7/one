@@ -46,7 +46,6 @@ ruby '2.0.0'
   gem 'backbone-on-rails', '1.0.0.1'
   gem 'toastr-rails', '1.0.3'
   gem 'marionette-rails', '1.1.0'
-  gem 'twitter-typeahead-rails', '0.9.3'
 
 
 
