@@ -24,10 +24,10 @@
         <ul class="nav pull-right" >
 
 
-              <li><%= link_to 'ABOUT US',about_path %>  </li>
-              <li><%= link_to 'BLOG', "http://blog.mywebroom.com" %>      </li>
-              <li><%= link_to 'SHOP',shop_index_path %> </li>
-              <li><%= link_to 'HELP',help_path %> </li>
+              <li><%= link_to 'About Us ',about_path %>  </li>
+              <li><%= link_to 'Blog', "//blog.mywebroom.com" %>      </li>
+              <li><%= link_to 'Shop',shop_index_path %> </li>
+              <li><%= link_to 'Help',help_path %> </li>
 
 
 
@@ -94,8 +94,8 @@
               <% end %>
 
           <% else %>
-              <li><%= link_to_function "LOGIN", "javascript:login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
-              <li><%= link_to "SIGN UP", xroom_rooms_path , :id =>"signup_btn" %></li>
+              <li><%= link_to_function "Login", "javascript:login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
+              <li><%= link_to "Sign Up", xroom_rooms_path , :id =>"signup_btn" %></li>
           <% end %>
           <!-- End If -->
 
