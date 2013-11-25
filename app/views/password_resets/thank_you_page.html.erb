@@ -17,12 +17,80 @@
         Just confirm the link sent to your email and you will be back i your ROOM in no time!
       </p>
     </div>
+
     <div id="password_reset_content">
       Need Help?
       <p>
         Click one of the following icons to visit your email provider.
       </p>
+
     </div>
+
+    <table class="password_reset_content_mail_table">
+    <tr>
+      <td >
+            <% @static_content = StaticContent.find_by_name("gmail-icon")  %>
+            <% if @static_content.nil? or @static_content.image_name.blank?  %>
+                <%= link_to("Gmail","//mail.google.com") %>
+            <% else %>
+                <a href="//mail.google.com">
+                  <%= cl_image_tag(@static_content.image_name, :width => 50, :height => 45, :crop => :fit, :alt => "google mail" ) %> </br>
+                  Gmail
+                </a>
+            <% end %>
+      </td>
+      <td>
+            <% @static_content = StaticContent.find_by_name("icloud-icon")  %>
+            <% if @static_content.nil? or @static_content.image_name.blank?  %>
+                <%= link_to("iCloud","//www.icloud.com") %>
+            <% else %>
+                <a href="//www.icloud.com">
+                  <%= cl_image_tag(@static_content.image_name, :width => 50, :height => 45, :crop => :fit, :alt => "icloud" ) %> </br>
+                  iCloud
+                </a>
+            <% end %>
+      </td>
+      <td>
+        <% @static_content = StaticContent.find_by_name("ymail-icon")  %>
+        <% if @static_content.nil? or @static_content.image_name.blank?  %>
+            <%= link_to("YMail","//mail.yahoo.com/‎") %>
+        <% else %>
+            <a href="//mail.yahoo.com/‎">
+              <%= cl_image_tag(@static_content.image_name, :width => 50, :height => 45, :crop => :fit, :alt => "Yahoo Mail" ) %> </br>
+                YMail
+            </a>
+        <% end %>
+      </td>
+
+
+      <td>
+        <% @static_content = StaticContent.find_by_name("hotmail-icon")  %>
+        <% if @static_content.nil? or @static_content.image_name.blank?  %>
+            <%= link_to("Hotmail","//www.hotmail.com/‎") %>
+        <% else %>
+            <a href="//www.hotmail.com/‎‎">
+              <%= cl_image_tag(@static_content.image_name, :width => 50, :height => 45, :crop => :fit, :alt => "hotmail" ) %> </br>
+              Hotmail
+            </a>
+        <% end %>
+      </td>
+
+      <td>
+        <% @static_content = StaticContent.find_by_name("aol-email-icon")  %>
+        <% if @static_content.nil? or @static_content.image_name.blank?  %>
+            <%= link_to("Aol Mail","//mail.aol.com/‎/‎") %>
+        <% else %>
+            <a href="//mail.aol.com/‎/‎‎">
+              <%= cl_image_tag(@static_content.image_name, :width => 50, :height => 45, :crop => :fit, :alt => "mail aol" ) %> </br>
+              Aol Mail
+            </a>
+        <% end %>
+      </td>
+
+    </tr>
+    </table>
+
+
 
 
   </div>
