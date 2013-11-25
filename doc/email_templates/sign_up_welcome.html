@@ -834,8 +834,7 @@ body.outlook img {
     .message_content h6{
       font-size:14px;
       text-align:center;
-      font-weight:normal;
-      
+      font-weight:normal;      
     }
 
     table.columns td.message_content_message{
@@ -854,7 +853,8 @@ body.outlook img {
 
 /*Specific Key Request style*/
     .message_content td.user_profile_image{
-      padding:10px;
+      padding:3px;
+      padding-right: 30px;
     }
     .message_content span{
       margin-top:10px;
@@ -951,13 +951,11 @@ body.outlook img {
                             <table class="container message_content">
                               <tr>
                                 <td class = "twelve subcolumns text-pad message_content_header">
-                                  %% if @user_profile.firstname.blank? %%
-                                    <h5>Welcome to myWebRoom.com, %%=@user.username%%!</h5>
-                                  %% else %%
-                                    <h5>Welcome to myWebRoom.com, %%=@user_profile.firstname%%!</h5>
-                                  %% end %%                            
-                                  <h6>We're happy you've joined our community. Settle in and let's see
-                                  </h6><h6>what you can do in your Room.</h6>
+                                  
+                                  <h5>Welcome to myWebRoom.com, %%=@user.username%%!</h5>
+                                  <h6 style="padding-top:6px;">We're happy you've joined our community. 
+                                  </h6><h6>Settle in and let's see what you can do in your Room.</h6>
+                                  
                                 </td>
                               </tr>
                               <tr>
@@ -976,16 +974,16 @@ body.outlook img {
                                           </td>
                                           <td class="">
                                             <span class="bolder_plus">Create Your Room</span>
-                                            <p>By <a href="%%=room_rooms_url(@user.username)%%">mixing and matching</a> themes and furniture</p>
+                                            <p>By <a href="%%=room_rooms_url(@user.username)%%">mixing and matching</a> themes and furniture.</p>
 
                                             <span class="bolder_plus">Express Yourself</span>
                                             <p>Through designs that show off your style.</p>
 
                                             <span class="bolder_plus">Discover the Web</span>
-                                            <p>By adding curated stores, sites, and <a href="%%=room_rooms_url(@user.username)%%">products</a>.</p>
+                                            <p>By adding curated stores, sites and <a href="%%=room_rooms_url(@user.username)%%">products</a>.</p>
 
-                                            <span class="bolder_plus">Organize your Bookmarks</span>
-                                            <p>In furniture and objects you can purchase!</p>
+                                            <span class="bolder_plus">Organize Bookmarks</span>
+                                            <p>In furniture and objects you can buy!</p>
 
                                             <span class="bolder_plus">Share your Favorite Finds</span>
                                             <p>With friends and family.</p>
@@ -1018,7 +1016,7 @@ body.outlook img {
                                               <br>
                                               Enjoy your Room! <br><br>
                                               Artem & John <br>
-                                              Co-counders, myWebRoom.com
+                                              Co-founders, myWebRoom.com
                                             </center>
                                             </td>
                                           </tr>
