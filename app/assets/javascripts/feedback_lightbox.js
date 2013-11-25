@@ -44,7 +44,7 @@ function feedback_lightbox(){
                     '<textarea name="description" rows="8"></textarea>'+
                     '<br/>'+
                     '<div id="feedback_btn_container">' +
-                        '<a id="feedback_close_btn" class="grey_button_light grey_button" href="javascript:feedback_close_lightbox();">Cancel</a>' +
+                        '<a id="feedback_close_btn" class="gray_button_light gray_button" href="javascript:feedback_close_lightbox();">Cancel</a>' +
                         '<input id="feedback_send_btn" class="green_button green_button_light" name="commit" type="submit" value="Send">'+
 
                     '</div>'+

@@ -1,5 +1,10 @@
-<% provide(:title, 'Home') %>
 <% provide(:title, 'myWebRoom Virtual Room') %>
+
+<% content_for :head do %>
+    <!-- your tags -->
+    <meta name="description" content="A virtual place to Express, Organize, Discover, Share and Create.">
+<% end %>
+
 <link href='//fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
 <style>
 html,body{height:100%;}
@@ -70,7 +75,7 @@ body{
   color:white;
 }
 .landing_text_2{
-  
+
   font-size:100px;
   font-weight:800;
   text-transform: uppercase;
@@ -80,7 +85,7 @@ body{
   font-size:25px;
   font-weight:400;
   text-shadow: 2px 2px 4px rgba(0,0,0,.8);
-  
+
 }
 
 .landing_get_started{
@@ -157,7 +162,7 @@ li.landing_login{
 
 }
 /* keep full widget on smaller screens */
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
   body {
     padding-left: 0;
     padding-right: 0;
@@ -172,36 +177,41 @@ li.landing_login{
   font-size:30px;
   }
   .landing_text_2{
-    
+
     font-size:70px;
   }
   .landing_text_3{
     font-size:19px;
     font-weight:400;
     text-shadow: 2px 2px 4px rgba(0,0,0,.8);
-    
+
   }
 }
 </style>
 <div id="toolbar_overlay">
   <div id="landing_logo">
-    <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904370/mywebroomlogo365x64.png">
+
+      <% if signed_in? %>
+        <a href="<%=room_rooms_path(current_user.username)%>"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904370/mywebroomlogo365x64.png"></a>
+      <%else%>
+         <a href="<%=root_path%>"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384904370/mywebroomlogo365x64.png"></a>
+      <%end%>
 
   </div>
 
   <div class="landing_header">
-    
+
     <ul class="pull-right" >
 
 
               <li><%= link_to 'ABOUT US',about_path %>  </li>
               <li><%= link_to 'BLOG', "http://blog.mywebroom.com" %>      </li>
               <li><%= link_to 'SHOP',shop_index_path %> </li>
-              
-              <li class="landing_login"> <%= link_to_function "LOGIN", "javascript:login_lightbox_show()",:class => "grey_button_light grey_button", :id => "login_btn"%></li>
+
+              <li class="landing_login"> <%= link_to_function "LOGIN", "javascript:login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
               <li><%= link_to "SIGN UP", xroom_rooms_path , :id =>"signup_btn" %></li>
     </ul>
-  
+
   </div>
 </div>
 <div id="myCarousel" class="carousel slide">
@@ -216,10 +226,10 @@ li.landing_login{
             <p class="landing_text_3 uppercase">Style &nbsp;  &#183; &nbsp;  Personality &nbsp;  &#183; &nbsp;  Interests</p><br>
             <div class="blue_button landing_get_started">
               <span>GET STARTED</span>
-              <a href="/xroom"> <span class="link_spanner"></span></a>
+              <a href="<%=xroom_rooms_path%>"> <span class="link_spanner"></span></a>
             </div>
             <div class="landing_play_video">
-              <a href="#"><span class="link_spanner"><span></a>
+              <a href="javascript:playVideoLightbox();"><span class="link_spanner"><span></a>
             </div>
           </div>
         </div>
@@ -236,14 +246,14 @@ li.landing_login{
             <p class="landing_text_3 uppercase">Bookmarks &nbsp;  &#183; &nbsp;  Ideas &nbsp;  &#183; &nbsp;  Activities</p><br>
             <div class="blue_button landing_get_started">
               <span>GET STARTED</span>
-              <a href="/xroom"> <span class="link_spanner"></span></a>
+              <a href="<%=xroom_rooms_path%>"> <span class="link_spanner"></span></a>
             </div>
 
-            <div class="landing_play_video">
-              <a href="#"><span class="link_spanner"><span></a>
+             <div class="landing_play_video">
+              <a href="javascript:playVideoLightbox();"><span class="link_spanner"><span></a>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -251,22 +261,22 @@ li.landing_login{
     <div class="item">
       <div class="fill" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384975885/landing-page-paris-blur-center.jpg');">
         <div class="container">
-          
+
           <div class="landing_slide_content">
             <p class="landing_text_1"> Your place to</p>
             <p class="landing_text_2" >DISCOVER</p>
             <p class="landing_text_3 uppercase">Trends &nbsp;  &#183; &nbsp;  Sites &nbsp;  &#183; &nbsp;  Stores</p><br>
-            <div class="blue_button landing_get_started">
+           <div class="blue_button landing_get_started">
               <span>GET STARTED</span>
-              <a href="/xroom"> <span class="link_spanner"></span></a>
+              <a href="<%=xroom_rooms_path%>"> <span class="link_spanner"></span></a>
             </div>
             <div class="landing_play_video">
-              <a href="#"><span class="link_spanner"><span></a>
+              <a href="javascript:playVideoLightbox();"><span class="link_spanner"><span></a>
             </div>
 
 
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -274,20 +284,20 @@ li.landing_login{
     <div class="item">
       <div class="fill" style="background-image:url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384975868/landing-page-urban-blur-center.jpg');">
         <div class="container">
-          
+
           <div class="landing_slide_content">
             <p class="landing_text_1"> Your place to</p>
             <p class="landing_text_2" >SHARE</p>
             <p class="landing_text_3 uppercase">Products &nbsp;  &#183; &nbsp;  Contents &nbsp;  &#183; &nbsp;  Designs</p><br>
-            <div class="blue_button landing_get_started">
+           <div class="blue_button landing_get_started">
               <span>GET STARTED</span>
-              <a href="/xroom"> <span class="link_spanner"></span></a>
+              <a href="<%=xroom_rooms_path%>"> <span class="link_spanner"></span></a>
             </div>
-            <div class="landing_play_video">
-              <a href="#"><span class="link_spanner"><span></a>
+             <div class="landing_play_video">
+              <a href="javascript:playVideoLightbox();"><span class="link_spanner"><span></a>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -295,25 +305,25 @@ li.landing_login{
     <div class="item">
       <div class="fill" style="background-image:url('http://placekitten.com/900/600');">
         <div class="container">
-          
+
           <div class="landing_slide_content">
             <p class="landing_text_1"> Your place to</p>
             <p class="landing_text_2" >CREATE</p>
             <p class="landing_text_3 ">a home on the web</p><br>
-            
+
             <div class="blue_button landing_get_started">
               <span>GET STARTED</span>
-              <a href="/xroom"> <span class="link_spanner"></span></a>
+              <a href="<%=xroom_rooms_path%>"> <span class="link_spanner"></span></a>
             </div>
-            
+
             <div class="landing_play_video">
-              <a href="#"><span class="link_spanner"><span></a>
-            </div>          
+              <a href="javascript:playVideoLightbox();"><span class="link_spanner"><span></a>
+            </div>
           </div>
-          
+
         </div>
       </div>
-    </div>    
+    </div>
   </div>
   <div class="pull-center">
   <a class="carousel-control left" href="#myCarousel" data-slide="prev"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1384913522/white-left-arrow.png"</a>
