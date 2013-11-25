@@ -98,7 +98,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("artem.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-small">
                             "I want to put a ding in the universe."<br>Steve Jobs
                         </p>
                     </div>
@@ -121,7 +121,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("john.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-small">
                             "You must be the change you wish to see in the world."<br>Gandhi
                         </p>
                     </div>
@@ -144,7 +144,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("dasha.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-large">
                             "If we are demoralized, sad and only complain, we'll not solve our problems."<br>Dalai Lama
                         </p>
                     </div>
@@ -167,7 +167,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("aubrey.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-small">
                             "Keep the dream alive: Hit the snooze button."<br>Anonymous
                         </p>
                     </div>
@@ -194,7 +194,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("millu.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-large">
                             "Random Jottings and drawings and questions, are just as, if not more, interesting than the final piece."<br>Sol Lewitt
                         </p>
                     </div>
@@ -217,7 +217,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("gabriel.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-x-large">
                             "Trust your passion, identify your dreams, and find the courage to share them with others, no matter how many times they call you a fool."<br>Bill Strickland
                         </p>
                     </div>
@@ -240,7 +240,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("sara.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-medium">
                             "Nothing in this world can take the place of persistence."<br>Calvin Coolidge
                         </p>
                     </div>
@@ -263,7 +263,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("dave.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-small">
                             "Get the important things right."<br>N.P. Collingwood
                         </p>
                     </div>
@@ -290,7 +290,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("nathalie.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-medium">
                              "All that we see or seem is but a dream within a dream."<br>Edgar Allen Poe
                         </p>
                     </div>
@@ -313,7 +313,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("dana.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-small">
                              "Good comes to those who wait."<br>Mother Goose
                         </p>
                     </div>
@@ -336,7 +336,7 @@
                         <div class="about-individual-picture">
                             <%= cl_image_tag("roomsy.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <p class="about-quote">
+                        <p class="about-quote about-quote-x-large">
                             "What makes us human, I think, is an ability to ask questions, a consequence of our sophisticated spoken language."<br>Jane Goodall
                         </p>
                     </div>
@@ -348,11 +348,13 @@
             </li>
             <li class="span3">
                 <div class="thumbnail about-thumbnail">
-                    <a href="#join-the-team-section">
-                        <div class="about-individual-picture">
-                            <%= cl_image_tag("default-profile.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                        </div>
-                    </a>
+                    <div class="about-wrapper">
+                        <a href="#join-the-team-section">
+                            <div class="about-individual-picture">
+                                <%= cl_image_tag("default-profile.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                            </div>
+                        </a>
+                    </div>
                     <div class="caption text-center">
                         <h4>This could be You</h4>
                         <h4 class="about-text-blue">Join the Team</h4>
@@ -552,15 +554,17 @@
 <div class="container-fluid about-background-blue">
     <div class="row-fluid">
         <div class="span6">
+            <br>
+            <br>
             <div class="about-large-round-picture">
                 <%= cl_image_tag("contact-us.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
             </div>
         </div>
         <div class="span6">
+            <br>
             <h2 class="about-heading-white">CONTACT US</h2>
             <div class="row-fluid">
                 <div class="span6">
-
                     <div class="media">
                         <a class="pull-left" href="mailto:info@mywebroom.com">
                             <img class="media-object" src="<%= cloudinary_url('email.png') %>">
