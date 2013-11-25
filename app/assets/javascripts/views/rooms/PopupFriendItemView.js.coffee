@@ -64,7 +64,7 @@ class Mywebroom.Views.PopupFriendItemView extends Backbone.View
 
     #Turn on Design Clicks
     Mywebroom.Helpers.turnOnDesignClick()
-    Mywebroom.Helpers.turnOffHover()
+    Mywebroom.Helpers.turnOnHover()
 
     #  Scroller visibility
     $("#xroom_scroll_left").show()
