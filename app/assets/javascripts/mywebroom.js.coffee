@@ -1059,11 +1059,16 @@ $(document).ready ->
 
     #This view extends PopupFriendItemView. remove() is overriding Backbone's so we can show bookmarks view when popup closes.
     FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
-                      template:JST['rooms/PopUpItemFirstClickTemplate'],
-                      className:"popup_item_first_click_view",
+                      template:JST['rooms/PopUpItemFirstClickTemplate']
+                      
+                      className:"popup_item_first_click_view"
 
-                      #Override Backbone.View::remove
-                      remove: ->
+                      events:
+                            'click .green_button':'closeViewWithDB'
+                            'click #popup_item_first_click_close':'closeView'
+
+                      #close the view, but tell the database the user clicked continue
+                      closeViewWithDB: ->
 
                         #1a. Send DB clicked item. Also, change the StateModel, so clicking again won't count as first time.
                         updateClickedItemModel = new Mywebroom.Models.UpdateUserItemDesignFirstTimeClickByUserIdAndDesignIdAndLocationId({id:0})
@@ -1079,8 +1084,8 @@ $(document).ready ->
                         #1b. Show bookmarks view.
                         Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
 
-                        #1c. Call the base class remove method
-                        Backbone.View::remove.apply this
+                        #1c. Call the original closeView method
+                        @closeView()
 
                     })
 
