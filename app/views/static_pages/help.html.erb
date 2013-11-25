@@ -1,413 +1,590 @@
 <% provide(:title, 'How to use your web room') %>
 
 
+
+
 <!-- META DATA -->
 <% content_for :head do %>
-    <!-- your tags -->
     <meta name="description" content="Learn how to use your webroom. Every unique featire explained on this page!">
 <% end %>
 
 
 
 
-<div class="container">
-  <div class="row">
+<div class="row-fluid">
 
     <!-- AFFIX -->
-    <div class="span4 help-sidebar">
-      <ul class="nav nav-list" data-spy="affix">
-        <li class="nav-header">DECORATE</li>
-        <li>
-          <!-- 1.1 -->
-          <a href="#change_objects">Change Objects</a>
-        </li>
-        <li>
-          <!-- 1.2 -->
-          <a href="#change_theme">Change Theme</a>
-        </li>
-        <li>
-          <!-- 1.3 -->
-          <a href="#save_and_cancel_changes">Save &amp; Cancel Changes</a>
-        </li>
-        <li>
-          <!-- 1.4 -->
-          <a href="#add_and_remove_objects">Add &amp; Remove Objects</a>
-        </li>
-        <li class="divider"></li>
-        <li class="nav-header">ORGANIZE</li>
-        <li>
-          <!-- 2.1 -->
-          <a href="#discover_bookmarks">Discover Bookmarks</a>
-        </li>
-        <li>
-          <!-- 2.2 -->
-          <a href="#add_and_create_bookmarks">Add &amp; Create Bookmarks</a>
-        </li>
-        <li>
-          <!-- 2.3 -->
-          <a href="#delete_bookmarks">Delete Bookmark</a>
-        </li>
-        <li>
-          <!-- 2.4 -->
-          <a href="#active_sites">Active Sites</a>
-        </li>
-        <li class="divider"></li>
-        <li class="nav-header">SHARE</li>
-        <li>
-          <!-- 3.1 -->
-          <a href="#key_requests">Key Requests</a>
-        </li>
-        <li>
-          <!-- 3.2 -->
-          <a href="#friends_room">Friend's Room</a>
-        </li>
-        <li>
-          <!-- 3.3 -->
-          <a href="#upload_your_photos">Upload Your Photos</a>
-        </li>
-        <li class="divider"></li>
-        <li class="nav-header">PROFILE SETTINGS</li>
-        <li>
-          <!-- 4.1 -->
-          <a href="#change_username_or_password">Change Username or Password</a>
-        </li>
-        <li>
-          <!-- 4.2 -->
-          <a href="#edit_profile_information">Edit Profile Information</a>
-        </li>
-        <li>
-          <!-- 4.3 -->
-          <a href="#change_photo">Change Photo</a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <!-- 5 -->
-          <a href="#faq">FAQ</a>
-        </li>
-      </ul>
+    <div class="span4">
+        <ul class="nav nav-list" data-spy="affix">
+            <li class="nav-header">DECORATE</li>
+            <li>
+                <!-- 1.1 -->
+                <a href="#change_objects">Change Objects</a>
+            </li>
+            <li>
+                <!-- 1.2 -->
+                <a href="#change_theme">Change Theme</a>
+            </li>
+            <li>
+                <!-- 1.3 -->
+                <a href="#save_and_cancel_changes">Save &amp; Cancel Changes</a>
+            </li>
+            <li>
+                <!-- 1.4 -->
+                <a href="#add_and_remove_objects">Add &amp; Remove Objects</a>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-header">ORGANIZE</li>
+            <li>
+                <!-- 2.1 -->
+                <a href="#discover_bookmarks">Discover Bookmarks</a>
+            </li>
+            <li>
+                <!-- 2.2 -->
+                <a href="#add_and_create_bookmarks">Add &amp; Create Bookmarks</a>
+            </li>
+            <li>
+                <!-- 2.3 -->
+                <a href="#delete_bookmarks">Delete Bookmark</a>
+            </li>
+            <li>
+                <!-- 2.4 -->
+                <a href="#active_sites">Active Sites</a>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-header">SHARE</li>
+            <li>
+                <!-- 3.1 -->
+                <a href="#key_requests">Key Requests</a>
+            </li>
+            <li>
+                <!-- 3.2 -->
+                <a href="#friends_room">Friend's Room</a>
+            </li>
+            <li>
+                <!-- 3.3 -->
+                <a href="#upload_your_photos">Upload Your Photos</a>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-header">PROFILE SETTINGS</li>
+            <li>
+                <!-- 4.1 -->
+                <a href="#change_username_or_password">Change Username or Password</a>
+            </li>
+            <li>
+                <!-- 4.2 -->
+                <a href="#edit_profile_information">Edit Profile Information</a>
+            </li>
+            <li>
+                <!-- 4.3 -->
+                <a href="#change_photo">Change Photo</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <!-- 5 -->
+                <a href="#faq">FAQ</a>
+            </li>
+        </ul>
     </div>
 
 
 
 
     <!-- MAIN -->
-    <div class="span8 help-main">
+    <div class="span8">
 
 
-      <div class="help-page-top-button">
-        <a href="#top"> <!-- THIS IS MAGIC! THERE'S NO ELEMENT WITH ID #top! -->
-          <%= cl_image_tag("up-icon.png", :quality => 100, :default_image => "default_image_all.png")%>
-        </a>
-      </div>
-
-
-      <!-- PAGE 1 -->
-      <h1>Decorate</h1>
-
-      <!-- 1.1 -->
-      <h3 id="change_objects">Change Objects</h3>
-      <p>
-        1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar</br>
-        2.&nbsp;&nbsp;Click the object you want to change</br>
-        3.&nbsp;&nbsp;Choose the one you'd like to preview. If you don't see one you like, you can</br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search for objects that match a keyword or use filters to help you find one</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_object.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-      <!-- 1.2 -->
-      <h3 id="change_theme">Change Theme</h3>
-      <p>
-        1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar</br>
-        2.&nbsp;&nbsp;Select the <em>Themes</em> tab</br>
-        3.&nbsp;&nbsp;Choose the theme you'd like to preview. If you don't see one you like, you can<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search for themes that match a keyword or use filters to help you find one</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_theme.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-
-      <!-- 1.3 -->
-      <h3 id="save_and_cancel_changes">Save and Cancel Changes</h3>
-
-      <!-- 1.3.1 -->
-      <h5>Save Changes</h5>
-      <p>
-        1.&nbsp;&nbsp;After you choose the object you want, click on the <em>Save Design</em> button to keep all changes</br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;made to your room</br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: you can change multiple objects and save all the changes once you are done</em></br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_save.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-      <!-- 1.3.2 -->
-      <h5>Cancel Changes</h5>
-      <p>
-        2.&nbsp&nbsp;Click the <em>Cancel Changes</em> button if you don't want to keep any changes made to your room</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_cancel.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-      <!-- 1.4 -->
-      <h3 id="add_and_remove_objects">Add and Remove Objects</h3>
-
-      <!-- 1.4.1 -->
-      <h5>Remove Object</h5>
-      <p>
-        1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar and click an object you want to remove</br>
-        2.&nbsp;&nbsp;Click the <em>Remove Object</em> button</br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: Removing this object does not delete its contents. All your bookmarks will be restored</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if you decide to re-add the object</em></br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_remove.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-      <!-- 1.4.2 -->
-      <h5>Add Object</h5>
-      <p>
-        2.&nbsp;&nbsp;To add the object back, simply choose a new design, click it, and then click <em>Save Design</em></br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_object.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-      <!-- 2 -->
-      </br>
-      <h1>Organize</h1>
-
-      <!-- 2.1 -->
-      <h3 id="discover_bookmarks">Discover Bookmarks</h3>
-      <p>
-        1.&nbsp;&nbsp;Click on any object to open up the bookmark interface</br>
-        2.&nbsp;&nbsp;Click on <em>Discover</em> to view all the available sites we have for that category</br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click a site's icon to preview that site)</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_discover_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_discover_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-      <!-- 2.2 -->
-      <h3 id="add_and_create_bookmarks">Add and Create Bookmarks</h3>
-      <p>
-        1.&nbsp;&nbsp;Click on the plus (add icon) in the top right corner to save bookmarks to your selected</br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;category. A checkmark icon signifies that it has been added</br>
-        2.&nbsp;&nbsp;If you can't find a site in our library, you have the option to add your own bookmark</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_add_bookmark.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_add_url.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-
-      <!-- 2.3 -->
-      <h3 id="delete_bookmarks">Delete Bookmarks</h3>
-      <p>
-        1.&nbsp;&nbsp;Go to the <em>My Bookmarks</em> tab and simply click on the trashbox button in</br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the top right corner to delete it.</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_delete_bookmark.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-
-      <!-- 2.4 -->
-      <h3 id="active_sites">Active Sites</h3>
-      <p>
-        1.&nbsp;&nbsp;To view all your active sites click on the star icon on your toolbar</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_active_sites.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-
-      <!-- 3 -->
-      </br>
-      <h1>Share</h1>
-
-
-      <!-- 3.1 -->
-      <h3 id="key_requests">Key Requests</h3>
-      <p>
-        1.&nbsp;&nbsp;Click on the social icon in the toolbar to open up the social interface</br>
-        2.&nbsp;&nbsp;Click on the <em>Key Request</em> tab</br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: You will get a red notification when you have a key request pending</em></br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_social.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_key_requests.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-
-      <!-- 3.2 -->
-      <h3 id="friends_room">Friend's Room</h3>
-
-      <!-- 3.2.1 -->
-      <h5>View Room</h5>
-      <p>
-        1.&nbsp;&nbsp;Click on the gear icon and then <em>View Room</em>to checkout your friend's room</br>
-        2.&nbsp;&nbsp;Once in the room you can click on the objects to view your friend's bookmarks and more.</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_gear_icon.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("full_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-
-      <!-- 3.2.2 -->
-      <h5>View profile info and photos</h5>
-      <p>
-        1.&nbsp;&nbsp;Once in the friend's tab click on friend's name or picture to open up their profile page</br>
-        2.&nbsp;&nbsp;View and like photos</br>
-      </p>
-      </br>
-      <div>
-        <%= cl_image_tag("profile.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("photos.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-      <!-- 3.3 -->
-      <h3 id="upload_your_photos">Upload your photos</h3>
-      <p>
-        1.&nbsp;&nbsp;Open the photo page on your social tab</br>
-        2.&nbsp;&nbsp;Click on the plus sign to upload photos or click on the upload photo button</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_upload_photo_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_upload_photo_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-
-      <!-- 4 -->
-      </br>
-      <h1>Profile Settings</h1>
-
-      <!-- 4.1 -->
-      <h3 id="change_username_or_password">Change Username or Password</h3>
-      <p>
-        1.&nbsp;&nbsp;Click the dropdown arrow on your toolbar next to your username</br>
-        2.&nbsp;&nbsp;Click on <em>Account Settings</em></br>
-        3.&nbsp;&nbsp;Change your username or password</br>
-        2.&nbsp;&nbsp;Once you are done click <em>Save Changes</em></br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_account_settings_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_account_settings_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-
-
-      <!-- 4.2 -->
-      <h3 id="edit_profile_information">Edit Profile Information</h3>
-      <p>
-        1.&nbsp;&nbsp;Click the Profile Tab to change your general information</br>
-        2.&nbsp;&nbsp;Once you are done click save changes</br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_account_settings_c.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
+        <div class="help-page-top-button">
+            <a href="#top"> <!-- THIS IS MAGIC! THERE'S NO ELEMENT WITH ID #top! -->
+                <%= cl_image_tag("up-icon.png", :quality => 100, :default_image => "default_image_all.png")%>
+            </a>
+        </div>
 
 
 
-      <!-- 4.3 -->
-      <h3 id="change_photo">Change Photo</h3>
-      <p>
-        1.&nbsp;&nbsp;Click the <em>Edit your Profile Picture</em> link</br>
-        2.&nbsp;&nbsp;Enter a name and click <em>Browse...</em> to select the photo to upload</br>
-        3.&nbsp;&nbsp;Once you are done click <em>Upload Photo</em></br>
-      </p>
-      <div>
-        <%= cl_image_tag("click_account_settings_d.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_set_as_profile_picture.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
-      <div>
-        <%= cl_image_tag("click_account_password.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
-      </div>
-      </br>
+        <!-- PAGE 1 -->
+        <h1>Decorate</h1>
 
-      <!-- 5 -->
-      </br>
-      <h1 id="faq">Frequently Asked Questions</h1>
-      <h3>Help Center</h3>
+        <!-- 1.1 -->
+        <h3 id="change_objects">Change Objects</h3>
 
-      </br>
-      <p>
-        <div class="text-info">Q.&nbsp;&nbsp;How do I invite my facebook friends to join mywebroom?</div></br>
-        <div>A.&nbsp;&nbsp;Click the social icon, then click the <em>Friends</em> or <em>Key Requests</em> tab. You can then click the blue <em>Invite Friends with Facebook</em> button</div>
-      </p>
-      </br>
-      <p>
-        <div class="text-info">Q.&nbsp;&nbsp;How do I share my bookmarks?</div></br>
-        <div>A.&nbsp;&nbsp;TODO</div>
-      </p>
-      </br>
-      <p>
-        <div class="text-info">Q.&nbsp;&nbsp;How do I design my own room?</div></br>
-        <div>A.&nbsp;&nbsp;TODO</div>
-      </p>
-      </br>
-      <p>
-        <div class="text-info">Q.&nbsp;&nbsp;How do I add my own objects to my room?</div></br>
-        <div>A.&nbsp;&nbsp;TODO</div>
-      </p>
-      </br>
-      <p>
-        <div class="text-info">Q.&nbsp;&nbsp;How do I access my bookmarks?</div></br>
-        <div>A.&nbsp;&nbsp;TODO</div>
-      </p>
-      </br>
+        <p>
+            1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar
+            <br>
+            2.&nbsp;&nbsp;Click the object you want to change
+            <br>
+            3.&nbsp;&nbsp;Choose the one you'd like to preview. If you don't see one you like, you can
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search for objects that match a keyword or use filters to help you find one
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_object.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <!-- 1.2 -->
+        <h3 id="change_theme">Change Theme</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar
+            <br>
+            2.&nbsp;&nbsp;Select the <em>Themes</em> tab
+            <br>
+            3.&nbsp;&nbsp;Choose the theme you'd like to preview. If you don't see one you like, you can
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search for themes that match a keyword or use filters to help you find one
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_theme.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+        <!-- 1.3 -->
+        <h3 id="save_and_cancel_changes">Save and Cancel Changes</h3>
+
+        <!-- 1.3.1 -->
+        <h5>Save Changes</h5>
+
+        <p>
+            1.&nbsp;&nbsp;After you choose the object you want, click on the <em>Save Design</em> button to keep all changes
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;made to your room
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: you can change multiple objects and save all the changes once you are done</em>
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_save.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <!-- 1.3.2 -->
+        <h5>Cancel Changes</h5>
+
+        <p>
+            2.&nbsp&nbsp;Click the <em>Cancel Changes</em> button if you don't want to keep any changes made to your room
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_cancel.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <!-- 1.4 -->
+        <h3 id="add_and_remove_objects">Add and Remove Objects</h3>
+
+        <!-- 1.4.1 -->
+        <h5>Remove Object</h5>
+
+        <p>
+            1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar and click an object you want to remove
+            <br>
+            2.&nbsp;&nbsp;Click the <em>Remove Object</em> button
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: Removing this object does not delete its contents. All your bookmarks will be restored
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if you decide to re-add the object</em>
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_remove.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <!-- 1.4.2 -->
+        <h5>Add Object</h5>
+
+        <p>
+            2.&nbsp;&nbsp;To add the object back, simply choose a new design, click it, and then click <em>Save Design</em>
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_object.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <!-- 2 -->
+        <br>
+
+        <h1>Organize</h1>
+
+        <!-- 2.1 -->
+        <h3 id="discover_bookmarks">Discover Bookmarks</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click on any object to open up the bookmark interface
+            <br>
+            2.&nbsp;&nbsp;Click on <em>Discover</em> to view all the available sites we have for that category
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click a site's icon to preview that site)
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_discover_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_discover_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <!-- 2.2 -->
+        <h3 id="add_and_create_bookmarks">Add and Create Bookmarks</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click on the plus (add icon) in the top right corner to save bookmarks to your selected
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;category. A checkmark icon signifies that it has been added
+            <br>
+            2.&nbsp;&nbsp;If you can't find a site in our library, you have the option to add your own bookmark
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_add_bookmark.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_add_url.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+        <!-- 2.3 -->
+        <h3 id="delete_bookmarks">Delete Bookmarks</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Go to the <em>My Bookmarks</em> tab and simply click on the trashbox button in
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the top right corner to delete it.
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_delete_bookmark.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+        <!-- 2.4 -->
+        <h3 id="active_sites">Active Sites</h3>
+
+        <p>
+            1.&nbsp;&nbsp;To view all your active sites click on the star icon on your toolbar
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_active_sites.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+        <!-- 3 -->
+        <br>
+
+        <h1>Share</h1>
+
+
+        <!-- 3.1 -->
+        <h3 id="key_requests">Key Requests</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click on the social icon in the toolbar to open up the social interface
+            <br>
+            2.&nbsp;&nbsp;Click on the <em>Key Request</em> tab
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: You will get a red notification when you have a key request pending</em>
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_social.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_key_requests.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+        <!-- 3.2 -->
+        <h3 id="friends_room">Friend's Room</h3>
+
+        <!-- 3.2.1 -->
+        <h5>View Room</h5>
+
+        <p>
+            1.&nbsp;&nbsp;Click on the gear icon and then <em>View Room</em>to checkout your friend's room
+            <br>
+            2.&nbsp;&nbsp;Once in the room you can click on the objects to view your friend's bookmarks and more.
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_gear_icon.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("full_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+        <!-- 3.2.2 -->
+        <h5>View profile info and photos</h5>
+
+        <p>
+            1.&nbsp;&nbsp;Once in the friend's tab click on friend's name or picture to open up their profile page
+            <br>
+            2.&nbsp;&nbsp;View and like photos
+            <br>
+        </p>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("profile.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("photos.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <!-- 3.3 -->
+        <h3 id="upload_your_photos">Upload your photos</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Open the photo page on your social tab
+            <br>
+            2.&nbsp;&nbsp;Click on the plus sign to upload photos or click on the upload photo button
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_upload_photo_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_upload_photo_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+        <!-- 4 -->
+        <br>
+
+        <h1>Profile Settings</h1>
+
+        <!-- 4.1 -->
+        <h3 id="change_username_or_password">Change Username or Password</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click the dropdown arrow on your toolbar next to your username
+            <br>
+            2.&nbsp;&nbsp;Click on <em>Account Settings</em>
+            <br>
+            3.&nbsp;&nbsp;Change your username or password
+            <br>
+            2.&nbsp;&nbsp;Once you are done click <em>Save Changes</em>
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_account_settings_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_account_settings_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+        <!-- 4.2 -->
+        <h3 id="edit_profile_information">Edit Profile Information</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click the Profile Tab to change your general information
+            <br>
+            2.&nbsp;&nbsp;Once you are done click save changes
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_account_settings_c.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+
+
+        <!-- 4.3 -->
+        <h3 id="change_photo">Change Photo</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click the <em>Edit your Profile Picture</em> link
+            <br>
+            2.&nbsp;&nbsp;Enter a name and click <em>Browse...</em> to select the photo to upload
+            <br>
+            3.&nbsp;&nbsp;Once you are done click <em>Upload Photo</em>
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("click_account_settings_d.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_set_as_profile_picture.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("click_account_password.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <!-- 5 -->
+        <br>
+
+        <h1 id="faq">Frequently Asked Questions</h1>
+
+        <h3>Help Center</h3>
+
+        <br>
+
+        <p>
+
+            <div class="text-info">Q.&nbsp;&nbsp;How do I invite my facebook friends to join mywebroom?</div>
+
+            <br>
+
+            <div>
+                A.&nbsp;&nbsp;Click the social icon, then click the <em>Friends</em> or <em>Key Requests</em> tab. You can then click the blue <em>Invite Friends with Facebook</em> button
+            </div>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <div class="text-info">
+                Q.&nbsp;&nbsp;How do I share my bookmarks?
+            </div>
+
+            <br>
+
+            <div>
+                A.&nbsp;&nbsp;TODO
+            </div>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <div class="text-info">
+                Q.&nbsp;&nbsp;How do I design my own room?
+            </div>
+
+            <br>
+
+            <div>
+                A.&nbsp;&nbsp;TODO
+            </div>
+        </p>
+
+        <br>
+
+        <p>
+
+            <div class="text-info">
+                Q.&nbsp;&nbsp;How do I add my own objects to my room?
+            </div>
+
+            <br>
+
+            <div>
+                A.&nbsp;&nbsp;TODO
+            </div>
+        </p>
+
+        <br>
+
+        <p>
+            <div class="text-info">
+                Q.&nbsp;&nbsp;How do I access my bookmarks?
+            </div>
+
+            <br>
+
+            <div>
+                A.&nbsp;&nbsp;TODO
+            </div>
+        </p>
+
+        <br>
+
     </div>
 
-  </div>
 </div>
+
+
