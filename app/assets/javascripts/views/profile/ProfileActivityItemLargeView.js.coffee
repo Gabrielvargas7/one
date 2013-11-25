@@ -117,8 +117,9 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
               #console.log('postBookmarkModel SUCCESS:')
               #console.log(response)
             error: (model, response)->
-              console.error('postBookmarkModel FAIL:')
-              console.error(response)
+              if response.responseText != "the bookmark already exists" 
+                console.error('postBookmarkModel FAIL:')
+                console.error(response)
         #Added confirmation.
         #@$('.profile_large_item_try_it_button').append("<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>")
         @$('.profile_large_item_try_it_button').text("Added to your " + Mywebroom.Data.ItemNames[ parseInt( @model.get('item_id') ) ] + '!')
@@ -156,8 +157,9 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
               #console.log('postBookmarkModel SUCCESS:')
               #console.log(response)
             error: (model, response)->
-              console.error('postBookmarkModel FAIL:')
-              console.error(response)
+              if response.responseText != "the bookmark already exists" 
+                console.error('postBookmarkModel FAIL:')
+                console.error(response)
         #Added confirmation.
         #@$('.profile_large_item_try_it_button').append("<img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>")
         @$('.profile_large_item_try_it_button').text("Added to your " + Mywebroom.Data.ItemNames[ parseInt( @model.get('item_id') ) ] + '!')
