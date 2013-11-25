@@ -11,7 +11,17 @@
 
 
 <!-- (1) HEADER -->
+<script>
+    $(function() {
+        $('.navbar img').css({'margin-left': '20px'});
 
+        $('.footer').css({
+            'background-color': '#333333',
+            'margin-top': '0px',
+            'border-top': 'none'
+        });
+    });
+</script>
 
 
 
@@ -668,10 +678,8 @@
 
 
 
-
-
 <!-- (11) SIGN UP -->
-<div class="center">
+<div class="center about-background-black">
     <br>
     <br>
     <% if signed_in? %>
