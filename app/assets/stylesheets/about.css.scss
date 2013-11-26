@@ -44,7 +44,9 @@
 (4) ABOUT US
 */
 .about-us-text {
-  margin-top: 195px;
+  padding-top: 195px;
+  max-height: 450px;
+  overflow: auto;
 }
 /*
 (5) ROOMS TEAM
