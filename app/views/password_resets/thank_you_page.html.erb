@@ -53,9 +53,9 @@
       <td>
         <% @static_content = StaticContent.find_by_name("ymail-icon")  %>
         <% if @static_content.nil? or @static_content.image_name.blank?  %>
-            <%= link_to("YMail","//mail.yahoo.com/‎") %>
+            <%= link_to("YMail","//yahoo.com‎") %>
         <% else %>
-            <a href="//mail.yahoo.com/‎">
+            <a href="http://www.yahoo.com/‎">
               <%= cl_image_tag(@static_content.image_name, :width => 50, :height => 45, :crop => :fit, :alt => "Yahoo Mail" ) %> </br>
                 YMail
             </a>
