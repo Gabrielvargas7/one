@@ -28,7 +28,7 @@ class UsersMailer < ActionMailer::Base
     @user_profile = UsersProfile.where("user_id = ?", user.id).first
     @greeting = "Hi"
     #Need user's room url. which is rooms url + /user.username
-    mail to: @user.email,subject: "Welcome to MyWebRoom"
+    mail to: @user.email,subject: "Welcome to myWebRoom.com!"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

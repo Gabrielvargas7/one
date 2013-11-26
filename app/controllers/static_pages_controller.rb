@@ -1,5 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
+    if signed_in?
+      redirect_to room_rooms_path(current_user.username)
+    end
+
+
     @skip_header = true
     @skip_footer = true
   end
