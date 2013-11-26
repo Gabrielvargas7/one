@@ -37,7 +37,7 @@ module SessionsHelper
       #puts default.username
       user_name = default.username
 
-      redirect_to(session[:return_to] || room_rooms_path(user_name))
+      redirect_to(session[:return_to] || room_rooms_path(user_name,:anchor => ""))
       session.delete(:return_to)
     end
 
