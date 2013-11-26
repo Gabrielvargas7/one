@@ -1,3 +1,10 @@
+#about-us-page {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+
 /*
 (1) HEADER
 */
@@ -29,14 +36,16 @@
 .about-our-product {
   margin-top: 25px;
   margin-left: 135px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   margin-right: 135px;
 }
 
 /*
 (4) ABOUT US
 */
-
+.about-us-text {
+  margin-top: 195px;
+}
 /*
 (5) ROOMS TEAM
 */
@@ -76,14 +85,13 @@
 }
 
 /*
-To calculate height, width, take image size (in our case 250) squared / 2, root-ed
+To calculate height and width take root of (image size (in our case 250) squared / 2)
 So... x = (250^2/2)^(1/2)
       x = 176
 */
 .about-quote {
   cursor: default;
   color: #ffffff;
-  font-family: "Open Sans";
   font-size: 1.1em;
   font-weight: 200;
   margin: auto;
@@ -110,6 +118,10 @@ So... x = (250^2/2)^(1/2)
   max-height: 130px;
 }
 
+.about-quote-large-plus {
+  max-height: 155px;
+}
+
 .about-quote-x-large {
   max-height: 180px;
 }
@@ -121,7 +133,7 @@ So... x = (250^2/2)^(1/2)
 }
 
 .about-wrapper:hover .about-background {
-  background-color:rgba(0,0,0,0.8);
+  background-color:rgba(0, 0, 0, 0.8);
 }
 
 /*
@@ -132,17 +144,19 @@ So... x = (250^2/2)^(1/2)
 (7) PARTNERS
 */
 .about-partners {
-  margin-top: 70px;
+  margin-top: 75px;
 }
 /*
 (8) FEEDBACK
 */
-
+.about-feedback {
+  margin-top: 90px;
+}
 /*
 (9) PRESS
 */
 .about-press {
-  margin-top: 70px;
+  margin-top: 88px;
 }
 
 /*
@@ -153,8 +167,6 @@ So... x = (250^2/2)^(1/2)
 (11) SIGN UP
 */
 #about-signup-button {
-  font-family: "Open Sans";
-  font-weight: normal;
   font-size: 18px;
   text-align: center;
   padding: 16px 180px;
@@ -179,42 +191,27 @@ So... x = (250^2/2)^(1/2)
 TEXT FONT / COLOR
 */
 .about-heading-black {
-  font-family: "Open Sans";
   font-weight: 200;
-  font-style: normal;
   color: #000000;
 }
 .about-heading-white {
-  font-family: "Open Sans";
   font-weight: 200;
-  font-style: normal;
   color: #ffffff;
 }
 .about-text-black {
-  font-family: "Open Sans";
-  font-weight: 200;
-  font-style: normal;
   color: #343434;
-  font-size: 1.1em;
+  font-size: 1.15em;
 }
 .about-text-black-bigger {
-  font-family: "Open Sans";
-  font-weight: 200;
-  font-style: normal;
   color: #343434;
-  font-size: 1.25em;
+  font-size: 1.3em;
 }
 .about-text-white {
-  font-family: "Open Sans";
-  font-weight: 200;
-  font-style: normal;
   color: #ffffff;
-  font-size: 1.1em;
+  font-size: 1.15em;
 }
 .about-text-blue {
-  font-family: "Open Sans";
   font-weight: 200;
-  font-style: normal;
   color: #00ccff;
 }
 
@@ -243,14 +240,17 @@ SECTION HEIGHT
 /*
 RECTANGLE PADDING
 */
-.about-rectangle-padding {
+.padding-top-small {
   padding-top: 20px;
+}
+
+.padding-bottom-small {
   padding-bottom: 20px;
 }
 /*
 TEXT ABOUT RECTANGLE PADDING
 */
-.about-text-above-rectangle-padding {
+.padding-left-small {
   padding-left: 20px;
 }
 /*
@@ -264,6 +264,14 @@ MARGIN
   margin-left: 135px;
 }
 
+.about-margin-left-small {
+  margin-left: 65px;
+}
+
 .about-margin-right {
   margin-right: 135px;
+}
+
+.about-margin-right-small {
+  margin-right: 65px;
 }
