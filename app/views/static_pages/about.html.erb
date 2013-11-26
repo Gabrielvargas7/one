@@ -34,38 +34,50 @@
 
 
 <!-- (3) OUR PRODUCT -->
-<div class="about-margin-half about-margin-left about-margin-right">
+<div class="about-our-product">
+
     <h2 class="about-heading-black">OUR PRODUCT</h2>
+
     <p class="about-text-black">
         We’ve created an easy and exciting new way for you to keep your online life organized and accessible. Your web room is a visual profile of everything you love. It’s a place where you can express yourself through design, bookmark your favorite sites, interact with products, and connect with friends, all from one beautiful interface.
     </p>
+
     <p class="about-text-black">
         Choose a room, fill it with furniture, organize sites in objects. The birdcage will take you to Twitter, fill the shopping bag with online stores, the music player is ready to rock the room with playlists you made on Spotify. It’s fun, it’s free, it’s time to make your room.
     </p>
+
     <hr>
-    <div class="about-margin-half">
-        <p class="text-center about-text-black about-margin-left about-margin-right">
-            MyWebRoom.com is a visual place where you can access your favorite websites, discover new content, connect with friends and interact with the products you love, all from one beautiful interface.
-        </p>
-        <br>
-        <br>
-        <div class="center">
-            <%= cl_image_tag("product-image.png", :quality => 100, :default_image => "default_image_all.png")%>
-        </div>
-        <div class="about-margin-left about-margin-right">
-            <hr>
-        </div>
-        <br>
-        <br>
-        <p class="text-center about-text-black">
-            Shop, study, book a vacation, listen to music, watch movies and more from the comfort of your private online room.
-        </p>
-        <br>
-        <br>
-        <div class="center">
-            <%= cl_image_tag("product-image-2.png", :quality => 100, :default_image => "default_image_all.png")%>
-        </div>
+
+    <br>
+    <br>
+
+    <p class="text-center about-text-black-bigger about-margin-left about-margin-right">
+        MyWebRoom.com is a visual place where you can access your favorite websites, discover new content, connect with friends and interact with the products you love, all from one beautiful interface.
+    </p>
+
+    <br>
+
+    <div class="center">
+        <%= cl_image_tag("product-image.png", :quality => 100, :default_image => "default_image_all.png")%>
     </div>
+
+    <div class="about-margin-left about-margin-right">
+        <hr>
+    </div>
+
+    <br>
+    <br>
+
+    <p class="text-center about-text-black-bigger">
+        Shop, study, book a vacation, listen to music, watch movies and more from the comfort of your private online room.
+    </p>
+
+    <br>
+
+    <div class="center">
+        <%= cl_image_tag("product-image-2.png", :quality => 100, :default_image => "default_image_all.png")%>
+    </div>
+
 </div>
 
 
@@ -73,10 +85,10 @@
 
 <!-- (4) ABOUT US -->
 <div class="container-fluid about-section about-background-blue">
-    <div class="row-fluid about-margin">
+    <div class="row-fluid about-margin-top">
         <div class="span6">
             <div class="about-margin-left">
-                <h4 class="about-heading-white">ABOUT US</h4>
+                <h2 class="about-heading-white">ABOUT US</h2>
                 <p class="about-text-white">
                     We are a young and driven team that’s creating a web experience like no other. Smart, tech-savvy and design-oriented, we’re working hard to make the internet a fun place where everyone has a stylish and useful platform to express themselves.
                 </p>
@@ -99,10 +111,9 @@
 
 <!-- (5) ROOMS TEAM -->
 <div class="container-fluid about-rooms-team">
+    <br>
+    <br>
     <h2 class="text-center about-heading-black">ROOMS TEAM</h2>
-    <br>
-    <br>
-    <br>
     <br>
     <ul class="row-fluid">
         <ul class="thumbnails">
@@ -386,13 +397,13 @@
 <!-- (6) JOIN THE TEAM -->
 <div id="join-the-team-section" class="container-fluid about-section about-background-gray">
     <div class="row-fluid">
-        <div class="about-margin">
+        <div class="about-margin-top">
             <div class="span6 center">
             <%= cl_image_tag("italy.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
             </div>
             <div class="span6">
                 <div class="about-margin-right">
-                    <h4 class="about-heading-black">JOIN THE TEAM</h4>
+                    <h2 class="about-heading-black">JOIN THE TEAM</h2>
                     <p class="about-text-black">
                         Want to be part of the Rooms team? We’re always looking for talented and motivated Roommates who are ready to step into a pair of house slippers. You can get in touch with us at hr@mywebroom.com. The positions we have open now:
                     </p>
@@ -426,51 +437,51 @@
 <!-- (7) PARTNERS -->
 <div class="container-fluid about-section about-background-blue">
     <div class="row-fluid">
-        <div class="about-margin">
-            <div class="span6">
-                <div class="about-margin-left">
-                    <h4 class="about-heading-white about-text-above-rectangle-padding">PARTNERS</h4>
-                    <p class="about-text-white about-text-above-rectangle-padding">
-                        We’re excited to have so many cool partners on board and we’re always open to new business opportunities. Let’s see how we can help each other out! If you’re interested in doing business with Rooms, please contact us at <a href="mailto:partners@mywebroom.com">partners@mywebroom.com</a>.
-                    </p>
-                    <br>
-                    <div class="container-fluid">
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                 <%= cl_image_tag("allmodern.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                <%= cl_image_tag("apt2b.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
+        <div class="span6">
+            <div class="about-partners about-margin-left">
+                <h2 class="about-heading-white about-text-above-rectangle-padding">PARTNERS</h2>
+                <p class="about-text-white about-text-above-rectangle-padding">
+                    We’re excited to have so many cool partners on board and we’re always open to new business opportunities. Let’s see how we can help each other out! If you’re interested in doing business with Rooms, please contact us at <a href="mailto:partners@mywebroom.com">partners@mywebroom.com</a>.
+                </p>
+                <br>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <%= cl_image_tag("pure-modern.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span4 about-rectangle-padding">
-                                <%= cl_image_tag("roomandboard.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4 about-rectangle-padding">
-                                 <%= cl_image_tag("sfdesigncenter.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4 about-rectangle-padding">
-                                <%= cl_image_tag("sony.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
+                        <div class="span4">
+                             <%= cl_image_tag("allmodern.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <%= cl_image_tag("wayfair.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                 <%= cl_image_tag("urbanoutfitters.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                <%= cl_image_tag("jointeam.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
+                        <div class="span4">
+                            <%= cl_image_tag("apt2b.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4 about-rectangle-padding">
+                            <%= cl_image_tag("roomandboard.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4 about-rectangle-padding">
+                             <%= cl_image_tag("sfdesigncenter.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4 about-rectangle-padding">
+                            <%= cl_image_tag("sony.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <%= cl_image_tag("wayfair.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                             <%= cl_image_tag("urbanoutfitters.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                            <%= cl_image_tag("jointeam.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="about-margin-top">
             <div class="span6 center">
                 <%= cl_image_tag("partners.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
             </div>
@@ -484,13 +495,13 @@
 <!-- (8) FEEDBACK -->
 <div class="container-fluid about-section">
     <div class="row-fluid">
-        <div class="about-margin">
+        <div class="about-margin-top">
             <div class="span6 center">
                 <%= cl_image_tag("feedback.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
             </div>
             <div class="span6">
                 <div class="about-margin-right">
-                    <h4 class="about-heading-black">FEEDBACK</h4>
+                    <h2 class="about-heading-black">FEEDBACK</h2>
                     <p class="about-text-black">
                         This website is for you, so we want to hear your opinions about how we can improve your experience on myWebRoom.com to make it the best place to be online. Have a great idea for a new room design, think your favorite site should be added to Rooms so everyone can discover it? Let us know!
                     </p>
@@ -518,52 +529,52 @@
 <!-- (9) PRESS -->
 <div class="container-fluid about-section about-background-gray">
     <div class="row-fluid">
-        <div class="about-margin">
-            <div class="span6">
-                <div class="about-margin-left">
-                    <h4 class="about-heading-black about-text-above-rectangle-padding">PRESS</h4>
-                    <p class="about-text-black about-text-above-rectangle-padding">
-                        The news about myWebRoom.com is spreading! We’ve been featured on tech, startup, and interior design sites. Here are a few articles so you can see and share the love.
-                    </p>
-                    <br>
-                    <div class="container-fluid">
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <%= cl_image_tag("bloomberg.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                 <%= cl_image_tag("inc.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                <%= cl_image_tag("killerstartups.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
+        <div class="span6">
+            <div class="about-press about-margin-left">
+                <h2 class="about-heading-black about-text-above-rectangle-padding">PRESS</h2>
+                <p class="about-text-black about-text-above-rectangle-padding">
+                    The news about myWebRoom.com is spreading! We’ve been featured on tech, startup, and interior design sites. Here are a few articles so you can see and share the love.
+                </p>
+                <br>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <%= cl_image_tag("bloomberg.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span4 about-rectangle-padding">
-                                <%= cl_image_tag("pandodaily.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4 about-rectangle-padding">
-                                 <%= cl_image_tag("techcocktail.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4 about-rectangle-padding">
-                                <%= cl_image_tag("techcrunch.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
+                        <div class="span4">
+                             <%= cl_image_tag("inc.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <%= cl_image_tag("tumblr.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                 <%= cl_image_tag("venturebeat.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
-                            <div class="span4">
-                                <%= cl_image_tag("techvista.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
-                            </div>
+                        <div class="span4">
+                            <%= cl_image_tag("killerstartups.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4 about-rectangle-padding">
+                            <%= cl_image_tag("pandodaily.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4 about-rectangle-padding">
+                             <%= cl_image_tag("techcocktail.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4 about-rectangle-padding">
+                            <%= cl_image_tag("techcrunch.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <%= cl_image_tag("tumblr.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                             <%= cl_image_tag("venturebeat.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                        </div>
+                        <div class="span4">
+                            <%= cl_image_tag("techvista.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="span6 center">
+        </div>
+        <div class="span6 center">
+            <div class="about-margin-top">
                 <%= cl_image_tag("press.png", :height => 420, :width => 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png") %>
             </div>
         </div>
@@ -575,7 +586,7 @@
 
 <!-- (10) CONTACT US -->
 <div class="container-fluid about-section about-background-blue">
-    <div class="row-fluid about-margin">
+    <div class="row-fluid about-margin-top">
         <div class="span6 center">
             <%= cl_image_tag("contact-us.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
         </div>

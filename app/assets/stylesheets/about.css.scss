@@ -26,6 +26,12 @@
 /*
 (3) OUR PRODUCT
 */
+.about-our-product {
+  margin-top: 25px;
+  margin-left: 135px;
+  margin-bottom: 100px;
+  margin-right: 135px;
+}
 
 /*
 (4) ABOUT US
@@ -125,7 +131,9 @@ So... x = (250^2/2)^(1/2)
 /*
 (7) PARTNERS
 */
-
+.about-partners {
+  margin-top: 70px;
+}
 /*
 (8) FEEDBACK
 */
@@ -133,6 +141,9 @@ So... x = (250^2/2)^(1/2)
 /*
 (9) PRESS
 */
+.about-press {
+  margin-top: 70px;
+}
 
 /*
 (10) CONTACT US
@@ -171,25 +182,34 @@ TEXT FONT / COLOR
   font-family: "Open Sans";
   font-weight: 200;
   font-style: normal;
-  color: black;
+  color: #000000;
 }
 .about-heading-white {
   font-family: "Open Sans";
   font-weight: 200;
   font-style: normal;
-  color: white;
+  color: #ffffff;
 }
 .about-text-black {
   font-family: "Open Sans";
   font-weight: 200;
   font-style: normal;
-  color: black;
+  color: #343434;
+  font-size: 1.1em;
+}
+.about-text-black-bigger {
+  font-family: "Open Sans";
+  font-weight: 200;
+  font-style: normal;
+  color: #343434;
+  font-size: 1.25em;
 }
 .about-text-white {
   font-family: "Open Sans";
   font-weight: 200;
   font-style: normal;
-  color: white;
+  color: #ffffff;
+  font-size: 1.1em;
 }
 .about-text-blue {
   font-family: "Open Sans";
@@ -197,6 +217,7 @@ TEXT FONT / COLOR
   font-style: normal;
   color: #00ccff;
 }
+
 /*
 BACKGROUND COLOR
 */
@@ -235,18 +256,14 @@ TEXT ABOUT RECTANGLE PADDING
 /*
 MARGIN
 */
-.about-margin {
+.about-margin-top {
   margin-top: 115px;
 }
 
-.about-margin-half {
-  margin-top: 50px;
-}
-
 .about-margin-left {
-  margin-left: 115px;
+  margin-left: 135px;
 }
 
 .about-margin-right {
-  margin-right: 115px;
+  margin-right: 135px;
 }
