@@ -52,9 +52,12 @@
         <ul class="nav pull-right" id="rooms_header_main_menu">
 
             <li class="xroom_header_li_login_btn">
-
-
+                  <a class="gray_button_light gray_button" href="#" id="login_btn" onclick="javascript:login_lightbox_show(); return false;">LOGIN</a>
             </li>
+            <li class="xroom_header_li_sign_up_btn">
+                    <a href="/select-room" id="signup_btn">SIGN UP</a>
+            </li>
+
 
             <li class="xroom_header_li_element">
               <a id='xroom_header_active_sites' class="xroom_header_active_sites_img">

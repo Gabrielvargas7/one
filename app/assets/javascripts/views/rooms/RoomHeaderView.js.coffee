@@ -119,20 +119,45 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     roomState =   Mywebroom.State.get("roomState")
     signInState = Mywebroom.State.get("signInState")
 
-    if roomState isnt "SELF"
-      $('#xroom_header_active_sites').remove()
-      $('#xroom_header_storepage').remove()
+    if signInState is true
+      $('.xroom_header_li_login_btn').remove()
+      $('.xroom_header_li_sign_up_btn').remove()
 
 
-    if roomState is "PUBLIC"
-      $('#xroom_header_profile').remove()
-      $('.dropdown').remove() if signInState isnt true
-      @showProfile(null)
+      if roomState is "FRIEND"
+        $('#xroom_header_active_sites').remove()
+        $('#xroom_header_storepage').remove()
+        @showProfile(null)
 
-    if roomState is "FRIEND"
-      @showProfile(null)
 
-    $('#xroom_header_myroom').remove() if signInState isnt true
+      if roomState is "PUBLIC"
+        $('#xroom_header_active_sites').remove()
+        $('#xroom_header_storepage').remove()
+        $('#xroom_header_profile').remove()
+        @showProfile(null)
+
+    else
+      $('#xroom_header_myroom').remove()
+
+############
+#   Remove this after  01/01/2014
+############
+#    if roomState isnt "SELF"
+#      $('#xroom_header_active_sites').remove()
+#      $('#xroom_header_storepage').remove()
+
+
+#    if roomState is "PUBLIC"
+#      $('#xroom_header_profile').remove()
+#      $('.dropdown').remove() if signInState isnt true
+#      @showProfile(null)
+
+#    if roomState is "FRIEND"
+#      @showProfile(null)
+
+#    $('#xroom_header_myroom').remove() if signInState isnt true
+
+
 
 
 
