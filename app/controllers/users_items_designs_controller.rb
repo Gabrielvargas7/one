@@ -287,6 +287,7 @@ class UsersItemsDesignsController < ApplicationController
                                         items_designs.item_id,
                                         items_designs.description,
                                         items_designs.image_name,
+                                        items_designs.image_name_selection,
                                             items_designs.category,
                                             items_designs.style,
                                             items_designs.brand,
