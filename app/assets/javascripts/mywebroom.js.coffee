@@ -50,6 +50,7 @@ $(document).ready ->
 
       friendItemPopupView          : false  # A reference to the popup view
       profileHomeView              : false  # A reference to this view
+      bookmarksView                : false  # A reference to the bookmarks view that currently open. There should only ever be one.
 
 
       roomViewState                     : false # open or closed

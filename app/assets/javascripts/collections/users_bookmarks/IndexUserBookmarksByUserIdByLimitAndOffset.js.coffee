@@ -5,3 +5,10 @@ class Mywebroom.Collections.IndexUserBookmarksByUserIdByLimitAndOffset extends B
   @offset
   url:(userId,limit,offset)->
     "/users_bookmarks/json/index_user_bookmarks_by_user_id_by_limit_and_offset/"+userId+"/"+limit+"/"+offset+".json"
+  
+  parse: (response) ->
+    _.map(response, (model) ->
+      obj = model
+      obj.type = "BOOKMARK"
+      return obj
+    )

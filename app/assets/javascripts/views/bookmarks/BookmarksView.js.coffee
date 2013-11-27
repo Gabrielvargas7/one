@@ -29,6 +29,12 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   #*******************
 
   initialize: ->
+
+    #Make sure there's only one Bookmarks View open and set current. 
+    if Mywebroom.State.get('bookmarksView')
+      Mywebroom.State.get('bookmarksView').closeView()
+    Mywebroom.State.set('bookmarksView',this)
+
     #fetch bookmark data
     @getMyBookmarksCollection() #Referred as @collection
     @getDiscoverCategoriesCollection() #referred as @discoverCategoriesCollection
@@ -155,7 +161,10 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
             #console.log(response)
 
         postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:bookmarkClick.get('item_id'), bookmarkId:bookmarkClick.get('id'),userId:Mywebroom.State.get('signInUser').get('id')})
-        lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
+        if @collection.models.length > 0 
+          lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
+        else 
+          lastBookmarkPosition = 0
         postBookmarkModel.set 'position',lastBookmarkPosition+1
         postBookmarkModel.save {},
           success: (model, response)->
@@ -336,6 +345,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
 
   closeView:->
+    Mywebroom.State.set('bookmarksView',false)
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable

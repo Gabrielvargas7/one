@@ -52,7 +52,8 @@ class Mywebroom.Views.PopupFriendItemView extends Backbone.View
 
     if not (rect.top >=0 and rect.left >=0) or 
     not (rect.bottom <= (window.innerHeight or document. documentElement.clientHeight)) or 
-    not (rect.right <= (window.innerWidth or document. documentElement.clientWidth))
+    not (rect.right <= (window.innerWidth or document. documentElement.clientWidth)) or
+    $('body').css('zoom')>1 #When zoom is over 1, coordinates are not accurate and popup is off center.
       $('#popup_friend_item_wrap').css(
                                        "position":"absolute"
                                        "top":"50%"
