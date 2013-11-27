@@ -10,7 +10,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     _.bindAll this, 'insideHandler', 'outsideHandler'
     @originalCollection=this.options.originalCollection
     $('body').on('click', this.outsideHandler);
-    #$('div').not('.activity_item_large_wrap *').on('click', this.outsideHandler);
+    
     #2. Add transition to profile_drawer
     $('#profile_drawer').css('transition','all 1s ease-in-out')
 

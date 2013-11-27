@@ -29,17 +29,18 @@
   </div>
   <ul>
     <li style="float: left;
-padding: 0;
-padding-left: 80px;
-text-align: left;
-display:inline-block;">
+              padding: 0;
+              padding-left: 60px;
+              display:inline-block;">
       <div class="social_bar">
         <div class ="navbar">
           <div class="navbar-inner">
             <ul class="nav">
-              <li style="width:90px;">
-                <fb:like class="fb-like" href="<%=@fbUrl%>" layout="button_count" show-faces="false" width="95">
-                </fb:like>
+              <li>
+                <div style="position:relative;min-width:90;min-height:20px;">
+                  <fb:like class="fb-like" href="<%=@fbUrl%>" layout="button_count" show-faces="false" width="95">
+                  </fb:like>
+                </div>
               </li>
               <li class="pinterest_item"><a href="#" data-pin-do="buttonPin"
             data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" target="_blank"></a></li>

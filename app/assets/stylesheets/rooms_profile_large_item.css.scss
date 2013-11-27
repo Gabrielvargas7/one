@@ -21,6 +21,8 @@
   padding:10px 35px 10px 40px;
   text-align:left;
   margin-bottom:10px;
+  max-height: 190px;
+  overflow: auto;
 }
 .large_view_header h2{
   font-size: 24px;
@@ -47,6 +49,7 @@
 }
 .activity_item_large_view .profile_large_item_try_it_button{
   width:auto;
+  min-width:143px;
   float:right;
   padding:0 20px;
 }
@@ -66,6 +69,10 @@
 
   }
 
+  .pinterest_item, .activity_item_large_list.profile_button{
+    /*To account for weirdo Facebook alignment*/
+    margin-top:-5px;
+  }
 }
 .activity_item_large_list.profile_button{
   vertical-align:top;
@@ -89,6 +96,9 @@
 }
 .activity_item_large_content_wrap{
   width:100%;
+}
+.activity_item_large_content_wrap ul{
+  min-height:270px;
 }
 #photos_next{
   right:20px;
