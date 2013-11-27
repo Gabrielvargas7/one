@@ -27,7 +27,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
     $(@el).append(@template())
     #Add the "MORE" square to the collection
     moreSquare = new Backbone.Model({title:"MYWEBROOM_LAST"})
-    @collection.add(moreSquare,{silent:true})
+    @collection.add(moreSquare,{silent:true}) #NOTE: This means this collection is never empty. If you don't add the moreSquare, make sure to do 0 collection checks
     @appendItems()
     @collection.remove(moreSquare,{silent:true})
     this

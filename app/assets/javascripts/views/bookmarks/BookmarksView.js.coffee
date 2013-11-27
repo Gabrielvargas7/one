@@ -155,7 +155,10 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
             #console.log(response)
 
         postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:bookmarkClick.get('item_id'), bookmarkId:bookmarkClick.get('id'),userId:Mywebroom.State.get('signInUser').get('id')})
-        lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
+        if @collection.models.length > 0 
+          lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
+        else 
+          lastBookmarkPosition = 0
         postBookmarkModel.set 'position',lastBookmarkPosition+1
         postBookmarkModel.save {},
           success: (model, response)->
