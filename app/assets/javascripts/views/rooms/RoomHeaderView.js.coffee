@@ -21,6 +21,8 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     'click #xroom_header_profile'        : 'showProfile'
     'click #xroom_header_forward_profile': 'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting': 'forwardToRoRSettingPage'
+    'click #xroom_header_forward_help'   : 'forwardToRoRHelpPage'
+
     'click #xroom_header_logout'         : 'logout'
 
     'click #xroom_header_storepage'      : 'toggleStore'
@@ -95,16 +97,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     @removeRoomHeaderElemments()
 
 
-
-    # Create Search Box
-    searchView = new Mywebroom.Views.SearchView()
-    searchView.render()
-
-    $("#xroom_header_search_box").append(searchView.el)
-    $("#xroom_header_search_box").hide()
-
     Mywebroom.State.set("searchViewArray", [])
-
 
 
     this
@@ -238,6 +231,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     origin =  window.location.origin
     origin += "/users/" + Mywebroom.State.get("signInUser").get("id") + "/edit"
 
+    window.location.replace(origin)
+
+
+  forwardToRoRHelpPage:(event) ->
+    event.preventDefault()
+
+    origin =  window.location.origin
+    origin += "/help"
     window.location.replace(origin)
 
 

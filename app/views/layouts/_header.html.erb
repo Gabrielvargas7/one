@@ -36,9 +36,9 @@
           <% if signed_in? %>
               <li>
                 <% if get_current_user_image_name.image_name.blank?  %>
-                    <%= link_to cl_image_tag("default-user.jpg", :width => 23, :height => 23, :crop => :fill)+"  "+current_user.username.titleize, room_rooms_path(current_user.username) %>
+                    <%= link_to cl_image_tag("default-user.jpg", :width => 36, :height => 36, :crop => :fill)+"  "+current_user.username.titleize, room_rooms_path(current_user.username), :id => "header_user_image_profile" %>
                 <% else %>
-                    <%= link_to cl_image_tag(get_current_user_image_name.image_name, :width => 23, :height => 23, :crop => :fill )+"  "+current_user.username.titleize, room_rooms_path(current_user.username) %>
+                    <%= link_to cl_image_tag(get_current_user_image_name.image_name, :width => 36, :height => 36, :crop => :fill )+"  "+current_user.username.titleize, room_rooms_path(current_user.username), :id => "header_user_image_profile" %>
                 <% end%>
               </li>
               <li class="dropdown">

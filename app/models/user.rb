@@ -135,8 +135,12 @@ class User < ActiveRecord::Base
       if UsersProfile.exists?(user_id:user.id)
         user_profile  = UsersProfile.find_by_user_id(user.id)
       else
+        # we add this new profile with facebook sign up and
+        # add the tutorial step and friend number because user don't do it with save!
         user_profile  = UsersProfile.new()
+
         user_profile.tutorial_step = 1
+        user_profile.friends_number = 7
 
       end
       user_profile.firstname = auth.extra.raw_info.first_name

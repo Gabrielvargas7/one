@@ -28,9 +28,9 @@
         </div>
         <p class="shop_main_image_name">
           <% if @bundle.image_name.blank?  %>
-              <%= cl_image_tag("default_image_all.png", width: 400,height:400,:crop => :fit,:default_image => "default_image_all.png")%>
+              <%= cl_image_tag("default_image_all.png", width: 400,height:400,:crop => :fit,:default_image => "default_image_all.png", :class =>"shop_image_name" )%>
           <% else %>
-              <%= cl_image_tag(@bundle.image_name , width: 400,height:400,:crop => :fit,:default_image => "default_image_all.png") %>
+              <%= cl_image_tag(@bundle.image_name , width: 400,height:400,:crop => :fit,:default_image => "default_image_all.png", :class =>"shop_image_name" ) %>
           <% end%>
 
         </p>

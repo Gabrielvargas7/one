@@ -23,9 +23,9 @@
 
         <p class="shop_main_image_name_bookmark">
           <% if @bookmark.image_name_desc.blank?  %>
-              <%= cl_image_tag("default_image_all.png", width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png")%>
+              <%= cl_image_tag("default_image_all.png", width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png", :class =>"shop_image_name" )%>
           <% else %>
-              <%= cl_image_tag(@bookmark.image_name_desc , width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png") %>
+              <%= cl_image_tag(@bookmark.image_name_desc , width: 180,height:180,:crop => :fit,:default_image => "default_image_all.png", :class =>"shop_image_name" ) %>
           <% end%>
 
 

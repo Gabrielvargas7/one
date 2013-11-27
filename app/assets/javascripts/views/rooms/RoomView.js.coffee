@@ -901,6 +901,15 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     $("#xroom_header").append(roomHeaderView.el)
     roomHeaderView.render()
 
+
+    # (13.1)Create Search Box
+    searchView = new Mywebroom.Views.SearchView()
+    searchView.render()
+
+    $("#xroom_header_search_box").append(searchView.el)
+    $("#xroom_header_search_box").hide()
+
+
     # Save a ref to the state model
     Mywebroom.State.set("roomHeaderView", roomHeaderView)
 

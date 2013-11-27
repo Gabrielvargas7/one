@@ -50,7 +50,7 @@ class Mywebroom.Views.RoomFooterView extends Backbone.View
     event.preventDefault()
 
     origin =  window.location.origin
-    origin += "/about"
+    origin += "/about-us"
 
     window.location.replace(origin)
 

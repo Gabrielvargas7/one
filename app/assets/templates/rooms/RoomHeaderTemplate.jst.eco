@@ -50,34 +50,36 @@
         </div>
         <!-- Menu  -->
         <ul class="nav pull-right" id="rooms_header_main_menu">
-            <li>
+            <li class="xroom_header_li_element">
               <a id='xroom_header_active_sites' class="xroom_header_active_sites_img">
               </a>
             </li>
-            <li>
+            <li class="xroom_header_li_element">
                 <a id="xroom_header_profile" class="xroom_header_profile_img">
                 </a>
             </li>
-            <li>
+            <li class="xroom_header_li_element">
                 <a href="#" id="xroom_header_storepage" class="xroom_header_storepage_img">
                     <span>&nbsp&nbspRoom<span>
                 </a>
             </li>
-            <li><a href="#" id="xroom_header_myroom" class="xroom_header_user_room"  >
+            <li><a href="#" id="xroom_header_myroom" class="xroom_header_user_room">
                 <img src=<%= @user_data.get('user_photos').image_name.url %> >
 
+                <span>&nbsp<span>
                 <%=  _.str.capitalize(@user_data.get('user').username) %>
 
             </a></li>
 
             <!-- sub menu (dropdown menu) -->
             <li class="dropdown xroom_header_user_room">
-                        <a class="dropdown-toggle" data-toggle="dropdown"  href="#">
+                        <a class="dropdown-toggle" data-toggle="dropdown"  id="xroom_header_user_room_dropdown-toggle" href="#">
                            <b class="caret" id="xroom_header_caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                            <li><a href="#" id="xroom_header_forward_profile" >Profile</a></li>
                            <li><a href="#" id="xroom_header_forward_setting" >Settings</a></li>
+                           <li><a href="#" id="xroom_header_forward_help" >Help</a></li>
                            <li><a href="#" id="xroom_header_logout" >Logout</a></li>
                         </ul>
             </li>
