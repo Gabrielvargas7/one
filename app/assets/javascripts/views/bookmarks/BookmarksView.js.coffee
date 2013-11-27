@@ -29,6 +29,12 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   #*******************
 
   initialize: ->
+
+    #Make sure there's only one Bookmarks View open and set current. 
+    if Mywebroom.State.get('bookmarksView')
+      Mywebroom.State.get('bookmarksView').closeView()
+    Mywebroom.State.set('bookmarksView',this)
+
     #fetch bookmark data
     @getMyBookmarksCollection() #Referred as @collection
     @getDiscoverCategoriesCollection() #referred as @discoverCategoriesCollection
@@ -339,6 +345,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
 
   closeView:->
+    Mywebroom.State.set('bookmarksView',false)
     this.unbind(); # Unbind all local event bindings
     this.remove(); # Remove view from DOM
     delete this.$el; # Delete the jQuery wrapped object variable
