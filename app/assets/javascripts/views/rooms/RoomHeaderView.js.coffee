@@ -138,6 +138,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     else
       $('#xroom_header_myroom').remove()
+      $('#xroom_header_active_sites').remove()
+      $('#xroom_header_storepage').remove()
+      $('#xroom_header_profile').remove()
+      $('.xroom_header_user_room').remove()
+      @showProfile(null)
+
 
 ############
 #   Remove this after  01/01/2014
