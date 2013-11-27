@@ -211,6 +211,8 @@ class RoomsController < ApplicationController
                             locations.section_id,
 
                             items.name as items_name,
+                            items.name_singular as items_name_singular,
+
                             items.clickable,
                             sections.name as section_name'
                             ).
@@ -231,6 +233,8 @@ class RoomsController < ApplicationController
 
                             items.id as item_id,
                             items.name,
+                            items.name_singular,
+
                             items.image_name_first_time_click,
                             items.image_name,
                             items.image_name_gray').

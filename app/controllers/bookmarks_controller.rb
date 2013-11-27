@@ -396,7 +396,8 @@ class BookmarksController < ApplicationController
                       bookmarks.image_name_desc,
                       bookmarks.title,
                       bookmarks.like,
-                      items.name as item_name').
+                      items.name as item_name,
+                      items.name_singular as item_name_singular').
             joins(:bookmarks_category).
             joins('INNER JOIN items  ON items.id = bookmarks_categories.item_id').
             where('bookmarks.id = ? ', params[:bookmark_id]).first

@@ -123,12 +123,14 @@ class SearchesController < ApplicationController
           @items_designs_id_array = ItemsDesign.
               where('lower(items_designs.name) LIKE ? or
                            lower(items.name)   LIKE ? or
+                           lower(items.name_singular)   LIKE ? or
                            lower(category)  LIKE ? or
                            lower(style)     LIKE ? or
                            lower(brand)     LIKE ? or
                            lower(color)     LIKE ? or
                            lower(make)      LIKE ? or
                            lower(special_name)  LIKE ?',
+                    "%#{keyword}%",
                     "%#{keyword}%",
                     "%#{keyword}%",
                     "%#{keyword}%",
@@ -205,7 +207,8 @@ class SearchesController < ApplicationController
                             items_designs.special_name,
                             items_designs.like,
                             items_designs.image_name,
-                            items.name as items_name').
+                            items.name as items_name,
+                            items.name_singular as items_name_singular').
             where('items_designs.id in (?)',@items_designs_array).
             joins(:item).
             limit(params[:limit]).
@@ -356,12 +359,14 @@ class SearchesController < ApplicationController
             @items_designs_id_array = ItemsDesign.
                 where('lower(items_designs.name) LIKE ? or
                            lower(items.name)   LIKE ? or
+                           lower(items.name_singular)   LIKE ? or
                            lower(category)  LIKE ? or
                            lower(style)     LIKE ? or
                            lower(brand)     LIKE ? or
                            lower(color)     LIKE ? or
                            lower(make)      LIKE ? or
                            lower(special_name)  LIKE ?',
+                      "%#{keyword}%",
                       "%#{keyword}%",
                       "%#{keyword}%",
                       "%#{keyword}%",
@@ -398,7 +403,8 @@ class SearchesController < ApplicationController
                             items_designs.image_name,
                             items_designs.image_name_hover,
                             items_designs.image_name_selection,
-                            items.name as items_name').
+                            items.name as items_name,
+                            items.name_singular as items_name_singular').
             where('items_designs.id in (?)',@items_designs_array).
             joins(:item).
             limit(params[:limit]).
@@ -665,12 +671,14 @@ class SearchesController < ApplicationController
             @items_designs_id_array = ItemsDesign.
                 where('lower(items_designs.name) LIKE ? or
                            lower(items.name)   LIKE ? or
+                           lower(items.name_singular)   LIKE ? or
                            lower(category)  LIKE ? or
                            lower(style)     LIKE ? or
                            lower(brand)     LIKE ? or
                            lower(color)     LIKE ? or
                            lower(make)      LIKE ? or
                            lower(special_name)  LIKE ?',
+                      "%#{keyword}%",
                       "%#{keyword}%",
                       "%#{keyword}%",
                       "%#{keyword}%",
@@ -704,7 +712,8 @@ class SearchesController < ApplicationController
                             items_designs.special_name,
                             items_designs.like,
                             items_designs.image_name,
-                            items.name as items_name').
+                            items.name as items_name,
+                            items.name_singular as items_name_singular').
             where('items_designs.id in (?)',@items_designs_array).
             where('item_id = ?',params[:item_id]).
             joins(:item).

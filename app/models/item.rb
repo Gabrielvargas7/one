@@ -16,7 +16,7 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :clickable, :name ,:priority_order,:image_name,:image_name_gray,:image_name_first_time_click
+  attr_accessible :clickable,:name, :name_singular ,:priority_order,:image_name,:image_name_gray,:image_name_first_time_click
 
 
   has_many :items_designs
@@ -44,7 +44,15 @@ class Item < ActiveRecord::Base
             #format: { with: VALID_REGEX } ,
             length: {minimum: 1, maximum: 100},
             allow_blank: false
+
+  validates :name_singular,
+            presence:true,
+            length: {minimum: 1, maximum: 100},
+            allow_blank: false
+
+
   validates :clickable, presence:true, format: { with: VALID_YES_NO_REGEX }
+
   validates :priority_order,presence:true, numericality: true
 
 
