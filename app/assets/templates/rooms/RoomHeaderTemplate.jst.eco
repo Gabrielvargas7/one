@@ -50,6 +50,12 @@
         </div>
         <!-- Menu  -->
         <ul class="nav pull-right" id="rooms_header_main_menu">
+
+            <li class="xroom_header_li_login_btn">
+
+
+            </li>
+
             <li class="xroom_header_li_element">
               <a id='xroom_header_active_sites' class="xroom_header_active_sites_img">
               </a>
@@ -60,7 +66,7 @@
             </li>
             <li class="xroom_header_li_element">
                 <a href="#" id="xroom_header_storepage" class="xroom_header_storepage_img">
-                    <span>&nbsp&nbspRoom<span>
+                    <span>&nbsp&nbsp&nbspEditor<span>
                 </a>
             </li>
             <li><a href="#" id="xroom_header_myroom" class="xroom_header_user_room">
