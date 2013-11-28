@@ -118,6 +118,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $('#profileHome_bottom').append(@ProfileHomeActivityView.el)
     @ProfileHomeActivityView.render()
 
+    $('.profile_menu_selected').removeClass('profile_menu_selected')
+    $('#profile_home').addClass('profile_menu_selected')
+
 
 
   ###
@@ -253,6 +256,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #*******************
 
   showProfilePhotos: ->
+    $('.profile_menu_selected').removeClass('profile_menu_selected')
+    $('#profile_photos').addClass('profile_menu_selected')
+
     @photosView = new Mywebroom.Views.ProfilePhotosView(model: @model)
     @profileHomeTopView.remove()
     $('#profileHome_top').css "height","auto"
@@ -265,8 +271,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
 
 
+
   # Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View
   showProfileKeyRequests: ->
+    
+    $('.profile_menu_selected').removeClass('profile_menu_selected')
+    $('#profile_key_requests').addClass('profile_menu_selected')
 
     # /*Note on key request view, we do not want profile-bottom overflow on. */
     topTemplate= JST['profile/ProfileSmallTopTemplate']
@@ -282,6 +292,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
 
   showProfileFriends: ->
+
+    $('.profile_menu_selected').removeClass('profile_menu_selected')
+    $('#profile_friends').addClass('profile_menu_selected')
+
     topTemplate = JST['profile/ProfileSmallTopTemplate']
 
     $('#profileHome_top').css "height","auto"
@@ -297,6 +311,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
 
   showProfileActivity:->
+
+    $('.profile_menu_selected').removeClass('profile_menu_selected')
+    $('#profile_activity').addClass('profile_menu_selected')
+
     #send full collection to this view.
     if Mywebroom.State.get("roomState") is "SELF"
       headerName = "Activity"
@@ -336,6 +354,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #--------------------------
   showProfileBookmarks:->
 
+    $('.profile_menu_selected').removeClass('profile_menu_selected')
+    $('#profile_bookmarks').addClass('profile_menu_selected')
+
     # show user Bookmarks
     @profileBookmarksView = new Mywebroom.Views.ProfileBookmarksView({model:@model})
     $('#profileHome_top').html('')
@@ -350,6 +371,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   # showProfileObjects - Only shows on Friend/Public Profile View
   #--------------------------
   showProfileObjects:->
+    
+    $('.profile_menu_selected').removeClass('profile_menu_selected')
+    $('#profile_objects').addClass('profile_menu_selected')
 
     # Show user Objects
     profileObjectsCollection = new Backbone.Collection()

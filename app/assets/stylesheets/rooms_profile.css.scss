@@ -235,44 +235,44 @@ div.spacer{
   text-align: center;
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-default_fllxkx.png") no-repeat center;
 }
-#profile_home a:hover{
+#profile_home a:hover, #profile_home.profile_menu_selected a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-active_n7xzdo.png") no-repeat center;
 }
 #profile_photos a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/photobtn-default_wyukgi.png") no-repeat center;
 }
-#profile_photos a:hover{
+#profile_photos a:hover, #profile_photos.profile_menu_selected a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/photobtn-active_fkeam2.png") no-repeat center;
 }
 #profile_friends a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/friendsbtn-default_acwlwf.png") no-repeat center;
 }
-#profile_friends a:hover{
+#profile_friends a:hover, #profile_friends.profile_menu_selected a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/friendsbtn-active_zjl9jt.png") no-repeat center;
 }
 #profile_key_requests a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/keyrequestbtn-default_cow1kv.png") no-repeat center;
 }
-#profile_key_requests a:hover{
+#profile_key_requests a:hover, #profile_key_requests.profile_menu_selected a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/keyrequestbtn-active_btjwdx.png") no-repeat center;
 }
 #profile_activity a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/activitybtn-default_nszatj.png") no-repeat center;
 }
-#profile_activity a:hover{
+#profile_activity a:hover, #profile_activity.profile_menu_selected a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811572/activitybtn-active_w91vry.png") no-repeat center;
 }
 #profile_objects a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/objectsbtn-default_mdls5o.png") no-repeat center;
 }
-#profile_objects a:hover{
+#profile_objects a:hover, #profile_objects.profile_menu_selected a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/objectsbtn-active_fmtjj4.png") no-repeat center;
 }
 #profile_bookmarks a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-default_n2c6yp.png") no-repeat center;
   font-size:18px;
 }
-#profile_bookmarks a:hover{
+#profile_bookmarks a:hover, #profile_bookmarks.profile_menu_selected a{
   background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-active_csktwe.png") no-repeat center;
 }
 #profile_home_info_img{
