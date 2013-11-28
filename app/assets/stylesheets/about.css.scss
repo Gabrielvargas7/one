@@ -22,7 +22,7 @@
 .about-top-image {
   width: 100%;
   height: 650px;
-  background-image: url(http://res.cloudinary.com/hpdnx5ayv/image/upload/v1385161332/team-image-01.jpg);
+  background-image: url(http://res.cloudinary.com/hpdnx5ayv/image/upload/v1385161332/about-us-cover-team-myWebRoom.jpg);
   background-position: 50% 50%;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -40,11 +40,21 @@
   margin-right: 150px;
 }
 
+#product-description {
+  font-size: 1.75em;
+  line-height: 41px;
+  font-weight: 100;
+}
+
+#about-black-arrow {
+  padding: 0px 0px 0px 590px;
+  display: inline-block;
+}
 /*
 (4) ABOUT US
 */
 .about-us-text {
-  padding-top: 195px;
+  padding-top: 128px;
   max-height: 450px;
   overflow: auto;
 }
@@ -70,7 +80,7 @@
 }
 
 .about-individual-picture {
-  border: solid #00ccff 2px;
+/*  border: solid #00ccff 2px;*/
   max-height: 250px;
   max-width: 250px;
   -webkit-border-radius: 50%;
@@ -141,24 +151,26 @@ So... x = (250^2/2)^(1/2)
 /*
 (6) JOIN THE TEAM
 */
-
+.about-join-team {
+  margin-top: 40px;
+}
 /*
 (7) PARTNERS
 */
 .about-partners {
-  margin-top: 75px;
+  margin-top: 32px;
 }
 /*
 (8) FEEDBACK
 */
 .about-feedback {
-  margin-top: 90px;
+  margin-top: 96px;
 }
 /*
 (9) PRESS
 */
 .about-press {
-  margin-top: 88px;
+  margin-top: 42px;
 }
 
 /*
@@ -177,6 +189,7 @@ So... x = (250^2/2)^(1/2)
   color: #ffffff;
   text-decoration: none;
   border: none;
+  box-shadow: 5px 4px 13px rgba(0, 0, 0, 0.5);
 }
 #about-signup-button:hover {
   color: #ffffff;
@@ -236,7 +249,7 @@ BACKGROUND COLOR
 SECTION HEIGHT
 */
 .about-section {
-  height: 650px;
+  height: 560px;
 }
 
 /*
@@ -259,7 +272,7 @@ TEXT ABOUT RECTANGLE PADDING
 MARGIN
 */
 .about-margin-top {
-  margin-top: 115px;
+  margin-top: 70px;
 }
 
 .about-margin-left {

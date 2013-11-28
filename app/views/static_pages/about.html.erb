@@ -42,19 +42,20 @@
 
     <!-- (3) OUR PRODUCT -->
     <div class="about-our-product">
+        <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1385607924/about-black-arrow.png" id="about-black-arrow">
 
         <h2 class="about-heading-black">OUR PRODUCT</h2>
 
         <br>
 
-        <p class="about-text-black">
+        <p id="product-description" class="about-text-black">
             We’ve created an easy and exciting new way for you to keep your online life organized and accessible. Your web room is a visual profile of everything you love. It’s a place where you can express yourself through design, bookmark your favorite sites, interact with products, and connect with friends, all from one beautiful interface.
         </p>
-
+<!-- 
         <p class="about-text-black">
             Choose a room, fill it with furniture, organize sites in objects. The birdcage will take you to Twitter, fill the shopping bag with online stores, the music player is ready to rock the room with playlists you made on Spotify. It’s fun, it’s free, it’s time to make your room.
         </p>
-
+ -->
         <hr>
 
         <br>
@@ -67,7 +68,7 @@
         <br>
 
         <div class="center">
-            <%= cl_image_tag("product-image.png", :quality => 100, :default_image => "default_image_all.png")%>
+            <%= cl_image_tag("product-desktop-team-myWebRoom.png", :quality => 100, :default_image => "default_image_all.png")%>
         </div>
 
         <div class="about-margin-left about-margin-right">
@@ -84,7 +85,7 @@
         <br>
 
         <div class="center">
-            <%= cl_image_tag("product-image-2.png", :quality => 100, :default_image => "default_image_all.png")%>
+            <%= cl_image_tag("product-bookmarks-objects-team-myWebRoom.png", :quality => 100, :default_image => "default_image_all.png")%>
         </div>
 
     </div>
@@ -110,7 +111,7 @@
                 </div>
             </div>
             <div class="span6 about-margin-top center">
-                <%= cl_image_tag("about-us.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                <%= cl_image_tag("about-us-team-myWebRoom.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
             </div>
         </div>
     </div>
@@ -131,7 +132,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("artem.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("artem-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-small">
                                 "I want to put a ding in the universe."<br>Steve Jobs
@@ -144,7 +145,7 @@
                                 <a href="http://www.linkedin.com/in/artemfedyaev/"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/artem"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/artem"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -154,7 +155,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("john.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("john-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-medium">
                                 "You must be the change you wish to see in the world."<br>Gandhi
@@ -167,7 +168,7 @@
                                 <a href="http://www.linkedin.com/in/johnnypreneur"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/john"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/john"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -177,7 +178,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("dasha.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("dasha-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-x-large">
                                 "If we are demoralized, sad and only complain, we’ll not solve our problems. You have to have confidence and keep up your efforts - in other words, never give up."<br>Dalai Lama
@@ -190,7 +191,7 @@
                                 <a href="http://www.linkedin.com/in/drebenok"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/drebenok"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/drebenok"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -200,7 +201,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("aubrey.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("aubrey-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-small">
                                 "Keep the dream alive: Hit the snooze button."<br>Anonymous
@@ -213,7 +214,7 @@
                                 <a href="http://www.linkedin.com/pub/aubrey-andel/a/a1a/ba"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/aubrey"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/aubrey"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -227,7 +228,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("millu.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("millu-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-large">
                                 "Random Jottings and drawings and questions, are just as, if not more, interesting than the final piece."<br>Sol Lewitt
@@ -240,7 +241,7 @@
                                 <a href="http://www.linkedin.com/pub/meley-araya/37/9b6/704"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/millu"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/millu"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -250,7 +251,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("gabriel.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("gabriel-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-x-large">
                                 "Trust your passion, identify your dreams, and find the courage to share them with others, no matter how many times they call you a fool."<br>Bill Strickland
@@ -263,7 +264,7 @@
                                 <a href="http://www.linkedin.com/pub/gabriel-vargas/18/868/34b/"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/gabriel"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/gabriel"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -273,7 +274,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("sara.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("sara-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-medium">
                                 "Nothing in this world can take the place of persistence."<br>Calvin Coolidge
@@ -286,7 +287,7 @@
                                 <a href="http://saratheneale.github.io/"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/saran"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/saran"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -296,7 +297,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("dave.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("dave-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-small">
                                 "Get the important things right."<br>N.P. Collingwood
@@ -309,7 +310,7 @@
                                 <a href="http://www.linkedin.com/in/joyvuudave"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/dave"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/dave"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -323,7 +324,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("nathalie.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("natalie-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-medium">
                                  "All that we see or seem is but a dream within a dream."<br>Edgar Allen Poe
@@ -336,7 +337,7 @@
                                 <a href="http://www.linkedin.com/pub/nathalie-aguinaldo/3/13/7a7"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/nathalie"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/nathalie"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -346,7 +347,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("dana.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("dana-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-small">
                                  "Good comes to those who wait."<br>Mother Goose
@@ -359,7 +360,7 @@
                                 <a href="http://www.linkedin.com/"><%= cl_image_tag("linkedin-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                             <span>
-                                <a href="/room/dana"><%= cl_image_tag("mywebroom-about-icon.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
+                                <a href="/room/dana"><%= cl_image_tag("mywebroom-icon-logo-team.png", height: 28, width: 28, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%></a>
                             </span>
                         </div>
                     </div>
@@ -369,7 +370,7 @@
                         <div class="about-wrapper">
                             <div class="about-background"></div>
                             <div class="about-individual-picture">
-                                <%= cl_image_tag("roomsy.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <%= cl_image_tag("roomsy-team-myWebRoom.png", height: 250, width: 250, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <p class="about-quote about-quote-large-plus">
                                 "What makes us human, I think, is an ability to ask questions, a consequence of our sophisticated spoken language."<br>Jane Goodall
@@ -408,10 +409,10 @@
         <div class="row-fluid">
             <div class="about-margin-top">
                 <div class="span6 center">
-                <%= cl_image_tag("italy.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                <%= cl_image_tag("join-us-team-myWebRoom.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                 </div>
                 <div class="span6">
-                    <div class="about-margin-right">
+                    <div class="about-join-team about-margin-right">
                         <h2 class="about-heading-black">JOIN THE TEAM</h2>
                         <p class="about-text-black">
                             Want to be part of the Rooms team? We’re always looking for talented and motivated Roommates who are ready to step into a pair of house slippers. You can get in touch with us at hr@mywebroom.com. The positions we have open now:
@@ -492,7 +493,7 @@
             </div>
             <div class="about-margin-top">
                 <div class="span6 center">
-                    <%= cl_image_tag("partners.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                    <%= cl_image_tag("partners-team-myWebRoom.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                 </div>
             </div>
         </div>
@@ -506,7 +507,7 @@
         <div class="row-fluid">
             <div class="about-margin-top">
                 <div class="span6 center">
-                    <%= cl_image_tag("feedback.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                    <%= cl_image_tag("feedback-team-myWebRoom.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                 </div>
                 <div class="span6">
                     <div class="about-feedback about-margin-right">
@@ -584,7 +585,7 @@
             </div>
             <div class="span6 center">
                 <div class="about-margin-top">
-                    <%= cl_image_tag("press.png", :height => 420, :width => 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png") %>
+                    <%= cl_image_tag("press-team-myWebRoom.png", :height => 420, :width => 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png") %>
                 </div>
             </div>
         </div>
@@ -597,7 +598,7 @@
     <div class="container-fluid about-section about-background-blue">
         <div class="row-fluid about-margin-top">
             <div class="span6 center">
-                <%= cl_image_tag("contact-us.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                <%= cl_image_tag("contact-us-team-myWebRoom.png", height: 420, width: 420, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
             </div>
             <div class="span6">
                 <div class="about-margin-right">
