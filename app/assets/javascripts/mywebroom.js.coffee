@@ -26,6 +26,8 @@ $(document).ready ->
 
       roomDesigns   : false  # Array of item designs, or empty array
       roomTheme     : false  # Object containing info on room's theme
+      firstTimePopupItem : 0 #set the item for the first time pupop
+      dom_item_id   : false # dom item when is click
 
       initialItems: false # Backbone collection of room items
 
@@ -905,6 +907,7 @@ $(document).ready ->
           dom_item_id = $(this).data().designItemId
 
 
+
           #console.log("Tutorial -> click item: "+dom_item_id)
           #console.log("room step "+Mywebroom.State.get("signInData").get("user_profile").tutorial_step.toString())
           #console.log("Open the editor here on the item that where click-it")
@@ -953,8 +956,7 @@ $(document).ready ->
           #console.log("No on the Tutorial -> click item")
           # item_id extracted from the clicked element
           dom_item_id = $(this).data().designItemId
-
-
+          Mywebroom.State.set("dom_item_id",dom_item_id)
 
           # model associated with this item_id
           model = Mywebroom.Data.ItemModels[dom_item_id]
@@ -1035,13 +1037,21 @@ $(document).ready ->
               #B. Check for first click
               if firstTimeClickedItem.get('first_time_click') is "y" and model.get('id')!=21
                 #1. Merge model and firstTimeClickedItem since we need both where we're going.
-                itemData = new Backbone.Model(firstTimeClickedItem.toJSON())
-                itemData.set(model.toJSON())
-                itemData.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
-                itemData.set('coordinates',coordinates) #Setting these for the case when: firstClick to Special Item Popup View
+#                itemData = new Backbone.Model(firstTimeClickedItem.toJSON())
+#                itemData.set(model.toJSON())
+#                itemData.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
+#                itemData.set('coordinates',coordinates) #Setting these for the case when: firstClick to Special Item Popup View
 
                 #2. Show Popup
-                Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
+#                Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
+
+                console.log("first time item "+model.get('id'))
+                Mywebroom.State.set("firstTimePopupItem",firstTimeClickedItem)
+
+                view = new Mywebroom.Views.RoomFirstTimePopupView()
+                $("#xroom_popup_container").append(view.el)
+                view.render()
+
 
               else
                 #(2.2) Create the Bookmarks View. (Function checks for special items like Portrait)

@@ -1,0 +1,24 @@
+<style>
+  #popup_item_first_click_close_x{
+    position:absolute;
+    right:40px;
+    top:0;
+  }
+</style>
+
+<div class="room_first_time_popup_container_header">
+</div>
+
+<div class="room_first_time_popup_container">
+</div>
+
+<div id="room_first_time_popup_container_box">
+
+  <img src="<%=@firstTimeClickedItem.get('image_name_first_time_click').url%>">
+  <div class="room_first_time_popup_close_btn green_button">
+    <a href="#"><span class="link_spanner"></span></a>
+    Continue
+  </div>
+  <a href="#"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383693029/x-button-white-on-dark.png" id="popup_item_first_click_close_x"> </a>
+</div>
+
