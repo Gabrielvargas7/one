@@ -43,9 +43,19 @@
   float:left;
 }
 .activity_item_large_view_img{
-  max-width:350px;
-  max-height:500px;
+  width:350px;
+  min-height:350px;
+  max-height:450px;
   border: 1px solid #ebebeb;
+  display:inline-block;
+  vertical-align:middle;
+  background-position:center;
+  background-repeat: no-repeat;
+  
+}
+.activity_item_large_view_img img{
+  max-width:350px;
+  max-height:450px;
 }
 .activity_item_large_view .profile_large_item_try_it_button{
   width:auto;

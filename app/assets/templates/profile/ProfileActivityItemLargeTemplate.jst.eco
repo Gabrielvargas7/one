@@ -11,21 +11,32 @@
     <%end%>
   </div>
   <div class='activity_item_large_content_wrap'>
-    <ul>
-    <li class='activity_item_large_list'><div class="" id="large_item_prev"><a  href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></li>
+    <!-- <ul> -->
+    <div class='activity_item_large_list'><div class="" id="large_item_prev"><a  href="#"><img class="large_item_nav_arrow" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></div>
 
-    <li class='activity_item_large_list activity_item_large_view_img_wrap'>
-      <%if @model.get('image_name_desc'):%>
-        <img class="activity_item_large_view_img" src="<%=@model.get('image_name_desc').url%>">
-      <%else if @model.get('image_name_selection'):%>
-        <img class="activity_item_large_view_img" src="<%=@model.get('image_name_selection').url%>">
-      <%else:%>
-        <img class="activity_item_large_view_img" src="<%=@model.get('image_name').url%>">
-      <%end%>
-    </li>
+    <div class='activity_item_large_list activity_item_large_view_img_wrap'>
+      <div class="activity_item_large_view_img">
+        <table id="activity_item_large_view_img_wrapper" 
+        style="min-height: 350px;
+                max-height: 450px;
+                width: 350px;margin:0;padding:0;border:0;">
+          <tr>
+            <td style="vertical-align:middle;text-align:center">
+              <%if @model.get('image_name_desc'):%>
+                <img src="<%=@model.get('image_name_desc').url%>">
+              <%else if @model.get('image_name_selection'):%>
+                <img src="<%=@model.get('image_name_selection').url%>">
+              <%else:%>
+                <img src="<%=@model.get('image_name').url%>">
+              <%end%>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
-    <li class='activity_item_large_list'><div class="" id="large_item_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></li>
-    </ul>
+    <div class='activity_item_large_list'><div class="" id="large_item_next"><a  href="#"><img class="large_item_nav_arrow flipimg" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1377717746/leftarrow.png"></a></div></div>
+    <!-- </ul> -->
   </div>
   <ul>
     <li style="float: left;
