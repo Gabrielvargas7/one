@@ -98,7 +98,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   render: ->
     #Template shows structure of the view
     $(@el).html(@template(user_info:@model))     #pass variables into template.
-    $('#profileHome_container').css "min-height",'720px'
+    #$('#profileHome_container').css "min-height",'720px'
     #Show the user content
     @showHomeGrid()
     this
@@ -111,7 +111,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
     @profileHomeTopView = new Mywebroom.Views.ProfileHomeTopView({model:@model})
     $('#profileHome_top').html(@profileHomeTopView.render().el)
-    #$('#profileHome_bottom').css "height","450px"
+    $('#profileHome_bottom').css "height","450px"
     #Bandaid- make header another table.
     tableHeader = JST['profile/ProfileGridTableHeader']
     $("#profileHome_bottom").html(tableHeader())

@@ -1,6 +1,9 @@
 // Place all the styles related to the rooms_profile object. 
 //Created by Sara Neale 8/12/2013
 
+$height_of_the_room: 688px; /*the room's theme image height without the header and footer*/
+$height_of_the_header_usually:51px; /*The header is usually this height. Browser size will vary this height.*/
+
 #users_profile_container{
   overflow:hidden;
   width:remainder;
@@ -32,9 +35,9 @@
   // transition:all 1s ease-in-out;
 }
 nav.profile {
-     position:fixed;
-     top:45px;
-     height:100%;
+     position:absolute;/*from fixed, so you can scroll to footer on small screens*/
+     top:$height_of_the_header_usually;
+     height:$height_of_the_room;
      background-color:transparent; /* your choice here */
      z-index:3; /* make sure this is the highest z-index on the page */
 }
@@ -300,8 +303,11 @@ div.spacer{
   float:left;
   width:460px;
   background: #1d1d1d;
-  margin:1em 0 1em 1em;
-  color:#f5f5f5
+  margin: 5px 0 1em 1em;
+  color:#f5f5f5;
+  /*To prevent user profile description from breaking the table*/
+  max-height: 194px;
+  overflow: hidden;
 }
 /*this refers to top section of the profile container */
 #profileHome_top{
@@ -372,12 +378,16 @@ table.generalGrid{
   border-collapse:separate;
   border-spacing:10px;
 }
+.profileActivity_activity.generalGrid,
+.profileHome_activity.generalGrid{
+  height:100%;
+}
 #gridItemList{
   background-color: white;
   position:relative;
   overflow-y:scroll;
   width:620px;
-  height:585px;
+  height:100%;
   text-align:center;
 
 }

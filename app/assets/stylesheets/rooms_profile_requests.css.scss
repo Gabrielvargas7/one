@@ -114,8 +114,12 @@ p.profile_friend_username{
   overflow-y:scroll;
 
 }
+/*User-Photos-View*/
 .user-photos-view{
   background-color: transparent;
+}
+.user-photos-view .profileHome_activity.generalGrid{
+  height:550px;
 }
 .user-photos-view #profile_small_user_picture_wrap{
   padding:1em 1em 1em 0;
