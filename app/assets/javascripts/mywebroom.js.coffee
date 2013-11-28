@@ -1821,11 +1821,10 @@ $(document).ready ->
       #Change style to Key requested.
       if $('#profile_ask_for_key_overlay button').length > 1
         $requestButton = $('#profile_ask_for_key_overlay button')
-      else
-        $requestButton = $('.profile_request_key_button')
-      $requestButton.text("Key Requested")
-      $requestButton.addClass("profile_key_requested").removeClass('profile_request_key_button')
+        $requestButton.text("Key Requested")
+        $requestButton.addClass("profile_key_requested").removeClass('profile_request_key_button')
 
+      #Otherwise, change the style in your code :)
 
     else
       #send to landing page
