@@ -127,7 +127,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 
     self = this
 
-    bootbox.confirm("Are you sure you want to remove this object?", (result) ->
+    bootbox.confirm("<h4>Are you sure you want to remove this object?</h4><br><p>Don't worry, you can add the object back to your room later and your bookmarks in this object will still be here!</p>", (result) ->
       if result
 
         self.removeObject()
