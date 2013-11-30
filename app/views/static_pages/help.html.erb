@@ -1,4 +1,4 @@
-<% provide(:title, 'How to use your webroom | myWebRoom') %>
+<% provide(:title, 'Help Page | How to use your webroom | myWebRoom') %>
 
 
 
@@ -27,10 +27,14 @@
             </li>
             <li>
                 <!-- 1.3 -->
-                <a href="#save_and_cancel_changes">Save &amp; Cancel Changes</a>
+                <a href="#change_bundle">Change Bundle</a>
             </li>
             <li>
                 <!-- 1.4 -->
+                <a href="#save_and_cancel_changes">Save &amp; Cancel Changes</a>
+            </li>
+            <li>
+                <!-- 1.5 -->
                 <a href="#add_and_remove_objects">Add &amp; Remove Objects</a>
             </li>
             <li class="divider"></li>
@@ -80,9 +84,10 @@
                 <a href="#change_photo">Change Photo</a>
             </li>
             <li class="divider"></li>
+            <li class="nav-header">FAQ</li>
             <li>
                 <!-- 5 -->
-                <a href="#faq">FAQ</a>
+                <a href="#faq">Frequently Asked Questions</a>
             </li>
         </ul>
     </div>
@@ -90,22 +95,21 @@
 
 
 
-    <!-- MAIN -->
-    <div class="span8">
+<!-- MAIN -->
+    <div class="span8 help-page-main-top-margin">
 
 
         <div class="help-page-top-button">
             <a href="#top"> <!-- THIS IS MAGIC! THERE'S NO ELEMENT WITH ID #top! -->
-                <%= cl_image_tag("up-icon.png", :quality => 100, :default_image => "default_image_all.png")%>
+                <%= cl_image_tag("back-to-top-arrow-help-page-mywebroom.png", :quality => 100, :default_image => "default_image_all.png")%>
             </a>
         </div>
 
 
-
-        <!-- PAGE 1 -->
+<!-- PAGE 1 -->
         <h1>Decorate</h1>
 
-        <!-- 1.1 -->
+<!-- 1.1 -->
         <div id="change_objects"> </div>
         <h3>Change Objects</h3>
 
@@ -121,18 +125,24 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-objects-help-page-1-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_object.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-objects-help-page-2-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
-        <!-- 1.2 -->
+        <div>
+            <%= cl_image_tag("change-objects-help-page-3-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+<!-- 1.2 -->
         <h3 id="change_theme">Change Theme</h3>
 
         <p>
@@ -147,22 +157,48 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-objects-help-page-1-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_theme.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-theme-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+<!-- 1.3 -->
+        <h3 id="change_bundle">Change Bundle</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar
+            <br>
+            2.&nbsp;&nbsp;Select the <em>Bundles</em> tab
+            <br>
+            3.&nbsp;&nbsp;Choose the Bundle you'd like to preview. If you don't see one you like, you can
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search for Bundles that match a keyword or use filters to help you find one
+            <br>
+        </p>
+
+        <div>
+            <%= cl_image_tag("change-objects-help-page-1-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
+
+        <div>
+            <%= cl_image_tag("change-bundle-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
-        <!-- 1.3 -->
+<!-- 1.4 -->
         <h3 id="save_and_cancel_changes">Save and Cancel Changes</h3>
 
-        <!-- 1.3.1 -->
+<!-- 1.4.1 -->
         <h5>Save Changes</h5>
 
         <p>
@@ -175,12 +211,12 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_save.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("save-changes-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
-        <!-- 1.3.2 -->
+<!-- 1.4.2 -->
         <h5>Cancel Changes</h5>
 
         <p>
@@ -189,15 +225,15 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_cancel.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("cancel-changes-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
-        <!-- 1.4 -->
+<!-- 1.5 -->
         <h3 id="add_and_remove_objects">Add and Remove Objects</h3>
 
-        <!-- 1.4.1 -->
+<!-- 1.5.1 -->
         <h5>Remove Object</h5>
 
         <p>
@@ -212,12 +248,12 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_remove.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("remove-object-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
-        <!-- 1.4.2 -->
+<!-- 1.5.2 -->
         <h5>Add Object</h5>
 
         <p>
@@ -226,17 +262,17 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_object.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("add-object-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
-        <!-- 2 -->
+<!-- 2 -->
         <br>
 
         <h1>Organize</h1>
 
-        <!-- 2.1 -->
+<!-- 2.1 -->
         <h3 id="discover_bookmarks">Discover Bookmarks</h3>
 
         <p>
@@ -249,18 +285,18 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_discover_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("discover-bookmarks-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_discover_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("discover-bookmarks-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
-        <!-- 2.2 -->
+<!-- 2.2 -->
         <h3 id="add_and_create_bookmarks">Add and Create Bookmarks</h3>
 
         <p>
@@ -273,19 +309,19 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_add_bookmark.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("add-create-bookmarks-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_add_url.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("add-create-bookmarks-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
-        <!-- 2.3 -->
+<!-- 2.3 -->
         <h3 id="delete_bookmarks">Delete Bookmarks</h3>
 
         <p>
@@ -296,13 +332,13 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_delete_bookmark.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("delete-bookmarks-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
-        <!-- 2.4 -->
+<!-- 2.4 -->
         <h3 id="active_sites">Active Sites</h3>
 
         <p>
@@ -311,19 +347,19 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_active_sites.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("active-bookmarks-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
-        <!-- 3 -->
+<!-- 3 -->
         <br>
 
         <h1>Share</h1>
 
 
-        <!-- 3.1 -->
+<!-- 3.1 -->
         <h3 id="key_requests">Key Requests</h3>
 
         <p>
@@ -336,22 +372,22 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_social.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("key-request-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_key_requests.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("key-request-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
-        <!-- 3.2 -->
+<!-- 3.2 -->
         <h3 id="friends_room">Friend's Room</h3>
 
-        <!-- 3.2.1 -->
+<!-- 3.2.1 -->
         <h5>View Room</h5>
 
         <p>
@@ -362,19 +398,19 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_gear_icon.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("friend-room-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("full_room.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("friend-room-1-2-help-page-mywebroom", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
-        <!-- 3.2.2 -->
+<!-- 3.2.2 -->
         <h5>View profile info and photos</h5>
 
         <p>
@@ -387,18 +423,18 @@
         <br>
 
         <div>
-            <%= cl_image_tag("profile.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("friend-room-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("photos.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("friend-room-3-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
-        <!-- 3.3 -->
+<!-- 3.3 -->
         <h3 id="upload_your_photos">Upload your photos</h3>
 
         <p>
@@ -409,24 +445,24 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_upload_photo_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("friend-room-4-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_upload_photo_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("friend-room-5-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
-        <!-- 4 -->
+<!-- 4 -->
         <br>
 
         <h1>Profile Settings</h1>
 
-        <!-- 4.1 -->
+<!-- 4.1 -->
         <h3 id="change_username_or_password">Change Username or Password</h3>
 
         <p>
@@ -441,19 +477,19 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_account_settings_a.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-username-password-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_account_settings_b.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-username-password-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
-        <!-- 4.2 -->
+<!-- 4.2 -->
         <h3 id="edit_profile_information">Edit Profile Information</h3>
 
         <p>
@@ -464,14 +500,14 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_account_settings_c.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("edit-profile-information-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
 
 
-        <!-- 4.3 -->
+<!-- 4.3 -->
         <h3 id="change_photo">Change Photo</h3>
 
         <p>
@@ -484,87 +520,84 @@
         </p>
 
         <div>
-            <%= cl_image_tag("click_account_settings_d.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-photo-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_set_as_profile_picture.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-photo-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
         <div>
-            <%= cl_image_tag("click_account_password.png", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-photo-3-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
-        <!-- 5 -->
+<!-- 5 -->
         <br>
-
         <h1 id="faq">Frequently Asked Questions</h1>
-
         <h3>Help Center</h3>
-
+        
+        <br>
+        
+        <p>
+            <div class="text-info">Q.&nbsp;&nbsp;What is myWebRoom? </div>
+            <br>
+            <div>
+                A.&nbsp;&nbsp;MyWebRoom is a fun way to take control of your online life. The internet can be overwhelming, so we’ve created an intuitive and interactive place for you to explore the web, organize sites, discover new content, shop, watch TV, listen to music, connect with friends and more. Your online room is a visual profile of everything you love and it’s where you can show off your personality and style.
+                <!-- Click the social icon, then click the <em>Friends</em> or <em>Key Requests</em> tab. You can then click the blue <em>Invite Friends with Facebook</em> button -->
+            </div>
+        </p>
+        
         <br>
 
-        <p>
-
-            <div class="text-info">Q.&nbsp;&nbsp;How do I invite my facebook friends to join mywebroom?</div>
-
-            <br>
-
-            <div>
-                A.&nbsp;&nbsp;Click the social icon, then click the <em>Friends</em> or <em>Key Requests</em> tab. You can then click the blue <em>Invite Friends with Facebook</em> button
+          <p>
+            <div class="text-info">
+                Q.&nbsp;&nbsp;Who is myWebRoom for?
             </div>
-
+            <br>
+            <div>
+                A.&nbsp;&nbsp;MyWebRoom is for everyone! In particular people that like art and visuals. Our platform allows people to create their own place on the web using real products which becomes your profile in our network, so we have seen a big interest coming from Artists, Creatives, Interior Desingers and people looking for a beautiful web experience.
+            </div>
         </p>
 
         <br>
-
+        
         <p>
-
             <div class="text-info">
-                Q.&nbsp;&nbsp;How do I share my bookmarks?
+                Q.&nbsp;&nbsp;Is it free? Do I need to pay for this service? 
             </div>
-
             <br>
-
             <div>
-                A.&nbsp;&nbsp;TODO
-            </div>
-
-        </p>
-
-        <br>
-
-        <p>
-
-            <div class="text-info">
-                Q.&nbsp;&nbsp;How do I design my own room?
-            </div>
-
-            <br>
-
-            <div>
-                A.&nbsp;&nbsp;TODO
+                A.&nbsp;&nbsp;It is completely FREE to use myWebRoom, so start enjoying your Room now!
             </div>
         </p>
 
         <br>
 
         <p>
-
             <div class="text-info">
-                Q.&nbsp;&nbsp;How do I add my own objects to my room?
+                Q.&nbsp;&nbsp;What does myWebRoom do? 
             </div>
-
             <br>
-
             <div>
-                A.&nbsp;&nbsp;TODO
+                A.&nbsp;&nbsp;MyWebRoom provides a beautiful way for you to interact with the web by organizing your favorite sites and apps in furniture and objects inside a custom online room. You can share items from your room on your social sites, store files, shop for furniture and objects, and invite friends to check out your place. MyWebRoom also curates hand-picked products and the hottest sites so you can stay on top of trends from all over the world. It’s a simple way to connect with services, brands, products and people. 
+            </div>
+        </p>
+
+        <br>
+
+        <p>
+            <div class="text-info">
+                Q.&nbsp;&nbsp;Why the Room interface? 
+            </div>
+            <br>
+            <div>
+                A.&nbsp;&nbsp;We use a room as a visual profile because we all have some sort of space where we feel at home. Your room is a place where you can relax, catch up with what’s going on in the news and entertainment world, study, work, shop the latest trends and chat with friends. Your room is where you display the objects and decor style that defines who you are. The type of art you like, your favorite brands, your hometown sports teams, mementos that bring back memories. Your room represents who you are and it’s filled with everything that matters to you. 
             </div>
         </p>
 
@@ -574,11 +607,69 @@
             <div class="text-info">
                 Q.&nbsp;&nbsp;How do I access my bookmarks?
             </div>
-
             <br>
-
             <div>
-                A.&nbsp;&nbsp;TODO
+                A.&nbsp;&nbsp;When you click on an object, your bookmarks stored within that object will open. You can also click star on the top screen toolbar to view and access all of your open/active bookmarks.  
+            </div>
+        </p>
+
+        <br>
+
+        <p>
+            <div class="text-info">
+                Q.&nbsp;&nbsp;How do I check out my friend’s room? 
+            </div>
+            <br>
+            <div>
+                A.&nbsp;&nbsp;First you need to send your friend a key request. Click the social icon on your toolbar, then click Requests on the left side of your screen. Once they have accepted your request, you can search for your friend in the Search box on the upper left part of the screen, or click the social icon, then click on Friends. Click their name. You are now in your friend’s room! 
+            </div>
+        </p>
+
+        <br>
+
+          <p>
+            <div class="text-info">
+                Q.&nbsp;&nbsp;What can I see in my friends room? 
+            </div>
+            <br>
+            <div>
+                A.&nbsp;&nbsp;You can see your friend’s photos, objects, bookmarks and recent activity. If you like their funky furniture or come across a fun site in their room, you can add it to your room! 
+            </div>
+        </p>
+
+        <br>
+
+          <p>
+            <div class="text-info">
+                Q.&nbsp;&nbsp;Can I message my friend in my room? 
+            </div>
+            <br>
+            <div>
+                A.&nbsp;&nbsp;Not yet, but it will be an upcoming feature! We will be coming out with a lot of cool features in the future so sit back and enjoy the ride. 
+            </div>
+        </p>
+
+        <br>
+
+          <p>
+            <div class="text-info">
+                Q.&nbsp;&nbsp;Can I move objects around? 
+            </div>
+            <br>
+            <div>
+                A.&nbsp;&nbsp;How to use my webroom is almost entirely up to you, but sometimes it looks funny when a bunch of bananas are hanging from the ceiling. We love crazy rooms, but we also want your webroom to be easy and intuitive to use, so we’ve placed objects in a logical fashion so you don’t have to search all over your room every time you want to access your favorite sites and apps. 
+            </div>
+        </p>
+
+        <br>
+
+          <p>
+            <div class="text-info">
+                Q.&nbsp;&nbsp;Why do some websites open in a separate tab?
+            </div>
+            <br>
+            <div>
+                A.&nbsp;&nbsp;Our technology aims to keep most sites within one platform, allowing you to stay in your webroom while you access the web from one place. We’ve manipulated a powerful tool to ensure one of the most private and visual browsing experiences on the internet today. That said, the ones that open on a separate tab, are companies that don’t agree with our vision of complete online privacy.
             </div>
         </p>
 
