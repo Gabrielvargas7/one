@@ -92,13 +92,16 @@ p.profile_friend_username{
   width:158px;
   height:23px;
 }
+.profile_request_key_button:hover {
+  background-color: #33a242;
+}
 .profile_request_deny{
   width:80px;
   height:23px;
 }
 .profile_request_deny,.profile_key_requested, .profile_large_item_tried_it{
   font-size:14px;
-  background-color:#e2e2e2;
+  background-color:#cbcbcb;
   color:#464646;
   // box-shadow: 0px 2px 0px 0px #c1c1c1;
   border:none;
@@ -153,6 +156,10 @@ p.profile_friend_username{
 }
 #profile_ask_for_key_overlay button.profile_key_requested{
   width:130px;
+}
+
+.profile_key_requested:hover {
+  background-color: #b6b6b6;
 }
 .profile_friends_suggestion_single .media{
   padding: 6px 1em;

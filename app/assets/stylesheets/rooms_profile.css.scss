@@ -1,4 +1,4 @@
-// Place all the styles related to the rooms_profile object. 
+// Place all the styles related to the rooms_profile object.
 //Created by Sara Neale 8/12/2013
 
 $height_of_the_room: 688px; /*the room's theme image height without the header and footer*/
@@ -73,7 +73,7 @@ nav.profile {
     width:120px;
     height:120px;
   }
-  
+
   #profile_image_edit{
     display:none;
 
@@ -88,7 +88,7 @@ nav.profile {
     margin:5px 1px;
     text-align:center;
   }
-  
+
   #profile_image_edit a,#profile_image_edit a:hover{
     color:black;
     text-decoration: none;
@@ -96,7 +96,7 @@ nav.profile {
 }
 
 .profile_home_img_wrap:hover{
-  //display change picture div here. 
+  //display change picture div here.
   #profile_image_edit{
     display:block;
   }
@@ -110,7 +110,7 @@ nav.profile {
   font-size:8px;
   display:table-row;
   white-space:nowrap;
-  
+
 }
 
 #profile_home_wrapper td{
@@ -124,7 +124,7 @@ nav.profile {
 #profile_sidebar a,#profile_sidebar a:visited{
   text-decoration:none;
   color:#f5f5f5;
-  
+
 }
 #profile_home_wrapper a:hover{
   // background:rgba(0,0,0,.8);
@@ -151,7 +151,7 @@ nav.profile {
   position:absolute;
   transition:left 1s ease-in-out;
   z-index:2;
-  
+
 }
 
 #profile_sidebar{
@@ -183,7 +183,7 @@ nav.profile {
 }
 #profile_sidebar li a{
   padding-top: 70px;
-  
+
 }
 #profile_sidebar ul{
   font-family:"Open Sans Condensed";
@@ -225,7 +225,9 @@ div.spacer{
 }
 .user-photos-view #upload_new_photo_button{
   width:107px;
-
+}
+#upload_new_photo_button:hover {
+  background-color: #00b7e5;
 }
 //Sidebar Icons
 
@@ -291,7 +293,7 @@ div.spacer{
   border:1px solid #919191
 }
 #profile_home_info_img img:hover{
-  
+
   /*float:left;
   border:1px solid #AFAFAF;
   width:100px;
@@ -320,12 +322,12 @@ div.spacer{
   font-size:15px;
   font-weight:lighter;
   padding:10px 10px 15px 10px;
-  
+
 }
 
 #profile_home_basic_info ul li{
   display:inline;
-  padding-right: 20px 
+  padding-right: 20px
 }
 /* this refers to the bottom section of the profile container */
 #profileHome_bottom{
@@ -371,7 +373,7 @@ div.profile_info_name{
   width:100%;
   padding-left:10px;
 }
-// #profile_home_wrapper 
+// #profile_home_wrapper
 table.generalGrid{
   // width:100%;
   background-color:#f5f5f5;
@@ -406,7 +408,7 @@ table.generalGrid{
   background-position: 50% 50%;
 }
 .user-photos-view .gridItemPicture{
- background-size:cover; 
+ background-size:cover;
 }
 #gridItemsTest{
   background-color: white;
@@ -425,7 +427,7 @@ table.generalGrid{
   display:inline-block;
   margin:9px 5px;
   overflow:hidden;
-  
+
 }
 /*center the picture*/
 .user-photos-view div.gridItem{
@@ -465,7 +467,7 @@ table.generalGrid{
   top:50%;
 }
 /*image holders for profile friends, requests, and suggestions*/
-div.profile_friend_image_holder, .profile_request_single_image_holder, 
+div.profile_friend_image_holder, .profile_request_single_image_holder,
 .profile_friend_suggestion_single_image_holder, {
    width:70px;
    height:70px;
