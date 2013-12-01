@@ -23,3 +23,6 @@
 
 # TextMate config file
 .tm_properties
+
+# rbenv
+.ruby-version
