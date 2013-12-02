@@ -48,7 +48,11 @@
         </p>
 
         <p class="shop_description">
-          <%= @items_design.description[0,490] %>
+          <%= @items_design.description[0,490]  %>
+          <% if @items_design.description.length > 490 %>
+          ...
+          <% end %>
+
         </p>
         <% @static_content = StaticContent.find_by_name("publicstore-icon")  %>
         <% if @static_content.nil? or @static_content.image_name.blank?  %>

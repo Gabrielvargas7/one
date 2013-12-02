@@ -141,6 +141,7 @@ class ItemsDesignsController < ApplicationController
                   @items_design_new = @items_designs_new.first
 
                   UsersItemsDesign.where('items_design_id =?',@items_design.id).update_all({:items_design_id =>@items_design_new.id,:hide =>'yes'})
+                  BundlesItemsDesign.where('items_design_id =?',@items_design.id).update_all({:items_design_id =>@items_design_new.id})
 
 
                   @items_design.destroy
