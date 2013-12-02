@@ -874,7 +874,7 @@ $(document).ready ->
       else #All other Items- create Bookmarks View
         view = new Mywebroom.Views.BookmarksView(
           {
-            items_name:       itemModel.get("name")
+            items_name:       itemModel.get("name_singular")
             item_id:          itemModel.get("id")
             user:             Mywebroom.State.get("roomUser").get("id")
           }
@@ -1791,7 +1791,7 @@ $(document).ready ->
     # Compare modelToBrowse ID to state room designs items id
     for item in Mywebroom.State.get('roomDesigns')
       if modelId is item.item_id
-        return item.items_name
+        return item.items_name_singular
 
   ###
   Checks if signed in user has requested a key from idRequested. returns true/false.
