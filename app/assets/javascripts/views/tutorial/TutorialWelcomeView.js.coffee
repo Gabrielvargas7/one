@@ -57,11 +57,11 @@ class Mywebroom.Views.TutorialWelcomeView extends Backbone.View
     view.render()
     Mywebroom.State.set("tutorialItemClick",view)
 
-    #console.log('Kill: ', this);
-    this.unbind(); # Unbind all local event bindings
-    this.remove(); # Remove view from DOM
-    delete this.$el; # Delete the jQuery wrapped object variable
-    delete this.el;
+    #console.log('Kill: ', this)
+    this.unbind() # Unbind all local event bindings
+    this.remove() # Remove view from DOM
+    delete this.$el # Delete the jQuery wrapped object variable
+    delete this.el
 
 
 

@@ -126,7 +126,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
     hasId = bookmark.has("id")
     hasItemId = bookmark.has("item_id")
-    hasItemName = bookmark.has("item_name")
+    hasItemName = bookmark.has("item_name_singular")
 
 
     if hasId and hasItemId and hasItemName
@@ -139,7 +139,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
       $('#xroom_bookmarks').show()
 
       bookmarksView = new Mywebroom.Views.BookmarksView({
-        items_name: bookmark.get('item_name')
+        items_name: bookmark.get('item_name_singular')
         item_id: bookmark.get('item_id')
         user: Mywebroom.State.get("roomUser").get("id")
       })
@@ -172,7 +172,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
       if not hasItemName
         message += "item_name\n"
 
-      alert(message)
+      #alert(message)
 
 
 

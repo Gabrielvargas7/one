@@ -24,7 +24,7 @@ class Mywebroom.Views.RoomFirstTimePopupView extends Backbone.View
 
     # THIS VIEW
     @firstTimeClickedItem = Mywebroom.State.get("firstTimePopupItem")
-    console.log(@firstTimeClickedItem)
+    #console.log(@firstTimeClickedItem)
     $(@el).html(@template(firstTimeClickedItem:@firstTimeClickedItem))
 
 
@@ -41,7 +41,7 @@ class Mywebroom.Views.RoomFirstTimePopupView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
-    console.log("close first time pop up")
+    #console.log("close first time pop up")
     itemData = Mywebroom.State.get("firstTimePopupItem")
     dom_item_id = Mywebroom.State.get('dom_item_id')
 
@@ -56,8 +56,8 @@ class Mywebroom.Views.RoomFirstTimePopupView extends Backbone.View
     #1a.. Update State Model locally so we don't have to refetch
     Mywebroom.State.get('roomItems').findWhere({'item_id':itemData.get('item_id').toString()}).set('first_time_click',"n")
 
-    console.log(dom_item_id)
-    console.log(itemData)
+    #console.log(dom_item_id)
+    #console.log(itemData)
 
     bookmarksView = new Mywebroom.Views.BookmarksView
       items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(dom_item_id))
@@ -72,10 +72,10 @@ class Mywebroom.Views.RoomFirstTimePopupView extends Backbone.View
 
 
     #console.log('Kill: ', this);
-    this.unbind(); # Unbind all local event bindings
-    this.remove(); # Remove view from DOM
-    delete this.$el; # Delete the jQuery wrapped object variable
-    delete this.el;
+    this.unbind() # Unbind all local event bindings
+    this.remove() # Remove view from DOM
+    delete this.$el # Delete the jQuery wrapped object variable
+    delete this.el
 
 
   roomFirstTimePopupCloseBtnX: (e) ->
@@ -83,15 +83,7 @@ class Mywebroom.Views.RoomFirstTimePopupView extends Backbone.View
     e.stopPropagation()
 
     #console.log('Kill: ', this);
-    this.unbind(); # Unbind all local event bindings
-    this.remove(); # Remove view from DOM
-    delete this.$el; # Delete the jQuery wrapped object variable
-    delete this.el;
-
-
-
-
-
-
-
-
+    this.unbind() # Unbind all local event bindings
+    this.remove() # Remove view from DOM
+    delete this.$el # Delete the jQuery wrapped object variable
+    delete this.el

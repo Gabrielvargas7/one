@@ -166,7 +166,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
         #console.log("REMOVE OBJECT SUCCESS\n", response)
 
       error: (model, response) ->
-        console.log("REMOVE OBJECT FAIL\n", response)
+        console.error("REMOVE OBJECT FAIL\n", response)
 
 
 
@@ -322,7 +322,7 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 #            #console.log("TOGGLE DESIGN HIDE SUCCESS\n", model)
 #
 #          error: (model, response) ->
-#            console.log("TOGGLE DESIGN HIDE FAIL\n", model)
+#            console.error("TOGGLE DESIGN HIDE FAIL\n", model)
 #
 #
 #
@@ -348,5 +348,5 @@ class Mywebroom.Views.StoreMenuSaveCancelRemoveView extends Backbone.View
 #
 #
 #        error: (model, response) ->
-#          console.log("UPDATE DESIGN ID FAIL\n", response)
+#          console.error("UPDATE DESIGN ID FAIL\n", response)
 #    )

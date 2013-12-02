@@ -897,7 +897,7 @@ $(document).ready ->
       else #All other Items- create Bookmarks View
         view = new Mywebroom.Views.BookmarksView(
           {
-            items_name:       itemModel.get("name")
+            items_name:       itemModel.get("name_singular")
             item_id:          itemModel.get("id")
             user:             Mywebroom.State.get("roomUser").get("id")
           }
@@ -1068,7 +1068,7 @@ $(document).ready ->
                 #2. Show Popup
 #                Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
 
-                console.log("first time item "+model.get('id'))
+                #console.log("first time item "+model.get('id'))
                 Mywebroom.State.set("firstTimePopupItem",firstTimeClickedItem)
 
                 view = new Mywebroom.Views.RoomFirstTimePopupView()
@@ -1814,7 +1814,7 @@ $(document).ready ->
     # Compare modelToBrowse ID to state room designs items id
     for item in Mywebroom.State.get('roomDesigns')
       if modelId is item.item_id
-        return item.items_name
+        return item.items_name_singular
 
   ###
   Checks if signed in user has requested a key from idRequested. returns true/false.

@@ -67,7 +67,7 @@ jQuery ->
 
     url = Pinterest.generatePinterestUrl()
 
-#    console.log("url "+url)
+    #console.log("url "+url)
     window.open(url,
       '_blank',
       'width=750,height=350,toolbar=0,location=0,directories=0,status=0'

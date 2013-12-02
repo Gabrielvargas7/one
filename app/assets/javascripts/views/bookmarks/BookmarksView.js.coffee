@@ -97,7 +97,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     #@myBookmarksView.remove() if @myBookmarksView
     #@myBookmarksView.remove()
-    $(@bookmarksDiscoverView.el).hide() if @bookmarksDiscoverView
+    @bookmarksDiscoverView.remove() if @bookmarksDiscoverView
     #@myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     @collection.fetch
       reset:true
