@@ -93,21 +93,6 @@ $(document).ready ->
         position: 2200
         screen_position: 2
         id: "#xroom_items_2"
-
-
-
-      ###
-      FIXME
-      ###
-      #An object containing base URLs for the shop.
-      shopBaseUrl:
-        itemDesign: 'http://staging-mywebroom.herokuapp.com/shop/show/items-design/'
-        bookmark: 'http://mywebroom.com/'
-        theme: 'http://mywebroom.com/'
-        bundle: 'http://mywebroom.com/'
-        entireRoom: 'http://mywebroom.com/'
-        default: 'http://mywebroom.com/'
-
     )
 
   # Create the state model
