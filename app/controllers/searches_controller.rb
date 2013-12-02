@@ -410,6 +410,8 @@ class SearchesController < ApplicationController
             limit(params[:limit]).
             offset(params[:offset])
 
+
+
         format.json { render json:@items_designs
         }
 
@@ -700,18 +702,7 @@ class SearchesController < ApplicationController
         end
 
         @items_designs = ItemsDesign.
-            select('items_designs.id,
-                            items_designs.name,
-                            items_designs.item_id,
-                            items_designs.description,
-                            items_designs.category,
-                            items_designs.style,
-                            items_designs.brand,
-                            items_designs.color,
-                            items_designs.make,
-                            items_designs.special_name,
-                            items_designs.like,
-                            items_designs.image_name,
+            select('items_designs.*,
                             items.name as items_name,
                             items.name_singular as items_name_singular').
             where('items_designs.id in (?)',@items_designs_array).
