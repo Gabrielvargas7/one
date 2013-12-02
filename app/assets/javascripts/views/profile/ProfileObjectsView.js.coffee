@@ -15,7 +15,11 @@ class Mywebroom.Views.ProfileObjectsView extends Backbone.View
   render: ->
     $(@el).html(@template(collection: @collection,model:@model))
     #append objects table.
-    objectsTableView = new Mywebroom.Views.ProfileActivityView2(collection: @collectionToPass, model:@model,headerName:"OBJECTS")
+    if Mywebroom.State.get('roomData').get('user_profile').firstname
+      headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s OBJECTS"
+    else
+      headerName = Mywebroom.State.get('roomData').get('user').username + "'s OBJECTS"
+    objectsTableView = new Mywebroom.Views.ProfileActivityView2(collection: @collectionToPass, model:@model,headerName:headerName)
     $(@el).append(objectsTableView.render().el)
     if @collectionToPass.length is @fetchLimit
       #set scroll event to fetch more photos. Try creating new tableview and appending it to the el.

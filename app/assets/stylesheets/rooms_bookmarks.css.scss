@@ -256,10 +256,13 @@ div.just_added img{
   border-top: 1px solid #707070;
   width:230px;
 }
- /*To make preview mode button align correctly.*/
+ 
 #bookmark_sidebar_preview_mode .bookmark_sidebar_preview_mode_description{
+  /*To make preview mode button align correctly.*/
   padding-right:1.5em;
   margin-top:10px;
+  max-height: 200px;
+  overflow: auto;
 }
 .preview_mode_save_button,.save_site_button {
   background-color:#0099cb;

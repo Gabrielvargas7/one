@@ -18,8 +18,12 @@ class Mywebroom.Views.ProfileBookmarksView extends Backbone.View
         #console.log(response)
     if(@model.get("FLAG_PROFILE") is "PUBLIC")
      @bookmarksCollection.reset(@bookmarksCollection.first(9), silent:true)
-
-    @bookmarksGridView = new Mywebroom.Views.ProfileActivityView2(collection:@bookmarksCollection,model:@model,headerName:"Bookmarks")
+    if Mywebroom.State.get('roomData').get('user_profile').firstname
+      headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s BOOKMARKS"
+    else
+      headerName = Mywebroom.State.get('roomData').get('user').username + "'s BOOKMARKS"
+    
+    @bookmarksGridView = new Mywebroom.Views.ProfileActivityView2(collection:@bookmarksCollection,model:@model,headerName:headerName)
 
   render:->
     $(@el).html(@template(model:@model))
