@@ -49,7 +49,7 @@
         <p id="product-description" class="about-text-black">
             We’ve created an easy and exciting way for you to keep your online life organized and accessible. Your web room is a visual profile of everything you love. It’s a place where you can express yourself through design, bookmark your favorite sites, interact with products and connect with friends, all from one beautiful interface.
         </p>
-<!-- 
+<!--
         <p class="about-text-black">
             Choose a room, fill it with furniture, organize sites in objects. The birdcage will take you to Twitter, fill the shopping bag with online stores, the music player is ready to rock the room with playlists you made on Spotify. It’s fun, it’s free, it’s time to make your room.
         </p>
@@ -474,7 +474,9 @@
                                  <%= cl_image_tag("urbanoutfitters.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
                             </div>
                             <div class="span4">
-                                <%= cl_image_tag("jointeam.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                <a href="mailto:partners@mywebroom.com">
+                                    <%= cl_image_tag("jointeam.png", width: 180, height: 100, :crop => :fit, :quality => 80, :default_image => "default_image_all.png")%>
+                                </a>
                             </div>
                         </div>
                     </div>
