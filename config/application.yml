@@ -7,7 +7,8 @@ ROOMS_MAIL_HOST_DEV: "localhost:3000"
 
 ROOMS_MAIL_PASSWORD_PRO: "SClara_1975"
 ROOMS_MAIL_USERNAME_PRO: "mywebroom@mywebroom.com"
-ROOMS_MAIL_HOST_PRO: "sleepy-scrubland-1880.herokuapp.com"
+#ROOMS_MAIL_HOST_PRO: "sleepy-scrubland-1880.herokuapp.com"
 #ROOMS_MAIL_HOST_PRO: "staging-mywebroom.herokuapp.com"
+ROOMS_MAIL_HOST_PRO: "mywebroom.com"
 
 ROOMS_IMAGE_MAGICK_PATH: "/usr/bin/"
