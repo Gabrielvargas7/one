@@ -38,6 +38,8 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+    
+    Mywebroom.State.get('profileHomeView').showHomeGrid()
     $('#xroom_profile').hide()
 
 

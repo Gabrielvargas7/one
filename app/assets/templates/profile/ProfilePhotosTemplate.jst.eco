@@ -10,13 +10,14 @@
   </div>
   
     <div class="pull-right profile_small_top_optional_button_outer" >
-
+<%if Mywebroom.State.get('roomState')=="SELF":%>
       <div id="upload_new_photo_button" class="blue_button blue_button_light">
 
             <a href="/users_photos/index_users_photos_by_user_id/<%=@model.get('user_id')%>"><span class= 'link_spanner'></span></a>
             <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383162444/upload_icon.png">Upload Photo
 
       </div>
+<%end%>
       
 
     </div>
