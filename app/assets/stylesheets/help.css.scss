@@ -11,3 +11,28 @@
 .help-page-main-top-margin {
 	margin-top: 15px;
 }
+
+
+/*
+The styles below are for making
+the page's links scroll beyond
+the navbar.
+
+http://css-tricks.com/hash-tag-links-padding/
+*/
+
+#help-page h3:before {
+  display: block;
+  content: "";
+  height: 50px;
+  margin: -50px 0 0;
+  visibility: hidden;
+}
+
+#faq:before {
+  display: block;
+  content: "";
+  height: 50px;
+  margin: -50px 0 0;
+  visibility: hidden;
+}
