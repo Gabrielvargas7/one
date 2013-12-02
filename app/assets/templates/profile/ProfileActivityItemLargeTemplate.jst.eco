@@ -16,7 +16,7 @@
 
     <div class='activity_item_large_list activity_item_large_view_img_wrap'>
       <div class="activity_item_large_view_img">
-        <table id="activity_item_large_view_img_wrapper" 
+        <table id="activity_item_large_view_img_wrapper"
         style="min-height: 350px;
                 max-height: 450px;
                 width: 350px;margin:0;padding:0;border:0;">
@@ -49,7 +49,7 @@
             <ul class="nav">
               <li>
                 <div style="position:relative;min-width:90;min-height:20px;">
-                  <fb:like class="fb-like" href="<%=@fbUrl%>" layout="button_count" show-faces="false" width="95">
+                  <fb:like class="fb-like" href="<%= @fbUrl %>" layout="button_count" show-faces="false" width="95">
                   </fb:like>
                 </div>
               </li>
