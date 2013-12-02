@@ -1039,17 +1039,19 @@ $(document).ready ->
 
 
               #A3. create Popup view
-              view = new Mywebroom.Views.PopupFriendItemView(itemData: model,coordinates:coordinates)
+              if urlToPopup
 
-              #A4. Render Popup view
-              $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
-              view.render()
+                view = new Mywebroom.Views.PopupFriendItemView(itemData: model, coordinates:coordinates)
 
-              #A4(i) Detect if Popup view is in viewport and adjust
-              view.detectViewportAndCenter()
+                #A4. Render Popup view
+                $('#room_bookmark_item_id_container_' + dom_item_id).append(view.el)
+                view.render()
 
-              #A5. update State view tracker
-              Mywebroom.State.set('friendItemPopupView',view)
+                #A4(i) Detect if Popup view is in viewport and adjust
+                view.detectViewportAndCenter()
+
+                #A5. update State view tracker
+                Mywebroom.State.set('friendItemPopupView', view)
 
             else #roomState is "SELF"
             #(2.2) Create the Bookmarks View.
