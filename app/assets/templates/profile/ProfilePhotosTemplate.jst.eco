@@ -26,7 +26,15 @@
 <table class='profileTableHeader'><thead>
   <tr>
     <th colspan='3'>
-      PHOTOS (<%=@collection.length%>)
+      <%if Mywebroom.State.get('roomState')!="SELF":%>
+        <%if Mywebroom.State.get('roomData').get('user_profile').firstname:%>
+          <%=Mywebroom.State.get('roomData').get('user_profile').firstname%>'s PHOTOS (<%=@collection.length%>)
+          <%else:%>
+            <%=Mywebroom.State.get('roomData').get('user').username%>'s PHOTOS (<%=@collection.length%>)
+          <%end%>
+      <%else:%>
+        MY PHOTOS (<%=@collection.length%>)
+      <%end%>
     </th>
   </tr>
 </thead></table>
