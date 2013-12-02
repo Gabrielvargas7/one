@@ -69,6 +69,10 @@
                 <!-- 3.3 -->
                 <a href="#upload_your_photos">Upload Your Photos</a>
             </li>
+             <li>
+                <!-- 3.4 -->
+                <a href="#share_objects">Share Objects</a>
+            </li>
             <li class="divider"></li>
             <li class="nav-header">PROFILE SETTINGS</li>
             <li>
@@ -81,7 +85,11 @@
             </li>
             <li>
                 <!-- 4.3 -->
-                <a href="#change_photo">Change Photo</a>
+                <a href="#change_photo">Change Profile Picture</a>
+            </li>
+             <li>
+                <!-- 4.4 -->
+                <a href="#add_delete_photo">Delete Photo</a>
             </li>
             <li class="divider"></li>
             <li class="nav-header">FAQ</li>
@@ -107,22 +115,23 @@
 
 
 <!-- PAGE 1 -->
-        <h1>Decorate</h1>
+        <h1>1. Decorate</h1>
 
 <!-- 1.1 -->
         <div id="change_objects"> </div>
-        <h3>Change Objects</h3>
+        <h3>A. Change Objects</h3>
 
         <p>
-            1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar
+            1.&nbsp;&nbsp;On the toolbar click the <em>Editor</em> button represented by the chair icon.
             <br>
-            2.&nbsp;&nbsp;Click the object you want to change
+            2.&nbsp;&nbsp;Choose the object you want to change and click on it.
             <br>
-            3.&nbsp;&nbsp;Choose the one you'd like to preview. If you don't see one you like, you can
+            3.&nbsp;&nbsp;Choose the object you want to preview. If you can't find one you like,
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search for objects that match a keyword or use filters to help you find one
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use the filters to help you find one.
             <br>
         </p>
+          <br>
 
         <div>
             <%= cl_image_tag("change-objects-help-page-1-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -143,18 +152,17 @@
         <br>
 
 <!-- 1.2 -->
-        <h3 id="change_theme">Change Theme</h3>
+        <h3 id="change_theme">B. Change Theme</h3>
 
         <p>
-            1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar
+            1.&nbsp;&nbsp;On the toolbar click the <em>Editor</em> button represented by the chair icon.
             <br>
-            2.&nbsp;&nbsp;Select the <em>Themes</em> tab
+            2.&nbsp;&nbsp;Click on the <em>Theme</em> tab
             <br>
-            3.&nbsp;&nbsp;Choose the theme you'd like to preview. If you don't see one you like, you can
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search for themes that match a keyword or use filters to help you find one
+            3.&nbsp;&nbsp;Choose the theme you want to preview.
             <br>
         </p>
+          <br>
 
         <div>
             <%= cl_image_tag("change-objects-help-page-1-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -169,18 +177,20 @@
         <br>
 
 <!-- 1.3 -->
-        <h3 id="change_bundle">Change Bundle</h3>
+        <h3 id="change_bundle">C. Change Bundle</h3>
 
         <p>
-            1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar
+            1.&nbsp;&nbsp;On the toolbar click the <em>Editor</em> button represented by the chair icon.
             <br>
-            2.&nbsp;&nbsp;Select the <em>Bundles</em> tab
+            2.&nbsp;&nbsp;Select the <em>Bundles</em> tab.
             <br>
-            3.&nbsp;&nbsp;Choose the Bundle you'd like to preview. If you don't see one you like, you can
+            3.&nbsp;&nbsp;Choose the Bundle you'd like to preview.
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search for Bundles that match a keyword or use filters to help you find one
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: This option will change the entire objects in your room as well.
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("change-objects-help-page-1-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -196,19 +206,19 @@
 
 
 <!-- 1.4 -->
-        <h3 id="save_and_cancel_changes">Save and Cancel Changes</h3>
+        <h3 id="save_and_cancel_changes">D. Save and Cancel Changes</h3>
 
 <!-- 1.4.1 -->
         <h5>Save Changes</h5>
 
         <p>
-            1.&nbsp;&nbsp;After you choose the object you want, click on the <em>Save Design</em> button to keep all changes
+            1.&nbsp;&nbsp;After you have selected your objects, click on <em>Save Design</em> to keep all changes
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;made to your room
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: you can change multiple objects and save all the changes once you are done</em>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;made to your room.
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("save-changes-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -220,9 +230,14 @@
         <h5>Cancel Changes</h5>
 
         <p>
-            2.&nbsp&nbsp;Click the <em>Cancel Changes</em> button if you don't want to keep any changes made to your room
+            1.&nbsp;&nbsp;Click <em>Cancel Changes</em> button if you don't want to keep any changes made to your room.
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: you can change multiple objects and save all the changes once you are<br> 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finished updating your room.</em>
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("cancel-changes-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -231,21 +246,23 @@
         <br>
 
 <!-- 1.5 -->
-        <h3 id="add_and_remove_objects">Add and Remove Objects</h3>
+        <h3 id="add_and_remove_objects">D. Add and Remove Objects</h3>
 
 <!-- 1.5.1 -->
         <h5>Remove Object</h5>
 
         <p>
-            1.&nbsp;&nbsp;Click the <em>Room</em> button in the toolbar and click an object you want to remove
+            1.&nbsp;&nbsp;Click the <em>Editor</em> button on the toolbar and selec an object you want to remove.
             <br>
-            2.&nbsp;&nbsp;Click the <em>Remove Object</em> button
+            2.&nbsp;&nbsp;Then Click the <em>Remove Object</em> button.
             <br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: Removing this object does not delete its contents. All your bookmarks will be restored
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if you decide to re-add the object</em>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if you decide to add the object back later.</em>
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("remove-object-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -257,9 +274,15 @@
         <h5>Add Object</h5>
 
         <p>
-            2.&nbsp;&nbsp;To add the object back, simply choose a new design, click it, and then click <em>Save Design</em>
+            1.&nbsp;&nbsp;To add the object back, click on the <em>Editor</em> button and the deleted object will appear 
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;greyed out with a plus sign.
+            <br>
+            2.&nbsp;&nbsp;Click on the object you would like to add and then click <em>Save Design</em>. 
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("add-object-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -270,19 +293,19 @@
 <!-- 2 -->
         <br>
 
-        <h1>Organize</h1>
+        <h1>2. Organize</h1>
 
 <!-- 2.1 -->
-        <h3 id="discover_bookmarks">Discover Bookmarks</h3>
+        <h3 id="discover_bookmarks">A. Discover Bookmarks</h3>
 
         <p>
-            1.&nbsp;&nbsp;Click on any object to open up the bookmark interface
+            1.&nbsp;&nbsp;Click on any object to open up the bookmark interface.
             <br>
-            2.&nbsp;&nbsp;Click on <em>Discover</em> to view all the available sites we have for that category
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click a site's icon to preview that site)
+            2.&nbsp;&nbsp;Click on <em>Discover</em> to view all the available sites for the category. (Click to preview site).
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("discover-bookmarks-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -297,22 +320,35 @@
         <br>
 
 <!-- 2.2 -->
-        <h3 id="add_and_create_bookmarks">Add and Create Bookmarks</h3>
+        <h3 id="add_and_create_bookmarks">B. Add Bookmarks</h3>
+
+        <h5>Add a Bookmark</h5>
 
         <p>
-            1.&nbsp;&nbsp;Click on the plus (add icon) in the top right corner to save bookmarks to your selected
+            1.&nbsp;&nbsp;Click on the plus (add icon) on top right corner to save bookmarks to your selected
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;category. A checkmark icon signifies that it has been added
-            <br>
-            2.&nbsp;&nbsp;If you can't find a site in our library, you have the option to add your own bookmark
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;category. A checkmark icon signifies that it has been added.
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("add-create-bookmarks-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
+
+        <h5>Create a Bookmark<h5>
+
+        <p>
+            1.&nbsp;&nbsp;If you can't find a site in our library, you have the option to add your own bookmark.
+            <br>
+            2.&nbsp;&nbsp;Add the URL and a name for the site and click save.
+            <br>
+        </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("add-create-bookmarks-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -322,14 +358,16 @@
 
 
 <!-- 2.3 -->
-        <h3 id="delete_bookmarks">Delete Bookmarks</h3>
+        <h3 id="delete_bookmarks">C. Delete Bookmarks</h3>
 
         <p>
-            1.&nbsp;&nbsp;Go to the <em>My Bookmarks</em> tab and simply click on the trashbox button in
+            1.&nbsp;&nbsp;Go to <em>My Bookmarks</em> tab. To delete a bookmark click on the trashcan
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the top right corner to delete it.
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; button on the top right corner.
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("delete-bookmarks-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -339,12 +377,14 @@
 
 
 <!-- 2.4 -->
-        <h3 id="active_sites">Active Sites</h3>
+        <h3 id="active_sites">D. Active Sites</h3>
 
         <p>
-            1.&nbsp;&nbsp;To view all your active sites click on the star icon on your toolbar
+            1.&nbsp;&nbsp;To view all your active sites click on the star icon on your toolbar.
             <br>
         </p>
+
+        <br> 
 
         <div>
             <%= cl_image_tag("active-bookmarks-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -356,20 +396,22 @@
 <!-- 3 -->
         <br>
 
-        <h1>Share</h1>
+        <h1>3. Share</h1>
 
 
 <!-- 3.1 -->
-        <h3 id="key_requests">Key Requests</h3>
+        <h3 id="key_requests">A. Key Requests</h3>
 
         <p>
-            1.&nbsp;&nbsp;Click on the social icon in the toolbar to open up the social interface
+            1.&nbsp;&nbsp;Click on the social icon on the toolbar to open up the social interface.
             <br>
-            2.&nbsp;&nbsp;Click on the <em>Key Request</em> tab
+            2.&nbsp;&nbsp;Click on the <em>Key Request</em> tab.
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: You will get a red notification when you have a key request pending</em>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: You will get a red notification when you have a key request pending.</em>
             <br>
         </p>
+
+        <br>
 
         <div>
             <%= cl_image_tag("key-request-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -385,17 +427,17 @@
 
 
 <!-- 3.2 -->
-        <h3 id="friends_room">Friend's Room</h3>
+        <h3 id="friends_room">B. Your Friend's Room</h3>
 
 <!-- 3.2.1 -->
         <h5>View Room</h5>
 
         <p>
-            1.&nbsp;&nbsp;Click on the gear icon and then <em>View Room</em>to checkout your friend's room
-            <br>
-            2.&nbsp;&nbsp;Once in the room you can click on the objects to view your friend's bookmarks and more.
+            1.&nbsp;&nbsp;Click on the gear icon and then <em>View Room</em>to checkout your friend's room.
             <br>
         </p>
+            
+        <br>
 
         <div>
             <%= cl_image_tag("friend-room-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -404,7 +446,7 @@
         <br>
 
         <div>
-            <%= cl_image_tag("friend-room-1-2-help-page-mywebroom", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("friend-room-1-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
@@ -414,9 +456,9 @@
         <h5>View profile info and photos</h5>
 
         <p>
-            1.&nbsp;&nbsp;Once in the friend's tab click on friend's name or picture to open up their profile page
+            1.&nbsp;&nbsp;In the friends tab, click on your friend's name or picture to open up their profile page.
             <br>
-            2.&nbsp;&nbsp;View and like photos
+            2.&nbsp;&nbsp;View and photos.
             <br>
         </p>
 
@@ -435,14 +477,16 @@
         <br>
 
 <!-- 3.3 -->
-        <h3 id="upload_your_photos">Upload your photos</h3>
+        <h3 id="upload_your_photos">B. Upload your photos</h3>
 
         <p>
-            1.&nbsp;&nbsp;Open the photo page on your social tab
+            1.&nbsp;&nbsp;Open the photo page on your social tab.
             <br>
-            2.&nbsp;&nbsp;Click on the plus sign to upload photos or click on the upload photo button
+            2.&nbsp;&nbsp;Click on the plus sign to upload photos or click on the upload photo button.
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("friend-room-4-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -456,25 +500,48 @@
 
         <br>
 
+<!-- 3.4 -->
+        <h3 id="share_objects">C. Share Objects</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click the gear icon to view your friend's room. 
+            <br>
+            2.&nbsp;&nbsp;From your friend's profile view, you can see his objects. From this view you are able to
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try some of the objects your friend has on your room. Same with bookmarks.
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>*Note: You can share objects through Social Media by using the "Share" and "Pin" buttons.</em>
+            <br>
+        </p>
+
+          <br>
+
+        <div>
+            <%= cl_image_tag("share-objects-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+        </div>
+
+        <br>
 
 <!-- 4 -->
         <br>
 
-        <h1>Profile Settings</h1>
+        <h1>4. Profile Settings</h1>
 
 <!-- 4.1 -->
-        <h3 id="change_username_or_password">Change Username or Password</h3>
+        <h3 id="change_username_or_password">A. Change Username or Password</h3>
 
         <p>
-            1.&nbsp;&nbsp;Click the dropdown arrow on your toolbar next to your username
+            1.&nbsp;&nbsp;Click the drop-down arrow on your toolbar next to your username.
             <br>
-            2.&nbsp;&nbsp;Click on <em>Account Settings</em>
+            2.&nbsp;&nbsp;Click on <em>Account Settings</em>.
             <br>
-            3.&nbsp;&nbsp;Change your username or password
+            3.&nbsp;&nbsp;Here you can change your username, password, and email.
             <br>
-            2.&nbsp;&nbsp;Once you are done click <em>Save Changes</em>
+            2.&nbsp;&nbsp;Once you are done click <em>Save Changes</em>.
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("change-username-password-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -490,14 +557,18 @@
 
 
 <!-- 4.2 -->
-        <h3 id="edit_profile_information">Edit Profile Information</h3>
+        <h3 id="edit_profile_information">B. Edit Profile Information</h3>
 
         <p>
-            1.&nbsp;&nbsp;Click the Profile Tab to change your general information
+            1.&nbsp;&nbsp;Click the drop-down arrow on your toolbar next to your username.
             <br>
-            2.&nbsp;&nbsp;Once you are done click save changes
+            2.&nbsp;&nbsp;Click the Profile Tab to change your user information.
+            <br>
+            3.&nbsp;&nbsp;Once you are done click <em>Save Changes<em>.
             <br>
         </p>
+
+          <br>
 
         <div>
             <%= cl_image_tag("edit-profile-information-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -508,16 +579,22 @@
 
 
 <!-- 4.3 -->
-        <h3 id="change_photo">Change Photo</h3>
+        <h3 id="change_photo">C. Change Profile Picture</h3>
 
         <p>
-            1.&nbsp;&nbsp;Click the <em>Edit your Profile Picture</em> link
+            1.&nbsp;&nbsp;Click the drop-down arrow on your toolbar next to your username.
             <br>
-            2.&nbsp;&nbsp;Enter a name and click <em>Browse...</em> to select the photo to upload
+            2.&nbsp;&nbsp;Click the Profile Tab.
             <br>
-            3.&nbsp;&nbsp;Once you are done click <em>Upload Photo</em>
+            3.&nbsp;&nbsp;Click the <em>Edit your Profile Picture</em> link.
+            <br>
+            4.&nbsp;&nbsp;Enter a name and click <em>Browse...</em> to select the photo to upload.
+            <br>
+            5.&nbsp;&nbsp;Once you are done click <em>Upload Photo</em>.
             <br>
         </p>
+
+        <br>
 
         <div>
             <%= cl_image_tag("change-photo-1-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
@@ -526,13 +603,30 @@
         <br>
 
         <div>
-            <%= cl_image_tag("change-photo-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-photo-3-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
 
+<!-- 4.4 -->
+        <h3 id="add_delete_photo">D. Delete Photo</h3>
+
+        <p>
+            1.&nbsp;&nbsp;Click the drop-down arrow on your toolbar next to your username.
+            <br>
+            2.&nbsp;&nbsp;Click the Profile Tab.
+            <br>
+            3.&nbsp;&nbsp;Click the <em>Edit your Profile Picture</em> link.
+            <br>
+            4.&nbsp;&nbsp; Rollover the image you want to delete and click on the pencil <em>Edit Icon</em>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; then click delete. You can also set older photos as Profile Pictures here.
+        </p>
+
+        <br>
+
         <div>
-            <%= cl_image_tag("change-photo-3-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
+            <%= cl_image_tag("change-photo-2-help-page-mywebroom.jpg", width: 640, :crop => :fit, :quality => 50,:default_image => "default_image_all.png")%>
         </div>
 
         <br>
