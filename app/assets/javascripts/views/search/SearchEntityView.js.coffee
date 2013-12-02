@@ -172,7 +172,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
       if not hasItemName
         message += "item_name\n"
 
-      alert(message)
+      #alert(message)
 
 
 

@@ -49,11 +49,11 @@ class Mywebroom.Views.TutorialOpenStoreView extends Backbone.View
     view.render()
 
 
-    #console.log('Kill: ', this);
-    this.unbind(); # Unbind all local event bindings
-    this.remove(); # Remove view from DOM
-    delete this.$el; # Delete the jQuery wrapped object variable
-    delete this.el;
+    #console.log('Kill: ', this)
+    this.unbind() # Unbind all local event bindings
+    this.remove() # Remove view from DOM
+    delete this.$el # Delete the jQuery wrapped object variable
+    delete this.el
 
 
 
