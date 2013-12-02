@@ -55,22 +55,29 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     # $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
 
+  
   renderDiscover:(event)->
     if event
       event.stopPropagation()
-      event.preventDefault()
-    @previewModeView.closeView() if @previewModeView
+      event.preventDefault() 
+
+    #bookmarks view sidebar management
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
     $('.discover_submenu_section').removeClass('hidden')
     $('.discover_submenu').removeClass('bookmark_menu_selected')
-    #@myBookmarksView.remove() if @myBookmarksView
+    #Add Sidebar custom url event. 
+    that = this
+    $('#add_your_own_submit input').off('click').on('click',{that},@addCustomBookmark)
+    
+    #Remove old views
     $(@myBookmarksView.el).hide()
+    @bookmarksDiscoverView.remove() if @bookmarksDiscoverView
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
+    @previewModeView.closeView() if @previewModeView
 
-    #Add sidebar (Make class display?)
-    #Render Bookmarks api.
-    #fetch DiscoverBookmarks here so we can reuse the view in other places
+    
+    #fetch DiscoverBookmarks 
     @discoverCollection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
     @discoverCollection.fetch
       async:false
@@ -78,36 +85,38 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       success:(response)->
         #console.log "discover Bookmarks fetch successful: "
         #console.log response
-    #@fetchDiscoverBookmarks()
+    
+    #set THE bookmarksDiscoverView and render
     @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.item_id)
     $(@el).append(@bookmarksDiscoverView.render().el)
-    #set .discover_bookmarks_bottom to 100% width minus the sidebar width
-    # $('.discover_bookmarks_bottom').css 'width',$(window).width()-270
-    that = this
-    #$('#add_your_own_form').submit({that},@addCustomBookmark)
-    $('#add_your_own_submit input').off('click').on('click',{that},@addCustomBookmark)
+
+
 
   renderMyBookmarks:(event)->
     event.preventDefault() if event
     event.stopPropagation() if event
-    @previewModeView.closeView() if @previewModeView
+
+    #bookmarks view sidebar management
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
     $('#discover_menu_item').removeClass 'bookmark_menu_selected'
     $('.discover_submenu_section').addClass('hidden')
+
+    #Remove old views
+    @previewModeView.closeView() if @previewModeView
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
-    #@myBookmarksView.remove() if @myBookmarksView
-    #@myBookmarksView.remove()
     @bookmarksDiscoverView.remove() if @bookmarksDiscoverView
-    #@myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
+    
+    #Fetch the collection so the myBookmarksView auto re-renders
     @collection.fetch
       reset:true
       async:false
       url:@collection.url this.options.user, this.options.item_id
-    #$(@el).append(@myBookmarksView.render().el)
+
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
     $('.my_bookmarks_bottom').css 'width',$(window).width()-270
+    
+    #Show the bookmarks view. (It's been rerendered after the collection fetch.)
     $(@myBookmarksView.el).show()
-    #$(@el).append(@myBookmarksView.render().el)
 
   showCategory:(event)->
     event.preventDefault()
@@ -245,10 +254,13 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
           success:(response) ->
             #console.log("bookmark fetch successful: ")
             #console.log(response)
-
+        if event.data.that.collection.length > 0
+          position = parseInt(event.data.that.collection.last().get('position'))+1
+        else
+          position = 0
         #set the position at the last possible moment so we don't fail.
         event.data.customBookmark.set
-          'position':parseInt(event.data.that.collection.last().get('position'))+1
+          'position':position
 
         #save the bookmark!
         event.data.customBookmark.save {},

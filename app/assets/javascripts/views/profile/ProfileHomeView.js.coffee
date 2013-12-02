@@ -319,7 +319,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     if Mywebroom.State.get("roomState") is "SELF"
       headerName = "Activity"
     else
-      headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s things"
+      if Mywebroom.State.get('roomData').get('user_profile').firstname
+        headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s things"
+      else
+        headerName = Mywebroom.State.get('roomData').get('user').username + "'s things"
 
     @profileActivityView = new Mywebroom.Views.ProfileActivityView2({collection:@activityCollection,headerName:headerName,model:@model,className:"profileActivity_activity generalGrid"})
 
