@@ -126,16 +126,41 @@ class ItemsDesignsController < ApplicationController
   # DELETE /items_designs/1
   # DELETE /items_designs/1.json
   def destroy
-    # sorry but not delete is not allow
-    #@items_design = ItemsDesign.find(params[:id])
-    #@items_design.destroy
-
     respond_to do |format|
-      format.html { redirect_to items_designs_url }
-      format.json { head :no_content }
+        if ItemsDesign.exists?(params[:id])
+          @items_design = ItemsDesign.find(params[:id])
+
+          if ItemsDesign.where('item_id=?',@items_design.item_id).count > 1
+
+             ActiveRecord::Base.transaction do
+                begin
+
+                  @user_items_designs = UsersItemsDesign.find_by_items_design_id(params[:id])
+                  @items_designs_new = ItemsDesign.where('item_id=? and id != ?',@items_design.item_id,params[:id])
+
+                  @items_design_new = @items_designs_new.first
+
+                  UsersItemsDesign.where('items_design_id =?',@items_design.id).update_all({:items_design_id =>@items_design_new.id,:hide =>'yes'})
+
+
+                  @items_design.destroy
+
+                  format.html { redirect_to items_designs_url, notice: 'Items design was successfully delete' }
+
+                rescue ActiveRecord::StatementInvalid
+                  format.html { redirect_to items_designs_url, notice: 'Error deleting Items design'  }
+                  raise ActiveRecord::Rollback
+                end
+             end
+
+          else
+            format.html { redirect_to items_designs_url, notice: 'Error deleting Items design'  }
+          end
+        else
+          format.html { redirect_to items_designs_url, notice: 'Error deleting Items design'  }
+        end
     end
   end
-
 
   #***********************************
   # Json methods for the room users

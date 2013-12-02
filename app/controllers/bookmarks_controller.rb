@@ -156,7 +156,8 @@ class BookmarksController < ApplicationController
           format.html { redirect_to bookmarks_url }
 
         rescue ActiveRecord::StatementInvalid
-          format.json { render json: 'failure to destroy bookmark', status: :unprocessable_entity }
+          #format.json { render json: 'failure to destroy bookmark', status: :unprocessable_entity }
+          format.html { redirect_to bookmarks_url }
           raise ActiveRecord::Rollback
         end
 
