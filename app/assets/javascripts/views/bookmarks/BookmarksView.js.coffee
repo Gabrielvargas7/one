@@ -245,10 +245,13 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
           success:(response) ->
             #console.log("bookmark fetch successful: ")
             #console.log(response)
-
+        if event.data.that.collection.length > 0
+          position = parseInt(event.data.that.collection.last().get('position'))+1
+        else
+          position = 0
         #set the position at the last possible moment so we don't fail.
         event.data.customBookmark.set
-          'position':parseInt(event.data.that.collection.last().get('position'))+1
+          'position':position
 
         #save the bookmark!
         event.data.customBookmark.save {},

@@ -918,22 +918,23 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.stopPropagation()
     event.preventDefault()
 
-    #need to do more than hide items. when profile is hidden, bookmarks events aren't turned back on.
-
-    $('#xroom_store_menu_save_cancel_remove').hide()
-    $('#xroom_storepage').hide()
-    $('#xroom_profile').hide()
-    $('#xroom_bookmarks').hide()
-    $('#xroom_header_search_box').hide()
-
+    #Only close everything if there are active sites to show. 
 
     #If no active sites, toast message
     if Mywebroom.State.get('activeSitesMenuView')
       if Mywebroom.State.get('activeSitesMenuView').collection.length > 0
-        #show
+        #1. Hide stuff
+        $('#xroom_store_menu_save_cancel_remove').hide()
+        $('#xroom_storepage').hide()
+        $('#xroom_profile').hide()
+        $('#xroom_bookmarks').hide()
+        $('#xroom_header_search_box').hide()
+        
+        #2. Show other stuff
         Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
         $('.browse_mode_view').show()
         $('#xroom_bookmarks_browse_mode').show()
+      
       else
         @noActiveSitesToast()
     else
@@ -960,7 +961,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       "onclick":         null
       "showDuration":    "0"
       "hideDuration":    "0"
-      "timeOut":         "3000"
+      "timeOut":         "2000"
       "extendedTimeOut": "0"
       "showEasing":      "swing"
       "hideEasing":      "linear"
