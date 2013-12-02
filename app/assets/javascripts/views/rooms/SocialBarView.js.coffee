@@ -8,19 +8,19 @@ the state model and inspecting it's properties.
 The urls of this object are simply hard-coded.
 ###
 class Mywebroom.Views.SocialBarView extends Backbone.View
-  
+
   ###
   CLASS
   ###
   className: 'social_bar'
-  
-  
+
+
   ###
   TEMPLATE
   ###
   template: JST['profile/SocialBarTemplate']
-  
-  
+
+
   ###
   EVENTS
   ###
@@ -29,21 +29,21 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
     'click .pinterest_item':   'clickPinIt'
     'click .info_button_item': 'clickInfo'
   }
-  
-  
-    
-  
+
+
+
+
   render: ->
-    
+
     $(@el).html(@template())
     this
-  
-    
+
+
   ###
   EVENTS
   ###
   clickFBLikeItem: ->
-      
+
     #console.log("You clicked FB Like", @model)
     url = Mywebroom.Helpers.getSEOLink(@model.get('id'), @model.get('type'))
 
@@ -54,44 +54,44 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
       'facebook-share-dialog',
       'width=626,height=436'
     )
-    
+
     return false
-  
 
 
- 
-  clickPinIt: (e) ->
-    
-    e.preventDefault()
-    e.stopPropagation()
-    
-    
+
+
+  clickPinIt: (event) ->
+
+    event.preventDefault()
+    event.stopPropagation()
+
+
     url = @generatePinterestUrl()
-    
+
     window.open(url,
       '_blank',
       'width=750,height=350,toolbar=0,location=0,directories=0,status=0'
     )
-  
-  
 
-  clickInfo: (e) ->
-    
-    e.preventDefault()
-    e.stopPropagation()
+
+
+  clickInfo: (event) ->
+
+    event.preventDefault()
+    event.stopPropagation()
 
     url = Mywebroom.Helpers.getSEOLink(@model.get('id'), @model.get('type'))
 
-  
+
     window.open(url.get("seo_url"), '_blank')
-    
-    
+
+
 
   ###
   EVENT HELPERS
   ###
   generatePinterestUrl: ->
-  
+
 
     if not @model.has('id')
       console.error('model without id', @model)
@@ -107,37 +107,37 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 
 
     baseUrl = '//pinterest.com/pin/create/button/?url='
-    
-    
+
+
     switch type
-      
+
       when "DESIGN"
         mediaUrl =    @model.get('image_name_selection').url
         description = @model.get('name') + ' - '
         signature =   ' - Found at myWebRoom.com'
-        
+
       when "BOOKMARK"
         mediaUrl =    @model.get('image_name_desc').url
         description = @model.get('title') + ' - '
         signature =   ' - For my virtual room at myWebRoom.com'
-      
+
       when "ENTIRE_ROOM"
         mediaUrl = @model.get('image_name_set').url
         description = @model.get('name')
         signature = ' - Check out this virtual room at myWebRoom.com'
-      
+
       when "BUNDLE"
         mediaUrl = @model.get('image_name')
         description = @model.get('name')
         signature = ' - For my virtual room at myWebRoom.com'
-        
+
       when "THEME"
         mediaUrl = @model.get('image_name_selection')
         description = @model.get('name')
         signature = ' - For my virtual room at myWebRoom.com'
-      
-     
-  
+
+
+
     description += @model.get('description') + signature
     results = baseUrl +
               encodeURIComponent(url.get("seo_url")) +
@@ -145,7 +145,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
               encodeURIComponent(mediaUrl) +
               '&description=' +
               encodeURIComponent(description)
-    
+
     return results
 
 
@@ -153,10 +153,10 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   METHODS
   ###
   hide: ->
-  
+
     $(@el).hide()
-  
+
 
   show: ->
-  
+
     $(@el).show()
