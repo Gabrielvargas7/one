@@ -1068,7 +1068,7 @@ $(document).ready ->
                 #2. Show Popup
 #                Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
 
-                console.log("first time item "+model.get('id'))
+                #console.log("first time item "+model.get('id'))
                 Mywebroom.State.set("firstTimePopupItem",firstTimeClickedItem)
 
                 view = new Mywebroom.Views.RoomFirstTimePopupView()

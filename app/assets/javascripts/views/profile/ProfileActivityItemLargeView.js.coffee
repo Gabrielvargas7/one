@@ -10,7 +10,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     _.bindAll this, 'insideHandler', 'outsideHandler'
     @originalCollection=this.options.originalCollection
     $('body').on('click', this.outsideHandler);
-    
+
     #2. Add transition to profile_drawer
     $('#profile_drawer').css('transition','all 1s ease-in-out')
 
@@ -72,7 +72,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 
   closeViewNoProp:(event)->
     event.stopPropagation()
-    alert('you clicked me')
+    #alert('you clicked me')
     event.data.closeView()
 
   showNext:(event) ->
@@ -117,7 +117,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
               #console.log('postBookmarkModel SUCCESS:')
               #console.log(response)
             error: (model, response)->
-              if response.responseText != "the bookmark already exists" 
+              if response.responseText != "the bookmark already exists"
                 console.error('postBookmarkModel FAIL:')
                 console.error(response)
         #Added confirmation.
@@ -157,7 +157,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
               #console.log('postBookmarkModel SUCCESS:')
               #console.log(response)
             error: (model, response)->
-              if response.responseText != "the bookmark already exists" 
+              if response.responseText != "the bookmark already exists"
                 console.error('postBookmarkModel FAIL:')
                 console.error(response)
         #Added confirmation.
