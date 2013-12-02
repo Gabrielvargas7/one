@@ -96,7 +96,9 @@ $(document).ready ->
 
 
 
-
+      ###
+      FIXME
+      ###
       #An object containing base URLs for the shop.
       shopBaseUrl:
         itemDesign: 'http://staging-mywebroom.herokuapp.com/shop/show/items-design/'
@@ -193,6 +195,7 @@ $(document).ready ->
       keyword: false
       offset: 0
       limit: 10
+      location: false
     }
     searchNum: -1
     FriendItemPopupUrls: {} #format -> 1:"string"
@@ -238,6 +241,13 @@ $(document).ready ->
 
           # ARE WE AT THE BOTTOM?
           if $('.tab-content').scrollTop() + $('.tab-content').innerHeight() >= $('.tab-content')[0].scrollHeight - 150
+
+
+            ###
+            FIX for Safari 6 on iMac
+            Issue: pagination causes editor to scroll to top
+            ###
+            Mywebroom.Data.Editor.location = $('.tab-content').scrollTop()
 
 
             # IS PAGINATE TRUE?
@@ -363,6 +373,19 @@ $(document).ready ->
 
 
                     Mywebroom.Data.Editor.offset += limit
+
+
+              ###
+              FIX for Safari 6 on iMac
+              Issue: pagination causes editor to scroll to top
+              ###
+              setTimeout ( ->
+                location = Mywebroom.Data.Editor.location
+
+                if location
+                  $('.tab-content').scrollTop(location)
+
+              ), 0
 
 
 
@@ -1070,7 +1093,7 @@ $(document).ready ->
     #This view extends PopupFriendItemView. remove() is overriding Backbone's so we can show bookmarks view when popup closes.
     FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
                       template:JST['rooms/PopUpItemFirstClickTemplate']
-                      
+
                       className:"popup_item_first_click_view"
 
                       events:
