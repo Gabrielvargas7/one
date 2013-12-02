@@ -141,13 +141,11 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
         userId = helper.getUserId()
         #Post bookmark
         position = @getMyBookmarksLength(userId)
-
-        
+ 
         # If position is 0 or the bookmark is not already in collection:
         if position is 0 or not @myBookmarksCollection.get(@model.id)
           postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId: @model.get('item_id'), bookmarkId: @model.get('id'), userId: userId})
           postBookmarkModel.set 'position', position + 1
-
           postBookmarkModel.save {},
             success: (model, response) ->
               #console.log('postBookmarkModel SUCCESS:')
