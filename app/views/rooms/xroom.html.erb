@@ -29,7 +29,7 @@
             <div id="xroom_entire_room_background">
                 <% if @bundle.theme.image_name.blank?  %>
                 <% else %>
-                    <%= cl_image_tag @bundle.image_name_entire_room ,:quality => 80, :default_image => "default_image_all.png", :alt => "enrire room"  %>
+                    <%= cl_image_tag @bundle.image_name_entire_room , :default_image => "default_image_all.png", :alt => "enrire room"  %>
                 <% end %>
             </div>
             <div id="xroom_entire_room_left" style="background-image: url('<%= @arrows_image %>')" >
