@@ -39,6 +39,12 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     $(@el).append(@activeMenuView.render().el)
     @activeMenuView.hideActiveMenu()
 
+    #Set Static Content
+    toolbarIcons = Mywebroom.State.get('staticContent').findWhere({"name":"save-cancel-refresh-btn"})
+    @toolbarUrl = toolbarIcons.get('image_name').url
+
+    
+
   ###
   Getters and Setters
 
@@ -89,7 +95,7 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     @browseModeSidebarView.remove() if @browseModeSidebarView
     @browseModeSidebarView = new Mywebroom.Views.BrowseModeSidebarView(model:@modelToBrowse)
     #$(@el).html(@browseModeSidebarView.render().el)
-    $(@el).append(@template(model:@getModelToBrowse()))
+    $(@el).append(@template(model:@getModelToBrowse(), toolbarUrl:@toolbarUrl))
     this
 
 
