@@ -15,10 +15,12 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     #2. Add transition to profile_drawer
     $('#profile_drawer').css('transition','all 1s ease-in-out')
 
+    #Photos Only Code vs. Other Types
     if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
       @template = JST['profile/ProfilePhotosLargeTemplate']
-
-    @fbUrl = @generateFacebookURL()
+      
+    else
+      @model.set('fbUrl', @generateFacebookURL())
 
   events: {
     'click #large_item_prev':                       'showNext'
@@ -34,7 +36,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     $("#profile_drawer").css "width", "1320px"
 
     # user_profile is sent to template for the case that we are in Photos view
-    $(@el).html(@template(model: @model, fbUrl: @fbUrl, user_profile: Mywebroom.State.get('roomData').get('user_profile')))
+    $(@el).html(@template(model: @model, user_profile: Mywebroom.State.get('roomData').get('user_profile')))
     FB.XFBML.parse($(@el)[0])
 
     # The social View is in the template because

@@ -380,8 +380,8 @@ table.generalGrid{
   border-collapse:separate;
   border-spacing:10px;
 }
-.profileActivity_activity.generalGrid,
-.profileHome_activity.generalGrid{
+div.profileActivity_activity.generalGrid,
+div.profileHome_activity.generalGrid{
   height:100%;
 }
 
@@ -405,6 +405,7 @@ table.generalGrid{
 #profileHome_activity_header, .profileTableHeader{
   border-collapse:collapse;
   width:620px;
+  height:auto;
 }
 .gridItemPicture {
   width:180px;
