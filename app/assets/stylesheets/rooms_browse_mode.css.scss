@@ -4,7 +4,35 @@
   right:95px;
   z-index: 2;
   transition:top .5s ease-in-out;
+  padding:2px;
+
+  .link_spanner{
+    margin:0;
+    padding:0;
+    
+  }
+  #browse_mode_site_nav_close,#browse_mode_site_nav_minimize,#browse_mode_site_nav_refresh{
+    background-repeat: no-repeat;
+    display:inline-block;
+    width: 28px;
+    height: 28px;
+    
+    position:relative;
+
+   }
+  #browse_mode_site_nav_minimize
+  {
+    background-position: -121px -58px;
+    
+  }
+  #browse_mode_site_nav_refresh{
+    background-position: -12px -58px;
+  }
+  #browse_mode_site_nav_close{
+    background-position: -67px -58px;
+  }
 }
+
 .browse_mode_sidebar{
   position:fixed;
   z-index:8;
