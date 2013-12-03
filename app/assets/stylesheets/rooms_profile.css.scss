@@ -384,6 +384,12 @@ table.generalGrid{
 .profileHome_activity.generalGrid{
   height:100%;
 }
+
+.profile_bookmarks_view .profileHome_activity.generalGrid,
+.profile_objects_view .profileHome_activity.generalGrid{
+  height:550px;
+}
+
 #gridItemList{
   background-color: white;
   position:relative;
