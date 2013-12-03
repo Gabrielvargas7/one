@@ -4,8 +4,13 @@ Testing
   * teaspoon  (testing framework)
   * phantomjs (headless web client)
   * tapout    (test harness)
+  * konacha-chai-matchers (test helpers)
 
 2. Install Istanbul with npm (code coverage)
   * npm install -g istanbul
 
-3.
+3. Generate stuff
+  rails generate teaspoon:install --framework=mocha --coffee
+
+4. CLI
+  bundle exec teaspoon -q --format=tap_y | tapout progress
