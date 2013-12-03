@@ -1086,50 +1086,52 @@ $(document).ready ->
       ) #end .click for img.room_design
     ) #end $('img.room_design').each
 
-  Mywebroom.Helpers.createFirstTimeClickPopupView = (itemData, dom_item_id) ->
 
-    #1. Define Special view for firstTimeClicks
-    #1a. When popup closes, Tell DB user item was clicked
-    #1b. When popup closes, show Bookmarks Interface.
 
-    #This view extends PopupFriendItemView. remove() is overriding Backbone's so we can show bookmarks view when popup closes.
-    FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
-                      template:JST['rooms/PopUpItemFirstClickTemplate']
-
-                      className:"popup_item_first_click_view"
-
-                      events:
-                            'click .green_button':'closeViewWithDB'
-                            'click #popup_item_first_click_close':'closeView'
-
-                      #close the view, but tell the database the user clicked continue
-                      closeViewWithDB: ->
-
-                        #1a. Send DB clicked item. Also, change the StateModel, so clicking again won't count as first time.
-                        updateClickedItemModel = new Mywebroom.Models.UpdateUserItemDesignFirstTimeClickByUserIdAndDesignIdAndLocationId({id:0})
-                        updateClickedItemModel.userId = Mywebroom.State.get('roomData').get('user').id
-                        updateClickedItemModel.designId = itemData.get('items_design_id')
-                        updateClickedItemModel.locationId = itemData.get('location_id')
-                        updateClickedItemModel.save #Makes PUT request to DB at #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
-                          wait: true
-
-                        #1a.. Update State Model locally so we don't have to refetch
-                        Mywebroom.State.get('roomItems').findWhere({'item_id':itemData.get('item_id').toString()}).set('first_time_click',"n")
-
-                        #1b. Show bookmarks view.
-                        Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
-
-                        #1c. Call the original closeView method
-                        @closeView()
-
-                    })
-
-    #2. Create First Time Popup View instance
-    firstClickView = new FirstClickView(
-                      itemData:itemData
-                      dom_item_id:dom_item_id)
-    #3. Render the view
-    $('body').append(firstClickView.render().el)
+#  Mywebroom.Helpers.createFirstTimeClickPopupView = (itemData, dom_item_id) ->
+#
+#    #1. Define Special view for firstTimeClicks
+#    #1a. When popup closes, Tell DB user item was clicked
+#    #1b. When popup closes, show Bookmarks Interface.
+#
+#    #This view extends PopupFriendItemView. remove() is overriding Backbone's so we can show bookmarks view when popup closes.
+#    FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
+#                      template:JST['rooms/PopUpItemFirstClickTemplate']
+#
+#                      className:"popup_item_first_click_view"
+#
+#                      events:
+#                            'click .green_button':'closeViewWithDB'
+#                            'click #popup_item_first_click_close':'closeView'
+#
+#                      #close the view, but tell the database the user clicked continue
+#                      closeViewWithDB: ->
+#
+#                        #1a. Send DB clicked item. Also, change the StateModel, so clicking again won't count as first time.
+#                        updateClickedItemModel = new Mywebroom.Models.UpdateUserItemDesignFirstTimeClickByUserIdAndDesignIdAndLocationId({id:0})
+#                        updateClickedItemModel.userId = Mywebroom.State.get('roomData').get('user').id
+#                        updateClickedItemModel.designId = itemData.get('items_design_id')
+#                        updateClickedItemModel.locationId = itemData.get('location_id')
+#                        updateClickedItemModel.save #Makes PUT request to DB at #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
+#                          wait: true
+#
+#                        #1a.. Update State Model locally so we don't have to refetch
+#                        Mywebroom.State.get('roomItems').findWhere({'item_id':itemData.get('item_id').toString()}).set('first_time_click',"n")
+#
+#                        #1b. Show bookmarks view.
+#                        Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
+#
+#                        #1c. Call the original closeView method
+#                        @closeView()
+#
+#                    })
+#
+#    #2. Create First Time Popup View instance
+#    firstClickView = new FirstClickView(
+#                      itemData:itemData
+#                      dom_item_id:dom_item_id)
+#    #3. Render the view
+#    $('body').append(firstClickView.render().el)
 
 
 
