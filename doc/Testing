@@ -1,0 +1,11 @@
+Testing
+
+1. Add testing libraries to project's Gemfile
+  * teaspoon  (testing framework)
+  * phantomjs (headless web client)
+  * tapout    (test harness)
+
+2. Install Istanbul with npm (code coverage)
+  * npm install -g istanbul
+
+3.
