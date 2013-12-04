@@ -1,7 +1,7 @@
 class Mywebroom.Models.ShowSeoLinkByIdModel extends Backbone.Model
 
   url: ->
-    
+
     ###
     CHECK THAT THE MODEL HAS A TYPE
     ###
@@ -9,9 +9,9 @@ class Mywebroom.Models.ShowSeoLinkByIdModel extends Backbone.Model
       type = this.get("type")
     else
       console.error("Model without type in ShowSeoLinkByIdModel")
-      
-    
-    
+
+
+
     switch type
       when "ENTIRE_ROOM"
         return '/bundles/json/show_entire_room_seo_url_by_bundle_id/' + @id + '.json'
@@ -28,6 +28,6 @@ class Mywebroom.Models.ShowSeoLinkByIdModel extends Backbone.Model
         OOPS! WE DON'T HAVE A PATH FOR THAT ONE
         ###
         console.error("Unexpected type in ShowSeoLinkByIdModel")
-        
-        
-        
+
+
+
