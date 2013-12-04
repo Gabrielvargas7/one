@@ -1,21 +1,21 @@
 <div id="tutorial_editor_open_container_header">
-</div>
-<div id="tutorial_editor_open_container_box_header">
-</div>
-
-
-<div id="tutorial_editor_open_container_box">
-
-    <div id="tutorial_editor_open_container_small_box">
-            <p>
-                Try changing your object. When you find
-                one you like, click Save and Continue.
-            </p>
-
-            <div id="tutorial_editor_open_btn_container">
-                <a href="#" class="blue_button blue_button_light" id="tutorial_editor_open_btn">Save and Continue </a>
-
-            </div>
+    <br>
+    <br>
+    <p>
+        Try changing your object. When you find
+        one you like, click Save and Continue.
+    </p>
+    <br>
+    <div id="tutorial_editor_open_btn_container">
+        <a href="#" class="blue_button blue_button_light" id="tutorial_editor_open_btn">
+            Save and Continue
+        </a>
     </div>
 </div>
 
+
+<div id="tutorial_editor_open_container_box_header">
+</div>
+
+<div id="tutorial_editor_open_container_box">
+</div>
