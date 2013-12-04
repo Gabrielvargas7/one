@@ -143,11 +143,22 @@ li.browse_mode_sidebar_icons_list{
 
 }
 #browse_mode_discover_default{
-
+  background-position: -16px -16px;
+}
+#browse_mode_discover:hover #browse_mode_discover_default{
+  background-position:-16px -89px;
 }
 #browse_mode_mybookmarks_default{
-
+  background-position:-89px -16px;
 }
+#browse_mode_bookmarks:hover #browse_mode_mybookmarks_default{
+  background-position:-90px -89px;
+}
+#browse_mode_bookmarks .browse_sidebar_text{
+  font-size:10px;
+  margin-left:-5px;
+}
+
 /*header Item name in Sidebar*/
 #browse_mode_item_name{
   color: white;

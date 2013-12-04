@@ -325,19 +325,19 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     #     $('#browse_mode_active_highlight').hide()
     #     $('#browse_mode_active_default').show()
     #   )
-    $('#browse_mode_discover_default').off('mouseover').mouseover(->
-      $('#browse_mode_discover_highlight').show()
-      $('#browse_mode_discover_default').hide()
-      )
-    $('#browse_mode_discover_highlight').off('mouseout').mouseout(->
-        $('#browse_mode_discover_highlight').hide()
-        $('#browse_mode_discover_default').show()
-      )
-    $('#browse_mode_mybookmarks_default').off('mouseover').mouseover(->
-      $('#browse_mode_mybookmarks_highlight').show()
-      $('#browse_mode_mybookmarks_default').hide()
-      )
-    $('#browse_mode_mybookmarks_highlight').off('mouseout').mouseout(->
-        $('#browse_mode_mybookmarks_highlight').hide()
-        $('#browse_mode_mybookmarks_default').show()
-      )
+    # $('#browse_mode_discover_default').off('mouseover').mouseover(->
+    #   $('#browse_mode_discover_highlight').show()
+    #   $('#browse_mode_discover_default').hide()
+    #   )
+    # $('#browse_mode_discover_highlight').off('mouseout').mouseout(->
+    #     $('#browse_mode_discover_highlight').hide()
+    #     $('#browse_mode_discover_default').show()
+    #   )
+    # $('#browse_mode_mybookmarks_default').off('mouseover').mouseover(->
+    #   $('#browse_mode_mybookmarks_highlight').show()
+    #   $('#browse_mode_mybookmarks_default').hide()
+    #   )
+    # $('#browse_mode_mybookmarks_highlight').off('mouseout').mouseout(->
+    #     $('#browse_mode_mybookmarks_highlight').hide()
+    #     $('#browse_mode_mybookmarks_default').show()
+    #   )
