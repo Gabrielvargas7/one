@@ -1,4 +1,9 @@
 
+<style>
+#profile_sidebar .profile_sidebar_image{
+  background-image:url('<%=@spriteUrl%>');
+}
+</style>
 <nav class="profile">
   <div id="profile_drawer">
     <div id="profile_home_wrapper">
@@ -8,7 +13,7 @@
           <ul>
             <li id="profile_home">
               <a href="#" >
-                <span class="profile_sidebar_image" style="background-image:url('<%=@spriteUrl%>')"></span>
+                <span class="profile_sidebar_image" ></span>
                 <span class="profile_sidebar_text">Home</span>
                 </a>
             </li>
@@ -18,22 +23,25 @@
             <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/linebreak_xjaflm.png" width="70px"/> 
             <li id="profile_photos">
               <a href="#">
-                <span class="profile_sidebar_image" style="background-image:url('<%=@spriteUrl%>')"></span>
+                <span class="profile_sidebar_image"></span>
                 <span class="profile_sidebar_text">Photos</span>
               </a>
             </li>
             <li id="profile_objects">
               <a href="#">
+                <span class="profile_sidebar_image"></span>
                 <span class="profile_sidebar_text">Objects</span>
               </a>
             </li>
             <li id="profile_bookmarks">
               <a href="#">
+                <span class="profile_sidebar_image"></span>
                 <span class="profile_sidebar_text">Bookmarks</span>
               </a>
             </li>
             <li id="profile_activity">
               <a href="#">
+                <span class="profile_sidebar_image"></span>
                 <span class="profile_sidebar_text">Activity</span>
               </a>
             </li>
