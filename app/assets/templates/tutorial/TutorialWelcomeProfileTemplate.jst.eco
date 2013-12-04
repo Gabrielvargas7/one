@@ -1,3 +1,23 @@
+<style>
+.tutorial-sprite {
+    width: 54px;
+    height: 54px;
+}
+.sprite-camera {
+    background: url('//res.cloudinary.com/hpdnx5ayv/image/upload/v1383693590/51646-static_content-social-tab-icons-image_name-social-tab-icons.png') no-repeat -153px -8px;
+}
+.sprite-people {
+    background: url('//res.cloudinary.com/hpdnx5ayv/image/upload/v1383693590/51646-static_content-social-tab-icons-image_name-social-tab-icons.png') no-repeat -295px -8px;
+}
+.sprite-key {
+    background: url('//res.cloudinary.com/hpdnx5ayv/image/upload/v1383693590/51646-static_content-social-tab-icons-image_name-social-tab-icons.png') no-repeat -441px -8px;
+}
+.sprite-window {
+    background: url('//res.cloudinary.com/hpdnx5ayv/image/upload/v1383693590/51646-static_content-social-tab-icons-image_name-social-tab-icons.png') no-repeat -8px -81px;
+}
+</style>
+
+
 <div class="tutorial_container">
             <div id="tutorial_welcome_profile_social_img" >
                     <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384297457/social_icon_tutorial.jpg" >
@@ -20,7 +40,46 @@
             </div>
 
              <div id="tutorial_welcome_profile_img" >
-                    <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384288328/social_welcome_tutorial.png" >
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <div class="media-object tutorial-sprite sprite-camera"></div>
+                    </a>
+                    <div class="media-body">
+                        <h4>
+                            View and edit photos
+                        </h4>
+                    </div>
+                </div>
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <div class="media-object tutorial-sprite sprite-people"></div>
+                    </a>
+                    <div class="media-body">
+                        <h4>
+                            View your friends and add<br>new ones
+                        </h4>
+                    </div>
+                </div>
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <div class="media-object tutorial-sprite sprite-key"></div>
+                    </a>
+                    <div class="media-body">
+                        <h4>
+                            View friend requests and<br>friend suggestions
+                        </h4>
+                    </div>
+                </div>
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <div class="media-object tutorial-sprite sprite-window"></div>
+                    </a>
+                    <div class="media-body">
+                        <h4>
+                            View updates from<br>myWebRoom
+                        </h4>
+                    </div>
+                </div>
              </div>
 
 
