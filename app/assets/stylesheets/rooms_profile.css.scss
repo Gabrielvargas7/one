@@ -162,7 +162,7 @@ nav.profile {
   top:0px;
   bottom:0px;
   text-transform:uppercase;
-  padding:0 10px;
+  padding:10px 10px 0 10px;
 }
 #profileHome_container{
   /*margin-left is the profile_sidebar width + sidebar padding*/
@@ -179,10 +179,10 @@ nav.profile {
 #profile_sidebar li, #profile_sidebar li a{
   list-style-type: none;
   text-align:center;
-  padding-top:60px;
+  //padding-top:60px;
 }
 #profile_sidebar li a{
-  padding-top: 70px;
+  //padding-top: 70px;
 
 }
 #profile_sidebar ul{
@@ -191,9 +191,6 @@ nav.profile {
   font-weight:lighter;
   margin:0;
   padding:0;
-
-}
-#profile_sidebar li a{
 
 }
 div.spacer{
@@ -230,52 +227,71 @@ div.spacer{
   background-color: #00b7e5;
 }
 //Sidebar Icons
+#profile_sidebar li a{
+  width:55px;
+  //background-image: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-default_fllxkx.png");
+  //background-repeat: no-repeat;
+  padding:0 5px;
+  display:block;
+}
+#profile_sidebar .profile_sidebar_image{
+  height:55px;
+  width:55px;
+  display:block;
+  margin-top:20px;
+  margin-bottom:5px; 
+  background-repeat:no-repeat;
 
-#profile_home a{
-  padding-top: 60px;
-  height:50px;
+}
+#profile_home .profile_sidebar_image{
+  // padding-top: 60px;
+  //height:50px;
   text-align: center;
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-default_fllxkx.png") no-repeat center;
+  background-position: -8px -8px;
 }
-#profile_home a:hover, #profile_home.profile_menu_selected a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/homebtn-active_n7xzdo.png") no-repeat center;
+#profile_home a:hover .profile_sidebar_image, #profile_home.profile_menu_selected .profile_sidebar_image{
+  background-position: -80px -8px;
 }
-#profile_photos a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/photobtn-default_wyukgi.png") no-repeat center;
+#profile_photos .profile_sidebar_image{
+  background-position:-153px -8px;
 }
-#profile_photos a:hover, #profile_photos.profile_menu_selected a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/photobtn-active_fkeam2.png") no-repeat center;
+#profile_photos a:hover .profile_sidebar_image, #profile_photos.profile_menu_selected .profile_sidebar_image{
+  background-position: -225px -8px;
 }
-#profile_friends a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/friendsbtn-default_acwlwf.png") no-repeat center;
+#profile_friends .profile_sidebar_image{
+  background-position:-295px -8px;
 }
-#profile_friends a:hover, #profile_friends.profile_menu_selected a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/friendsbtn-active_zjl9jt.png") no-repeat center;
+#profile_friends a:hover .profile_sidebar_image, #profile_friends.profile_menu_selected .profile_sidebar_image{
+  background-position: -369px -8px;
 }
-#profile_key_requests a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/keyrequestbtn-default_cow1kv.png") no-repeat center;
+#profile_key_requests .profile_sidebar_image{
+  background-position:-441px -7px;
 }
-#profile_key_requests a:hover, #profile_key_requests.profile_menu_selected a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/keyrequestbtn-active_btjwdx.png") no-repeat center;
+#profile_key_requests a:hover .profile_sidebar_image , #profile_key_requests.profile_menu_selected .profile_sidebar_image{
+  background-position: -513px -8px;
 }
-#profile_activity a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/activitybtn-default_nszatj.png") no-repeat center;
+#profile_activity .profile_sidebar_image{
+  background-position:-8px -81px;
 }
-#profile_activity a:hover, #profile_activity.profile_menu_selected a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811572/activitybtn-active_w91vry.png") no-repeat center;
+#profile_activity a:hover .profile_sidebar_image, #profile_activity.profile_menu_selected .profile_sidebar_image{
+  background-position: -81px -81px;
 }
-#profile_objects a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/objectsbtn-default_mdls5o.png") no-repeat center;
+#profile_objects .profile_sidebar_image{
+  background-position:-295px -81px;
 }
-#profile_objects a:hover, #profile_objects.profile_menu_selected a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/objectsbtn-active_fmtjj4.png") no-repeat center;
+#profile_objects a:hover .profile_sidebar_image, #profile_objects.profile_menu_selected .profile_sidebar_image{
+  background-position: -369px -81px;
 }
-#profile_bookmarks a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-default_n2c6yp.png") no-repeat center;
+#profile_bookmarks .profile_sidebar_image{
+  background-position:-441px -81px;
+  
+}
+#profile_bookmarks .profile_sidebar_text{
   font-size:18px;
+  margin-left:-4px;
 }
-#profile_bookmarks a:hover, #profile_bookmarks.profile_menu_selected a{
-  background: url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/bookmarkbtn-active_csktwe.png") no-repeat center;
+#profile_bookmarks a:hover .profile_sidebar_image, #profile_bookmarks.profile_menu_selected .profile_sidebar_image{
+  background-position: -513px -81px;
 }
 #profile_home_info_img{
   height:150px;

@@ -2,13 +2,23 @@ class Mywebroom.Views.ProfileObjectsView extends Backbone.View
   className:'profile_objects_view'
   template: JST['profile/ProfileObjectsTemplate']
   initialize: ->
+    
+    @fetchLimit = 24
+    @offset = 0
+
+    #Note: previously, we were sending in the collection of objects. 
+    #We should just fetch the collection initially since this is what we'll do in the future 
+    @collection = new Mywebroom.Collections.IndexUserItemsDesignsByUserIdByLimitAndOffset()
+    @collection.fetch
+        url: @collection.url @model.get('user_id'),@fetchLimit,@offset
+        async:false
+        success: (response)->
     if(@model.get("FLAG_PROFILE") is "PUBLIC")
      @collection.reset(@collection.first(9), silent:true)
 
-    @fetchLimit = 24
-    @collectionToPass = new Backbone.Collection(@collection.first(@fetchLimit))
+    
 
-    @offset = 0
+
   events:
     'click .profile_request_key_button':'askForKey'
 
@@ -19,10 +29,10 @@ class Mywebroom.Views.ProfileObjectsView extends Backbone.View
       headerName = Mywebroom.State.get('roomData').get('user_profile').firstname + "'s OBJECTS"
     else
       headerName = Mywebroom.State.get('roomData').get('user').username + "'s OBJECTS"
-    objectsTableView = new Mywebroom.Views.ProfileActivityView2(collection: @collectionToPass, model:@model,headerName:headerName)
+    objectsTableView = new Mywebroom.Views.ProfileActivityView2(collection: @collection, model:@model,headerName:headerName)
     $(@el).append(objectsTableView.render().el)
-    if @collectionToPass.length is @fetchLimit
-      #set scroll event to fetch more photos. Try creating new tableview and appending it to the el.
+    if @collection.length is @fetchLimit
+      #set scroll event to fetch more objects. Try creating new tableview and appending it to the el.
       that = this
       @$('#gridItemList').off('scroll').on('scroll',that, (event)->
         if $('#gridItemList').scrollTop() + $('#gridItemList').innerHeight() >= $('#gridItemList')[0].scrollHeight-100
@@ -56,7 +66,7 @@ class Mywebroom.Views.ProfileObjectsView extends Backbone.View
     #3. Render the new data's view.
     if nextCollection
       #3a. Add to collection and Marionette- ProfileActivityView2 will auto render it. Yay!
-      event.data.collectionToPass.add(nextCollection.toJSON())
+      event.data.collection.add(nextCollection.toJSON())
       # nextCollection.each((item)->
       #   itemView = new Mywebroom.Views.ProfileGridItemView2(model:item)
       #   $('#gridItemList').append(itemView.render().el)

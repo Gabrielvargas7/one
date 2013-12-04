@@ -28,3 +28,7 @@ class Mywebroom.Views.ProfileHomeTopView extends Backbone.View
   askForKey:(event)->
     #Key Request.
     Mywebroom.Helpers.RequestKey(@model.get('user_id'))
+    #Since the template is a class instead of ID, we need to handle the styling here
+    $('.profile_request_key_button').hide()
+    $('.profile_key_requested').show()
+    
