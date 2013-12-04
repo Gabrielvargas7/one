@@ -277,7 +277,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
   # Responsible for Key Requests View, Key Requests Single View and Suggested Friends View and Suggested Friends Single View
   showProfileKeyRequests: ->
-    
+
     $('.profile_menu_selected').removeClass('profile_menu_selected')
     $('#profile_key_requests').addClass('profile_menu_selected')
 
@@ -377,7 +377,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   # showProfileObjects - Only shows on Friend/Public Profile View
   #--------------------------
   showProfileObjects:->
-    
+
     $('.profile_menu_selected').removeClass('profile_menu_selected')
     $('#profile_objects').addClass('profile_menu_selected')
 
@@ -466,7 +466,19 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
     signInState = Mywebroom.State.get("signInState")
     if signInState is true
-      requestMessage = "Your friend " + Mywebroom.State.get("signInData").get("user_profile").firstname + " " + Mywebroom.State.get("signInData").get("user_profile").lastname + " would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
+
+      firstname = Mywebroom.State.get("signInData").get("user_profile").firstname
+      lastname = Mywebroom.State.get("signInData").get("user_profile").lastname
+      username =  Mywebroom.State.get("signInUser").get("username")
+
+      if firstname and lastname
+        requestMessage = "Your friend " + firstname + " " + lastname + " would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
+      else if username
+        requestMessage = "Your friend " + username + " would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
+      else
+        requestMessage = "Your friend would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
+
+
     else
       requestMessage = "Your friend would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
     FB.ui
