@@ -14,3 +14,11 @@ Testing
 
 4. CLI
   bundle exec teaspoon -q --format=tap_y | tapout progress
+
+
+
+
+Files You Should Know About
+
+config/initializers/teaspoon.rb
+spec/javascripts/spec_helper.coffee
