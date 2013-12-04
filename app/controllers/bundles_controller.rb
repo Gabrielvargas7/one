@@ -314,7 +314,8 @@ class BundlesController < ApplicationController
         }
 
       else
-        format.json { render json: 'keyword or category to long ' , status: :not_found }
+        #format.json { render json: 'keyword or category to long ' , status: :not_found }
+        format.json { render json:'[]'}
       end
 
     end
