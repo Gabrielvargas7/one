@@ -162,7 +162,7 @@ nav.profile {
   top:0px;
   bottom:0px;
   text-transform:uppercase;
-  padding:20px 10px 0 10px;
+  padding:10px 10px 0 10px;
 }
 #profileHome_container{
   /*margin-left is the profile_sidebar width + sidebar padding*/
@@ -238,8 +238,8 @@ div.spacer{
   height:55px;
   width:55px;
   display:block;
-  margin-top:5px;
-  margin-bottom:10px; 
+  margin-top:20px;
+  margin-bottom:5px; 
   background-repeat:no-repeat;
 
 }
@@ -284,7 +284,11 @@ div.spacer{
 }
 #profile_bookmarks .profile_sidebar_image{
   background-position:-441px -81px;
+  
+}
+#profile_bookmarks .profile_sidebar_text{
   font-size:18px;
+  margin-left:-4px;
 }
 #profile_bookmarks a:hover .profile_sidebar_image, #profile_bookmarks.profile_menu_selected .profile_sidebar_image{
   background-position: -513px -81px;

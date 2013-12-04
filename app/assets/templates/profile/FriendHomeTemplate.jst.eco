@@ -17,8 +17,7 @@
                 <span class="profile_sidebar_text">Home</span>
                 </a>
             </li>
-            <br>
-            <br>
+
             <div class="spacer"></div>
             <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811603/linebreak_xjaflm.png" width="70px"/> 
             <li id="profile_photos">
