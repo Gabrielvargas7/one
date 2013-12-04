@@ -349,6 +349,18 @@ padding: 8px 35px;
   </script>
 
 
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('body').on("mousewheel", function(event) {
+        if(event.deltaY) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      });
+    });
+  </script>
+
+
 
 
 
