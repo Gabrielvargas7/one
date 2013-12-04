@@ -153,8 +153,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
 
-    # Hide the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
+    # Conditionally Hide the Save, Cancel, Remove view
+    if not $('#xroom_store_save').is(':visible')
+      $('#xroom_store_menu_save_cancel_remove').hide()
 
     # Hide the search filters
     Mywebroom.Helpers.collapseFilters()
@@ -180,8 +181,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
 
-    # Hide the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
+    # Conditionally Hide the Save, Cancel, Remove view
+    if not $('#xroom_store_save').is(':visible')
+      $('#xroom_store_menu_save_cancel_remove').hide()
 
 
     # Re-show nav pills
@@ -232,8 +234,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
 
-    # Hide the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
+    # Conditionally Hide the Save, Cancel, Remove view
+    if not $('#xroom_store_save').is(':visible')
+      $('#xroom_store_menu_save_cancel_remove').hide()
 
 
     # Re-show nav pills
@@ -283,8 +286,9 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     Mywebroom.State.set("storeHelper", "ENTIRE ROOMS")
 
 
-    # Hide the Save, Cancel, Remove view
-    $('#xroom_store_menu_save_cancel_remove').hide()
+    # Conditionally Hide the Save, Cancel, Remove view
+    if not $('#xroom_store_save').is(':visible')
+      $('#xroom_store_menu_save_cancel_remove').hide()
 
 
     # Re-show nav pills
