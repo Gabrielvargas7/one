@@ -360,7 +360,7 @@ class BundlesController < ApplicationController
         @bundle = Bundle.where("active = 'y'").where('id=?',params[:bundle_id]).first
 
         seo_url = Hash.new
-        seo_url["seo_url"] = shop_show_bundle_url(@bundle.id,get_clean_name(@bundle.name))
+        seo_url["seo_url"] = shop_show_entire_room_url(@bundle.id,get_clean_name(@bundle.name))
 
         format.json { render json: seo_url }
       else
