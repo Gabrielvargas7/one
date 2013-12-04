@@ -317,14 +317,14 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 
 
   setSidebarHover:->
-    $('#browse_mode_active_default').off('mouseover').mouseover(->
-      $('#browse_mode_active_highlight').show()
-      $('#browse_mode_active_default').hide()
-      )
-    $('#browse_mode_active_highlight').off('mouseout').mouseout(->
-        $('#browse_mode_active_highlight').hide()
-        $('#browse_mode_active_default').show()
-      )
+    # $('#browse_mode_active_default').off('mouseover').mouseover(->
+    #   $('#browse_mode_active_highlight').show()
+    #   $('#browse_mode_active_default').hide()
+    #   )
+    # $('#browse_mode_active_highlight').off('mouseout').mouseout(->
+    #     $('#browse_mode_active_highlight').hide()
+    #     $('#browse_mode_active_default').show()
+    #   )
     $('#browse_mode_discover_default').off('mouseover').mouseover(->
       $('#browse_mode_discover_highlight').show()
       $('#browse_mode_discover_default').hide()

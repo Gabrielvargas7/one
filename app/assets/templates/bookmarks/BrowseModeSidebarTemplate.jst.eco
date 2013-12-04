@@ -1,10 +1,20 @@
+<style>
+.browse_sidebar_image{
+  background-image:url('<%=@spriteUrl%>');
+}
+
+
+</style>
+
 <ul class="browse_mode_list">
   <li>
     <a id="browse_mode_active" href="#">
-      <img id="browse_mode_active_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697970/browse-mode-active.png">
-      <img id="browse_mode_active_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697987/browse-mode-active-highlight.png">
+      <span id="browse_mode_active_default" class="browse_sidebar_image"></span>
+      <span class="browse_sidebar_text">Active</span>
+      <!-- <img id="browse_mode_active_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697970/browse-mode-active.png"> -->
+      <!-- <img id="browse_mode_active_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697987/browse-mode-active-highlight.png"> -->
     </a>
-    <div>Active</div>
+    <!-- <div>Active</div> -->
   </li>
   <li>
     <a id="browse_mode_discover" >
