@@ -113,9 +113,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $('#profileHome_top').html(@profileHomeTopView.render().el)
     $('#profileHome_bottom').css "height","450px"
     #Bandaid- make header another table.
-    tableHeader = JST['profile/ProfileGridTableHeader']
-    $("#profileHome_bottom").html(tableHeader())
-    $('#profileHome_bottom').append(@ProfileHomeActivityView.el)
+    #tableHeader = JST['profile/ProfileGridTableHeader']
+    #$("#profileHome_bottom").html(tableHeader())
+    $('#profileHome_bottom').html(@ProfileHomeActivityView.el)
     @ProfileHomeActivityView.render()
 
     $('.profile_menu_selected').removeClass('profile_menu_selected')
