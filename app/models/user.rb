@@ -88,8 +88,8 @@ class User < ActiveRecord::Base
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
-    save!
-    #save!(validate: false)
+    #save!
+    save!(validate: false)
     UsersMailer.forget_password_email(self).deliver
 
   end

@@ -11,7 +11,10 @@ class UsersController < ApplicationController
         :update,
         :destroy,
         :show,
-        :index]
+        :index,
+        :edit_password,
+        :update_password
+    ]
 
   before_filter :json_signed_in_user,
     only:[
@@ -27,7 +30,12 @@ class UsersController < ApplicationController
                 ]
 
 
-  before_filter :correct_user, only:[:edit,:show,:update]
+  before_filter :correct_user, only:[:edit,
+                                     :show,
+                                     :update,
+                                     :edit_password,
+                                     :update_password]
+
   before_filter :admin_user, only:[:destroy,:index]
 
 
@@ -100,7 +108,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     user = User.find(params[:id])
 
-    if user && user.authenticate(params[:user][:password])
+    if user
+      #&& user.authenticate(params[:user][:password])
 
        if user.username == params[:user][:username]
          # no changes on the username
@@ -137,10 +146,29 @@ class UsersController < ApplicationController
           end
        end
     else
-      flash[:success] = "password is not valid"
+      flash[:success] = "problem we user "
       render 'edit'
     end
   end
+
+
+  def edit_password
+    @user = User.find(params[:id])
+  end
+
+
+
+  def update_password
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(params[:user])
+       sign_in @user
+       redirect_to @user, :notice => "Password has been reset."
+    else
+      render :edit_password
+    end
+  end
+
 
 
   def index

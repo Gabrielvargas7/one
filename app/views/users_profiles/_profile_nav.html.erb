@@ -6,6 +6,11 @@
       <li>
         <%= link_to "Settings", edit_user_path(current_user.id) %>
       </li>
+      <% unless current_user.provider == "facebook"%>
+          <li>
+            <%= link_to "Change password",users_edit_password_path(current_user.id) %>
+          </li>
+      <%end%>
 
     </ul>
 </div>

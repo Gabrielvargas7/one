@@ -116,8 +116,11 @@ Mywebroom::Application.routes.draw do
   resources :sections
 
   resources :password_resets
-  match '/thank_you_page', to:   'password_resets#thank_you_page', via: :get,as:
-            :password_resets_thank_you_page
+
+  match '/thank_you_page', to:
+        'password_resets#thank_you_page', via: :get,as:
+        :password_resets_thank_you_page
+
 
   match '/signup',  to: 'users#new'
 
@@ -153,7 +156,19 @@ Mywebroom::Application.routes.draw do
          :bundles_active_update
   resources :items
 
+
+
   resources :users
+
+  match '/users/edit_password/:id', to:
+         'users#edit_password', via: :get,as:
+         :users_edit_password
+
+  match '/users/update_password/:id', to:
+         'users#update_password', via: :put,as:
+         :users_update_password
+
+
 
   resources :sessions, only: [:new, :create, :destroy]
 

@@ -13,17 +13,16 @@
 
             <%= render 'shared/error_messages' %>
 
-            <div class="field">
-                <%= f.label :email %>
-                <%= f.text_field :email %>
-            </div>
+            <% unless current_user.provider == "facebook"%>
+                <div class="field">
+                    <%= f.label :email %>
+                    <%= f.text_field :email %>
+                </div>
+            <%end%>
+
             <div class="field">
                 <%= f.label :username %>
                 <%= f.text_field :username %>
-            </div>
-            <div class="field">
-                <%= f.label :password %>
-                <%= f.password_field :password %>
             </div>
             <div class="actions">
                 <%= f.submit "Save Changes",class: "blue_button blue_button_light" %>
