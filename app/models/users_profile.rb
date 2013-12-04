@@ -8,7 +8,8 @@ class UsersProfile < ActiveRecord::Base
                   :lastname,
                   :user_id,
                   :friends_number,
-                  :tutorial_step
+                  :tutorial_step,
+                  :password_reset_on_login
 
 
   #before_save{ get_location}

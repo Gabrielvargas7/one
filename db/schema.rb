@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125214224) do
+ActiveRecord::Schema.define(:version => 20131204202752) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
@@ -357,10 +357,11 @@ ActiveRecord::Schema.define(:version => 20131125214224) do
     t.string   "country"
     t.date     "birthday"
     t.integer  "user_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "friends_number", :default => 0
-    t.integer  "tutorial_step",  :default => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "friends_number",          :default => 0
+    t.integer  "tutorial_step",           :default => 0
+    t.boolean  "password_reset_on_login", :default => false
   end
 
   add_index "users_profiles", ["birthday"], :name => "index_users_profiles_on_birthday"
