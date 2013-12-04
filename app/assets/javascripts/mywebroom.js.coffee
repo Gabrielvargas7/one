@@ -1841,7 +1841,7 @@ $(document).ready ->
         console.error(response)
 
       #Change style to Key requested.
-      if $('#profile_ask_for_key_overlay button').length > 1
+      if $('#profile_ask_for_key_overlay button').length is 1
         $requestButton = $('#profile_ask_for_key_overlay button')
         $requestButton.text("Key Requested")
         $requestButton.addClass("profile_key_requested").removeClass('profile_request_key_button')
