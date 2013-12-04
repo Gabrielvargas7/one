@@ -36,11 +36,11 @@ function feedback_lightbox(){
         if($('#feedback_lightbox').size() == 0){
 
             var theLightbox =  $('<div id="feedback_lightbox"> ' +
-                '<p id="feedback_label_title">Please feel free to leave us feeedback.</p>'+
+                '<p id="feedback_label_title">Please feel free to leave us feedback.</p>'+
                 '<form action="/feedbacks/json/create_feedback" data-remote="true" id="feedback_form" method="POST">' +
-                    '<label id="feeedback_label_name">Name/Email</label>'+
+                    '<label id="feedback_label_name">Name/Email</label>'+
                     '<input name="name" type="text">'+
-                    '<label id="feeedback_label_comment">Comment</label>'+
+                    '<label id="feedback_label_comment">Comment</label>'+
                     '<textarea name="description" rows="8"></textarea>'+
                     '<br/>'+
                     '<div id="feedback_btn_container">' +
