@@ -2,21 +2,28 @@
 .tutorial-sprite {
     width: 58px;
     height: 58px;
+    background-repeat: no-repeat;
 }
+/*
+Go to spritecow.com to quickly and easily
+determine background-position values.
+
+Note: spritecow's values led to some of the images
+      being ever so slightly cut off, so it's a good idea
+      to go 1 pixel beyond what they give you
+*/
 .sprite-camera {
-    background: url('//res.cloudinary.com/hpdnx5ayv/image/upload/v1383693590/51646-static_content-social-tab-icons-image_name-social-tab-icons.png') no-repeat -151px -6px;
+    background-position: -151px -6px;
 }
 .sprite-people {
-    background: url('//res.cloudinary.com/hpdnx5ayv/image/upload/v1383693590/51646-static_content-social-tab-icons-image_name-social-tab-icons.png') no-repeat -293px -6px;
+    background-position: -293px -6px;
 }
 .sprite-key {
-    background: url('//res.cloudinary.com/hpdnx5ayv/image/upload/v1383693590/51646-static_content-social-tab-icons-image_name-social-tab-icons.png') no-repeat -439px -6px;
+    background-position: -439px -6px;
 }
 .sprite-window {
-    background: url('//res.cloudinary.com/hpdnx5ayv/image/upload/v1383693590/51646-static_content-social-tab-icons-image_name-social-tab-icons.png') no-repeat -6px -79px;
+    background-position: -6px -79px;
 }
-
-
 .tutorial-text-light {
     font-weight: 100;
     line-height: 26px;
@@ -24,71 +31,94 @@
 </style>
 
 
-<div class="tutorial_container">
-            <div id="tutorial_welcome_profile_social_img" >
-                    <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384297457/social_icon_tutorial.jpg" >
-             </div>
 
+
+<script>
+    /*
+    Rather than refering the background-image url directly,
+    we get it from our static-content collection so that
+    designers can change images without anything in the
+    project breaking.
+    */
+
+    url = Mywebroom.State.get('staticContent').findWhere({'name': 'social-tab-icons'}).get('image_name').url.split(':')[1];
+    $('.tutorial-sprite').css({'background-image': 'url(' + url + ')'});
+</script>
+
+
+
+
+<div class="tutorial_container">
+    <div id="tutorial_welcome_profile_social_img" >
+        <img alt="social icon tutorial" src="//res.cloudinary.com/hpdnx5ayv/image/upload/v1384297457/social_icon_tutorial.jpg" >
+     </div>
 </div>
+
+
+
 
 <div class="tutorial_welcome_profile_container_side_bar">
 </div>
 
 
+
+
 <div id="tutorial_welcome_profile_container_box">
-            <p>
-                Welcome to your Profile Page
-            </p>
 
-            <div id="tutorial_welcome_profile_btn_container">
-                <a href="#" class="blue_button blue_button_light" id="tutorial_welcome_profile_btn">Continue </a>
+    <p>
+        Welcome to your Profile Page
+    </p>
 
+    <div id="tutorial_welcome_profile_btn_container">
+        <a href="#" class="blue_button blue_button_light" id="tutorial_welcome_profile_btn">Continue </a>
+    </div>
+
+     <div id="tutorial_welcome_profile_img" >
+
+        <div class="media">
+            <a class="pull-left" href="#">
+                <div class="media-object tutorial-sprite sprite-camera"></div>
+            </a>
+            <div class="media-body">
+                <h4 class="tutorial-text-light">
+                    View and edit photos
+                </h4>
             </div>
+        </div>
 
-             <div id="tutorial_welcome_profile_img" >
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <div class="media-object tutorial-sprite sprite-camera"></div>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="tutorial-text-light">
-                            View and edit photos
-                        </h4>
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <div class="media-object tutorial-sprite sprite-people"></div>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="tutorial-text-light">
-                            View your friends and add<br>new ones
-                        </h4>
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <div class="media-object tutorial-sprite sprite-key"></div>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="tutorial-text-light">
-                            View friend requests and<br>friend suggestions
-                        </h4>
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <div class="media-object tutorial-sprite sprite-window"></div>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="tutorial-text-light">
-                            View updates from<br>myWebRoom
-                        </h4>
-                    </div>
-                </div>
-             </div>
+        <div class="media">
+            <a class="pull-left" href="#">
+                <div class="media-object tutorial-sprite sprite-people"></div>
+            </a>
+            <div class="media-body">
+                <h4 class="tutorial-text-light">
+                    View your friends and add<br>new ones
+                </h4>
+            </div>
+        </div>
 
+        <div class="media">
+            <a class="pull-left" href="#">
+                <div class="media-object tutorial-sprite sprite-key"></div>
+            </a>
+            <div class="media-body">
+                <h4 class="tutorial-text-light">
+                    View friend requests and<br>friend suggestions
+                </h4>
+            </div>
+        </div>
 
+        <div class="media">
+            <a class="pull-left" href="#">
+                <div class="media-object tutorial-sprite sprite-window"></div>
+            </a>
+            <div class="media-body">
+                <h4 class="tutorial-text-light">
+                    View updates from<br>myWebRoom
+                </h4>
+            </div>
+        </div>
+
+     </div>
 
 </div>
-
