@@ -21,10 +21,10 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "SIGN UP", class: "blue_button" %>
+          <%= f.submit "SIGN UP", class: "blue_button", :onclick=>"gaq.push(['_trackEvent', 'signin', 'regular','user']);" %>
         </div>
 
-
+        <!--<a href="#" onClick="_gaq.push(['_trackEvent', 'Videos', 'Play', 'Baby\'s First Birthday']);">Play</a>-->
 
     <% end %>
 
