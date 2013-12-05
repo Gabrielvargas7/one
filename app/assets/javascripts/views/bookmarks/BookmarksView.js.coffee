@@ -30,14 +30,15 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
   initialize: ->
 
-    #Make sure there's only one Bookmarks View open and set current. 
+    #Make sure there's only one Bookmarks View open and set current.
     if Mywebroom.State.get('bookmarksView')
       Mywebroom.State.get('bookmarksView').closeView()
-    Mywebroom.State.set('bookmarksView',this)
+
+    Mywebroom.State.set('bookmarksView', this)
 
     #fetch bookmark data
     @getMyBookmarksCollection() #Referred as @collection
-    @getDiscoverCategoriesCollection() #referred as @discoverCategoriesCollection
+    @getDiscoverCategoriesCollection(@options.item_id) #referred as @discoverCategoriesCollection
 
     self= this
     Mywebroom.App.vent.off('BrowseMode:closeBookmarkView').on('BrowseMode:closeBookmarkView',@closeView,self)
@@ -59,29 +60,29 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     # $('.my_bookmarks_bottom').css 'width',$(window).width()-270
     $('#my_bookmarks_menu_item').addClass 'bookmark_menu_selected'
 
-  
+
   renderDiscover:(event)->
     if event
       event.stopPropagation()
-      event.preventDefault() 
+      event.preventDefault()
 
     #bookmarks view sidebar management
     $('#my_bookmarks_menu_item').removeClass 'bookmark_menu_selected'
     $('#discover_menu_item').addClass 'bookmark_menu_selected'
     $('.discover_submenu_section').removeClass('hidden')
     $('.discover_submenu').removeClass('bookmark_menu_selected')
-    #Add Sidebar custom url event. 
+    #Add Sidebar custom url event.
     that = this
     $('#add_your_own_submit input').off('click').on('click',{that},@addCustomBookmark)
-    
+
     #Remove old views
     $(@myBookmarksView.el).hide()
     @bookmarksDiscoverView.remove() if @bookmarksDiscoverView
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     @previewModeView.closeView() if @previewModeView
 
-    
-    #fetch DiscoverBookmarks 
+
+    #fetch DiscoverBookmarks
     @discoverCollection = new Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollection()
     @discoverCollection.fetch
       async:false
@@ -89,14 +90,14 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       success:(response)->
         #console.log "discover Bookmarks fetch successful: "
         #console.log response
-    
+
     #set THE bookmarksDiscoverView and render
     @bookmarksDiscoverView = new Mywebroom.Views.DiscoverBookmarksView(collection:@discoverCollection, user_item_design:this.options.item_id)
     $(@el).append(@bookmarksDiscoverView.render().el)
 
 
 
-  renderMyBookmarks:(event)->
+  renderMyBookmarks: (event) ->
     event.preventDefault() if event
     event.stopPropagation() if event
 
@@ -109,7 +110,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @previewModeView.closeView() if @previewModeView
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     @bookmarksDiscoverView.remove() if @bookmarksDiscoverView
-    
+
     #Fetch the collection so the myBookmarksView auto re-renders
     @collection.fetch
       reset:true
@@ -118,7 +119,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
 
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
     $('.my_bookmarks_bottom').css 'width',$(window).width()-270
-    
+
     #Show the bookmarks view. (It's been rerendered after the collection fetch.)
     $(@myBookmarksView.el).show()
 
@@ -174,9 +175,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
             #console.log(response)
 
         postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId:bookmarkClick.get('item_id'), bookmarkId:bookmarkClick.get('id'),userId:Mywebroom.State.get('signInUser').get('id')})
-        if @collection.models.length > 0 
+        if @collection.models.length > 0
           lastBookmarkPosition = parseInt(_.last(@collection.models).get('position'))
-        else 
+        else
           lastBookmarkPosition = 0
         postBookmarkModel.set 'position',lastBookmarkPosition+1
         postBookmarkModel.save {},
@@ -184,7 +185,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
             #console.log('postBookmarkModel SUCCESS:')
             #console.log(response)
           error: (model, response)->
-            if response.responseText != "the bookmark already exists" 
+            if response.responseText != "the bookmark already exists"
               console.error('postBookmarkModel FAIL:')
               console.error(response)
 
@@ -301,23 +302,31 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       #console.log "There was an error in your url or the title was too long."
 
 
-  getMyBookmarksCollection:->
+  getMyBookmarksCollection: ->
     @collection = new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdCollection()
     @collection.fetch
       async:false
       url:@collection.url this.options.user, this.options.item_id
-      success:(response) ->
+      success: (response) ->
         #console.log("bookmark fetch successful: ")
         #console.log(response)
 
-  getDiscoverCategoriesCollection:->
-    @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId()
-    @discoverCategoriesCollection.fetch
-      async:false
-      url: @discoverCategoriesCollection.url this.options.item_id
-      success:(response) ->
-        #console.log("categories fetch successful: ")
-        #console.log(response)
+
+
+
+  getDiscoverCategoriesCollection: (itemId) ->
+
+    @discoverCategoriesCollection = new Mywebroom.Collections.IndexBookmarksCategoriesByItemId([], {itemId: itemId})
+    @discoverCategoriesCollection.fetch({
+      async: false
+      success: (collection, response, options) ->
+        #console.log("categories fetch success", collection)
+      error: (collection, response, options) ->
+        console.error("getDiscoverCategoriesCollection() fail", response.responseText)
+    })
+
+
+
 
   ###
   # Highlight a bookmark item by and make sure the user sees it. (From "Try in My Room")
