@@ -40,6 +40,9 @@
 #add_your_own_bookmark_title{
 
 }
+.bookmark_menu_list li:before{
+  background-image:url('<%=@spriteUrl%>');
+}
 </style>
 <div class="bookmark_menu">
   <p class="bookmark_object_title bottom_border_padding"><%=@items_name%> Bookmarks</p>

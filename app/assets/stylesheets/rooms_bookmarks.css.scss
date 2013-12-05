@@ -32,13 +32,23 @@ ul.bookmark_menu_list {
 }
 .bookmark_menu_list li{
   padding:.4em 0;
+
 }
+.bookmark_menu_list li:before{
+    background-color:transparent;
+    background-repeat:no-repeat;
+    padding-right: 20px;
+
+    }
 .bookmark_menu_list li a,.bookmark_menu_list li {
   list-style-type: none;
   text-align:left;
   font-size: 16px;
   color:white;
   //width:100%;
+}
+.bookmark_menu_list > li a{
+  margin-left:20px;
 }
 #my_bookmarks_menu_item.bookmark_menu_selected, 
 #discover_menu_item.bookmark_menu_selected, li.bookmark_menu_selected a, a li.bookmark_menu_selected{
@@ -50,26 +60,25 @@ ul.bookmark_menu_list {
   text-decoration: none;
 }
 #my_bookmarks_menu_item:before {
-    background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226417/my-bookmarks-menu-icon.png') no-repeat;
+    background-position: -6px -8px;
     content:"";
-  padding-right: 40px;
+  
 }
 #my_bookmarks_menu_item:hover:before, #my_bookmarks_menu_item.bookmark_menu_selected:before{
-  background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226438/my-bookmarks-menu-icon-hover.png') no-repeat;
+  background-position: -6px -44px;
   content:"";
-  padding-right: 40px;
+  padding-right: 20px;
 }
 #discover_menu_item:before{
-  background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226491/discover-bookmarks-menu-icon.png') no-repeat;
-//  content: url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226491/discover-bookmarks-menu-icon.png');
-  padding-right:40px;
+  background-position: -44px -9px;
+  padding-right:20px;
   content:"";
 
 }
 #discover_menu_item:hover:before, #discover_menu_item.bookmark_menu_selected:before
 {
-  background: transparent url('http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226505/discover-bookmarks-menu-icon-hover.png') no-repeat;
-  padding-right:40px;
+  background-position: -44px -45px;
+  padding-right:20px;
   content:"";
 }
 
