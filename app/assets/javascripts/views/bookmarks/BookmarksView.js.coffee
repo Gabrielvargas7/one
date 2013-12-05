@@ -42,13 +42,17 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     self= this
     Mywebroom.App.vent.off('BrowseMode:closeBookmarkView').on('BrowseMode:closeBookmarkView',@closeView,self)
 
+    #getSpriteUrl
+    @spriteUrl = Mywebroom.State.get('staticContent').findWhere('name':'bookmark-sml-icons').get('image_name').url
+    @largeSpriteUrl = Mywebroom.State.get('staticContent').findWhere('name':'bookmark-main-icons').get('image_name').url
+
   #*******************
   #**** Render
   #*******************
   render: ->
     #console.log("bookmark view: "+this.options.item_id)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user)
-    $(@el).append(@template(user_item_design:this.options.item_id,items_name:this.options.items_name, collection:@collection, categories:@discoverCategoriesCollection))
+    $(@el).append(@template(user_item_design:this.options.item_id,items_name:this.options.items_name, collection:@collection, categories:@discoverCategoriesCollection,spriteUrl:@spriteUrl,largeSpriteUrl:@largeSpriteUrl))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection:@collection)
     $(@el).append(@myBookmarksView.render().el)
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
