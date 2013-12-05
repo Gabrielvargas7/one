@@ -94,6 +94,20 @@ img.browse_mode_sidebar_icons{
   list-style: none;
   text-align:center;
 }
+.browse_mode_list li a{
+  text-decoration: none;
+  color:#d2d4d4;
+}
+.browse_sidebar_image{
+  background-repeat:no-repeat;
+  background-position: -159px -16px;
+  display:block;
+  width:40px;
+  height:40px;
+  margin-bottom:5px;
+  margin-top:15px;
+  margin-left:4px; /*this span comes with a mysterious right padding that doesn't let this image center.*/
+}
 .browse_mode_list div{
   margin:3px 0;
 }
@@ -119,6 +133,32 @@ li.browse_mode_sidebar_icons_list{
   padding:8px;
 
 }
+#browse_mode_active_default{
+  background-position:-159px -16px;
+  margin-top:0;
+
+}
+#browse_mode_active:hover #browse_mode_active_default,#browse_mode_active_default.selected{
+  background-position:-160px -87px;
+
+}
+#browse_mode_discover_default{
+  background-position: -16px -16px;
+}
+#browse_mode_discover:hover #browse_mode_discover_default{
+  background-position:-16px -89px;
+}
+#browse_mode_mybookmarks_default{
+  background-position:-89px -16px;
+}
+#browse_mode_bookmarks:hover #browse_mode_mybookmarks_default{
+  background-position:-90px -89px;
+}
+#browse_mode_bookmarks .browse_sidebar_text{
+  font-size:10px;
+  margin-left:-5px;
+}
+
 /*header Item name in Sidebar*/
 #browse_mode_item_name{
   color: white;
