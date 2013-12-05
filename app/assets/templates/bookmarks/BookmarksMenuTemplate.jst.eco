@@ -40,18 +40,22 @@
 #add_your_own_bookmark_title{
 
 }
+.bookmark_menu_list li:before{
+  background-image:url('<%=@spriteUrl%>');
+}
 </style>
 <div class="bookmark_menu">
   <p class="bookmark_object_title bottom_border_padding"><%=@items_name%> Bookmarks</p>
   <ul class="bookmark_menu_list">
-    <a href="#"><li id="my_bookmarks_menu_item">My Bookmarks</li></a>
-    <a href="#"><li id="discover_menu_item">Discover</li></a>
+    <li id="my_bookmarks_menu_item"><a href="#">My Bookmarks</a></li>
+    <li id="discover_menu_item"><a href="#">Discover</a></li>
   </ul>
   <div class="hidden discover_submenu_section">
     <ul class="bookmark_menu_list" id="discover_submenu_list">
       <%for category in @categories.models:%>
-        <a href="#"><li class="discover_submenu" data-id="<%=category.get('id')%>"><%=category.get('name')%></li></a>
-
+        <li class="discover_submenu" data-id="<%=category.get('id')%>">
+          <a href="#"><%=category.get('name')%></a>
+        </li>
       <%end%>
     </ul>
     

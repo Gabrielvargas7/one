@@ -6,5 +6,6 @@
 //# success    ->  head  200 OK
 
 {
-    "seo_url": "http://localhost:3000/shop/bundle/1/cartoonish"
+
+    "seo_url": "http://localhost:3000/shop/entire_room/16/alpine-style"
 }

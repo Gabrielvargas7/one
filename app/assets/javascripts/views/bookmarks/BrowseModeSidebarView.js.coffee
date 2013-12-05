@@ -5,6 +5,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     'click .browse_mode_sidebar_icons':'sideBarActiveSiteChange'
   initialize:->
     this.on('render',@setScroll)
+    @spriteUrl = Mywebroom.State.get('staticContent').findWhere('name':'bookmark-main-icons').get('image_name').url
 
   render:->
     if @model
@@ -16,7 +17,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       #@collection = @itemBookmarksCollection.first(4)
       @model.on('change',@render,this)
       @tagActiveSites()
-    $(@el).html(@template(collection:@collection,model:@model))
+    $(@el).html(@template(collection:@collection,model:@model,spriteUrl:@spriteUrl))
     #@setScroll()
     this
 

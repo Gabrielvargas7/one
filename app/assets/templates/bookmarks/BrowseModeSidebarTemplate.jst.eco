@@ -1,24 +1,40 @@
+<style>
+.browse_sidebar_image{
+  background-image:url('<%=@spriteUrl%>');
+}
+
+
+</style>
+
 <ul class="browse_mode_list">
   <li>
     <a id="browse_mode_active" href="#">
-      <img id="browse_mode_active_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697970/browse-mode-active.png">
-      <img id="browse_mode_active_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697987/browse-mode-active-highlight.png">
+      <span id="browse_mode_active_default" class="browse_sidebar_image"></span>
+      <span class="browse_sidebar_text">Active</span>
+      <!-- <img id="browse_mode_active_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697970/browse-mode-active.png"> -->
+      <!-- <img id="browse_mode_active_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379697987/browse-mode-active-highlight.png"> -->
     </a>
-    <div>Active</div>
+    <!-- <div>Active</div> -->
   </li>
   <li>
     <a id="browse_mode_discover" >
-      <img id="browse_mode_discover_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698076/browse-mode-discover-bookmarks.png">
-      <img id="browse_mode_discover_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698097/browse-mode-discover-bookmarks-highlight.png">
+      <span id="browse_mode_discover_default" class="browse_sidebar_image"></span>
+      <span class="browse_sidebar_text">Discover</span>
+
+      <!-- <img id="browse_mode_discover_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698076/browse-mode-discover-bookmarks.png">
+      <img id="browse_mode_discover_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698097/browse-mode-discover-bookmarks-highlight.png"> -->
     </a>
-    <div>Discover</div>
+    <!-- <div>Discover</div> -->
   </li>
   <li>
     <a id="browse_mode_bookmarks" >
-      <img id="browse_mode_mybookmarks_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698023/browse-mode-my-bookmarks.png">
-      <img id="browse_mode_mybookmarks_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698041/browse-mode-my-bookmarks-highlight.png">
+      <span id="browse_mode_mybookmarks_default" class="browse_sidebar_image"></span>
+      <span class="browse_sidebar_text">Bookmarks</span>
+
+      <!-- <img id="browse_mode_mybookmarks_default" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698023/browse-mode-my-bookmarks.png">
+      <img id="browse_mode_mybookmarks_highlight" src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1379698041/browse-mode-my-bookmarks-highlight.png"> -->
     </a>
-    <div>Bookmarks</div>
+ <!--    <div>Bookmarks</div> -->
   </li>
 </ul>
   <div class="sidebar_spacer"></div>
