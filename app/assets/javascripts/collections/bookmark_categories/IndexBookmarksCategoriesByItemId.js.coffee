@@ -1,4 +1,9 @@
 class Mywebroom.Collections.IndexBookmarksCategoriesByItemId extends Backbone.Collection
 
-  url: (itemId) ->
-    "/bookmarks_categories/json/index_bookmarks_categories_by_item_id/" + itemId + ".json"
+  initialize: (models, options) ->
+
+    @itemId = options.itemId
+
+
+  url: ->
+    "/bookmarks_categories/json/index_bookmarks_categories_by_item_id/" + @itemId + ".json"

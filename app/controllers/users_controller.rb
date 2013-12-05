@@ -69,6 +69,7 @@ class UsersController < ApplicationController
     end
 
   end
+
   def create
     @user = User.new(params[:user])
     if params[:bundle_id].blank?
@@ -173,7 +174,7 @@ class UsersController < ApplicationController
 
   def index
 
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page]).order(:created_at)
 
   end
 
