@@ -41,7 +41,7 @@ ul.bookmark_menu_list {
   //width:100%;
 }
 #my_bookmarks_menu_item.bookmark_menu_selected, 
-#discover_menu_item.bookmark_menu_selected, a li.bookmark_menu_selected{
+#discover_menu_item.bookmark_menu_selected, li.bookmark_menu_selected a, a li.bookmark_menu_selected{
   color:#40c3fd;
 }
 .bookmark_menu_list a:hover, .bookmark_menu_list li:hover{
