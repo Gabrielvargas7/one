@@ -55,7 +55,7 @@ class FriendRequestsController < ApplicationController
                    #send a email
                    user = User.find(params[:user_id])
                    user_requested = User.find(params[:user_id_requested])
-                   #UsersMailer.friend_request_email(user,user_requested).deliver
+                   UsersMailer.friend_request_email(user,user_requested).deliver
 
                   format.json { render json: @friend_request, status: :created }
                 else
