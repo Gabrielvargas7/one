@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   # Send email after the user sign up
   def send_signup_user_email
     #if Rails.env.production?
-        UsersMailer.signup_email(self).deliver
+    #    UsersMailer.signup_email(self).deliver
     #end
   end
 
@@ -86,11 +86,11 @@ class User < ActiveRecord::Base
   #***********************************
 
   def send_password_reset
-    generate_token(:password_reset_token)
-    self.password_reset_sent_at = Time.zone.now
-    #save!
-    save!(validate: false)
-    UsersMailer.forget_password_email(self).deliver
+    #generate_token(:password_reset_token)
+    #self.password_reset_sent_at = Time.zone.now
+    ##save!
+    #save!(validate: false)
+    #UsersMailer.forget_password_email(self).deliver
 
   end
 
