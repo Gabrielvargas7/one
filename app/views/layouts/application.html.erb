@@ -50,6 +50,8 @@
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
+
+
   </script>
 
   <!-- End Google analytics -->
@@ -61,11 +63,13 @@
     <%= render 'layouts/signup' %>
     <%= render 'layouts/login' %>
 
+    <div
     <%if @landing_page_view%>
-      <div class="container fill landing_page_view hidden">
+        class="container fill landing_page_view hidden"
     <%else%>
-      <div class=<%= "container" unless @skip_container %>>
-    <%end%>  
+        class=<%= "container" unless @skip_container %>
+    <%end%>
+    >
 
       <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
