@@ -96,9 +96,9 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #*******************
 
   render: ->
-    #Get sprite url to send to template: 
+    #Get sprite url to send to template:
     spriteUrl = Mywebroom.State.get('staticContent').findWhere('name':'social-tab-icons').get('image_name').url
-    console.log(spriteUrl)
+
     #Template shows structure of the view
     $(@el).html(@template(user_info:@model,spriteUrl:spriteUrl))     #pass variables into template.
 
