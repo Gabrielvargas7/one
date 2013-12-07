@@ -541,7 +541,8 @@ Mywebroom.Helpers.Editor = {
     ###
     FETCH CORRESPONDING DESIGNS
     ###
-    designs = Mywebroom.Helpers.Editor.paginateInitial(itemId, 10, 0)
+    limit = Mywebroom.Data.Editor.limit
+    designs = Mywebroom.Helpers.Editor.paginateInitial(itemId, limit, 0)
 
 
 
@@ -577,8 +578,8 @@ Mywebroom.Helpers.Editor = {
     # Populate the filters
     categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection()
     categories.fetch
-      async  : false
-      url    : categories.url itemId
+      async: false
+      url:   categories.url itemId
       success: (response) ->
         #console.log("designs fetch success", response)
         myModel = categories.first()

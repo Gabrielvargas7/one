@@ -179,7 +179,7 @@ $(document).ready ->
       contentType: false
       keyword: false
       offset: 0
-      limit: 10
+      limit: 20
       location: false
     }
     searchNum: -1
@@ -218,14 +218,13 @@ $(document).ready ->
     $(".tab-content").on "mousewheel",
       mousewheel:
         behavior: "throttle"
-        delay: 300
+        delay: 100
       , (event) ->
 
         if event.deltaY > 0
 
-
           # ARE WE AT THE BOTTOM?
-          if $('.tab-content').scrollTop() + $('.tab-content').innerHeight() >= $('.tab-content')[0].scrollHeight - 150
+          if $('.tab-content').scrollTop() + $('.tab-content').innerHeight() >= $('.tab-content')[0].scrollHeight - 300
 
 
             ###

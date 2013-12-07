@@ -48,22 +48,24 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
 
 
+    # Limit
+    limit = Mywebroom.Data.Editor.limit
 
 
     # themes
-    themes = Mywebroom.Helpers.Editor.paginateInitial("THEMES", 10, 0)
+    themes = Mywebroom.Helpers.Editor.paginateInitial("THEMES", limit, 0)
 
 
 
 
     # bundles
-    bundles = Mywebroom.Helpers.Editor.paginateInitial("BUNDLES", 10, 0)
+    bundles = Mywebroom.Helpers.Editor.paginateInitial("BUNDLES", limit, 0)
 
 
 
 
     # entire rooms
-    entireRooms = Mywebroom.Helpers.Editor.paginateInitial("ENTIRE ROOMS", 10, 0)
+    entireRooms = Mywebroom.Helpers.Editor.paginateInitial("ENTIRE ROOMS", limit, 0)
 
 
 
@@ -108,7 +110,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     #console.log("Manual tab switch")
 
     event.preventDefault()
-    #e.stopPropagation() <-- Prevents tabs from functioning
+    #event.stopPropagation() <-- Prevents tabs from functioning
 
     ###
     SWITCH THE SEARCH DROPDOWN TO ALL
@@ -133,7 +135,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     #console.log("OBJECTS clicked")
 
     event.preventDefault()
-    #e.stopPropagation() <-- Prevents tab from working
+    #event.stopPropagation() <-- Prevents tab from working
 
 
 
@@ -172,7 +174,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     #console.log("THEMES clicked")
 
     event.preventDefault()
-    #e.stopPropagation() <-- Prevents tab from working
+    #event.stopPropagation() <-- Prevents tab from working
 
     ###
     Set our store helper
@@ -224,7 +226,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   clickBundles: (event) ->
 
     event.preventDefault()
-    #e.stopPropagation() <-- Prevents tab from working
+    #event.stopPropagation() <-- Prevents tab from working
 
 
     ###
@@ -278,7 +280,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   clickEntireRooms: (event) ->
 
     event.preventDefault()
-    #e.stopPropagation() <-- Prevents tab from working
+    #event.stopPropagation() <-- Prevents tab from working
 
     ###
     Set our store helper
@@ -331,7 +333,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
   clickSearchFilter: (event) ->
 
     event.preventDefault()
-    #e.stopPropagation() <-- This prevents the nav pills from closing automatically
+    #event.stopPropagation() <-- This prevents the nav pills from closing automatically
 
     # Switch to the hidden tab
     $('#storeTabs a[href="#tab_hidden"]').tab('show')
@@ -391,7 +393,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     #console.log("SEARCH DROPDOWN CHANGE")
 
     event.preventDefault()
-    #e.stopPropagation() <-- This prevents the dropdown menu from closing automatically
+    #event.stopPropagation() <-- This prevents the dropdown menu from closing automatically
 
     # SEARCH DROPDOWN
     # Remove active class
@@ -455,8 +457,6 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
     limit = Mywebroom.Data.Editor.limit
-
-
 
 
     data = Mywebroom.Helpers.Editor.paginateSearch(category, limit, 0, keyword)

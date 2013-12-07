@@ -1,53 +1,53 @@
 #store_main_box {
-  position:fixed;
-  z-index:5;
-  top:45px;
-  right:0px;
-  width:700px;
-  height:750px;
+  position: fixed;
+  z-index: 5;
+  top: 45px;
+  right: 0px;
+  width: 700px;
+  height: 750px;
   background-color: rgba(0,0,0,.8);
-  transition:all .4s ease-in-out;
+  transition: all .4s ease-in-out;
  }
 
 
 .store_main_box_left {
-  float:left;
-  width:40px;
-  height:750px;
+  float: left;
+  width: 40px;
+  height: 750px;
 }
 
 
 .store_main_box_right {
-  float:right;
-  width:660px;
-  height:750px;
-  background-color:#ffffff;
+  float: right;
+  width: 660px;
+  height: 750px;
+  background-color: #ffffff;
 }
 
 
 #store_close_button img {
-  position:relative;
-  top:1%;
-  left:10px;
+  position: relative;
+  top: 1%;
+  left: 10px;
   width: 14px;
-  height:14px;
+  height: 14px;
 }
 
 
 #store_collapse_button img {
-  position:relative;
-  top:50%;
-  left:-8px;
+  position: relative;
+  top: 50%;
+  left: -8px;
   width: 22px;
-  height:24px;
+  height: 24px;
 }
 
 
 .tab-content {
   overflow-x: hidden;
   overflow-y: auto;
-  width:640px;
-  height:540px;
+  width: 640px;
+  height: 540px;
 }
 
 
@@ -85,14 +85,14 @@
   background-color: transparent;
   border: none;
   top: 0;
-  width:100%;
+  width: 100%;
 }
 
 
 #button_preview {
-  position:relative;
+  position: relative;
   top: -100px;
-  left:0px;
+  left: 0px;
 }
 
 
