@@ -37,6 +37,7 @@ class Mywebroom.Views.TutorialShowMeMyRoomView extends Backbone.View
 
     e.preventDefault()
     e.stopPropagation()
+    _gaq.push(['_trackEvent', 'category','action','opt_label']);
 
     user_id  = Mywebroom.State.get("signInUser").get("id")
     tutorial_step = 0

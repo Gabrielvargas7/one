@@ -36,6 +36,7 @@ class Mywebroom.Views.TutorialClickItemView extends Backbone.View
 
     event.preventDefault()
     event.stopPropagation()
+    _gaq.push(['_trackEvent', 'category','action','opt_label']);
 
     #console.log("tutorial click item")
 

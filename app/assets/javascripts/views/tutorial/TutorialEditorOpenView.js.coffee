@@ -36,6 +36,7 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
 
     e.preventDefault()
     e.stopPropagation()
+    _gaq.push(['_trackEvent', 'category','action','opt_label']);
 
 
     # Hide the Save, Cancel, Remove View

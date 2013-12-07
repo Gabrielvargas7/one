@@ -36,6 +36,7 @@ class Mywebroom.Views.TutorialCongratulationsBookmarksView extends Backbone.View
 
     e.preventDefault()
     e.stopPropagation()
+    _gaq.push(['_trackEvent', 'category','action','opt_label']);
 
     $('#xroom_bookmarks').hide()
     $('#xroom_profile').show()

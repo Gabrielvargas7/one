@@ -37,6 +37,7 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
 
     e.preventDefault()
     e.stopPropagation()
+    _gaq.push(['_trackEvent', 'category','action','opt_label']);
 
 
     Mywebroom.State.get('profileHomeView').showHomeGrid()
