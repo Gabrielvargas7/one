@@ -90,7 +90,7 @@ img.browse_mode_sidebar_icons{
 }
 
 .browse_mode_list li{
-  padding:12px 0;
+  padding:8px 0;
   list-style: none;
   text-align:center;
 }
@@ -106,7 +106,7 @@ img.browse_mode_sidebar_icons{
   height:40px;
   margin-bottom:5px;
   margin-top:15px;
-  margin-left:4px; /*this span comes with a mysterious right padding that doesn't let this image center.*/
+  margin-left:7px; /*this span comes with a mysterious right padding that doesn't let this image center.*/
 }
 .browse_mode_list div{
   margin:3px 0;
@@ -115,7 +115,7 @@ img.browse_mode_sidebar_icons{
   margin:0;
 }
 .sidebar_spacer{
-  height:22px;
+  height:5px;
   border-top: 1px solid #707070;
 }
 #browse_mode_list_selected .browse_mode_sidebar_icons,.blue_border{
@@ -130,7 +130,7 @@ img.browse_mode_sidebar_icons{
   font-size:10.5px
 }
 li.browse_mode_sidebar_icons_list{
-  padding:8px;
+  // padding:8px;
 
 }
 #browse_mode_active_default{

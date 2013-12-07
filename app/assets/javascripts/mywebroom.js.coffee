@@ -1011,6 +1011,14 @@ $(document).ready ->
             if Mywebroom.State.get('roomState') is "FRIEND" #Public is not clickable so no worry here.
              #(2.1)show the popups
 
+             #Special Items Checks
+              switch(model.get('id'))
+
+                when 21
+                  #CASE: You are in a friend's room and click portrait. We want normal behavior here, so we'll create the bookmarks view in this case. 
+                  #Show Profile and return. 
+                  return Mywebroom.Helpers.createBookmarksView(model)
+
               #A. Create PopupFriendItemView
 
               #A1. if a popup is already made, make sure we close it before creating the new one.

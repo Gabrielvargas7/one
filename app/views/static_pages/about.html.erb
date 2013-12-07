@@ -696,9 +696,10 @@
         <br>
         <br>
         <% if signed_in? %>
-            <%= link_to "GO TO MY ROOM", room_rooms_path(current_user.username), :id => "about-signup-button" %>
+            <%= link_to "GO TO MY ROOM", room_rooms_path(current_user.username), :id => "about-signup-button", :onclick=>"_gaq.push(['_trackEvent', 'category','action','opt_label']);"  %>
+
         <% else %>
-            <%= link_to "GET STARTED", xroom_rooms_path, :id => "about-signup-button" %>
+            <%= link_to "GET STARTED", xroom_rooms_path, :id => "about-signup-button", :onclick=>"_gaq.push(['_trackEvent', 'category','action','opt_label']);"  %>
         <% end %>
     </div>
 
