@@ -37,7 +37,8 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
 
     e.preventDefault()
     e.stopPropagation()
-    _gaq.push(['_trackEvent', 'category','action','opt_label']);
+
+    _gaq.push(['_trackEvent', 'tutorial','click_btn','profile_skip']);
 
 
     Mywebroom.State.get('profileHomeView').showHomeGrid()
@@ -68,6 +69,8 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
   inviteFriendsFacebook: (e) ->
     e.preventDefault()
     e.stopPropagation()
+    _gaq.push(['_trackEvent', 'tutorial','click_btn','profile_facebook_btn']);
+
 
 
     signInState = Mywebroom.State.get("signInState")

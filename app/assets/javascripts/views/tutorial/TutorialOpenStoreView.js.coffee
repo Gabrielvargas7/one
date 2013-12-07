@@ -36,7 +36,9 @@ class Mywebroom.Views.TutorialOpenStoreView extends Backbone.View
 
     e.preventDefault()
     e.stopPropagation()
-    _gaq.push(['_trackEvent', 'category','action','opt_label']);
+
+
+    _gaq.push(['_trackEvent', 'tutorial','click_btn','editor_customize']);
 
     user_id  = Mywebroom.State.get("signInUser").get("id")
     tutorial_step = 4

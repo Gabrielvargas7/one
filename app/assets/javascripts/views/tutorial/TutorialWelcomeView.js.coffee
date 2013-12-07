@@ -37,7 +37,7 @@ class Mywebroom.Views.TutorialWelcomeView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
-    _gaq.push(['_trackEvent', 'category','action','opt_label']);
+    _gaq.push(['_trackEvent', 'tutorial','click_btn','welcome']);
     #console.log("welcome to tutorial")
 
 
