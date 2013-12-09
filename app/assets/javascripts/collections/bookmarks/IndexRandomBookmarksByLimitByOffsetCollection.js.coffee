@@ -1,9 +1,15 @@
 class Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection extends Backbone.Collection
 
 
+  initialize: (models, options) ->
 
-  url: (limit, offset) ->
-    '/bookmarks/json/index_random_bookmarks_by_limit_by_offset/' + limit + '/' + offset + '.json'
+    @limit =  options.limit
+    @offset = options.offset
+
+
+  url: ->
+    '/bookmarks/json/index_random_bookmarks_by_limit_by_offset/' + @limit + '/' + @offset + '.json'
+
 
   parse: (response) ->
 
