@@ -1,5 +1,5 @@
-# Ruby on Rails Tutorial: sample application
+# myWebRoom application
 
-This is the sample application for
-[*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/)
-by [Michael Hartl](http://michaelhartl.com/).
+This is THE myWebRoom application built with Ruby on Rails, JavaScript, Backbone.js, and lots of love!
+
+
