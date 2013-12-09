@@ -50,15 +50,25 @@ text-align: center;"> You have no key requests!</p>'
   @keyRequestsCollection.remove(modelToRemove)
   this.render()
 
- #Fetch collection data
- getKeyRequestsCollection:()->
-  @keyRequestsCollection = new Mywebroom.Collections.IndexFriendRequestMakeFromYourFriendToYouByUserIdCollection()
-  @keyRequestsCollection.fetch
-    url: @keyRequestsCollection.url @model.get('user_id')
-    async:false
-    success: (response)->
-      #console.log("KeyRequestsCollection Fetched Successfully")
-      #console.log(response)
+
+
+
+ # Fetch collection data
+ getKeyRequestsCollection: ->
+
+  userId = @model.get('user_id')
+  @keyRequestsCollection = new Mywebroom.Collections.IndexFriendRequestMakeFromYourFriendToYouByUserIdCollection([], {userId: userId})
+  @keyRequestsCollection.fetch({
+    async: false
+    success: (collection, response, options) ->
+      #console.log("KeyRequestsCollection fetch success", collection)
+
+    error: (collection, response, options) ->
+      console.error("KeyRequestsCollection fetch fail", response.responseText)
+  })
+
+
+
 
  getFriendsSuggestionCollection:()->
   @friendsSuggestionsCollection = new Mywebroom.Collections.IndexFriendsSuggestionByUserIdByLimitByOffsetCollection()

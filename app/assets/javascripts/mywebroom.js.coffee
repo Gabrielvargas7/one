@@ -1015,8 +1015,8 @@ $(document).ready ->
               switch(model.get('id'))
 
                 when 21
-                  #CASE: You are in a friend's room and click portrait. We want normal behavior here, so we'll create the bookmarks view in this case. 
-                  #Show Profile and return. 
+                  #CASE: You are in a friend's room and click portrait. We want normal behavior here, so we'll create the bookmarks view in this case.
+                  #Show Profile and return.
                   return Mywebroom.Helpers.createBookmarksView(model)
 
               #A. Create PopupFriendItemView
@@ -1815,13 +1815,22 @@ $(document).ready ->
   ###
   Checks if signed in user has requested a key from idRequested. returns true/false.
   ###
-  Mywebroom.Helpers.IsThisMyFriendRequest = (idRequested) ->
+  Mywebroom.Helpers.IsThisMyFriendRequest = (userIdRequested) ->
 
     return false if !Mywebroom.State.get("signInUser")
-    hasRequested = new Mywebroom.Collections.ShowFriendRequestByUserIdAndUserIdRequestedCollection()
-    hasRequested.fetch
-      async  : false
-      url    : hasRequested.url(Mywebroom.State.get("signInUser").get("id"),idRequested)
+
+    userId = Mywebroom.State.get("signInUser").get("id")
+
+    hasRequested = new Mywebroom.Collections.ShowFriendRequestByUserIdAndUserIdRequestedCollection([], {userId: userId, userIdRequested: userIdRequested})
+    hasRequested.fetch({
+      async: false
+      success: (collection, response, options) ->
+        #console.log("Mywebroom.Helpers.IsThisMyFriendRequest fetch success", collection)
+
+      error: (collection, response, options) ->
+        console.error("Mywebroom.Helpers.IsThisMyFriendRequest fetch fail", response.responseText)
+    })
+
 
     if hasRequested.models.length > 0
       true

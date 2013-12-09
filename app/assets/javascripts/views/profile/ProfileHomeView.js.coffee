@@ -35,10 +35,10 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
     #initial limit and offset for apis
     @fetchLimit = 24
-    @fetchOffset= 0
+    @fetchOffset = 0
 
     if Mywebroom.State.get("roomState") != "SELF"
-      @template=JST['profile/FriendHomeTemplate']
+      @template = JST['profile/FriendHomeTemplate']
 
       #Bookmarks and Items Design will be different for Home and Activity
       # new Mywebroom.Collections.IndexUserBookmarksByUserIdAndItemIdByLimitAndOffset(
@@ -63,17 +63,18 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
           #console.log(response)
     else
 
-      activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
+      activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection([], {limit: @fetchLimit, offset: @fetchOffset})
       activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
 
-      #Fetch them
-      activityBookmarksRandomCollection.fetch
-        url:activityBookmarksRandomCollection.url @fetchLimit, @fetchOffset
-        reset:true
-        async:false
-        success: (response)->
-          #console.log("activityBookmarksRandomCollection Fetched Successfully Response:")
-          #console.log(response)
+      # Fetch them
+      activityBookmarksRandomCollection.fetch({
+        reset: true
+        async: false
+        success: (collection, response, options) ->
+          #console.log("activityBookmarksRandomCollection fetch success", collection)
+        error: (collection, response, options) ->
+          console.error("activityBookmarksRandomCollection fetch fail", response.responseText)
+      })
 
       activityItemsDesignsRandomCollection.fetch
         url:activityItemsDesignsRandomCollection.url @fetchLimit, @fetchOffset
@@ -131,7 +132,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #       -called from $('#gridItemList') scroll event in showActivity
   #       -Function only intended for SELF state
   ###
-  paginateActivity:(event) ->
+  paginateActivity: (event) ->
     event.preventDefault()
     event.stopPropagation()
 
@@ -144,14 +145,18 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
 
     #1. Grab more Designs
     #2. Grab more Bookmarks
-    activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection()
+    activityBookmarksRandomCollection = new Mywebroom.Collections.IndexRandomBookmarksByLimitByOffsetCollection([], {limit: event.data.fetchLimit, offset: event.data.fetchOffset})
     activityItemsDesignsRandomCollection = new Mywebroom.Collections.IndexRandomItemsByLimitByOffsetCollection()
 
     #3. Fetch them
-    activityBookmarksRandomCollection.fetch
-      url:activityBookmarksRandomCollection.url event.data.fetchLimit, event.data.fetchOffset
-      reset:true
-      async:false
+    activityBookmarksRandomCollection.fetch({
+      reset: true
+      async: false
+      success: (collection, response, options) ->
+        #console.log("activityBookmarksRandomCollection fetch success", collection)
+      error: (collection, response, options) ->
+        console.error("activityBookmarksRandomCollection fetch fail", response.responseText)
+    })
 
     activityItemsDesignsRandomCollection.fetch
       url:activityItemsDesignsRandomCollection.url event.data.fetchLimit, event.data.fetchOffset
@@ -183,7 +188,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #       -called from $('#gridItemList') scroll event in showActivity
   #       -Function only intended for FRIEND state
   ###
-  paginateFriendActivity:(event) ->
+  paginateFriendActivity: (event) ->
     event.preventDefault()
     event.stopPropagation()
 
@@ -225,7 +230,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     else
       that = this
       @$('#gridItemList').off('scroll').on('scroll',that,(event)->
-        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 100
           event.data.paginateFriendActivity(event)
       )
 
@@ -259,6 +264,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   #*******************
 
   showProfilePhotos: ->
+
     $('.profile_menu_selected').removeClass('profile_menu_selected')
     $('#profile_photos').addClass('profile_menu_selected')
 
@@ -343,12 +349,12 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     that = this
     if Mywebroom.State.get("roomState") is "SELF"
       @$('#gridItemList').off('scroll').on('scroll',that,(event)->
-        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 100
           event.data.paginateActivity(event)
       )
     else if Mywebroom.State.get("roomState") is "FRIEND"
       @$('#gridItemList').off('scroll').on('scroll',that,(event)->
-        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-100
+        if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 100
           event.data.paginateFriendActivity(event)
       )
 
@@ -364,7 +370,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     $('#profile_bookmarks').addClass('profile_menu_selected')
 
     # show user Bookmarks
-    @profileBookmarksView = new Mywebroom.Views.ProfileBookmarksView({model:@model})
+    @profileBookmarksView = new Mywebroom.Views.ProfileBookmarksView({model: @model})
     $('#profileHome_top').html('')
     $('#profileHome_top').css 'height', 'auto'
     $("#profileHome_bottom").html(@profileBookmarksView.el)
@@ -384,8 +390,8 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     # Show user Objects
     profileObjectsCollection = new Backbone.Collection()
     profileObjectsCollection.set(@model.get('user_items_designs'))
-    profileObjectsCollection.reset(profileObjectsCollection.shuffle(),{silent:true})
-    @profileObjectsView = new Mywebroom.Views.ProfileObjectsView({collection:profileObjectsCollection,model:@model})
+    profileObjectsCollection.reset(profileObjectsCollection.shuffle(),{silent: true})
+    @profileObjectsView = new Mywebroom.Views.ProfileObjectsView({collection: profileObjectsCollection, model: @model})
     $('#profileHome_top').html('')
     $('#profileHome_top').css 'height', 'auto'
     $("#profileHome_bottom").html(@profileObjectsView.el)
