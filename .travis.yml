@@ -3,7 +3,9 @@ rvm:
   - "2.0.0"
 
 before_script:
+  - psql -c "CREATE USER rooms WITH PASSWORD 'rooms';" -U postgres
   - psql -c 'create database rooms_test;' -U postgres
+  - psql -c 'GRANT ALL PRIVILEGES ON DATABASE rooms_test to rooms'; -U postgres
   - rake db:migrate
 
 addons:

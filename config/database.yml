@@ -57,7 +57,8 @@ test:
   host: localhost
   database: rooms_test
   pool: 5
-  username: postgres
+  username: rooms
+  password: rooms
 
 
 
