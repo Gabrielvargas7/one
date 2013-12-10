@@ -22,3 +22,8 @@ Files You Should Know About
 
 config/initializers/teaspoon.rb
 spec/javascripts/spec_helper.coffee
+
+
+
+# Turn on teaspoon-guard
+bundle exec guard start
