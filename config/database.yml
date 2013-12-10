@@ -53,12 +53,10 @@ development:
 
 test:
   adapter: postgresql
-  encoding: unicode
-  host: localhost
   database: rooms_test
-  pool: 5
-  username: rooms
-  password: rooms
+  username: postgres
+
+
 
 production:
   adapter: postgresql
