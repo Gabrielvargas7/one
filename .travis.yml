@@ -9,5 +9,8 @@ before_script:
 addons:
   postgresql: "9.3"
 
+
+cache: bundler
+
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
