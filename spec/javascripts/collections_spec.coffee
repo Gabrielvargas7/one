@@ -4,8 +4,6 @@ expect = chai.expect
 describe("Collections", ->
 
 
-
-
   describe("IndexBookmarksCategoriesByItemId", ->
 
     before( ->
@@ -26,6 +24,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/bookmarks_categories/json/index_bookmarks_categories_by_item_id/16.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
 
 
@@ -46,6 +45,7 @@ describe("Collections", ->
 
       this.emptyCollection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -72,6 +72,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/bookmarks/json/index_bookmarks_by_bookmarks_category_id/101.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
 
 
@@ -92,6 +93,7 @@ describe("Collections", ->
 
       this.emptyCollection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -118,6 +120,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/bookmarks/json/index_bookmarks_with_bookmarks_category_by_item_id/1.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
 
 
@@ -138,6 +141,7 @@ describe("Collections", ->
 
       this.emptyCollection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -162,6 +166,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/bookmarks/json/index_random_bookmarks_by_limit_by_offset/10/0.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
 
 
@@ -172,6 +177,7 @@ describe("Collections", ->
 
       this.collection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -196,6 +202,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/bundles/json/index_bundles_by_limit_and_offset/10/0.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
 
 
@@ -206,6 +213,7 @@ describe("Collections", ->
 
       this.collection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -229,6 +237,7 @@ describe("Collections", ->
       expect(this.collection.url).to.equal('/bundles/json/index_bundles_categories.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
 
 
@@ -239,6 +248,7 @@ describe("Collections", ->
 
       this.collection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -263,8 +273,8 @@ describe("Collections", ->
       expect(this.collection.url).to.equal('/bundles/json/index_bundles.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
-
 
       this.collection.once('reset', ->
         expect(this).to.have.length(10)
@@ -273,6 +283,7 @@ describe("Collections", ->
 
       this.collection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -299,6 +310,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/bundles/json/index_bundles_by_limit_and_offset/10/0.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
 
 
@@ -309,6 +321,7 @@ describe("Collections", ->
 
       this.collection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -333,6 +346,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/friend_requests/json/index_friend_request_make_from_your_friend_to_you_by_user_id/18327.json')
     )
 
+    ###
     it("should be empty when the item doesn't exist in the database", (done) ->
 
       this.collection.once('reset', ->
@@ -342,6 +356,7 @@ describe("Collections", ->
 
       this.collection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -366,6 +381,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/friend_requests/json/show_friend_request_by_user_id_user_id_requested/18327/7247.json')
     )
 
+    ###
     it("should be empty when the item doesn't exist in the database", (done) ->
 
       this.collection.once('reset', ->
@@ -375,6 +391,7 @@ describe("Collections", ->
 
       this.collection.fetch({reset: true})
     )
+    ###
 
   )
 
@@ -399,6 +416,7 @@ describe("Collections", ->
       expect(this.collection.url()).to.equal('/friends/json/index_friend_by_user_id_by_limit_by_offset/18327/27/0.json')
     )
 
+    ###
     it("should return data for items in the database", (done) ->
 
       this.collection.once('reset', ->
@@ -408,30 +426,7 @@ describe("Collections", ->
 
       this.collection.fetch({reset: true})
     )
-
-  )
-
-
-
-  # Fixtures
-  fixture.preload("fixture.html", "fixture.json")
-
-  describe("Using fixtures", ->
-
-    fixture.set("<h2>Another Title</h2>")
-
-    beforeEach( ->
-      @fixtures = fixture.load("fixture.html", "fixture.json", true)
-    )
-
-    it("loads fixtures", ->
-
-      expect(document.getElementById("test").tagName).to.equal("DIV")
-      expect($('#test', fixture.el).text()).to.equal("Hello, World!")
-      expect(@fixtures[0]).to.equal(fixture.el)
-      expect(@fixtures[1]).to.eql(fixture.json[0]) # Note: using .equal() would fail because that does a deep equals
-      expect(@fixtures[1].foo).to.equal('bar')
-    )
+    ###
 
   )
 

@@ -59,6 +59,8 @@ group :development, :test do
   gem 'teaspoon', '0.7.7'
   gem 'tapout', '0.4.5'
   gem 'konacha-chai-matchers', '0.1.5'
+  gem 'guard-teaspoon'
+  gem 'rb-fsevent'
   # gem 'guard-rspec', '1.2.1'
   # gem 'guard-spork', '1.2.0'
   # gem 'spork', '0.9.2'
