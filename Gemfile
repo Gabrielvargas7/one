@@ -83,6 +83,7 @@ group :test do
   gem 'cucumber-rails', '1.3.1', :require => false
   gem 'database_cleaner', '0.9.1'
   gem 'guard-rspec', '3.0.0'
+  gem 'rake'
  end
 
 group :production do
