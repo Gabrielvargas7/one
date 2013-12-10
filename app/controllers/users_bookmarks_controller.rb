@@ -11,7 +11,7 @@ class UsersBookmarksController < ApplicationController
                     :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
                     :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
                     :json_create_user_bookmark_custom_by_user_id ,
-                    :json_show_user_bookmark_by_user_id_and_bookmark_id
+                    #:json_show_user_bookmark_by_user_id_and_bookmark_id
 
 
                 ]
@@ -21,7 +21,7 @@ class UsersBookmarksController < ApplicationController
                     :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
                     :json_destroy_user_bookmark_by_user_id_and_by_bookmark_id_and_position,
                     :json_create_user_bookmark_custom_by_user_id,
-                    :json_show_user_bookmark_by_user_id_and_bookmark_id
+                    #:json_show_user_bookmark_by_user_id_and_bookmark_id
                 ]
 
 
@@ -128,8 +128,8 @@ class UsersBookmarksController < ApplicationController
 
 
   # GET get all user's Bookmarks
-  # users_bookmarks/json_index_user_bookmarks_by_user_id/:user_id'
-  # users_bookmarksjson_index_user_bookmarks_by_user_id/1.json'
+  # users_bookmarks/json/index_user_bookmarks_by_user_id/:user_id
+  # users_bookmarks/json/index_user_bookmarks_by_user_id/1.json
   #Return ->
   #Success    ->  head  200 OK
 
@@ -137,18 +137,38 @@ class UsersBookmarksController < ApplicationController
 
     respond_to do |format|
 
-      if UsersBookmark.exists?(user_id: params[:user_id])
+      if User.exists?(params[:user_id])
 
-        @user_bookmarks = Bookmark.
-            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+        # remove custom bookmark that are not approve
+        @user = User.find(params[:user_id])
+        if (signed_in?) and current_user?(@user)
+          custom_bookmark_sql = ""
+        else
+          custom_bookmark_sql = "and user_bookmark = 0"
+        end
+
+
+          #if UsersBookmark.exists?(user_id: params[:user_id])
+        if Bookmark.
             joins(:users_bookmarks).
             joins(:bookmarks_category).
-            where('user_id = ? ',params[:user_id])
+            where('user_id = ?  '+custom_bookmark_sql,params[:user_id]).exists?
 
-        format.json { render json: @user_bookmarks }
 
+          @user_bookmarks = Bookmark.
+              select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+              joins(:users_bookmarks).
+              joins(:bookmarks_category).
+              where('user_id = ? '+custom_bookmark_sql,params[:user_id])
+
+          format.json { render json: @user_bookmarks }
+
+         else
+          #format.json { render json: 'not found user_id' , status: :no_content }
+          format.json { render json:'[]'}
+         end
       else
-        format.json { render json: 'not found user_id' , status: :no_content }
+        format.json { render json:'[]'}
       end
     end
 
@@ -166,20 +186,40 @@ class UsersBookmarksController < ApplicationController
 
     respond_to do |format|
 
-      if UsersBookmark.exists?(user_id: params[:user_id])
+      if User.exists?(params[:user_id])
 
-        @user_bookmarks = Bookmark.
-            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+        # remove custom bookmark that are not approve
+        @user = User.find(params[:user_id])
+        if (signed_in?) and current_user?(@user)
+          custom_bookmark_sql = ""
+        else
+          custom_bookmark_sql = "and user_bookmark = 0"
+        end
+
+
+        #if UsersBookmark.exists?(user_id: params[:user_id])
+        if Bookmark.
             joins(:users_bookmarks).
             joins(:bookmarks_category).
-            where('user_id = ? ',params[:user_id]).
-            limit(params[:limit]).
-            offset(params[:offset])
+            where('user_id = ?  '+custom_bookmark_sql,params[:user_id]).exists?
 
-        format.json { render json: @user_bookmarks }
 
+          @user_bookmarks = Bookmark.
+              select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+              joins(:users_bookmarks).
+              joins(:bookmarks_category).
+              where('user_id = ? '+custom_bookmark_sql,params[:user_id]).
+              limit(params[:limit]).
+              offset(params[:offset])
+
+          format.json { render json: @user_bookmarks }
+
+        else
+          #format.json { render json: 'not found user_id ' , status: :no_content }
+          format.json { render json:'[]'}
+        end
       else
-        format.json { render json: 'not found user_id ' , status: :no_content }
+        format.json { render json:'[]'}
       end
     end
 
@@ -196,21 +236,38 @@ class UsersBookmarksController < ApplicationController
 
   respond_to do |format|
 
+    if User.exists?(params[:user_id])
+
+      # remove custom bookmark that are not approve
+      @user = User.find(params[:user_id])
+      if (signed_in?) and current_user?(@user)
+        custom_bookmark_sql = ""
+      else
+        custom_bookmark_sql = "and user_bookmark = 0"
+      end
+
+
       if Bookmark.
           joins(:users_bookmarks).
           joins(:bookmarks_category).
-          where('user_id = ? and bookmarks_categories.item_id = ?',params[:user_id],params[:item_id]).exists?
+          where('user_id = ? and bookmarks_categories.item_id = ? '+custom_bookmark_sql,params[:user_id],params[:item_id]).exists?
 
         @user_bookmarks = Bookmark.
             select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
             joins(:users_bookmarks).
             joins(:bookmarks_category).
-            where('user_id = ? and bookmarks_categories.item_id = ?',params[:user_id],params[:item_id] )
+            where('user_id = ? and bookmarks_categories.item_id = ? '+custom_bookmark_sql,params[:user_id],params[:item_id] )
 
           format.json { render json: @user_bookmarks }
       else
-        format.json { render json: 'not found user_id and item id' , status: :no_content }
+        #format.json { render json: 'not found user_id and item id' , status: :no_content }
+
+        format.json { render json:'[]'}
       end
+    else
+      format.json { render json:'[]'}
+
+    end
   end
 
   end
@@ -247,13 +304,14 @@ class UsersBookmarksController < ApplicationController
 
             format.json { render json: 'the position of the bookmark already exists' , status: :ok }
           else
-
+            image_name  = URI.parse(params[:image_name])
             ActiveRecord::Base.transaction do
              begin
                @bookmark = Bookmark.new(title:params[:title],
                                         bookmark_url:params[:bookmark_url],
                                         bookmarks_category_id:params[:bookmarks_category_id],
-                                        image_name:params[:image_name],
+                                        #image_name:params[:image_name],
+                                        image_name:image_name,
                                         approval:'n',
                                         i_frame:'y',
                                         user_bookmark:params[:user_id],
@@ -290,21 +348,37 @@ class UsersBookmarksController < ApplicationController
   def json_show_user_bookmark_by_user_id_and_bookmark_id
 
     respond_to do |format|
+      if User.exists?(params[:user_id])
 
-      if Bookmark.
-          joins(:users_bookmarks).
-          joins(:bookmarks_category).
-          where('user_id = ? and bookmarks.id = ?',params[:user_id],params[:bookmark_id]).exists?
+        # remove custom bookmark that are not approve
+        @user = User.find(params[:user_id])
+        if (signed_in?) and current_user?(@user)
+          custom_bookmark_sql = ""
+        else
+          custom_bookmark_sql = "and user_bookmark = 0"
+        end
 
-        @user_bookmark = Bookmark.
-            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+
+
+        if Bookmark.
             joins(:users_bookmarks).
             joins(:bookmarks_category).
-            where('user_id = ? and bookmarks.id = ?',params[:user_id],params[:bookmark_id]).first
+            where('user_id = ? and bookmarks.id = ? '+custom_bookmark_sql,params[:user_id],params[:bookmark_id]).exists?
 
-        format.json { render json: @user_bookmark }
+              @user_bookmark = Bookmark.
+                select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+                joins(:users_bookmarks).
+                joins(:bookmarks_category).
+                where('user_id = ? and bookmarks.id = ? '+custom_bookmark_sql,params[:user_id],params[:bookmark_id]).first
+
+            format.json { render json: @user_bookmark }
+        else
+          #format.json { render json: 'not found user_id and bookmark id' , status: :no_content }
+
+          format.json { render json:'{}'}
+        end
       else
-        format.json { render json: 'not found user_id and bookmark id' , status: :no_content }
+        format.json { render json:'{}'}
       end
     end
 
@@ -313,7 +387,7 @@ class UsersBookmarksController < ApplicationController
 
   # GET get all user's Bookmarks by item id and limit and offset
   # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset/:user_id/:item_id/:limit/:offset
-  # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id/10000011/1/10/0.json
+  # /users_bookmarks/json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset/10000011/1/10/0.json
   #Return ->
   #Success    ->  head  200 OK
 
@@ -321,22 +395,37 @@ class UsersBookmarksController < ApplicationController
 
     respond_to do |format|
 
-      if Bookmark.
-          joins(:users_bookmarks).
-          joins(:bookmarks_category).
-          where('user_id = ? and bookmarks_categories.item_id = ?',params[:user_id],params[:item_id]).exists?
+      if User.exists?(params[:user_id])
 
-        @user_bookmarks = Bookmark.
-            select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+        # remove custom bookmark that are not approve
+          @user = User.find(params[:user_id])
+          if (signed_in?) and current_user?(@user)
+            custom_bookmark_sql = ""
+          else
+            custom_bookmark_sql = "and user_bookmark = 0"
+          end
+
+          if Bookmark.
             joins(:users_bookmarks).
             joins(:bookmarks_category).
-            where('user_id = ? and bookmarks_categories.item_id = ?',params[:user_id],params[:item_id]).
-            limit(params[:limit]).
-            offset(params[:offset])
+            where('user_id = ? and bookmarks_categories.item_id = ? '+custom_bookmark_sql,params[:user_id],params[:item_id]).exists?
 
-        format.json { render json: @user_bookmarks }
+
+              @user_bookmarks = Bookmark.
+                select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+                joins(:users_bookmarks).
+                joins(:bookmarks_category).
+                where('user_id = ? and bookmarks_categories.item_id = ? '+custom_bookmark_sql,params[:user_id],params[:item_id]).
+                limit(params[:limit]).
+                offset(params[:offset])
+
+            format.json { render json: @user_bookmarks }
+          else
+            #format.json { render json: 'not found user_id and item id' , status: :no_content }
+            format.json { render json:'[]'}
+          end
       else
-        format.json { render json: 'not found user_id and item id' , status: :no_content }
+        format.json { render json:'[]'}
       end
     end
 

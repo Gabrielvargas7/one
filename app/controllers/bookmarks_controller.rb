@@ -327,7 +327,11 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
 
-      @bookmarks = Bookmark.select("bookmarks.*,bookmarks_categories.item_id").joins(:bookmarks_category).order("RANDOM()").limit(params[:limit]).offset(params[:offset])
+      @bookmarks = Bookmark.
+          select("bookmarks.*,bookmarks_categories.item_id").
+          where("user_bookmark = 0").
+          joins(:bookmarks_category).
+          order("RANDOM()").limit(params[:limit]).offset(params[:offset])
       format.json { render json: @bookmarks }
 
     end
@@ -386,7 +390,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
 
-      if Bookmark.exists?(id:params[:bookmark_id])
+      if Bookmark.where("user_bookmark = 0").exists?(id:params[:bookmark_id])
 
 
         @bookmark  = Bookmark.
@@ -405,7 +409,7 @@ class BookmarksController < ApplicationController
                       items.name_singular as item_name_singular').
             joins(:bookmarks_category).
             joins('INNER JOIN items  ON items.id = bookmarks_categories.item_id').
-            where('bookmarks.id = ? ', params[:bookmark_id]).first
+            where('bookmarks.id = ?  and user_bookmark = 0', params[:bookmark_id]).first
 
         format.json {render json: @bookmark.as_json()}
 
@@ -417,7 +421,7 @@ class BookmarksController < ApplicationController
 
     end
   end
-
+  #where('bookmarks_categories.item_id = ? and user_bookmark = 0'
 
   # GET Get seo_url of bookmarks
   # /bookmarks/json/show_bookmark_seo_url_by_bookmark_id/:bookmark_id'
@@ -480,7 +484,7 @@ class BookmarksController < ApplicationController
 
       else
         #format.json { render json: 'not bookmark for this item ', status: :no_content }
-        format.json { render json:'{}'}
+        format.json { render json:'[]'}
       end
 
     end
