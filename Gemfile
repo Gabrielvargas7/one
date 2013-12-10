@@ -85,7 +85,7 @@ group :test do
   gem 'cucumber-rails', '1.3.1', :require => false
   gem 'database_cleaner', '0.9.1'
   gem 'guard-rspec', '3.0.0'
-  gem 'rake'
+  gem 'rake', '10.1.0'
  end
 
 group :production do

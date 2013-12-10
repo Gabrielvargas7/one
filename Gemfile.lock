@@ -315,7 +315,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails_12factor (= 0.0.2)
   railties (= 3.2.13)
-  rake
+  rake (= 10.1.0)
   rb-fsevent
   rspec-rails (= 2.13.0)
   sass-rails (= 3.2.6)
