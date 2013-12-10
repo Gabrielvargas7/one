@@ -26,3 +26,6 @@
 
 # rbenv
 .ruby-version
+
+# Code Coverage
+coverage/
