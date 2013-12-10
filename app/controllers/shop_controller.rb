@@ -442,8 +442,14 @@ class ShopController < ApplicationController
 
     # when is not filter(all filter blank, it should get all the themes
     #@bookmarks = Bookmark.order(:updated_at)
-    @bookmarks = Bookmark.order("RANDOM()")
+    #if (signed_in?) and current_user?(@user)
+    #  custom_bookmark_sql = ""
+    #else
+    #  custom_bookmark_sql = "and user_bookmark = 0"
+    #end
 
+
+    @bookmarks = Bookmark.where("approval = 'y'").order("RANDOM()")
 
     if @bookmarks.length < 4
       @bookmark_length = @bookmarks.length
@@ -463,7 +469,7 @@ class ShopController < ApplicationController
 
     number_of_enties = 5
     @bookmark = Bookmark.find(params[:id])
-    @bookmark_rand = Bookmark.limit(number_of_enties*2).order("RANDOM()")
+    @bookmark_rand = Bookmark.limit(number_of_enties*2).where("approval = 'y'").order("RANDOM()")
 
     @fb_og_image = @bookmark.image_name_desc.url.to_s
     @fb_og_title = @bookmark.title.to_s
@@ -496,7 +502,7 @@ class ShopController < ApplicationController
 
       if params[:entity_type] == 'BOOKMARK'
 
-        if Bookmark.exists?(id:params[:entity_id])
+        if Bookmark.where("approval = 'y'").exists?(id:params[:entity_id])
           bookmark = Bookmark.find(params[:entity_id])
           item_id = bookmark.bookmarks_category.item_id
         else
