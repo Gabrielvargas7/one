@@ -21,6 +21,7 @@ ruby '2.0.0'
   gem 'unicorn', '4.6.3'
   gem 'geocoder', '1.1.8'
   gem 'newrelic_rpm'
+  gem "codeclimate-test-reporter", group: :test, require: nil
 
 
 

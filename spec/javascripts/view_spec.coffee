@@ -21,7 +21,7 @@ describe("Testing a view", ->
 
 
   after( ->
-    $("teaspoon-fixtures").empty()
+    $("#teaspoon-fixtures").empty()
   )
 
   it("should have a text value", ->
