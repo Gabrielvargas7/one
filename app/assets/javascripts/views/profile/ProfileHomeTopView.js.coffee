@@ -13,7 +13,7 @@ class Mywebroom.Views.ProfileHomeTopView extends Backbone.View
         @model.set('member_since',newMemberSince,{silent:true})
 
   render: ->
-    $(@el).html(@template(user_info:@model))
+    $(@el).html(@template(user_info:@model.toJSON()))
 
     if(@model.get("FLAG_PROFILE") is "PUBLIC")
       if Mywebroom.Helpers.IsThisMyFriendRequest(Mywebroom.State.get('roomUser').get('id'))
