@@ -281,6 +281,7 @@ class UsersBookmarksController < ApplicationController
   #             :bookmark_url,
   #             :bookmarks_category_id,
   #             :image_name, (full path)
+  #             :item_id
   #             :title
   #             :position
   #Return ->
@@ -304,14 +305,15 @@ class UsersBookmarksController < ApplicationController
 
             format.json { render json: 'the position of the bookmark already exists' , status: :ok }
           else
-            image_name  = URI.parse(params[:image_name])
+            #image_name  = URI.parse(params[:image_name])
             ActiveRecord::Base.transaction do
              begin
                @bookmark = Bookmark.new(title:params[:title],
                                         bookmark_url:params[:bookmark_url],
                                         bookmarks_category_id:params[:bookmarks_category_id],
-                                        #image_name:params[:image_name],
-                                        image_name:image_name,
+                                        remote_image_name_url:params[:image_name],
+                                        remote_image_name_desc_url:params[:image_name],
+                                        #image_name:URI.parse(params[:image_name]),
                                         approval:'n',
                                         i_frame:'y',
                                         user_bookmark:params[:user_id],
