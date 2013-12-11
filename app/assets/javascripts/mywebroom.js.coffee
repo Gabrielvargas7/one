@@ -489,21 +489,21 @@ $(document).ready ->
                   when 2
                     #console.log("item notification - move top right")
                     $('#lightbox').css({
-                      "left": "80%"
+                      "left": "79%"
                       "top": "-=140"
                     })
 
                   when 3
                     #console.log("theme notification - move top right")
                     $('#lightbox').css({
-                      "left": "80%"
+                      "left": "79%"
                       "top": "-=140"
                     })
 
                   when 4
                     #console.log("new version notification - move top right")
                     $('#lightbox').css({
-                      "left": "80%"
+                      "left": "79%"
                       "top": "-=140"
                     })
 
