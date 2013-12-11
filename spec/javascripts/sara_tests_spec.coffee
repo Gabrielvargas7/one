@@ -21,20 +21,25 @@ describe "Profile View", ->
     userPhotos = {image_name:{url:""}}
     
     user.set("user_photos",userPhotos) #for render test
+
     roomData = new Backbone.Model({user:user})
     Mywebroom.State.set("roomData",new Backbone.Model({}))
     Mywebroom.State.get("roomData").set("user_profile",user)
 
-    viewModel= new Backbone.Model({user_photos:userPhotos})
+    viewModel= new Backbone.Model({user_photos:userPhotos,user:{}})
     this.profileView = new Mywebroom.Views.ProfileHomeView(model:viewModel)
 
   describe "defined", ->
     it "should be defined", ->
       expect(this.profileView).toBeDefined()
   describe "render", ->
-    # describe "Gets data", ->
-    #   it "should grab bookmarks and objects", ->
-    #     expect
+    describe "Gets data", ->
+      it "should call showHomeGrid", ->
+        # maybe make spy to insure correct function is called?
+        #expect
+        spyOn(this.profileView,"showHomeGrid")
+        this.profileView.render();
+        expect(this.profileView.showHomeGrid).toHaveBeenCalled();
 
     it "should render", ->
       expect(this.profileView.render()).toBeTruthy()

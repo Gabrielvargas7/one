@@ -13,7 +13,7 @@
       <p>Member since <%=@user_info.member_since%>.</p>
     <%end%>
     <%if Mywebroom.State.get('roomState') is 'SELF':%>
-      <!-- <p id="profile_image_edit"><a href="/users_photos/index_users_photos_by_user_id/<%=@user_info.get('user_id')%>">Edit</a></p> -->
+
     <%else:%>
       <%if Mywebroom.State.get('roomState') is 'PUBLIC': %>
         <button class="profile_request_key_button">Request Key</button>
