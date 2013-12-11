@@ -5,13 +5,13 @@ class Mywebroom.Views.InsView extends Backbone.View
 
   render: ->
 
-    this.$el.html(@template({model: @model}))
+    this.$el.empty().append(@template({model: @model}))
     this
 
 
   events: {
     'click .ins-button': 'continue'
-    'click .ins-close': 'close'
+    'click .ins-close':  'close'
   }
 
 
