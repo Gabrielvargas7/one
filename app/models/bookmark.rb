@@ -26,7 +26,10 @@ class Bookmark < ActiveRecord::Base
                   :title,
                   :approval,
                   :user_bookmark,
-                  :like
+                  :like,
+                  :remote_image_name_url,
+                  :remote_image_name_desc_url
+
 
   mount_uploader :image_name, BookmarkImageNameUploader
   mount_uploader :image_name_desc, BookmarkImageNameDescUploader
