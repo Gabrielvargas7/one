@@ -1873,6 +1873,30 @@ $(document).ready ->
 
 
 
+  Mywebroom.Helpers.fetchInitialData = ->
+
+    # (1) set staticContent images
+    $.ajax
+      url: '/static_contents/json/index_static_contents.json'
+      type: 'get'
+      dataType: 'json'
+      async: false
+      success: (data) ->
+        staticContentCollection = new Backbone.Collection()
+        staticContentCollection.add(data)
+        Mywebroom.State.set('staticContent', staticContentCollection)
+
+
+
+
+    Mywebroom.Helpers.setItemRefs()
+
+
+
+
+
+
+
 
   # Create the Marionette App Object
   Mywebroom.App = new Backbone.Marionette.Application()
@@ -1899,6 +1923,17 @@ $(document).ready ->
   Mywebroom.App.addInitializer ->
     new Mywebroom.Routers.RoomsRouter()
     Backbone.history.start() if Backbone.history
+
+
+
+  Mywebroom.App.addInitializer ->
+
+    Mywebroom.Helpers.fetchInitialData()
+
+    view = new Mywebroom.Views.RoomView()
+
+    # Save a reference in the state model
+    Mywebroom.State.set("roomView", view)
 
 
 

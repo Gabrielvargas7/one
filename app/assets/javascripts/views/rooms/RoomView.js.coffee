@@ -13,21 +13,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   #*******************
   initialize: ->
 
-    # (1) set staticContent images
-    $.ajax
-      url: '/static_contents/json/index_static_contents.json'
-      type: 'get'
-      dataType: 'json'
-      async: false
-      success: (data) ->
-        staticContentCollection = new Backbone.Collection()
-        staticContentCollection.add(data)
-        Mywebroom.State.set('staticContent', staticContentCollection)
 
-
-
-
-    Mywebroom.Helpers.setItemRefs()
 
 
 
@@ -61,10 +47,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     isSignedIn = @isSignedIn()
 
 
-
-#    view = new Mywebroom.Views.TutorialWelcomeView()
-#    $("#xroom_tutorial_container").append(view.el)
-#    view.render()
 
 
     switch isSignedIn
@@ -736,6 +718,81 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
+    user_profile = Mywebroom.State.get("signInData").get("user_profile")
+
+
+    if user_profile.tutorial_step == 0
+
+      # (16) Conditionally Show Notification Modal
+      Mywebroom.Helpers.showModal()
+
+
+      ###
+       (11) DEAL WITH URL ENCODED PARAMS WHEN the user is Sign in his/her Room State
+      ###
+      ###
+            entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- i.e. model.get("type")
+            entity_id  : e.g. 123 <-- model.get("id")
+            came_from  : PUBLIC_SHOP, ?? <-- TODO
+            item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
+      ###
+
+      entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
+      came_from = Mywebroom.Helpers.getParameterByName('came_from')
+
+      #Friends has no parameter: came_from
+      #The only things that have Came_from are SHOP and EMAIL.
+      #Test for CAME_FROM Email case. Then test entity_type.
+
+      if came_from
+
+        switch came_from
+
+          when "EMAIL_REQUEST_KEY"
+            #console.log("Profile Request Accept entity")
+            @entityTypeRequest()
+
+          when "PUBLIC_SHOP", "FRIEND_ROOM", "PUBLIC_ROOM"
+
+            if entity_type
+
+              entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
+
+              switch entity_type
+
+                when "BOOKMARK"
+                  #console.log("bookmark entity ")
+                  @entityTypeBookmark(entity_id)
+
+                when "DESIGN"
+                  #console.log("designs entity ")
+                  @entityTypeItemDesign(entity_id)
+
+                when "THEME"
+                  #console.log("theme entity ")
+                  @entityTypeTheme(entity_id)
+
+                when "BUNDLE"
+                  #console.log("Bundle entity ")
+                  @entityTypeBundle(entity_id)
+
+                when "ENTIRE_ROOM"
+                  #console.log("Entire room entity")
+                  @entityTypeEntireRoom(entity_id)
+
+
+    else
+
+      @doTutorialStuff()
+
+
+
+
+
+
+
+
+
 
 
 
@@ -941,103 +998,37 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    signInState = Mywebroom.State.get("signInState")
-    roomState = Mywebroom.State.get("roomState")
-
-    #console.log("Tutorial Room State " + roomState)
-    #console.log("Tutorial SignIn State " + signInState)
-
-    ###
-    SETUP STEPS FOR SIGNED IN USERS ONLY
-    ###
-    if (Mywebroom.State.get("roomState") == "SELF") and Mywebroom.State.get("signInState")
 
 
 
 
 
-      ##########################
-      #  Tutorial  if the user didn't finish the tutorial, open the tutorial window
-      ##########################
 
 
 
-      #console.log("sign in data")
-      #console.log(Mywebroom.State.get("signInData"))
-      user_profile = Mywebroom.State.get("signInData").get("user_profile")
-      #console.log(user_profile)
-      #console.log(user_profile.tutorial_step)
 
 
-      # if the user finish the tutorial step = 0
-      if user_profile.tutorial_step == 0
-        #console.log(" user finish the tutorail ")
-
-        # (16) Conditionally Show Notification Modal
-        Mywebroom.Helpers.showModal()
 
 
-        ###
-         (11) DEAL WITH URL ENCODED PARAMS WHEN the user is Sign in his/her Room State
-        ###
-        ###
-              entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- i.e. model.get("type")
-              entity_id  : e.g. 123 <-- model.get("id")
-              came_from  : PUBLIC_SHOP, ?? <-- TODO
-              item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
-        ###
-
-        entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
-        came_from = Mywebroom.Helpers.getParameterByName('came_from')
-
-        #Friends has no parameter: came_from
-        #The only things that have Came_from are SHOP and EMAIL.
-        #Test for CAME_FROM Email case. Then test entity_type.
-
-        if came_from
-
-          switch came_from
-
-            when "EMAIL_REQUEST_KEY"
-              #console.log("Profile Request Accept entity")
-              @entityTypeRequest()
-
-            when "PUBLIC_SHOP", "FRIEND_ROOM" , "PUBLIC_ROOM"
-
-              if entity_type
-                entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
-
-                switch entity_type
-
-                  when "BOOKMARK"
-                    #console.log("bookmark entity ")
-                    @entityTypeBookmark(entity_id)
-
-                  when "DESIGN"
-                    #console.log("designs entity ")
-                    @entityTypeItemDesign(entity_id)
-
-                  when "THEME"
-                    #console.log("theme entity ")
-                    @entityTypeTheme(entity_id)
-
-                  when "BUNDLE"
-                    #console.log("Bundle entity ")
-                    @entityTypeBundle(entity_id)
-
-                  when "ENTIRE_ROOM"
-                    #console.log("Entire room entity")
-                    @entityTypeEntireRoom(entity_id)
 
 
-      else
-        # tutorial user
-        #console.log("user did not finish the tutorial")
-        #console.log("tutorial step 1 welcome ")
-        # welcome
-        view = new Mywebroom.Views.TutorialWelcomeView()
-        $("#xroom_tutorial_container").append(view.el)
-        view.render()
+
+
+
+
+
+
+
+
+
+
+  doTutorialStuff: ->
+
+    view = new Mywebroom.Views.TutorialWelcomeView()
+    $("#xroom_tutorial_container").append(view.el)
+    view.render()
+
+
 
 
 

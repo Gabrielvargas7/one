@@ -91,7 +91,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @discoverCollection.fetch({
       async: false
       success: (collection, response, options) ->
-        console.log("discover Bookmarks fetch success", collection)
+        #console.log("discover Bookmarks fetch success", collection)
       error: (collection, response, options) ->
         console.error("discover Bookmarks fetch fail", response.responseText)
     })
