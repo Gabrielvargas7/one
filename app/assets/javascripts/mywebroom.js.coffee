@@ -489,21 +489,21 @@ $(document).ready ->
                   when 2
                     #console.log("item notification - move top right")
                     $('#lightbox').css({
-                      "left": "80%"
+                      "left": "79%"
                       "top": "-=140"
                     })
 
                   when 3
                     #console.log("theme notification - move top right")
                     $('#lightbox').css({
-                      "left": "80%"
+                      "left": "79%"
                       "top": "-=140"
                     })
 
                   when 4
                     #console.log("new version notification - move top right")
                     $('#lightbox').css({
-                      "left": "80%"
+                      "left": "79%"
                       "top": "-=140"
                     })
 
@@ -1873,6 +1873,30 @@ $(document).ready ->
 
 
 
+  Mywebroom.Helpers.fetchInitialData = ->
+
+    # (1) set staticContent images
+    $.ajax
+      url: '/static_contents/json/index_static_contents.json'
+      type: 'get'
+      dataType: 'json'
+      async: false
+      success: (data) ->
+        staticContentCollection = new Backbone.Collection()
+        staticContentCollection.add(data)
+        Mywebroom.State.set('staticContent', staticContentCollection)
+
+
+
+
+    Mywebroom.Helpers.setItemRefs()
+
+
+
+
+
+
+
 
   # Create the Marionette App Object
   Mywebroom.App = new Backbone.Marionette.Application()
@@ -1899,6 +1923,17 @@ $(document).ready ->
   Mywebroom.App.addInitializer ->
     new Mywebroom.Routers.RoomsRouter()
     Backbone.history.start() if Backbone.history
+
+
+
+  Mywebroom.App.addInitializer ->
+
+    Mywebroom.Helpers.fetchInitialData()
+
+    view = new Mywebroom.Views.RoomView()
+
+    # Save a reference in the state model
+    Mywebroom.State.set("roomView", view)
 
 
 

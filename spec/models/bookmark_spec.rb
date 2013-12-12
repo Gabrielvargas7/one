@@ -44,6 +44,8 @@ describe Bookmark do
   it { @bookmark.should respond_to(:like) }
 
 
+
+
   it { @bookmark.should be_valid }
 
   ###############

@@ -54,7 +54,9 @@ development:
 test:
   adapter: postgresql
   database: myapp_test
+  host: localhost
   username: postgres
+
 
 
 
@@ -66,4 +68,4 @@ production:
   pool: 5
   username: rooms
   password: Mos1999_rommy!
-                                                     `
+

@@ -81,7 +81,7 @@ group :assets do
 end
 
 group :test do
-  gem 'capybara', '2.1.0'
+  gem 'capybara', '2.2.0'
   gem 'factory_girl_rails', '4.2.1'
   gem 'cucumber-rails', '1.3.1', :require => false
   gem 'database_cleaner', '0.9.1'
