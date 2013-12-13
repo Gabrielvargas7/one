@@ -47,7 +47,7 @@ describe Section do
       end
 
       it "should print the id and name  " do
-        puts @section.id_and_section
+        #puts @section.id_and_section
         @section.id_and_section.should ==  @id.to_s+". "+@name
 
       end

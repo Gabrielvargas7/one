@@ -221,9 +221,15 @@ describe ItemsController do
           expect {
             post :create,item: FactoryGirl.attributes_for(:item)
           }.to change(Item, :count).by(1)
-
-
         end
+
+        it ", When a item is create a new item it, designs should be create " do
+
+          expect {
+            post :create,item: FactoryGirl.attributes_for(:item)
+          }.to change(ItemsDesign, :count).by(1)
+        end
+
 
         it "assigns a newly created item as @item" do
           post :create,item: FactoryGirl.attributes_for(:item)
@@ -252,7 +258,7 @@ describe ItemsController do
 
 
 
-      describe "is not admin user" do
+    describe "is not admin user" do
       before do
         @user  = FactoryGirl.create(:user)
         sign_in @user

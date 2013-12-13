@@ -13,7 +13,7 @@ class ItemsLocation < ActiveRecord::Base
 
 
   def item_location_section
-    "Item: #{item.id}. #{item.name}  --Location:: #{location.id}. #{location.name} --Section: #{location.section.id}. #{location.section.name} "
+    "Item: #{item.id}. #{item.name}  --Location:: #{location.id}. #{location.name} --Section: #{location.section.id}. #{location.section.name}"
   end
 
 

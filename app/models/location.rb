@@ -18,7 +18,7 @@ class Location < ActiveRecord::Base
 
 
   def id_and_location_section
-    "Location: #{id}. #{name} --Section: #{section_id}. #{section.name} "
+    "Location: #{id}. #{name} --Section: #{section_id}. #{section.name}"
   end
 
 

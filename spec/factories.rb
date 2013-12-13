@@ -25,7 +25,7 @@ FactoryGirl.define do
 
 
   factory :section do
-    sequence(:name)  { |n| "theme #{n}" }
+    sequence(:name)  { |n| "section #{n}" }
     sequence(:description)  { |n| "desc #{n}" }
   end
 

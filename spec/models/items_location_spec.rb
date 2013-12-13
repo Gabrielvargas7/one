@@ -48,7 +48,36 @@ describe ItemsLocation do
     it { items_location_not_item_id.should_not be_valid }
     it { items_location_not_location_id.should_not be_valid }
 
+  end
 
+
+  ###############
+  #test function - item_location_section
+  ###############
+  describe "when the function id_and_location_section" , tag_function: true  do
+
+    context "get id and location and section" do
+      before do
+
+
+        @location_name = @items_location.location.name
+        @location_id = @items_location.location.id.to_s
+        @section_id = @items_location.location.section_id.to_s
+        @section_name = @items_location.location.section.name
+        @item_id = @items_location.item_id.to_s
+        @item_name = @items_location.item.name
+
+      end
+
+      it "should print the id and location and section " do
+
+        #puts @items_location.item_location_section
+        @items_location.item_location_section.should ==  "Item: "+@item_id+". "+@item_name+"  --Location:: "+@location_id.to_s+". "+@location_name+" --Section: "+@section_id.to_s+". "+@section_name
+
+
+      end
+
+    end
   end
 
 

@@ -155,5 +155,35 @@ describe Location do
   end
 
 
+  ###############
+  #test function - id_and_location_section
+  ###############
+  describe "when the function id_and_location_section" , tag_function: true  do
+
+    context "get id and location and section" do
+      before do
+
+          @name = "location_name"
+          @location.name = @name
+          @location.save!
+          @id = @location.id
+          @section_id = @location.section_id
+          @section_name = @location.section.name
+
+      end
+
+      it "should print the id and location and section " do
+        puts @location.id_and_location_section
+        #@item.id_and_item.should ==  @id.to_s+". "+@name
+        @location.id_and_location_section.should ==  "Location: "+@id.to_s+". "+@name+" --Section: "+@section_id.to_s+". "+@section_name
+
+      end
+
+
+    end
+  end
+
+
+
 
 end
