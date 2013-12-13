@@ -42,6 +42,10 @@ describe ItemsController do
   before  do
     @item = FactoryGirl.create(:item)
     @admin = FactoryGirl.create(:admin)
+    #puts @item.name
+    #puts @admin.email
+
+
     sign_in @admin
     #puts "Admin user signin cookie: "+cookies[:remember_token].to_s
   end
@@ -49,6 +53,14 @@ describe ItemsController do
 
   #the (subject)line declare the variable that is use in all the test
   subject { @item }
+
+  describe "before and after callbacks" do
+    puts "inner after all 1"
+    after(:all) do
+      puts "inner after all 2"
+    end
+  end
+
 
 
   #***********************************
@@ -70,6 +82,7 @@ describe ItemsController do
         response.should render_template :index
       end
     end
+
     context "is not admin user" do
       before do
         @user  = FactoryGirl.create(:user)
@@ -314,6 +327,90 @@ describe ItemsController do
       it "redirects to root " do
         put :update, id: @item, item: FactoryGirl.attributes_for(:item)
         response.should redirect_to root_path
+      end
+    end
+  end
+
+
+
+  #***********************************
+  # rspec test  #json_index_themes
+  #***********************************
+
+
+  describe "api #json_index_items",tag_json_index:true do
+
+    describe "is public api" do
+      before do
+        sign_out
+      end
+
+
+      it "should be successful" do
+        #get :json_index_items, item: @item, :format => :json
+        get :json_index_items, :format => :json
+        response.should be_success
+      end
+
+      let(:item_all){Item.joins(:items_locations).
+                      select('items.*,
+                        locations.z,
+                        locations.x,
+                        locations.y,
+                        locations.height,
+                        locations.width,
+                        locations.section_id,
+                        items_locations.location_id').
+                    joins('LEFT OUTER JOIN locations  ON locations.id = items_locations.location_id').
+                    order(:priority_order,:name).all}
+
+      it "should set item" do
+        get :json_index_items, :format => :json
+        assigns(:items).as_json.should == item_all.as_json
+      end
+
+      it "has a 200 status code" do
+        get :json_index_items, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "should return json_index item in json" do # depend on what you return in action
+          get :json_index_items, :format => :json
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          #puts "theme ----> "+@theme.as_json.to_s
+          #puts "body name ----> " + body[0]["name"].to_s
+          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          #puts "theme name----> "+@theme.name.to_s
+          #puts "theme image name----> "+@theme.image_name.to_s
+
+          body.each do |body_item|
+            @item_json = Item.find(body_item["id"])
+
+            body_item["name"].should == @item_json.name
+            body_item["name_singular"].should == @item_json.name_singular
+            body_item["priority_order"].should == @item_json.priority_order
+            body_item["clickable"].should == @item_json.clickable
+            body_item["image_name"]["url"].should == @item_json.image_name.to_s
+            body_item["image_name_gray"]["url"].should == @item_json.image_name_gray.to_s
+            body_item["image_name_first_time_click"]["url"].should == @item_json.image_name_first_time_click.to_s
+
+            @items_location_json = ItemsLocation.find_by_item_id_and_location_id(body_item["id"],body_item["location_id"])
+            body_item["location_id"].should == @items_location_json.location_id.to_s
+            body_item["id"].should == @items_location_json.item_id
+
+            @location_json = Location.where("id = ? and section_id = ?", body_item["location_id"],body_item["section_id"]).first
+            body_item["location_id"].should == @location_json.id.to_s
+            body_item["section_id"].should == @location_json.section_id.to_s
+            body_item["z"].should == @location_json.z.to_s
+            body_item["x"].should == @location_json.x.to_s
+            body_item["y"].should == @location_json.y.to_s
+            body_item["height"].should == @location_json.height.to_s
+            body_item["width"].should == @location_json.width.to_s
+
+          end
+        end
       end
     end
   end

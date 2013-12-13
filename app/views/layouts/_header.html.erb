@@ -94,7 +94,9 @@
               <% end %>
 
           <% else %>
-              <li><%= link_to_function "Login", "javascript:login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
+              <%unless @skip_login %>
+                 <li><%= link_to_function "Login", "javascript:login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
+              <%end%>
               <li><%= link_to "Sign Up", xroom_rooms_path , :id =>"signup_btn" %></li>
           <% end %>
           <!-- End If -->

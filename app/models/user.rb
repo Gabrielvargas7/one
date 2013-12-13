@@ -410,10 +410,10 @@ class User < ActiveRecord::Base
 
 
   def create_specific_room
-    puts "inside of the specific room"
+    #puts "inside of the specific room"
 
     if self.specific_room_id.nil?
-      puts "specific_room_id is nil"
+      #puts "specific_room_id is nil"
 
       if Bundle.exists?(id:27)
         bundle = Bundle.find(27)
@@ -422,7 +422,7 @@ class User < ActiveRecord::Base
       end
 
     else
-      puts "specific_room_id is not nil"
+      #puts "specific_room_id is not nil"
       if Bundle.exists?(id:self.specific_room_id)
         bundle = Bundle.find(self.specific_room_id)
       else

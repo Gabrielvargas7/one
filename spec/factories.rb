@@ -14,7 +14,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "person_#{n}@example.com"}
     sequence(:username)  {|n| "username#{n}"}
 
-    password "foobar"
+    password "foodbar"
 
     factory :admin do
       admin true
@@ -65,6 +65,7 @@ FactoryGirl.define do
 
   factory :item do
     sequence(:name)  { |n| "item #{n}" }
+    sequence(:name_singular)  { |n| "item singular#{n}" }
     clickable  "yes"
     priority_order 1
   end
