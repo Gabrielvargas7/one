@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
-
+    @skip_login = true
+    @skip_signup = true
   end
 
 
@@ -31,7 +32,9 @@ class SessionsController < ApplicationController
 
                rescue ActiveRecord::StatementInvalid
                  flash.now[:error] = 'Invalid email/password combination' # Not quite right!
+                 @skip_login = true
                  render 'new'
+
                end
              end
        else
@@ -46,6 +49,7 @@ class SessionsController < ApplicationController
 
             else
               flash.now[:error] = 'Invalid email/password combination' # Not quite right!
+              @skip_login = true
               render 'new'
             end
 
@@ -53,6 +57,7 @@ class SessionsController < ApplicationController
 
     else
       flash.now[:error] = 'Invalid email/password combination' # Not quite right!
+      @skip_login = true
       render 'new'
     end
 
@@ -86,6 +91,7 @@ class SessionsController < ApplicationController
       if user.uid.blank? then
       # this user is already on the system with room login
         flash.now[:error] = 'Invalid email/password combination' # Not quite right!
+        @skip_login = true
         render 'new'
       else
 

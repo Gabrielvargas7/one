@@ -60,8 +60,8 @@
 </head>
 <body  class="<%= @room_backgroud_color ? 'room_backgroud_color' : ''%>"  >
     <%= render 'layouts/header'  unless @skip_header %>
-    <%= render 'layouts/signup' %>
-    <%= render 'layouts/login' %>
+    <%= render 'layouts/signup'unless @skip_signup %>
+    <%= render 'layouts/login' unless @skip_login %>
 
     <div
     <%if @landing_page_view%>

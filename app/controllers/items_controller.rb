@@ -139,19 +139,25 @@ class ItemsController < ApplicationController
   def json_index_items
 
     respond_to do |format|
-      @items = Item.joins(:items_locations).
-          select('items.*,
-                  locations.z,
-                  locations.x,
-                  locations.y,
-                  locations.height,
-                  locations.width,
-                  locations.section_id').
-          joins('LEFT OUTER JOIN locations  ON locations.id = items_locations.location_id').
-          order(:priority_order,:name).all
 
-      format.json { render json: @items }
+      if Item.count != 0
 
+          @items = Item.joins(:items_locations).
+              select('items.*,
+                      locations.z,
+                      locations.x,
+                      locations.y,
+                      locations.height,
+                      locations.width,
+                      locations.section_id,
+                      items_locations.location_id').
+              joins('LEFT OUTER JOIN locations  ON locations.id = items_locations.location_id').
+              order(:priority_order,:name).all
+
+          format.json { render json: @items }
+      else
+        format.json { render json:'[]'}
+      end
     end
   end
 

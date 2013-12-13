@@ -31,7 +31,7 @@ class ItemsImageNameFirstTimeClickUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    asset_path("fallback/item/" + [version_name, "default.png"].compact.join('_'))
+    asset_path("fallback/item/" + [version_name, "default_item.png"].compact.join('_'))
   end
 
   def cache_dir

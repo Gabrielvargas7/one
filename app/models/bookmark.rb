@@ -22,7 +22,6 @@ class Bookmark < ActiveRecord::Base
                   :i_frame,
                   :image_name,
                   :image_name_desc,
-                  #:item_id,
                   :title,
                   :approval,
                   :user_bookmark,

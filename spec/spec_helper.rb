@@ -63,6 +63,8 @@ RSpec.configure do |config|
   config.filter_run_excluding tag_image_notification: true
   config.filter_run_excluding tag_image_user_photos: true
   config.filter_run_excluding tag_image_item: true
+  config.filter_run_excluding tag_image_gray_item: true
+  config.filter_run_excluding tag_image_first_time_click_item: true
 
 
 

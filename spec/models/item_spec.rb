@@ -25,13 +25,13 @@ describe Item do
 
   #theme info
   it { @item.should respond_to(:name) }
+  it { @item.should respond_to(:name_singular) }
   it { @item.should respond_to(:clickable) }
+  it { @item.should respond_to(:priority_order) }
   it { @item.should respond_to(:image_name) }
   it { @item.should respond_to(:image_name_gray) }
   it { @item.should respond_to(:image_name_first_time_click) }
 
-
-  it { @item.should respond_to(:priority_order) }
 
 
   it { @item.should be_valid }
@@ -44,6 +44,15 @@ describe Item do
 
     context "is not present" do
       before {@item.name = " "}
+      it {should_not be_valid}
+
+    end
+  end
+
+  describe "when the name_singular" , tag_name_singular: true  do
+
+    context "is not present" do
+      before {@item.name_singular = " "}
       it {should_not be_valid}
 
     end
@@ -114,18 +123,82 @@ describe Item do
   describe "when image default ", tag_image_default: true  do
 
     let(:image_default) {"/assets/fallback/item/default_item.png"}
-
     it "should be default  " do
-      #puts @theme.image_name
-      #puts @theme.image_name_selection
-
       @item.image_name.to_s.should == image_default.to_s
+    end
+
+  end
+
+  ###############
+  #test validation - upload image gray
+  ###############
+  # these test only run when it is explicit.- example
+  # bundle exec rspec --tag tag_image spec/models/item_spec.rb
+  describe "when image gray",tag_image_gray_item:true  do
+
+    let(:item_with_image_upload) { Item.create(
+        name:"theme test",
+        clickable:"yes",
+        image_name_gray:Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'image', 'test_image.jpg'))
+    )}
+
+    it "should be upload to CDN - cloudinary " do
+      #puts theme_with_image_upload.image_name
+      #puts theme_with_image_upload.image_name_selection
+      item_with_image_upload.image_name_gray.to_s.should include("http")
+
 
     end
 
   end
 
 
+  ###############
+  #test validation - default image  gray
+  ###############
+  describe "when image gray default ", tag_image_gray_default: true  do
+
+    let(:image_gray_default) {"/assets/fallback/item/default_item.png"}
+    it "should be default  " do
+      @item.image_name_gray.to_s.should == image_gray_default.to_s
+    end
+
+  end
+
+
+  ###############
+  #test validation - upload image first time click
+  ###############
+  # these test only run when it is explicit.- example
+  # bundle exec rspec --tag tag_image spec/models/item_spec.rb
+  describe "when image first_time_click",tag_image_first_time_click_item:true  do
+
+    let(:item_with_image_upload) { Item.create(
+        name:"item test",
+        clickable:"yes",
+        image_name_first_time_click:Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'image', 'test_image.png'))
+    )}
+
+    it "should be upload to CDN - cloudinary " do
+      puts item_with_image_upload.image_name_first_time_click.to_s
+      item_with_image_upload.image_name_first_time_click.to_s.should include("http")
+
+    end
+
+  end
+
+
+  ###############
+  #test validation - default image first time click
+  ###############
+  describe "when image_name_first_time_click default ", tag_image_first_time_click_default: true  do
+
+    let(:image_first_time_click_default) {"/assets/fallback/item/default_item.png"}
+    it "should be default  " do
+      @item.image_name_first_time_click.to_s.should == image_first_time_click_default.to_s
+    end
+
+  end
 
 
 
