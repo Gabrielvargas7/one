@@ -36,7 +36,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     ###
     DETERMINE IF USER IS IN A ROOM
     ###
-    isInARoom = Mywebroom.Helpers.AppHelper.isInARoom()
+    isInARoom = @isInARoom()
 
 
 
@@ -44,7 +44,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     ###
     DETERMINE IF USER IS SIGNED IN
     ###
-    isSignedIn = Mywebroom.Helpers.AppHelper.isSignedIn()
+    isSignedIn = @isSignedIn()
 
 
 
@@ -57,7 +57,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
         if isInARoom #...AND IN A ROOM
 
-          roomUser =   Mywebroom.Helpers.AppHelper.getRoomUser()
+          roomUser =   @getRoomUser()
           signInUser = false
 
           Mywebroom.State.set("signInState", false)
@@ -93,7 +93,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         if not isInARoom #...AND NOT IN A ROOM
 
           roomUser =   false
-          signInUser = Mywebroom.Helpers.AppHelper.getSignInUser()
+          signInUser = @getSignInUser()
 
           Mywebroom.State.set("signInState", true)
           Mywebroom.State.set("signInUser", signInUser)
@@ -110,8 +110,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-          roomUser =   Mywebroom.Helpers.AppHelper.getRoomUser()
-          signInUser = Mywebroom.Helpers.AppHelper.getSignInUser()
+          roomUser =   @getRoomUser()
+          signInUser = @getSignInUser()
 
 
           if roomUser.get("id") is signInUser.get("id") # ROOM: SELF
@@ -122,17 +122,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
             Mywebroom.State.set("roomState", "SELF")
             Mywebroom.State.set("roomUser", roomUser)
 
-
-
-
-            if Mywebroom.State.get("tutorialStep") isnt 0
-
-              @signedInSelfTutorial() # HASN'T COMPLETED TUTORIAL
-
-
-            else
-
-              @signedInSelf() # HAS ALREADY COMPLETED TUTORIAL
+            @signedInSelf()
 
 
 
@@ -141,8 +131,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
           else # ROOM: FRIEND OR PUBLIC
 
 
-            roomUser =   Mywebroom.Helpers.AppHelper.getRoomUser()
-            signInUser = Mywebroom.Helpers.AppHelper.getSignInUser()
+            roomUser =   @getRoomUser()
+            signInUser = @getSignInUser()
 
 
 
@@ -253,7 +243,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
         bookmarkHomeView = new Mywebroom.Views.BookmarkHomeView(
           {
             user_item_design: designs[i],
-            user:             roomUser
+            user            : roomUser
           }
         )
 
@@ -272,6 +262,57 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
+  ###
+  Determines if user is in a room
+  Returns boolean
+  ###
+  isInARoom: ->
+
+    path = window.location.pathname
+
+    if path.split('/')[1] is 'room' and typeof path.split('/')[2] is "string" and path.split('/')[2].length > 0
+
+      return true
+
+    else
+
+      return false
+
+
+
+
+
+
+
+  ###
+  DETERMINE IF USER IS SIGNED IN
+  ###
+  isSignedIn: ->
+
+    isSignedInModel = new Mywebroom.Models.ShowIsSignedUserModel()
+    isSignedInModel.fetch
+      async: false
+      success: (model, response, options) ->
+        # console.log("signedIn fetch success", response)
+
+      error: (model, response, options) ->
+        console.error("isSigedIn model fetch fail", response.responseText)
+
+
+    isSignedIn = isSignedInModel.get('signed')
+
+
+    switch isSignedIn
+
+      when "yes"
+        return true
+
+      when "not"
+        return false
+
+      else
+        console.error("UNEXPECTED VALUE FOR ShowIsSignedeUserModel", isSignedIn)
+        return false
 
 
 
@@ -280,24 +321,59 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
+  getRoomUser: ->
+
+    # Set roomUser
+    roomUsers = new Mywebroom.Collections.ShowRoomUserCollection()
+    roomUsers.fetch
+      async  : false
+      success: (collection, response, options) ->
+        # console.log("roomUser fetch success", response)
+      error: (collection, response, options) ->
+        console.error("roomUser fetch fail", response.responseText)
+
+
+    roomUser = roomUsers.first()
+    return roomUser
 
 
 
 
 
+  getSignInUser: ->
+
+    signInUsers = new Mywebroom.Collections.ShowSignedUserCollection()
+    signInUsers.fetch
+      async: false
+      success: (collection, response, options) ->
+        # console.log('signedUser collection fetch success', resposne)
+
+      error: (collection, response, options) ->
+        console.error('signInUsers collection fetch fail', response.responseText)
+
+
+    signInUser = signInUsers.first()
+    return signInUser
 
 
 
 
 
+  getRoomData: (userId) ->
+
+    dataCollection = new Mywebroom.Collections.ShowRoomByUserIdCollection()
+    dataCollection.fetch
+      async: false
+      url: dataCollection.url(userId)
+      success: (collection, response, options) ->
+        # console.log("roomData fetch success", resposne)
+
+      error: (collection, response, options) ->
+        console.error("roomData fetch fail", response.responseText)
 
 
-
-
-
-
-
-
+    dataModel = dataCollection.first()
+    return dataModel
 
 
 
@@ -375,7 +451,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
     # roomData
-    data = Mywebroom.Helpers.AppHelper.getRoomData(roomUser.get('id'))
+    data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
 
 
@@ -436,7 +512,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     Mywebroom.State.set("roomItems", false)
 
 
-    data = Mywebroom.Helpers.AppHelper.getRoomData(signInUser.get('id'))
+    data = @getRoomData(signInUser.get('id'))
     Mywebroom.State.set("signInData", data)
 
 
@@ -477,7 +553,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    data = Mywebroom.Helpers.AppHelper.getRoomData(roomUser.get('id'))
+    data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
 
 
@@ -495,7 +571,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    signInData = Mywebroom.Helpers.AppHelper.getRoomData(signInUser.get('id'))
+    signInData = @getRoomData(signInUser.get('id'))
     Mywebroom.State.set("signInData", signInData)
 
 
@@ -542,7 +618,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    data = Mywebroom.Helpers.AppHelper.getRoomData(roomUser.get('id'))
+    data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
 
 
@@ -560,7 +636,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    signInData = Mywebroom.Helpers.AppHelper.getRoomData(signInUser.get('id'))
+    signInData = @getRoomData(signInUser.get('id'))
     Mywebroom.State.set("signInData", signInData)
 
 
@@ -570,68 +646,6 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     @doRoomStuff()
 
 
-
-
-
-
-  signedInSelfTutorial: ->
-
-    roomState = Mywebroom.State.get("roomState")
-    if roomState isnt "SELF" then console.error("ERROR: signedInSelf.roomState should be SELF but is " + roomState)
-
-
-    signInState = Mywebroom.State.get("signInState")
-    if signInState isnt true then console.error("ERROR: signedInSelf.signInState should be true but is " + signInState)
-
-
-    roomUser = Mywebroom.State.get("roomUser")
-    if roomUser is false then console.error("ERROR: signedInSelf.roomUser shouldnt be false but it is")
-
-
-    signInUser = Mywebroom.State.get("signInUser")
-    if signInUser is false then console.error("ERROR: signedInSelf.signInUser shouldnt be false but it is")
-
-
-    if roomUser.get("id") isnt signInUser.get("id") then console.error("ERROR: signedInSelf.signInUser.id doesnt equal signedInSelf.roomUser.id but it should")
-
-
-
-
-    #console.log("SIGNED IN - IN " + roomUser.get("username") + "\'s ROOM (self)")
-
-
-
-
-    data = Mywebroom.Helpers.AppHelper.getRoomData(roomUser.get('id'))
-    Mywebroom.State.set("roomData", data)
-
-
-    designs = data.get('user_items_designs')
-    Mywebroom.State.set("roomDesigns", designs)
-
-
-    theme = data.get('user_theme')[0]
-    Mywebroom.State.set("roomTheme", theme)
-
-
-    items = new Backbone.Collection(data.get("user_items"))
-    Mywebroom.State.set("roomItems", items)
-
-
-
-
-
-    Mywebroom.State.set("signInData", data)
-
-
-
-
-    # Setup Room
-    @doRoomStuff()
-
-
-    # Proceed with Tutorial
-    @doTutorialStuff()
 
 
 
@@ -669,7 +683,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    data = Mywebroom.Helpers.AppHelper.getRoomData(roomUser.get('id'))
+    data = @getRoomData(roomUser.get('id'))
     Mywebroom.State.set("roomData", data)
 
 
@@ -699,66 +713,77 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
 
-    # (16) Conditionally Show Notification Modal
-    Mywebroom.Helpers.showModal()
 
 
 
 
 
-    ###
-    (11) DEAL WITH URL ENCODED PARAMS
-    ###
-    ###
-    entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- i.e. model.get("type")
-    entity_id  : e.g. 123 <-- model.get("id")
-    came_from  : EMAIL_REQUEST_KEY, PUBLIC_SHOP, FRIEND_ROOM, PUBLIC_ROOM
-    item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
-    ###
+    user_profile = Mywebroom.State.get("signInData").get("user_profile")
 
 
-    came_from =   Mywebroom.Helpers.getParameterByName('came_from')
+    if user_profile.tutorial_step == 0
 
-    if came_from
-
-      switch came_from
-
-        when "EMAIL_REQUEST_KEY"
-
-          #console.log("Profile Request Accept entity")
-          @entityTypeRequest()
-
-        when "PUBLIC_SHOP", "FRIEND_ROOM", "PUBLIC_ROOM"
-
-          entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
-
-          if entity_type
-
-            entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
-
-            switch entity_type
-
-              when "BOOKMARK"
-                #console.log("bookmark entity")
-                @entityTypeBookmark(entity_id)
-
-              when "DESIGN"
-                #console.log("designs entity")
-                @entityTypeItemDesign(entity_id)
-
-              when "THEME"
-                #console.log("theme entity")
-                @entityTypeTheme(entity_id)
-
-              when "BUNDLE"
-                #console.log("Bundle entity")
-                @entityTypeBundle(entity_id)
-
-              when "ENTIRE_ROOM"
-                #console.log("Entire room entity")
-                @entityTypeEntireRoom(entity_id)
+      # (16) Conditionally Show Notification Modal
+      Mywebroom.Helpers.showModal()
 
 
+      ###
+       (11) DEAL WITH URL ENCODED PARAMS WHEN the user is Sign in his/her Room State
+      ###
+      ###
+            entity_type: BOOKMARK, DESIGN, THEME, BUNDLE, ENTIRE_ROOM <-- i.e. model.get("type")
+            entity_id  : e.g. 123 <-- model.get("id")
+            came_from  : PUBLIC_SHOP, ?? <-- TODO
+            item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
+      ###
+
+      entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
+      came_from = Mywebroom.Helpers.getParameterByName('came_from')
+
+      #Friends has no parameter: came_from
+      #The only things that have Came_from are SHOP and EMAIL.
+      #Test for CAME_FROM Email case. Then test entity_type.
+
+      if came_from
+
+        switch came_from
+
+          when "EMAIL_REQUEST_KEY"
+            #console.log("Profile Request Accept entity")
+            @entityTypeRequest()
+
+          when "PUBLIC_SHOP", "FRIEND_ROOM", "PUBLIC_ROOM"
+
+            if entity_type
+
+              entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
+
+              switch entity_type
+
+                when "BOOKMARK"
+                  #console.log("bookmark entity ")
+                  @entityTypeBookmark(entity_id)
+
+                when "DESIGN"
+                  #console.log("designs entity ")
+                  @entityTypeItemDesign(entity_id)
+
+                when "THEME"
+                  #console.log("theme entity ")
+                  @entityTypeTheme(entity_id)
+
+                when "BUNDLE"
+                  #console.log("Bundle entity ")
+                  @entityTypeBundle(entity_id)
+
+                when "ENTIRE_ROOM"
+                  #console.log("Entire room entity")
+                  @entityTypeEntireRoom(entity_id)
+
+
+    else
+
+      @doTutorialStuff()
 
 
 
@@ -1043,7 +1068,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
     # TODO Check for bookmark in my bookmarks
-    if not bookmarksView.collection.findWhere(id: parseInt(entity_id))
+    if !bookmarksView.collection.findWhere(id: parseInt(entity_id))
       bookmarksView.renderDiscover()
       bookmarksView.highlightItem(entity_id)
     else
