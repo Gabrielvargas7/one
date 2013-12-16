@@ -11,7 +11,7 @@
  *= require bootstrap
  *= require toastr
  *= require toastr-responsive
- *= require offline
+ *= require offline-theme-default-indicator
  *= require_self
  *= require_tree .
  */
