@@ -490,9 +490,13 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     FB.ui
       method: "apprequests"
       message: requestMessage
+      display: "popup"
     , (request) ->
-      #console.log 'inviteFriendsFacebook ui call: '
-      #console.log request
+      console.log 'inviteFriendsFacebook ui call: '
+      console.log request
+
+
+
 
 
 
