@@ -25,7 +25,6 @@
 //= require jquery.scrollTo
 //= require backbone.marionette
 //= require jquery.mousewheel
-//= require offline.min
 //= require lightbox
 //= require FB.js
 //= require shop
