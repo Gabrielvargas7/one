@@ -11,7 +11,6 @@
  *= require bootstrap
  *= require toastr
  *= require toastr-responsive
- *= require offline-theme-slide
  *= require_self
  *= require_tree .
  */
