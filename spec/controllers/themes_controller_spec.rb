@@ -677,7 +677,62 @@ describe ThemesController do
 
   describe "json_index_themes_by_limit_and_offset", tag_json:true do
 
-    pending "add #{__FILE__}"
+    describe "is public api" do
+      before do
+        sign_out
+        @limit = 10
+        @offset = 1
+      end
+
+
+      it "should be successful" do
+        get :json_index_themes_by_limit_and_offset,limit:@limit,offset:@offset, :format => :json
+        response.should be_success
+      end
+      let(:themes_all){Theme.all}
+      it "should set theme" do
+        #get :json_index_themes, :format => :json
+        #assigns(:themes).as_json.should == themes_all.as_json
+      end
+
+      it "has a 200 status code" do
+        get :json_index_themes_by_limit_and_offset,limit:@limit,offset:@offset, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "should return json_index theme in json" do # depend on what you return in action
+          get :json_index_themes_by_limit_and_offset,limit:@limit,offset:@offset, :format => :json
+
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          #puts "theme ----> "+@theme.as_json.to_s
+          #puts "body name ----> " + body[0]["name"].to_s
+          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          #puts "theme name----> "+@theme.name.to_s
+          #puts "theme image name----> "+@theme.image_name.to_s
+
+          body.each do |body_theme|
+            @theme_json = Theme.find(body_theme["id"])
+            body_theme["name"].should == @theme_json.name
+            body_theme["description"].should == @theme_json.description
+            body_theme["id"].should == @theme_json.id
+            body_theme["image_name"]["url"].should == @theme_json.image_name.to_s
+            body_theme["image_name_selection"]["url"].should == @theme_json.image_name_selection.to_s
+            body_theme["category"].should == @theme_json.category
+            body_theme["style"].should == @theme_json.style
+            body_theme["brand"].should == @theme_json.brand
+            body_theme["location"].should == @theme_json.location
+            body_theme["color"].should == @theme_json.color
+            body_theme["make"].should == @theme_json.make
+            body_theme["special_name"].should == @theme_json.special_name
+            body_theme["like"].should == @theme_json.like
+
+
+          end
+        end
+      end
+    end
 
 
   end
