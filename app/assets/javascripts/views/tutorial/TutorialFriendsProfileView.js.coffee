@@ -92,6 +92,7 @@ class Mywebroom.Views.TutorialFriendsProfileView extends Backbone.View
       requestMessage = "Your friend would like to invite you to join myWebRoom.com, a visual way to organize your online life. Create a virtual room, add your favorite products, access all your sites, and check out your friend's room!"
     FB.ui
       method: "apprequests"
+      display: "popup"
       message: requestMessage
     , (request) ->
       #console.log 'inviteFriendsFacebook ui call: '
