@@ -422,6 +422,7 @@ div.profileHome_activity.generalGrid{
   border-collapse:collapse;
   width:620px;
   height:auto;
+  max-width:none; /*Override Bootstrap max-width which causes this to be shorter than the scrollbar*/
 }
 .gridItemPicture {
   width:180px;
