@@ -216,7 +216,7 @@ describe Item do
       end
 
       it "should print the id and name  " do
-        puts @item.id_and_item
+        #puts @item.id_and_item
         @item.id_and_item.should ==  @id.to_s+". "+@name
 
       end

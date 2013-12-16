@@ -469,7 +469,7 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
   # Create a Facebook Requests Dialog to invite Facebook Friends
   inviteFriendsFacebook: ->
 
-
+    console.log("Start Facebook click")
     signInState = Mywebroom.State.get("signInState")
     if signInState is true
 
@@ -490,9 +490,19 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     FB.ui
       method: "apprequests"
       message: requestMessage
+      display: "popup"
     , (request) ->
-      #console.log 'inviteFriendsFacebook ui call: '
-      #console.log request
+      console.log 'inviteFriendsFacebook ui call: '
+      console.log request
+
+    console.log("End Facebook click")
+
+#    FB.ui
+#        method: "apprequests"
+#        title: "Check out this great app!"
+#        message: "Join the fun!"
+#        display: "popup"
+#    , inviteCallback
 
 
 

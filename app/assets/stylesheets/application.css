@@ -24,6 +24,7 @@ body {
     padding-top: 45px;
     font-family: "Open Sans";
     zoom: 100%;
+    /*zoom: reset;*/
 
 
 }
@@ -53,7 +54,7 @@ input {
         /*-moz-transform-origin: 0 0*/
     }
     .shop_container{
-        /*zoom: 120%;*/
+        zoom: 120%;
     }
 
 }
@@ -65,7 +66,7 @@ input {
         /*firefox zoon break the css*/
         /*-moz-transform: scale(0.5);*/
         /*-moz-transform-origin: 0 0*/
-        /**/
+
     }
     .shop_container{
         zoom: 100%;

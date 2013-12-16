@@ -147,8 +147,33 @@ module ApplicationHelper
 
   end
 
+  #***********************************
+  # check if the category exist for api the send params like a category
+  #***********************************
 
+  def category_exist?(value)
 
+    case value
 
+      when "category"
+        true
+      when "style"
+        true
+      when "brand"
+        true
+      when "location"
+        true
+      when "color"
+        true
+      when "make"
+        true
+      else
+        false
+    end
+
+  end
 
 end
+
+
+

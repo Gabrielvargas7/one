@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+include ApplicationHelper
+
 
 describe ThemesController do
 
@@ -503,8 +505,18 @@ describe ThemesController do
     describe "is public api" do
       before do
         sign_out
+        @no_category = "no_category"
+        @keywork_too_long = "electronics_long"
         @category = "category"
+        @brand = "brand"
+        @style = "style"
+        ################
+        #  Monday,
+        # finish testing every single category
+        ################
+
         @keyword = "electronics"
+
         @limit = 4
         @offset = 0
 
@@ -512,6 +524,8 @@ describe ThemesController do
         FactoryGirl.create(:theme,category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather",location:"london")
         FactoryGirl.create(:theme,category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather",location:"london")
         FactoryGirl.create(:theme,category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather",location:"london")
+        FactoryGirl.create(:theme,category:"electronics_long",style:"easter",brand:"prada",color:"red",make:"leather",location:"london")
+
 
       end
 
@@ -531,12 +545,6 @@ describe ThemesController do
         it "should return json_index theme in json" do # depend on what you return in action
           get :json_index_themes_filter_by_category_by_keyword_and_limit_and_offset, category:@category,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
           body = JSON.parse(response.body)
-          #puts "body ---- > "+body.to_s
-          #puts "theme ----> "+@theme.as_json.to_s
-          #puts "body name ----> " + body[0]["name"].to_s
-          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
-          #puts "theme name----> "+@theme.name.to_s
-          #puts "theme image name----> "+@theme.image_name.to_s
 
           body.each do |body_theme|
             @theme_json = Theme.find(body_theme["id"])
@@ -558,6 +566,33 @@ describe ThemesController do
           end
         end
       end
+
+
+      context "get empty json object " do
+        it ", when the category don't exist " do # depend on what you return in action
+          get :json_index_themes_filter_by_category_by_keyword_and_limit_and_offset, category:@no_category,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
+          body = JSON.parse(response.body)
+          body.should == []
+        end
+      end
+
+      context "get empty json object " do
+        it ", when the category is longer that 12 charaters " do
+          get :json_index_themes_filter_by_category_by_keyword_and_limit_and_offset, category:@keywork_too_long,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
+          body = JSON.parse(response.body)
+          body.should == []
+        end
+      end
+
+      context "get empty json object " do
+        it ", when the keyword  is longer that 12 charaters " do
+          get :json_index_themes_filter_by_category_by_keyword_and_limit_and_offset, category:@category,keyword:@keywork_too_long,limit:@limit,offset:@offset, :format => :json
+          body = JSON.parse(response.body)
+          body.should == []
+        end
+      end
+
+
     end
   end
 
@@ -583,21 +618,68 @@ describe ThemesController do
   #end
 
 
-  describe "api #json_index_themes_categories",tag_json_category:true do
-    pending "pending test api"
+
+
+  describe "api #json_show_themes_seo_url_by_themes_id",tag_json:true do
+    describe "is public api" do
+      before do
+        sign_out
+      end
+
+      it "should be successful when exist" do
+        get :json_show_theme_seo_url_by_theme_id,theme_id:@theme.id, :format => :json
+        response.should be_success
+      end
+
+      it "should be successful when theme didn't exist" do
+        get :json_show_theme_seo_url_by_theme_id,theme_id:-1, :format => :json
+        response.should be_success
+      end
+
+
+      it "has a 200 status code" do
+        get :json_show_theme_seo_url_by_theme_id,theme_id:@theme.id, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      it "has a 200 status code  when theme didn't exist" do
+        get :json_show_theme_seo_url_by_theme_id,theme_id:-1, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get seo value " do
+        it ", should return url_seo value  " do # depend on what you return in action
+          get :json_show_theme_seo_url_by_theme_id,theme_id:@theme.id, :format => :json
+
+          body = JSON.parse(response.body)
+          #puts  body
+          @seo_url =  shop_show_theme_url(@theme.id,get_clean_name(@theme.name))
+          #puts  body.seo_url
+          body["seo_url"].should == @seo_url
+        end
+
+        it ", should return url_seo empty value  " do # depend on what you return in action
+          get :json_show_theme_seo_url_by_theme_id,theme_id:-1, :format => :json
+          body = JSON.parse(response.body)
+          #puts  body
+          @seo_url =  shop_show_theme_url(@theme.id,get_clean_name(@theme.name))
+          #puts  body.seo_url
+          body.should == {}
+        end
+
+      end
+
+
+    end
+
   end
 
-  describe "api #json_index_themes_filter_by_category_by_keyword_and_limit_and_offset",tag_json_category:true do
-    pending "pending test api"
-  end
 
-  describe "api #json_show_themes_seo_url_by_themes_id",tag_json_category:true do
-    pending "pending test api"
-  end
+  describe "json_index_themes_by_limit_and_offset", tag_json:true do
 
-
-  describe "json_index_themes_by_limit_and_offset" do
     pending "add #{__FILE__}"
+
+
   end
 
 

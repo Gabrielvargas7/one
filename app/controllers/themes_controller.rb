@@ -213,16 +213,22 @@ class ThemesController < ApplicationController
           keyword = params[:keyword].strip.downcase
           category = params[:category].strip.downcase
 
-          @themes = Theme.
-              where("LOWER(LTRIM(RTRIM("+category+"))) LIKE ? ", "%#{keyword}%").
-              limit(params[:limit]).
-              offset(params[:offset])
+             if category_exist?(params[:category])
+                @themes = Theme.
+                    where("LOWER(LTRIM(RTRIM("+category+"))) LIKE ? ", "%#{keyword}%").
+                    limit(params[:limit]).
+                    offset(params[:offset])
 
-          format.json { render json: @themes
-          }
+                format.json { render json: @themes
+                }
+             else
+               format.json { render json: '[]' }
+             end
 
       else
-        format.json { render json: 'keyword or category to long ' , status: :not_found }
+        #format.json { render json: 'keyword or category to long ' , status: :not_found }
+        format.json { render json: '[]' }
+
       end
 
     end
@@ -246,8 +252,10 @@ class ThemesController < ApplicationController
         seo_url["seo_url"] = shop_show_theme_url(@theme.id,get_clean_name(@theme.name))
 
         format.json { render json: seo_url }
+
       else
-        format.json { render json: 'not found item designs id' , status: :not_found }
+        #format.json { render json: 'not found theme id' , status: :not_found }
+        format.json { render json: '{}' }
       end
     end
 

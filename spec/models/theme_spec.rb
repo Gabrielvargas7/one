@@ -109,6 +109,33 @@ describe Theme do
   end
 
 
+  ###############
+  #test function - id_and_theme
+  ###############
+  describe "when the function id_and_theme" , tag_function: true  do
+
+    context "get id and name" do
+      before do
+
+        @name = "theme_name"
+        @theme.name = @name
+        @theme.save!
+        @id = @theme.id
+      end
+
+      it "should print the id and name  " do
+        puts @theme.id_and_theme
+        @theme.id_and_theme.should ==  @id.to_s+". "+@name
+
+      end
+
+
+    end
+  end
+
+
+
+
 
 
 

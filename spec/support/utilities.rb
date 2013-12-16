@@ -175,3 +175,27 @@ def delete_init_data
 
 end
 
+def category_exist?(value)
+
+  case value
+    when "category"
+      true
+    when "style"
+      true
+    when "brand"
+      true
+    when "location"
+      true
+    when "color"
+      true
+    when "make"
+      true
+    else
+      false
+  end
+
+
+
+
+end
+

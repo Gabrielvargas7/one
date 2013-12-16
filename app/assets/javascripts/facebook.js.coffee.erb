@@ -9,7 +9,10 @@ jQuery ->
 
 
 window.fbAsyncInit = ->
-    FB.init(appId: '<%= ENV["ROOMS_FACEBOOK_APP_ID"] %>', cookie: true)
+    FB.init(appId: '<%= ENV["ROOMS_FACEBOOK_APP_ID"] %>',
+        status: true, # Check Facebook Login status
+        xfbml: true,
+        cookie: true) # Look for social plugins on the page
 
     $('#sign_in').click (e) ->
         e.preventDefault()
@@ -39,26 +42,26 @@ window.fbAsyncInit = ->
 #//From Facebook- this code is for loading the SDK, so we can use FB ui and api calls
 
 
-window.fbAsyncInit = ->
-
-    # init the FB JS SDK
-    FB.init
-        appId: "<%= ENV["ROOMS_FACEBOOK_APP_ID"] %>" # App ID from the app dashboard
-        status: true # Check Facebook Login status
-        xfbml: true
-        cookie: true # Look for social plugins on the page
-
-
-# Additional initialization code such as adding Event Listeners goes here
-
-
-# Additional initialization code such as adding Event Listeners goes here
-((d, s, id) ->
-    js = undefined
-    fjs = d.getElementsByTagName(s)[0]
-    return  if d.getElementById(id)
-    js = d.createElement(s)
-    js.id = id
-    js.src = "//connect.facebook.net/en_US/all.js"
-    fjs.parentNode.insertBefore js, fjs
-) document, "script", "facebook-jssdk"
+#window.fbAsyncInit = ->
+#
+#    # init the FB JS SDK
+#    FB.init
+#        appId: "<%= ENV["ROOMS_FACEBOOK_APP_ID"] %>" # App ID from the app dashboard
+#        status: true # Check Facebook Login status
+#        xfbml: true
+#        cookie: true # Look for social plugins on the page
+#
+#
+## Additional initialization code such as adding Event Listeners goes here
+#
+#
+## Additional initialization code such as adding Event Listeners goes here
+#((d, s, id) ->
+#    js = undefined
+#    fjs = d.getElementsByTagName(s)[0]
+#    return  if d.getElementById(id)
+#    js = d.createElement(s)
+#    js.id = id
+#    js.src = "//connect.facebook.net/en_US/all.js"
+#    fjs.parentNode.insertBefore js, fjs
+#) document, "script", "facebook-jssdk"
