@@ -510,10 +510,6 @@ describe ThemesController do
         @category = "category"
         @brand = "brand"
         @style = "style"
-        ################
-        #  Monday,
-        # finish testing every single category
-        ################
 
         @keyword = "electronics"
 
@@ -618,7 +614,9 @@ describe ThemesController do
   #end
 
 
-
+  #***********************************
+  # rspec test  json_show_themes_seo_url_by_themes_id
+  #***********************************
 
   describe "api #json_show_themes_seo_url_by_themes_id",tag_json:true do
     describe "is public api" do
@@ -666,13 +664,14 @@ describe ThemesController do
           #puts  body.seo_url
           body.should == {}
         end
-
       end
-
-
     end
-
   end
+
+
+  #***********************************
+  # rspec test  json_index_themes_by_limit_and_offset
+  #***********************************
 
 
   describe "json_index_themes_by_limit_and_offset", tag_json:true do

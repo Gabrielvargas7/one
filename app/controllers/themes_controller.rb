@@ -219,8 +219,7 @@ class ThemesController < ApplicationController
                     limit(params[:limit]).
                     offset(params[:offset])
 
-                format.json { render json: @themes
-                }
+                format.json { render json: @themes  }
              else
                format.json { render json: '[]' }
              end

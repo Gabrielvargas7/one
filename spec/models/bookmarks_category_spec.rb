@@ -69,6 +69,32 @@ describe BookmarksCategory do
     end
   end
 
+  ###############
+  #test function - id_and_bookmark_category
+  ###############
+  describe "when the function id_and_bookmark category" , tag_function: true  do
+
+    context "get id and name" do
+      before do
+
+        @name = "bookmark category_name"
+        @bookmarks_category.name = @name
+        @bookmarks_category.save!
+
+
+      end
+
+      it "should print the id and name  " do
+        #puts @bookmarks_category.id_and_bookmark_category
+        @bookmarks_category.id_and_bookmark_category.should == "Item: #{@bookmarks_category.item_id}.#{@bookmarks_category.item.name} -> Bookmark Cat: #{@bookmarks_category.id}.#{@bookmarks_category.name}"
+
+      end
+
+
+    end
+  end
+
+
 
 
 end

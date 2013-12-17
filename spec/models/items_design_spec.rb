@@ -136,6 +136,33 @@ describe ItemsDesign do
   end
 
 
+  ###############
+  #test function - id_and_item_design
+  ###############
+  describe "when the function id_and_item_designs" , tag_function: true  do
+
+    context "get id and name" do
+      before do
+
+        @name = "item_designs_name"
+        @items_designs.name = @name
+        @items_designs.save!
+        @id = @items_designs.id
+      end
+
+      it "should print the id and name  " do
+        #puts @item.id_and_item
+        @items_designs.id_and_item_design.should ==  @id.to_s+". "+@name
+
+      end
+
+
+    end
+  end
+
+
+
+
 
 
 end

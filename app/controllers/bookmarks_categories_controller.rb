@@ -196,41 +196,6 @@ class BookmarksCategoriesController < ApplicationController
       end
   end
 
-  # GET Get all bookmarks that has to be approved,
-  #   eg. when that user add a new bookmark, the bookmark has to be approved for the administrator, and after that everybody can see it.
-  #        but if is not approved, it will be delete
-  # bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id/:user_id/:item_id
-  # bookmarks_categories/json/index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id/1/1.json
-  #Return head
-  # success    ->  head  200 OK
-
-  #def json_index_bookmarks_categories_with_bookmarks_been_approved_by_user_id_and_by_item_id
-  #
-  #  respond_to do |format|
-  #
-  #    if User.exists?(id:params[:user_id])
-  #
-  #      if BookmarksCategory.exists?(item_id:params[:item_id])
-  #
-  #        @bookmarks_category  = BookmarksCategory.
-  #                                includes(:bookmarks).
-  #                                  where('bookmarks_categories.item_id = ? and bookmarks.approval in (0,?)', params[:item_id],params[:user_id])
-  #        format.json {render json:@bookmarks_category.
-  #                              as_json(include:
-  #                                          {bookmarks: {only: [:id, :bookmark_url, :bookmarks_category_id, :description, :i_frame, :image_name, :image_name_desc, :item_id, :title]}}) }
-  #
-  #      else
-  #        format.json { render json: 'not bookmark category for this item ', status: :not_found }
-  #      end
-  #    else
-  #      format.json { render json: 'not user found', status: :not_found }
-  #    end
-  #  end
-  #
-  #
-  #end
-  #
-
 
 
 

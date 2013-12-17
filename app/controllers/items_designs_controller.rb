@@ -177,10 +177,17 @@ class ItemsDesignsController < ApplicationController
   # success    ->  head  200 OK
   
   def json_show_item_design_by_id
-    @items_design = ItemsDesign.find(params[:id])
-
     respond_to do |format|
-      format.json { render json: @items_design }
+
+        if ItemsDesign.exists?(id:params[:id])
+          @items_design = ItemsDesign.find(params[:id])
+
+
+          format.json { render json: @items_design }
+        else
+          format.json { render json:{}}
+        end
+
     end
   end
 
@@ -202,7 +209,9 @@ class ItemsDesignsController < ApplicationController
 
         format.json { render json: @items_designs }
       else
-        format.json { render json: 'not found item id' , status: :not_found }
+        #format.json { render json: 'not found item id' , status: :not_found }
+        format.json { render json: []}
+
       end
     end
   end
@@ -224,7 +233,8 @@ class ItemsDesignsController < ApplicationController
 
         format.json { render json: @items_designs }
       else
-        format.json { render json: 'not found item id' , status: :not_found }
+        #format.json { render json: 'not found item id' , status: :not_found }
+        format.json { render json: []}
       end
     end
   end
@@ -281,7 +291,8 @@ class ItemsDesignsController < ApplicationController
 
         format.json { render json: @bundles_items_designs }
       else
-        format.json { render json: 'not found bundle id' , status: :not_found }
+        format.json { render json: []}
+        #format.json { render json: 'not found bundle id' , status: :not_found }
       end
 
 
@@ -327,7 +338,9 @@ class ItemsDesignsController < ApplicationController
         }}
 
       else
-        format.json { render json: 'not found item id' , status: :not_found }
+        #format.json { render json: 'not found item id' , status: :not_found }
+        format.json { render json: []}
+
       end
 
     end
@@ -356,20 +369,26 @@ class ItemsDesignsController < ApplicationController
           keyword = params[:keyword].strip.downcase
           category = params[:category].strip.downcase
 
-          @items_designs = ItemsDesign.
-              where("LOWER(LTRIM(RTRIM("+category+"))) LIKE ? and item_id = ? ", "%#{keyword}%",params[:item_id]).
-              limit(params[:limit]).
-              offset(params[:offset])
+          if category_exist?(params[:category])
 
 
-          format.json { render json: @items_designs
-          }
+              @items_designs = ItemsDesign.
+                where("LOWER(LTRIM(RTRIM("+category+"))) LIKE ? and item_id = ? ", "%#{keyword}%",params[:item_id]).
+                limit(params[:limit]).
+                offset(params[:offset])
+
+              format.json { render json: @items_designs }
+          else
+            format.json { render json: '[]' }
+          end
 
         else
-          format.json { render json: 'not found item id' , status: :not_found }
+          #format.json { render json: 'not found item id' , status: :not_found }
+          format.json { render json: []}
         end
       else
-        format.json { render json: 'keyword or category to long ' , status: :not_found }
+        format.json { render json: []}
+        #format.json { render json: 'keyword or category to long ' , status: :not_found }
       end
 
     end
@@ -397,7 +416,8 @@ class ItemsDesignsController < ApplicationController
 
         format.json { render json: seo_url }
       else
-        format.json { render json: 'not found item designs id' , status: :not_found }
+        #format.json { render json: 'not found item designs id' , status: :not_found }
+        format.json { render json: {}}
       end
     end
 
