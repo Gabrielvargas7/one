@@ -120,6 +120,9 @@ p.profile_friend_username{
 /*User-Photos-View*/
 .user-photos-view{
   background-color: transparent;
+  #gridItemList{
+    padding-top:9px;
+  }
 }
 .user-photos-view .profileHome_activity.generalGrid{
   height:550px;
