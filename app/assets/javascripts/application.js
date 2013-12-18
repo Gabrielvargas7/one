@@ -23,6 +23,7 @@
 //= require underscore.string
 //= require jquery.simplyscroll
 //= require jquery.scrollTo
+//= require masonry.pkgd
 //= require backbone.marionette
 //= require jquery.mousewheel
 //= require lightbox
