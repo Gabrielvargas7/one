@@ -35,6 +35,11 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
       else
         #append ask for key overlay.
         @$(@itemViewContainer).append(JST['profile/ProfileAskForKey']())
+
+    $('#gridItemsTest').masonry(
+                                columnWidth:200
+                                itemSelector:'.gridItemWrap'
+                                gutter:10)
   
   showGridItemLargeView:(childView,model)->
     currentGridItem = model
