@@ -21,7 +21,6 @@ ruby '2.0.0'
   gem 'unicorn', '4.6.3'
   gem 'geocoder', '1.1.8'
   gem 'newrelic_rpm'
-  gem "codeclimate-test-reporter", group: :test, require: nil
 
 
 
@@ -87,6 +86,8 @@ group :test do
   gem 'database_cleaner', '0.9.1'
   gem 'guard-rspec', '3.0.0'
   gem 'rake', '10.1.0'
+  gem 'codeclimate-test-reporter', :require => false
+
  end
 
 group :production do
