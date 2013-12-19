@@ -96,10 +96,38 @@ Mywebroom.Helpers.Editor = {
 
 
 
+  filterKeyword: (keyword) ->
+
+
+    if keyword is null or typeof keyword is "undefined"                   # null / undefined
+      ""
+
+    else if typeof keyword is "boolean"
+      ""
+
+    else if typeof keyword is "number"                                    # Number
+
+      result = String(keyword)
+
+      if result is "NaN"                                                  # NaN
+        ""
+      else
+        result
+
+    else if not /^[a-z0-9]+$/i.test(keyword)                              # Special character
+      keyword.replace(/[^a-z0-9]/ig, " ").trim()
+    else                                                                  # Alpha-Numeric
+      keyword.trim()
+
 
 
 
   paginateSearch: (type, limit, offset, keyword) ->
+
+    # Strip special chars, etc. from keyword
+    keyword = @filterKeyword(keyword)
+
+
 
     switch type
       when "ALL"
