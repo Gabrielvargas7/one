@@ -57,7 +57,7 @@ describe "User pages" do
     end
 
     xit { should have_selector('title', text: 'All users') }
-    xit { should have_selector('h1',    text: 'All users') }
+    xit { page.should have_selector('h1',    text: 'All users') }
 
     xit "should list each user" do
       User.all.each do |user|
