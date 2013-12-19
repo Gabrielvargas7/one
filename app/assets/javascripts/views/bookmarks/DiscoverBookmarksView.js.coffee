@@ -13,8 +13,15 @@ class Mywebroom.Views.DiscoverBookmarksView extends Backbone.View
 
 
 
-
   appendDiscoverItems: (collection) ->
+    rowLine = "<div class='discover_bookmarks_list'></div>"
+    @$('.discover_bookmarks_bottom').append rowLine
+    collection.forEach ((bookmark)->
+      bookmarkItemView = new Mywebroom.Views.DiscoverBookmarkGridItemView(model:bookmark)
+      @$('.discover_bookmarks_list').append(bookmarkItemView.el)
+      bookmarkItemView.render()
+      ),this
+  appendDiscoverItemsOld: (collection) ->
 
     # Divide collection into rows of 5.
     # Insert ul element.

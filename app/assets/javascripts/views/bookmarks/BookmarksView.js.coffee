@@ -118,6 +118,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     @bookmarksDiscoverView.remove() if @bookmarksDiscoverView
 
+    # Show the bookmarks view. (It will rerendered after the collection fetch.)
+    $(@myBookmarksView.el).show()
+
     # Fetch the collection so the myBookmarksView auto re-renders
     @collection.fetch
       reset:true
@@ -125,10 +128,9 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
       url:@collection.url this.options.user, this.options.item_id
 
     # set .my_bookmarks_bottom to 100% width minus the sidebar width
-    $('.my_bookmarks_bottom').css 'width',$(window).width() - 270
+    #$('.my_bookmarks_bottom').css 'width',$(window).width() - 270
 
-    # Show the bookmarks view. (It's been rerendered after the collection fetch.)
-    $(@myBookmarksView.el).show()
+
 
 
 

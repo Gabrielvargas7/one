@@ -2,9 +2,9 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
   #*******************
   #**** Tag  (no tag = default el "div")
   #*******************
-  tagName:"li"
+  className:"bookmark_grid_item"
   #*******************
-  #**** Templeate
+  #**** Template
   #*******************
   template:JST['bookmarks/DiscoverGridItemTemplate']
   events:
@@ -14,6 +14,7 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
     #*******************
   render:->
     $(@el).html(@template(model:@model))
+    $(@el).attr('data-id',@model.id)
 
   #--------------------------
   # Add bookmark to server. Append "Added" to the el.
@@ -47,7 +48,7 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
           console.error(response)
 
     #Append Added Confirmation HTML
-    @$('.bookmark_grid_item').append("<div class='just_added'>
+    $(@el).append("<div class='just_added'>
       <p>Added!</p>
       <img src='http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226370/bookmarks-corner-icon-check-confirmation.png'>
       </div>")
