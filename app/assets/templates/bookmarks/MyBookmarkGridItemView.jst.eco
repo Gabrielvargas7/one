@@ -1,5 +1,5 @@
 
-<div class="bookmark_grid_item" data-cid="<%=@model.cid%>" data-id="<%=@model.id%>">
+
 
   <div class="gridItemPicture my_bookmarks_grid_item" style="background-image:url(<%=@model.get('image_name_desc').url%>)">
     <div class="bookmark_corner_icon_wrap">
@@ -14,4 +14,3 @@
     </div>
 
   </div>
-</div>

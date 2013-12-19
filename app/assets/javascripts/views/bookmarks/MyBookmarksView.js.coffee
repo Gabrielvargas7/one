@@ -30,16 +30,30 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
     @collection.add(moreSquare,{silent:true}) #NOTE: This means this collection is never empty. If you don't add the moreSquare, make sure to do 0 collection checks
     @appendItems()
     @collection.remove(moreSquare,{silent:true})
+    $('.bookmark_grid_list').masonry(
+                            columnWidth:200
+                            itemSelector:'.bookmark_grid_item'
+                            gutter:10)
+
     this
 
   #*******************
   #**** Functions
   #*******************
+  appendItems:->
+    beginListLine = "<div class='bookmark_grid_list'></div>"
+    @$('.my_bookmarks_bottom').append beginListLine
 
+    @collection.forEach ((item)->
+      bookmarkItemView = new Mywebroom.Views.MyBookmarkGridItemView(model:item)
+      @$('.bookmark_grid_list').append(bookmarkItemView.el)
+      bookmarkItemView.render()
+      bookmarkItemView.on('deleteBookmark',@triggerDeleteBookmark,this))
+      ,this
   #--------------------------
   # append bookmark items to this view. called from render(). Views here listen for deleteBookmark event.
   #--------------------------
-  appendItems:->
+  appendItemsOld:->
     #Divide collection into rows of 5.
     #Insert ul element.
     #For each in 5ple, append a grid item view.

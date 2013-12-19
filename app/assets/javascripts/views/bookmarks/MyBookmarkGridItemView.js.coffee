@@ -2,7 +2,7 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
   #*******************
   #**** Tag  (no tag = default el "div")
   #*******************
-  tagName:"li"
+  className:"bookmark_grid_item"
   #*******************
   #**** Templeate
   #*******************
@@ -19,6 +19,8 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
     #*******************
   render:->
     $(@el).html(@template(model:@model))
+    $(@el).attr('data-cid',@model.cid)
+    $(@el).attr('data-id',@model.id)
 
   confirmDeleteBookmark:(event)->
     #Confirm to delete the bookmark.
