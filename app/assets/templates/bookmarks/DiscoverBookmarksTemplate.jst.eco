@@ -4,4 +4,5 @@
 </div>
 <div class="discover_bookmarks_bottom">
   <!--5 columns-->
+  <div class='discover_bookmarks_list'></div>
 </div>

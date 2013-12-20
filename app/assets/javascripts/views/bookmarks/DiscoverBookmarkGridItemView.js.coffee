@@ -1,4 +1,4 @@
-class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
+class Mywebroom.Views.DiscoverBookmarkGridItemView extends Marionette.ItemView#Backbone.View
   #*******************
   #**** Tag  (no tag = default el "div")
   #*******************
@@ -12,8 +12,8 @@ class Mywebroom.Views.DiscoverBookmarkGridItemView extends Backbone.View
   #*******************
     #**** Render
     #*******************
-  render:->
-    $(@el).html(@template(model:@model))
+  onRender:->
+    #$(@el).html(@template(model:@model))
     $(@el).attr('data-id',@model.id)
 
   #--------------------------

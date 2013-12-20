@@ -4,5 +4,6 @@
   <a href="#" class="bookmarks_close_button"><img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1371245133/close-delete-icon.png"></a>
 </div>
 <div class="my_bookmarks_bottom">
+  <div class="bookmark_grid_list"></div>
   <!--5 columns-->
 </div>

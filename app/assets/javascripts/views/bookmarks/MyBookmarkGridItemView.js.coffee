@@ -1,4 +1,4 @@
-class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
+class Mywebroom.Views.MyBookmarkGridItemView extends Marionette.ItemView
   #*******************
   #**** Tag  (no tag = default el "div")
   #*******************
@@ -32,7 +32,8 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
     #NOTE: This .on is jQuery NOT Backbone.on.
     $('.delete_bookmark_button').on('click',{@model, that},
       ->
-        that.trigger('deleteBookmark',that.model)
+        that.deleteBookmark()
+        #that.trigger('deleteBookmark',that.model)
         that.remove())
     #Destroy the modal instead of hide it, since we have changing data inside it. (model name)
     $("#myModal").on "hidden", ->
@@ -42,3 +43,14 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Backbone.View
     #console.log @model
     Mywebroom.App.vent.trigger('BrowseMode:open',{@model})
     Mywebroom.App.vent.trigger('BrowseMode:closeBookmarkView')
+
+  deleteBookmark:()->
+    bookmarkId= @model.get('id')
+    position= @model.get('position')
+    #userId= @getUserSignedInId()
+    #deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
+    #deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
+    #Delete the bookmark from the server.
+    deletedBookmark.destroyUserBookmark()
+    #destroy the modal
+    $('#myModal').remove()

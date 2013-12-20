@@ -1,9 +1,13 @@
-class Mywebroom.Views.MyBookmarksView extends Backbone.View
+class Mywebroom.Views.MyBookmarksView extends Marionette.CompositeView
   #*******************
   #**** Tag  / Class
   #*******************
 
   className:"my_bookmarks_list_wrap"
+
+  itemView: (obj)->
+    new Mywebroom.Views.MyBookmarkGridItemView(obj)
+  itemViewContainer: '.bookmark_grid_list'
   #*******************
   #**** Initialize
   #*******************
@@ -21,20 +25,25 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
   #*******************
     #**** Render
     #*******************
-
-  render:->
-    @$el.empty()
-    $(@el).append(@template())
+  beforeRender:->
     #Add the "MORE" square to the collection
-    moreSquare = new Backbone.Model({title:"MYWEBROOM_LAST"})
-    @collection.add(moreSquare,{silent:true}) #NOTE: This means this collection is never empty. If you don't add the moreSquare, make sure to do 0 collection checks
-    @appendItems()
-    @collection.remove(moreSquare,{silent:true})
+    # @moreSquare = new Backbone.Model({title:"MYWEBROOM_LAST"})
+    # @collection.add(moreSquare,{silent:true}) #NOTE: This means this collection is never empty. If you don't add the moreSquare, make sure to do 0 collection checks
+
+  onRender:->
+    #@$el.empty()
+    #$(@el).append(@template())
+    
+    #@appendItems()
+    #@collection.remove(@moreSquare,{silent:true})
+    moreSquare = JST['bookmarks/MyBookmarksMoreSquareTemplate']
+    @$(@itemViewContainer).append moreSquare()
     $('.bookmark_grid_list').masonry(
                             columnWidth:200
                             itemSelector:'.bookmark_grid_item'
                             gutter:10)
 
+    #bookmarkItemView.on('deleteBookmark',@triggerDeleteBookmark,this)
     this
 
   #*******************
@@ -48,7 +57,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
       bookmarkItemView = new Mywebroom.Views.MyBookmarkGridItemView(model:item)
       @$('.bookmark_grid_list').append(bookmarkItemView.el)
       bookmarkItemView.render()
-      bookmarkItemView.on('deleteBookmark',@triggerDeleteBookmark,this))
+      )
       ,this
   #--------------------------
   # append bookmark items to this view. called from render(). Views here listen for deleteBookmark event.
@@ -85,15 +94,7 @@ class Mywebroom.Views.MyBookmarksView extends Backbone.View
   #
   #--------------------------
   triggerDeleteBookmark:(model)->
-    bookmarkId= model.get('id')
-    position= model.get('position')
-    userId= @getUserSignedInId()
-    deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
-    deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
-    #Delete the bookmark from the server.
-    deletedBookmark.destroyUserBookmark()
-    #destroy the modal
-    $('#myModal').remove()
+    
 
   #--------------------------
   # Get the current signed in user. Called from triggerDeleteBookmark
