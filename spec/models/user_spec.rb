@@ -34,6 +34,7 @@ describe User do
   it { @user.should respond_to(:email) }
   it { @user.should respond_to(:username)}
   it { @user.should respond_to(:admin) }
+  it { @user.should respond_to(:specific_room_id) }
 
 
 
@@ -100,25 +101,6 @@ describe User do
   end
 
 
-  ################
-  ##test validation - name
-  ################
-  #describe "when the name" , tag_name: true  do
-  #
-  #    context "is not present" do
-  #      before {@user.name = " "}
-  #      it {should_not be_valid}
-  #
-  #    end
-  #
-  #    context "is too long" do
-  #      before { @user.name = "a" * 51 }
-  #      it { should_not be_valid }
-  #    end
-  #
-  #end
-
-
   ###############
   #test validation - email
   ###############
@@ -139,6 +121,7 @@ describe User do
 
             addresses.each do |invalid_address|
               @user.email = invalid_address
+              #puts invalid_address
               @user.should_not be_valid
             end
           end
@@ -228,6 +211,31 @@ describe User do
       it { @user.username.should_not == @user_with_same_username.username  }
     end
 
+
+    context "get user name method" do
+
+       it " should be valid"  do
+         username =  @user.get_username("test@a.com")
+         username.should == "test"
+
+         username =  @user.get_username("te_st@a.com")
+         username.should == "test"
+
+         username =  @user.get_username("t#est123_@a.com")
+         username.should == "test123"
+       end
+
+       it "should be unique"  do
+         @user1 = FactoryGirl.create(:user,email:"email_unique@uni.com")
+         @user2 = FactoryGirl.build(:user,email:"email_unique@uni.com")
+
+         username1 = @user1.get_username("email_unique@uni.com")
+         username2 = @user2.get_username("email_unique@uni.com")
+
+          username1.should_not eq(username2)
+       end
+    end
+
   end
 
   ###############
@@ -248,6 +256,19 @@ describe User do
       user_notification_not_exist.should be_nil
     end
 
+    it "build a new user notification" do
+      expect {
+        FactoryGirl.build(:user)
+      }.to change(UsersNotification, :count).by(0)
+    end
+
+    it "creates a new user notification" do
+      expect {
+        FactoryGirl.create(:user)
+      }.to change(UsersNotification, :count).by(1)
+    end
+
+
   end
 
 
@@ -261,7 +282,6 @@ describe User do
       last_email = ActionMailer::Base.deliveries.last
       last_email.to.should include(@user.email)
     end
-
   end
 
 
@@ -285,55 +305,169 @@ describe User do
 
       it "delivers email to user" do
         @user.send_password_reset
+        last_email = ActionMailer::Base.deliveries.last
         last_email.to.should include (@user.email)
       end
 
    end
 
 
-  ################
-  ##test validation - default image
-  ################
-  #describe "when image default ", tag_image_default: true  do
-  #
-  #  let(:image_default) {"/assets/fallback/user/default_user.png"}
-  #
-  #  it "should be default " do
-  #    puts @user.image_name
-  #    @user.image_name.to_s.should == image_default.to_s
-  #
-  #  end
-  #
-  #end
+
+  ###############
+  #test validation - create user photo name
+  ###############
+  describe "#create user photo for the user",tag_photo:true do
+
+    before{@user.save}
+    let(:user_photo) { UsersPhoto.find_by_user_id(@user.id) }
+    let(:user_photo_not_exist) { UsersPhoto.find_by_user_id(@user.id+1) }
+    it "should be valid" do
+      #puts @user.id
+      user_photo.should be_valid
+    end
+
+    it "should not be valid " do
+      user_photo_not_exist.should be_nil
+    end
+
+    it "should image be = profile_image = y " do
+      user_photo.profile_image.should eq('y')
+    end
 
 
-  ################
-  ##test validation - upload image
-  ################
-  ## these test only run when it is explicit.- example
-  ## bundle exec rspec --tag tag_image spec/models/theme_spec.rb
-  #describe "when image",tag_image_user:true  do
-  #
-  #  let(:user_with_image_upload) { Theme.create(
-  #      name:"user test",
-  #      image_name:Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'image', 'test_image.jpg'))
-  #  )}
-  #
-  #  it "should be upload to CDN - cloudinary " do
-  #    puts user_with_image_upload.image_name
-  #    user_with_image_upload.image_name.to_s.should include("http")
-  #  end
-  #
-  #end
+    it "build a new user" do
+      expect {
+        FactoryGirl.build(:user)
+      }.to change(UsersPhoto, :count).by(0)
+    end
+
+    it "creates a new user" do
+      expect {
+        FactoryGirl.create(:user)
+      }.to change(UsersPhoto, :count).by(1)
+    end
+  end
 
 
+  ###############
+  #test validation - create user profile name
+  ###############
+  describe "#create user profile for the user",tag_profile:true do
+
+    before{@user.save}
+    let(:user_profile) { UsersProfile.find_by_user_id(@user.id) }
+    let(:user_profile_not_exist) { UsersProfile.find_by_user_id(@user.id+1) }
+    it "should be valid" do
+      user_profile.should be_valid
+    end
+
+    it "should not be valid " do
+      user_profile_not_exist.should be_nil
+    end
+
+    it "should image be = profile_image = y " do
+      user_profile.tutorial_step.should eq(1)
+    end
+
+    it "build a new user" do
+      expect {
+        FactoryGirl.build(:user)
+      }.to change(UsersProfile, :count).by(0)
+    end
+
+    it "creates a new user" do
+      expect {
+        FactoryGirl.create(:user)
+      }.to change(UsersProfile, :count).by(1)
+    end
+
+
+  end
 
 
   ###############
   #test validation - create random room
   ###############
-  describe "#random_room",tag_random_room:true do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe "#specific_room",tag_specific_room:true do
+
+    before do
+      @bundle = Bundle.first
+    end
+
+    context "must have a theme " do
+      it "create user must change user theme by 1" do
+        expect {
+          FactoryGirl.create(:user,specific_room_id:@bundle.id)
+        }.to change(UsersTheme, :count).by(1)
+      end
+
+      it "create user must hava user theme form bundle " do
+          user_specific_room = FactoryGirl.create(:user,specific_room_id:@bundle.id)
+          @user_theme = UsersTheme.find_by_user_id(user_specific_room.id)
+          #puts "user theme"
+          #puts @bundle.theme_id
+          #puts @user_theme.theme_id
+          @user_theme.theme_id.should == @bundle.theme_id
+      end
+    end
+
+
+    context "must have a item design " do
+      before do
+        @bundle_items_design_count = BundlesItemsDesign.where("bundle_id = ?",@bundle.id).count
+        #puts " count bundle items designs"
+        #puts @bundle_items_design_count
+      end
+      it "create user must change user items designs by many" do
+        expect {
+          FactoryGirl.create(:user,specific_room_id:@bundle.id)
+        }.to change(UsersItemsDesign, :count).by(@bundle_items_design_count)
+      end
+
+      it "create user must have some items designs from bundle  " do
+
+        @bundle_items_designs = BundlesItemsDesign.where("bundle_id = ?",@bundle.id)
+        @user_bundle = FactoryGirl.create(:user,specific_room_id:@bundle.id)
+
+        @bundle_items_designs.each do | items_design|
+
+          user_items_design = UsersItemsDesign.find_by_user_id_and_items_design_id(@user_bundle.id,items_design.items_design_id)
+          #puts user_items_design.items_design_id
+          user_items_design.should be_valid
+        end
+      end
+    end
+
+    context "must have a bookmarks " do
+      before do
+        @bundle_bookmarks_count = BundlesBookmark.count
+        puts " count bundle bookmarks "
+        puts @bundle_bookmarks_count
+      end
+      it "create user must change user bookmarks by many" do
+        expect {
+          FactoryGirl.create(:user,specific_room_id:@bundle.id)
+        }.to change(UsersBookmark, :count).by(@bundle_bookmarks_count)
+      end
+
+      it "create user must have some bookmarks from bundle " do
+
+        @bundle_bookmarks = BundlesBookmark.all
+        @user_bundle = FactoryGirl.create(:user,specific_room_id:@bundle.id)
+
+        @bundle_bookmarks.each do | bookmark|
+          user_bookmark = UsersBookmark.find_by_user_id_and_bookmark_id(@user_bundle.id,bookmark.bookmark_id)
+          #puts user_bookmark.bookmark_id
+          #puts user_bookmark.position
+          user_bookmark.should be_valid
+        end
+      end
+    end
+
+
+
+
+
 
   end
 
@@ -345,14 +479,6 @@ describe User do
     pending "add some examples to (or delete) #{__FILE__}"
   end
 
-
-  #def get_username
-  ###############
-  #test validation - def get_username
-  ###############
-  describe "#get_username",tag_get_username:true do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
 
 
 
