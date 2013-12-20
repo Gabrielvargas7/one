@@ -178,7 +178,7 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
-    omniauth-facebook (1.4.1)
+    omniauth-facebook (1.5.1)
       omniauth-oauth2 (~> 1.1.0)
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
@@ -317,7 +317,7 @@ DEPENDENCIES
   newrelic_rpm
   oauth2 (= 0.8.0)
   oink (= 0.10.1)
-  omniauth-facebook (= 1.4.1)
+  omniauth-facebook (= 1.5.1)
   pg (= 0.15.1)
   phantomjs (= 1.9.2.0)
   rack-timeout

@@ -15,6 +15,7 @@ FactoryGirl.define do
     sequence(:username)  {|n| "username#{n}"}
 
     password "foodbar"
+    specific_room_id 1
 
     factory :admin do
       admin true

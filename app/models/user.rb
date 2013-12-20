@@ -52,10 +52,6 @@ class User < ActiveRecord::Base
                :create_specific_friends
 
 
-  #validates :name,
-  #           presence:true,
-  #           length: { maximum: 50 }
-
 
   validates :email,
              presence:true,
@@ -109,14 +105,8 @@ class User < ActiveRecord::Base
       #---------------------------------
       # create user from facebook
       #---------------------------------
-
-      #puts "omniauth cookies facebook"+cookies[:facebook_bundle_id].to_s
-      #
-      #if cookies[:facebook_bundle_id].nil?
-      #
-      #else
       user.specific_room_id = specific_room_id
-      #end
+
 
 
       user.provider = auth.provider
@@ -233,20 +223,20 @@ class User < ActiveRecord::Base
   #***********************************
 
   #use this method when the user forget the password
-    def generate_token(column)
+   def generate_token(column)
       begin
         self[column] = SecureRandom.urlsafe_base64
       end while User.exists?(column => self[column])
-    end
+   end
 
 
-    def create_remember_token
+  def create_remember_token
       # when the user authenticate with facebook
       # we don't create a token because facebook generate it for us
       if self.uid.blank?
          self.remember_token = SecureRandom.urlsafe_base64
       end
-    end
+   end
 
 
   #***********************************
@@ -330,7 +320,7 @@ class User < ActiveRecord::Base
   def create_image_name
     if self.uid.blank?
       UsersPhoto.create(user_id:self.id,profile_image:'y')
-     end
+    end
 
   end
 
