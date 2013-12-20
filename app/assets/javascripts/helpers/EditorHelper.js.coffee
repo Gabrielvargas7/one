@@ -112,7 +112,12 @@ Mywebroom.Helpers.Editor = {
       if result is "NaN"                                                  # NaN
         ""
       else
-        result
+
+        if keyword % 1 is 0                                               # Integers
+          result
+        else
+          result.replace(/\./g, " ").trim()                      # Decimals
+
 
     else if not /^[a-z0-9]+$/i.test(keyword)                              # Special character
       keyword.replace(/[^a-z0-9]/ig, " ").trim()
