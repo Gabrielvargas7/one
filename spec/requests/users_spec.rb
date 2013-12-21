@@ -6,28 +6,11 @@ describe "User pages" do
   after(:all){ delete_init_data }
 
   before do
-    #@user = FactoryGirl.create(:user)
-    #sign_in @user
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
 
   subject { page }
-
-
-
-  describe "index" do
-    before  do
-      visit room_rooms_path(@user.username)
-    end
-
-    xit { page.should have_selector('title', text: 'My Room') }
-
-  end
-
-
-
-
 
   describe "Authentications", tag_auth:true do
     before do

@@ -43,4 +43,20 @@ Mywebroom::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  # add in test for OmniAuth
+  #OmniAuth.config.test_mode = true
+  #
+  #OmniAuth.config.mock_auth[:facebook] = {
+  #    'uid' => '1337',
+  #    'provider' => 'facebook',
+  #    'info' => {
+  #        'name' => 'JonnieHallman'
+  #    },
+  #    'extra' => {
+  #    'user_hash' => {
+  #        'email' => 'someone@webs.com'
+  #    }
+  #    }
+  #}
+
 end

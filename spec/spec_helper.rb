@@ -1,12 +1,54 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
+#require 'open-uri'
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
+
+###############
+#Start Test facebook login
+###############
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.full_host = 'http://example.com'
+#OmniAuth.config.full_host = 'http://localhost:3000'
+
+omni_hash = {
+    'uid' => "12345",
+    'provider' => "facebook",
+    "info" => {
+        "email" => Faker::Internet.email,
+        "image" => 'http://graph.facebook.com/1234567/picture?type=square'
+    },
+    "extra" => {
+        "raw_info" => {
+            "first_name" => Faker::Name.first_name,
+            "last_name" => Faker::Name.last_name,
+            "name" => Faker::Internet.user_name,
+            "gender" => "male",
+            "locale" => "en",
+            "email" => Faker::Internet.email
+        }
+    },
+    "credentials" => {
+        "token" => 'ABCDEF...', # OAuth 2.0 access_token, which you may wish to store
+        "expires_at" => 1321747205, # when the access token expires (it always will)
+        "expires" => true # this will always be true
+    },
+}
+OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(omni_hash)
+
+
+###############
+# End Test facebook login
+###############
+
+
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -50,6 +92,8 @@ RSpec.configure do |config|
   #config.use_transactional_fixtures = true
   config.include(MailerMacros)
   config.before(:each) { reset_email }
+
+  config.include Capybara::DSL
 
 
   # these test only run when it is explicit.-because it insert image to the CDN and is very slow
