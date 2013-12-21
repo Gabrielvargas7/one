@@ -52,7 +52,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
   render: ->
     #console.log("bookmark view: "+this.options.item_id)
     #alert("user_item_design: "+this.options.user_item_design.id+" user id: "+this.options.user)
-    $(@el).append(@template(user_item_design: this.options.item_id, items_name: this.options.items_name, collection: @collection, categories: @discoverCategoriesCollection, spriteUrl: @spriteUrl, largeSpriteUrl: @largeSpriteUrl))
+    $(@el).html(@template(user_item_design: this.options.item_id, items_name: this.options.items_name, collection: @collection, categories: @discoverCategoriesCollection, spriteUrl: @spriteUrl, largeSpriteUrl: @largeSpriteUrl))
     @myBookmarksView = new Mywebroom.Views.MyBookmarksView(collection: @collection)
     $(@el).append(@myBookmarksView.render().el)
     #set .my_bookmarks_bottom to 100% width minus the sidebar width
@@ -78,7 +78,8 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('#add_your_own_submit input').off('click').on('click', {that}, @addCustomBookmark)
 
     # Remove old views
-    $(@myBookmarksView.el).hide()
+    #@myBookmarksView.remove() if @myBookmarksView
+    @myBookmarksView.remove() if @myBookmarksView
     @bookmarksDiscoverView.remove() if @bookmarksDiscoverView
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     @previewModeView.closeView() if @previewModeView
@@ -114,21 +115,29 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     $('.discover_submenu_section').addClass('hidden')
 
     # Remove old views
+    @myBookmarksView.remove() if @myBookmarksView
     @previewModeView.closeView() if @previewModeView
     @currentBookmarkbyCategoryView.remove() if @currentBookmarkbyCategoryView
     @bookmarksDiscoverView.remove() if @bookmarksDiscoverView
 
-    # Fetch the collection so the myBookmarksView auto re-renders
-    @collection.fetch
-      reset:true
-      async:false
-      url:@collection.url this.options.user, this.options.item_id
+    @getMyBookmarksCollection()
+    @render()
+
+    # Show the bookmarks view. (It will rerendered after the collection fetch.)
+    # $(@myBookmarksView.el).show()
+
+    # # Fetch the collection so the myBookmarksView auto re-renders
+    # @collection.fetch
+    #   reset:true
+    #   async:false
+    #   url:@collection.url this.options.user, this.options.item_id
+
+    # @myBookmarksView.onRender()
 
     # set .my_bookmarks_bottom to 100% width minus the sidebar width
-    $('.my_bookmarks_bottom').css 'width',$(window).width() - 270
+    #$('.my_bookmarks_bottom').css 'width',$(window).width() - 270
 
-    # Show the bookmarks view. (It's been rerendered after the collection fetch.)
-    $(@myBookmarksView.el).show()
+
 
 
 

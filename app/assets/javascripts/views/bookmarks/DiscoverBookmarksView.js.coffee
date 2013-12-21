@@ -1,20 +1,31 @@
-class Mywebroom.Views.DiscoverBookmarksView extends Backbone.View
+class Mywebroom.Views.DiscoverBookmarksView extends Marionette.CompositeView #Backbone.View
 
   template: JST['bookmarks/DiscoverBookmarksTemplate']
 
   className: 'discover_list_wrap'
 
+  itemView:(obj)->
+    new Mywebroom.Views.DiscoverBookmarkGridItemView(obj)
 
-  render: ->
+  itemViewContainer:'.discover_bookmarks_list'
 
-    $(@el).append(@template())
-    @appendDiscoverItems(@collection)
-    this
-
+  onRender: ->
+    
+    #$(@el).append(@template())
+    #@appendDiscoverItems(@collection)
+    #this
 
 
 
   appendDiscoverItems: (collection) ->
+    #rowLine = "<div class='discover_bookmarks_list'></div>"
+    #@$('.discover_bookmarks_bottom').append rowLine
+    collection.forEach ((bookmark)->
+      bookmarkItemView = new Mywebroom.Views.DiscoverBookmarkGridItemView(model:bookmark)
+      @$('.discover_bookmarks_list').append(bookmarkItemView.el)
+      bookmarkItemView.render()
+      ),this
+  appendDiscoverItemsOld: (collection) ->
 
     # Divide collection into rows of 5.
     # Insert ul element.

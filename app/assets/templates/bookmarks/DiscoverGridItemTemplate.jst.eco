@@ -1,16 +1,13 @@
-<div class="bookmark_grid_item" data-id="<%=@model.get('id')%>">
 
-  <div class="gridItemPicture my_bookmarks_grid_item" style="background-image:url(<%=@model.get('image_name_desc').url%>)">
+  <div class="gridItemPicture my_bookmarks_grid_item" style="background-image:url(<%=@image_name_desc.url%>)">
     <div class="bookmark_corner_icon_wrap">
       <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226317/bookmarks-corner-icon-add-plus.png" class="add_bookmark_icon pull-right">
       <img src="http://res.cloudinary.com/hpdnx5ayv/image/upload/v1378226332/bookmarks-corner-icon-add-plus-hover.png" class="add_bookmark_icon_hover pull-right">
     </div>
   </div>
   <div class="bookmark_grid_item_bottom"> 
-    <img src="<%=@model.get('image_name_desc').url%>">
+    <img src="<%=@image_name_desc.url%>">
         <div class="discover_bookmark_name_form">
-      <%=@model.get('title')%>
+      <%=@title%>
     </div>
-    <!--<%=@model.get('id')%> <%=@model.get('title')%>-->
   </div>
-</div>
