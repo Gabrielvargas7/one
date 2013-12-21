@@ -44,13 +44,13 @@ class Mywebroom.Views.InsView extends Backbone.View
           #console.log("design - open store")
 
           # Design
-          Mywebroom.Helpers.showStore()
+          Mywebroom.Helpers.EditorHelper.showStore()
 
         when 3
           #console.log("theme - open store, show theme tab")
 
           # Theme
-          Mywebroom.Helpers.showStore()
+          Mywebroom.Helpers.EditorHelper.showStore()
 
           # Switch to Theme Tab
           $('a[href="#tab_themes"]').tab('show')

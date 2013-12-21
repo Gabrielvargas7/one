@@ -333,7 +333,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     switch state
 
       when "hidden"
-        Mywebroom.Helpers.showStore()
+        Mywebroom.Helpers.EditorHelper.showStore()
 
 
 
@@ -353,18 +353,18 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
 
               # Proceed with hiding the store
-              Mywebroom.Helpers.hideStore()
+              Mywebroom.Helpers.EditorHelper.hideStore()
           )
         else
 
           # Hide the store
-          Mywebroom.Helpers.hideStore()
+          Mywebroom.Helpers.EditorHelper.hideStore()
 
 
 
 
       when "collapsed"
-        Mywebroom.Helpers.expandStore()
+        Mywebroom.Helpers.EditorHelper.expandStore()
 
 
     # Always take these actions
@@ -918,7 +918,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     event.stopPropagation()
     event.preventDefault()
 
-    #Only close everything if there are active sites to show. 
+    #Only close everything if there are active sites to show.
 
     #If no active sites, toast message
     if Mywebroom.State.get('activeSitesMenuView')
@@ -929,12 +929,12 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         $('#xroom_profile').hide()
         $('#xroom_bookmarks').hide()
         $('#xroom_header_search_box').hide()
-        
+
         #2. Show other stuff
         Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
         $('.browse_mode_view').show()
         $('#xroom_bookmarks_browse_mode').show()
-      
+
       else
         @noActiveSitesToast()
     else

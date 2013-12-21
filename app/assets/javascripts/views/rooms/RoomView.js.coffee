@@ -215,7 +215,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
     # TRANSITION OUR STORE TO A HIDDEN STATE
     # this also adds the click events for objects
-    Mywebroom.Helpers.hideStore()
+    Mywebroom.Helpers.EditorHelper.hideStore()
 
 
 
@@ -724,7 +724,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     if user_profile.tutorial_step == 0
 
       # (16) Conditionally Show Notification Modal
-      Mywebroom.Helpers.showModal()
+      Mywebroom.Helpers.AppHelper.showModal()
 
 
       ###
@@ -937,7 +937,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
     # (12) Listen for editor scroll
-    Mywebroom.Helpers.onEditorScroll()
+    Mywebroom.Helpers.EditorHelper.onEditorScroll()
 
 
 
@@ -1088,7 +1088,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     #console.log("designs entity ")
 
     # (1) Show Store
-    Mywebroom.Helpers.showStore()
+    Mywebroom.Helpers.EditorHelper.showStore()
 
 
     # (2) Switch to the hidden tab
@@ -1121,7 +1121,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
     #console.log("theme entity ")
 
     # (1) Show Store
-    Mywebroom.Helpers.showStore()
+    Mywebroom.Helpers.EditorHelper.showStore()
 
 
     # (2) Switch to the hidden tab
@@ -1151,7 +1151,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   # ENCODED PARAMS Bundle
   entityTypeBundle: (entity_id) ->
     # (1) Show Store
-    Mywebroom.Helpers.showStore()
+    Mywebroom.Helpers.EditorHelper.showStore()
 
 
     # (2) Switch to the hidden tab
@@ -1182,7 +1182,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   entityTypeEntireRoom: (entity_id) ->
 
     # (1) Show Store
-    Mywebroom.Helpers.showStore()
+    Mywebroom.Helpers.EditorHelper.showStore()
 
 
     # (2) Switch to the hidden tab

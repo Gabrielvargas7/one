@@ -41,7 +41,7 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
 
 
     # Listen for editor scroll
-    Mywebroom.Helpers.onEditorScroll()
+    Mywebroom.Helpers.EditorHelper.onEditorScroll()
 
 
     # Store a reference
@@ -76,12 +76,12 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
 
 
           # Proceed with hiding the store
-          Mywebroom.Helpers.hideStore()
+          Mywebroom.Helpers.EditorHelper.hideStore()
       )
     else
 
       # Hide the store
-      Mywebroom.Helpers.hideStore()
+      Mywebroom.Helpers.EditorHelper.hideStore()
 
 
 
@@ -101,6 +101,6 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
     switch state
 
       when "shown"
-        Mywebroom.Helpers.collapseStore()
+        Mywebroom.Helpers.EditorHelper.collapseStore()
       when "collapsed"
-        Mywebroom.Helpers.expandStore()
+        Mywebroom.Helpers.EditorHelper.expandStore()

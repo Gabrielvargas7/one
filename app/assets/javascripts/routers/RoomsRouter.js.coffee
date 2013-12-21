@@ -7,9 +7,9 @@ class Mywebroom.Routers.RoomsRouter extends Backbone.Router
 
 
   showEditor: ->
-    Mywebroom.Helpers.showStore()
+    Mywebroom.Helpers.EditorHelper.showStore()
 
   collapseEditor: ->
-    Mywebroom.Helpers.collapseStore()
+    Mywebroom.Helpers.EditorHelper.collapseStore()
 
 
