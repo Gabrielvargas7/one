@@ -476,7 +476,7 @@ describe User do
   #test validation - facebook login  def self.from_omniauth(auth)
   ###############
   describe " #omniauth",tag_omniauth:true do
-    pending "add some examples to (or delete) #{__FILE__}"
+    pending "this test is mode to capybarra test on spec/requests/user_spec.rb #{__FILE__}"
   end
 
 

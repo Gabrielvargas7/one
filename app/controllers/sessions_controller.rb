@@ -77,7 +77,7 @@ class SessionsController < ApplicationController
 
 
   def create_facebook
-    puts "create facebook cookies facebook: "+cookies[:facebook_bundle_id].to_s
+    #puts "create facebook cookies facebook: "+cookies[:facebook_bundle_id].to_s
     auth = env["omniauth.auth"]
     email = auth.extra.raw_info.email
 
