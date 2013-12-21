@@ -17,8 +17,8 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Marionette.ItemView
   #*******************
     #**** Render
     #*******************
-  render:->
-    $(@el).html(@template(model:@model))
+  onRender:->
+    #$(@el).html(@template(model:@model))
     $(@el).attr('data-cid',@model.cid)
     $(@el).attr('data-id',@model.id)
 
@@ -47,9 +47,9 @@ class Mywebroom.Views.MyBookmarkGridItemView extends Marionette.ItemView
   deleteBookmark:()->
     bookmarkId= @model.get('id')
     position= @model.get('position')
-    #userId= @getUserSignedInId()
-    #deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
-    #deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
+    userId= Mywebroom.State.get('roomUser').id #@getUserSignedInId()
+    deletedBookmark = new Mywebroom.Models.DestroyUserBookmarkByUserIdBookmarkIdAndPosition()
+    deletedBookmark.set 'url', deletedBookmark.url(userId,bookmarkId,position)
     #Delete the bookmark from the server.
     deletedBookmark.destroyUserBookmark()
     #destroy the modal

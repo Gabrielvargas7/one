@@ -13,9 +13,9 @@ class Mywebroom.Views.MyBookmarksView extends Marionette.CompositeView
   #*******************
   initialize:->
     @template=this.options.template if this.options.template
-    @collection.on('add', this.render, this);
-    @collection.on('reset', this.render, this);
-    @collection.on('remove',this.render,this)
+    #@collection.on('add', this.render, this);
+    #@collection.on('reset', this.render, this);
+    #@collection.on('remove',this.render,this)
     #@collection.on('deleteBookmark',@triggerDeleteBookmark,this)
   #*******************
   #**** Template
