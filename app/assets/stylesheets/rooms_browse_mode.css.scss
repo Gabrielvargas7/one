@@ -47,11 +47,12 @@
 }
 
 .halfCircleLeft{
-  height:100px;
-  width:50px;
-  border-radius: 100px 0 0 100px;
-  -moz-border-radius: 100px 0 0 100px;
-  -webkit-border-radius: 100px 0 0 100px;
+  /*wxh orignally 100x100, but adjusted for padding in browse_mode_site_nav*/
+  height:96px;
+  width:46px;
+  border-radius: 96px 0 0 96px;
+  -moz-border-radius: 96px 0 0 96px;
+  -webkit-border-radius: 96px 0 0 96px;
   background:#000000;
 }
 
@@ -103,14 +104,22 @@ div.current_browse_mode_site.browse_mode_site{
      font-size:14px;
      position:absolute;
      top:40%;
-     left:-24px;/*inside sidebar div which has padding of 10px. 
+     z-index:8;
+     left:-38px;/*verticalization offset by half the width (flipped height). 
                 +14px to cut off the circle by 14 pixels to give width of 36px. */
      margin-top:25px; /*verticalizing this turns from the center, so nav menu doesn't line up 
                         even though they are positioned the same. 
                         offset margin by half height to fix. */
-    
+    opacity:1;
+    /*Fade Transition*/
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+     -ms-transition: opacity 1s ease-in;
+      -o-transition: opacity 1s ease-in;
+         transition: opacity 1s ease-in;
+
     .browse_expand_inner_wrap{
-       padding-top: 7px;
+       padding-top: 12px;
     }
 
 }
@@ -128,11 +137,16 @@ div.current_browse_mode_site.browse_mode_site{
 
 }
 /*Browse mode Sidebar*/
-
+.browse_mode_sidebar_wrap{
+  position:fixed;
+  width:0px;
+  height:100%;
+  z-index:8;
+}
 .browse_mode_sidebar{
   position:fixed;
   z-index:8;
-  left:0;
+  left:-90px;
   top:45px;
   background-color:rgba(0,0,0,.8);
   padding:0 10px;
@@ -142,6 +156,13 @@ div.current_browse_mode_site.browse_mode_site{
   font-size:12px;
   font-weight:bolder;
   text-transform:uppercase;
+
+  /*Fade Transition*/
+  -webkit-transition: left 1s ease-in;
+  -moz-transition: left 1s ease-in;
+   -ms-transition: left 1s ease-in;
+    -o-transition: left 1s ease-in;
+       transition: left 1s ease-in;
 }
 
 img.browse_mode_sidebar_icons{
