@@ -41,7 +41,8 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
 
     #Set Static Content
     toolbarIcons = Mywebroom.State.get('staticContent').findWhere({"name":"save-cancel-refresh-btn"})
-    @toolbarUrl = toolbarIcons.get('image_name').url
+    newIcons = Mywebroom.State.get('staticContent').findWhere({"name":"browser-buttons"})
+    @toolbarUrl = newIcons.get('image_name').url
 
     
 

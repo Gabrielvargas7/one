@@ -17,7 +17,7 @@ class Mywebroom.Views.BrowseActiveMenuView extends Backbone.View
     $(@el).css "left","-12070px"
     # $('#browse_mode_active_highlight').hide()
     $('#browse_mode_active_default').removeClass('selected')
-    $('.browse_mode_site_nav').css 'top',5
+    #$('.browse_mode_site_nav').css 'top',5
   showActiveMenu:->
     if $(@el).css("left") is "-12070px"
       $(@el).css "left","70px"
@@ -25,6 +25,6 @@ class Mywebroom.Views.BrowseActiveMenuView extends Backbone.View
       # $('#browse_mode_active_highlight').unbind('mouseout')
       # $('#browse_mode_active_highlight').show()
       $('#browse_mode_active_default').addClass('selected')
-      $('.browse_mode_site_nav').css 'top',82
+      #$('.browse_mode_site_nav').css 'top',82
     else
       @hideActiveMenu()

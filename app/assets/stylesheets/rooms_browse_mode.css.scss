@@ -1,16 +1,29 @@
 .browse_mode_site_nav{
   position:absolute;
-  top:5px;
-  right:95px;
+  top:45%;
+  overflow:hidden;
   z-index: 2;
   transition:top .5s ease-in-out;
   padding:2px;
+  right:-14px; /*This way semi circle will be 36px wide, but still be circle shape.*/
 
+  .browse_nav_row{
+    width:100%;
+    height:30px;
+    border-bottom:1px solid #464646;
+    text-align: center;
+    padding:2px;
+  }
+  .browse_nav_row:hover{
+    background-color:#313131;
+  }
+  
   .link_spanner{
     margin:0;
     padding:0;
     
   }
+
   #browse_mode_site_nav_close,#browse_mode_site_nav_minimize,#browse_mode_site_nav_refresh{
     background-repeat: no-repeat;
     display:inline-block;
@@ -22,15 +35,24 @@
    }
   #browse_mode_site_nav_minimize
   {
-    background-position: -121px -58px;
+    background-position: -44px -4px//-52px -15px; dim:11x2 boxwidth~28
     
   }
   #browse_mode_site_nav_refresh{
-    background-position: -12px -58px;
+    background-position: -82px -6px;
   }
   #browse_mode_site_nav_close{
-    background-position: -67px -58px;
+    background-position: -5px -1px;/*-14px -10px;*/
   }
+}
+
+.halfCircleLeft{
+  height:100px;
+  width:50px;
+  border-radius: 100px 0 0 100px;
+  -moz-border-radius: 100px 0 0 100px;
+  -webkit-border-radius: 100px 0 0 100px;
+  background:#000000;
 }
 
 .browse_mode_sidebar{
@@ -52,7 +74,6 @@
   width:100%;
   position:fixed;
   z-index:8;
-  left:70px;
   background-color: white;
 }
 iframe.current_browse_mode_site {
