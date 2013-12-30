@@ -1,8 +1,14 @@
 class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
-  className:'browse_mode_sidebar'
+  
+  className:'browse_mode_sidebar_wrap'
+  
   template:JST['bookmarks/BrowseModeSidebarTemplate']
+  
   events:
     'click .browse_mode_sidebar_icons':'sideBarActiveSiteChange'
+    'click .halfCircleRight':'showSideBar'
+
+
   initialize:->
     this.on('render',@setScroll)
     @spriteUrl = Mywebroom.State.get('staticContent').findWhere('name':'bookmark-main-icons').get('image_name').url
@@ -49,6 +55,13 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     this.trigger 'BrowseMode:sidebarIconClick', modelClicked
   #Create SimplyScroll event for mybookmarks sidebar
   #Hope it dies quickly when the view closes
+
+  showSideBar:->
+    #Fade Out Expand Button
+
+    $('.halfCircleRight').css 'opacity', 0
+    #Fade in Bar
+    $('.browse_mode_sidebar').css 'left',0
 
   setScroll:->
     #console.log 'one day i will scroll things beautifully.'

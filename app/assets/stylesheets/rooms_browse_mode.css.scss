@@ -1,6 +1,6 @@
 .browse_mode_site_nav{
   position:absolute;
-  top:45%;
+  top:40%;
   overflow:hidden;
   z-index: 2;
   transition:top .5s ease-in-out;
@@ -47,28 +47,16 @@
 }
 
 .halfCircleLeft{
-  height:100px;
-  width:50px;
-  border-radius: 100px 0 0 100px;
-  -moz-border-radius: 100px 0 0 100px;
-  -webkit-border-radius: 100px 0 0 100px;
+  /*wxh orignally 100x100, but adjusted for padding in browse_mode_site_nav*/
+  height:96px;
+  width:46px;
+  border-radius: 96px 0 0 96px;
+  -moz-border-radius: 96px 0 0 96px;
+  -webkit-border-radius: 96px 0 0 96px;
   background:#000000;
 }
 
-.browse_mode_sidebar{
-  position:fixed;
-  z-index:8;
-  left:0;
-  top:45px;
-  background-color:rgba(0,0,0,.8);
-  padding:0 10px;
-  height:100%;
-  width:50px;
-  color:#d2d4d4;
-  font-size:12px;
-  font-weight:bolder;
-  text-transform:uppercase;
-}
+
 .browse_mode_site_wrap{
   height:100%;
   width:100%;
@@ -98,7 +86,85 @@ div.current_browse_mode_site.browse_mode_site{
   color:black;
   text-align:center;
 }
+
+/**----BrowseModeSideBar---------**/
+/*Expand Button*/
+
+.halfCircleRight{
+  /*This is a bottom semi-circle. It becomes right semi-circle by applying class vertical*/
+     height:50px;
+     width:100px;
+     border-radius: 0 0 100px 100px;
+     -moz-border-radius: 0 0 100px 100px;
+     -webkit-border-radius: 0 0 100px 100px;
+     background:rgba(0,0,0,.8);
+
+     color:white;
+     text-align:center;
+     font-size:14px;
+     position:absolute;
+     top:40%;
+     z-index:8;
+     left:-38px;/*verticalization offset by half the width (flipped height). 
+                +14px to cut off the circle by 14 pixels to give width of 36px. */
+     margin-top:25px; /*verticalizing this turns from the center, so nav menu doesn't line up 
+                        even though they are positioned the same. 
+                        offset margin by half height to fix. */
+    opacity:1;
+    /*Fade Transition*/
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+     -ms-transition: opacity 1s ease-in;
+      -o-transition: opacity 1s ease-in;
+         transition: opacity 1s ease-in;
+
+    .browse_expand_inner_wrap{
+       padding-top: 12px;
+    }
+
+}
+.vertical{
+  /*Verticalize */
+  -webkit-transform: rotate(-90deg);
+  /* Firefox */
+  -moz-transform: rotate(-90deg);
+  /* IE */
+  -ms-transform: rotate(-90deg);
+  /* Opera */
+  -o-transform: rotate(-90deg);
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+}
 /*Browse mode Sidebar*/
+.browse_mode_sidebar_wrap{
+  position:fixed;
+  width:0px;
+  height:100%;
+  z-index:8;
+}
+.browse_mode_sidebar{
+  position:fixed;
+  z-index:8;
+  left:-90px;
+  top:45px;
+  background-color:rgba(0,0,0,.8);
+  padding:0 10px;
+  height:100%;
+  width:50px;
+  color:#d2d4d4;
+  font-size:12px;
+  font-weight:bolder;
+  text-transform:uppercase;
+
+  /*Fade Transition*/
+  -webkit-transition: left 1s ease-in;
+  -moz-transition: left 1s ease-in;
+   -ms-transition: left 1s ease-in;
+    -o-transition: left 1s ease-in;
+       transition: left 1s ease-in;
+}
+
 img.browse_mode_sidebar_icons{
   width:35px;
   border-radius:100%;
