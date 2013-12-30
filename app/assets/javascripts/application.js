@@ -26,8 +26,6 @@
 //= require masonry.pkgd
 //= require backbone.marionette
 //= require jquery.mousewheel
-//= require lightbox
-//= require FB.js
 //= require shop
 //= require mywebroom
 //= require_tree ../templates
@@ -36,5 +34,3 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
-
-
