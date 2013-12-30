@@ -18,7 +18,7 @@
             <% end %>
 
           <ul class="nav pull-right" >
-            <li> <%= link_to_function "Login", "javascript:login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
+            <li> <%= link_to_function "Login", "javascript:Mywebroom.Helpers.LightboxHelper.login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
           </ul>
 
         </div>
@@ -42,7 +42,7 @@
 
 
           <div id="xroom_entire_room_btn">
-            <%= link_to_function "Click here to use this Room", "javascript:signup_lightbox_show()",:class => "blue_button blue_button_light", :id => "xroom_entire_room_btn_blue"%>
+            <%= link_to_function "Click here to use this Room", "javascript:Mywebroom.Helpers.LightboxHelper.signup_lightbox_show()",:class => "blue_button blue_button_light", :id => "xroom_entire_room_btn_blue"%>
           </div>
 
 

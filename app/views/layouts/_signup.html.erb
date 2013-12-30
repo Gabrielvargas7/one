@@ -3,12 +3,12 @@
 
     <% @static_content_x_img = StaticContent.find_by_name("x-btn-sml")  %>
     <% if @static_content_x_img.nil? or @static_content_x_img.image_name.blank?   %>
-        <%= link_to_function "X", 'javascript:signup_lightbox_hide()'  %>
+        <%= link_to_function "X", 'javascript:Mywebroom.Helpers.LightboxHelper.signup_lightbox_hide()'  %>
     <% else %>
         <%= link_to_function cl_image_tag(@static_content_x_img.image_name,
                                     :transformation => { :width => 150, :height => 50, :x => -90, :y => 0, :crop => :crop },
                                     :width => 40, :height => 40, :crop => :fill
-                             ), 'javascript:signup_lightbox_hide()'  %>
+                             ), 'javascript:Mywebroom.Helpers.LightboxHelper.signup_lightbox_hide()'  %>
     <% end %>
 
 
@@ -27,7 +27,7 @@
       <div class="field">
         <input id="signup_lightbox_password_box" name="user[password]" placeholder="Password" size="30" type="password">
       </div>
-      <%= link_to_function "Term of Use", "signup_lightbox_term_of_use_show()", :id => "signup_term_of_use_link" %>
+      <%= link_to_function "Term of Use", "Mywebroom.Helpers.LightboxHelper.signup_lightbox_term_of_use_show()", :id => "signup_term_of_use_link" %>
       <div class="actions">
               <input class="blue_button" name="commit" type="submit" value="SIGN UP" onclick="_gaq.push(['_trackEvent', 'signin','regular','lightbox']);" >
       </div>
@@ -38,12 +38,12 @@
 
 <div id="signup_term_of_use">
   <% if @static_content_x_img.nil? or @static_content_x_img.image_name.blank?   %>
-      <%= link_to_function "X", 'javascript:signup_lightbox_term_of_use_hide()'  %>
+      <%= link_to_function "X", 'javascript:Mywebroom.Helpers.LightboxHelper.signup_lightbox_term_of_use_hide()'  %>
   <% else %>
       <%= link_to_function cl_image_tag(@static_content_x_img.image_name,
                                         :transformation => { :width => 150, :height => 50, :x => -90, :y => 0, :crop => :crop },
                                         :width => 40, :height => 40, :crop => :fill
-                           ), 'javascript:signup_lightbox_term_of_use_hide()'  %>
+                           ), 'javascript:Mywebroom.Helpers.LightboxHelper.signup_lightbox_term_of_use_hide()'  %>
   <% end %>
 
 
@@ -268,7 +268,7 @@
 
   </div>
   <div id="signup_term_of_use_btn_container"  >
-    <%= link_to_function "Close", "javascript:signup_lightbox_term_of_use_hide()",:class => "blue_button blue_button_light",:id => "signup_term_of_use_btn"%>
+    <%= link_to_function "Close", "javascript:Mywebroom.Helpers.LightboxHelper.signup_lightbox_term_of_use_hide()",:class => "blue_button blue_button_light",:id => "signup_term_of_use_btn"%>
   </div>
 
 

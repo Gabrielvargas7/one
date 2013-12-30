@@ -10,7 +10,7 @@
             <li><a href="#" id="footer_blog">Blog</a></li>
             <li><a href="#" id="footer_shop">Shop</a></li>
             <li><a href="#" id="footer_help">Help</a></li>
-            <li><a href="javascript:feedback_lightbox();">Send Feedback!</a></li>
+            <li><a href="javascript:Mywebroom.Helpers.LightboxHelper.feedback_lightbox();">Send Feedback!</a></li>
         </ul>
         <ul class="nav pull-right">
             <li class="disabled"> <a href="#"> &copy; 2014 Rooms Inc. </a></li>
