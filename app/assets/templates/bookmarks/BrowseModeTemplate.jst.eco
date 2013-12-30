@@ -5,15 +5,15 @@
 
   <div class="browse_mode_site_nav halfCircleLeft">
     <div class="browse_nav_row">
-     <div id="browse_mode_site_nav_close" style="background-image:url('<%=@toolbarUrl%>')"><a  href="#" ><span class="link_spanner"></span></a></div>
+     <div id="browse_mode_site_nav_close" style="background-image:url('<%=@toolbarUrl%>')" title="Close Page/ Browser"><a  href="#" ><span class="link_spanner"></span></a></div>
     </div>
    
     <div class="browse_nav_row">
-     <div id="browse_mode_site_nav_minimize" style="background-image:url('<%=@toolbarUrl%>')"> <a  href="#" ><span class="link_spanner"></span></a></div>
+     <div id="browse_mode_site_nav_minimize" style="background-image:url('<%=@toolbarUrl%>')" title="Minimize Page"> <a  href="#" ><span class="link_spanner"></span></a></div>
     </div>
    
     <div class="browse_nav_row">
-      <div id="browse_mode_site_nav_refresh" style="background-image:url('<%=@toolbarUrl%>')"> <a  href="#" ><span class="link_spanner"></span></a></div>
+      <div id="browse_mode_site_nav_refresh" style="background-image:url('<%=@toolbarUrl%>')" title="Reload/ Refresh Current Page"> <a  href="#" ><span class="link_spanner"></span></a></div>
     </div>
   </div>
 

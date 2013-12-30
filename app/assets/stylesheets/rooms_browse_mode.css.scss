@@ -97,7 +97,7 @@ div.current_browse_mode_site.browse_mode_site{
      border-radius: 0 0 100px 100px;
      -moz-border-radius: 0 0 100px 100px;
      -webkit-border-radius: 0 0 100px 100px;
-     background:rgba(0,0,0,.8);
+     background:black;
 
      color:white;
      text-align:center;
@@ -120,6 +120,7 @@ div.current_browse_mode_site.browse_mode_site{
 
     .browse_expand_inner_wrap{
        padding-top: 12px;
+       cursor:pointer;
     }
 
 }
