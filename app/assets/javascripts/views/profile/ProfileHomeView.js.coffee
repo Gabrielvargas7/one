@@ -506,11 +506,11 @@ class Mywebroom.Views.ProfileHomeView extends Backbone.View
     #Turn on events:
 
     #1. Image Hover: on or off
-    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
+    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.RoomMainHelper.turnOnHover()
 
 
     #2. Image Click: on or off
-    Mywebroom.Helpers.turnOnDesignClick()
+    Mywebroom.Helpers.RoomMainHelper.turnOnDesignClick()
 
     #3. Scroller visibility
     $("#xroom_scroll_left").show()
