@@ -196,7 +196,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
 
     # (1) Show Store
-    Mywebroom.Helpers.showStore()
+    Mywebroom.Helpers.EditorHelper.showStore()
 
 
     # (2) Switch to the hidden tab

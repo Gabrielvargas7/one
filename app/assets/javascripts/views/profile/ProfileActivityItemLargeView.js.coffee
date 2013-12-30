@@ -18,7 +18,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     #Photos Only Code vs. Other Types
     if @model.collection.constructor.name is Mywebroom.Collections.IndexUsersPhotosByUserIdByLimitByOffsetCollection.name
       @template = JST['profile/ProfilePhotosLargeTemplate']
-      
+
     else
       @model.set('fbUrl', @generateFacebookURL())
 
@@ -143,7 +143,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
         userId = helper.getUserId()
         #Post bookmark
         position = @getMyBookmarksLength(userId)
- 
+
         # If position is 0 or the bookmark is not already in collection:
         if position is 0 or not @myBookmarksCollection.get(@model.id)
           postBookmarkModel = new Mywebroom.Models.CreateUserBookmarkByUserIdBookmarkIdItemId({itemId: @model.get('item_id'), bookmarkId: @model.get('id'), userId: userId})
@@ -210,7 +210,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 
 
         # (1) Show Store
-        Mywebroom.Helpers.showStore()
+        Mywebroom.Helpers.EditorHelper.showStore()
 
 
         # (2) Switch to the hidden tab

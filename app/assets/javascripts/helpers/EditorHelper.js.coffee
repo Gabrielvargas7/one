@@ -1,4 +1,178 @@
-Mywebroom.Helpers.Editor = {
+Mywebroom.Helpers.EditorHelper = {
+
+
+  onEditorScroll: ->
+
+    ###
+    Here, we setup a scroll handler for the editor.
+    We trigger actions when the page is scrolled to the bottom.
+    ###
+    $(".tab-content").on "mousewheel",
+      mousewheel:
+        behavior: "throttle"
+        delay: 100
+      , (event) ->
+
+        if event.deltaY > 0
+
+          # ARE WE AT THE BOTTOM?
+          if $('.tab-content').scrollTop() + $('.tab-content').innerHeight() >= $('.tab-content')[0].scrollHeight - 300
+
+
+            ###
+            FIX for Safari 6 on iMac
+            Issue: pagination causes editor to scroll to top
+            ###
+            Mywebroom.Data.Editor.location = $('.tab-content').scrollTop()
+
+
+            # IS PAGINATE TRUE?
+            if Mywebroom.Data.Editor.paginate is true
+
+              #console.log("paginate")
+
+              path =    Mywebroom.Data.Editor.contentPath
+              type =    Mywebroom.Data.Editor.contentType
+              keyword = Mywebroom.Data.Editor.keyword
+              limit =   Mywebroom.Data.Editor.limit
+              offset  = Mywebroom.Data.Editor.offset + limit
+
+
+              if path is false then console.error("no pagination type!")
+
+
+
+
+              switch path
+
+                when "INITIAL"
+
+                  #console.log("PAGINATE INITIAL - " + type + "\tOffset: " + offset)
+
+                  data = Mywebroom.Helpers.EditorHelper.paginateInitial(type, limit, offset)
+                  #console.log(data.length)
+
+                  unless data.length is 0
+
+                    switch type
+
+                      when "THEMES"
+
+                        col = Mywebroom.State.get('tabContentThemes')
+                        #console.log('initial length', col.length)
+
+                        col.add(data.toJSON(), {silent: false})
+                        #console.log('length after add', col.length)
+
+                        Mywebroom.State.set('tabContentThemes', col)
+                        Mywebroom.Helpers.EditorHelper.appendCollection(col, 'THEMES')
+
+                      when "BUNDLES"
+
+                        col = Mywebroom.State.get('tabContentBundles')
+                        #console.log('initial length', col.length)
+
+                        col.add(data.toJSON(), {silent: false})
+                        #console.log('length after add', col.length)
+
+
+                        Mywebroom.State.set('tabContentBundles', col)
+                        Mywebroom.Helpers.EditorHelper.appendCollection(col, 'BUNLDES')
+
+                      when "ENTIRE ROOMS"
+
+                        col = Mywebroom.State.get('tabContentEntireRooms')
+                        #console.log('initial length', col.length)
+
+                        col.add(data.toJSON(), {silent: false})
+                        #console.log('length after add', col.length)
+
+
+                        Mywebroom.State.set('tabContentEntireRooms', col)
+                        Mywebroom.Helpers.EditorHelper.appendCollection(col, 'ENTIRE ROOMS')
+
+                      else
+
+                        col = Mywebroom.State.get('tabContentHidden')
+                        #console.log('initial length', col.length)
+
+                        col.add(data.toJSON(), {silent: false})
+                        #console.log('length after add', col.length)
+
+
+                        Mywebroom.State.set('tabContentHidden', col)
+                        Mywebroom.Helpers.EditorHelper.appendCollection(col, 'HIDDEN')
+
+
+                    Mywebroom.Data.Editor.offset += limit
+
+
+                when "SEARCH"
+
+                  #console.log("PAGINATE SEARCH - " + type + "\tOffset: " + offset + "\tKeyword: " + keyword)
+
+                  data = Mywebroom.Helpers.EditorHelper.paginateSearch(type, limit, offset, keyword)
+                  #console.log(data.length)
+
+
+                  unless data.length is 0
+
+                    switch type
+
+                      when "THEMES"
+
+                        col = Mywebroom.State.get('tabContentThemes')
+                        col.add(data.toJSON(), {silent: false})
+                        Mywebroom.State.set('tabContentThemes', col)
+                        Mywebroom.Helpers.EditorHelper.appendCollection(col, 'THEMES')
+
+                      when "BUNDLES"
+
+                        col = Mywebroom.State.get('tabContentBundles')
+                        col.add(data.toJSON(), {silent: false})
+                        Mywebroom.State.set('tabContentBundles', col)
+                        Mywebroom.Helpers.EditorHelper.appendCollection(col, 'BUNDLES')
+
+                      when "ENTIRE ROOMS"
+
+                        col = Mywebroom.State.get('tabContentEntireRooms')
+                        col.add(data.toJSON(), {silent: false})
+                        Mywebroom.State.set('tabContentEntireRooms', col)
+                        Mywebroom.Helpers.EditorHelper.appendCollection(col, 'ENTIRE ROOMS')
+
+                      else
+
+                        col = Mywebroom.State.get('tabContentHidden')
+                        col.add(data.toJSON(), {silent: false})
+                        Mywebroom.State.set('tabContentHidden', col)
+                        Mywebroom.Helpers.EditorHelper.appendCollection(col, 'HIDDEN')
+
+
+                    Mywebroom.Data.Editor.offset += limit
+
+
+              ###
+              FIX for Safari 6 on iMac
+              Issue: pagination causes editor to scroll to top
+              ###
+              setTimeout ( ->
+                location = Mywebroom.Data.Editor.location
+
+                if location
+                  $('.tab-content').scrollTop(location)
+
+              ), 0
+
+
+
+
+
+
+
+
+
+
+
 
   paginateInitial: (type, limit, offset) ->
 
@@ -575,7 +749,7 @@ Mywebroom.Helpers.Editor = {
     FETCH CORRESPONDING DESIGNS
     ###
     limit = Mywebroom.Data.Editor.limit
-    designs = Mywebroom.Helpers.Editor.paginateInitial(itemId, limit, 0)
+    designs = Mywebroom.Helpers.EditorHelper.paginateInitial(itemId, limit, 0)
 
 
 
@@ -601,7 +775,7 @@ Mywebroom.Helpers.Editor = {
     FILTERS - START
     ###
     # Show all the dropdown filters
-    Mywebroom.Helpers.expandFilters()
+    Mywebroom.Helpers.EditorHelper.expandFilters()
 
 
     # Collapse location filter
@@ -616,12 +790,459 @@ Mywebroom.Helpers.Editor = {
       success: (response) ->
         #console.log("designs fetch success", response)
         myModel = categories.first()
-        Mywebroom.Helpers.setCategories(myModel.get('items_designs_categories'))
-        Mywebroom.Helpers.setBrands(myModel.get('items_designs_brands'))
-        Mywebroom.Helpers.setStyles(myModel.get('items_designs_styles'))
-        Mywebroom.Helpers.setColors(myModel.get('items_designs_colors'))
-        Mywebroom.Helpers.setMakes(myModel.get('items_designs_makes'))
+        Mywebroom.Helpers.EditorHelper.setCategories(myModel.get('items_designs_categories'))
+        Mywebroom.Helpers.EditorHelper.setBrands(myModel.get('items_designs_brands'))
+        Mywebroom.Helpers.EditorHelper.setStyles(myModel.get('items_designs_styles'))
+        Mywebroom.Helpers.EditorHelper.setColors(myModel.get('items_designs_colors'))
+        Mywebroom.Helpers.EditorHelper.setMakes(myModel.get('items_designs_makes'))
     ###
     FILTERS - END
     ###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  setCategories: (categories) ->
+
+    # empty out existing dropdown items
+    $('#dropdown-category > .dropdown-menu').empty()
+
+
+    # iterate through the category items and create a li out of each one
+    _.each(categories, (category) ->
+      if category.category
+        $('#dropdown-category > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(category.category) + '</a></li>')
+    )
+
+
+
+
+  setBrands: (brands) ->
+
+    # empty out existing dropdown items
+    $('#dropdown-brand > .dropdown-menu').empty()
+
+
+    # iterate through the brand items and create a li out of each one
+    _.each(brands, (brand) ->
+      if brand.brand
+        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
+    )
+
+
+
+
+  setLocations: (locations) ->
+
+    # empty out existing dropdown items
+    $('#dropdown-location > .dropdown-menu').empty()
+
+
+    # iterate through the location items and create a li out of each one
+    _.each(locations, (location) ->
+      if location.location
+        $('#dropdown-location > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(location.location) + '</a></li>')
+    )
+
+
+
+  setStyles: (styles) ->
+    # empty out existing dropdown items
+    $('#dropdown-style > .dropdown-menu').empty()
+
+
+    # iterate through the style items and create a li out of each one
+    _.each(styles, (style) ->
+      if style.style
+        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
+    )
+
+
+
+
+  setColors: (colors) ->
+
+    # empty out existing dropdown items
+    $('#dropdown-color > .dropdown-menu').empty()
+
+
+    # iterate through the color items and create a li out of each one
+    _.each(colors, (color) ->
+      if color.color
+        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
+    )
+
+
+
+  setMakes: (makes) ->
+
+    # empty out existing dropdown items
+    $('#dropdown-make > .dropdown-menu').empty()
+
+
+    # iterate through the make items and create a li out of each one
+    _.each(makes, (make) ->
+      if make.make
+        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(make.make) + '</a></li>')
+    )
+
+
+
+
+  collapseFilters: ->
+
+    # Add the collapse class
+    $('#dropdown-category').addClass('collapse')
+    $('#dropdown-style').addClass('collapse')
+    $('#dropdown-brand').addClass('collapse')
+    $('#dropdown-location').addClass('collapse')
+    $('#dropdown-color').addClass('collapse')
+    $('#dropdown-make').addClass('collapse')
+
+
+
+
+  expandFilters: ->
+
+    # Remove the collapse class
+    $('#dropdown-category').removeClass('collapse')
+    $('#dropdown-style').removeClass('collapse')
+    $('#dropdown-brand').removeClass('collapse')
+    $('#dropdown-location').removeClass('collapse')
+    $('#dropdown-color').removeClass('collapse')
+    $('#dropdown-make').removeClass('collapse')
+
+
+
+
+
+
+
+
+
+
+
+
+  ###
+  (1) Store visibility
+  (1.1) Scroller visibility
+  (2.1) Get saveBarWasVisible
+  (2.2) Set saveBarWasVisible
+  (2.3) Save, Cancel, Remove view visibility
+  (3) Button visibility <-- don't worry about
+  (4) Active Nav Tab
+  (5) Search filter
+  (6) Dropdown filters
+  (7) Hidden item visibility: gray or hidden
+  (8) Highlighted Images
+  (9) Room size & Button class
+  (10) Room Item Hover: on or off
+  (10.1) Room Item Click: on or off
+  (11) Room Mousewheel
+  (12) Set Store State
+  ###
+
+
+
+
+  ###
+  hidden_to_shown
+  ###
+  showStore: ->
+    #console.log("show store")
+
+    # (1) Store visibility
+    $('#xroom_storepage').show()
+
+
+    # (1.1) Scroller visibility
+    $("#xroom_scroll_left").hide()
+    $("#xroom_scroll_right").hide()
+
+
+    # (2.1) Get saveBarWasVisible
+    # (2.2) Set saveBarWasVisible
+
+
+    # (2.3) Save, Cancel, Remove view visibility
+    $('#xroom_store_menu_save_cancel_remove').hide()
+
+
+    # (3) Button Visibility
+    # n/a
+
+
+    # (4) Active Nav Tab
+    $('a[href="#tab_items"]').tab('show')
+
+
+    # (5) Search filter
+    $('#store-search-dropdown li').removeClass('active') # Remove active class
+    $("#store-search-all").addClass("active") # Add active class to ALL
+    $('#store-dropdown-btn').text("ALL") # Change the text of the search filter to ALL
+
+
+    # (6) Dropdown filters
+    Mywebroom.Helpers.EditorHelper.collapseFilters()
+
+
+    # (7) Hidden item visibility: gray or hidden
+    Mywebroom.Helpers.grayHidden()
+
+
+    # (8) Highlighted Images
+    # n/a
+
+
+    # (9) Room size & Button class
+    Mywebroom.Helpers.unShrinkStore()
+
+
+    # (10) Image Hover: on or off
+    Mywebroom.Helpers.turnOffHover()
+
+
+    # (10.1) Image Click: on or off
+    Mywebroom.Helpers.turnOffDesignClick()
+
+
+    # (11) Mousewheel
+    # n/a
+
+
+    # (12) Set Store State
+    Mywebroom.State.set("storeState", "shown")
+
+
+
+
+
+  ###
+  init_TO_hidden, shown_TO_hidden, collapsed_TO_hidden
+  ###
+  hideStore: ->
+    #console.log("hide store")
+
+    # (1) Store visibility
+    $('#xroom_storepage').hide()
+
+
+    # (1.1) Scroller visibility
+    $("#xroom_scroll_left").show()
+    $("#xroom_scroll_right").show()
+
+
+    # (2.1) Get saveBarWasVisible
+    # (2.2) Set saveBarWasVisible
+
+
+    # (2.3) Save, Cancel, Remove view visibility
+    $('#xroom_store_menu_save_cancel_remove').hide()
+
+
+    # (3) Button Visibility
+    # n/a
+
+
+    # (4) Active Nav Tab
+    # n/a
+
+
+    # (5) Search filter
+    # n/a
+
+
+    # (6) Dropdown filters
+    # n/a
+
+
+    # (7) Hidden item visibility: gray or hidden
+    Mywebroom.Helpers.hideHidden()
+
+
+    # (8) Highlighted Images
+    Mywebroom.Helpers.unHighlight()
+
+
+    # (9) Room size & Button class
+    Mywebroom.Helpers.unShrinkStore()
+
+
+    # (10) Image Hover: on or off
+    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
+
+
+    # (10.1) Image Click: on or off
+    Mywebroom.Helpers.turnOnDesignClick()
+
+
+    # (11) Mousewheel
+    # n/a
+
+
+    # (12) Set Store State
+    Mywebroom.State.set("storeState", "hidden")
+
+
+
+
+  ###
+  shown_TO_collapsed
+  ###
+  collapseStore: ->
+    #console.log("collapse store")
+
+    # (1) Store visibility
+    $('#xroom_storepage').show()
+
+
+    # (1.1) Scroller visibility
+    $("#xroom_scroll_left").show()
+    $("#xroom_scroll_right").show()
+
+
+    # (2.1) Get saveBarWasVisible
+    # (2.2) Set saveBarWasVisible
+    Mywebroom.Helpers.setSaveBarVisibility()
+
+
+    # (2.3) Save, Cancel, Remove view visibility
+    $('#xroom_store_menu_save_cancel_remove').hide()
+
+
+    # (3) Button Visibility
+    # n/a
+
+
+    # (4) Active Nav Tab
+    # n/a
+
+
+    # (5) Search filter
+    # n/a
+
+
+    # (6) Dropdown filters
+    # n/a
+
+
+    # (7) Hidden item visibility: gray or hidden
+    # n/a
+
+
+    # (8) Highlighted Images
+    # n/a
+
+
+    # (9) Room size & Button class
+    Mywebroom.Helpers.shrinkStore()
+
+
+    # (10) Image Hover: on or off
+    # n/a
+
+
+    # (10.1) Image Click: on or off
+    # n/a
+
+
+    # (11) Mousewheel
+    # n/a
+
+
+    # (12) Set Store State
+    Mywebroom.State.set("storeState", "collapsed")
+
+
+
+
+  ###
+  collapsed_TO_shown
+  ###
+  expandStore: ->
+    #console.log("expand store")
+
+    # (1) Store visibility
+    $('#xroom_storepage').show()
+
+
+    # (1.1) Scroller visibility
+    $("#xroom_scroll_left").hide()
+    $("#xroom_scroll_right").hide()
+
+
+    # (2.1) Get saveBarWasVisible
+    flag = Mywebroom.State.get("saveBarWasVisible")
+
+
+    # (2.2) Set saveBarWasVisible
+
+
+    # (2.3) Save, Cancel, Remove view visibility
+    if flag is true
+      $('#xroom_store_menu_save_cancel_remove').show()
+
+
+    # (3) Button Visibility
+    # n/a
+
+
+    # (4) Active Nav Tab
+    # n/a
+
+
+    # (5) Search filter
+    # n/a
+
+
+    # (6) Dropdown filters
+    # n/a
+
+
+    # (7) Hidden item visibility: gray or hidden
+    # n/a
+
+
+    # (8) Highlighted Images
+    # n/a
+
+
+    # (9) Room size & Button class
+    Mywebroom.Helpers.unShrinkStore()
+
+
+    # (10) Image Hover: on or off
+    # n/a
+
+
+    # (10.1) Image Click: on or off
+    # n/a
+
+
+    # (11) Mousewheel
+    # n/a
+
+
+    # (12) Set Store State
+    Mywebroom.State.set("storeState", "shown")
+
+
+
+
+
 }

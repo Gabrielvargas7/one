@@ -101,7 +101,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     itemId = @model.get('id')
 
 
-    Mywebroom.Helpers.Editor.clickItem(itemId)
+    Mywebroom.Helpers.EditorHelper.clickItem(itemId)
 
     ###
     SCROLL TO THE TOP

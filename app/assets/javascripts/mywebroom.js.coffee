@@ -112,7 +112,7 @@ $(document).ready ->
     #console.log('change:tabContentItems')
 
     data = Mywebroom.State.get('tabContentItems')
-    Mywebroom.Helpers.Editor.appendCollection(data, 'ITEMS')
+    Mywebroom.Helpers.EditorHelper.appendCollection(data, 'ITEMS')
 
   )
 
@@ -124,7 +124,7 @@ $(document).ready ->
     #console.log('change:tabContentThemes')
 
     data = Mywebroom.State.get('tabContentThemes')
-    Mywebroom.Helpers.Editor.appendCollection(data, 'THEMES')
+    Mywebroom.Helpers.EditorHelper.appendCollection(data, 'THEMES')
 
   )
 
@@ -136,7 +136,7 @@ $(document).ready ->
     #console.log('change:tabContentBundles')
 
     data = Mywebroom.State.get('tabContentBundles')
-    Mywebroom.Helpers.Editor.appendCollection(data, 'BUNDLES')
+    Mywebroom.Helpers.EditorHelper.appendCollection(data, 'BUNDLES')
 
   )
 
@@ -148,7 +148,7 @@ $(document).ready ->
     #console.log('change:tabContentEntireRooms')
 
     data = Mywebroom.State.get('tabContentEntireRooms')
-    Mywebroom.Helpers.Editor.appendCollection(data, 'ENTIRE ROOMS')
+    Mywebroom.Helpers.EditorHelper.appendCollection(data, 'ENTIRE ROOMS')
 
   )
 
@@ -160,7 +160,7 @@ $(document).ready ->
     #console.log('change:tabContentHidden')
 
     data = Mywebroom.State.get('tabContentHidden')
-    Mywebroom.Helpers.Editor.appendCollection(data, 'HIDDEN')
+    Mywebroom.Helpers.EditorHelper.appendCollection(data, 'HIDDEN')
 
   )
 
@@ -209,169 +209,6 @@ $(document).ready ->
 
 
 
-  Mywebroom.Helpers.onEditorScroll = ->
-
-    ###
-    Here, we setup a scroll handler for the editor.
-    We trigger actions when the page is scrolled to the bottom.
-    ###
-    $(".tab-content").on "mousewheel",
-      mousewheel:
-        behavior: "throttle"
-        delay: 100
-      , (event) ->
-
-        if event.deltaY > 0
-
-          # ARE WE AT THE BOTTOM?
-          if $('.tab-content').scrollTop() + $('.tab-content').innerHeight() >= $('.tab-content')[0].scrollHeight - 300
-
-
-            ###
-            FIX for Safari 6 on iMac
-            Issue: pagination causes editor to scroll to top
-            ###
-            Mywebroom.Data.Editor.location = $('.tab-content').scrollTop()
-
-
-            # IS PAGINATE TRUE?
-            if Mywebroom.Data.Editor.paginate is true
-
-              #console.log("paginate")
-
-              path =    Mywebroom.Data.Editor.contentPath
-              type =    Mywebroom.Data.Editor.contentType
-              keyword = Mywebroom.Data.Editor.keyword
-              limit =   Mywebroom.Data.Editor.limit
-              offset  = Mywebroom.Data.Editor.offset + limit
-
-
-              if path is false then console.error("no pagination type!")
-
-
-
-
-              switch path
-
-                when "INITIAL"
-
-                  #console.log("PAGINATE INITIAL - " + type + "\tOffset: " + offset)
-
-                  data = Mywebroom.Helpers.Editor.paginateInitial(type, limit, offset)
-                  #console.log(data.length)
-
-                  unless data.length is 0
-
-                    switch type
-
-                      when "THEMES"
-
-                        col = Mywebroom.State.get('tabContentThemes')
-                        #console.log('initial length', col.length)
-
-                        col.add(data.toJSON(), {silent: false})
-                        #console.log('length after add', col.length)
-
-                        Mywebroom.State.set('tabContentThemes', col)
-                        Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
-
-                      when "BUNDLES"
-
-                        col = Mywebroom.State.get('tabContentBundles')
-                        #console.log('initial length', col.length)
-
-                        col.add(data.toJSON(), {silent: false})
-                        #console.log('length after add', col.length)
-
-
-                        Mywebroom.State.set('tabContentBundles', col)
-                        Mywebroom.Helpers.Editor.appendCollection(col, 'BUNLDES')
-
-                      when "ENTIRE ROOMS"
-
-                        col = Mywebroom.State.get('tabContentEntireRooms')
-                        #console.log('initial length', col.length)
-
-                        col.add(data.toJSON(), {silent: false})
-                        #console.log('length after add', col.length)
-
-
-                        Mywebroom.State.set('tabContentEntireRooms', col)
-                        Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
-
-                      else
-
-                        col = Mywebroom.State.get('tabContentHidden')
-                        #console.log('initial length', col.length)
-
-                        col.add(data.toJSON(), {silent: false})
-                        #console.log('length after add', col.length)
-
-
-                        Mywebroom.State.set('tabContentHidden', col)
-                        Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
-
-
-                    Mywebroom.Data.Editor.offset += limit
-
-
-                when "SEARCH"
-
-                  #console.log("PAGINATE SEARCH - " + type + "\tOffset: " + offset + "\tKeyword: " + keyword)
-
-                  data = Mywebroom.Helpers.Editor.paginateSearch(type, limit, offset, keyword)
-                  #console.log(data.length)
-
-
-                  unless data.length is 0
-
-                    switch type
-
-                      when "THEMES"
-
-                        col = Mywebroom.State.get('tabContentThemes')
-                        col.add(data.toJSON(), {silent: false})
-                        Mywebroom.State.set('tabContentThemes', col)
-                        Mywebroom.Helpers.Editor.appendCollection(col, 'THEMES')
-
-                      when "BUNDLES"
-
-                        col = Mywebroom.State.get('tabContentBundles')
-                        col.add(data.toJSON(), {silent: false})
-                        Mywebroom.State.set('tabContentBundles', col)
-                        Mywebroom.Helpers.Editor.appendCollection(col, 'BUNDLES')
-
-                      when "ENTIRE ROOMS"
-
-                        col = Mywebroom.State.get('tabContentEntireRooms')
-                        col.add(data.toJSON(), {silent: false})
-                        Mywebroom.State.set('tabContentEntireRooms', col)
-                        Mywebroom.Helpers.Editor.appendCollection(col, 'ENTIRE ROOMS')
-
-                      else
-
-                        col = Mywebroom.State.get('tabContentHidden')
-                        col.add(data.toJSON(), {silent: false})
-                        Mywebroom.State.set('tabContentHidden', col)
-                        Mywebroom.Helpers.Editor.appendCollection(col, 'HIDDEN')
-
-
-                    Mywebroom.Data.Editor.offset += limit
-
-
-              ###
-              FIX for Safari 6 on iMac
-              Issue: pagination causes editor to scroll to top
-              ###
-              setTimeout ( ->
-                location = Mywebroom.Data.Editor.location
-
-                if location
-                  $('.tab-content').scrollTop(location)
-
-              ), 0
-
-
 
 
 
@@ -401,238 +238,15 @@ $(document).ready ->
 
 
 
-  Mywebroom.Helpers.showModal = ->
-    ###
-    MODAL
-    ###
 
-    ###
-    (1) Get ID of Signed-In User
-    (2) Look Up his notifications
-          a. Handle Error
-    (3) Extract first model
-    (4) Check that the model has the notified field
-    (5) Only do something if the user hasn't been notified
-    (6) Inform server that we've been notified
-    ###
 
-    # (1) Get user_id
-    user_id = Mywebroom.State.get("signInUser").get("id")
 
 
-    # (2) Get Notifications
-    collection = new Mywebroom.Collections.ShowUserNotificationByUserCollection([], {user_id: user_id})
-    collection.fetch
-      async: false
-      success: (collection, response, options) ->
 
-        if collection and collection.length
 
-          #console.log("Notification fetch success", collection)
 
-          # (3) Extract first model
-          model = collection.first()
 
 
-          # (4) Check for existance of property we'll need to use
-          if model.has("notified")
-
-            # (5) Only show the user a message if he hasn't already been notified
-            if model.get("notified") is "n"
-
-              # View
-              view = new Mywebroom.Views.InsView({model: model})
-              view.render()
-
-
-
-              window.lightbox('lightbox-ins', 'lightbox-shadow-ins')
-
-
-              $('#lightbox').append(view.el)
-
-
-
-              ###
-              LET THE SERVER KNOW WE DON'T NEED THIS NOTIFICATION AGAIN - START
-              ###
-
-              #console.log("fake tell sever we saw notification")
-
-
-
-              note = new Mywebroom.Models.UpdateUserNotificationToNotifiedByUserModel()
-              note.save({id: user_id},
-                {
-                  success: (model, response, options) ->
-                    #console.log("REMOVE NOTIFICATION SUCCESS")
-                    #console.log(model, response, options)
-                  ,
-                  error: (model, xhr, options) ->
-                    console.error("REMOVE NOTIFICATION FAIL")
-                    #console.error(model, xhr, options)
-                }
-              )
-
-
-
-
-              if model.has("position")
-
-                position = model.get("position")
-
-                switch position
-
-                  when 1 then false
-                    #console.log("bookmark notification - no position change")
-
-                  when 2
-                    #console.log("item notification - move top right")
-                    $('#lightbox').css({
-                      "left": "79%"
-                      "top": "-=140"
-                    })
-
-                  when 3
-                    #console.log("theme notification - move top right")
-                    $('#lightbox').css({
-                      "left": "79%"
-                      "top": "-=140"
-                    })
-
-                  when 4
-                    #console.log("new version notification - move top right")
-                    $('#lightbox').css({
-                      "left": "79%"
-                      "top": "-=140"
-                    })
-
-
-
-              else
-                console.error("position field missing", model)
-
-          else
-            console.error("notified field missing", model)
-
-        else
-          #console.log("Woo hoo! We prevented an error!")
-
-      error: (collection, response, options) ->
-        console.error("Notification fetch fail", response.responseText)
-
-
-
-
-
-
-
-
-
-
-
-  Mywebroom.Helpers.setCategories = (categories) ->
-
-    # empty out existing dropdown items
-    $('#dropdown-category > .dropdown-menu').empty()
-
-
-    # iterate through the category items and create a li out of each one
-    _.each(categories, (category) ->
-      if category.category
-        $('#dropdown-category > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(category.category) + '</a></li>')
-    )
-
-
-
-
-  Mywebroom.Helpers.setBrands = (brands) ->
-
-    # empty out existing dropdown items
-    $('#dropdown-brand > .dropdown-menu').empty()
-
-
-    # iterate through the brand items and create a li out of each one
-    _.each(brands, (brand) ->
-      if brand.brand
-        $('#dropdown-brand > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(brand.brand) + '</a></li>')
-    )
-
-
-
-
-  Mywebroom.Helpers.setLocations = (locations) ->
-
-    # empty out existing dropdown items
-    $('#dropdown-location > .dropdown-menu').empty()
-
-
-    # iterate through the location items and create a li out of each one
-    _.each(locations, (location) ->
-      if location.location
-        $('#dropdown-location > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(location.location) + '</a></li>')
-    )
-
-  Mywebroom.Helpers.setStyles = (styles) ->
-    # empty out existing dropdown items
-    $('#dropdown-style > .dropdown-menu').empty()
-
-
-    # iterate through the style items and create a li out of each one
-    _.each(styles, (style) ->
-      if style.style
-        $('#dropdown-style > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(style.style) + '</a></li>')
-    )
-
-
-
-
-  Mywebroom.Helpers.setColors = (colors) ->
-
-    # empty out existing dropdown items
-    $('#dropdown-color > .dropdown-menu').empty()
-
-
-    # iterate through the color items and create a li out of each one
-    _.each(colors, (color) ->
-      if color.color
-        $('#dropdown-color > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(color.color) + '</a></li>')
-    )
-
-
-
-  Mywebroom.Helpers.setMakes = (makes) ->
-
-    # empty out existing dropdown items
-    $('#dropdown-make > .dropdown-menu').empty()
-
-
-    # iterate through the make items and create a li out of each one
-    _.each(makes, (make) ->
-      if make.make
-        $('#dropdown-make > .dropdown-menu').append('<li class=\"store-filter-item\"><a href=\"#\">' + _.str.capitalize(make.make) + '</a></li>')
-    )
-
-
-  Mywebroom.Helpers.collapseFilters = ->
-
-    # Add the collapse class
-    $('#dropdown-category').addClass('collapse')
-    $('#dropdown-style').addClass('collapse')
-    $('#dropdown-brand').addClass('collapse')
-    $('#dropdown-location').addClass('collapse')
-    $('#dropdown-color').addClass('collapse')
-    $('#dropdown-make').addClass('collapse')
-
-  Mywebroom.Helpers.expandFilters = ->
-
-    # Remove the collapse class
-    $('#dropdown-category').removeClass('collapse')
-    $('#dropdown-style').removeClass('collapse')
-    $('#dropdown-brand').removeClass('collapse')
-    $('#dropdown-location').removeClass('collapse')
-    $('#dropdown-color').removeClass('collapse')
-    $('#dropdown-make').removeClass('collapse')
 
 
 
@@ -701,6 +315,11 @@ $(document).ready ->
 
 
 
+
+
+
+
+
   Mywebroom.Helpers.turnOnHover = ->
 
     #console.log("TURN ON HOVER")
@@ -729,6 +348,12 @@ $(document).ready ->
     )
 
 
+
+
+
+
+
+
   Mywebroom.Helpers.turnOffHover = ->
 
     #console.log("TURN OFF HOVER")
@@ -736,6 +361,11 @@ $(document).ready ->
     $('.room_design').each( ->
       $(this).off("mouseenter mouseleave")
     )
+
+
+
+
+
 
 
 
@@ -747,12 +377,24 @@ $(document).ready ->
     $("#xroom_scroll_right").hide()
 
 
+
+
+
+
+
+
   Mywebroom.Helpers.showScrollers = ->
 
     #console.log("SHOW SCROLLERS")
 
     $("#xroom_scroll_left").show()
     $("#xroom_scroll_right").show()
+
+
+
+
+
+
 
 
   Mywebroom.Helpers.shrinkStore = ->
@@ -766,6 +408,11 @@ $(document).ready ->
 
 
 
+
+
+
+
+
   Mywebroom.Helpers.unShrinkStore = ->
 
     #console.log("UNSHRINK STORE")
@@ -776,6 +423,10 @@ $(document).ready ->
     $('#store_main_box').css('width', '700px')
 
     $('#store_collapse_button img').addClass('flipimg')
+
+
+
+
 
 
 
@@ -902,7 +553,7 @@ $(document).ready ->
       $(this).off('click') # So we don't have multiple click handlers
 
 
-      $(this).click( (event)->
+      $(this).click( (event) ->
 
 
         if ((Mywebroom.State.get("roomState") == "SELF") and Mywebroom.State.get("signInState") and Mywebroom.State.get("tutorialStep") != 0)
@@ -943,8 +594,8 @@ $(document).ready ->
 
 
               #console.log("David code should be here -> Open the editor here on the item that where click-it")
-              Mywebroom.Helpers.showStore()
-              Mywebroom.Helpers.Editor.clickItem(dom_item_id)
+              Mywebroom.Helpers.EditorHelper.showStore()
+              Mywebroom.Helpers.EditorHelper.clickItem(dom_item_id)
 
 
 
@@ -1054,13 +705,6 @@ $(document).ready ->
               #B. Check for first click
               if firstTimeClickedItem.get('first_time_click') is "y" and model.get('id')!=21
                 #1. Merge model and firstTimeClickedItem since we need both where we're going.
-#                itemData = new Backbone.Model(firstTimeClickedItem.toJSON())
-#                itemData.set(model.toJSON())
-#                itemData.set('urlToPopup',firstTimeClickedItem.get('image_name_first_time_click').url)
-#                itemData.set('coordinates',coordinates) #Setting these for the case when: firstClick to Special Item Popup View
-
-                #2. Show Popup
-#                Mywebroom.Helpers.createFirstTimeClickPopupView(itemData,dom_item_id)
 
                 #console.log("first time item "+model.get('id'))
                 Mywebroom.State.set("firstTimePopupItem",firstTimeClickedItem)
@@ -1080,56 +724,14 @@ $(document).ready ->
 
 
 
-#  Mywebroom.Helpers.createFirstTimeClickPopupView = (itemData, dom_item_id) ->
-#
-#    #1. Define Special view for firstTimeClicks
-#    #1a. When popup closes, Tell DB user item was clicked
-#    #1b. When popup closes, show Bookmarks Interface.
-#
-#    #This view extends PopupFriendItemView. remove() is overriding Backbone's so we can show bookmarks view when popup closes.
-#    FirstClickView = Mywebroom.Views.PopupFriendItemView.extend({
-#                      template:JST['rooms/PopUpItemFirstClickTemplate']
-#
-#                      className:"popup_item_first_click_view"
-#
-#                      events:
-#                            'click .green_button':'closeViewWithDB'
-#                            'click #popup_item_first_click_close':'closeView'
-#
-#                      #close the view, but tell the database the user clicked continue
-#                      closeViewWithDB: ->
-#
-#                        #1a. Send DB clicked item. Also, change the StateModel, so clicking again won't count as first time.
-#                        updateClickedItemModel = new Mywebroom.Models.UpdateUserItemDesignFirstTimeClickByUserIdAndDesignIdAndLocationId({id:0})
-#                        updateClickedItemModel.userId = Mywebroom.State.get('roomData').get('user').id
-#                        updateClickedItemModel.designId = itemData.get('items_design_id')
-#                        updateClickedItemModel.locationId = itemData.get('location_id')
-#                        updateClickedItemModel.save #Makes PUT request to DB at #/users_items_designs/json/update_user_items_design_first_time_click_to_not_by_user_id_and_items_design_id_and_location_id/10000001/1000/1.json
-#                          wait: true
-#
-#                        #1a.. Update State Model locally so we don't have to refetch
-#                        Mywebroom.State.get('roomItems').findWhere({'item_id':itemData.get('item_id').toString()}).set('first_time_click',"n")
-#
-#                        #1b. Show bookmarks view.
-#                        Mywebroom.Helpers.createBookmarksView(@itemData, @options.dom_item_id) if @itemData and @options.dom_item_id
-#
-#                        #1c. Call the original closeView method
-#                        @closeView()
-#
-#                    })
-#
-#    #2. Create First Time Popup View instance
-#    firstClickView = new FirstClickView(
-#                      itemData:itemData
-#                      dom_item_id:dom_item_id)
-#    #3. Render the view
-#    $('body').append(firstClickView.render().el)
+
 
 
 
   Mywebroom.Helpers.turnOffDesignClick = ->
 
     $('img.room_design').off('click')
+
 
 
 
@@ -1175,40 +777,20 @@ $(document).ready ->
     Mywebroom.State.set('room0',@room0)
     Mywebroom.State.set('room1',@room1)
     Mywebroom.State.set('room2',@room2)
-    #console.log("p0")
-    #console.log(@room0)
-    #console.log("p1")
-    #console.log(@room1)
-    #console.log("p2")
-    #console.log(@room2)
 
-
-
-
-
-    #  $('#xroom_items_0').attr('data-current_screen_position','0')
-    #    $('#xroom_items_0').css({
-    #      'left': Math.floor(-2200 - item_location_x + 100)
-    #    })
-    #
-    #    #console.log('room top', $('#xroom_items_0').css('top'))
-    #    #console.log('room bottom', $('#xroom_items_0').css('bottom'))
-    #
-    #    $('#xroom_items_1').attr('data-current_screen_position','1')
-    #    $('#xroom_items_1').css({
-    #      'left': Math.floor(0 - item_location_x + 100)
-    #    })
-    #
-    #    $('#xroom_items_2').attr('data-current_screen_position','2')
-    #    $('#xroom_items_2').css({
-    #      'left': Math.floor(2200 - item_location_x + 100)
-    #    })
-    #
 
     ###
     ScrollTo Y Value - 100
     ###
     $.scrollTo(item_location_y - 100, {axis: 'y'})
+
+
+
+
+
+
+
+
 
   Mywebroom.Helpers.updateRoomDesign = (model) ->
 
@@ -1385,6 +967,11 @@ $(document).ready ->
 
 
 
+
+
+
+
+
   Mywebroom.Helpers.turnOffMousewheel = ->
     #console.log("turn off mousewheel")
 
@@ -1393,6 +980,11 @@ $(document).ready ->
         if event.deltaX
           event.preventDefault()
           event.stopPropagation()
+
+
+
+
+
 
 
 
@@ -1413,6 +1005,11 @@ $(document).ready ->
 
 
     return model
+
+
+
+
+
 
 
 
@@ -1463,7 +1060,7 @@ $(document).ready ->
       6:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348860/map-Friend-Pop-Up-Object_gp3jlo.png" #world map
       7:   "" #tv stand
       8:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348727/dresser-Friend-Pop-Up-Object_mwf3fb.png" #dresser
-      9:   "https://res.cloudinary.com/hpdnx5ayv/image/upload/v1383594435/shoppingbag-Friend-Pop-Up-Object.png" #shopping bag
+      9:   "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383594435/shoppingbag-Friend-Pop-Up-Object.png" #shopping bag
       10:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349273/socialcanvas-Friend-Pop-Up-Object_pvzhz4.png" #social canvas
       11:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349372/wallshelf-Friend-Pop-Up-Object_ylcro0.png" #wall shelf
       12:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348903/music-Friend-Pop-Up-Object_n4bmwf.png" #music player
@@ -1477,7 +1074,7 @@ $(document).ready ->
       20:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349151/pinboard-Friend-Pop-Up-Object_iztyad.png" #pinboard
       21:  "" #portrait
       22:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349306/sport-Friend-Pop-Up-Object_yxtfe5.png" #sports
-      23:  "http://res.cloudinary.com/hpdnx5ayv/image/upload/v1383349438/window-Friend-Pop-Up-Object_gbupwg.png" #window
+      23:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383349438/window-Friend-Pop-Up-Object_gbupwg.png" #window
       24:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348514/box-Friend-Pop-Up-Object_eixd0j.png" #box
       25:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348798/games-Friend-Pop-Up-Object_qphqgk.png" #games
       26:  "//res.cloudinary.com/hpdnx5ayv/image/upload/v1383348829/hobbies-Friend-Pop-Up-Object_x4ev1a.png" #hobbies
@@ -1502,305 +1099,7 @@ $(document).ready ->
 
 
 
-  ###
-  (1) Store visibility
-  (1.1) Scroller visibility
-  (2.1) Get saveBarWasVisible
-  (2.2) Set saveBarWasVisible
-  (2.3) Save, Cancel, Remove view visibility
-  (3) Button visibility <-- don't worry about
-  (4) Active Nav Tab
-  (5) Search filter
-  (6) Dropdown filters
-  (7) Hidden item visibility: gray or hidden
-  (8) Highlighted Images
-  (9) Room size & Button class
-  (10) Room Item Hover: on or off
-  (10.1) Room Item Click: on or off
-  (11) Room Mousewheel
-  (12) Set Store State
-  ###
 
-
-
-
-  ###
-  hidden_to_shown
-  ###
-  Mywebroom.Helpers.showStore = ->
-    #console.log("show store")
-
-    # (1) Store visibility
-    $('#xroom_storepage').show()
-
-
-    # (1.1) Scroller visibility
-    $("#xroom_scroll_left").hide()
-    $("#xroom_scroll_right").hide()
-
-
-    # (2.1) Get saveBarWasVisible
-    # (2.2) Set saveBarWasVisible
-
-
-    # (2.3) Save, Cancel, Remove view visibility
-    $('#xroom_store_menu_save_cancel_remove').hide()
-
-
-    # (3) Button Visibility
-    # n/a
-
-
-    # (4) Active Nav Tab
-    $('a[href="#tab_items"]').tab('show')
-
-
-    # (5) Search filter
-    $('#store-search-dropdown li').removeClass('active') # Remove active class
-    $("#store-search-all").addClass("active") # Add active class to ALL
-    $('#store-dropdown-btn').text("ALL") # Change the text of the search filter to ALL
-
-
-    # (6) Dropdown filters
-    Mywebroom.Helpers.collapseFilters()
-
-
-    # (7) Hidden item visibility: gray or hidden
-    Mywebroom.Helpers.grayHidden()
-
-
-    # (8) Highlighted Images
-    # n/a
-
-
-    # (9) Room size & Button class
-    Mywebroom.Helpers.unShrinkStore()
-
-
-    # (10) Image Hover: on or off
-    Mywebroom.Helpers.turnOffHover()
-
-
-    # (10.1) Image Click: on or off
-    Mywebroom.Helpers.turnOffDesignClick()
-
-
-    # (11) Mousewheel
-    # n/a
-
-
-    # (12) Set Store State
-    Mywebroom.State.set("storeState", "shown")
-
-
-  ###
-  init_TO_hidden, shown_TO_hidden, collapsed_TO_hidden
-  ###
-  Mywebroom.Helpers.hideStore = ->
-    #console.log("hide store")
-
-    # (1) Store visibility
-    $('#xroom_storepage').hide()
-
-
-    # (1.1) Scroller visibility
-    $("#xroom_scroll_left").show()
-    $("#xroom_scroll_right").show()
-
-
-    # (2.1) Get saveBarWasVisible
-    # (2.2) Set saveBarWasVisible
-
-
-    # (2.3) Save, Cancel, Remove view visibility
-    $('#xroom_store_menu_save_cancel_remove').hide()
-
-
-    # (3) Button Visibility
-    # n/a
-
-
-    # (4) Active Nav Tab
-    # n/a
-
-
-    # (5) Search filter
-    # n/a
-
-
-    # (6) Dropdown filters
-    # n/a
-
-
-    # (7) Hidden item visibility: gray or hidden
-    Mywebroom.Helpers.hideHidden()
-
-
-    # (8) Highlighted Images
-    Mywebroom.Helpers.unHighlight()
-
-
-    # (9) Room size & Button class
-    Mywebroom.Helpers.unShrinkStore()
-
-
-    # (10) Image Hover: on or off
-    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
-
-
-    # (10.1) Image Click: on or off
-    Mywebroom.Helpers.turnOnDesignClick()
-
-
-    # (11) Mousewheel
-    # n/a
-
-
-    # (12) Set Store State
-    Mywebroom.State.set("storeState", "hidden")
-
-
-
-
-  ###
-  shown_TO_collapsed
-  ###
-  Mywebroom.Helpers.collapseStore = ->
-    #console.log("collapse store")
-
-    # (1) Store visibility
-    $('#xroom_storepage').show()
-
-
-    # (1.1) Scroller visibility
-    $("#xroom_scroll_left").show()
-    $("#xroom_scroll_right").show()
-
-
-    # (2.1) Get saveBarWasVisible
-    # (2.2) Set saveBarWasVisible
-    Mywebroom.Helpers.setSaveBarVisibility()
-
-
-    # (2.3) Save, Cancel, Remove view visibility
-    $('#xroom_store_menu_save_cancel_remove').hide()
-
-
-    # (3) Button Visibility
-    # n/a
-
-
-    # (4) Active Nav Tab
-    # n/a
-
-
-    # (5) Search filter
-    # n/a
-
-
-    # (6) Dropdown filters
-    # n/a
-
-
-    # (7) Hidden item visibility: gray or hidden
-    # n/a
-
-
-    # (8) Highlighted Images
-    # n/a
-
-
-    # (9) Room size & Button class
-    Mywebroom.Helpers.shrinkStore()
-
-
-    # (10) Image Hover: on or off
-    # n/a
-
-
-    # (10.1) Image Click: on or off
-    # n/a
-
-
-    # (11) Mousewheel
-    # n/a
-
-
-    # (12) Set Store State
-    Mywebroom.State.set("storeState", "collapsed")
-
-
-
-
-  ###
-  collapsed_TO_shown
-  ###
-  Mywebroom.Helpers.expandStore = ->
-    #console.log("expand store")
-
-    # (1) Store visibility
-    $('#xroom_storepage').show()
-
-
-    # (1.1) Scroller visibility
-    $("#xroom_scroll_left").hide()
-    $("#xroom_scroll_right").hide()
-
-
-    # (2.1) Get saveBarWasVisible
-    flag = Mywebroom.State.get("saveBarWasVisible")
-
-
-    # (2.2) Set saveBarWasVisible
-
-
-    # (2.3) Save, Cancel, Remove view visibility
-    if flag is true
-      $('#xroom_store_menu_save_cancel_remove').show()
-
-
-    # (3) Button Visibility
-    # n/a
-
-
-    # (4) Active Nav Tab
-    # n/a
-
-
-    # (5) Search filter
-    # n/a
-
-
-    # (6) Dropdown filters
-    # n/a
-
-
-    # (7) Hidden item visibility: gray or hidden
-    # n/a
-
-
-    # (8) Highlighted Images
-    # n/a
-
-
-    # (9) Room size & Button class
-    Mywebroom.Helpers.unShrinkStore()
-
-
-    # (10) Image Hover: on or off
-    # n/a
-
-
-    # (10.1) Image Click: on or off
-    # n/a
-
-
-    # (11) Mousewheel
-    # n/a
-
-
-    # (12) Set Store State
-    Mywebroom.State.set("storeState", "shown")
 
   ###
   get Item Name of room object from the item's id.
@@ -1811,6 +1110,15 @@ $(document).ready ->
     for item in Mywebroom.State.get('roomDesigns')
       if modelId is item.item_id
         return item.items_name_singular
+
+
+
+
+
+
+
+
+
 
   ###
   Checks if signed in user has requested a key from idRequested. returns true/false.
@@ -1836,6 +1144,10 @@ $(document).ready ->
       true
     else
       false
+
+
+
+
 
   ###
   Request key from signed in user to idRequested
@@ -1887,8 +1199,6 @@ $(document).ready ->
         Mywebroom.State.set('staticContent', staticContentCollection)
 
 
-
-
     Mywebroom.Helpers.setItemRefs()
 
 
@@ -1900,6 +1210,7 @@ $(document).ready ->
 
   # Create the Marionette App Object
   Mywebroom.App = new Backbone.Marionette.Application()
+
 
   # Create Regions
   Mywebroom.App.addRegions
