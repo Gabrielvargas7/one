@@ -724,7 +724,7 @@ Mywebroom.Helpers.EditorHelper = {
       ###
       Highlight Image
       ###
-      Mywebroom.Helpers.highLight(itemId)
+      Mywebroom.Helpers.RoomMainHelper.highLight(itemId)
 
     else
       # Show the Save, Cancel, Remove view
@@ -766,7 +766,7 @@ Mywebroom.Helpers.EditorHelper = {
     ###
     CENTER ITEM
     ###
-    Mywebroom.Helpers.centerItem(itemId)
+    Mywebroom.Helpers.RoomMainHelper.centerItem(itemId)
 
 
 
@@ -786,7 +786,7 @@ Mywebroom.Helpers.EditorHelper = {
     categories = new Mywebroom.Collections.IndexItemsDesignsCategoriesByItemIdCollection()
     categories.fetch
       async: false
-      url:   categories.url itemId
+      url:   categories.url(itemId)
       success: (response) ->
         #console.log("designs fetch success", response)
         myModel = categories.first()
@@ -1002,7 +1002,7 @@ Mywebroom.Helpers.EditorHelper = {
 
 
     # (7) Hidden item visibility: gray or hidden
-    Mywebroom.Helpers.grayHidden()
+    Mywebroom.Helpers.RoomMainHelper.grayHidden()
 
 
     # (8) Highlighted Images
@@ -1010,15 +1010,15 @@ Mywebroom.Helpers.EditorHelper = {
 
 
     # (9) Room size & Button class
-    Mywebroom.Helpers.unShrinkStore()
+    Mywebroom.Helpers.EditorHelper.unShrinkStore()
 
 
     # (10) Image Hover: on or off
-    Mywebroom.Helpers.turnOffHover()
+    Mywebroom.Helpers.RoomMainHelper.turnOffHover()
 
 
     # (10.1) Image Click: on or off
-    Mywebroom.Helpers.turnOffDesignClick()
+    Mywebroom.Helpers.RoomMainHelper.turnOffDesignClick()
 
 
     # (11) Mousewheel
@@ -1072,23 +1072,23 @@ Mywebroom.Helpers.EditorHelper = {
 
 
     # (7) Hidden item visibility: gray or hidden
-    Mywebroom.Helpers.hideHidden()
+    Mywebroom.Helpers.RoomMainHelper.hideHidden()
 
 
     # (8) Highlighted Images
-    Mywebroom.Helpers.unHighlight()
+    Mywebroom.Helpers.RoomMainHelper.unHighlight()
 
 
     # (9) Room size & Button class
-    Mywebroom.Helpers.unShrinkStore()
+    Mywebroom.Helpers.EditorHelper.unShrinkStore()
 
 
     # (10) Image Hover: on or off
-    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
+    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.RoomMainHelper.turnOnHover()
 
 
     # (10.1) Image Click: on or off
-    Mywebroom.Helpers.turnOnDesignClick()
+    Mywebroom.Helpers.RoomMainHelper.turnOnDesignClick()
 
 
     # (11) Mousewheel
@@ -1118,7 +1118,7 @@ Mywebroom.Helpers.EditorHelper = {
 
     # (2.1) Get saveBarWasVisible
     # (2.2) Set saveBarWasVisible
-    Mywebroom.Helpers.setSaveBarVisibility()
+    Mywebroom.Helpers.EditorHelper.setSaveBarVisibility()
 
 
     # (2.3) Save, Cancel, Remove view visibility
@@ -1150,7 +1150,7 @@ Mywebroom.Helpers.EditorHelper = {
 
 
     # (9) Room size & Button class
-    Mywebroom.Helpers.shrinkStore()
+    Mywebroom.Helpers.EditorHelper.shrinkStore()
 
 
     # (10) Image Hover: on or off
@@ -1223,7 +1223,7 @@ Mywebroom.Helpers.EditorHelper = {
 
 
     # (9) Room size & Button class
-    Mywebroom.Helpers.unShrinkStore()
+    Mywebroom.Helpers.EditorHelper.unShrinkStore()
 
 
     # (10) Image Hover: on or off
@@ -1240,6 +1240,69 @@ Mywebroom.Helpers.EditorHelper = {
 
     # (12) Set Store State
     Mywebroom.State.set("storeState", "shown")
+
+
+
+
+
+
+
+
+  shrinkStore: ->
+
+    #console.log("SHRINK STORE")
+
+    $('.store_main_box_right').hide() # Hide the main box
+    $('#store_main_box').css('width', '40px')
+    $('#store_collapse_img').attr('src','http://res.cloudinary.com/hpdnx5ayv/image/upload/v1375811602/close-arrow_nwupj2.png')
+    $('#store_collapse_button img').removeClass('flipimg') # Button now faces the left
+
+
+
+
+  unShrinkStore: ->
+
+    #console.log("UNSHRINK STORE")
+
+    $('.store_main_box_right').show() # Un-hide the main box
+
+    # Note: this width should be the same as #store_main_box in stylesheets/rooms_store.css.scss
+    $('#store_main_box').css('width', '700px')
+
+    $('#store_collapse_button img').addClass('flipimg')
+
+
+
+
+  setSaveBarVisibility: ->
+
+    #console.log("SET SAVEBAR VISIBILITY")
+
+    visible = $('#xroom_store_menu_save_cancel_remove').is(":visible")
+    Mywebroom.State.set("saveBarWasVisible", visible)
+
+
+
+
+  showSaveBar: ->
+
+    if $('[data-design-has-changed=true]').size() > 0 or $('[data-theme-has-changed=true]').size() > 0
+
+      # Show the Save Bar
+      $("#xroom_store_menu_save_cancel_remove").show()
+
+    else
+
+      # Hide the Save Bar
+      $("#xroom_store_menu_save_cancel_remove").hide()
+
+
+
+
+
+
+
+
 
 
 

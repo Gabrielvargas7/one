@@ -72,7 +72,7 @@ class Mywebroom.Views.StoreLayoutView extends Backbone.View
         if result
 
           # Change All DOM properties back to their original
-          Mywebroom.Helpers.cancelChanges()
+          Mywebroom.Helpers.RoomMainHelper.cancelChanges()
 
 
           # Proceed with hiding the store

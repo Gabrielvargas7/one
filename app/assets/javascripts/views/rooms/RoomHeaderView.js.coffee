@@ -349,7 +349,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
             if result
 
               # Change All DOM properties back to their original
-              Mywebroom.Helpers.cancelChanges()
+              Mywebroom.Helpers.RoomMainHelper.cancelChanges()
 
 
               # Proceed with hiding the store
@@ -411,10 +411,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
     #Turn off events:
 
     #1. Image Hover: on or off
-    Mywebroom.Helpers.turnOffHover()
+    Mywebroom.Helpers.RoomMainHelper.turnOffHover()
 
     #2. Image Click: on or off
-    Mywebroom.Helpers.turnOffDesignClick()
+    Mywebroom.Helpers.RoomMainHelper.turnOffDesignClick()
 
     #3. Scroller visibility
     $("#xroom_scroll_left").hide()

@@ -22,8 +22,8 @@ class Mywebroom.Views.PopupFriendItemView extends Backbone.View
     $("#xroom_scroll_right").hide()
 
     # Turn off Design Click too
-    Mywebroom.Helpers.turnOffDesignClick()
-    Mywebroom.Helpers.turnOffHover()
+    Mywebroom.Helpers.RoomMainHelper.turnOffDesignClick()
+    Mywebroom.Helpers.RoomMainHelper.turnOffHover()
 
     @itemData = this.options.itemData
     @coordinates = this.options.coordinates
@@ -64,8 +64,8 @@ class Mywebroom.Views.PopupFriendItemView extends Backbone.View
   closeView:->
 
     #Turn on Design Clicks
-    Mywebroom.Helpers.turnOnDesignClick()
-    Mywebroom.Helpers.turnOnHover()
+    Mywebroom.Helpers.RoomMainHelper.turnOnDesignClick()
+    Mywebroom.Helpers.RoomMainHelper.turnOnHover()
 
     #  Scroller visibility
     $("#xroom_scroll_left").show()

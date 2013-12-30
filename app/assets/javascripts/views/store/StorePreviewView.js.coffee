@@ -142,7 +142,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     (1) CENTER
     ###
-    Mywebroom.Helpers.centerItem(design_type)
+    Mywebroom.Helpers.RoomMainHelper.centerItem(design_type)
 
 
 
@@ -150,14 +150,14 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     (2) UPDATE DOM
     ###
-    Mywebroom.Helpers.updateRoomDesign(@model)
+    Mywebroom.Helpers.RoomMainHelper.updateRoomDesign(@model)
 
 
 
     ###
     (3) CONDITIONALLY SHOW SAVE BAR
     ###
-    Mywebroom.Helpers.showSaveBar()
+    Mywebroom.Helpers.EditorHelper.showSaveBar()
 
 
 
@@ -165,7 +165,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     (4) HIGHLIGHT
     ###
-    Mywebroom.Helpers.highLight(design_type)
+    Mywebroom.Helpers.RoomMainHelper.highLight(design_type)
 
 
 
@@ -198,13 +198,13 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     (1) UPDATE THEME IN DOM
     ###
-    Mywebroom.Helpers.updateRoomTheme(@model)
+    Mywebroom.Helpers.RoomMainHelper.updateRoomTheme(@model)
 
 
     ###
     (2) CONDITIONALLY SHOW SAVE BAR
     ###
-    Mywebroom.Helpers.showSaveBar()
+    Mywebroom.Helpers.EditorHelper.showSaveBar()
 
 
   clickBundle: (e) ->
@@ -227,7 +227,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     UPDATE DOM
     ###
     designs.each( (design) ->
-      Mywebroom.Helpers.updateRoomDesign(design)
+      Mywebroom.Helpers.RoomMainHelper.updateRoomDesign(design)
     )
 
 
@@ -235,7 +235,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     CONDITIONALLY SHOW SAVE BAR
     ###
-    Mywebroom.Helpers.showSaveBar()
+    Mywebroom.Helpers.EditorHelper.showSaveBar()
 
 
     ###
@@ -268,7 +268,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     THEME: UPDATE DOM
     ###
-    Mywebroom.Helpers.updateRoomTheme(theme)
+    Mywebroom.Helpers.RoomMainHelper.updateRoomTheme(theme)
 
 
 
@@ -288,7 +288,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     designs.each( (design) ->
 
-      Mywebroom.Helpers.updateRoomDesign(design)
+      Mywebroom.Helpers.RoomMainHelper.updateRoomDesign(design)
 
     )
 
@@ -298,7 +298,7 @@ class Mywebroom.Views.StorePreviewView  extends Backbone.View
     ###
     CONDITIONALLY SHOW SAVE BAR
     ###
-    Mywebroom.Helpers.showSaveBar()
+    Mywebroom.Helpers.EditorHelper.showSaveBar()
 
 
 
