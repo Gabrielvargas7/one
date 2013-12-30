@@ -53,19 +53,19 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
     # themes
-    themes = Mywebroom.Helpers.Editor.paginateInitial("THEMES", limit, 0)
+    themes = Mywebroom.Helpers.EditorHelper.paginateInitial("THEMES", limit, 0)
 
 
 
 
     # bundles
-    bundles = Mywebroom.Helpers.Editor.paginateInitial("BUNDLES", limit, 0)
+    bundles = Mywebroom.Helpers.EditorHelper.paginateInitial("BUNDLES", limit, 0)
 
 
 
 
     # entire rooms
-    entireRooms = Mywebroom.Helpers.Editor.paginateInitial("ENTIRE ROOMS", limit, 0)
+    entireRooms = Mywebroom.Helpers.EditorHelper.paginateInitial("ENTIRE ROOMS", limit, 0)
 
 
 
@@ -160,7 +160,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       $('#xroom_store_menu_save_cancel_remove').hide()
 
     # Hide the search filters
-    Mywebroom.Helpers.collapseFilters()
+    Mywebroom.Helpers.EditorHelper.collapseFilters()
 
     # Turn pagination off
     Mywebroom.Data.Editor.paginate = false
@@ -189,7 +189,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
     # Re-show nav pills
-    Mywebroom.Helpers.expandFilters()
+    Mywebroom.Helpers.EditorHelper.expandFilters()
 
 
      # Add the collapse class
@@ -211,11 +211,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       async: false
       success: (collection, response, options) ->
         model = collection.first()
-        Mywebroom.Helpers.setBrands(model.get('themes_brands'))
-        Mywebroom.Helpers.setStyles(model.get('themes_styles'))
-        Mywebroom.Helpers.setLocations(model.get('themes_locations'))
-        Mywebroom.Helpers.setColors(model.get('themes_colors'))
-        Mywebroom.Helpers.setMakes(model.get('themes_makes'))
+        Mywebroom.Helpers.EditorHelper.setBrands(model.get('themes_brands'))
+        Mywebroom.Helpers.EditorHelper.setStyles(model.get('themes_styles'))
+        Mywebroom.Helpers.EditorHelper.setLocations(model.get('themes_locations'))
+        Mywebroom.Helpers.EditorHelper.setColors(model.get('themes_colors'))
+        Mywebroom.Helpers.EditorHelper.setMakes(model.get('themes_makes'))
       error: (collection, response, options) ->
         console.error("theme fetch fail", response.responseText)
 
@@ -242,7 +242,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
     # Re-show nav pills
-    Mywebroom.Helpers.expandFilters()
+    Mywebroom.Helpers.EditorHelper.expandFilters()
 
 
     # Add the collapse class
@@ -264,11 +264,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       async:   false
       success: (collection, response, options) ->
         model = collection.first()
-        Mywebroom.Helpers.setBrands(model.get('bundles_brands'))
-        Mywebroom.Helpers.setStyles(model.get('bundles_styles'))
-        Mywebroom.Helpers.setLocations(model.get('bundles_locations'))
-        Mywebroom.Helpers.setColors(model.get('bundles_colors'))
-        Mywebroom.Helpers.setMakes(model.get('bundles_makes'))
+        Mywebroom.Helpers.EditorHelper.setBrands(model.get('bundles_brands'))
+        Mywebroom.Helpers.EditorHelper.setStyles(model.get('bundles_styles'))
+        Mywebroom.Helpers.EditorHelper.setLocations(model.get('bundles_locations'))
+        Mywebroom.Helpers.EditorHelper.setColors(model.get('bundles_colors'))
+        Mywebroom.Helpers.EditorHelper.setMakes(model.get('bundles_makes'))
       error: (collection, response, options) ->
         console.error("bundle category fail", response.responseText)
 
@@ -294,7 +294,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
 
 
     # Re-show nav pills
-    Mywebroom.Helpers.expandFilters()
+    Mywebroom.Helpers.EditorHelper.expandFilters()
 
 
     # Add the collapse class
@@ -316,11 +316,11 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       async:   false
       success: (collection, response, options) ->
         model = collection.first()
-        Mywebroom.Helpers.setBrands(model.get('bundles_brands'))
-        Mywebroom.Helpers.setStyles(model.get('bundles_styles'))
-        Mywebroom.Helpers.setLocations(model.get('bundles_locations'))
-        Mywebroom.Helpers.setColors(model.get('bundles_colors'))
-        Mywebroom.Helpers.setMakes(model.get('bundles_makes'))
+        Mywebroom.Helpers.EditorHelper.setBrands(model.get('bundles_brands'))
+        Mywebroom.Helpers.EditorHelper.setStyles(model.get('bundles_styles'))
+        Mywebroom.Helpers.EditorHelper.setLocations(model.get('bundles_locations'))
+        Mywebroom.Helpers.EditorHelper.setColors(model.get('bundles_colors'))
+        Mywebroom.Helpers.EditorHelper.setMakes(model.get('bundles_makes'))
       error: (collection, response, options) ->
         console.error("bundle category fail", response.responseText)
 
@@ -459,7 +459,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     limit = Mywebroom.Data.Editor.limit
 
 
-    data = Mywebroom.Helpers.Editor.paginateSearch(category, limit, 0, keyword)
+    data = Mywebroom.Helpers.EditorHelper.paginateSearch(category, limit, 0, keyword)
 
 
 

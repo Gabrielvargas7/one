@@ -44,7 +44,7 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
     $('#xroom_store_menu_save_cancel_remove').hide()
 
     # Hide the store
-    Mywebroom.Helpers.hideStore()
+    Mywebroom.Helpers.EditorHelper.hideStore()
 
     Mywebroom.Helpers.StoreSaveCancelRemoveHelper.saveNewItems()
 

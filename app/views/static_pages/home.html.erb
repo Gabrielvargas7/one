@@ -43,7 +43,7 @@
               <li><%= link_to 'BLOG', "http://blog.mywebroom.com" %>      </li>
               <li><%= link_to 'SHOP',shop_index_path %> </li>
 
-              <li class="landing_login"> <%= link_to_function "LOGIN", "javascript:login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
+              <li class="landing_login"> <%= link_to_function "LOGIN", "javascript:Mywebroom.Helpers.LightboxHelper.login_lightbox_show()",:class => "gray_button_light gray_button", :id => "login_btn"%></li>
               <li><%= link_to "SIGN UP", xroom_rooms_path , :id =>"signup_btn" %></li>
     </ul>
 
@@ -64,7 +64,7 @@
               <a href="<%=xroom_rooms_path%>"> <span class="link_spanner"></span></a>
             </div>
             <div class="landing_play_video">
-              <a href="javascript:playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
+              <a href="javascript:Mywebroom.Helpers.LightboxHelper.playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@
             </div>
 
              <div class="landing_play_video">
-              <a href="javascript:playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
+              <a href="javascript:Mywebroom.Helpers.LightboxHelper.playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
             </div>
           </div>
 
@@ -106,7 +106,7 @@
               <a href="<%=xroom_rooms_path%>"> <span class="link_spanner"></span></a>
             </div>
             <div class="landing_play_video">
-              <a href="javascript:playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
+              <a href="javascript:Mywebroom.Helpers.LightboxHelper.playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
             </div>
 
 
@@ -129,7 +129,7 @@
               <a href="<%=xroom_rooms_path%>"> <span class="link_spanner"></span></a>
             </div>
              <div class="landing_play_video">
-              <a href="javascript:playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
+              <a href="javascript:Mywebroom.Helpers.LightboxHelper.playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
             </div>
           </div>
 
@@ -152,7 +152,7 @@
             </div>
 
             <div class="landing_play_video">
-              <a href="javascript:playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
+              <a href="javascript:Mywebroom.Helpers.LightboxHelper.playVideoLightbox();" onclick="_gaq.push(['_trackEvent', 'static_pages','home','video']);"><span class="link_spanner"></span></a>
             </div>
           </div>
 
