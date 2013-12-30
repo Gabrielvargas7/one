@@ -46,8 +46,7 @@ Mywebroom.Helpers.AppHelper = {
               view.render()
 
 
-
-              window.lightbox('lightbox-ins', 'lightbox-shadow-ins')
+              Mywebroom.Helpers.LightboxHelper.lightbox('lightbox-ins', 'lightbox-shadow-ins')
 
 
               $('#lightbox').append(view.el)
