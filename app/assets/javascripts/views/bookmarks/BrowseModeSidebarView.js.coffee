@@ -71,18 +71,18 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
 
     #2.2 Clear timer once mouse enters the sidebar. 
     $('.browse_mode_sidebar').off('mouseenter').on('mouseenter',{that},(event)->
-      console.log 'browse_mode_sidebar mouseenter'
+      
       clearTimeout hideTimer if hideTimer != null)
 
     #2.3 Set timer once mouse leaves sidebar
     $('.browse_mode_sidebar').off('mouseleave').on('mouseleave',{that},(event)->
-      console.log 'browse_mode_sidebar mouseleave'
+      
       hideTimer = setTimeout event.data.that.hideSideBar,5000
       )
 
     #2.4 Clear the timer when the mouse enters the expand circle. (This is to prevent duplicate events)
     $('.halfCircleRight').off('mouseenter').on('mouseenter',{that},(event)->
-      console.log 'halfCircleRight mouseenter'
+      
       clearTimeout(hideTimer) if hideTimer != null
       )
 
@@ -94,7 +94,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     #2. Clear timer event
     $('.browse_mode_sidebar').off('mouseleave')
 
-    
+
   setScroll:->
     #console.log 'one day i will scroll things beautifully.'
     #Determine if we need to scroll.
