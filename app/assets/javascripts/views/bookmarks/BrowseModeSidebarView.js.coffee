@@ -12,7 +12,8 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
   initialize:->
     this.on('render',@setScroll)
     @spriteUrl = Mywebroom.State.get('staticContent').findWhere('name':'bookmark-main-icons').get('image_name').url
-
+    @sideBarInView = true #sidebar is in view (vs. expand button is in view)
+  
   render:->
     if @model
       #fetch data here
@@ -59,6 +60,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
   #Hope it dies quickly when the view closes
 
   showSideBar:->
+    @sideBarInView = true
     #1. Fade Out Expand Button
 
     $('.halfCircleRight').css 'opacity', 0
@@ -89,6 +91,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       )
 
   hideSideBar:->
+    @sideBarInView = false
     #1. Fade In Buttons
     @$('.halfCircleRight').css 'opacity', 1
     @$('.browse_mode_sidebar').css 'left',-90
@@ -96,7 +99,9 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     #2. Clear timer event
     @$('.browse_mode_sidebar').off('mouseleave')
 
-
+    #3. If Active Sites Menu shown, need to hide it. (Might change. I forgot what Artem wants here)
+    if Mywebroom.State.get('browseModeView').activeMenuView && !Mywebroom.State.get('browseModeView').activeMenuView.isHidden()
+      Mywebroom.State.get('browseModeView').activeMenuView.hideActiveMenu()
   setScroll:->
     #console.log 'one day i will scroll things beautifully.'
     #Determine if we need to scroll.
