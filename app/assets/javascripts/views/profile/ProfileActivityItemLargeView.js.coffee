@@ -42,7 +42,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     # The social View is in the template because
     # the styling was not right with this view.
 
-    #Set State for LargeView tracker;
+    #Set State for LargeView tracker
     Mywebroom.State.set('profileLargeView', this)
 
     this
@@ -131,7 +131,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
     If user not signed in, send to landing page. Otherwise, send to their room with params.
     ###
     if !Mywebroom.State.get('signInUser')
-     return window.location.assign(window.location.protocol + "//" + window.location.host)
+      return window.location.assign(window.location.protocol + "//" + window.location.host)
 
 
     if Mywebroom.State.get('roomState') != "SELF"
@@ -263,7 +263,7 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 
 
     type = @model.get('type')
-    url = Mywebroom.Helpers.getSEOLink(@model.get('id'), type)
+    url = Mywebroom.Helpers.AppHelper.getSEOLink(@model.get('id'), type)
 
 
     baseUrl = '//pinterest.com/pin/create/button/?url='
@@ -315,6 +315,6 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
   generateFacebookURL: ->
 
     baseUrl = 'https://www.facebook.com/sharer/sharer.php?u='
-    url = Mywebroom.Helpers.getSEOLink(@model.get('id'), @model.get('type'))
+    url = Mywebroom.Helpers.AppHelper.getSEOLink(@model.get('id'), @model.get('type'))
 
     return baseUrl + encodeURIComponent(url.get("seo_url"))

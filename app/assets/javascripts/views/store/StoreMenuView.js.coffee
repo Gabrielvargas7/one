@@ -45,7 +45,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
     ###
     Turn on hover
     ###
-    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.turnOnHover()
+    if Object.keys(Mywebroom.Data.ItemModels).length then Mywebroom.Helpers.RoomMainHelper.turnOnHover()
 
 
     # Limit
@@ -535,15 +535,15 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       when "DESIGN"
 
         # Center the item
-        Mywebroom.Helpers.centerItem(model.get("item_id"))
+        Mywebroom.Helpers.RoomMainHelper.centerItem(model.get("item_id"))
 
         # Insert the item into the DOM
-        Mywebroom.Helpers.updateRoomDesign(model)
+        Mywebroom.Helpers.RoomMainHelper.updateRoomDesign(model)
 
         ###
         CONDITIONALLY SHOW SAVE BAR
         ###
-        Mywebroom.Helpers.showSaveBar()
+        Mywebroom.Helpers.EditorHelper.showSaveBar()
 
 
 
@@ -551,12 +551,12 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
       when "THEME"
 
         # Insert the item into the DOM
-        Mywebroom.Helpers.updateRoomTheme(model)
+        Mywebroom.Helpers.RoomMainHelper.updateRoomTheme(model)
 
         ###
         CONDITIONALLY SHOW SAVE BAR
         ###
-        Mywebroom.Helpers.showSaveBar()
+        Mywebroom.Helpers.EditorHelper.showSaveBar()
 
 
 
@@ -581,13 +581,13 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         designs.each (design) ->
 
-          Mywebroom.Helpers.updateRoomDesign(design)
+          Mywebroom.Helpers.RoomMainHelper.updateRoomDesign(design)
 
 
         ###
         CONDITIONALLY SHOW SAVE BAR
         ###
-        Mywebroom.Helpers.showSaveBar()
+        Mywebroom.Helpers.EditorHelper.showSaveBar()
 
 
         ###
@@ -615,7 +615,7 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         THEME: UPDATE DOM
         ###
-        Mywebroom.Helpers.updateRoomTheme(theme)
+        Mywebroom.Helpers.RoomMainHelper.updateRoomTheme(theme)
 
 
 
@@ -639,14 +639,14 @@ class Mywebroom.Views.StoreMenuView extends Backbone.View
         ###
         designs.each (design) ->
 
-          Mywebroom.Helpers.updateRoomDesign(design)
+          Mywebroom.Helpers.RoomMainHelper.updateRoomDesign(design)
 
 
 
         ###
         CONDITIONALLY SHOW SAVE BAR
         ###
-        Mywebroom.Helpers.showSaveBar()
+        Mywebroom.Helpers.EditorHelper.showSaveBar()
 
 
 

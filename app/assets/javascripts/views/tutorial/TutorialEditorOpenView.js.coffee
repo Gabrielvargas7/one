@@ -37,7 +37,7 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
-    _gaq.push(['_trackEvent', 'tutorial','click_btn','editor_save']);
+    _gaq.push(['_trackEvent', 'tutorial','click_btn','editor_save'])
 
 
     # Hide the Save, Cancel, Remove View
@@ -61,7 +61,7 @@ class Mywebroom.Views.TutorialEditorOpenView extends Backbone.View
     itemId = Mywebroom.State.get("tutorialItem")
 
     bookmarksView = new Mywebroom.Views.BookmarksView
-      items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+      items_name: Mywebroom.Helpers.AppHelper.getItemNameOfItemId(parseInt(itemId))
       item_id: itemId
       user: Mywebroom.State.get("roomUser").get("id")
 

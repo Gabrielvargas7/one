@@ -737,8 +737,8 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
             item_id    : e.g. 2 <-- model.get("item_id") <-- should only need for bookmarks
       ###
 
-      entity_type = Mywebroom.Helpers.getParameterByName('entity_type')
-      came_from = Mywebroom.Helpers.getParameterByName('came_from')
+      entity_type = Mywebroom.Helpers.AppHelper.getParameterByName('entity_type')
+      came_from = Mywebroom.Helpers.AppHelper.getParameterByName('came_from')
 
       #Friends has no parameter: came_from
       #The only things that have Came_from are SHOP and EMAIL.
@@ -756,7 +756,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
             if entity_type
 
-              entity_id = Mywebroom.Helpers.getParameterByName('entity_id')
+              entity_id = Mywebroom.Helpers.AppHelper.getParameterByName('entity_id')
 
               switch entity_type
 
@@ -929,7 +929,7 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
 
 
     # (11) Turn off mousewheel
-    Mywebroom.Helpers.turnOffMousewheel()
+    Mywebroom.Helpers.AppHelper.turnOffMousewheel()
 
 
 
@@ -1044,18 +1044,18 @@ class Mywebroom.Views.RoomView extends Backbone.Marionette.ItemView
   # ENCODED PARAMS Bookmarks
   entityTypeBookmark: (entity_id) ->
 
-    itemId = Mywebroom.Helpers.getParameterByName('item_id')
+    itemId = Mywebroom.Helpers.AppHelper.getParameterByName('item_id')
 
 
     if not itemId
       throw new Error("BOOKMARK WITHOUT item_id")
 
 
-    #console.log Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+    #console.log Mywebroom.Helpers.AppHelper.getItemNameOfItemId(parseInt(itemId))
 
 
     bookmarksView = new Mywebroom.Views.BookmarksView
-      items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(itemId))
+      items_name: Mywebroom.Helpers.AppHelper.getItemNameOfItemId(parseInt(itemId))
       item_id: itemId
       user: Mywebroom.State.get("roomUser").get("id")
 

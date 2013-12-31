@@ -48,7 +48,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
         else
 
-          seoModel = Mywebroom.Helpers.getSEOLink(@model.get('entityId'), 'BOOKMARK')
+          seoModel = Mywebroom.Helpers.AppHelper.getSEOLink(@model.get('entityId'), 'BOOKMARK')
           window.open(seoModel.get("seo_url"), '_blank')
 
 
@@ -71,7 +71,7 @@ class Mywebroom.Views.SearchEntityView extends Backbone.View
 
         else
 
-          seoModel = Mywebroom.Helpers.getSEOLink(@model.get('entityId'), 'DESIGN')
+          seoModel = Mywebroom.Helpers.AppHelper.getSEOLink(@model.get('entityId'), 'DESIGN')
           window.open(seoModel.get("seo_url"), '_blank')
 
 

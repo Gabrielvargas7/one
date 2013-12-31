@@ -45,7 +45,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
   clickFBLikeItem: ->
 
     #console.log("You clicked FB Like", @model)
-    url = Mywebroom.Helpers.getSEOLink(@model.get('id'), @model.get('type'))
+    url = Mywebroom.Helpers.AppHelper.getSEOLink(@model.get('id'), @model.get('type'))
 
 
     window.open(
@@ -80,7 +80,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
 
-    url = Mywebroom.Helpers.getSEOLink(@model.get('id'), @model.get('type'))
+    url = Mywebroom.Helpers.AppHelper.getSEOLink(@model.get('id'), @model.get('type'))
 
 
     window.open(url.get("seo_url"), '_blank')
@@ -103,7 +103,7 @@ class Mywebroom.Views.SocialBarView extends Backbone.View
 
 
     type = @model.get('type')
-    url = Mywebroom.Helpers.getSEOLink(@model.get('id'), type)
+    url = Mywebroom.Helpers.AppHelper.getSEOLink(@model.get('id'), type)
 
 
     baseUrl = '//pinterest.com/pin/create/button/?url='
