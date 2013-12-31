@@ -57,12 +57,44 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
   #Hope it dies quickly when the view closes
 
   showSideBar:->
-    #Fade Out Expand Button
+    #1. Fade Out Expand Button
 
     $('.halfCircleRight').css 'opacity', 0
     #Fade in Bar
     $('.browse_mode_sidebar').css 'left',0
 
+    #2. Start event to detect inactivity on sidebar
+
+    #2.1 Start to timeout unless the mouse enters the sidebar. 
+    that = this
+    hideTimer = setTimeout @hideSideBar,5000
+
+    #2.2 Clear timer once mouse enters the sidebar. 
+    $('.browse_mode_sidebar').off('mouseenter').on('mouseenter',{that},(event)->
+      console.log 'browse_mode_sidebar mouseenter'
+      clearTimeout hideTimer if hideTimer != null)
+
+    #2.3 Set timer once mouse leaves sidebar
+    $('.browse_mode_sidebar').off('mouseleave').on('mouseleave',{that},(event)->
+      console.log 'browse_mode_sidebar mouseleave'
+      hideTimer = setTimeout event.data.that.hideSideBar,5000
+      )
+
+    #2.4 Clear the timer when the mouse enters the expand circle. (This is to prevent duplicate events)
+    $('.halfCircleRight').off('mouseenter').on('mouseenter',{that},(event)->
+      console.log 'halfCircleRight mouseenter'
+      clearTimeout(hideTimer) if hideTimer != null
+      )
+
+  hideSideBar:->
+    #1. Fade In Buttons
+    $('.halfCircleRight').css 'opacity', 1
+    $('.browse_mode_sidebar').css 'left',-90
+
+    #2. Clear timer event
+    $('.browse_mode_sidebar').off('mouseleave')
+
+    
   setScroll:->
     #console.log 'one day i will scroll things beautifully.'
     #Determine if we need to scroll.
