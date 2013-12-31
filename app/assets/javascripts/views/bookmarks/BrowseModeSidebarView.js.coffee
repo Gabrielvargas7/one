@@ -24,7 +24,9 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       @model.on('change',@render,this)
       @tagActiveSites()
     $(@el).html(@template(collection:@collection,model:@model,spriteUrl:@spriteUrl))
-    #@setScroll()
+    
+    #Start event timers for menu timeouts
+    @showSideBar()
     this
 
   ###
@@ -70,29 +72,29 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     hideTimer = setTimeout @hideSideBar,5000
 
     #2.2 Clear timer once mouse enters the sidebar. 
-    $('.browse_mode_sidebar').off('mouseenter').on('mouseenter',{that},(event)->
-      
+    @$('.browse_mode_sidebar').off('mouseenter').on('mouseenter',{that},(event)->
+      console.log 'sidebar mouseenter'
       clearTimeout hideTimer if hideTimer != null)
 
     #2.3 Set timer once mouse leaves sidebar
-    $('.browse_mode_sidebar').off('mouseleave').on('mouseleave',{that},(event)->
-      
+    @$('.browse_mode_sidebar').off('mouseleave').on('mouseleave',{that},(event)->
+      console.log 'sidebar mouseleave'
       hideTimer = setTimeout event.data.that.hideSideBar,5000
       )
 
     #2.4 Clear the timer when the mouse enters the expand circle. (This is to prevent duplicate events)
-    $('.halfCircleRight').off('mouseenter').on('mouseenter',{that},(event)->
-      
+    @$('.halfCircleRight').off('mouseenter').on('mouseenter',{that},(event)->
+      console.log 'circle mouseenter'
       clearTimeout(hideTimer) if hideTimer != null
       )
 
   hideSideBar:->
     #1. Fade In Buttons
-    $('.halfCircleRight').css 'opacity', 1
-    $('.browse_mode_sidebar').css 'left',-90
+    @$('.halfCircleRight').css 'opacity', 1
+    @$('.browse_mode_sidebar').css 'left',-90
 
     #2. Clear timer event
-    $('.browse_mode_sidebar').off('mouseleave')
+    @$('.browse_mode_sidebar').off('mouseleave')
 
 
   setScroll:->

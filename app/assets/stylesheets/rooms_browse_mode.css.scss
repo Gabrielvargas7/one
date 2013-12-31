@@ -110,7 +110,7 @@ div.current_browse_mode_site.browse_mode_site{
      margin-top:25px; /*verticalizing this turns from the center, so nav menu doesn't line up 
                         even though they are positioned the same. 
                         offset margin by half height to fix. */
-    opacity:1;
+    opacity:0;
     /*Fade Transition*/
     -webkit-transition: opacity 1s ease-in;
     -moz-transition: opacity 1s ease-in;
@@ -121,6 +121,9 @@ div.current_browse_mode_site.browse_mode_site{
     .browse_expand_inner_wrap{
        padding-top: 12px;
        cursor:pointer;
+       font-family: 'Open Sans Condensed',sans-serif;
+       font-size:18px;
+       font-weight:300;
     }
 
 }
@@ -147,7 +150,7 @@ div.current_browse_mode_site.browse_mode_site{
 .browse_mode_sidebar{
   position:fixed;
   z-index:8;
-  left:-90px;
+  left:0px;
   top:45px;
   background-color:rgba(0,0,0,.8);
   padding:0 10px;
