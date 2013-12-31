@@ -934,6 +934,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
         $('.browse_mode_view').show()
         $('#xroom_bookmarks_browse_mode').show()
+        #2.1 Show the sidebar if its not shown
+        if !Mywebroom.State.get('browseModeView').browseModeSidebarView.sideBarInView
+          Mywebroom.State.get('browseModeView').browseModeSidebarView.showSideBar()
 
       else
         @noActiveSitesToast()
