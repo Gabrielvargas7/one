@@ -26,7 +26,7 @@
 //= require masonry.pkgd
 //= require backbone.marionette
 //= require jquery.mousewheel
-//= require shop
+//= require rails/shop.js.coffee
 //= require mywebroom
 //= require_tree ../templates
 //= require_tree ./models
