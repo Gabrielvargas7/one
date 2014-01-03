@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 
     else
       @user.specific_room_id = params[:bundle_id]
-      puts "Bundle id "+@user.specific_room_id.to_s
+      #puts "Bundle id "+@user.specific_room_id.to_s
     end
     #puts "Bundle id specifit room"+@user.specific_room_id.to_s
 
@@ -109,7 +109,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     user = User.find(params[:id])
 
-    if user
+    if user  && (! params[:user][:username].blank?)
       #&& user.authenticate(params[:user][:password])
 
        if user.username == params[:user][:username]
@@ -127,27 +127,27 @@ class UsersController < ApplicationController
        else
          clean_username = user.get_username(params[:user][:username])
 
-         if clean_username == params[:user][:username]
+           if clean_username == params[:user][:username]
 
-            params[:user][:username] = clean_username
+              params[:user][:username] = clean_username
 
-            if @user.update_attributes(params[:user])
-              # Handle a successful update.
-              flash[:success] = "Profile updated"
-              sign_in @user
-              redirect_to @user
+              if @user.update_attributes(params[:user])
+                # Handle a successful update.
+                flash[:success] = "Profile updated"
+                sign_in @user
+                redirect_to @user
+              else
+                render 'edit'
+              end
+
             else
+              # no available username
+              flash[:error] = "the username is not available: this one is avalable "+clean_username
               render 'edit'
-            end
-
-          else
-            # no available username
-            flash[:error] = "the username is not available: this one is avalable "+clean_username
-            render 'edit'
           end
        end
     else
-      flash[:success] = "problem we user "
+      flash[:success] = "problem whit the user "
       render 'edit'
     end
   end
@@ -160,14 +160,16 @@ class UsersController < ApplicationController
 
 
   def update_password
+    puts "update password yes"
     @user = User.find(params[:id])
-
+    puts params[:user].to_s
     if @user.update_attributes(params[:user])
        sign_in @user
        redirect_to @user, :notice => "Password has been reset."
     else
       render :edit_password
     end
+
   end
 
 
@@ -276,7 +278,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       #format.json { render json: @current_user.as_json(only:[:id,:username]), status: :ok}
       if @current_user.nil?
-        format.json { render json: 'user not found' , status: :no_content }
+        #format.json { render json: 'user not found' , status: :no_content }
+        format.json { render json: '{}'}
+
       else
         format.json { render json: @current_user.as_json(only:[:id,:username]), status: :ok}
       end
@@ -315,25 +319,30 @@ class UsersController < ApplicationController
   #***********************************
   # End Json methods for the room users
   #***********************************
-  private
-
-  # this function will remove all non-alphanumeric character and
-  # replace the empty space for dash eg 'my new username@@' = my-new-username
-  def clean_username(username)
-
-    my_username = username
-    #remove all non- alphanumeric character (expect dashes '-')
-    my_username = my_username.gsub(/[^0-9a-z -]/i, '')
-
-    #remplace dashes() for empty space because if the user add dash mean that it want separate the username
-    my_username = my_username.gsub(/[-]/i, ' ')
-
-    #remplace the empty space for one dash by word
-    my_username.downcase!
-    my_username.strip!
-    username_split = my_username.split(' ').join('-')
-
-  end
+  # gabriel
+  # modified on 01/03/2014
+  # remove on Feb 2014
+  #private
+  #
+  ## this function will remove all non-alphanumeric character and
+  ## replace the empty space for dash eg 'my new username@@' = my-new-username
+  #def clean_username(username)
+  #
+  #
+  #    my_username = username
+  #    #remove all non- alphanumeric character (expect dashes '-')
+  #    my_username = my_username.gsub(/[^0-9a-z -]/i, '')
+  #
+  #    #remplace dashes() for empty space because if the user add dash mean that it want separate the username
+  #    my_username = my_username.gsub(/[-]/i, ' ')
+  #
+  #    #remplace the empty space for one dash by word
+  #    my_username.downcase!
+  #    my_username.strip!
+  #    username_split = my_username.split(' ').join('-')
+  #
+  #
+  #end
 
 
 

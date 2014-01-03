@@ -187,8 +187,8 @@ describe UsersController do
 
         it "redirects to the room of the user" do
           post :create, user: FactoryGirl.attributes_for(:user)
-          #
-          response.should  redirect_to room_rooms_path User.last.username
+
+          response.should  redirect_to room_rooms_path(User.last.username,:anchor => "")
         end
       end
 
@@ -246,19 +246,20 @@ describe UsersController do
       context "invalid attributes" do
 
         it "locates the requested @user" do
-          put :update, id: @user, user: FactoryGirl.attributes_for(:user,username:nil,password:nil)
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user,username:nil)
           assigns(:user).should eq(@user)
         end
-        it "does not change @user's attributes" do
-          put :update, id: @user, user: FactoryGirl.attributes_for(:user, username:"john", password: nil)
-          @user.reload
-          @user.username.should_not eq("john")
-
-        end
         it "re-renders the edit method" do
-          put :update, id: @user, user: FactoryGirl.attributes_for(:user,username:nil,password:nil)
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user,username:nil)
           response.should render_template :edit
         end
+
+        it "re-renders the edit method when is invalid username" do
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user,username:"one%%$$one")
+          response.should render_template :edit
+        end
+
+
       end
     end
 
@@ -271,11 +272,11 @@ describe UsersController do
         put :update, id: @user, user: FactoryGirl.attributes_for(:user)
         response.should redirect_to root_path
       end
-
     end
-
-
   end
+
+
+
 
   ##***********************************
   ## rspec test  #json_show_user_profile_by_user_id
@@ -362,7 +363,7 @@ describe UsersController do
         response.should be_success
       end
 
-      it "should set theme" do
+      it "should get user" do
 
         get :json_show_signed_user, :format => :json
         assigns(:current_user).as_json.should == @user.as_json
@@ -374,7 +375,7 @@ describe UsersController do
       end
 
       context "get all values " do
-        it "should return json_index theme in json" do # depend on what you return in action
+        it "should return json_show_signed user" do # depend on what you return in action
           get :json_show_signed_user, :format => :json
           body = JSON.parse(response.body)
           body["id"].should == @user.id
@@ -487,9 +488,78 @@ describe UsersController do
   end
 
 
-  describe "is_signed_user" do
-    pending "add #{__FILE__}"
+  describe "json_is_signed_user", tag_json_signed:true do
+
+    describe "sign_in user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "should be successful" do
+        get :json_is_signed_user, :format => :json
+        response.should be_success
+      end
+
+      it "should get json object {'signed':'yes'}" do
+        @is_signed_user = JSON.parse('{"signed":"yes"}')
+        get :json_is_signed_user, :format => :json
+        assigns(:is_signed_user).as_json.should ==  @is_signed_user
+      end
+
+      it "has a 200 status code" do
+        get :json_is_signed_user, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "should return json_is_signed_user" do # depend on what you return in action
+          get :json_is_signed_user, :format => :json
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          body["signed"].should == "yes"
+          #body["username"].should == @user.username
+
+        end
+      end
+    end
+
+    describe "sign_out user" do
+      before do
+        sign_out
+      end
+
+      it "should be successful" do
+        get :json_is_signed_user, :format => :json
+        response.should be_success
+      end
+
+      it "should get json object {'signed':'not'}" do
+        @is_signed_user = JSON.parse('{"signed":"not"}')
+        get :json_is_signed_user, :format => :json
+        assigns(:is_signed_user).as_json.should ==  @is_signed_user
+      end
+
+      it "has a 200 status code" do
+        get :json_is_signed_user, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "should return json_is_signed_user" do # depend on what you return in action
+          get :json_is_signed_user, :format => :json
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          body["signed"].should == "not"
+          #body["username"].should == @user.username
+
+        end
+      end
+    end
+
   end
+
+
 
 
 
