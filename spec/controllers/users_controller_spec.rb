@@ -188,7 +188,8 @@ describe UsersController do
         it "redirects to the room of the user" do
           post :create, user: FactoryGirl.attributes_for(:user)
 
-          response.should  redirect_to room_rooms_path(User.last.username,:anchor => "")
+          #response.should  redirect_to room_rooms_path(User.last.username,:anchor => "")
+          response.should  redirect_to room_rooms_path(User.last.username)
         end
       end
 
