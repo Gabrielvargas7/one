@@ -18,7 +18,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
   events: {
     'click #xroom_header_active_sites'   : 'showActiveSites'
-    'click #xroom_header_profile'        : 'showProfile'
+    'click #xroom_header_profile'        : 'toggleProfile'
     'click #xroom_header_forward_profile': 'forwardToRoRProfilePage'
     'click #xroom_header_forward_setting': 'forwardToRoRSettingPage'
     'click #xroom_header_forward_help'   : 'forwardToRoRHelpPage'
@@ -127,14 +127,14 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       if roomState is "FRIEND"
         $('#xroom_header_active_sites').remove()
         $('#xroom_header_storepage').remove()
-        @showProfile(null)
+        @toggleProfile(null)
 
 
       if roomState is "PUBLIC"
         $('#xroom_header_active_sites').remove()
         $('#xroom_header_storepage').remove()
         $('#xroom_header_profile').remove()
-        @showProfile(null)
+        @toggleProfile(null)
 
     else
       $('#xroom_header_myroom').remove()
@@ -142,7 +142,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
       $('#xroom_header_storepage').remove()
       $('#xroom_header_profile').remove()
       $('.xroom_header_user_room').remove()
-      @showProfile(null)
+      @toggleProfile(null)
 
 
 ############
@@ -156,10 +156,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 #    if roomState is "PUBLIC"
 #      $('#xroom_header_profile').remove()
 #      $('.dropdown').remove() if signInState isnt true
-#      @showProfile(null)
+#      @toggleProfile(null)
 
 #    if roomState is "FRIEND"
-#      @showProfile(null)
+#      @toggleProfile(null)
 
 #    $('#xroom_header_myroom').remove() if signInState isnt true
 
@@ -192,9 +192,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
   #*******************
 
   #--------------------------
-  #  *** function showProfile
+  #  *** function toggleProfile
   #--------------------------
-  showProfile: (event) ->
+  toggleProfile: (event) ->
 
     if event  # this is is because this fuction is also called when room is PUBLIC
       event.preventDefault()
