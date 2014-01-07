@@ -71,7 +71,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
 
     #2.1 Start to timeout unless the mouse enters the sidebar. 
     that = this
-    hideTimer = setTimeout @hideSideBar,5000
+    hideTimer = setTimeout @hideSideBar,2000
 
     #2.2 Clear timer once mouse enters the sidebar. 
     @$('.browse_mode_sidebar').off('mouseenter').on('mouseenter',{that},(event)->
@@ -81,7 +81,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     #2.3 Set timer once mouse leaves sidebar
     @$('.browse_mode_sidebar').off('mouseleave').on('mouseleave',{that},(event)->
       #console.log 'sidebar mouseleave'
-      hideTimer = setTimeout event.data.that.hideSideBar,5000
+      hideTimer = setTimeout event.data.that.hideSideBar,2000
       )
 
     #2.4 Clear the timer when the mouse enters the expand circle. (This is to prevent duplicate events)
@@ -97,7 +97,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       clearTimeout hideTimer if hideTimer != null)
     $('.browse_mode_active_sites_menu').off('mouseleave').on('mouseleave',{that},(event)->
       # console.log 'activesites mouseleave'
-      hideTimer = setTimeout event.data.that.hideSideBar, 5000)
+      hideTimer = setTimeout event.data.that.hideSideBar, 2000)
 
   hideSideBar:->
   #Context/scope is the window here. So, let's use state model to set theimportant bits
