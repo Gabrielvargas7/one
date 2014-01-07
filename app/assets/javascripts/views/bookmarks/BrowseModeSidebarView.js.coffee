@@ -100,9 +100,14 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       hideTimer = setTimeout event.data.that.hideSideBar, 2000)
 
     $('#xroom_header').off('mouseenter').on('mouseenter',{that},(event)->
+      console.log 'header mouseenter'
+      clearTimeout hideTimer if hideTimer != null)
+    $('#xroom_header').off('mouseover').one('mouseover',{that},(event)->
+      console.log 'header mouseover one'
       clearTimeout hideTimer if hideTimer != null)
     $('#xroom_header').off('mouseleave').on('mouseleave', {that}, (event)->
-      clearTimeout hideTimer if hideTimer !=null)
+      console.log 'header mouseleave'
+      hideTimer = setTimeout event.data.that.hideSideBar, 2000)
   hideSideBar:->
   #Context/scope is the window here. So, let's use state model to set theimportant bits
     Mywebroom.State.get('browseModeView').browseModeSidebarView.sideBarInView = false
@@ -113,9 +118,13 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     #2. Clear timer event
     @$('.browse_mode_sidebar').off('mouseleave')
 
-    #3. If Active Sites Menu shown, need to hide it. (Might change. I forgot what Artem wants here)
+    #3. If Active Sites Menu shown, need to hide it. 
     if Mywebroom.State.get('browseModeView').activeMenuView && !Mywebroom.State.get('browseModeView').activeMenuView.isHidden()
       Mywebroom.State.get('browseModeView').activeMenuView.hideActiveMenu()
+
+    #Get rid of extra events from showSidebar
+    $('#xroom_header').off('mouseenter mouseover mouseleave')
+    $('.browse_mode_active_sites_menu').off('mouseenter mouseleave')
 
 
   setScroll:->
