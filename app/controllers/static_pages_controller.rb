@@ -16,6 +16,4 @@ class StaticPagesController < ApplicationController
     @skip_header = false
     @skip_footer = false
   end
-  def contact
-  end
 end

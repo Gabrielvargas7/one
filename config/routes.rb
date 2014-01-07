@@ -188,7 +188,6 @@ Mywebroom::Application.routes.draw do
   # static pages
   match '/help',    to: 'static_pages#help'
   match '/about-us',  to: 'static_pages#about', via: :get,as: :about
-  match '/contact', to: 'static_pages#contact'
   match '/landing', to:'static_pages#landing'
 
   #room page
@@ -373,7 +372,7 @@ Mywebroom::Application.routes.draw do
   match '/items_designs/json/show_item_design_by_id/:id', to:
         'items_designs#json_show_item_design_by_id', via: :get  , as:
         :items_designs_json_show_item_design_by_id
-        
+
   match '/items_designs/json/index_items_designs_by_item_id/:item_id', to:
          'items_designs#json_index_items_designs_by_item_id', via: :get  , as:
          :items_designs_json_index_items_designs_by_item_id
