@@ -77,6 +77,7 @@ describe BookmarksCategoriesController do
       it "redirect to root " do
         get :index
         response.should redirect_to root_path
+        expect(response).to redirect_to root_path
       end
 
       it "not render to index " do

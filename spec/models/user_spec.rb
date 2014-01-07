@@ -464,20 +464,9 @@ describe User do
       end
     end
 
-
-
-
-
-
   end
 
 
-  ###############
-  #test validation - facebook login  def self.from_omniauth(auth)
-  ###############
-  describe " #omniauth",tag_omniauth:true do
-    pending "this test is mode to capybarra test on spec/requests/user_spec.rb #{__FILE__}"
-  end
 
 
 

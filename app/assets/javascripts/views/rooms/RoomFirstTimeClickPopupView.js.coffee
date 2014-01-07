@@ -60,7 +60,7 @@ class Mywebroom.Views.RoomFirstTimePopupView extends Backbone.View
     #console.log(itemData)
 
     bookmarksView = new Mywebroom.Views.BookmarksView
-      items_name: Mywebroom.Helpers.getItemNameOfItemId(parseInt(dom_item_id))
+      items_name: Mywebroom.Helpers.AppHelper.getItemNameOfItemId(parseInt(dom_item_id))
       item_id: dom_item_id
       user: Mywebroom.State.get("roomUser").get("id")
 

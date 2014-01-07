@@ -29,4 +29,9 @@ describe "User pages" do
   end
 
 
+  describe "update password",  tag_update_password:true do
+    pending "add some examples to (or delete) #{__FILE__}"
+  end
+
+
 end

@@ -41,6 +41,7 @@ describe BookmarksController do
     context "is not admin user" do
       before do
         @user  = FactoryGirl.create(:user)
+        sign_out
         sign_in @user
       end
 
