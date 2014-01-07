@@ -260,16 +260,17 @@ li.browse_mode_sidebar_icons_list{
 /*Active Sites Menu*/
 .browse_mode_active_sites_menu{
   width: 100%;
-  top: 45px;
+  top: -115px;//-45px;
   position: fixed;
   z-index: 9;
   height: 80px;
   padding: 0;
   margin: 0;
-  left: -12070px;
-  opacity:0;
+  left:70px;
+  //left: -12070px;
+  //opacity:0;
   background-color:rgba(0,0,0,.8);
-  transition: opacity 1s ease-in-out;
+  transition: top .6s ease-in-out;
 }
 .horizontal_list{
   padding-left:20px;
