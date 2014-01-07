@@ -99,6 +99,10 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       # console.log 'activesites mouseleave'
       hideTimer = setTimeout event.data.that.hideSideBar, 2000)
 
+    $('#xroom_header').off('mouseenter').on('mouseenter',{that},(event)->
+      clearTimeout hideTimer if hideTimer != null)
+    $('#xroom_header').off('mouseleave').on('mouseleave', {that}, (event)->
+      clearTimeout hideTimer if hideTimer !=null)
   hideSideBar:->
   #Context/scope is the window here. So, let's use state model to set theimportant bits
     Mywebroom.State.get('browseModeView').browseModeSidebarView.sideBarInView = false
