@@ -100,13 +100,13 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       hideTimer = setTimeout event.data.that.hideSideBar, 2000)
 
     $('#xroom_header').off('mouseenter').on('mouseenter',{that},(event)->
-      console.log 'header mouseenter'
+      #console.log 'header mouseenter'
       clearTimeout hideTimer if hideTimer != null)
     $('#xroom_header').off('mouseover').one('mouseover',{that},(event)->
-      console.log 'header mouseover one'
+      #console.log 'header mouseover one'
       clearTimeout hideTimer if hideTimer != null)
     $('#xroom_header').off('mouseleave').on('mouseleave', {that}, (event)->
-      console.log 'header mouseleave'
+      #console.log 'header mouseleave'
       hideTimer = setTimeout event.data.that.hideSideBar, 2000)
   hideSideBar:->
   #Context/scope is the window here. So, let's use state model to set theimportant bits
