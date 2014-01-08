@@ -9,6 +9,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 
 ###############
 #Start Test facebook login
@@ -130,6 +132,21 @@ RSpec.configure do |config|
   config.filter_run_excluding tag_image_item: true
   config.filter_run_excluding tag_image_gray_item: true
   config.filter_run_excluding tag_image_first_time_click_item: true
+
+
+  # Database Cleaner
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :transaction
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
+
+  # config.after(:each) do
+  #   DatabaseCleaner.start
+  # end
+
+  # config.after(:each) do
+  #   DatabaseCleaner.clean
+  # end
 
 
 

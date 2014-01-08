@@ -21,6 +21,7 @@ ruby '2.0.0'
   gem 'unicorn', '4.6.3'
   gem 'geocoder', '1.1.8'
   gem 'newrelic_rpm'
+  gem 'pg', '0.15.1'
 
 
 
@@ -51,18 +52,17 @@ ruby '2.0.0'
 
 
 group :development, :test do
-  gem 'sqlite3', '1.3.7'
-  gem 'pg', '0.15.1'
-  gem 'rspec-rails', '2.13.0'
-  gem 'debugger','1.5.0'
-  gem 'phantomjs', '1.9.2.0'
-  gem 'teaspoon', '0.7.7'
-  gem 'tapout', '0.4.5'
-  gem 'konacha-chai-matchers', '0.1.5'
-  gem 'guard-teaspoon'
-  gem 'rb-fsevent'
+  gem 'rspec-rails', '2.14.1'
+  gem 'debugger', '1.5.0'
+  gem 'phantomjs', '1.9.2.1'
+  #gem 'database_cleaner', '1.2.0'
+  gem 'teaspoon', '0.7.8'
+  gem 'guard-teaspoon', '0.0.4'
+  gem 'rb-fsevent', '0.9.4'
   gem 'poltergeist', '1.5.0'
-  # gem 'guard-rspec', '1.2.1'
+  gem 'guard', '2.2.5'
+  gem 'guard-rspec', '4.2.3'
+  gem 'growl', '1.0.3'
   # gem 'guard-spork', '1.2.0'
   # gem 'spork', '0.9.2'
 end
@@ -81,18 +81,14 @@ group :assets do
 end
 
 group :test do
-  gem 'capybara', '2.2.0'
-  gem 'factory_girl_rails', '4.2.1'
-  gem 'cucumber-rails', '1.3.1', :require => false
-  gem 'database_cleaner', '0.9.1'
-  gem 'guard-rspec', '3.0.0'
-  gem 'rake', '10.1.0'
-  gem 'codeclimate-test-reporter', :require => false
+  gem 'capybara', '2.2.1'
+  gem 'factory_girl_rails', '4.3.0'
+  gem 'rake', '10.1.1'
+  gem 'codeclimate-test-reporter', require: false
 
  end
 
 group :production do
-  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
 
