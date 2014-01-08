@@ -42,6 +42,10 @@ describe Bookmark do
   it { @bookmark.should respond_to(:approval) }
   it { @bookmark.should respond_to(:user_bookmark) }
   it { @bookmark.should respond_to(:like) }
+  it { @bookmark.should respond_to(:bookmark_url) }
+  it { @bookmark.should respond_to(:remote_image_name_url)}
+  it { @bookmark.should respond_to(:remote_image_name_desc_url)}
+
 
 
 
