@@ -1,12 +1,19 @@
 class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
-  className:'browse_mode_sidebar'
+  
+  className:'browse_mode_sidebar_wrap'
+  
   template:JST['bookmarks/BrowseModeSidebarTemplate']
+  
   events:
     'click .browse_mode_sidebar_icons':'sideBarActiveSiteChange'
+    'mouseenter .halfCircleRight':'showSideBar'
+
+
   initialize:->
     this.on('render',@setScroll)
     @spriteUrl = Mywebroom.State.get('staticContent').findWhere('name':'bookmark-main-icons').get('image_name').url
-
+    @sideBarInView = true #sidebar is in view (vs. expand button is in view)
+  
   render:->
     if @model
       #fetch data here
@@ -18,7 +25,9 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
       @model.on('change',@render,this)
       @tagActiveSites()
     $(@el).html(@template(collection:@collection,model:@model,spriteUrl:@spriteUrl))
-    #@setScroll()
+    
+    #Start event timers for menu timeouts
+    @showSideBar()
     this
 
   ###
@@ -49,6 +58,74 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
     this.trigger 'BrowseMode:sidebarIconClick', modelClicked
   #Create SimplyScroll event for mybookmarks sidebar
   #Hope it dies quickly when the view closes
+
+  showSideBar:->
+    @sideBarInView = true
+    #1. Fade Out Expand Button
+
+    $('.halfCircleRight').css 'opacity', 0
+    #Fade in Bar
+    $('.browse_mode_sidebar').css 'left',0
+
+    #2. Start event to detect inactivity on sidebar
+
+    #2.1 Start to timeout unless the mouse enters the sidebar. 
+    that = this
+    hideTimer = setTimeout @hideSideBar,2000
+
+    #2.2 Clear timer once mouse enters the sidebar. 
+    @$('.browse_mode_sidebar').off('mouseenter').on('mouseenter',{that},(event)->
+      #console.log 'sidebar mouseenter'
+      clearTimeout hideTimer if hideTimer != null)
+
+    #2.3 Set timer once mouse leaves sidebar
+    @$('.browse_mode_sidebar').off('mouseleave').on('mouseleave',{that},(event)->
+      #console.log 'sidebar mouseleave'
+      hideTimer = setTimeout event.data.that.hideSideBar,2000
+      )
+
+    #2.4 Clear the timer when the mouse enters the expand circle. (This is to prevent duplicate events)
+    @$('.halfCircleRight').off('mouseenter').on('mouseenter',{that},(event)->
+      #console.log 'circle mouseenter'
+      clearTimeout(hideTimer) if hideTimer != null
+      )
+
+    #2.5 Do similar things for the Active Sites Menu- browse_mode_active_sites_menu in case its shown
+
+    $('.browse_mode_active_sites_menu').off('mouseenter').on('mouseenter',{that},(event)->
+      # console.log 'activesites mouseenter'
+      clearTimeout hideTimer if hideTimer != null)
+    $('.browse_mode_active_sites_menu').off('mouseleave').on('mouseleave',{that},(event)->
+      # console.log 'activesites mouseleave'
+      hideTimer = setTimeout event.data.that.hideSideBar, 2000)
+
+    $('#xroom_header').off('mouseenter').on('mouseenter',{that},(event)->
+      #console.log 'header mouseenter'
+      clearTimeout hideTimer if hideTimer != null)
+    $('#xroom_header').off('mouseover').one('mouseover',{that},(event)->
+      #console.log 'header mouseover one'
+      clearTimeout hideTimer if hideTimer != null)
+    $('#xroom_header').off('mouseleave').on('mouseleave', {that}, (event)->
+      #console.log 'header mouseleave'
+      hideTimer = setTimeout event.data.that.hideSideBar, 2000)
+  hideSideBar:->
+  #Context/scope is the window here. So, let's use state model to set theimportant bits
+    Mywebroom.State.get('browseModeView').browseModeSidebarView.sideBarInView = false
+    #1. Fade In Buttons
+    @$('.halfCircleRight').css 'opacity', 1
+    @$('.browse_mode_sidebar').css 'left',-90
+
+    #2. Clear timer event
+    @$('.browse_mode_sidebar').off('mouseleave')
+
+    #3. If Active Sites Menu shown, need to hide it. 
+    if Mywebroom.State.get('browseModeView').activeMenuView && !Mywebroom.State.get('browseModeView').activeMenuView.isHidden()
+      Mywebroom.State.get('browseModeView').activeMenuView.hideActiveMenu()
+
+    #Get rid of extra events from showSidebar
+    $('#xroom_header').off('mouseenter mouseover mouseleave')
+    $('.browse_mode_active_sites_menu').off('mouseenter mouseleave')
+
 
   setScroll:->
     #console.log 'one day i will scroll things beautifully.'

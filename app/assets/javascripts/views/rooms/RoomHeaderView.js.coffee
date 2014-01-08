@@ -931,9 +931,18 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         $('#xroom_header_search_box').hide()
 
         #2. Show other stuff
-        Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
+        
         $('.browse_mode_view').show()
+
         $('#xroom_bookmarks_browse_mode').show()
+
+        #2.1 Show the sidebar if its not shown
+        if !Mywebroom.State.get('browseModeView').browseModeSidebarView.sideBarInView
+          Mywebroom.State.get('browseModeView').browseModeSidebarView.showSideBar()
+
+          setTimeout (->Mywebroom.State.get('activeSitesMenuView').showActiveMenu()),500
+        else
+          Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
 
       else
         @noActiveSitesToast()

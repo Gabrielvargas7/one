@@ -6,6 +6,13 @@
 
 </style>
 
+<div class="halfCircleRight vertical">
+    <div class="browse_expand_inner_wrap" title="Expand Browser Toolbar">
+      <div class="col"><span>EXPAND</span></div>
+      <div class="vertical"><span> < </span></div> 
+    </div>
+</div>
+<div class="browse_mode_sidebar">
 <ul class="browse_mode_list">
   <li>
     <a id="browse_mode_active" href="#">
@@ -46,3 +53,4 @@
     <%end%>
   <%end%>
 </ul>
+</div>

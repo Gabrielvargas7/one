@@ -41,8 +41,9 @@ class Mywebroom.Views.BrowseModeView extends Backbone.View
     @activeMenuView.hideActiveMenu()
 
     #Set Static Content
-    toolbarIcons = Mywebroom.State.get('staticContent').findWhere({"name": "save-cancel-refresh-btn"})
-    @toolbarUrl = toolbarIcons.get('image_name').url
+    toolbarIcons = Mywebroom.State.get('staticContent').findWhere({"name":"save-cancel-refresh-btn"})
+    newIcons = Mywebroom.State.get('staticContent').findWhere({"name":"browser-buttons"})
+    @toolbarUrl = newIcons.get('image_name').url
 
 
 
