@@ -48,6 +48,27 @@ OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(omni_hash)
 # End Test facebook login
 ###############
 
+def wait_for_ajax
+  Timeout.timeout(Capybara.default_wait_time) do
+    active = page.evaluate_script('jQuery.active')
+
+    until active == 0
+      active = page.evaluate_script('jQuery.active')
+    end
+  end
+end
+
+def wait_for_dom(timeout = Capybara.default_wait_time)
+  uuid = SecureRandom.uuid
+  page.find("body")
+  page.evaluate_script <<-EOS
+    _.defer(function() {
+      $('body').append("<div id='#{uuid}'></div>");
+    });
+  EOS
+  page.find("##{uuid}")
+end
+
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,

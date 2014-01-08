@@ -78,8 +78,14 @@
                             <%= link_to cl_image_tag(items_design.image_name_selection , width: 200,height:200,:crop => :fit,:default_image => "default_image_all.png"),shop_show_items_design_path(items_design.id,get_clean_name(items_design.name)), :method => :get %>
                         <% end%>
 
+                        </br>
 
-                        </br><%= items_design.name[0,15] %>
+                        <% if items_design.name.length > 25 %>
+                            <%=  "#{items_design.name[0,25].strip}..." %>
+                        <% else %>
+                            <%=  "#{items_design.name[0,25]}" %>
+                        <% end %>
+
                       </td>
 
                   <% end %>
