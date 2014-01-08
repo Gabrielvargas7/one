@@ -55,7 +55,7 @@ group :development, :test do
   gem 'rspec-rails', '2.14.1'
   gem 'debugger', '1.5.0'
   gem 'phantomjs', '1.9.2.1'
-  gem 'database_cleaner', '1.2.0'
+  #gem 'database_cleaner', '1.2.0'
   gem 'teaspoon', '0.7.8'
   gem 'guard-teaspoon', '0.0.4'
   gem 'rb-fsevent', '0.9.4'
