@@ -21,6 +21,7 @@ ruby '2.0.0'
   gem 'unicorn', '4.6.3'
   gem 'geocoder', '1.1.8'
   gem 'newrelic_rpm'
+  gem 'pg', '0.15.1'
 
 
 
@@ -51,14 +52,10 @@ ruby '2.0.0'
 
 
 group :development, :test do
-  gem 'sqlite3', '1.3.7'
-  gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.0'
-  gem 'debugger','1.5.0'
+  gem 'debugger', '1.5.0'
   gem 'phantomjs', '1.9.2.0'
   gem 'teaspoon', '0.7.7'
-  gem 'tapout', '0.4.5'
-  gem 'konacha-chai-matchers', '0.1.5'
   gem 'guard-teaspoon'
   gem 'rb-fsevent'
   gem 'poltergeist', '1.5.0'
@@ -83,16 +80,13 @@ end
 group :test do
   gem 'capybara', '2.2.0'
   gem 'factory_girl_rails', '4.2.1'
-  gem 'cucumber-rails', '1.3.1', :require => false
-  gem 'database_cleaner', '0.9.1'
   gem 'guard-rspec', '3.0.0'
   gem 'rake', '10.1.0'
-  gem 'codeclimate-test-reporter', :require => false
+  gem 'codeclimate-test-reporter', require: false
 
  end
 
 group :production do
-  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
 
