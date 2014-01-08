@@ -28,6 +28,29 @@ def sign_out
 end
 
 
+#def wait_for_ajax
+#  Timeout.timeout(Capybara.default_wait_time) do
+#    active = page.evaluate_script('jQuery.active')
+#
+#    until active == 0
+#      active = page.evaluate_script('jQuery.active')
+#    end
+#  end
+#end
+#
+#def wait_for_dom(timeout = Capybara.default_wait_time)
+#  uuid = SecureRandom.uuid
+#  page.find("body")
+#  page.evaluate_script <<-EOS
+#    _.defer(function() {
+#      $('body').append("<div id='#{uuid}'></div>");
+#    });
+#  EOS
+#  page.find("##{uuid}")
+#end
+
+
+
 
 def create_init_data
 
@@ -38,6 +61,7 @@ def create_init_data
     #  Creating Section
     #####################
 
+
     2.times {FactoryGirl.create(:section)}
     @section = Section.first
     #puts "--- Start creating seed data for test  "
@@ -46,8 +70,9 @@ def create_init_data
     #  Creating Themes
     #####################
 
-    6.times {FactoryGirl.create(:theme)}
+    6.times {FactoryGirl.create(:theme,name:"delete_data")}
     @themes = Theme.all
+
 
     #####################
     #  Creating Bundles
@@ -89,8 +114,8 @@ def create_init_data
     @items.each do |item|
       location = FactoryGirl.create(:location,section_id:@section.id)
       FactoryGirl.create(:items_location,item_id:item.id,location_id:location.id)
-      #puts "items : " +item.id.to_s
-      #puts "location : "+ location.id.to_s
+      puts "items : " +item.id.to_s
+      puts "location : "+ location.id.to_s
 
     end
 
@@ -157,18 +182,23 @@ def delete_init_data
 
   #puts "--- Start deleting init data for test  "
 
-  Section.delete_all
-  Location.delete_all
-  ItemsLocation.delete_all
-  Bundle.delete_all
-  Theme.delete_all
-  Item.delete_all
-  ItemsDesign.delete_all
-  BookmarksCategory.delete_all
-  Bookmark.delete_all
-  BundlesBookmark.delete_all
-  BundlesItemsDesign.delete_all
-  UsersPhoto.delete_all
+  #delete only data when we create
+  if Theme.find_by_name("delete_data")
+
+    Section.delete_all
+    Location.delete_all
+    ItemsLocation.delete_all
+    Bundle.delete_all
+    Theme.delete_all
+    Item.delete_all
+    ItemsDesign.delete_all
+    BookmarksCategory.delete_all
+    Bookmark.delete_all
+    BundlesBookmark.delete_all
+    BundlesItemsDesign.delete_all
+
+  end
+
 
 #  puts "--- End deleteing init data for test  "
 

@@ -1,43 +1,46 @@
 require 'spec_helper'
 
-describe "User pages" do
+describe "backbone view rooms" do
 
-  before(:all){ create_init_data }
-  after(:all){ delete_init_data }
+  #before(:all){ create_init_data }
+  #after(:all){ delete_init_data }
 
   before do
     #@user = FactoryGirl.create(:user)
     #sign_in @user
     @user = FactoryGirl.create(:user)
     sign_in @user
+    visit room_rooms_path(@user.username)
   end
 
   subject { page }
 
 
-  describe "index" do
+  describe "design_view" do
     before  do
-      visit room_rooms_path(@user.username)
+      #visit room_rooms_path(@user.username)
+      @items = Item.all
+      #sleep 100
+
     end
 
-    it {page.should have_selector('div#xroom_main_container')}
-    it {page.should have_selector('div#xroom_scroll_left')}
-    it {page.should have_selector('div#xroom_store_menu_save_cancel_remove')}
-    it {page.should have_selector('div#xroom_profile')}
-    it {page.should have_selector('div#xroom_storepage')}
-    it {page.should have_selector('div#xroom_bookmarks')}
-    it {page.should have_selector('div#xroom_bookmarks_browse_mode')}
-    it {page.should have_selector('div#xroom_footer')}
-    it {page.should have_selector('div#xroom_scroll_right')}
-    it {page.should have_selector('div#xroom_tutorial_container')}
-    it {page.should have_selector('div#xroom_popup_container')}
-    it {page.should have_selector('div#xroom_scroll_left')}
-    it {page.should have_selector('div#xroom')}
-    it {page.should have_selector('div#xroom_items_0')}
-    it {page.should have_selector('div#xroom_items_1')}
-    it {page.should have_selector('div#xroom_items_2')}
+    #it { page.find('#id').should have_content('loaded')}
+
+                           #<img class="room_design"
+    it {page.should have_selector('img.room_design')}
+
+    it "should have all the items1" do
+        page.should have_selector('div')
+    end
 
 
+    it "should have all the items" do
+
+      @items.each do |item|
+          selector = "div.room_design_container_"+item.id.to_s
+         page.should have_selector(selector)
+      end
+    end
 
   end
 

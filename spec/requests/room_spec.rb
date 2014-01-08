@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "User pages" do
+describe "room page" do
 
-  before(:all){ create_init_data }
-  after(:all){ delete_init_data }
+  #before(:all){ create_init_data }
+  #after(:all){ delete_init_data }
 
   before do
     #@user = FactoryGirl.create(:user)
@@ -15,7 +15,7 @@ describe "User pages" do
   subject { page }
 
 
-  describe "index" do
+  describe "rails room view " do
     before  do
       visit room_rooms_path(@user.username)
     end

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe UsersPhoto do
   # the (before) line will instance the variable for every (describe methods)
-  before(:all){ create_init_data }
-  after(:all){ delete_init_data }
+  #before(:all){ create_init_data }
+  #after(:all){ delete_init_data }
 
   before do
     @user = FactoryGirl.create(:user)
@@ -26,7 +26,7 @@ describe UsersPhoto do
   ###############
   describe "when image default ", tag_image_default: true  do
 
-    let(:image_default) {"/assets/fallback/users_photos/default_user.png"}
+    let(:image_default) {"/assets/fallback/users_photos/default-user.jpg"}
 
     it "should be default " do
       #puts @user_photos.image_name
