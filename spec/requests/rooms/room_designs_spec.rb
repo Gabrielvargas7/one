@@ -16,31 +16,32 @@ describe "backbone view rooms", :js => true do
   subject { page }
 
 
-  describe "design_view" do
-    before  do
-      #visit room_rooms_path(@user.username)
-      @items = Item.all
-      #sleep 100
-
-    end
+  describe "design_view", :js => true  do
+    #before  do
+    #  #visit room_rooms_path(@user.username)
+    #  @item = Item.first
+    #  puts @item.id
+    #  #sleep 100
+    #
+    #end
 
     #it { page.find('#id').should have_content('loaded')}
-
-                           #<img class="room_design"
+    #it { find('.room_design').should have_content('baz') }
+    #                       #<img class="room_design"
     it {page.should have_selector('img.room_design')}
 
-    it "should have all the items1" do
-        page.should have_selector('div')
-    end
+    #it {page.should have_selector('div.room_design_container_4')}
 
 
-    it "should have all the items" do
-
-      @items.each do |item|
-          selector = "div.room_design_container_"+item.id.to_s
-         page.should have_selector(selector)
-      end
-    end
+    #it "should have all the items" do
+    #
+    #  page.should have_selector("div.room_design_container_"+@item.id.to_s)
+    #
+    #  #@items.each do |item|
+    #  #    selector = "div.room_design_container_"+item.id.to_s
+    #  #   page.should have_selector(selector)
+    #  #end
+    #end
 
   end
 
