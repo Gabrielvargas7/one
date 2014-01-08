@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "backbone view rooms" do
+describe "backbone view rooms", :js => true do
 
   #before(:all){ create_init_data }
   #after(:all){ delete_init_data }

@@ -9,6 +9,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 
 ###############
 #Start Test facebook login
@@ -90,7 +92,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -130,6 +132,21 @@ RSpec.configure do |config|
   config.filter_run_excluding tag_image_item: true
   config.filter_run_excluding tag_image_gray_item: true
   config.filter_run_excluding tag_image_first_time_click_item: true
+
+
+  # Database Cleaner
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
 
 
