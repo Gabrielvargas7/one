@@ -939,8 +939,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         #2.1 Show the sidebar if its not shown
         if !Mywebroom.State.get('browseModeView').browseModeSidebarView.sideBarInView
           Mywebroom.State.get('browseModeView').browseModeSidebarView.showSideBar()
-
+          Mywebroom.State.get('browseModeView').browseModeSidebarView.clearTimer()
           setTimeout (->Mywebroom.State.get('activeSitesMenuView').showActiveMenu()),500
+          #We want to clear the sidebar's timer until the mouse leaves the star area. 
+
         else
           Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
 

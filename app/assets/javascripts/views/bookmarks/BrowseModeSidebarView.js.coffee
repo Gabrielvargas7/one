@@ -71,43 +71,36 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
 
     #2.1 Start to timeout unless the mouse enters the sidebar. 
     that = this
-    hideTimer = setTimeout @hideSideBar,2000
+    @hideTimer = setTimeout @hideSideBar,2000
 
     #2.2 Clear timer once mouse enters the sidebar. 
     @$('.browse_mode_sidebar').off('mouseenter').on('mouseenter',{that},(event)->
-      #console.log 'sidebar mouseenter'
-      clearTimeout hideTimer if hideTimer != null)
+      event.data.that.clearTimer(event))
 
     #2.3 Set timer once mouse leaves sidebar
     @$('.browse_mode_sidebar').off('mouseleave').on('mouseleave',{that},(event)->
-      #console.log 'sidebar mouseleave'
-      hideTimer = setTimeout event.data.that.hideSideBar,2000
-      )
+      event.data.that.setHideTimer(event))
 
     #2.4 Clear the timer when the mouse enters the expand circle. (This is to prevent duplicate events)
     @$('.halfCircleRight').off('mouseenter').on('mouseenter',{that},(event)->
-      #console.log 'circle mouseenter'
-      clearTimeout(hideTimer) if hideTimer != null
-      )
+      event.data.that.clearTimer(event))
 
     #2.5 Do similar things for the Active Sites Menu- browse_mode_active_sites_menu in case its shown
 
     $('.browse_mode_active_sites_menu').off('mouseenter').on('mouseenter',{that},(event)->
-      # console.log 'activesites mouseenter'
-      clearTimeout hideTimer if hideTimer != null)
+      event.data.that.clearTimer(event))
     $('.browse_mode_active_sites_menu').off('mouseleave').on('mouseleave',{that},(event)->
-      # console.log 'activesites mouseleave'
-      hideTimer = setTimeout event.data.that.hideSideBar, 2000)
+      event.data.that.setHideTimer(event))
 
     $('#xroom_header').off('mouseenter').on('mouseenter',{that},(event)->
-      #console.log 'header mouseenter'
-      clearTimeout hideTimer if hideTimer != null)
-    $('#xroom_header').off('mouseover').one('mouseover',{that},(event)->
-      #console.log 'header mouseover one'
-      clearTimeout hideTimer if hideTimer != null)
+      event.data.that.clearTimer(event))
+    # $('#xroom_header').off('mouseover').one('mouseover',{that},(event)->
+    #   event.data.that.clearTimer(event))
     $('#xroom_header').off('mouseleave').on('mouseleave', {that}, (event)->
-      #console.log 'header mouseleave'
-      hideTimer = setTimeout event.data.that.hideSideBar, 2000)
+      event.data.that.setHideTimer(event))
+    #$('#xroom_header_active_sites').off('mouseover').on('mouseover',{that},(event)->
+    #   console.log 'active sites btn mouseover one'
+    #   clearTimeout hideTimer if hideTimer != null)
   hideSideBar:->
   #Context/scope is the window here. So, let's use state model to set theimportant bits
     Mywebroom.State.get('browseModeView').browseModeSidebarView.sideBarInView = false
@@ -140,3 +133,7 @@ class Mywebroom.Views.BrowseModeSidebarView extends Backbone.View
         frameRate: 20
         speed: 5
 
+  clearTimer:->
+    clearTimeout(@hideTimer) if @hideTimer != null
+  setHideTimer:->
+    @hideTimer = setTimeout @hideSideBar,2000
