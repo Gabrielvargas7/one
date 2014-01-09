@@ -46,7 +46,7 @@ describe Bookmark do
   it { @bookmark.should respond_to(:remote_image_name_url)}
   it { @bookmark.should respond_to(:remote_image_name_desc_url)}
 
-
+  #it { @bookmark.should belong_to(:bookmarks_category)}
 
 
 
@@ -105,6 +105,11 @@ describe Bookmark do
       it {should_not be_valid}
 
     end
+
+    context "has over 100 characters" do
+      before{@bookmark.title = "Fetch the toy, Roomsy! Fetch the toy, Roomsy! Fetch the toy, Roomsy! Fetch the toy, Roomsy! Fetch the toy, Roomsy! "}
+      it {should_not be_valid}    
+    end
   end
 
 
@@ -116,6 +121,15 @@ describe Bookmark do
     it "should be valid " do
       @bookmark.bookmarks_category_id == @bookmarks_category.id
     end
+    context "is not valid if its a string" do
+      before{@bookmark.bookmarks_category_id = "Roomsy"}
+      it {should_not be_valid}
+    end
+    context "is not valid if its not an integer" do
+      before{@bookmark.bookmarks_category_id = 22.4}
+      it {should_not be_valid}
+    end
+
   end
 
   ###############

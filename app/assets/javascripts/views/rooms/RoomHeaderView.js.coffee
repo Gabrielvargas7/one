@@ -403,6 +403,9 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
     $('#xroom_store_menu_save_cancel_remove').hide()
     $('#xroom_storepage').hide()
+    #Make sure Store/Editor is in hidden state
+    Mywebroom.Helpers.EditorHelper.hideStore()
+
     $('#xroom_profile').show()
     $('#xroom_bookmarks').hide()
     $('#xroom_header_search_box').hide()
@@ -425,7 +428,7 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
 
   hideProfile: ->
     @profileView.closeProfileView() if @profileView
-    #Turn on events are in profileView.closeProfileView()
+    #Turn on hover events are in profileView.closeProfileView()
 
 
 
@@ -926,7 +929,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         #1. Hide stuff
         $('#xroom_store_menu_save_cancel_remove').hide()
         $('#xroom_storepage').hide()
+        Mywebroom.Helpers.EditorHelper.hideStore() #need to close store in case toggle from store to active sites. (objects need to be clickable when activeSites closes.)
+
         $('#xroom_profile').hide()
+        @hideProfile() #add this in to turn objects clickable again when active sites closes if coming from profileHeader-button.
+
         $('#xroom_bookmarks').hide()
         $('#xroom_header_search_box').hide()
 
@@ -939,8 +946,10 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         #2.1 Show the sidebar if its not shown
         if !Mywebroom.State.get('browseModeView').browseModeSidebarView.sideBarInView
           Mywebroom.State.get('browseModeView').browseModeSidebarView.showSideBar()
-
+          Mywebroom.State.get('browseModeView').browseModeSidebarView.clearTimer()
           setTimeout (->Mywebroom.State.get('activeSitesMenuView').showActiveMenu()),500
+          #We want to clear the sidebar's timer until the mouse leaves the star area. 
+
         else
           Mywebroom.State.get('activeSitesMenuView').showActiveMenu()
 
