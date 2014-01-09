@@ -624,7 +624,7 @@ class SearchesController < ApplicationController
                     description'
 
         ).
-            where('bookmarks.id in (?)',@bookmarks_array).
+            where('bookmarks.id in (?) and user_bookmark = 0',@bookmarks_array).
             joins(:bookmarks_category).
             limit(params[:limit]).
             offset(params[:offset])
