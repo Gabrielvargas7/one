@@ -926,7 +926,11 @@ class Mywebroom.Views.RoomHeaderView extends Backbone.View
         #1. Hide stuff
         $('#xroom_store_menu_save_cancel_remove').hide()
         $('#xroom_storepage').hide()
+        #need to close store in case toggle from active sites to store. (objects need to be clickable when this closes.)
+
         $('#xroom_profile').hide()
+        @hideProfile() #add this in to turn objects clickable again when active sites closes if going to profile.
+
         $('#xroom_bookmarks').hide()
         $('#xroom_header_search_box').hide()
 
