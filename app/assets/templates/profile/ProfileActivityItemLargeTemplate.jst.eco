@@ -48,7 +48,7 @@
           <div class="navbar-inner">
             <ul class="nav">
               <li>
-                <div style="position:relative;min-width:90;min-height:20px;">
+                <div style="position:relative;min-width:90px;min-height:20px;">
                   <fb:like class="fb-like" href="<%= @model.get('fbUrl') %>" layout="button_count" show-faces="false" width="95">
                   </fb:like>
                 </div>

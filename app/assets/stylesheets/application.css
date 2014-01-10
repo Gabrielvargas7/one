@@ -170,6 +170,9 @@ footer ul li {
 .social_bar .navbar{
     border-spacing:0;
 }
+#profile_home_wrapper .activity_item_large_view .social_bar .nav{
+    padding-left:12px; /*This moves the large view social bar from the edge.*/
+}
 #profile_home_wrapper .social_bar .nav, .social_bar .nav {
     margin-left: -15px;
 }
