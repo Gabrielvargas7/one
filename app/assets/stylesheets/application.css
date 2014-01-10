@@ -170,6 +170,9 @@ footer ul li {
 .social_bar .navbar{
     border-spacing:0;
 }
+#profile_home_wrapper .social_bar .nav, .social_bar .nav {
+    margin-left: -15px;
+}
 .dark_text{
     color:#464646;
 }
@@ -198,7 +201,6 @@ footer ul li {
 }
 .social_bar{
     background-color: rgba(255,255,255,.4);
-    left: -5%;
 }
 
 /*End social bar style*/
