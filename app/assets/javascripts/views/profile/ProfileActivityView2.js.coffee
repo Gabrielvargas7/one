@@ -40,7 +40,7 @@ class Mywebroom.Views.ProfileActivityView2 extends Marionette.CompositeView
     $('#gridItemsTest').masonry({
       columnWidth:  200
       itemSelector: '.gridItemWrap'
-      gutter:       10
+      gutter:       8
     })
 
   showGridItemLargeView: (childView,model) ->
