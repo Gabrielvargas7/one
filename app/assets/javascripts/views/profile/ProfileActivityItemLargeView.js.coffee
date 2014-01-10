@@ -313,8 +313,12 @@ class Mywebroom.Views.ActivityItemLargeView extends Backbone.View
 
 
   generateFacebookURL: ->
-
+    #NOTE: THIS IS LIKING- NOT SHARING. Therefore:
+    ##1. get rid of the sharer url. 
+    ##2. No encoded url necessary. Just the absolute path.
+    ##3. SEO Link returns local host if you're local. This doesn't work in your local environment.  
     baseUrl = 'https://www.facebook.com/sharer/sharer.php?u='
     url = Mywebroom.Helpers.AppHelper.getSEOLink(@model.get('id'), @model.get('type'))
-
-    return baseUrl + encodeURIComponent(url.get("seo_url"))
+    #return encodeURIComponent(url.get("seo_url"))
+    #return "http://mywebroom.com"
+    return url.get("seo_url")

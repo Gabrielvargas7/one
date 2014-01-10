@@ -217,7 +217,7 @@ Mywebroom.Helpers.AppHelper = {
     model.fetch({
       async: false
       success: (model, response, options) ->
-        #console.log("model fetch success", model, response, options)
+        console.log("model fetch success", model, response, options)
       error: (model, response, options) ->
         console.error("model fetch fail", response.responseText)
     })
