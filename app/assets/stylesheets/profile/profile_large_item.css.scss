@@ -43,7 +43,8 @@
   float:left;
 }
 .activity_item_large_view_img{
-  width:350px;
+  min-width:350px;
+  max-width:355px; //This is to account for a weird case where the border is cut off if the image is 350px w
   min-height:350px;
   max-height:450px;
   border: 1px solid #ebebeb;
