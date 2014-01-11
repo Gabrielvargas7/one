@@ -366,7 +366,7 @@ class Mywebroom.Views.BookmarksView extends Backbone.View
     if container.length is 0
       container = $('.my_bookmarks_bottom')
     if container.length is 1
-      scrollTo = $('.bookmark_grid_item[data-id="'+ id +'"]')[0]
+      scrollTo = $('.bookmark_grid_item[data-id="' + id + '"]')[0]
       scrollTo.scrollIntoView(true)
       #container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop())
 
