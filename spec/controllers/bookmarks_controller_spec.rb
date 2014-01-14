@@ -556,14 +556,14 @@ describe BookmarksController do
 
   describe "api #json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id/:user_id/:item_id.json",tag_json_index:true do
 
-    describe "is private api " do
+    context "with correct sign in user " do
       before do
         @user  = FactoryGirl.create(:user)
         sign_in @user
 
       end
 
-      it "should be successful" do
+      it "should be successful with correct user id" do
         get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@user.id,item_id: @bookmarks_category.item_id, :format => :json
         response.should be_success
       end
@@ -574,7 +574,7 @@ describe BookmarksController do
         expect(response.status).to eq(200)
       end
 
-      context "get all values " do
+      describe "get all values " do
 
         it "should return json_index_bookmarks_with_bookmarks_category_by_item_id in json" do
           # depend on what you return in action
@@ -610,7 +610,24 @@ describe BookmarksController do
       end
     end
 
-    describe "is user didn't sign in " do
+    context "with the 'wrong' signed in user" do
+      before do
+        #Create a different user and try to get that user's info while signed in with @user.
+        @different_user  = FactoryGirl.create(:user)
+        get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:@different_user.id,item_id: @bookmarks_category.item_id, :format => :json
+      end
+      it "should have status 404" do
+        #get json with different_user_id
+        #get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:different_user_id,item_id: @bookmarks_category.item_id, :format => :json
+        expect(response.status).to eq(404)
+        #puts response.body #says 'user not correct'
+      end
+
+
+
+    end
+
+    context "with no signed in user " do
       before do
         sign_out
       end
@@ -620,19 +637,29 @@ describe BookmarksController do
         get :json_index_bookmarks_with_bookmarks_that_need_to_be_approve_by_user_id_and_by_item_id,user_id:User.first.id,item_id: @bookmarks_category.item_id, :format => :json
         expect(response.status).to eq(404)
       end
-
     end
   end
 
-  describe "api #json_show_bookmarks_seo_url_by_bookmark_id",tag_json_category:true do
-    pending "pending test api"
-  end
+### These are user_bookmarks related and should be in user_bookmarks_controller_spec
+  # describe "api #json_show_bookmarks_seo_url_by_bookmark_id",tag_json_category:true do
+    
+  #   context "with signed in user" do
+  #   end
+
+  #   context "with wrong signed in user" do
+  #   end
+
+  #   context "with no signed in uesr" do
+  #   end
+
+
+  # end
 
 
 
-  describe "#json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset" do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+  # describe "#json/index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset" do
+  #   pending "add some examples to (or delete) #{__FILE__}"
+  # end
 
 
 
