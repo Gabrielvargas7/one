@@ -340,16 +340,15 @@ describe BookmarksController do
     context "is admin user" do
       let(:bookmarks_all) { Bookmark.joins(:bookmarks_category).where("approval = 'n'").order('bookmarks_categories.item_id,bookmarks_category_id').all }
 
-
+      before(:each){get :index_bookmarks_approval}
 
       it "assigns all bookmark as :bookmark" do
         #puts "what is a id to approve "+Bookmark.where("approval = 'n'").order("item_id","bookmarks_category_id").first.id.to_s
-        get :index_bookmarks_approval
         assigns(:bookmarks).should eq(bookmarks_all)
       end
 
       it "renders the :index_bookmarks_approval view" do
-        get :index_bookmarks_approval
+        #get :index_bookmarks_approval
         response.should render_template :index_bookmarks_approval
       end
     end
@@ -498,16 +497,15 @@ describe BookmarksController do
     describe "is public api" do
       before do
         sign_out
+        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
       end
 
       it "should be successful" do
-        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
         response.should be_success
       end
 
 
       it "has a 200 status code" do
-        get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
         expect(response.status).to eq(200)
       end
 
@@ -517,8 +515,6 @@ describe BookmarksController do
 
         it "should return json_index_bookmarks_with_bookmarks_category_by_item_id in json" do
           # depend on what you return in action
-
-          get :json_index_bookmarks_with_bookmarks_category_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
 
           body = JSON.parse(response.body)
           #puts "body ---- > "+body.to_s
@@ -534,9 +530,7 @@ describe BookmarksController do
 
             body_bookmark["id"].should == @bookmark_json.id
             body_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
-            #body_bookmark["item_id"].should == @bookmark_json.item_id
             body_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
-            body_bookmark["bookmarks_category_name"].should == @bookmarks_category_json.name
             body_bookmark["description"].should == @bookmark_json.description
             body_bookmark["i_frame"].should == @bookmark_json.i_frame
             body_bookmark["title"].should == @bookmark_json.title
@@ -544,6 +538,8 @@ describe BookmarksController do
             body_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
             body_bookmark["like"].should == @bookmark_json.like
 
+            body_bookmark["bookmarks_category_name"].should == @bookmarks_category_json.name
+            body_bookmark["item_id"].should == @bookmarks_category_json.item_id.to_s
 
           end
         end
