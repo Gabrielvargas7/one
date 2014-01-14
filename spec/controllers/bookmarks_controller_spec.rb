@@ -194,7 +194,9 @@ describe BookmarksController do
         end
 
         context "with newly created bookmark"
-          before{post :create, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:bookmarks_category_new.id)}
+          before(:each) do
+            post :create, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:bookmarks_category_new.id)
+          end
 
 
           it "assigns a newly created bookmark as @bookmark" do
@@ -254,30 +256,36 @@ describe BookmarksController do
   describe "PUT update", tag_update:true do
 
     describe "is admin user" do
-      context "valid attributes" do
-        it "located the requested @bookmark" do
+      context "has valid attributes" do
+        before(:each) do
           FactoryGirl.create(:item)
           FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
+        end
 
+        it "located the requested @bookmark" do
+          
           put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
           assigns(:bookmark).should eq(@bookmark)
         end
+        
+        context "and has changed attributes" do
+          before(:each) do
+            put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
+          end
+        
+          it "changes @bookmarks's attributes" do
+            @bookmark.reload
+            @bookmark.bookmarks_category_id.should eq(BookmarksCategory.last.id)
+          end
+        
+          it "redirects to the updated bookmarks" do
+            put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
+            response.should redirect_to @bookmark
+          end
+        end
       end
 
-      it "changes @bookmarks's attributes" do
-        FactoryGirl.create(:item)
-        FactoryGirl.create(:bookmarks_category,item_id:Item.last.id)
 
-        put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
-        @bookmark.reload
-        @bookmark.bookmarks_category_id.should eq(BookmarksCategory.last.id)
-
-      end
-
-      it "redirects to the updated bookmarks" do
-        put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
-        response.should redirect_to @bookmark
-      end
 
 
       context "invalid attributes" do
