@@ -14,5 +14,5 @@ class Mywebroom.Collections.IndexBookmarksWithBookmarksCategoryByItemIdCollectio
     _.map(response, (model) ->
       obj = model
       obj.type = "BOOKMARK"
-      return obj
+      obj
     )
