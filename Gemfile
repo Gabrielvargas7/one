@@ -24,23 +24,15 @@ ruby '2.0.0'
   gem 'pg', '0.15.1'
 
 
-
-
   # gem to look for improment like
   # memory leak and time out
   gem 'oink', '0.10.1'
-  gem 'rack-timeout'
-
-
-
-
-
+  gem 'rack-timeout', '0.1.0.beta3'
 
 
 ####################
 # gems for front end
 ####################
-  gem 'bootstrap-sass', '2.3.2.2'
   gem 'will_paginate', '3.0.4'
   gem 'bootstrap-will_paginate', '0.0.6'
   gem 'jquery-rails', '3.0.4'
@@ -51,46 +43,64 @@ ruby '2.0.0'
 
 
 
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'eco', '1.0.0'
+  gem 'sass-rails', '3.2.6'
+  gem 'coffee-rails','3.2.2'
+  gem 'bootstrap-sass', '2.3.2.2'
+  gem 'uglifier', '2.4.0'
+
+end
+
+
+
+
+group :production do
+  gem 'rails_12factor', '0.0.2'
+
+end
+
+
+
 group :development, :test do
   gem 'rspec-rails', '2.14.1'
-  gem 'debugger', '1.5.0'
-  gem 'phantomjs', '1.9.2.1'
-  #gem 'database_cleaner', '1.2.0'
+
   gem 'teaspoon', '0.7.8'
   gem 'guard-teaspoon', '0.0.4'
   gem 'rb-fsevent', '0.9.4'
-  gem 'poltergeist', '1.5.0'
-  gem 'guard', '2.2.5'
-  gem 'guard-rspec', '4.2.3'
-  gem 'growl', '1.0.3'
   # gem 'guard-spork', '1.2.0'
   # gem 'spork', '0.9.2'
+
 end
 
+
+
+
 group :development do
+  gem 'guard', '2.2.5'
+  gem 'guard-rspec', '4.2.4'
   gem 'annotate', '2.5.0'
 
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails', '3.2.6'
-  gem 'coffee-rails','3.2.2'
-  gem 'uglifier', '2.0.1'
-end
+
 
 group :test do
-  gem 'capybara', '2.2.1'
-  gem 'factory_girl_rails', '4.3.0'
   gem 'rake', '10.1.1'
+  #gem 'database_cleaner', '1.2.0'
+  gem 'factory_girl_rails', '4.3.0'
   gem 'codeclimate-test-reporter', require: false
+  gem 'growl', '1.0.3'
+
+  gem 'poltergeist', '1.5.0'
+  gem 'phantomjs', '1.9.2.1', :require => 'phantomjs/poltergeist'
+  gem 'capybara', '2.2.1'
 
  end
 
-group :production do
-  gem 'rails_12factor', '0.0.2'
-end
+
 
 # Bundle edge Rails instead:
 
