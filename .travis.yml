@@ -23,5 +23,7 @@ addons:
     code_climate:
         repo_token: de58995f211cd6a4d351744bed6cbce8985aec0d4ea5621e0795b202cc74a25a
 
-# uncomment this line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+
+script:
+  - bundle exec rake
+  - bundle exec teaspoon
