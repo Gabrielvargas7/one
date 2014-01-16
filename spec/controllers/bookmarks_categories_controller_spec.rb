@@ -349,27 +349,24 @@ describe BookmarksCategoriesController do
 
 
   describe "api #json_index_bookmarks_categories_by_item_id",tag_json:true do
-
-    it "should be successful" do
-      get :json_index_bookmarks_categories_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
-      response.should be_success
-    end
-
-
-    it "has a 200 status code" do
-      get :json_index_bookmarks_categories_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
-      expect(response.status).to eq(200)
-    end
-
-    it "has a 200 status code when don't exist" do
-      get :json_index_bookmarks_categories_by_item_id,item_id: -1, :format => :json
-      expect(response.status).to eq(200)
-    end
-
-
-    context "get a values " do
-      it "should return json_show items designs  in json" do # depend on what you return in action
+    context "valid parameters" do
+      
+      before do
         get :json_index_bookmarks_categories_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
+      end
+
+      it "should be successful" do
+        response.should be_success
+      end
+
+
+      it "has a 200 status code" do
+        #get :json_index_bookmarks_categories_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
+        expect(response.status).to eq(200)
+      end
+      
+      it "should have values by returning json_show items designs  in json" do # depend on what you return in action
+        #get :json_index_bookmarks_categories_by_item_id,item_id: @bookmarks_category.item_id, :format => :json
         body = JSON.parse(response.body)
 
         body.each do |body_bk|
@@ -379,22 +376,23 @@ describe BookmarksCategoriesController do
           body_bk["item_id"].should == @body_bk_json.item_id
 
         end
-
       end
     end
 
-    context "get no values " do
-      it "should return no value with unvalid value from json_show items designs  in json" do # depend on what you return in action
-
+    context "invalid parameters " do
+      before do
         get :json_index_bookmarks_categories_by_item_id,item_id: -1, :format => :json
+      end
+
+      it "has a 200 status code when don't exist" do
+        expect(response.status).to eq(200)
+      end
+
+      it "should return no value with unvalid value from json_show items designs  in json" do # depend on what you return in action
         body = JSON.parse(response.body)
         body.should == []
-
-
       end
     end
+    
   end
-
-
-
 end
