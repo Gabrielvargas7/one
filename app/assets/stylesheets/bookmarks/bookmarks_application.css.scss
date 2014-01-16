@@ -156,7 +156,7 @@ ul.bookmark_menu_list {
 }
 .bookmark_grid_item_bottom img{
   width:30px;
-  position:absolute;
+  /*position:absolute; prevents firefox icons from showing too far down and hidden.*/
   bottom:0;
   left:0;
   border:none;/*2px solid #7d7d7d;*/
