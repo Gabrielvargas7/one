@@ -3,17 +3,16 @@ Testing
 1. Add testing libraries to project's Gemfile
   * teaspoon  (testing framework)
   * phantomjs (headless web client)
-  * tapout    (test harness)
-  * konacha-chai-matchers (test helpers)
+
 
 2. Install Istanbul with npm (code coverage)
   * npm install -g istanbul
 
 3. Generate stuff
-  rails generate teaspoon:install --framework=mocha --coffee
+  rails generate teaspoon:install --framework=jasmine --coffee
 
 4. CLI
-  bundle exec teaspoon -q --format=tap_y | tapout progress
+  bundle exec teaspoon
 
 
 
