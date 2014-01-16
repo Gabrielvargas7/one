@@ -41,6 +41,173 @@ describe FriendsController do
   subject { @user1 }
 
 
+#json_create_friend_by_user_id_accept_and_user_id_request
+  #'/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id/:user_id_request'
+
+  ##***********************************
+  ## rspec test json_create_friend_by_user_id_accept_and_user_id_request
+  ##***********************************
+
+  describe "POST json_create_friend_by_user_id_accept_and_user_id_request", tag_json_create:true  do
+    before do
+      @user_requested = FactoryGirl.create(:user)
+      @friend_request = FactoryGirl.create(:friend_request,user_id:@user1.id,user_id_requested:@user_requested.id)
+      sign_in @user_requested
+    end
+
+
+    describe "is regular user" do
+      context "with valid params" do
+
+        it "creates a new friend " do
+          #puts "user id --->"+@user1.id.to_s
+          #puts "user id requested--->"+@user_requested.id.to_s
+
+          expect {
+            post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+          }.to change(Friend, :count).by(2)
+        end
+
+        it "numeber of friend increase by 1 " do
+          @user_profile_1 = UsersProfile.find_all_by_user_id(@user1.id).first
+          @user_profile_2 = UsersProfile.find_all_by_user_id(@user_requested.id).first
+
+          @user_profile_1.friends_number.should be == 4
+          @user_profile_2.friends_number.should be == 0
+
+          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+          @user_profile_1.reload
+          @user_profile_1.friends_number.should be == 5
+          @user_profile_2.reload
+          @user_profile_2.friends_number.should be == 1
+
+        end
+
+
+        it "assigns a newly created friend request as @friend request" do
+          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+          assigns(:user_friend_request).should be_a(Friend)
+          assigns(:user_friend_request).should be_persisted
+          assigns(:user_friend_accept).should be_a(Friend)
+          assigns(:user_friend_accept).should be_persisted
+        end
+
+        it "response should be success" do
+          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+          response.should be_success
+        end
+
+        it "has a 201 status code" do
+          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+          expect(response.status).to eq(201)
+        end
+
+        context "return json values " do
+          it "should return friend request in json" do # depend on what you return in action
+            #puts "user id --->"+@user1.id.to_s
+            #puts "user id requested--->"+@user_requested.id.to_s
+            post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+            body = JSON.parse(response.body)
+            #puts "body ---- > "+body.to_s
+            #puts body["user_friend_request"]["user_id"].to_s
+
+            body["user_friend_request"]["user_id"].should == @user1.id
+            body["user_friend_request"]["user_id_friend"].should == @user_requested.id
+
+            body["user_friend_accept"]["user_id"].should == @user_requested.id
+            body["user_friend_accept"]["user_id_friend"].should == @user1.id
+
+
+          end
+        end
+
+      end
+    end
+
+    context "is sign in with other user" do
+      before do
+        @user3 = FactoryGirl.create(:user)
+        sign_in @user3
+      end
+      it "has a 404 status code" do
+        post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
+
+    context "is sign out user" do
+      before do
+        sign_out
+      end
+      it "has a 404 status code" do
+        post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
+  end
+
+#***********************************
+  # rspec test  destroy  json_destroy_friend_by_user_id_and_user_id_friend
+  #***********************************
+
+
+  #'/friends/json/destroy_friend_by_user_id_and_user_id_friend/:user_id/:user_id_friend'
+  describe "DELETE json_destroy_friend_by_user_id_and_user_id_friend",tag_destroy:true do
+    before do
+
+      sign_in @user1
+    end
+
+    it "deletes friend " do
+      expect{
+        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
+      }.to change(Friend,:count).by(-2)
+    end
+
+
+    it "numeber of friend decrease by 1 " do
+        @user_profile_1 = UsersProfile.find_all_by_user_id(@user1.id).first
+        @user_profile_2 = UsersProfile.find_all_by_user_id(@user2.id).first
+
+        @user_profile_1.friends_number.should be == 4
+        @user_profile_2.friends_number.should be == 2
+
+        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
+        @user_profile_1.reload
+        @user_profile_1.friends_number.should be == 3
+        @user_profile_2.reload
+        @user_profile_2.friends_number.should be == 1
+
+    end
+
+
+
+    context "is sign in with other user" do
+      before do
+        @user3 = FactoryGirl.create(:user)
+        sign_in @user3
+      end
+      it "has a 404 status code" do
+        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
+
+    context "is sign out user" do
+      before do
+        sign_out
+      end
+      it "has a 404 status code" do
+        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
+        expect(response.status).to eq(404)
+      end
+    end
+
+
+  end
 
   #***********************************
   # rspec test  #json_index_friend_by_user_id
@@ -314,174 +481,10 @@ describe FriendsController do
 
 
 
-  #json_create_friend_by_user_id_accept_and_user_id_request
-  #'/friends/json/create_friend_by_user_id_accept_and_user_id_request/:user_id/:user_id_request'
-
-  ##***********************************
-  ## rspec test json_create_friend_by_user_id_accept_and_user_id_request
-  ##***********************************
-
-  describe "POST json_create_friend_by_user_id_accept_and_user_id_request", tag_json_create:true  do
-    before do
-      @user_requested = FactoryGirl.create(:user)
-      @friend_request = FactoryGirl.create(:friend_request,user_id:@user1.id,user_id_requested:@user_requested.id)
-      sign_in @user_requested
-    end
+  
 
 
-    describe "is regular user" do
-      context "with valid params" do
-
-        it "creates a new friend " do
-          #puts "user id --->"+@user1.id.to_s
-          #puts "user id requested--->"+@user_requested.id.to_s
-
-          expect {
-            post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
-          }.to change(Friend, :count).by(2)
-        end
-
-        it "numeber of friend increase by 1 " do
-          @user_profile_1 = UsersProfile.find_all_by_user_id(@user1.id).first
-          @user_profile_2 = UsersProfile.find_all_by_user_id(@user_requested.id).first
-
-          @user_profile_1.friends_number.should be == 4
-          @user_profile_2.friends_number.should be == 0
-
-          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
-          @user_profile_1.reload
-          @user_profile_1.friends_number.should be == 5
-          @user_profile_2.reload
-          @user_profile_2.friends_number.should be == 1
-
-        end
-
-
-        it "assigns a newly created friend request as @friend request" do
-          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
-          assigns(:user_friend_request).should be_a(Friend)
-          assigns(:user_friend_request).should be_persisted
-          assigns(:user_friend_accept).should be_a(Friend)
-          assigns(:user_friend_accept).should be_persisted
-        end
-
-        it "response should be success" do
-          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
-          response.should be_success
-        end
-
-        it "has a 201 status code" do
-          post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
-          expect(response.status).to eq(201)
-        end
-
-        context "return json values " do
-          it "should return friend request in json" do # depend on what you return in action
-            #puts "user id --->"+@user1.id.to_s
-            #puts "user id requested--->"+@user_requested.id.to_s
-            post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
-            body = JSON.parse(response.body)
-            #puts "body ---- > "+body.to_s
-            #puts body["user_friend_request"]["user_id"].to_s
-
-            body["user_friend_request"]["user_id"].should == @user1.id
-            body["user_friend_request"]["user_id_friend"].should == @user_requested.id
-
-            body["user_friend_accept"]["user_id"].should == @user_requested.id
-            body["user_friend_accept"]["user_id_friend"].should == @user1.id
-
-
-          end
-        end
-
-      end
-    end
-
-    context "is sign in with other user" do
-      before do
-        @user3 = FactoryGirl.create(:user)
-        sign_in @user3
-      end
-      it "has a 404 status code" do
-        post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
-        expect(response.status).to eq(404)
-      end
-    end
-
-
-    context "is sign out user" do
-      before do
-        sign_out
-      end
-      it "has a 404 status code" do
-        post :json_create_friend_by_user_id_accept_and_user_id_request,user_id:@user_requested.id,user_id_request:@user1.id, :format => :json
-        expect(response.status).to eq(404)
-      end
-    end
-
-  end
-
-
-  #***********************************
-  # rspec test  destroy  json_destroy_friend_by_user_id_and_user_id_friend
-  #***********************************
-
-
-  #'/friends/json/destroy_friend_by_user_id_and_user_id_friend/:user_id/:user_id_friend'
-  describe "DELETE json_destroy_friend_by_user_id_and_user_id_friend",tag_destroy:true do
-    before do
-
-      sign_in @user1
-    end
-
-    it "deletes friend " do
-      expect{
-        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
-      }.to change(Friend,:count).by(-2)
-    end
-
-
-    it "numeber of friend decrease by 1 " do
-        @user_profile_1 = UsersProfile.find_all_by_user_id(@user1.id).first
-        @user_profile_2 = UsersProfile.find_all_by_user_id(@user2.id).first
-
-        @user_profile_1.friends_number.should be == 4
-        @user_profile_2.friends_number.should be == 2
-
-        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
-        @user_profile_1.reload
-        @user_profile_1.friends_number.should be == 3
-        @user_profile_2.reload
-        @user_profile_2.friends_number.should be == 1
-
-    end
-
-
-
-    context "is sign in with other user" do
-      before do
-        @user3 = FactoryGirl.create(:user)
-        sign_in @user3
-      end
-      it "has a 404 status code" do
-        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
-        expect(response.status).to eq(404)
-      end
-    end
-
-
-    context "is sign out user" do
-      before do
-        sign_out
-      end
-      it "has a 404 status code" do
-        delete :json_destroy_friend_by_user_id_and_user_id_friend, user_id: @user1.id,user_id_friend:@user2.id, :format => :json
-        expect(response.status).to eq(404)
-      end
-    end
-
-
-  end
+  
 
 
 
