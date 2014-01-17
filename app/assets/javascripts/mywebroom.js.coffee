@@ -1,5 +1,5 @@
 window.Mywebroom = {
-  
+
   Models: {}
   Collections: {}
   Views: {}
@@ -8,6 +8,7 @@ window.Mywebroom = {
   State: {}
   App: {}
   Data: {}
+  Start: {}
 
 }
 
@@ -83,15 +84,15 @@ http://stackoverflow.com/questions/6408726/iterate-over-associative-array-in-cof
 
 
 
-$(document).ready( ->
+Mywebroom.Start = ->
 
-  
-  
-  
+
+
+
   # Instantiate a state model
   Mywebroom.State = new Mywebroom.Models.DefaultStateModel()
 
-  
+
 
   # Listen for changes to the state model
   Mywebroom.State.on('change:tabContentItems', ->
@@ -182,7 +183,7 @@ $(document).ready( ->
 
   # Create Initializer Functions
   Mywebroom.App.addInitializer( ->
-    
+
     new Mywebroom.Routers.RoomsRouter()
     Backbone.history.start() if Backbone.history
   )
@@ -207,4 +208,4 @@ $(document).ready( ->
 
 
 
-)
+
