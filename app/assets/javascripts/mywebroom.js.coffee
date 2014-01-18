@@ -84,7 +84,7 @@ http://stackoverflow.com/questions/6408726/iterate-over-associative-array-in-cof
 
 
 
-Mywebroom.Start = ->
+$(document).ready( ->
 
 
 
@@ -205,6 +205,8 @@ Mywebroom.Start = ->
   # Start the App!
   Mywebroom.App.start()
 
+
+)
 
 
 
