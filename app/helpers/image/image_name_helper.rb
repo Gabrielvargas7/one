@@ -3,7 +3,7 @@ module Image::ImageNameHelper
   EXTENSION_PNG = ".png"
   EXTENSION_JPG = ".jpg"
 
-  # this methos remove extention and space and dash ("-")
+  # this method removes extension and space and dash ("-")
   def self.fix_image_name image_name
 
     remove_ext = remove_image_extension image_name
