@@ -479,14 +479,84 @@ describe FriendsController do
 
   end
 
+  # json_show_is_my_friend_by_user_id_and_friend_id
+  # /friends/json/show_is_my_friend_by_user_id_and_friend_id/:user_id/friend_id'
+  #***********************************
+  # rspec test  #json_show_is_my_friend_by_user_id_and_friend_id
+  #***********************************
 
 
-  
+  describe "api json_show_is_my_friend_by_user_id_and_friend_id", tag_show_is_my_friend:true do
+
+    context "correct access- signed in user asking about her friend- " do
+      before do
+        sign_in @user1
+        get :json_show_is_my_friend_by_user_id_and_friend_id, user_id:@user1.id, friend_id:@user2.id, :format=> :json      
+      end
+
+      it "should have status 200" do
+            #call function
+
+        expect(response.status).to eq(200)
+        #puts response.body
+      end
+
+      it "should have the right value if user is my friend" do
+        body = JSON.parse(response.body)
+        body.each do |body_friend|
+          body_friend["user_id"].should == @user2.id
+        end
+
+        
+      end
+      context "correct access- signed in user asking about not friend user" do
+        before do
+          get :json_show_is_my_friend_by_user_id_and_friend_id, user_id:@user1.id, friend_id:@user6.id, :format=> :json
+        end
+        
+        it "should have status 200" do
+          expect(response.status).to eq(200)
+         # puts response.body
+        end
+
+        it "should not show info if user is not my friend" do
+          #puts response.body
+          expected_response = '[]'
+          expect(response.body).to eq(expected_response)
+        end
+      
+      end
+
+    end
+
+    context "incorrect access" do
+      
+      describe "user signed is asking about another user's friends" do
+        before do
+          sign_in @user2
+        end
+        
+        it "should have status 404" do
+          get :json_show_is_my_friend_by_user_id_and_friend_id, user_id:@user1.id, friend_id:@user6.id, :format=> :json
+          #puts response.body
+        end
+
+      end
+      describe "user signed out" do
+        before do
+          sign_out
+          get :json_show_is_my_friend_by_user_id_and_friend_id, user_id:@user1.id, friend_id:@user2.id, :format=> :json
+        end
+
+        it "should have status 404" do
+          expect(response.status).to eq(404)
+        end
+      end
 
 
-  
+    end
 
-
-
-
+    #status code 200
+    #expect response.body of y or n?
+  end
 end
