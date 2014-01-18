@@ -9,7 +9,7 @@ module UploaderImageHelper
       #remove all non- alphanumeric character (expect dashes '-')
       image_path = image_path.gsub(/[^0-9a-z -]/i, ' ')
 
-      #remplace the empty space for one dash by word
+      #replace the empty space for one dash by word
       image_path.downcase!
       image_path.strip!
       image_path_split = image_path.split(' ').join('-')

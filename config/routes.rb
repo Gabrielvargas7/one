@@ -1,6 +1,6 @@
 Mywebroom::Application.routes.draw do
 
-
+  #match '/test', to: 'test#index', via: :get
 
   resources :tutorials
 
