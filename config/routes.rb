@@ -1,6 +1,6 @@
 Mywebroom::Application.routes.draw do
 
-
+  #match '/test', to: 'test#index', via: :get
 
   resources :tutorials
 
@@ -196,6 +196,12 @@ Mywebroom::Application.routes.draw do
   match '/select-room', to: 'rooms#xroom', via: :get,as: :xroom_rooms
 
 
+  # The start of the application
+  # This tells the program to jump
+  # over to the static_pages controller
+  # and run the home action.
+  # The javascript equivilent would look
+  # something like controllers.static_pages.home()
   root to: 'static_pages#home'
 
 

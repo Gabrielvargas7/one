@@ -15,16 +15,16 @@
 
   <!-- Insert image to facebook og:image -->
   <% if @fb_app_id %>
-  <meta property="fb:app_id" content="<%=@fb_app_id %>" /> 
+  <meta property="fb:app_id" content="<%=@fb_app_id %>" />
   <meta property="og:image"  content= "<%= @fb_og_image %>" />
-  <meta property="og:title"  content="<%= @fb_og_title %>" /> 
+  <meta property="og:title"  content="<%= @fb_og_title %>" />
   <meta property="og:description" content="<%= @fb_og_description %>"/>
-  <meta property="og:url" content="<%= @fb_url unless !@fb_url%>"/> 
+  <meta property="og:url" content="<%= @fb_url unless !@fb_url%>"/>
   <% end %>
 
 
   <link rel="shortcut icon"  href="<%= cloudinary_url("http://res.cloudinary.com/hpdnx5ayv/image/upload/v1368722702/favicon_uu2zkk.ico") %>" />
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <%= render 'layouts/shim' %>
 
@@ -72,10 +72,13 @@
     >
 
       <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
+        <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
+
       <%= yield %>
+
       <%= render 'layouts/footer' unless @skip_footer %>
+
       <!--remove development params on room -->
       <%= debug(params) if Rails.env.development? unless @skip_header %>
 

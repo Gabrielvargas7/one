@@ -94,16 +94,28 @@ class RoomsController < ApplicationController
   # /room/:username
   # room_rooms_path // room_rooms_url
   # public
+
+  # This method gets called when a user is signed in and navigates to root,
+  # or when a user (signed in or not) navigates to room/<name>
   def room
 
     if User.exists?(username:params[:username])
 
+        # We set a few variables for the room - the user's name, a user object, and the user's theme.
+        # We ought to use them.
         @username = params[:username]
-
         @user = User.find_by_username(params[:username])
         @user_theme = UsersTheme.find_by_user_id(@user.id)
 
+
+        # Here we set a cookie
         set_room_user @user
+
+        # Note: we also have access to a function that checks to see if the room user is the same as the user
+
+
+
+
         @skip_header = true
         @skip_container = true
         @skip_footer = true

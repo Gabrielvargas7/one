@@ -12,7 +12,7 @@ describe "backbone view rooms", :js => true do
     sign_in @user
     visit room_rooms_path(@user.username)
     #sleep 50
-    wait_for_ajax
+    #wait_for_ajax
     #wait_for_dom
   end
 

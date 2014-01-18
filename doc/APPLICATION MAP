@@ -1,0 +1,9 @@
+APPLICATION MAP
+
+Let's walk through the process of running our application.
+
+The app starts when a user navigates to the root of the application.
+  --> config/routes.rb
+  --> root to: 'static_pages#home'
+
+The application

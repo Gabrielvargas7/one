@@ -1,0 +1,22 @@
+Features
+  landing
+    login
+    signup
+  room
+    navbar
+    main
+      ins
+        shows-up
+        button-actions
+      editor
+      bookmarks
+      profile
+      preview
+      items
+        clickable
+        first-time-click
+        hoverable
+        visible
+        not-visible
+    footer
+      links
