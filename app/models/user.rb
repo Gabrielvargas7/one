@@ -247,7 +247,7 @@ class User < ActiveRecord::Base
     def create_user_notification
 
       if Notification.count.zero?
-        # if notification is we need to create one
+        # if notification is 0 we need to create one
 
         UsersNotification.create(user_id:self.id,notified:'y')
 

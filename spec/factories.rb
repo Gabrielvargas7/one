@@ -11,10 +11,10 @@
 FactoryGirl.define do
 
   factory :user do
-    sequence(:email) { |n| "person_#{n}@example.com"}
+    sequence(:email) { |n| "fake_person_#{n}@example.com"}
     sequence(:username)  {|n| "username#{n}"}
 
-    password "foodbar"
+    password "foobar"
     #specific_room_id 1
 
     factory :admin do
@@ -209,6 +209,39 @@ FactoryGirl.define do
     user_id 1
 
   end
+
+
+
+  factory :tutorial do
+
+    sequence(:description) { |n| "description #{n}" }
+    name 'name'
+    image_name 'image name'
+    step 1
+
+  end
+
+
+
+  factory :company do
+
+    sequence(:description) { |n| "description #{n}" }
+    image_name 'image name'
+    name 'name'
+
+  end
+
+
+
+  factory :static_content do
+
+    sequence(:description) { |n| "description #{n}" }
+    image_name 'image name'
+    name 'name'
+
+  end
+
+
 
 
 
