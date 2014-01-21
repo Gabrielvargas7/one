@@ -8,8 +8,9 @@ describe "backbone view rooms", :js => true do
   before do
     #@user = FactoryGirl.create(:user)
     #sign_in @user
-    @user = FactoryGirl.create(:user)
-    sign_in @user
+    #@user = FactoryGirl.create(:user)
+    #sign_in @user
+     @user =   User.first
     visit room_rooms_path(@user.username)
     #sleep 50
     wait_for_ajax
