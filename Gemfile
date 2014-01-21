@@ -79,7 +79,7 @@ end
 
 
 group :development do
-  gem 'guard', '2.2.5'
+  gem 'guard', '2.3.0'
   gem 'guard-rspec', '4.2.4'
   gem 'annotate', '2.5.0'
 
