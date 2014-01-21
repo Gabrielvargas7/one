@@ -9,9 +9,9 @@ describe BundlesBookmarksController do
 
   before do
     @item = @item = FactoryGirl.create(:item)
-    @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
-    @bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
-    @bundles_bookmark = FactoryGirl.create(:bundles_bookmark,bookmark_id:@bookmark.id)
+    @bookmarks_category = FactoryGirl.create(:bookmarks_category, item_id: @item.id)
+    @bookmark = FactoryGirl.create(:bookmark, bookmarks_category_id: @bookmarks_category.id)
+    @bundles_bookmark = FactoryGirl.create(:bundles_bookmark, bookmark_id: @bookmark.id)
     @admin = FactoryGirl.create(:admin)
     sign_in @admin
   end
@@ -32,7 +32,7 @@ describe BundlesBookmarksController do
 
       it "assigns all bundles_bookmark as @bundle_bookmark" do
         get :index
-        assigns(:bundles_bookmarks).should eq(bundles_bookmark_all)
+        expect(assigns(:bundles_bookmarks)).to eq(bundles_bookmark_all)
       end
 
       it "renders the :index view" do
