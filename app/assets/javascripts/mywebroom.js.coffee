@@ -9,6 +9,7 @@ window.Mywebroom = {
   App: {}
   Data: {}
   Start: {}
+  Facebook: {}
 
 }
 
@@ -80,6 +81,25 @@ Since this program speaks coffee, we use "of" to query instead of "in".
 
 http://stackoverflow.com/questions/6408726/iterate-over-associative-array-in-coffeescript/6408784#6408784
 ###
+
+
+
+
+Mywebroom.Facebook.register = ->
+  console.log('facebook register')
+  fb_param = {}
+  fb_param.pixel_id = "6015424409838"
+  fb_param.value = "0.00"
+  fb_param.currency = "USD"
+  (->
+    fpw = document.createElement("script")
+    fpw.async = true
+    fpw.src = "//connect.facebook.net/en_US/fp.js"
+    ref = document.getElementsByTagName("script")[0]
+    ref.parentNode.insertBefore(fpw, ref)
+  )()
+
+
 
 
 
