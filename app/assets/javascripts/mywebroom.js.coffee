@@ -86,7 +86,6 @@ http://stackoverflow.com/questions/6408726/iterate-over-associative-array-in-cof
 
 
 Mywebroom.Facebook.register = ->
-  console.log('facebook register')
   fb_param = {}
   fb_param.pixel_id = "6015424409838"
   fb_param.value = "0.00"
