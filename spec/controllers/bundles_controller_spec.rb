@@ -39,10 +39,10 @@ describe BundlesController do
   # rspec test  index
   #***********************************
 
-  describe "GET index",tag_index:true do
+  describe "GET index", tag_index:true do
 
     context "is admin user" do
-      let(:bundle_all) { Bundle.all }
+      let(:bundle_all) { Bundle.order('id').all }
 
       it "assigns all bundle as @bundle" do
         get :index
@@ -54,6 +54,8 @@ describe BundlesController do
         response.should render_template :index
       end
     end
+
+
     context "is not admin user" do
       before do
         @user  = FactoryGirl.create(:user)
