@@ -122,8 +122,8 @@ def create_init_data
     @items.each do |item|
       location = FactoryGirl.create(:location,section_id:@section.id)
       FactoryGirl.create(:items_location,item_id:item.id,location_id:location.id)
-      puts "items : " +item.id.to_s
-      puts "location : "+ location.id.to_s
+      #puts "items : " +item.id.to_s
+      #puts "location : "+ location.id.to_s
 
     end
 
