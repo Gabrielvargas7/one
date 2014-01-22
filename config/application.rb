@@ -69,5 +69,8 @@ module Mywebroom
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+
+    Rack::Timeout.unregister_state_change_observer(:logger)
   end
 end
