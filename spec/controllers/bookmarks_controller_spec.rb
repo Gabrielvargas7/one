@@ -34,7 +34,7 @@ describe BookmarksController do
         get :index
         assigns(:bookmarks).first.attributes.should eq(bookmarks_all.first.attributes)
         #I don't know why this doesn't pass. The printed diff is empty, but the test still fails.
-        #these don't have the same database id likely. maybe compare attributes. 
+        #these don't have the same database id likely. maybe compare attributes.
       end
 
       it "renders the :index view" do
@@ -263,21 +263,21 @@ describe BookmarksController do
         end
 
         it "located the requested @bookmark" do
-          
+
           put :update, id: @bookmark, bookmark: FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
           assigns(:bookmark).should eq(@bookmark)
         end
-        
+
         context "and has changed attributes" do
           before(:each) do
             put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
           end
-        
+
           it "changes @bookmarks's attributes" do
             @bookmark.reload
             @bookmark.bookmarks_category_id.should eq(BookmarksCategory.last.id)
           end
-        
+
           it "redirects to the updated bookmarks" do
             put :update, id: @bookmark, bookmark:FactoryGirl.attributes_for(:bookmark,bookmarks_category_id:BookmarksCategory.last.id)
             response.should redirect_to @bookmark
@@ -642,7 +642,7 @@ describe BookmarksController do
 
 ### These are user_bookmarks related and should be in user_bookmarks_controller_spec
   # describe "api #json_show_bookmarks_seo_url_by_bookmark_id",tag_json_category:true do
-    
+
   #   context "with signed in user" do
   #   end
 
