@@ -33,8 +33,7 @@ describe BookmarksController do
       it "has the same attributes assigned to the first row in :bookmarks" do
         get :index
         assigns(:bookmarks).first.attributes.should eq(bookmarks_all.first.attributes)
-        #I don't know why this doesn't pass. The printed diff is empty, but the test still fails.
-        #these don't have the same database id likely. maybe compare attributes.
+        #NOTE: is there a better test we could do here? To test most bookmarks attributes?
       end
 
       it "renders the :index view" do
