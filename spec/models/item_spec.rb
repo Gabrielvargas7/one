@@ -180,7 +180,7 @@ describe Item do
     )}
 
     it "should be upload to CDN - cloudinary " do
-      puts item_with_image_upload.image_name_first_time_click.to_s
+      #puts item_with_image_upload.image_name_first_time_click.to_s
       item_with_image_upload.image_name_first_time_click.to_s.should include("http")
 
     end
