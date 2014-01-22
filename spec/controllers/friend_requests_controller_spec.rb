@@ -242,10 +242,6 @@ describe FriendRequestsController do
   end
 
 
-
-
-
-
   ###############
   #rspec - json_show_friend_request_by_user_id_user_id_requested
   ###############
@@ -257,13 +253,13 @@ describe FriendRequestsController do
       sign_in @user1
       #post :json_create_friend_request_by_user_id_and_user_id_requested,user_id:@user1.id,user_id_requested:@user2.id, :format => :json
       @friend_request1 = FactoryGirl.create(:friend_request,user_id:@user1.id,user_id_requested:@user2.id)
-      puts @user1.id
-      puts @user2.id
+      #puts @user1.id
+      #puts @user2.id
     end
 
     context "Correct Parameters (correct user signed in)" do
 
-      it "shows friend requested info if I requested friend's key" do
+      it "shows info if I requested user key" do
         # puts @user_requested.id
         # puts @user.id
         # expect(true).should == true
@@ -310,9 +306,19 @@ describe FriendRequestsController do
     #user3 make key request to user2. 
     #run api.
     #expect result to be empty array
-
-      it "shows empty array if I am friends with user_requested" do
-        pending
+      describe "I'm friends with user_requested" do
+        before do
+          @userA = FactoryGirl.create(:user)
+          @userB = FactoryGirl.create(:user)
+          @friend1 = FactoryGirl.create(:friend,user_id:@userA.id,user_id_friend:@userB.id)
+          sign_in @userA
+        end
+        it "shows empty array if I am friends with user_requested" do
+          get :json_show_friend_request_by_user_id_user_id_requested, user_id: @userA.id, user_id_requested: @userB.id, :format => :json
+          expect(response.status).to eq(200)
+          body = JSON.parse(response.body)
+          expect(body.length).to eq(0)
+        end
       end
     end
 
@@ -321,47 +327,18 @@ describe FriendRequestsController do
         get :json_show_friend_request_by_user_id_user_id_requested, user_id: @user2.id, user_id_requested: @user3id, :format => :json
         expect(response.status).to eq(404)
       end
-
-      
-    end
-
-    context "user is signed out" do
-      describe "blah" do
+    
+      describe "user is signed out" do
         before do
-          #@user1 = FactoryGirl.create(:user)
-          #@user2 = FactoryGirl.create(:user)
-          @user1id= @user1.id
-          @user2id= @user2.id
           sign_out
         end
 
-
         it "should 404" do
-          get :json_show_friend_request_by_user_id_user_id_requested, user_id: @user1id, user_id_requested: @user2id, :format => :json
+          get :json_show_friend_request_by_user_id_user_id_requested, user_id: @user1.id, user_id_requested: @user2.id, :format => :json
           expect(response.status).to eq(404)
         end
       end
-      
     end
-
-   
-
-
-
-    #Case- We are friends. 
-    #create friend1
-    #expect result to be empty array. 
-
-    #Case- sign in as other user and ask about user1 friend request to user2.
-    #get :json_show_friend_request_by_user_id_user_id_requested,user_id: @user_requested.id,user_id_requested: @user.id, :format => :json
- 
-    #expect 404
-
-    #Case- I sign out. 
-    #expect 404
-
-
-
   end
 end
 
