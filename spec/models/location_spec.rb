@@ -173,7 +173,7 @@ describe Location do
       end
 
       it "should print the id and location and section " do
-        puts @location.id_and_location_section
+        #puts @location.id_and_location_section
         #@item.id_and_item.should ==  @id.to_s+". "+@name
         @location.id_and_location_section.should ==  "Location: "+@id.to_s+". "+@name+" --Section: "+@section_id.to_s+". "+@section_name
 

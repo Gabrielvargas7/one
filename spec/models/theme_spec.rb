@@ -124,7 +124,7 @@ describe Theme do
       end
 
       it "should print the id and name  " do
-        puts @theme.id_and_theme
+        #puts @theme.id_and_theme
         @theme.id_and_theme.should ==  @id.to_s+". "+@name
 
       end
