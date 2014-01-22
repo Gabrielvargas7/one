@@ -1,6 +1,5 @@
 Mywebroom::Application.routes.draw do
 
-  #match '/test', to: 'test#index', via: :get
 
   resources :tutorials
 
@@ -208,7 +207,7 @@ Mywebroom::Application.routes.draw do
 # Contract Back-end -- Front-end only Json responce
 # Rules of name
 # 1.- name of the path should start with name of the controller , eg - for RoomsController -- should be /rooms/...
-# 2.- name of the method should start with the (rials rule action for REST)
+# 2.- name of the method should start with the (rails rule action for REST)
     # eg - for GET -- should be -- show (for one),
     # eg - for GET -- should be -- index (for all)
     # eg - for PUT -- should be -- update

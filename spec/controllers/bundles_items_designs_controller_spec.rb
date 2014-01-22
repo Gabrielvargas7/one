@@ -20,6 +20,7 @@ describe BundlesItemsDesignsController do
     #@bundles_items_design = FactoryGirl.create(:bundles_items_design,bundle_id:@bundle.id,location_id:@items_location.location_id,items_design_id:@items_designs.id)
 
     @bundles_items_design = BundlesItemsDesign.first
+    @bundle = Bundle.first
     @admin = FactoryGirl.create(:admin)
     sign_in @admin
     #puts "Admin user signin cookie: "+cookies[:remember_token].to_s
@@ -35,11 +36,13 @@ describe BundlesItemsDesignsController do
   # rspec test  index
   #***********************************
 
-  describe "GET index",tag_index:true do
+  describe "GET index", tag_index:true do
 
     context "is admin user" do
-      let(:bundles_items_design_all) { BundlesItemsDesign.order('bundle_id,items_designs.item_id ').
-              joins('LEFT OUTER JOIN items_designs ON items_designs.id = bundles_items_designs.items_design_id')
+      let(:bundles_items_design_all) { BundlesItemsDesign.order('bundle_id, items_designs.item_id').
+          joins('LEFT OUTER JOIN items_designs ON items_designs.id = bundles_items_designs.items_design_id').
+          where('bundles_items_designs.bundle_id = ?', @bundle.id).
+          paginate(page: '1', :per_page => 200)
       }
 
       it "assigns all bundle_items_designs as @bundle_items_designs" do
