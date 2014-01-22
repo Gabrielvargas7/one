@@ -441,8 +441,8 @@ describe User do
     context "must have a bookmarks " do
       before do
         @bundle_bookmarks_count = BundlesBookmark.count
-        puts " count bundle bookmarks "
-        puts @bundle_bookmarks_count
+        #puts " count bundle bookmarks "
+        #puts @bundle_bookmarks_count
       end
       it "create user must change user bookmarks by many" do
         expect {
