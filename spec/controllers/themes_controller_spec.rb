@@ -449,8 +449,9 @@ describe ThemesController do
           get :json_index_themes_categories, :format => :json
           body = JSON.parse(response.body)
           #puts body.as_json
-          puts body["category"]
+          #puts body["category"]
           #puts @the
+
 
           body["themes_categories"].each do |body_theme|
             @theme_json = Theme.find_all_by_category(body_theme["category"]).first()
