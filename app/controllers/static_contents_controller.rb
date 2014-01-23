@@ -120,7 +120,6 @@ class StaticContentsController < ApplicationController
   #Return head 200 OK
   def json_index_static_contents
 
-    # Where does this data come from?
     @static_contents = StaticContent.all
     respond_to do |format|
 
