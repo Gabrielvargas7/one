@@ -116,10 +116,10 @@ class SessionsController < ApplicationController
 
         @items_locations.each do |item_location|
 
-          unless UsersItemsDesign.joins(:items_design).where('user_id = ? and items_designs.item_id =? and location_id = ?',user.id,item_location.item_id,item_location.location_id).exists?
-            if ItemsDesign.exists?(item_id:item_location.item_id)
+          unless UsersItemsDesign.joins(:items_design).where('user_id = ? and items_designs.item_id =? and location_id = ?', user.id, item_location.item_id, item_location.location_id).exists?
+            if ItemsDesign.exists?(item_id: item_location.item_id)
               @item_design = ItemsDesign.find_by_item_id(item_location.item_id)
-              UsersItemsDesign.create(items_design_id:@item_design.id, user_id:user.id,hide:"no" ,location_id:item_location.location_id)
+              UsersItemsDesign.create(items_design_id: @item_design.id, user_id: user.id, hide:"no" , location_id: item_location.location_id)
             end
           end
         end
