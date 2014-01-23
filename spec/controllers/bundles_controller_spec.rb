@@ -590,7 +590,7 @@ describe BundlesController do
 #***********************************
 
 
-  describe "api #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset",tag_json_index:true do
+  describe "api #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset", tag_json_index: true do
 
     describe "is public api" do
       before do
@@ -602,33 +602,28 @@ describe BundlesController do
 
         @section = Section.first()
         @theme =  Theme.first()
-        FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'y',
-                           category:"furniture",style:"modern",brand:"nike",color:"green",make:"wood",location:"los angeles")
+        FactoryGirl.create(:bundle, theme_id: @theme.id, section_id: @section.id, active:'y',
+                           category: "furniture", style: "modern", brand: "nike", color: "green", make: "wood", location: "los angeles")
 
-        FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'y',
-                           category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather",location:"london")
-
-        FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'y',
-                           category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather",location:"london")
-
-
+        FactoryGirl.create(:bundle,theme_id: @theme.id, section_id: @section.id, active: 'y',
+                           category: "electronics", style: "easter", brand: "prada", color: "red", make: "leather", location: "london")
       end
 
 
       it "should be successful" do
-        get :json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset, category:@category,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
+        get :json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset, category: @category, keyword: @keyword, limit: @limit, offset: @offset, :format => :json
         response.should be_success
       end
 
 
       it "has a 200 status code" do
-        get :json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset, category:@category,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
+        get :json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset, category: @category, keyword: @keyword, limit: @limit, offset: @offset, :format => :json
         expect(response.status).to eq(200)
       end
 
       context "get all values " do
         it "should return json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset" do # depend on what you return in action
-          get :json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset, category:@category,keyword:@keyword,limit:@limit,offset:@offset, :format => :json
+          get :json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset, category: @category, keyword: @keyword, limit: @limit, offset: @offset, :format => :json
           body = JSON.parse(response.body)
           #puts "body ---- > "+body.to_s
           #puts "theme ----> "+@theme.as_json.to_s
@@ -660,20 +655,60 @@ describe BundlesController do
     end
   end
 
-  describe "api #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset",tag_json_category:true do
+
+
+  describe "api #json_index_bundles_categories", tag_json_category: true do
+    describe "is public api" do
+
+      before do
+        sign_out
+        FactoryGirl.create(:bundle, theme_id: 1, section_id: 1, active:'y', category: "electronics", style: "easter", brand: "prada", color: "red", make: "leather", location: "london")
+      end
+
+
+      it "should be successful" do
+        get :json_index_bundles_categories, :format => :json
+        response.should be_success
+      end
+
+
+      it "has a 200 status code" do
+        get :json_index_bundles_categories, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "should return json_index_bundles_categories" do # depend on what you return in action
+          get :json_index_bundles_categories, :format => :json
+          body = JSON.parse(response.body)
+
+          # puts body["bundles_categories"][0]["category"]
+          # puts body["bundles_styles"][0]["style"]
+          # puts body["bundles_brands"][0]["brand"]
+          # puts body["bundles_colors"][0]["color"]
+          # puts body["bundles_makes"][0]["make"]
+          # puts body["bundles_locations"][0]["make"]
+
+          # THIS TEST PERIODICALLY FAILS!
+
+          body["bundles_categories"][0]["category"].should == "electronics"
+          body["bundles_styles"][0]["style"].should == "easter"
+          body["bundles_brands"][0]["brand"].should == "prada"
+          body["bundles_colors"][0]["color"].should == "red"
+          body["bundles_makes"][0]["make"].should == "leather"
+          body["bundles_locations"][0]["make"].should == "london"
+
+        end
+      end
+    end
+  end
+
+
+  describe "api #json_show_bundles_seo_url_by_bundles_id", tag_json_category: true do
     pending "pending test api"
   end
 
-  describe "api #json_index_bundles_categories",tag_json_category:true do
-    pending "pending test api"
-  end
-
-
-  describe "api #json_show_bundles_seo_url_by_bundles_id",tag_json_category:true do
-    pending "pending test api"
-  end
-
-  describe "api #json_show_entire_room_seo_url_by_entire_room_id",tag_json_category:true do
+  describe "api #json_show_entire_room_seo_url_by_entire_room_id", tag_json_category: true do
     pending "pending test api"
   end
 
