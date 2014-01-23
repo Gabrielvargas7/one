@@ -177,15 +177,15 @@ class BundlesController < ApplicationController
   # Json methods for the room users
   #***********************************
 
-  
+
   # GET Get bundle by id
   # /bundles/json/show_bundle_by_id/:id'
   # /bundles/json/show_bundle_by_id/1.json
   # Return head
   # success    ->  head  200 OK
-  
+
   #public api
-  
+
   def json_show_bundle_by_id
     @bundle = Bundle.find(params[:id])
 
@@ -271,12 +271,12 @@ class BundlesController < ApplicationController
 
 
 
-      format.json { render json:{ bundles_categories:@bundles_categories,
-                                  bundles_brands:@bundles_brands,
-                                  bundles_styles:@bundles_styles,
-                                  bundles_colors:@bundles_colors,
-                                  bundles_makes:@bundles_makes,
-                                  bundles_locations:@bundles_locations
+      format.json { render json:{ bundles_categories: @bundles_categories,
+                                  bundles_brands: @bundles_brands,
+                                  bundles_styles: @bundles_styles,
+                                  bundles_colors: @bundles_colors,
+                                  bundles_makes: @bundles_makes,
+                                  bundles_locations: @bundles_locations
       }}
     end
   end
@@ -304,14 +304,13 @@ class BundlesController < ApplicationController
 
 
         @bundles = Bundle.
-            where("LOWER(LTRIM(RTRIM("+category+"))) LIKE ? ", "%#{keyword}%").
+            where("LOWER(LTRIM(RTRIM(" + category + "))) LIKE ? ", "%#{keyword}%").
             where("active = 'y'").
             limit(params[:limit]).
             offset(params[:offset])
 
 
-        format.json { render json: @bundles
-        }
+        format.json { render json: @bundles }
 
       else
         #format.json { render json: 'keyword or category to long ' , status: :not_found }
