@@ -113,6 +113,8 @@ class RoomsController < ApplicationController
 
         # Note: we also have access to a function that checks to see if the room user is the same as the user
 
+        # SET STATIC CONTENTS
+        @static_contents = StaticContent.all
 
 
 
