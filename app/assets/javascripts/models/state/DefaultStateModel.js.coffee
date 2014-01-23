@@ -1,8 +1,8 @@
 class Mywebroom.Models.DefaultStateModel extends Backbone.Model
-  
-  
+
+
   defaults: {
-    
+
     staticContent : false  #Collection of static content images
 
     roomState     : false  # Who's room are we viewing? PUBLIC, FRIEND, or SELF
@@ -14,7 +14,7 @@ class Mywebroom.Models.DefaultStateModel extends Backbone.Model
 
     roomDesigns   : false  # Array of item designs, or empty array
     roomTheme     : false  # Object containing info on room's theme
-    firstTimePopupItem : 0 #set the item for the first time pupop
+    firstTimePopupItem : 0 #set the item for the first time popup
     dom_item_id   : false # dom item when is click
 
     initialItems: false # Backbone collection of room items
@@ -59,7 +59,7 @@ class Mywebroom.Models.DefaultStateModel extends Backbone.Model
     storeHelper: false # Store information about the tab or object we're on
     activeSitesMenuView: false #A reference to the Active Sites Menu View.
     searchViewArray: false #A reference to an Array of view on the search
-    
+
     room0: {
       position: -2200
       screen_position: 0
@@ -76,11 +76,11 @@ class Mywebroom.Models.DefaultStateModel extends Backbone.Model
       id: "#xroom_items_2"
     }
   }
-  
+
   ###
   *Note about $activeDesign: At the present, this gets set when either the object this design
    belongs to is clicked from the store, or a new design was
    chosen from the store. Would probably be good to have this
    get set when a room design is click directly.
   ###
-  
+
