@@ -355,73 +355,220 @@ describe UsersBookmarksController do
       end
     end
 
-    context "correct parameters and correct user and offset 0 and limit 6" do
-      before do
-        @offset = 0
-        @limit = 6
-        get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
-        user_id: @user.id,limit:@limit, 
-        offset:@offset,
-         :format => :json
-        @body = JSON.parse(response.body)
-      end
-      it "should be successful" do
-        expect(response.status).to eq(200)
-      end
+    describe "correct parameters and correct user" do
 
-      it "should return only 6 bookmarks" do
-        expect(@body.length).to eq(@limit)
-      end
+      context "test limits of 6 and offset 0" do 
 
-      it "should have the correct values" do
-        @body.each do |body_user_bookmark|
-          bookmark_json = Bookmark.find(body_user_bookmark["id"])
-          user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
-          body_user_bookmark["id"].should == bookmark_json.id
-          body_user_bookmark["bookmark_url"].should == bookmark_json.bookmark_url
-          body_user_bookmark["bookmarks_category_id"].should == bookmark_json.bookmarks_category_id
-          body_user_bookmark["description"].should == bookmark_json.description
-          body_user_bookmark["i_frame"].should == bookmark_json.i_frame
-          body_user_bookmark["image_name"]["url"].should == bookmark_json.image_name.to_s
-          body_user_bookmark["image_name_desc"]["url"].should == bookmark_json.image_name_desc.to_s
-          body_user_bookmark["title"].should == bookmark_json.title
-          body_user_bookmark["position"].should == user_bookmark_json.position.to_s
-          body_user_bookmark["like"].should == bookmark_json.like
+        let(:offset){0}
+        let(:limit){6} 
+
+        before do
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+           user_id: @user.id,limit:limit, 
+           offset:offset,
+           :format => :json
+          @body = JSON.parse(response.body)
+        end
+        it "should be successful" do
+          expect(response.status).to eq(200)
+        end
+
+        it "should return only 6 bookmarks since limit is 6" do
+          expect(@body.length).to eq(limit)
+        end
+
+        it "should have the correct values" do
+          @body.each do |body_user_bookmark|
+            bookmark_json = Bookmark.find(body_user_bookmark["id"])
+            user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+            body_user_bookmark["id"].should == bookmark_json.id
+            body_user_bookmark["bookmark_url"].should == bookmark_json.bookmark_url
+            body_user_bookmark["bookmarks_category_id"].should == bookmark_json.bookmarks_category_id
+            body_user_bookmark["description"].should == bookmark_json.description
+            body_user_bookmark["i_frame"].should == bookmark_json.i_frame
+            body_user_bookmark["image_name"]["url"].should == bookmark_json.image_name.to_s
+            body_user_bookmark["image_name_desc"]["url"].should == bookmark_json.image_name_desc.to_s
+            body_user_bookmark["title"].should == bookmark_json.title
+            body_user_bookmark["position"].should == user_bookmark_json.position.to_s
+            body_user_bookmark["like"].should == bookmark_json.like
+          end
+        end
+      end
+    
+
+      context "correct parameters and correct user and offset 6" do
+        let(:offset){0}
+        let(:limit){1}
+        
+        before do
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+          user_id: @user.id,limit:limit, 
+          offset:offset,
+           :format => :json
+          @body = JSON.parse(response.body)
+          @first_bookmark_in_user_collection = @body.first
+          # puts @first_bookmark_in_user_collection
+
+        end
+
+        it " should not contain the first bookmark." do
+          #call function with limit and offset 6. 
+          offset = 6
+          limit = 6
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+          user_id: @user.id,limit:limit, 
+          offset:offset,
+           :format => :json
+          body_with_offset = JSON.parse(response.body)
+          body_with_offset.should_not include(@first_bookmark_in_user_collection)
         end
       end
     end
-    context "correct parameters and correct user and offset 6" do
+
+    describe "sign in with other user" do
       before do
-        offset = 0
-        @limit = 1
-        get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
-        user_id: @user.id,limit:@limit, 
-        offset:@offset,
-         :format => :json
-        @body = JSON.parse(response.body)
-        @first_bookmark_in_user_collection = @body.first
-        puts @first_bookmark_in_user_collection
+        @user1 = FactoryGirl.create(:user)
+        sign_in @user1
+      end
+      context "test limits of 6 and offset 0" do 
 
+        let(:offset){0}
+        let(:limit){6} 
+
+        before do
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+           user_id: @user.id,limit:limit, 
+           offset:offset,
+           :format => :json
+          @body = JSON.parse(response.body)
+        end
+        it "should be successful" do
+          expect(response.status).to eq(200)
+        end
+
+        it "should return only 6 bookmarks since limit is 6" do
+          expect(@body.length).to eq(limit)
+        end
+
+        it "should have the correct values" do
+          @body.each do |body_user_bookmark|
+            bookmark_json = Bookmark.find(body_user_bookmark["id"])
+            user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+            body_user_bookmark["id"].should == bookmark_json.id
+            body_user_bookmark["bookmark_url"].should == bookmark_json.bookmark_url
+            body_user_bookmark["bookmarks_category_id"].should == bookmark_json.bookmarks_category_id
+            body_user_bookmark["description"].should == bookmark_json.description
+            body_user_bookmark["i_frame"].should == bookmark_json.i_frame
+            body_user_bookmark["image_name"]["url"].should == bookmark_json.image_name.to_s
+            body_user_bookmark["image_name_desc"]["url"].should == bookmark_json.image_name_desc.to_s
+            body_user_bookmark["title"].should == bookmark_json.title
+            body_user_bookmark["position"].should == user_bookmark_json.position.to_s
+            body_user_bookmark["like"].should == bookmark_json.like
+          end
+        end
+      end
+    
+
+      context "correct parameters and correct user and offset 6" do
+        let(:offset){0}
+        let(:limit){1}
+        
+        before do
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+          user_id: @user.id,limit:limit, 
+          offset:offset,
+           :format => :json
+          @body = JSON.parse(response.body)
+          @first_bookmark_in_user_collection = @body.first
+          # puts @first_bookmark_in_user_collection
+
+        end
+
+        it " should not contain the first bookmark." do
+          #call function with limit and offset 6. 
+          offset = 6
+          limit = 6
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+          user_id: @user.id,limit:limit, 
+          offset:offset,
+           :format => :json
+          body_with_offset = JSON.parse(response.body)
+          body_with_offset.should_not include(@first_bookmark_in_user_collection)
+        end
       end
 
-      it " should not contain the first bookmark." do
-        #call function with limit and offset 6. 
-        offset = 6
-        limit = 6
-        get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
-        user_id: @user.id,limit:limit, 
-        offset:offset,
-         :format => :json
-        body_with_offset = JSON.parse(response.body)
-        body_with_offset.should_not include(@first_bookmark_in_user_collection)
+    end #end describe sign in with other user
+    describe "sign out user" do
+      before do
+        @user1 = FactoryGirl.create(:user)
+        sign_in @user1
       end
-    end
+      context "test limits of 6 and offset 0" do 
 
-    context "sign in with other user" do
-      pending "Should have the same tests as above"
-    end
-    context "sign out" do
-      pending "Should have the same tests as above"
+        let(:offset){0}
+        let(:limit){6} 
+
+        before do
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+           user_id: @user.id,limit:limit, 
+           offset:offset,
+           :format => :json
+          @body = JSON.parse(response.body)
+        end
+        it "should be successful" do
+          expect(response.status).to eq(200)
+        end
+
+        it "should return only 6 bookmarks since limit is 6" do
+          expect(@body.length).to eq(limit)
+        end
+
+        it "should have the correct values" do
+          @body.each do |body_user_bookmark|
+            bookmark_json = Bookmark.find(body_user_bookmark["id"])
+            user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+            body_user_bookmark["id"].should == bookmark_json.id
+            body_user_bookmark["bookmark_url"].should == bookmark_json.bookmark_url
+            body_user_bookmark["bookmarks_category_id"].should == bookmark_json.bookmarks_category_id
+            body_user_bookmark["description"].should == bookmark_json.description
+            body_user_bookmark["i_frame"].should == bookmark_json.i_frame
+            body_user_bookmark["image_name"]["url"].should == bookmark_json.image_name.to_s
+            body_user_bookmark["image_name_desc"]["url"].should == bookmark_json.image_name_desc.to_s
+            body_user_bookmark["title"].should == bookmark_json.title
+            body_user_bookmark["position"].should == user_bookmark_json.position.to_s
+            body_user_bookmark["like"].should == bookmark_json.like
+          end
+        end
+      end
+    
+
+      context "correct parameters and correct user and offset 6" do
+        let(:offset){0}
+        let(:limit){1}
+        
+        before do
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+          user_id: @user.id,limit:limit, 
+          offset:offset,
+           :format => :json
+          @body = JSON.parse(response.body)
+          @first_bookmark_in_user_collection = @body.first
+          # puts @first_bookmark_in_user_collection
+
+        end
+
+        it " should not contain the first bookmark." do
+          #call function with limit and offset 6. 
+          offset = 6
+          limit = 6
+          get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
+          user_id: @user.id,limit:limit, 
+          offset:offset,
+           :format => :json
+          body_with_offset = JSON.parse(response.body)
+          body_with_offset.should_not include(@first_bookmark_in_user_collection)
+        end
+      end
     end
   end
 
