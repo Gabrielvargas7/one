@@ -89,7 +89,23 @@ Mywebroom::Application.routes.draw do
 
 
 
-  resources :bundles_items_designs
+  resources :bundles_items_designs # No action for new, edit, create, update <-- TODO: fix route
+
+  # These 3 routes handle the remaining actions that exist for the bundles_items_designs resource
+  # match '/bundles_items_designs',     to: 'bundles_items_designs#index',   via: :get
+  # match '/bundles_items_designs/:id', to: 'bundles_items_designs#show',    via: :get, as: :bundles_items_design
+  # match '/bundles_items_designs/:id', to: 'bundles_items_designs#destroy', via: :delete
+
+  # NOTE
+  # If we want to remove the resources :bundles_items_designs route,
+  # we need to also remove 2 views:
+  # views/bundles_items_designs/edit.html.erb, views/bundles_items_designs/new.html.erb
+  # and
+  # 2 links:
+  # Destroy link --> views/bundles_items_designs/index.html.erb
+  # Edit link --> views/bundles_items_designs/new.html.erb
+
+
 
   match '/bundles_items_designs/index/bundle_selection', to:
          'bundles_items_designs#index_bundle_selection', via: :get,as: :index_bundle_selection

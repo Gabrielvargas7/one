@@ -645,7 +645,7 @@ describe ItemsDesignsController do
         get :json_index_items_designs_of_bundle_by_bundle_id,bundle_id:@invalid_bundle_id, :format => :json
 
         body = JSON.parse(response.body)
-        puts "bunde items"
+        #puts "bundle items"
         #puts body.as_json
         body.should == []
 

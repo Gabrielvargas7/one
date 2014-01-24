@@ -25,7 +25,7 @@ describe BundlesBookmarksController do
   # rspec test  index
   #***********************************
 
-  describe "GET index",tag_index:true do
+  describe "GET index",tag_index: true do
 
     context "is admin user" do
       let(:bundles_bookmark_all) { BundlesBookmark.all }
@@ -64,7 +64,7 @@ describe BundlesBookmarksController do
   #***********************************
 
 
-  describe "GET show", tag_show:true do
+  describe "GET show", tag_show: true do
 
     context "is admin user" do
 
@@ -106,7 +106,7 @@ describe BundlesBookmarksController do
   # rspec test  new
   #***********************************
 
-  describe "GET new",tag_new:true do
+  describe "GET new",tag_new: true do
 
     context "is admin user"  do
       it "assigns a new bundle bookmark as @bundle bookmark" do
@@ -140,7 +140,7 @@ describe BundlesBookmarksController do
   # rspec test  edit
   #***********************************
 
-  describe "GET edit", tag_edit:true do
+  describe "GET edit", tag_edit: true do
 
     context "is admin user"  do
 
@@ -183,7 +183,7 @@ describe BundlesBookmarksController do
   #***********************************
 
 
-  describe "POST create", tag_create:true  do
+  describe "POST create", tag_create: true  do
     before do
 
       @item = @item = FactoryGirl.create(:item)
@@ -264,7 +264,7 @@ describe BundlesBookmarksController do
   #***********************************
 
 
-  describe "PUT update", tag_update:true do
+  describe "PUT update", tag_update: true do
     before do
       @item = @item = FactoryGirl.create(:item)
       @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
@@ -335,7 +335,7 @@ describe BundlesBookmarksController do
     #***********************************
 
 
-      describe 'DELETE destroy', tag_destroy:true do
+      describe 'DELETE destroy', tag_destroy: true do
 
         it "deletes the contact" do
           expect{

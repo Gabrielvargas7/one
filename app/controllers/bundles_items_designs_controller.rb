@@ -58,6 +58,11 @@ class BundlesItemsDesignsController < ApplicationController
     end
   end
 
+
+
+
+
+
   # GET /bundles_items_designs/1
   # GET /bundles_items_designs/1.json
   def show
@@ -68,6 +73,32 @@ class BundlesItemsDesignsController < ApplicationController
       format.json { render json: @bundles_items_design }
     end
   end
+
+
+
+
+
+
+
+
+
+
+  # NOTE:
+  #
+  # The new, edit, create, and update actions are
+  # empty. However, there is a route for
+  # resources :bundles_items_designs, which means
+  # these actions are expected.
+  #
+  # Before deleting these actions, we would
+  # need to remove resources :bundles_items_designs
+  # from routes and add the routes we are using:
+  # get 'index', get 'show', delete 'destroy'
+  # Additionally, we have views for new and edit,
+  # so navigating to these pages produces an error
+  # because they expect to be given something
+  #
+
 
   # GET /bundles_items_designs/new
   # GET /bundles_items_designs/new.json
@@ -116,6 +147,17 @@ class BundlesItemsDesignsController < ApplicationController
     #  end
     #end
   end
+
+
+
+
+
+
+
+
+
+
+
 
   # DELETE /bundles_items_designs/1
   # DELETE /bundles_items_designs/1.json
