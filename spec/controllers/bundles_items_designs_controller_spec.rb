@@ -136,7 +136,7 @@ describe BundlesItemsDesignsController do
   #***********************************
 
 
-  describe 'DELETE destroy' do
+  describe 'DELETE destroy', tag_destroy: true do
 
     it "deletes the contact" do
       expect{
@@ -158,7 +158,7 @@ describe BundlesItemsDesignsController do
   # rspec test  index_bundle_selection
   #***********************************
 
-  describe "GET index_bundle_selection",tag_index:true do
+  describe "GET index_bundle_selection", tag_index_bundle_selection: true do
 
     context "is admin user" do
 
@@ -193,13 +193,15 @@ describe BundlesItemsDesignsController do
   end
 
 
+
+
   #***********************************
   # rspec test  index_items_location_selection
   #***********************************
 
 
 
-  describe "GET index_items_location_selection",tag_index_location:true do
+  describe "GET index_items_location_selection", tag_index_items_location_selection: true do
 
     context "is admin user" do
       before do
@@ -267,6 +269,8 @@ describe BundlesItemsDesignsController do
 
 
 
+
+
   #***********************************
   # rspec test  index_items_design_selection
   #***********************************
@@ -274,7 +278,7 @@ describe BundlesItemsDesignsController do
   ## GET /index/items_location_selection/:bundle_id/:location_id/:item_id
 
 
-  describe "GET index_items_design_selection",tag_index_design_selection:true do
+  describe "GET index_items_design_selection", tag_index_items_design_selection: true do
 
     context "is admin user" do
       before do
@@ -357,7 +361,7 @@ describe BundlesItemsDesignsController do
   #***********************************
 
 
-  describe "POST create_bundle_items_design", tag_create:true  do
+  describe "POST create_bundle_items_design", tag_create_bundle_items_design: true  do
 
 
 
