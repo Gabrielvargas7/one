@@ -91,6 +91,12 @@ class UsersProfilesController < ApplicationController
   # POST /users_profiles
   # POST /users_profiles.json
   def create
+
+    # NOTE: without a corresponding view, this action will fail
+    #       If we aren't providing a view, don't we need
+    #       to redirect somewhere?
+
+
     #@users_profile = UsersProfile.new(params[:users_profile])
     #
     #respond_to do |format|
@@ -155,7 +161,7 @@ class UsersProfilesController < ApplicationController
 
   end
 
-  # PUT /users_profiles/update_by_user_id/:id
+  # PUT /users_profiles/update_by_user_id/:id <-- although :id is the only param being passed in the route, another param, :users_profile, is also being passed
   def update_users_profiles_by_user_id
     @users_profile = UsersProfile.find_all_by_user_id(params[:id]).first
 
@@ -193,7 +199,7 @@ class UsersProfilesController < ApplicationController
 
         if @user_profile.update_attributes(tutorial_step:params[:tutorial_step])
 
-          format.json { render json: @user_profile.as_json(only: [:user_id,:tutorial_step]), status: :ok }
+          format.json { render json: @user_profile.as_json(only: [:user_id, :tutorial_step]), status: :ok }
 
         else
           format.json { render json: @user_profile.errors, status: :unprocessable_entity }
@@ -212,9 +218,9 @@ class UsersProfilesController < ApplicationController
   def json_show_users_profile_tutorial_step_by_user_id
 
     respond_to do |format|
-      if UsersProfile.exists?(user_id:params[:user_id])
+      if UsersProfile.exists?(user_id: params[:user_id])
         @user_profile = UsersProfile.find_by_user_id(params[:user_id])
-        format.json { render json: @user_profile.as_json(only: [:user_id,:tutorial_step]), status: :ok }
+        format.json { render json: @user_profile.as_json(only: [:user_id, :tutorial_step]), status: :ok }
 
       end
     end

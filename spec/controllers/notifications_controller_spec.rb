@@ -8,9 +8,7 @@ describe NotificationsController do
   before  do
     @admin = FactoryGirl.create(:admin)
     @notification = FactoryGirl.create(:notification,user_id: @admin.id)
-    @notificatio1 = FactoryGirl.create(:notification,user_id: @admin.id)
-    @notificatio2 = FactoryGirl.create(:notification,user_id: @admin.id)
-    @notificatio3 = FactoryGirl.create(:notification,user_id: @admin.id)
+
     @limit = 2
     @offset = 1
 
@@ -297,11 +295,54 @@ describe NotificationsController do
 
 
 
+
+
+
+  #***********************************
+  # rspec test  destroy
+  #***********************************
+
+  describe "DELETE destroy", tag_destroy: true do
+
+    context "is admin user" do
+      it "should redirect to notifications url if html request" do
+        delete :destroy, id: @notification
+        expect(response).to redirect_to notifications_url
+      end
+
+      it "should return no content if json request" do
+        delete :destroy, id: @notification, :format => :json
+        expect(response.code).to eq("204")
+      end
+    end
+
+
+
+
+
+    context "is not admin user" do
+      before do
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root" do
+        delete :destroy, id: @notification
+        expect(response).to redirect_to root_path
+      end
+
+    end
+
+  end
+
+
+
+
   #***********************************
   # rspec test  json_index_notification
   #***********************************
 
-  describe "GET json_index_notification",tag_index:true do
+  describe "GET json_index_notification", tag_json_index_notification:true do
     before do
        sign_out
     end

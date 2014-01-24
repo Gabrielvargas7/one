@@ -24,7 +24,7 @@ describe UsersNotificationsController do
   #***********************************
 
 
-  describe "api #json_show_user_notification_by_user",tag_json_show:true do
+  describe "api #json_show_user_notification_by_user", tag_json_show: true do
 
       describe "is regular user api when notified is 'n'" do
 
@@ -118,6 +118,10 @@ describe UsersNotificationsController do
   end
 
 
+
+
+
+
   # PUT set user notified to yes by user id
   # users_notifications/json/update_user_notification_to_notified_by_user/:user_id'
   # users_notifications/json/update_user_notification_to_notified_by_user/1.json'
@@ -129,7 +133,7 @@ describe UsersNotificationsController do
   #***********************************
 
 
-  describe "PUT json_update_user_notification_to_notified_by_user", tag_json_update:true do
+  describe "PUT json_update_user_notification_to_notified_by_user", tag_json_update: true do
 
     describe "is regular user" do
       before  do
