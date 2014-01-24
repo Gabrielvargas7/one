@@ -58,6 +58,11 @@ class BundlesItemsDesignsController < ApplicationController
     end
   end
 
+
+
+
+
+
   # GET /bundles_items_designs/1
   # GET /bundles_items_designs/1.json
   def show
@@ -116,6 +121,20 @@ class BundlesItemsDesignsController < ApplicationController
     #  end
     #end
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   # DELETE /bundles_items_designs/1
   # DELETE /bundles_items_designs/1.json
