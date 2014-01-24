@@ -94,14 +94,14 @@ describe UsersBookmarksController do
       before do
         @user1 = FactoryGirl.create(:user)
         sign_in @user1
+        post :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
+          user_id:@user.id,
+          bookmark_id:@bookmark2.id,
+          item_id:@item2.id,
+          position:@user_max_position+1,
+          :format => :json
       end
       it "has a 404 status code" do
-        post :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
-        user_id:@user.id,
-        bookmark_id:@bookmark2.id,
-        item_id:@item2.id,
-        position:@user_max_position+1,
-        :format => :json
         expect(response.status).to eq(404)
       end
     end
@@ -110,9 +110,14 @@ describe UsersBookmarksController do
     context "is sign out user" do
       before do
         sign_out
+        post :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,
+          user_id:@user.id,
+          bookmark_id:@bookmark2.id,
+          item_id:@item2.id,
+          position:@user_max_position+1,
+          :format => :json
       end
       it "has a 404 status code" do
-        post :json_create_user_bookmark_by_user_id_and_bookmark_id_and_item_id,user_id:@user.id,bookmark_id:@bookmark2.id,item_id:@item2.id,position:@user_max_position+1,:format => :json
         expect(response.status).to eq(404)
       end
     end
