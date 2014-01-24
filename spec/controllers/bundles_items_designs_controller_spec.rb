@@ -37,6 +37,7 @@ describe BundlesItemsDesignsController do
   #***********************************
 
   describe "GET index", tag_index:true do
+  describe "GET index", tag_index: true do
 
     context "is admin user" do
       let(:bundles_items_design_all) { BundlesItemsDesign.order('bundle_id, items_designs.item_id').
@@ -74,12 +75,15 @@ describe BundlesItemsDesignsController do
 
   end
 
+
+
+
+
   #***********************************
   # rspec test  show
   #***********************************
 
-
-  describe "GET show", tag_show:true do
+  describe "GET show", tag_show: true do
 
     context "is admin user" do
 
@@ -116,6 +120,17 @@ describe BundlesItemsDesignsController do
     end
   end
 
+
+
+
+
+
+
+
+
+
+
+
   #***********************************
   # rspec test  destroy
   #***********************************
@@ -133,6 +148,11 @@ describe BundlesItemsDesignsController do
       response.should redirect_to bundles_items_designs_url
     end
   end
+
+
+
+
+
 
   #***********************************
   # rspec test  index_bundle_selection
@@ -318,6 +338,11 @@ describe BundlesItemsDesignsController do
     end
 
   end
+
+
+
+
+
 
   #***********************************
   # rspec test  create_bundle_items_design
