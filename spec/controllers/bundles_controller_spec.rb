@@ -77,6 +77,7 @@ describe BundlesController do
 
 
 
+
   ##***********************************
   ## rspec test  show
   ##***********************************
@@ -628,16 +629,13 @@ describe BundlesController do
   end
 
 
-#***********************************
-# rspec test  #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset
-#***********************************
 
 
-  describe "api #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset", tag_json_index: true do
 
     describe "is public api" do
       before do
         sign_out
+
         @category = "category"
         @keyword = "electronics"
         @limit = 4
