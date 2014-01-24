@@ -39,7 +39,7 @@ describe BundlesController do
   # rspec test  index
   #***********************************
 
-  describe "GET index", tag_index:true do
+  describe "GET index", tag_index: true do
 
     context "is admin user" do
       let(:bundle_all) { Bundle.order('id').all }
@@ -75,11 +75,13 @@ describe BundlesController do
 
   end
 
+
+
   ##***********************************
   ## rspec test  show
   ##***********************************
   #
-  describe "GET show", tag_show:true do
+  describe "GET show", tag_show: true do
 
     context "is admin user" do
 
@@ -103,12 +105,12 @@ describe BundlesController do
       end
 
       it "redirect to root " do
-        get :show, id:@bundle
+        get :show, id: @bundle
         response.should redirect_to root_path
       end
 
       it "not render to show " do
-        get :show, id:@bundle
+        get :show, id: @bundle
         response.should_not render_template :show
       end
 
@@ -116,11 +118,14 @@ describe BundlesController do
 
   end
 
+
+
+
   ##***********************************
   ## rspec test  new
   ##***********************************
 
-  describe "GET new",tag_new:true do
+  describe "GET new", tag_new: true do
 
     context "is admin user"  do
       it "assigns a new bundle as @bundle" do
@@ -149,19 +154,22 @@ describe BundlesController do
 
   end
 
+
+
+
   ##***********************************
   ## rspec test  edit
   ##***********************************
 
 
-  describe "GET edit", tag_edit:true do
+  describe "GET edit", tag_edit: true do
 
     context "is admin user"  do
 
       it "assigns the requested bundle as @bundle" do
         new_section = FactoryGirl.create(:section)
         new_theme = FactoryGirl.create(:theme)
-        new_bundle = FactoryGirl.create(:bundle,theme_id:new_theme.id,section_id:new_section.id)
+        new_bundle = FactoryGirl.create(:bundle, theme_id: new_theme.id, section_id: new_section.id)
 
         get :edit, id: new_bundle
         assigns[:bundle].should eq(new_bundle)
@@ -189,12 +197,15 @@ describe BundlesController do
   end
 
 
+
+
+
   #***********************************
   # rspec test create
   #***********************************
 
 
-  describe "POST create", tag_create:true  do
+  describe "POST create", tag_create: true  do
 
     describe "is admin user" do
       context "with valid params" do
@@ -273,11 +284,14 @@ describe BundlesController do
 
   end
 
+
+
+
   #***********************************
   # rspec test  update
   #***********************************
 
-  describe "PUT update", tag_update:true do
+  describe "PUT update", tag_update: true do
 
     describe "is admin user" do
 
@@ -356,22 +370,33 @@ describe BundlesController do
   end
 
 
+
+
+
+
+
+
+
+
+
+
+
   #***********************************
   # rspec test active_update
   #***********************************
 
-  describe "PUT active_update", tag_active_update:true do
+  describe "PUT active_update", tag_active_update: true do
     before do
 
       @section = FactoryGirl.create(:section)
       @theme = FactoryGirl.create(:theme)
-      @bundle = FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'n')
+      @bundle = FactoryGirl.create(:bundle,theme_id: @theme.id, section_id: @section.id, active: 'n')
 
-      @location = FactoryGirl.create(:location,section_id:@section.id )
+      @location = FactoryGirl.create(:location,section_id: @section.id )
       @item = FactoryGirl.create(:item)
-      @items_location = FactoryGirl.create(:items_location,location_id:@location.id,item_id:@item.id)
+      @items_location = FactoryGirl.create(:items_location, location_id: @location.id, item_id: @item.id)
       @items_designs = FactoryGirl.create(:items_design,item_id:@item.id)
-      @bundle_items_design = FactoryGirl.create(:bundles_items_design,bundle_id:@bundle.id,location_id:@items_location.location_id,items_design_id:@items_designs.id)
+      @bundle_items_design = FactoryGirl.create(:bundles_items_design, bundle_id: @bundle.id, location_id: @items_location.location_id, items_design_id: @items_designs.id)
 
     end
 
@@ -400,7 +425,7 @@ describe BundlesController do
 
       context "invalid attributes" do
         before do
-          @invalid_bundle = FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'n')
+          @invalid_bundle = FactoryGirl.create(:bundle, theme_id: @theme.id, section_id: @section.id, active: 'n')
         end
 
         it "locates the requested @invalid_bundle" do
@@ -434,12 +459,23 @@ describe BundlesController do
 
 
 
+
+
+
+
+
+
+
+
+
+
+
   #***********************************
   # rspec test  #json_index_bundles
   #***********************************
 
 
-  describe "api #json_index_bundles",tag_json_index:true do
+  describe "api #json_index_bundles", tag_json_index_bundles: true do
 
     describe "is public api" do
       before do
@@ -454,7 +490,7 @@ describe BundlesController do
         response.should be_success
       end
 
-      let(:bundles_all){Bundle.all}
+      let(:bundles_all){ Bundle.all }
       it "should set bundle" do
         get :json_index_bundles, :format => :json
         assigns(:bundles).as_json.should == bundles_all.as_json
@@ -505,11 +541,18 @@ describe BundlesController do
   end
 
 
+
+
+
+
+
+
+
   #***********************************
-  # rspec test  #json_index_bunles_categories
+  # rspec test  #json_index_bundles_categories
   #***********************************
 
-  describe "api #json_index_bundles_categories",tag_json_category:true do
+  describe "api #json_index_bundles_categories", tag_json_index_bundles_categories: true do
 
 
     describe "is public api" do
