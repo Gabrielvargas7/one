@@ -584,64 +584,124 @@ describe UsersBookmarksController do
     before do
       #sign_in @requested
     end
-
-    it "should be successful" do
-      get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
-      response.should be_success
-    end
-
-
-    it "should set user bookmark " do
-      #puts "user bookmark "+@user_bookmarks.as_json
-      #puts "item id "+@item.id.to_s
-      #puts "user id "+@user.id.to_s
+    context "correct user and correct parameters" do 
+      it "should be successful" do
+        get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+        response.should be_success
+      end
 
 
-
-      @user_bookmarks = Bookmark.
-          select('bookmarks.id, bookmark_url, bookmarks_category_id, bookmarks_categories.item_id,description, i_frame, image_name, image_name_desc, title,position,"like"').
-          joins(:users_bookmarks).
-          joins(:bookmarks_category).
-          where('user_id = ? and bookmarks_categories.item_id = ?',@user.id,@item.id)
-
-      #puts "user bookmark "+@user_bookmarks.as_json.to_s
+      it "should set user bookmark " do
+        #puts "user bookmark "+@user_bookmarks.as_json
+        #puts "item id "+@item.id.to_s
+        #puts "user id "+@user.id.to_s
 
 
-      get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
-      assigns(:user_bookmarks).as_json.should eq(@user_bookmarks.as_json)
-    end
 
-    it "has a 200 status code" do
-      get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
-      expect(response.status).to eq(200)
-    end
+        @user_bookmarks = Bookmark.
+            select('bookmarks.id, bookmark_url, bookmarks_category_id, bookmarks_categories.item_id,description, i_frame, image_name, image_name_desc, title,position,"like"').
+            joins(:users_bookmarks).
+            joins(:bookmarks_category).
+            where('user_id = ? and bookmarks_categories.item_id = ?',@user.id,@item.id)
 
-    context "get all values " do
-      it "should return json_index user bookmarks in json" do # depend on what you return in action
+        #puts "user bookmark "+@user_bookmarks.as_json.to_s
+
 
         get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
-        body = JSON.parse(response.body)
+        assigns(:user_bookmarks).as_json.should eq(@user_bookmarks.as_json)
+      end
 
-        body.each do |body_user_bookmark|
-          @bookmark_json = Bookmark.find(body_user_bookmark["id"])
-          @user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
-          body_user_bookmark["id"].should == @bookmark_json.id
-          body_user_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
-          body_user_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
-          body_user_bookmark["description"].should == @bookmark_json.description
-          body_user_bookmark["i_frame"].should == @bookmark_json.i_frame
-          body_user_bookmark["image_name"]["url"].should == @bookmark_json.image_name.to_s
-          body_user_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
-          body_user_bookmark["title"].should == @bookmark_json.title
-          body_user_bookmark["position"].should == @user_bookmark_json.position.to_s
-          body_user_bookmark["like"].should == @bookmark_json.like
+      it "has a 200 status code" do
+        get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+        expect(response.status).to eq(200)
+      end
 
+      context "get all values " do
+        it "should return json_index user bookmarks in json" do # depend on what you return in action
+
+          get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+          body = JSON.parse(response.body)
+
+          body.each do |body_user_bookmark|
+            @bookmark_json = Bookmark.find(body_user_bookmark["id"])
+            @user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+            body_user_bookmark["id"].should == @bookmark_json.id
+            body_user_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
+            body_user_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
+            body_user_bookmark["description"].should == @bookmark_json.description
+            body_user_bookmark["i_frame"].should == @bookmark_json.i_frame
+            body_user_bookmark["image_name"]["url"].should == @bookmark_json.image_name.to_s
+            body_user_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
+            body_user_bookmark["title"].should == @bookmark_json.title
+            body_user_bookmark["position"].should == @user_bookmark_json.position.to_s
+            body_user_bookmark["like"].should == @bookmark_json.like
+
+          end
         end
       end
-    end
+    end #end context correct user and correct paramters
 
     context "is sign in with other user" do
-      pending "until define the security type"
+      before do
+        @user1=FactoryGirl.create(:user)
+        sign_in @user1
+      end
+      context "correct user and correct parameters" do 
+        it "should be successful" do
+          get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+          response.should be_success
+        end
+
+
+        it "should set user bookmark " do
+          #puts "user bookmark "+@user_bookmarks.as_json
+          #puts "item id "+@item.id.to_s
+          #puts "user id "+@user.id.to_s
+
+
+
+          @user_bookmarks = Bookmark.
+              select('bookmarks.id, bookmark_url, bookmarks_category_id, bookmarks_categories.item_id,description, i_frame, image_name, image_name_desc, title,position,"like"').
+              joins(:users_bookmarks).
+              joins(:bookmarks_category).
+              where('user_id = ? and bookmarks_categories.item_id = ?',@user.id,@item.id)
+
+          #puts "user bookmark "+@user_bookmarks.as_json.to_s
+
+
+          get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+          assigns(:user_bookmarks).as_json.should eq(@user_bookmarks.as_json)
+        end
+
+        it "has a 200 status code" do
+          get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+          expect(response.status).to eq(200)
+        end
+
+        context "get all values " do
+          it "should return json_index user bookmarks in json" do # depend on what you return in action
+
+            get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+            body = JSON.parse(response.body)
+
+            body.each do |body_user_bookmark|
+              @bookmark_json = Bookmark.find(body_user_bookmark["id"])
+              @user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+              body_user_bookmark["id"].should == @bookmark_json.id
+              body_user_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
+              body_user_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
+              body_user_bookmark["description"].should == @bookmark_json.description
+              body_user_bookmark["i_frame"].should == @bookmark_json.i_frame
+              body_user_bookmark["image_name"]["url"].should == @bookmark_json.image_name.to_s
+              body_user_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
+              body_user_bookmark["title"].should == @bookmark_json.title
+              body_user_bookmark["position"].should == @user_bookmark_json.position.to_s
+              body_user_bookmark["like"].should == @bookmark_json.like
+
+            end
+          end
+        end
+      end #end context sign in with other user
       #before do
       #  @user1 = FactoryGirl.create(:user)
       #  sign_in @user1
@@ -654,7 +714,67 @@ describe UsersBookmarksController do
 
 
     context "is sign out user" do
-      pending "until define the security type"
+      
+      before do
+        sign_out
+      end
+
+      context "correct user and correct parameters" do 
+        it "should be successful" do
+          get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+          response.should be_success
+        end
+
+
+        it "should set user bookmark " do
+          #puts "user bookmark "+@user_bookmarks.as_json
+          #puts "item id "+@item.id.to_s
+          #puts "user id "+@user.id.to_s
+
+
+
+          @user_bookmarks = Bookmark.
+              select('bookmarks.id, bookmark_url, bookmarks_category_id, bookmarks_categories.item_id,description, i_frame, image_name, image_name_desc, title,position,"like"').
+              joins(:users_bookmarks).
+              joins(:bookmarks_category).
+              where('user_id = ? and bookmarks_categories.item_id = ?',@user.id,@item.id)
+
+          #puts "user bookmark "+@user_bookmarks.as_json.to_s
+
+
+          get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+          assigns(:user_bookmarks).as_json.should eq(@user_bookmarks.as_json)
+        end
+
+        it "has a 200 status code" do
+          get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+          expect(response.status).to eq(200)
+        end
+
+        context "get all values " do
+          it "should return json_index user bookmarks in json" do # depend on what you return in action
+
+            get :json_index_user_bookmarks_by_user_id_and_item_id,user_id: @user.id,item_id:@item.id, :format => :json
+            body = JSON.parse(response.body)
+
+            body.each do |body_user_bookmark|
+              @bookmark_json = Bookmark.find(body_user_bookmark["id"])
+              @user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+              body_user_bookmark["id"].should == @bookmark_json.id
+              body_user_bookmark["bookmark_url"].should == @bookmark_json.bookmark_url
+              body_user_bookmark["bookmarks_category_id"].should == @bookmark_json.bookmarks_category_id
+              body_user_bookmark["description"].should == @bookmark_json.description
+              body_user_bookmark["i_frame"].should == @bookmark_json.i_frame
+              body_user_bookmark["image_name"]["url"].should == @bookmark_json.image_name.to_s
+              body_user_bookmark["image_name_desc"]["url"].should == @bookmark_json.image_name_desc.to_s
+              body_user_bookmark["title"].should == @bookmark_json.title
+              body_user_bookmark["position"].should == @user_bookmark_json.position.to_s
+              body_user_bookmark["like"].should == @bookmark_json.like
+
+            end
+          end
+        end
+      end #end context sign out
       #before do
       #  sign_out
       #end
@@ -847,11 +967,16 @@ describe UsersBookmarksController do
 
   end
 
+  #rspec GET json_show_user_bookmark_by_user_id_and_bookmark_id
+  #1-24-2014 ApI returns the bookmark if the bookmark is present in the user's mybookmarks. Otherwise it returns empty.
+  #           This API is public -SN
 
   describe "get json_show_user_bookmark_by_user_id_and_bookmark_id" do
     before do
       sign_in @user
     end
+    pending ""
+
 
     # context "correct user" do
 
