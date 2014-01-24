@@ -9,11 +9,11 @@ end
 
 def sign_in(user)
   visit signin_path
-  #fill_in "Email",    with: user.email
-  #fill_in "Password", with: user.password
+  fill_in "Email",    with: user.email
+  fill_in "Password", with: user.password
 
-  fill_in "Email",    with: "myuser@gmail.com"
-  fill_in "Password", with: "lksdjf"
+  #fill_in "Email",    with: "myuser@gmail.com"
+  #fill_in "Password", with: "lksdjf"
 
 
   click_button "LOGIN"
