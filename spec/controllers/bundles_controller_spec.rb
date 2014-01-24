@@ -31,7 +31,7 @@ describe BundlesController do
   end
 
 
-  #the (subject)line declare the variable that is use in all the test
+  #the (subject)line declares the variable that is used in all the tests
   subject { @bundle }
 
 
