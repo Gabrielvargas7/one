@@ -342,7 +342,7 @@ describe NotificationsController do
   # rspec test  json_index_notification
   #***********************************
 
-  describe "GET json_index_notification",tag_index:true do
+  describe "GET json_index_notification", tag_json_index_notification:true do
     before do
        sign_out
     end
