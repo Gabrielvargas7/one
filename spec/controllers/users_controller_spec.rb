@@ -162,7 +162,7 @@ describe UsersController do
   #***********************************
 
 
-  describe "POST create", tag_create:true  do
+  describe "POST create", tag_create: true  do
     before do
       sign_out
     end
