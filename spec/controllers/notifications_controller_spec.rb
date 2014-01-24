@@ -8,9 +8,7 @@ describe NotificationsController do
   before  do
     @admin = FactoryGirl.create(:admin)
     @notification = FactoryGirl.create(:notification,user_id: @admin.id)
-    @notificatio1 = FactoryGirl.create(:notification,user_id: @admin.id)
-    @notificatio2 = FactoryGirl.create(:notification,user_id: @admin.id)
-    @notificatio3 = FactoryGirl.create(:notification,user_id: @admin.id)
+
     @limit = 2
     @offset = 1
 
