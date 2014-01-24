@@ -297,6 +297,49 @@ describe NotificationsController do
 
 
 
+
+
+
+  #***********************************
+  # rspec test  destroy
+  #***********************************
+
+  describe "DELETE destroy", tag_destroy: true do
+
+    context "is admin user" do
+      it "should redirect to notifications url if html request" do
+        delete :destroy, id: @notification
+        expect(response).to redirect_to notifications_url
+      end
+
+      it "should return no content if json request" do
+        delete :destroy, id: @notification, :format => :json
+        expect(response.code).to eq("204")
+      end
+    end
+
+
+
+
+
+    context "is not admin user" do
+      before do
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirects to root" do
+        delete :destroy, id: @notification
+        expect(response).to redirect_to root_path
+      end
+
+    end
+
+  end
+
+
+
+
   #***********************************
   # rspec test  json_index_notification
   #***********************************
