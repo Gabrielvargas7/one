@@ -375,6 +375,33 @@ describe BundlesController do
 
 
 
+  #***********************************
+  # rspec test destroy
+  #***********************************
+
+  describe "destroy bundle", tag_destroy: true do
+
+    context "when there is a corresponding bundle" do
+
+      it "deletes the corresponding bundles_items_design" do
+        expect{
+          delete :destroy, id: @bundle
+        }.to change(BundlesItemsDesign, :count).by(-10) # This is because we create 10 items during create_init_data() (utilities.rb)
+      end
+
+      it "deletes the bundle" do
+        expect{
+          delete :destroy, id: @bundle
+        }.to change(Bundle, :count).by(-1)
+      end
+
+      it "redirects to bundles#index" do
+        delete :destroy, id: @bundle
+        expect(response).to redirect_to(bundles_url)
+      end
+    end
+
+  end
 
 
 
@@ -465,6 +492,65 @@ describe BundlesController do
 
 
 
+  #***********************************
+  # rspec test  #json_show_bundle_by_id
+  #***********************************
+
+  describe "json_show_bundle_by_id", tag_json_show_bundle_by_id: true do
+
+    describe "is public api" do
+      before do
+        sign_out
+      end
+
+
+      it "should be successful" do
+        get :json_show_bundle_by_id, id: @bundle, :format => :json
+        response.should be_success
+      end
+
+      let(:my_bundle){ Bundle.find_by_id(@bundle.id) }
+      it "should set bundle" do
+        get :json_show_bundle_by_id, id: @bundle, :format => :json
+        assigns(:bundle).as_json.should == my_bundle.as_json
+      end
+
+      it "has a 200 status code" do
+        get :json_show_bundle_by_id, id: @bundle, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "should return bundle in json" do
+
+          get :json_show_bundle_by_id, id: @bundle, :format => :json
+
+          body = JSON.parse(response.body)
+
+
+          record = Bundle.find(body["id"])
+
+          expect(body["id"]).to                    eq(record["id"])
+          expect(body["name"]).to                  eq(record["name"])
+          expect(body["description"]).to           eq(record["description"])
+          expect(body["image_name"]["url"]).to     eq(record.image_name.to_s)
+          expect(body["image_name_set"]["url"]).to eq(record.image_name_set.to_s)
+          expect(body["section_id"]).to            eq(record["section_id"])
+          expect(body["active"]).to                eq('y')
+          expect(body["category"]).to              eq(record["category"])
+          expect(body["style"]).to                 eq(record["style"])
+          expect(body["brand"]).to                 eq(record["brand"])
+          expect(body["location"]).to              eq(record["location"])
+          expect(body["color"]).to                 eq(record["color"])
+          expect(body["make"]).to                  eq(record["make"])
+          expect(body["special_name"]).to          eq(record["special_name"])
+          expect(body["like"]).to                  eq(record["like"])
+
+        end
+      end
+    end
+
+  end
 
 
 
@@ -544,6 +630,72 @@ describe BundlesController do
 
 
 
+  #***********************************
+  # rspec test  #json_index_bundles_by_limit_and_offset
+  #***********************************
+  describe "json_index_bundles_by_limit_and_offset", tag_json_index_bundles_by_limit_and_offset: true do
+    describe "is public api" do
+      before do
+        sign_out
+        @category = "category"
+
+        @limit = 4
+        @offset = 0
+
+        @section = Section.first()
+        @theme =  Theme.first()
+        FactoryGirl.create(:bundle, theme_id: @theme.id, section_id: @section.id, active:'y',
+                           category: "furniture", style: "modern", brand: "nike", color: "green", make: "wood", location: "los angeles")
+
+        FactoryGirl.create(:bundle,theme_id: @theme.id, section_id: @section.id, active: 'y',
+                           category: "electronics", style: "easter", brand: "prada", color: "red", make: "leather", location: "london")
+      end
+
+
+      it "should be successful" do
+        get :json_index_bundles_by_limit_and_offset, category: @category, limit: @limit, offset: @offset, :format => :json
+        response.should be_success
+      end
+
+
+      it "has a 200 status code" do
+        get :json_index_bundles_by_limit_and_offset, category: @category, limit: @limit, offset: @offset, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      context "get all values " do
+        it "should return json_index_bundles_by_limit_and_offset" do # depend on what you return in action
+          get :json_index_bundles_by_limit_and_offset, category: @category, limit: @limit, offset: @offset, :format => :json
+          body = JSON.parse(response.body)
+          #puts "body ---- > "+body.to_s
+          #puts "theme ----> "+@theme.as_json.to_s
+          #puts "body name ----> " + body[0]["name"].to_s
+          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
+          #puts "theme name----> "+@theme.name.to_s
+          #puts "theme image name----> "+@theme.image_name.to_s
+
+          body.each do |body_b|
+            @b_json = Bundle.find(body_b["id"])
+            body_b["name"].should == @b_json.name
+            body_b["description"].should == @b_json.description
+            body_b["id"].should == @b_json.id
+            body_b["image_name"]["url"].should == @b_json.image_name.to_s
+            body_b["image_name_set"]["url"].should == @b_json.image_name_set.to_s
+            body_b["category"].should == @b_json.category
+            body_b["style"].should == @b_json.style
+            body_b["brand"].should == @b_json.brand
+            body_b["location"].should == @b_json.location
+            body_b["color"].should == @b_json.color
+            body_b["make"].should == @b_json.make
+            body_b["special_name"].should == @b_json.special_name
+            body_b["like"].should == @b_json.like
+
+
+          end
+        end
+      end
+    end
+  end
 
 
 
@@ -559,12 +711,12 @@ describe BundlesController do
     describe "is public api" do
       before do
         sign_out
-        @section = Section.first()
-        @theme =  Theme.first()
-        FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'y',
-                           category:"furniture",style:"modern",brand:"nike",color:"green",make:"wood",location:"los angeles")
-        FactoryGirl.create(:bundle,theme_id:@theme.id,section_id:@section.id,active:'y',
-                           category:"electronics",style:"easter",brand:"prada",color:"red",make:"leather",location:"london")
+        @section = FactoryGirl.create(:section)
+        @theme =  FactoryGirl.create(:theme)
+        FactoryGirl.create(:bundle,theme_id: @theme.id, section_id: @section.id, active:'y',
+                           category: "furniture", style: "modern", brand: "nike", color: "green", make: "wood", location: "los angeles")
+        FactoryGirl.create(:bundle, theme_id: @theme.id, section_id: @section.id, active: 'y',
+                           category: "electronics", style: "easter", brand: "prada", color: "red", make: "leather", location: "london")
       end
 
       it "should be successful" do
@@ -631,6 +783,11 @@ describe BundlesController do
 
 
 
+  #***********************************
+  # rspec test  #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset
+  #***********************************
+
+  describe "api #json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset", tag_json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset: true do
 
     describe "is public api" do
       before do
@@ -641,13 +798,7 @@ describe BundlesController do
         @limit = 4
         @offset = 0
 
-        @section = Section.first()
-        @theme =  Theme.first()
-        FactoryGirl.create(:bundle, theme_id: @theme.id, section_id: @section.id, active:'y',
-                           category: "furniture", style: "modern", brand: "nike", color: "green", make: "wood", location: "los angeles")
 
-        FactoryGirl.create(:bundle,theme_id: @theme.id, section_id: @section.id, active: 'y',
-                           category: "electronics", style: "easter", brand: "prada", color: "red", make: "leather", location: "london")
       end
 
 
@@ -662,35 +813,30 @@ describe BundlesController do
         expect(response.status).to eq(200)
       end
 
-      context "get all values " do
-        it "should return json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset" do # depend on what you return in action
-          get :json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset, category: @category, keyword: @keyword, limit: @limit, offset: @offset, :format => :json
-          body = JSON.parse(response.body)
-          #puts "body ---- > "+body.to_s
-          #puts "theme ----> "+@theme.as_json.to_s
-          #puts "body name ----> " + body[0]["name"].to_s
-          #puts "body image name ----> " + body[0]["image_name"]["url"].to_s
-          #puts "theme name----> "+@theme.name.to_s
-          #puts "theme image name----> "+@theme.image_name.to_s
-
-          body.each do |body_b|
-            @b_json = Bundle.find(body_b["id"])
-            body_b["name"].should == @b_json.name
-            body_b["description"].should == @b_json.description
-            body_b["id"].should == @b_json.id
-            body_b["image_name"]["url"].should == @b_json.image_name.to_s
-            body_b["image_name_set"]["url"].should == @b_json.image_name_set.to_s
-            body_b["category"].should == @b_json.category
-            body_b["style"].should == @b_json.style
-            body_b["brand"].should == @b_json.brand
-            body_b["location"].should == @b_json.location
-            body_b["color"].should == @b_json.color
-            body_b["make"].should == @b_json.make
-            body_b["special_name"].should == @b_json.special_name
-            body_b["like"].should == @b_json.like
 
 
-          end
+      it "should return json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset" do # depend on what you return in action
+        get :json_index_bundles_filter_by_category_by_keyword_and_limit_and_offset, category: @category, keyword: @keyword, limit: @limit, offset: @offset, :format => :json
+
+
+        body = JSON.parse(response.body)
+
+        body.each do |body_b|
+          @b_json = Bundle.find(body_b["id"])
+          body_b["name"].should == @b_json.name
+          body_b["description"].should == @b_json.description
+          body_b["id"].should == @b_json.id
+          body_b["image_name"]["url"].should == @b_json.image_name.to_s
+          body_b["image_name_set"]["url"].should == @b_json.image_name_set.to_s
+          body_b["category"].should == @b_json.category
+          body_b["style"].should == @b_json.style
+          body_b["brand"].should == @b_json.brand
+          body_b["location"].should == @b_json.location
+          body_b["color"].should == @b_json.color
+          body_b["make"].should == @b_json.make
+          body_b["special_name"].should == @b_json.special_name
+          body_b["like"].should == @b_json.like
+
         end
       end
     end
@@ -698,72 +844,93 @@ describe BundlesController do
 
 
 
-  describe "api #json_index_bundles_categories", tag_json_category: true do
-    describe "is public api" do
 
+
+
+
+
+
+
+  #***********************************
+  # rspec test  #json_show_bundle_seo_url_by_bundle_id
+  #***********************************
+  describe "api #json_show_bundle_seo_url_by_bundle_id", tag_json_show_bundle_seo_url_by_bundle_id: true do
+
+    describe "is public api" do
       before do
         sign_out
-        FactoryGirl.create(:bundle, theme_id: 1, section_id: 1, active:'y', category: "electronics", style: "easter", brand: "prada", color: "red", make: "leather", location: "london")
+
+        @section = FactoryGirl.create(:section)
+        @theme = FactoryGirl.create(:theme)
+        @my_bundle = FactoryGirl.create(:bundle, theme_id: @theme.id, section_id: @section.id, active: 'y')
+
+        #puts 'Bundle ID:' + @my_bundle.id.to_s
       end
 
 
       it "should be successful" do
-        get :json_index_bundles_categories, :format => :json
-        response.should be_success
+        get :json_show_bundle_seo_url_by_bundle_id, bundle_id: @my_bundle.id, :format => :json
+        expect(response).to be_success
       end
 
 
-      it "has a 200 status code" do
-        get :json_index_bundles_categories, :format => :json
+      it "has a 200 status" do
+        get :json_show_bundle_seo_url_by_bundle_id, bundle_id: @my_bundle.id, :format => :json
         expect(response.status).to eq(200)
       end
 
-      context "get all values " do
-        it "should return json_index_bundles_categories" do # depend on what you return in action
-          get :json_index_bundles_categories, :format => :json
-          body = JSON.parse(response.body)
-
-          # puts body["bundles_categories"][0]["category"]
-          # puts body["bundles_styles"][0]["style"]
-          # puts body["bundles_brands"][0]["brand"]
-          # puts body["bundles_colors"][0]["color"]
-          # puts body["bundles_makes"][0]["make"]
-          # puts body["bundles_locations"][0]["make"]
-
-          # THIS TEST PERIODICALLY FAILS!
-
-          body["bundles_categories"][0]["category"].should == "electronics"
-          body["bundles_styles"][0]["style"].should == "easter"
-          body["bundles_brands"][0]["brand"].should == "prada"
-          body["bundles_colors"][0]["color"].should == "red"
-          body["bundles_makes"][0]["make"].should == "leather"
-          body["bundles_locations"][0]["make"].should == "london"
-
-        end
+      it "should be a url" do
+        get :json_show_bundle_seo_url_by_bundle_id, bundle_id: @my_bundle.id, :format => :json
+        body = JSON.parse(response.body)
+        expect(body["seo_url"]).to start_with("http://")
       end
+
     end
+
   end
 
 
-  describe "api #json_show_bundles_seo_url_by_bundles_id", tag_json_category: true do
-    pending "pending test api"
+
+
+
+
+
+
+  #***********************************
+  # rspec test  #json_show_entire_room_seo_url_by_bundle_id
+  #***********************************
+  describe "api #json_show_entire_room_seo_url_by_bundle_id", tag_json_show_entire_room_seo_url_by_bundle_id: true do
+
+    describe "is public api" do
+      before do
+        sign_out
+
+        @section = FactoryGirl.create(:section)
+        @theme = FactoryGirl.create(:theme)
+        @my_bundle = FactoryGirl.create(:bundle, theme_id: @theme.id, section_id: @section.id, active: 'y')
+      end
+
+
+      it "should be successful" do
+        get :json_show_entire_room_seo_url_by_bundle_id, bundle_id: @my_bundle.id, :format => :json
+        expect(response).to be_success
+      end
+
+
+      it "has a 200 status" do
+        get :json_show_entire_room_seo_url_by_bundle_id, bundle_id: @my_bundle.id, :format => :json
+        expect(response.status).to eq(200)
+      end
+
+      it "should be a url" do
+        get :json_show_entire_room_seo_url_by_bundle_id, bundle_id: @my_bundle.id, :format => :json
+        body = JSON.parse(response.body)
+        expect(body["seo_url"]).to start_with("http://")
+      end
+
+    end
+
   end
-
-  describe "api #json_show_entire_room_seo_url_by_entire_room_id", tag_json_category: true do
-    pending "pending test api"
-  end
-
-
-  describe "destroy bundle" do
-    pending "add test destroy bundle #{__FILE__}"
-  end
-
-
-  describe "json_index_bundles_by_limit_and_offset" do
-    pending "add bundle #{__FILE__}"
-  end
-
-
 
 
 
