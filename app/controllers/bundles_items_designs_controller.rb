@@ -136,6 +136,10 @@ class BundlesItemsDesignsController < ApplicationController
 
 
 
+
+
+
+
   # DELETE /bundles_items_designs/1
   # DELETE /bundles_items_designs/1.json
   def destroy
