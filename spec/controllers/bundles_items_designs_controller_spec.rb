@@ -36,7 +36,6 @@ describe BundlesItemsDesignsController do
   # rspec test  index
   #***********************************
 
-  describe "GET index", tag_index:true do
   describe "GET index", tag_index: true do
 
     context "is admin user" do
