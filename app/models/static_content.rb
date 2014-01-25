@@ -4,7 +4,7 @@ class StaticContent < ActiveRecord::Base
   mount_uploader :image_name, StaticContentsImageNameUploader
 
   validates :name,
-            presence:true,
+            presence: true,
             uniqueness:{ case_sensitive: false }
 
 
