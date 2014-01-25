@@ -237,8 +237,7 @@ FactoryGirl.define do
 
     sequence(:description) { |n| "description #{n}" }
     image_name 'image name'
-    name 'name'
-
+    sequence(:name) { |n| "name #{n}" }
   end
 
 
