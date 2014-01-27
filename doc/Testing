@@ -26,3 +26,14 @@ spec/javascripts/spec_helper.coffee
 
 # Turn on teaspoon-guard
 bundle exec guard start
+
+
+
+
+
+
+###
+CAPYBARA TESTING
+###
+--> restore production database to myapp_test
+--> DON'T run rake db:migrate or db:test:prepare
