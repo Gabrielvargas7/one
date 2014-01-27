@@ -55,7 +55,7 @@
                   <a class="gray_button_light gray_button" href="#" id="login_btn" onclick="javascript:Mywebroom.Helpers.LightboxHelper.login_lightbox_show(); return false;">LOGIN</a>
             </li>
             <li class="xroom_header_li_sign_up_btn">
-                    <a href="/select-room" id="signup_btn">SIGN UP</a>
+                  <a href="/select-room" id="signup_btn">SIGN UP</a>
             </li>
 
 

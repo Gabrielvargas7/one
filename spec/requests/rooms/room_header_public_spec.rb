@@ -5,6 +5,7 @@ describe "backbone view rooms", :js => true do
 
   before do
     @user =   User.last
+    #sign_in @user
     visit room_rooms_path(@user.username)
   end
 
@@ -39,7 +40,6 @@ describe "backbone view rooms", :js => true do
 
     it "button text should be ALL " do
       page.should have_css("button#header-search-dropdown-btn", :text => "ALL")
-
     end
   end
 
@@ -72,15 +72,10 @@ describe "backbone view rooms", :js => true do
     end
 
     it "should have rooms_header main_sign up button a = 'SIGN UP' " do
-      #find('li.xroom_header_li_sign_up_btn a', :href => "/select-room")
-      #page.should have_xpath("//li.xroom_header_li_sign_up_btn//a",:href => "google.com")
-      #page.should have_link("li.xroom_header_li_sign_up_btn a", :href=>"select-room")
-      #page.should have_link("a", :href=>"/select-room")
-
+      find('li.xroom_header_li_sign_up_btn a')['href'].should == "/select-room"
     end
 
-    #should have_xpath("//a",:href => "google.com")
-    #<a href="/select-room" id="signup_btn">SIGN UP</a>
+
 
   end
 
