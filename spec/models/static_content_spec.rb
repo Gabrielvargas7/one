@@ -44,8 +44,25 @@ describe StaticContent do
         before { @static_content.name = nil }
         it { @static_content.should_not be_valid }
       end
-
   end
+
+
+  ###############
+  #test name uniqueness requirement
+  ###############
+  describe "when we try and create a model with a non-unique name", tag_unique: true do
+    before do
+      @static_content_1 = FactoryGirl.create(:static_content, name: 'bob')
+      @static_content_2 = FactoryGirl.build(:static_content, name: 'bob')
+      @static_content_3 = FactoryGirl.build(:static_content, name: 'BOB')
+    end
+    it "doesn't allow it" do
+      expect(@static_content_2.valid?).to be false
+      expect(@static_content_3.valid?).to be false
+    end
+  end
+
+
 
 
 end

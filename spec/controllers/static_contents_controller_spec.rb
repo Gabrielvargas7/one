@@ -68,7 +68,7 @@ describe StaticContentsController do
   # rspec test  show
   #***********************************
 
-  describe "GET show", tag_show:true do
+  describe "GET show", tag_show: true do
 
     context "is admin user" do
 
@@ -113,17 +113,19 @@ describe StaticContentsController do
   # rspec test  new
   #***********************************
 
-  describe "GET new",tag_new:true do
+  describe "GET new", tag_new: true do
 
     context "is admin user"  do
       it "assigns a new item as @static_content" do
 
         new_static_content = FactoryGirl.create(:static_content)
-        Item.should_receive(:new).and_return(new_static_content)
+        StaticContent.should_receive(:new).and_return(new_static_content)
+
         get :new
         expect(assigns[:static_content]).to eq(new_static_content)
       end
     end
+
     context "is not admin user"  do
       before do
         @user  = FactoryGirl.create(:user)
@@ -142,130 +144,171 @@ describe StaticContentsController do
 
 
   #***********************************
-  # rspec test  show
+  # rspec test  edit
   #***********************************
 
-  describe "GET edit" do
-    xit "assigns the requested static_content as @static_content" do
-      static_content = StaticContent.create! valid_attributes
-      get :edit, {:id => static_content.to_param}, valid_session
-      assigns(:static_content).should eq(static_content)
+  describe "GET edit", tag_edit: true do
+
+    context "is admin user"  do
+
+      it "assigns the requested item design as @item design" do
+        new_static_content = FactoryGirl.create(:static_content)
+        get :edit, id: new_static_content
+        assigns[:static_content].should eq(new_static_content)
+      end
     end
+
+    context "is not admin user"  do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      it "redirect to root" do
+        new_static_content = FactoryGirl.create(:static_content)
+        get :new, id: new_static_content
+        expect(response).to redirect_to root_path
+      end
+    end
+
   end
 
 
 
 
+
   #***********************************
-  # rspec test  show
+  # rspec test  create
   #***********************************
 
-  describe "POST create" do
-    describe "with valid params" do
-      xit "creates a new StaticContent" do
-        expect {
-          post :create, {:static_content => valid_attributes}, valid_session
-        }.to change(StaticContent, :count).by(1)
+  describe "POST create", tag_create: true  do
+
+
+    describe "is admin user" do
+      context "with valid params" do
+
+        it "creates a new Items design" do
+          expect {
+            post :create, static_content: FactoryGirl.attributes_for(:static_content)
+          }.to change(StaticContent, :count).by(1)
+        end
+
+        it "assigns a newly created static content as @static_content" do
+          post :create, static_content: FactoryGirl.attributes_for(:static_content)
+          assigns(:static_content).should be_a(StaticContent)
+          assigns(:static_content).should be_persisted
+        end
+
+        it "redirects to the created static content" do
+          post :create, static_content: FactoryGirl.attributes_for(:static_content)
+          response.should redirect_to(StaticContent.last)
+        end
       end
 
-      xit "assigns a newly created static_content as @static_content" do
-        post :create, {:static_content => valid_attributes}, valid_session
-        assigns(:static_content).should be_a(StaticContent)
-        assigns(:static_content).should be_persisted
-      end
 
-      xit "redirects to the created static_content" do
-        post :create, {:static_content => valid_attributes}, valid_session
-        response.should redirect_to(StaticContent.last)
+      context "with invalid params" do
+
+        context "with invalid attributes" do
+          it "does not save the new static content" do
+            expect{ post :create, static_content: FactoryGirl.attributes_for(:static_content, name: nil)
+            }.to_not change(StaticContent, :count)
+          end
+          it "re-renders the new method" do
+            post :create, static_content: FactoryGirl.attributes_for(:static_content, name: nil)
+            response.should render_template :new
+          end
+        end
       end
     end
 
-    describe "with invalid params" do
-      xit "assigns a newly created but unsaved static_content as @static_content" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        StaticContent.any_instance.stub(:save).and_return(false)
-        post :create, {:static_content => { "name" => "invalid value" }}, valid_session
-        assigns(:static_content).should be_a_new(StaticContent)
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
       end
 
-      xit "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        StaticContent.any_instance.stub(:save).and_return(false)
-        post :create, {:static_content => { "name" => "invalid value" }}, valid_session
-        response.should render_template("new")
+      it "redirects to root" do
+        post :create, static_content: FactoryGirl.attributes_for(:static_content)
+        response.should redirect_to(root_path)
+      end
+      it "not redirects to the created items design" do
+        post :create, static_content: FactoryGirl.attributes_for(:static_content)
+        response.should_not redirect_to(StaticContent.last)
       end
     end
+
   end
 
 
 
   #***********************************
-  # rspec test  show
+  # rspec test  update
   #***********************************
 
-  describe "PUT update" do
-    describe "with valid params" do
-      xit "updates the requested static_content" do
-        static_content = StaticContent.create! valid_attributes
-        # Assuming there are no other static_contents in the database, this
-        # specifies that the StaticContent created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        StaticContent.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
-        put :update, {:id => static_content.to_param, :static_content => { "name" => "MyString" }}, valid_session
+  describe "PUT update", tag_update: true do
+
+    describe "is admin user" do
+
+      context "valid attributes" do
+        it "located the requested @static_content" do
+
+          @static_content = FactoryGirl.create(:static_content)
+          put :update, id: @static_content, static_content: FactoryGirl.attributes_for(:static_content)
+
+          assigns(:static_content).should eq(@static_content)
+        end
       end
 
-      xit "assigns the requested static_content as @static_content" do
-        static_content = StaticContent.create! valid_attributes
-        put :update, {:id => static_content.to_param, :static_content => valid_attributes}, valid_session
-        assigns(:static_content).should eq(static_content)
+      it "changes @static_content attributes" do
+        put :update, id: @static_content, static_content: FactoryGirl.attributes_for(:static_content, name: 'bob', description: "bob's static content")
+        @static_content.reload
+        @static_content.name.should eq('bob')
+        @static_content.description.should eq("bob's static content")
       end
 
-      xit "redirects to the static_content" do
-        static_content = StaticContent.create! valid_attributes
-        put :update, {:id => static_content.to_param, :static_content => valid_attributes}, valid_session
-        response.should redirect_to(static_content)
+      it "redirects to the updated static content" do
+        put :update, id: @static_content, static_content: FactoryGirl.attributes_for(:static_content, name: 'bob', description: "bob's static content")
+        response.should redirect_to @static_content
+      end
+
+      context "invalid attributes" do
+
+        it "locates the requested @static_content" do
+          put :update, id: @static_content, static_content: FactoryGirl.attributes_for(:static_content, name: nil, description: "bob's static content")
+          expect(assigns(:static_content)).to eq(@static_content)
+        end
+        it "does not change @static_content's attributes" do
+          put :update, id:@static_content, static_content: FactoryGirl.attributes_for(:static_content, name: nil, description: "bob's static content")
+          @static_content.reload
+          @static_content.name.should_not eq(nil)
+          @static_content.description.should_not eq("bob's static content")
+        end
+        it "re-renders the edit method" do
+          put :update, id: @static_content, static_content: FactoryGirl.attributes_for(:static_content, name: nil, description: "bob's static content")
+          response.should render_template :edit
+        end
       end
     end
 
-    describe "with invalid params" do
-      xit "assigns the static_content as @static_content" do
-        static_content = StaticContent.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        StaticContent.any_instance.stub(:save).and_return(false)
-        put :update, {:id => static_content.to_param, :static_content => { "name" => "invalid value" }}, valid_session
-        assigns(:static_content).should eq(static_content)
+    describe "is not admin user" do
+      before do
+        @user  = FactoryGirl.create(:user)
+        sign_in @user
       end
 
-      xit "re-renders the 'edit' template" do
-        static_content = StaticContent.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        StaticContent.any_instance.stub(:save).and_return(false)
-        put :update, {:id => static_content.to_param, :static_content => { "name" => "invalid value" }}, valid_session
-        response.should render_template("edit")
+      it "redirects to root" do
+        put :update, id: @static_content, static_content: FactoryGirl.attributes_for(:static_content, name: 'bob', description: "bob's static content")
+        response.should redirect_to root_path
       end
     end
+
   end
 
 
 
   #***********************************
-  # rspec test  show
+  # rspec test  destroy <-- no-op, missing template
   #***********************************
-  describe "DELETE destroy" do
-    xit "destroys the requested static_content" do
-      static_content = StaticContent.create! valid_attributes
-      expect {
-        delete :destroy, {:id => static_content.to_param}, valid_session
-      }.to change(StaticContent, :count).by(-1)
-    end
-
-    xit "redirects to the static_contents list" do
-      static_content = StaticContent.create! valid_attributes
-      delete :destroy, {:id => static_content.to_param}, valid_session
-      response.should redirect_to(static_contents_url)
-    end
-  end
 
 
 
@@ -276,7 +319,24 @@ describe StaticContentsController do
   #***********************************
   # rspec test  json_index_static_contents
   #***********************************
+  describe "GET static content index", tag_json_index: true do
 
+    context "is a public api" do
+      before { sign_out }
+      let(:static_contents_all){ StaticContent.all }
+
+      it "fetches all static contents" do
+        get :json_index_static_contents, :format => :json
+        expect(response).to be_success
+
+        body = JSON.parse(response.body)
+
+        expect(body.length).to eq(static_contents_all.length)
+        expect(body[0]["description"]).to eq(static_contents_all[0].description)
+        expect(body[0]["name"]).to eq(static_contents_all[0].name)
+      end
+    end
+  end
 
 
 
@@ -285,6 +345,24 @@ describe StaticContentsController do
   #***********************************
   # rspec test  json_show_static_content_by_name
   #***********************************
+  describe "GET static content index", tag_json_index: true do
+
+    context "is a public api" do
+      before { sign_out }
+      let(:static_contents){ StaticContent.find_by_name(@static_content.name) }
+
+      it "fetches 1 static content by name" do
+        get :json_index_static_contents, name: @static_content.name, :format => :json
+        expect(response).to be_success
+
+        body = JSON.parse(response.body)
+
+        expect(body[0]["description"]).to eq(static_contents.description)
+        expect(body[0]["name"]).to eq(static_contents.name)
+      end
+    end
+  end
+
 
 
 end
