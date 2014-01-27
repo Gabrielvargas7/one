@@ -29,8 +29,6 @@ describe "backbone view rooms", :js => true do
     it {page.should have_selector('div#xroom_items_2')}
 
     it "should have all the items and three time on the dom" do
-      #page.should have_selector("div.room_design_container_"+@item.id.to_s)
-      #@items = Item.all
 
       @items.each do |item|
         selector = "div.room_design_container_"+item.id.to_s

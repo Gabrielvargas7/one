@@ -15,48 +15,28 @@ def sign_in(user)
   #fill_in "Email",    with: "myuser@gmail.com"
   #fill_in "Password", with: "lksdjf"
 
+  click_button "LOGIN"
+  # Sign in when not using Capybara as well.
+  cookies[:remember_token] = user.remember_token
+
+end
+
+def sign_in_with_password(user,password)
+  visit signin_path
+  fill_in "Email",    with: user.email
+  fill_in "Password", with: password
 
   click_button "LOGIN"
   # Sign in when not using Capybara as well.
   cookies[:remember_token] = user.remember_token
 
-
-
-
-  #if user.admin
-  #  puts "Admin user signin cookie: "+cookies[:remember_token].to_s
-  #else
-  #  puts "Regular user signin cookie: "+cookies[:remember_token].to_s
-  #end
 end
+
 
 def sign_out
   cookies.delete(:remember_token)
   #puts "user signout cookie: "+cookies[:remember_token].to_s
 end
-
-
-#def wait_for_ajax
-#  Timeout.timeout(Capybara.default_wait_time) do
-#    active = page.evaluate_script('jQuery.active')
-#
-#    until active == 0
-#      active = page.evaluate_script('jQuery.active')
-#    end
-#  end
-#end
-#
-#def wait_for_dom(timeout = Capybara.default_wait_time)
-#  uuid = SecureRandom.uuid
-#  page.find("body")
-#  page.evaluate_script <<-EOS
-#    _.defer(function() {
-#      $('body').append("<div id='#{uuid}'></div>");
-#    });
-#  EOS
-#  page.find("##{uuid}")
-#end
-
 
 
 

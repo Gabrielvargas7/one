@@ -97,6 +97,7 @@ group :test do
   gem 'poltergeist', '1.5.0'
   gem 'phantomjs', '1.9.2.1', :require => 'phantomjs/poltergeist'
   gem 'capybara', '2.2.1'
+  gem "selenium-webdriver", "2.39.0"
 
  end
 
