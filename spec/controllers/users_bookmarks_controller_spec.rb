@@ -435,6 +435,7 @@ describe UsersBookmarksController do
         let(:offset){0}
         let(:limit){6} 
 
+
         before do
           get :json_index_user_bookmarks_by_user_id_by_limit_and_offset,
            user_id: @user.id,limit:limit, 
@@ -971,41 +972,211 @@ describe UsersBookmarksController do
   #1-24-2014 ApI returns the bookmark if the bookmark is present in the user's mybookmarks. Otherwise it returns empty.
   #           This API is public -SN
 
-  describe "get json_show_user_bookmark_by_user_id_and_bookmark_id" do
+  describe "get json_show_user_bookmark_by_user_id_and_bookmark_id", tag_show_by_user_bm_id:true do
+    
+        
     before do
       sign_in @user
+      @bookmark1= FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+      @bookmark2= FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+      user_bookmark=FactoryGirl.create(:users_bookmark,user_id:@user.id,bookmark_id:@bookmark1.id)
+      
+      get :json_show_user_bookmark_by_user_id_and_bookmark_id,
+          user_id: @user.id,
+          bookmark_id: @bookmark1.id,
+          :format => :json
+
+      
     end
-    pending ""
 
+    context "correct user " do
+      context "with a bookmark present" do
 
-    # context "correct user" do
+        it "should be successful" do
+          response.should be_success
+        end
 
-    #   it "should be successful" do
-    #     get :json_show_user_bookmark_by_user_id_and_bookmark_id,user_id: @user.id, :format => :json
-    #     response.should be_success
-    #   end
+        it "has a 200 status code" do
+          expect(response.status).to eq(200)
+        end
 
+        it "should get the user bookmark with values" do
+          # Bookmark.columns_hash.each {|k,v| puts "#{k} => #{v.type}"}
+          # @bookmark1= FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+          # user_bookmark=FactoryGirl.create(:users_bookmark,user_id:@user.id,bookmark_id:@bookmark1.id)
 
-    #   it "should set user bookmark " do
-    #     @user_bookmarks = Bookmark.
-    #         select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc,  bookmarks_categories.item_id, title,position,"like"').
-    #         joins(:users_bookmarks).
-    #         joins(:bookmarks_category).
-    #         where('user_id = ? ',@user.id)
-    #     #puts @user_bookmarks.as_json
-    #     get :json_show_user_bookmark_by_user_id_and_bookmark_id,user_id: @user.id, :format => :json
-    #     assigns(:user_bookmarks).as_json.should eq(@user_bookmarks.as_json)
-    #   end
+          #Note this assumes that the newly added bookmark is not a custom bookmark. 
+          # Otherwise, we'd have to add sql parameters defined in the controller. 
+          body = JSON.parse(response.body)
+          user_bookmark_test = Bookmark.
+              select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+              joins(:users_bookmarks).
+              joins(:bookmarks_category).
+              where('user_id = ? and bookmark_id =?',@user.id,@bookmark1.id)
+          #puts @user_bookmarks.as_json
 
-    #   it "has a 200 status code" do
-    #     get :json_show_user_bookmark_by_user_id_and_bookmark_id,user_id: @user.id, :format => :json
-    #     expect(response.status).to eq(200)
-    #   end
-    # end
+          user_bookmark_test[0].id.should == body["id"]
+          user_bookmark_test[0].bookmark_url.should == body["bookmark_url"]
+          user_bookmark_test[0].bookmarks_category_id.should ==body["bookmarks_category_id"]
+          user_bookmark_test[0].description.should ==body["description"]
+          user_bookmark_test[0].i_frame.should ==body["i_frame"]
+          user_bookmark_test[0].item_id.should ==body["item_id"]
+          user_bookmark_test[0].like.should ==body["like"]
+          user_bookmark_test[0].position.should ==body["position"]
+         # assigns(:user_bookmarks).as_json.should eq(@user_bookmarks.as_json)
+        end
+      end #end context with a bookmark present
+
+      context "without the bookmark present" do
+        before do
+          get :json_show_user_bookmark_by_user_id_and_bookmark_id,
+            user_id: @user.id,
+            bookmark_id: @bookmark2.id,
+            :format => :json
+          @body = JSON.parse(response.body)
+        end
+        it "should be successful and have status 200" do
+          expect(response.status).to eq(200)
+          response.should be_success
+        end
+        it "should be an empty array" do
+          expect(@body).to be_empty
+        end
+      end #end context without a bookmark present
+    end #end context correct user
+    
+
+    context "Another user signed in" do
+      before do
+        @user1 = FactoryGirl.create(:user)
+        sign_in @user1
+        get :json_show_user_bookmark_by_user_id_and_bookmark_id,
+            user_id: @user.id,
+            bookmark_id: @bookmark1.id,
+            :format => :json
+      end
+
+      context "with a bookmark present" do
+
+        it "should be successful" do
+          response.should be_success
+        end
+
+        it "has a 200 status code" do
+          expect(response.status).to eq(200)
+        end
+
+        it "should get the user bookmark with values" do
+          # Bookmark.columns_hash.each {|k,v| puts "#{k} => #{v.type}"}
+          # @bookmark1= FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+          # user_bookmark=FactoryGirl.create(:users_bookmark,user_id:@user.id,bookmark_id:@bookmark1.id)
+
+          #Note this assumes that the newly added bookmark is not a custom bookmark. 
+          # Otherwise, we'd have to add sql parameters defined in the controller. 
+          body = JSON.parse(response.body)
+          user_bookmark_test = Bookmark.
+              select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+              joins(:users_bookmarks).
+              joins(:bookmarks_category).
+              where('user_id = ? and bookmark_id =?',@user.id,@bookmark1.id)
+          #puts @user_bookmarks.as_json
+
+          user_bookmark_test[0].id.should == body["id"]
+          user_bookmark_test[0].bookmark_url.should == body["bookmark_url"]
+          user_bookmark_test[0].bookmarks_category_id.should ==body["bookmarks_category_id"]
+          user_bookmark_test[0].description.should ==body["description"]
+          user_bookmark_test[0].i_frame.should ==body["i_frame"]
+          user_bookmark_test[0].item_id.should ==body["item_id"]
+          user_bookmark_test[0].like.should ==body["like"]
+          user_bookmark_test[0].position.should ==body["position"]
+         # assigns(:user_bookmarks).as_json.should eq(@user_bookmarks.as_json)
+        end
+      end #end context with a bookmark present
+
+      context "without the bookmark present" do
+        before do
+          get :json_show_user_bookmark_by_user_id_and_bookmark_id,
+            user_id: @user.id,
+            bookmark_id: @bookmark2.id,
+            :format => :json
+          @body = JSON.parse(response.body)
+        end
+        it "should be successful and have status 200" do
+          expect(response.status).to eq(200)
+          response.should be_success
+        end
+        it "should be an empty array" do
+          expect(@body).to be_empty
+        end
+      end #end context without a bookmark present
+
+    end
+
+    context "signed out" do
+      before do
+        sign_out
+        get :json_show_user_bookmark_by_user_id_and_bookmark_id,
+          user_id: @user.id,
+          bookmark_id: @bookmark1.id,
+          :format => :json
+      end
+      context "with a bookmark present" do
+
+        it "should be successful" do
+          response.should be_success
+        end
+
+        it "has a 200 status code" do
+          expect(response.status).to eq(200)
+        end
+
+        it "should get the user bookmark with values" do
+          # Bookmark.columns_hash.each {|k,v| puts "#{k} => #{v.type}"}
+          # @bookmark1= FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+          # user_bookmark=FactoryGirl.create(:users_bookmark,user_id:@user.id,bookmark_id:@bookmark1.id)
+
+          #Note this assumes that the newly added bookmark is not a custom bookmark. 
+          # Otherwise, we'd have to add sql parameters defined in the controller. 
+          body = JSON.parse(response.body)
+          user_bookmark_test = Bookmark.
+              select('bookmarks.id, bookmark_url, bookmarks_category_id, description, i_frame, image_name, image_name_desc, bookmarks_categories.item_id, title,position,"like"').
+              joins(:users_bookmarks).
+              joins(:bookmarks_category).
+              where('user_id = ? and bookmark_id =?',@user.id,@bookmark1.id)
+          #puts @user_bookmarks.as_json
+
+          user_bookmark_test[0].id.should == body["id"]
+          user_bookmark_test[0].bookmark_url.should == body["bookmark_url"]
+          user_bookmark_test[0].bookmarks_category_id.should ==body["bookmarks_category_id"]
+          user_bookmark_test[0].description.should ==body["description"]
+          user_bookmark_test[0].i_frame.should ==body["i_frame"]
+          user_bookmark_test[0].item_id.should ==body["item_id"]
+          user_bookmark_test[0].like.should ==body["like"]
+          user_bookmark_test[0].position.should ==body["position"]
+         # assigns(:user_bookmarks).as_json.should eq(@user_bookmarks.as_json)
+        end
+      end #end context with a bookmark present
+
+      context "without the bookmark present" do
+        before do
+          get :json_show_user_bookmark_by_user_id_and_bookmark_id,
+            user_id: @user.id,
+            bookmark_id: @bookmark2.id,
+            :format => :json
+          @body = JSON.parse(response.body)
+        end
+        it "should be successful and have status 200" do
+          expect(response.status).to eq(200)
+          response.should be_success
+        end
+        it "should be an empty array" do
+          expect(@body).to be_empty
+        end
+      end #end context without a bookmark present
+
+    end
+
   end
-
-  
-
 
   describe "#json/index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset" do
     pending "add some examples to (or delete) #{__FILE__}"
