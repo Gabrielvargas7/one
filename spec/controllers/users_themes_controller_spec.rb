@@ -160,22 +160,22 @@ describe UsersThemesController do
       end
 
       context "return json values " do
-        it "should count one user notification 'y' " do
-          put :json_update_user_theme_by_user_id_and_section_id, user_id: @user_theme.user_id,section_id:@user_theme.section_id,new_theme_id:@theme2.id, :format => :json
+        it "should count one user theme " do
+          put :json_update_user_theme_by_user_id_and_section_id, user_id: @user_theme.user_id, section_id: @user_theme.section_id, new_theme_id: @theme2.id, :format => :json
           @user_theme_count  = UsersTheme.where("section_id = ? and user_id = ?",@section.id,@user.id).count
           @user_theme_count.should == 1
         end
 
       end
 
-      #context "invalid attributes" do
-      #
-      #  it "does not change @users photo's attributes" do
-      #    put :json_update_users_set_profile_image_by_user_id_and_users_photo_id, user_id: @users_photo.user_id,users_photo_id:-1  , :format => :json
-      #    @users_photo.reload
-      #    @users_photo.profile_image.should_not eq("y")
-      #  end
-      #end
+      context "invalid attributes" do
+
+       it "does not change @users themes's attributes" do
+         put :json_update_user_theme_by_user_id_and_section_id, user_id: @user_theme.user_id, section_id: @user_theme.section_id, theme_id: -1  , :format => :json
+         @user_theme.reload
+         @user_theme.theme_id.should_not eq(-1)
+       end
+      end
 
 
       context "is sign in with other user" do
