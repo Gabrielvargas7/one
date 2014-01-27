@@ -592,7 +592,7 @@ describe UsersBookmarksController do
       end
 
 
-      it "should set user bookmark " do
+      it "should get user bookmark " do
         #puts "user bookmark "+@user_bookmarks.as_json
         #puts "item id "+@item.id.to_s
         #puts "user id "+@user.id.to_s
@@ -972,7 +972,7 @@ describe UsersBookmarksController do
   #1-24-2014 ApI returns the bookmark if the bookmark is present in the user's mybookmarks. Otherwise it returns empty.
   #           This API is public -SN
 
-  describe "get json_show_user_bookmark_by_user_id_and_bookmark_id", tag_show_by_user_bm_id:true do
+  describe "GET json_show_user_bookmark_by_user_id_and_bookmark_id", tag_show_by_user_bm_id:true do
     
         
     before do
@@ -1178,11 +1178,261 @@ describe UsersBookmarksController do
 
   end
 
-  describe "#json/index_bookmarks_with_bookmarks_category_by_item_id_by_limit_and_offset" do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe "GET json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset", tag_bm:true do
+    before do
+      #ensure user has 4 bookmarks. 
+      @item = FactoryGirl.create(:item)
+      @bookmarks_category = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
+      for i in 1..4
+        bookmark = FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+        user_bookmark = FactoryGirl.create(:users_bookmark,user_id:@user.id,bookmark_id:bookmark.id)
+      end
+    end
+
+    context "with sign in user" do
+      let(:offset){0}
+      let(:limit){2}
+      before do
+        @bookmark1= FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+        get :json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset,
+          user_id: @user.id,
+          item_id: @item.id,
+          limit: limit,
+          offset: offset,
+          :format => :json
+      end
+      
+      context "with limit 2 and offset 0" do
+        let(:body){JSON.parse(response.body)}
+        it "should have 200 status and be successful" do
+          expect(response).to be_success
+          expect(response.status).to eq(200)
+        end
+
+        it "should return 2 bookmarks since limit is 2" do
+          body.length.should eq(limit)
+        end
+
+        it "should have the correct bookmarks" do
+          #   user_bookmarks = Bookmark.
+          #     select('bookmarks.id, bookmark_url, bookmarks_category_id, bookmarks_categories.item_id,description, i_frame, image_name, image_name_desc, title,position,"like"').
+          #     joins(:users_bookmarks).
+          #     joins(:bookmarks_category).
+          #     where('user_id = ? and bookmarks_categories.item_id = ?',@user.id,@item.id)
+          # puts body
+          # puts user_bookmarks
+          body.each do |body_user_bookmark|
+            bookmark_json = Bookmark.find(body_user_bookmark["id"])
+            user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+            body_user_bookmark["id"].should == bookmark_json.id
+            body_user_bookmark["bookmark_url"].should == bookmark_json.bookmark_url
+            body_user_bookmark["bookmarks_category_id"].should == bookmark_json.bookmarks_category_id
+            body_user_bookmark["description"].should == bookmark_json.description
+            body_user_bookmark["i_frame"].should == bookmark_json.i_frame
+            body_user_bookmark["image_name"]["url"].should == bookmark_json.image_name.to_s
+            body_user_bookmark["image_name_desc"]["url"].should == bookmark_json.image_name_desc.to_s
+            body_user_bookmark["title"].should == bookmark_json.title
+            body_user_bookmark["position"].should == user_bookmark_json.position.to_s
+            body_user_bookmark["like"].should == bookmark_json.like
+          end
+
+        end
+
+      end #end context with limit 2 and offset 0
+
+      context "with limit 2 and offset 1" do
+        let(:body_no_offset){JSON.parse(response.body)}
+        let(:offset){1}
+        let(:limit){2}
+
+        before do
+          get :json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset,
+            user_id: @user.id,
+            item_id: @item.id,
+            limit: limit,
+            offset: offset,
+            :format => :json
+        end
+
+        it "should be successful and status 200" do
+          expect(response).to be_success
+          expect(response.status).to eq(200)
+        end
+
+        it "should not contain the first bookmark" do
+          body_with_offset = JSON.parse(response.body)
+          body_with_offset.should_not include(body_no_offset)
+        end
+
+      end #end context with limit 2 and offset 
+
+    end #end context sign in user
+
+
+
+    context "with other sign in user" do
+      let(:offset){0}
+      let(:limit){2}
+      before do
+        @user1 = FactoryGirl.create(:user)
+        sign_in @user1
+        @bookmark1= FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+        get :json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset,
+          user_id: @user.id,
+          item_id: @item.id,
+          limit: limit,
+          offset: offset,
+          :format => :json
+      end
+      
+      context "with limit 2 and offset 0" do
+        let(:body){JSON.parse(response.body)}
+        it "should have 200 status and be successful" do
+          expect(response).to be_success
+          expect(response.status).to eq(200)
+        end
+
+        it "should return 2 bookmarks since limit is 2" do
+          body.length.should eq(limit)
+        end
+
+        it "should have the correct bookmarks" do
+          #   user_bookmarks = Bookmark.
+          #     select('bookmarks.id, bookmark_url, bookmarks_category_id, bookmarks_categories.item_id,description, i_frame, image_name, image_name_desc, title,position,"like"').
+          #     joins(:users_bookmarks).
+          #     joins(:bookmarks_category).
+          #     where('user_id = ? and bookmarks_categories.item_id = ?',@user.id,@item.id)
+          # puts body
+          # puts user_bookmarks
+          body.each do |body_user_bookmark|
+            bookmark_json = Bookmark.find(body_user_bookmark["id"])
+            user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+            body_user_bookmark["id"].should == bookmark_json.id
+            body_user_bookmark["bookmark_url"].should == bookmark_json.bookmark_url
+            body_user_bookmark["bookmarks_category_id"].should == bookmark_json.bookmarks_category_id
+            body_user_bookmark["description"].should == bookmark_json.description
+            body_user_bookmark["i_frame"].should == bookmark_json.i_frame
+            body_user_bookmark["image_name"]["url"].should == bookmark_json.image_name.to_s
+            body_user_bookmark["image_name_desc"]["url"].should == bookmark_json.image_name_desc.to_s
+            body_user_bookmark["title"].should == bookmark_json.title
+            body_user_bookmark["position"].should == user_bookmark_json.position.to_s
+            body_user_bookmark["like"].should == bookmark_json.like
+          end
+
+        end
+
+      end #end context with limit 2 and offset 0
+
+      context "with limit 2 and offset 1" do
+        let(:body_no_offset){JSON.parse(response.body)}
+        let(:offset){1}
+        let(:limit){2}
+
+        before do
+          get :json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset,
+            user_id: @user.id,
+            item_id: @item.id,
+            limit: limit,
+            offset: offset,
+            :format => :json
+        end
+
+        it "should be successful and status 200" do
+          expect(response).to be_success
+          expect(response.status).to eq(200)
+        end
+
+        it "should not contain the first bookmark" do
+          body_with_offset = JSON.parse(response.body)
+          body_with_offset.should_not include(body_no_offset)
+        end
+
+      end #end context with limit 2 and offset 
+
+    end #end context sign in with other user
+    
+
+
+    context "with sign out user" do
+      
+      let(:offset){0}
+      let(:limit){2}
+      
+      before do
+        sign_out
+        @bookmark1= FactoryGirl.create(:bookmark,bookmarks_category_id:@bookmarks_category.id)
+        get :json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset,
+          user_id: @user.id,
+          item_id: @item.id,
+          limit: limit,
+          offset: offset,
+          :format => :json
+      end
+      
+      context "with limit 2 and offset 0" do
+        let(:body){JSON.parse(response.body)}
+        it "should have 200 status and be successful" do
+          expect(response).to be_success
+          expect(response.status).to eq(200)
+        end
+
+        it "should return 2 bookmarks since limit is 2" do
+          body.length.should eq(limit)
+        end
+
+        it "should have the correct bookmarks" do
+          #   user_bookmarks = Bookmark.
+          #     select('bookmarks.id, bookmark_url, bookmarks_category_id, bookmarks_categories.item_id,description, i_frame, image_name, image_name_desc, title,position,"like"').
+          #     joins(:users_bookmarks).
+          #     joins(:bookmarks_category).
+          #     where('user_id = ? and bookmarks_categories.item_id = ?',@user.id,@item.id)
+          # puts body
+          # puts user_bookmarks
+          body.each do |body_user_bookmark|
+            bookmark_json = Bookmark.find(body_user_bookmark["id"])
+            user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_position(body_user_bookmark["id"],body_user_bookmark["position"])
+            body_user_bookmark["id"].should == bookmark_json.id
+            body_user_bookmark["bookmark_url"].should == bookmark_json.bookmark_url
+            body_user_bookmark["bookmarks_category_id"].should == bookmark_json.bookmarks_category_id
+            body_user_bookmark["description"].should == bookmark_json.description
+            body_user_bookmark["i_frame"].should == bookmark_json.i_frame
+            body_user_bookmark["image_name"]["url"].should == bookmark_json.image_name.to_s
+            body_user_bookmark["image_name_desc"]["url"].should == bookmark_json.image_name_desc.to_s
+            body_user_bookmark["title"].should == bookmark_json.title
+            body_user_bookmark["position"].should == user_bookmark_json.position.to_s
+            body_user_bookmark["like"].should == bookmark_json.like
+          end
+
+        end
+
+      end #end context with limit 2 and offset 0
+
+      context "with limit 2 and offset 1" do
+        let(:body_no_offset){JSON.parse(response.body)}
+        let(:offset){1}
+        let(:limit){2}
+
+        before do
+          get :json_index_user_bookmarks_by_user_id_and_item_id_by_limit_and_offset,
+            user_id: @user.id,
+            item_id: @item.id,
+            limit: limit,
+            offset: offset,
+            :format => :json
+        end
+
+        it "should be successful and status 200" do
+          expect(response).to be_success
+          expect(response.status).to eq(200)
+        end
+
+        it "should not contain the first bookmark" do
+          body_with_offset = JSON.parse(response.body)
+          body_with_offset.should_not include(body_no_offset)
+        end
+
+      end #end context with limit 2 and offset 
+    end
   end
-
-
-
 
 end
