@@ -21,8 +21,15 @@ describe "backbone view rooms", :js => true do
 
     it "has various elements" do
       find("a#xroom_header_storepage").click
-      expect(page).to have_css('div#xroom_storepage', :visible => true)
+
+      #puts page.body
+
+      expect(page).to have_css('div#xroom_storepage', :visible => true) # in the view to begin with
       expect(page).to have_css('a#store_close_button', :visible => true)
+      expect(page).to have_css('div.tab-content', :visible => true)
+      expect(page).to have_css('div#tab_items')
+      expect(page).to have_css('ul#storeTabs')
+      #expect(page).to have_css('div.tab-pane active')
       #expect(page).to have_css('input#store_search_box', :visible => true) <-- fails
       #expect(page).to have_css('div#store_container', :visible => true) <-- fails
       find('a#store_close_button').click
