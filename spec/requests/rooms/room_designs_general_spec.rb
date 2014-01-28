@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "backbone view rooms", :js => true do
+describe "requests room design general ", :js => true do
 
 
   before do
@@ -20,13 +20,15 @@ describe "backbone view rooms", :js => true do
 
   describe "design_view ", tag_dom_items:true do
     before do
-      @items = Item.all
-      @user_items_designs = UsersItemsDesign.find_all_by_user_id(@user.id)
+      #@items = Item.all
+      #@user_items_designs = UsersItemsDesign.find_all_by_user_id(@user.id)
     end
 
     it {page.should have_selector('div#xroom_items_0')}
     it {page.should have_selector('div#xroom_items_1')}
     it {page.should have_selector('div#xroom_items_2')}
+    #it { should have_css('div#xroom_items_2', :visible => true) }
+
 
     it "should have all the items and three time on the dom" do
 

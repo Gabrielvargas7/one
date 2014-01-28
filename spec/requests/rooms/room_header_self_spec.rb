@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "backbone view rooms", :js => true do
+describe "requests room header self", :js => true do
 
 
   before do
@@ -13,7 +13,7 @@ describe "backbone view rooms", :js => true do
   subject { page }
 
 
-  describe "header menu genaral elements", tag_dom_header_menu_general:true do
+  describe "header menu genaral elements", tag_dom_header_menu:true do
 
     it "should have rooms_header main_menu " do
       page.should have_selector("ul#rooms_header_main_menu")
@@ -115,16 +115,20 @@ describe "backbone view rooms", :js => true do
       page.should have_css("#xroom_header_forward_help", :text => "Help")
     end
 
-    it "should have xroom_header_forward_Logout" do
+    it "should have xroom_header_Logout" do
       page.find("a#xroom_header_user_room_dropdown-toggle").click
-      page.should have_selector("a#xroom_header_forward_logout")
+      page.should have_selector("a#xroom_header_logout")
     end
 
     it "button text should be 'Logout' " do
       page.find("a#xroom_header_user_room_dropdown-toggle").click
-      page.should have_css("#xroom_header_forward_logout", :text => "Logout")
+      page.should have_css("#xroom_header_logout", :text => "Logout")
     end
   end
+
+
+
+
 
 
 

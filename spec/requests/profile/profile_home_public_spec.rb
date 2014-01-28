@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "backbone view profile", :js => true do
+describe "requests profile home public ", :js => true do
 
 
   before do
@@ -90,11 +90,11 @@ describe "backbone view profile", :js => true do
 
   end
 
-  describe "id = profileHome_container", tag_dom_profileHome_botton:true do
+  describe "id = profileHome_container", tag_dom_profileHome_bottom:true do
 
-    it "should have profileHome botton" do
-      page.should have_selector("div#profileHome_botton")
-      page.should have_css("div#profileHome_botton")
+    it "should have profileHome bottom" do
+      page.should have_selector("div#profileHome_bottom")
+      page.should have_css("div#profileHome_bottom")
     end
 
   end

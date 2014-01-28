@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "backbone view rooms", :js => true do
+describe "requests room header public ", :js => true do
 
 
   before do
@@ -11,37 +11,6 @@ describe "backbone view rooms", :js => true do
 
   subject { page }
 
-  describe "header logo", tag_dom_header_logo:true do
-
-
-    it "should have id #xroom_header_logo" do
-      page.should have_selector("#xroom_header_logo")
-      page.should have_css("a#xroom_header_logo")
-    end
-
-    it "should have the atl logo-mywebroom" do
-      find('#xroom_header_logo img')['alt'].should == "logo-mywebroom"
-    end
-
-  end
-
-
-
-  describe "header search", tag_dom_header_search:true do
-
-    it "should have id #xroom_header_search" do
-        page.should have_selector("#xroom_header_search")
-        page.should have_css("input#xroom_header_search_text")
-    end
-
-    it "should have text" do
-      find('#xroom_header_search_text')['placeholder'].should == "Search for people, objects and bookmarks"
-    end
-
-    it "button text should be ALL " do
-      page.should have_css("button#header-search-dropdown-btn", :text => "ALL")
-    end
-  end
 
   describe "header menu", tag_dom_header_menu:true do
 
@@ -70,11 +39,6 @@ describe "backbone view rooms", :js => true do
     it "should have rooms_header main_sign up button a = 'SIGN UP' " do
       find('li.xroom_header_li_sign_up_btn a', :text => "SIGN UP")
     end
-
-    it "should have rooms_header main_sign up button a = 'SIGN UP' " do
-      find('li.xroom_header_li_sign_up_btn a')['href'].should == "/select-room"
-    end
-
 
 
   end
