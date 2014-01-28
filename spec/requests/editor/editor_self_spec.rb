@@ -4,7 +4,8 @@ describe "backbone view rooms", :js => true do
 
 
   before do
-    @user = User.last
+    @user =   User.find_by_email('test1@mywebroom.com')
+    sign_in_with_password(@user,'rooms')
     visit room_rooms_path(@user.username)
   end
 
@@ -17,9 +18,13 @@ describe "backbone view rooms", :js => true do
 
   describe "design_view ", tag_dom_items: true do
 
-    xit "should do something" do
-      expect('thing').to be('thing')
+
+    it "click on the profile, display should be true" do
+      page.find("a#xroom_header_storepage").click
+      page.should have_css('div#xroom_storepage', :visible => true)
+      page.should have_css('a#store_close_button', :visible => true)
     end
+
   end
 
 end
