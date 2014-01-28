@@ -809,7 +809,7 @@ describe UsersBookmarksController do
   describe "POST json_create_user_bookmark_custom_by_user_id", tag_json_create_custom:true  do
     before do
       @item2 = FactoryGirl.create(:item)
-      @bookmarks_category2 = FactoryGirl.create(:bookmarks_category,item_id:Item.first.id)
+      @bookmarks_category2 = FactoryGirl.create(:bookmarks_category,item_id:@item.id)
       @bookmark2 = FactoryGirl.build(:bookmark,bookmarks_category_id:@bookmarks_category2.id)
       @user_max_position = UsersBookmark.maximum("position")
     end
@@ -817,6 +817,86 @@ describe UsersBookmarksController do
     describe "is regular user" do
       context "with valid params" do
 
+
+        xit "has a 201 status code" do
+          
+          puts @user.id
+          puts @bookmark2.bookmark_url
+          puts @bookmark2.bookmarks_category_id
+          puts @item2.id
+          puts @bookmark2.title
+          puts @user_max_position+1
+          puts "http://placekitten/30/30"
+          
+          post :json_create_user_bookmark_custom_by_user_id,
+               user_id:@user.id,
+               bookmark_url:@bookmark2.bookmark_url,
+               bookmarks_category_id:@bookmark2.bookmarks_category_id,
+               item_id:Item.first.id,
+               title:@bookmark2.title,
+               position:@user_max_position+1,
+               image_name:"http://placekitten/30/30",
+               #remote_image_name_desc_url:@bookmark2.remote_image_name_desc_url,
+               :format => :json
+          puts response.body
+          # puts :user_bookmark.errors
+          # puts :bookmark.errors
+
+          #puts response
+          expect(response.status).to eq(201)
+        end
+
+
+        #{
+        #    "user_bookmark":
+        #    {"bookmark_id":16508,"created_at":"2013-05-06T16:47:07Z","id":2248,"position":12,"updated_at":"2013-05-06T16:47:07Z","user_id":206},
+        #    "bookmark":
+        #    {"bookmark_url":"http%3A%2F%2Fwww.univision.com%2F","bookmarks_category_id":301,"created_at":"2013-05-06T16:47:07Z","description":null,"i_frame":"y","id":16508,"image_name":{"url":"/uploads/bookmark/image_name/16508/images.jpg","small":{"url":"/uploads/bookmark/image_name/16508/small_images.jpg"},"tiny":{"url":"/uploads/bookmark/image_name/16508/tiny_images.jpg"},"toolbar":{"url":"/uploads/bookmark/image_name/16508/toolbar_images.jpg"}},"image_name_desc":{"url":"/images/fallback/bookmark/default_bookmark.png","small":{"url":"/images/fallback/bookmark/default_bookmark.png"},"tiny":{"url":"/images/fallback/bookmark/default_bookmark.png"},"toolbar":{"url":"/images/fallback/bookmark/default_bookmark.png"}},"item_id":3,"title":"%22uni%22","updated_at":"2013-05-06T16:47:07Z"}
+        #}
+        context "return json values " do
+          xit "should return friend request in json" do
+
+            # @bookmarkTest = Bookmark.new(title: @bookmark2.title,
+            #                              bookmark_url:@bookmark2.bookmark_url,
+            #      bookmarks_category_id:@bookmark2.bookmarks_category_id,
+            #      remote_image_name_url:@bookmark2.remote_image_name_url,
+            #      remote_image_name_desc_url:@bookmark2.remote_image_name_url,
+            #      approval:'n',
+            #      i_frame:'y',
+            #      user_bookmark:@user.id,
+            #      like:1)
+            # @bookmarkTest.save
+            # puts "BOOKAMRKS TEST"
+            # puts @bookmarkTest.as_json
+            #@bookmark2.remote_image_name_url
+
+            post :json_create_user_bookmark_custom_by_user_id,
+                 user_id:@user.id,
+                 bookmark_url:@bookmark2.bookmark_url,
+                 bookmarks_category_id:@bookmark2.bookmarks_category_id,
+                 item_id:@item2.id,
+                 title:@bookmark2.title,
+                 position:@user_max_position+1,
+                 image_name:@bookmark2.remote_image_name_url,
+                 :format => :json
+
+            body = JSON.parse(response.body)
+            #puts "body ---- > "+body.to_s
+            #puts body["user_friend_request"]["user_id"].to_s
+            #
+            @bookmark_json = Bookmark.find(body["user_bookmark"]["bookmark_id"])
+            @user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_user_id(@bookmark_json.id,@user.id)
+
+            body["user_bookmark"]["position"].should == @user_max_position+1
+            body["user_bookmark"]["user_id"].should == @user.id
+            body["bookmark"]["bookmark_url"].should == @bookmark_json.bookmark_url
+            body["bookmark"]["approval"].should == 'n'
+            body["bookmark"]["i_frame"].should == 'y'
+            body["bookmark"]["title"].should == @bookmark_json.title
+            body["bookmark"]["user_bookmark"].should == @bookmark_json.user_bookmark
+
+          end
+        end
         #it "creates a new user bookmark " do
         #  #puts "user id --->"+@user1.id.to_s
         #  #puts "user id requested--->"+@user_requested.id.to_s
@@ -862,70 +942,6 @@ describe UsersBookmarksController do
         #
         #  response.should be_success
         #end
-
-        xit "has a 201 status code" do
-          
-          puts @user.id
-          puts @bookmark2.bookmark_url
-          puts @bookmark2.bookmarks_category_id
-          puts @item2.id
-          puts @bookmark2.title
-          puts @user_max_position+1
-          puts "http://placekitten/30/30"
-          
-          post :json_create_user_bookmark_custom_by_user_id,
-               user_id:@user.id,
-               bookmark_url:@bookmark2.bookmark_url,
-               bookmarks_category_id:@bookmark2.bookmarks_category_id,
-               item_id:Item.first.id,
-               title:@bookmark2.title,
-               position:@user_max_position+1,
-               image_name:"http://placekitten/30/30",
-               #remote_image_name_desc_url:@bookmark2.remote_image_name_desc_url,
-               :format => :json
-          puts response.body
-          # puts :user_bookmark.errors
-          # puts :bookmark.errors
-
-          #puts response
-          expect(response.status).to eq(201)
-        end
-
-
-        #{
-        #    "user_bookmark":
-        #    {"bookmark_id":16508,"created_at":"2013-05-06T16:47:07Z","id":2248,"position":12,"updated_at":"2013-05-06T16:47:07Z","user_id":206},
-        #    "bookmark":
-        #    {"bookmark_url":"http%3A%2F%2Fwww.univision.com%2F","bookmarks_category_id":301,"created_at":"2013-05-06T16:47:07Z","description":null,"i_frame":"y","id":16508,"image_name":{"url":"/uploads/bookmark/image_name/16508/images.jpg","small":{"url":"/uploads/bookmark/image_name/16508/small_images.jpg"},"tiny":{"url":"/uploads/bookmark/image_name/16508/tiny_images.jpg"},"toolbar":{"url":"/uploads/bookmark/image_name/16508/toolbar_images.jpg"}},"image_name_desc":{"url":"/images/fallback/bookmark/default_bookmark.png","small":{"url":"/images/fallback/bookmark/default_bookmark.png"},"tiny":{"url":"/images/fallback/bookmark/default_bookmark.png"},"toolbar":{"url":"/images/fallback/bookmark/default_bookmark.png"}},"item_id":3,"title":"%22uni%22","updated_at":"2013-05-06T16:47:07Z"}
-        #}
-        context "return json values " do
-          xit "should return friend request in json" do
-
-            post :json_create_user_bookmark_custom_by_user_id,
-                 user_id:@user.id,
-                 bookmark_url:@bookmark2.bookmark_url,
-                 bookmarks_category_id:@bookmark2.bookmarks_category_id,
-                 item_id:@item2.id,
-                 title:@bookmark2.title,
-                 position:@user_max_position+1,:format => :json
-
-            body = JSON.parse(response.body)
-            #puts "body ---- > "+body.to_s
-            #puts body["user_friend_request"]["user_id"].to_s
-            #
-            @bookmark_json = Bookmark.find(body["user_bookmark"]["bookmark_id"])
-            @user_bookmark_json = UsersBookmark.find_by_bookmark_id_and_user_id(@bookmark_json.id,@user.id)
-
-            body["user_bookmark"]["position"].should == @user_max_position+1
-            body["user_bookmark"]["user_id"].should == @user.id
-            body["bookmark"]["bookmark_url"].should == @bookmark_json.bookmark_url
-            body["bookmark"]["approval"].should == 'n'
-            body["bookmark"]["i_frame"].should == 'y'
-            body["bookmark"]["title"].should == @bookmark_json.title
-            body["bookmark"]["user_bookmark"].should == @bookmark_json.user_bookmark
-
-          end
-        end
 
       end
 
