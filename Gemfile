@@ -94,7 +94,7 @@ group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'growl', '1.0.3'
 
-  #gem 'poltergeist', '1.5.0'
+  gem 'poltergeist', '1.5.0'
   gem 'phantomjs', '1.9.2.1', require: 'phantomjs/poltergeist'
   gem 'capybara', '2.2.1'
   gem 'selenium-webdriver', '2.39.0'
