@@ -21,7 +21,7 @@
     git commit -m "one commit"
 
     // move to the master branch
-    git checkout master            
+    git checkout master
 
     // pull all changes before of merge
     git pull
@@ -31,10 +31,10 @@
 
     // push your changes
     git push
-    
+
     // delete the branch
     git branch -D my_new_branch
-    
+
     // push to heroku (after adding remote repo staging)
     git push staging master
 
@@ -60,11 +60,11 @@
     git clone  git@github.com:Gabrielvargas7/sample_app.git
     // check is there
     git remote -v
-    
-    
-   
-   
-   
+
+
+
+
+
 ********************
 ** How to add Heroku as staging
 ********************
@@ -76,14 +76,14 @@
 https://help.github.com/articles/adding-a-remote
 https://help.github.com/articles/removing-a-remote
 
-Note: if you accidentily add a remote branch that you'd like to remove, 
+Note: if you accidentily add a remote branch that you'd like to remove,
       type git remote rm <name you want to remove>
-   
-   
-   
-   
-    
-    
+
+
+
+
+
+
 
 ********************
 ** How to update local database
@@ -94,16 +94,16 @@ Note: if you accidentily add a remote branch that you'd like to remove,
 2) Stop PostgreSQL server
     a) Open pgAdmin3
     b) Right click on server instance and click 'Disconect server'
-    
+
 2) Download new database
-    a) From project root (any branch) type into console:  heroku pgbackups:url --remote staging
+    a) From project root (any branch) type into console:  heroku pgbackups:url --remote production
     b) Copy generated link into browser (Note: link only good for a few minutes)
         i) new copy of database will be downloaded
-        
+
 3) Drop existing database and create a new one
     a) From project root type into console:  rake db:drop
     b) Then:  rake db:create
-    
+
 4) Restore database
     a) Go back to pgAdmin3
     b) Sign into server

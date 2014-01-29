@@ -67,7 +67,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '2.14.1'
 
-  gem 'teaspoon', '0.7.8'
+  gem 'teaspoon', '0.7.9'
   gem 'guard-teaspoon', '0.0.4'
   gem 'rb-fsevent', '0.9.4'
   # gem 'guard-spork', '1.2.0'
@@ -80,7 +80,7 @@ end
 
 group :development do
   gem 'guard', '2.3.0'
-  gem 'guard-rspec', '4.2.4'
+  gem 'guard-rspec', '4.2.5'
   gem 'annotate', '2.5.0'
 
 end
@@ -95,9 +95,9 @@ group :test do
   gem 'growl', '1.0.3'
 
   gem 'poltergeist', '1.5.0'
-  gem 'phantomjs', '1.9.2.1', :require => 'phantomjs/poltergeist'
+  gem 'phantomjs', '1.9.2.1', require: 'phantomjs/poltergeist'
   gem 'capybara', '2.2.1'
-  gem "selenium-webdriver", "2.39.0"
+  gem 'selenium-webdriver', '2.39.0'
 
  end
 

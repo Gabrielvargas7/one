@@ -30,7 +30,7 @@
             <input id="store-search-box" class="span2" type="text">
             <div class="btn-group">
               <button id="store-dropdown-btn" class="btn">ALL</button>
-              <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <button id="editor-searchbox-caret" class="btn dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
               </button>
 
