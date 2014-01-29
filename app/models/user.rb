@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :specific_room_id
 
+
   #mount_uploader :image_name, UsersImageUploader
 
   has_many :users_themes
