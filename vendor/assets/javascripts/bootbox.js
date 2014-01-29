@@ -348,7 +348,7 @@ var bootbox = window.bootbox || (function(document, $) {
                 href = _defaultHref;
             }
 
-            buttons = "<a data-handler='"+i+"' class='"+_class+"' href='" + href + "'>"+icon+""+label+"</a>" + buttons;
+            buttons = "<a id='bootbox-button-"+i+"' data-handler='"+i+"' class='"+_class+"' href='" + href + "'>"+icon+""+label+"</a>" + buttons;
 
             callbacks[i] = callback;
         }
