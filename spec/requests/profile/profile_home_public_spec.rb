@@ -1,5 +1,13 @@
 require 'spec_helper'
 
+def social_bar_spec_helper 
+  #page.first(".gridItem").hover
+  page.should have_css(".gridItem .social_bar", :visible => true)
+  page.should have_css(".social_bar .fb_like_item", :visible => true)
+  page.should have_selector(".social_bar .pinterest_item")
+  page.should have_selector(".social_bar .info_button_item")
+end
+
 describe "requests profile home public ", :js => true do
 
 
@@ -9,6 +17,121 @@ describe "requests profile home public ", :js => true do
   end
 
   subject { page }
+
+  describe "profile click " , tag_click_profile:true do
+    
+    el_ask_for_key_btn = "#profile_ask_for_key_overlay button.profile_request_key_button"
+
+    describe "Home" do
+      it "should have Request Key button" do
+        el_request_key_btn = "button.profile_request_key_button"
+        page.should have_css(el_request_key_btn, :visible => true)
+      end
+
+      it "should show social on grid item hover" do
+        page.first(".gridItem").hover
+        page.should have_css(".gridItem .social_bar", :visible => true)
+        page.should have_css(".social_bar .fb_like_item", :visible => true)
+        page.should have_selector(".social_bar .pinterest_item")
+        page.should have_selector(".social_bar .info_button_item")
+      end      
+    end
+
+    describe "Photos" do
+      
+      el_photos = "li#profile_photos"
+      el_photos_view = "div.user-photos-view"
+      
+      before do
+        page.find(el_photos).click
+      end
+
+      it "should show the Photos" do
+
+        page.should have_css(el_ask_for_key_btn, :visible => true)
+        page.should have_selector(el_photos_view)
+      end
+
+    end
+
+    describe "Objects" do
+      el_objects = "li#profile_objects"
+      el_objects_view = "div.profile_objects_view"
+
+      it "should show Objects" do
+        page.find(el_objects).click
+
+        page.should have_css(el_ask_for_key_btn, :visible => true)
+        page.should have_selector(el_objects_view)
+      end
+
+      it "should show social on grid item hover" do
+        page.first(".gridItem").hover
+        page.should have_css(".gridItem .social_bar", :visible => true)
+        page.should have_css(".social_bar .fb_like_item", :visible => true)
+        page.should have_selector(".social_bar .pinterest_item")
+        page.should have_selector(".social_bar .info_button_item")
+      end
+    end
+
+    describe "Bookmarks" do
+      el_bookmarks = "li#profile_bookmarks"
+      el_bookmarks_view = "div.profile_bookmarks_view"
+
+      it "should show Bookmarks" do
+        page.find(el_bookmarks).click
+        page.should have_css(el_ask_for_key_btn, :visible => true)
+        page.should have_selector(el_bookmarks_view)
+      end
+
+      it "should show social on grid item hover" do
+        page.first(".gridItem").hover
+        page.should have_css(".gridItem .social_bar", :visible => true)
+        page.should have_css(".social_bar .fb_like_item", :visible => true)
+        page.should have_selector(".social_bar .pinterest_item")
+        page.should have_selector(".social_bar .info_button_item")
+      end
+    end
+
+    describe "Activity" , tag_click_activity:true do
+      el_activity = "li#profile_activity"
+      el_activity_view = "#profileHome_bottom .profileActivity_activity.generalGrid"
+
+      before do
+        page.find(el_activity).click
+      end
+
+      it "should show Activity" do
+        
+        page.should have_css(el_ask_for_key_btn, :visible => true)
+        page.should have_selector(el_activity_view)
+      end
+
+      it "should show social on grid item hover" do
+        page.first(".gridItem").hover
+        page.should have_css(".gridItem .social_bar", :visible => true)
+        page.should have_css(".social_bar .fb_like_item", :visible => true)
+        page.should have_selector(".social_bar .pinterest_item")
+        page.should have_selector(".social_bar .info_button_item")
+      end
+
+    end
+
+    describe "Friends" do
+      it "should not be visible in sidebar" do
+        el_friends = "li#profile_friends"
+        
+      end
+    end
+
+    describe "Requests" do
+      it "should not be visible in sidebar" do
+        el_requests = "li#profile_key_requests"
+        page.should_not have_selector(el_requests)
+      end
+    end
+
+  end #
 
   describe "profile general class", tag_dom_profile_general:true do
 
@@ -98,11 +221,6 @@ describe "requests profile home public ", :js => true do
     end
 
   end
-
-
-
-
-
 
 end
 
