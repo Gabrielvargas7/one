@@ -135,7 +135,7 @@ describe "Room Editor", :js => true do
         expect(page).to have_css('div.modal-footer', :visible => true)
 
         # Clicking OK closes the modal
-        find('a#bootbox-button-1').click
+        find('a.btn.btn-primary').click
         expect(page).to have_css('div.modal-footer', :visible => false)
       end
 
