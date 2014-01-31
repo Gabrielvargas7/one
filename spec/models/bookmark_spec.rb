@@ -4,7 +4,6 @@
 #
 #  id                    :integer          not null, primary key
 #  bookmarks_category_id :integer
-#  item_id               :integer
 #  bookmark_url          :text
 #  title                 :string(255)
 #  i_frame               :string(255)      default("y")
@@ -13,6 +12,9 @@
 #  description           :text
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  approval              :string(255)      default("y")
+#  user_bookmark         :integer          default(0)
+#  like                  :integer          default(0)
 #
 
 require 'spec_helper'

@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: locations
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :string(255)
+#  x           :decimal(8, 1)
+#  y           :decimal(8, 1)
+#  z           :integer
+#  width       :integer
+#  height      :integer
+#  section_id  :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Location < ActiveRecord::Base
   attr_accessible :description, :height, :name, :section_id, :width, :x, :y, :z
 

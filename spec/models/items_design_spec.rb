@@ -6,11 +6,22 @@
 #  name                 :string(255)
 #  description          :text
 #  item_id              :integer
+#  bundle_id            :integer
 #  image_name           :string(255)
 #  image_name_hover     :string(255)
 #  image_name_selection :string(255)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  category             :string(255)
+#  style                :string(255)
+#  brand                :string(255)
+#  color                :string(255)
+#  make                 :string(255)
+#  special_name         :string(255)
+#  like                 :integer          default(0)
+#  price                :decimal(8, 2)    default(0.0)
+#  product_url          :string(255)
+#  company_id           :integer
 #
 
 require 'spec_helper'

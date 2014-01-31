@@ -2,13 +2,13 @@
 #
 # Table name: tutorials
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  image_name      :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  description     :string(255)
-#  step            :integer
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  image_name  :string(255)
+#  description :string(255)
+#  step        :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'spec_helper'
