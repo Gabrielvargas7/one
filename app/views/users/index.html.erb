@@ -9,7 +9,7 @@
     <th>User Id</th>
     <th>Email</th>
     <th>UserName</th>
-    <th>Create Date</th>
+    <th>Create Date - Pacific Time (US & Canada)</th>
 
 
 
@@ -20,7 +20,7 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.username %></td>
-        <td><%= user.created_at %></td>
+        <td><%= user.created_at.in_time_zone('Pacific Time (US & Canada)') %></td>
 
 
       </tr>

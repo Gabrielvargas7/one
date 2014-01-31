@@ -44,8 +44,10 @@ Mywebroom::Application.configure do
      :address              => "smtp.gmail.com",
      :port                 => 587,
      :domain               => 'mywebroom.com',
-     :user_name            => 'mywebroom@mywebroom.com',
-     :password             => 'SClara_1975',
+     #:user_name            => 'mywebroom@mywebroom.com',
+     #:password             => 'SClara_1975',
+     :user_name            => ENV['ROOMS_MAIL_USERNAME_PRO'],
+     :password             => ENV['ROOMS_MAIL_PASSWORD_PRO'],
      :authentication       => 'plain',
      :enable_starttls_auto => true  }
   config.action_mailer.perform_deliveries = true # change this to false to prevent email from being sent
