@@ -2,17 +2,20 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  email           :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  password_digest :string(255)
-#  remember_token  :string(255)
-#  admin           :boolean          default(FALSE)
-#  username        :string(255)
-#  image_name      :string(255)
+#  id                     :integer          not null, primary key
+#  email                  :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  password_digest        :string(255)
+#  remember_token         :string(255)
+#  admin                  :boolean          default(FALSE)
+#  username               :string(255)
+#  password_reset_token   :string(255)
+#  password_reset_sent_at :datetime
+#  provider               :string(255)
+#  uid                    :string(255)
 #
+
 require 'open-uri'
 
 class User < ActiveRecord::Base
@@ -51,6 +54,8 @@ class User < ActiveRecord::Base
                :create_user_profile,
                :create_specific_friends
 
+
+  validate :active_bundle_exists
 
 
   validates :email,
@@ -122,17 +127,17 @@ class User < ActiveRecord::Base
       # create user profile from facebook
       #---------------------------------
 
-      if UsersProfile.exists?(user_id:user.id)
-        user_profile  = UsersProfile.find_by_user_id(user.id)
+      if UsersProfile.exists?(user_id: user.id)
+        user_profile = UsersProfile.find_by_user_id(user.id)
       else
         # we add this new profile with facebook sign up and
         # add the tutorial step and friend number because user don't do it with save!
-        user_profile  = UsersProfile.new()
+        user_profile = UsersProfile.new()
 
         user_profile.tutorial_step = 1
         user_profile.friends_number = 7
-
       end
+
       user_profile.firstname = auth.extra.raw_info.first_name
       user_profile.lastname = auth.extra.raw_info.last_name
       user_profile.gender = auth.extra.raw_info.gender
@@ -329,7 +334,7 @@ class User < ActiveRecord::Base
   #***********************************
   def create_user_profile
     if self.uid.blank?
-      UsersProfile.create(user_id:self.id,tutorial_step:1)
+      UsersProfile.create(user_id: self.id, tutorial_step: 1)
     end
   end
 
@@ -478,6 +483,14 @@ class User < ActiveRecord::Base
 
 
 
+  end
+
+
+
+
+
+  def active_bundle_exists
+    errors.add(:base, "The database must contain at least 1 'active' bundle.") unless Bundle.where(active: 'y').count >= 1
   end
 
 
