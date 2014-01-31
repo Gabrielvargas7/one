@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131204202752) do
+ActiveRecord::Schema.define(:version => 20140129200950) do
+
+  create_table "bookmark_likes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "bookmark_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "bookmark_likes", ["bookmark_id"], :name => "index_bookmark_likes_on_bookmark_id"
+  add_index "bookmark_likes", ["user_id", "bookmark_id"], :name => "index_bookmark_likes_on_user_id_and_bookmark_id", :unique => true
+  add_index "bookmark_likes", ["user_id"], :name => "index_bookmark_likes_on_user_id"
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "bookmarks_category_id"
