@@ -3,7 +3,6 @@
 # Table name: bundles_bookmarks
 #
 #  id          :integer          not null, primary key
-#  item_id     :integer
 #  bookmark_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

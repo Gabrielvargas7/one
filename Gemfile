@@ -81,7 +81,7 @@ end
 group :development do
   gem 'guard', '2.3.0'
   gem 'guard-rspec', '4.2.5'
-  gem 'annotate', '2.5.0'
+  gem 'annotate', :github => 'ctran/annotate_models', :branch => 'develop'
 
 end
 

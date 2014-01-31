@@ -13,7 +13,8 @@ class FriendRequest < ActiveRecord::Base
   attr_accessible :user_id, :user_id_requested
 
 
-  before_create :user_id_requested_exist
+  validate :friend_exists
+  validate :friend_and_user_are_not_same
 
   belongs_to :user
   validates_presence_of :user
@@ -21,14 +22,12 @@ class FriendRequest < ActiveRecord::Base
   validates :user_id,presence:true, numericality: { only_integer: true }
   validates :user_id_requested,presence:true, numericality: { only_integer: true }
 
-  def user_id_requested_exist
+  def friend_exists
+    errors.add(:user_id_friend, "friend does not exist") unless User.exists?(id: self.user_id_requested)
+  end
 
-     #check is the user request exist if not (don't save)
-     if User.exists?(id:self.user_id_requested)
-        true
-      else
-        false
-     end
+  def friend_and_user_are_not_same
+    errors.add(:base, "friend and user cannot be the same") unless self.user_id_requested != self.user_id
   end
 
 

@@ -16,7 +16,7 @@ class BookmarksCategory < ActiveRecord::Base
   has_many :bookmarks
 
 
-    validates_presence_of :item
+  validates_presence_of :item
 
   validates :item_id, :numericality => { :only_integer => true }
   validates :name, presence:true

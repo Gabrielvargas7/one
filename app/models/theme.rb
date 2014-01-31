@@ -9,6 +9,14 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  image_name_selection :string(255)
+#  category             :string(255)
+#  style                :string(255)
+#  brand                :string(255)
+#  location             :string(255)
+#  color                :string(255)
+#  make                 :string(255)
+#  special_name         :string(255)
+#  like                 :integer          default(0)
 #
 
 class Theme < ActiveRecord::Base

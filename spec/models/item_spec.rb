@@ -2,11 +2,16 @@
 #
 # Table name: items
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  clickable   :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                          :integer          not null, primary key
+#  name                        :string(255)
+#  clickable                   :string(255)      default("yes")
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  image_name                  :string(255)
+#  priority_order              :integer          default(0)
+#  image_name_gray             :string(255)
+#  image_name_first_time_click :string(255)
+#  name_singular               :string(255)
 #
 
 require 'spec_helper'

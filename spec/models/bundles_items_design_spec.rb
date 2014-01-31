@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: bundles_items_designs
+#
+#  id              :integer          not null, primary key
+#  items_design_id :integer
+#  location_id     :integer
+#  bundle_id       :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'spec_helper'
 
 describe BundlesItemsDesign do
