@@ -50,7 +50,7 @@ ul.bookmark_menu_list {
 .bookmark_menu_list > li a{
   margin-left:20px;
 }
-#my_bookmarks_menu_item.bookmark_menu_selected, 
+#my_bookmarks_menu_item.bookmark_menu_selected,
 #discover_menu_item.bookmark_menu_selected, li.bookmark_menu_selected a, a li.bookmark_menu_selected{
   color:#40c3fd;
 }
@@ -62,7 +62,7 @@ ul.bookmark_menu_list {
 #my_bookmarks_menu_item:before {
     background-position: -6px -8px;
     content:"";
-  
+
 }
 #my_bookmarks_menu_item:hover:before, #my_bookmarks_menu_item.bookmark_menu_selected:before{
   background-position: -6px -44px;
@@ -86,7 +86,7 @@ ul.bookmark_menu_list {
 #discover_submenu_list li.discover_submenu{
   padding-left:40px;
   font-size:14px;
-  
+
 }
 #discover_submenu_list{
   border-bottom:1px solid #707070;
@@ -259,13 +259,13 @@ div.just_added img{
   top:10px;
 }
 #bookmark_sidebar_preview_mode{
-  
+
   padding:30px .5em;
   margin-top: 15px;
   border-top: 1px solid #707070;
   width:230px;
 }
- 
+
 #bookmark_sidebar_preview_mode .bookmark_sidebar_preview_mode_description{
   /*To make preview mode button align correctly.*/
   padding-right:1.5em;
@@ -286,6 +286,7 @@ div.just_added img{
   text-decoration:none;
   text-align:center;
   border-radius:3px;
+  cursor: pointer;
 }
 #add_your_own_box .save_site_button{
   width:150px;

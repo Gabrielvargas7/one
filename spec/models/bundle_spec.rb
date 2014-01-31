@@ -2,14 +2,25 @@
 #
 # Table name: bundles
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)
-#  description    :text
-#  theme_id       :integer
-#  image_name     :string(255)
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  image_name_set :string(255)
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  description            :text
+#  theme_id               :integer
+#  image_name             :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  image_name_set         :string(255)
+#  section_id             :integer
+#  active                 :string(255)      default("n")
+#  category               :string(255)
+#  style                  :string(255)
+#  brand                  :string(255)
+#  location               :string(255)
+#  color                  :string(255)
+#  make                   :string(255)
+#  special_name           :string(255)
+#  like                   :integer          default(0)
+#  image_name_entire_room :string(255)
 #
 
 require 'spec_helper'

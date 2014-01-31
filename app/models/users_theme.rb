@@ -7,6 +7,7 @@
 #  theme_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  section_id :integer
 #
 
 class UsersTheme < ActiveRecord::Base

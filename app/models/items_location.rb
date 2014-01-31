@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: items_locations
+#
+#  id          :integer          not null, primary key
+#  item_id     :integer
+#  location_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class ItemsLocation < ActiveRecord::Base
   attr_accessible :item_id, :location_id
 

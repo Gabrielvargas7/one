@@ -2,12 +2,14 @@
 #
 # Table name: users_items_designs
 #
-#  id              :integer          not null, primary key
-#  user_id         :integer
-#  items_design_id :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  hide            :string(255)
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  items_design_id  :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  hide             :string(255)
+#  location_id      :integer          default(0)
+#  first_time_click :string(255)      default("y")
 #
 
 require 'spec_helper'

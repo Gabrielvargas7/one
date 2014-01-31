@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users_photos
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  description   :string(255)
+#  image_name    :string(255)
+#  profile_image :string(255)      default("n")
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 require 'spec_helper'
 
 describe UsersPhoto do
